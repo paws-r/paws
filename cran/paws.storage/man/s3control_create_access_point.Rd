@@ -34,7 +34,8 @@ point to requests from the specified virtual private cloud (VPC).
 This is required for creating an access point for Amazon S3 on Outposts
 buckets.}
 
-\item{PublicAccessBlockConfiguration}{}
+\item{PublicAccessBlockConfiguration}{The \code{PublicAccessBlock} configuration that you want to apply to the
+access point.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -45,21 +46,12 @@ A list with the following syntax:\preformatted{list(
 \description{
 Creates an access point and associates it with the specified bucket. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-\strong{Using this action with Amazon S3 on Outposts}
+S3 on Outposts only supports VPC-style access points.
 
-This action:
-\itemize{
-\item Requires a virtual private cloud (VPC) configuration as S3 on
-Outposts only supports VPC style access points.
-\item Does not support ACL on S3 on Outposts buckets.
-\item Does not support Public Access on S3 on Outposts buckets.
-\item Does not support object lock for S3 on Outposts buckets.
-}
-
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide} .
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Accessing Amazon S3 on Outposts using virtual private cloud (VPC) only access points}
+in the \emph{Amazon S3 User Guide}.
 
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request

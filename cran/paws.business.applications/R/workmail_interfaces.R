@@ -63,6 +63,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workmail$create_mobile_device_access_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Effect = structure(logical(0), tags = list(type = "string")), DeviceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeviceModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeviceOperatingSystems = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceOperatingSystems = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeviceUserAgents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceUserAgents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$create_mobile_device_access_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MobileDeviceAccessRuleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workmail$create_organization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Domains = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), HostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), KmsKeyArn = structure(logical(0), tags = list(type = "string")), EnableInteroperability = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
@@ -142,6 +154,18 @@ NULL
 }
 
 .workmail$delete_mailbox_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$delete_mobile_device_access_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), MobileDeviceAccessRuleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$delete_mobile_device_access_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -327,6 +351,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workmail$get_mobile_device_access_effect_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), DeviceType = structure(logical(0), tags = list(type = "string")), DeviceModel = structure(logical(0), tags = list(type = "string")), DeviceOperatingSystem = structure(logical(0), tags = list(type = "string")), DeviceUserAgent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$get_mobile_device_access_effect_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Effect = structure(logical(0), tags = list(type = "string")), MatchedRules = structure(list(structure(list(MobileDeviceAccessRuleId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workmail$list_access_control_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -396,6 +432,18 @@ NULL
 .workmail$list_mailbox_permissions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Permissions = structure(list(structure(list(GranteeId = structure(logical(0), tags = list(type = "string")), GranteeType = structure(logical(0), tags = list(type = "string")), PermissionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$list_mobile_device_access_rules_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$list_mobile_device_access_rules_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Rules = structure(list(structure(list(MobileDeviceAccessRuleId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Effect = structure(logical(0), tags = list(type = "string")), DeviceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeviceModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeviceOperatingSystems = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceOperatingSystems = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeviceUserAgents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceUserAgents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DateCreated = structure(logical(0), tags = list(type = "timestamp")), DateModified = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -562,6 +610,18 @@ NULL
 }
 
 .workmail$update_mailbox_quota_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$update_mobile_device_access_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), MobileDeviceAccessRuleId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Effect = structure(logical(0), tags = list(type = "string")), DeviceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeviceModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeviceOperatingSystems = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceOperatingSystems = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeviceUserAgents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotDeviceUserAgents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$update_mobile_device_access_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

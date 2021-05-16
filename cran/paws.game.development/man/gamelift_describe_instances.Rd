@@ -2,12 +2,14 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_instances}
 \alias{gamelift_describe_instances}
-\title{Retrieves information about a fleet's instances, including instance IDs}
+\title{Retrieves information about a fleet's instances, including instance IDs,
+connection data, and status}
 \usage{
-gamelift_describe_instances(FleetId, InstanceId, Limit, NextToken)
+gamelift_describe_instances(FleetId, InstanceId, Limit, NextToken,
+  Location)
 }
 \arguments{
-\item{FleetId}{[required] A unique identifier for a fleet to retrieve instance information for.
+\item{FleetId}{[required] A unique identifier for the fleet to retrieve instance information for.
 You can use either the fleet ID or ARN value.}
 
 \item{InstanceId}{A unique identifier for an instance to retrieve. Specify an instance ID
@@ -16,15 +18,19 @@ or leave blank to retrieve all instances in the fleet.}
 \item{Limit}{The maximum number of results to return. Use this parameter with
 \code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
+
+\item{Location}{The name of a location to retrieve instance information for, in the form
+of an AWS Region code such as \code{us-west-2}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
   Instances = list(
     list(
       FleetId = "string",
+      FleetArn = "string",
       InstanceId = "string",
       IpAddress = "string",
       DnsName = "string",
@@ -33,7 +39,8 @@ A list with the following syntax:\preformatted{list(
       Status = "PENDING"|"ACTIVE"|"TERMINATING",
       CreationTime = as.POSIXct(
         "2015-01-01"
-      )
+      ),
+      Location = "string"
     )
   ),
   NextToken = "string"
@@ -41,14 +48,24 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Retrieves information about a fleet's instances, including instance IDs.
-Use this operation to get details on all instances in the fleet or get
-details on one specific instance.
+Retrieves information about a fleet's instances, including instance IDs,
+connection data, and status.
 
-To get a specific instance, specify fleet ID and instance ID. To get all
-instances in a fleet, specify a fleet ID only. Use the pagination
-parameters to retrieve results as a set of sequential pages. If
-successful, an Instance object is returned for each result.
+This operation can be used in the following ways:
+\itemize{
+\item To get information on all instances that are deployed to a fleet's
+home Region, provide the fleet ID.
+\item To get information on all instances that are deployed to a fleet's
+remote location, provide the fleet ID and location name.
+\item To get information on a specific instance in a fleet, provide the
+fleet ID and instance ID.
+}
+
+Use the pagination parameters to retrieve results as a set of sequential
+pages.
+
+If successful, an \code{Instance} object is returned for each requested
+instance. Instances are not returned in any particular order.
 
 \strong{Learn more}
 
@@ -56,18 +73,20 @@ successful, an Instance object is returned for each result.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html}{Debug Fleet Issues}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_describe_instances]{describe_instances}}
-\item \code{\link[=gamelift_get_instance_access]{get_instance_access}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_describe_instances]{describe_instances}} |
+\code{\link[=gamelift_get_instance_access]{get_instance_access}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_instances(
   FleetId = "string",
   InstanceId = "string",
   Limit = 123,
-  NextToken = "string"
+  NextToken = "string",
+  Location = "string"
 )
 }
 }

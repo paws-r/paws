@@ -19,9 +19,14 @@ A list with the following syntax:\preformatted{list(
   ChannelId = "string",
   CmafPackage = list(
     Encryption = list(
+      ConstantInitializationVector = "string",
       KeyRotationIntervalSeconds = 123,
       SpekeKeyProvider = list(
         CertificateArn = "string",
+        EncryptionContractConfiguration = list(
+          PresetSpeke20Audio = "PRESET-AUDIO-1",
+          PresetSpeke20Video = "PRESET-VIDEO-1"
+        ),
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(
@@ -59,6 +64,10 @@ A list with the following syntax:\preformatted{list(
       KeyRotationIntervalSeconds = 123,
       SpekeKeyProvider = list(
         CertificateArn = "string",
+        EncryptionContractConfiguration = list(
+          PresetSpeke20Audio = "PRESET-AUDIO-1",
+          PresetSpeke20Video = "PRESET-VIDEO-1"
+        ),
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(
@@ -100,6 +109,10 @@ A list with the following syntax:\preformatted{list(
       RepeatExtXKey = TRUE|FALSE,
       SpekeKeyProvider = list(
         CertificateArn = "string",
+        EncryptionContractConfiguration = list(
+          PresetSpeke20Audio = "PRESET-AUDIO-1",
+          PresetSpeke20Video = "PRESET-VIDEO-1"
+        ),
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(
@@ -126,6 +139,10 @@ A list with the following syntax:\preformatted{list(
     Encryption = list(
       SpekeKeyProvider = list(
         CertificateArn = "string",
+        EncryptionContractConfiguration = list(
+          PresetSpeke20Audio = "PRESET-AUDIO-1",
+          PresetSpeke20Video = "PRESET-VIDEO-1"
+        ),
         ResourceId = "string",
         RoleArn = "string",
         SystemIds = list(

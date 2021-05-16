@@ -15,14 +15,14 @@ storagegateway_create_storedi_scsi_volume(GatewayARN, DiskId,
 stored volume. Use \code{\link[=storagegateway_list_local_disks]{list_local_disks}}
 to list disk IDs for a gateway.}
 
-\item{SnapshotId}{The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the
-new stored volume. Specify this field if you want to create the iSCSI
-storage volume from a snapshot; otherwise, do not include this field. To
-list snapshots for your account use
+\item{SnapshotId}{The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
+the new stored volume. Specify this field if you want to create the
+iSCSI storage volume from a snapshot; otherwise, do not include this
+field. To list snapshots for your account use
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html}{DescribeSnapshots}
 in the \emph{Amazon Elastic Compute Cloud API Reference}.}
 
-\item{PreserveExistingData}{[required] Set to true \code{true} if you want to preserve the data on the local disk.
+\item{PreserveExistingData}{[required] Set to \code{true} if you want to preserve the data on the local disk.
 Otherwise, set to \code{false} to create an empty volume.
 
 Valid Values: \code{true} | \code{false}}

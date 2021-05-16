@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_start_contact_recording}
 \alias{connect_start_contact_recording}
-\title{This API starts recording the contact when the agent joins the call}
+\title{Starts recording the contact when the agent joins the call}
 \usage{
 connect_start_contact_recording(InstanceId, ContactId, InitialContactId,
   VoiceRecordingConfiguration)
@@ -15,13 +15,13 @@ connect_start_contact_recording(InstanceId, ContactId, InitialContactId,
 \item{InitialContactId}{[required] The identifier of the contact. This is the identifier of the contact
 associated with the first interaction with the contact center.}
 
-\item{VoiceRecordingConfiguration}{[required] Who is being recorded.}
+\item{VoiceRecordingConfiguration}{[required] The person being recorded.}
 }
 \value{
 An empty list.
 }
 \description{
-This API starts recording the contact when the agent joins the call.
+Starts recording the contact when the agent joins the call.
 StartContactRecording is a one-time action. For example, if you use
 StopContactRecording to stop recording an ongoing call, you can't use
 StartContactRecording to restart it. For scenarios where the recording

@@ -324,7 +324,8 @@ appsync_create_data_source <- function(apiId, name, description = NULL, type, se
 #'
 #' @usage
 #' appsync_create_function(apiId, name, description, dataSourceName,
-#'   requestMappingTemplate, responseMappingTemplate, functionVersion)
+#'   requestMappingTemplate, responseMappingTemplate, functionVersion,
+#'   syncConfig)
 #'
 #' @param apiId &#91;required&#93; The GraphQL API ID.
 #' @param name &#91;required&#93; The `Function` name. The function name does not have to be unique.
@@ -335,6 +336,7 @@ appsync_create_data_source <- function(apiId, name, description = NULL, type, se
 #' @param responseMappingTemplate The `Function` response mapping template.
 #' @param functionVersion &#91;required&#93; The `version` of the request mapping template. Currently the supported
 #' value is 2018-05-29.
+#' @param syncConfig 
 #'
 #' @return
 #' A list with the following syntax:
@@ -348,7 +350,14 @@ appsync_create_data_source <- function(apiId, name, description = NULL, type, se
 #'     dataSourceName = "string",
 #'     requestMappingTemplate = "string",
 #'     responseMappingTemplate = "string",
-#'     functionVersion = "string"
+#'     functionVersion = "string",
+#'     syncConfig = list(
+#'       conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'       conflictDetection = "VERSION"|"NONE",
+#'       lambdaConflictHandlerConfig = list(
+#'         lambdaConflictHandlerArn = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -362,21 +371,28 @@ appsync_create_data_source <- function(apiId, name, description = NULL, type, se
 #'   dataSourceName = "string",
 #'   requestMappingTemplate = "string",
 #'   responseMappingTemplate = "string",
-#'   functionVersion = "string"
+#'   functionVersion = "string",
+#'   syncConfig = list(
+#'     conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'     conflictDetection = "VERSION"|"NONE",
+#'     lambdaConflictHandlerConfig = list(
+#'       lambdaConflictHandlerArn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appsync_create_function
-appsync_create_function <- function(apiId, name, description = NULL, dataSourceName, requestMappingTemplate = NULL, responseMappingTemplate = NULL, functionVersion) {
+appsync_create_function <- function(apiId, name, description = NULL, dataSourceName, requestMappingTemplate = NULL, responseMappingTemplate = NULL, functionVersion, syncConfig = NULL) {
   op <- new_operation(
     name = "CreateFunction",
     http_method = "POST",
     http_path = "/v1/apis/{apiId}/functions",
     paginator = list()
   )
-  input <- .appsync$create_function_input(apiId = apiId, name = name, description = description, dataSourceName = dataSourceName, requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, functionVersion = functionVersion)
+  input <- .appsync$create_function_input(apiId = apiId, name = name, description = description, dataSourceName = dataSourceName, requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, functionVersion = functionVersion, syncConfig = syncConfig)
   output <- .appsync$create_function_output()
   config <- get_config()
   svc <- .appsync$service(config)
@@ -1207,7 +1223,14 @@ appsync_get_data_source <- function(apiId, name) {
 #'     dataSourceName = "string",
 #'     requestMappingTemplate = "string",
 #'     responseMappingTemplate = "string",
-#'     functionVersion = "string"
+#'     functionVersion = "string",
+#'     syncConfig = list(
+#'       conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'       conflictDetection = "VERSION"|"NONE",
+#'       lambdaConflictHandlerConfig = list(
+#'         lambdaConflictHandlerArn = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1746,7 +1769,14 @@ appsync_list_data_sources <- function(apiId, nextToken = NULL, maxResults = NULL
 #'       dataSourceName = "string",
 #'       requestMappingTemplate = "string",
 #'       responseMappingTemplate = "string",
-#'       functionVersion = "string"
+#'       functionVersion = "string",
+#'       syncConfig = list(
+#'         conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'         conflictDetection = "VERSION"|"NONE",
+#'         lambdaConflictHandlerConfig = list(
+#'           lambdaConflictHandlerArn = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2600,7 +2630,7 @@ appsync_update_data_source <- function(apiId, name, description = NULL, type, se
 #' @usage
 #' appsync_update_function(apiId, name, description, functionId,
 #'   dataSourceName, requestMappingTemplate, responseMappingTemplate,
-#'   functionVersion)
+#'   functionVersion, syncConfig)
 #'
 #' @param apiId &#91;required&#93; The GraphQL API ID.
 #' @param name &#91;required&#93; The `Function` name.
@@ -2612,6 +2642,7 @@ appsync_update_data_source <- function(apiId, name, description = NULL, type, se
 #' @param responseMappingTemplate The `Function` request mapping template.
 #' @param functionVersion &#91;required&#93; The `version` of the request mapping template. Currently the supported
 #' value is 2018-05-29.
+#' @param syncConfig 
 #'
 #' @return
 #' A list with the following syntax:
@@ -2625,7 +2656,14 @@ appsync_update_data_source <- function(apiId, name, description = NULL, type, se
 #'     dataSourceName = "string",
 #'     requestMappingTemplate = "string",
 #'     responseMappingTemplate = "string",
-#'     functionVersion = "string"
+#'     functionVersion = "string",
+#'     syncConfig = list(
+#'       conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'       conflictDetection = "VERSION"|"NONE",
+#'       lambdaConflictHandlerConfig = list(
+#'         lambdaConflictHandlerArn = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2640,21 +2678,28 @@ appsync_update_data_source <- function(apiId, name, description = NULL, type, se
 #'   dataSourceName = "string",
 #'   requestMappingTemplate = "string",
 #'   responseMappingTemplate = "string",
-#'   functionVersion = "string"
+#'   functionVersion = "string",
+#'   syncConfig = list(
+#'     conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'     conflictDetection = "VERSION"|"NONE",
+#'     lambdaConflictHandlerConfig = list(
+#'       lambdaConflictHandlerArn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appsync_update_function
-appsync_update_function <- function(apiId, name, description = NULL, functionId, dataSourceName, requestMappingTemplate = NULL, responseMappingTemplate = NULL, functionVersion) {
+appsync_update_function <- function(apiId, name, description = NULL, functionId, dataSourceName, requestMappingTemplate = NULL, responseMappingTemplate = NULL, functionVersion, syncConfig = NULL) {
   op <- new_operation(
     name = "UpdateFunction",
     http_method = "POST",
     http_path = "/v1/apis/{apiId}/functions/{functionId}",
     paginator = list()
   )
-  input <- .appsync$update_function_input(apiId = apiId, name = name, description = description, functionId = functionId, dataSourceName = dataSourceName, requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, functionVersion = functionVersion)
+  input <- .appsync$update_function_input(apiId = apiId, name = name, description = description, functionId = functionId, dataSourceName = dataSourceName, requestMappingTemplate = requestMappingTemplate, responseMappingTemplate = responseMappingTemplate, functionVersion = functionVersion, syncConfig = syncConfig)
   output <- .appsync$update_function_output()
   config <- get_config()
   svc <- .appsync$service(config)

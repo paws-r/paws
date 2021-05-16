@@ -62,7 +62,7 @@ Amazon EBS does not support asymmetric CMKs.}
 
 \item{RoleName}{The name of the role to use when not using the default role, 'vmimport'.}
 
-\item{TagSpecifications}{The tags to apply to the snapshot being imported.}
+\item{TagSpecifications}{The tags to apply to the import snapshot task during creation.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -95,6 +95,9 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Imports a disk into an EBS snapshot.
+
+For more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-import-snapshot.html}{Importing a disk as a snapshot using VM Import/Export}
+in the \emph{VM Import/Export User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$import_snapshot(

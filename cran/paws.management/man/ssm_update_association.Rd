@@ -8,7 +8,7 @@ ssm_update_association(AssociationId, Parameters, DocumentVersion,
   ScheduleExpression, OutputLocation, Name, Targets, AssociationName,
   AssociationVersion, AutomationTargetParameterName, MaxErrors,
   MaxConcurrency, ComplianceSeverity, SyncCompliance,
-  ApplyOnlyAtCronInterval, TargetLocations)
+  ApplyOnlyAtCronInterval, CalendarNames, TargetLocations)
 }
 \arguments{
 \item{AssociationId}{[required] The ID of the association you want to update.}
@@ -112,6 +112,11 @@ parameter when you update the association from the command line. This
 parameter forces the association to run immediately after updating it
 and according to the interval specified.}
 
+\item{CalendarNames}{The names or Amazon Resource Names (ARNs) of the Systems Manager Change
+Calendar type documents you want to gate your associations under. The
+associations only run when that Change Calendar is open. For more
+information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html}{AWS Systems Manager Change Calendar}.}
+
 \item{TargetLocations}{A location is a combination of AWS Regions and AWS accounts where you
 want to run the association. Use this action to update an association in
 multiple Regions and multiple accounts.}
@@ -179,6 +184,9 @@ A list with the following syntax:\preformatted{list(
     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
     SyncCompliance = "AUTO"|"MANUAL",
     ApplyOnlyAtCronInterval = TRUE|FALSE,
+    CalendarNames = list(
+      "string"
+    ),
     TargetLocations = list(
       list(
         Accounts = list(
@@ -244,6 +252,9 @@ the specified targets.
   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
   SyncCompliance = "AUTO"|"MANUAL",
   ApplyOnlyAtCronInterval = TRUE|FALSE,
+  CalendarNames = list(
+    "string"
+  ),
   TargetLocations = list(
     list(
       Accounts = list(

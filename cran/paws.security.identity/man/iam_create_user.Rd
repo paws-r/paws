@@ -7,7 +7,7 @@
 iam_create_user(Path, UserName, PermissionsBoundary, Tags)
 }
 \arguments{
-\item{Path}{The path for the user name. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
+\item{Path}{The path for the user name. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -29,13 +29,13 @@ create resources named both "MyResource" and "myresource".}
 \item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for
 the user.}
 
-\item{Tags}{A list of tags that you want to attach to the newly created user. Each
-tag consists of a key name and an associated value. For more information
-about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+\item{Tags}{A list of tags that you want to attach to the new user. Each tag
+consists of a key name and an associated value. For more information
+about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
 in the \emph{IAM User Guide}.
 
-If any one of the tags is invalid or if you exceed the allowed number of
-tags per user, then the entire request fails and the user is not
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
 created.}
 }
 \value{
@@ -68,8 +68,8 @@ A list with the following syntax:\preformatted{list(
 \description{
 Creates a new IAM user for your AWS account.
 
-The number and size of IAM resources in an AWS account are limited. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
+For information about quotas for the number of IAM users you can create,
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS quotas}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

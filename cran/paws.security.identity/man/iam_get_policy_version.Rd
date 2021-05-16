@@ -11,7 +11,7 @@ iam_get_policy_version(PolicyArn, VersionId)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the managed policy that you want
 information about.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 
 \item{VersionId}{[required] Identifies the policy version to retrieve.
@@ -38,25 +38,25 @@ A list with the following syntax:\preformatted{list(
 Retrieves information about the specified version of the specified
 managed policy, including the policy document.
 
-Policies returned by this API are URL-encoded compliant with \href{https://tools.ietf.org/html/rfc3986}{RFC 3986}. You can use a URL decoding
-method to convert the policy back to plain JSON text. For example, if
-you use Java, you can use the \code{decode} method of the
+Policies returned by this operation are URL-encoded compliant with \href{https://datatracker.ietf.org/doc/html/rfc3986}{RFC 3986}. You can use a URL
+decoding method to convert the policy back to plain JSON text. For
+example, if you use Java, you can use the \code{decode} method of the
 \code{java.net.URLDecoder} utility class in the Java SDK. Other languages and
 SDKs provide similar functionality.
 
 To list the available versions for a policy, use
 \code{\link[=iam_list_policy_versions]{list_policy_versions}}.
 
-This API retrieves information about managed policies. To retrieve
+This operation retrieves information about managed policies. To retrieve
 information about an inline policy that is embedded in a user, group, or
-role, use the \code{\link[=iam_get_user_policy]{get_user_policy}},
+role, use \code{\link[=iam_get_user_policy]{get_user_policy}},
 \code{\link[=iam_get_group_policy]{get_group_policy}}, or
-\code{\link[=iam_get_role_policy]{get_role_policy}} API.
+\code{\link[=iam_get_role_policy]{get_role_policy}}.
 
-For more information about the types of policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about the types of policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed policies and inline policies}
 in the \emph{IAM User Guide}.
 
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for managed policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

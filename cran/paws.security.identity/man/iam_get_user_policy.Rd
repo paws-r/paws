@@ -32,9 +32,9 @@ A list with the following syntax:\preformatted{list(
 Retrieves the specified inline policy document that is embedded in the
 specified IAM user.
 
-Policies returned by this API are URL-encoded compliant with \href{https://tools.ietf.org/html/rfc3986}{RFC 3986}. You can use a URL decoding
-method to convert the policy back to plain JSON text. For example, if
-you use Java, you can use the \code{decode} method of the
+Policies returned by this operation are URL-encoded compliant with \href{https://datatracker.ietf.org/doc/html/rfc3986}{RFC 3986}. You can use a URL
+decoding method to convert the policy back to plain JSON text. For
+example, if you use Java, you can use the \code{decode} method of the
 \code{java.net.URLDecoder} utility class in the Java SDK. Other languages and
 SDKs provide similar functionality.
 
@@ -44,7 +44,7 @@ managed policy document that is attached to a user, use
 version. Then use \code{\link[=iam_get_policy_version]{get_policy_version}} to
 retrieve the policy document.
 
-For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed policies and inline policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

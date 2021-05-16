@@ -53,6 +53,12 @@ A list with the following syntax:\preformatted{list(
           Region = "string"
         )
       )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
     )
   )
 )
@@ -61,7 +67,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Retrieves information about the specified instance profile, including
 the instance profile's path, GUID, ARN, and role. For more information
-about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}
+about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About instance profiles}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

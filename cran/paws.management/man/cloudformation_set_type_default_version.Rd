@@ -2,34 +2,34 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_set_type_default_version}
 \alias{cloudformation_set_type_default_version}
-\title{Specify the default version of a type}
+\title{Specify the default version of an extension}
 \usage{
 cloudformation_set_type_default_version(Arn, Type, TypeName, VersionId)
 }
 \arguments{
-\item{Arn}{The Amazon Resource Name (ARN) of the type for which you want version
-summary information.
+\item{Arn}{The Amazon Resource Name (ARN) of the extension for which you want
+version summary information.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{Type}{The kind of type.
+\item{Type}{The kind of extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{TypeName}{The name of the type.
+\item{TypeName}{The name of the extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{VersionId}{The ID of a specific version of the type. The version ID is the value at
-the end of the Amazon Resource Name (ARN) assigned to the type version
-when it is registered.}
+\item{VersionId}{The ID of a specific version of the extension. The version ID is the
+value at the end of the Amazon Resource Name (ARN) assigned to the
+extension version when it is registered.}
 }
 \value{
 An empty list.
 }
 \description{
-Specify the default version of a type. The default version of a type
-will be used in CloudFormation operations.
+Specify the default version of an extension. The default version of an
+extension will be used in CloudFormation operations.
 }
 \section{Request syntax}{
 \preformatted{svc$set_type_default_version(

@@ -2,15 +2,15 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_list_app_instances}
 \alias{chime_list_app_instances}
-\title{Lists all Amazon Chime app instances created under a single AWS account}
+\title{Lists all Amazon Chime AppInstances created under a single AWS account}
 \usage{
 chime_list_app_instances(MaxResults, NextToken)
 }
 \arguments{
-\item{MaxResults}{The maximum number of app instances that you want to return.}
+\item{MaxResults}{The maximum number of \code{AppInstance}s that you want to return.}
 
 \item{NextToken}{The token passed by previous API requests until you reach the maximum
-number of app instances.}
+number of \code{AppInstance}s.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -26,7 +26,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Lists all Amazon Chime app instances created under a single AWS account.
+Lists all Amazon Chime \code{AppInstance}s created under a single AWS
+account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_app_instances(

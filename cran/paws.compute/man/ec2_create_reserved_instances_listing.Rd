@@ -91,7 +91,7 @@ Standard Reserved Instance listing, you can use the
 operation.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_reserved_instances_listing(

@@ -20,6 +20,19 @@ A list with the following syntax:\preformatted{list(
   cluster = list(
     clusterArn = "string",
     clusterName = "string",
+    configuration = list(
+      executeCommandConfiguration = list(
+        kmsKeyId = "string",
+        logging = "NONE"|"DEFAULT"|"OVERRIDE",
+        logConfiguration = list(
+          cloudWatchLogGroupName = "string",
+          cloudWatchEncryptionEnabled = TRUE|FALSE,
+          s3BucketName = "string",
+          s3EncryptionEnabled = TRUE|FALSE,
+          s3KeyPrefix = "string"
+        )
+      )
+    ),
     status = "string",
     registeredContainerInstancesCount = 123,
     runningTasksCount = 123,

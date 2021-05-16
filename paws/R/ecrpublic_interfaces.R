@@ -41,7 +41,7 @@ NULL
 
 .ecrpublic$create_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), catalogData = structure(list(description = structure(logical(0), tags = list(type = "string")), architectures = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), operatingSystems = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), logoImageBlob = structure(logical(0), tags = list(type = "blob")), aboutText = structure(logical(0), tags = list(type = "string")), usageText = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), catalogData = structure(list(description = structure(logical(0), tags = list(type = "string")), architectures = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), operatingSystems = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), logoImageBlob = structure(logical(0), tags = list(type = "blob")), aboutText = structure(logical(0), tags = list(type = "string")), usageText = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -183,6 +183,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ecrpublic$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecrpublic$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ecrpublic$put_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageManifest = structure(logical(0), tags = list(type = "string")), imageManifestMediaType = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string")), imageDigest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -228,6 +240,30 @@ NULL
 .ecrpublic$set_repository_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), policyText = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecrpublic$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecrpublic$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecrpublic$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecrpublic$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

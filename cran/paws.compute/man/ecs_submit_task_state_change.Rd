@@ -6,7 +6,8 @@
 for use outside of the agent}
 \usage{
 ecs_submit_task_state_change(cluster, task, status, reason, containers,
-  attachments, pullStartedAt, pullStoppedAt, executionStoppedAt)
+  attachments, managedAgents, pullStartedAt, pullStoppedAt,
+  executionStoppedAt)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -21,6 +22,8 @@ hosts the task.}
 \item{containers}{Any containers associated with the state change request.}
 
 \item{attachments}{Any attachments associated with the state change request.}
+
+\item{managedAgents}{The details for the managed agent associated with the task.}
 
 \item{pullStartedAt}{The Unix timestamp for when the container image pull began.}
 
@@ -68,6 +71,14 @@ Sent to acknowledge that a task changed states.
     list(
       attachmentArn = "string",
       status = "string"
+    )
+  ),
+  managedAgents = list(
+    list(
+      containerName = "string",
+      managedAgentName = "ExecuteCommandAgent",
+      status = "string",
+      reason = "string"
     )
   ),
   pullStartedAt = as.POSIXct(

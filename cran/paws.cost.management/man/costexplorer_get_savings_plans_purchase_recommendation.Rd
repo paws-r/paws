@@ -54,7 +54,7 @@ A list with the following syntax:\preformatted{list(
   ),
   SavingsPlansPurchaseRecommendation = list(
     AccountScope = "PAYER"|"LINKED",
-    SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP",
+    SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
     TermInYears = "ONE_YEAR"|"THREE_YEARS",
     PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
     LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
@@ -106,7 +106,7 @@ and Details.
 }
 \section{Request syntax}{
 \preformatted{svc$get_savings_plans_purchase_recommendation(
-  SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP",
+  SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
   TermInYears = "ONE_YEAR"|"THREE_YEARS",
   PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
   AccountScope = "PAYER"|"LINKED",

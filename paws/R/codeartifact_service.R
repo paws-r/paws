@@ -7,7 +7,7 @@ NULL
 #' @description
 #' AWS CodeArtifact is a fully managed artifact repository compatible with
 #' language-native package managers and build tools such as npm, Apache
-#' Maven, NuGet, and pip. You can use CodeArtifact to share packages with
+#' Maven, and pip. You can use CodeArtifact to share packages with
 #' development teams and pull packages. Packages can be pulled from both
 #' public and CodeArtifact repositories. You can also create an upstream
 #' relationship between a CodeArtifact repository and another repository,
@@ -24,8 +24,8 @@ NULL
 #'     each of which maps to a set of assets, or files. Repositories are
 #'     polyglot, so a single repository can contain packages of any
 #'     supported type. Each repository exposes endpoints for fetching and
-#'     publishing packages using tools like the **`npm`** CLI, the
-#'     **`NuGet`** CLI, the Maven CLI ( **`mvn`** ), and **`pip`** .
+#'     publishing packages using tools like the **`npm`** CLI, the Maven
+#'     CLI ( **`mvn`** ), and **`pip`** .
 #' 
 #' -   **Domain**: Repositories are aggregated into a higher-level entity
 #'     known as a *domain*. All package assets and metadata are stored in
@@ -52,9 +52,8 @@ NULL
 #'     CodeArtifact supports
 #'     [npm](https://docs.aws.amazon.com/codeartifact/latest/ug/using-npm.html),
 #'     [PyPI](https://docs.aws.amazon.com/codeartifact/latest/ug/using-python.html),
-#'     [Maven](https://docs.aws.amazon.com/codeartifact/latest/ug/using-maven.html),
 #'     and
-#'     [NuGet](https://docs.aws.amazon.com/codeartifact/latest/ug/using-nuget.html)
+#'     [Maven](https://docs.aws.amazon.com/codeartifact/latest/ug/using-maven.html)
 #'     package formats.
 #' 
 #'     In CodeArtifact, a package consists of:
@@ -123,8 +122,9 @@ NULL
 #'     requested domain.
 #' 
 #' -   [`describe_package_version`][codeartifact_describe_package_version]:
-#'     Returns a ` PackageVersionDescription ` object that contains details
-#'     about a package version.
+#'     Returns a
+#'     [PackageVersionDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html)
+#'     object that contains details about a package version.
 #' 
 #' -   [`describe_repository`][codeartifact_describe_repository]: Returns a
 #'     `RepositoryDescription` object that contains detailed information
@@ -164,8 +164,6 @@ NULL
 #' 
 #'     -   `maven`
 #' 
-#'     -   `nuget`
-#' 
 #' -   [`get_repository_permissions_policy`][codeartifact_get_repository_permissions_policy]:
 #'     Returns the resource policy that is set on a repository.
 #' 
@@ -193,21 +191,12 @@ NULL
 #' -   [`list_repositories_in_domain`][codeartifact_list_repositories_in_domain]:
 #'     Returns a list of the repositories in a domain.
 #' 
-#' -   [`list_tags_for_resource`][codeartifact_list_tags_for_resource]:
-#'     Returns a list of the tags associated with a resource.
-#' 
 #' -   [`put_domain_permissions_policy`][codeartifact_put_domain_permissions_policy]:
 #'     Attaches a resource policy to a domain.
 #' 
 #' -   [`put_repository_permissions_policy`][codeartifact_put_repository_permissions_policy]:
 #'     Sets the resource policy on a repository that specifies permissions
 #'     to access it.
-#' 
-#' -   [`tag_resource`][codeartifact_tag_resource]: Adds or updates tags
-#'     for a resource.
-#' 
-#' -   [`untag_resource`][codeartifact_untag_resource]: Removes a tag from
-#'     a resource.
 #' 
 #' -   [`update_package_versions_status`][codeartifact_update_package_versions_status]:
 #'     Updates the status of one or more versions of a package.

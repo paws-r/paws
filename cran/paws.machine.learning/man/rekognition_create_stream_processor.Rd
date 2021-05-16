@@ -6,7 +6,7 @@
 detect and recognize faces in a streaming video}
 \usage{
 rekognition_create_stream_processor(Input, Output, Name, Settings,
-  RoleArn)
+  RoleArn, Tags)
 }
 \arguments{
 \item{Input}{[required] Kinesis video stream stream that provides the source streaming video. If
@@ -27,6 +27,9 @@ Includes the collection to use for face recognition and the face
 attributes to detect.}
 
 \item{RoleArn}{[required] ARN of the IAM role that allows access to the stream processor.}
+
+\item{Tags}{A set of tags (key-value pairs) that you want to attach to the stream
+processor.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -75,7 +78,10 @@ processing. You can delete the stream processor by calling
       FaceMatchThreshold = 123.0
     )
   ),
-  RoleArn = "string"
+  RoleArn = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

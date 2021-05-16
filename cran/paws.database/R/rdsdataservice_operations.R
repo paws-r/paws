@@ -94,7 +94,7 @@ NULL
 #'     list(
 #'       list(
 #'         name = "string",
-#'         typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
+#'         typeHint = "JSON"|"UUID"|"TIMESTAMP"|"DATE"|"TIME"|"DECIMAL",
 #'         value = list(
 #'           arrayValue = list(
 #'             arrayValues = list(
@@ -404,6 +404,8 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param resultSetOptions Options that control how the result set is returned.
 #' @param schema The name of the database schema.
+#' 
+#' Currently, the `schema` parameter isn't supported.
 #' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
 #' @param sql &#91;required&#93; The SQL statement to run.
 #' @param transactionId The identifier of a transaction that was started by using the
@@ -505,7 +507,7 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #'   parameters = list(
 #'     list(
 #'       name = "string",
-#'       typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
+#'       typeHint = "JSON"|"UUID"|"TIMESTAMP"|"DATE"|"TIME"|"DECIMAL",
 #'       value = list(
 #'         arrayValue = list(
 #'           arrayValues = list(
@@ -535,7 +537,7 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #'   ),
 #'   resourceArn = "string",
 #'   resultSetOptions = list(
-#'     decimalReturnType = "DOUBLE_OR_LONG"|"STRING"
+#'     decimalReturnType = "STRING"|"DOUBLE_OR_LONG"
 #'   ),
 #'   schema = "string",
 #'   secretArn = "string",

@@ -2,16 +2,16 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_update_app_instance_user}
 \alias{chime_update_app_instance_user}
-\title{Updates the details for an AppInstanceUser}
+\title{Updates the details of an AppInstanceUser}
 \usage{
 chime_update_app_instance_user(AppInstanceUserArn, Name, Metadata)
 }
 \arguments{
-\item{AppInstanceUserArn}{[required] The ARN of the app instance user.}
+\item{AppInstanceUserArn}{[required] The ARN of the \code{AppInstanceUser}.}
 
-\item{Name}{[required] The name of the app instance user.}
+\item{Name}{[required] The name of the \code{AppInstanceUser}.}
 
-\item{Metadata}{The metadata of the app instance user.}
+\item{Metadata}{The metadata of the \code{AppInstanceUser}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -20,7 +20,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Updates the details for an \code{AppInstanceUser}. You can update names and
+Updates the details of an \code{AppInstanceUser}. You can update names and
 metadata.
 }
 \section{Request syntax}{

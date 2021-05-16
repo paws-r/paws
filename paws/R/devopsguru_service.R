@@ -61,9 +61,11 @@ NULL
 #'  \link[=devopsguru_describe_account_health]{describe_account_health} \tab Returns the number of open reactive insights, the number of open proactive insights, and the number of metrics analyzed in your AWS account\cr
 #'  \link[=devopsguru_describe_account_overview]{describe_account_overview} \tab For the time range passed in, returns the number of open reactive insight that were created, the number of open proactive insights that were created, and the Mean Time to Recover (MTTR) for all closed reactive insights\cr
 #'  \link[=devopsguru_describe_anomaly]{describe_anomaly} \tab Returns details about an anomaly that you specify using its ID\cr
+#'  \link[=devopsguru_describe_feedback]{describe_feedback} \tab Returns the most recent feedback submitted in the current AWS account and Region\cr
 #'  \link[=devopsguru_describe_insight]{describe_insight} \tab Returns details about an insight that you specify using its ID\cr
 #'  \link[=devopsguru_describe_resource_collection_health]{describe_resource_collection_health} \tab Returns the number of open proactive insights, open reactive insights, and the Mean Time to Recover (MTTR) for all closed insights in resource collections in your account\cr
 #'  \link[=devopsguru_describe_service_integration]{describe_service_integration} \tab Returns the integration status of services that are integrated with DevOps Guru\cr
+#'  \link[=devopsguru_get_cost_estimation]{get_cost_estimation} \tab Returns an estimate of the monthly cost for DevOps Guru to analyze your AWS resources\cr
 #'  \link[=devopsguru_get_resource_collection]{get_resource_collection} \tab Returns lists AWS resources that are of the specified resource collection type\cr
 #'  \link[=devopsguru_list_anomalies_for_insight]{list_anomalies_for_insight} \tab Returns a list of the anomalies that belong to an insight that you specify using its ID\cr
 #'  \link[=devopsguru_list_events]{list_events} \tab Returns a list of the events emitted by the resources that are evaluated by DevOps Guru\cr
@@ -73,6 +75,7 @@ NULL
 #'  \link[=devopsguru_put_feedback]{put_feedback} \tab Collects customer feedback about the specified insight\cr
 #'  \link[=devopsguru_remove_notification_channel]{remove_notification_channel} \tab Removes a notification channel from DevOps Guru\cr
 #'  \link[=devopsguru_search_insights]{search_insights} \tab Returns a list of insights in your AWS account\cr
+#'  \link[=devopsguru_start_cost_estimation]{start_cost_estimation} \tab Starts the creation of an estimate of the monthly cost to analyze your AWS resources\cr
 #'  \link[=devopsguru_update_resource_collection]{update_resource_collection} \tab Updates the collection of resources that DevOps Guru analyzes\cr
 #'  \link[=devopsguru_update_service_integration]{update_service_integration} \tab Enables or disables integration with a service that can be integrated with DevOps Guru
 #' }

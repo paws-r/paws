@@ -47,7 +47,7 @@ If you do not specify a purchase time, the default is the current time.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html}{Reserved Instances}
 and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$purchase_reserved_instances_offering(

@@ -21,12 +21,16 @@ either JSON or YAML. JSON is the default format.}
 \value{
 A list with the following syntax:\preformatted{list(
   Name = "string",
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  DisplayName = "string",
   VersionName = "string",
   DocumentVersion = "string",
   Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
   StatusInformation = "string",
   Content = "string",
-  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
   DocumentFormat = "YAML"|"JSON"|"TEXT",
   Requires = list(
     list(

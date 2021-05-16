@@ -92,6 +92,7 @@ A list with the following syntax:\preformatted{list(
         deploymentType = "IN_PLACE"|"BLUE_GREEN",
         deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
       ),
+      outdatedInstancesStrategy = "UPDATE"|"IGNORE",
       blueGreenDeploymentConfiguration = list(
         terminateBlueInstancesOnDeploymentSuccess = list(
           action = "TERMINATE"|"KEEP_ALIVE",

@@ -489,7 +489,14 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 #'       IncludeTableAlterOperations = TRUE|FALSE,
 #'       IncludeControlDetails = TRUE|FALSE,
 #'       MessageMaxBytes = 123,
-#'       IncludeNullAndEmpty = TRUE|FALSE
+#'       IncludeNullAndEmpty = TRUE|FALSE,
+#'       SecurityProtocol = "plaintext"|"ssl-authentication"|"ssl-encryption"|"sasl-ssl",
+#'       SslClientCertificateArn = "string",
+#'       SslClientKeyArn = "string",
+#'       SslClientKeyPassword = "string",
+#'       SslCaCertificateArn = "string",
+#'       SaslUsername = "string",
+#'       SaslPassword = "string"
 #'     ),
 #'     ElasticsearchSettings = list(
 #'       ServiceAccessRoleArn = "string",
@@ -556,6 +563,7 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 #'     ),
 #'     MySQLSettings = list(
 #'       AfterConnectScript = "string",
+#'       CleanSourceMetadataOnMismatch = TRUE|FALSE,
 #'       DatabaseName = "string",
 #'       EventsPollInterval = 123,
 #'       TargetDbType = "specific-database"|"multiple-databases",
@@ -599,6 +607,7 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 #'       SecurityDbEncryption = "string",
 #'       SecurityDbEncryptionName = "string",
 #'       ServerName = "string",
+#'       SpatialDataOptionToGeoJsonFunctionName = "string",
 #'       Username = "string",
 #'       SecretsManagerAccessRoleArn = "string",
 #'       SecretsManagerSecretId = "string",
@@ -620,11 +629,13 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 #'       DatabaseName = "string",
 #'       ControlTablesFileGroup = "string",
 #'       Password = "string",
+#'       QuerySingleAlwaysOnNode = TRUE|FALSE,
 #'       ReadBackupOnly = TRUE|FALSE,
 #'       SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
 #'       ServerName = "string",
 #'       Username = "string",
 #'       UseBcpFullLoad = TRUE|FALSE,
+#'       UseThirdPartyBackupDevice = TRUE|FALSE,
 #'       SecretsManagerAccessRoleArn = "string",
 #'       SecretsManagerSecretId = "string"
 #'     ),
@@ -754,7 +765,14 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 #'     IncludeTableAlterOperations = TRUE|FALSE,
 #'     IncludeControlDetails = TRUE|FALSE,
 #'     MessageMaxBytes = 123,
-#'     IncludeNullAndEmpty = TRUE|FALSE
+#'     IncludeNullAndEmpty = TRUE|FALSE,
+#'     SecurityProtocol = "plaintext"|"ssl-authentication"|"ssl-encryption"|"sasl-ssl",
+#'     SslClientCertificateArn = "string",
+#'     SslClientKeyArn = "string",
+#'     SslClientKeyPassword = "string",
+#'     SslCaCertificateArn = "string",
+#'     SaslUsername = "string",
+#'     SaslPassword = "string"
 #'   ),
 #'   ElasticsearchSettings = list(
 #'     ServiceAccessRoleArn = "string",
@@ -821,6 +839,7 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 #'   ),
 #'   MySQLSettings = list(
 #'     AfterConnectScript = "string",
+#'     CleanSourceMetadataOnMismatch = TRUE|FALSE,
 #'     DatabaseName = "string",
 #'     EventsPollInterval = 123,
 #'     TargetDbType = "specific-database"|"multiple-databases",
@@ -864,6 +883,7 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 #'     SecurityDbEncryption = "string",
 #'     SecurityDbEncryptionName = "string",
 #'     ServerName = "string",
+#'     SpatialDataOptionToGeoJsonFunctionName = "string",
 #'     Username = "string",
 #'     SecretsManagerAccessRoleArn = "string",
 #'     SecretsManagerSecretId = "string",
@@ -885,11 +905,13 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 #'     DatabaseName = "string",
 #'     ControlTablesFileGroup = "string",
 #'     Password = "string",
+#'     QuerySingleAlwaysOnNode = TRUE|FALSE,
 #'     ReadBackupOnly = TRUE|FALSE,
 #'     SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
 #'     ServerName = "string",
 #'     Username = "string",
 #'     UseBcpFullLoad = TRUE|FALSE,
+#'     UseThirdPartyBackupDevice = TRUE|FALSE,
 #'     SecretsManagerAccessRoleArn = "string",
 #'     SecretsManagerSecretId = "string"
 #'   ),
@@ -1881,7 +1903,14 @@ databasemigrationservice_delete_connection <- function(EndpointArn, ReplicationI
 #'       IncludeTableAlterOperations = TRUE|FALSE,
 #'       IncludeControlDetails = TRUE|FALSE,
 #'       MessageMaxBytes = 123,
-#'       IncludeNullAndEmpty = TRUE|FALSE
+#'       IncludeNullAndEmpty = TRUE|FALSE,
+#'       SecurityProtocol = "plaintext"|"ssl-authentication"|"ssl-encryption"|"sasl-ssl",
+#'       SslClientCertificateArn = "string",
+#'       SslClientKeyArn = "string",
+#'       SslClientKeyPassword = "string",
+#'       SslCaCertificateArn = "string",
+#'       SaslUsername = "string",
+#'       SaslPassword = "string"
 #'     ),
 #'     ElasticsearchSettings = list(
 #'       ServiceAccessRoleArn = "string",
@@ -1948,6 +1977,7 @@ databasemigrationservice_delete_connection <- function(EndpointArn, ReplicationI
 #'     ),
 #'     MySQLSettings = list(
 #'       AfterConnectScript = "string",
+#'       CleanSourceMetadataOnMismatch = TRUE|FALSE,
 #'       DatabaseName = "string",
 #'       EventsPollInterval = 123,
 #'       TargetDbType = "specific-database"|"multiple-databases",
@@ -1991,6 +2021,7 @@ databasemigrationservice_delete_connection <- function(EndpointArn, ReplicationI
 #'       SecurityDbEncryption = "string",
 #'       SecurityDbEncryptionName = "string",
 #'       ServerName = "string",
+#'       SpatialDataOptionToGeoJsonFunctionName = "string",
 #'       Username = "string",
 #'       SecretsManagerAccessRoleArn = "string",
 #'       SecretsManagerSecretId = "string",
@@ -2012,11 +2043,13 @@ databasemigrationservice_delete_connection <- function(EndpointArn, ReplicationI
 #'       DatabaseName = "string",
 #'       ControlTablesFileGroup = "string",
 #'       Password = "string",
+#'       QuerySingleAlwaysOnNode = TRUE|FALSE,
 #'       ReadBackupOnly = TRUE|FALSE,
 #'       SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
 #'       ServerName = "string",
 #'       Username = "string",
 #'       UseBcpFullLoad = TRUE|FALSE,
+#'       UseThirdPartyBackupDevice = TRUE|FALSE,
 #'       SecretsManagerAccessRoleArn = "string",
 #'       SecretsManagerSecretId = "string"
 #'     ),
@@ -2845,6 +2878,77 @@ databasemigrationservice_describe_connections <- function(Filters = NULL, MaxRec
 }
 .databasemigrationservice$operations$describe_connections <- databasemigrationservice_describe_connections
 
+#' Returns information about the possible endpoint settings available when
+#' you create an endpoint for a specific database engine
+#'
+#' @description
+#' Returns information about the possible endpoint settings available when
+#' you create an endpoint for a specific database engine.
+#'
+#' @usage
+#' databasemigrationservice_describe_endpoint_settings(EngineName,
+#'   MaxRecords, Marker)
+#'
+#' @param EngineName &#91;required&#93; The databse engine used for your source or target endpoint.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a marker is included in the response so that the remaining
+#' results can be retrieved.
+#' @param Marker An optional pagination token provided by a previous request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   EndpointSettings = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "string"|"boolean"|"integer"|"enum",
+#'       EnumValues = list(
+#'         "string"
+#'       ),
+#'       Sensitive = TRUE|FALSE,
+#'       Units = "string",
+#'       Applicability = "string",
+#'       IntValueMin = 123,
+#'       IntValueMax = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_endpoint_settings(
+#'   EngineName = "string",
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname databasemigrationservice_describe_endpoint_settings
+databasemigrationservice_describe_endpoint_settings <- function(EngineName, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeEndpointSettings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .databasemigrationservice$describe_endpoint_settings_input(EngineName = EngineName, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .databasemigrationservice$describe_endpoint_settings_output()
+  config <- get_config()
+  svc <- .databasemigrationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.databasemigrationservice$operations$describe_endpoint_settings <- databasemigrationservice_describe_endpoint_settings
+
 #' Returns information about the type of endpoints available
 #'
 #' @description
@@ -3064,7 +3168,14 @@ databasemigrationservice_describe_endpoint_types <- function(Filters = NULL, Max
 #'         IncludeTableAlterOperations = TRUE|FALSE,
 #'         IncludeControlDetails = TRUE|FALSE,
 #'         MessageMaxBytes = 123,
-#'         IncludeNullAndEmpty = TRUE|FALSE
+#'         IncludeNullAndEmpty = TRUE|FALSE,
+#'         SecurityProtocol = "plaintext"|"ssl-authentication"|"ssl-encryption"|"sasl-ssl",
+#'         SslClientCertificateArn = "string",
+#'         SslClientKeyArn = "string",
+#'         SslClientKeyPassword = "string",
+#'         SslCaCertificateArn = "string",
+#'         SaslUsername = "string",
+#'         SaslPassword = "string"
 #'       ),
 #'       ElasticsearchSettings = list(
 #'         ServiceAccessRoleArn = "string",
@@ -3131,6 +3242,7 @@ databasemigrationservice_describe_endpoint_types <- function(Filters = NULL, Max
 #'       ),
 #'       MySQLSettings = list(
 #'         AfterConnectScript = "string",
+#'         CleanSourceMetadataOnMismatch = TRUE|FALSE,
 #'         DatabaseName = "string",
 #'         EventsPollInterval = 123,
 #'         TargetDbType = "specific-database"|"multiple-databases",
@@ -3174,6 +3286,7 @@ databasemigrationservice_describe_endpoint_types <- function(Filters = NULL, Max
 #'         SecurityDbEncryption = "string",
 #'         SecurityDbEncryptionName = "string",
 #'         ServerName = "string",
+#'         SpatialDataOptionToGeoJsonFunctionName = "string",
 #'         Username = "string",
 #'         SecretsManagerAccessRoleArn = "string",
 #'         SecretsManagerSecretId = "string",
@@ -3195,11 +3308,13 @@ databasemigrationservice_describe_endpoint_types <- function(Filters = NULL, Max
 #'         DatabaseName = "string",
 #'         ControlTablesFileGroup = "string",
 #'         Password = "string",
+#'         QuerySingleAlwaysOnNode = TRUE|FALSE,
 #'         ReadBackupOnly = TRUE|FALSE,
 #'         SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
 #'         ServerName = "string",
 #'         Username = "string",
 #'         UseBcpFullLoad = TRUE|FALSE,
+#'         UseThirdPartyBackupDevice = TRUE|FALSE,
 #'         SecretsManagerAccessRoleArn = "string",
 #'         SecretsManagerSecretId = "string"
 #'       ),
@@ -5075,7 +5190,14 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'       IncludeTableAlterOperations = TRUE|FALSE,
 #'       IncludeControlDetails = TRUE|FALSE,
 #'       MessageMaxBytes = 123,
-#'       IncludeNullAndEmpty = TRUE|FALSE
+#'       IncludeNullAndEmpty = TRUE|FALSE,
+#'       SecurityProtocol = "plaintext"|"ssl-authentication"|"ssl-encryption"|"sasl-ssl",
+#'       SslClientCertificateArn = "string",
+#'       SslClientKeyArn = "string",
+#'       SslClientKeyPassword = "string",
+#'       SslCaCertificateArn = "string",
+#'       SaslUsername = "string",
+#'       SaslPassword = "string"
 #'     ),
 #'     ElasticsearchSettings = list(
 #'       ServiceAccessRoleArn = "string",
@@ -5142,6 +5264,7 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'     ),
 #'     MySQLSettings = list(
 #'       AfterConnectScript = "string",
+#'       CleanSourceMetadataOnMismatch = TRUE|FALSE,
 #'       DatabaseName = "string",
 #'       EventsPollInterval = 123,
 #'       TargetDbType = "specific-database"|"multiple-databases",
@@ -5185,6 +5308,7 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'       SecurityDbEncryption = "string",
 #'       SecurityDbEncryptionName = "string",
 #'       ServerName = "string",
+#'       SpatialDataOptionToGeoJsonFunctionName = "string",
 #'       Username = "string",
 #'       SecretsManagerAccessRoleArn = "string",
 #'       SecretsManagerSecretId = "string",
@@ -5206,11 +5330,13 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'       DatabaseName = "string",
 #'       ControlTablesFileGroup = "string",
 #'       Password = "string",
+#'       QuerySingleAlwaysOnNode = TRUE|FALSE,
 #'       ReadBackupOnly = TRUE|FALSE,
 #'       SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
 #'       ServerName = "string",
 #'       Username = "string",
 #'       UseBcpFullLoad = TRUE|FALSE,
+#'       UseThirdPartyBackupDevice = TRUE|FALSE,
 #'       SecretsManagerAccessRoleArn = "string",
 #'       SecretsManagerSecretId = "string"
 #'     ),
@@ -5334,7 +5460,14 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'     IncludeTableAlterOperations = TRUE|FALSE,
 #'     IncludeControlDetails = TRUE|FALSE,
 #'     MessageMaxBytes = 123,
-#'     IncludeNullAndEmpty = TRUE|FALSE
+#'     IncludeNullAndEmpty = TRUE|FALSE,
+#'     SecurityProtocol = "plaintext"|"ssl-authentication"|"ssl-encryption"|"sasl-ssl",
+#'     SslClientCertificateArn = "string",
+#'     SslClientKeyArn = "string",
+#'     SslClientKeyPassword = "string",
+#'     SslCaCertificateArn = "string",
+#'     SaslUsername = "string",
+#'     SaslPassword = "string"
 #'   ),
 #'   ElasticsearchSettings = list(
 #'     ServiceAccessRoleArn = "string",
@@ -5401,6 +5534,7 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'   ),
 #'   MySQLSettings = list(
 #'     AfterConnectScript = "string",
+#'     CleanSourceMetadataOnMismatch = TRUE|FALSE,
 #'     DatabaseName = "string",
 #'     EventsPollInterval = 123,
 #'     TargetDbType = "specific-database"|"multiple-databases",
@@ -5444,6 +5578,7 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'     SecurityDbEncryption = "string",
 #'     SecurityDbEncryptionName = "string",
 #'     ServerName = "string",
+#'     SpatialDataOptionToGeoJsonFunctionName = "string",
 #'     Username = "string",
 #'     SecretsManagerAccessRoleArn = "string",
 #'     SecretsManagerSecretId = "string",
@@ -5465,11 +5600,13 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'     DatabaseName = "string",
 #'     ControlTablesFileGroup = "string",
 #'     Password = "string",
+#'     QuerySingleAlwaysOnNode = TRUE|FALSE,
 #'     ReadBackupOnly = TRUE|FALSE,
 #'     SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
 #'     ServerName = "string",
 #'     Username = "string",
 #'     UseBcpFullLoad = TRUE|FALSE,
+#'     UseThirdPartyBackupDevice = TRUE|FALSE,
 #'     SecretsManagerAccessRoleArn = "string",
 #'     SecretsManagerSecretId = "string"
 #'   ),
@@ -5926,9 +6063,9 @@ databasemigrationservice_modify_replication_subnet_group <- function(Replication
 #' @param MigrationType The migration type. Valid values: `full-load` | `cdc` |
 #' `full-load-and-cdc`
 #' @param TableMappings When using the AWS CLI or boto3, provide the path of the JSON file that
-#' contains the table mappings. Precede the path with `file://`. When
-#' working with the DMS API, provide the JSON as the parameter value, for
-#' example: `--table-mappings file://mappingfile.json`
+#' contains the table mappings. Precede the path with `file://`. For
+#' example, `--table-mappings file://mappingfile.json`. When working with
+#' the DMS API, provide the JSON as the parameter value.
 #' @param ReplicationTaskSettings JSON file that contains settings for the task, such as task metadata
 #' settings.
 #' @param CdcStartTime Indicates the start time for a change data capture (CDC) operation. Use

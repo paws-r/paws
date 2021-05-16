@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_describe_type_registration}
 \alias{cloudformation_describe_type_registration}
-\title{Returns information about a type's registration, including its current
-status and type and version identifiers}
+\title{Returns information about an extension's registration, including its
+current status and type and version identifiers}
 \usage{
 cloudformation_describe_type_registration(RegistrationToken)
 }
@@ -24,8 +24,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns information about a type's registration, including its current
-status and type and version identifiers.
+Returns information about an extension's registration, including its
+current status and type and version identifiers.
 
 When you initiate a registration request using
 \code{\link[=cloudformation_register_type]{register_type}}, you can then use
@@ -34,7 +34,7 @@ to monitor the progress of that registration request.
 
 Once the registration request has completed, use
 \code{\link[=cloudformation_describe_type]{describe_type}} to return detailed
-informaiton about a type.
+information about an extension.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_type_registration(

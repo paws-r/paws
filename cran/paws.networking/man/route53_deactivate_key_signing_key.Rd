@@ -2,7 +2,7 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_deactivate_key_signing_key}
 \alias{route53_deactivate_key_signing_key}
-\title{Deactivates a key signing key (KSK) so that it will not be used for
+\title{Deactivates a key-signing key (KSK) so that it will not be used for
 signing by DNSSEC}
 \usage{
 route53_deactivate_key_signing_key(HostedZoneId, Name)
@@ -10,7 +10,7 @@ route53_deactivate_key_signing_key(HostedZoneId, Name)
 \arguments{
 \item{HostedZoneId}{[required] A unique string used to identify a hosted zone.}
 
-\item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK).}
+\item{Name}{[required] A string used to identify a key-signing key (KSK).}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -26,7 +26,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Deactivates a key signing key (KSK) so that it will not be used for
+Deactivates a key-signing key (KSK) so that it will not be used for
 signing by DNSSEC. This operation changes the KSK status to \code{INACTIVE}.
 }
 \section{Request syntax}{

@@ -5,7 +5,7 @@
 \title{Detect drift on a stack set}
 \usage{
 cloudformation_detect_stack_set_drift(StackSetName,
-  OperationPreferences, OperationId)
+  OperationPreferences, OperationId, CallAs)
 }
 \arguments{
 \item{StackSetName}{[required] The name of the stack set on which to perform the drift detection
@@ -14,6 +14,22 @@ operation.}
 \item{OperationPreferences}{}
 
 \item{OperationId}{\emph{The ID of the stack set operation.}}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your AWS account must be registered as a delegated administrator in
+the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{AWS CloudFormation User Guide}.
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -40,7 +56,7 @@ Once the operation has completed, use the following actions to return
 drift information:
 \itemize{
 \item Use \code{\link[=cloudformation_describe_stack_set]{describe_stack_set}} to
-return detailed informaiton about the stack set, including detailed
+return detailed information about the stack set, including detailed
 information about the last \emph{completed} drift operation performed on
 the stack set. (Information about drift operations that are in
 progress is not included.)
@@ -67,6 +83,7 @@ To stop a drift detection stack set operation, use
 \preformatted{svc$detect_stack_set_drift(
   StackSetName = "string",
   OperationPreferences = list(
+    RegionConcurrencyType = "SEQUENTIAL"|"PARALLEL",
     RegionOrder = list(
       "string"
     ),
@@ -75,7 +92,8 @@ To stop a drift detection stack set operation, use
     MaxConcurrentCount = 123,
     MaxConcurrentPercentage = 123
   ),
-  OperationId = "string"
+  OperationId = "string",
+  CallAs = "SELF"|"DELEGATED_ADMIN"
 )
 }
 }

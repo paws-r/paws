@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_select_object_content}
 \alias{s3_select_object_content}
-\title{This operation filters the contents of an Amazon S3 object based on a
+\title{This action filters the contents of an Amazon S3 object based on a
 simple structured query language (SQL) statement}
 \usage{
 s3_select_object_content(Bucket, Key, SSECustomerAlgorithm,
@@ -50,7 +50,7 @@ records starting after the byte 50
 within the last 50 bytes of the file.
 }}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -81,7 +81,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This operation filters the contents of an Amazon S3 object based on a
+This action filters the contents of an Amazon S3 object based on a
 simple structured query language (SQL) statement. In the request, along
 with the SQL expression, you must also specify a data serialization
 format (JSON, CSV, or Apache Parquet) of the object. Amazon S3 uses this
@@ -92,17 +92,17 @@ serialization format for the response.
 This action is not supported by Amazon S3 on Outposts.
 
 For more information about Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html}{Selecting Content from Objects}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 For more information about using SQL with Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 \strong{Permissions}
 
 You must have \code{s3:GetObject} permission for this operation. Amazon S3
 Select does not support anonymous access. For more information about
 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 \emph{Object Data Formats}
 
@@ -125,7 +125,7 @@ For objects that are encrypted with customer-provided encryption
 keys (SSE-C), you must use HTTPS, and you must use the headers that
 are documented in the \code{\link[=s3_get_object]{get_object}}. For more
 information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 For objects that are encrypted with Amazon S3 managed encryption
 keys (SSE-S3) and customer master keys (CMKs) stored in AWS Key
@@ -133,7 +133,7 @@ Management Service (SSE-KMS), server-side encryption is handled
 transparently, so you don't need to specify anything. For more
 information about server-side encryption, including SSE-S3 and
 SSE-KMS, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 }
 
 \strong{Working with the Response Body}
@@ -146,9 +146,9 @@ information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTSelec
 
 \strong{GetObject Support}
 
-The \code{\link[=s3_select_object_content]{select_object_content}} operation does
-not support the following \code{\link[=s3_get_object]{get_object}} functionality.
-For more information, see \code{\link[=s3_get_object]{get_object}}.
+The \code{\link[=s3_select_object_content]{select_object_content}} action does not
+support the following \code{\link[=s3_get_object]{get_object}} functionality. For
+more information, see \code{\link[=s3_get_object]{get_object}}.
 \itemize{
 \item \code{Range}: Although you can specify a scan range for an Amazon S3
 Select request (see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_SelectObjectContent.html#AmazonS3-SelectObjectContent-request-ScanRange}{SelectObjectContentRequest - ScanRange}
@@ -158,7 +158,7 @@ an object to return.
 cannot specify the GLACIER, DEEP_ARCHIVE, or \code{REDUCED_REDUNDANCY}
 storage classes. For more information, about storage classes see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#storage-class-intro}{Storage Classes}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 }
 
 \strong{Special Errors}

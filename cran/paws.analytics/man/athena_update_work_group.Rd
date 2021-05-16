@@ -42,7 +42,11 @@ cannot be changed.
     PublishCloudWatchMetricsEnabled = TRUE|FALSE,
     BytesScannedCutoffPerQuery = 123,
     RemoveBytesScannedCutoffPerQuery = TRUE|FALSE,
-    RequesterPaysEnabled = TRUE|FALSE
+    RequesterPaysEnabled = TRUE|FALSE,
+    EngineVersion = list(
+      SelectedEngineVersion = "string",
+      EffectiveEngineVersion = "string"
+    )
   ),
   State = "ENABLED"|"DISABLED"
 )

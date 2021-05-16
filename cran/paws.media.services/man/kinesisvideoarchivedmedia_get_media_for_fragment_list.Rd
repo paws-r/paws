@@ -6,10 +6,15 @@
 the archived data in an Amazon Kinesis video stream}
 \usage{
 kinesisvideoarchivedmedia_get_media_for_fragment_list(StreamName,
-  Fragments)
+  StreamARN, Fragments)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream from which to retrieve fragment media.}
+\item{StreamName}{The name of the stream from which to retrieve fragment media. Specify
+either this parameter or the \code{StreamARN} parameter.}
+
+\item{StreamARN}{The Amazon Resource Name (ARN) of the stream from which to retrieve
+fragment media. Specify either this parameter or the \code{StreamName}
+parameter.}
 
 \item{Fragments}{[required] A list of the numbers of fragments for which to retrieve media. You
 retrieve these values with
@@ -31,18 +36,7 @@ send the
 \code{\link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list}}
 requests to this endpoint using the \href{https://docs.aws.amazon.com/cli/latest/reference/}{--endpoint-url parameter}.
 
-The following limits apply when using the
-\code{\link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list}}
-API:
-\itemize{
-\item A client can call
-\code{\link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list}}
-up to five times per second per stream.
-\item Kinesis Video Streams sends media data at a rate of up to 25
-megabytes per second (or 200 megabits per second) during a
-\code{\link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list}}
-session.
-}
+For limits, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html}{Kinesis Video Streams Limits}.
 
 If an error is thrown after invoking a Kinesis Video Streams archived
 media API, in addition to the HTTP status code and the response body, it
@@ -67,6 +61,7 @@ topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/d
 \section{Request syntax}{
 \preformatted{svc$get_media_for_fragment_list(
   StreamName = "string",
+  StreamARN = "string",
   Fragments = list(
     "string"
   )

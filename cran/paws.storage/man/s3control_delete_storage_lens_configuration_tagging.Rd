@@ -16,13 +16,13 @@ An empty list.
 }
 \description{
 Deletes the Amazon S3 Storage Lens configuration tags. For more
-information about S3 Storage Lens, see Working with Amazon S3 Storage
-Lens in the \emph{Amazon Simple Storage Service Developer Guide}.
+information about S3 Storage Lens, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html}{Assessing your storage activity and usage with Amazon S3 Storage Lens}
+in the \emph{Amazon S3 User Guide}.
 
 To use this action, you must have permission to perform the
 \code{s3:DeleteStorageLensConfigurationTagging} action. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html#storage_lens_IAM}{Setting permissions to use Amazon S3 Storage Lens}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html}{Setting permissions to use Amazon S3 Storage Lens}
+in the \emph{Amazon S3 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_storage_lens_configuration_tagging(

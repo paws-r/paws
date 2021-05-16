@@ -5,10 +5,20 @@
 \title{Uses your private certificate authority (CA), or one that has been
 shared with you, to issue a client certificate}
 \usage{
-acmpca_issue_certificate(CertificateAuthorityArn, Csr, SigningAlgorithm,
-  TemplateArn, Validity, IdempotencyToken)
+acmpca_issue_certificate(ApiPassthrough, CertificateAuthorityArn, Csr,
+  SigningAlgorithm, TemplateArn, Validity, ValidityNotBefore,
+  IdempotencyToken)
 }
 \arguments{
+\item{ApiPassthrough}{Specifies X.509 certificate information to be included in the issued
+certificate. An \code{APIPassthrough} or \code{APICSRPassthrough} template variant
+must be selected, or else this parameter is ignored. For more
+information about using these templates, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html}{Understanding Certificate Templates}.
+
+If conflicting or duplicate certificate information is supplied during
+certificate issuance, ACM Private CA applies \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html#template-order-of-operations}{order of operation rules}
+to determine what information is used.}
+
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
 \code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}.
 This must be of the form:
@@ -16,12 +26,12 @@ This must be of the form:
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 
 \item{Csr}{[required] The certificate signing request (CSR) for the certificate you want to
-issue. You can use the following OpenSSL command to create the CSR and a
-2048 bit RSA private key.
+issue. As an example, you can use the following OpenSSL command to
+create the CSR and a 2048 bit RSA private key.
 
 \verb{openssl req -new -newkey rsa:2048 -days 365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr}
 
-If you have a configuration file, you can use the following OpenSSL
+If you have a configuration file, you can then use the following OpenSSL
 command. The \code{usr_cert} block in the configuration file contains your
 X509 version 3 extensions.
 
@@ -34,7 +44,9 @@ alternative name} or the request will be rejected.}
 be issued.
 
 This parameter should not be confused with the \code{SigningAlgorithm}
-parameter used to sign a CSR.}
+parameter used to sign a CSR in the
+\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
+action.}
 
 \item{TemplateArn}{Specifies a custom configuration template to use when issuing a
 certificate. If this parameter is not provided, ACM Private CA defaults
@@ -46,45 +58,54 @@ the \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaTerms.html#ter
 Note: The CA depth configured on a subordinate CA certificate must not
 exceed the limit set by its parents in the CA hierarchy.
 
-The following service-owned \code{TemplateArn} values are supported by ACM
-Private CA:
-\itemize{
-\item arn:aws:acm-pca:::template/CodeSigningCertificate/V1
-\item arn:aws:acm-pca:::template/CodeSigningCertificate_CSRPassthrough/V1
-\item arn:aws:acm-pca:::template/EndEntityCertificate/V1
-\item arn:aws:acm-pca:::template/EndEntityCertificate_CSRPassthrough/V1
-\item arn:aws:acm-pca:::template/EndEntityClientAuthCertificate/V1
-\item arn:aws:acm-pca:::template/EndEntityClientAuthCertificate_CSRPassthrough/V1
-\item arn:aws:acm-pca:::template/EndEntityServerAuthCertificate/V1
-\item arn:aws:acm-pca:::template/EndEntityServerAuthCertificate_CSRPassthrough/V1
-\item arn:aws:acm-pca:::template/OCSPSigningCertificate/V1
-\item arn:aws:acm-pca:::template/OCSPSigningCertificate_CSRPassthrough/V1
-\item arn:aws:acm-pca:::template/RootCACertificate/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
-}
+For a list of \code{TemplateArn} values supported by ACM Private CA, see
+\href{https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html}{Understanding Certificate Templates}.}
 
-For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html}{Using Templates}.}
+\item{Validity}{[required] Information describing the end of the validity period of the
+certificate. This parameter sets the “Not After” date for the
+certificate.
 
-\item{Validity}{[required] Information describing the validity period of the certificate.
+Certificate validity is the period of time during which a certificate is
+valid. Validity can be expressed as an explicit date and time when the
+certificate expires, or as a span of time after issuance, stated in
+days, months, or years. For more information, see
+\href{https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5}{Validity}
+in RFC 5280.
 
-When issuing a certificate, ACM Private CA sets the "Not Before" date in
-the validity field to date and time minus 60 minutes. This is intended
-to compensate for time inconsistencies across systems of 60 minutes or
-less.
+This value is unaffected when \code{ValidityNotBefore} is also specified. For
+example, if \code{Validity} is set to 20 days in the future, the certificate
+will expire 20 days from issuance time regardless of the
+\code{ValidityNotBefore} value.
 
-The validity period configured on a certificate must not exceed the
-limit set by its parents in the CA hierarchy.}
+The end of the validity period configured on a certificate must not
+exceed the limit set on its parents in the CA hierarchy.}
 
-\item{IdempotencyToken}{Custom string that can be used to distinguish between calls to the
-\strong{IssueCertificate} action. Idempotency tokens time out after one hour.
-Therefore, if you call \strong{IssueCertificate} multiple times with the same
-idempotency token within 5 minutes, ACM Private CA recognizes that you
-are requesting only one certificate and will issue only one. If you
-change the idempotency token for each call, PCA recognizes that you are
-requesting multiple certificates.}
+\item{ValidityNotBefore}{Information describing the start of the validity period of the
+certificate. This parameter sets the “Not Before" date for the
+certificate.
+
+By default, when issuing a certificate, ACM Private CA sets the "Not
+Before" date to the issuance time minus 60 minutes. This compensates for
+clock inconsistencies across computer systems. The \code{ValidityNotBefore}
+parameter can be used to customize the “Not Before” value.
+
+Unlike the \code{Validity} parameter, the \code{ValidityNotBefore} parameter is
+optional.
+
+The \code{ValidityNotBefore} value is expressed as an explicit date and time,
+using the \code{Validity} type value \code{ABSOLUTE}. For more information, see
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_Validity.html}{Validity}
+in this API reference and
+\href{https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5}{Validity}
+in RFC 5280.}
+
+\item{IdempotencyToken}{Alphanumeric string that can be used to distinguish between calls to the
+\strong{IssueCertificate} action. Idempotency tokens for \strong{IssueCertificate}
+time out after one minute. Therefore, if you call \strong{IssueCertificate}
+multiple times with the same idempotency token within one minute, ACM
+Private CA recognizes that you are requesting only one certificate and
+will issue only one. If you change the idempotency token for each call,
+PCA recognizes that you are requesting multiple certificates.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -104,11 +125,98 @@ the ARNs of the certificates that you issue by using ACM Private CA.
 }
 \section{Request syntax}{
 \preformatted{svc$issue_certificate(
+  ApiPassthrough = list(
+    Extensions = list(
+      CertificatePolicies = list(
+        list(
+          CertPolicyId = "string",
+          PolicyQualifiers = list(
+            list(
+              PolicyQualifierId = "CPS",
+              Qualifier = list(
+                CpsUri = "string"
+              )
+            )
+          )
+        )
+      ),
+      ExtendedKeyUsage = list(
+        list(
+          ExtendedKeyUsageType = "SERVER_AUTH"|"CLIENT_AUTH"|"CODE_SIGNING"|"EMAIL_PROTECTION"|"TIME_STAMPING"|"OCSP_SIGNING"|"SMART_CARD_LOGIN"|"DOCUMENT_SIGNING"|"CERTIFICATE_TRANSPARENCY",
+          ExtendedKeyUsageObjectIdentifier = "string"
+        )
+      ),
+      KeyUsage = list(
+        DigitalSignature = TRUE|FALSE,
+        NonRepudiation = TRUE|FALSE,
+        KeyEncipherment = TRUE|FALSE,
+        DataEncipherment = TRUE|FALSE,
+        KeyAgreement = TRUE|FALSE,
+        KeyCertSign = TRUE|FALSE,
+        CRLSign = TRUE|FALSE,
+        EncipherOnly = TRUE|FALSE,
+        DecipherOnly = TRUE|FALSE
+      ),
+      SubjectAlternativeNames = list(
+        list(
+          OtherName = list(
+            TypeId = "string",
+            Value = "string"
+          ),
+          Rfc822Name = "string",
+          DnsName = "string",
+          DirectoryName = list(
+            Country = "string",
+            Organization = "string",
+            OrganizationalUnit = "string",
+            DistinguishedNameQualifier = "string",
+            State = "string",
+            CommonName = "string",
+            SerialNumber = "string",
+            Locality = "string",
+            Title = "string",
+            Surname = "string",
+            GivenName = "string",
+            Initials = "string",
+            Pseudonym = "string",
+            GenerationQualifier = "string"
+          ),
+          EdiPartyName = list(
+            PartyName = "string",
+            NameAssigner = "string"
+          ),
+          UniformResourceIdentifier = "string",
+          IpAddress = "string",
+          RegisteredId = "string"
+        )
+      )
+    ),
+    Subject = list(
+      Country = "string",
+      Organization = "string",
+      OrganizationalUnit = "string",
+      DistinguishedNameQualifier = "string",
+      State = "string",
+      CommonName = "string",
+      SerialNumber = "string",
+      Locality = "string",
+      Title = "string",
+      Surname = "string",
+      GivenName = "string",
+      Initials = "string",
+      Pseudonym = "string",
+      GenerationQualifier = "string"
+    )
+  ),
   CertificateAuthorityArn = "string",
   Csr = raw,
   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
   TemplateArn = "string",
   Validity = list(
+    Value = 123,
+    Type = "END_DATE"|"ABSOLUTE"|"DAYS"|"MONTHS"|"YEARS"
+  ),
+  ValidityNotBefore = list(
     Value = 123,
     Type = "END_DATE"|"ABSOLUTE"|"DAYS"|"MONTHS"|"YEARS"
   ),

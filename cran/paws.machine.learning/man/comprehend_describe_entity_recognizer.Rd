@@ -83,7 +83,8 @@ A list with the following syntax:\preformatted{list(
       Subnets = list(
         "string"
       )
-    )
+    ),
+    ModelKmsKeyId = "string"
   )
 )
 }

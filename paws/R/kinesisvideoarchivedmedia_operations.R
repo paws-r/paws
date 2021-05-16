@@ -14,8 +14,9 @@ NULL
 #' must specify either the StreamName or the StreamARN when invoking this
 #' API operation.
 #' 
-#' As a prerequsite to using GetCLip API, you must obtain an endpoint using
-#' `GetDataEndpoint`, specifying GET_CLIP for`` the `APIName` parameter.
+#' As a prerequisite to using GetCLip API, you must obtain an endpoint
+#' using `GetDataEndpoint`, specifying GET_CLIP for`` the `APIName`
+#' parameter.
 #' 
 #' An Amazon Kinesis video stream has the following requirements for
 #' providing data through MP4:
@@ -30,9 +31,9 @@ NULL
 #' 
 #' -   The video track of each fragment must contain codec private data in
 #'     the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265
-#'     format. For more information, see [MPEG-4 specification ISO/IEC
-#'     14496-15](https://www.iso.org/standard/55980.html). For information
-#'     about adapting stream data to a given format, see [NAL Adaptation
+#'     format. For more information, see MPEG-4 specification ISO/IEC
+#'     14496-15. For information about adapting stream data to a given
+#'     format, see [NAL Adaptation
 #'     Flags](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
 #' 
 #' -   The audio track (if present) of each fragment must contain codec
@@ -163,10 +164,10 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #'     token) for the session's MPEG-DASH *manifest* (the root resource
 #'     needed for streaming with MPEG-DASH).
 #' 
-#'     Don't share or store this token where an unauthorized entity could
+#'     Don't share or store this token where an unauthorized entity can
 #'     access it. The token provides access to the content of the stream.
-#'     Safeguard the token with the same measures that you would use with
-#'     your AWS credentials.
+#'     Safeguard the token with the same measures that you use with your
+#'     AWS credentials.
 #' 
 #'     The media that is made available through the manifest consists only
 #'     of the requested stream, time range, and format. No other media data
@@ -217,23 +218,9 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #'         [Pricing](https://aws.amazon.com/kinesis/video-streams/pricing/)
 #'         for details.
 #' 
-#' The following restrictions apply to MPEG-DASH sessions:
-#' 
-#' -   A streaming session URL should not be shared between players. The
-#'     service might throttle a session if multiple media players are
-#'     sharing it. For connection limits, see [Kinesis Video Streams
-#'     Limits](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
-#' 
-#' -   A Kinesis video stream can have a maximum of ten active MPEG-DASH
-#'     streaming sessions. If a new session is created when the maximum
-#'     number of sessions is already active, the oldest (earliest created)
-#'     session is closed. The number of active `GetMedia` connections on a
-#'     Kinesis video stream does not count against this limit, and the
-#'     number of active MPEG-DASH sessions does not count against the
-#'     active `GetMedia` connection limit.
-#' 
-#'     The maximum limits for active HLS and MPEG-DASH streaming sessions
-#'     are independent of each other.
+#' For restrictions that apply to MPEG-DASH sessions, see [Kinesis Video
+#' Streams
+#' Limits](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
 #' 
 #' You can monitor the amount of data that the media player consumes by
 #' monitoring the `GetMP4MediaFragment.OutgoingBytes` Amazon CloudWatch
@@ -319,7 +306,7 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #' 
 #' -   **`ON_DEMAND`** : For sessions of this type, the MPEG-DASH manifest
 #'     contains all the fragments for the session, up to the number that is
-#'     specified in `MaxMediaPlaylistFragmentResults`. The manifest must be
+#'     specified in `MaxManifestFragmentResults`. The manifest must be
 #'     retrieved only once for each session. When this type of session is
 #'     played in a media player, the user interface typically displays a
 #'     scrubber control for choosing the position in the playback window to
@@ -484,7 +471,7 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #' MPEG-4 form (also called fMP4 or CMAF) or the MPEG-2 form (also called
 #' TS chunks, which the HLS specification also supports). For more
 #' information about HLS fragment types, see the [HLS
-#' specification](https://tools.ietf.org/html/draft-pantos-http-live-streaming-23).
+#' specification](https://datatracker.ietf.org/doc/html/draft-pantos-http-live-streaming-23).
 #' 
 #' The following procedure shows how to use HLS with Kinesis Video Streams:
 #' 
@@ -582,23 +569,10 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #'         information, see [Kinesis Video Streams
 #'         pricing](https://aws.amazon.com/kinesis/video-streams/pricing/).
 #' 
-#' The following restrictions apply to HLS sessions:
-#' 
-#' -   A streaming session URL should not be shared between players. The
-#'     service might throttle a session if multiple media players are
-#'     sharing it. For connection limits, see [Kinesis Video Streams
-#'     Limits](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
-#' 
-#' -   A Kinesis video stream can have a maximum of ten active HLS
-#'     streaming sessions. If a new session is created when the maximum
-#'     number of sessions is already active, the oldest (earliest created)
-#'     session is closed. The number of active `GetMedia` connections on a
-#'     Kinesis video stream does not count against this limit, and the
-#'     number of active HLS sessions does not count against the active
-#'     `GetMedia` connection limit.
-#' 
-#'     The maximum limits for active HLS and MPEG-DASH streaming sessions
-#'     are independent of each other.
+#' A streaming session URL must not be shared between players. The service
+#' might throttle a session if multiple media players are sharing it. For
+#' connection limits, see [Kinesis Video Streams
+#' Limits](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
 #' 
 #' You can monitor the amount of data that the media player consumes by
 #' monitoring the `GetMP4MediaFragment.OutgoingBytes` Amazon CloudWatch
@@ -693,11 +667,12 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #' 
 #' In all playback modes, if `FragmentSelectorType` is
 #' `PRODUCER_TIMESTAMP`, and if there are multiple fragments with the same
-#' start timestamp, the fragment that has the larger fragment number (that
-#' is, the newer fragment) is included in the HLS media playlist. The other
-#' fragments are not included. Fragments that have different timestamps but
-#' have overlapping durations are still included in the HLS media playlist.
-#' This can lead to unexpected behavior in the media player.
+#' start timestamp, the fragment that has the largest fragment number (that
+#' is, the newest fragment) is included in the HLS media playlist. The
+#' other fragments are not included. Fragments that have different
+#' timestamps but have overlapping durations are still included in the HLS
+#' media playlist. This can lead to unexpected behavior in the media
+#' player.
 #' 
 #' The default is `LIVE`.
 #' @param HLSFragmentSelector The time range of the requested fragment and the source of the
@@ -743,7 +718,7 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #'     recommended to use a value of `NEVER` to ensure the media player
 #'     timeline most accurately maps to the producer timestamps.
 #' 
-#' -   `ON_DISCONTIUNITY`: a discontinuity marker is placed between
+#' -   `ON_DISCONTINUITY`: a discontinuity marker is placed between
 #'     fragments that have a gap or overlap of more than 50 milliseconds.
 #'     For most playback scenarios, it is recommended to use a value of
 #'     `ON_DISCONTINUITY` so that the media player timeline is only reset
@@ -790,9 +765,9 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #' The default is 5 fragments if `PlaybackMode` is `LIVE` or `LIVE_REPLAY`,
 #' and 1,000 if `PlaybackMode` is `ON_DEMAND`.
 #' 
-#' The maximum value of 1,000 fragments corresponds to more than 16 minutes
-#' of video on streams with 1-second fragments, and more than 2 1/2 hours
-#' of video on streams with 10-second fragments.
+#' The maximum value of 5,000 fragments corresponds to more than 80 minutes
+#' of video on streams with 1-second fragments, and more than 13 hours of
+#' video on streams with 10-second fragments.
 #'
 #' @return
 #' A list with the following syntax:
@@ -860,18 +835,8 @@ kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName =
 #' requests to this endpoint using the [--endpoint-url
 #' parameter](https://docs.aws.amazon.com/cli/latest/reference/).
 #' 
-#' The following limits apply when using the
-#' [`get_media_for_fragment_list`][kinesisvideoarchivedmedia_get_media_for_fragment_list]
-#' API:
-#' 
-#' -   A client can call
-#'     [`get_media_for_fragment_list`][kinesisvideoarchivedmedia_get_media_for_fragment_list]
-#'     up to five times per second per stream.
-#' 
-#' -   Kinesis Video Streams sends media data at a rate of up to 25
-#'     megabytes per second (or 200 megabits per second) during a
-#'     [`get_media_for_fragment_list`][kinesisvideoarchivedmedia_get_media_for_fragment_list]
-#'     session.
+#' For limits, see [Kinesis Video Streams
+#' Limits](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
 #' 
 #' If an error is thrown after invoking a Kinesis Video Streams archived
 #' media API, in addition to the HTTP status code and the response body, it
@@ -896,9 +861,13 @@ kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName =
 #'
 #' @usage
 #' kinesisvideoarchivedmedia_get_media_for_fragment_list(StreamName,
-#'   Fragments)
+#'   StreamARN, Fragments)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream from which to retrieve fragment media.
+#' @param StreamName The name of the stream from which to retrieve fragment media. Specify
+#' either this parameter or the `StreamARN` parameter.
+#' @param StreamARN The Amazon Resource Name (ARN) of the stream from which to retrieve
+#' fragment media. Specify either this parameter or the `StreamName`
+#' parameter.
 #' @param Fragments &#91;required&#93; A list of the numbers of fragments for which to retrieve media. You
 #' retrieve these values with
 #' [`list_fragments`][kinesisvideoarchivedmedia_list_fragments].
@@ -916,6 +885,7 @@ kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName =
 #' ```
 #' svc$get_media_for_fragment_list(
 #'   StreamName = "string",
+#'   StreamARN = "string",
 #'   Fragments = list(
 #'     "string"
 #'   )
@@ -925,14 +895,14 @@ kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName =
 #' @keywords internal
 #'
 #' @rdname kinesisvideoarchivedmedia_get_media_for_fragment_list
-kinesisvideoarchivedmedia_get_media_for_fragment_list <- function(StreamName, Fragments) {
+kinesisvideoarchivedmedia_get_media_for_fragment_list <- function(StreamName = NULL, StreamARN = NULL, Fragments) {
   op <- new_operation(
     name = "GetMediaForFragmentList",
     http_method = "POST",
     http_path = "/getMediaForFragmentList",
     paginator = list()
   )
-  input <- .kinesisvideoarchivedmedia$get_media_for_fragment_list_input(StreamName = StreamName, Fragments = Fragments)
+  input <- .kinesisvideoarchivedmedia$get_media_for_fragment_list_input(StreamName = StreamName, StreamARN = StreamARN, Fragments = Fragments)
   output <- .kinesisvideoarchivedmedia$get_media_for_fragment_list_output()
   config <- get_config()
   svc <- .kinesisvideoarchivedmedia$service(config)
@@ -982,10 +952,14 @@ kinesisvideoarchivedmedia_get_media_for_fragment_list <- function(StreamName, Fr
 #' Errors](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html).
 #'
 #' @usage
-#' kinesisvideoarchivedmedia_list_fragments(StreamName, MaxResults,
-#'   NextToken, FragmentSelector)
+#' kinesisvideoarchivedmedia_list_fragments(StreamName, StreamARN,
+#'   MaxResults, NextToken, FragmentSelector)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream from which to retrieve a fragment list.
+#' @param StreamName The name of the stream from which to retrieve a fragment list. Specify
+#' either this parameter or the `StreamARN` parameter.
+#' @param StreamARN The Amazon Resource Name (ARN) of the stream from which to retrieve a
+#' fragment list. Specify either this parameter or the `StreamName`
+#' parameter.
 #' @param MaxResults The total number of fragments to return. If the total number of
 #' fragments available is more than the value specified in `max-results`,
 #' then a ListFragmentsOutput$NextToken is provided in the output that you
@@ -1020,6 +994,7 @@ kinesisvideoarchivedmedia_get_media_for_fragment_list <- function(StreamName, Fr
 #' ```
 #' svc$list_fragments(
 #'   StreamName = "string",
+#'   StreamARN = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   FragmentSelector = list(
@@ -1039,14 +1014,14 @@ kinesisvideoarchivedmedia_get_media_for_fragment_list <- function(StreamName, Fr
 #' @keywords internal
 #'
 #' @rdname kinesisvideoarchivedmedia_list_fragments
-kinesisvideoarchivedmedia_list_fragments <- function(StreamName, MaxResults = NULL, NextToken = NULL, FragmentSelector = NULL) {
+kinesisvideoarchivedmedia_list_fragments <- function(StreamName = NULL, StreamARN = NULL, MaxResults = NULL, NextToken = NULL, FragmentSelector = NULL) {
   op <- new_operation(
     name = "ListFragments",
     http_method = "POST",
     http_path = "/listFragments",
     paginator = list()
   )
-  input <- .kinesisvideoarchivedmedia$list_fragments_input(StreamName = StreamName, MaxResults = MaxResults, NextToken = NextToken, FragmentSelector = FragmentSelector)
+  input <- .kinesisvideoarchivedmedia$list_fragments_input(StreamName = StreamName, StreamARN = StreamARN, MaxResults = MaxResults, NextToken = NextToken, FragmentSelector = FragmentSelector)
   output <- .kinesisvideoarchivedmedia$list_fragments_output()
   config <- get_config()
   svc <- .kinesisvideoarchivedmedia$service(config)

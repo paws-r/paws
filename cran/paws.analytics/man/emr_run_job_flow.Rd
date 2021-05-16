@@ -72,7 +72,7 @@ Supported values are:
 "--edition,m5" - launch the job flow using MapR M3 or M5 Edition
 respectively.
 \item "mapr-m7" - launch the cluster using MapR M7 Edition.
-\item "hunk" - launch the cluster with the Hunk Big Data Analtics
+\item "hunk" - launch the cluster with the Hunk Big Data Analytics
 Platform.
 \item "hue"- launch the cluster with Hue installed.
 \item "spark" - launch the cluster with Apache Spark installed.
@@ -325,7 +325,12 @@ parameters, but not both.
             AllocationStrategy = "capacity-optimized"
           ),
           OnDemandSpecification = list(
-            AllocationStrategy = "lowest-price"
+            AllocationStrategy = "lowest-price",
+            CapacityReservationOptions = list(
+              UsageStrategy = "use-capacity-reservations-first",
+              CapacityReservationPreference = "open"|"none",
+              CapacityReservationResourceGroupArn = "string"
+            )
           )
         )
       )

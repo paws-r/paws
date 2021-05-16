@@ -50,7 +50,10 @@ A list with the following syntax:\preformatted{list(
       isStaticIp = TRUE|FALSE,
       privateIpAddress = "string",
       publicIpAddress = "string",
-      ipv6Address = "string",
+      ipv6Addresses = list(
+        "string"
+      ),
+      ipAddressType = "dualstack"|"ipv4",
       hardware = list(
         cpuCount = 123,
         disks = list(
@@ -107,6 +110,9 @@ A list with the following syntax:\preformatted{list(
             commonName = "string",
             accessDirection = "inbound"|"outbound",
             cidrs = list(
+              "string"
+            ),
+            ipv6Cidrs = list(
               "string"
             ),
             cidrListAliases = list(

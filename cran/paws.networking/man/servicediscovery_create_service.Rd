@@ -7,33 +7,42 @@ entities:}
 \usage{
 servicediscovery_create_service(Name, NamespaceId, CreatorRequestId,
   Description, DnsConfig, HealthCheckConfig, HealthCheckCustomConfig,
-  Tags)
+  Tags, Type)
 }
 \arguments{
 \item{Name}{[required] The name that you want to assign to the service.
 
 If you want AWS Cloud Map to create an \code{SRV} record when you register an
-instance, and if you're using a system that requires a specific \code{SRV}
+instance and you're using a system that requires a specific \code{SRV}
 format, such as \href{http://www.haproxy.org/}{HAProxy}, specify the
 following for \code{Name}:
 \itemize{
-\item Start the name with an underscore (_), such as \verb{_exampleservice}
-\item End the name with \emph{._protocol}, such as \code{._tcp}
+\item Start the name with an underscore (_), such as \verb{_exampleservice}.
+\item End the name with \emph{._protocol}, such as \code{._tcp}.
 }
 
 When you register an instance, AWS Cloud Map creates an \code{SRV} record and
 assigns a name to the record by concatenating the service name and the
 namespace name, for example:
 
-\verb{_exampleservice._tcp.example.com}}
+\verb{_exampleservice._tcp.example.com}
 
-\item{NamespaceId}{The ID of the namespace that you want to use to create the service.}
+For services that are accessible by DNS queries, you can't create
+multiple services with names that differ only by case (such as EXAMPLE
+and example). Otherwise, these services have the same DNS name and can't
+be distinguished. However, if you use a namespace that's only accessible
+by API calls, then you can create services that with names that differ
+only by case.}
+
+\item{NamespaceId}{The ID of the namespace that you want to use to create the service. The
+namespace ID must be specified, but it can be specified either here or
+in the \code{DnsConfig} object.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed
 \code{\link[=servicediscovery_create_service]{create_service}} requests to be
-retried without the risk of executing the operation twice.
-\code{CreatorRequestId} can be any unique string, for example, a date/time
-stamp.}
+retried without the risk of running the operation twice.
+\code{CreatorRequestId} can be any unique string, for example, a
+date/timestamp.}
 
 \item{Description}{A description for the service.}
 
@@ -61,9 +70,13 @@ You can't add, update, or delete a \code{HealthCheckCustomConfig}
 configuration from an existing service.}
 
 \item{Tags}{The tags to add to the service. Each tag consists of a key and an
-optional value, both of which you define. Tag keys can have a maximum
-character length of 128 characters, and tag values can have a maximum
-length of 256 characters.}
+optional value that you define. Tags keys can be up to 128 characters in
+length, and tag values can be up to 256 characters in length.}
+
+\item{Type}{If present, specifies that the service instances are only discoverable
+using the \code{\link[=servicediscovery_discover_instances]{discover_instances}}
+API operation. No DNS records will be registered for the service
+instances. The only valid value is \code{HTTP}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -84,6 +97,7 @@ A list with the following syntax:\preformatted{list(
         )
       )
     ),
+    Type = "HTTP"|"DNS_HTTP"|"DNS",
     HealthCheckConfig = list(
       Type = "HTTP"|"HTTPS"|"TCP",
       ResourcePath = "string",
@@ -154,7 +168,8 @@ in the \emph{AWS Cloud Map Developer Guide}.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  Type = "HTTP"
 )
 }
 }

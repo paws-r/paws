@@ -165,6 +165,20 @@ dataexchange_create_data_set <- function(AssetType, Description, Name, Tags = NU
 #'       ),
 #'       RevisionId = "string"
 #'     ),
+#'     ExportRevisionsToS3 = list(
+#'       DataSetId = "string",
+#'       Encryption = list(
+#'         KmsKeyArn = "string",
+#'         Type = "aws:kms"|"AES256"
+#'       ),
+#'       RevisionDestinations = list(
+#'         list(
+#'           Bucket = "string",
+#'           KeyPattern = "string",
+#'           RevisionId = "string"
+#'         )
+#'       )
+#'     ),
 #'     ImportAssetFromSignedUrl = list(
 #'       AssetName = "string",
 #'       DataSetId = "string",
@@ -209,7 +223,7 @@ dataexchange_create_data_set <- function(AssetType, Description, Name, Tags = NU
 #'   ),
 #'   Id = "string",
 #'   State = "WAITING"|"IN_PROGRESS"|"ERROR"|"COMPLETED"|"CANCELLED"|"TIMED_OUT",
-#'   Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL",
+#'   Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL"|"EXPORT_REVISIONS_TO_S3",
 #'   UpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -240,6 +254,20 @@ dataexchange_create_data_set <- function(AssetType, Description, Name, Tags = NU
 #'       ),
 #'       RevisionId = "string"
 #'     ),
+#'     ExportRevisionsToS3 = list(
+#'       DataSetId = "string",
+#'       Encryption = list(
+#'         KmsKeyArn = "string",
+#'         Type = "aws:kms"|"AES256"
+#'       ),
+#'       RevisionDestinations = list(
+#'         list(
+#'           Bucket = "string",
+#'           KeyPattern = "string",
+#'           RevisionId = "string"
+#'         )
+#'       )
+#'     ),
 #'     ImportAssetFromSignedUrl = list(
 #'       AssetName = "string",
 #'       DataSetId = "string",
@@ -257,7 +285,7 @@ dataexchange_create_data_set <- function(AssetType, Description, Name, Tags = NU
 #'       RevisionId = "string"
 #'     )
 #'   ),
-#'   Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL"
+#'   Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL"|"EXPORT_REVISIONS_TO_S3"
 #' )
 #' ```
 #'
@@ -648,6 +676,20 @@ dataexchange_get_data_set <- function(DataSetId) {
 #'       ),
 #'       RevisionId = "string"
 #'     ),
+#'     ExportRevisionsToS3 = list(
+#'       DataSetId = "string",
+#'       Encryption = list(
+#'         KmsKeyArn = "string",
+#'         Type = "aws:kms"|"AES256"
+#'       ),
+#'       RevisionDestinations = list(
+#'         list(
+#'           Bucket = "string",
+#'           KeyPattern = "string",
+#'           RevisionId = "string"
+#'         )
+#'       )
+#'     ),
 #'     ImportAssetFromSignedUrl = list(
 #'       AssetName = "string",
 #'       DataSetId = "string",
@@ -692,7 +734,7 @@ dataexchange_get_data_set <- function(DataSetId) {
 #'   ),
 #'   Id = "string",
 #'   State = "WAITING"|"IN_PROGRESS"|"ERROR"|"COMPLETED"|"CANCELLED"|"TIMED_OUT",
-#'   Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL",
+#'   Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL"|"EXPORT_REVISIONS_TO_S3",
 #'   UpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -978,6 +1020,20 @@ dataexchange_list_data_sets <- function(MaxResults = NULL, NextToken = NULL, Ori
 #'           ),
 #'           RevisionId = "string"
 #'         ),
+#'         ExportRevisionsToS3 = list(
+#'           DataSetId = "string",
+#'           Encryption = list(
+#'             KmsKeyArn = "string",
+#'             Type = "aws:kms"|"AES256"
+#'           ),
+#'           RevisionDestinations = list(
+#'             list(
+#'               Bucket = "string",
+#'               KeyPattern = "string",
+#'               RevisionId = "string"
+#'             )
+#'           )
+#'         ),
 #'         ImportAssetFromSignedUrl = list(
 #'           AssetName = "string",
 #'           DataSetId = "string",
@@ -1022,7 +1078,7 @@ dataexchange_list_data_sets <- function(MaxResults = NULL, NextToken = NULL, Ori
 #'       ),
 #'       Id = "string",
 #'       State = "WAITING"|"IN_PROGRESS"|"ERROR"|"COMPLETED"|"CANCELLED"|"TIMED_OUT",
-#'       Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL",
+#'       Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL"|"EXPORT_REVISIONS_TO_S3",
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )

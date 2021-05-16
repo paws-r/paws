@@ -2,8 +2,8 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_describe_studio}
 \alias{emr_describe_studio}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Returns details for the specified Amazon EMR Studio including ID, Name,
+VPC, Studio access URL, and so on}
 \usage{
 emr_describe_studio(StudioId)
 }
@@ -42,9 +42,6 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
-
 Returns details for the specified Amazon EMR Studio including ID, Name,
 VPC, Studio access URL, and so on.
 }

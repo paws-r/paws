@@ -6,7 +6,7 @@
 \usage{
 ssm_start_change_request_execution(ScheduledTime, DocumentName,
   DocumentVersion, Parameters, ChangeRequestName, ClientToken, Runbooks,
-  Tags)
+  Tags, ScheduledEndTime, ChangeDetails)
 }
 \arguments{
 \item{ScheduledTime}{The date and time specified in the change request to run the Automation
@@ -46,6 +46,14 @@ following key-value pairs:
 \item \verb{Key=Environment,Value=Production}
 \item \verb{Key=Region,Value=us-east-2}
 }}
+
+\item{ScheduledEndTime}{The time that the requester expects the runbook workflow related to the
+change request to complete. The time is an estimate only that the
+requester provides for reviewers.}
+
+\item{ChangeDetails}{User-provided details about the change. If no details are provided,
+content specified in the \strong{Template information} section of the
+associated change template is added.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -112,7 +120,11 @@ approvals for the change request have been received.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  ScheduledEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ChangeDetails = "string"
 )
 }
 }

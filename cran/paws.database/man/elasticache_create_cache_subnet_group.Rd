@@ -5,7 +5,7 @@
 \title{Creates a new cache subnet group}
 \usage{
 elasticache_create_cache_subnet_group(CacheSubnetGroupName,
-  CacheSubnetGroupDescription, SubnetIds)
+  CacheSubnetGroupDescription, SubnetIds, Tags)
 }
 \arguments{
 \item{CacheSubnetGroupName}{[required] A name for the cache subnet group. This value is stored as a lowercase
@@ -19,6 +19,9 @@ Example: \code{mysubnetgroup}}
 \item{CacheSubnetGroupDescription}{[required] A description for the cache subnet group.}
 
 \item{SubnetIds}{[required] A list of VPC subnet IDs for the cache subnet group.}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -54,6 +57,12 @@ Virtual Private Cloud (Amazon VPC).
   CacheSubnetGroupDescription = "string",
   SubnetIds = list(
     "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

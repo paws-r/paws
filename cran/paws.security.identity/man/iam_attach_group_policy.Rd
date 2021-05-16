@@ -15,7 +15,7 @@ spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 }
 \value{
@@ -24,11 +24,15 @@ An empty list.
 \description{
 Attaches the specified managed policy to the specified IAM group.
 
-You use this API to attach a managed policy to a group. To embed an
-inline policy in a group, use
+You use this operation to attach a managed policy to a group. To embed
+an inline policy in a group, use
 \code{\link[=iam_put_group_policy]{put_group_policy}}.
 
-For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+As a best practice, you can validate your IAM policies. To learn more,
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_policy-validator.html}{Validating IAM policies}
+in the \emph{IAM User Guide}.
+
+For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed policies and inline policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

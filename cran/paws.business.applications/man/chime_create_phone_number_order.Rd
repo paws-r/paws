@@ -15,7 +15,7 @@ chime_create_phone_number_order(ProductType, E164PhoneNumbers)
 A list with the following syntax:\preformatted{list(
   PhoneNumberOrder = list(
     PhoneNumberOrderId = "string",
-    ProductType = "BusinessCalling"|"VoiceConnector",
+    ProductType = "BusinessCalling"|"VoiceConnector"|"SipMediaApplicationDialIn",
     Status = "Processing"|"Successful"|"Failed"|"Partial",
     OrderedPhoneNumbers = list(
       list(
@@ -34,14 +34,14 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates an order for phone numbers to be provisioned. Choose from Amazon
-Chime Business Calling and Amazon Chime Voice Connector product types.
-For toll-free numbers, you must use the Amazon Chime Voice Connector
-product type.
+Creates an order for phone numbers to be provisioned. For toll-free
+numbers, you cannot use the Amazon Chime Business Calling product type.
+For numbers outside the US, you must use the Amazon Chime SIP Media
+Application Dial-In product type.
 }
 \section{Request syntax}{
 \preformatted{svc$create_phone_number_order(
-  ProductType = "BusinessCalling"|"VoiceConnector",
+  ProductType = "BusinessCalling"|"VoiceConnector"|"SipMediaApplicationDialIn",
   E164PhoneNumbers = list(
     "string"
   )

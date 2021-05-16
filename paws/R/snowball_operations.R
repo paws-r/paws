@@ -207,6 +207,12 @@ snowball_create_address <- function(Address) {
 #'
 #' @param JobType &#91;required&#93; The type of job for this cluster. Currently, the only job type supported
 #' for clusters is `LOCAL_USE`.
+#' 
+#' For more information, see
+#' "https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide* or
+#' "https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide*.
 #' @param Resources &#91;required&#93; The resources associated with the cluster job. These resources include
 #' Amazon S3 buckets and optional AWS Lambda functions written in the
 #' Python language.
@@ -221,10 +227,16 @@ snowball_create_address <- function(Address) {
 #' values are created by using the
 #' [CreateRole](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 #' API action in AWS Identity and Access Management (IAM).
-#' @param SnowballType The type of AWS Snow Family device to use for this cluster.
+#' @param SnowballType &#91;required&#93; The type of AWS Snow Family device to use for this cluster.
 #' 
 #' For cluster jobs, AWS Snow Family currently supports only the `EDGE`
 #' device type.
+#' 
+#' For more information, see
+#' "https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide* or
+#' "https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide*.
 #' @param ShippingOption &#91;required&#93; The shipping speed for each node in this cluster. This speed doesn't
 #' dictate how soon you'll get each Snowball Edge device, rather it
 #' represents how quickly each device moves to its destination while in
@@ -304,7 +316,7 @@ snowball_create_address <- function(Address) {
 #'   AddressId = "string",
 #'   KmsKeyARN = "string",
 #'   RoleARN = "string",
-#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
 #'   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
 #'   Notification = list(
 #'     SnsTopicARN = "string",
@@ -358,7 +370,7 @@ snowball_create_address <- function(Address) {
 #' @keywords internal
 #'
 #' @rdname snowball_create_cluster
-snowball_create_cluster <- function(JobType, Resources, Description = NULL, AddressId, KmsKeyARN = NULL, RoleARN, SnowballType = NULL, ShippingOption, Notification = NULL, ForwardingAddressId = NULL, TaxDocuments = NULL) {
+snowball_create_cluster <- function(JobType, Resources, Description = NULL, AddressId, KmsKeyARN = NULL, RoleARN, SnowballType, ShippingOption, Notification = NULL, ForwardingAddressId = NULL, TaxDocuments = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -385,12 +397,78 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' you're creating a job for a node in a cluster, you only need to provide
 #' the `clusterId` value; the other job attributes are inherited from the
 #' cluster.
+#' 
+#' Only the Snowball; Edge device type is supported when ordering clustered
+#' jobs.
+#' 
+#' The device capacity is optional.
+#' 
+#' Availability of device types differ by AWS Region. For more information
+#' about region availability, see [AWS Regional
+#' Services](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/?p=ngi&loc=4).
+#' 
+#' **AWS Snow Family device types and their capacities.**
+#' 
+#' -   Snow Family device type: **SNC1_SSD**
+#' 
+#'     -   Capacity: T14
+#' 
+#'     -   Description: Snowcone
+#' 
+#' -   Snow Family device type: **SNC1_HDD**
+#' 
+#'     -   Capacity: T8
+#' 
+#'     -   Description: Snowcone
+#' 
+#' -   Device type: **EDGE_S**
+#' 
+#'     -   Capacity: T98
+#' 
+#'     -   Description: Snowball Edge Storage Optimized for data transfer
+#'         only
+#' 
+#' -   Device type: **EDGE_CG**
+#' 
+#'     -   Capacity: T42
+#' 
+#'     -   Description: Snowball Edge Compute Optimized with GPU
+#' 
+#' -   Device type: **EDGE_C**
+#' 
+#'     -   Capacity: T42
+#' 
+#'     -   Description: Snowball Edge Compute Optimized without GPU
+#' 
+#' -   Device type: **EDGE**
+#' 
+#'     -   Capacity: T100
+#' 
+#'     -   Description: Snowball Edge Storage Optimized with EC2 Compute
+#' 
+#' -   Device type: **STANDARD**
+#' 
+#'     -   Capacity: T50
+#' 
+#'     -   Description: Original Snowball device
+#' 
+#'         This device is only available in the Ningxia, Beijing, and
+#'         Singapore AWS Regions.
+#' 
+#' -   Device type: **STANDARD**
+#' 
+#'     -   Capacity: T80
+#' 
+#'     -   Description: Original Snowball device
+#' 
+#'         This device is only available in the Ningxia, Beijing, and
+#'         Singapore AWS Regions.
 #'
 #' @usage
 #' snowball_create_job(JobType, Resources, Description, AddressId,
 #'   KmsKeyARN, RoleARN, SnowballCapacityPreference, ShippingOption,
 #'   Notification, ClusterId, SnowballType, ForwardingAddressId,
-#'   TaxDocuments, DeviceConfiguration)
+#'   TaxDocuments, DeviceConfiguration, LongTermPricingId)
 #'
 #' @param JobType Defines the type of job that you're creating.
 #' @param Resources Defines the Amazon S3 buckets associated with this job.
@@ -418,6 +496,12 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' @param SnowballCapacityPreference If your job is being created in one of the US regions, you have the
 #' option of specifying what size Snow device you'd like for this job. In
 #' all other regions, Snowballs come with 80 TB in storage capacity.
+#' 
+#' For more information, see
+#' "https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide* or
+#' "https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide*.
 #' @param ShippingOption The shipping speed for this job. This speed doesn't dictate how soon
 #' you'll get the Snow device, rather it represents how quickly the Snow
 #' device moves to its destination while in transit. Regional shipping
@@ -450,10 +534,23 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' For more information, see [Snowball Edge Device
 #' Options](https://docs.aws.amazon.com/snowball/latest/developer-guide/device-differences.html)
 #' in the Snowball Edge Developer Guide.
+#' 
+#' For more information, see
+#' "https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide* or
+#' "https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide*.
 #' @param ForwardingAddressId The forwarding address ID for a job. This field is not supported in most
 #' regions.
 #' @param TaxDocuments The tax documents required in your AWS Region.
 #' @param DeviceConfiguration Defines the device configuration for an AWS Snowcone job.
+#' 
+#' For more information, see
+#' "https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide* or
+#' "https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide*.
+#' @param LongTermPricingId The ID of the long term pricing type for the device.
 #'
 #' @return
 #' A list with the following syntax:
@@ -498,7 +595,7 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #'   AddressId = "string",
 #'   KmsKeyARN = "string",
 #'   RoleARN = "string",
-#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"T14"|"NoPreference",
 #'   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
 #'   Notification = list(
 #'     SnsTopicARN = "string",
@@ -508,7 +605,7 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #'     NotifyAll = TRUE|FALSE
 #'   ),
 #'   ClusterId = "string",
-#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
 #'   ForwardingAddressId = "string",
 #'   TaxDocuments = list(
 #'     IND = list(
@@ -521,7 +618,8 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #'         IsWifiEnabled = TRUE|FALSE
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   LongTermPricingId = "string"
 #' )
 #' ```
 #'
@@ -565,14 +663,14 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' @keywords internal
 #'
 #' @rdname snowball_create_job
-snowball_create_job <- function(JobType = NULL, Resources = NULL, Description = NULL, AddressId = NULL, KmsKeyARN = NULL, RoleARN = NULL, SnowballCapacityPreference = NULL, ShippingOption = NULL, Notification = NULL, ClusterId = NULL, SnowballType = NULL, ForwardingAddressId = NULL, TaxDocuments = NULL, DeviceConfiguration = NULL) {
+snowball_create_job <- function(JobType = NULL, Resources = NULL, Description = NULL, AddressId = NULL, KmsKeyARN = NULL, RoleARN = NULL, SnowballCapacityPreference = NULL, ShippingOption = NULL, Notification = NULL, ClusterId = NULL, SnowballType = NULL, ForwardingAddressId = NULL, TaxDocuments = NULL, DeviceConfiguration = NULL, LongTermPricingId = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .snowball$create_job_input(JobType = JobType, Resources = Resources, Description = Description, AddressId = AddressId, KmsKeyARN = KmsKeyARN, RoleARN = RoleARN, SnowballCapacityPreference = SnowballCapacityPreference, ShippingOption = ShippingOption, Notification = Notification, ClusterId = ClusterId, SnowballType = SnowballType, ForwardingAddressId = ForwardingAddressId, TaxDocuments = TaxDocuments, DeviceConfiguration = DeviceConfiguration)
+  input <- .snowball$create_job_input(JobType = JobType, Resources = Resources, Description = Description, AddressId = AddressId, KmsKeyARN = KmsKeyARN, RoleARN = RoleARN, SnowballCapacityPreference = SnowballCapacityPreference, ShippingOption = ShippingOption, Notification = Notification, ClusterId = ClusterId, SnowballType = SnowballType, ForwardingAddressId = ForwardingAddressId, TaxDocuments = TaxDocuments, DeviceConfiguration = DeviceConfiguration, LongTermPricingId = LongTermPricingId)
   output <- .snowball$create_job_output()
   config <- get_config()
   svc <- .snowball$service(config)
@@ -581,6 +679,61 @@ snowball_create_job <- function(JobType = NULL, Resources = NULL, Description = 
   return(response)
 }
 .snowball$operations$create_job <- snowball_create_job
+
+#' Creates a job with long term usage option for a device
+#'
+#' @description
+#' Creates a job with long term usage option for a device. The long term
+#' usage is a one year or three year long term pricing type for the device.
+#' You are billed upfront and AWS give discounts for long term pricing. For
+#' detailed information see XXXXXXXX
+#'
+#' @usage
+#' snowball_create_long_term_pricing(LongTermPricingType,
+#'   IsLongTermPricingAutoRenew, SnowballType)
+#'
+#' @param LongTermPricingType &#91;required&#93; The type of long term pricing option you want for the device - one year
+#' or three year long term pricing.
+#' @param IsLongTermPricingAutoRenew Specifies whether the current long term pricing type for the device
+#' should be renewed.
+#' @param SnowballType The type of AWS Snow Family device to use for the long term pricing job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LongTermPricingId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_long_term_pricing(
+#'   LongTermPricingType = "OneYear"|"ThreeYear",
+#'   IsLongTermPricingAutoRenew = TRUE|FALSE,
+#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname snowball_create_long_term_pricing
+snowball_create_long_term_pricing <- function(LongTermPricingType, IsLongTermPricingAutoRenew = NULL, SnowballType = NULL) {
+  op <- new_operation(
+    name = "CreateLongTermPricing",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .snowball$create_long_term_pricing_input(LongTermPricingType = LongTermPricingType, IsLongTermPricingAutoRenew = IsLongTermPricingAutoRenew, SnowballType = SnowballType)
+  output <- .snowball$create_long_term_pricing_output()
+  config <- get_config()
+  svc <- .snowball$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.snowball$operations$create_long_term_pricing <- snowball_create_long_term_pricing
 
 #' Creates a shipping label that will be used to return the Snow device to
 #' AWS
@@ -806,7 +959,7 @@ snowball_describe_addresses <- function(MaxResults = NULL, NextToken = NULL) {
 #'     RoleARN = "string",
 #'     ClusterState = "AwaitingQuorum"|"Pending"|"InUse"|"Complete"|"Cancelled",
 #'     JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
-#'     SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'     SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
 #'     CreationDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -913,7 +1066,7 @@ snowball_describe_cluster <- function(ClusterId) {
 #'     JobId = "string",
 #'     JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
 #'     JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
-#'     SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'     SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
 #'     CreationDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -959,7 +1112,7 @@ snowball_describe_cluster <- function(ClusterId) {
 #'         TrackingNumber = "string"
 #'       )
 #'     ),
-#'     SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+#'     SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"T14"|"NoPreference",
 #'     Notification = list(
 #'       SnsTopicARN = "string",
 #'       JobStatesToNotify = list(
@@ -991,14 +1144,15 @@ snowball_describe_cluster <- function(ClusterId) {
 #'           IsWifiEnabled = TRUE|FALSE
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     LongTermPricingId = "string"
 #'   ),
 #'   SubJobMetadata = list(
 #'     list(
 #'       JobId = "string",
 #'       JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
 #'       JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
-#'       SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'       SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
 #'       CreationDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1044,7 +1198,7 @@ snowball_describe_cluster <- function(ClusterId) {
 #'           TrackingNumber = "string"
 #'         )
 #'       ),
-#'       SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+#'       SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"T14"|"NoPreference",
 #'       Notification = list(
 #'         SnsTopicARN = "string",
 #'         JobStatesToNotify = list(
@@ -1076,7 +1230,8 @@ snowball_describe_cluster <- function(ClusterId) {
 #'             IsWifiEnabled = TRUE|FALSE
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       LongTermPricingId = "string"
 #'     )
 #'   )
 #' )
@@ -1127,7 +1282,7 @@ snowball_describe_job <- function(JobId) {
 #' @usage
 #' snowball_describe_return_shipping_label(JobId)
 #'
-#' @param JobId The automatically generated ID for a job, for example
+#' @param JobId &#91;required&#93; The automatically generated ID for a job, for example
 #' `JID123e4567-e89b-12d3-a456-426655440000`.
 #'
 #' @return
@@ -1151,7 +1306,7 @@ snowball_describe_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname snowball_describe_return_shipping_label
-snowball_describe_return_shipping_label <- function(JobId = NULL) {
+snowball_describe_return_shipping_label <- function(JobId) {
   op <- new_operation(
     name = "DescribeReturnShippingLabel",
     http_method = "POST",
@@ -1191,7 +1346,7 @@ snowball_describe_return_shipping_label <- function(JobId = NULL) {
 #' gaining access to the Snow device associated with that job.
 #' 
 #' The credentials of a given job, including its manifest file and unlock
-#' code, expire 90 days after the job is created.
+#' code, expire 360 days after the job is created.
 #'
 #' @usage
 #' snowball_get_job_manifest(JobId)
@@ -1265,7 +1420,7 @@ snowball_get_job_manifest <- function(JobId) {
 #'
 #' @description
 #' Returns the `UnlockCode` code value for the specified job. A particular
-#' `UnlockCode` value can be accessed for up to 90 days after the
+#' `UnlockCode` value can be accessed for up to 360 days after the
 #' associated job has been created.
 #' 
 #' The `UnlockCode` value is a 29-character code with 25 alphanumeric
@@ -1474,7 +1629,7 @@ snowball_get_software_updates <- function(JobId) {
 #'       JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
 #'       IsMaster = TRUE|FALSE,
 #'       JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
-#'       SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'       SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
 #'       CreationDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1684,7 +1839,7 @@ snowball_list_compatible_images <- function(MaxResults = NULL, NextToken = NULL)
 #'       JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
 #'       IsMaster = TRUE|FALSE,
 #'       JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
-#'       SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'       SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
 #'       CreationDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1732,6 +1887,77 @@ snowball_list_jobs <- function(MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .snowball$operations$list_jobs <- snowball_list_jobs
+
+#' Lists all long term pricing types
+#'
+#' @description
+#' Lists all long term pricing types.
+#'
+#' @usage
+#' snowball_list_long_term_pricing(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of
+#' [`list_long_term_pricing`][snowball_list_long_term_pricing] objects to
+#' return.
+#' @param NextToken Because HTTP requests are stateless, this is the starting point for your
+#' next list of [`list_long_term_pricing`][snowball_list_long_term_pricing]
+#' to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LongTermPricingEntries = list(
+#'     list(
+#'       LongTermPricingId = "string",
+#'       LongTermPricingEndDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LongTermPricingStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LongTermPricingType = "OneYear"|"ThreeYear",
+#'       CurrentActiveJob = "string",
+#'       ReplacementJob = "string",
+#'       IsLongTermPricingAutoRenew = TRUE|FALSE,
+#'       LongTermPricingStatus = "string",
+#'       SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
+#'       JobIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_long_term_pricing(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname snowball_list_long_term_pricing
+snowball_list_long_term_pricing <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLongTermPricing",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .snowball$list_long_term_pricing_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .snowball$list_long_term_pricing_output()
+  config <- get_config()
+  svc <- .snowball$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.snowball$operations$list_long_term_pricing <- snowball_list_long_term_pricing
 
 #' While a cluster's ClusterState value is in the AwaitingQuorum state, you
 #' can update some of the information associated with a cluster
@@ -1870,6 +2096,12 @@ snowball_update_cluster <- function(ClusterId, RoleARN = NULL, Description = NUL
 #' @param Description The updated description of this job's JobMetadata object.
 #' @param SnowballCapacityPreference The updated `SnowballCapacityPreference` of this job's JobMetadata
 #' object. The 50 TB Snowballs are only available in the US regions.
+#' 
+#' For more information, see
+#' "https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide* or
+#' "https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+#' (Snow Family Devices and Capacity) in the *Snowcone User Guide*.
 #' @param ForwardingAddressId The updated ID for the forwarding address for a job. This field is not
 #' supported in most regions.
 #'
@@ -1918,7 +2150,7 @@ snowball_update_cluster <- function(ClusterId, RoleARN = NULL, Description = NUL
 #'   AddressId = "string",
 #'   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
 #'   Description = "string",
-#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"T14"|"NoPreference",
 #'   ForwardingAddressId = "string"
 #' )
 #' ```
@@ -2005,3 +2237,51 @@ snowball_update_job_shipment_state <- function(JobId, ShipmentState) {
   return(response)
 }
 .snowball$operations$update_job_shipment_state <- snowball_update_job_shipment_state
+
+#' Updates the long term pricing type
+#'
+#' @description
+#' Updates the long term pricing type.
+#'
+#' @usage
+#' snowball_update_long_term_pricing(LongTermPricingId, ReplacementJob,
+#'   IsLongTermPricingAutoRenew)
+#'
+#' @param LongTermPricingId &#91;required&#93; The ID of the long term pricing type for the device.
+#' @param ReplacementJob Specifies that a device that is ordered with long term pricing should be
+#' replaced with a new device.
+#' @param IsLongTermPricingAutoRenew If set to `true`, specifies that the current long term pricing type for
+#' the device should be automatically renewed before the long term pricing
+#' contract expires.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_long_term_pricing(
+#'   LongTermPricingId = "string",
+#'   ReplacementJob = "string",
+#'   IsLongTermPricingAutoRenew = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname snowball_update_long_term_pricing
+snowball_update_long_term_pricing <- function(LongTermPricingId, ReplacementJob = NULL, IsLongTermPricingAutoRenew = NULL) {
+  op <- new_operation(
+    name = "UpdateLongTermPricing",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .snowball$update_long_term_pricing_input(LongTermPricingId = LongTermPricingId, ReplacementJob = ReplacementJob, IsLongTermPricingAutoRenew = IsLongTermPricingAutoRenew)
+  output <- .snowball$update_long_term_pricing_output()
+  config <- get_config()
+  svc <- .snowball$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.snowball$operations$update_long_term_pricing <- snowball_update_long_term_pricing

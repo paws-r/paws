@@ -4,6 +4,10 @@ test_that("describe_account_health", {
   expect_error(svc$describe_account_health(), NA)
 })
 
+test_that("describe_feedback", {
+  expect_error(svc$describe_feedback(), NA)
+})
+
 test_that("describe_service_integration", {
   expect_error(svc$describe_service_integration(), NA)
 })

@@ -2,24 +2,24 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disassociate_members}
 \alias{securityhub_disassociate_members}
-\title{Disassociates the specified member accounts from the associated master
-account}
+\title{Disassociates the specified member accounts from the associated
+administrator account}
 \usage{
 securityhub_disassociate_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] The account IDs of the member accounts to disassociate from the master
-account.}
+\item{AccountIds}{[required] The account IDs of the member accounts to disassociate from the
+administrator account.}
 }
 \value{
 An empty list.
 }
 \description{
-Disassociates the specified member accounts from the associated master
-account.
+Disassociates the specified member accounts from the associated
+administrator account.
 
-Can be used to disassociate both accounts that are in an organization
-and accounts that were invited manually.
+Can be used to disassociate both accounts that are managed using
+Organizations and accounts that were invited manually.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_members(

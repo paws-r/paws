@@ -32,6 +32,12 @@ Creates a \emph{context}. A context is a lineage tracking entity that
 represents a logical grouping of other tracking or experiment entities.
 Some examples are an endpoint and a model package. For more information,
 see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
+
+\code{\link[=sagemaker_create_context]{create_context}} can only be invoked from
+within an SageMaker managed environment. This includes SageMaker
+training jobs, processing jobs, transform jobs, and SageMaker notebooks.
+A call to \code{\link[=sagemaker_create_context]{create_context}} from outside one
+of these environments results in an error.
 }
 \section{Request syntax}{
 \preformatted{svc$create_context(

@@ -2,19 +2,20 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_fleet_capacity}
 \alias{gamelift_describe_fleet_capacity}
-\title{Retrieves the current capacity statistics for one or more fleets}
+\title{Retrieves the resource capacity settings for one or more fleets}
 \usage{
 gamelift_describe_fleet_capacity(FleetIds, Limit, NextToken)
 }
 \arguments{
-\item{FleetIds}{A unique identifier for a fleet(s) to retrieve capacity information for.
-You can use either the fleet ID or ARN value.}
+\item{FleetIds}{A unique identifier for the fleet(s) to retrieve capacity information
+for. You can use either the fleet ID or ARN value. Leave this parameter
+empty to retrieve capacity information for all fleets.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
 \code{NextToken} to get results as a set of sequential pages. This parameter
 is ignored when the request specifies one or a list of fleet IDs.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.
 This parameter is ignored when the request specifies one or a list of
@@ -25,6 +26,7 @@ A list with the following syntax:\preformatted{list(
   FleetCapacity = list(
     list(
       FleetId = "string",
+      FleetArn = "string",
       InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
       InstanceCounts = list(
         DESIRED = 123,
@@ -34,7 +36,8 @@ A list with the following syntax:\preformatted{list(
         ACTIVE = 123,
         IDLE = 123,
         TERMINATING = 123
-      )
+      ),
+      Location = "string"
     )
   ),
   NextToken = "string"
@@ -42,48 +45,55 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Retrieves the current capacity statistics for one or more fleets. These
-statistics present a snapshot of the fleet's instances and provide
-insight on current or imminent scaling activity. To get statistics on
-game hosting activity in the fleet, see
-\code{\link[=gamelift_describe_fleet_utilization]{describe_fleet_utilization}}.
+Retrieves the resource capacity settings for one or more fleets. The
+data returned includes the current fleet capacity (number of EC2
+instances), and settings that can control how capacity scaling. For
+fleets with remote locations, this operation retrieves data for the
+fleet's home Region only. See
+\code{\link[=gamelift_describe_fleet_location_capacity]{describe_fleet_location_capacity}}
+to get capacity settings for a fleet's remote locations.
 
-You can request capacity for all fleets or specify a list of one or more
-fleet identifiers. When requesting multiple fleets, use the pagination
-parameters to retrieve results as a set of sequential pages. If
-successful, a FleetCapacity object is returned for each requested fleet
-ID. When a list of fleet IDs is provided, attribute objects are returned
-only for fleets that currently exist.
+This operation can be used in the following ways:
+\itemize{
+\item To get capacity data for one or more specific fleets, provide a list
+of fleet IDs or fleet ARNs.
+\item To get capacity data for all fleets, do not provide a fleet
+identifier.
+}
 
-Some API operations may limit the number of fleet IDs allowed in one
-request. If a request exceeds this limit, the request fails and the
-error message includes the maximum allowed.
+When requesting multiple fleets, use the pagination parameters to
+retrieve results as a set of sequential pages.
+
+If successful, a FleetCapacity object is returned for each requested
+fleet ID. Each FleetCapacity object includes a \code{Location} property,
+which is set to the fleet's home Region. When a list of fleet IDs is
+provided, attribute objects are returned only for fleets that currently
+exist.
+
+Some API operations may limit the number of fleet IDs that are allowed
+in one request. If a request exceeds this limit, the request fails and
+the error message includes the maximum allowed.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift fleets}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet}{GameLift Metrics for Fleets}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet}{GameLift metrics for fleets}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_fleet]{create_fleet}}
-\item \code{\link[=gamelift_list_fleets]{list_fleets}}
-\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
-\item Describe fleets:
-\itemize{
-\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
-\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
-\item \code{\link[=gamelift_describe_fleet_port_settings]{describe_fleet_port_settings}}
-\item \code{\link[=gamelift_describe_fleet_utilization]{describe_fleet_utilization}}
-\item \code{\link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration}}
-\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
-\item \code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}}
-}
-\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
-\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_list_fleets]{list_fleets}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}} |
+\code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}} |
+\code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}} |
+\code{\link[=gamelift_describe_fleet_location_attributes]{describe_fleet_location_attributes}}
+|
+\code{\link[=gamelift_describe_fleet_port_settings]{describe_fleet_port_settings}}
+| \code{\link[=gamelift_describe_fleet_utilization]{describe_fleet_utilization}} |
+\code{\link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration}}
+| \code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}} |
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_fleet_capacity(

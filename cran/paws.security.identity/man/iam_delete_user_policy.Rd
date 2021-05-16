@@ -31,7 +31,7 @@ IAM user.
 A user can also have managed policies attached to it. To detach a
 managed policy from a user, use
 \code{\link[=iam_detach_user_policy]{detach_user_policy}}. For more information
-about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed policies and inline policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

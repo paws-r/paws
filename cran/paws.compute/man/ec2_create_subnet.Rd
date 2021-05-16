@@ -5,7 +5,7 @@
 \title{Creates a subnet in a specified VPC}
 \usage{
 ec2_create_subnet(TagSpecifications, AvailabilityZone,
-  AvailabilityZoneId, CidrBlock, Ipv6CidrBlock, OutpostArn, VpcId, DryRun)
+  AvailabilityZoneId, Ipv6CidrBlock, OutpostArn, VpcId, DryRun, CidrBlock)
 }
 \arguments{
 \item{TagSpecifications}{The tags to assign to the subnet.}
@@ -25,11 +25,6 @@ Zone for the Outpost and specify the Outpost ARN.}
 
 \item{AvailabilityZoneId}{The AZ ID or the Local Zone ID of the subnet.}
 
-\item{CidrBlock}{[required] The IPv4 network range for the subnet, in CIDR notation. For example,
-\verb{10.0.0.0/24}. We modify the specified CIDR block to its canonical form;
-for example, if you specify \verb{100.68.0.18/18}, we modify it to
-\verb{100.68.0.0/18}.}
-
 \item{Ipv6CidrBlock}{The IPv6 network range for the subnet, in CIDR notation. The subnet size
 must use a /64 prefix length.}
 
@@ -42,6 +37,11 @@ ARN, you must also specify the Availability Zone of the Outpost subnet.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{CidrBlock}{[required] The IPv4 network range for the subnet, in CIDR notation. For example,
+\verb{10.0.0.0/24}. We modify the specified CIDR block to its canonical form;
+for example, if you specify \verb{100.68.0.18/18}, we modify it to
+\verb{100.68.0.0/18}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -122,11 +122,11 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   ),
   AvailabilityZone = "string",
   AvailabilityZoneId = "string",
-  CidrBlock = "string",
   Ipv6CidrBlock = "string",
   OutpostArn = "string",
   VpcId = "string",
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  CidrBlock = "string"
 )
 }
 }

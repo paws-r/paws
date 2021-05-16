@@ -2,7 +2,7 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_list_user_tags}
 \alias{iam_list_user_tags}
-\title{Lists the tags that are attached to the specified user}
+\title{Lists the tags that are attached to the specified IAM user}
 \usage{
 iam_list_user_tags(UserName, Marker, MaxItems)
 }
@@ -43,9 +43,9 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Lists the tags that are attached to the specified user. The returned
+Lists the tags that are attached to the specified IAM user. The returned
 list of tags is sorted by tag key. For more information about tagging,
-see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

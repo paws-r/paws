@@ -7,8 +7,8 @@
 gamelift_delete_build(BuildId)
 }
 \arguments{
-\item{BuildId}{[required] A unique identifier for a build to delete. You can use either the build
-ID or ARN value.}
+\item{BuildId}{[required] A unique identifier for the build to delete. You can use either the
+build ID or ARN value.}
 }
 \value{
 An empty list.
@@ -25,14 +25,13 @@ To delete a build, specify the build ID.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Upload a Custom Server Build}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_build]{create_build}}
-\item \code{\link[=gamelift_list_builds]{list_builds}}
-\item \code{\link[=gamelift_describe_build]{describe_build}}
-\item \code{\link[=gamelift_update_build]{update_build}}
-\item \code{\link[=gamelift_delete_build]{delete_build}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_build]{create_build}} |
+\code{\link[=gamelift_list_builds]{list_builds}} |
+\code{\link[=gamelift_describe_build]{describe_build}} |
+\code{\link[=gamelift_update_build]{update_build}} |
+\code{\link[=gamelift_delete_build]{delete_build}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_build(

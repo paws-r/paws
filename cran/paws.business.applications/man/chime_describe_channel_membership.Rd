@@ -4,12 +4,14 @@
 \alias{chime_describe_channel_membership}
 \title{Returns the full details of a user's channel membership}
 \usage{
-chime_describe_channel_membership(ChannelArn, MemberArn)
+chime_describe_channel_membership(ChannelArn, MemberArn, ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
 
 \item{MemberArn}{[required] The ARN of the member.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -36,11 +38,16 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Returns the full details of a user's channel membership.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_channel_membership(
   ChannelArn = "string",
-  MemberArn = "string"
+  MemberArn = "string",
+  ChimeBearer = "string"
 )
 }
 }

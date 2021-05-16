@@ -20,6 +20,12 @@ A list with the following syntax:\preformatted{list(
 \description{
 Lists information about the IAM OpenID Connect (OIDC) provider resource
 objects defined in the AWS account.
+
+IAM resource-listing operations return a subset of the available
+attributes for the resource. For example, this operation does not return
+tags, even though they are an attribute of the returned object. To view
+all of the information for an OIDC provider, see
+\code{\link[=iam_get_open_id_connect_provider]{get_open_id_connect_provider}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_open_id_connect_providers()

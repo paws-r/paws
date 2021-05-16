@@ -41,7 +41,10 @@ A list with the following syntax:\preformatted{list(
         DedicatedMasterCount = 123,
         WarmEnabled = TRUE|FALSE,
         WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-        WarmCount = 123
+        WarmCount = 123,
+        ColdStorageOptions = list(
+          Enabled = TRUE|FALSE
+        )
       ),
       Status = list(
         CreationDate = as.POSIXct(
@@ -260,6 +263,36 @@ A list with the following syntax:\preformatted{list(
         ),
         UpdateVersion = 123,
         State = "RequiresIndexDocuments"|"Processing"|"Active",
+        PendingDeletion = TRUE|FALSE
+      )
+    ),
+    AutoTuneOptions = list(
+      Options = list(
+        DesiredState = "ENABLED"|"DISABLED",
+        RollbackOnDisable = "NO_ROLLBACK"|"DEFAULT_ROLLBACK",
+        MaintenanceSchedules = list(
+          list(
+            StartAt = as.POSIXct(
+              "2015-01-01"
+            ),
+            Duration = list(
+              Value = 123,
+              Unit = "HOURS"
+            ),
+            CronExpressionForRecurrence = "string"
+          )
+        )
+      ),
+      Status = list(
+        CreationDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        UpdateDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        UpdateVersion = 123,
+        State = "ENABLED"|"DISABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_SCHEDULED"|"DISABLED_AND_ROLLBACK_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_COMPLETE"|"DISABLED_AND_ROLLBACK_ERROR"|"ERROR",
+        ErrorMessage = "string",
         PendingDeletion = TRUE|FALSE
       )
     )

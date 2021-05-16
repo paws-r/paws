@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_get_messaging_session_endpoint}
 \alias{chime_get_messaging_session_endpoint}
-\title{The endpoint for the messaging session}
+\title{The details of the endpoint for the messaging session}
 \usage{
 chime_get_messaging_session_endpoint()
 }
@@ -15,7 +15,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-The endpoint for the messaging session.
+The details of the endpoint for the messaging session.
 }
 \section{Request syntax}{
 \preformatted{svc$get_messaging_session_endpoint()

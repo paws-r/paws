@@ -54,6 +54,9 @@ A list with the following syntax:\preformatted{list(
       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
       SyncCompliance = "AUTO"|"MANUAL",
       ApplyOnlyAtCronInterval = TRUE|FALSE,
+      CalendarNames = list(
+        "string"
+      ),
       TargetLocations = list(
         list(
           Accounts = list(

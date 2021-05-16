@@ -7,7 +7,7 @@
 chime_delete_app_instance(AppInstanceArn)
 }
 \arguments{
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 }
 \value{
 An empty list.

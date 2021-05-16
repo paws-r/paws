@@ -12,7 +12,7 @@ elasticache_modify_replication_group(ReplicationGroupId,
   ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
   SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
   AuthTokenUpdateStrategy, UserGroupIdsToAdd, UserGroupIdsToRemove,
-  RemoveUserGroups)
+  RemoveUserGroups, LogDeliveryConfigurations)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The identifier of the replication group to modify.}
@@ -34,8 +34,8 @@ read/write primary if the existing primary encounters a failure.
 
 Valid values: \code{true} | \code{false}}
 
-\item{MultiAZEnabled}{A flag indicating if you have Multi-AZ enabled to enhance fault
-tolerance. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
+\item{MultiAZEnabled}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 
 \item{NodeGroupId}{Deprecated. This parameter is not used.}
 
@@ -160,6 +160,8 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/la
 longer can access thereplication group.}
 
 \item{RemoveUserGroups}{Removes the user groups that can access this replication group.}
+
+\item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -186,6 +188,21 @@ A list with the following syntax:\preformatted{list(
         ),
         UserGroupIdsToRemove = list(
           "string"
+        )
+      ),
+      LogDeliveryConfigurations = list(
+        list(
+          LogType = "slow-log",
+          DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+          DestinationDetails = list(
+            CloudWatchLogsDetails = list(
+              LogGroup = "string"
+            ),
+            KinesisFirehoseDetails = list(
+              DeliveryStream = "string"
+            )
+          ),
+          LogFormat = "text"|"json"
         )
       )
     ),
@@ -244,6 +261,23 @@ A list with the following syntax:\preformatted{list(
     ARN = "string",
     UserGroupIds = list(
       "string"
+    ),
+    LogDeliveryConfigurations = list(
+      list(
+        LogType = "slow-log",
+        DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+        DestinationDetails = list(
+          CloudWatchLogsDetails = list(
+            LogGroup = "string"
+          ),
+          KinesisFirehoseDetails = list(
+            DeliveryStream = "string"
+          )
+        ),
+        LogFormat = "text"|"json",
+        Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+        Message = "string"
+      )
     )
   )
 )
@@ -293,7 +327,23 @@ This operation is valid for Redis only.
   UserGroupIdsToRemove = list(
     "string"
   ),
-  RemoveUserGroups = TRUE|FALSE
+  RemoveUserGroups = TRUE|FALSE,
+  LogDeliveryConfigurations = list(
+    list(
+      LogType = "slow-log",
+      DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+      DestinationDetails = list(
+        CloudWatchLogsDetails = list(
+          LogGroup = "string"
+        ),
+        KinesisFirehoseDetails = list(
+          DeliveryStream = "string"
+        )
+      ),
+      LogFormat = "text"|"json",
+      Enabled = TRUE|FALSE
+    )
+  )
 )
 }
 }

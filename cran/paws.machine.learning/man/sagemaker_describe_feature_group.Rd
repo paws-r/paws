@@ -36,7 +36,8 @@ A list with the following syntax:\preformatted{list(
   OfflineStoreConfig = list(
     S3StorageConfig = list(
       S3Uri = "string",
-      KmsKeyId = "string"
+      KmsKeyId = "string",
+      ResolvedOutputS3Uri = "string"
     ),
     DisableGlueTableCreation = TRUE|FALSE,
     DataCatalogConfig = list(

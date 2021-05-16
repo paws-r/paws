@@ -6,7 +6,7 @@
 \usage{
 acmpca_create_certificate_authority(CertificateAuthorityConfiguration,
   RevocationConfiguration, CertificateAuthorityType, IdempotencyToken,
-  Tags)
+  KeyStorageSecurityStandard, Tags)
 }
 \arguments{
 \item{CertificateAuthorityConfiguration}{[required] Name and bit size of the private key algorithm, the name of the signing
@@ -22,12 +22,26 @@ structure.}
 
 \item{CertificateAuthorityType}{[required] The type of the certificate authority.}
 
-\item{IdempotencyToken}{Alphanumeric string that can be used to distinguish between calls to
-\strong{CreateCertificateAuthority}. For a given token, ACM Private CA
-creates exactly one CA. If you issue a subsequent call using the same
-token, ACM Private CA returns the ARN of the existing CA and takes no
-further action. If you change the idempotency token across multiple
-calls, ACM Private CA creates a unique CA for each unique token.}
+\item{IdempotencyToken}{Custom string that can be used to distinguish between calls to the
+\strong{CreateCertificateAuthority} action. Idempotency tokens for
+\strong{CreateCertificateAuthority} time out after five minutes. Therefore,
+if you call \strong{CreateCertificateAuthority} multiple times with the same
+idempotency token within five minutes, ACM Private CA recognizes that
+you are requesting only certificate authority and will issue only one.
+If you change the idempotency token for each call, PCA recognizes that
+you are requesting multiple certificate authorities.}
+
+\item{KeyStorageSecurityStandard}{Specifies a cryptographic key management compliance standard used for
+handling CA keys.
+
+Default: FIPS_140_2_LEVEL_3_OR_HIGHER
+
+Note: AWS Region ap-northeast-3 supports only
+FIPS_140_2_LEVEL_2_OR_HIGHER. You must explicitly specify this
+parameter and value when creating a CA in that Region. Specifying a
+different value (or no value) results in an \code{InvalidArgsException} with
+the message "A certificate authority cannot be created in this region
+with the specified security standard."}
 
 \item{Tags}{Key-value pairs that will be attached to the new private CA. You can
 associate up to 50 tags with a private CA. For information using tags
@@ -52,8 +66,8 @@ contain the CRL, and a CNAME alias for the S3 bucket that is included in
 certificates issued by the CA. If successful, this action returns the
 Amazon Resource Name (ARN) of the CA.
 
-ACM Private CAA assets that are stored in Amazon S3 can be protected
-with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption}{Encrypting Your CRLs}.
+ACM Private CA assets that are stored in Amazon S3 can be protected with
+encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption}{Encrypting Your CRLs}.
 
 Both PCA and the IAM principal must have permission to write to the S3
 bucket that you specify. If the IAM principal making the call does not
@@ -144,6 +158,7 @@ more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide
   ),
   CertificateAuthorityType = "ROOT"|"SUBORDINATE",
   IdempotencyToken = "string",
+  KeyStorageSecurityStandard = "FIPS_140_2_LEVEL_2_OR_HIGHER"|"FIPS_140_2_LEVEL_3_OR_HIGHER",
   Tags = list(
     list(
       Key = "string",

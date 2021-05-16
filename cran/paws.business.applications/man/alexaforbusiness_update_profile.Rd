@@ -6,7 +6,7 @@
 \usage{
 alexaforbusiness_update_profile(ProfileArn, ProfileName, IsDefault,
   Timezone, Address, DistanceUnit, TemperatureUnit, WakeWord, Locale,
-  SetupModeDisabled, MaxVolumeLimit, PSTNEnabled,
+  SetupModeDisabled, MaxVolumeLimit, PSTNEnabled, DataRetentionOptIn,
   MeetingRoomConfiguration)
 }
 \arguments{
@@ -36,6 +36,8 @@ available to a limited preview audience.)}
 
 \item{PSTNEnabled}{Whether the PSTN setting of the room profile is enabled.}
 
+\item{DataRetentionOptIn}{Whether data retention of the profile is enabled.}
+
 \item{MeetingRoomConfiguration}{The updated meeting room settings of a room profile.}
 }
 \value{
@@ -58,6 +60,7 @@ Updates an existing room profile by room profile ARN.
   SetupModeDisabled = TRUE|FALSE,
   MaxVolumeLimit = 123,
   PSTNEnabled = TRUE|FALSE,
+  DataRetentionOptIn = TRUE|FALSE,
   MeetingRoomConfiguration = list(
     RoomUtilizationMetricsEnabled = TRUE|FALSE,
     EndOfMeetingReminder = list(

@@ -67,7 +67,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Provides a list of steps for the cluster in reverse order unless you
 specify \code{stepIds} with the request of filter by \code{StepStates}. You can
-specify a maximum of ten \code{stepIDs}.
+specify a maximum of 10 \code{stepIDs}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_steps(

@@ -9,7 +9,7 @@ macie_disassociate_s3_resources(memberAccountId, associatedS3Resources)
 }
 \arguments{
 \item{memberAccountId}{The ID of the Amazon Macie Classic member account whose resources you
-want to remove from being monitored by Amazon Macie Classic.}
+want to remove from being monitored by Macie Classic.}
 
 \item{associatedS3Resources}{[required] The S3 resources (buckets or prefixes) that you want to remove from
 being monitored and classified by Amazon Macie Classic.}
@@ -32,9 +32,10 @@ A list with the following syntax:\preformatted{list(
 \description{
 Removes specified S3 resources from being monitored by Amazon Macie
 Classic. If memberAccountId isn't specified, the action removes
-specified S3 resources from Macie Classic for the current master
-account. If memberAccountId is specified, the action removes specified
-S3 resources from Macie Classic for the specified member account.
+specified S3 resources from Macie Classic for the current Macie Classic
+administrator account. If memberAccountId is specified, the action
+removes specified S3 resources from Macie Classic for the specified
+member account.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_s3_resources(

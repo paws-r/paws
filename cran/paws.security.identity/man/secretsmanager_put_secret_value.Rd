@@ -133,12 +133,11 @@ AWS CLI or one of the AWS SDKs.
 \item If this operation creates the first version for the secret then
 Secrets Manager automatically attaches the staging label
 \code{AWSCURRENT} to the new version.
-\item If another version of this secret already exists, then this
-operation does not automatically move any staging labels other than
-those that you explicitly specify in the \code{VersionStages} parameter.
+\item If you do not specify a value for VersionStages then Secrets Manager
+automatically moves the staging label \code{AWSCURRENT} to this new
+version.
 \item If this operation moves the staging label \code{AWSCURRENT} from another
-version to this version (because you included it in the
-\code{StagingLabels} parameter) then Secrets Manager also automatically
+version to this version, then Secrets Manager also automatically
 moves the staging label \code{AWSPREVIOUS} to the version that
 \code{AWSCURRENT} was removed from.
 \item This operation is idempotent. If a version with a \code{VersionId} with

@@ -18,6 +18,7 @@ A list with the following syntax:\preformatted{list(
       AccountId = "string",
       Email = "string",
       MasterId = "string",
+      AdministratorId = "string",
       MemberStatus = "string",
       InvitedAt = as.POSIXct(
         "2015-01-01"
@@ -40,12 +41,12 @@ A list with the following syntax:\preformatted{list(
 Returns the details for the Security Hub member accounts for the
 specified account IDs.
 
-A master account can be either a delegated Security Hub administrator
-account for an organization or a master account that enabled Security
-Hub manually.
+An administrator account can be either the delegated Security Hub
+administrator account for an organization or an administrator account
+that enabled Security Hub manually.
 
-The results include both member accounts that are in an organization and
-accounts that were invited manually.
+The results include both member accounts that are managed using
+Organizations and accounts that were invited manually.
 }
 \section{Request syntax}{
 \preformatted{svc$get_members(

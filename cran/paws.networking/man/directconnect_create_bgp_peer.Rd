@@ -79,7 +79,7 @@ address. IPv6 addresses are automatically assigned from the Amazon pool
 of IPv6 addresses; you cannot specify custom IPv6 addresses.
 
 For a public virtual interface, the Autonomous System Number (ASN) must
-be private or already whitelisted for the virtual interface.
+be private or already on the allow list for the virtual interface.
 }
 \section{Request syntax}{
 \preformatted{svc$create_bgp_peer(

@@ -10,7 +10,7 @@ sagemaker_create_user_profile(DomainId, UserProfileName,
 \arguments{
 \item{DomainId}{[required] The ID of the associated Domain.}
 
-\item{UserProfileName}{[required] A name for the UserProfile.}
+\item{UserProfileName}{[required] A name for the UserProfile. This value is not case sensitive.}
 
 \item{SingleSignOnUserIdentifier}{A specifier for the type of value specified in SingleSignOnUserValue.
 Currently, the only supported value is "UserName". If the Domain's
@@ -23,7 +23,10 @@ and must match a valid username of a user in your directory. If the
 Domain's AuthMode is not SSO, this field cannot be specified.}
 
 \item{Tags}{Each tag consists of a key and an optional value. Tag keys must be
-unique per resource.}
+unique per resource.
+
+Tags that you specify for the User Profile are also added to all Apps
+that the User Profile launches.}
 
 \item{UserSettings}{A collection of settings.}
 }

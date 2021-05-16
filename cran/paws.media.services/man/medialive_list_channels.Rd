@@ -122,6 +122,12 @@ A list with the following syntax:\preformatted{list(
                     Pid = 123
                   ),
                   TeletextSourceSettings = list(
+                    OutputRectangle = list(
+                      Height = 123.0,
+                      LeftOffset = 123.0,
+                      TopOffset = 123.0,
+                      Width = 123.0
+                    ),
                     PageNumber = "string"
                   )
                 )
@@ -143,7 +149,13 @@ A list with the following syntax:\preformatted{list(
             Smpte2038DataPreference = "IGNORE"|"PREFER",
             SourceEndBehavior = "CONTINUE"|"LOOP",
             VideoSelector = list(
-              ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+              ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+              ColorSpaceSettings = list(
+                Hdr10Settings = list(
+                  MaxCll = 123,
+                  MaxFall = 123
+                )
+              ),
               ColorSpaceUsage = "FALLBACK"|"FORCE",
               SelectorSettings = list(
                 VideoSelectorPid = list(
@@ -169,6 +181,20 @@ A list with the following syntax:\preformatted{list(
       State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
       Tags = list(
         "string"
+      ),
+      Vpc = list(
+        AvailabilityZones = list(
+          "string"
+        ),
+        NetworkInterfaceIds = list(
+          "string"
+        ),
+        SecurityGroupIds = list(
+          "string"
+        ),
+        SubnetIds = list(
+          "string"
+        )
       )
     )
   ),

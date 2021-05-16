@@ -19,7 +19,9 @@ function.}
 \item{Marker}{Specify the pagination token that's returned by a previous request to
 retrieve the next page of results.}
 
-\item{MaxItems}{The maximum number of functions to return.}
+\item{MaxItems}{The maximum number of functions to return in the response. Note that
+\code{\link[=lambda_list_functions]{list_functions}} returns a maximum of 50 items
+in each response, even if you set the number higher.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     list(
       FunctionName = "string",
       FunctionArn = "string",
-      Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
+      Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
       Role = "string",
       Handler = "string",
       CodeSize = 123,
@@ -113,8 +115,13 @@ Returns a list of Lambda functions, with the version-specific
 configuration of each. Lambda returns up to 50 functions per call.
 
 Set \code{FunctionVersion} to \code{ALL} to include all published versions of each
-function in addition to the unpublished version. To get more information
-about a function or version, use \code{\link[=lambda_get_function]{get_function}}.
+function in addition to the unpublished version.
+
+The \code{\link[=lambda_list_functions]{list_functions}} action returns a subset of
+the FunctionConfiguration fields. To get the additional fields (State,
+StateReasonCode, StateReason, LastUpdateStatus, LastUpdateStatusReason,
+LastUpdateStatusReasonCode) for a function or version, use
+\code{\link[=lambda_get_function]{get_function}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_functions(

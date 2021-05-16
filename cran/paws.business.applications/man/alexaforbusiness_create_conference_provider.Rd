@@ -6,7 +6,7 @@
 \usage{
 alexaforbusiness_create_conference_provider(ConferenceProviderName,
   ConferenceProviderType, IPDialIn, PSTNDialIn, MeetingSetting,
-  ClientRequestToken)
+  ClientRequestToken, Tags)
 }
 \arguments{
 \item{ConferenceProviderName}{[required] The name of the conference provider.}
@@ -20,6 +20,9 @@ alexaforbusiness_create_conference_provider(ConferenceProviderName,
 \item{MeetingSetting}{[required] The meeting settings for the conference provider.}
 
 \item{ClientRequestToken}{The request token of the client.}
+
+\item{Tags}{The tags to be added to the specified resource. Do not provide system
+tags.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -47,7 +50,13 @@ Adds a new conference provider under the user's AWS account.
   MeetingSetting = list(
     RequirePin = "YES"|"NO"|"OPTIONAL"
   ),
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

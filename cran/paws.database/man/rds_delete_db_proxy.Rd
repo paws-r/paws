@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_delete_db_proxy}
 \alias{rds_delete_db_proxy}
-\title{Deletes an existing proxy}
+\title{Deletes an existing DB proxy}
 \usage{
 rds_delete_db_proxy(DBProxyName)
 }
@@ -16,6 +16,7 @@ A list with the following syntax:\preformatted{list(
     DBProxyArn = "string",
     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
     EngineFamily = "string",
+    VpcId = "string",
     VpcSecurityGroupIds = list(
       "string"
     ),
@@ -47,7 +48,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Deletes an existing proxy.
+Deletes an existing DB proxy.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_proxy(

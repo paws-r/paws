@@ -14,8 +14,8 @@ gamelift_create_player_sessions(GameSessionId, PlayerIds, PlayerDataMap)
 \item{PlayerDataMap}{Map of string pairs, each specifying a player ID and a set of
 developer-defined information related to the player. Amazon GameLift
 does not use this data, so it can be formatted as needed for use in the
-game. Player data strings for player IDs not included in the \code{PlayerIds}
-parameter are ignored.}
+game. Any player data strings for player IDs that are not included in
+the \code{PlayerIds} parameter are ignored.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -43,32 +43,33 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Reserves open slots in a game session for a group of players. Before
-players can be added, a game session must have an \code{ACTIVE} status, have
-a creation policy of \code{ALLOW_ALL}, and have an open player slot. To add a
-single player to a game session, use
-\code{\link[=gamelift_create_player_session]{create_player_session}}. When a player
-connects to the game server and references a player session ID, the game
-server contacts the Amazon GameLift service to validate the player
-reservation and accept the player.
+Reserves open slots in a game session for a group of players. New player
+sessions can be created in any game session with an open slot that is in
+\code{ACTIVE} status and has a player creation policy of \code{ACCEPT_ALL}. To add
+a single player to a game session, use
+\code{\link[=gamelift_create_player_session]{create_player_session}}.
 
-To create player sessions, specify a game session ID, a list of player
-IDs, and optionally a set of player data strings. If successful, a slot
-is reserved in the game session for each player and a set of new
-PlayerSession objects is returned. Player sessions cannot be updated.
+To create player sessions, specify a game session ID and a list of
+player IDs. Optionally, provide a set of player data for each player ID.
+
+If successful, a slot is reserved in the game session for each player,
+and new PlayerSession objects are returned with player session IDs. Each
+player references their player session ID when sending a connection
+request to the game session, and the game server can use it to validate
+the player reservation with the GameLift service. Player sessions cannot
+be updated.
 
 \emph{Available in Amazon GameLift Local.}
-\itemize{
-\item \code{\link[=gamelift_create_player_session]{create_player_session}}
-\item \code{\link[=gamelift_create_player_sessions]{create_player_sessions}}
-\item \code{\link[=gamelift_describe_player_sessions]{describe_player_sessions}}
-\item Game session placements
-\itemize{
-\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
-\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
-\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
-}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_player_session]{create_player_session}} |
+\code{\link[=gamelift_create_player_sessions]{create_player_sessions}} |
+\code{\link[=gamelift_describe_player_sessions]{describe_player_sessions}} |
+\code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+|
+\code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$create_player_sessions(

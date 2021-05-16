@@ -61,15 +61,22 @@ NULL
 #' \tabular{ll}{
 #'  \link[=eventbridge_activate_event_source]{activate_event_source} \tab Activates a partner event source that has been deactivated\cr
 #'  \link[=eventbridge_cancel_replay]{cancel_replay} \tab Cancels the specified replay\cr
+#'  \link[=eventbridge_create_api_destination]{create_api_destination} \tab Creates an API destination, which is an HTTP invocation endpoint configured as a target for events\cr
 #'  \link[=eventbridge_create_archive]{create_archive} \tab Creates an archive of events with the specified settings\cr
+#'  \link[=eventbridge_create_connection]{create_connection} \tab Creates a connection\cr
 #'  \link[=eventbridge_create_event_bus]{create_event_bus} \tab Creates a new event bus within your account\cr
 #'  \link[=eventbridge_create_partner_event_source]{create_partner_event_source} \tab Called by an SaaS partner to create a partner event source\cr
 #'  \link[=eventbridge_deactivate_event_source]{deactivate_event_source} \tab You can use this operation to temporarily stop receiving events from the specified partner event source\cr
+#'  \link[=eventbridge_deauthorize_connection]{deauthorize_connection} \tab Removes all authorization parameters from the connection\cr
+#'  \link[=eventbridge_delete_api_destination]{delete_api_destination} \tab Deletes the specified API destination\cr
 #'  \link[=eventbridge_delete_archive]{delete_archive} \tab Deletes the specified archive\cr
+#'  \link[=eventbridge_delete_connection]{delete_connection} \tab Deletes a connection\cr
 #'  \link[=eventbridge_delete_event_bus]{delete_event_bus} \tab Deletes the specified custom event bus or partner event bus\cr
 #'  \link[=eventbridge_delete_partner_event_source]{delete_partner_event_source} \tab This operation is used by SaaS partners to delete a partner event source\cr
 #'  \link[=eventbridge_delete_rule]{delete_rule} \tab Deletes the specified rule\cr
+#'  \link[=eventbridge_describe_api_destination]{describe_api_destination} \tab Retrieves details about an API destination\cr
 #'  \link[=eventbridge_describe_archive]{describe_archive} \tab Retrieves details about an archive\cr
+#'  \link[=eventbridge_describe_connection]{describe_connection} \tab Retrieves details about a connection\cr
 #'  \link[=eventbridge_describe_event_bus]{describe_event_bus} \tab Displays details about an event bus in your account\cr
 #'  \link[=eventbridge_describe_event_source]{describe_event_source} \tab This operation lists details about a partner event source that is shared with your account\cr
 #'  \link[=eventbridge_describe_partner_event_source]{describe_partner_event_source} \tab An SaaS partner can use this operation to list details about a partner event source that they have created\cr
@@ -77,7 +84,9 @@ NULL
 #'  \link[=eventbridge_describe_rule]{describe_rule} \tab Describes the specified rule\cr
 #'  \link[=eventbridge_disable_rule]{disable_rule} \tab Disables the specified rule\cr
 #'  \link[=eventbridge_enable_rule]{enable_rule} \tab Enables the specified rule\cr
+#'  \link[=eventbridge_list_api_destinations]{list_api_destinations} \tab Retrieves a list of API destination in the account in the current Region\cr
 #'  \link[=eventbridge_list_archives]{list_archives} \tab Lists your archives\cr
+#'  \link[=eventbridge_list_connections]{list_connections} \tab Retrieves a list of connections from the account\cr
 #'  \link[=eventbridge_list_event_buses]{list_event_buses} \tab Lists all the event buses in your account, including the default event bus, custom event buses, and partner event buses\cr
 #'  \link[=eventbridge_list_event_sources]{list_event_sources} \tab You can use this to see all the partner event sources that have been shared with your AWS account\cr
 #'  \link[=eventbridge_list_partner_event_source_accounts]{list_partner_event_source_accounts} \tab An SaaS partner can use this operation to display the AWS account ID that a particular partner event source name is associated with\cr
@@ -98,7 +107,9 @@ NULL
 #'  \link[=eventbridge_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified EventBridge resource\cr
 #'  \link[=eventbridge_test_event_pattern]{test_event_pattern} \tab Tests whether the specified event pattern matches the provided event\cr
 #'  \link[=eventbridge_untag_resource]{untag_resource} \tab Removes one or more tags from the specified EventBridge resource\cr
-#'  \link[=eventbridge_update_archive]{update_archive} \tab Updates the specified archive
+#'  \link[=eventbridge_update_api_destination]{update_api_destination} \tab Updates an API destination\cr
+#'  \link[=eventbridge_update_archive]{update_archive} \tab Updates the specified archive\cr
+#'  \link[=eventbridge_update_connection]{update_connection} \tab Updates settings for a connection
 #' }
 #'
 #' @rdname eventbridge

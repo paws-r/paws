@@ -37,7 +37,7 @@ preparations must in place:
 \enumerate{
 \item In ACM Private CA, call the
 \code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
-action to create the private CA that that you plan to back with the
+action to create the private CA that you plan to back with the
 imported certificate.
 \item Call the
 \code{\link[=acmpca_get_certificate_authority_csr]{get_certificate_authority_csr}}
@@ -57,7 +57,7 @@ hosted by ACM Private CA.
 externally hosted.
 }
 
-The following addtitional requirements apply when you import a CA
+The following additional requirements apply when you import a CA
 certificate.
 \itemize{
 \item Only a self-signed certificate can be imported as a root CA.

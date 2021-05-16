@@ -23,6 +23,7 @@ A list with the following syntax:\preformatted{list(
     Hash = "string",
     HashType = "Sha256"|"Sha1",
     Name = "string",
+    DisplayName = "string",
     VersionName = "string",
     Owner = "string",
     CreatedDate = as.POSIXct(
@@ -43,7 +44,7 @@ A list with the following syntax:\preformatted{list(
     PlatformTypes = list(
       "Windows"|"Linux"
     ),
-    DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+    DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
     SchemaVersion = "string",
     LatestVersion = "string",
     DefaultVersion = "string",

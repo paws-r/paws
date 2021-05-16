@@ -43,20 +43,20 @@ warehouse management.
 \link[=emr_add_tags]{add_tags} \tab Adds tags to an Amazon EMR resource\cr
 \link[=emr_cancel_steps]{cancel_steps} \tab Cancels a pending step or steps in a running cluster\cr
 \link[=emr_create_security_configuration]{create_security_configuration} \tab Creates a security configuration, which is stored in the service and can be specified when a cluster is created\cr
-\link[=emr_create_studio]{create_studio} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change\cr
-\link[=emr_create_studio_session_mapping]{create_studio_session_mapping} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change\cr
+\link[=emr_create_studio]{create_studio} \tab Creates a new Amazon EMR Studio\cr
+\link[=emr_create_studio_session_mapping]{create_studio_session_mapping} \tab Maps a user or group to the Amazon EMR Studio specified by StudioId, and applies a session policy to refine Studio permissions for that user or group\cr
 \link[=emr_delete_security_configuration]{delete_security_configuration} \tab Deletes a security configuration\cr
-\link[=emr_delete_studio]{delete_studio} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change\cr
-\link[=emr_delete_studio_session_mapping]{delete_studio_session_mapping} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change\cr
+\link[=emr_delete_studio]{delete_studio} \tab Removes an Amazon EMR Studio from the Studio metadata store\cr
+\link[=emr_delete_studio_session_mapping]{delete_studio_session_mapping} \tab Removes a user or group from an Amazon EMR Studio\cr
 \link[=emr_describe_cluster]{describe_cluster} \tab Provides cluster-level details including status, hardware and software configuration, VPC settings, and so on\cr
 \link[=emr_describe_job_flows]{describe_job_flows} \tab This API is no longer supported and will eventually be removed\cr
 \link[=emr_describe_notebook_execution]{describe_notebook_execution} \tab Provides details of a notebook execution\cr
 \link[=emr_describe_security_configuration]{describe_security_configuration} \tab Provides the details of a security configuration by returning the configuration JSON\cr
 \link[=emr_describe_step]{describe_step} \tab Provides more detail about the cluster step\cr
-\link[=emr_describe_studio]{describe_studio} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change\cr
+\link[=emr_describe_studio]{describe_studio} \tab Returns details for the specified Amazon EMR Studio including ID, Name, VPC, Studio access URL, and so on\cr
 \link[=emr_get_block_public_access_configuration]{get_block_public_access_configuration} \tab Returns the Amazon EMR block public access configuration for your AWS account in the current Region\cr
 \link[=emr_get_managed_scaling_policy]{get_managed_scaling_policy} \tab Fetches the attached managed scaling policy for an Amazon EMR cluster\cr
-\link[=emr_get_studio_session_mapping]{get_studio_session_mapping} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change\cr
+\link[=emr_get_studio_session_mapping]{get_studio_session_mapping} \tab Fetches mapping details for the specified Amazon EMR Studio and identity (user or group)\cr
 \link[=emr_list_bootstrap_actions]{list_bootstrap_actions} \tab Provides information about the bootstrap actions associated with a cluster\cr
 \link[=emr_list_clusters]{list_clusters} \tab Provides the status of all clusters visible to this AWS account\cr
 \link[=emr_list_instance_fleets]{list_instance_fleets} \tab Lists all available details about the instance fleets in a cluster\cr
@@ -65,8 +65,8 @@ warehouse management.
 \link[=emr_list_notebook_executions]{list_notebook_executions} \tab Provides summaries of all notebook executions\cr
 \link[=emr_list_security_configurations]{list_security_configurations} \tab Lists all the security configurations visible to this account, providing their creation dates and times, and their names\cr
 \link[=emr_list_steps]{list_steps} \tab Provides a list of steps for the cluster in reverse order unless you specify stepIds with the request of filter by StepStates\cr
-\link[=emr_list_studios]{list_studios} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change\cr
-\link[=emr_list_studio_session_mappings]{list_studio_session_mappings} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change\cr
+\link[=emr_list_studios]{list_studios} \tab Returns a list of all Amazon EMR Studios associated with the AWS account\cr
+\link[=emr_list_studio_session_mappings]{list_studio_session_mappings} \tab Returns a list of all user or group session mappings for the Amazon EMR Studio specified by StudioId\cr
 \link[=emr_modify_cluster]{modify_cluster} \tab Modifies the number of steps that can be executed concurrently for the cluster specified using ClusterID\cr
 \link[=emr_modify_instance_fleet]{modify_instance_fleet} \tab Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified InstanceFleetID within the cluster specified using ClusterID\cr
 \link[=emr_modify_instance_groups]{modify_instance_groups} \tab ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group\cr
@@ -82,7 +82,8 @@ warehouse management.
 \link[=emr_start_notebook_execution]{start_notebook_execution} \tab Starts a notebook execution\cr
 \link[=emr_stop_notebook_execution]{stop_notebook_execution} \tab Stops a notebook execution\cr
 \link[=emr_terminate_job_flows]{terminate_job_flows} \tab TerminateJobFlows shuts a list of clusters (job flows) down\cr
-\link[=emr_update_studio_session_mapping]{update_studio_session_mapping} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change
+\link[=emr_update_studio]{update_studio} \tab Updates an Amazon EMR Studio configuration, including attributes such as name, description, and subnets\cr
+\link[=emr_update_studio_session_mapping]{update_studio_session_mapping} \tab Updates the session policy attached to the user or group for the specified Amazon EMR Studio
 }
 }
 

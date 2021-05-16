@@ -2,54 +2,77 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_stop_fleet_actions}
 \alias{gamelift_stop_fleet_actions}
-\title{Suspends activity on a fleet}
+\title{Suspends certain types of activity in a fleet location}
 \usage{
-gamelift_stop_fleet_actions(FleetId, Actions)
+gamelift_stop_fleet_actions(FleetId, Actions, Location)
 }
 \arguments{
-\item{FleetId}{[required] A unique identifier for a fleet to stop actions on. You can use either
+\item{FleetId}{[required] A unique identifier for the fleet to stop actions on. You can use either
 the fleet ID or ARN value.}
 
 \item{Actions}{[required] List of actions to suspend on the fleet.}
+
+\item{Location}{The fleet location to stop fleet actions for. Specify a location in the
+form of an AWS Region code, such as \code{us-west-2}.}
 }
 \value{
-An empty list.
+A list with the following syntax:\preformatted{list(
+  FleetId = "string",
+  FleetArn = "string"
+)
+}
 }
 \description{
-Suspends activity on a fleet. Currently, this operation is used to stop
-a fleet's auto-scaling activity. It is used to temporarily stop
-triggering scaling events. The policies can be retained and auto-scaling
-activity can be restarted using
-\code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}}. You can view a
-fleet's stopped actions using
-\code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}.
+Suspends certain types of activity in a fleet location. Currently, this
+operation is used to stop auto-scaling activity. For multi-location
+fleets, fleet actions are managed separately for each location.
 
-To stop fleet actions, specify the fleet ID and the type of actions to
-suspend. When auto-scaling fleet actions are stopped, Amazon GameLift no
-longer initiates scaling events except in response to manual changes
-using \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}.
+Stopping fleet actions has several potential purposes. It allows you to
+temporarily stop auto-scaling activity but retain your scaling policies
+for use in the future. For multi-location fleets, you can set up
+fleet-wide auto-scaling, and then opt out of it for certain locations.
+
+This operation can be used in the following ways:
+\itemize{
+\item To stop actions on instances in the fleet's home Region, provide a
+fleet ID and the type of actions to suspend.
+\item To stop actions on instances in one of the fleet's remote locations,
+provide a fleet ID, a location name, and the type of actions to
+suspend.
+}
+
+If successful, GameLift no longer initiates scaling events except in
+response to manual changes using
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}. You can view
+a fleet's stopped actions using
+\code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}} or
+\code{\link[=gamelift_describe_fleet_location_attributes]{describe_fleet_location_attributes}}.
+Suspended activity can be restarted using
+\code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}}.
 
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_fleet]{create_fleet}}
-\item \code{\link[=gamelift_list_fleets]{list_fleets}}
-\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
-\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
-\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
-\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_fleet]{create_fleet}} |
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}} |
+\code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}} |
+\code{\link[=gamelift_describe_fleet_location_attributes]{describe_fleet_location_attributes}}
+| \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}} |
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} |
+\code{\link[=gamelift_delete_fleet]{delete_fleet}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$stop_fleet_actions(
   FleetId = "string",
   Actions = list(
     "AUTO_SCALING"
-  )
+  ),
+  Location = "string"
 )
 }
 }

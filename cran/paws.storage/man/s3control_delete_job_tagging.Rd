@@ -18,7 +18,7 @@ An empty list.
 Removes the entire tag set from the specified S3 Batch Operations job.
 To use this operation, you must have permission to perform the
 \code{s3:DeleteJobTagging} action. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 Related actions include:
 \itemize{

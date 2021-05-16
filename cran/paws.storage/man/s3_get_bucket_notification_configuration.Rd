@@ -9,7 +9,7 @@ s3_get_bucket_notification_configuration(Bucket, ExpectedBucketOwner)
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to get the notification configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -78,7 +78,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Returns the notification configuration of a bucket.
 
-If notifications are not enabled on the bucket, the operation returns an
+If notifications are not enabled on the bucket, the action returns an
 empty \code{NotificationConfiguration} element.
 
 By default, you must be the bucket owner to read the notification
@@ -90,7 +90,7 @@ For more information about setting and reading the notification
 configuration on a bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html}{Setting Up Notification of Bucket Events}.
 For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies}.
 
-The following operation is related to
+The following action is related to
 \code{\link[=s3_get_bucket_notification]{get_bucket_notification}}:
 \itemize{
 \item \code{\link[=s3_put_bucket_notification]{put_bucket_notification}}

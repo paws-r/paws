@@ -68,10 +68,15 @@ starting with the most recent.
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
 \code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
-operation from your organization's master account.
-
-This API operation uses pagination. Specify the \code{nextToken} parameter in
-the next request to return more results.
+operation from your organization's management account.
+\itemize{
+\item This API operation uses pagination. Specify the \code{nextToken}
+parameter in the next request to return more results.
+\item This operation doesn't support resource-level permissions. You can't
+use this operation to allow or deny access to specific AWS Health
+events. For more information, see \href{https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions}{Resource- and action-based conditions}
+in the \emph{AWS Health User Guide}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_affected_entities_for_organization(

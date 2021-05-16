@@ -5,7 +5,7 @@
 \title{Retrieves information about the partitions in a table}
 \usage{
 glue_get_partitions(CatalogId, DatabaseName, TableName, Expression,
-  NextToken, Segment, MaxResults)
+  NextToken, Segment, MaxResults, ExcludeColumnSchema)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partitions in question reside. If
@@ -107,6 +107,8 @@ partitions.}
 \item{Segment}{The segment of the table's partitions to scan in this request.}
 
 \item{MaxResults}{The maximum number of partitions to return in a single response.}
+
+\item{ExcludeColumnSchema}{}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -207,7 +209,8 @@ Retrieves information about the partitions in a table.
     SegmentNumber = 123,
     TotalSegments = 123
   ),
-  MaxResults = 123
+  MaxResults = 123,
+  ExcludeColumnSchema = TRUE|FALSE
 )
 }
 }

@@ -4,12 +4,15 @@
 \alias{chime_create_channel_moderator}
 \title{Creates a new ChannelModerator}
 \usage{
-chime_create_channel_moderator(ChannelArn, ChannelModeratorArn)
+chime_create_channel_moderator(ChannelArn, ChannelModeratorArn,
+  ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
 
 \item{ChannelModeratorArn}{[required] The ARN of the moderator.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -30,11 +33,16 @@ Creates a new \code{ChannelModerator}. A channel moderator can:
 \item Redact messages in the channel.
 \item List messages in the channel.
 }
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$create_channel_moderator(
   ChannelArn = "string",
-  ChannelModeratorArn = "string"
+  ChannelModeratorArn = "string",
+  ChimeBearer = "string"
 )
 }
 }

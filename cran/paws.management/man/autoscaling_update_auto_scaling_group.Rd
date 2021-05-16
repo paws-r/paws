@@ -25,7 +25,7 @@ specify \code{LaunchTemplate} in your update request, you can't specify
 \code{LaunchConfigurationName} or \code{MixedInstancesPolicy}.}
 
 \item{MixedInstancesPolicy}{An embedded object that specifies a mixed instances policy. When you
-make changes to an existing policy, all optional parameters are left
+make changes to an existing policy, all optional properties are left
 unchanged if not specified. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling groups with multiple instance types and purchase options}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 

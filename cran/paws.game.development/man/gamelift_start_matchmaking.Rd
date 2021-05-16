@@ -77,45 +77,42 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Uses FlexMatch to create a game match for a group of players based on
-custom matchmaking rules. If you're also using GameLift hosting, a new
-game session is started for the matched players. Each matchmaking
-request identifies one or more players to find a match for, and
-specifies the type of match to build, including the team configuration
-and the rules for an acceptable match. When a matchmaking request
-identifies a group of players who want to play together, FlexMatch finds
-additional players to fill the match. Match type, rules, and other
-features are defined in a \code{MatchmakingConfiguration}.
+custom matchmaking rules. With games that use GameLift managed hosting,
+this operation also triggers GameLift to find hosting resources and
+start a new game session for the new match. Each matchmaking request
+includes information on one or more players and specifies the FlexMatch
+matchmaker to use. When a request is for multiple players, FlexMatch
+attempts to build a match that includes all players in the request,
+placing them in the same team and finding additional players as needed
+to fill the match.
 
 To start matchmaking, provide a unique ticket ID, specify a matchmaking
-configuration, and include the players to be matched. For each player,
-you must also include the player attribute values that are required by
-the matchmaking configuration (in the rule set). If successful, a
-matchmaking ticket is returned with status set to \code{QUEUED}.
+configuration, and include the players to be matched. You must also
+include any player attributes that are required by the matchmaking
+configuration's rule set. If successful, a matchmaking ticket is
+returned with status set to \code{QUEUED}.
 
-Track the status of the ticket to respond as needed. If you're also
-using GameLift hosting, a successfully completed ticket contains game
-session connection information. Ticket status updates are tracked using
-event notification through Amazon Simple Notification Service (SNS),
-which is defined in the matchmaking configuration.
+Track matchmaking events to respond as needed and acquire game session
+connection information for successfully completed matches. Ticket status
+updates are tracked using event notification through Amazon Simple
+Notification Service (SNS), which is defined in the matchmaking
+configuration.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html}{Add FlexMatch to a Game Client}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html}{Add FlexMatch to a game client}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html}{Set Up FlexMatch Event Notification}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html}{Set Up FlexMatch event notification}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-tasks.html}{FlexMatch Integration Roadmap}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html}{How GameLift FlexMatch works}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html}{How GameLift FlexMatch Works}
+\strong{Related actions}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_start_matchmaking]{start_matchmaking}}
-\item \code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}}
-\item \code{\link[=gamelift_stop_matchmaking]{stop_matchmaking}}
-\item \code{\link[=gamelift_accept_match]{accept_match}}
-\item \code{\link[=gamelift_start_match_backfill]{start_match_backfill}}
-}
+\code{\link[=gamelift_start_matchmaking]{start_matchmaking}} |
+\code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}} |
+\code{\link[=gamelift_stop_matchmaking]{stop_matchmaking}} |
+\code{\link[=gamelift_accept_match]{accept_match}} |
+\code{\link[=gamelift_start_match_backfill]{start_match_backfill}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$start_matchmaking(

@@ -13,7 +13,7 @@ s3_put_bucket_lifecycle_configuration(Bucket, LifecycleConfiguration,
 
 \item{LifecycleConfiguration}{Container for lifecycle rules. You can add as many as 1,000 rules.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }

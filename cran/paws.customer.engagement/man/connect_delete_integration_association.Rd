@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_delete_integration_association}
 \alias{connect_delete_integration_association}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Deletes an AppIntegration association from an Amazon Connect instance}
 \usage{
 connect_delete_integration_association(InstanceId,
   IntegrationAssociationId)
@@ -17,9 +16,6 @@ connect_delete_integration_association(InstanceId,
 An empty list.
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Deletes an AppIntegration association from an Amazon Connect instance.
 The association must not have any use cases associated with it.
 }

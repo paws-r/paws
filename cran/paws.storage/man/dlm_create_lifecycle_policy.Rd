@@ -40,6 +40,9 @@ You can create up to 100 lifecycle policies.
     ResourceTypes = list(
       "VOLUME"|"INSTANCE"
     ),
+    ResourceLocations = list(
+      "CLOUD"|"OUTPOST"
+    ),
     TargetTags = list(
       list(
         Key = "string",
@@ -63,6 +66,7 @@ You can create up to 100 lifecycle policies.
           )
         ),
         CreateRule = list(
+          Location = "CLOUD"|"OUTPOST_LOCAL",
           Interval = 123,
           IntervalUnit = "HOURS",
           Times = list(
@@ -86,6 +90,7 @@ You can create up to 100 lifecycle policies.
         CrossRegionCopyRules = list(
           list(
             TargetRegion = "string",
+            Target = "string",
             Encrypted = TRUE|FALSE,
             CmkArn = "string",
             CopyTags = TRUE|FALSE,

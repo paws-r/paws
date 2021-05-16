@@ -6,7 +6,7 @@
 moment in time}
 \usage{
 elasticache_create_snapshot(ReplicationGroupId, CacheClusterId,
-  SnapshotName, KmsKeyId)
+  SnapshotName, KmsKeyId, Tags)
 }
 \arguments{
 \item{ReplicationGroupId}{The identifier of an existing replication group. The snapshot is created
@@ -18,6 +18,9 @@ cluster.}
 \item{SnapshotName}{[required] A name for the snapshot being created.}
 
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the snapshot.}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -92,7 +95,13 @@ This operation is valid for Redis only.
   ReplicationGroupId = "string",
   CacheClusterId = "string",
   SnapshotName = "string",
-  KmsKeyId = "string"
+  KmsKeyId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

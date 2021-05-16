@@ -48,14 +48,20 @@ NULL
 #' 
 #' PatchBaseline: pb-012345abcde
 #' 
+#' OpsMetadata object: `ResourceID` for tagging is created from the Amazon
+#' Resource Name (ARN) for the object. Specifically, `ResourceID` is
+#' created from the strings that come after the word `opsmetadata` in the
+#' ARN. For example, an OpsMetadata object with an ARN of
+#' `arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager`
+#' has a `ResourceID` of either `aws/ssm/MyGroup/appmanager` or
+#' `/aws/ssm/MyGroup/appmanager`.
+#' 
 #' For the Document and Parameter values, use the name of the resource.
 #' 
 #' The ManagedInstance type for this API action is only for on-premises
 #' managed instances. You must specify the name of the managed instance in
 #' the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
-#' @param Tags &#91;required&#93; One or more tags. The value parameter is required, but if you don't want
-#' the tag to have a value, specify the parameter with no value, and we set
-#' the value to an empty string.
+#' @param Tags &#91;required&#93; One or more tags. The value parameter is required.
 #' 
 #' Do not enter personally identifiable information in this field.
 #'
@@ -65,7 +71,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$add_tags_to_resource(
-#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
+#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem"|"OpsMetadata",
 #'   ResourceId = "string",
 #'   Tags = list(
 #'     list(
@@ -95,6 +101,71 @@ ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
   return(response)
 }
 .ssm$operations$add_tags_to_resource <- ssm_add_tags_to_resource
+
+#' Associates a related resource to a Systems Manager OpsCenter OpsItem
+#'
+#' @description
+#' Associates a related resource to a Systems Manager OpsCenter OpsItem.
+#' For example, you can associate an Incident Manager incident or analysis
+#' with an OpsItem. Incident Manager is a capability of AWS Systems
+#' Manager.
+#'
+#' @usage
+#' ssm_associate_ops_item_related_item(OpsItemId, AssociationType,
+#'   ResourceType, ResourceUri)
+#'
+#' @param OpsItemId &#91;required&#93; The ID of the OpsItem to which you want to associate a resource as a
+#' related item.
+#' @param AssociationType &#91;required&#93; The type of association that you want to create between an OpsItem and a
+#' resource. OpsCenter supports `IsParentOf` and `RelatesTo` association
+#' types.
+#' @param ResourceType &#91;required&#93; The type of resource that you want to associate with an OpsItem.
+#' OpsCenter supports the following types:
+#' 
+#' `AWS::SSMIncidents::IncidentRecord`: an Incident Manager incident.
+#' Incident Manager is a capability of AWS Systems Manager.
+#' 
+#' `AWS::SSM::Document`: a Systems Manager (SSM) document.
+#' @param ResourceUri &#91;required&#93; The Amazon Resource Name (ARN) of the AWS resource that you want to
+#' associate with the OpsItem.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_ops_item_related_item(
+#'   OpsItemId = "string",
+#'   AssociationType = "string",
+#'   ResourceType = "string",
+#'   ResourceUri = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_associate_ops_item_related_item
+ssm_associate_ops_item_related_item <- function(OpsItemId, AssociationType, ResourceType, ResourceUri) {
+  op <- new_operation(
+    name = "AssociateOpsItemRelatedItem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$associate_ops_item_related_item_input(OpsItemId = OpsItemId, AssociationType = AssociationType, ResourceType = ResourceType, ResourceUri = ResourceUri)
+  output <- .ssm$associate_ops_item_related_item_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$associate_ops_item_related_item <- ssm_associate_ops_item_related_item
 
 #' Attempts to cancel the command specified by the Command ID
 #'
@@ -233,8 +304,10 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' in the *AWS Systems Manager User Guide*.
 #' @param RegistrationLimit Specify the maximum number of managed instances you want to register.
 #' The default value is 1 instance.
-#' @param ExpirationDate The date by which this activation request should expire. The default
-#' value is 24 hours.
+#' @param ExpirationDate The date by which this activation request should expire, in timestamp
+#' format, such as "2021-07-07T00:00:00". You can specify a date up to 30
+#' days in advance. If you don't provide an expiration date, the activation
+#' code expires in 24 hours.
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
 #' environment. For example, you might want to tag an activation to
@@ -332,7 +405,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'   Targets, ScheduleExpression, OutputLocation, AssociationName,
 #'   AutomationTargetParameterName, MaxErrors, MaxConcurrency,
 #'   ComplianceSeverity, SyncCompliance, ApplyOnlyAtCronInterval,
-#'   TargetLocations)
+#'   CalendarNames, TargetLocations)
 #'
 #' @param Name &#91;required&#93; The name of the SSM document that contains the configuration information
 #' for the instance. You can specify Command or Automation documents.
@@ -417,11 +490,16 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' [`put_compliance_items`][ssm_put_compliance_items] API action.
 #' 
 #' By default, all associations use `AUTO` mode.
-#' @param ApplyOnlyAtCronInterval By default, when you create a new associations, the system runs it
+#' @param ApplyOnlyAtCronInterval By default, when you create a new association, the system runs it
 #' immediately after it is created and then according to the schedule you
 #' specified. Specify this option if you don't want an association to run
 #' immediately after you create it. This parameter is not supported for
 #' rate expressions.
+#' @param CalendarNames The names or Amazon Resource Names (ARNs) of the Systems Manager Change
+#' Calendar type documents you want to gate your associations under. The
+#' associations only run when that Change Calendar is open. For more
+#' information, see [AWS Systems Manager Change
+#' Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html).
 #' @param TargetLocations A location is a combination of AWS Regions and AWS accounts where you
 #' want to run the association. Use this action to create an association in
 #' multiple Regions and multiple accounts.
@@ -491,6 +569,9 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
 #'     SyncCompliance = "AUTO"|"MANUAL",
 #'     ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'     CalendarNames = list(
+#'       "string"
+#'     ),
 #'     TargetLocations = list(
 #'       list(
 #'         Accounts = list(
@@ -542,6 +623,9 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
 #'   SyncCompliance = "AUTO"|"MANUAL",
 #'   ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'   CalendarNames = list(
+#'     "string"
+#'   ),
 #'   TargetLocations = list(
 #'     list(
 #'       Accounts = list(
@@ -561,14 +645,14 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @keywords internal
 #'
 #' @rdname ssm_create_association
-ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, OutputLocation = NULL, AssociationName = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, TargetLocations = NULL) {
+ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, OutputLocation = NULL, AssociationName = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL) {
   op <- new_operation(
     name = "CreateAssociation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_association_input(Name = Name, DocumentVersion = DocumentVersion, InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, AssociationName = AssociationName, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, TargetLocations = TargetLocations)
+  input <- .ssm$create_association_input(Name = Name, DocumentVersion = DocumentVersion, InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, AssociationName = AssociationName, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations)
   output <- .ssm$create_association_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -664,6 +748,9 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #'       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
 #'       SyncCompliance = "AUTO"|"MANUAL",
 #'       ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'       CalendarNames = list(
+#'         "string"
+#'       ),
 #'       TargetLocations = list(
 #'         list(
 #'           Accounts = list(
@@ -713,6 +800,9 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #'         ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
 #'         SyncCompliance = "AUTO"|"MANUAL",
 #'         ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'         CalendarNames = list(
+#'           "string"
+#'         ),
 #'         TargetLocations = list(
 #'           list(
 #'             Accounts = list(
@@ -770,6 +860,9 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #'       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
 #'       SyncCompliance = "AUTO"|"MANUAL",
 #'       ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'       CalendarNames = list(
+#'         "string"
+#'       ),
 #'       TargetLocations = list(
 #'         list(
 #'           Accounts = list(
@@ -819,8 +912,8 @@ ssm_create_association_batch <- function(Entries) {
 #' in the *AWS Systems Manager User Guide*.
 #'
 #' @usage
-#' ssm_create_document(Content, Requires, Attachments, Name, VersionName,
-#'   DocumentType, DocumentFormat, TargetType, Tags)
+#' ssm_create_document(Content, Requires, Attachments, Name, DisplayName,
+#'   VersionName, DocumentType, DocumentFormat, TargetType, Tags)
 #'
 #' @param Content &#91;required&#93; The content for the new SSM document in JSON or YAML format. We
 #' recommend storing the contents for your new document in an external JSON
@@ -844,7 +937,7 @@ ssm_create_association_batch <- function(Entries) {
 #' `ApplicationConfiguration` document requires an
 #' `ApplicationConfigurationSchema` document for validation purposes. For
 #' more information, see [AWS
-#' AppConfig](https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html)
+#' AppConfig](https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html)
 #' in the *AWS Systems Manager User Guide*.
 #' @param Attachments A list of key and value pairs that describe attachments to a version of
 #' a document.
@@ -858,6 +951,10 @@ ssm_create_association_batch <- function(Entries) {
 #' -   `amazon`
 #' 
 #' -   `amzn`
+#' @param DisplayName An optional field where you can specify a friendly name for the Systems
+#' Manager document. This value can differ for each version of the
+#' document. You can update this value at a later time using the
+#' [`update_document`][ssm_update_document] action.
 #' @param VersionName An optional field specifying the version of the artifact you are
 #' creating with the document. For example, "Release 12, Update 6". This
 #' value is unique across all versions of a document, and cannot be
@@ -895,6 +992,7 @@ ssm_create_association_batch <- function(Entries) {
 #'     Hash = "string",
 #'     HashType = "Sha256"|"Sha1",
 #'     Name = "string",
+#'     DisplayName = "string",
 #'     VersionName = "string",
 #'     Owner = "string",
 #'     CreatedDate = as.POSIXct(
@@ -915,7 +1013,7 @@ ssm_create_association_batch <- function(Entries) {
 #'     PlatformTypes = list(
 #'       "Windows"|"Linux"
 #'     ),
-#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
 #'     SchemaVersion = "string",
 #'     LatestVersion = "string",
 #'     DefaultVersion = "string",
@@ -975,8 +1073,9 @@ ssm_create_association_batch <- function(Entries) {
 #'     )
 #'   ),
 #'   Name = "string",
+#'   DisplayName = "string",
 #'   VersionName = "string",
-#'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
 #'   DocumentFormat = "YAML"|"JSON"|"TEXT",
 #'   TargetType = "string",
 #'   Tags = list(
@@ -991,14 +1090,14 @@ ssm_create_association_batch <- function(Entries) {
 #' @keywords internal
 #'
 #' @rdname ssm_create_document
-ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Name, VersionName = NULL, DocumentType = NULL, DocumentFormat = NULL, TargetType = NULL, Tags = NULL) {
+ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Name, DisplayName = NULL, VersionName = NULL, DocumentType = NULL, DocumentFormat = NULL, TargetType = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_document_input(Content = Content, Requires = Requires, Attachments = Attachments, Name = Name, VersionName = VersionName, DocumentType = DocumentType, DocumentFormat = DocumentFormat, TargetType = TargetType, Tags = Tags)
+  input <- .ssm$create_document_input(Content = Content, Requires = Requires, Attachments = Attachments, Name = Name, DisplayName = DisplayName, VersionName = VersionName, DocumentType = DocumentType, DocumentFormat = DocumentFormat, TargetType = TargetType, Tags = Tags)
   output <- .ssm$create_document_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -1302,10 +1401,20 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
 #' including the application type.
 #'
 #' @usage
-#' ssm_create_ops_metadata(ResourceId, Metadata)
+#' ssm_create_ops_metadata(ResourceId, Metadata, Tags)
 #'
 #' @param ResourceId &#91;required&#93; A resource ID for a new Application Manager application.
 #' @param Metadata Metadata for a new Application Manager application.
+#' @param Tags Optional metadata that you assign to a resource. You can specify a
+#' maximum of five tags for an OpsMetadata object. Tags enable you to
+#' categorize a resource in different ways, such as by purpose, owner, or
+#' environment. For example, you might want to tag an OpsMetadata object to
+#' identify an environment or target AWS Region. In this case, you could
+#' specify the following key-value pairs:
+#' 
+#' -   `Key=Environment,Value=Production`
+#' 
+#' -   `Key=Region,Value=us-east-2`
 #'
 #' @return
 #' A list with the following syntax:
@@ -1323,6 +1432,12 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
 #'     list(
 #'       Value = "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1330,14 +1445,14 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
 #' @keywords internal
 #'
 #' @rdname ssm_create_ops_metadata
-ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL) {
+ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateOpsMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_ops_metadata_input(ResourceId = ResourceId, Metadata = Metadata)
+  input <- .ssm$create_ops_metadata_input(ResourceId = ResourceId, Metadata = Metadata, Tags = Tags)
   output <- .ssm$create_ops_metadata_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -1374,8 +1489,8 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL) {
 #' rejected patch
 #' lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 #' in the *AWS Systems Manager User Guide*.
-#' @param ApprovedPatchesComplianceLevel Defines the compliance level for approved patches. This means that if an
-#' approved patch is reported as missing, this is the severity of the
+#' @param ApprovedPatchesComplianceLevel Defines the compliance level for approved patches. When an approved
+#' patch is reported as missing, this value describes the severity of the
 #' compliance violation. The default value is UNSPECIFIED.
 #' @param ApprovedPatchesEnableNonSecurity Indicates whether the list of approved patches includes non-security
 #' updates that should be applied to the instances. The default value is
@@ -1596,7 +1711,8 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #'     SourceRegions = list(
 #'       "string"
 #'     ),
-#'     IncludeFutureRegions = TRUE|FALSE
+#'     IncludeFutureRegions = TRUE|FALSE,
+#'     EnableAllOpsDataSources = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2496,6 +2612,9 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 #'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
 #'     SyncCompliance = "AUTO"|"MANUAL",
 #'     ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'     CalendarNames = list(
+#'       "string"
+#'     ),
 #'     TargetLocations = list(
 #'       list(
 #'         Accounts = list(
@@ -2891,8 +3010,8 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
-#' @param ReverseOrder A boolean that indicates whether to list step executions in reverse
-#' order by start time. The default value is false.
+#' @param ReverseOrder Indicates whether to list step executions in reverse order by start
+#' time. The default value is 'false'.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3123,6 +3242,7 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
 #'     Hash = "string",
 #'     HashType = "Sha256"|"Sha1",
 #'     Name = "string",
+#'     DisplayName = "string",
 #'     VersionName = "string",
 #'     Owner = "string",
 #'     CreatedDate = as.POSIXct(
@@ -3143,7 +3263,7 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
 #'     PlatformTypes = list(
 #'       "Windows"|"Linux"
 #'     ),
-#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
 #'     SchemaVersion = "string",
 #'     LatestVersion = "string",
 #'     DefaultVersion = "string",
@@ -3221,11 +3341,17 @@ ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NU
 #' (*All*).
 #'
 #' @usage
-#' ssm_describe_document_permission(Name, PermissionType)
+#' ssm_describe_document_permission(Name, PermissionType, MaxResults,
+#'   NextToken)
 #'
 #' @param Name &#91;required&#93; The name of the document for which you are the owner.
 #' @param PermissionType &#91;required&#93; The permission type for the document. The permission type can be
 #' *Share*.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
 #'
 #' @return
 #' A list with the following syntax:
@@ -3239,7 +3365,8 @@ ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NU
 #'       AccountId = "string",
 #'       SharedDocumentVersion = "string"
 #'     )
-#'   )
+#'   ),
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -3247,21 +3374,23 @@ ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NU
 #' ```
 #' svc$describe_document_permission(
 #'   Name = "string",
-#'   PermissionType = "Share"
+#'   PermissionType = "Share",
+#'   MaxResults = 123,
+#'   NextToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_describe_document_permission
-ssm_describe_document_permission <- function(Name, PermissionType) {
+ssm_describe_document_permission <- function(Name, PermissionType, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDocumentPermission",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$describe_document_permission_input(Name = Name, PermissionType = PermissionType)
+  input <- .ssm$describe_document_permission_input(Name = Name, PermissionType = PermissionType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_document_permission_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -3676,7 +3805,10 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
 #'       LastNoRebootInstallOperationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       RebootOption = "RebootIfNeeded"|"NoReboot"
+#'       RebootOption = "RebootIfNeeded"|"NoReboot",
+#'       CriticalNonCompliantCount = 123,
+#'       SecurityNonCompliantCount = 123,
+#'       OtherNonCompliantCount = 123
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3768,7 +3900,10 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
 #'       LastNoRebootInstallOperationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       RebootOption = "RebootIfNeeded"|"NoReboot"
+#'       RebootOption = "RebootIfNeeded"|"NoReboot",
+#'       CriticalNonCompliantCount = 123,
+#'       SecurityNonCompliantCount = 123,
+#'       OtherNonCompliantCount = 123
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4998,7 +5133,10 @@ ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, Next
 #'   InstancesWithMissingPatches = 123,
 #'   InstancesWithFailedPatches = 123,
 #'   InstancesWithNotApplicablePatches = 123,
-#'   InstancesWithUnreportedNotApplicablePatches = 123
+#'   InstancesWithUnreportedNotApplicablePatches = 123,
+#'   InstancesWithCriticalNonCompliantPatches = 123,
+#'   InstancesWithSecurityNonCompliantPatches = 123,
+#'   InstancesWithOtherNonCompliantPatches = 123
 #' )
 #' ```
 #'
@@ -5316,6 +5454,52 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
 }
 .ssm$operations$describe_sessions <- ssm_describe_sessions
 
+#' Deletes the association between an OpsItem and a related resource
+#'
+#' @description
+#' Deletes the association between an OpsItem and a related resource. For
+#' example, this API action can delete an Incident Manager incident from an
+#' OpsItem. Incident Manager is a capability of AWS Systems Manager.
+#'
+#' @usage
+#' ssm_disassociate_ops_item_related_item(OpsItemId, AssociationId)
+#'
+#' @param OpsItemId &#91;required&#93; The ID of the OpsItem for which you want to delete an association
+#' between the OpsItem and a related resource.
+#' @param AssociationId &#91;required&#93; The ID of the association for which you want to delete an association
+#' between the OpsItem and a related resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_ops_item_related_item(
+#'   OpsItemId = "string",
+#'   AssociationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_disassociate_ops_item_related_item
+ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
+  op <- new_operation(
+    name = "DisassociateOpsItemRelatedItem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$disassociate_ops_item_related_item_input(OpsItemId = OpsItemId, AssociationId = AssociationId)
+  output <- .ssm$disassociate_ops_item_related_item_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$disassociate_ops_item_related_item <- ssm_disassociate_ops_item_related_item
+
 #' Get detailed information about a particular Automation execution
 #'
 #' @description
@@ -5623,20 +5807,35 @@ ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
 #' @description
 #' Returns detailed information about command execution for an invocation
 #' or plugin.
+#' 
+#' [`get_command_invocation`][ssm_get_command_invocation] only gives the
+#' execution status of a plugin in a document. To get the command execution
+#' status on a specific instance, use
+#' [`list_command_invocations`][ssm_list_command_invocations]. To get the
+#' command execution status across instances, use
+#' [`list_commands`][ssm_list_commands].
 #'
 #' @usage
 #' ssm_get_command_invocation(CommandId, InstanceId, PluginName)
 #'
 #' @param CommandId &#91;required&#93; (Required) The parent command ID of the invocation plugin.
 #' @param InstanceId &#91;required&#93; (Required) The ID of the managed instance targeted by the command. A
-#' managed instance can be an EC2 instance or an instance in your hybrid
-#' environment that is configured for Systems Manager.
-#' @param PluginName (Optional) The name of the plugin for which you want detailed results.
-#' If the document contains only one plugin, the name can be omitted and
-#' the details will be returned.
+#' managed instance can be an Amazon Elastic Compute Cloud (Amazon EC2)
+#' instance or an instance in your hybrid environment that is configured
+#' for AWS Systems Manager.
+#' @param PluginName The name of the plugin for which you want detailed results. If the
+#' document contains only one plugin, you can omit the name and details for
+#' that plugin. If the document contains more than one plugin, you must
+#' specify the name of the plugin for which you want to view details.
 #' 
-#' Plugin names are also referred to as step names in Systems Manager
-#' documents.
+#' Plugin names are also referred to as *step names* in Systems Manager
+#' documents. For example, `aws:RunShellScript` is a plugin.
+#' 
+#' To find the `PluginName`, check the document content and find the name
+#' of the plugin. Alternatively, use
+#' [`list_command_invocations`][ssm_list_command_invocations] with the
+#' `CommandId` and `Details` parameters. The `PluginName` is the `Name`
+#' attribute of the `CommandPlugin` object in the `CommandPlugins` list.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5803,11 +6002,13 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 #' document.
 #'
 #' @usage
-#' ssm_get_deployable_patch_snapshot_for_instance(InstanceId, SnapshotId)
+#' ssm_get_deployable_patch_snapshot_for_instance(InstanceId, SnapshotId,
+#'   BaselineOverride)
 #'
 #' @param InstanceId &#91;required&#93; The ID of the instance for which the appropriate patch snapshot should
 #' be retrieved.
 #' @param SnapshotId &#91;required&#93; The user-defined snapshot ID.
+#' @param BaselineOverride Defines the basic information about a patch baseline override.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5824,21 +6025,72 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 #' ```
 #' svc$get_deployable_patch_snapshot_for_instance(
 #'   InstanceId = "string",
-#'   SnapshotId = "string"
+#'   SnapshotId = "string",
+#'   BaselineOverride = list(
+#'     OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+#'     GlobalFilters = list(
+#'       PatchFilters = list(
+#'         list(
+#'           Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ApprovalRules = list(
+#'       PatchRules = list(
+#'         list(
+#'           PatchFilterGroup = list(
+#'             PatchFilters = list(
+#'               list(
+#'                 Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+#'           ApproveAfterDays = 123,
+#'           ApproveUntilDate = "string",
+#'           EnableNonSecurity = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     ApprovedPatches = list(
+#'       "string"
+#'     ),
+#'     ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+#'     RejectedPatches = list(
+#'       "string"
+#'     ),
+#'     RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
+#'     ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
+#'     Sources = list(
+#'       list(
+#'         Name = "string",
+#'         Products = list(
+#'           "string"
+#'         ),
+#'         Configuration = "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_get_deployable_patch_snapshot_for_instance
-ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotId) {
+ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotId, BaselineOverride = NULL) {
   op <- new_operation(
     name = "GetDeployablePatchSnapshotForInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$get_deployable_patch_snapshot_for_instance_input(InstanceId = InstanceId, SnapshotId = SnapshotId)
+  input <- .ssm$get_deployable_patch_snapshot_for_instance_input(InstanceId = InstanceId, SnapshotId = SnapshotId, BaselineOverride = BaselineOverride)
   output <- .ssm$get_deployable_patch_snapshot_for_instance_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -5869,12 +6121,16 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
 #' ```
 #' list(
 #'   Name = "string",
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DisplayName = "string",
 #'   VersionName = "string",
 #'   DocumentVersion = "string",
 #'   Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
 #'   StatusInformation = "string",
 #'   Content = "string",
-#'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
 #'   DocumentFormat = "YAML"|"JSON"|"TEXT",
 #'   Requires = list(
 #'     list(
@@ -7001,9 +7257,11 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #'   WithDecryption, MaxResults, NextToken)
 #'
 #' @param Path &#91;required&#93; The hierarchy for the parameter. Hierarchies start with a forward slash
-#' (/) and end with the parameter name. A parameter name hierarchy can have
-#' a maximum of 15 levels. Here is an example of a hierarchy:
-#' `/Finance/Prod/IAD/WinServ2016/license33`
+#' (/). The hierachy is the parameter name except the last part of the
+#' parameter. For the API call to succeeed, the last part of the parameter
+#' name cannot be in the path. A parameter name hierarchy can have a
+#' maximum of 15 levels. Here is an example of a hierarchy:
+#' `/Finance/Prod/IAD/WinServ2016/license33 `
 #' @param Recursive Retrieve all parameters within a hierarchy.
 #' 
 #' If a user has access to a path, then the user can access all levels of
@@ -7273,6 +7531,8 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 #' ssm_get_service_setting(SettingId)
 #'
 #' @param SettingId &#91;required&#93; The ID of the service setting to get. The setting ID can be
+#' `/ssm/automation/customer-script-log-destination`,
+#' `/ssm/automation/customer-script-log-group-name`,
 #' `/ssm/parameter-store/default-parameter-tier`,
 #' `/ssm/parameter-store/high-throughput-enabled`, or
 #' `/ssm/managed-instance/activation-tier`.
@@ -7344,9 +7604,8 @@ ssm_get_service_setting <- function(SettingId) {
 #' -   You can't create a label when you create a new parameter. You must
 #'     attach a label to a specific version of a parameter.
 #' 
-#' -   You can't delete a parameter label. If you no longer want to use a
-#'     parameter label, then you must move it to a different version of a
-#'     parameter.
+#' -   If you no longer want to use a parameter label, then you can either
+#'     delete it or move it to a different version of a parameter.
 #' 
 #' -   A label can have a maximum of 100 characters.
 #' 
@@ -7464,6 +7723,9 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
 #'       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
 #'       SyncCompliance = "AUTO"|"MANUAL",
 #'       ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'       CalendarNames = list(
+#'         "string"
+#'       ),
 #'       TargetLocations = list(
 #'         list(
 #'           Accounts = list(
@@ -7631,7 +7893,7 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
 #' @param Filters (Optional) One or more filters. Use a filter to return a more specific
 #' list of results.
 #' @param Details (Optional) If set this returns the response of the command executions
-#' and any command output. By default this is set to False.
+#' and any command output. The default value is 'false'.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8140,6 +8402,7 @@ ssm_list_document_metadata_history <- function(Name, DocumentVersion = NULL, Met
 #'   DocumentVersions = list(
 #'     list(
 #'       Name = "string",
+#'       DisplayName = "string",
 #'       DocumentVersion = "string",
 #'       VersionName = "string",
 #'       CreatedDate = as.POSIXct(
@@ -8196,13 +8459,17 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
 #' ssm_list_documents(DocumentFilterList, Filters, MaxResults, NextToken)
 #'
 #' @param DocumentFilterList This data type is deprecated. Instead, use `Filters`.
-#' @param Filters One or more DocumentKeyValuesFilter objects. Use a filter to return a
+#' @param Filters One or more `DocumentKeyValuesFilter` objects. Use a filter to return a
 #' more specific list of results. For keys, you can specify one or more
 #' key-value pair tags that have been applied to a document. Other valid
 #' keys include `Owner`, `Name`, `PlatformTypes`, `DocumentType`, and
 #' `TargetType`. For example, to return documents you own use
 #' `Key=Owner,Values=Self`. To specify a custom key-value pair, use the
 #' format `Key=tag:tagName,Values=valueName`.
+#' 
+#' This API action only supports filtering documents by using a single tag
+#' key and one or more tag values. For example:
+#' `Key=tag:tagName,Values=valueName1,valueName2`
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
@@ -8216,13 +8483,17 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
 #'   DocumentIdentifiers = list(
 #'     list(
 #'       Name = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisplayName = "string",
 #'       Owner = "string",
 #'       VersionName = "string",
 #'       PlatformTypes = list(
 #'         "Windows"|"Linux"
 #'       ),
 #'       DocumentVersion = "string",
-#'       DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'       DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
 #'       SchemaVersion = "string",
 #'       DocumentFormat = "YAML"|"JSON"|"TEXT",
 #'       TargetType = "string",
@@ -8441,6 +8712,92 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
   return(response)
 }
 .ssm$operations$list_ops_item_events <- ssm_list_ops_item_events
+
+#' Lists all related-item resources associated with an OpsItem
+#'
+#' @description
+#' Lists all related-item resources associated with an OpsItem.
+#'
+#' @usage
+#' ssm_list_ops_item_related_items(OpsItemId, Filters, MaxResults,
+#'   NextToken)
+#'
+#' @param OpsItemId The ID of the OpsItem for which you want to list all related-item
+#' resources.
+#' @param Filters One or more OpsItem filters. Use a filter to return a more specific list
+#' of results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Summaries = list(
+#'     list(
+#'       OpsItemId = "string",
+#'       AssociationId = "string",
+#'       ResourceType = "string",
+#'       AssociationType = "string",
+#'       ResourceUri = "string",
+#'       CreatedBy = list(
+#'         Arn = "string"
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = list(
+#'         Arn = "string"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_ops_item_related_items(
+#'   OpsItemId = "string",
+#'   Filters = list(
+#'     list(
+#'       Key = "ResourceType"|"AssociationId"|"ResourceUri",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Operator = "Equal"
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_list_ops_item_related_items
+ssm_list_ops_item_related_items <- function(OpsItemId = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListOpsItemRelatedItems",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$list_ops_item_related_items_input(OpsItemId = OpsItemId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssm$list_ops_item_related_items_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$list_ops_item_related_items <- ssm_list_ops_item_related_items
 
 #' Systems Manager calls this API action when displaying all Application
 #' Manager OpsMetadata objects or blobs
@@ -8669,7 +9026,8 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
 #'           "string"
 #'         ),
 #'         IncludeFutureRegions = TRUE|FALSE,
-#'         State = "string"
+#'         State = "string",
+#'         EnableAllOpsDataSources = TRUE|FALSE
 #'       ),
 #'       S3Destination = list(
 #'         BucketName = "string",
@@ -8757,7 +9115,7 @@ ssm_list_resource_data_sync <- function(SyncType = NULL, NextToken = NULL, MaxRe
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
-#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
+#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem"|"OpsMetadata",
 #'   ResourceId = "string"
 #' )
 #' ```
@@ -9068,7 +9426,11 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #'     (case-insensitive).
 #' 
 #' -   Parameter names can include only the following symbols and letters:
-#'     `a-zA-Z0-9_.-/`
+#'     `a-zA-Z0-9_.-`
+#' 
+#'     In addition, the slash character ( / ) is used to delineate
+#'     hierarchies in parameter names. For example:
+#'     `/Dev/Production/East/Project-ABC/MyParameter`
 #' 
 #' -   A parameter name can't include spaces.
 #' 
@@ -9076,9 +9438,9 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #'     levels.
 #' 
 #' For additional information about valid values for parameter names, see
-#' [About requirements and constraints for parameter
-#' names](https://docs.aws.amazon.com/systems-manager/latest/userguide/) in
-#' the *AWS Systems Manager User Guide*.
+#' [Creating Systems Manager
+#' parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html)
+#' in the *AWS Systems Manager User Guide*.
 #' 
 #' The maximum length constraint listed below includes capacity for
 #' additional system attributes that are not part of the name. The maximum
@@ -9125,8 +9487,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' 
 #' -   To use a custom KMS key, choose the `SecureString` data type with
 #'     the `Key ID` parameter.
-#' @param Overwrite Overwrite an existing parameter. If not specified, will default to
-#' "false".
+#' @param Overwrite Overwrite an existing parameter. The default value is 'false'.
 #' @param AllowedPattern A regular expression used to validate the parameter value. For example,
 #' for String types with values restricted to numbers, you can specify the
 #' following: AllowedPattern=^\\d+$
@@ -9421,6 +9782,11 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 #' @param Targets &#91;required&#93; The targets to register with the maintenance window. In other words, the
 #' instances to run commands on when the maintenance window runs.
 #' 
+#' If a single maintenance window task is registered with multiple targets,
+#' its task invocations occur sequentially and not in parallel. If your
+#' task must run on multiple targets at the same time, register a task for
+#' each target individually and assign each task the same priority level.
+#' 
 #' You can specify targets using instance IDs, resource group names, or
 #' tags that have been applied to instances.
 #' 
@@ -9526,7 +9892,7 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' Command-type tasks. Depending on the task, targets are optional for
 #' other maintenance window task types (Automation, AWS Lambda, and AWS
 #' Step Functions). For more information about running tasks that do not
-#' specify targets, see see [Registering maintenance window tasks without
+#' specify targets, see [Registering maintenance window tasks without
 #' targets](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
 #' in the *AWS Systems Manager User Guide*.
 #' 
@@ -9724,6 +10090,14 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
 #' 
 #' PatchBaseline: pb-012345abcde
 #' 
+#' OpsMetadata object: `ResourceID` for tagging is created from the Amazon
+#' Resource Name (ARN) for the object. Specifically, `ResourceID` is
+#' created from the strings that come after the word `opsmetadata` in the
+#' ARN. For example, an OpsMetadata object with an ARN of
+#' `arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager`
+#' has a `ResourceID` of either `aws/ssm/MyGroup/appmanager` or
+#' `/aws/ssm/MyGroup/appmanager`.
+#' 
 #' For the Document and Parameter values, use the name of the resource.
 #' 
 #' The ManagedInstance type for this API action is only for on-premises
@@ -9737,7 +10111,7 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$remove_tags_from_resource(
-#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
+#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem"|"OpsMetadata",
 #'   ResourceId = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -9792,7 +10166,9 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 #' ssm_reset_service_setting(SettingId)
 #'
 #' @param SettingId &#91;required&#93; The Amazon Resource Name (ARN) of the service setting to reset. The
-#' setting ID can be `/ssm/parameter-store/default-parameter-tier`,
+#' setting ID can be `/ssm/automation/customer-script-log-destination`,
+#' `/ssm/automation/customer-script-log-group-name`,
+#' `/ssm/parameter-store/default-parameter-tier`,
 #' `/ssm/parameter-store/high-throughput-enabled`, or
 #' `/ssm/managed-instance/activation-tier`. For example,
 #' `arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled`.
@@ -9999,8 +10375,12 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' a
 #' fleet](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
 #' in the *AWS Systems Manager User Guide*.
-#' @param DocumentName &#91;required&#93; Required. The name of the Systems Manager document to run. This can be a
-#' public document or a custom document.
+#' @param DocumentName &#91;required&#93; The name of the Systems Manager document to run. This can be a public
+#' document or a custom document. To run a shared document belonging to
+#' another account, specify the document ARN. For more information about
+#' how to use shared documents, see [Using shared SSM
+#' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html)
+#' in the *AWS Systems Manager User Guide*.
 #' @param DocumentVersion The SSM document version to use in the request. You can specify
 #' $DEFAULT, $LATEST, or a specific version number. If you run commands by
 #' using the AWS CLI, then you must escape the first two options by using a
@@ -10229,7 +10609,12 @@ ssm_start_associations_once <- function(AssociationIds) {
 #'   Parameters, ClientToken, Mode, TargetParameterName, Targets, TargetMaps,
 #'   MaxConcurrency, MaxErrors, TargetLocations, Tags)
 #'
-#' @param DocumentName &#91;required&#93; The name of the Automation document to use for this execution.
+#' @param DocumentName &#91;required&#93; The name of the Systems Manager document to run. This can be a public
+#' document or a custom document. To run a shared document belonging to
+#' another account, specify the document ARN. For more information about
+#' how to use shared documents, see [Using shared SSM
+#' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html)
+#' in the *AWS Systems Manager User Guide*.
 #' @param DocumentVersion The version of the Automation document to use for this execution.
 #' @param Parameters A key-value map of execution parameters, which match the declared
 #' parameters in the Automation document.
@@ -10371,7 +10756,7 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' @usage
 #' ssm_start_change_request_execution(ScheduledTime, DocumentName,
 #'   DocumentVersion, Parameters, ChangeRequestName, ClientToken, Runbooks,
-#'   Tags)
+#'   Tags, ScheduledEndTime, ChangeDetails)
 #'
 #' @param ScheduledTime The date and time specified in the change request to run the Automation
 #' runbooks.
@@ -10403,6 +10788,12 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' -   `Key=Environment,Value=Production`
 #' 
 #' -   `Key=Region,Value=us-east-2`
+#' @param ScheduledEndTime The time that the requester expects the runbook workflow related to the
+#' change request to complete. The time is an estimate only that the
+#' requester provides for reviewers.
+#' @param ChangeDetails User-provided details about the change. If no details are provided,
+#' content specified in the **Template information** section of the
+#' associated change template is added.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10467,21 +10858,25 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   ScheduledEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ChangeDetails = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_start_change_request_execution
-ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentName, DocumentVersion = NULL, Parameters = NULL, ChangeRequestName = NULL, ClientToken = NULL, Runbooks, Tags = NULL) {
+ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentName, DocumentVersion = NULL, Parameters = NULL, ChangeRequestName = NULL, ClientToken = NULL, Runbooks, Tags = NULL, ScheduledEndTime = NULL, ChangeDetails = NULL) {
   op <- new_operation(
     name = "StartChangeRequestExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$start_change_request_execution_input(ScheduledTime = ScheduledTime, DocumentName = DocumentName, DocumentVersion = DocumentVersion, Parameters = Parameters, ChangeRequestName = ChangeRequestName, ClientToken = ClientToken, Runbooks = Runbooks, Tags = Tags)
+  input <- .ssm$start_change_request_execution_input(ScheduledTime = ScheduledTime, DocumentName = DocumentName, DocumentVersion = DocumentVersion, Parameters = Parameters, ChangeRequestName = ChangeRequestName, ClientToken = ClientToken, Runbooks = Runbooks, Tags = Tags, ScheduledEndTime = ScheduledEndTime, ChangeDetails = ChangeDetails)
   output <- .ssm$start_change_request_execution_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -10654,6 +11049,63 @@ ssm_terminate_session <- function(SessionId) {
 }
 .ssm$operations$terminate_session <- ssm_terminate_session
 
+#' Remove a label or labels from a parameter
+#'
+#' @description
+#' Remove a label or labels from a parameter.
+#'
+#' @usage
+#' ssm_unlabel_parameter_version(Name, ParameterVersion, Labels)
+#'
+#' @param Name &#91;required&#93; The parameter name of which you want to delete one or more labels.
+#' @param ParameterVersion &#91;required&#93; The specific version of the parameter which you want to delete one or
+#' more labels from. If it is not present, the call will fail.
+#' @param Labels &#91;required&#93; One or more labels to delete from the specified parameter version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RemovedLabels = list(
+#'     "string"
+#'   ),
+#'   InvalidLabels = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$unlabel_parameter_version(
+#'   Name = "string",
+#'   ParameterVersion = 123,
+#'   Labels = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_unlabel_parameter_version
+ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
+  op <- new_operation(
+    name = "UnlabelParameterVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$unlabel_parameter_version_input(Name = Name, ParameterVersion = ParameterVersion, Labels = Labels)
+  output <- .ssm$unlabel_parameter_version_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$unlabel_parameter_version <- ssm_unlabel_parameter_version
+
 #' Updates an association
 #'
 #' @description
@@ -10675,7 +11127,7 @@ ssm_terminate_session <- function(SessionId) {
 #'   ScheduleExpression, OutputLocation, Name, Targets, AssociationName,
 #'   AssociationVersion, AutomationTargetParameterName, MaxErrors,
 #'   MaxConcurrency, ComplianceSeverity, SyncCompliance,
-#'   ApplyOnlyAtCronInterval, TargetLocations)
+#'   ApplyOnlyAtCronInterval, CalendarNames, TargetLocations)
 #'
 #' @param AssociationId &#91;required&#93; The ID of the association you want to update.
 #' @param Parameters The parameters you want to update for the association. If you create a
@@ -10763,6 +11215,11 @@ ssm_terminate_session <- function(SessionId) {
 #' parameter when you update the association from the command line. This
 #' parameter forces the association to run immediately after updating it
 #' and according to the interval specified.
+#' @param CalendarNames The names or Amazon Resource Names (ARNs) of the Systems Manager Change
+#' Calendar type documents you want to gate your associations under. The
+#' associations only run when that Change Calendar is open. For more
+#' information, see [AWS Systems Manager Change
+#' Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html).
 #' @param TargetLocations A location is a combination of AWS Regions and AWS accounts where you
 #' want to run the association. Use this action to update an association in
 #' multiple Regions and multiple accounts.
@@ -10832,6 +11289,9 @@ ssm_terminate_session <- function(SessionId) {
 #'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
 #'     SyncCompliance = "AUTO"|"MANUAL",
 #'     ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'     CalendarNames = list(
+#'       "string"
+#'     ),
 #'     TargetLocations = list(
 #'       list(
 #'         Accounts = list(
@@ -10884,6 +11344,9 @@ ssm_terminate_session <- function(SessionId) {
 #'   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
 #'   SyncCompliance = "AUTO"|"MANUAL",
 #'   ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'   CalendarNames = list(
+#'     "string"
+#'   ),
 #'   TargetLocations = list(
 #'     list(
 #'       Accounts = list(
@@ -10903,14 +11366,14 @@ ssm_terminate_session <- function(SessionId) {
 #' @keywords internal
 #'
 #' @rdname ssm_update_association
-ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, TargetLocations = NULL) {
+ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL) {
   op <- new_operation(
     name = "UpdateAssociation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$update_association_input(AssociationId = AssociationId, Parameters = Parameters, DocumentVersion = DocumentVersion, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, Name = Name, Targets = Targets, AssociationName = AssociationName, AssociationVersion = AssociationVersion, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, TargetLocations = TargetLocations)
+  input <- .ssm$update_association_input(AssociationId = AssociationId, Parameters = Parameters, DocumentVersion = DocumentVersion, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, Name = Name, Targets = Targets, AssociationName = AssociationName, AssociationVersion = AssociationVersion, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations)
   output <- .ssm$update_association_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -10999,6 +11462,9 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
 #'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
 #'     SyncCompliance = "AUTO"|"MANUAL",
 #'     ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'     CalendarNames = list(
+#'       "string"
+#'     ),
 #'     TargetLocations = list(
 #'       list(
 #'         Accounts = list(
@@ -11058,21 +11524,25 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #' Updates one or more values for an SSM document.
 #'
 #' @usage
-#' ssm_update_document(Content, Attachments, Name, VersionName,
-#'   DocumentVersion, DocumentFormat, TargetType)
+#' ssm_update_document(Content, Attachments, Name, DisplayName,
+#'   VersionName, DocumentVersion, DocumentFormat, TargetType)
 #'
 #' @param Content &#91;required&#93; A valid JSON or YAML string.
 #' @param Attachments A list of key and value pairs that describe attachments to a version of
 #' a document.
-#' @param Name &#91;required&#93; The name of the document that you want to update.
+#' @param Name &#91;required&#93; The name of the Systems Manager document that you want to update.
+#' @param DisplayName The friendly name of the Systems Manager document that you want to
+#' update. This value can differ for each version of the document. If you
+#' do not specify a value for this parameter in your request, the existing
+#' value is applied to the new document version.
 #' @param VersionName An optional field specifying the version of the artifact you are
 #' updating with the document. For example, "Release 12, Update 6". This
 #' value is unique across all versions of a document, and cannot be
 #' changed.
-#' @param DocumentVersion (Required) The latest version of the document that you want to update.
-#' The latest document version can be specified using the $LATEST variable
-#' or by the version number. Updating a previous version of a document is
-#' not supported.
+#' @param DocumentVersion The version of the document that you want to update. Currently, Systems
+#' Manager supports updating only the latest version of the document. You
+#' can specify the version number of the latest version or use the
+#' `$LATEST` variable.
 #' @param DocumentFormat Specify the document format for the new document version. Systems
 #' Manager supports JSON and YAML documents. JSON is the default format.
 #' @param TargetType Specify a new target type for the document.
@@ -11086,6 +11556,7 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #'     Hash = "string",
 #'     HashType = "Sha256"|"Sha1",
 #'     Name = "string",
+#'     DisplayName = "string",
 #'     VersionName = "string",
 #'     Owner = "string",
 #'     CreatedDate = as.POSIXct(
@@ -11106,7 +11577,7 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #'     PlatformTypes = list(
 #'       "Windows"|"Linux"
 #'     ),
-#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
 #'     SchemaVersion = "string",
 #'     LatestVersion = "string",
 #'     DefaultVersion = "string",
@@ -11160,6 +11631,7 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #'     )
 #'   ),
 #'   Name = "string",
+#'   DisplayName = "string",
 #'   VersionName = "string",
 #'   DocumentVersion = "string",
 #'   DocumentFormat = "YAML"|"JSON"|"TEXT",
@@ -11170,14 +11642,14 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #' @keywords internal
 #'
 #' @rdname ssm_update_document
-ssm_update_document <- function(Content, Attachments = NULL, Name, VersionName = NULL, DocumentVersion = NULL, DocumentFormat = NULL, TargetType = NULL) {
+ssm_update_document <- function(Content, Attachments = NULL, Name, DisplayName = NULL, VersionName = NULL, DocumentVersion = NULL, DocumentFormat = NULL, TargetType = NULL) {
   op <- new_operation(
     name = "UpdateDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$update_document_input(Content = Content, Attachments = Attachments, Name = Name, VersionName = VersionName, DocumentVersion = DocumentVersion, DocumentFormat = DocumentFormat, TargetType = TargetType)
+  input <- .ssm$update_document_input(Content = Content, Attachments = Attachments, Name = Name, DisplayName = DisplayName, VersionName = VersionName, DocumentVersion = DocumentVersion, DocumentFormat = DocumentFormat, TargetType = TargetType)
   output <- .ssm$update_document_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -11529,7 +12001,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' Command-type tasks. Depending on the task, targets are optional for
 #' other maintenance window task types (Automation, AWS Lambda, and AWS
 #' Step Functions). For more information about running tasks that do not
-#' specify targets, see see [Registering maintenance window tasks without
+#' specify targets, see [Registering maintenance window tasks without
 #' targets](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
 #' in the *AWS Systems Manager User Guide*.
 #' 
@@ -11567,7 +12039,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' Command-type tasks. Depending on the task, targets are optional for
 #' other maintenance window task types (Automation, AWS Lambda, and AWS
 #' Step Functions). For more information about running tasks that do not
-#' specify targets, see see [Registering maintenance window tasks without
+#' specify targets, see [Registering maintenance window tasks without
 #' targets](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
 #' in the *AWS Systems Manager User Guide*.
 #' @param TaskArn The task ARN to modify.
@@ -12321,7 +12793,8 @@ ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = N
 #'     SourceRegions = list(
 #'       "string"
 #'     ),
-#'     IncludeFutureRegions = TRUE|FALSE
+#'     IncludeFutureRegions = TRUE|FALSE,
+#'     EnableAllOpsDataSources = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -12376,6 +12849,10 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' `arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled`.
 #' The setting ID can be one of the following.
 #' 
+#' -   `/ssm/automation/customer-script-log-destination`
+#' 
+#' -   `/ssm/automation/customer-script-log-group-name`
+#' 
 #' -   `/ssm/parameter-store/default-parameter-tier`
 #' 
 #' -   `/ssm/parameter-store/high-throughput-enabled`
@@ -12394,6 +12871,12 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' For the `/ssm/parameter-store/high-throughput-enabled`, and
 #' `/ssm/managed-instance/activation-tier` setting IDs, the setting value
 #' can be true or false.
+#' 
+#' For the `/ssm/automation/customer-script-log-destination` setting ID,
+#' the setting value can be CloudWatch.
+#' 
+#' For the `/ssm/automation/customer-script-log-group-name` setting ID, the
+#' setting value can be the name of a CloudWatch Logs log group.
 #'
 #' @return
 #' An empty list.

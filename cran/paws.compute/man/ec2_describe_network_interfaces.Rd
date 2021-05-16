@@ -58,9 +58,8 @@ network interface.
 network interface.
 \item \code{private-dns-name} - The private DNS name of the network interface
 (IPv4).
-\item \code{requester-id} - The ID of the entity that launched the instance on
-your behalf (for example, AWS Management Console, Auto Scaling, and
-so on).
+\item \code{requester-id} - The alias or AWS account ID of the principal or
+service that created the network interface.
 \item \code{requester-managed} - Indicates whether the network interface is
 being managed by an AWS service (for example, AWS Management
 Console, Auto Scaling, and so on).

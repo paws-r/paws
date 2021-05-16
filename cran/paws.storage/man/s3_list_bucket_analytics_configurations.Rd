@@ -14,7 +14,7 @@ retrieved.}
 \item{ContinuationToken}{The ContinuationToken that represents a placeholder from where this
 request should begin.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -64,8 +64,8 @@ A list with the following syntax:\preformatted{list(
 Lists the analytics configurations for the bucket. You can have up to
 1,000 analytics configurations per bucket.
 
-This operation supports list pagination and does not return more than
-100 configurations at a time. You should always check the \code{IsTruncated}
+This action supports list pagination and does not return more than 100
+configurations at a time. You should always check the \code{IsTruncated}
 element in the response. If there are no more configurations to list,
 \code{IsTruncated} is set to false. If there are more configurations to list,
 \code{IsTruncated} is set to true, and there will be a value in

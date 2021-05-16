@@ -30,9 +30,9 @@ credentials expire 12 hours after they are created, at which point you
 will need to create a new set of log in credentials.
 
 You can only push container images to the container service registry of
-your Lightsail account. You cannot pull container images perform any
+your Lightsail account. You cannot pull container images or perform any
 other container image management actions on the container service
-registry of your Lightsail account.
+registry.
 
 After you push your container images to the container image registry of
 your Lightsail account, use the

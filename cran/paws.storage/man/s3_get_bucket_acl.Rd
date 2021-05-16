@@ -2,15 +2,15 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_acl}
 \alias{s3_get_bucket_acl}
-\title{This implementation of the GET operation uses the acl subresource to
-return the access control list (ACL) of a bucket}
+\title{This implementation of the GET action uses the acl subresource to return
+the access control list (ACL) of a bucket}
 \usage{
 s3_get_bucket_acl(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] Specifies the S3 bucket whose ACL is being requested.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -36,7 +36,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This implementation of the \code{GET} operation uses the \code{acl} subresource to
+This implementation of the \code{GET} action uses the \code{acl} subresource to
 return the access control list (ACL) of a bucket. To use \code{GET} to return
 the ACL of the bucket, you must have \code{READ_ACP} access to the bucket. If
 \code{READ_ACP} permission is granted to the anonymous user, you can return

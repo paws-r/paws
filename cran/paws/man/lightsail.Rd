@@ -59,7 +59,7 @@ the \emph{AWS General Reference}.
 \link[=lightsail_attach_static_ip]{attach_static_ip} \tab Attaches a static IP address to a specific Amazon Lightsail instance\cr
 \link[=lightsail_close_instance_public_ports]{close_instance_public_ports} \tab Closes ports for a specific Amazon Lightsail instance\cr
 \link[=lightsail_copy_snapshot]{copy_snapshot} \tab Copies a manual snapshot of an instance or disk as another manual snapshot, or copies an automatic snapshot of an instance or disk as a manual snapshot\cr
-\link[=lightsail_create_certificate]{create_certificate} \tab Creates an SSL/TLS certificate for a Amazon Lightsail content delivery network (CDN) distribution\cr
+\link[=lightsail_create_certificate]{create_certificate} \tab Creates an SSL/TLS certificate for an Amazon Lightsail content delivery network (CDN) distribution and a container service\cr
 \link[=lightsail_create_cloud_formation_stack]{create_cloud_formation_stack} \tab Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot\cr
 \link[=lightsail_create_contact_method]{create_contact_method} \tab Creates an email or SMS text message contact method\cr
 \link[=lightsail_create_container_service]{create_container_service} \tab Creates an Amazon Lightsail container service\cr
@@ -76,7 +76,7 @@ the \emph{AWS General Reference}.
 \link[=lightsail_create_instance_snapshot]{create_instance_snapshot} \tab Creates a snapshot of a specific virtual private server, or instance\cr
 \link[=lightsail_create_key_pair]{create_key_pair} \tab Creates an SSH key pair\cr
 \link[=lightsail_create_load_balancer]{create_load_balancer} \tab Creates a Lightsail load balancer\cr
-\link[=lightsail_create_load_balancer_tls_certificate]{create_load_balancer_tls_certificate} \tab Creates a Lightsail load balancer TLS certificate\cr
+\link[=lightsail_create_load_balancer_tls_certificate]{create_load_balancer_tls_certificate} \tab Creates an SSL/TLS certificate for an Amazon Lightsail load balancer\cr
 \link[=lightsail_create_relational_database]{create_relational_database} \tab Creates a new database in Amazon Lightsail\cr
 \link[=lightsail_create_relational_database_from_snapshot]{create_relational_database_from_snapshot} \tab Creates a new database from an existing database snapshot in Amazon Lightsail\cr
 \link[=lightsail_create_relational_database_snapshot]{create_relational_database_snapshot} \tab Creates a snapshot of your database in Amazon Lightsail\cr
@@ -177,6 +177,7 @@ the \emph{AWS General Reference}.
 \link[=lightsail_release_static_ip]{release_static_ip} \tab Deletes a specific static IP from your account\cr
 \link[=lightsail_reset_distribution_cache]{reset_distribution_cache} \tab Deletes currently cached content from your Amazon Lightsail content delivery network (CDN) distribution\cr
 \link[=lightsail_send_contact_method_verification]{send_contact_method_verification} \tab Sends a verification request to an email contact method to ensure it's owned by the requester\cr
+\link[=lightsail_set_ip_address_type]{set_ip_address_type} \tab Sets the IP address type for an Amazon Lightsail resource\cr
 \link[=lightsail_start_instance]{start_instance} \tab Starts a specific Amazon Lightsail instance from a stopped state\cr
 \link[=lightsail_start_relational_database]{start_relational_database} \tab Starts a specific database from a stopped state in Amazon Lightsail\cr
 \link[=lightsail_stop_instance]{stop_instance} \tab Stops a specific Amazon Lightsail instance that is currently running\cr

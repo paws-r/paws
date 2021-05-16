@@ -87,6 +87,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$create_workspace_bundle_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(BundleName = structure(logical(0), tags = list(type = "string")), BundleDescription = structure(logical(0), tags = list(type = "string")), ImageId = structure(logical(0), tags = list(type = "string")), ComputeType = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UserStorage = structure(list(Capacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RootStorage = structure(list(Capacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$create_workspace_bundle_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WorkspaceBundle = structure(list(BundleId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ImageId = structure(logical(0), tags = list(type = "string")), RootStorage = structure(list(Capacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UserStorage = structure(list(Capacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ComputeType = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$create_workspaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Workspaces = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -130,6 +142,18 @@ NULL
 }
 
 .workspaces$delete_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$delete_workspace_bundle_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(BundleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$delete_workspace_bundle_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -251,7 +275,7 @@ NULL
 
 .workspaces$describe_workspace_bundles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bundles = structure(list(structure(list(BundleId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ImageId = structure(logical(0), tags = list(type = "string")), RootStorage = structure(list(Capacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UserStorage = structure(list(Capacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ComputeType = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Bundles = structure(list(structure(list(BundleId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ImageId = structure(logical(0), tags = list(type = "string")), RootStorage = structure(list(Capacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UserStorage = structure(list(Capacity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ComputeType = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -586,6 +610,18 @@ NULL
 }
 
 .workspaces$update_rules_of_ip_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$update_workspace_bundle_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(BundleId = structure(logical(0), tags = list(type = "string")), ImageId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$update_workspace_bundle_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

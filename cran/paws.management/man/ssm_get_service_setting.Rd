@@ -8,6 +8,8 @@ ssm_get_service_setting(SettingId)
 }
 \arguments{
 \item{SettingId}{[required] The ID of the service setting to get. The setting ID can be
+\verb{/ssm/automation/customer-script-log-destination},
+\verb{/ssm/automation/customer-script-log-group-name},
 \verb{/ssm/parameter-store/default-parameter-tier},
 \verb{/ssm/parameter-store/high-throughput-enabled}, or
 \verb{/ssm/managed-instance/activation-tier}.}

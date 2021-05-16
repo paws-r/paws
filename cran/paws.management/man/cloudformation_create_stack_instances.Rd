@@ -7,19 +7,19 @@ Regions}
 \usage{
 cloudformation_create_stack_instances(StackSetName, Accounts,
   DeploymentTargets, Regions, ParameterOverrides, OperationPreferences,
-  OperationId)
+  OperationId, CallAs)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to create stack
 instances from.}
 
-\item{Accounts}{[\code{Self-managed} permissions] The names of one or more AWS accounts
-that you want to create stack instances in the specified Region(s) for.
+\item{Accounts}{[Self-managed permissions] The names of one or more AWS accounts that
+you want to create stack instances in the specified Region(s) for.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{DeploymentTargets}{[\code{Service-managed} permissions] The AWS Organizations accounts for
-which to create stack instances in the specified Regions.
+\item{DeploymentTargets}{[Service-managed permissions] The AWS Organizations accounts for which
+to create stack instances in the specified Regions.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
@@ -75,6 +75,22 @@ automatically.
 
 Repeating this stack set operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your AWS account must be registered as a delegated administrator in
+the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{AWS CloudFormation User Guide}.
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -99,6 +115,7 @@ Region. You must specify at least one value for either \code{Accounts} or
     Accounts = list(
       "string"
     ),
+    AccountsUrl = "string",
     OrganizationalUnitIds = list(
       "string"
     )
@@ -115,6 +132,7 @@ Region. You must specify at least one value for either \code{Accounts} or
     )
   ),
   OperationPreferences = list(
+    RegionConcurrencyType = "SEQUENTIAL"|"PARALLEL",
     RegionOrder = list(
       "string"
     ),
@@ -123,7 +141,8 @@ Region. You must specify at least one value for either \code{Accounts} or
     MaxConcurrentCount = 123,
     MaxConcurrentPercentage = 123
   ),
-  OperationId = "string"
+  OperationId = "string",
+  CallAs = "SELF"|"DELEGATED_ADMIN"
 )
 }
 }

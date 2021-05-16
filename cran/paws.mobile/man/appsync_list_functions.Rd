@@ -26,7 +26,14 @@ A list with the following syntax:\preformatted{list(
       dataSourceName = "string",
       requestMappingTemplate = "string",
       responseMappingTemplate = "string",
-      functionVersion = "string"
+      functionVersion = "string",
+      syncConfig = list(
+        conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+        conflictDetection = "VERSION"|"NONE",
+        lambdaConflictHandlerConfig = list(
+          lambdaConflictHandlerArn = "string"
+        )
+      )
     )
   ),
   nextToken = "string"

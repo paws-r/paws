@@ -2,23 +2,21 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_fleet_attributes}
 \alias{gamelift_describe_fleet_attributes}
-\title{Retrieves core properties, including configuration, status, and
-metadata, for a fleet}
+\title{Retrieves core fleet-wide properties, including the computing hardware
+and deployment configuration for all instances in the fleet}
 \usage{
 gamelift_describe_fleet_attributes(FleetIds, Limit, NextToken)
 }
 \arguments{
 \item{FleetIds}{A list of unique fleet identifiers to retrieve attributes for. You can
 use either the fleet ID or ARN value. To retrieve attributes for all
-current fleets, do not include this parameter. If the list of fleet
-identifiers includes fleets that don't currently exist, the request
-succeeds but no attributes for that fleet are returned.}
+current fleets, do not include this parameter.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
 \code{NextToken} to get results as a set of sequential pages. This parameter
 is ignored when the request specifies one or a list of fleet IDs.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.
 This parameter is ignored when the request specifies one or a list of
@@ -73,43 +71,44 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Retrieves core properties, including configuration, status, and
-metadata, for a fleet.
+Retrieves core fleet-wide properties, including the computing hardware
+and deployment configuration for all instances in the fleet.
 
-To get attributes for one or more fleets, provide a list of fleet IDs or
-fleet ARNs. To get attributes for all fleets, do not specify a fleet
-identifier. When requesting attributes for multiple fleets, use the
-pagination parameters to retrieve results as a set of sequential pages.
-If successful, a FleetAttributes object is returned for each fleet
+This operation can be used in the following ways:
+\itemize{
+\item To get attributes for one or more specific fleets, provide a list of
+fleet IDs or fleet ARNs.
+\item To get attributes for all fleets, do not provide a fleet identifier.
+}
+
+When requesting attributes for multiple fleets, use the pagination
+parameters to retrieve results as a set of sequential pages.
+
+If successful, a \code{FleetAttributes} object is returned for each fleet
 requested, unless the fleet identifier is not found.
 
-Some API operations may limit the number of fleet IDs allowed in one
+Some API operations limit the number of fleet IDs that allowed in one
 request. If a request exceeds this limit, the request fails and the
-error message includes the maximum allowed number.
+error message contains the maximum allowed number.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift fleets}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_fleet]{create_fleet}}
-\item \code{\link[=gamelift_list_fleets]{list_fleets}}
-\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
-\item Describe fleets:
-\itemize{
-\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
-\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
-\item \code{\link[=gamelift_describe_fleet_port_settings]{describe_fleet_port_settings}}
-\item \code{\link[=gamelift_describe_fleet_utilization]{describe_fleet_utilization}}
-\item \code{\link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration}}
-\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
-\item \code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}}
-}
-\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
-\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_list_fleets]{list_fleets}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}} |
+\code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}} |
+\code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}} |
+\code{\link[=gamelift_describe_fleet_location_attributes]{describe_fleet_location_attributes}}
+|
+\code{\link[=gamelift_describe_fleet_port_settings]{describe_fleet_port_settings}}
+| \code{\link[=gamelift_describe_fleet_utilization]{describe_fleet_utilization}} |
+\code{\link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration}}
+| \code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}} |
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_fleet_attributes(

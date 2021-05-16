@@ -25,13 +25,12 @@ the queue name.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-intro.html}{Using Multi-Region Queues}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}}
-\item \code{\link[=gamelift_describe_game_session_queues]{describe_game_session_queues}}
-\item \code{\link[=gamelift_update_game_session_queue]{update_game_session_queue}}
-\item \code{\link[=gamelift_delete_game_session_queue]{delete_game_session_queue}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}} |
+\code{\link[=gamelift_describe_game_session_queues]{describe_game_session_queues}}
+| \code{\link[=gamelift_update_game_session_queue]{update_game_session_queue}} |
+\code{\link[=gamelift_delete_game_session_queue]{delete_game_session_queue}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_game_session_queue(

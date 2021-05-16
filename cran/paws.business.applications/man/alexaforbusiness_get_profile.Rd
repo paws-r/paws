@@ -24,6 +24,7 @@ A list with the following syntax:\preformatted{list(
     SetupModeDisabled = TRUE|FALSE,
     MaxVolumeLimit = 123,
     PSTNEnabled = TRUE|FALSE,
+    DataRetentionOptIn = TRUE|FALSE,
     AddressBookArn = "string",
     MeetingRoomConfiguration = list(
       RoomUtilizationMetricsEnabled = TRUE|FALSE,

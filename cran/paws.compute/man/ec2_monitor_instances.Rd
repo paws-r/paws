@@ -30,7 +30,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Enables detailed monitoring for a running instance. Otherwise, basic
 monitoring is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitoring your instances and volumes}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 
 To disable detailed monitoring, see .
 }

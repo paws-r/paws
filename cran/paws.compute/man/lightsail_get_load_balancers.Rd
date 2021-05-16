@@ -58,7 +58,8 @@ A list with the following syntax:\preformatted{list(
       ),
       configurationOptions = list(
         "string"
-      )
+      ),
+      ipAddressType = "dualstack"|"ipv4"
     )
   ),
   nextPageToken = "string"

@@ -2,7 +2,8 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_backup_jobs}
 \alias{backup_list_backup_jobs}
-\title{Returns a list of existing backup jobs for an authenticated account}
+\title{Returns a list of existing backup jobs for an authenticated account for
+the last 30 days}
 \usage{
 backup_list_backup_jobs(NextToken, MaxResults, ByResourceArn, ByState,
   ByBackupVaultName, ByCreatedBefore, ByCreatedAfter, ByResourceType,
@@ -37,11 +38,15 @@ They consist of lowercase letters, numbers, and hyphens.}
 \item \code{EC2} for Amazon Elastic Compute Cloud
 \item \code{EFS} for Amazon Elastic File System
 \item \code{RDS} for Amazon Relational Database Service
+\item \code{Aurora} for Amazon Aurora
 \item \verb{Storage Gateway} for AWS Storage Gateway
 }}
 
 \item{ByAccountId}{The account ID to list the jobs from. Returns only backup jobs
-associated with the specified account ID.}
+associated with the specified account ID.
+
+If used from an AWS Organizations management account, passing \code{*}
+returns all jobs across the organization.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -89,7 +94,9 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns a list of existing backup jobs for an authenticated account.
+Returns a list of existing backup jobs for an authenticated account for
+the last 30 days. For a longer period of time, consider using these
+\href{https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html}{monitoring tools}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_backup_jobs(

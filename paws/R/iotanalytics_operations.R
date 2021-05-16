@@ -450,7 +450,8 @@ iotanalytics_create_dataset_content <- function(datasetName, versionId = NULL) {
 #' `customerManagedS3` storage is selected, this parameter is ignored.
 #' @param tags Metadata which can be used to manage the data store.
 #' @param fileFormatConfiguration Contains the configuration information of file formats. AWS IoT
-#' Analytics data stores support JSON and Parquet.
+#' Analytics data stores support JSON and
+#' [Parquet](https://parquet.apache.org/).
 #' 
 #' The default file format is JSON. You can specify only one format.
 #' 
@@ -2458,7 +2459,8 @@ iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, c
 #' default is`serviceManagedS3`. You cannot change this storage option
 #' after the data store is created.
 #' @param fileFormatConfiguration Contains the configuration information of file formats. AWS IoT
-#' Analytics data stores support JSON and Parquet.
+#' Analytics data stores support JSON and
+#' [Parquet](https://parquet.apache.org/).
 #' 
 #' The default file format is JSON. You can specify only one format.
 #' 

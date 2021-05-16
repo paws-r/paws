@@ -4,13 +4,13 @@
 \alias{ecs_create_cluster}
 \title{Creates a new Amazon ECS cluster}
 \usage{
-ecs_create_cluster(clusterName, tags, settings, capacityProviders,
-  defaultCapacityProviderStrategy)
+ecs_create_cluster(clusterName, tags, settings, configuration,
+  capacityProviders, defaultCapacityProviderStrategy)
 }
 \arguments{
 \item{clusterName}{The name of your cluster. If you do not specify a name for your cluster,
 you create a cluster named \code{default}. Up to 255 letters (uppercase and
-lowercase), numbers, and hyphens are allowed.}
+lowercase), numbers, underscores, and hyphens are allowed.}
 
 \item{tags}{The metadata that you apply to the cluster to help you categorize and
 organize them. Each tag consists of a key and an optional value, both of
@@ -42,12 +42,19 @@ specified, it will override the \code{containerInsights} value set with
 \code{\link[=ecs_put_account_setting]{put_account_setting}} or
 \code{\link[=ecs_put_account_setting_default]{put_account_setting_default}}.}
 
+\item{configuration}{The execute command configuration for the cluster.}
+
 \item{capacityProviders}{The short name of one or more capacity providers to associate with the
-cluster.
+cluster. A capacity provider must be associated with a cluster before it
+can be included as part of the default capacity provider strategy of the
+cluster or used in a capacity provider strategy when calling the
+\code{\link[=ecs_create_service]{create_service}} or \code{\link[=ecs_run_task]{run_task}}
+actions.
 
 If specifying a capacity provider that uses an Auto Scaling group, the
 capacity provider must already be created and not already associated
-with another cluster. New capacity providers can be created with the
+with another cluster. New Auto Scaling group capacity providers can be
+created with the
 \code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
 operation.
 
@@ -61,30 +68,12 @@ The
 API operation is used to update the list of available capacity providers
 for a cluster after the cluster is created.}
 
-\item{defaultCapacityProviderStrategy}{The capacity provider strategy to use by default for the cluster.
-
-When creating a service or running a task on a cluster, if no capacity
-provider or launch type is specified then the default capacity provider
+\item{defaultCapacityProviderStrategy}{The capacity provider strategy to set as the default for the cluster.
+When a default capacity provider strategy is set for a cluster, when
+calling the \code{\link[=ecs_run_task]{run_task}} or
+\code{\link[=ecs_create_service]{create_service}} APIs wtih no capacity provider
+strategy or launch type specified, the default capacity provider
 strategy for the cluster is used.
-
-A capacity provider strategy consists of one or more capacity providers
-along with the \code{base} and \code{weight} to assign to them. A capacity
-provider must be associated with the cluster to be used in a capacity
-provider strategy. The
-\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
-API is used to associate a capacity provider with a cluster. Only
-capacity providers with an \code{ACTIVE} or \code{UPDATING} status can be used.
-
-If specifying a capacity provider that uses an Auto Scaling group, the
-capacity provider must already be created. New capacity providers can be
-created with the
-\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
-operation.
-
-To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
-\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
-are available to all accounts and only need to be associated with a
-cluster to be used.
 
 If a default capacity provider strategy is not defined for a cluster
 during creation, it can be defined later with the
@@ -96,6 +85,19 @@ A list with the following syntax:\preformatted{list(
   cluster = list(
     clusterArn = "string",
     clusterName = "string",
+    configuration = list(
+      executeCommandConfiguration = list(
+        kmsKeyId = "string",
+        logging = "NONE"|"DEFAULT"|"OVERRIDE",
+        logConfiguration = list(
+          cloudWatchLogGroupName = "string",
+          cloudWatchEncryptionEnabled = TRUE|FALSE,
+          s3BucketName = "string",
+          s3EncryptionEnabled = TRUE|FALSE,
+          s3KeyPrefix = "string"
+        )
+      )
+    ),
     status = "string",
     registeredContainerInstancesCount = 123,
     runningTasksCount = 123,
@@ -174,6 +176,19 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     list(
       name = "containerInsights",
       value = "string"
+    )
+  ),
+  configuration = list(
+    executeCommandConfiguration = list(
+      kmsKeyId = "string",
+      logging = "NONE"|"DEFAULT"|"OVERRIDE",
+      logConfiguration = list(
+        cloudWatchLogGroupName = "string",
+        cloudWatchEncryptionEnabled = TRUE|FALSE,
+        s3BucketName = "string",
+        s3EncryptionEnabled = TRUE|FALSE,
+        s3KeyPrefix = "string"
+      )
     )
   ),
   capacityProviders = list(

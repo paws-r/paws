@@ -42,7 +42,8 @@ rules.
       ),
       DetailType = "string",
       Detail = "string",
-      EventBusName = "string"
+      EventBusName = "string",
+      TraceHeader = "string"
     )
   )
 )

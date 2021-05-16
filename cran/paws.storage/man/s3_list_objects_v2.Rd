@@ -11,30 +11,30 @@ s3_list_objects_v2(Bucket, Delimiter, EncodingType, MaxKeys, Prefix,
 \arguments{
 \item{Bucket}{[required] Bucket name to list.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Delimiter}{A delimiter is a character you use to group keys.}
 
 \item{EncodingType}{Encoding type used by Amazon S3 to encode object keys in the response.}
 
 \item{MaxKeys}{Sets the maximum number of keys returned in the response. By default the
-API returns up to 1,000 key names. The response might contain fewer keys
-but will never contain more.}
+action returns up to 1,000 key names. The response might contain fewer
+keys but will never contain more.}
 
 \item{Prefix}{Limits the response to keys that begin with the specified prefix.}
 
@@ -54,7 +54,7 @@ the bucket.}
 list objects request in V2 style. Bucket owners need not specify this
 parameter in their requests.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -98,19 +98,20 @@ Returns some or all (up to 1,000) of the objects in a bucket. You can
 use the request parameters as selection criteria to return a subset of
 the objects in a bucket. A \verb{200 OK} response can contain valid or
 invalid XML. Make sure to design your application to parse the contents
-of the response and handle it appropriately.
+of the response and handle it appropriately. Objects are returned sorted
+in an ascending order of the respective key names in the list.
 
 To use this operation, you must have READ access to the bucket.
 
-To use this operation in an AWS Identity and Access Management (IAM)
+To use this action in an AWS Identity and Access Management (IAM)
 policy, you must have permissions to perform the \code{s3:ListBucket} action.
 The bucket owner has this permission by default and can grant this
 permission to others. For more information about permissions, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
-This section describes the latest revision of the API. We recommend that
-you use this revised API for application development. For backward
+This section describes the latest revision of this action. We recommend
+that you use this revised API for application development. For backward
 compatibility, Amazon S3 continues to support the prior version of this
 API, \code{\link[=s3_list_objects]{list_objects}}.
 

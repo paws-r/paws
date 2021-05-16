@@ -11,8 +11,8 @@ autoscaling_delete_auto_scaling_group(AutoScalingGroupName, ForceDelete)
 
 \item{ForceDelete}{Specifies that the group is to be deleted along with all instances
 associated with the group, without waiting for all instances to be
-terminated. This parameter also deletes any lifecycle actions associated
-with the group.}
+terminated. This parameter also deletes any outstanding lifecycle
+actions associated with the group.}
 }
 \value{
 An empty list.

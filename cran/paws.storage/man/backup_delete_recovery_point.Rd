@@ -21,6 +21,10 @@ An empty list.
 }
 \description{
 Deletes the recovery point specified by a recovery point ID.
+
+If the recovery point ID belongs to a continuous backup, calling this
+endpoint deletes the existing continuous backup and stops future
+continuous backup.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_recovery_point(

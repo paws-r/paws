@@ -14,7 +14,7 @@ inclusive, but the end date is exclusive. For example, if \code{start} is
 retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not
 including \code{2017-05-01}.}
 
-\item{Granularity}{Sets the AWS cost granularity to \code{MONTHLY} or \code{DAILY}, or \code{HOURLY}. If
+\item{Granularity}{[required] Sets the AWS cost granularity to \code{MONTHLY} or \code{DAILY}, or \code{HOURLY}. If
 \code{Granularity} isn't set, the response object doesn't include the
 \code{Granularity}, either \code{MONTHLY} or \code{DAILY}, or \code{HOURLY}.}
 

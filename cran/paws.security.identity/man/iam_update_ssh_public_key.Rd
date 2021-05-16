@@ -34,7 +34,7 @@ a key rotation work flow.
 The SSH public key affected by this operation is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS
-CodeCommit repository, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html}{Set up AWS CodeCommit for SSH Connections}
+CodeCommit repository, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html}{Set up AWS CodeCommit for SSH connections}
 in the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{

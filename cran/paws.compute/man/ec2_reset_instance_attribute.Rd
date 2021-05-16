@@ -32,7 +32,7 @@ The \code{sourceDestCheck} attribute controls whether source/destination
 checking is enabled. The default value is \code{true}, which means checking
 is enabled. This value must be \code{false} for a NAT instance to perform
 NAT. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html}{NAT Instances}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+in the \emph{Amazon VPC User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$reset_instance_attribute(

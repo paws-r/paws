@@ -45,6 +45,16 @@ NULL
   list()
 }
 
+.connect$associate_queue_quick_connects_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QueueId = structure(logical(0), tags = list(location = "uri", locationName = "QueueId", type = "string")), QuickConnectIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$associate_queue_quick_connects_output <- function(...) {
+  list()
+}
+
 .connect$associate_routing_profile_queues_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), RoutingProfileId = structure(logical(0), tags = list(location = "uri", locationName = "RoutingProfileId", type = "string")), QueueConfigs = structure(list(structure(list(QueueReference = structure(list(QueueId = structure(logical(0), tags = list(type = "string")), Channel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), Delay = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -93,13 +103,25 @@ NULL
 
 .connect$create_integration_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), IntegrationType = structure(logical(0), tags = list(type = "string")), IntegrationArn = structure(logical(0), tags = list(type = "string")), SourceApplicationUrl = structure(logical(0), tags = list(type = "string")), SourceApplicationName = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), IntegrationType = structure(logical(0), tags = list(type = "string")), IntegrationArn = structure(logical(0), tags = list(type = "string")), SourceApplicationUrl = structure(logical(0), tags = list(type = "string")), SourceApplicationName = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connect$create_integration_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(IntegrationAssociationId = structure(logical(0), tags = list(type = "string")), IntegrationAssociationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$create_queue_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OutboundCallerConfig = structure(list(OutboundCallerIdName = structure(logical(0), tags = list(type = "string")), OutboundCallerIdNumberId = structure(logical(0), tags = list(type = "string")), OutboundFlowId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HoursOfOperationId = structure(logical(0), tags = list(type = "string")), MaxContacts = structure(logical(0), tags = list(box = TRUE, type = "integer")), QuickConnectIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$create_queue_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(QueueArn = structure(logical(0), tags = list(type = "string")), QueueId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -129,7 +151,7 @@ NULL
 
 .connect$create_use_case_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), IntegrationAssociationId = structure(logical(0), tags = list(location = "uri", locationName = "IntegrationAssociationId", type = "string")), UseCaseType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), IntegrationAssociationId = structure(logical(0), tags = list(location = "uri", locationName = "IntegrationAssociationId", type = "string")), UseCaseType = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -235,6 +257,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$describe_hours_of_operation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), HoursOfOperationId = structure(logical(0), tags = list(location = "uri", locationName = "HoursOfOperationId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_hours_of_operation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(HoursOfOperation = structure(list(HoursOfOperationId = structure(logical(0), tags = list(type = "string")), HoursOfOperationArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), TimeZone = structure(logical(0), tags = list(type = "string")), Config = structure(list(structure(list(Day = structure(logical(0), tags = list(type = "string")), StartTime = structure(list(Hours = structure(logical(0), tags = list(type = "integer")), Minutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), EndTime = structure(list(Hours = structure(logical(0), tags = list(type = "integer")), Minutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$describe_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string"))), tags = list(type = "structure"))
@@ -268,6 +302,18 @@ NULL
 .connect$describe_instance_storage_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StorageConfig = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), StorageType = structure(logical(0), tags = list(type = "string")), S3Config = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string")), EncryptionConfig = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisVideoStreamConfig = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), EncryptionConfig = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisStreamConfig = structure(list(StreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseConfig = structure(list(FirehoseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_queue_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QueueId = structure(logical(0), tags = list(location = "uri", locationName = "QueueId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_queue_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Queue = structure(list(Name = structure(logical(0), tags = list(type = "string")), QueueArn = structure(logical(0), tags = list(type = "string")), QueueId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OutboundCallerConfig = structure(list(OutboundCallerIdName = structure(logical(0), tags = list(type = "string")), OutboundCallerIdNumberId = structure(logical(0), tags = list(type = "string")), OutboundFlowId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HoursOfOperationId = structure(logical(0), tags = list(type = "string")), MaxContacts = structure(logical(0), tags = list(box = TRUE, type = "integer")), Status = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -368,6 +414,16 @@ NULL
 }
 
 .connect$disassociate_lex_bot_output <- function(...) {
+  list()
+}
+
+.connect$disassociate_queue_quick_connects_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QueueId = structure(logical(0), tags = list(location = "uri", locationName = "QueueId", type = "string")), QuickConnectIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$disassociate_queue_quick_connects_output <- function(...) {
   list()
 }
 
@@ -568,6 +624,18 @@ NULL
 .connect$list_prompts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PromptSummaryList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_queue_quick_connects_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QueueId = structure(logical(0), tags = list(location = "uri", locationName = "QueueId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_queue_quick_connects_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), QuickConnectSummaryList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), QuickConnectType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -856,6 +924,56 @@ NULL
 }
 
 .connect$update_instance_storage_config_output <- function(...) {
+  list()
+}
+
+.connect$update_queue_hours_of_operation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QueueId = structure(logical(0), tags = list(location = "uri", locationName = "QueueId", type = "string")), HoursOfOperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_queue_hours_of_operation_output <- function(...) {
+  list()
+}
+
+.connect$update_queue_max_contacts_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QueueId = structure(logical(0), tags = list(location = "uri", locationName = "QueueId", type = "string")), MaxContacts = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_queue_max_contacts_output <- function(...) {
+  list()
+}
+
+.connect$update_queue_name_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QueueId = structure(logical(0), tags = list(location = "uri", locationName = "QueueId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_queue_name_output <- function(...) {
+  list()
+}
+
+.connect$update_queue_outbound_caller_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QueueId = structure(logical(0), tags = list(location = "uri", locationName = "QueueId", type = "string")), OutboundCallerConfig = structure(list(OutboundCallerIdName = structure(logical(0), tags = list(type = "string")), OutboundCallerIdNumberId = structure(logical(0), tags = list(type = "string")), OutboundFlowId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_queue_outbound_caller_config_output <- function(...) {
+  list()
+}
+
+.connect$update_queue_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QueueId = structure(logical(0), tags = list(location = "uri", locationName = "QueueId", type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_queue_status_output <- function(...) {
   list()
 }
 

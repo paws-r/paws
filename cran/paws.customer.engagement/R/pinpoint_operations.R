@@ -171,7 +171,10 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -180,7 +183,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -347,7 +350,10 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -357,7 +363,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -516,7 +522,10 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -525,7 +534,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -681,7 +690,10 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -691,7 +703,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -1031,7 +1043,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -1058,7 +1070,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1131,7 +1143,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1170,7 +1182,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -1197,7 +1209,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1270,7 +1282,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1306,7 +1318,10 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -1328,7 +1343,8 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -1354,7 +1370,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -1381,10 +1397,12 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1416,7 +1434,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -1443,7 +1461,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1516,7 +1534,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1555,7 +1573,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -1582,7 +1600,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1655,7 +1673,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1691,7 +1709,10 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -1711,7 +1732,8 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -1737,7 +1759,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -1764,7 +1786,9 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2002,7 +2026,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -2075,7 +2099,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -2102,7 +2126,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -2175,7 +2199,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -2212,7 +2236,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -2285,7 +2309,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -2300,7 +2324,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -2373,7 +2397,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -3074,7 +3098,10 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -3083,7 +3110,7 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -3250,7 +3277,10 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -3260,7 +3290,7 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -3736,7 +3766,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -3763,7 +3793,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -3836,7 +3866,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -3875,7 +3905,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -3902,7 +3932,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -3975,7 +4005,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -4011,7 +4041,10 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -4033,7 +4066,8 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -4059,7 +4093,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -4086,10 +4120,12 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -4283,7 +4319,7 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -4356,7 +4392,7 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -4383,7 +4419,7 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -4456,7 +4492,7 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -5262,7 +5298,8 @@ pinpoint_get_app <- function(ApplicationId) {
 #' and consists of two or more terms, which are comprised of lowercase
 #' alphanumeric characters, separated by a hyphen. Examples are
 #' email-open-rate and successful-delivery-rate. For a list of valid
-#' values, see the Amazon Pinpoint Developer Guide.
+#' values, see the [Amazon Pinpoint Developer
+#' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html).
 #' @param NextToken The string that specifies which page of results to return in a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
@@ -5648,7 +5685,10 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -5657,7 +5697,7 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -5824,7 +5864,10 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -5834,7 +5877,7 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -6023,7 +6066,8 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
 #' and consists of two or more terms, which are comprised of lowercase
 #' alphanumeric characters, separated by a hyphen. Examples are
 #' email-open-rate and successful-delivery-rate. For a list of valid
-#' values, see the Amazon Pinpoint Developer Guide.
+#' values, see the [Amazon Pinpoint Developer
+#' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html).
 #' @param NextToken The string that specifies which page of results to return in a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
@@ -6224,7 +6268,10 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -6233,7 +6280,7 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -6400,7 +6447,10 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -6410,7 +6460,7 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -6621,7 +6671,10 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'               SMSMessage = list(
 #'                 Body = "string",
 #'                 MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'                 SenderId = "string"
+#'                 OriginationNumber = "string",
+#'                 SenderId = "string",
+#'                 EntityId = "string",
+#'                 TemplateId = "string"
 #'               )
 #'             ),
 #'             Schedule = list(
@@ -6630,7 +6683,7 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'                 Dimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -6797,7 +6850,10 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           )
 #'         ),
 #'         Name = "string",
@@ -6807,7 +6863,7 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -7020,7 +7076,10 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'               SMSMessage = list(
 #'                 Body = "string",
 #'                 MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'                 SenderId = "string"
+#'                 OriginationNumber = "string",
+#'                 SenderId = "string",
+#'                 EntityId = "string",
+#'                 TemplateId = "string"
 #'               )
 #'             ),
 #'             Schedule = list(
@@ -7029,7 +7088,7 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'                 Dimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -7196,7 +7255,10 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           )
 #'         ),
 #'         Name = "string",
@@ -7206,7 +7268,7 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -8078,7 +8140,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -8105,7 +8167,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -8178,7 +8240,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -8217,7 +8279,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -8244,7 +8306,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -8317,7 +8379,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -8353,7 +8415,10 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -8375,7 +8440,8 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -8401,7 +8467,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -8428,10 +8494,12 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -8487,7 +8555,8 @@ pinpoint_get_journey <- function(ApplicationId, JourneyId) {
 #' and consists of two or more terms, which are comprised of lowercase
 #' alphanumeric characters, separated by a hyphen. Examples are
 #' email-open-rate and successful-delivery-rate. For a list of valid
-#' values, see the Amazon Pinpoint Developer Guide.
+#' values, see the [Amazon Pinpoint Developer
+#' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html).
 #' @param NextToken The string that specifies which page of results to return in a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
@@ -9008,7 +9077,7 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -9081,7 +9150,7 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -9108,7 +9177,7 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -9181,7 +9250,7 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -9438,7 +9507,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -9511,7 +9580,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -9538,7 +9607,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -9611,7 +9680,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -9703,7 +9772,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -9776,7 +9845,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #'           ),
 #'           UserAttributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -9803,7 +9872,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #'                 list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -9876,7 +9945,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -9969,7 +10038,7 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -10042,7 +10111,7 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #'           ),
 #'           UserAttributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -10069,7 +10138,7 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #'                 list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -10142,7 +10211,7 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -10646,7 +10715,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                       Dimensions = list(
 #'                         Attributes = list(
 #'                           list(
-#'                             AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                             AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                             Values = list(
 #'                               "string"
 #'                             )
@@ -10673,7 +10742,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                     SegmentDimensions = list(
 #'                       Attributes = list(
 #'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                           Values = list(
 #'                             "string"
 #'                           )
@@ -10746,7 +10815,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                       ),
 #'                       UserAttributes = list(
 #'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                           Values = list(
 #'                             "string"
 #'                           )
@@ -10785,7 +10854,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                       Dimensions = list(
 #'                         Attributes = list(
 #'                           list(
-#'                             AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                             AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                             Values = list(
 #'                               "string"
 #'                             )
@@ -10812,7 +10881,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                     SegmentDimensions = list(
 #'                       Attributes = list(
 #'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                           Values = list(
 #'                             "string"
 #'                           )
@@ -10885,7 +10954,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                       ),
 #'                       UserAttributes = list(
 #'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                           Values = list(
 #'                             "string"
 #'                           )
@@ -10921,7 +10990,10 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'             SMS = list(
 #'               MessageConfig = list(
 #'                 MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'                 SenderId = "string"
+#'                 OriginationNumber = "string",
+#'                 SenderId = "string",
+#'                 EntityId = "string",
+#'                 TemplateId = "string"
 #'               ),
 #'               NextActivity = "string",
 #'               TemplateName = "string",
@@ -10943,7 +11015,8 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'         Limits = list(
 #'           DailyCap = 123,
 #'           EndpointReentryCap = 123,
-#'           MessagesPerSecond = 123
+#'           MessagesPerSecond = 123,
+#'           EndpointReentryInterval = "string"
 #'         ),
 #'         LocalTime = TRUE|FALSE,
 #'         Name = "string",
@@ -10969,7 +11042,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'               Dimensions = list(
 #'                 Attributes = list(
 #'                   list(
-#'                     AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                     AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                     Values = list(
 #'                       "string"
 #'                     )
@@ -10996,10 +11069,12 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'             SegmentId = "string"
 #'           )
 #'         ),
-#'         State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'         State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'         tags = list(
 #'           "string"
-#'         )
+#'         ),
+#'         WaitForQuietTime = TRUE|FALSE,
+#'         RefreshOnSegmentUpdate = TRUE|FALSE
 #'       )
 #'     ),
 #'     NextToken = "string"
@@ -11818,7 +11893,9 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #'           list(
 #'             "string"
 #'           )
-#'         )
+#'         ),
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       ),
 #'       VoiceMessage = list(
 #'         Body = "string",
@@ -12080,7 +12157,9 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
 #'           list(
 #'             "string"
 #'           )
-#'         )
+#'         ),
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       ),
 #'       VoiceMessage = list(
 #'         Body = "string",
@@ -12865,7 +12944,10 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -12874,7 +12956,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -13041,7 +13123,10 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -13051,7 +13136,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -13211,7 +13296,10 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -13220,7 +13308,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -13376,7 +13464,10 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -13386,7 +13477,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -13944,7 +14035,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -13971,7 +14062,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14044,7 +14135,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14083,7 +14174,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -14110,7 +14201,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14183,7 +14274,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14219,7 +14310,10 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -14241,7 +14335,8 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -14267,7 +14362,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -14294,10 +14389,12 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -14330,7 +14427,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -14357,7 +14454,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14430,7 +14527,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14469,7 +14566,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -14496,7 +14593,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14569,7 +14666,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14605,7 +14702,10 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -14625,7 +14725,8 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -14651,7 +14752,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -14678,7 +14779,9 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -14744,7 +14847,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -14771,7 +14874,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14844,7 +14947,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14883,7 +14986,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -14910,7 +15013,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14983,7 +15086,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -15019,7 +15122,10 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -15041,7 +15147,8 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -15067,7 +15174,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -15094,10 +15201,12 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -15108,7 +15217,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'   ApplicationId = "string",
 #'   JourneyId = "string",
 #'   JourneyStateRequest = list(
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED"
 #'   )
 #' )
 #' ```
@@ -15383,7 +15492,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -15456,7 +15565,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -15483,7 +15592,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -15556,7 +15665,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -15594,7 +15703,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -15667,7 +15776,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -15682,7 +15791,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -15755,7 +15864,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )

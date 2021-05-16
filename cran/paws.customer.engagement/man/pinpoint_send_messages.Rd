@@ -243,7 +243,9 @@ Creates and sends a direct message.
           list(
             "string"
           )
-        )
+        ),
+        EntityId = "string",
+        TemplateId = "string"
       ),
       VoiceMessage = list(
         Body = "string",

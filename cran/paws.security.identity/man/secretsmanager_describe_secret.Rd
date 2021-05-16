@@ -67,6 +67,18 @@ A list with the following syntax:\preformatted{list(
   OwningService = "string",
   CreatedDate = as.POSIXct(
     "2015-01-01"
+  ),
+  PrimaryRegion = "string",
+  ReplicationStatus = list(
+    list(
+      Region = "string",
+      KmsKeyId = "string",
+      Status = "InSync"|"Failed"|"InProgress",
+      StatusMessage = "string",
+      LastAccessedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
   )
 )
 }

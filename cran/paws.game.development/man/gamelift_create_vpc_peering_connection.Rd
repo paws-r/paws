@@ -9,17 +9,17 @@ gamelift_create_vpc_peering_connection(FleetId, PeerVpcAwsAccountId,
   PeerVpcId)
 }
 \arguments{
-\item{FleetId}{[required] A unique identifier for a fleet. You can use either the fleet ID or ARN
-value. This tells Amazon GameLift which GameLift VPC to peer with.}
+\item{FleetId}{[required] A unique identifier for the fleet. You can use either the fleet ID or
+ARN value. This tells Amazon GameLift which GameLift VPC to peer with.}
 
 \item{PeerVpcAwsAccountId}{[required] A unique identifier for the AWS account with the VPC that you want to
 peer your Amazon GameLift fleet with. You can find your Account ID in
 the AWS Management Console under account settings.}
 
 \item{PeerVpcId}{[required] A unique identifier for a VPC with resources to be accessed by your
-Amazon GameLift fleet. The VPC must be in the same Region where your
-fleet is deployed. Look up a VPC ID using the \href{https://console.aws.amazon.com/vpc/home}{VPC Dashboard} in the AWS
-Management Console. Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.}
+GameLift fleet. The VPC must be in the same Region as your fleet. To
+look up a VPC ID, use the VPC Dashboard in the AWS Management Console.
+Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with GameLift Fleets}.}
 }
 \value{
 An empty list.
@@ -52,14 +52,21 @@ using
 \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}},
 or by monitoring fleet events for success or failure using
 \code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}}.
-\itemize{
-\item \code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
-\item \code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
-\item \code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
-\item \code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
-\item \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
-\item \code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
+|
+\code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
+|
+\code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
+|
+\code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
+|
+\code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
+|
+\code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$create_vpc_peering_connection(

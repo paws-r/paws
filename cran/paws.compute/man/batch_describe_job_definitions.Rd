@@ -15,9 +15,9 @@ batch_describe_job_definitions(jobDefinitions, maxResults,
 \code{\link[=batch_describe_job_definitions]{describe_job_definitions}} in
 paginated output. When this parameter is used,
 \code{\link[=batch_describe_job_definitions]{describe_job_definitions}} only
-returns \code{maxResults} results in a single page along with a \code{nextToken}
-response element. The remaining results of the initial request can be
-seen by sending another
+returns \code{maxResults} results in a single page and a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another
 \code{\link[=batch_describe_job_definitions]{describe_job_definitions}} request
 with the returned \code{nextToken} value. This value can be between 1 and
 100. If this parameter isn't used, then
@@ -76,7 +76,17 @@ A list with the following syntax:\preformatted{list(
             host = list(
               sourcePath = "string"
             ),
-            name = "string"
+            name = "string",
+            efsVolumeConfiguration = list(
+              fileSystemId = "string",
+              rootDirectory = "string",
+              transitEncryption = "ENABLED"|"DISABLED",
+              transitEncryptionPort = 123,
+              authorizationConfig = list(
+                accessPointId = "string",
+                iam = "ENABLED"|"DISABLED"
+              )
+            )
           )
         ),
         environment = list(
@@ -181,7 +191,17 @@ A list with the following syntax:\preformatted{list(
                   host = list(
                     sourcePath = "string"
                   ),
-                  name = "string"
+                  name = "string",
+                  efsVolumeConfiguration = list(
+                    fileSystemId = "string",
+                    rootDirectory = "string",
+                    transitEncryption = "ENABLED"|"DISABLED",
+                    transitEncryptionPort = 123,
+                    authorizationConfig = list(
+                      accessPointId = "string",
+                      iam = "ENABLED"|"DISABLED"
+                    )
+                  )
                 )
               ),
               environment = list(

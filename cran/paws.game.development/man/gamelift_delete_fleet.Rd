@@ -2,21 +2,22 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_delete_fleet}
 \alias{gamelift_delete_fleet}
-\title{Deletes everything related to a fleet}
+\title{Deletes all resources and information related a fleet}
 \usage{
 gamelift_delete_fleet(FleetId)
 }
 \arguments{
-\item{FleetId}{[required] A unique identifier for a fleet to be deleted. You can use either the
+\item{FleetId}{[required] A unique identifier for the fleet to be deleted. You can use either the
 fleet ID or ARN value.}
 }
 \value{
 An empty list.
 }
 \description{
-Deletes everything related to a fleet. Before deleting a fleet, you must
-set the fleet's desired capacity to zero. See
-\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}.
+Deletes all resources and information related a fleet. Any current fleet
+instances, including those in remote locations, are shut down. You don't
+need to call \code{\link[=gamelift_delete_fleet_locations]{delete_fleet_locations}}
+separately.
 
 If the fleet being deleted has a VPC peering connection, you first need
 to get a valid authorization (good for 24 hours) by calling
@@ -24,23 +25,28 @@ to get a valid authorization (good for 24 hours) by calling
 You do not need to explicitly delete the VPC peering connection--this is
 done as part of the delete fleet process.
 
-This operation removes the fleet and its resources. Once a fleet is
-deleted, you can no longer use any of the resource in that fleet.
+To delete a fleet, specify the fleet ID to be terminated. During the
+deletion process the fleet status is changed to \code{DELETING}. When
+completed, the status switches to \code{TERMINATED} and the fleet event
+\code{FLEET_DELETED} is sent.
 
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_fleet]{create_fleet}}
-\item \code{\link[=gamelift_list_fleets]{list_fleets}}
-\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
-\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
-\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
-\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_fleet_locations]{create_fleet_locations}} |
+\code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}} |
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}} |
+\code{\link[=gamelift_update_fleet_port_settings]{update_fleet_port_settings}} |
+\code{\link[=gamelift_update_runtime_configuration]{update_runtime_configuration}}
+| \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} |
+\code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} |
+\code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}} |
+\code{\link[=gamelift_delete_fleet]{delete_fleet}} |
+\code{\link[=gamelift_delete_fleet_locations]{delete_fleet_locations}} |
+\code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_fleet(

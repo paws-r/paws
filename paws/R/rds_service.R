@@ -111,6 +111,7 @@ NULL
 #'  \link[=rds_create_db_instance_read_replica]{create_db_instance_read_replica} \tab Creates a new DB instance that acts as a read replica for an existing source DB instance\cr
 #'  \link[=rds_create_db_parameter_group]{create_db_parameter_group} \tab Creates a new DB parameter group\cr
 #'  \link[=rds_create_db_proxy]{create_db_proxy} \tab Creates a new DB proxy\cr
+#'  \link[=rds_create_db_proxy_endpoint]{create_db_proxy_endpoint} \tab Creates a DBProxyEndpoint\cr
 #'  \link[=rds_create_db_security_group]{create_db_security_group} \tab Creates a new DB security group\cr
 #'  \link[=rds_create_db_snapshot]{create_db_snapshot} \tab Creates a snapshot of a DB instance\cr
 #'  \link[=rds_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group\cr
@@ -125,7 +126,8 @@ NULL
 #'  \link[=rds_delete_db_instance]{delete_db_instance} \tab The DeleteDBInstance action deletes a previously provisioned DB instance\cr
 #'  \link[=rds_delete_db_instance_automated_backup]{delete_db_instance_automated_backup} \tab Deletes automated backups using the DbiResourceId value of the source DB instance or the Amazon Resource Name (ARN) of the automated backups\cr
 #'  \link[=rds_delete_db_parameter_group]{delete_db_parameter_group} \tab Deletes a specified DB parameter group\cr
-#'  \link[=rds_delete_db_proxy]{delete_db_proxy} \tab Deletes an existing proxy\cr
+#'  \link[=rds_delete_db_proxy]{delete_db_proxy} \tab Deletes an existing DB proxy\cr
+#'  \link[=rds_delete_db_proxy_endpoint]{delete_db_proxy_endpoint} \tab Deletes a DBProxyEndpoint\cr
 #'  \link[=rds_delete_db_security_group]{delete_db_security_group} \tab Deletes a DB security group\cr
 #'  \link[=rds_delete_db_snapshot]{delete_db_snapshot} \tab Deletes a DB snapshot\cr
 #'  \link[=rds_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group\cr
@@ -151,6 +153,7 @@ NULL
 #'  \link[=rds_describe_db_parameter_groups]{describe_db_parameter_groups} \tab Returns a list of DBParameterGroup descriptions\cr
 #'  \link[=rds_describe_db_parameters]{describe_db_parameters} \tab Returns the detailed parameter list for a particular DB parameter group\cr
 #'  \link[=rds_describe_db_proxies]{describe_db_proxies} \tab Returns information about DB proxies\cr
+#'  \link[=rds_describe_db_proxy_endpoints]{describe_db_proxy_endpoints} \tab Returns information about DB proxy endpoints\cr
 #'  \link[=rds_describe_db_proxy_target_groups]{describe_db_proxy_target_groups} \tab Returns information about DB proxy target groups, represented by DBProxyTargetGroup data structures\cr
 #'  \link[=rds_describe_db_proxy_targets]{describe_db_proxy_targets} \tab Returns information about DBProxyTarget objects\cr
 #'  \link[=rds_describe_db_security_groups]{describe_db_security_groups} \tab Returns a list of DBSecurityGroup descriptions\cr
@@ -175,6 +178,7 @@ NULL
 #'  \link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr
 #'  \link[=rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size\cr
 #'  \link[=rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
+#'  \link[=rds_failover_global_cluster]{failover_global_cluster} \tab Initiates the failover process for an Aurora global database (GlobalCluster)\cr
 #'  \link[=rds_import_installation_media]{import_installation_media} \tab Imports the installation media for a DB engine that requires an on-premises customer provided license, such as SQL Server\cr
 #'  \link[=rds_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon RDS resource\cr
 #'  \link[=rds_modify_certificates]{modify_certificates} \tab Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances temporarily, or remove the override\cr
@@ -186,6 +190,7 @@ NULL
 #'  \link[=rds_modify_db_instance]{modify_db_instance} \tab Modifies settings for a DB instance\cr
 #'  \link[=rds_modify_db_parameter_group]{modify_db_parameter_group} \tab Modifies the parameters of a DB parameter group\cr
 #'  \link[=rds_modify_db_proxy]{modify_db_proxy} \tab Changes the settings for an existing DB proxy\cr
+#'  \link[=rds_modify_db_proxy_endpoint]{modify_db_proxy_endpoint} \tab Changes the settings for an existing DB proxy endpoint\cr
 #'  \link[=rds_modify_db_proxy_target_group]{modify_db_proxy_target_group} \tab Modifies the properties of a DBProxyTargetGroup\cr
 #'  \link[=rds_modify_db_snapshot]{modify_db_snapshot} \tab Updates a manual DB snapshot with a new engine version\cr
 #'  \link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot\cr
@@ -211,7 +216,7 @@ NULL
 #'  \link[=rds_restore_db_instance_from_db_snapshot]{restore_db_instance_from_db_snapshot} \tab Creates a new DB instance from a DB snapshot\cr
 #'  \link[=rds_restore_db_instance_from_s3]{restore_db_instance_from_s3} \tab Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files\cr
 #'  \link[=rds_restore_db_instance_to_point_in_time]{restore_db_instance_to_point_in_time} \tab Restores a DB instance to an arbitrary point in time\cr
-#'  \link[=rds_revoke_db_security_group_ingress]{revoke_db_security_group_ingress} \tab Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC Security Groups\cr
+#'  \link[=rds_revoke_db_security_group_ingress]{revoke_db_security_group_ingress} \tab Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC security groups\cr
 #'  \link[=rds_start_activity_stream]{start_activity_stream} \tab Starts a database activity stream to monitor activity on the database\cr
 #'  \link[=rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the AWS console, the stop-db-cluster AWS CLI command, or the StopDBCluster action\cr
 #'  \link[=rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action\cr

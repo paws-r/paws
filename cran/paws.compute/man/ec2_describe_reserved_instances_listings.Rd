@@ -86,7 +86,7 @@ listings to you until your demand is met. You are charged based on the
 total price of all of the listings that you purchase.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_reserved_instances_listings(

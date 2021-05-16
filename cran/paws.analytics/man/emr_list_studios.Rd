@@ -2,8 +2,7 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_list_studios}
 \alias{emr_list_studios}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Returns a list of all Amazon EMR Studios associated with the AWS account}
 \usage{
 emr_list_studios(Marker)
 }
@@ -29,9 +28,6 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
-
 Returns a list of all Amazon EMR Studios associated with the AWS
 account. The list includes details such as ID, Studio Access URL, and
 creation time for each Studio.

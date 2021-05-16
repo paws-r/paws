@@ -5,7 +5,8 @@
 \title{Creates a model in Amazon SageMaker}
 \usage{
 sagemaker_create_model(ModelName, PrimaryContainer, Containers,
-  ExecutionRoleArn, Tags, VpcConfig, EnableNetworkIsolation)
+  InferenceExecutionConfig, ExecutionRoleArn, Tags, VpcConfig,
+  EnableNetworkIsolation)
 }
 \arguments{
 \item{ModelName}{[required] The name of the new model.}
@@ -15,6 +16,9 @@ associated artifacts, and custom environment map that the inference code
 uses when the model is deployed for predictions.}
 
 \item{Containers}{Specifies the containers in the inference pipeline.}
+
+\item{InferenceExecutionConfig}{Specifies details of how containers in a multi-container endpoint are
+called.}
 
 \item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can
 assume to access model artifacts and docker image for deployment on ML
@@ -85,29 +89,44 @@ grant necessary permissions via this role.
     ContainerHostname = "string",
     Image = "string",
     ImageConfig = list(
-      RepositoryAccessMode = "Platform"|"Vpc"
+      RepositoryAccessMode = "Platform"|"Vpc",
+      RepositoryAuthConfig = list(
+        RepositoryCredentialsProviderArn = "string"
+      )
     ),
     Mode = "SingleModel"|"MultiModel",
     ModelDataUrl = "string",
     Environment = list(
       "string"
     ),
-    ModelPackageName = "string"
+    ModelPackageName = "string",
+    MultiModelConfig = list(
+      ModelCacheSetting = "Enabled"|"Disabled"
+    )
   ),
   Containers = list(
     list(
       ContainerHostname = "string",
       Image = "string",
       ImageConfig = list(
-        RepositoryAccessMode = "Platform"|"Vpc"
+        RepositoryAccessMode = "Platform"|"Vpc",
+        RepositoryAuthConfig = list(
+          RepositoryCredentialsProviderArn = "string"
+        )
       ),
       Mode = "SingleModel"|"MultiModel",
       ModelDataUrl = "string",
       Environment = list(
         "string"
       ),
-      ModelPackageName = "string"
+      ModelPackageName = "string",
+      MultiModelConfig = list(
+        ModelCacheSetting = "Enabled"|"Disabled"
+      )
     )
+  ),
+  InferenceExecutionConfig = list(
+    Mode = "Serial"|"Direct"
   ),
   ExecutionRoleArn = "string",
   Tags = list(

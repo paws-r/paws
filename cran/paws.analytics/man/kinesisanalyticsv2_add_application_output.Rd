@@ -13,7 +13,8 @@ kinesisanalyticsv2_add_application_output(ApplicationName,
 configuration.}
 
 \item{CurrentApplicationVersionId}{[required] The version of the application to which you want to add the output
-configuration. You can use the
+configuration. You must provide the \code{ApplicationVersionID} or the
+\code{ConditionalToken}. You can use the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation to get the current application version. If the version
 specified is not the current version, the

@@ -39,6 +39,18 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$create_dataset_export_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), ingestionMode = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), jobOutput = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$create_dataset_export_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetExportJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$create_dataset_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -241,6 +253,18 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$describe_dataset_export_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetExportJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$describe_dataset_export_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetExportJob = structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetExportJobArn = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), ingestionMode = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), jobOutput = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$describe_dataset_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(datasetGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -382,6 +406,18 @@ NULL
 .personalize$list_campaigns_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(campaigns = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), campaignArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$list_dataset_export_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$list_dataset_export_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetExportJobs = structure(list(structure(list(datasetExportJobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

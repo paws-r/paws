@@ -10,10 +10,9 @@ ec2instanceconnect(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-AWS EC2 Connect Service is a service that enables system administrators
-to publish temporary SSH keys to their EC2 instances in order to
-establish connections to their instances without leaving a permanent
-authentication option.
+Amazon EC2 Instance Connect enables system administrators to publish
+one-time use SSH public keys to EC2, providing users a simple and secure
+way to connect to their instances.
 }
 \section{Service syntax}{
 \preformatted{svc <- ec2instanceconnect(
@@ -36,7 +35,8 @@ authentication option.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=ec2instanceconnect_send_ssh_public_key]{send_ssh_public_key} \tab Pushes an SSH public key to a particular OS user on a given EC2 instance for 60 seconds
+\link[=ec2instanceconnect_send_serial_console_ssh_public_key]{send_serial_console_ssh_public_key} \tab Pushes an SSH public key to the specified EC2 instance\cr
+\link[=ec2instanceconnect_send_ssh_public_key]{send_ssh_public_key} \tab Pushes an SSH public key to the specified EC2 instance for use by the specified user
 }
 }
 

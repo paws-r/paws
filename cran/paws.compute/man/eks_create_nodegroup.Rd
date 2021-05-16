@@ -2,12 +2,12 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_create_nodegroup}
 \alias{eks_create_nodegroup}
-\title{Creates a managed worker node group for an Amazon EKS cluster}
+\title{Creates a managed node group for an Amazon EKS cluster}
 \usage{
 eks_create_nodegroup(clusterName, nodegroupName, scalingConfig,
   diskSize, subnets, instanceTypes, amiType, remoteAccess, nodeRole,
-  labels, tags, clientRequestToken, launchTemplate, capacityType, version,
-  releaseVersion)
+  labels, taints, tags, clientRequestToken, launchTemplate, capacityType,
+  version, releaseVersion)
 }
 \arguments{
 \item{clusterName}{[required] The name of the cluster to create the node group in.}
@@ -24,10 +24,7 @@ information about using launch templates with Amazon EKS, see \href{https://docs
 in the Amazon EKS User Guide.}
 
 \item{subnets}{[required] The subnets to use for the Auto Scaling group that is created for your
-node group. These subnets must have the tag key
-\code{kubernetes.io/cluster/CLUSTER_NAME} with a value of \code{shared}, where
-\code{CLUSTER_NAME} is replaced with the name of your cluster. If you specify
-\code{launchTemplate}, then don't specify
+node group. If you specify \code{launchTemplate}, then don't specify
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html}{\code{SubnetId}}
 in your launch template, or the node group deployment will fail. For
 more information about using launch templates with Amazon EKS, see
@@ -44,7 +41,8 @@ group deployment will fail. If you don't specify an instance type in a
 launch template or for \code{instanceTypes}, then \code{t3.medium} is used, by
 default. If you specify \code{Spot} for \code{capacityType}, then we recommend
 specifying multiple values for \code{instanceTypes}. For more information,
-see Managed node group capacity types and \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+see \href{https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html#managed-node-group-capacity-types}{Managed node group capacity types}
+and \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
 in the \emph{Amazon EKS User Guide}.}
 
 \item{amiType}{The AMI type for your node group. GPU instance types should use the
@@ -64,11 +62,11 @@ in the Amazon EKS User Guide.}
 
 \item{nodeRole}{[required] The Amazon Resource Name (ARN) of the IAM role to associate with your
 node group. The Amazon EKS worker node \code{kubelet} daemon makes calls to
-AWS APIs on your behalf. Worker nodes receive permissions for these API
-calls through an IAM instance profile and associated policies. Before
-you can launch worker nodes and register them into a cluster, you must
-create an IAM role for those worker nodes to use when they are launched.
-For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/}{Amazon EKS Worker Node IAM Role} in the \strong{Amazon
+AWS APIs on your behalf. Nodes receive permissions for these API calls
+through an IAM instance profile and associated policies. Before you can
+launch nodes and register them into a cluster, you must create an IAM
+role for those nodes to use when they are launched. For more
+information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/}{Amazon EKS node IAM role} in the \strong{Amazon
 EKS User Guide} . If you specify \code{launchTemplate}, then don't specify
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfile.html}{\code{IamInstanceProfile}}
 in your launch template, or the node group deployment will fail. For
@@ -78,6 +76,8 @@ in the Amazon EKS User Guide.}
 
 \item{labels}{The Kubernetes labels to be applied to the nodes in the node group when
 they are created.}
+
+\item{taints}{The Kubernetes taints to be applied to the nodes in the node group.}
 
 \item{tags}{The metadata to apply to the node group to assist with categorization
 and organization. Each tag consists of a key and an optional value, both
@@ -145,10 +145,17 @@ A list with the following syntax:\preformatted{list(
         "string"
       )
     ),
-    amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+    amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM",
     nodeRole = "string",
     labels = list(
       "string"
+    ),
+    taints = list(
+      list(
+        key = "string",
+        value = "string",
+        effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+      )
     ),
     resources = list(
       autoScalingGroups = list(
@@ -183,8 +190,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates a managed worker node group for an Amazon EKS cluster. You can
-only create a node group for your cluster that is equal to the current
+Creates a managed node group for an Amazon EKS cluster. You can only
+create a node group for your cluster that is equal to the current
 Kubernetes version for the cluster. All node groups are created with the
 latest AMI release version for the respective minor Kubernetes version
 of the cluster, unless you deploy a custom AMI using a launch template.
@@ -212,7 +219,7 @@ in the \emph{Amazon EKS User Guide}.
   instanceTypes = list(
     "string"
   ),
-  amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+  amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM",
   remoteAccess = list(
     ec2SshKey = "string",
     sourceSecurityGroups = list(
@@ -222,6 +229,13 @@ in the \emph{Amazon EKS User Guide}.
   nodeRole = "string",
   labels = list(
     "string"
+  ),
+  taints = list(
+    list(
+      key = "string",
+      value = "string",
+      effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+    )
   ),
   tags = list(
     "string"

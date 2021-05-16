@@ -9,7 +9,7 @@ ssm_create_association(Name, DocumentVersion, InstanceId, Parameters,
   Targets, ScheduleExpression, OutputLocation, AssociationName,
   AutomationTargetParameterName, MaxErrors, MaxConcurrency,
   ComplianceSeverity, SyncCompliance, ApplyOnlyAtCronInterval,
-  TargetLocations)
+  CalendarNames, TargetLocations)
 }
 \arguments{
 \item{Name}{[required] The name of the SSM document that contains the configuration information
@@ -107,11 +107,16 @@ managed by your direct call to the
 
 By default, all associations use \code{AUTO} mode.}
 
-\item{ApplyOnlyAtCronInterval}{By default, when you create a new associations, the system runs it
+\item{ApplyOnlyAtCronInterval}{By default, when you create a new association, the system runs it
 immediately after it is created and then according to the schedule you
 specified. Specify this option if you don't want an association to run
 immediately after you create it. This parameter is not supported for
 rate expressions.}
+
+\item{CalendarNames}{The names or Amazon Resource Names (ARNs) of the Systems Manager Change
+Calendar type documents you want to gate your associations under. The
+associations only run when that Change Calendar is open. For more
+information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html}{AWS Systems Manager Change Calendar}.}
 
 \item{TargetLocations}{A location is a combination of AWS Regions and AWS accounts where you
 want to run the association. Use this action to create an association in
@@ -180,6 +185,9 @@ A list with the following syntax:\preformatted{list(
     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
     SyncCompliance = "AUTO"|"MANUAL",
     ApplyOnlyAtCronInterval = TRUE|FALSE,
+    CalendarNames = list(
+      "string"
+    ),
     TargetLocations = list(
       list(
         Accounts = list(
@@ -245,6 +253,9 @@ start the service.
   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
   SyncCompliance = "AUTO"|"MANUAL",
   ApplyOnlyAtCronInterval = TRUE|FALSE,
+  CalendarNames = list(
+    "string"
+  ),
   TargetLocations = list(
     list(
       Accounts = list(

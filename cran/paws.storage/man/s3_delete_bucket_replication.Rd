@@ -9,7 +9,7 @@ s3_delete_bucket_replication(Bucket, ExpectedBucketOwner)
 \arguments{
 \item{Bucket}{[required] The bucket name.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -28,8 +28,9 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-contro
 It can take a while for the deletion of a replication configuration to
 fully propagate.
 
-For information about replication configuration, see Replication in the
-\emph{Amazon S3 Developer Guide}.
+For information about replication configuration, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html}{Replication}
+in the \emph{Amazon S3 Developer Guide}.
 
 The following operations are related to
 \code{\link[=s3_delete_bucket_replication]{delete_bucket_replication}}:

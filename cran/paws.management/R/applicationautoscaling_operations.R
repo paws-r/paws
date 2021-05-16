@@ -14,10 +14,10 @@ NULL
 #' does not delete the CloudWatch alarm associated with the scaling policy,
 #' even if it no longer has an associated action.
 #' 
-#' For more information, see [Delete a Step Scaling
-#' Policy](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html#delete-step-scaling-policy)
-#' and [Delete a Target Tracking Scaling
-#' Policy](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html#delete-target-tracking-policy)
+#' For more information, see [Delete a step scaling
+#' policy](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html#delete-step-scaling-policy)
+#' and [Delete a target tracking scaling
+#' policy](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html#delete-target-tracking-policy)
 #' in the *Application Auto Scaling User Guide*.
 #'
 #' @usage
@@ -197,8 +197,8 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' Deletes the specified scheduled action for an Application Auto Scaling
 #' scalable target.
 #' 
-#' For more information, see [Delete a Scheduled
-#' Action](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html#delete-scheduled-action)
+#' For more information, see [Delete a scheduled
+#' action](https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html#delete-scheduled-action)
 #' in the *Application Auto Scaling User Guide*.
 #'
 #' @usage
@@ -552,8 +552,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' resource provided by your own application or service, use
 #' `custom-resource` instead.
 #' @param ResourceIds The identifier of the resource associated with the scalable target. This
-#' string consists of the resource type and unique identifier. If you
-#' specify a scalable dimension, you must also specify a resource ID.
+#' string consists of the resource type and unique identifier.
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
@@ -765,8 +764,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' resource provided by your own application or service, use
 #' `custom-resource` instead.
 #' @param ResourceId The identifier of the resource associated with the scaling activity.
-#' This string consists of the resource type and unique identifier. If you
-#' specify a scalable dimension, you must also specify a resource ID.
+#' This string consists of the resource type and unique identifier.
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
@@ -971,10 +969,10 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' You can filter the results using `ResourceId`, `ScalableDimension`, and
 #' `PolicyNames`.
 #' 
-#' For more information, see [Target Tracking Scaling
-#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
-#' and [Step Scaling
-#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+#' For more information, see [Target tracking scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
+#' and [Step scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
 #' in the *Application Auto Scaling User Guide*.
 #'
 #' @usage
@@ -986,8 +984,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' resource provided by your own application or service, use
 #' `custom-resource` instead.
 #' @param ResourceId The identifier of the resource associated with the scaling policy. This
-#' string consists of the resource type and unique identifier. If you
-#' specify a scalable dimension, you must also specify a resource ID.
+#' string consists of the resource type and unique identifier.
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
@@ -1229,7 +1226,9 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' and `ScheduledActionNames` parameters.
 #' 
 #' For more information, see [Scheduled
-#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html)
+#' scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html)
+#' and [Managing scheduled
+#' scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html)
 #' in the *Application Auto Scaling User Guide*.
 #'
 #' @usage
@@ -1241,8 +1240,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' resource provided by your own application or service, use
 #' `custom-resource` instead.
 #' @param ResourceId The identifier of the resource associated with the scheduled action.
-#' This string consists of the resource type and unique identifier. If you
-#' specify a scalable dimension, you must also specify a resource ID.
+#' This string consists of the resource type and unique identifier.
 #' 
 #' -   ECS service - The resource type is `service` and the unique
 #'     identifier is the cluster name and service name. Example:
@@ -1378,6 +1376,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'       ScheduledActionARN = "string",
 #'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'       Schedule = "string",
+#'       Timezone = "string",
 #'       ResourceId = "string",
 #'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
 #'       StartTime = as.POSIXct(
@@ -1464,10 +1463,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' After the scale-in activity completes, the target tracking policy could
 #' instruct the scalable target to scale out again.
 #' 
-#' For more information, see [Target Tracking Scaling
-#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
-#' and [Step Scaling
-#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+#' For more information, see [Target tracking scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
+#' and [Step scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
 #' in the *Application Auto Scaling User Guide*.
 #' 
 #' If a scalable target is deregistered, the scalable target is no longer
@@ -1610,10 +1609,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' `StepScaling`—Not supported for DynamoDB, Amazon Comprehend, Lambda,
 #' Amazon Keyspaces (for Apache Cassandra), or Amazon MSK.
 #' 
-#' For more information, see [Target Tracking Scaling
-#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
-#' and [Step Scaling
-#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+#' For more information, see [Target tracking scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
+#' and [Step scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
 #' in the *Application Auto Scaling User Guide*.
 #' @param StepScalingPolicyConfiguration A step scaling policy.
 #' 
@@ -1743,15 +1742,15 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' target.
 #' 
 #' When start and end times are specified with a recurring schedule using a
-#' cron expression or rates, they form the boundaries of when the recurring
-#' action starts and stops.
+#' cron expression or rates, they form the boundaries for when the
+#' recurring action starts and stops.
 #' 
 #' To update a scheduled action, specify the parameters that you want to
 #' change. If you don't specify start and end times, the old values are
 #' deleted.
 #' 
 #' For more information, see [Scheduled
-#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html)
+#' scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html)
 #' in the *Application Auto Scaling User Guide*.
 #' 
 #' If a scalable target is deregistered, the scalable target is no longer
@@ -1760,8 +1759,8 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'
 #' @usage
 #' applicationautoscaling_put_scheduled_action(ServiceNamespace, Schedule,
-#'   ScheduledActionName, ResourceId, ScalableDimension, StartTime, EndTime,
-#'   ScalableTargetAction)
+#'   Timezone, ScheduledActionName, ResourceId, ScalableDimension, StartTime,
+#'   EndTime, ScalableTargetAction)
 #'
 #' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
 #' resource provided by your own application or service, use
@@ -1774,19 +1773,31 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   Cron expressions - "`cron(fields)`"
 #' 
-#' At expressions are useful for one-time schedules. Specify the time in
-#' UTC.
+#' At expressions are useful for one-time schedules. Cron expressions are
+#' useful for scheduled actions that run periodically at a specified date
+#' and time, and rate expressions are useful for scheduled actions that run
+#' at a regular interval.
+#' 
+#' At and cron expressions use Universal Coordinated Time (UTC) by default.
+#' 
+#' The cron format consists of six fields separated by white spaces:
+#' \[Minutes\] \[Hours\] \[Day_of_Month\] \[Month\] \[Day_of_Week\]
+#' \[Year\].
 #' 
 #' For rate expressions, *value* is a positive integer and *unit* is
 #' `minute` | `minutes` | `hour` | `hours` | `day` | `days`.
 #' 
-#' For cron expressions, *fields* is a cron expression. The supported cron
-#' format consists of six fields separated by white spaces: \[Minutes\]
-#' \[Hours\] \[Day_of_Month\] \[Month\] \[Day_of_Week\] \[Year\].
-#' 
-#' For more information and examples, see [Scheduled
-#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html)
+#' For more information and examples, see [Example scheduled actions for
+#' Application Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/examples-scheduled-actions.html)
 #' in the *Application Auto Scaling User Guide*.
+#' @param Timezone Specifies the time zone used when setting a scheduled action by using an
+#' at or cron expression. If a time zone is not provided, UTC is used by
+#' default.
+#' 
+#' Valid values are the canonical names of the IANA time zones supported by
+#' Joda-Time (such as `Etc/GMT+9` or `Pacific/Tahiti`). For more
+#' information, see <https://www.joda.org/joda-time/timezones.html>.
 #' @param ScheduledActionName &#91;required&#93; The name of the scheduled action. This name must be unique among all
 #' other scheduled actions on the specified scalable target.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scheduled action.
@@ -1905,8 +1916,8 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
-#' @param StartTime The date and time for this scheduled action to start.
-#' @param EndTime The date and time for the recurring schedule to end.
+#' @param StartTime The date and time for this scheduled action to start, in UTC.
+#' @param EndTime The date and time for the recurring schedule to end, in UTC.
 #' @param ScalableTargetAction The new minimum and maximum capacity. You can set both values or just
 #' one. At the scheduled time, if the current capacity is below the minimum
 #' capacity, Application Auto Scaling scales out to the minimum capacity.
@@ -1921,6 +1932,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' svc$put_scheduled_action(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   Schedule = "string",
+#'   Timezone = "string",
 #'   ScheduledActionName = "string",
 #'   ResourceId = "string",
 #'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
@@ -1940,14 +1952,14 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_put_scheduled_action
-applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedule = NULL, ScheduledActionName, ResourceId, ScalableDimension, StartTime = NULL, EndTime = NULL, ScalableTargetAction = NULL) {
+applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedule = NULL, Timezone = NULL, ScheduledActionName, ResourceId, ScalableDimension, StartTime = NULL, EndTime = NULL, ScalableTargetAction = NULL) {
   op <- new_operation(
     name = "PutScheduledAction",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationautoscaling$put_scheduled_action_input(ServiceNamespace = ServiceNamespace, Schedule = Schedule, ScheduledActionName = ScheduledActionName, ResourceId = ResourceId, ScalableDimension = ScalableDimension, StartTime = StartTime, EndTime = EndTime, ScalableTargetAction = ScalableTargetAction)
+  input <- .applicationautoscaling$put_scheduled_action_input(ServiceNamespace = ServiceNamespace, Schedule = Schedule, Timezone = Timezone, ScheduledActionName = ScheduledActionName, ResourceId = ResourceId, ScalableDimension = ScalableDimension, StartTime = StartTime, EndTime = EndTime, ScalableTargetAction = ScalableTargetAction)
   output <- .applicationautoscaling$put_scheduled_action_output()
   config <- get_config()
   svc <- .applicationautoscaling$service(config)
@@ -2140,7 +2152,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' If the service supports service-linked roles, Application Auto Scaling
 #' uses a service-linked role, which it creates if it does not yet exist.
 #' For more information, see [Application Auto Scaling IAM
-#' Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles).
+#' roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles).
 #' @param SuspendedState An embedded object that contains attributes and attribute values that
 #' are used to suspend and resume automatic scaling. Setting the value of
 #' an attribute to `true` suspends the specified scaling activities.
@@ -2160,8 +2172,8 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' -   For `ScheduledScalingSuspended`, while a suspension is in effect,
 #'     all scaling activities that involve scheduled actions are suspended.
 #' 
-#' For more information, see [Suspending and Resuming
-#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html)
+#' For more information, see [Suspending and resuming
+#' scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html)
 #' in the *Application Auto Scaling User Guide*.
 #'
 #' @return

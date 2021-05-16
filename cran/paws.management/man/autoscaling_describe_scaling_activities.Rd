@@ -6,7 +6,7 @@
 group}
 \usage{
 autoscaling_describe_scaling_activities(ActivityIds,
-  AutoScalingGroupName, MaxRecords, NextToken)
+  AutoScalingGroupName, IncludeDeletedGroups, MaxRecords, NextToken)
 }
 \arguments{
 \item{ActivityIds}{The activity IDs of the desired scaling activities. You can specify up
@@ -16,6 +16,9 @@ ignored with no error. If you specify an Auto Scaling group, the results
 are limited to that group.}
 
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+
+\item{IncludeDeletedGroups}{Indicates whether to include scaling activity from deleted Auto Scaling
+groups.}
 
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{100} and the maximum value is \code{100}.}
@@ -40,7 +43,9 @@ A list with the following syntax:\preformatted{list(
       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
       StatusMessage = "string",
       Progress = 123,
-      Details = "string"
+      Details = "string",
+      AutoScalingGroupState = "string",
+      AutoScalingGroupARN = "string"
     )
   ),
   NextToken = "string"
@@ -50,6 +55,12 @@ A list with the following syntax:\preformatted{list(
 \description{
 Describes one or more scaling activities for the specified Auto Scaling
 group.
+
+To view the scaling activities from the Amazon EC2 Auto Scaling console,
+choose the \strong{Activity} tab of the Auto Scaling group. When scaling
+events occur, you see scaling activity messages in the \strong{Activity
+history}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-verify-scaling-activity.html}{Verifying a scaling activity for an Auto Scaling group}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_scaling_activities(
@@ -57,6 +68,7 @@ group.
     "string"
   ),
   AutoScalingGroupName = "string",
+  IncludeDeletedGroups = TRUE|FALSE,
   MaxRecords = 123,
   NextToken = "string"
 )

@@ -173,6 +173,7 @@ which provides details of a job success.
 \link[=codepipeline_deregister_webhook_with_third_party]{deregister_webhook_with_third_party} \tab Removes the connection between the webhook that was created by CodePipeline and the external tool with events to be detected\cr
 \link[=codepipeline_disable_stage_transition]{disable_stage_transition} \tab Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline\cr
 \link[=codepipeline_enable_stage_transition]{enable_stage_transition} \tab Enables artifacts in a pipeline to transition to a stage in a pipeline\cr
+\link[=codepipeline_get_action_type]{get_action_type} \tab Returns information about an action type created for an external provider, where the action is to be used by customers of the external provider\cr
 \link[=codepipeline_get_job_details]{get_job_details} \tab Returns information about a job\cr
 \link[=codepipeline_get_pipeline]{get_pipeline} \tab Returns the metadata, structure, stages, and actions of a pipeline\cr
 \link[=codepipeline_get_pipeline_execution]{get_pipeline_execution} \tab Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline\cr
@@ -199,6 +200,7 @@ which provides details of a job success.
 \link[=codepipeline_stop_pipeline_execution]{stop_pipeline_execution} \tab Stops the specified pipeline execution\cr
 \link[=codepipeline_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
 \link[=codepipeline_untag_resource]{untag_resource} \tab Removes tags from an AWS resource\cr
+\link[=codepipeline_update_action_type]{update_action_type} \tab Updates an action type that was created with any supported integration model, where the action type is to be used by customers of the action type provider\cr
 \link[=codepipeline_update_pipeline]{update_pipeline} \tab Updates a specified pipeline with edits or changes to its structure
 }
 }

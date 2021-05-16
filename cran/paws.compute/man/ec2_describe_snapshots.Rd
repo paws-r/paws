@@ -93,6 +93,7 @@ A list with the following syntax:\preformatted{list(
       VolumeId = "string",
       VolumeSize = 123,
       OwnerAlias = "string",
+      OutpostArn = "string",
       Tags = list(
         list(
           Key = "string",

@@ -9,7 +9,9 @@ securityhub_tag_resource(ResourceArn, Tags)
 \arguments{
 \item{ResourceArn}{[required] The ARN of the resource to apply the tags to.}
 
-\item{Tags}{[required] The tags to add to the resource.}
+\item{Tags}{[required] The tags to add to the resource. You can add up to 50 tags at a time.
+The tag keys can be no longer than 128 characters. The tag values can be
+no longer than 256 characters.}
 }
 \value{
 An empty list.

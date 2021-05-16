@@ -29,7 +29,7 @@ NULL
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -37,6 +37,7 @@ NULL
 #'         Url = "string"
 #'       ),
 #'       EntitlementArn = "string",
+#'       ListenerAddress = "string",
 #'       MediaLiveInputArn = "string",
 #'       Name = "string",
 #'       OutputArn = "string",
@@ -47,7 +48,8 @@ NULL
 #'         ),
 #'         MaxBitrate = 123,
 #'         MaxLatency = 123,
-#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'         MinLatency = 123,
+#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'         RemoteId = "string",
 #'         SmoothingLatency = 123,
 #'         StreamId = "string"
@@ -75,7 +77,7 @@ NULL
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -83,9 +85,10 @@ NULL
 #'         Url = "string"
 #'       ),
 #'       MaxLatency = 123,
+#'       MinLatency = 123,
 #'       Name = "string",
 #'       Port = 123,
-#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'       RemoteId = "string",
 #'       SmoothingLatency = 123,
 #'       StreamId = "string",
@@ -140,7 +143,7 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -159,7 +162,8 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'         ),
 #'         MaxBitrate = 123,
 #'         MaxLatency = 123,
-#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'         MinLatency = 123,
+#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'         RemoteId = "string",
 #'         SmoothingLatency = 123,
 #'         StreamId = "string"
@@ -181,7 +185,7 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -193,8 +197,9 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'       IngestPort = 123,
 #'       MaxBitrate = 123,
 #'       MaxLatency = 123,
+#'       MinLatency = 123,
 #'       Name = "string",
-#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'       StreamId = "string",
 #'       VpcInterfaceName = "string",
 #'       WhitelistCidr = "string"
@@ -328,7 +333,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'           Algorithm = "aes128"|"aes192"|"aes256",
 #'           ConstantInitializationVector = "string",
 #'           DeviceId = "string",
-#'           KeyType = "speke"|"static-key",
+#'           KeyType = "speke"|"static-key"|"srt-password",
 #'           Region = "string",
 #'           ResourceId = "string",
 #'           RoleArn = "string",
@@ -354,7 +359,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'           Algorithm = "aes128"|"aes192"|"aes256",
 #'           ConstantInitializationVector = "string",
 #'           DeviceId = "string",
-#'           KeyType = "speke"|"static-key",
+#'           KeyType = "speke"|"static-key"|"srt-password",
 #'           Region = "string",
 #'           ResourceId = "string",
 #'           RoleArn = "string",
@@ -362,6 +367,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'           Url = "string"
 #'         ),
 #'         EntitlementArn = "string",
+#'         ListenerAddress = "string",
 #'         MediaLiveInputArn = "string",
 #'         Name = "string",
 #'         OutputArn = "string",
@@ -372,7 +378,8 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'           ),
 #'           MaxBitrate = 123,
 #'           MaxLatency = 123,
-#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           MinLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'           RemoteId = "string",
 #'           SmoothingLatency = 123,
 #'           StreamId = "string"
@@ -388,7 +395,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -407,7 +414,8 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'         ),
 #'         MaxBitrate = 123,
 #'         MaxLatency = 123,
-#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'         MinLatency = 123,
+#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'         RemoteId = "string",
 #'         SmoothingLatency = 123,
 #'         StreamId = "string"
@@ -426,7 +434,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'           Algorithm = "aes128"|"aes192"|"aes256",
 #'           ConstantInitializationVector = "string",
 #'           DeviceId = "string",
-#'           KeyType = "speke"|"static-key",
+#'           KeyType = "speke"|"static-key"|"srt-password",
 #'           Region = "string",
 #'           ResourceId = "string",
 #'           RoleArn = "string",
@@ -445,7 +453,8 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'           ),
 #'           MaxBitrate = 123,
 #'           MaxLatency = 123,
-#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           MinLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'           RemoteId = "string",
 #'           SmoothingLatency = 123,
 #'           StreamId = "string"
@@ -484,7 +493,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -510,7 +519,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -518,9 +527,10 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'         Url = "string"
 #'       ),
 #'       MaxLatency = 123,
+#'       MinLatency = 123,
 #'       Name = "string",
 #'       Port = 123,
-#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'       RemoteId = "string",
 #'       SmoothingLatency = 123,
 #'       StreamId = "string",
@@ -534,7 +544,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'       Algorithm = "aes128"|"aes192"|"aes256",
 #'       ConstantInitializationVector = "string",
 #'       DeviceId = "string",
-#'       KeyType = "speke"|"static-key",
+#'       KeyType = "speke"|"static-key"|"srt-password",
 #'       Region = "string",
 #'       ResourceId = "string",
 #'       RoleArn = "string",
@@ -546,8 +556,9 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'     IngestPort = 123,
 #'     MaxBitrate = 123,
 #'     MaxLatency = 123,
+#'     MinLatency = 123,
 #'     Name = "string",
-#'     Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'     Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'     StreamId = "string",
 #'     VpcInterfaceName = "string",
 #'     WhitelistCidr = "string"
@@ -562,7 +573,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -574,8 +585,9 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'       IngestPort = 123,
 #'       MaxBitrate = 123,
 #'       MaxLatency = 123,
+#'       MinLatency = 123,
 #'       Name = "string",
-#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'       StreamId = "string",
 #'       VpcInterfaceName = "string",
 #'       WhitelistCidr = "string"
@@ -688,7 +700,7 @@ mediaconnect_delete_flow <- function(FlowArn) {
 #'           Algorithm = "aes128"|"aes192"|"aes256",
 #'           ConstantInitializationVector = "string",
 #'           DeviceId = "string",
-#'           KeyType = "speke"|"static-key",
+#'           KeyType = "speke"|"static-key"|"srt-password",
 #'           Region = "string",
 #'           ResourceId = "string",
 #'           RoleArn = "string",
@@ -714,7 +726,7 @@ mediaconnect_delete_flow <- function(FlowArn) {
 #'           Algorithm = "aes128"|"aes192"|"aes256",
 #'           ConstantInitializationVector = "string",
 #'           DeviceId = "string",
-#'           KeyType = "speke"|"static-key",
+#'           KeyType = "speke"|"static-key"|"srt-password",
 #'           Region = "string",
 #'           ResourceId = "string",
 #'           RoleArn = "string",
@@ -722,6 +734,7 @@ mediaconnect_delete_flow <- function(FlowArn) {
 #'           Url = "string"
 #'         ),
 #'         EntitlementArn = "string",
+#'         ListenerAddress = "string",
 #'         MediaLiveInputArn = "string",
 #'         Name = "string",
 #'         OutputArn = "string",
@@ -732,7 +745,8 @@ mediaconnect_delete_flow <- function(FlowArn) {
 #'           ),
 #'           MaxBitrate = 123,
 #'           MaxLatency = 123,
-#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           MinLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'           RemoteId = "string",
 #'           SmoothingLatency = 123,
 #'           StreamId = "string"
@@ -748,7 +762,7 @@ mediaconnect_delete_flow <- function(FlowArn) {
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -767,7 +781,8 @@ mediaconnect_delete_flow <- function(FlowArn) {
 #'         ),
 #'         MaxBitrate = 123,
 #'         MaxLatency = 123,
-#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'         MinLatency = 123,
+#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'         RemoteId = "string",
 #'         SmoothingLatency = 123,
 #'         StreamId = "string"
@@ -786,7 +801,7 @@ mediaconnect_delete_flow <- function(FlowArn) {
 #'           Algorithm = "aes128"|"aes192"|"aes256",
 #'           ConstantInitializationVector = "string",
 #'           DeviceId = "string",
-#'           KeyType = "speke"|"static-key",
+#'           KeyType = "speke"|"static-key"|"srt-password",
 #'           Region = "string",
 #'           ResourceId = "string",
 #'           RoleArn = "string",
@@ -805,7 +820,8 @@ mediaconnect_delete_flow <- function(FlowArn) {
 #'           ),
 #'           MaxBitrate = 123,
 #'           MaxLatency = 123,
-#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           MinLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'           RemoteId = "string",
 #'           SmoothingLatency = 123,
 #'           StreamId = "string"
@@ -1011,7 +1027,7 @@ mediaconnect_describe_reservation <- function(ReservationArn) {
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -1041,7 +1057,7 @@ mediaconnect_describe_reservation <- function(ReservationArn) {
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -1915,7 +1931,7 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #'           Algorithm = "aes128"|"aes192"|"aes256",
 #'           ConstantInitializationVector = "string",
 #'           DeviceId = "string",
-#'           KeyType = "speke"|"static-key",
+#'           KeyType = "speke"|"static-key"|"srt-password",
 #'           Region = "string",
 #'           ResourceId = "string",
 #'           RoleArn = "string",
@@ -1941,7 +1957,7 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #'           Algorithm = "aes128"|"aes192"|"aes256",
 #'           ConstantInitializationVector = "string",
 #'           DeviceId = "string",
-#'           KeyType = "speke"|"static-key",
+#'           KeyType = "speke"|"static-key"|"srt-password",
 #'           Region = "string",
 #'           ResourceId = "string",
 #'           RoleArn = "string",
@@ -1949,6 +1965,7 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #'           Url = "string"
 #'         ),
 #'         EntitlementArn = "string",
+#'         ListenerAddress = "string",
 #'         MediaLiveInputArn = "string",
 #'         Name = "string",
 #'         OutputArn = "string",
@@ -1959,7 +1976,8 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #'           ),
 #'           MaxBitrate = 123,
 #'           MaxLatency = 123,
-#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           MinLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'           RemoteId = "string",
 #'           SmoothingLatency = 123,
 #'           StreamId = "string"
@@ -1975,7 +1993,7 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #'         Algorithm = "aes128"|"aes192"|"aes256",
 #'         ConstantInitializationVector = "string",
 #'         DeviceId = "string",
-#'         KeyType = "speke"|"static-key",
+#'         KeyType = "speke"|"static-key"|"srt-password",
 #'         Region = "string",
 #'         ResourceId = "string",
 #'         RoleArn = "string",
@@ -1994,7 +2012,8 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #'         ),
 #'         MaxBitrate = 123,
 #'         MaxLatency = 123,
-#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'         MinLatency = 123,
+#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'         RemoteId = "string",
 #'         SmoothingLatency = 123,
 #'         StreamId = "string"
@@ -2013,7 +2032,7 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #'           Algorithm = "aes128"|"aes192"|"aes256",
 #'           ConstantInitializationVector = "string",
 #'           DeviceId = "string",
-#'           KeyType = "speke"|"static-key",
+#'           KeyType = "speke"|"static-key"|"srt-password",
 #'           Region = "string",
 #'           ResourceId = "string",
 #'           RoleArn = "string",
@@ -2032,7 +2051,8 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #'           ),
 #'           MaxBitrate = 123,
 #'           MaxLatency = 123,
-#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           MinLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'           RemoteId = "string",
 #'           SmoothingLatency = 123,
 #'           StreamId = "string"
@@ -2128,7 +2148,7 @@ mediaconnect_update_flow <- function(FlowArn, SourceFailoverConfig = NULL) {
 #'       Algorithm = "aes128"|"aes192"|"aes256",
 #'       ConstantInitializationVector = "string",
 #'       DeviceId = "string",
-#'       KeyType = "speke"|"static-key",
+#'       KeyType = "speke"|"static-key"|"srt-password",
 #'       Region = "string",
 #'       ResourceId = "string",
 #'       RoleArn = "string",
@@ -2154,7 +2174,7 @@ mediaconnect_update_flow <- function(FlowArn, SourceFailoverConfig = NULL) {
 #'     Algorithm = "aes128"|"aes192"|"aes256",
 #'     ConstantInitializationVector = "string",
 #'     DeviceId = "string",
-#'     KeyType = "speke"|"static-key",
+#'     KeyType = "speke"|"static-key"|"srt-password",
 #'     Region = "string",
 #'     ResourceId = "string",
 #'     RoleArn = "string",
@@ -2197,8 +2217,8 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'
 #' @usage
 #' mediaconnect_update_flow_output(CidrAllowList, Description, Destination,
-#'   Encryption, FlowArn, MaxLatency, OutputArn, Port, Protocol, RemoteId,
-#'   SmoothingLatency, StreamId, VpcInterfaceAttachment)
+#'   Encryption, FlowArn, MaxLatency, MinLatency, OutputArn, Port, Protocol,
+#'   RemoteId, SmoothingLatency, StreamId, VpcInterfaceAttachment)
 #'
 #' @param CidrAllowList The range of IP addresses that should be allowed to initiate output
 #' requests to this flow. These IP addresses should be in the form of a
@@ -2210,6 +2230,11 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #' service will use the default setting (static-key).
 #' @param FlowArn &#91;required&#93; The flow that is associated with the output that you want to update.
 #' @param MaxLatency The maximum latency in milliseconds for Zixi-based streams.
+#' @param MinLatency The minimum latency in milliseconds for SRT-based streams. In streams
+#' that use the SRT protocol, this value that you set on your MediaConnect
+#' source or output represents the minimal potential latency of that
+#' connection. The latency of the stream is set to the highest number
+#' between the sender’s minimum latency and the receiver’s minimum latency.
 #' @param OutputArn &#91;required&#93; The ARN of the output that you want to update.
 #' @param Port The port to use when content is distributed to this output.
 #' @param Protocol The protocol to use for the output.
@@ -2233,7 +2258,7 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'       Algorithm = "aes128"|"aes192"|"aes256",
 #'       ConstantInitializationVector = "string",
 #'       DeviceId = "string",
-#'       KeyType = "speke"|"static-key",
+#'       KeyType = "speke"|"static-key"|"srt-password",
 #'       Region = "string",
 #'       ResourceId = "string",
 #'       RoleArn = "string",
@@ -2241,6 +2266,7 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'       Url = "string"
 #'     ),
 #'     EntitlementArn = "string",
+#'     ListenerAddress = "string",
 #'     MediaLiveInputArn = "string",
 #'     Name = "string",
 #'     OutputArn = "string",
@@ -2251,7 +2277,8 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'       ),
 #'       MaxBitrate = 123,
 #'       MaxLatency = 123,
-#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       MinLatency = 123,
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'       RemoteId = "string",
 #'       SmoothingLatency = 123,
 #'       StreamId = "string"
@@ -2275,7 +2302,7 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'     Algorithm = "aes128"|"aes192"|"aes256",
 #'     ConstantInitializationVector = "string",
 #'     DeviceId = "string",
-#'     KeyType = "speke"|"static-key",
+#'     KeyType = "speke"|"static-key"|"srt-password",
 #'     Region = "string",
 #'     ResourceId = "string",
 #'     RoleArn = "string",
@@ -2284,9 +2311,10 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'   ),
 #'   FlowArn = "string",
 #'   MaxLatency = 123,
+#'   MinLatency = 123,
 #'   OutputArn = "string",
 #'   Port = 123,
-#'   Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'   Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'   RemoteId = "string",
 #'   SmoothingLatency = 123,
 #'   StreamId = "string",
@@ -2299,14 +2327,14 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #' @keywords internal
 #'
 #' @rdname mediaconnect_update_flow_output
-mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = NULL, Destination = NULL, Encryption = NULL, FlowArn, MaxLatency = NULL, OutputArn, Port = NULL, Protocol = NULL, RemoteId = NULL, SmoothingLatency = NULL, StreamId = NULL, VpcInterfaceAttachment = NULL) {
+mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = NULL, Destination = NULL, Encryption = NULL, FlowArn, MaxLatency = NULL, MinLatency = NULL, OutputArn, Port = NULL, Protocol = NULL, RemoteId = NULL, SmoothingLatency = NULL, StreamId = NULL, VpcInterfaceAttachment = NULL) {
   op <- new_operation(
     name = "UpdateFlowOutput",
     http_method = "PUT",
     http_path = "/v1/flows/{flowArn}/outputs/{outputArn}",
     paginator = list()
   )
-  input <- .mediaconnect$update_flow_output_input(CidrAllowList = CidrAllowList, Description = Description, Destination = Destination, Encryption = Encryption, FlowArn = FlowArn, MaxLatency = MaxLatency, OutputArn = OutputArn, Port = Port, Protocol = Protocol, RemoteId = RemoteId, SmoothingLatency = SmoothingLatency, StreamId = StreamId, VpcInterfaceAttachment = VpcInterfaceAttachment)
+  input <- .mediaconnect$update_flow_output_input(CidrAllowList = CidrAllowList, Description = Description, Destination = Destination, Encryption = Encryption, FlowArn = FlowArn, MaxLatency = MaxLatency, MinLatency = MinLatency, OutputArn = OutputArn, Port = Port, Protocol = Protocol, RemoteId = RemoteId, SmoothingLatency = SmoothingLatency, StreamId = StreamId, VpcInterfaceAttachment = VpcInterfaceAttachment)
   output <- .mediaconnect$update_flow_output_output()
   config <- get_config()
   svc <- .mediaconnect$service(config)
@@ -2323,8 +2351,8 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #'
 #' @usage
 #' mediaconnect_update_flow_source(Decryption, Description, EntitlementArn,
-#'   FlowArn, IngestPort, MaxBitrate, MaxLatency, Protocol, SourceArn,
-#'   StreamId, VpcInterfaceName, WhitelistCidr)
+#'   FlowArn, IngestPort, MaxBitrate, MaxLatency, MinLatency, Protocol,
+#'   SourceArn, StreamId, VpcInterfaceName, WhitelistCidr)
 #'
 #' @param Decryption The type of encryption used on the content ingested from this source.
 #' @param Description A description for the source. This value is not used or seen outside of
@@ -2337,6 +2365,11 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #' @param MaxBitrate The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.
 #' @param MaxLatency The maximum latency in milliseconds. This parameter applies only to
 #' RIST-based and Zixi-based streams.
+#' @param MinLatency The minimum latency in milliseconds for SRT-based streams. In streams
+#' that use the SRT protocol, this value that you set on your MediaConnect
+#' source or output represents the minimal potential latency of that
+#' connection. The latency of the stream is set to the highest number
+#' between the sender’s minimum latency and the receiver’s minimum latency.
 #' @param Protocol The protocol that is used by the source.
 #' @param SourceArn &#91;required&#93; The ARN of the source that you want to update.
 #' @param StreamId The stream ID that you want to use for this transport. This parameter
@@ -2357,7 +2390,7 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #'       Algorithm = "aes128"|"aes192"|"aes256",
 #'       ConstantInitializationVector = "string",
 #'       DeviceId = "string",
-#'       KeyType = "speke"|"static-key",
+#'       KeyType = "speke"|"static-key"|"srt-password",
 #'       Region = "string",
 #'       ResourceId = "string",
 #'       RoleArn = "string",
@@ -2376,7 +2409,8 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #'       ),
 #'       MaxBitrate = 123,
 #'       MaxLatency = 123,
-#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       MinLatency = 123,
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'       RemoteId = "string",
 #'       SmoothingLatency = 123,
 #'       StreamId = "string"
@@ -2394,7 +2428,7 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #'     Algorithm = "aes128"|"aes192"|"aes256",
 #'     ConstantInitializationVector = "string",
 #'     DeviceId = "string",
-#'     KeyType = "speke"|"static-key",
+#'     KeyType = "speke"|"static-key"|"srt-password",
 #'     Region = "string",
 #'     ResourceId = "string",
 #'     RoleArn = "string",
@@ -2407,7 +2441,8 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #'   IngestPort = 123,
 #'   MaxBitrate = 123,
 #'   MaxLatency = 123,
-#'   Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'   MinLatency = 123,
+#'   Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
 #'   SourceArn = "string",
 #'   StreamId = "string",
 #'   VpcInterfaceName = "string",
@@ -2418,14 +2453,14 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #' @keywords internal
 #'
 #' @rdname mediaconnect_update_flow_source
-mediaconnect_update_flow_source <- function(Decryption = NULL, Description = NULL, EntitlementArn = NULL, FlowArn, IngestPort = NULL, MaxBitrate = NULL, MaxLatency = NULL, Protocol = NULL, SourceArn, StreamId = NULL, VpcInterfaceName = NULL, WhitelistCidr = NULL) {
+mediaconnect_update_flow_source <- function(Decryption = NULL, Description = NULL, EntitlementArn = NULL, FlowArn, IngestPort = NULL, MaxBitrate = NULL, MaxLatency = NULL, MinLatency = NULL, Protocol = NULL, SourceArn, StreamId = NULL, VpcInterfaceName = NULL, WhitelistCidr = NULL) {
   op <- new_operation(
     name = "UpdateFlowSource",
     http_method = "PUT",
     http_path = "/v1/flows/{flowArn}/source/{sourceArn}",
     paginator = list()
   )
-  input <- .mediaconnect$update_flow_source_input(Decryption = Decryption, Description = Description, EntitlementArn = EntitlementArn, FlowArn = FlowArn, IngestPort = IngestPort, MaxBitrate = MaxBitrate, MaxLatency = MaxLatency, Protocol = Protocol, SourceArn = SourceArn, StreamId = StreamId, VpcInterfaceName = VpcInterfaceName, WhitelistCidr = WhitelistCidr)
+  input <- .mediaconnect$update_flow_source_input(Decryption = Decryption, Description = Description, EntitlementArn = EntitlementArn, FlowArn = FlowArn, IngestPort = IngestPort, MaxBitrate = MaxBitrate, MaxLatency = MaxLatency, MinLatency = MinLatency, Protocol = Protocol, SourceArn = SourceArn, StreamId = StreamId, VpcInterfaceName = VpcInterfaceName, WhitelistCidr = WhitelistCidr)
   output <- .mediaconnect$update_flow_source_output()
   config <- get_config()
   svc <- .mediaconnect$service(config)

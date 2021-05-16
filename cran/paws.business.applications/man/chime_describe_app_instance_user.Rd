@@ -7,7 +7,7 @@
 chime_describe_app_instance_user(AppInstanceUserArn)
 }
 \arguments{
-\item{AppInstanceUserArn}{[required] The ARN of the app instance user.}
+\item{AppInstanceUserArn}{[required] The ARN of the \code{AppInstanceUser}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -26,7 +26,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns the full details of an \code{AppInstanceUser}.
+Returns the full details of an \code{AppInstanceUser} .
 }
 \section{Request syntax}{
 \preformatted{svc$describe_app_instance_user(

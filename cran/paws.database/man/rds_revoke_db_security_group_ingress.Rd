@@ -3,7 +3,7 @@
 \name{rds_revoke_db_security_group_ingress}
 \alias{rds_revoke_db_security_group_ingress}
 \title{Revokes ingress from a DBSecurityGroup for previously authorized IP
-ranges or EC2 or VPC Security Groups}
+ranges or EC2 or VPC security groups}
 \usage{
 rds_revoke_db_security_group_ingress(DBSecurityGroupName, CIDRIP,
   EC2SecurityGroupName, EC2SecurityGroupId, EC2SecurityGroupOwnerId)
@@ -59,7 +59,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Revokes ingress from a DBSecurityGroup for previously authorized IP
-ranges or EC2 or VPC Security Groups. Required parameters for this API
+ranges or EC2 or VPC security groups. Required parameters for this API
 are one of CIDRIP, EC2SecurityGroupId for VPC, or
 (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 EC2SecurityGroupId).

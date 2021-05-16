@@ -17,7 +17,7 @@ connect_list_instance_storage_configs(InstanceId, ResourceType,
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

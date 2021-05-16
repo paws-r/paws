@@ -2,13 +2,12 @@
 % Please edit documentation in R/cognitoidentity_operations.R
 \name{cognitoidentity_tag_resource}
 \alias{cognitoidentity_tag_resource}
-\title{Assigns a set of tags to an Amazon Cognito identity pool}
+\title{Assigns a set of tags to the specified Amazon Cognito identity pool}
 \usage{
 cognitoidentity_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the identity pool to assign the tags
-to.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the identity pool.}
 
 \item{Tags}{[required] The tags to assign to the identity pool.}
 }
@@ -16,9 +15,9 @@ to.}
 An empty list.
 }
 \description{
-Assigns a set of tags to an Amazon Cognito identity pool. A tag is a
-label that you can use to categorize and manage identity pools in
-different ways, such as by purpose, owner, environment, or other
+Assigns a set of tags to the specified Amazon Cognito identity pool. A
+tag is a label that you can use to categorize and manage identity pools
+in different ways, such as by purpose, owner, environment, or other
 criteria.
 
 Each tag consists of a key and value, both of which you define. A key is

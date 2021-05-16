@@ -13,8 +13,8 @@ ec2_modify_hosts(AutoPlacement, HostIds, HostRecovery, InstanceType,
 \item{HostIds}{[required] The IDs of the Dedicated Hosts to modify.}
 
 \item{HostRecovery}{Indicates whether to enable or disable host recovery for the Dedicated
-Host. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html}{Host Recovery}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+Host. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html}{Host recovery}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{InstanceType}{Specifies the instance type to be supported by the Dedicated Host.
 Specify this parameter to modify a Dedicated Host to support only a

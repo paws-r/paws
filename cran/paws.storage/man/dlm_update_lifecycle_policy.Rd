@@ -37,6 +37,9 @@ Updates the specified lifecycle policy.
     ResourceTypes = list(
       "VOLUME"|"INSTANCE"
     ),
+    ResourceLocations = list(
+      "CLOUD"|"OUTPOST"
+    ),
     TargetTags = list(
       list(
         Key = "string",
@@ -60,6 +63,7 @@ Updates the specified lifecycle policy.
           )
         ),
         CreateRule = list(
+          Location = "CLOUD"|"OUTPOST_LOCAL",
           Interval = 123,
           IntervalUnit = "HOURS",
           Times = list(
@@ -83,6 +87,7 @@ Updates the specified lifecycle policy.
         CrossRegionCopyRules = list(
           list(
             TargetRegion = "string",
+            Target = "string",
             Encrypted = TRUE|FALSE,
             CmkArn = "string",
             CopyTags = TRUE|FALSE,

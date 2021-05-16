@@ -9,7 +9,7 @@ elasticache_rebalance_slots_in_global_replication_group(
   GlobalReplicationGroupId, ApplyImmediately)
 }
 \arguments{
-\item{GlobalReplicationGroupId}{[required] The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{[required] The name of the Global datastore}
 
 \item{ApplyImmediately}{[required] If \code{True}, redistribution is applied immediately.}
 }

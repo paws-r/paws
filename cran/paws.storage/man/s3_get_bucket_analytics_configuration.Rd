@@ -2,9 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_analytics_configuration}
 \alias{s3_get_bucket_analytics_configuration}
-\title{This implementation of the GET operation returns an analytics
-configuration (identified by the analytics configuration ID) from the
-bucket}
+\title{This implementation of the GET action returns an analytics configuration
+(identified by the analytics configuration ID) from the bucket}
 \usage{
 s3_get_bucket_analytics_configuration(Bucket, Id, ExpectedBucketOwner)
 }
@@ -14,7 +13,7 @@ retrieved.}
 
 \item{Id}{[required] The ID that identifies the analytics configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -56,19 +55,18 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This implementation of the GET operation returns an analytics
-configuration (identified by the analytics configuration ID) from the
-bucket.
+This implementation of the GET action returns an analytics configuration
+(identified by the analytics configuration ID) from the bucket.
 
 To use this operation, you must have permissions to perform the
 \code{s3:GetAnalyticsConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to
 others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 For information about Amazon S3 analytics feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/analytics-storage-class.html}{Amazon S3 Analytics – Storage Class Analysis}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 \strong{Related Resources}
 \itemize{

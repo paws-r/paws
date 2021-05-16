@@ -2,7 +2,7 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_describe_availability_monitor_test}
 \alias{storagegateway_describe_availability_monitor_test}
-\title{Returns information about the most recent High Availability monitoring
+\title{Returns information about the most recent high availability monitoring
 test that was performed on the host in a cluster}
 \usage{
 storagegateway_describe_availability_monitor_test(GatewayARN)
@@ -21,7 +21,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns information about the most recent High Availability monitoring
+Returns information about the most recent high availability monitoring
 test that was performed on the host in a cluster. If a test isn't
 performed, the status and start time in the response would be null.
 }

@@ -15,7 +15,7 @@ SDKs, this field is calculated automatically.}
 
 \item{LifecycleConfiguration}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -31,7 +31,7 @@ work. For new lifecycle configurations, use the updated API.
 Creates a new lifecycle configuration for the bucket or replaces an
 existing lifecycle configuration. For information about lifecycle
 configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 By default, all Amazon S3 resources, including buckets, objects, and
 related subresources (for example, lifecycle configuration and website
@@ -52,7 +52,7 @@ deny them permissions for the following actions:
 }
 
 For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 For more examples of transitioning objects to storage classes such as
 STANDARD_IA or ONEZONE_IA, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html#lifecycle-configuration-examples}{Examples of Lifecycle Configuration}.
@@ -66,7 +66,7 @@ STANDARD_IA or ONEZONE_IA, see \href{https://docs.aws.amazon.com/AmazonS3/latest
 the AWS account that created the bucket—can perform any of the
 operations. A resource owner can also grant others permission to
 perform the operation. For more information, see the following
-topics in the Amazon Simple Storage Service Developer Guide:
+topics in the Amazon S3 User Guide:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}

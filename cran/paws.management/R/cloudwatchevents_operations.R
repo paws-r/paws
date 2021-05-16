@@ -92,6 +92,75 @@ cloudwatchevents_cancel_replay <- function(ReplayName) {
 }
 .cloudwatchevents$operations$cancel_replay <- cloudwatchevents_cancel_replay
 
+#' Creates an API destination, which is an HTTP invocation endpoint
+#' configured as a target for events
+#'
+#' @description
+#' Creates an API destination, which is an HTTP invocation endpoint
+#' configured as a target for events.
+#'
+#' @usage
+#' cloudwatchevents_create_api_destination(Name, Description,
+#'   ConnectionArn, InvocationEndpoint, HttpMethod,
+#'   InvocationRateLimitPerSecond)
+#'
+#' @param Name &#91;required&#93; The name for the API destination to create.
+#' @param Description A description for the API destination to create.
+#' @param ConnectionArn &#91;required&#93; The ARN of the connection to use for the API destination. The
+#' destination endpoint must support the authorization type specified for
+#' the connection.
+#' @param InvocationEndpoint &#91;required&#93; The URL to the HTTP invocation endpoint for the API destination.
+#' @param HttpMethod &#91;required&#93; The method to use for the request to the HTTP invocation endpoint.
+#' @param InvocationRateLimitPerSecond The maximum number of requests per second to send to the HTTP invocation
+#' endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinationArn = "string",
+#'   ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_api_destination(
+#'   Name = "string",
+#'   Description = "string",
+#'   ConnectionArn = "string",
+#'   InvocationEndpoint = "string",
+#'   HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'   InvocationRateLimitPerSecond = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_create_api_destination
+cloudwatchevents_create_api_destination <- function(Name, Description = NULL, ConnectionArn, InvocationEndpoint, HttpMethod, InvocationRateLimitPerSecond = NULL) {
+  op <- new_operation(
+    name = "CreateApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$create_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
+  output <- .cloudwatchevents$create_api_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$create_api_destination <- cloudwatchevents_create_api_destination
+
 #' Creates an archive of events with the specified settings
 #'
 #' @description
@@ -156,6 +225,131 @@ cloudwatchevents_create_archive <- function(ArchiveName, EventSourceArn, Descrip
   return(response)
 }
 .cloudwatchevents$operations$create_archive <- cloudwatchevents_create_archive
+
+#' Creates a connection
+#'
+#' @description
+#' Creates a connection. A connection defines the authorization type and
+#' credentials to use for authorization with an API destination HTTP
+#' endpoint.
+#'
+#' @usage
+#' cloudwatchevents_create_connection(Name, Description, AuthorizationType,
+#'   AuthParameters)
+#'
+#' @param Name &#91;required&#93; The name for the connection to create.
+#' @param Description A description for the connection to create.
+#' @param AuthorizationType &#91;required&#93; The type of authorization to use for the connection.
+#' @param AuthParameters &#91;required&#93; A `CreateConnectionAuthRequestParameters` object that contains the
+#' authorization parameters to use to authorize with the endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connection(
+#'   Name = "string",
+#'   Description = "string",
+#'   AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'   AuthParameters = list(
+#'     BasicAuthParameters = list(
+#'       Username = "string",
+#'       Password = "string"
+#'     ),
+#'     OAuthParameters = list(
+#'       ClientParameters = list(
+#'         ClientID = "string",
+#'         ClientSecret = "string"
+#'       ),
+#'       AuthorizationEndpoint = "string",
+#'       HttpMethod = "GET"|"POST"|"PUT",
+#'       OAuthHttpParameters = list(
+#'         HeaderParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         QueryStringParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         BodyParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ApiKeyAuthParameters = list(
+#'       ApiKeyName = "string",
+#'       ApiKeyValue = "string"
+#'     ),
+#'     InvocationHttpParameters = list(
+#'       HeaderParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       QueryStringParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       BodyParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_create_connection
+cloudwatchevents_create_connection <- function(Name, Description = NULL, AuthorizationType, AuthParameters) {
+  op <- new_operation(
+    name = "CreateConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
+  output <- .cloudwatchevents$create_connection_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$create_connection <- cloudwatchevents_create_connection
 
 #' Creates a new event bus within your account
 #'
@@ -348,6 +542,103 @@ cloudwatchevents_deactivate_event_source <- function(Name) {
 }
 .cloudwatchevents$operations$deactivate_event_source <- cloudwatchevents_deactivate_event_source
 
+#' Removes all authorization parameters from the connection
+#'
+#' @description
+#' Removes all authorization parameters from the connection. This lets you
+#' remove the secret from the connection so you can reuse it without having
+#' to create a new connection.
+#'
+#' @usage
+#' cloudwatchevents_deauthorize_connection(Name)
+#'
+#' @param Name &#91;required&#93; The name of the connection to remove authorization from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deauthorize_connection(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_deauthorize_connection
+cloudwatchevents_deauthorize_connection <- function(Name) {
+  op <- new_operation(
+    name = "DeauthorizeConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$deauthorize_connection_input(Name = Name)
+  output <- .cloudwatchevents$deauthorize_connection_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$deauthorize_connection <- cloudwatchevents_deauthorize_connection
+
+#' Deletes the specified API destination
+#'
+#' @description
+#' Deletes the specified API destination.
+#'
+#' @usage
+#' cloudwatchevents_delete_api_destination(Name)
+#'
+#' @param Name &#91;required&#93; The name of the destination to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_api_destination(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_delete_api_destination
+cloudwatchevents_delete_api_destination <- function(Name) {
+  op <- new_operation(
+    name = "DeleteApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$delete_api_destination_input(Name = Name)
+  output <- .cloudwatchevents$delete_api_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$delete_api_destination <- cloudwatchevents_delete_api_destination
+
 #' Deletes the specified archive
 #'
 #' @description
@@ -387,6 +678,61 @@ cloudwatchevents_delete_archive <- function(ArchiveName) {
   return(response)
 }
 .cloudwatchevents$operations$delete_archive <- cloudwatchevents_delete_archive
+
+#' Deletes a connection
+#'
+#' @description
+#' Deletes a connection.
+#'
+#' @usage
+#' cloudwatchevents_delete_connection(Name)
+#'
+#' @param Name &#91;required&#93; The name of the connection to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_delete_connection
+cloudwatchevents_delete_connection <- function(Name) {
+  op <- new_operation(
+    name = "DeleteConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$delete_connection_input(Name = Name)
+  output <- .cloudwatchevents$delete_connection_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$delete_connection <- cloudwatchevents_delete_connection
 
 #' Deletes the specified custom event bus or partner event bus
 #'
@@ -540,6 +886,64 @@ cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL
 }
 .cloudwatchevents$operations$delete_rule <- cloudwatchevents_delete_rule
 
+#' Retrieves details about an API destination
+#'
+#' @description
+#' Retrieves details about an API destination.
+#'
+#' @usage
+#' cloudwatchevents_describe_api_destination(Name)
+#'
+#' @param Name &#91;required&#93; The name of the API destination to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinationArn = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'   ConnectionArn = "string",
+#'   InvocationEndpoint = "string",
+#'   HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'   InvocationRateLimitPerSecond = 123,
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_api_destination(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_describe_api_destination
+cloudwatchevents_describe_api_destination <- function(Name) {
+  op <- new_operation(
+    name = "DescribeApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$describe_api_destination_input(Name = Name)
+  output <- .cloudwatchevents$describe_api_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$describe_api_destination <- cloudwatchevents_describe_api_destination
+
 #' Retrieves details about an archive
 #'
 #' @description
@@ -596,6 +1000,127 @@ cloudwatchevents_describe_archive <- function(ArchiveName) {
   return(response)
 }
 .cloudwatchevents$operations$describe_archive <- cloudwatchevents_describe_archive
+
+#' Retrieves details about a connection
+#'
+#' @description
+#' Retrieves details about a connection.
+#'
+#' @usage
+#' cloudwatchevents_describe_connection(Name)
+#'
+#' @param Name &#91;required&#93; The name of the connection to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   StateReason = "string",
+#'   AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'   SecretArn = "string",
+#'   AuthParameters = list(
+#'     BasicAuthParameters = list(
+#'       Username = "string"
+#'     ),
+#'     OAuthParameters = list(
+#'       ClientParameters = list(
+#'         ClientID = "string"
+#'       ),
+#'       AuthorizationEndpoint = "string",
+#'       HttpMethod = "GET"|"POST"|"PUT",
+#'       OAuthHttpParameters = list(
+#'         HeaderParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         QueryStringParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         BodyParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ApiKeyAuthParameters = list(
+#'       ApiKeyName = "string"
+#'     ),
+#'     InvocationHttpParameters = list(
+#'       HeaderParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       QueryStringParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       BodyParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_connection(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_describe_connection
+cloudwatchevents_describe_connection <- function(Name) {
+  op <- new_operation(
+    name = "DescribeConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$describe_connection_input(Name = Name)
+  output <- .cloudwatchevents$describe_connection_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$describe_connection <- cloudwatchevents_describe_connection
 
 #' Displays details about an event bus in your account
 #'
@@ -1001,6 +1526,78 @@ cloudwatchevents_enable_rule <- function(Name, EventBusName = NULL) {
 }
 .cloudwatchevents$operations$enable_rule <- cloudwatchevents_enable_rule
 
+#' Retrieves a list of API destination in the account in the current Region
+#'
+#' @description
+#' Retrieves a list of API destination in the account in the current
+#' Region.
+#'
+#' @usage
+#' cloudwatchevents_list_api_destinations(NamePrefix, ConnectionArn,
+#'   NextToken, Limit)
+#'
+#' @param NamePrefix A name prefix to filter results returned. Only API destinations with a
+#' name that starts with the prefix are returned.
+#' @param ConnectionArn The ARN of the connection specified for the API destination.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param Limit The maximum number of API destinations to include in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinations = list(
+#'     list(
+#'       ApiDestinationArn = "string",
+#'       Name = "string",
+#'       ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'       ConnectionArn = "string",
+#'       InvocationEndpoint = "string",
+#'       HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'       InvocationRateLimitPerSecond = 123,
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_api_destinations(
+#'   NamePrefix = "string",
+#'   ConnectionArn = "string",
+#'   NextToken = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_list_api_destinations
+cloudwatchevents_list_api_destinations <- function(NamePrefix = NULL, ConnectionArn = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListApiDestinations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$list_api_destinations_input(NamePrefix = NamePrefix, ConnectionArn = ConnectionArn, NextToken = NextToken, Limit = Limit)
+  output <- .cloudwatchevents$list_api_destinations_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$list_api_destinations <- cloudwatchevents_list_api_destinations
+
 #' Lists your archives
 #'
 #' @description
@@ -1072,6 +1669,78 @@ cloudwatchevents_list_archives <- function(NamePrefix = NULL, EventSourceArn = N
   return(response)
 }
 .cloudwatchevents$operations$list_archives <- cloudwatchevents_list_archives
+
+#' Retrieves a list of connections from the account
+#'
+#' @description
+#' Retrieves a list of connections from the account.
+#'
+#' @usage
+#' cloudwatchevents_list_connections(NamePrefix, ConnectionState,
+#'   NextToken, Limit)
+#'
+#' @param NamePrefix A name prefix to filter results returned. Only connections with a name
+#' that starts with the prefix are returned.
+#' @param ConnectionState The state of the connection.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param Limit The maximum number of connections to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connections = list(
+#'     list(
+#'       ConnectionArn = "string",
+#'       Name = "string",
+#'       ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'       StateReason = "string",
+#'       AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastAuthorizedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connections(
+#'   NamePrefix = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   NextToken = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_list_connections
+cloudwatchevents_list_connections <- function(NamePrefix = NULL, ConnectionState = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListConnections",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$list_connections_input(NamePrefix = NamePrefix, ConnectionState = ConnectionState, NextToken = NextToken, Limit = Limit)
+  output <- .cloudwatchevents$list_connections_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$list_connections <- cloudwatchevents_list_connections
 
 #' Lists all the event buses in your account, including the default event
 #' bus, custom event buses, and partner event buses
@@ -1694,6 +2363,14 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
 #'         StatementName = "string",
 #'         WithEvent = TRUE|FALSE
 #'       ),
+#'       SageMakerPipelineParameters = list(
+#'         PipelineParameterList = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
 #'       DeadLetterConfig = list(
 #'         Arn = "string"
 #'       ),
@@ -1780,7 +2457,8 @@ cloudwatchevents_list_targets_by_rule <- function(Rule, EventBusName = NULL, Nex
 #'       ),
 #'       DetailType = "string",
 #'       Detail = "string",
-#'       EventBusName = "string"
+#'       EventBusName = "string",
+#'       TraceHeader = "string"
 #'     )
 #'   )
 #' )
@@ -1898,7 +2576,7 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' organization must specify a `RoleArn` with proper permissions when they
 #' use `PutTarget` to add your account's event bus as a target. For more
 #' information, see [Sending and Receiving Events Between AWS
-#' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
+#' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
 #' The permission policy on the default event bus cannot exceed 10 KB in
@@ -2058,7 +2736,7 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #' @param ScheduleExpression The scheduling expression. For example, "cron(0 20 * * ? *)" or
 #' "rate(5 minutes)".
 #' @param EventPattern The event pattern. For more information, see [Events and Event
-#' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
+#' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
 #' in the *Amazon EventBridge User Guide*.
 #' @param State Indicates whether the rule is enabled or disabled.
 #' @param Description A description of the rule.
@@ -2159,6 +2837,10 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' 
 #' -   Redshift Clusters to invoke Data API ExecuteStatement on
 #' 
+#' -   Custom/SaaS HTTPS APIs via EventBridge API Destinations
+#' 
+#' -   Amazon SageMaker Model Building Pipelines
+#' 
 #' Creating rules with built-in targets is supported only in the AWS
 #' Management Console. The built-in targets are
 #' `EC2 CreateSnapshot API call`, `EC2 RebootInstances API call`,
@@ -2179,7 +2861,7 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' relies on IAM roles that you specify in the `RoleARN` argument in
 #' [`put_targets`][cloudwatchevents_put_targets]. For more information, see
 #' [Authentication and Access
-#' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html)
+#' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-iam.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
 #' If another AWS account is in the same region and has granted you
@@ -2202,7 +2884,7 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' instead of directly by the account ID, then you must specify a `RoleArn`
 #' with proper permissions in the `Target` structure. For more information,
 #' see [Sending and Receiving Events Between AWS
-#' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
+#' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
 #' For more information about enabling cross-account events, see
@@ -2344,6 +3026,14 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #'         Sql = "string",
 #'         StatementName = "string",
 #'         WithEvent = TRUE|FALSE
+#'       ),
+#'       SageMakerPipelineParameters = list(
+#'         PipelineParameterList = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
 #'       ),
 #'       DeadLetterConfig = list(
 #'         Arn = "string"
@@ -2670,9 +3360,26 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
 #' cloudwatchevents_test_event_pattern(EventPattern, Event)
 #'
 #' @param EventPattern &#91;required&#93; The event pattern. For more information, see [Events and Event
-#' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
+#' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
 #' in the *Amazon EventBridge User Guide*.
-#' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern.
+#' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern. The JSON
+#' must follow the format specified in [AWS
+#' Events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html),
+#' and the following fields are mandatory:
+#' 
+#' -   `id`
+#' 
+#' -   `account`
+#' 
+#' -   `source`
+#' 
+#' -   `time`
+#' 
+#' -   `region`
+#' 
+#' -   `resources`
+#' 
+#' -   `detail-type`
 #'
 #' @return
 #' A list with the following syntax:
@@ -2756,6 +3463,71 @@ cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .cloudwatchevents$operations$untag_resource <- cloudwatchevents_untag_resource
 
+#' Updates an API destination
+#'
+#' @description
+#' Updates an API destination.
+#'
+#' @usage
+#' cloudwatchevents_update_api_destination(Name, Description,
+#'   ConnectionArn, InvocationEndpoint, HttpMethod,
+#'   InvocationRateLimitPerSecond)
+#'
+#' @param Name &#91;required&#93; The name of the API destination to update.
+#' @param Description The name of the API destination to update.
+#' @param ConnectionArn The ARN of the connection to use for the API destination.
+#' @param InvocationEndpoint The URL to the endpoint to use for the API destination.
+#' @param HttpMethod The method to use for the API destination.
+#' @param InvocationRateLimitPerSecond The maximum number of invocations per second to send to the API
+#' destination.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinationArn = "string",
+#'   ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_api_destination(
+#'   Name = "string",
+#'   Description = "string",
+#'   ConnectionArn = "string",
+#'   InvocationEndpoint = "string",
+#'   HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'   InvocationRateLimitPerSecond = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_update_api_destination
+cloudwatchevents_update_api_destination <- function(Name, Description = NULL, ConnectionArn = NULL, InvocationEndpoint = NULL, HttpMethod = NULL, InvocationRateLimitPerSecond = NULL) {
+  op <- new_operation(
+    name = "UpdateApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$update_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
+  output <- .cloudwatchevents$update_api_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$update_api_destination <- cloudwatchevents_update_api_destination
+
 #' Updates the specified archive
 #'
 #' @description
@@ -2812,3 +3584,128 @@ cloudwatchevents_update_archive <- function(ArchiveName, Description = NULL, Eve
   return(response)
 }
 .cloudwatchevents$operations$update_archive <- cloudwatchevents_update_archive
+
+#' Updates settings for a connection
+#'
+#' @description
+#' Updates settings for a connection.
+#'
+#' @usage
+#' cloudwatchevents_update_connection(Name, Description, AuthorizationType,
+#'   AuthParameters)
+#'
+#' @param Name &#91;required&#93; The name of the connection to update.
+#' @param Description A description for the connection.
+#' @param AuthorizationType The type of authorization to use for the connection.
+#' @param AuthParameters The authorization parameters to use for the connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connection(
+#'   Name = "string",
+#'   Description = "string",
+#'   AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'   AuthParameters = list(
+#'     BasicAuthParameters = list(
+#'       Username = "string",
+#'       Password = "string"
+#'     ),
+#'     OAuthParameters = list(
+#'       ClientParameters = list(
+#'         ClientID = "string",
+#'         ClientSecret = "string"
+#'       ),
+#'       AuthorizationEndpoint = "string",
+#'       HttpMethod = "GET"|"POST"|"PUT",
+#'       OAuthHttpParameters = list(
+#'         HeaderParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         QueryStringParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         BodyParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ApiKeyAuthParameters = list(
+#'       ApiKeyName = "string",
+#'       ApiKeyValue = "string"
+#'     ),
+#'     InvocationHttpParameters = list(
+#'       HeaderParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       QueryStringParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       BodyParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_update_connection
+cloudwatchevents_update_connection <- function(Name, Description = NULL, AuthorizationType = NULL, AuthParameters = NULL) {
+  op <- new_operation(
+    name = "UpdateConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
+  output <- .cloudwatchevents$update_connection_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$update_connection <- cloudwatchevents_update_connection

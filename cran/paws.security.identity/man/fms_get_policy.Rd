@@ -16,7 +16,7 @@ A list with the following syntax:\preformatted{list(
     PolicyName = "string",
     PolicyUpdateToken = "string",
     SecurityServicePolicyData = list(
-      Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
+      Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL",
       ManagedServiceData = "string"
     ),
     ResourceType = "string",

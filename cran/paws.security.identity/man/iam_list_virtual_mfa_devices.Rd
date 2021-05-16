@@ -58,6 +58,12 @@ A list with the following syntax:\preformatted{list(
       ),
       EnableDate = as.POSIXct(
         "2015-01-01"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
       )
     )
   ),
@@ -71,6 +77,12 @@ Lists the virtual MFA devices defined in the AWS account by assignment
 status. If you do not specify an assignment status, the operation
 returns a list of all virtual MFA devices. Assignment status can be
 \code{Assigned}, \code{Unassigned}, or \code{Any}.
+
+IAM resource-listing operations return a subset of the available
+attributes for the resource. For example, this operation does not return
+tags, even though they are an attribute of the returned object. To view
+all of the information for a virtual MFA device, see
+\code{\link[=iam_list_virtual_mfa_devices]{list_virtual_mfa_devices}}.
 
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.

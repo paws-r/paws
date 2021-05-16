@@ -10,19 +10,19 @@ elasticache_create_global_replication_group(
   PrimaryReplicationGroupId)
 }
 \arguments{
-\item{GlobalReplicationGroupIdSuffix}{[required] The suffix name of a Global Datastore. Amazon ElastiCache automatically
-applies a prefix to the Global Datastore ID when it is created. Each AWS
-Region has its own prefix. For instance, a Global Datastore ID created
+\item{GlobalReplicationGroupIdSuffix}{[required] The suffix name of a Global datastore. Amazon ElastiCache automatically
+applies a prefix to the Global datastore ID when it is created. Each AWS
+Region has its own prefix. For instance, a Global datastore ID created
 in the US-West-1 region will begin with "dsdfu" along with the suffix
 name you provide. The suffix, combined with the auto-generated prefix,
-guarantees uniqueness of the Global Datastore name across multiple
+guarantees uniqueness of the Global datastore name across multiple
 regions.
 
-For a full list of AWS Regions and their respective Global Datastore iD
-prefixes, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastores-CLI.html}{Using the AWS CLI with Global Datastores}
+For a full list of AWS Regions and their respective Global datastore iD
+prefixes, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastores-CLI.html}{Using the AWS CLI with Global datastores}
 .}
 
-\item{GlobalReplicationGroupDescription}{Provides details of the Global Datastore}
+\item{GlobalReplicationGroupDescription}{Provides details of the Global datastore}
 
 \item{PrimaryReplicationGroupId}{[required] The name of the primary cluster that accepts writes and will replicate
 updates to the secondary cluster.}
@@ -68,7 +68,7 @@ to enable low-latency reads and disaster recovery across regions. For
 more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html}{Replication Across Regions Using Global Datastore}.
 \itemize{
 \item The \strong{GlobalReplicationGroupIdSuffix} is the name of the Global
-Datastore.
+datastore.
 \item The \strong{PrimaryReplicationGroupId} represents the name of the primary
 cluster that accepts writes and will replicate updates to the
 secondary cluster.

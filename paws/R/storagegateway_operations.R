@@ -297,7 +297,7 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Configures one or more gateway local disks as upload buffer for a
 #' specified gateway. This operation is supported for the stored volume,
-#' cached volume and tape gateway types.
+#' cached volume, and tape gateway types.
 #' 
 #' In the request, you specify the gateway Amazon Resource Name (ARN) to
 #' which you want to add upload buffer, and one or more disk IDs that you
@@ -510,6 +510,81 @@ storagegateway_assign_tape_pool <- function(TapeARN, PoolId, BypassGovernanceRet
   return(response)
 }
 .storagegateway$operations$assign_tape_pool <- storagegateway_assign_tape_pool
+
+#' Associate an Amazon FSx file system with the Amazon FSx file gateway
+#'
+#' @description
+#' Associate an Amazon FSx file system with the Amazon FSx file gateway.
+#' After the association process is complete, the file shares on the Amazon
+#' FSx file system are available for access through the gateway. This
+#' operation only supports the Amazon FSx file gateway type.
+#'
+#' @usage
+#' storagegateway_associate_file_system(UserName, Password, ClientToken,
+#'   GatewayARN, LocationARN, Tags, AuditDestinationARN, CacheAttributes)
+#'
+#' @param UserName &#91;required&#93; The user name of the user credential that has permission to access the
+#' root share D$ of the Amazon FSx file system. The user account must
+#' belong to the Amazon FSx delegated admin user group.
+#' @param Password &#91;required&#93; The password of the user credential.
+#' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by the file gateway
+#' to ensure idempotent file system association creation.
+#' @param GatewayARN &#91;required&#93; 
+#' @param LocationARN &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon FSx file system to
+#' associate with the Amazon FSx file gateway.
+#' @param Tags A list of up to 50 tags that can be assigned to the file system
+#' association. Each tag is a key-value pair.
+#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for the audit logs.
+#' @param CacheAttributes 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystemAssociationARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_file_system(
+#'   UserName = "string",
+#'   Password = "string",
+#'   ClientToken = "string",
+#'   GatewayARN = "string",
+#'   LocationARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   AuditDestinationARN = "string",
+#'   CacheAttributes = list(
+#'     CacheStaleTimeoutInSeconds = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_associate_file_system
+storagegateway_associate_file_system <- function(UserName, Password, ClientToken, GatewayARN, LocationARN, Tags = NULL, AuditDestinationARN = NULL, CacheAttributes = NULL) {
+  op <- new_operation(
+    name = "AssociateFileSystem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$associate_file_system_input(UserName = UserName, Password = Password, ClientToken = ClientToken, GatewayARN = GatewayARN, LocationARN = LocationARN, Tags = Tags, AuditDestinationARN = AuditDestinationARN, CacheAttributes = CacheAttributes)
+  output <- .storagegateway$associate_file_system_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$associate_file_system <- storagegateway_associate_file_system
 
 #' Connects a volume to an iSCSI connection and then attaches the volume to
 #' the specified gateway
@@ -942,8 +1017,25 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
 #' `LocationARN`.
-#' @param CacheAttributes Refresh cache information.
-#' @param NotificationPolicy The notification policy of the file share.
+#' @param CacheAttributes Specifies refresh cache information for the file share.
+#' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
+#' controls the number of seconds to wait after the last point in time a
+#' client wrote to a file before generating an `ObjectUploaded`
+#' notification. Because clients can make many small writes to files, it's
+#' best to set this parameter for as long as possible to avoid generating
+#' multiple notifications for the same file in a small time period.
+#' 
+#' `SettlingTimeInSeconds` has no effect on the timing of the object
+#' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' The following example sets `NotificationPolicy` on with
+#' `SettlingTimeInSeconds` set to 60.
+#' 
+#' `{\"Upload\": {\"SettlingTimeInSeconds\": 60}}`
+#' 
+#' The following example sets `NotificationPolicy` off.
+#' 
+#' `{}`
 #'
 #' @return
 #' A list with the following syntax:
@@ -1113,7 +1205,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
 #' `@@DOMAIN\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
-#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for the audit logs.
+#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for audit logs.
 #' @param Authentication The authentication method that users use to access the file share. The
 #' default is `ActiveDirectory`.
 #' 
@@ -1133,8 +1225,25 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
 #' `LocationARN`.
-#' @param CacheAttributes Refresh cache information.
-#' @param NotificationPolicy The notification policy of the file share.
+#' @param CacheAttributes Specifies refresh cache information for the file share.
+#' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
+#' controls the number of seconds to wait after the last point in time a
+#' client wrote to a file before generating an `ObjectUploaded`
+#' notification. Because clients can make many small writes to files, it's
+#' best to set this parameter for as long as possible to avoid generating
+#' multiple notifications for the same file in a small time period.
+#' 
+#' `SettlingTimeInSeconds` has no effect on the timing of the object
+#' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' The following example sets `NotificationPolicy` on with
+#' `SettlingTimeInSeconds` set to 60.
+#' 
+#' `{\"Upload\": {\"SettlingTimeInSeconds\": 60}}`
+#' 
+#' The following example sets `NotificationPolicy` off.
+#' 
+#' `{}`
 #'
 #' @return
 #' A list with the following syntax:
@@ -1213,7 +1322,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' 
 #' AWS Storage Gateway provides the ability to back up point-in-time
 #' snapshots of your data to Amazon Simple Storage (Amazon S3) for durable
-#' off-site recovery, as well as import the data to an Amazon Elastic Block
+#' off-site recovery, and also import the data to an Amazon Elastic Block
 #' Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take
 #' snapshots of your gateway volume on a scheduled or ad hoc basis. This
 #' API enables you to take an ad hoc snapshot. For more information, see
@@ -1438,13 +1547,13 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' @param DiskId &#91;required&#93; The unique identifier for the gateway local disk that is configured as a
 #' stored volume. Use [`list_local_disks`][storagegateway_list_local_disks]
 #' to list disk IDs for a gateway.
-#' @param SnapshotId The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the
-#' new stored volume. Specify this field if you want to create the iSCSI
-#' storage volume from a snapshot; otherwise, do not include this field. To
-#' list snapshots for your account use
+#' @param SnapshotId The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
+#' the new stored volume. Specify this field if you want to create the
+#' iSCSI storage volume from a snapshot; otherwise, do not include this
+#' field. To list snapshots for your account use
 #' [DescribeSnapshots](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html)
 #' in the *Amazon Elastic Compute Cloud API Reference*.
-#' @param PreserveExistingData &#91;required&#93; Set to true `true` if you want to preserve the data on the local disk.
+#' @param PreserveExistingData &#91;required&#93; Set to `true` if you want to preserve the data on the local disk.
 #' Otherwise, set to `false` to create an empty volume.
 #' 
 #' Valid Values: `true` | `false`
@@ -1757,7 +1866,7 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' @param TapeBarcodePrefix &#91;required&#93; A prefix that you append to the barcode of the virtual tape you are
 #' creating. This prefix makes the barcode unique.
 #' 
-#' The prefix must be 1 to 4 characters in length and must be one of the
+#' The prefix must be 1-4 characters in length and must be one of the
 #' uppercase letters from A to Z.
 #' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
 #' KMS key, or `false` to use a key managed by Amazon S3. Optional.
@@ -2464,11 +2573,11 @@ storagegateway_delete_volume <- function(VolumeARN) {
 }
 .storagegateway$operations$delete_volume <- storagegateway_delete_volume
 
-#' Returns information about the most recent High Availability monitoring
+#' Returns information about the most recent high availability monitoring
 #' test that was performed on the host in a cluster
 #'
 #' @description
-#' Returns information about the most recent High Availability monitoring
+#' Returns information about the most recent high availability monitoring
 #' test that was performed on the host in a cluster. If a test isn't
 #' performed, the status and start time in the response would be null.
 #'
@@ -2881,6 +2990,73 @@ storagegateway_describe_chap_credentials <- function(TargetARN) {
   return(response)
 }
 .storagegateway$operations$describe_chap_credentials <- storagegateway_describe_chap_credentials
+
+#' Gets the file system association information
+#'
+#' @description
+#' Gets the file system association information. This operation is only
+#' supported for Amazon FSx file gateways.
+#'
+#' @usage
+#' storagegateway_describe_file_system_associations(
+#'   FileSystemAssociationARNList)
+#'
+#' @param FileSystemAssociationARNList &#91;required&#93; An array containing the Amazon Resource Name (ARN) of each file system
+#' association to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystemAssociationInfoList = list(
+#'     list(
+#'       FileSystemAssociationARN = "string",
+#'       LocationARN = "string",
+#'       FileSystemAssociationStatus = "string",
+#'       AuditDestinationARN = "string",
+#'       GatewayARN = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CacheAttributes = list(
+#'         CacheStaleTimeoutInSeconds = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_file_system_associations(
+#'   FileSystemAssociationARNList = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_describe_file_system_associations
+storagegateway_describe_file_system_associations <- function(FileSystemAssociationARNList) {
+  op <- new_operation(
+    name = "DescribeFileSystemAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$describe_file_system_associations_input(FileSystemAssociationARNList = FileSystemAssociationARNList)
+  output <- .storagegateway$describe_file_system_associations_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$describe_file_system_associations <- storagegateway_describe_file_system_associations
 
 #' Returns metadata about a gateway such as its name, network interfaces,
 #' configured time zone, and the state (whether the gateway is running or
@@ -4064,6 +4240,62 @@ storagegateway_disable_gateway <- function(GatewayARN) {
 }
 .storagegateway$operations$disable_gateway <- storagegateway_disable_gateway
 
+#' Disassociates an Amazon FSx file system from the specified gateway
+#'
+#' @description
+#' Disassociates an Amazon FSx file system from the specified gateway.
+#' After the disassociation process finishes, the gateway can no longer
+#' access the Amazon FSx file system. This operation is only supported in
+#' the Amazon FSx file gateway type.
+#'
+#' @usage
+#' storagegateway_disassociate_file_system(FileSystemAssociationARN,
+#'   ForceDelete)
+#'
+#' @param FileSystemAssociationARN &#91;required&#93; The Amazon Resource Name (ARN) of the file system association to be
+#' deleted.
+#' @param ForceDelete If this value is set to true, the operation disassociates an Amazon FSx
+#' file system immediately. It ends all data uploads to the file system,
+#' and the file system association enters the `FORCE_DELETING` status. If
+#' this value is set to false, the Amazon FSx file system does not
+#' disassociate until all data is uploaded.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystemAssociationARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_file_system(
+#'   FileSystemAssociationARN = "string",
+#'   ForceDelete = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_disassociate_file_system
+storagegateway_disassociate_file_system <- function(FileSystemAssociationARN, ForceDelete = NULL) {
+  op <- new_operation(
+    name = "DisassociateFileSystem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$disassociate_file_system_input(FileSystemAssociationARN = FileSystemAssociationARN, ForceDelete = ForceDelete)
+  output <- .storagegateway$disassociate_file_system_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$disassociate_file_system <- storagegateway_disassociate_file_system
+
 #' Adds a file gateway to an Active Directory domain
 #'
 #' @description
@@ -4267,6 +4499,73 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
   return(response)
 }
 .storagegateway$operations$list_file_shares <- storagegateway_list_file_shares
+
+#' Gets a list of FileSystemAssociationSummary objects
+#'
+#' @description
+#' Gets a list of `FileSystemAssociationSummary` objects. Each object
+#' contains a summary of a file system association. This operation is only
+#' supported for Amazon FSx file gateways.
+#'
+#' @usage
+#' storagegateway_list_file_system_associations(GatewayARN, Limit, Marker)
+#'
+#' @param GatewayARN 
+#' @param Limit The maximum number of file system associations to return in the
+#' response. If present, `Limit` must be an integer with a value greater
+#' than zero. Optional.
+#' @param Marker Opaque pagination token returned from a previous
+#' [`list_file_system_associations`][storagegateway_list_file_system_associations]
+#' operation. If present, `Marker` specifies where to continue the list
+#' from after a previous call to
+#' [`list_file_system_associations`][storagegateway_list_file_system_associations].
+#' Optional.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   NextMarker = "string",
+#'   FileSystemAssociationSummaryList = list(
+#'     list(
+#'       FileSystemAssociationId = "string",
+#'       FileSystemAssociationARN = "string",
+#'       FileSystemAssociationStatus = "string",
+#'       GatewayARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_file_system_associations(
+#'   GatewayARN = "string",
+#'   Limit = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_list_file_system_associations
+storagegateway_list_file_system_associations <- function(GatewayARN = NULL, Limit = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "ListFileSystemAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$list_file_system_associations_input(GatewayARN = GatewayARN, Limit = Limit, Marker = Marker)
+  output <- .storagegateway$list_file_system_associations_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$list_file_system_associations <- storagegateway_list_file_system_associations
 
 #' Lists gateways owned by an AWS account in an AWS Region specified in the
 #' request
@@ -4927,16 +5226,19 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 }
 .storagegateway$operations$notify_when_uploaded <- storagegateway_notify_when_uploaded
 
-#' Refreshes the cache for the specified file share
+#' Refreshes the cached inventory of objects for the specified file share
 #'
 #' @description
-#' Refreshes the cache for the specified file share. This operation finds
-#' objects in the Amazon S3 bucket that were added, removed, or replaced
-#' since the gateway last listed the bucket's contents and cached the
-#' results. This operation is only supported in the file gateway type. You
-#' can subscribe to be notified through an Amazon CloudWatch event when
-#' your RefreshCache operation completes. For more information, see
-#' [Getting notified about file
+#' Refreshes the cached inventory of objects for the specified file share.
+#' This operation finds objects in the Amazon S3 bucket that were added,
+#' removed, or replaced since the gateway last listed the bucket's contents
+#' and cached the results. This operation does not import files into the
+#' file gateway cache storage. It only updates the cached inventory to
+#' reflect changes in the inventory of the objects in the S3 bucket. This
+#' operation is only supported in the file gateway type. You can subscribe
+#' to be notified through an Amazon CloudWatch event when your
+#' [`refresh_cache`][storagegateway_refresh_cache] operation completes. For
+#' more information, see [Getting notified about file
 #' operations](https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification)
 #' in the *AWS Storage Gateway User Guide*.
 #' 
@@ -4945,10 +5247,10 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' necessarily mean that the file refresh has completed. You should use the
 #' refresh-complete notification to determine that the operation has
 #' completed before you check for new files on the gateway file share. You
-#' can subscribe to be notified through an CloudWatch event when your
+#' can subscribe to be notified through a CloudWatch event when your
 #' [`refresh_cache`][storagegateway_refresh_cache] operation completes.
 #' 
-#' Throttle limit: This API is asynchronous so the gateway will accept no
+#' Throttle limit: This API is asynchronous, so the gateway will accept no
 #' more than two refreshes at any time. We recommend using the
 #' refresh-complete CloudWatch event notification before issuing additional
 #' requests. For more information, see [Getting notified about file
@@ -5895,6 +6197,66 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 }
 .storagegateway$operations$update_chap_credentials <- storagegateway_update_chap_credentials
 
+#' Updates a file system association
+#'
+#' @description
+#' Updates a file system association. This operation is only supported in
+#' the Amazon FSx file gateway type.
+#'
+#' @usage
+#' storagegateway_update_file_system_association(FileSystemAssociationARN,
+#'   UserName, Password, AuditDestinationARN, CacheAttributes)
+#'
+#' @param FileSystemAssociationARN &#91;required&#93; The Amazon Resource Name (ARN) of the file system association that you
+#' want to update.
+#' @param UserName The user name of the user credential that has permission to access the
+#' root share D$ of the Amazon FSx file system. The user account must
+#' belong to the Amazon FSx delegated admin user group.
+#' @param Password The password of the user credential.
+#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for the audit logs.
+#' @param CacheAttributes 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystemAssociationARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_file_system_association(
+#'   FileSystemAssociationARN = "string",
+#'   UserName = "string",
+#'   Password = "string",
+#'   AuditDestinationARN = "string",
+#'   CacheAttributes = list(
+#'     CacheStaleTimeoutInSeconds = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_update_file_system_association
+storagegateway_update_file_system_association <- function(FileSystemAssociationARN, UserName = NULL, Password = NULL, AuditDestinationARN = NULL, CacheAttributes = NULL) {
+  op <- new_operation(
+    name = "UpdateFileSystemAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$update_file_system_association_input(FileSystemAssociationARN = FileSystemAssociationARN, UserName = UserName, Password = Password, AuditDestinationARN = AuditDestinationARN, CacheAttributes = CacheAttributes)
+  output <- .storagegateway$update_file_system_association_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$update_file_system_association <- storagegateway_update_file_system_association
+
 #' Updates a gateway's metadata, which includes the gateway's name and time
 #' zone
 #'
@@ -6199,8 +6561,25 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
 #' `LocationARN`.
-#' @param CacheAttributes Refresh cache information.
-#' @param NotificationPolicy The notification policy of the file share.
+#' @param CacheAttributes specifies refresh cache information for the file share.
+#' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
+#' controls the number of seconds to wait after the last point in time a
+#' client wrote to a file before generating an `ObjectUploaded`
+#' notification. Because clients can make many small writes to files, it's
+#' best to set this parameter for as long as possible to avoid generating
+#' multiple notifications for the same file in a small time period.
+#' 
+#' `SettlingTimeInSeconds` has no effect on the timing of the object
+#' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' The following example sets `NotificationPolicy` on with
+#' `SettlingTimeInSeconds` set to 60.
+#' 
+#' `{\"Upload\": {\"SettlingTimeInSeconds\": 60}}`
+#' 
+#' The following example sets `NotificationPolicy` off.
+#' 
+#' `{}`
 #'
 #' @return
 #' A list with the following syntax:
@@ -6352,7 +6731,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
 #' `@@DOMAIN\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
-#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for the audit logs.
+#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for audit logs.
 #' @param CaseSensitivity The case of an object name in an Amazon S3 bucket. For
 #' `ClientSpecified`, the client determines the case sensitivity. For
 #' `CaseSensitive`, the gateway determines the case sensitivity. The
@@ -6361,8 +6740,25 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
 #' `LocationARN`.
-#' @param CacheAttributes Refresh cache information.
-#' @param NotificationPolicy The notification policy of the file share.
+#' @param CacheAttributes Specifies refresh cache information for the file share.
+#' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
+#' controls the number of seconds to wait after the last point in time a
+#' client wrote to a file before generating an `ObjectUploaded`
+#' notification. Because clients can make many small writes to files, it's
+#' best to set this parameter for as long as possible to avoid generating
+#' multiple notifications for the same file in a small time period.
+#' 
+#' `SettlingTimeInSeconds` has no effect on the timing of the object
+#' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' The following example sets `NotificationPolicy` on with
+#' `SettlingTimeInSeconds` set to 60.
+#' 
+#' `{\"Upload\": {\"SettlingTimeInSeconds\": 60}}`
+#' 
+#' The following example sets `NotificationPolicy` off.
+#' 
+#' `{}`
 #'
 #' @return
 #' A list with the following syntax:

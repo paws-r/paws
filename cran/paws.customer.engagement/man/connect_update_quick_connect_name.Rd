@@ -25,8 +25,8 @@ This API is in preview release for Amazon Connect and is subject to
 change.
 
 Updates the name and description of a quick connect. The request accepts
-the following data in JSON format. At least Name or Description must be
-provided.
+the following data in JSON format. At least \code{Name} or \code{Description} must
+be provided.
 }
 \section{Request syntax}{
 \preformatted{svc$update_quick_connect_name(

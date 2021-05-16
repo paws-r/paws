@@ -15,12 +15,6 @@ NULL
 #' accessed or moved. For more information, see the [Amazon Macie Classic
 #' User
 #' Guide](https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html).
-#' 
-#' A new Amazon Macie is now available with significant design improvements
-#' and additional features, at a lower price and in most AWS Regions. We
-#' encourage you to explore and use the new and improved features, and
-#' benefit from the reduced cost. To learn about features and pricing for
-#' the new Amazon Macie, see [Amazon Macie](https://aws.amazon.com/macie/).
 #'
 #' @param
 #' config
@@ -58,7 +52,7 @@ NULL
 #'  \link[=macie_associate_s3_resources]{associate_s3_resources} \tab Associates specified S3 resources with Amazon Macie Classic for monitoring and data classification\cr
 #'  \link[=macie_disassociate_member_account]{disassociate_member_account} \tab Removes the specified member account from Amazon Macie Classic\cr
 #'  \link[=macie_disassociate_s3_resources]{disassociate_s3_resources} \tab Removes specified S3 resources from being monitored by Amazon Macie Classic\cr
-#'  \link[=macie_list_member_accounts]{list_member_accounts} \tab Lists all Amazon Macie Classic member accounts for the current Amazon Macie Classic master account\cr
+#'  \link[=macie_list_member_accounts]{list_member_accounts} \tab Lists all Amazon Macie Classic member accounts for the current Macie Classic administrator account\cr
 #'  \link[=macie_list_s3_resources]{list_s3_resources} \tab Lists all the S3 resources associated with Amazon Macie Classic\cr
 #'  \link[=macie_update_s3_resources]{update_s3_resources} \tab Updates the classification types for the specified S3 resources
 #' }

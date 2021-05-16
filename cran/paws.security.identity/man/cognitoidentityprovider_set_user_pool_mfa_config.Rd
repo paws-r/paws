@@ -14,7 +14,10 @@ cognitoidentityprovider_set_user_pool_mfa_config(UserPoolId,
 
 \item{SoftwareTokenMfaConfiguration}{The software token MFA configuration.}
 
-\item{MfaConfiguration}{The MFA configuration. Valid values include:
+\item{MfaConfiguration}{The MFA configuration. Users who don't have an MFA factor set up won't
+be able to sign-in if you set the MfaConfiguration value to ‘ON’. See
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-mfa.html}{Adding Multi-Factor Authentication (MFA) to a User Pool}
+to learn more. Valid values include:
 \itemize{
 \item \code{OFF} MFA will not be used for any users.
 \item \code{ON} MFA is required for all users to sign in.

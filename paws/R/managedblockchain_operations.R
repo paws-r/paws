@@ -55,6 +55,9 @@ NULL
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     Tags = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -90,7 +93,7 @@ managedblockchain_create_member <- function(ClientRequestToken, InvitationId, Ne
 #' @usage
 #' managedblockchain_create_network(ClientRequestToken, Name, Description,
 #'   Framework, FrameworkVersion, FrameworkConfiguration, VotingPolicy,
-#'   MemberConfiguration)
+#'   MemberConfiguration, Tags)
 #'
 #' @param ClientRequestToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the operation. An idempotent operation completes no more
@@ -106,6 +109,18 @@ managedblockchain_create_member <- function(ClientRequestToken, InvitationId, Ne
 #' @param VotingPolicy &#91;required&#93; The voting rules used by the network to determine if a proposal is
 #' approved.
 #' @param MemberConfiguration &#91;required&#93; Configuration properties for the first member within the network.
+#' @param Tags Tags to assign to the network. Each tag consists of a key and optional
+#' value.
+#' 
+#' When specifying tags during creation, you can specify multiple key-value
+#' pairs in a single request, with an overall maximum of 50 tags added to
+#' each resource.
+#' 
+#' For more information about tags, see [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/)
+#' in the *Amazon Managed Blockchain Ethereum Developer Guide*, or [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/)
+#' in the *Amazon Managed Blockchain Hyperledger Fabric Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -153,7 +168,13 @@ managedblockchain_create_member <- function(ClientRequestToken, InvitationId, Ne
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     Tags = list(
+#'       "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -161,14 +182,14 @@ managedblockchain_create_member <- function(ClientRequestToken, InvitationId, Ne
 #' @keywords internal
 #'
 #' @rdname managedblockchain_create_network
-managedblockchain_create_network <- function(ClientRequestToken, Name, Description = NULL, Framework, FrameworkVersion, FrameworkConfiguration = NULL, VotingPolicy, MemberConfiguration) {
+managedblockchain_create_network <- function(ClientRequestToken, Name, Description = NULL, Framework, FrameworkVersion, FrameworkConfiguration = NULL, VotingPolicy, MemberConfiguration, Tags = NULL) {
   op <- new_operation(
     name = "CreateNetwork",
     http_method = "POST",
     http_path = "/networks",
     paginator = list()
   )
-  input <- .managedblockchain$create_network_input(ClientRequestToken = ClientRequestToken, Name = Name, Description = Description, Framework = Framework, FrameworkVersion = FrameworkVersion, FrameworkConfiguration = FrameworkConfiguration, VotingPolicy = VotingPolicy, MemberConfiguration = MemberConfiguration)
+  input <- .managedblockchain$create_network_input(ClientRequestToken = ClientRequestToken, Name = Name, Description = Description, Framework = Framework, FrameworkVersion = FrameworkVersion, FrameworkConfiguration = FrameworkConfiguration, VotingPolicy = VotingPolicy, MemberConfiguration = MemberConfiguration, Tags = Tags)
   output <- .managedblockchain$create_network_output()
   config <- get_config()
   svc <- .managedblockchain$service(config)
@@ -187,7 +208,7 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 #'
 #' @usage
 #' managedblockchain_create_node(ClientRequestToken, NetworkId, MemberId,
-#'   NodeConfiguration)
+#'   NodeConfiguration, Tags)
 #'
 #' @param ClientRequestToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the operation. An idempotent operation completes no more
@@ -207,6 +228,18 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 #' 
 #' Applies only to Hyperledger Fabric.
 #' @param NodeConfiguration &#91;required&#93; The properties of a node configuration.
+#' @param Tags Tags to assign to the node. Each tag consists of a key and optional
+#' value.
+#' 
+#' When specifying tags during creation, you can specify multiple key-value
+#' pairs in a single request, with an overall maximum of 50 tags added to
+#' each resource.
+#' 
+#' For more information about tags, see [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/)
+#' in the *Amazon Managed Blockchain Ethereum Developer Guide*, or [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/)
+#' in the *Amazon Managed Blockchain Hyperledger Fabric Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -240,6 +273,9 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 #'       )
 #'     ),
 #'     StateDB = "LevelDB"|"CouchDB"
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -247,14 +283,14 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 #' @keywords internal
 #'
 #' @rdname managedblockchain_create_node
-managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberId = NULL, NodeConfiguration) {
+managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberId = NULL, NodeConfiguration, Tags = NULL) {
   op <- new_operation(
     name = "CreateNode",
     http_method = "POST",
     http_path = "/networks/{networkId}/nodes",
     paginator = list()
   )
-  input <- .managedblockchain$create_node_input(ClientRequestToken = ClientRequestToken, NetworkId = NetworkId, MemberId = MemberId, NodeConfiguration = NodeConfiguration)
+  input <- .managedblockchain$create_node_input(ClientRequestToken = ClientRequestToken, NetworkId = NetworkId, MemberId = MemberId, NodeConfiguration = NodeConfiguration, Tags = Tags)
   output <- .managedblockchain$create_node_output()
   config <- get_config()
   svc <- .managedblockchain$service(config)
@@ -277,7 +313,7 @@ managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberI
 #'
 #' @usage
 #' managedblockchain_create_proposal(ClientRequestToken, NetworkId,
-#'   MemberId, Actions, Description)
+#'   MemberId, Actions, Description, Tags)
 #'
 #' @param ClientRequestToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the operation. An idempotent operation completes no more
@@ -294,6 +330,19 @@ managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberI
 #' `Removals` actions.
 #' @param Description A description for the proposal that is visible to voting members, for
 #' example, "Proposal to add Example Corp. as member."
+#' @param Tags Tags to assign to the proposal. Each tag consists of a key and optional
+#' value.
+#' 
+#' When specifying tags during creation, you can specify multiple key-value
+#' pairs in a single request, with an overall maximum of 50 tags added to
+#' each resource. If the proposal is for a network invitation, the
+#' invitation inherits the tags added to the proposal.
+#' 
+#' For more information about tags, see [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/)
+#' in the *Amazon Managed Blockchain Ethereum Developer Guide*, or [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/)
+#' in the *Amazon Managed Blockchain Hyperledger Fabric Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -321,21 +370,24 @@ managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberI
 #'       )
 #'     )
 #'   ),
-#'   Description = "string"
+#'   Description = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname managedblockchain_create_proposal
-managedblockchain_create_proposal <- function(ClientRequestToken, NetworkId, MemberId, Actions, Description = NULL) {
+managedblockchain_create_proposal <- function(ClientRequestToken, NetworkId, MemberId, Actions, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateProposal",
     http_method = "POST",
     http_path = "/networks/{networkId}/proposals",
     paginator = list()
   )
-  input <- .managedblockchain$create_proposal_input(ClientRequestToken = ClientRequestToken, NetworkId = NetworkId, MemberId = MemberId, Actions = Actions, Description = Description)
+  input <- .managedblockchain$create_proposal_input(ClientRequestToken = ClientRequestToken, NetworkId = NetworkId, MemberId = MemberId, Actions = Actions, Description = Description, Tags = Tags)
   output <- .managedblockchain$create_proposal_output()
   config <- get_config()
   svc <- .managedblockchain$service(config)
@@ -495,7 +547,11 @@ managedblockchain_delete_node <- function(NetworkId, MemberId = NULL, NodeId) {
 #'     Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED",
 #'     CreationDate = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     Tags = list(
+#'       "string"
+#'     ),
+#'     Arn = "string"
 #'   )
 #' )
 #' ```
@@ -570,7 +626,11 @@ managedblockchain_get_member <- function(NetworkId, MemberId) {
 #'     Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED",
 #'     CreationDate = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     Tags = list(
+#'       "string"
+#'     ),
+#'     Arn = "string"
 #'   )
 #' )
 #' ```
@@ -657,7 +717,11 @@ managedblockchain_get_network <- function(NetworkId) {
 #'     Status = "CREATING"|"AVAILABLE"|"UNHEALTHY"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
 #'     CreationDate = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     Tags = list(
+#'       "string"
+#'     ),
+#'     Arn = "string"
 #'   )
 #' )
 #' ```
@@ -735,7 +799,11 @@ managedblockchain_get_node <- function(NetworkId, MemberId = NULL, NodeId) {
 #'     ),
 #'     YesVoteCount = 123,
 #'     NoVoteCount = 123,
-#'     OutstandingVoteCount = 123
+#'     OutstandingVoteCount = 123,
+#'     Tags = list(
+#'       "string"
+#'     ),
+#'     Arn = "string"
 #'   )
 #' )
 #' ```
@@ -804,8 +872,10 @@ managedblockchain_get_proposal <- function(NetworkId, ProposalId) {
 #'         Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED",
 #'         CreationDate = as.POSIXct(
 #'           "2015-01-01"
-#'         )
-#'       )
+#'         ),
+#'         Arn = "string"
+#'       ),
+#'       Arn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -876,7 +946,8 @@ managedblockchain_list_invitations <- function(MaxResults = NULL, NextToken = NU
 #'       CreationDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       IsOwned = TRUE|FALSE
+#'       IsOwned = TRUE|FALSE,
+#'       Arn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -952,7 +1023,8 @@ managedblockchain_list_members <- function(NetworkId, Name = NULL, Status = NULL
 #'       Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED",
 #'       CreationDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       Arn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1023,7 +1095,8 @@ managedblockchain_list_networks <- function(Name = NULL, Framework = NULL, Statu
 #'         "2015-01-01"
 #'       ),
 #'       AvailabilityZone = "string",
-#'       InstanceType = "string"
+#'       InstanceType = "string",
+#'       Arn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1154,7 +1227,8 @@ managedblockchain_list_proposal_votes <- function(NetworkId, ProposalId, MaxResu
 #'       ),
 #'       ExpirationDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       Arn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1189,6 +1263,63 @@ managedblockchain_list_proposals <- function(NetworkId, MaxResults = NULL, NextT
   return(response)
 }
 .managedblockchain$operations$list_proposals <- managedblockchain_list_proposals
+
+#' Returns a list of tags for the specified resource
+#'
+#' @description
+#' Returns a list of tags for the specified resource. Each tag consists of
+#' a key and optional value.
+#' 
+#' For more information about tags, see [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/)
+#' in the *Amazon Managed Blockchain Ethereum Developer Guide*, or [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/)
+#' in the *Amazon Managed Blockchain Hyperledger Fabric Developer Guide*.
+#'
+#' @usage
+#' managedblockchain_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. For more information
+#' about ARNs and their format, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' in the *AWS General Reference*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedblockchain_list_tags_for_resource
+managedblockchain_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .managedblockchain$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .managedblockchain$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .managedblockchain$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedblockchain$operations$list_tags_for_resource <- managedblockchain_list_tags_for_resource
 
 #' Rejects an invitation to join a network
 #'
@@ -1233,6 +1364,124 @@ managedblockchain_reject_invitation <- function(InvitationId) {
   return(response)
 }
 .managedblockchain$operations$reject_invitation <- managedblockchain_reject_invitation
+
+#' Adds or overwrites the specified tags for the specified Amazon Managed
+#' Blockchain resource
+#'
+#' @description
+#' Adds or overwrites the specified tags for the specified Amazon Managed
+#' Blockchain resource. Each tag consists of a key and optional value.
+#' 
+#' When you specify a tag key that already exists, the tag value is
+#' overwritten with the new value. Use
+#' [`untag_resource`][managedblockchain_untag_resource] to remove tag keys.
+#' 
+#' A resource can have up to 50 tags. If you try to create more than 50
+#' tags for a resource, your request fails and returns an error.
+#' 
+#' For more information about tags, see [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/)
+#' in the *Amazon Managed Blockchain Ethereum Developer Guide*, or [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/)
+#' in the *Amazon Managed Blockchain Hyperledger Fabric Developer Guide*.
+#'
+#' @usage
+#' managedblockchain_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. For more information
+#' about ARNs and their format, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' in the *AWS General Reference*.
+#' @param Tags &#91;required&#93; The tags to assign to the specified resource. Tag values can be empty,
+#' for example, `"MyTagKey" : ""`. You can specify multiple key-value pairs
+#' in a single request, with an overall maximum of 50 tags added to each
+#' resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedblockchain_tag_resource
+managedblockchain_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .managedblockchain$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .managedblockchain$tag_resource_output()
+  config <- get_config()
+  svc <- .managedblockchain$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedblockchain$operations$tag_resource <- managedblockchain_tag_resource
+
+#' Removes the specified tags from the Amazon Managed Blockchain resource
+#'
+#' @description
+#' Removes the specified tags from the Amazon Managed Blockchain resource.
+#' 
+#' For more information about tags, see [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/)
+#' in the *Amazon Managed Blockchain Ethereum Developer Guide*, or [Tagging
+#' Resources](https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/)
+#' in the *Amazon Managed Blockchain Hyperledger Fabric Developer Guide*.
+#'
+#' @usage
+#' managedblockchain_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. For more information
+#' about ARNs and their format, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' in the *AWS General Reference*.
+#' @param TagKeys &#91;required&#93; The tag keys.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedblockchain_untag_resource
+managedblockchain_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .managedblockchain$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .managedblockchain$untag_resource_output()
+  config <- get_config()
+  svc <- .managedblockchain$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedblockchain$operations$untag_resource <- managedblockchain_untag_resource
 
 #' Updates a member configuration with new parameters
 #'

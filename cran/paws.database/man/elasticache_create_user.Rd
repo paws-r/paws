@@ -5,7 +5,7 @@
 \title{For Redis engine version 6}
 \usage{
 elasticache_create_user(UserId, UserName, Engine, Passwords,
-  AccessString, NoPasswordRequired)
+  AccessString, NoPasswordRequired, Tags)
 }
 \arguments{
 \item{UserId}{[required] The ID of the user.}
@@ -20,6 +20,9 @@ each user.}
 \item{AccessString}{[required] Access permissions string used for this user.}
 
 \item{NoPasswordRequired}{Indicates a password is not required for this user.}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -52,7 +55,13 @@ information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-
     "string"
   ),
   AccessString = "string",
-  NoPasswordRequired = TRUE|FALSE
+  NoPasswordRequired = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

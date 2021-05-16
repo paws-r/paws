@@ -1232,12 +1232,17 @@ mturk_disassociate_qualification_from_worker <- function(WorkerId, Qualification
 }
 .mturk$operations$disassociate_qualification_from_worker <- mturk_disassociate_qualification_from_worker
 
-#' The GetAccountBalance operation retrieves the amount of money in your
-#' Amazon Mechanical Turk account
+#' The GetAccountBalance operation retrieves the Prepaid HITs balance in
+#' your Amazon Mechanical Turk account if you are a Prepaid Requester
 #'
 #' @description
 #' The [`get_account_balance`][mturk_get_account_balance] operation
-#' retrieves the amount of money in your Amazon Mechanical Turk account.
+#' retrieves the Prepaid HITs balance in your Amazon Mechanical Turk
+#' account if you are a Prepaid Requester. Alternatively, this operation
+#' will retrieve the remaining available AWS Billing usage if you have
+#' enabled AWS Billing. Note: If you have enabled AWS Billing and still
+#' have a remaining Prepaid HITs balance, this balance can be viewed on the
+#' My Account page in the Requester console.
 #'
 #' @usage
 #' mturk_get_account_balance()

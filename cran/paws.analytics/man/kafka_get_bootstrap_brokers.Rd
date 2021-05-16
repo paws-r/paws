@@ -13,7 +13,8 @@ kafka_get_bootstrap_brokers(ClusterArn)
 A list with the following syntax:\preformatted{list(
   BootstrapBrokerString = "string",
   BootstrapBrokerStringTls = "string",
-  BootstrapBrokerStringSaslScram = "string"
+  BootstrapBrokerStringSaslScram = "string",
+  BootstrapBrokerStringSaslIam = "string"
 )
 }
 }

@@ -23,8 +23,8 @@ operation and disassociate it from any job queues with the
 \code{\link[=batch_update_job_queue]{update_job_queue}} API operation. Compute
 environments that use AWS Fargate resources must terminate all active
 jobs on that compute environment before deleting the compute
-environment. If this isn't done, the compute environment will end up in
-an invalid state.
+environment. If this isn't done, the compute environment enters an
+invalid state.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_compute_environment(

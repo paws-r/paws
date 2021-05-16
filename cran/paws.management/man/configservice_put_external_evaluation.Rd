@@ -2,21 +2,23 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_put_external_evaluation}
 \alias{configservice_put_external_evaluation}
-\title{Put external evaluation}
+\title{Add or updates the evaluations for process checks}
 \usage{
 configservice_put_external_evaluation(ConfigRuleName,
   ExternalEvaluation)
 }
 \arguments{
-\item{ConfigRuleName}{[required]}
+\item{ConfigRuleName}{[required] The name of the AWS Config rule.}
 
-\item{ExternalEvaluation}{[required]}
+\item{ExternalEvaluation}{[required] An \code{ExternalEvaluation} object that provides details about compliance.}
 }
 \value{
 An empty list.
 }
 \description{
-Put external evaluation
+Add or updates the evaluations for process checks. This API checks if
+the rule is a process check when the name of the AWS Config rule is
+provided.
 }
 \section{Request syntax}{
 \preformatted{svc$put_external_evaluation(

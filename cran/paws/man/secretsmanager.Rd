@@ -96,7 +96,7 @@ including enabling it and find your log files, see the \href{https://docs.aws.am
 \link[=secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Disables automatic scheduled rotation and cancels the rotation of a secret if currently in progress\cr
 \link[=secretsmanager_create_secret]{create_secret} \tab Creates a new secret\cr
 \link[=secretsmanager_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based permission policy attached to the secret\cr
-\link[=secretsmanager_delete_secret]{delete_secret} \tab Deletes an entire secret and all of its versions\cr
+\link[=secretsmanager_delete_secret]{delete_secret} \tab Deletes an entire secret and all of the versions\cr
 \link[=secretsmanager_describe_secret]{describe_secret} \tab Retrieves the details of a secret\cr
 \link[=secretsmanager_get_random_password]{get_random_password} \tab Generates a random password of the specified complexity\cr
 \link[=secretsmanager_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the specified secret\cr
@@ -105,13 +105,16 @@ including enabling it and find your log files, see the \href{https://docs.aws.am
 \link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids} \tab Lists all of the versions attached to the specified secret\cr
 \link[=secretsmanager_put_resource_policy]{put_resource_policy} \tab Attaches the contents of the specified resource-based permission policy to a secret\cr
 \link[=secretsmanager_put_secret_value]{put_secret_value} \tab Stores a new encrypted secret value in the specified secret\cr
+\link[=secretsmanager_remove_regions_from_replication]{remove_regions_from_replication} \tab Remove regions from replication\cr
+\link[=secretsmanager_replicate_secret_to_regions]{replicate_secret_to_regions} \tab Converts an existing secret to a multi-Region secret and begins replication the secret to a list of new regions\cr
 \link[=secretsmanager_restore_secret]{restore_secret} \tab Cancels the scheduled deletion of a secret by removing the DeletedDate time stamp\cr
 \link[=secretsmanager_rotate_secret]{rotate_secret} \tab Configures and starts the asynchronous process of rotating this secret\cr
+\link[=secretsmanager_stop_replication_to_replica]{stop_replication_to_replica} \tab Removes the secret from replication and promotes the secret to a regional secret in the replica Region\cr
 \link[=secretsmanager_tag_resource]{tag_resource} \tab Attaches one or more tags, each consisting of a key name and a value, to the specified secret\cr
 \link[=secretsmanager_untag_resource]{untag_resource} \tab Removes one or more tags from the specified secret\cr
 \link[=secretsmanager_update_secret]{update_secret} \tab Modifies many of the details of the specified secret\cr
 \link[=secretsmanager_update_secret_version_stage]{update_secret_version_stage} \tab Modifies the staging labels attached to a version of a secret\cr
-\link[=secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates the JSON text of the resource-based policy document attached to the specified secret
+\link[=secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates that the resource policy does not grant a wide range of IAM principals access to your secret
 }
 }
 

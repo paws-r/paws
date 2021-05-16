@@ -53,6 +53,7 @@ NULL
 #'  \link[=forecastservice_delete_forecast_export_job]{delete_forecast_export_job} \tab Deletes a forecast export job created using the CreateForecastExportJob operation\cr
 #'  \link[=forecastservice_delete_predictor]{delete_predictor} \tab Deletes a predictor created using the CreatePredictor operation\cr
 #'  \link[=forecastservice_delete_predictor_backtest_export_job]{delete_predictor_backtest_export_job} \tab Deletes a predictor backtest export job\cr
+#'  \link[=forecastservice_delete_resource_tree]{delete_resource_tree} \tab Deletes an entire resource tree\cr
 #'  \link[=forecastservice_describe_dataset]{describe_dataset} \tab Describes an Amazon Forecast dataset created using the CreateDataset operation\cr
 #'  \link[=forecastservice_describe_dataset_group]{describe_dataset_group} \tab Describes a dataset group created using the CreateDatasetGroup operation\cr
 #'  \link[=forecastservice_describe_dataset_import_job]{describe_dataset_import_job} \tab Describes a dataset import job created using the CreateDatasetImportJob operation\cr
@@ -69,6 +70,7 @@ NULL
 #'  \link[=forecastservice_list_predictor_backtest_export_jobs]{list_predictor_backtest_export_jobs} \tab Returns a list of predictor backtest export jobs created using the CreatePredictorBacktestExportJob operation\cr
 #'  \link[=forecastservice_list_predictors]{list_predictors} \tab Returns a list of predictors created using the CreatePredictor operation\cr
 #'  \link[=forecastservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Amazon Forecast resource\cr
+#'  \link[=forecastservice_stop_resource]{stop_resource} \tab Stops a resource\cr
 #'  \link[=forecastservice_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
 #'  \link[=forecastservice_untag_resource]{untag_resource} \tab Deletes the specified tags from a resource\cr
 #'  \link[=forecastservice_update_dataset_group]{update_dataset_group} \tab Replaces the datasets in a dataset group with the specified datasets

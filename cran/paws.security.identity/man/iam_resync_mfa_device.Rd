@@ -37,7 +37,7 @@ Synchronizes the specified MFA device with its IAM resource object on
 the AWS servers.
 
 For more information about creating and working with virtual MFA
-devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html}{Using a Virtual MFA Device}
+devices, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html}{Using a virtual MFA device}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

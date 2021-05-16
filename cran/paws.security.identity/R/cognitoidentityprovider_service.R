@@ -12,7 +12,8 @@ NULL
 #' This API reference provides information about user pools in Amazon
 #' Cognito User Pools.
 #' 
-#' For more information, see the Amazon Cognito Documentation.
+#' For more information, see the [Amazon Cognito
+#' Documentation](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html).
 #'
 #' @param
 #' config

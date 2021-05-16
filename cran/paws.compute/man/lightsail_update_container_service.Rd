@@ -74,7 +74,11 @@ A list with the following syntax:\preformatted{list(
     ),
     power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
     powerId = "string",
-    state = "PENDING"|"READY"|"RUNNING"|"UPDATING"|"DELETING"|"DISABLED",
+    state = "PENDING"|"READY"|"RUNNING"|"UPDATING"|"DELETING"|"DISABLED"|"DEPLOYING",
+    stateDetail = list(
+      code = "CREATING_SYSTEM_RESOURCES"|"CREATING_NETWORK_INFRASTRUCTURE"|"PROVISIONING_CERTIFICATE"|"PROVISIONING_SERVICE"|"CREATING_DEPLOYMENT"|"EVALUATING_HEALTH_CHECK"|"ACTIVATING_DEPLOYMENT"|"CERTIFICATE_LIMIT_EXCEEDED"|"UNKNOWN_ERROR",
+      message = "string"
+    ),
     scale = 123,
     currentDeployment = list(
       version = 123,

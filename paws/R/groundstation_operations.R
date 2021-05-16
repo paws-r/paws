@@ -68,7 +68,7 @@ groundstation_cancel_contact <- function(contactId) {
 #' list(
 #'   configArn = "string",
 #'   configId = "string",
-#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"|"s3-recording"
 #' )
 #' ```
 #'
@@ -125,6 +125,11 @@ groundstation_cancel_contact <- function(contactId) {
 #'     dataflowEndpointConfig = list(
 #'       dataflowEndpointName = "string",
 #'       dataflowEndpointRegion = "string"
+#'     ),
+#'     s3RecordingConfig = list(
+#'       bucketArn = "string",
+#'       prefix = "string",
+#'       roleArn = "string"
 #'     ),
 #'     trackingConfig = list(
 #'       autotrack = "PREFERRED"|"REMOVED"|"REQUIRED"
@@ -330,7 +335,7 @@ groundstation_create_mission_profile <- function(contactPostPassDurationSeconds 
 #' list(
 #'   configArn = "string",
 #'   configId = "string",
-#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"|"s3-recording"
 #' )
 #' ```
 #'
@@ -338,7 +343,7 @@ groundstation_create_mission_profile <- function(contactPostPassDurationSeconds 
 #' ```
 #' svc$delete_config(
 #'   configId = "string",
-#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"|"s3-recording"
 #' )
 #' ```
 #'
@@ -494,10 +499,14 @@ groundstation_delete_mission_profile <- function(missionProfileId) {
 #'                 "string"
 #'               )
 #'             )
+#'           ),
+#'           s3RecordingDetails = list(
+#'             bucketArn = "string",
+#'             keyTemplate = "string"
 #'           )
 #'         ),
 #'         configId = "string",
-#'         configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
+#'         configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"|"s3-recording",
 #'         dataflowDestinationRegion = "string"
 #'       ),
 #'       errorMessage = "string",
@@ -525,10 +534,14 @@ groundstation_delete_mission_profile <- function(missionProfileId) {
 #'                 "string"
 #'               )
 #'             )
+#'           ),
+#'           s3RecordingDetails = list(
+#'             bucketArn = "string",
+#'             keyTemplate = "string"
 #'           )
 #'         ),
 #'         configId = "string",
-#'         configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
+#'         configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"|"s3-recording",
 #'         dataflowSourceRegion = "string"
 #'       )
 #'     )
@@ -656,6 +669,11 @@ groundstation_describe_contact <- function(contactId) {
 #'       dataflowEndpointName = "string",
 #'       dataflowEndpointRegion = "string"
 #'     ),
+#'     s3RecordingConfig = list(
+#'       bucketArn = "string",
+#'       prefix = "string",
+#'       roleArn = "string"
+#'     ),
 #'     trackingConfig = list(
 #'       autotrack = "PREFERRED"|"REMOVED"|"REQUIRED"
 #'     ),
@@ -665,7 +683,7 @@ groundstation_describe_contact <- function(contactId) {
 #'     )
 #'   ),
 #'   configId = "string",
-#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"|"s3-recording",
 #'   name = "string",
 #'   tags = list(
 #'     "string"
@@ -677,7 +695,7 @@ groundstation_describe_contact <- function(contactId) {
 #' ```
 #' svc$get_config(
 #'   configId = "string",
-#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"|"s3-recording"
 #' )
 #' ```
 #'
@@ -954,7 +972,7 @@ groundstation_get_satellite <- function(satelliteId) {
 #'     list(
 #'       configArn = "string",
 #'       configId = "string",
-#'       configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
+#'       configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"|"s3-recording",
 #'       name = "string"
 #'     )
 #'   ),
@@ -1537,7 +1555,7 @@ groundstation_untag_resource <- function(resourceArn, tagKeys) {
 #' list(
 #'   configArn = "string",
 #'   configId = "string",
-#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"|"s3-recording"
 #' )
 #' ```
 #'
@@ -1595,6 +1613,11 @@ groundstation_untag_resource <- function(resourceArn, tagKeys) {
 #'       dataflowEndpointName = "string",
 #'       dataflowEndpointRegion = "string"
 #'     ),
+#'     s3RecordingConfig = list(
+#'       bucketArn = "string",
+#'       prefix = "string",
+#'       roleArn = "string"
+#'     ),
 #'     trackingConfig = list(
 #'       autotrack = "PREFERRED"|"REMOVED"|"REQUIRED"
 #'     ),
@@ -1604,7 +1627,7 @@ groundstation_untag_resource <- function(resourceArn, tagKeys) {
 #'     )
 #'   ),
 #'   configId = "string",
-#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"|"s3-recording",
 #'   name = "string"
 #' )
 #' ```

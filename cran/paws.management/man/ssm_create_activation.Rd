@@ -29,8 +29,10 @@ in the \emph{AWS Systems Manager User Guide}.}
 \item{RegistrationLimit}{Specify the maximum number of managed instances you want to register.
 The default value is 1 instance.}
 
-\item{ExpirationDate}{The date by which this activation request should expire. The default
-value is 24 hours.}
+\item{ExpirationDate}{The date by which this activation request should expire, in timestamp
+format, such as "2021-07-07T00:00:00". You can specify a date up to 30
+days in advance. If you don't provide an expiration date, the activation
+code expires in 24 hours.}
 
 \item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or

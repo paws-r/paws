@@ -18,13 +18,13 @@ grantee.}
 \item{Bucket}{[required] The bucket name that contains the object to which you want to attach the
 ACL.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
 used as a message integrity check to verify that the request body was
@@ -53,30 +53,30 @@ bucket.}
 
 This action is not supported by Amazon S3 on Outposts.}
 
-\item{Key}{[required] Key for which the PUT operation was initiated.
+\item{Key}{[required] Key for which the PUT action was initiated.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{RequestPayer}{}
 
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -91,7 +91,7 @@ Uses the \code{acl} subresource to set the access control list (ACL)
 permissions for a new or existing object in an S3 bucket. You must have
 \code{WRITE_ACP} permission to set the ACL of an object. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions}{What permissions can I grant?}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 This action is not supported by Amazon S3 on Outposts.
 

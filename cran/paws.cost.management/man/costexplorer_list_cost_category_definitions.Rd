@@ -34,7 +34,8 @@ A list with the following syntax:\preformatted{list(
       ),
       Values = list(
         "string"
-      )
+      ),
+      DefaultValue = "string"
     )
   ),
   NextToken = "string"

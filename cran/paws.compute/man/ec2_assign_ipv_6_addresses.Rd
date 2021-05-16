@@ -8,9 +8,12 @@ ec2_assign_ipv_6_addresses(Ipv6AddressCount, Ipv6Addresses,
   NetworkInterfaceId)
 }
 \arguments{
-\item{Ipv6AddressCount}{The number of IPv6 addresses to assign to the network interface. Amazon
-EC2 automatically selects the IPv6 addresses from the subnet range. You
-can't use this option if specifying specific IPv6 addresses.}
+\item{Ipv6AddressCount}{The number of additional IPv6 addresses to assign to the network
+interface. The specified number of IPv6 addresses are assigned in
+addition to the existing IPv6 addresses that are already assigned to the
+network interface. Amazon EC2 automatically selects the IPv6 addresses
+from the subnet range. You can't use this option if specifying specific
+IPv6 addresses.}
 
 \item{Ipv6Addresses}{One or more specific IPv6 addresses to be assigned to the network
 interface. You can't use this option if you're specifying a number of

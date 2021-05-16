@@ -17,13 +17,13 @@ different meetings.}
 
 \item{MeetingHostId}{Reserved.}
 
-\item{MediaRegion}{The Region in which to create the meeting. Default: \code{us-east-1}.
+\item{MediaRegion}{The Region in which to create the meeting. Default: \code{us-east-1} .
 
-Available values: \code{af-south-1}, \code{ap-northeast-1}, \code{ap-northeast-2},
-\code{ap-south-1}, \code{ap-southeast-1}, \code{ap-southeast-2}, \code{ca-central-1},
-\code{eu-central-1}, \code{eu-north-1}, \code{eu-south-1}, \code{eu-west-1}, \code{eu-west-2},
-\code{eu-west-3}, \code{sa-east-1}, \code{us-east-1}, \code{us-east-2}, \code{us-west-1},
-\code{us-west-2}.}
+Available values: \code{af-south-1} , \code{ap-northeast-1} , \code{ap-northeast-2} ,
+\code{ap-south-1} , \code{ap-southeast-1} , \code{ap-southeast-2} , \code{ca-central-1} ,
+\code{eu-central-1} , \code{eu-north-1} , \code{eu-south-1} , \code{eu-west-1} , \code{eu-west-2}
+, \code{eu-west-3} , \code{sa-east-1} , \code{us-east-1} , \code{us-east-2} , \code{us-west-1} ,
+\code{us-west-2} .}
 
 \item{Tags}{The tag key-value pairs.}
 
@@ -68,9 +68,9 @@ A list with the following syntax:\preformatted{list(
 Creates a new Amazon Chime SDK meeting in the specified media Region,
 with attendees. For more information about specifying media Regions, see
 \href{https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html}{Amazon Chime SDK Media Regions}
-in the \emph{Amazon Chime Developer Guide}. For more information about the
+in the \emph{Amazon Chime Developer Guide} . For more information about the
 Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in
-the \emph{Amazon Chime Developer Guide}.
+the \emph{Amazon Chime Developer Guide} .
 }
 \section{Request syntax}{
 \preformatted{svc$create_meeting_with_attendees(

@@ -10,7 +10,8 @@ sagemaker_create_processing_job(ProcessingInputs,
   RoleArn, Tags, ExperimentConfig)
 }
 \arguments{
-\item{ProcessingInputs}{List of input configurations for the processing job.}
+\item{ProcessingInputs}{An array of inputs configuring the data to download into the processing
+container.}
 
 \item{ProcessingOutputConfig}{Output configuration for the processing job.}
 
@@ -25,9 +26,13 @@ more than one instance.}
 
 \item{AppSpecification}{[required] Configures the processing job to run a specified Docker container image.}
 
-\item{Environment}{Sets the environment variables in the Docker container.}
+\item{Environment}{The environment variables to set in the Docker container. Up to 100 key
+and values entries in the map are supported.}
 
-\item{NetworkConfig}{Networking options for a processing job.}
+\item{NetworkConfig}{Networking options for a processing job, such as whether to allow
+inbound and outbound network calls to and from processing containers,
+and the VPC subnets and security groups to use for VPC-enabled
+processing jobs.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 assume to perform tasks on your behalf.}

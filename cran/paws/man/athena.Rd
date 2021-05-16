@@ -52,20 +52,25 @@ in the \emph{Amazon Athena User Guide}.
 \link[=athena_batch_get_query_execution]{batch_get_query_execution} \tab Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings\cr
 \link[=athena_create_data_catalog]{create_data_catalog} \tab Creates (registers) a data catalog with the specified name and properties\cr
 \link[=athena_create_named_query]{create_named_query} \tab Creates a named query in the specified workgroup\cr
+\link[=athena_create_prepared_statement]{create_prepared_statement} \tab Creates a prepared statement for use with SQL queries in Athena\cr
 \link[=athena_create_work_group]{create_work_group} \tab Creates a workgroup with the specified name\cr
 \link[=athena_delete_data_catalog]{delete_data_catalog} \tab Deletes a data catalog\cr
 \link[=athena_delete_named_query]{delete_named_query} \tab Deletes the named query if you have access to the workgroup in which the query was saved\cr
+\link[=athena_delete_prepared_statement]{delete_prepared_statement} \tab Deletes the prepared statement with the specified name from the specified workgroup\cr
 \link[=athena_delete_work_group]{delete_work_group} \tab Deletes the workgroup with the specified name\cr
-\link[=athena_get_database]{get_database} \tab Returns a database object for the specfied database and data catalog\cr
+\link[=athena_get_database]{get_database} \tab Returns a database object for the specified database and data catalog\cr
 \link[=athena_get_data_catalog]{get_data_catalog} \tab Returns the specified data catalog\cr
 \link[=athena_get_named_query]{get_named_query} \tab Returns information about a single query\cr
+\link[=athena_get_prepared_statement]{get_prepared_statement} \tab Retrieves the prepared statement with the specified name from the specified workgroup\cr
 \link[=athena_get_query_execution]{get_query_execution} \tab Returns information about a single execution of a query if you have access to the workgroup in which the query ran\cr
 \link[=athena_get_query_results]{get_query_results} \tab Streams the results of a single query execution specified by QueryExecutionId from the Athena query results location in Amazon S3\cr
 \link[=athena_get_table_metadata]{get_table_metadata} \tab Returns table metadata for the specified catalog, database, and table\cr
 \link[=athena_get_work_group]{get_work_group} \tab Returns information about the workgroup with the specified name\cr
 \link[=athena_list_databases]{list_databases} \tab Lists the databases in the specified data catalog\cr
 \link[=athena_list_data_catalogs]{list_data_catalogs} \tab Lists the data catalogs in the current AWS account\cr
+\link[=athena_list_engine_versions]{list_engine_versions} \tab Returns a list of engine versions that are available to choose from, including the Auto option\cr
 \link[=athena_list_named_queries]{list_named_queries} \tab Provides a list of available query IDs only for queries saved in the specified workgroup\cr
+\link[=athena_list_prepared_statements]{list_prepared_statements} \tab Lists the prepared statements in the specfied workgroup\cr
 \link[=athena_list_query_executions]{list_query_executions} \tab Provides a list of available query execution IDs for the queries in the specified workgroup\cr
 \link[=athena_list_table_metadata]{list_table_metadata} \tab Lists the metadata for the tables in the specified data catalog database\cr
 \link[=athena_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags associated with an Athena workgroup or data catalog resource\cr
@@ -75,6 +80,7 @@ in the \emph{Amazon Athena User Guide}.
 \link[=athena_tag_resource]{tag_resource} \tab Adds one or more tags to an Athena resource\cr
 \link[=athena_untag_resource]{untag_resource} \tab Removes one or more tags from a data catalog or workgroup resource\cr
 \link[=athena_update_data_catalog]{update_data_catalog} \tab Updates the data catalog that has the specified name\cr
+\link[=athena_update_prepared_statement]{update_prepared_statement} \tab Updates a prepared statement\cr
 \link[=athena_update_work_group]{update_work_group} \tab Updates the workgroup with the specified name
 }
 }

@@ -419,6 +419,102 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 }
 .workspaces$operations$create_tags <- workspaces_create_tags
 
+#' Creates the specified WorkSpace bundle
+#'
+#' @description
+#' Creates the specified WorkSpace bundle. For more information about
+#' creating WorkSpace bundles, see [Create a Custom WorkSpaces Image and
+#' Bundle](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-custom-bundle.html).
+#'
+#' @usage
+#' workspaces_create_workspace_bundle(BundleName, BundleDescription,
+#'   ImageId, ComputeType, UserStorage, RootStorage, Tags)
+#'
+#' @param BundleName &#91;required&#93; The name of the bundle.
+#' @param BundleDescription &#91;required&#93; The description of the bundle.
+#' @param ImageId &#91;required&#93; The identifier of the image that is used to create the bundle.
+#' @param ComputeType &#91;required&#93; 
+#' @param UserStorage &#91;required&#93; 
+#' @param RootStorage 
+#' @param Tags The tags associated with the bundle.
+#' 
+#' To add tags at the same time that you're creating the bundle, you must
+#' create an IAM policy that grants your IAM user permissions to use
+#' `workspaces:CreateTags`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkspaceBundle = list(
+#'     BundleId = "string",
+#'     Name = "string",
+#'     Owner = "string",
+#'     Description = "string",
+#'     ImageId = "string",
+#'     RootStorage = list(
+#'       Capacity = "string"
+#'     ),
+#'     UserStorage = list(
+#'       Capacity = "string"
+#'     ),
+#'     ComputeType = list(
+#'       Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_workspace_bundle(
+#'   BundleName = "string",
+#'   BundleDescription = "string",
+#'   ImageId = "string",
+#'   ComputeType = list(
+#'     Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'   ),
+#'   UserStorage = list(
+#'     Capacity = "string"
+#'   ),
+#'   RootStorage = list(
+#'     Capacity = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_workspace_bundle
+workspaces_create_workspace_bundle <- function(BundleName, BundleDescription, ImageId, ComputeType, UserStorage, RootStorage = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateWorkspaceBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_workspace_bundle_input(BundleName = BundleName, BundleDescription = BundleDescription, ImageId = ImageId, ComputeType = ComputeType, UserStorage = UserStorage, RootStorage = RootStorage, Tags = Tags)
+  output <- .workspaces$create_workspace_bundle_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_workspace_bundle <- workspaces_create_workspace_bundle
+
 #' Creates one or more WorkSpaces
 #'
 #' @description
@@ -688,6 +784,48 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
   return(response)
 }
 .workspaces$operations$delete_tags <- workspaces_delete_tags
+
+#' Deletes the specified WorkSpace bundle
+#'
+#' @description
+#' Deletes the specified WorkSpace bundle. For more information about
+#' deleting WorkSpace bundles, see [Delete a Custom WorkSpaces Bundle or
+#' Image](https://docs.aws.amazon.com/workspaces/latest/adminguide/delete_bundle.html).
+#'
+#' @usage
+#' workspaces_delete_workspace_bundle(BundleId)
+#'
+#' @param BundleId The identifier of the bundle.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_workspace_bundle(
+#'   BundleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_delete_workspace_bundle
+workspaces_delete_workspace_bundle <- function(BundleId = NULL) {
+  op <- new_operation(
+    name = "DeleteWorkspaceBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$delete_workspace_bundle_input(BundleId = BundleId)
+  output <- .workspaces$delete_workspace_bundle_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$delete_workspace_bundle <- workspaces_delete_workspace_bundle
 
 #' Deletes the specified image from your account
 #'
@@ -1219,8 +1357,8 @@ workspaces_describe_tags <- function(ResourceId) {
 #' @param Owner The owner of the bundles. You cannot combine this parameter with any
 #' other filter.
 #' 
-#' Specify `AMAZON` to describe the bundles provided by AWS or null to
-#' describe the bundles that belong to your account.
+#' To describe the bundles provided by AWS, specify `AMAZON`. To describe
+#' the bundles that belong to your account, don't specify a value.
 #' @param NextToken The token for the next set of results. (You received this token from a
 #' previous call.)
 #'
@@ -1245,6 +1383,9 @@ workspaces_describe_tags <- function(ResourceId) {
 #'         Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
 #'       ),
 #'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
 #'     )
@@ -3023,6 +3164,55 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
   return(response)
 }
 .workspaces$operations$update_rules_of_ip_group <- workspaces_update_rules_of_ip_group
+
+#' Updates a WorkSpace bundle with a new image
+#'
+#' @description
+#' Updates a WorkSpace bundle with a new image. For more information about
+#' updating WorkSpace bundles, see [Update a Custom WorkSpaces
+#' Bundle](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-custom-bundle.html).
+#' 
+#' Existing WorkSpaces aren't automatically updated when you update the
+#' bundle that they're based on. To update existing WorkSpaces that are
+#' based on a bundle that you've updated, you must either rebuild the
+#' WorkSpaces or delete and recreate them.
+#'
+#' @usage
+#' workspaces_update_workspace_bundle(BundleId, ImageId)
+#'
+#' @param BundleId The identifier of the bundle.
+#' @param ImageId The identifier of the image.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_workspace_bundle(
+#'   BundleId = "string",
+#'   ImageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_update_workspace_bundle
+workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) {
+  op <- new_operation(
+    name = "UpdateWorkspaceBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$update_workspace_bundle_input(BundleId = BundleId, ImageId = ImageId)
+  output <- .workspaces$update_workspace_bundle_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$update_workspace_bundle <- workspaces_update_workspace_bundle
 
 #' Shares or unshares an image with one account in the same AWS Region by
 #' specifying whether that account has permission to copy the image

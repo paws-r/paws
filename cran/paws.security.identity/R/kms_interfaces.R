@@ -339,7 +339,7 @@ NULL
 
 .kms$list_grants_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string")), GranteePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

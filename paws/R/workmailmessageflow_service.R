@@ -40,7 +40,8 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=workmailmessageflow_get_raw_message_content]{get_raw_message_content} \tab Retrieves the raw content of an in-transit email message, in MIME format
+#'  \link[=workmailmessageflow_get_raw_message_content]{get_raw_message_content} \tab Retrieves the raw content of an in-transit email message, in MIME format\cr
+#'  \link[=workmailmessageflow_put_raw_message_content]{put_raw_message_content} \tab Updates the raw content of an in-transit email message, in MIME format
 #' }
 #'
 #' @rdname workmailmessageflow

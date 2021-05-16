@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_bucket_lifecycle_configuration}
 \alias{s3control_get_bucket_lifecycle_configuration}
-\title{This operation gets an Amazon S3 on Outposts bucket's lifecycle
+\title{This action gets an Amazon S3 on Outposts bucket's lifecycle
 configuration}
 \usage{
 s3control_get_bucket_lifecycle_configuration(AccountId, Bucket)
@@ -80,17 +80,17 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This operation gets an Amazon S3 on Outposts bucket's lifecycle
+This action gets an Amazon S3 on Outposts bucket's lifecycle
 configuration. To get an S3 bucket's lifecycle configuration, see
 \code{\link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
-in the \emph{Amazon Simple Storage Service API}.
+in the \emph{Amazon S3 API Reference}.
 
 Returns the lifecycle configuration information set on the Outposts
 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 and for information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}
-in \emph{Amazon Simple Storage Service Developer Guide}.
+in \emph{Amazon S3 User Guide}.
 
-To use this operation, you must have permission to perform the
+To use this action, you must have permission to perform the
 \code{s3-outposts:GetLifecycleConfiguration} action. The Outposts bucket
 owner has this permission, by default. The bucket owner can grant this
 permission to others. For more information about permissions, see

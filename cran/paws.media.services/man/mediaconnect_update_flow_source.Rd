@@ -5,8 +5,8 @@
 \title{Updates the source of a flow}
 \usage{
 mediaconnect_update_flow_source(Decryption, Description, EntitlementArn,
-  FlowArn, IngestPort, MaxBitrate, MaxLatency, Protocol, SourceArn,
-  StreamId, VpcInterfaceName, WhitelistCidr)
+  FlowArn, IngestPort, MaxBitrate, MaxLatency, MinLatency, Protocol,
+  SourceArn, StreamId, VpcInterfaceName, WhitelistCidr)
 }
 \arguments{
 \item{Decryption}{The type of encryption used on the content ingested from this source.}
@@ -26,6 +26,12 @@ as part of the originator's flow.}
 
 \item{MaxLatency}{The maximum latency in milliseconds. This parameter applies only to
 RIST-based and Zixi-based streams.}
+
+\item{MinLatency}{The minimum latency in milliseconds for SRT-based streams. In streams
+that use the SRT protocol, this value that you set on your MediaConnect
+source or output represents the minimal potential latency of that
+connection. The latency of the stream is set to the highest number
+between the sender’s minimum latency and the receiver’s minimum latency.}
 
 \item{Protocol}{The protocol that is used by the source.}
 
@@ -49,7 +55,7 @@ A list with the following syntax:\preformatted{list(
       Algorithm = "aes128"|"aes192"|"aes256",
       ConstantInitializationVector = "string",
       DeviceId = "string",
-      KeyType = "speke"|"static-key",
+      KeyType = "speke"|"static-key"|"srt-password",
       Region = "string",
       ResourceId = "string",
       RoleArn = "string",
@@ -68,7 +74,8 @@ A list with the following syntax:\preformatted{list(
       ),
       MaxBitrate = 123,
       MaxLatency = 123,
-      Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+      MinLatency = 123,
+      Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
       RemoteId = "string",
       SmoothingLatency = 123,
       StreamId = "string"
@@ -88,7 +95,7 @@ Updates the source of a flow.
     Algorithm = "aes128"|"aes192"|"aes256",
     ConstantInitializationVector = "string",
     DeviceId = "string",
-    KeyType = "speke"|"static-key",
+    KeyType = "speke"|"static-key"|"srt-password",
     Region = "string",
     ResourceId = "string",
     RoleArn = "string",
@@ -101,7 +108,8 @@ Updates the source of a flow.
   IngestPort = 123,
   MaxBitrate = 123,
   MaxLatency = 123,
-  Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+  MinLatency = 123,
+  Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
   SourceArn = "string",
   StreamId = "string",
   VpcInterfaceName = "string",

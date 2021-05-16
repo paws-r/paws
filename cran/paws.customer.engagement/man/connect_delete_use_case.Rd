@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_delete_use_case}
 \alias{connect_delete_use_case}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Deletes a use case from an AppIntegration association}
 \usage{
 connect_delete_use_case(InstanceId, IntegrationAssociationId, UseCaseId)
 }
@@ -18,9 +17,6 @@ connect_delete_use_case(InstanceId, IntegrationAssociationId, UseCaseId)
 An empty list.
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Deletes a use case from an AppIntegration association.
 }
 \section{Request syntax}{

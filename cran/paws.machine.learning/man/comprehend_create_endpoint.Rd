@@ -6,7 +6,7 @@
 previously trained custom model}
 \usage{
 comprehend_create_endpoint(EndpointName, ModelArn,
-  DesiredInferenceUnits, ClientRequestToken, Tags)
+  DesiredInferenceUnits, ClientRequestToken, Tags, DataAccessRoleArn)
 }
 \arguments{
 \item{EndpointName}{[required] This is the descriptive suffix that becomes part of the \code{EndpointArn}
@@ -27,6 +27,10 @@ previous endpoint creation request, Amazon Comprehend will not return a
 pair that adds metadata to the endpoint. For example, a tag with "Sales"
 as the key might be added to an endpoint to indicate its use by the
 sales department.}
+
+\item{DataAccessRoleArn}{The Amazon Resource Name (ARN) of the AWS identity and Access Management
+(IAM) role that grants Amazon Comprehend read access to trained custom
+models encrypted with a customer managed key (ModelKmsKeyId).}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -49,7 +53,8 @@ previously trained custom model
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  DataAccessRoleArn = "string"
 )
 }
 }

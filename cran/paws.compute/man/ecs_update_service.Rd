@@ -10,7 +10,7 @@ https://aws}
 ecs_update_service(cluster, service, desiredCount, taskDefinition,
   capacityProviderStrategy, deploymentConfiguration, networkConfiguration,
   placementConstraints, placementStrategy, platformVersion,
-  forceNewDeployment, healthCheckGracePeriodSeconds)
+  forceNewDeployment, healthCheckGracePeriodSeconds, enableExecuteCommand)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -65,7 +65,7 @@ for a cluster after the cluster is created.}
 \item{deploymentConfiguration}{Optional deployment parameters that control how many tasks run during
 the deployment and the ordering of stopping and starting tasks.}
 
-\item{networkConfiguration}{}
+\item{networkConfiguration}{An object representing the network configuration for the service.}
 
 \item{placementConstraints}{An array of task placement constraint objects to update the service to
 use. If no value is specified, the existing placement constraints for
@@ -108,6 +108,12 @@ During that time, the Amazon ECS service scheduler ignores the Elastic
 Load Balancing health check status. This grace period can prevent the
 ECS service scheduler from marking tasks as unhealthy and stopping them
 before they have time to come up.}
+
+\item{enableExecuteCommand}{If \code{true}, this enables execute command functionality on all task
+containers.
+
+If you do not want to override the value that was set when the service
+was created, you can set this to \code{null} when performing this action.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -312,7 +318,8 @@ A list with the following syntax:\preformatted{list(
     ),
     createdBy = "string",
     enableECSManagedTags = TRUE|FALSE,
-    propagateTags = "TASK_DEFINITION"|"SERVICE"
+    propagateTags = "TASK_DEFINITION"|"SERVICE",
+    enableExecuteCommand = TRUE|FALSE
   )
 )
 }
@@ -478,7 +485,8 @@ with the largest number of running tasks for this service.
   ),
   platformVersion = "string",
   forceNewDeployment = TRUE|FALSE,
-  healthCheckGracePeriodSeconds = 123
+  healthCheckGracePeriodSeconds = 123,
+  enableExecuteCommand = TRUE|FALSE
 )
 }
 }

@@ -4,23 +4,30 @@
 \alias{chime_delete_channel_membership}
 \title{Removes a member from a channel}
 \usage{
-chime_delete_channel_membership(ChannelArn, MemberArn)
+chime_delete_channel_membership(ChannelArn, MemberArn, ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel from which you want to remove the user.}
 
 \item{MemberArn}{[required] The ARN of the member that you're removing from the channel.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 An empty list.
 }
 \description{
 Removes a member from a channel.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_channel_membership(
   ChannelArn = "string",
-  MemberArn = "string"
+  MemberArn = "string",
+  ChimeBearer = "string"
 )
 }
 }

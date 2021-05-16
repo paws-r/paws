@@ -5,10 +5,12 @@
 \title{Immediately makes a channel and its memberships inaccessible and marks
 them for deletion}
 \usage{
-chime_delete_channel(ChannelArn)
+chime_delete_channel(ChannelArn, ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel being deleted.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 An empty list.
@@ -16,10 +18,15 @@ An empty list.
 \description{
 Immediately makes a channel and its memberships inaccessible and marks
 them for deletion. This is an irreversible process.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_channel(
-  ChannelArn = "string"
+  ChannelArn = "string",
+  ChimeBearer = "string"
 )
 }
 }

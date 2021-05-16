@@ -5,7 +5,7 @@
 \title{Updates an existing Cost Category}
 \usage{
 costexplorer_update_cost_category_definition(CostCategoryArn,
-  RuleVersion, Rules)
+  RuleVersion, Rules, DefaultValue)
 }
 \arguments{
 \item{CostCategoryArn}{[required] The unique identifier for your Cost Category.}
@@ -16,6 +16,8 @@ costexplorer_update_cost_category_definition(CostCategoryArn,
 see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html}{CostCategoryRule}
 .}
+
+\item{DefaultValue}{}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -71,9 +73,15 @@ expenses. This won’t change categorization for the previous months.
             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
           )
         )
-      )
+      ),
+      InheritedValue = list(
+        DimensionName = "LINKED_ACCOUNT_NAME"|"TAG",
+        DimensionKey = "string"
+      ),
+      Type = "REGULAR"|"INHERITED_VALUE"
     )
-  )
+  ),
+  DefaultValue = "string"
 )
 }
 }

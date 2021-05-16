@@ -47,14 +47,13 @@ with the AWS account in use.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html}{Amazon GameLift Realtime Servers}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_script]{create_script}}
-\item \code{\link[=gamelift_list_scripts]{list_scripts}}
-\item \code{\link[=gamelift_describe_script]{describe_script}}
-\item \code{\link[=gamelift_update_script]{update_script}}
-\item \code{\link[=gamelift_delete_script]{delete_script}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_script]{create_script}} |
+\code{\link[=gamelift_list_scripts]{list_scripts}} |
+\code{\link[=gamelift_describe_script]{describe_script}} |
+\code{\link[=gamelift_update_script]{update_script}} |
+\code{\link[=gamelift_delete_script]{delete_script}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$list_scripts(

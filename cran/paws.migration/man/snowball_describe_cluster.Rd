@@ -19,7 +19,7 @@ A list with the following syntax:\preformatted{list(
     RoleARN = "string",
     ClusterState = "AwaitingQuorum"|"Pending"|"InUse"|"Complete"|"Cancelled",
     JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
-    SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+    SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
     CreationDate = as.POSIXct(
       "2015-01-01"
     ),

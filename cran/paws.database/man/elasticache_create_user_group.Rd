@@ -4,7 +4,7 @@
 \alias{elasticache_create_user_group}
 \title{For Redis engine version 6}
 \usage{
-elasticache_create_user_group(UserGroupId, Engine, UserIds)
+elasticache_create_user_group(UserGroupId, Engine, UserIds, Tags)
 }
 \arguments{
 \item{UserGroupId}{[required] The ID of the user group.}
@@ -12,6 +12,9 @@ elasticache_create_user_group(UserGroupId, Engine, UserIds)
 \item{Engine}{[required] The current supported value is Redis.}
 
 \item{UserIds}{The list of user IDs that belong to the user group.}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -46,6 +49,12 @@ more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest
   Engine = "string",
   UserIds = list(
     "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

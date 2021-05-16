@@ -9,7 +9,25 @@ rds_describe_orderable_db_instance_options(Engine, EngineVersion,
   MaxRecords, Marker)
 }
 \arguments{
-\item{Engine}{[required] The name of the engine to retrieve DB instance options for.}
+\item{Engine}{[required] The name of the engine to retrieve DB instance options for.
+
+Valid Values:
+\itemize{
+\item \code{aurora} (for MySQL 5.6-compatible Aurora)
+\item \code{aurora-mysql} (for MySQL 5.7-compatible Aurora)
+\item \code{aurora-postgresql}
+\item \code{mariadb}
+\item \code{mysql}
+\item \code{oracle-ee}
+\item \code{oracle-se2}
+\item \code{oracle-se1}
+\item \code{oracle-se}
+\item \code{postgres}
+\item \code{sqlserver-ee}
+\item \code{sqlserver-se}
+\item \code{sqlserver-ex}
+\item \code{sqlserver-web}
+}}
 
 \item{EngineVersion}{The engine version filter value. Specify this parameter to show only the
 available offerings matching the specified engine version.}

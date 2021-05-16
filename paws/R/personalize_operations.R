@@ -19,13 +19,14 @@ NULL
 #' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version that will be used
 #' to generate the batch inference recommendations.
 #' @param filterArn The ARN of the filter to apply to the batch inference job. For more
-#' information on using filters, see Using Filters with Amazon Personalize.
+#' information on using filters, see [Filtering Batch
+#' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html)..
 #' @param numResults The number of recommendations to retreive.
 #' @param jobInput &#91;required&#93; The Amazon S3 path that leads to the input file to base your
 #' recommendations on. The input material must be in JSON format.
 #' @param jobOutput &#91;required&#93; The path to the Amazon S3 bucket where the job's output will be stored.
 #' @param roleArn &#91;required&#93; The ARN of the Amazon Identity and Access Management role that has
-#' permissions to read and write to your input and out Amazon S3 buckets
+#' permissions to read and write to your input and output Amazon S3 buckets
 #' respectively.
 #' @param batchInferenceJobConfig The configuration details of a batch inference job.
 #'
@@ -102,13 +103,17 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' throughput and unit of billing for Amazon Personalize. The minimum
 #' provisioned TPS (`minProvisionedTPS`) specifies the baseline throughput
 #' provisioned by Amazon Personalize, and thus, the minimum billing charge.
+#' 
 #' If your TPS increases beyond `minProvisionedTPS`, Amazon Personalize
 #' auto-scales the provisioned capacity up and down, but never below
-#' `minProvisionedTPS`, to maintain a 70% utilization. There's a short time
-#' delay while the capacity is increased that might cause loss of
-#' transactions. It's recommended to start with a low `minProvisionedTPS`,
-#' track your usage using Amazon CloudWatch metrics, and then increase the
-#' `minProvisionedTPS` as necessary.
+#' `minProvisionedTPS`. There's a short time delay while the capacity is
+#' increased that might cause loss of transactions.
+#' 
+#' The actual TPS used is calculated as the average requests/second within
+#' a 5-minute window. You pay for maximum of either the minimum provisioned
+#' TPS or the actual TPS. We recommend starting with a low
+#' `minProvisionedTPS`, track your usage using Amazon CloudWatch metrics,
+#' and then increase the `minProvisionedTPS` as necessary.
 #' 
 #' **Status**
 #' 
@@ -284,6 +289,92 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 }
 .personalize$operations$create_dataset <- personalize_create_dataset
 
+#' Creates a job that exports data from your dataset to an Amazon S3 bucket
+#'
+#' @description
+#' Creates a job that exports data from your dataset to an Amazon S3
+#' bucket. To allow Amazon Personalize to export the training data, you
+#' must specify an service-linked AWS Identity and Access Management (IAM)
+#' role that gives Amazon Personalize `PutObject` permissions for your
+#' Amazon S3 bucket. For information, see [Exporting a
+#' dataset](https://docs.aws.amazon.com/personalize/latest/dg/export-data.html)
+#' in the Amazon Personalize developer guide.
+#' 
+#' **Status**
+#' 
+#' A dataset export job can be in one of the following states:
+#' 
+#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+#'     FAILED
+#' 
+#' To get the status of the export job, call
+#' [`describe_dataset_export_job`][personalize_describe_dataset_export_job],
+#' and specify the Amazon Resource Name (ARN) of the dataset export job.
+#' The dataset export is complete when the status shows as ACTIVE. If the
+#' status shows as CREATE FAILED, the response includes a `failureReason`
+#' key, which describes why the job failed.
+#'
+#' @usage
+#' personalize_create_dataset_export_job(jobName, datasetArn,
+#'   ingestionMode, roleArn, jobOutput)
+#'
+#' @param jobName &#91;required&#93; The name for the dataset export job.
+#' @param datasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset that contains the data to
+#' export.
+#' @param ingestionMode The data to export, based on how you imported the data. You can choose
+#' to export only `BULK` data that you imported using a dataset import job,
+#' only `PUT` data that you imported incrementally (using the console,
+#' PutEvents, PutUsers and PutItems operations), or `ALL` for both types.
+#' The default value is `PUT`.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
+#' service role that has permissions to add data to your output Amazon S3
+#' bucket.
+#' @param jobOutput &#91;required&#93; The path to the Amazon S3 bucket where the job's output is stored.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetExportJobArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_dataset_export_job(
+#'   jobName = "string",
+#'   datasetArn = "string",
+#'   ingestionMode = "BULK"|"PUT"|"ALL",
+#'   roleArn = "string",
+#'   jobOutput = list(
+#'     s3DataDestination = list(
+#'       path = "string",
+#'       kmsKeyArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_create_dataset_export_job
+personalize_create_dataset_export_job <- function(jobName, datasetArn, ingestionMode = NULL, roleArn, jobOutput) {
+  op <- new_operation(
+    name = "CreateDatasetExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$create_dataset_export_job_input(jobName = jobName, datasetArn = datasetArn, ingestionMode = ingestionMode, roleArn = roleArn, jobOutput = jobOutput)
+  output <- .personalize$create_dataset_export_job_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$create_dataset_export_job <- personalize_create_dataset_export_job
+
 #' Creates an empty dataset group
 #'
 #' @description
@@ -391,11 +482,15 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' Creates a job that imports training data from your data source (an
 #' Amazon S3 bucket) to an Amazon Personalize dataset. To allow Amazon
 #' Personalize to import the training data, you must specify an AWS
-#' Identity and Access Management (IAM) role that has permission to read
-#' from the data source, as Amazon Personalize makes a copy of your data
-#' and processes it in an internal AWS system.
+#' Identity and Access Management (IAM) service role that has permission to
+#' read from the data source, as Amazon Personalize makes a copy of your
+#' data and processes it in an internal AWS system. For information on
+#' granting access to your Amazon S3 bucket, see [Giving Amazon Personalize
+#' Access to Amazon S3
+#' Resources](https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html).
 #' 
-#' The dataset import job replaces any previous data in the dataset.
+#' The dataset import job replaces any existing data in the dataset that
+#' you imported in bulk.
 #' 
 #' **Status**
 #' 
@@ -470,28 +565,26 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 }
 .personalize$operations$create_dataset_import_job <- personalize_create_dataset_import_job
 
-#' Creates an event tracker that you use when sending event data to the
+#' Creates an event tracker that you use when adding event data to a
 #' specified dataset group using the PutEvents API
 #'
 #' @description
-#' Creates an event tracker that you use when sending event data to the
+#' Creates an event tracker that you use when adding event data to a
 #' specified dataset group using the
 #' [PutEvents](https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html)
 #' API.
-#' 
-#' When Amazon Personalize creates an event tracker, it also creates an
-#' *event-interactions* dataset in the dataset group associated with the
-#' event tracker. The event-interactions dataset stores the event data from
-#' the `PutEvents` call. The contents of this dataset are not available to
-#' the user.
 #' 
 #' Only one event tracker can be associated with a dataset group. You will
 #' get an error if you call
 #' [`create_event_tracker`][personalize_create_event_tracker] using the
 #' same dataset group as an existing event tracker.
 #' 
-#' When you send event data you include your tracking ID. The tracking ID
-#' identifies the customer and authorizes the customer to send the data.
+#' When you create an event tracker, the response includes a tracking ID,
+#' which you pass as a parameter when you use the
+#' [PutEvents](https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html)
+#' operation. Amazon Personalize then appends the event data to the
+#' Interactions dataset of the dataset group you specify in your event
+#' tracker.
 #' 
 #' The event tracker can be in one of the following states:
 #' 
@@ -561,25 +654,17 @@ personalize_create_event_tracker <- function(name, datasetGroupArn) {
 #' Creates a recommendation filter
 #'
 #' @description
-#' Creates a recommendation filter. For more information, see [Using
-#' Filters with Amazon
-#' Personalize](https://docs.aws.amazon.com/personalize/latest/dg/).
+#' Creates a recommendation filter. For more information, see filter.
 #'
 #' @usage
 #' personalize_create_filter(name, datasetGroupArn, filterExpression)
 #'
 #' @param name &#91;required&#93; The name of the filter to create.
 #' @param datasetGroupArn &#91;required&#93; The ARN of the dataset group that the filter will belong to.
-#' @param filterExpression &#91;required&#93; The filter expression that designates the interaction types that the
-#' filter will filter out. A filter expression must follow the following
-#' format:
-#' 
-#' `EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")`
-#' 
-#' Where "EVENT_TYPE" is the type of event to filter out. To filter out
-#' all items with any interactions history, set `"*"` as the EVENT_TYPE.
-#' For more information, see [Using Filters with Amazon
-#' Personalize](https://docs.aws.amazon.com/personalize/latest/dg/).
+#' @param filterExpression &#91;required&#93; The filter expression defines which items are included or excluded from
+#' recommendations. Filter expression must follow specific format rules.
+#' For information about filter expression structure and syntax, see
+#' filter-expressions.
 #'
 #' @return
 #' A list with the following syntax:
@@ -706,6 +791,9 @@ personalize_create_schema <- function(name, schema) {
 #' and Amazon Personalize will analyze your data and select the optimum
 #' USER_PERSONALIZATION recipe for you.
 #' 
+#' Amazon Personalize doesn't support configuring the `hpoObjective` for
+#' solution hyperparameter optimization at this time.
+#' 
 #' **Status**
 #' 
 #' A solution can be in one of the following states:
@@ -761,9 +849,15 @@ personalize_create_schema <- function(name, schema) {
 #' @param eventType When your have multiple event types (using an `EVENT_TYPE` schema
 #' field), this parameter specifies which event type (for example, 'click'
 #' or 'like') is used for training the model.
+#' 
+#' If you do not provide an `eventType`, Amazon Personalize will use all
+#' interactions for training with equal weight regardless of type.
 #' @param solutionConfig The configuration to use with the solution. When `performAutoML` is set
 #' to true, Amazon Personalize only evaluates the `autoMLConfig` section of
 #' the solution configuration.
+#' 
+#' Amazon Personalize doesn't support configuring the `hpoObjective` at
+#' this time.
 #'
 #' @return
 #' A list with the following syntax:
@@ -908,7 +1002,10 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' 
 #' The `UPDATE` option can only be used when you already have an active
 #' solution version created from the input solution using the `FULL` option
-#' and the input solution was trained with the native-recipe-hrnn-coldstart
+#' and the input solution was trained with the
+#' [User-Personalization](https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html)
+#' recipe or the
+#' [HRNN-Coldstart](https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-hrnn-coldstart.html)
 #' recipe.
 #'
 #' @return
@@ -1579,6 +1676,74 @@ personalize_describe_dataset <- function(datasetArn) {
   return(response)
 }
 .personalize$operations$describe_dataset <- personalize_describe_dataset
+
+#' Describes the dataset export job created by CreateDatasetExportJob,
+#' including the export job status
+#'
+#' @description
+#' Describes the dataset export job created by
+#' [`create_dataset_export_job`][personalize_create_dataset_export_job],
+#' including the export job status.
+#'
+#' @usage
+#' personalize_describe_dataset_export_job(datasetExportJobArn)
+#'
+#' @param datasetExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset export job to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetExportJob = list(
+#'     jobName = "string",
+#'     datasetExportJobArn = "string",
+#'     datasetArn = "string",
+#'     ingestionMode = "BULK"|"PUT"|"ALL",
+#'     roleArn = "string",
+#'     status = "string",
+#'     jobOutput = list(
+#'       s3DataDestination = list(
+#'         path = "string",
+#'         kmsKeyArn = "string"
+#'       )
+#'     ),
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     failureReason = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_dataset_export_job(
+#'   datasetExportJobArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_describe_dataset_export_job
+personalize_describe_dataset_export_job <- function(datasetExportJobArn) {
+  op <- new_operation(
+    name = "DescribeDatasetExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$describe_dataset_export_job_input(datasetExportJobArn = datasetExportJobArn)
+  output <- .personalize$describe_dataset_export_job_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$describe_dataset_export_job <- personalize_describe_dataset_export_job
 
 #' Describes the given dataset group
 #'
@@ -2446,6 +2611,79 @@ personalize_list_campaigns <- function(solutionArn = NULL, nextToken = NULL, max
   return(response)
 }
 .personalize$operations$list_campaigns <- personalize_list_campaigns
+
+#' Returns a list of dataset export jobs that use the given dataset
+#'
+#' @description
+#' Returns a list of dataset export jobs that use the given dataset. When a
+#' dataset is not specified, all the dataset export jobs associated with
+#' the account are listed. The response provides the properties for each
+#' dataset export job, including the Amazon Resource Name (ARN). For more
+#' information on dataset export jobs, see
+#' [`create_dataset_export_job`][personalize_create_dataset_export_job].
+#' For more information on datasets, see
+#' [`create_dataset`][personalize_create_dataset].
+#'
+#' @usage
+#' personalize_list_dataset_export_jobs(datasetArn, nextToken, maxResults)
+#'
+#' @param datasetArn The Amazon Resource Name (ARN) of the dataset to list the dataset export
+#' jobs for.
+#' @param nextToken A token returned from the previous call to
+#' [`list_dataset_export_jobs`][personalize_list_dataset_export_jobs] for
+#' getting the next set of dataset export jobs (if they exist).
+#' @param maxResults The maximum number of dataset export jobs to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetExportJobs = list(
+#'     list(
+#'       datasetExportJobArn = "string",
+#'       jobName = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_dataset_export_jobs(
+#'   datasetArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_list_dataset_export_jobs
+personalize_list_dataset_export_jobs <- function(datasetArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListDatasetExportJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$list_dataset_export_jobs_input(datasetArn = datasetArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .personalize$list_dataset_export_jobs_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$list_dataset_export_jobs <- personalize_list_dataset_export_jobs
 
 #' Returns a list of dataset groups
 #'

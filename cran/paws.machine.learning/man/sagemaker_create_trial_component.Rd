@@ -54,8 +54,8 @@ component can be used in multiple trials.
 Trial components include pre-processing jobs, training jobs, and batch
 transform jobs.
 
-When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-all experiments, trials, and trial components are automatically tracked,
+When you use SageMaker Studio or the SageMaker Python SDK, all
+experiments, trials, and trial components are automatically tracked,
 logged, and indexed. When you use the AWS SDK for Python (Boto), you
 must use the logging APIs provided by the SDK.
 
@@ -63,9 +63,9 @@ You can add tags to a trial component and then use the
 \code{\link[=sagemaker_search]{search}} API to search for the tags.
 
 \code{\link[=sagemaker_create_trial_component]{create_trial_component}} can only be
-invoked from within an Amazon SageMaker managed environment. This
-includes Amazon SageMaker training jobs, processing jobs, transform
-jobs, and Amazon SageMaker notebooks. A call to
+invoked from within an SageMaker managed environment. This includes
+SageMaker training jobs, processing jobs, transform jobs, and SageMaker
+notebooks. A call to
 \code{\link[=sagemaker_create_trial_component]{create_trial_component}} from
 outside one of these environments results in an error.
 }

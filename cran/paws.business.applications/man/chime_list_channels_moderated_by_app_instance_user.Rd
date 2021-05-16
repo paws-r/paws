@@ -2,10 +2,10 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_list_channels_moderated_by_app_instance_user}
 \alias{chime_list_channels_moderated_by_app_instance_user}
-\title{A list of the channels moderated by an app instance user}
+\title{A list of the channels moderated by an AppInstanceUser}
 \usage{
 chime_list_channels_moderated_by_app_instance_user(AppInstanceUserArn,
-  MaxResults, NextToken)
+  MaxResults, NextToken, ChimeBearer)
 }
 \arguments{
 \item{AppInstanceUserArn}{The ARN of the user in the moderated channel.}
@@ -14,6 +14,8 @@ chime_list_channels_moderated_by_app_instance_user(AppInstanceUserArn,
 
 \item{NextToken}{The token returned from previous API requests until the number of
 channels moderated by the user is reached.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -36,13 +38,18 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-A list of the channels moderated by an app instance user.
+A list of the channels moderated by an \code{AppInstanceUser}.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$list_channels_moderated_by_app_instance_user(
   AppInstanceUserArn = "string",
   MaxResults = 123,
-  NextToken = "string"
+  NextToken = "string",
+  ChimeBearer = "string"
 )
 }
 }

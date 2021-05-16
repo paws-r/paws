@@ -18,14 +18,15 @@ Deletes an alias. This operation removes all record of the alias. Game
 clients attempting to access a server process using the deleted alias
 receive an error. To delete an alias, specify the alias ID to be
 deleted.
-\itemize{
-\item \code{\link[=gamelift_create_alias]{create_alias}}
-\item \code{\link[=gamelift_list_aliases]{list_aliases}}
-\item \code{\link[=gamelift_describe_alias]{describe_alias}}
-\item \code{\link[=gamelift_update_alias]{update_alias}}
-\item \code{\link[=gamelift_delete_alias]{delete_alias}}
-\item \code{\link[=gamelift_resolve_alias]{resolve_alias}}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_alias]{create_alias}} |
+\code{\link[=gamelift_list_aliases]{list_aliases}} |
+\code{\link[=gamelift_describe_alias]{describe_alias}} |
+\code{\link[=gamelift_update_alias]{update_alias}} |
+\code{\link[=gamelift_delete_alias]{delete_alias}} |
+\code{\link[=gamelift_resolve_alias]{resolve_alias}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_alias(

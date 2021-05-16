@@ -3,8 +3,7 @@
 \name{route53_get_dnssec}
 \alias{route53_get_dnssec}
 \title{Returns information about DNSSEC for a specific hosted zone, including
-the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
-zone}
+the key-signing keys (KSKs) in the hosted zone}
 \usage{
 route53_get_dnssec(HostedZoneId)
 }
@@ -46,8 +45,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Returns information about DNSSEC for a specific hosted zone, including
-the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
-zone.
+the key-signing keys (KSKs) in the hosted zone.
 }
 \section{Request syntax}{
 \preformatted{svc$get_dnssec(

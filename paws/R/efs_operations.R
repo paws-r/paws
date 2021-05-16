@@ -13,8 +13,8 @@ NULL
 #' identity information provided by the NFS client. The file system path is
 #' exposed as the access point's root directory. Applications using the
 #' access point can only access data in its own directory and below. To
-#' learn more, see [Mounting a File System Using EFS Access
-#' Points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
+#' learn more, see [Mounting a file system using EFS access
+#' points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
 #' 
 #' This operation requires permissions for the
 #' `elasticfilesystem:CreateAccessPoint` action.
@@ -36,8 +36,13 @@ NULL
 #' access the root directory and below. If the `RootDirectory` &gt; `Path`
 #' specified does not exist, EFS creates it and applies the `CreationInfo`
 #' settings when a client connects to an access point. When specifying a
-#' `RootDirectory`, you need to provide the `Path`, and the `CreationInfo`
-#' is optional.
+#' `RootDirectory`, you need to provide the `Path`, and the `CreationInfo`.
+#' 
+#' Amazon EFS creates a root directory only if you have provided the
+#' CreationInfo: OwnUid, OwnGID, and permissions for the directory. If you
+#' do not provide this information, Amazon EFS does not create the root
+#' directory. If the root directory does not exist, attempts to mount using
+#' the access point will fail.
 #'
 #' @return
 #' A list with the following syntax:
@@ -70,7 +75,7 @@ NULL
 #'     )
 #'   ),
 #'   OwnerId = "string",
-#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
+#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error"
 #' )
 #' ```
 #'
@@ -154,21 +159,27 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' system, the client can learn of its existence from the
 #' `FileSystemAlreadyExists` error.
 #' 
+#' For more information, see [Creating a file
+#' system](https://docs.aws.amazon.com/efs/latest/ug/creating-using-create-fs.html#creating-using-create-fs-part1)
+#' in the *Amazon EFS User Guide*.
+#' 
 #' The [`create_file_system`][efs_create_file_system] call returns while
 #' the file system's lifecycle state is still `creating`. You can check the
 #' file system creation status by calling the
 #' [`describe_file_systems`][efs_describe_file_systems] operation, which
 #' among other things returns the file system state.
 #' 
-#' This operation also takes an optional `PerformanceMode` parameter that
-#' you choose for your file system. We recommend `generalPurpose`
-#' performance mode for most file systems. File systems using the `maxIO`
-#' performance mode can scale to higher levels of aggregate throughput and
-#' operations per second with a tradeoff of slightly higher latencies for
-#' most file operations. The performance mode can't be changed after the
-#' file system has been created. For more information, see [Amazon EFS:
-#' Performance
-#' Modes](https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html).
+#' This operation accepts an optional `PerformanceMode` parameter that you
+#' choose for your file system. We recommend `generalPurpose` performance
+#' mode for most file systems. File systems using the `maxIO` performance
+#' mode can scale to higher levels of aggregate throughput and operations
+#' per second with a tradeoff of slightly higher latencies for most file
+#' operations. The performance mode can't be changed after the file system
+#' has been created. For more information, see [Amazon EFS performance
+#' modes](https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html).
+#' 
+#' You can set the throughput mode for the file system using the
+#' `ThroughputMode` parameter.
 #' 
 #' After the file system is fully created, Amazon EFS sets its lifecycle
 #' state to `available`, at which point you can create one or more mount
@@ -183,7 +194,8 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #'
 #' @usage
 #' efs_create_file_system(CreationToken, PerformanceMode, Encrypted,
-#'   KmsKeyId, ThroughputMode, ProvisionedThroughputInMibps, Tags)
+#'   KmsKeyId, ThroughputMode, ProvisionedThroughputInMibps,
+#'   AvailabilityZoneName, Backup, Tags)
 #'
 #' @param CreationToken &#91;required&#93; A string of up to 64 ASCII characters. Amazon EFS uses this to ensure
 #' idempotent creation.
@@ -193,6 +205,9 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' operations per second with a tradeoff of slightly higher latencies for
 #' most file operations. The performance mode can't be changed after the
 #' file system has been created.
+#' 
+#' The `maxIO` mode is not supported on file systems using One Zone storage
+#' classes.
 #' @param Encrypted A Boolean value that, if true, creates an encrypted file system. When
 #' creating an encrypted file system, you have the option of specifying
 #' CreateFileSystemRequest$KmsKeyId for an existing AWS Key Management
@@ -200,7 +215,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' then the default CMK for Amazon EFS, `/aws/elasticfilesystem`, is used
 #' to protect the encrypted file system.
 #' @param KmsKeyId The ID of the AWS KMS CMK to be used to protect the encrypted file
-#' system. This parameter is only required if you want to use a nondefault
+#' system. This parameter is only required if you want to use a non-default
 #' CMK. If this parameter is not specified, the default CMK for Amazon EFS
 #' is used. This ID can be in one of the following formats:
 #' 
@@ -221,23 +236,47 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' 
 #' EFS accepts only symmetric CMKs. You cannot use asymmetric CMKs with EFS
 #' file systems.
-#' @param ThroughputMode The throughput mode for the file system to be created. There are two
-#' throughput modes to choose from for your file system: `bursting` and
+#' @param ThroughputMode Specifies the throughput mode for the file system, either `bursting` or
 #' `provisioned`. If you set `ThroughputMode` to `provisioned`, you must
-#' also set a value for `ProvisionedThroughPutInMibps`. You can decrease
-#' your file system's throughput in Provisioned Throughput mode or change
-#' between the throughput modes as long as it’s been more than 24 hours
-#' since the last decrease or throughput mode change. For more, see
-#' [Specifying Throughput with Provisioned
-#' Mode](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput)
-#' in the *Amazon EFS User Guide.*
+#' also set a value for `ProvisionedThroughputInMibps`. After you create
+#' the file system, you can decrease your file system's throughput in
+#' Provisioned Throughput mode or change between the throughput modes, as
+#' long as it’s been more than 24 hours since the last decrease or
+#' throughput mode change. For more information, see [Specifying throughput
+#' with provisioned
+#' mode](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput)
+#' in the *Amazon EFS User Guide*.
+#' 
+#' Default is `bursting`.
 #' @param ProvisionedThroughputInMibps The throughput, measured in MiB/s, that you want to provision for a file
 #' system that you're creating. Valid values are 1-1024. Required if
 #' `ThroughputMode` is set to `provisioned`. The upper limit for throughput
-#' is 1024 MiB/s. You can get this limit increased by contacting AWS
-#' Support. For more information, see [Amazon EFS Limits That You Can
-#' Increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits)
-#' in the *Amazon EFS User Guide.*
+#' is 1024 MiB/s. To increase this limit, contact AWS Support. For more
+#' information, see [Amazon EFS quotas that you can
+#' increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits)
+#' in the *Amazon EFS User Guide*.
+#' @param AvailabilityZoneName Used to create a file system that uses One Zone storage classes. It
+#' specifies the AWS Availability Zone in which to create the file system.
+#' Use the format `us-east-1a` to specify the Availability Zone. For more
+#' information about One Zone storage classes, see [Using EFS storage
+#' classes](https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html)
+#' in the *Amazon EFS User Guide*.
+#' 
+#' One Zone storage classes are not available in all Availability Zones in
+#' AWS Regions where Amazon EFS is available.
+#' @param Backup Specifies whether automatic backups are enabled on the file system that
+#' you are creating. Set the value to `true` to enable automatic backups.
+#' If you are creating a file system that uses One Zone storage classes,
+#' automatic backups are enabled by default. For more information, see
+#' [Automatic
+#' backups](https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html#automatic-backups)
+#' in the *Amazon EFS User Guide*.
+#' 
+#' Default is `false`. However, if you specify an `AvailabilityZoneName`,
+#' the default is `true`.
+#' 
+#' AWS Backup is not available in all AWS Regions where Amazon EFS is
+#' available.
 #' @param Tags A value that specifies to create one or more tags associated with the
 #' file system. Each tag is a user-defined key-value pair. Name your file
 #' system on creation by including a `"Key":"Name","Value":"{value}"`
@@ -254,7 +293,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #'   CreationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error",
 #'   Name = "string",
 #'   NumberOfMountTargets = 123,
 #'   SizeInBytes = list(
@@ -270,6 +309,8 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #'   KmsKeyId = "string",
 #'   ThroughputMode = "bursting"|"provisioned",
 #'   ProvisionedThroughputInMibps = 123.0,
+#'   AvailabilityZoneName = "string",
+#'   AvailabilityZoneId = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -288,6 +329,8 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #'   KmsKeyId = "string",
 #'   ThroughputMode = "bursting"|"provisioned",
 #'   ProvisionedThroughputInMibps = 123.0,
+#'   AvailabilityZoneName = "string",
+#'   Backup = TRUE|FALSE,
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -299,10 +342,12 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #'
 #' @examples
 #' \dontrun{
-#' # This operation creates a new file system with the default generalpurpose
-#' # performance mode.
+#' # This operation creates a new, encrypted file system with automatic
+#' # backups enabled, and the default generalpurpose performance mode.
 #' svc$create_file_system(
+#'   Backup = TRUE,
 #'   CreationToken = "tokenstring",
+#'   Encrypted = TRUE,
 #'   PerformanceMode = "generalPurpose",
 #'   Tags = list(
 #'     list(
@@ -316,14 +361,14 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' @keywords internal
 #'
 #' @rdname efs_create_file_system
-efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encrypted = NULL, KmsKeyId = NULL, ThroughputMode = NULL, ProvisionedThroughputInMibps = NULL, Tags = NULL) {
+efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encrypted = NULL, KmsKeyId = NULL, ThroughputMode = NULL, ProvisionedThroughputInMibps = NULL, AvailabilityZoneName = NULL, Backup = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFileSystem",
     http_method = "POST",
     http_path = "/2015-02-01/file-systems",
     paginator = list()
   )
-  input <- .efs$create_file_system_input(CreationToken = CreationToken, PerformanceMode = PerformanceMode, Encrypted = Encrypted, KmsKeyId = KmsKeyId, ThroughputMode = ThroughputMode, ProvisionedThroughputInMibps = ProvisionedThroughputInMibps, Tags = Tags)
+  input <- .efs$create_file_system_input(CreationToken = CreationToken, PerformanceMode = PerformanceMode, Encrypted = Encrypted, KmsKeyId = KmsKeyId, ThroughputMode = ThroughputMode, ProvisionedThroughputInMibps = ProvisionedThroughputInMibps, AvailabilityZoneName = AvailabilityZoneName, Backup = Backup, Tags = Tags)
   output <- .efs$create_file_system_output()
   config <- get_config()
   svc <- .efs$service(config)
@@ -344,24 +389,37 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' single mount target for a given file system. If you have multiple
 #' subnets in an Availability Zone, you create a mount target in one of the
 #' subnets. EC2 instances do not need to be in the same subnet as the mount
-#' target in order to access their file system. For more information, see
-#' [Amazon EFS: How it
+#' target in order to access their file system.
+#' 
+#' You can create only one mount target for an EFS file system using One
+#' Zone storage classes. You must create that mount target in the same
+#' Availability Zone in which the file system is located. Use the
+#' `AvailabilityZoneName` and `AvailabiltyZoneId` properties in the
+#' [`describe_file_systems`][efs_describe_file_systems] response object to
+#' get this information. Use the `subnetId` associated with the file
+#' system's Availability Zone when creating the mount target.
+#' 
+#' For more information, see [Amazon EFS: How it
 #' Works](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
 #' 
-#' In the request, you also specify a file system ID for which you are
-#' creating the mount target and the file system's lifecycle state must be
-#' `available`. For more information, see
+#' To create a mount target for a file system, the file system's lifecycle
+#' state must be `available`. For more information, see
 #' [`describe_file_systems`][efs_describe_file_systems].
 #' 
-#' In the request, you also provide a subnet ID, which determines the
-#' following:
+#' In the request, provide the following:
 #' 
-#' -   VPC in which Amazon EFS creates the mount target
+#' -   The file system ID for which you are creating the mount target.
 #' 
-#' -   Availability Zone in which Amazon EFS creates the mount target
+#' -   A subnet ID, which determines the following:
 #' 
-#' -   IP address range from which Amazon EFS selects the IP address of the
-#'     mount target (if you don't specify an IP address in the request)
+#'     -   The VPC in which Amazon EFS creates the mount target
+#' 
+#'     -   The Availability Zone in which Amazon EFS creates the mount
+#'         target
+#' 
+#'     -   The IP address range from which Amazon EFS selects the IP
+#'         address of the mount target (if you don't specify an IP address
+#'         in the request)
 #' 
 #' After creating the mount target, Amazon EFS returns a response that
 #' includes, a `MountTargetId` and an `IpAddress`. You use this IP address
@@ -450,7 +508,9 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #'   SecurityGroups)
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system for which to create the mount target.
-#' @param SubnetId &#91;required&#93; The ID of the subnet to add the mount target in.
+#' @param SubnetId &#91;required&#93; The ID of the subnet to add the mount target in. For file systems that
+#' use One Zone storage classes, use the subnet that is associated with the
+#' file system's Availability Zone.
 #' @param IpAddress Valid IPv4 address within the address range of the specified subnet.
 #' @param SecurityGroups Up to five VPC security group IDs, of the form `sg-xxxxxxxx`. These must
 #' be for the same VPC as subnet specified.
@@ -463,7 +523,7 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #'   MountTargetId = "string",
 #'   FileSystemId = "string",
 #'   SubnetId = "string",
-#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error",
 #'   IpAddress = "string",
 #'   NetworkInterfaceId = "string",
 #'   AvailabilityZoneId = "string",
@@ -942,7 +1002,7 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 #'         )
 #'       ),
 #'       OwnerId = "string",
-#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
+#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1139,7 +1199,7 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error",
 #'       Name = "string",
 #'       NumberOfMountTargets = 123,
 #'       SizeInBytes = list(
@@ -1155,6 +1215,8 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #'       KmsKeyId = "string",
 #'       ThroughputMode = "bursting"|"provisioned",
 #'       ProvisionedThroughputInMibps = 123.0,
+#'       AvailabilityZoneName = "string",
+#'       AvailabilityZoneId = "string",
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -1388,7 +1450,7 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #'       MountTargetId = "string",
 #'       FileSystemId = "string",
 #'       SubnetId = "string",
-#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error",
 #'       IpAddress = "string",
 #'       NetworkInterfaceId = "string",
 #'       AvailabilityZoneId = "string",
@@ -1710,10 +1772,13 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' file system policy is an IAM resource-based policy and can contain
 #' multiple policy statements. A file system always has exactly one file
 #' system policy, which can be the default policy or an explicit policy set
-#' or updated using this API operation. When an explicit policy is set, it
-#' overrides the default policy. For more information about the default
-#' file system policy, see [Default EFS File System
+#' or updated using this API operation. EFS file system policies have a
+#' 20,000 character limit. When an explicit policy is set, it overrides the
+#' default policy. For more information about the default file system
+#' policy, see [Default EFS File System
 #' Policy](https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy).
+#' 
+#' EFS file system policies have a 20,000 character limit.
 #' 
 #' This operation requires permissions for the
 #' `elasticfilesystem:PutFileSystemPolicy` action.
@@ -1725,8 +1790,9 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' @param FileSystemId &#91;required&#93; The ID of the EFS file system that you want to create or update the
 #' `FileSystemPolicy` for.
 #' @param Policy &#91;required&#93; The `FileSystemPolicy` that you're creating. Accepts a JSON formatted
-#' policy definition. To find out more about the elements that make up a
-#' file system policy, see [EFS Resource-based
+#' policy definition. EFS file system policies have a 20,000 character
+#' limit. To find out more about the elements that make up a file system
+#' policy, see [EFS Resource-based
 #' Policies](https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies).
 #' @param BypassPolicyLockoutSafetyCheck (Optional) A flag to indicate whether to bypass the `FileSystemPolicy`
 #' lockout safety check. The policy lockout safety check determines whether
@@ -1947,7 +2013,7 @@ efs_tag_resource <- function(ResourceId, Tags) {
 #' efs_untag_resource(ResourceId, TagKeys)
 #'
 #' @param ResourceId &#91;required&#93; Specifies the EFS resource that you want to remove tags from.
-#' @param TagKeys &#91;required&#93; The keys of the key:value tag pairs that you want to remove from the
+#' @param TagKeys &#91;required&#93; The keys of the key-value tag pairs that you want to remove from the
 #' specified EFS resource.
 #'
 #' @return
@@ -1995,16 +2061,15 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #'   ProvisionedThroughputInMibps)
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system that you want to update.
-#' @param ThroughputMode (Optional) The throughput mode that you want your file system to use. If
-#' you're not updating your throughput mode, you don't need to provide this
-#' value in your request. If you are changing the `ThroughputMode` to
-#' `provisioned`, you must also set a value for
-#' `ProvisionedThroughputInMibps`.
-#' @param ProvisionedThroughputInMibps (Optional) The amount of throughput, in MiB/s, that you want to
-#' provision for your file system. Valid values are 1-1024. Required if
-#' `ThroughputMode` is changed to `provisioned` on update. If you're not
-#' updating the amount of provisioned throughput for your file system, you
-#' don't need to provide this value in your request.
+#' @param ThroughputMode (Optional) Updates the file system's throughput mode. If you're not
+#' updating your throughput mode, you don't need to provide this value in
+#' your request. If you are changing the `ThroughputMode` to `provisioned`,
+#' you must also set a value for `ProvisionedThroughputInMibps`.
+#' @param ProvisionedThroughputInMibps (Optional) Sets the amount of provisioned throughput, in MiB/s, for the
+#' file system. Valid values are 1-1024. If you are changing the throughput
+#' mode to provisioned, you must also provide the amount of provisioned
+#' throughput. Required if `ThroughputMode` is changed to `provisioned` on
+#' update.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2017,7 +2082,7 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #'   CreationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error",
 #'   Name = "string",
 #'   NumberOfMountTargets = 123,
 #'   SizeInBytes = list(
@@ -2033,6 +2098,8 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #'   KmsKeyId = "string",
 #'   ThroughputMode = "bursting"|"provisioned",
 #'   ProvisionedThroughputInMibps = 123.0,
+#'   AvailabilityZoneName = "string",
+#'   AvailabilityZoneId = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",

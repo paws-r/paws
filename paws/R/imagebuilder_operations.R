@@ -148,10 +148,10 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #'
 #' @usage
 #' imagebuilder_create_container_recipe(containerType, name, description,
-#'   semanticVersion, components, dockerfileTemplateData,
-#'   dockerfileTemplateUri, platformOverride, imageOsVersionOverride,
-#'   parentImage, tags, workingDirectory, targetRepository, kmsKeyId,
-#'   clientToken)
+#'   semanticVersion, components, instanceConfiguration,
+#'   dockerfileTemplateData, dockerfileTemplateUri, platformOverride,
+#'   imageOsVersionOverride, parentImage, tags, workingDirectory,
+#'   targetRepository, kmsKeyId, clientToken)
 #'
 #' @param containerType &#91;required&#93; The type of container to create.
 #' @param name &#91;required&#93; The name of the container recipe.
@@ -159,7 +159,9 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @param semanticVersion &#91;required&#93; The semantic version of the container recipe
 #' (&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;).
 #' @param components &#91;required&#93; Components for build and test that are included in the container recipe.
-#' @param dockerfileTemplateData &#91;required&#93; The Dockerfile template used to build your image as an inline data blob.
+#' @param instanceConfiguration A group of options that can be used to configure an instance for
+#' building and testing container images.
+#' @param dockerfileTemplateData The Dockerfile template used to build your image as an inline data blob.
 #' @param dockerfileTemplateUri The S3 URI for the Dockerfile that will be used to build your container
 #' image.
 #' @param platformOverride Specifies the operating system platform when you use a custom source
@@ -194,6 +196,25 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #'       componentArn = "string"
 #'     )
 #'   ),
+#'   instanceConfiguration = list(
+#'     image = "string",
+#'     blockDeviceMappings = list(
+#'       list(
+#'         deviceName = "string",
+#'         ebs = list(
+#'           encrypted = TRUE|FALSE,
+#'           deleteOnTermination = TRUE|FALSE,
+#'           iops = 123,
+#'           kmsKeyId = "string",
+#'           snapshotId = "string",
+#'           volumeSize = 123,
+#'           volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1"
+#'         ),
+#'         virtualName = "string",
+#'         noDevice = "string"
+#'       )
+#'     )
+#'   ),
 #'   dockerfileTemplateData = "string",
 #'   dockerfileTemplateUri = "string",
 #'   platformOverride = "Windows"|"Linux",
@@ -215,14 +236,14 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_container_recipe
-imagebuilder_create_container_recipe <- function(containerType, name, description = NULL, semanticVersion, components, dockerfileTemplateData, dockerfileTemplateUri = NULL, platformOverride = NULL, imageOsVersionOverride = NULL, parentImage, tags = NULL, workingDirectory = NULL, targetRepository, kmsKeyId = NULL, clientToken) {
+imagebuilder_create_container_recipe <- function(containerType, name, description = NULL, semanticVersion, components, instanceConfiguration = NULL, dockerfileTemplateData = NULL, dockerfileTemplateUri = NULL, platformOverride = NULL, imageOsVersionOverride = NULL, parentImage, tags = NULL, workingDirectory = NULL, targetRepository, kmsKeyId = NULL, clientToken) {
   op <- new_operation(
     name = "CreateContainerRecipe",
     http_method = "PUT",
     http_path = "/CreateContainerRecipe",
     paginator = list()
   )
-  input <- .imagebuilder$create_container_recipe_input(containerType = containerType, name = name, description = description, semanticVersion = semanticVersion, components = components, dockerfileTemplateData = dockerfileTemplateData, dockerfileTemplateUri = dockerfileTemplateUri, platformOverride = platformOverride, imageOsVersionOverride = imageOsVersionOverride, parentImage = parentImage, tags = tags, workingDirectory = workingDirectory, targetRepository = targetRepository, kmsKeyId = kmsKeyId, clientToken = clientToken)
+  input <- .imagebuilder$create_container_recipe_input(containerType = containerType, name = name, description = description, semanticVersion = semanticVersion, components = components, instanceConfiguration = instanceConfiguration, dockerfileTemplateData = dockerfileTemplateData, dockerfileTemplateUri = dockerfileTemplateUri, platformOverride = platformOverride, imageOsVersionOverride = imageOsVersionOverride, parentImage = parentImage, tags = tags, workingDirectory = workingDirectory, targetRepository = targetRepository, kmsKeyId = kmsKeyId, clientToken = clientToken)
   output <- .imagebuilder$create_container_recipe_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)
@@ -297,6 +318,13 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #'       ),
 #'       licenseConfigurationArns = list(
 #'         "string"
+#'       ),
+#'       launchTemplateConfigurations = list(
+#'         list(
+#'           launchTemplateId = "string",
+#'           accountId = "string",
+#'           setDefaultVersion = TRUE|FALSE
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -332,7 +360,8 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' @description
 #' Creates a new image. This request will create a new image along with all
 #' of the configured output resources defined in the distribution
-#' configuration.
+#' configuration. You must specify exactly one recipe for your image, using
+#' either a ContainerRecipeArn or an ImageRecipeArn.
 #'
 #' @usage
 #' imagebuilder_create_image(imageRecipeArn, containerRecipeArn,
@@ -464,6 +493,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #'   enhancedImageMetadataEnabled = TRUE|FALSE,
 #'   schedule = list(
 #'     scheduleExpression = "string",
+#'     timezone = "string",
 #'     pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
 #'   ),
 #'   status = "DISABLED"|"ENABLED",
@@ -512,7 +542,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @param parentImage &#91;required&#93; The parent image of the image recipe. The value of the string can be the
 #' ARN of the parent image or an AMI ID. The format for the ARN follows
 #' this example:
-#' `arn:aws:imagebuilder:us-west-2:aws:image/windows-server-2016-english-full-base-x86/xxxx.x.x`.
+#' `arn:aws:imagebuilder:us-west-2:aws:image/windows-server-2016-english-full-base-x86/x.x.x`.
 #' You can provide the specific version that you want to use, or you can
 #' use a wildcard in all of the fields. If you enter an AMI ID for the
 #' string value, you must have access to the AMI, and the AMI must be in
@@ -554,7 +584,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #'         kmsKeyId = "string",
 #'         snapshotId = "string",
 #'         volumeSize = 123,
-#'         volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"
+#'         volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1"
 #'       ),
 #'       virtualName = "string",
 #'       noDevice = "string"
@@ -1153,6 +1183,25 @@ imagebuilder_get_component_policy <- function(componentArn) {
 #'         componentArn = "string"
 #'       )
 #'     ),
+#'     instanceConfiguration = list(
+#'       image = "string",
+#'       blockDeviceMappings = list(
+#'         list(
+#'           deviceName = "string",
+#'           ebs = list(
+#'             encrypted = TRUE|FALSE,
+#'             deleteOnTermination = TRUE|FALSE,
+#'             iops = 123,
+#'             kmsKeyId = "string",
+#'             snapshotId = "string",
+#'             volumeSize = 123,
+#'             volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1"
+#'           ),
+#'           virtualName = "string",
+#'           noDevice = "string"
+#'         )
+#'       )
+#'     ),
 #'     dockerfileTemplateData = "string",
 #'     kmsKeyId = "string",
 #'     encrypted = TRUE|FALSE,
@@ -1299,6 +1348,13 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
 #'         ),
 #'         licenseConfigurationArns = list(
 #'           "string"
+#'         ),
+#'         launchTemplateConfigurations = list(
+#'           list(
+#'             launchTemplateId = "string",
+#'             accountId = "string",
+#'             setDefaultVersion = TRUE|FALSE
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1390,7 +1446,7 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'             kmsKeyId = "string",
 #'             snapshotId = "string",
 #'             volumeSize = 123,
-#'             volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"
+#'             volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1"
 #'           ),
 #'           virtualName = "string",
 #'           noDevice = "string"
@@ -1413,6 +1469,25 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'       components = list(
 #'         list(
 #'           componentArn = "string"
+#'         )
+#'       ),
+#'       instanceConfiguration = list(
+#'         image = "string",
+#'         blockDeviceMappings = list(
+#'           list(
+#'             deviceName = "string",
+#'             ebs = list(
+#'               encrypted = TRUE|FALSE,
+#'               deleteOnTermination = TRUE|FALSE,
+#'               iops = 123,
+#'               kmsKeyId = "string",
+#'               snapshotId = "string",
+#'               volumeSize = 123,
+#'               volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1"
+#'             ),
+#'             virtualName = "string",
+#'             noDevice = "string"
+#'           )
 #'         )
 #'       ),
 #'       dockerfileTemplateData = "string",
@@ -1499,6 +1574,13 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'           ),
 #'           licenseConfigurationArns = list(
 #'             "string"
+#'           ),
+#'           launchTemplateConfigurations = list(
+#'             list(
+#'               launchTemplateId = "string",
+#'               accountId = "string",
+#'               setDefaultVersion = TRUE|FALSE
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -1603,6 +1685,7 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
 #'     ),
 #'     schedule = list(
 #'       scheduleExpression = "string",
+#'       timezone = "string",
 #'       pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
 #'     ),
 #'     status = "DISABLED"|"ENABLED",
@@ -1731,7 +1814,7 @@ imagebuilder_get_image_policy <- function(imageArn) {
 #'           kmsKeyId = "string",
 #'           snapshotId = "string",
 #'           volumeSize = 123,
-#'           volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"
+#'           volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1"
 #'         ),
 #'         virtualName = "string",
 #'         noDevice = "string"
@@ -2398,6 +2481,68 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
 }
 .imagebuilder$operations$list_image_build_versions <- imagebuilder_list_image_build_versions
 
+#' List the Packages that are associated with an Image Build Version, as
+#' determined by AWS Systems Manager Inventory at build time
+#'
+#' @description
+#' List the Packages that are associated with an Image Build Version, as
+#' determined by AWS Systems Manager Inventory at build time.
+#'
+#' @usage
+#' imagebuilder_list_image_packages(imageBuildVersionArn, maxResults,
+#'   nextToken)
+#'
+#' @param imageBuildVersionArn &#91;required&#93; Filter results for the ListImagePackages request by the Image Build
+#' Version ARN
+#' @param maxResults The maxiumum number of results to return from the ListImagePackages
+#' request.
+#' @param nextToken A token to specify where to start paginating. This is the NextToken from
+#' a previously truncated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imagePackageList = list(
+#'     list(
+#'       packageName = "string",
+#'       packageVersion = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_image_packages(
+#'   imageBuildVersionArn = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_list_image_packages
+imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListImagePackages",
+    http_method = "POST",
+    http_path = "/ListImagePackages",
+    paginator = list()
+  )
+  input <- .imagebuilder$list_image_packages_input(imageBuildVersionArn = imageBuildVersionArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .imagebuilder$list_image_packages_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$list_image_packages <- imagebuilder_list_image_packages
+
 #' Returns a list of images created by the specified pipeline
 #'
 #' @description
@@ -2537,6 +2682,7 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 #'       ),
 #'       schedule = list(
 #'         scheduleExpression = "string",
+#'         timezone = "string",
 #'         pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
 #'       ),
 #'       status = "DISABLED"|"ENABLED",
@@ -2778,7 +2924,11 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
 #'       ),
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       instanceTypes = list(
+#'         "string"
+#'       ),
+#'       instanceProfileName = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -3299,6 +3449,13 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #'       ),
 #'       licenseConfigurationArns = list(
 #'         "string"
+#'       ),
+#'       launchTemplateConfigurations = list(
+#'         list(
+#'           launchTemplateId = "string",
+#'           accountId = "string",
+#'           setDefaultVersion = TRUE|FALSE
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -3326,11 +3483,15 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 }
 .imagebuilder$operations$update_distribution_configuration <- imagebuilder_update_distribution_configuration
 
-#' Updates a new image pipeline
+#' Updates an image pipeline
 #'
 #' @description
-#' Updates a new image pipeline. Image pipelines enable you to automate the
+#' Updates an image pipeline. Image pipelines enable you to automate the
 #' creation and distribution of images.
+#' 
+#' UpdateImagePipeline does not support selective updates for the pipeline.
+#' You must specify all of the required properties in the update request,
+#' not just the properties that have changed.
 #'
 #' @usage
 #' imagebuilder_update_image_pipeline(imagePipelineArn, description,
@@ -3384,6 +3545,7 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #'   enhancedImageMetadataEnabled = TRUE|FALSE,
 #'   schedule = list(
 #'     scheduleExpression = "string",
+#'     timezone = "string",
 #'     pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
 #'   ),
 #'   status = "DISABLED"|"ENABLED",

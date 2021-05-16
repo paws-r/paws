@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_delete_bucket_lifecycle_configuration}
 \alias{s3control_delete_bucket_lifecycle_configuration}
-\title{This API action deletes an Amazon S3 on Outposts bucket's lifecycle
+\title{This action deletes an Amazon S3 on Outposts bucket's lifecycle
 configuration}
 \usage{
 s3control_delete_bucket_lifecycle_configuration(AccountId, Bucket)
@@ -28,10 +28,10 @@ The value must be URL encoded.}
 An empty list.
 }
 \description{
-This API action deletes an Amazon S3 on Outposts bucket's lifecycle
+This action deletes an Amazon S3 on Outposts bucket's lifecycle
 configuration. To delete an S3 bucket's lifecycle configuration, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html}{DeleteBucketLifecycle}
-in the \emph{Amazon Simple Storage Service API}.
+in the \emph{Amazon S3 API Reference}.
 
 Deletes the lifecycle configuration from the specified Outposts bucket.
 Amazon S3 on Outposts removes all the lifecycle configuration rules in
@@ -39,9 +39,9 @@ the lifecycle subresource associated with the bucket. Your objects never
 expire, and Amazon S3 on Outposts no longer automatically deletes any
 objects on the basis of rules contained in the deleted lifecycle
 configuration. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in \emph{Amazon Simple Storage Service Developer Guide}.
+in \emph{Amazon S3 User Guide}.
 
-To use this operation, you must have permission to perform the
+To use this action, you must have permission to perform the
 \code{s3-outposts:DeleteLifecycleConfiguration} action. By default, the
 bucket owner has this permission and the Outposts bucket owner can grant
 this permission to others.

@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_encryption}
 \alias{s3_delete_bucket_encryption}
-\title{This implementation of the DELETE operation removes default encryption
-from the bucket}
+\title{This implementation of the DELETE action removes default encryption from
+the bucket}
 \usage{
 s3_delete_bucket_encryption(Bucket, ExpectedBucketOwner)
 }
@@ -11,7 +11,7 @@ s3_delete_bucket_encryption(Bucket, ExpectedBucketOwner)
 \item{Bucket}{[required] The name of the bucket containing the server-side encryption
 configuration to delete.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -19,17 +19,17 @@ different account, the request will fail with an HTTP
 An empty list.
 }
 \description{
-This implementation of the DELETE operation removes default encryption
-from the bucket. For information about the Amazon S3 default encryption
+This implementation of the DELETE action removes default encryption from
+the bucket. For information about the Amazon S3 default encryption
 feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 To use this operation, you must have permissions to perform the
 \code{s3:PutEncryptionConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to
 others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 \strong{Related Resources}
 \itemize{

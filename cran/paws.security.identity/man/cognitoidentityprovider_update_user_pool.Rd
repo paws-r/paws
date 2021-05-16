@@ -37,7 +37,10 @@ service makes a request to update user pools.}
 \item \code{OFF} - MFA tokens are not required and cannot be specified during
 user registration.
 \item \code{ON} - MFA tokens are required for all user registrations. You can
-only specify required when you are initially creating a user pool.
+only specify ON when you are initially creating a user pool. You can
+use the
+\code{\link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config}}
+API operation to turn MFA "ON" for existing user pools.
 \item \code{OPTIONAL} - Users have the option when registering to create an MFA
 token.
 }}

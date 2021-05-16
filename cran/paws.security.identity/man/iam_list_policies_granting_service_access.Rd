@@ -20,11 +20,11 @@ want to list.}
 \item{ServiceNamespaces}{[required] The service namespace for the AWS services whose policies you want to
 list.
 
-To learn the service namespace for a service, go to \href{https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html}{Actions, Resources, and Condition Keys for AWS Services}
+To learn the service namespace for a service, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html}{Actions, resources, and condition keys for AWS services}
 in the \emph{IAM User Guide}. Choose the name of the service to view details
 for that service. In the first paragraph, find the service prefix. For
 example, \verb{(service prefix: a4b)}. For more information about service
-namespaces, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
+namespaces, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS service namespaces}
 in the \emph{AWS General Reference}.}
 }
 \value{
@@ -57,7 +57,7 @@ a resource could access a service. These other policy types include
 resource-based policies, access control lists, AWS Organizations
 policies, IAM permissions boundaries, and AWS STS assume role policies.
 It only applies permissions policy logic. For more about the evaluation
-of policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating Policies}
+of policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating policies}
 in the \emph{IAM User Guide}.
 
 The list of policies returned by the operation depends on the ARN of the
@@ -77,7 +77,7 @@ policies that are attached to the role.
 For each managed policy, this operation returns the ARN and policy name.
 For each inline policy, it returns the policy name and the entity to
 which it is attached. Inline policies do not have an ARN. For more
-information about these policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+information about these policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed policies and inline policies}
 in the \emph{IAM User Guide}.
 
 Policies that are attached to users and roles as permissions boundaries

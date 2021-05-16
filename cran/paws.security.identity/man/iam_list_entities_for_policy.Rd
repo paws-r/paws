@@ -12,7 +12,7 @@ iam_list_entities_for_policy(PolicyArn, EntityFilter, PathPrefix,
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy for which you want the
 versions.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 
 \item{EntityFilter}{The entity type to use for filtering the results.

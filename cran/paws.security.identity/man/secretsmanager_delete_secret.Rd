@@ -2,14 +2,14 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_delete_secret}
 \alias{secretsmanager_delete_secret}
-\title{Deletes an entire secret and all of its versions}
+\title{Deletes an entire secret and all of the versions}
 \usage{
 secretsmanager_delete_secret(SecretId, RecoveryWindowInDays,
   ForceDeleteWithoutRecovery)
 }
 \arguments{
-\item{SecretId}{[required] Specifies the secret that you want to delete. You can specify either the
-Amazon Resource Name (ARN) or the friendly name of the secret.
+\item{SecretId}{[required] Specifies the secret to delete. You can specify either the Amazon
+Resource Name (ARN) or the friendly name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
 complete ARN. You can specify a partial ARN too—for example, if you
@@ -31,10 +31,11 @@ receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 
 \item{RecoveryWindowInDays}{(Optional) Specifies the number of days that Secrets Manager waits
-before it can delete the secret. You can't use both this parameter and
-the \code{ForceDeleteWithoutRecovery} parameter in the same API call.
+before Secrets Manager can delete the secret. You can't use both this
+parameter and the \code{ForceDeleteWithoutRecovery} parameter in the same API
+call.
 
-This value can range from 7 to 30 days. The default value is 30.}
+This value can range from 7 to 30 days with a default value of 30.}
 
 \item{ForceDeleteWithoutRecovery}{(Optional) Specifies that the secret is to be deleted without any
 recovery window. You can't use both this parameter and the
@@ -50,7 +51,12 @@ Use this parameter with caution. This parameter causes the operation to
 skip the normal waiting period before the permanent deletion that AWS
 would normally impose with the \code{RecoveryWindowInDays} parameter. If you
 delete a secret with the \code{ForceDeleteWithouRecovery} parameter, then you
-have no opportunity to recover the secret. It is permanently lost.}
+have no opportunity to recover the secret. You lose the secret
+permanently.
+
+If you use this parameter and include a previously deleted or
+nonexistent secret, the operation does not return the error
+\code{ResourceNotFoundException} in order to correctly handle retries.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -63,7 +69,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Deletes an entire secret and all of its versions. You can optionally
+Deletes an entire secret and all of the versions. You can optionally
 include a recovery window during which you can restore the secret. If
 you don't specify a recovery window value, the operation defaults to 30
 days. Secrets Manager attaches a \code{DeletionDate} stamp to the secret that
@@ -74,7 +80,7 @@ At any time before recovery window ends, you can use
 \code{\link[=secretsmanager_restore_secret]{restore_secret}} to remove the
 \code{DeletionDate} and cancel the deletion of the secret.
 
-You cannot access the encrypted secret information in any secret that is
+You cannot access the encrypted secret information in any secret
 scheduled for deletion. If you need to access that information, you must
 cancel the deletion with
 \code{\link[=secretsmanager_restore_secret]{restore_secret}} and then retrieve the
@@ -83,8 +89,8 @@ information.
 \item There is no explicit operation to delete a version of a secret.
 Instead, remove all staging labels from the \code{VersionStage} field of
 a version. That marks the version as deprecated and allows Secrets
-Manager to delete it as needed. Versions that do not have any
-staging labels do not show up in
+Manager to delete it as needed. Versions without any staging labels
+do not show up in
 \code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}
 unless you specify \code{IncludeDeprecated}.
 \item The permanent secret deletion at the end of the waiting period is

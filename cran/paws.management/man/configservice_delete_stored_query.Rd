@@ -2,7 +2,8 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_delete_stored_query}
 \alias{configservice_delete_stored_query}
-\title{Deletes the stored query for an AWS account in an AWS Region}
+\title{Deletes the stored query for a single AWS account and a single AWS
+Region}
 \usage{
 configservice_delete_stored_query(QueryName)
 }
@@ -13,7 +14,8 @@ configservice_delete_stored_query(QueryName)
 An empty list.
 }
 \description{
-Deletes the stored query for an AWS account in an AWS Region.
+Deletes the stored query for a single AWS account and a single AWS
+Region.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_stored_query(

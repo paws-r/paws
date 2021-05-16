@@ -91,16 +91,16 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Used by Security Hub customers to update information about their
-investigation into a finding. Requested by master accounts or member
-accounts. Master accounts can update findings for their account and
-their member accounts. Member accounts can update findings for their
-account.
+investigation into a finding. Requested by administrator accounts or
+member accounts. Administrator accounts can update findings for their
+account and their member accounts. Member accounts can update findings
+for their account.
 
 Updates from
 \code{\link[=securityhub_batch_update_findings]{batch_update_findings}} do not
 affect the value of \code{UpdatedAt} for a finding.
 
-Master and member accounts can use
+Administrator and member accounts can use
 \code{\link[=securityhub_batch_update_findings]{batch_update_findings}} to update
 the following finding fields and objects.
 \itemize{

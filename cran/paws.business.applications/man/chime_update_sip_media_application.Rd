@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_update_sip_media_application}
 \alias{chime_update_sip_media_application}
-\title{Updates the details for the specified SIP media application}
+\title{Updates the details of the specified SIP media application}
 \usage{
 chime_update_sip_media_application(SipMediaApplicationId, Name,
   Endpoints)
@@ -36,7 +36,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Updates the details for the specified SIP media application.
+Updates the details of the specified SIP media application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_sip_media_application(

@@ -2,15 +2,15 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_put_app_instance_streaming_configurations}
 \alias{chime_put_app_instance_streaming_configurations}
-\title{The data streaming configurations of an app instance}
+\title{The data streaming configurations of an AppInstance}
 \usage{
 chime_put_app_instance_streaming_configurations(AppInstanceArn,
   AppInstanceStreamingConfigurations)
 }
 \arguments{
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 
-\item{AppInstanceStreamingConfigurations}{[required] The streaming configurations set for an app instance.}
+\item{AppInstanceStreamingConfigurations}{[required] The streaming configurations set for an \code{AppInstance}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -24,7 +24,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-The data streaming configurations of an app instance.
+The data streaming configurations of an \code{AppInstance}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_app_instance_streaming_configurations(

@@ -8,25 +8,23 @@ gamelift_update_script(ScriptId, Name, Version, StorageLocation,
   ZipFile)
 }
 \arguments{
-\item{ScriptId}{[required] A unique identifier for a Realtime script to update. You can use either
-the script ID or ARN value.}
+\item{ScriptId}{[required] A unique identifier for the Realtime script to update. You can use
+either the script ID or ARN value.}
 
 \item{Name}{A descriptive label that is associated with a script. Script names do
 not need to be unique.}
 
-\item{Version}{The version that is associated with a build or script. Version strings
-do not need to be unique.}
+\item{Version}{Version information that is associated with a build or script. Version
+strings do not need to be unique.}
 
-\item{StorageLocation}{The Amazon S3 location of your Realtime scripts. The storage location
-must specify the S3 bucket name, the zip file name (the "key"), and an
-IAM role ARN that allows Amazon GameLift to access the S3 storage
-location. The S3 bucket must be in the same Region as the script you're
-updating. By default, Amazon GameLift uploads the latest version of the
-zip file; if you have S3 object versioning turned on, you can use the
-\code{ObjectVersion} parameter to specify an earlier version. To call this
-operation with a storage location, you must have IAM PassRole
-permission. For more details on IAM roles and PassRole permissions, see
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html}{Set up a role for GameLift access}.}
+\item{StorageLocation}{The location of the Amazon S3 bucket where a zipped file containing your
+Realtime scripts is stored. The storage location must specify the Amazon
+S3 bucket name, the zip file name (the "key"), and a role ARN that
+allows Amazon GameLift to access the Amazon S3 storage location. The S3
+bucket must be in the same Region where you want to create a new script.
+By default, Amazon GameLift uploads the latest version of the zip file;
+if you have S3 object versioning turned on, you can use the
+\code{ObjectVersion} parameter to specify an earlier version.}
 
 \item{ZipFile}{A data object containing your Realtime scripts and dependencies as a zip
 file. The zip file can have one or multiple files. Maximum size of a zip
@@ -78,14 +76,13 @@ version is used for all new game sessions.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html}{Amazon GameLift Realtime Servers}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_script]{create_script}}
-\item \code{\link[=gamelift_list_scripts]{list_scripts}}
-\item \code{\link[=gamelift_describe_script]{describe_script}}
-\item \code{\link[=gamelift_update_script]{update_script}}
-\item \code{\link[=gamelift_delete_script]{delete_script}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_script]{create_script}} |
+\code{\link[=gamelift_list_scripts]{list_scripts}} |
+\code{\link[=gamelift_describe_script]{describe_script}} |
+\code{\link[=gamelift_update_script]{update_script}} |
+\code{\link[=gamelift_delete_script]{delete_script}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$update_script(

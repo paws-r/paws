@@ -48,6 +48,7 @@ NULL
 #'  \link[=comprehend_batch_detect_sentiment]{batch_detect_sentiment} \tab Inspects a batch of documents and returns an inference of the prevailing sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one\cr
 #'  \link[=comprehend_batch_detect_syntax]{batch_detect_syntax} \tab Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them\cr
 #'  \link[=comprehend_classify_document]{classify_document} \tab Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint\cr
+#'  \link[=comprehend_contains_pii_entities]{contains_pii_entities} \tab Analyzes input text for the presence of personally identifiable information (PII) and returns the labels of identified PII entity types such as name, address, bank account number, or phone number\cr
 #'  \link[=comprehend_create_document_classifier]{create_document_classifier} \tab Creates a new document classifier that you can use to categorize documents\cr
 #'  \link[=comprehend_create_endpoint]{create_endpoint} \tab Creates a model-specific endpoint for synchronous inference for a previously trained custom model\cr
 #'  \link[=comprehend_create_entity_recognizer]{create_entity_recognizer} \tab Creates an entity recognizer using submitted files\cr

@@ -3,6 +3,443 @@
 #' @include mediatailor_service.R
 NULL
 
+#' Creates a channel
+#'
+#' @description
+#' Creates a channel.
+#'
+#' @usage
+#' mediatailor_create_channel(ChannelName, Outputs, PlaybackMode, Tags)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#' @param Outputs &#91;required&#93; The channel's output properties.
+#' @param PlaybackMode &#91;required&#93; The type of playback mode for this channel. The only supported value is
+#' LOOP.
+#' @param Tags The tags to assign to the channel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   ChannelName = "string",
+#'   ChannelState = "RUNNING"|"STOPPED",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Outputs = list(
+#'     list(
+#'       DashPlaylistSettings = list(
+#'         ManifestWindowSeconds = 123,
+#'         MinBufferTimeSeconds = 123,
+#'         MinUpdatePeriodSeconds = 123,
+#'         SuggestedPresentationDelaySeconds = 123
+#'       ),
+#'       HlsPlaylistSettings = list(
+#'         ManifestWindowSeconds = 123
+#'       ),
+#'       ManifestName = "string",
+#'       PlaybackUrl = "string",
+#'       SourceGroup = "string"
+#'     )
+#'   ),
+#'   PlaybackMode = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_channel(
+#'   ChannelName = "string",
+#'   Outputs = list(
+#'     list(
+#'       DashPlaylistSettings = list(
+#'         ManifestWindowSeconds = 123,
+#'         MinBufferTimeSeconds = 123,
+#'         MinUpdatePeriodSeconds = 123,
+#'         SuggestedPresentationDelaySeconds = 123
+#'       ),
+#'       HlsPlaylistSettings = list(
+#'         ManifestWindowSeconds = 123
+#'       ),
+#'       ManifestName = "string",
+#'       SourceGroup = "string"
+#'     )
+#'   ),
+#'   PlaybackMode = "LOOP",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_create_channel
+mediatailor_create_channel <- function(ChannelName, Outputs, PlaybackMode, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateChannel",
+    http_method = "POST",
+    http_path = "/channel/{channelName}",
+    paginator = list()
+  )
+  input <- .mediatailor$create_channel_input(ChannelName = ChannelName, Outputs = Outputs, PlaybackMode = PlaybackMode, Tags = Tags)
+  output <- .mediatailor$create_channel_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$create_channel <- mediatailor_create_channel
+
+#' Creates a program
+#'
+#' @description
+#' Creates a program.
+#'
+#' @usage
+#' mediatailor_create_program(AdBreaks, ChannelName, ProgramName,
+#'   ScheduleConfiguration, SourceLocationName, VodSourceName)
+#'
+#' @param AdBreaks The ad break configuration settings.
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#' @param ProgramName &#91;required&#93; The identifier for the program you are working on.
+#' @param ScheduleConfiguration &#91;required&#93; The schedule configuration settings.
+#' @param SourceLocationName &#91;required&#93; The name of the source location.
+#' @param VodSourceName &#91;required&#93; The name that's used to refer to a VOD source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AdBreaks = list(
+#'     list(
+#'       MessageType = "SPLICE_INSERT",
+#'       OffsetMillis = 123,
+#'       Slate = list(
+#'         SourceLocationName = "string",
+#'         VodSourceName = "string"
+#'       ),
+#'       SpliceInsertMessage = list(
+#'         AvailNum = 123,
+#'         AvailsExpected = 123,
+#'         SpliceEventId = 123,
+#'         UniqueProgramId = 123
+#'       )
+#'     )
+#'   ),
+#'   Arn = "string",
+#'   ChannelName = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ProgramName = "string",
+#'   SourceLocationName = "string",
+#'   VodSourceName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_program(
+#'   AdBreaks = list(
+#'     list(
+#'       MessageType = "SPLICE_INSERT",
+#'       OffsetMillis = 123,
+#'       Slate = list(
+#'         SourceLocationName = "string",
+#'         VodSourceName = "string"
+#'       ),
+#'       SpliceInsertMessage = list(
+#'         AvailNum = 123,
+#'         AvailsExpected = 123,
+#'         SpliceEventId = 123,
+#'         UniqueProgramId = 123
+#'       )
+#'     )
+#'   ),
+#'   ChannelName = "string",
+#'   ProgramName = "string",
+#'   ScheduleConfiguration = list(
+#'     Transition = list(
+#'       RelativePosition = "BEFORE_PROGRAM"|"AFTER_PROGRAM",
+#'       RelativeProgram = "string",
+#'       Type = "string"
+#'     )
+#'   ),
+#'   SourceLocationName = "string",
+#'   VodSourceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_create_program
+mediatailor_create_program <- function(AdBreaks = NULL, ChannelName, ProgramName, ScheduleConfiguration, SourceLocationName, VodSourceName) {
+  op <- new_operation(
+    name = "CreateProgram",
+    http_method = "POST",
+    http_path = "/channel/{channelName}/program/{programName}",
+    paginator = list()
+  )
+  input <- .mediatailor$create_program_input(AdBreaks = AdBreaks, ChannelName = ChannelName, ProgramName = ProgramName, ScheduleConfiguration = ScheduleConfiguration, SourceLocationName = SourceLocationName, VodSourceName = VodSourceName)
+  output <- .mediatailor$create_program_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$create_program <- mediatailor_create_program
+
+#' Creates a source location on a specific channel
+#'
+#' @description
+#' Creates a source location on a specific channel.
+#'
+#' @usage
+#' mediatailor_create_source_location(AccessConfiguration,
+#'   DefaultSegmentDeliveryConfiguration, HttpConfiguration,
+#'   SourceLocationName, Tags)
+#'
+#' @param AccessConfiguration Access configuration parameters. Configures the type of authentication
+#' used to access content from your source location.
+#' @param DefaultSegmentDeliveryConfiguration The optional configuration for the server that serves segments.
+#' @param HttpConfiguration &#91;required&#93; The source's HTTP package configurations.
+#' @param SourceLocationName &#91;required&#93; The identifier for the source location you are working on.
+#' @param Tags The tags to assign to the source location.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessConfiguration = list(
+#'     AccessType = "S3_SIGV4"
+#'   ),
+#'   Arn = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DefaultSegmentDeliveryConfiguration = list(
+#'     BaseUrl = "string"
+#'   ),
+#'   HttpConfiguration = list(
+#'     BaseUrl = "string"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SourceLocationName = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_source_location(
+#'   AccessConfiguration = list(
+#'     AccessType = "S3_SIGV4"
+#'   ),
+#'   DefaultSegmentDeliveryConfiguration = list(
+#'     BaseUrl = "string"
+#'   ),
+#'   HttpConfiguration = list(
+#'     BaseUrl = "string"
+#'   ),
+#'   SourceLocationName = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_create_source_location
+mediatailor_create_source_location <- function(AccessConfiguration = NULL, DefaultSegmentDeliveryConfiguration = NULL, HttpConfiguration, SourceLocationName, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateSourceLocation",
+    http_method = "POST",
+    http_path = "/sourceLocation/{sourceLocationName}",
+    paginator = list()
+  )
+  input <- .mediatailor$create_source_location_input(AccessConfiguration = AccessConfiguration, DefaultSegmentDeliveryConfiguration = DefaultSegmentDeliveryConfiguration, HttpConfiguration = HttpConfiguration, SourceLocationName = SourceLocationName, Tags = Tags)
+  output <- .mediatailor$create_source_location_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$create_source_location <- mediatailor_create_source_location
+
+#' Creates name for a specific VOD source in a source location
+#'
+#' @description
+#' Creates name for a specific VOD source in a source location.
+#'
+#' @usage
+#' mediatailor_create_vod_source(HttpPackageConfigurations,
+#'   SourceLocationName, Tags, VodSourceName)
+#'
+#' @param HttpPackageConfigurations &#91;required&#93; An array of HTTP package configuration parameters for this VOD source.
+#' @param SourceLocationName &#91;required&#93; The identifier for the source location you are working on.
+#' @param Tags The tags to assign to the VOD source.
+#' @param VodSourceName &#91;required&#93; The identifier for the VOD source you are working on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   HttpPackageConfigurations = list(
+#'     list(
+#'       Path = "string",
+#'       SourceGroup = "string",
+#'       Type = "DASH"|"HLS"
+#'     )
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SourceLocationName = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   VodSourceName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_vod_source(
+#'   HttpPackageConfigurations = list(
+#'     list(
+#'       Path = "string",
+#'       SourceGroup = "string",
+#'       Type = "DASH"|"HLS"
+#'     )
+#'   ),
+#'   SourceLocationName = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   VodSourceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_create_vod_source
+mediatailor_create_vod_source <- function(HttpPackageConfigurations, SourceLocationName, Tags = NULL, VodSourceName) {
+  op <- new_operation(
+    name = "CreateVodSource",
+    http_method = "POST",
+    http_path = "/sourceLocation/{sourceLocationName}/vodSource/{vodSourceName}",
+    paginator = list()
+  )
+  input <- .mediatailor$create_vod_source_input(HttpPackageConfigurations = HttpPackageConfigurations, SourceLocationName = SourceLocationName, Tags = Tags, VodSourceName = VodSourceName)
+  output <- .mediatailor$create_vod_source_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$create_vod_source <- mediatailor_create_vod_source
+
+#' Deletes a channel
+#'
+#' @description
+#' Deletes a channel. You must stop the channel before it can be deleted.
+#'
+#' @usage
+#' mediatailor_delete_channel(ChannelName)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_channel(
+#'   ChannelName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_delete_channel
+mediatailor_delete_channel <- function(ChannelName) {
+  op <- new_operation(
+    name = "DeleteChannel",
+    http_method = "DELETE",
+    http_path = "/channel/{channelName}",
+    paginator = list()
+  )
+  input <- .mediatailor$delete_channel_input(ChannelName = ChannelName)
+  output <- .mediatailor$delete_channel_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$delete_channel <- mediatailor_delete_channel
+
+#' Deletes a channel's IAM policy
+#'
+#' @description
+#' Deletes a channel's IAM policy.
+#'
+#' @usage
+#' mediatailor_delete_channel_policy(ChannelName)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_channel_policy(
+#'   ChannelName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_delete_channel_policy
+mediatailor_delete_channel_policy <- function(ChannelName) {
+  op <- new_operation(
+    name = "DeleteChannelPolicy",
+    http_method = "DELETE",
+    http_path = "/channel/{channelName}/policy",
+    paginator = list()
+  )
+  input <- .mediatailor$delete_channel_policy_input(ChannelName = ChannelName)
+  output <- .mediatailor$delete_channel_policy_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$delete_channel_policy <- mediatailor_delete_channel_policy
+
 #' Deletes the playback configuration for the specified name
 #'
 #' @description
@@ -43,6 +480,517 @@ mediatailor_delete_playback_configuration <- function(Name) {
 }
 .mediatailor$operations$delete_playback_configuration <- mediatailor_delete_playback_configuration
 
+#' Deletes a specific program on a specific channel
+#'
+#' @description
+#' Deletes a specific program on a specific channel.
+#'
+#' @usage
+#' mediatailor_delete_program(ChannelName, ProgramName)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#' @param ProgramName &#91;required&#93; The identifier for the program you are working on.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_program(
+#'   ChannelName = "string",
+#'   ProgramName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_delete_program
+mediatailor_delete_program <- function(ChannelName, ProgramName) {
+  op <- new_operation(
+    name = "DeleteProgram",
+    http_method = "DELETE",
+    http_path = "/channel/{channelName}/program/{programName}",
+    paginator = list()
+  )
+  input <- .mediatailor$delete_program_input(ChannelName = ChannelName, ProgramName = ProgramName)
+  output <- .mediatailor$delete_program_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$delete_program <- mediatailor_delete_program
+
+#' Deletes a source location on a specific channel
+#'
+#' @description
+#' Deletes a source location on a specific channel.
+#'
+#' @usage
+#' mediatailor_delete_source_location(SourceLocationName)
+#'
+#' @param SourceLocationName &#91;required&#93; The identifier for the source location you are working on.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_source_location(
+#'   SourceLocationName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_delete_source_location
+mediatailor_delete_source_location <- function(SourceLocationName) {
+  op <- new_operation(
+    name = "DeleteSourceLocation",
+    http_method = "DELETE",
+    http_path = "/sourceLocation/{sourceLocationName}",
+    paginator = list()
+  )
+  input <- .mediatailor$delete_source_location_input(SourceLocationName = SourceLocationName)
+  output <- .mediatailor$delete_source_location_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$delete_source_location <- mediatailor_delete_source_location
+
+#' Deletes a specific VOD source in a specific source location
+#'
+#' @description
+#' Deletes a specific VOD source in a specific source location.
+#'
+#' @usage
+#' mediatailor_delete_vod_source(SourceLocationName, VodSourceName)
+#'
+#' @param SourceLocationName &#91;required&#93; The identifier for the source location you are working on.
+#' @param VodSourceName &#91;required&#93; The identifier for the VOD source you are working on.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_vod_source(
+#'   SourceLocationName = "string",
+#'   VodSourceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_delete_vod_source
+mediatailor_delete_vod_source <- function(SourceLocationName, VodSourceName) {
+  op <- new_operation(
+    name = "DeleteVodSource",
+    http_method = "DELETE",
+    http_path = "/sourceLocation/{sourceLocationName}/vodSource/{vodSourceName}",
+    paginator = list()
+  )
+  input <- .mediatailor$delete_vod_source_input(SourceLocationName = SourceLocationName, VodSourceName = VodSourceName)
+  output <- .mediatailor$delete_vod_source_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$delete_vod_source <- mediatailor_delete_vod_source
+
+#' Describes the properties of a specific channel
+#'
+#' @description
+#' Describes the properties of a specific channel.
+#'
+#' @usage
+#' mediatailor_describe_channel(ChannelName)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   ChannelName = "string",
+#'   ChannelState = "RUNNING"|"STOPPED",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Outputs = list(
+#'     list(
+#'       DashPlaylistSettings = list(
+#'         ManifestWindowSeconds = 123,
+#'         MinBufferTimeSeconds = 123,
+#'         MinUpdatePeriodSeconds = 123,
+#'         SuggestedPresentationDelaySeconds = 123
+#'       ),
+#'       HlsPlaylistSettings = list(
+#'         ManifestWindowSeconds = 123
+#'       ),
+#'       ManifestName = "string",
+#'       PlaybackUrl = "string",
+#'       SourceGroup = "string"
+#'     )
+#'   ),
+#'   PlaybackMode = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_channel(
+#'   ChannelName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_describe_channel
+mediatailor_describe_channel <- function(ChannelName) {
+  op <- new_operation(
+    name = "DescribeChannel",
+    http_method = "GET",
+    http_path = "/channel/{channelName}",
+    paginator = list()
+  )
+  input <- .mediatailor$describe_channel_input(ChannelName = ChannelName)
+  output <- .mediatailor$describe_channel_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$describe_channel <- mediatailor_describe_channel
+
+#' Retrieves the properties of the requested program
+#'
+#' @description
+#' Retrieves the properties of the requested program.
+#'
+#' @usage
+#' mediatailor_describe_program(ChannelName, ProgramName)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#' @param ProgramName &#91;required&#93; The identifier for the program you are working on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AdBreaks = list(
+#'     list(
+#'       MessageType = "SPLICE_INSERT",
+#'       OffsetMillis = 123,
+#'       Slate = list(
+#'         SourceLocationName = "string",
+#'         VodSourceName = "string"
+#'       ),
+#'       SpliceInsertMessage = list(
+#'         AvailNum = 123,
+#'         AvailsExpected = 123,
+#'         SpliceEventId = 123,
+#'         UniqueProgramId = 123
+#'       )
+#'     )
+#'   ),
+#'   Arn = "string",
+#'   ChannelName = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ProgramName = "string",
+#'   SourceLocationName = "string",
+#'   VodSourceName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_program(
+#'   ChannelName = "string",
+#'   ProgramName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_describe_program
+mediatailor_describe_program <- function(ChannelName, ProgramName) {
+  op <- new_operation(
+    name = "DescribeProgram",
+    http_method = "GET",
+    http_path = "/channel/{channelName}/program/{programName}",
+    paginator = list()
+  )
+  input <- .mediatailor$describe_program_input(ChannelName = ChannelName, ProgramName = ProgramName)
+  output <- .mediatailor$describe_program_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$describe_program <- mediatailor_describe_program
+
+#' Retrieves the properties of the requested source location
+#'
+#' @description
+#' Retrieves the properties of the requested source location.
+#'
+#' @usage
+#' mediatailor_describe_source_location(SourceLocationName)
+#'
+#' @param SourceLocationName &#91;required&#93; The identifier for the source location you are working on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessConfiguration = list(
+#'     AccessType = "S3_SIGV4"
+#'   ),
+#'   Arn = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DefaultSegmentDeliveryConfiguration = list(
+#'     BaseUrl = "string"
+#'   ),
+#'   HttpConfiguration = list(
+#'     BaseUrl = "string"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SourceLocationName = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_source_location(
+#'   SourceLocationName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_describe_source_location
+mediatailor_describe_source_location <- function(SourceLocationName) {
+  op <- new_operation(
+    name = "DescribeSourceLocation",
+    http_method = "GET",
+    http_path = "/sourceLocation/{sourceLocationName}",
+    paginator = list()
+  )
+  input <- .mediatailor$describe_source_location_input(SourceLocationName = SourceLocationName)
+  output <- .mediatailor$describe_source_location_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$describe_source_location <- mediatailor_describe_source_location
+
+#' Provides details about a specific VOD source in a specific source
+#' location
+#'
+#' @description
+#' Provides details about a specific VOD source in a specific source
+#' location.
+#'
+#' @usage
+#' mediatailor_describe_vod_source(SourceLocationName, VodSourceName)
+#'
+#' @param SourceLocationName &#91;required&#93; The identifier for the source location you are working on.
+#' @param VodSourceName &#91;required&#93; The identifier for the VOD source you are working on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   HttpPackageConfigurations = list(
+#'     list(
+#'       Path = "string",
+#'       SourceGroup = "string",
+#'       Type = "DASH"|"HLS"
+#'     )
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SourceLocationName = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   VodSourceName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_vod_source(
+#'   SourceLocationName = "string",
+#'   VodSourceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_describe_vod_source
+mediatailor_describe_vod_source <- function(SourceLocationName, VodSourceName) {
+  op <- new_operation(
+    name = "DescribeVodSource",
+    http_method = "GET",
+    http_path = "/sourceLocation/{sourceLocationName}/vodSource/{vodSourceName}",
+    paginator = list()
+  )
+  input <- .mediatailor$describe_vod_source_input(SourceLocationName = SourceLocationName, VodSourceName = VodSourceName)
+  output <- .mediatailor$describe_vod_source_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$describe_vod_source <- mediatailor_describe_vod_source
+
+#' Retrieves information about a channel's IAM policy
+#'
+#' @description
+#' Retrieves information about a channel's IAM policy.
+#'
+#' @usage
+#' mediatailor_get_channel_policy(ChannelName)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_channel_policy(
+#'   ChannelName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_get_channel_policy
+mediatailor_get_channel_policy <- function(ChannelName) {
+  op <- new_operation(
+    name = "GetChannelPolicy",
+    http_method = "GET",
+    http_path = "/channel/{channelName}/policy",
+    paginator = list()
+  )
+  input <- .mediatailor$get_channel_policy_input(ChannelName = ChannelName)
+  output <- .mediatailor$get_channel_policy_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$get_channel_policy <- mediatailor_get_channel_policy
+
+#' Retrieves information about your channel's schedule
+#'
+#' @description
+#' Retrieves information about your channel's schedule.
+#'
+#' @usage
+#' mediatailor_get_channel_schedule(ChannelName, DurationMinutes,
+#'   MaxResults, NextToken)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#' @param DurationMinutes The schedule duration in minutes. The maximum duration is 4320 minutes
+#' (three days).
+#' @param MaxResults Upper bound on number of records to return. The maximum number of
+#' results is 100.
+#' @param NextToken Pagination token from the GET list request. Use the token to fetch the
+#' next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ApproximateDurationSeconds = 123,
+#'       ApproximateStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Arn = "string",
+#'       ChannelName = "string",
+#'       ProgramName = "string",
+#'       SourceLocationName = "string",
+#'       VodSourceName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_channel_schedule(
+#'   ChannelName = "string",
+#'   DurationMinutes = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_get_channel_schedule
+mediatailor_get_channel_schedule <- function(ChannelName, DurationMinutes = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetChannelSchedule",
+    http_method = "GET",
+    http_path = "/channel/{channelName}/schedule",
+    paginator = list()
+  )
+  input <- .mediatailor$get_channel_schedule_input(ChannelName = ChannelName, DurationMinutes = DurationMinutes, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .mediatailor$get_channel_schedule_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$get_channel_schedule <- mediatailor_get_channel_schedule
+
 #' Returns the playback configuration for the specified name
 #'
 #' @description
@@ -69,6 +1017,11 @@ mediatailor_delete_playback_configuration <- function(Name) {
 #'   CdnConfiguration = list(
 #'     AdSegmentUrlPrefix = "string",
 #'     ContentSegmentUrlPrefix = "string"
+#'   ),
+#'   ConfigurationAliases = list(
+#'     list(
+#'       "string"
+#'     )
 #'   ),
 #'   DashConfiguration = list(
 #'     ManifestEndpointPrefix = "string",
@@ -128,6 +1081,88 @@ mediatailor_get_playback_configuration <- function(Name) {
 }
 .mediatailor$operations$get_playback_configuration <- mediatailor_get_playback_configuration
 
+#' Retrieves a list of channels that are associated with this account
+#'
+#' @description
+#' Retrieves a list of channels that are associated with this account.
+#'
+#' @usage
+#' mediatailor_list_channels(MaxResults, NextToken)
+#'
+#' @param MaxResults Upper bound on number of records to return. The maximum number of
+#' results is 100.
+#' @param NextToken Pagination token from the GET list request. Use the token to fetch the
+#' next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Arn = "string",
+#'       ChannelName = "string",
+#'       ChannelState = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Outputs = list(
+#'         list(
+#'           DashPlaylistSettings = list(
+#'             ManifestWindowSeconds = 123,
+#'             MinBufferTimeSeconds = 123,
+#'             MinUpdatePeriodSeconds = 123,
+#'             SuggestedPresentationDelaySeconds = 123
+#'           ),
+#'           HlsPlaylistSettings = list(
+#'             ManifestWindowSeconds = 123
+#'           ),
+#'           ManifestName = "string",
+#'           PlaybackUrl = "string",
+#'           SourceGroup = "string"
+#'         )
+#'       ),
+#'       PlaybackMode = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_channels(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_list_channels
+mediatailor_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannels",
+    http_method = "GET",
+    http_path = "/channels",
+    paginator = list()
+  )
+  input <- .mediatailor$list_channels_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .mediatailor$list_channels_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$list_channels <- mediatailor_list_channels
+
 #' Returns a list of the playback configurations defined in AWS Elemental
 #' MediaTailor
 #'
@@ -165,6 +1200,11 @@ mediatailor_get_playback_configuration <- function(Name) {
 #'         AdSegmentUrlPrefix = "string",
 #'         ContentSegmentUrlPrefix = "string"
 #'       ),
+#'       ConfigurationAliases = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
 #'       DashConfiguration = list(
 #'         ManifestEndpointPrefix = "string",
 #'         MpdLocation = "string",
@@ -173,12 +1213,17 @@ mediatailor_get_playback_configuration <- function(Name) {
 #'       HlsConfiguration = list(
 #'         ManifestEndpointPrefix = "string"
 #'       ),
+#'       LivePreRollConfiguration = list(
+#'         AdDecisionServerUrl = "string",
+#'         MaxDurationSeconds = 123
+#'       ),
 #'       ManifestProcessingRules = list(
 #'         AdMarkerPassthrough = list(
 #'           Enabled = TRUE|FALSE
 #'         )
 #'       ),
 #'       Name = "string",
+#'       PersonalizationThresholdSeconds = 123,
 #'       PlaybackConfigurationArn = "string",
 #'       PlaybackEndpointPrefix = "string",
 #'       SessionInitializationEndpointPrefix = "string",
@@ -187,7 +1232,6 @@ mediatailor_get_playback_configuration <- function(Name) {
 #'         "string"
 #'       ),
 #'       TranscodeProfileName = "string",
-#'       PersonalizationThresholdSeconds = 123,
 #'       VideoContentSourceUrl = "string"
 #'     )
 #'   ),
@@ -222,6 +1266,79 @@ mediatailor_list_playback_configurations <- function(MaxResults = NULL, NextToke
   return(response)
 }
 .mediatailor$operations$list_playback_configurations <- mediatailor_list_playback_configurations
+
+#' Retrieves a list of source locations
+#'
+#' @description
+#' Retrieves a list of source locations.
+#'
+#' @usage
+#' mediatailor_list_source_locations(MaxResults, NextToken)
+#'
+#' @param MaxResults Upper bound on number of records to return. The maximum number of
+#' results is 100.
+#' @param NextToken Pagination token from the GET list request. Use the token to fetch the
+#' next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       AccessConfiguration = list(
+#'         AccessType = "S3_SIGV4"
+#'       ),
+#'       Arn = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DefaultSegmentDeliveryConfiguration = list(
+#'         BaseUrl = "string"
+#'       ),
+#'       HttpConfiguration = list(
+#'         BaseUrl = "string"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceLocationName = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_source_locations(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_list_source_locations
+mediatailor_list_source_locations <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSourceLocations",
+    http_method = "GET",
+    http_path = "/sourceLocations",
+    paginator = list()
+  )
+  input <- .mediatailor$list_source_locations_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .mediatailor$list_source_locations_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$list_source_locations <- mediatailor_list_source_locations
 
 #' Returns a list of the tags assigned to the specified playback
 #' configuration resource
@@ -273,6 +1390,122 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 }
 .mediatailor$operations$list_tags_for_resource <- mediatailor_list_tags_for_resource
 
+#' Lists all the VOD sources in a source location
+#'
+#' @description
+#' Lists all the VOD sources in a source location.
+#'
+#' @usage
+#' mediatailor_list_vod_sources(MaxResults, NextToken, SourceLocationName)
+#'
+#' @param MaxResults Upper bound on number of records to return. The maximum number of
+#' results is 100.
+#' @param NextToken Pagination token from the GET list request. Use the token to fetch the
+#' next page of results.
+#' @param SourceLocationName &#91;required&#93; The identifier for the source location you are working on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       HttpPackageConfigurations = list(
+#'         list(
+#'           Path = "string",
+#'           SourceGroup = "string",
+#'           Type = "DASH"|"HLS"
+#'         )
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceLocationName = "string",
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       VodSourceName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_vod_sources(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   SourceLocationName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_list_vod_sources
+mediatailor_list_vod_sources <- function(MaxResults = NULL, NextToken = NULL, SourceLocationName) {
+  op <- new_operation(
+    name = "ListVodSources",
+    http_method = "GET",
+    http_path = "/sourceLocation/{sourceLocationName}/vodSources",
+    paginator = list()
+  )
+  input <- .mediatailor$list_vod_sources_input(MaxResults = MaxResults, NextToken = NextToken, SourceLocationName = SourceLocationName)
+  output <- .mediatailor$list_vod_sources_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$list_vod_sources <- mediatailor_list_vod_sources
+
+#' Creates an IAM policy for the channel
+#'
+#' @description
+#' Creates an IAM policy for the channel.
+#'
+#' @usage
+#' mediatailor_put_channel_policy(ChannelName, Policy)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#' @param Policy &#91;required&#93; Adds an IAM role that determines the permissions of your channel.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_channel_policy(
+#'   ChannelName = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_put_channel_policy
+mediatailor_put_channel_policy <- function(ChannelName, Policy) {
+  op <- new_operation(
+    name = "PutChannelPolicy",
+    http_method = "PUT",
+    http_path = "/channel/{channelName}/policy",
+    paginator = list()
+  )
+  input <- .mediatailor$put_channel_policy_input(ChannelName = ChannelName, Policy = Policy)
+  output <- .mediatailor$put_channel_policy_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$put_channel_policy <- mediatailor_put_channel_policy
+
 #' Adds a new playback configuration to AWS Elemental MediaTailor
 #'
 #' @description
@@ -280,10 +1513,10 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @usage
 #' mediatailor_put_playback_configuration(AdDecisionServerUrl,
-#'   AvailSuppression, Bumper, CdnConfiguration, DashConfiguration,
-#'   LivePreRollConfiguration, ManifestProcessingRules, Name,
-#'   PersonalizationThresholdSeconds, SlateAdUrl, Tags, TranscodeProfileName,
-#'   VideoContentSourceUrl)
+#'   AvailSuppression, Bumper, CdnConfiguration, ConfigurationAliases,
+#'   DashConfiguration, LivePreRollConfiguration, ManifestProcessingRules,
+#'   Name, PersonalizationThresholdSeconds, SlateAdUrl, Tags,
+#'   TranscodeProfileName, VideoContentSourceUrl)
 #'
 #' @param AdDecisionServerUrl The URL for the ad decision server (ADS). This includes the
 #' specification of static parameters and placeholders for dynamic
@@ -291,21 +1524,33 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #' session-specific parameters as needed when calling the ADS. Alternately,
 #' for testing you can provide a static VAST URL. The maximum length is
 #' 25,000 characters.
-#' @param AvailSuppression The configuration for Avail Suppression. Ad suppression can be used to
-#' turn off ad personalization in a long manifest, or if a viewer joins
-#' mid-break.
+#' @param AvailSuppression The configuration for avail suppression, also known as ad suppression.
+#' For more information about ad suppression, see [Ad
+#' Suppression](https://docs.aws.amazon.com/mediatailor/latest/ug/ad-behavior.html).
 #' @param Bumper The configuration for bumpers. Bumpers are short audio or video clips
-#' that play at the start or before the end of an ad break.
+#' that play at the start or before the end of an ad break. To learn more
+#' about bumpers, see
+#' [Bumpers](https://docs.aws.amazon.com/mediatailor/latest/ug/bumpers.html).
 #' @param CdnConfiguration The configuration for using a content delivery network (CDN), like
 #' Amazon CloudFront, for content and ad segment management.
+#' @param ConfigurationAliases The player parameters and aliases used as dynamic variables during
+#' session initialization. For more information, see [Domain
+#' Variables](https://docs.aws.amazon.com/mediatailor/latest/ug/).
 #' @param DashConfiguration The configuration for DASH content.
 #' @param LivePreRollConfiguration The configuration for pre-roll ad insertion.
 #' @param ManifestProcessingRules The configuration for manifest processing rules. Manifest processing
 #' rules enable customization of the personalized manifests created by
 #' MediaTailor.
 #' @param Name The identifier for the playback configuration.
-#' @param PersonalizationThresholdSeconds The maximum duration of underfilled ad time (in seconds) allowed in an
-#' ad break.
+#' @param PersonalizationThresholdSeconds Defines the maximum duration of underfilled ad time (in seconds) allowed
+#' in an ad break. If the duration of underfilled ad time exceeds the
+#' personalization threshold, then the personalization of the ad break is
+#' abandoned and the underlying content is shown. This feature applies to
+#' *ad replacement* in live and VOD streams, rather than ad insertion,
+#' because it relies on an underlying content stream. For more information
+#' about ad break behavior, including ad replacement and insertion, see [Ad
+#' Behavior in AWS Elemental
+#' MediaTailor](https://docs.aws.amazon.com/mediatailor/latest/ug/ad-behavior.html).
 #' @param SlateAdUrl The URL for a high-quality video asset to transcode and use to fill in
 #' time that's not used by ads. AWS Elemental MediaTailor shows the slate
 #' to fill in gaps in media content. Configuring the slate is optional for
@@ -318,7 +1563,7 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #' custom transcode profile. This overrides the dynamic transcoding
 #' defaults of MediaTailor. Use this only if you have already set up custom
 #' profiles with the help of AWS Support.
-#' @param VideoContentSourceUrl The URL prefix for the master playlist for the stream, minus the asset
+#' @param VideoContentSourceUrl The URL prefix for the parent manifest for the stream, minus the asset
 #' ID. The maximum length is 512 characters.
 #'
 #' @return
@@ -337,6 +1582,11 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #'   CdnConfiguration = list(
 #'     AdSegmentUrlPrefix = "string",
 #'     ContentSegmentUrlPrefix = "string"
+#'   ),
+#'   ConfigurationAliases = list(
+#'     list(
+#'       "string"
+#'     )
 #'   ),
 #'   DashConfiguration = list(
 #'     ManifestEndpointPrefix = "string",
@@ -385,6 +1635,11 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #'     AdSegmentUrlPrefix = "string",
 #'     ContentSegmentUrlPrefix = "string"
 #'   ),
+#'   ConfigurationAliases = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
 #'   DashConfiguration = list(
 #'     MpdLocation = "string",
 #'     OriginManifestType = "SINGLE_PERIOD"|"MULTI_PERIOD"
@@ -412,14 +1667,14 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname mediatailor_put_playback_configuration
-mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, AvailSuppression = NULL, Bumper = NULL, CdnConfiguration = NULL, DashConfiguration = NULL, LivePreRollConfiguration = NULL, ManifestProcessingRules = NULL, Name = NULL, PersonalizationThresholdSeconds = NULL, SlateAdUrl = NULL, Tags = NULL, TranscodeProfileName = NULL, VideoContentSourceUrl = NULL) {
+mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, AvailSuppression = NULL, Bumper = NULL, CdnConfiguration = NULL, ConfigurationAliases = NULL, DashConfiguration = NULL, LivePreRollConfiguration = NULL, ManifestProcessingRules = NULL, Name = NULL, PersonalizationThresholdSeconds = NULL, SlateAdUrl = NULL, Tags = NULL, TranscodeProfileName = NULL, VideoContentSourceUrl = NULL) {
   op <- new_operation(
     name = "PutPlaybackConfiguration",
     http_method = "PUT",
     http_path = "/playbackConfiguration",
     paginator = list()
   )
-  input <- .mediatailor$put_playback_configuration_input(AdDecisionServerUrl = AdDecisionServerUrl, AvailSuppression = AvailSuppression, Bumper = Bumper, CdnConfiguration = CdnConfiguration, DashConfiguration = DashConfiguration, LivePreRollConfiguration = LivePreRollConfiguration, ManifestProcessingRules = ManifestProcessingRules, Name = Name, PersonalizationThresholdSeconds = PersonalizationThresholdSeconds, SlateAdUrl = SlateAdUrl, Tags = Tags, TranscodeProfileName = TranscodeProfileName, VideoContentSourceUrl = VideoContentSourceUrl)
+  input <- .mediatailor$put_playback_configuration_input(AdDecisionServerUrl = AdDecisionServerUrl, AvailSuppression = AvailSuppression, Bumper = Bumper, CdnConfiguration = CdnConfiguration, ConfigurationAliases = ConfigurationAliases, DashConfiguration = DashConfiguration, LivePreRollConfiguration = LivePreRollConfiguration, ManifestProcessingRules = ManifestProcessingRules, Name = Name, PersonalizationThresholdSeconds = PersonalizationThresholdSeconds, SlateAdUrl = SlateAdUrl, Tags = Tags, TranscodeProfileName = TranscodeProfileName, VideoContentSourceUrl = VideoContentSourceUrl)
   output <- .mediatailor$put_playback_configuration_output()
   config <- get_config()
   svc <- .mediatailor$service(config)
@@ -428,6 +1683,86 @@ mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, A
   return(response)
 }
 .mediatailor$operations$put_playback_configuration <- mediatailor_put_playback_configuration
+
+#' Starts a specific channel
+#'
+#' @description
+#' Starts a specific channel.
+#'
+#' @usage
+#' mediatailor_start_channel(ChannelName)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_channel(
+#'   ChannelName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_start_channel
+mediatailor_start_channel <- function(ChannelName) {
+  op <- new_operation(
+    name = "StartChannel",
+    http_method = "PUT",
+    http_path = "/channel/{channelName}/start",
+    paginator = list()
+  )
+  input <- .mediatailor$start_channel_input(ChannelName = ChannelName)
+  output <- .mediatailor$start_channel_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$start_channel <- mediatailor_start_channel
+
+#' Stops a specific channel
+#'
+#' @description
+#' Stops a specific channel.
+#'
+#' @usage
+#' mediatailor_stop_channel(ChannelName)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_channel(
+#'   ChannelName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_stop_channel
+mediatailor_stop_channel <- function(ChannelName) {
+  op <- new_operation(
+    name = "StopChannel",
+    http_method = "PUT",
+    http_path = "/channel/{channelName}/stop",
+    paginator = list()
+  )
+  input <- .mediatailor$stop_channel_input(ChannelName = ChannelName)
+  output <- .mediatailor$stop_channel_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$stop_channel <- mediatailor_stop_channel
 
 #' Adds tags to the specified playback configuration resource
 #'
@@ -440,8 +1775,7 @@ mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, A
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the playback configuration. You can
 #' get this from the response to any playback configuration request.
-#' @param Tags &#91;required&#93; A comma-separated list of tag key:value pairs. For example: \{ "Key1":
-#' "Value1", "Key2": "Value2" \}
+#' @param Tags &#91;required&#93; A comma-separated list of tag key:value pairs.
 #'
 #' @return
 #' An empty list.
@@ -522,3 +1856,246 @@ mediatailor_untag_resource <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .mediatailor$operations$untag_resource <- mediatailor_untag_resource
+
+#' Updates an existing channel
+#'
+#' @description
+#' Updates an existing channel.
+#'
+#' @usage
+#' mediatailor_update_channel(ChannelName, Outputs)
+#'
+#' @param ChannelName &#91;required&#93; The identifier for the channel you are working on.
+#' @param Outputs &#91;required&#93; The channel's output properties.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   ChannelName = "string",
+#'   ChannelState = "RUNNING"|"STOPPED",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Outputs = list(
+#'     list(
+#'       DashPlaylistSettings = list(
+#'         ManifestWindowSeconds = 123,
+#'         MinBufferTimeSeconds = 123,
+#'         MinUpdatePeriodSeconds = 123,
+#'         SuggestedPresentationDelaySeconds = 123
+#'       ),
+#'       HlsPlaylistSettings = list(
+#'         ManifestWindowSeconds = 123
+#'       ),
+#'       ManifestName = "string",
+#'       PlaybackUrl = "string",
+#'       SourceGroup = "string"
+#'     )
+#'   ),
+#'   PlaybackMode = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_channel(
+#'   ChannelName = "string",
+#'   Outputs = list(
+#'     list(
+#'       DashPlaylistSettings = list(
+#'         ManifestWindowSeconds = 123,
+#'         MinBufferTimeSeconds = 123,
+#'         MinUpdatePeriodSeconds = 123,
+#'         SuggestedPresentationDelaySeconds = 123
+#'       ),
+#'       HlsPlaylistSettings = list(
+#'         ManifestWindowSeconds = 123
+#'       ),
+#'       ManifestName = "string",
+#'       SourceGroup = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_update_channel
+mediatailor_update_channel <- function(ChannelName, Outputs) {
+  op <- new_operation(
+    name = "UpdateChannel",
+    http_method = "PUT",
+    http_path = "/channel/{channelName}",
+    paginator = list()
+  )
+  input <- .mediatailor$update_channel_input(ChannelName = ChannelName, Outputs = Outputs)
+  output <- .mediatailor$update_channel_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$update_channel <- mediatailor_update_channel
+
+#' Updates a source location on a specific channel
+#'
+#' @description
+#' Updates a source location on a specific channel.
+#'
+#' @usage
+#' mediatailor_update_source_location(AccessConfiguration,
+#'   DefaultSegmentDeliveryConfiguration, HttpConfiguration,
+#'   SourceLocationName)
+#'
+#' @param AccessConfiguration Access configuration parameters. Configures the type of authentication
+#' used to access content from your source location.
+#' @param DefaultSegmentDeliveryConfiguration The optional configuration for the host server that serves segments.
+#' @param HttpConfiguration &#91;required&#93; The HTTP configuration for the source location.
+#' @param SourceLocationName &#91;required&#93; The identifier for the source location you are working on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessConfiguration = list(
+#'     AccessType = "S3_SIGV4"
+#'   ),
+#'   Arn = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DefaultSegmentDeliveryConfiguration = list(
+#'     BaseUrl = "string"
+#'   ),
+#'   HttpConfiguration = list(
+#'     BaseUrl = "string"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SourceLocationName = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_source_location(
+#'   AccessConfiguration = list(
+#'     AccessType = "S3_SIGV4"
+#'   ),
+#'   DefaultSegmentDeliveryConfiguration = list(
+#'     BaseUrl = "string"
+#'   ),
+#'   HttpConfiguration = list(
+#'     BaseUrl = "string"
+#'   ),
+#'   SourceLocationName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_update_source_location
+mediatailor_update_source_location <- function(AccessConfiguration = NULL, DefaultSegmentDeliveryConfiguration = NULL, HttpConfiguration, SourceLocationName) {
+  op <- new_operation(
+    name = "UpdateSourceLocation",
+    http_method = "PUT",
+    http_path = "/sourceLocation/{sourceLocationName}",
+    paginator = list()
+  )
+  input <- .mediatailor$update_source_location_input(AccessConfiguration = AccessConfiguration, DefaultSegmentDeliveryConfiguration = DefaultSegmentDeliveryConfiguration, HttpConfiguration = HttpConfiguration, SourceLocationName = SourceLocationName)
+  output <- .mediatailor$update_source_location_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$update_source_location <- mediatailor_update_source_location
+
+#' Updates a specific VOD source in a specific source location
+#'
+#' @description
+#' Updates a specific VOD source in a specific source location.
+#'
+#' @usage
+#' mediatailor_update_vod_source(HttpPackageConfigurations,
+#'   SourceLocationName, VodSourceName)
+#'
+#' @param HttpPackageConfigurations &#91;required&#93; An array of HTTP package configurations for the VOD source on this
+#' account.
+#' @param SourceLocationName &#91;required&#93; The identifier for the source location you are working on.
+#' @param VodSourceName &#91;required&#93; The identifier for the VOD source you are working on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   HttpPackageConfigurations = list(
+#'     list(
+#'       Path = "string",
+#'       SourceGroup = "string",
+#'       Type = "DASH"|"HLS"
+#'     )
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SourceLocationName = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   VodSourceName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_vod_source(
+#'   HttpPackageConfigurations = list(
+#'     list(
+#'       Path = "string",
+#'       SourceGroup = "string",
+#'       Type = "DASH"|"HLS"
+#'     )
+#'   ),
+#'   SourceLocationName = "string",
+#'   VodSourceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediatailor_update_vod_source
+mediatailor_update_vod_source <- function(HttpPackageConfigurations, SourceLocationName, VodSourceName) {
+  op <- new_operation(
+    name = "UpdateVodSource",
+    http_method = "PUT",
+    http_path = "/sourceLocation/{sourceLocationName}/vodSource/{vodSourceName}",
+    paginator = list()
+  )
+  input <- .mediatailor$update_vod_source_input(HttpPackageConfigurations = HttpPackageConfigurations, SourceLocationName = SourceLocationName, VodSourceName = VodSourceName)
+  output <- .mediatailor$update_vod_source_output()
+  config <- get_config()
+  svc <- .mediatailor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediatailor$operations$update_vod_source <- mediatailor_update_vod_source

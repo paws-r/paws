@@ -13,7 +13,7 @@ cognitoidentity_get_open_id_token(IdentityId, Logins)
 tokens. When using graph.facebook.com and www.amazon.com, supply the
 access_token returned from the provider's authflow. For
 accounts.google.com, an Amazon Cognito user pool provider, or any other
-OpenId Connect provider, always include the \code{id_token}.}
+OpenID Connect provider, always include the \code{id_token}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -28,7 +28,7 @@ returned by \code{\link[=cognitoidentity_get_id]{get_id}}. You can optionally ad
 additional logins for the identity. Supplying multiple logins creates an
 implicit link.
 
-The OpenId token is valid for 10 minutes.
+The OpenID token is valid for 10 minutes.
 
 This is a public API. You do not need any credentials to call this API.
 }

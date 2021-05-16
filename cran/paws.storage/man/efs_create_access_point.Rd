@@ -25,8 +25,13 @@ using the access point. The clients using the access point can only
 access the root directory and below. If the \code{RootDirectory} > \code{Path}
 specified does not exist, EFS creates it and applies the \code{CreationInfo}
 settings when a client connects to an access point. When specifying a
-\code{RootDirectory}, you need to provide the \code{Path}, and the \code{CreationInfo}
-is optional.}
+\code{RootDirectory}, you need to provide the \code{Path}, and the \code{CreationInfo}.
+
+Amazon EFS creates a root directory only if you have provided the
+CreationInfo: OwnUid, OwnGID, and permissions for the directory. If you
+do not provide this information, Amazon EFS does not create the root
+directory. If the root directory does not exist, attempts to mount using
+the access point will fail.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -57,7 +62,7 @@ A list with the following syntax:\preformatted{list(
     )
   ),
   OwnerId = "string",
-  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
+  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error"
 )
 }
 }
@@ -69,7 +74,7 @@ the access point. The operating system user and group override any
 identity information provided by the NFS client. The file system path is
 exposed as the access point's root directory. Applications using the
 access point can only access data in its own directory and below. To
-learn more, see \href{https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html}{Mounting a File System Using EFS Access Points}.
+learn more, see \href{https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html}{Mounting a file system using EFS access points}.
 
 This operation requires permissions for the
 \code{elasticfilesystem:CreateAccessPoint} action.

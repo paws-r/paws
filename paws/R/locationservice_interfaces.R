@@ -77,7 +77,7 @@ NULL
 
 .locationservice$create_geofence_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CollectionName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CollectionName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -113,7 +113,7 @@ NULL
 
 .locationservice$create_tracker_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), TrackerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(type = "string")), TrackerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -179,7 +179,7 @@ NULL
 
 .locationservice$describe_geofence_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CollectionArn = structure(logical(0), tags = list(type = "string")), CollectionName = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  shape <- structure(list(CollectionArn = structure(logical(0), tags = list(type = "string")), CollectionName = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -191,7 +191,7 @@ NULL
 
 .locationservice$describe_map_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Configuration = structure(list(Style = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MapArn = structure(logical(0), tags = list(type = "string")), MapName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  shape <- structure(list(Configuration = structure(list(Style = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MapArn = structure(logical(0), tags = list(type = "string")), MapName = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -203,7 +203,7 @@ NULL
 
 .locationservice$describe_place_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), DataSourceConfiguration = structure(list(IntendedUse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), IndexArn = structure(logical(0), tags = list(type = "string")), IndexName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  shape <- structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), DataSourceConfiguration = structure(list(IntendedUse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), IndexArn = structure(logical(0), tags = list(type = "string")), IndexName = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -215,7 +215,7 @@ NULL
 
 .locationservice$describe_tracker_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), TrackerArn = structure(logical(0), tags = list(type = "string")), TrackerName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  shape <- structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(type = "string")), TrackerArn = structure(logical(0), tags = list(type = "string")), TrackerName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -323,7 +323,7 @@ NULL
 
 .locationservice$list_geofence_collections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entries = structure(list(structure(list(CollectionName = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entries = structure(list(structure(list(CollectionName = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -347,7 +347,7 @@ NULL
 
 .locationservice$list_maps_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entries = structure(list(structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MapName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entries = structure(list(structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MapName = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -359,7 +359,7 @@ NULL
 
 .locationservice$list_place_indexes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entries = structure(list(structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), IndexName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entries = structure(list(structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), IndexName = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -383,7 +383,7 @@ NULL
 
 .locationservice$list_trackers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entries = structure(list(structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), TrackerName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entries = structure(list(structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(type = "string")), TrackerName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

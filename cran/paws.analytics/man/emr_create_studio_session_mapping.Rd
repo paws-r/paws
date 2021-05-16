@@ -2,8 +2,9 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_create_studio_session_mapping}
 \alias{emr_create_studio_session_mapping}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Maps a user or group to the Amazon EMR Studio specified by StudioId, and
+applies a session policy to refine Studio permissions for that user or
+group}
 \usage{
 emr_create_studio_session_mapping(StudioId, IdentityId, IdentityName,
   IdentityType, SessionPolicyArn)
@@ -21,14 +22,14 @@ in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} o
 \code{IdentityId} must be specified.}
 
 \item{IdentityName}{The name of the user or group. For more information, see
-\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId}{UserName}
+\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName}{UserName}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName}{DisplayName}
 in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} or
 \code{IdentityId} must be specified.}
 
-\item{IdentityType}{[required] Specifies whether the identity to map to the Studio is a user or a
-group.}
+\item{IdentityType}{[required] Specifies whether the identity to map to the Amazon EMR Studio is a user
+or a group.}
 
 \item{SessionPolicyArn}{[required] The Amazon Resource Name (ARN) for the session policy that will be
 applied to the user or group. Session policies refine Studio user
@@ -38,9 +39,6 @@ permissions without the need to use multiple IAM user roles.}
 An empty list.
 }
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
-
 Maps a user or group to the Amazon EMR Studio specified by \code{StudioId},
 and applies a session policy to refine Studio permissions for that user
 or group.

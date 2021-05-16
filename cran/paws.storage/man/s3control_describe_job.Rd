@@ -8,7 +8,7 @@ job}
 s3control_describe_job(AccountId, JobId)
 }
 \arguments{
-\item{AccountId}{[required]}
+\item{AccountId}{[required] The AWS account ID associated with the S3 Batch Operations job.}
 
 \item{JobId}{[required] The ID for the job whose information you want to retrieve.}
 }
@@ -120,6 +120,7 @@ A list with the following syntax:\preformatted{list(
           )
         )
       ),
+      S3DeleteObjectTagging = list(),
       S3InitiateRestoreObject = list(
         ExpirationInDays = 123,
         GlacierJobTier = "BULK"|"STANDARD"
@@ -177,7 +178,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Retrieves the configuration parameters and status for a Batch Operations
 job. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 Related actions include:
 \itemize{

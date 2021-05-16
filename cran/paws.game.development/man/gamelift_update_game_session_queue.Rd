@@ -2,11 +2,12 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_update_game_session_queue}
 \alias{gamelift_update_game_session_queue}
-\title{Updates settings for a game session queue, which determines how new game
-session requests in the queue are processed}
+\title{Updates the configuration of a game session queue, which determines how
+the queue processes new game session requests}
 \usage{
 gamelift_update_game_session_queue(Name, TimeoutInSeconds,
-  PlayerLatencyPolicies, Destinations)
+  PlayerLatencyPolicies, Destinations, FilterConfiguration,
+  PriorityConfiguration, CustomEventData, NotificationTarget)
 }
 \arguments{
 \item{Name}{[required] A descriptive label that is associated with game session queue. Queue
@@ -17,21 +18,37 @@ or ARN value.}
 remains in the queue. When a request exceeds this time, the game session
 placement changes to a \code{TIMED_OUT} status.}
 
-\item{PlayerLatencyPolicies}{A collection of latency policies to apply when processing game sessions
-placement requests with player latency information. Multiple policies
-are evaluated in order of the maximum latency value, starting with the
-lowest latency values. With just one policy, the policy is enforced at
-the start of the game session placement for the duration period. With
-multiple policies, each policy is enforced consecutively for its
-duration period. For example, a queue might enforce a 60-second policy
-followed by a 120-second policy, and then no policy for the remainder of
-the placement. When updating policies, provide a complete collection of
-policies.}
+\item{PlayerLatencyPolicies}{A set of policies that act as a sliding cap on player latency. FleetIQ
+works to deliver low latency for most players in a game session. These
+policies ensure that no individual player can be placed into a game with
+unreasonably high latency. Use multiple policies to gradually relax
+latency requirements a step at a time. Multiple policies are applied
+based on their maximum allowed latency, starting with the lowest value.
+When updating policies, provide a complete collection of policies.}
 
-\item{Destinations}{A list of fleets that can be used to fulfill game session placement
-requests in the queue. Fleets are identified by either a fleet ARN or a
-fleet alias ARN. Destinations are listed in default preference order.
-When updating this list, provide a complete list of destinations.}
+\item{Destinations}{A list of fleets and/or fleet aliases that can be used to fulfill game
+session placement requests in the queue. Destinations are identified by
+either a fleet ARN or a fleet alias ARN, and are listed in order of
+placement preference. When updating this list, provide a complete list
+of destinations.}
+
+\item{FilterConfiguration}{A list of locations where a queue is allowed to place new game sessions.
+Locations are specified in the form of AWS Region codes, such as
+\code{us-west-2}. If this parameter is not set, game sessions can be placed
+in any queue location. To remove an existing filter configuration, pass
+in an empty set.}
+
+\item{PriorityConfiguration}{Custom settings to use when prioritizing destinations and locations for
+game session placements. This configuration replaces the FleetIQ default
+prioritization process. Priority types that are not explicitly named
+will be automatically applied at the end of the prioritization process.
+To remove an existing priority configuration, pass in an empty set.}
+
+\item{CustomEventData}{Information to be added to all events that are related to this game
+session queue.}
+
+\item{NotificationTarget}{An SNS topic ARN that is set up to receive game session placement
+notifications. See \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queue-notification.html}{Setting up notifications for game session placement}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -49,28 +66,42 @@ A list with the following syntax:\preformatted{list(
       list(
         DestinationArn = "string"
       )
-    )
+    ),
+    FilterConfiguration = list(
+      AllowedLocations = list(
+        "string"
+      )
+    ),
+    PriorityConfiguration = list(
+      PriorityOrder = list(
+        "LATENCY"|"COST"|"DESTINATION"|"LOCATION"
+      ),
+      LocationOrder = list(
+        "string"
+      )
+    ),
+    CustomEventData = "string",
+    NotificationTarget = "string"
   )
 )
 }
 }
 \description{
-Updates settings for a game session queue, which determines how new game
-session requests in the queue are processed. To update settings, specify
-the queue name to be updated and provide the new settings. When updating
-destinations, provide a complete list of destinations.
+Updates the configuration of a game session queue, which determines how
+the queue processes new game session requests. To update settings,
+specify the queue name to be updated and provide the new settings. When
+updating destinations, provide a complete list of destinations.
 
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-intro.html}{Using Multi-Region Queues}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}}
-\item \code{\link[=gamelift_describe_game_session_queues]{describe_game_session_queues}}
-\item \code{\link[=gamelift_update_game_session_queue]{update_game_session_queue}}
-\item \code{\link[=gamelift_delete_game_session_queue]{delete_game_session_queue}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}} |
+\code{\link[=gamelift_describe_game_session_queues]{describe_game_session_queues}}
+| \code{\link[=gamelift_update_game_session_queue]{update_game_session_queue}} |
+\code{\link[=gamelift_delete_game_session_queue]{delete_game_session_queue}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$update_game_session_queue(
@@ -86,7 +117,22 @@ destinations, provide a complete list of destinations.
     list(
       DestinationArn = "string"
     )
-  )
+  ),
+  FilterConfiguration = list(
+    AllowedLocations = list(
+      "string"
+    )
+  ),
+  PriorityConfiguration = list(
+    PriorityOrder = list(
+      "LATENCY"|"COST"|"DESTINATION"|"LOCATION"
+    ),
+    LocationOrder = list(
+      "string"
+    )
+  ),
+  CustomEventData = "string",
+  NotificationTarget = "string"
 )
 }
 }

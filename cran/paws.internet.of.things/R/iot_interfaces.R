@@ -1987,7 +1987,7 @@ NULL
 
 .iot$list_things_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), attributeName = structure(logical(0), tags = list(location = "querystring", locationName = "attributeName", type = "string")), attributeValue = structure(logical(0), tags = list(location = "querystring", locationName = "attributeValue", type = "string")), thingTypeName = structure(logical(0), tags = list(location = "querystring", locationName = "thingTypeName", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), attributeName = structure(logical(0), tags = list(location = "querystring", locationName = "attributeName", type = "string")), attributeValue = structure(logical(0), tags = list(location = "querystring", locationName = "attributeValue", type = "string")), thingTypeName = structure(logical(0), tags = list(location = "querystring", locationName = "thingTypeName", type = "string")), usePrefixAttributeValue = structure(logical(0), tags = list(location = "querystring", locationName = "usePrefixAttributeValue", type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

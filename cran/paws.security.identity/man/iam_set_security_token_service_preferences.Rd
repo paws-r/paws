@@ -14,7 +14,7 @@ work in manually enabled Regions, such as Asia Pacific (Hong Kong).
 Version 2 tokens are valid in all Regions. However, version 2 tokens are
 longer and might affect systems where you temporarily store tokens.
 
-For information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating STS in an AWS Region}
+For information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and deactivating STS in an AWS region}
 in the \emph{IAM User Guide}.}
 }
 \value{
@@ -28,8 +28,8 @@ By default, AWS Security Token Service (STS) is available as a global
 service, and all STS requests go to a single endpoint at
 \verb{https://sts.amazonaws.com}. AWS recommends using Regional STS endpoints
 to reduce latency, build in redundancy, and increase session token
-availability. For information about Regional endpoints for STS, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region}{AWS Regions and Endpoints}
-in the \emph{AWS General Reference}.
+availability. For information about Regional endpoints for STS, see \href{https://docs.aws.amazon.com/general/latest/gr/sts.html}{AWS AWS Security Token Service endpoints and quotas} in the
+\emph{AWS General Reference}.
 
 If you make an STS call to the global endpoint, the resulting session
 tokens might be valid in some Regions but not others. It depends on the
@@ -38,7 +38,7 @@ in AWS Regions that are available by default. These tokens do not work
 in manually enabled Regions, such as Asia Pacific (Hong Kong). Version 2
 tokens are valid in all Regions. However, version 2 tokens are longer
 and might affect systems where you temporarily store tokens. For
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating STS in an AWS Region}
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and deactivating STS in an AWS region}
 in the \emph{IAM User Guide}.
 
 To view the current session token version, see the

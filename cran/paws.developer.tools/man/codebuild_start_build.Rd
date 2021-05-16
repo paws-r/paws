@@ -52,7 +52,7 @@ branch's HEAD commit ID is used. If not specified, the default branch's
 HEAD commit ID is used.
 }
 
-\subsection{Amazon Simple Storage Service (Amazon S3)}{
+\subsection{Amazon S3}{
 
 The version ID of the object that represents the build input ZIP file to
 use.
@@ -110,7 +110,13 @@ override applies only if the build's source is GitHub Enterprise.}
 \item{reportBuildStatusOverride}{Set to true to report to your source provider the status of a build's
 start and completion. If you use this option with a source provider
 other than GitHub, GitHub Enterprise, or Bitbucket, an
-invalidInputException is thrown.
+\code{invalidInputException} is thrown.
+
+To be able to report the build status to the source provider, the user
+associated with the source provider must have write access to the repo.
+If the user does not have write access, the build status cannot be
+updated. For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/access-tokens.html}{Source provider access}
+in the \emph{AWS CodeBuild User Guide}.
 
 The status of a build triggered by a webhook is always reported to your
 source provider.}
@@ -278,7 +284,8 @@ A list with the following syntax:\preformatted{list(
       md5sum = "string",
       overrideArtifactName = TRUE|FALSE,
       encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
+      artifactIdentifier = "string",
+      bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
     ),
     secondaryArtifacts = list(
       list(
@@ -287,7 +294,8 @@ A list with the following syntax:\preformatted{list(
         md5sum = "string",
         overrideArtifactName = TRUE|FALSE,
         encryptionDisabled = TRUE|FALSE,
-        artifactIdentifier = "string"
+        artifactIdentifier = "string",
+        bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
       )
     ),
     cache = list(
@@ -332,7 +340,8 @@ A list with the following syntax:\preformatted{list(
       s3Logs = list(
         status = "ENABLED"|"DISABLED",
         location = "string",
-        encryptionDisabled = TRUE|FALSE
+        encryptionDisabled = TRUE|FALSE,
+        bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
       )
     ),
     timeoutInMinutes = 123,
@@ -424,7 +433,8 @@ Starts running a build.
     packaging = "NONE"|"ZIP",
     overrideArtifactName = TRUE|FALSE,
     encryptionDisabled = TRUE|FALSE,
-    artifactIdentifier = "string"
+    artifactIdentifier = "string",
+    bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
   ),
   secondaryArtifactsOverride = list(
     list(
@@ -436,7 +446,8 @@ Starts running a build.
       packaging = "NONE"|"ZIP",
       overrideArtifactName = TRUE|FALSE,
       encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
+      artifactIdentifier = "string",
+      bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
     )
   ),
   environmentVariablesOverride = list(
@@ -489,7 +500,8 @@ Starts running a build.
     s3Logs = list(
       status = "ENABLED"|"DISABLED",
       location = "string",
-      encryptionDisabled = TRUE|FALSE
+      encryptionDisabled = TRUE|FALSE,
+      bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
     )
   ),
   registryCredentialOverride = list(

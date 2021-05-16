@@ -16,29 +16,44 @@ A list with the following syntax:\preformatted{list(
     ContainerHostname = "string",
     Image = "string",
     ImageConfig = list(
-      RepositoryAccessMode = "Platform"|"Vpc"
+      RepositoryAccessMode = "Platform"|"Vpc",
+      RepositoryAuthConfig = list(
+        RepositoryCredentialsProviderArn = "string"
+      )
     ),
     Mode = "SingleModel"|"MultiModel",
     ModelDataUrl = "string",
     Environment = list(
       "string"
     ),
-    ModelPackageName = "string"
+    ModelPackageName = "string",
+    MultiModelConfig = list(
+      ModelCacheSetting = "Enabled"|"Disabled"
+    )
   ),
   Containers = list(
     list(
       ContainerHostname = "string",
       Image = "string",
       ImageConfig = list(
-        RepositoryAccessMode = "Platform"|"Vpc"
+        RepositoryAccessMode = "Platform"|"Vpc",
+        RepositoryAuthConfig = list(
+          RepositoryCredentialsProviderArn = "string"
+        )
       ),
       Mode = "SingleModel"|"MultiModel",
       ModelDataUrl = "string",
       Environment = list(
         "string"
       ),
-      ModelPackageName = "string"
+      ModelPackageName = "string",
+      MultiModelConfig = list(
+        ModelCacheSetting = "Enabled"|"Disabled"
+      )
     )
+  ),
+  InferenceExecutionConfig = list(
+    Mode = "Serial"|"Direct"
   ),
   ExecutionRoleArn = "string",
   VpcConfig = list(

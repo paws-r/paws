@@ -56,7 +56,7 @@ instances in different partitions, where instances in one partition do
 not share the same hardware with instances in another partition.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_placement_group(

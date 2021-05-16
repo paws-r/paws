@@ -2,11 +2,11 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_integration_association}
 \alias{connect_create_integration_association}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Create an AppIntegration association with an Amazon Connect instance}
 \usage{
 connect_create_integration_association(InstanceId, IntegrationType,
-  IntegrationArn, SourceApplicationUrl, SourceApplicationName, SourceType)
+  IntegrationArn, SourceApplicationUrl, SourceApplicationName, SourceType,
+  Tags)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
@@ -20,6 +20,8 @@ connect_create_integration_association(InstanceId, IntegrationType,
 \item{SourceApplicationName}{[required] The name of the external application.}
 
 \item{SourceType}{[required] The type of the data source.}
+
+\item{Tags}{One or more tags.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -29,9 +31,6 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Create an AppIntegration association with an Amazon Connect instance.
 }
 \section{Request syntax}{
@@ -41,7 +40,10 @@ Create an AppIntegration association with an Amazon Connect instance.
   IntegrationArn = "string",
   SourceApplicationUrl = "string",
   SourceApplicationName = "string",
-  SourceType = "SALESFORCE"|"ZENDESK"
+  SourceType = "SALESFORCE"|"ZENDESK",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

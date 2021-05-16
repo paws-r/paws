@@ -2,7 +2,8 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_describe_global_settings}
 \alias{backup_describe_global_settings}
-\title{The current feature settings for the AWS Account}
+\title{Describes the global settings of the AWS account, including whether it
+is opted in to cross-account backup}
 \usage{
 backup_describe_global_settings()
 }
@@ -18,7 +19,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-The current feature settings for the AWS Account.
+Describes the global settings of the AWS account, including whether it
+is opted in to cross-account backup.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_global_settings()

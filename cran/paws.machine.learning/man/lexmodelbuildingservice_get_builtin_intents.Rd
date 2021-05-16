@@ -30,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     list(
       signature = "string",
       supportedLocales = list(
-        "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+        "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"
       )
     )
   ),
@@ -46,7 +46,7 @@ action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_builtin_intents(
-  locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+  locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP",
   signatureContains = "string",
   nextToken = "string",
   maxResults = 123

@@ -8,7 +8,7 @@ s3control_update_job_status(AccountId, JobId, RequestedJobStatus,
   StatusUpdateReason)
 }
 \arguments{
-\item{AccountId}{[required]}
+\item{AccountId}{[required] The AWS account ID associated with the S3 Batch Operations job.}
 
 \item{JobId}{[required] The ID of the job whose status you want to update.}
 
@@ -26,10 +26,10 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Updates the status for the specified job. Use this operation to confirm
+Updates the status for the specified job. Use this action to confirm
 that you want to run a job or to cancel an existing job. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 Related actions include:
 \itemize{

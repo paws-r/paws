@@ -6,7 +6,7 @@
 \usage{
 alexaforbusiness_create_network_profile(NetworkProfileName, Description,
   Ssid, SecurityType, EapMethod, CurrentPassword, NextPassword,
-  CertificateAuthorityArn, TrustAnchors, ClientRequestToken)
+  CertificateAuthorityArn, TrustAnchors, ClientRequestToken, Tags)
 }
 \arguments{
 \item{NetworkProfileName}{[required] The name of the network profile associated with a device.}
@@ -36,6 +36,9 @@ your devices and used to trust your authentication server during EAP
 negotiation.}
 
 \item{ClientRequestToken}{[required]}
+
+\item{Tags}{The tags to be added to the specified resource. Do not provide system
+tags.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -59,7 +62,13 @@ Creates a network profile with the specified details.
   TrustAnchors = list(
     "string"
   ),
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

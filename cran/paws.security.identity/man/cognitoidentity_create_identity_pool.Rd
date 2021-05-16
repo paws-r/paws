@@ -30,7 +30,7 @@ underscore (\verb{_}), and dash (\code{-}).
 Once you have set a developer provider name, you cannot change it.
 Please take care in setting this parameter.}
 
-\item{OpenIdConnectProviderARNs}{A list of OpendID Connect provider ARNs.}
+\item{OpenIdConnectProviderARNs}{The Amazon Resource Names (ARN) of the OpenID Connect providers.}
 
 \item{CognitoIdentityProviders}{An array of Amazon Cognito user pools and their client IDs.}
 

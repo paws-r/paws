@@ -8,7 +8,7 @@ the last 30 days for the AWS account making the request}
 s3control_list_jobs(AccountId, JobStatuses, NextToken, MaxResults)
 }
 \arguments{
-\item{AccountId}{[required]}
+\item{AccountId}{[required] The AWS account ID associated with the S3 Batch Operations job.}
 
 \item{JobStatuses}{The \verb{List Jobs} request returns jobs that match the statuses listed in
 this element.}
@@ -29,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     list(
       JobId = "string",
       Description = "string",
-      Operation = "LambdaInvoke"|"S3PutObjectCopy"|"S3PutObjectAcl"|"S3PutObjectTagging"|"S3InitiateRestoreObject"|"S3PutObjectLegalHold"|"S3PutObjectRetention",
+      Operation = "LambdaInvoke"|"S3PutObjectCopy"|"S3PutObjectAcl"|"S3PutObjectTagging"|"S3DeleteObjectTagging"|"S3InitiateRestoreObject"|"S3PutObjectLegalHold"|"S3PutObjectRetention",
       Priority = 123,
       Status = "Active"|"Cancelled"|"Cancelling"|"Complete"|"Completing"|"Failed"|"Failing"|"New"|"Paused"|"Pausing"|"Preparing"|"Ready"|"Suspended",
       CreationTime = as.POSIXct(
@@ -52,7 +52,7 @@ A list with the following syntax:\preformatted{list(
 Lists current S3 Batch Operations jobs and jobs that have ended within
 the last 30 days for the AWS account making the request. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 Related actions include:
 \itemize{

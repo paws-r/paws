@@ -17,7 +17,8 @@ sagemaker_list_endpoints(SortBy, SortOrder, NextToken, MaxResults,
 was truncated, the response includes a \code{NextToken}. To retrieve the next
 set of endpoints, use the token in the next request.}
 
-\item{MaxResults}{The maximum number of endpoints to return in the response.}
+\item{MaxResults}{The maximum number of endpoints to return in the response. This value
+defaults to 10.}
 
 \item{NameContains}{A string in endpoint names. This filter returns only endpoints whose
 name contains the specified string.}

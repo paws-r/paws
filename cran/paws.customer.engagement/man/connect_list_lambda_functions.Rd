@@ -14,7 +14,7 @@ connect_list_lambda_functions(InstanceId, NextToken, MaxResults)
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -29,8 +29,8 @@ A list with the following syntax:\preformatted{list(
 This API is in preview release for Amazon Connect and is subject to
 change.
 
-Returns a paginated list of all the Lambda functions that show up in the
-drop-down options in the relevant contact flow blocks.
+Returns a paginated list of all Lambda functions that display in the
+dropdown options in the relevant contact flow blocks.
 }
 \section{Request syntax}{
 \preformatted{svc$list_lambda_functions(

@@ -78,6 +78,16 @@ A list with the following syntax:\preformatted{list(
           )
         ),
         healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+        managedAgents = list(
+          list(
+            lastStartedAt = as.POSIXct(
+              "2015-01-01"
+            ),
+            name = "ExecuteCommandAgent",
+            reason = "string",
+            lastStatus = "string"
+          )
+        ),
         cpu = "string",
         memory = "string",
         memoryReservation = "string",
@@ -91,6 +101,7 @@ A list with the following syntax:\preformatted{list(
       "2015-01-01"
     ),
     desiredStatus = "string",
+    enableExecuteCommand = TRUE|FALSE,
     executionStoppedAt = as.POSIXct(
       "2015-01-01"
     ),
@@ -144,7 +155,10 @@ A list with the following syntax:\preformatted{list(
       ),
       executionRoleArn = "string",
       memory = "string",
-      taskRoleArn = "string"
+      taskRoleArn = "string",
+      ephemeralStorage = list(
+        sizeInGiB = 123
+      )
     ),
     platformVersion = "string",
     pullStartedAt = as.POSIXct(
@@ -173,7 +187,10 @@ A list with the following syntax:\preformatted{list(
     ),
     taskArn = "string",
     taskDefinitionArn = "string",
-    version = 123
+    version = 123,
+    ephemeralStorage = list(
+      sizeInGiB = 123
+    )
   )
 )
 }

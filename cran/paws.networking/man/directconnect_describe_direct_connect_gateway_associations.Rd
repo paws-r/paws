@@ -3,7 +3,7 @@
 \name{directconnect_describe_direct_connect_gateway_associations}
 \alias{directconnect_describe_direct_connect_gateway_associations}
 \title{Lists the associations between your Direct Connect gateways and virtual
-private gateways}
+private gateways and transit gateways}
 \usage{
 directconnect_describe_direct_connect_gateway_associations(
   associationId, associatedGatewayId, directConnectGatewayId, maxResults,
@@ -25,7 +25,7 @@ returned.}
 
 \item{nextToken}{The token provided in the previous call to retrieve the next page.}
 
-\item{virtualGatewayId}{The ID of the virtual private gateway.}
+\item{virtualGatewayId}{The ID of the virtual private gateway or transit gateway.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -58,14 +58,28 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Lists the associations between your Direct Connect gateways and virtual
-private gateways. You must specify a Direct Connect gateway, a virtual
-private gateway, or both. If you specify a Direct Connect gateway, the
-response contains all virtual private gateways associated with the
-Direct Connect gateway. If you specify a virtual private gateway, the
-response contains all Direct Connect gateways associated with the
-virtual private gateway. If you specify both, the response contains the
-association between the Direct Connect gateway and the virtual private
-gateway.
+private gateways and transit gateways. You must specify one of the
+following:
+\itemize{
+\item A Direct Connect gateway
+
+The response contains all virtual private gateways and transit
+gateways associated with the Direct Connect gateway.
+\item A virtual private gateway
+
+The response contains the Direct Connect gateway.
+\item A transit gateway
+
+The response contains the Direct Connect gateway.
+\item A Direct Connect gateway and a virtual private gateway
+
+The response contains the association between the Direct Connect
+gateway and virtual private gateway.
+\item A Direct Connect gateway and a transit gateway
+
+The response contains the association between the Direct Connect
+gateway and transit gateway.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_direct_connect_gateway_associations(

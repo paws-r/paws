@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_deregister_game_server}
 \alias{gamelift_deregister_game_server}
-\title{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups}
+\title{This operation is used with the GameLift FleetIQ solution and game
+server groups}
 \usage{
 gamelift_deregister_game_server(GameServerGroupName, GameServerId)
 }
@@ -17,8 +17,8 @@ running. Use either the GameServerGroup name or ARN value.}
 An empty list.
 }
 \description{
-\strong{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups.}
+\strong{This operation is used with the GameLift FleetIQ solution and game
+server groups.}
 
 Removes the game server from a game server group. As a result of this
 operation, the deregistered game server can no longer be claimed and
@@ -32,15 +32,14 @@ termination timestamp and reason.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_register_game_server]{register_game_server}}
-\item \code{\link[=gamelift_list_game_servers]{list_game_servers}}
-\item \code{\link[=gamelift_claim_game_server]{claim_game_server}}
-\item \code{\link[=gamelift_describe_game_server]{describe_game_server}}
-\item \code{\link[=gamelift_update_game_server]{update_game_server}}
-\item \code{\link[=gamelift_deregister_game_server]{deregister_game_server}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_register_game_server]{register_game_server}} |
+\code{\link[=gamelift_list_game_servers]{list_game_servers}} |
+\code{\link[=gamelift_claim_game_server]{claim_game_server}} |
+\code{\link[=gamelift_describe_game_server]{describe_game_server}} |
+\code{\link[=gamelift_update_game_server]{update_game_server}} |
+\code{\link[=gamelift_deregister_game_server]{deregister_game_server}} | \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/reference-awssdk-fleetiq.html}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$deregister_game_server(

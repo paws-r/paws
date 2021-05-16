@@ -54,7 +54,7 @@ A list with the following syntax:\preformatted{list(
         )
       ),
       OwnerId = "string",
-      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
+      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error"
     )
   ),
   NextToken = "string"

@@ -35,8 +35,11 @@ To send a command to a smaller number of instances, you can use the
 For more information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending commands to a fleet}
 in the \emph{AWS Systems Manager User Guide}.}
 
-\item{DocumentName}{[required] Required. The name of the Systems Manager document to run. This can be a
-public document or a custom document.}
+\item{DocumentName}{[required] The name of the Systems Manager document to run. This can be a public
+document or a custom document. To run a shared document belonging to
+another account, specify the document ARN. For more information about
+how to use shared documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html}{Using shared SSM documents}
+in the \emph{AWS Systems Manager User Guide}.}
 
 \item{DocumentVersion}{The SSM document version to use in the request. You can specify
 $DEFAULT, $LATEST, or a specific version number. If you run commands by

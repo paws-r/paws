@@ -20,7 +20,7 @@ An empty list.
 This API is in preview release for Amazon Connect and is subject to
 change.
 
-Remove the Lambda function from the drop-down options available in the
+Remove the Lambda function from the dropdown options available in the
 relevant contact flow blocks.
 }
 \section{Request syntax}{

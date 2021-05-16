@@ -21,7 +21,7 @@ An empty list.
 }
 \description{
 Removes the specified tags from the user. For more information about
-tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

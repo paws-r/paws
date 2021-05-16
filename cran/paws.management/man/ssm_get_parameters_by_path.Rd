@@ -10,9 +10,11 @@ ssm_get_parameters_by_path(Path, Recursive, ParameterFilters,
 }
 \arguments{
 \item{Path}{[required] The hierarchy for the parameter. Hierarchies start with a forward slash
-(/) and end with the parameter name. A parameter name hierarchy can have
-a maximum of 15 levels. Here is an example of a hierarchy:
-\verb{/Finance/Prod/IAD/WinServ2016/license33}}
+(/). The hierachy is the parameter name except the last part of the
+parameter. For the API call to succeeed, the last part of the parameter
+name cannot be in the path. A parameter name hierarchy can have a
+maximum of 15 levels. Here is an example of a hierarchy:
+\verb{/Finance/Prod/IAD/WinServ2016/license33 }}
 
 \item{Recursive}{Retrieve all parameters within a hierarchy.
 

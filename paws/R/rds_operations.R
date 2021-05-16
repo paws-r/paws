@@ -635,15 +635,6 @@ rds_cancel_export_task <- function(ExportTaskIdentifier) {
 #' Constraints:
 #' 
 #' -   Must specify a valid DB cluster parameter group.
-#' 
-#' -   If the source DB cluster parameter group is in the same AWS Region
-#'     as the copy, specify a valid DB parameter group identifier, for
-#'     example `my-db-cluster-param-group`, or a valid ARN.
-#' 
-#' -   If the source DB parameter group is in a different AWS Region than
-#'     the copy, specify a valid DB cluster parameter group ARN, for
-#'     example
-#'     `arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1`.
 #' @param TargetDBClusterParameterGroupIdentifier &#91;required&#93; The identifier for the copied DB cluster parameter group.
 #' 
 #' Constraints:
@@ -921,6 +912,7 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #'       "2015-01-01"
 #'     ),
 #'     Engine = "string",
+#'     EngineMode = "string",
 #'     AllocatedStorage = 123,
 #'     Status = "string",
 #'     Port = 123,
@@ -1004,9 +996,6 @@ rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Targ
 #' Constraints:
 #' 
 #' -   Must specify a valid DB parameter group.
-#' 
-#' -   Must specify a valid DB parameter group identifier, for example
-#'     `my-db-param-group`, or a valid ARN.
 #' @param TargetDBParameterGroupIdentifier &#91;required&#93; The identifier for the copied DB parameter group.
 #' 
 #' Constraints:
@@ -1641,9 +1630,9 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region. To see the time blocks available, see
-#' [Adjusting the Preferred DB Cluster Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+#' block of time for each AWS Region. To view the time blocks available,
+#' see [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow)
 #' in the *Amazon Aurora User Guide.*
 #' 
 #' Constraints:
@@ -1773,9 +1762,9 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' 
 #' **Aurora PostgreSQL**
 #' 
-#' Possible values are `postgresql` and `upgrade`.
-#' @param EngineMode The DB engine mode of the DB cluster, either `provisioned` `serverless`,
-#' `parallelquery`, `global`, or `multimaster`.
+#' Possible value is `postgresql`.
+#' @param EngineMode The DB engine mode of the DB cluster, either `provisioned`,
+#' `serverless`, `parallelquery`, `global`, or `multimaster`.
 #' 
 #' The `parallelquery` engine mode isn't required for Aurora MySQL version
 #' 1.23 and higher 1.x versions, and version 2.09 and higher 2.x versions.
@@ -1835,12 +1824,19 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' in the *Amazon Aurora User Guide*.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
-#' @param EnableGlobalWriteForwarding A value that indicates whether to enable write operations to be
-#' forwarded from this cluster to the primary cluster in an Aurora global
-#' database. The resulting changes are replicated back to this cluster.
-#' This parameter only applies to DB clusters that are secondary clusters
-#' in an Aurora global database. By default, Aurora disallows write
-#' operations for secondary clusters.
+#' @param EnableGlobalWriteForwarding A value that indicates whether to enable this DB cluster to forward
+#' write operations to the primary cluster of an Aurora global database
+#' (GlobalCluster). By default, write operations are not allowed on Aurora
+#' DB clusters that are secondary clusters in an Aurora global database.
+#' 
+#' You can set this value only on Aurora DB clusters that are members of an
+#' Aurora global database. With this parameter enabled, a secondary cluster
+#' can forward writes to the current primary cluster and the resulting
+#' changes are replicated back to this cluster. For the primary DB cluster
+#' of an Aurora global database, this value is used immediately if the
+#' primary is demoted by the
+#' [`failover_global_cluster`][rds_failover_global_cluster] API operation,
+#' but it does nothing until then.
 #' @param SourceRegion The ID of the region that contains the source for the read replica.
 #'
 #' @return
@@ -2307,6 +2303,7 @@ rds_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, D
 #'       "2015-01-01"
 #'     ),
 #'     Engine = "string",
+#'     EngineMode = "string",
 #'     AllocatedStorage = 123,
 #'     Status = "string",
 #'     Port = 123,
@@ -2426,8 +2423,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **PostgreSQL**
 #' 
 #' The name of the database to create when the DB instance is created. If
-#' this parameter isn't specified, no database is created in the DB
-#' instance.
+#' this parameter isn't specified, a database named `postgres` is created
+#' in the DB instance.
 #' 
 #' Constraints:
 #' 
@@ -2454,17 +2451,34 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' Not applicable. Must be null.
 #' 
-#' **Amazon Aurora**
+#' **Amazon Aurora MySQL**
 #' 
-#' The name of the database to create when the primary instance of the DB
-#' cluster is created. If this parameter isn't specified, no database is
-#' created in the DB instance.
+#' The name of the database to create when the primary DB instance of the
+#' Aurora MySQL DB cluster is created. If this parameter isn't specified
+#' for an Aurora MySQL DB cluster, no database is created in the DB
+#' cluster.
 #' 
 #' Constraints:
 #' 
-#' -   Must contain 1 to 64 letters or numbers.
+#' -   It must contain 1 to 64 alphanumeric characters.
 #' 
-#' -   Can't be a word reserved by the specified database engine
+#' -   It can't be a word reserved by the database engine.
+#' 
+#' **Amazon Aurora PostgreSQL**
+#' 
+#' The name of the database to create when the primary DB instance of the
+#' Aurora PostgreSQL DB cluster is created. If this parameter isn't
+#' specified for an Aurora PostgreSQL DB cluster, a database named
+#' `postgres` is created in the DB cluster.
+#' 
+#' Constraints:
+#' 
+#' -   It must contain 1 to 63 alphanumeric characters.
+#' 
+#' -   It must begin with a letter or an underscore. Subsequent characters
+#'     can be letters, underscores, or digits (0 to 9).
+#' 
+#' -   It can't be a word reserved by the database engine.
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
 #' string.
 #' 
@@ -2773,20 +2787,16 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' -   Can't be set to 0 if the DB instance is a source to read replicas
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
 #' automated backups are enabled, using the `BackupRetentionPeriod`
-#' parameter. For more information, see [The Backup
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+#' parameter. The default is a 30-minute window selected at random from an
+#' 8-hour block of time for each AWS Region. For more information, see
+#' [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
 #' in the *Amazon RDS User Guide*.
 #' 
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The daily time range for creating automated backups is
 #' managed by the DB cluster.
-#' 
-#' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region. To see the time blocks available, see
-#' [Adjusting the Preferred DB Instance Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
-#' in the *Amazon RDS User Guide*.
 #' 
 #' Constraints:
 #' 
@@ -2886,8 +2896,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' **PostgreSQL**
 #' 
-#' See [Supported PostgreSQL Database
-#' Versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions)
+#' See [Amazon RDS for PostgreSQL versions and
+#' extensions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts)
 #' in the *Amazon RDS User Guide.*
 #' @param AutoMinorVersionUpgrade A value that indicates whether minor engine upgrades are applied
 #' automatically to the DB instance during the maintenance window. By
@@ -2906,8 +2916,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' must be a multiple between .5 and 50 of the storage amount for the DB
 #' instance. For SQL Server DB instances, must be a multiple between 1 and
 #' 50 of the storage amount for the DB instance.
-#' @param OptionGroupName Indicates that the DB instance should be associated with the specified
-#' option group.
+#' @param OptionGroupName A value that indicates that the DB instance should be associated with
+#' the specified option group.
 #' 
 #' Permanent options, such as the TDE option for Oracle Advanced Security
 #' TDE, can't be removed from an option group. Also, that option group
@@ -3087,7 +3097,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' **Oracle**
 #' 
-#' Possible values are `alert`, `audit`, `listener`, and `trace`.
+#' Possible values are `alert`, `audit`, `listener`, `trace`, and
+#' `oemagent`.
 #' 
 #' **PostgreSQL**
 #' 
@@ -3109,6 +3120,12 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' DB cluster.
 #' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
 #' of the DB instance.
+#' 
+#' For more information about this setting, including limitations that
+#' apply to it, see [Managing capacity automatically with Amazon RDS
+#' storage
+#' autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+#' in the *Amazon RDS User Guide*.
 #' @param EnableCustomerOwnedIp A value that indicates whether to enable a customer-owned IP address
 #' (CoIP) for an RDS on Outposts DB instance.
 #' 
@@ -3312,7 +3329,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```
@@ -3463,8 +3481,8 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' 
 #' -   For the limitations of SQL Server read replicas, see [Read Replica
 #'     Limitations with Microsoft SQL
-#'     Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) in
-#'     the *Amazon RDS User Guide*.
+#'     Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.html)
+#'     in the *Amazon RDS User Guide*.
 #' 
 #' -   Can specify a PostgreSQL DB instance only if the source is running
 #'     PostgreSQL 9.3.5 or later (9.4.7 and higher for cross-region
@@ -3754,6 +3772,12 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' in the *Amazon RDS User Guide*.
 #' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
 #' of the DB instance.
+#' 
+#' For more information about this setting, including limitations that
+#' apply to it, see [Managing capacity automatically with Amazon RDS
+#' storage
+#' autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+#' in the *Amazon RDS User Guide*.
 #' @param SourceRegion The ID of the region that contains the source for the read replica.
 #'
 #' @return
@@ -3942,7 +3966,8 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```
@@ -4172,6 +4197,7 @@ rds_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroup
 #'     DBProxyArn = "string",
 #'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
 #'     EngineFamily = "string",
+#'     VpcId = "string",
 #'     VpcSecurityGroupIds = list(
 #'       "string"
 #'     ),
@@ -4254,6 +4280,99 @@ rds_create_db_proxy <- function(DBProxyName, EngineFamily, Auth, RoleArn, VpcSub
   return(response)
 }
 .rds$operations$create_db_proxy <- rds_create_db_proxy
+
+#' Creates a DBProxyEndpoint
+#'
+#' @description
+#' Creates a `DBProxyEndpoint`. Only applies to proxies that are associated
+#' with Aurora DB clusters. You can use DB proxy endpoints to specify
+#' read/write or read-only access to the DB cluster. You can also use DB
+#' proxy endpoints to access a DB proxy through a different VPC than the
+#' proxy's default VPC.
+#'
+#' @usage
+#' rds_create_db_proxy_endpoint(DBProxyName, DBProxyEndpointName,
+#'   VpcSubnetIds, VpcSecurityGroupIds, TargetRole, Tags)
+#'
+#' @param DBProxyName &#91;required&#93; The name of the DB proxy associated with the DB proxy endpoint that you
+#' create.
+#' @param DBProxyEndpointName &#91;required&#93; The name of the DB proxy endpoint to create.
+#' @param VpcSubnetIds &#91;required&#93; The VPC subnet IDs for the DB proxy endpoint that you create. You can
+#' specify a different set of subnet IDs than for the original DB proxy.
+#' @param VpcSecurityGroupIds The VPC security group IDs for the DB proxy endpoint that you create.
+#' You can specify a different set of security group IDs than for the
+#' original DB proxy. The default is the default security group for the
+#' VPC.
+#' @param TargetRole A value that indicates whether the DB proxy endpoint can be used for
+#' read/write or read-only operations. The default is `READ_WRITE`.
+#' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBProxyEndpoint = list(
+#'     DBProxyEndpointName = "string",
+#'     DBProxyEndpointArn = "string",
+#'     DBProxyName = "string",
+#'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting",
+#'     VpcId = "string",
+#'     VpcSecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     VpcSubnetIds = list(
+#'       "string"
+#'     ),
+#'     Endpoint = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TargetRole = "READ_WRITE"|"READ_ONLY",
+#'     IsDefault = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_db_proxy_endpoint(
+#'   DBProxyName = "string",
+#'   DBProxyEndpointName = "string",
+#'   VpcSubnetIds = list(
+#'     "string"
+#'   ),
+#'   VpcSecurityGroupIds = list(
+#'     "string"
+#'   ),
+#'   TargetRole = "READ_WRITE"|"READ_ONLY",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_create_db_proxy_endpoint
+rds_create_db_proxy_endpoint <- function(DBProxyName, DBProxyEndpointName, VpcSubnetIds, VpcSecurityGroupIds = NULL, TargetRole = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateDBProxyEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$create_db_proxy_endpoint_input(DBProxyName = DBProxyName, DBProxyEndpointName = DBProxyEndpointName, VpcSubnetIds = VpcSubnetIds, VpcSecurityGroupIds = VpcSecurityGroupIds, TargetRole = TargetRole, Tags = Tags)
+  output <- .rds$create_db_proxy_endpoint_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$create_db_proxy_endpoint <- rds_create_db_proxy_endpoint
 
 #' Creates a new DB security group
 #'
@@ -4608,8 +4727,7 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' 
 #' Constraints:
 #' 
-#' -   If a `SourceIds` value is supplied, `SourceType` must also be
-#'     provided.
+#' -   If `SourceIds` are supplied, `SourceType` must also be provided.
 #' 
 #' -   If the source type is a DB instance, a `DBInstanceIdentifier` value
 #'     must be supplied.
@@ -4754,6 +4872,11 @@ rds_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceT
 #'         IsWriter = TRUE|FALSE,
 #'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
 #'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string"
 #'     )
 #'   )
 #' )
@@ -4814,6 +4937,30 @@ rds_create_global_cluster <- function(GlobalClusterIdentifier = NULL, SourceDBCl
 #' Example: `myoptiongroup`
 #' @param EngineName &#91;required&#93; Specifies the name of the engine that this option group should be
 #' associated with.
+#' 
+#' Valid Values:
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se1`
+#' 
+#' -   `oracle-se`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param MajorEngineVersion &#91;required&#93; Specifies the major version of the engine that this option group should
 #' be associated with.
 #' @param OptionGroupDescription &#91;required&#93; The description of the option group.
@@ -5335,6 +5482,7 @@ rds_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName) {
 #'       "2015-01-01"
 #'     ),
 #'     Engine = "string",
+#'     EngineMode = "string",
 #'     AllocatedStorage = 123,
 #'     Status = "string",
 #'     Port = 123,
@@ -5654,7 +5802,8 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```
@@ -5831,10 +5980,10 @@ rds_delete_db_parameter_group <- function(DBParameterGroupName) {
 }
 .rds$operations$delete_db_parameter_group <- rds_delete_db_parameter_group
 
-#' Deletes an existing proxy
+#' Deletes an existing DB proxy
 #'
 #' @description
-#' Deletes an existing proxy.
+#' Deletes an existing DB proxy.
 #'
 #' @usage
 #' rds_delete_db_proxy(DBProxyName)
@@ -5850,6 +5999,7 @@ rds_delete_db_parameter_group <- function(DBParameterGroupName) {
 #'     DBProxyArn = "string",
 #'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
 #'     EngineFamily = "string",
+#'     VpcId = "string",
 #'     VpcSecurityGroupIds = list(
 #'       "string"
 #'     ),
@@ -5906,6 +6056,72 @@ rds_delete_db_proxy <- function(DBProxyName) {
   return(response)
 }
 .rds$operations$delete_db_proxy <- rds_delete_db_proxy
+
+#' Deletes a DBProxyEndpoint
+#'
+#' @description
+#' Deletes a `DBProxyEndpoint`. Doing so removes the ability to access the
+#' DB proxy using the endpoint that you defined. The endpoint that you
+#' delete might have provided capabilities such as read/write or read-only
+#' operations, or using a different VPC than the DB proxy's default VPC.
+#'
+#' @usage
+#' rds_delete_db_proxy_endpoint(DBProxyEndpointName)
+#'
+#' @param DBProxyEndpointName &#91;required&#93; The name of the DB proxy endpoint to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBProxyEndpoint = list(
+#'     DBProxyEndpointName = "string",
+#'     DBProxyEndpointArn = "string",
+#'     DBProxyName = "string",
+#'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting",
+#'     VpcId = "string",
+#'     VpcSecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     VpcSubnetIds = list(
+#'       "string"
+#'     ),
+#'     Endpoint = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TargetRole = "READ_WRITE"|"READ_ONLY",
+#'     IsDefault = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_db_proxy_endpoint(
+#'   DBProxyEndpointName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_delete_db_proxy_endpoint
+rds_delete_db_proxy_endpoint <- function(DBProxyEndpointName) {
+  op <- new_operation(
+    name = "DeleteDBProxyEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$delete_db_proxy_endpoint_input(DBProxyEndpointName = DBProxyEndpointName)
+  output <- .rds$delete_db_proxy_endpoint_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$delete_db_proxy_endpoint <- rds_delete_db_proxy_endpoint
 
 #' Deletes a DB security group
 #'
@@ -6205,6 +6421,11 @@ rds_delete_event_subscription <- function(SubscriptionName) {
 #'         IsWriter = TRUE|FALSE,
 #'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
 #'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string"
 #'     )
 #'   )
 #' )
@@ -7249,6 +7470,7 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #'         "2015-01-01"
 #'       ),
 #'       Engine = "string",
+#'       EngineMode = "string",
 #'       AllocatedStorage = 123,
 #'       Status = "string",
 #'       Port = 123,
@@ -7551,6 +7773,36 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #'   ListSupportedCharacterSets, ListSupportedTimezones, IncludeAll)
 #'
 #' @param Engine The database engine to return.
+#' 
+#' Valid Values:
+#' 
+#' -   `aurora` (for MySQL 5.6-compatible Aurora)
+#' 
+#' -   `aurora-mysql` (for MySQL 5.7-compatible Aurora)
+#' 
+#' -   `aurora-postgresql`
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se1`
+#' 
+#' -   `oracle-se`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param EngineVersion The database engine version to return.
 #' 
 #' Example: `5.1.49`
@@ -7624,7 +7876,12 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #'           EngineVersion = "string",
 #'           Description = "string",
 #'           AutoUpgrade = TRUE|FALSE,
-#'           IsMajorVersionUpgrade = TRUE|FALSE
+#'           IsMajorVersionUpgrade = TRUE|FALSE,
+#'           SupportedEngineModes = list(
+#'             "string"
+#'           ),
+#'           SupportsParallelQuery = TRUE|FALSE,
+#'           SupportsGlobalDatabases = TRUE|FALSE
 #'         )
 #'       ),
 #'       SupportedTimezones = list(
@@ -8086,7 +8343,8 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #'           DBInstanceAutomatedBackupsArn = "string"
 #'         )
 #'       ),
-#'       CustomerOwnedIpEnabled = TRUE|FALSE
+#'       CustomerOwnedIpEnabled = TRUE|FALSE,
+#'       AwsBackupRecoveryPointArn = "string"
 #'     )
 #'   )
 #' )
@@ -8402,7 +8660,8 @@ rds_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filt
 #' @usage
 #' rds_describe_db_proxies(DBProxyName, Filters, Marker, MaxRecords)
 #'
-#' @param DBProxyName The name of the DB proxy.
+#' @param DBProxyName The name of the DB proxy. If you omit this parameter, the output
+#' includes information about all DB proxies owned by your AWS account ID.
 #' @param Filters This parameter is not currently supported.
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
@@ -8426,6 +8685,7 @@ rds_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filt
 #'       DBProxyArn = "string",
 #'       Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
 #'       EngineFamily = "string",
+#'       VpcId = "string",
 #'       VpcSecurityGroupIds = list(
 #'         "string"
 #'       ),
@@ -8494,6 +8754,101 @@ rds_describe_db_proxies <- function(DBProxyName = NULL, Filters = NULL, Marker =
   return(response)
 }
 .rds$operations$describe_db_proxies <- rds_describe_db_proxies
+
+#' Returns information about DB proxy endpoints
+#'
+#' @description
+#' Returns information about DB proxy endpoints.
+#'
+#' @usage
+#' rds_describe_db_proxy_endpoints(DBProxyName, DBProxyEndpointName,
+#'   Filters, Marker, MaxRecords)
+#'
+#' @param DBProxyName The name of the DB proxy whose endpoints you want to describe. If you
+#' omit this parameter, the output includes information about all DB proxy
+#' endpoints associated with all your DB proxies.
+#' @param DBProxyEndpointName The name of a DB proxy endpoint to describe. If you omit this parameter,
+#' the output includes information about all DB proxy endpoints associated
+#' with the specified proxy.
+#' @param Filters This parameter is not currently supported.
+#' @param Marker An optional pagination token provided by a previous request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a marker is included in the response so that the remaining
+#' results can be retrieved.
+#' 
+#' Default: 100
+#' 
+#' Constraints: Minimum 20, maximum 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBProxyEndpoints = list(
+#'     list(
+#'       DBProxyEndpointName = "string",
+#'       DBProxyEndpointArn = "string",
+#'       DBProxyName = "string",
+#'       Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting",
+#'       VpcId = "string",
+#'       VpcSecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       VpcSubnetIds = list(
+#'         "string"
+#'       ),
+#'       Endpoint = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TargetRole = "READ_WRITE"|"READ_ONLY",
+#'       IsDefault = TRUE|FALSE
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_db_proxy_endpoints(
+#'   DBProxyName = "string",
+#'   DBProxyEndpointName = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string",
+#'   MaxRecords = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_describe_db_proxy_endpoints
+rds_describe_db_proxy_endpoints <- function(DBProxyName = NULL, DBProxyEndpointName = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
+  op <- new_operation(
+    name = "DescribeDBProxyEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$describe_db_proxy_endpoints_input(DBProxyName = DBProxyName, DBProxyEndpointName = DBProxyEndpointName, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
+  output <- .rds$describe_db_proxy_endpoints_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$describe_db_proxy_endpoints <- rds_describe_db_proxy_endpoints
 
 #' Returns information about DB proxy target groups, represented by
 #' DBProxyTargetGroup data structures
@@ -8628,9 +8983,10 @@ rds_describe_db_proxy_target_groups <- function(DBProxyName, TargetGroupName = N
 #'       RdsResourceId = "string",
 #'       Port = 123,
 #'       Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
+#'       Role = "READ_WRITE"|"READ_ONLY"|"UNKNOWN",
 #'       TargetHealth = list(
 #'         State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
-#'         Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
+#'         Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY"|"INVALID_REPLICATION_STATE",
 #'         Description = "string"
 #'       )
 #'     )
@@ -9816,6 +10172,11 @@ rds_describe_export_tasks <- function(ExportTaskIdentifier = NULL, SourceArn = N
 #'           IsWriter = TRUE|FALSE,
 #'           GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
 #'         )
+#'       ),
+#'       FailoverState = list(
+#'         Status = "pending"|"failing-over"|"cancelling",
+#'         FromDbClusterArn = "string",
+#'         ToDbClusterArn = "string"
 #'       )
 #'     )
 #'   )
@@ -9962,6 +10323,30 @@ rds_describe_installation_media <- function(InstallationMediaId = NULL, Filters 
 #'
 #' @param EngineName &#91;required&#93; A required parameter. Options available for the given engine name are
 #' described.
+#' 
+#' Valid Values:
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se1`
+#' 
+#' -   `oracle-se`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param MajorEngineVersion If specified, filters the results to include only options for the
 #' specified major engine version.
 #' @param Filters This parameter isn't currently supported.
@@ -10093,6 +10478,30 @@ rds_describe_option_group_options <- function(EngineName, MajorEngineVersion = N
 #' Constraints: Minimum 20, maximum 100.
 #' @param EngineName Filters the list of option groups to only include groups associated with
 #' a specific database engine.
+#' 
+#' Valid Values:
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se1`
+#' 
+#' -   `oracle-se`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param MajorEngineVersion Filters the list of option groups to only include groups associated with
 #' a specific database engine version. If specified, then EngineName must
 #' also be specified.
@@ -10202,6 +10611,36 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 #'   MaxRecords, Marker)
 #'
 #' @param Engine &#91;required&#93; The name of the engine to retrieve DB instance options for.
+#' 
+#' Valid Values:
+#' 
+#' -   `aurora` (for MySQL 5.6-compatible Aurora)
+#' 
+#' -   `aurora-mysql` (for MySQL 5.7-compatible Aurora)
+#' 
+#' -   `aurora-postgresql`
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se1`
+#' 
+#' -   `oracle-se`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param EngineVersion The engine version filter value. Specify this parameter to show only the
 #' available offerings matching the specified engine version.
 #' @param DBInstanceClass The DB instance class filter value. Specify this parameter to show only
@@ -11118,6 +11557,109 @@ rds_failover_db_cluster <- function(DBClusterIdentifier, TargetDBInstanceIdentif
 }
 .rds$operations$failover_db_cluster <- rds_failover_db_cluster
 
+#' Initiates the failover process for an Aurora global database
+#' (GlobalCluster)
+#'
+#' @description
+#' Initiates the failover process for an Aurora global database
+#' (GlobalCluster).
+#' 
+#' A failover for an Aurora global database promotes one of secondary
+#' read-only DB clusters to be the primary DB cluster and demotes the
+#' primary DB cluster to being a secondary (read-only) DB cluster. In other
+#' words, the role of the current primary DB cluster and the selected
+#' (target) DB cluster are switched. The selected secondary DB cluster
+#' assumes full read/write capabilities for the Aurora global database.
+#' 
+#' For more information about failing over an Amazon Aurora global
+#' database, see [Managed planned failover for Amazon Aurora global
+#' databases](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-disaster-recovery.html#aurora-global-database-disaster-recovery.managed-failover)
+#' in the *Amazon Aurora User Guide.*
+#' 
+#' This action applies to GlobalCluster (Aurora global databases) only. Use
+#' this action only on healthy Aurora global databases with running Aurora
+#' DB clusters and no Region-wide outages, to test disaster recovery
+#' scenarios or to reconfigure your Aurora global database topology.
+#'
+#' @usage
+#' rds_failover_global_cluster(GlobalClusterIdentifier,
+#'   TargetDbClusterIdentifier)
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; Identifier of the Aurora global database (GlobalCluster) that should be
+#' failed over. The identifier is the unique key assigned by the user when
+#' the Aurora global database was created. In other words, it's the name of
+#' the Aurora global database that you want to fail over.
+#' 
+#' Constraints:
+#' 
+#' -   Must match the identifier of an existing GlobalCluster (Aurora
+#'     global database).
+#' @param TargetDbClusterIdentifier &#91;required&#93; Identifier of the secondary Aurora DB cluster that you want to promote
+#' to primary for the Aurora global database (GlobalCluster.) Use the
+#' Amazon Resource Name (ARN) for the identifier so that Aurora can locate
+#' the cluster in its AWS Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalCluster = list(
+#'     GlobalClusterIdentifier = "string",
+#'     GlobalClusterResourceId = "string",
+#'     GlobalClusterArn = "string",
+#'     Status = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     DatabaseName = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     DeletionProtection = TRUE|FALSE,
+#'     GlobalClusterMembers = list(
+#'       list(
+#'         DBClusterArn = "string",
+#'         Readers = list(
+#'           "string"
+#'         ),
+#'         IsWriter = TRUE|FALSE,
+#'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
+#'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$failover_global_cluster(
+#'   GlobalClusterIdentifier = "string",
+#'   TargetDbClusterIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_failover_global_cluster
+rds_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier) {
+  op <- new_operation(
+    name = "FailoverGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
+  output <- .rds$failover_global_cluster_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$failover_global_cluster <- rds_failover_global_cluster
+
 #' Imports the installation media for a DB engine that requires an
 #' on-premises customer provided license, such as SQL Server
 #'
@@ -11585,9 +12127,9 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region. To see the time blocks available, see
-#' [Adjusting the Preferred DB Cluster Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+#' block of time for each AWS Region. To view the time blocks available,
+#' see [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow)
 #' in the *Amazon Aurora User Guide.*
 #' 
 #' Constraints:
@@ -11701,12 +12243,19 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' in the *Amazon Aurora User Guide*.
 #' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB cluster to
 #' snapshots of the DB cluster. The default is not to copy them.
-#' @param EnableGlobalWriteForwarding A value that indicates whether to enable write operations to be
-#' forwarded from this cluster to the primary cluster in an Aurora global
-#' database. The resulting changes are replicated back to this cluster.
-#' This parameter only applies to DB clusters that are secondary clusters
-#' in an Aurora global database. By default, Aurora disallows write
-#' operations for secondary clusters.
+#' @param EnableGlobalWriteForwarding A value that indicates whether to enable this DB cluster to forward
+#' write operations to the primary cluster of an Aurora global database
+#' (GlobalCluster). By default, write operations are not allowed on Aurora
+#' DB clusters that are secondary clusters in an Aurora global database.
+#' 
+#' You can set this value only on Aurora DB clusters that are members of an
+#' Aurora global database. With this parameter enabled, a secondary cluster
+#' can forward writes to the current primary cluster and the resulting
+#' changes are replicated back to this cluster. For the primary DB cluster
+#' of an Aurora global database, this value is used immediately if the
+#' primary is demoted by the
+#' [`failover_global_cluster`][rds_failover_global_cluster] API operation,
+#' but it does nothing until then.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12220,7 +12769,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #'   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
 #'   CloudwatchLogsExportConfiguration, ProcessorFeatures,
 #'   UseDefaultProcessorFeatures, DeletionProtection, MaxAllocatedStorage,
-#'   CertificateRotationRestart, ReplicaMode, EnableCustomerOwnedIp)
+#'   CertificateRotationRestart, ReplicaMode, EnableCustomerOwnedIp,
+#'   AwsBackupRecoveryPointArn)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This value is stored as a lowercase string.
 #' 
@@ -12353,12 +12903,14 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' to a positive number enables backups. Setting this parameter to 0
 #' disables automated backups.
 #' 
-#' Changing this parameter can result in an outage if you change from 0 to
-#' a non-zero value or from a non-zero value to 0. These changes are
-#' applied during the next maintenance window unless the `ApplyImmediately`
-#' parameter is enabled for this request. If you change the parameter from
-#' one non-zero value to another non-zero value, the change is
-#' asynchronously applied as soon as possible.
+#' Enabling and disabling backups can result in a brief I/O suspension that
+#' lasts from a few seconds to a few minutes, depending on the size and
+#' class of your DB instance.
+#' 
+#' These changes are applied during the next maintenance window unless the
+#' `ApplyImmediately` parameter is enabled for this request. If you change
+#' the parameter from one non-zero value to another non-zero value, the
+#' change is asynchronously applied as soon as possible.
 #' 
 #' **Amazon Aurora**
 #' 
@@ -12383,7 +12935,11 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' automated backups are enabled, as determined by the
 #' `BackupRetentionPeriod` parameter. Changing this parameter doesn't
 #' result in an outage and the change is asynchronously applied as soon as
-#' possible.
+#' possible. The default is a 30-minute window selected at random from an
+#' 8-hour block of time for each AWS Region. For more information, see
+#' [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+#' in the *Amazon RDS User Guide.*
 #' 
 #' **Amazon Aurora**
 #' 
@@ -12410,6 +12966,10 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' there must be at least 30 minutes between the current time and end of
 #' the window to ensure pending changes are applied.
 #' 
+#' For more information, see [Amazon RDS Maintenance
+#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance)
+#' in the *Amazon RDS User Guide.*
+#' 
 #' Default: Uses existing setting
 #' 
 #' Format: ddd:hh24:mi-ddd:hh24:mi
@@ -12431,7 +12991,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' family for the new engine version must be specified. The new DB
 #' parameter group can be the default for that DB parameter group family.
 #' 
-#' For information about valid engine versions, see
+#' If you specify only a major version, Amazon RDS will update the DB
+#' instance to the default minor version if the current minor version is
+#' lower. For information about valid engine versions, see
 #' [`create_db_instance`][rds_create_db_instance], or call
 #' [`describe_db_engine_versions`][rds_describe_db_engine_versions].
 #' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
@@ -12483,14 +13045,14 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' so that they are 10% greater than the current value.
 #' 
 #' Default: Uses existing setting
-#' @param OptionGroupName Indicates that the DB instance should be associated with the specified
-#' option group. Changing this parameter doesn't result in an outage except
-#' in the following case and the change is applied during the next
-#' maintenance window unless the `ApplyImmediately` parameter is enabled
-#' for this request. If the parameter change results in an option group
-#' that enables OEM, this change can cause a brief (sub-second) period
-#' during which new connections are rejected but existing connections are
-#' not interrupted.
+#' @param OptionGroupName A value that indicates the DB instance should be associated with the
+#' specified option group. Changing this parameter doesn't result in an
+#' outage except in the following case and the change is applied during the
+#' next maintenance window unless the `ApplyImmediately` parameter is
+#' enabled for this request. If the parameter change results in an option
+#' group that enables OEM, this change can cause a brief (sub-second)
+#' period during which new connections are rejected but existing
+#' connections are not interrupted.
 #' 
 #' Permanent options, such as the TDE option for Oracle Advanced Security
 #' TDE, can't be removed from an option group, and that option group can't
@@ -12693,6 +13255,12 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
 #' of the DB instance.
+#' 
+#' For more information about this setting, including limitations that
+#' apply to it, see [Managing capacity automatically with Amazon RDS
+#' storage
+#' autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+#' in the *Amazon RDS User Guide*.
 #' @param CertificateRotationRestart A value that indicates whether the DB instance is restarted when you
 #' rotate your SSL/TLS certificate.
 #' 
@@ -12745,6 +13313,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' For more information about CoIPs, see [Customer-owned IP
 #' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
 #' in the *AWS Outposts User Guide*.
+#' @param AwsBackupRecoveryPointArn The Amazon Resource Name (ARN) of the recovery point in AWS Backup.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12932,7 +13501,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```
@@ -12999,21 +13569,22 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #'   MaxAllocatedStorage = 123,
 #'   CertificateRotationRestart = TRUE|FALSE,
 #'   ReplicaMode = "open-read-only"|"mounted",
-#'   EnableCustomerOwnedIp = TRUE|FALSE
+#'   EnableCustomerOwnedIp = TRUE|FALSE,
+#'   AwsBackupRecoveryPointArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_instance
-rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass = NULL, DBSubnetGroupName = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ApplyImmediately = NULL, MasterUserPassword = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, NewDBInstanceIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, CACertificateIdentifier = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, DBPortNumber = NULL, PubliclyAccessible = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, CloudwatchLogsExportConfiguration = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, CertificateRotationRestart = NULL, ReplicaMode = NULL, EnableCustomerOwnedIp = NULL) {
+rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass = NULL, DBSubnetGroupName = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ApplyImmediately = NULL, MasterUserPassword = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, NewDBInstanceIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, CACertificateIdentifier = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, DBPortNumber = NULL, PubliclyAccessible = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, CloudwatchLogsExportConfiguration = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, CertificateRotationRestart = NULL, ReplicaMode = NULL, EnableCustomerOwnedIp = NULL, AwsBackupRecoveryPointArn = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, CertificateRotationRestart = CertificateRotationRestart, ReplicaMode = ReplicaMode, EnableCustomerOwnedIp = EnableCustomerOwnedIp)
+  input <- .rds$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, CertificateRotationRestart = CertificateRotationRestart, ReplicaMode = ReplicaMode, EnableCustomerOwnedIp = EnableCustomerOwnedIp, AwsBackupRecoveryPointArn = AwsBackupRecoveryPointArn)
   output <- .rds$modify_db_instance_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -13159,6 +13730,7 @@ rds_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) {
 #'     DBProxyArn = "string",
 #'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
 #'     EngineFamily = "string",
+#'     VpcId = "string",
 #'     VpcSecurityGroupIds = list(
 #'       "string"
 #'     ),
@@ -13232,6 +13804,81 @@ rds_modify_db_proxy <- function(DBProxyName, NewDBProxyName = NULL, Auth = NULL,
   return(response)
 }
 .rds$operations$modify_db_proxy <- rds_modify_db_proxy
+
+#' Changes the settings for an existing DB proxy endpoint
+#'
+#' @description
+#' Changes the settings for an existing DB proxy endpoint.
+#'
+#' @usage
+#' rds_modify_db_proxy_endpoint(DBProxyEndpointName,
+#'   NewDBProxyEndpointName, VpcSecurityGroupIds)
+#'
+#' @param DBProxyEndpointName &#91;required&#93; The name of the DB proxy sociated with the DB proxy endpoint that you
+#' want to modify.
+#' @param NewDBProxyEndpointName The new identifier for the `DBProxyEndpoint`. An identifier must begin
+#' with a letter and must contain only ASCII letters, digits, and hyphens;
+#' it can't end with a hyphen or contain two consecutive hyphens.
+#' @param VpcSecurityGroupIds The VPC security group IDs for the DB proxy endpoint. When the DB proxy
+#' endpoint uses a different VPC than the original proxy, you also specify
+#' a different set of security group IDs than for the original proxy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBProxyEndpoint = list(
+#'     DBProxyEndpointName = "string",
+#'     DBProxyEndpointArn = "string",
+#'     DBProxyName = "string",
+#'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting",
+#'     VpcId = "string",
+#'     VpcSecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     VpcSubnetIds = list(
+#'       "string"
+#'     ),
+#'     Endpoint = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TargetRole = "READ_WRITE"|"READ_ONLY",
+#'     IsDefault = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_db_proxy_endpoint(
+#'   DBProxyEndpointName = "string",
+#'   NewDBProxyEndpointName = "string",
+#'   VpcSecurityGroupIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_modify_db_proxy_endpoint
+rds_modify_db_proxy_endpoint <- function(DBProxyEndpointName, NewDBProxyEndpointName = NULL, VpcSecurityGroupIds = NULL) {
+  op <- new_operation(
+    name = "ModifyDBProxyEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$modify_db_proxy_endpoint_input(DBProxyEndpointName = DBProxyEndpointName, NewDBProxyEndpointName = NewDBProxyEndpointName, VpcSecurityGroupIds = VpcSecurityGroupIds)
+  output <- .rds$modify_db_proxy_endpoint_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$modify_db_proxy_endpoint <- rds_modify_db_proxy_endpoint
 
 #' Modifies the properties of a DBProxyTargetGroup
 #'
@@ -13739,7 +14386,8 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 #'
 #' @usage
 #' rds_modify_global_cluster(GlobalClusterIdentifier,
-#'   NewGlobalClusterIdentifier, DeletionProtection)
+#'   NewGlobalClusterIdentifier, DeletionProtection, EngineVersion,
+#'   AllowMajorVersionUpgrade)
 #'
 #' @param GlobalClusterIdentifier The DB cluster identifier for the global cluster being modified. This
 #' parameter isn't case-sensitive.
@@ -13763,6 +14411,34 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 #' @param DeletionProtection Indicates if the global database cluster has deletion protection
 #' enabled. The global database cluster can't be deleted when deletion
 #' protection is enabled.
+#' @param EngineVersion The version number of the database engine to which you want to upgrade.
+#' Changing this parameter results in an outage. The change is applied
+#' during the next maintenance window unless `ApplyImmediately` is enabled.
+#' 
+#' To list all of the available engine versions for `aurora` (for MySQL
+#' 5.6-compatible Aurora), use the following command:
+#' 
+#' `` aws rds describe-db-engine-versions --engine aurora --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]' ``
+#' 
+#' To list all of the available engine versions for `aurora-mysql` (for
+#' MySQL 5.7-compatible Aurora), use the following command:
+#' 
+#' `` aws rds describe-db-engine-versions --engine aurora-mysql --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]' ``
+#' 
+#' To list all of the available engine versions for `aurora-postgresql`,
+#' use the following command:
+#' 
+#' `` aws rds describe-db-engine-versions --engine aurora-postgresql --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]' ``
+#' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
+#' 
+#' Constraints: You must allow major version upgrades when specifying a
+#' value for the `EngineVersion` parameter that is a different major
+#' version than the DB cluster's current version.
+#' 
+#' If you upgrade the major version of a global database, the cluster and
+#' DB instance parameter groups are set to the default parameter groups for
+#' the new version. Apply any custom parameter groups after completing the
+#' upgrade.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13787,6 +14463,11 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 #'         IsWriter = TRUE|FALSE,
 #'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
 #'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string"
 #'     )
 #'   )
 #' )
@@ -13797,21 +14478,23 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 #' svc$modify_global_cluster(
 #'   GlobalClusterIdentifier = "string",
 #'   NewGlobalClusterIdentifier = "string",
-#'   DeletionProtection = TRUE|FALSE
+#'   DeletionProtection = TRUE|FALSE,
+#'   EngineVersion = "string",
+#'   AllowMajorVersionUpgrade = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rds_modify_global_cluster
-rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL) {
+rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL) {
   op <- new_operation(
     name = "ModifyGlobalCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection)
+  input <- .rds$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade)
   output <- .rds$modify_global_cluster_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -14195,7 +14878,8 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```
@@ -14716,7 +15400,8 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```
@@ -14778,9 +15463,10 @@ rds_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
 #'       RdsResourceId = "string",
 #'       Port = 123,
 #'       Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
+#'       Role = "READ_WRITE"|"READ_ONLY"|"UNKNOWN",
 #'       TargetHealth = list(
 #'         State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
-#'         Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
+#'         Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY"|"INVALID_REPLICATION_STATE",
 #'         Description = "string"
 #'       )
 #'     )
@@ -14865,6 +15551,11 @@ rds_register_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, D
 #'         IsWriter = TRUE|FALSE,
 #'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
 #'       )
+#'     ),
+#'     FailoverState = list(
+#'       Status = "pending"|"failing-over"|"cancelling",
+#'       FromDbClusterArn = "string",
+#'       ToDbClusterArn = "string"
 #'     )
 #'   )
 #' )
@@ -15453,9 +16144,9 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region. To see the time blocks available, see
-#' [Adjusting the Preferred Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+#' block of time for each AWS Region. To view the time blocks available,
+#' see [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow)
 #' in the *Amazon Aurora User Guide.*
 #' 
 #' Constraints:
@@ -16944,7 +17635,8 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```
@@ -17138,8 +17830,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' this parameter to a positive number enables backups. For more
 #' information, see [`create_db_instance`][rds_create_db_instance].
 #' @param PreferredBackupWindow The time range each day during which automated backups are created if
-#' automated backups are enabled. For more information, see [The Backup
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+#' automated backups are enabled. For more information, see [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
 #' in the *Amazon RDS User Guide.*
 #' 
 #' Constraints:
@@ -17290,6 +17982,12 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
 #' of the DB instance.
+#' 
+#' For more information about this setting, including limitations that
+#' apply to it, see [Managing capacity automatically with Amazon RDS
+#' storage
+#' autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+#' in the *Amazon RDS User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -17477,7 +18175,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```
@@ -17803,6 +18502,12 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' @param SourceDbiResourceId The resource ID of the source DB instance from which to restore.
 #' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
 #' of the DB instance.
+#' 
+#' For more information about this setting, including limitations that
+#' apply to it, see [Managing capacity automatically with Amazon RDS
+#' storage
+#' autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+#' in the *Amazon RDS User Guide*.
 #' @param SourceDBInstanceAutomatedBackupsArn The Amazon Resource Name (ARN) of the replicated automated backups from
 #' which to restore, for example,
 #' `arn:aws:rds:useast-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE`.
@@ -18009,7 +18714,8 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```
@@ -18091,11 +18797,11 @@ rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier 
 .rds$operations$restore_db_instance_to_point_in_time <- rds_restore_db_instance_to_point_in_time
 
 #' Revokes ingress from a DBSecurityGroup for previously authorized IP
-#' ranges or EC2 or VPC Security Groups
+#' ranges or EC2 or VPC security groups
 #'
 #' @description
 #' Revokes ingress from a DBSecurityGroup for previously authorized IP
-#' ranges or EC2 or VPC Security Groups. Required parameters for this API
+#' ranges or EC2 or VPC security groups. Required parameters for this API
 #' are one of CIDRIP, EC2SecurityGroupId for VPC, or
 #' (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 #' EC2SecurityGroupId).
@@ -18635,7 +19341,8 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```
@@ -19348,7 +20055,8 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
 #'         DBInstanceAutomatedBackupsArn = "string"
 #'       )
 #'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'     CustomerOwnedIpEnabled = TRUE|FALSE,
+#'     AwsBackupRecoveryPointArn = "string"
 #'   )
 #' )
 #' ```

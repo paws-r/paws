@@ -13,8 +13,8 @@ any other filter.}
 \item{Owner}{The owner of the bundles. You cannot combine this parameter with any
 other filter.
 
-Specify \code{AMAZON} to describe the bundles provided by AWS or null to
-describe the bundles that belong to your account.}
+To describe the bundles provided by AWS, specify \code{AMAZON}. To describe
+the bundles that belong to your account, don't specify a value.}
 
 \item{NextToken}{The token for the next set of results. (You received this token from a
 previous call.)}
@@ -38,6 +38,9 @@ A list with the following syntax:\preformatted{list(
         Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
       ),
       LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreationTime = as.POSIXct(
         "2015-01-01"
       )
     )

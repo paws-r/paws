@@ -48,7 +48,11 @@ A list with the following syntax:\preformatted{list(
         QueryPlanningTimeInMillis = 123,
         ServiceProcessingTimeInMillis = 123
       ),
-      WorkGroup = "string"
+      WorkGroup = "string",
+      EngineVersion = list(
+        SelectedEngineVersion = "string",
+        EffectiveEngineVersion = "string"
+      )
     )
   ),
   UnprocessedQueryExecutionIds = list(

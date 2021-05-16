@@ -28,6 +28,7 @@ associated with the subnet.
 an IPv6 CIDR block associated with the subnet.
 \item \code{ipv6-cidr-block-association.state} - The state of an IPv6 CIDR
 block associated with the subnet.
+\item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost.
 \item \code{owner-id} - The ID of the AWS account that owns the subnet.
 \item \code{state} - The state of the subnet (\code{pending} | \code{available}).
 \item \code{subnet-arn} - The Amazon Resource Name (ARN) of the subnet.

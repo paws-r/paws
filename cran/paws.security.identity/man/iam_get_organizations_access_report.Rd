@@ -76,10 +76,10 @@ report, the data returned could include different information. For
 details, see
 \code{\link[=iam_generate_organizations_access_report]{generate_organizations_access_report}}.
 
-To call this operation, you must be signed in to the master account in
-your organization. SCPs must be enabled for your organization root. You
-must have permissions to perform this operation. For more information,
-see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html}{Refining Permissions Using Service Last Accessed Data}
+To call this operation, you must be signed in to the management account
+in your organization. SCPs must be enabled for your organization root.
+You must have permissions to perform this operation. For more
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html}{Refining permissions using service last accessed data}
 in the \emph{IAM User Guide}.
 
 For each service that principals in an account (root users, IAM users,

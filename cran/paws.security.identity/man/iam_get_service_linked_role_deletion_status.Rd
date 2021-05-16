@@ -31,9 +31,9 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Retrieves the status of your service-linked role deletion. After you use
-the \code{\link[=iam_delete_service_linked_role]{delete_service_linked_role}} API
-operation to submit a service-linked role for deletion, you can use the
-\code{DeletionTaskId} parameter in
+\code{\link[=iam_delete_service_linked_role]{delete_service_linked_role}} to submit
+a service-linked role for deletion, you can use the \code{DeletionTaskId}
+parameter in
 \code{\link[=iam_get_service_linked_role_deletion_status]{get_service_linked_role_deletion_status}}
 to check the status of the deletion. If the deletion fails, this
 operation returns the reason that it failed, if that information is

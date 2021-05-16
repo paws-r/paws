@@ -46,6 +46,7 @@ A list with the following syntax:\preformatted{list(
       FailureReason = "string",
       OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
       Specialty = "PRIMARYCARE",
+      ContentIdentificationType = "PHI",
       Type = "CONVERSATION"|"DICTATION"
     )
   )

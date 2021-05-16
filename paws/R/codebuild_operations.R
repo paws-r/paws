@@ -160,7 +160,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       ),
 #'       secondaryArtifacts = list(
 #'         list(
@@ -169,7 +170,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #'           md5sum = "string",
 #'           overrideArtifactName = TRUE|FALSE,
 #'           encryptionDisabled = TRUE|FALSE,
-#'           artifactIdentifier = "string"
+#'           artifactIdentifier = "string",
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       cache = list(
@@ -208,7 +210,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #'         s3Logs = list(
 #'           status = "ENABLED"|"DISABLED",
 #'           location = "string",
-#'           encryptionDisabled = TRUE|FALSE
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       buildTimeoutInMinutes = 123,
@@ -294,7 +297,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       debugSessionEnabled = TRUE|FALSE
 #'     )
 #'   ),
 #'   buildBatchesNotFound = list(
@@ -435,7 +439,8 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       ),
 #'       secondaryArtifacts = list(
 #'         list(
@@ -444,7 +449,8 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'           md5sum = "string",
 #'           overrideArtifactName = TRUE|FALSE,
 #'           encryptionDisabled = TRUE|FALSE,
-#'           artifactIdentifier = "string"
+#'           artifactIdentifier = "string",
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       cache = list(
@@ -489,7 +495,8 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'         s3Logs = list(
 #'           status = "ENABLED"|"DISABLED",
 #'           location = "string",
-#'           encryptionDisabled = TRUE|FALSE
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       timeoutInMinutes = 123,
@@ -661,7 +668,8 @@ codebuild_batch_get_builds <- function(ids) {
 #'         packaging = "NONE"|"ZIP",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       ),
 #'       secondaryArtifacts = list(
 #'         list(
@@ -673,7 +681,8 @@ codebuild_batch_get_builds <- function(ids) {
 #'           packaging = "NONE"|"ZIP",
 #'           overrideArtifactName = TRUE|FALSE,
 #'           encryptionDisabled = TRUE|FALSE,
-#'           artifactIdentifier = "string"
+#'           artifactIdentifier = "string",
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       cache = list(
@@ -759,7 +768,8 @@ codebuild_batch_get_builds <- function(ids) {
 #'         s3Logs = list(
 #'           status = "ENABLED"|"DISABLED",
 #'           location = "string",
-#'           encryptionDisabled = TRUE|FALSE
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       fileSystemLocations = list(
@@ -781,7 +791,8 @@ codebuild_batch_get_builds <- function(ids) {
 #'           )
 #'         ),
 #'         timeoutInMins = 123
-#'       )
+#'       ),
+#'       concurrentBuildLimit = 123
 #'     )
 #'   ),
 #'   projectsNotFound = list(
@@ -842,6 +853,7 @@ codebuild_batch_get_projects <- function(names) {
 #'         exportConfigType = "S3"|"NO_EXPORT",
 #'         s3Destination = list(
 #'           bucket = "string",
+#'           bucketOwner = "string",
 #'           path = "string",
 #'           packaging = "ZIP"|"NONE",
 #'           encryptionKey = "string",
@@ -930,6 +942,7 @@ codebuild_batch_get_report_groups <- function(reportGroupArns) {
 #'         exportConfigType = "S3"|"NO_EXPORT",
 #'         s3Destination = list(
 #'           bucket = "string",
+#'           bucketOwner = "string",
 #'           path = "string",
 #'           packaging = "ZIP"|"NONE",
 #'           encryptionKey = "string",
@@ -999,7 +1012,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
 #'   cache, environment, serviceRole, timeoutInMinutes,
 #'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-#'   logsConfig, fileSystemLocations, buildBatchConfig)
+#'   logsConfig, fileSystemLocations, buildBatchConfig, concurrentBuildLimit)
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' @param description A description that makes the build project easy to identify.
@@ -1022,8 +1035,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     a branch name is specified, the branch's HEAD commit ID is used. If
 #'     not specified, the default branch's HEAD commit ID is used.
 #' 
-#' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
-#'     object that represents the build input ZIP file to use.
+#' -   For Amazon S3: the version ID of the object that represents the
+#'     build input ZIP file to use.
 #' 
 #' If `sourceVersion` is specified at the build level, then that version
 #' takes precedence over this `sourceVersion` (at the project level).
@@ -1070,6 +1083,12 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' file system created using Amazon Elastic File System.
 #' @param buildBatchConfig A ProjectBuildBatchConfig object that defines the batch build options
 #' for the project.
+#' @param concurrentBuildLimit The maximum number of concurrent builds that are allowed for this
+#' project.
+#' 
+#' New builds are only started if the current number of builds is less than
+#' or equal to this limit. If the current build count meets this limit, new
+#' builds are throttled and are not run.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1137,7 +1156,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -1149,7 +1169,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'         packaging = "NONE"|"ZIP",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -1235,7 +1256,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     fileSystemLocations = list(
@@ -1257,7 +1279,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'         )
 #'       ),
 #'       timeoutInMins = 123
-#'     )
+#'     ),
+#'     concurrentBuildLimit = 123
 #'   )
 #' )
 #' ```
@@ -1325,7 +1348,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     packaging = "NONE"|"ZIP",
 #'     overrideArtifactName = TRUE|FALSE,
 #'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
+#'     artifactIdentifier = "string",
+#'     bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'   ),
 #'   secondaryArtifacts = list(
 #'     list(
@@ -1337,7 +1361,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   cache = list(
@@ -1395,7 +1420,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
 #'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
+#'       encryptionDisabled = TRUE|FALSE,
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   fileSystemLocations = list(
@@ -1417,21 +1443,22 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       )
 #'     ),
 #'     timeoutInMins = 123
-#'   )
+#'   ),
+#'   concurrentBuildLimit = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_create_project
-codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL) {
+codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig)
+  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
   output <- .codebuild$create_project_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -1470,6 +1497,7 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #'       exportConfigType = "S3"|"NO_EXPORT",
 #'       s3Destination = list(
 #'         bucket = "string",
+#'         bucketOwner = "string",
 #'         path = "string",
 #'         packaging = "ZIP"|"NONE",
 #'         encryptionKey = "string",
@@ -1502,6 +1530,7 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #'     exportConfigType = "S3"|"NO_EXPORT",
 #'     s3Destination = list(
 #'       bucket = "string",
+#'       bucketOwner = "string",
 #'       path = "string",
 #'       packaging = "ZIP"|"NONE",
 #'       encryptionKey = "string",
@@ -2122,18 +2151,66 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
 }
 .codebuild$operations$describe_test_cases <- codebuild_describe_test_cases
 
-#' Get report group trend
+#' Analyzes and accumulates test report values for the specified test
+#' reports
 #'
 #' @description
-#' Get report group trend
+#' Analyzes and accumulates test report values for the specified test
+#' reports.
 #'
 #' @usage
 #' codebuild_get_report_group_trend(reportGroupArn, numOfReports,
 #'   trendField)
 #'
-#' @param reportGroupArn &#91;required&#93; 
-#' @param numOfReports 
-#' @param trendField &#91;required&#93; 
+#' @param reportGroupArn &#91;required&#93; The ARN of the report group that contains the reports to analyze.
+#' @param numOfReports The number of reports to analyze. This operation always retrieves the
+#' most recent reports.
+#' 
+#' If this parameter is omitted, the most recent 100 reports are analyzed.
+#' @param trendField &#91;required&#93; The test report value to accumulate. This must be one of the following
+#' values:
+#' 
+#' ### Test reports:
+#' 
+#' ### DURATION
+#' 
+#' Accumulate the test run times for the specified reports.
+#' 
+#' ### PASS_RATE
+#' 
+#' Accumulate the percentage of tests that passed for the specified test
+#' reports.
+#' 
+#' ### TOTAL
+#' 
+#' Accumulate the total number of tests for the specified test reports.
+#' 
+#' ### Code coverage reports:
+#' 
+#' ### BRANCH_COVERAGE
+#' 
+#' Accumulate the branch coverage percentages for the specified test
+#' reports.
+#' 
+#' ### BRANCHES_COVERED
+#' 
+#' Accumulate the branches covered values for the specified test reports.
+#' 
+#' ### BRANCHES_MISSED
+#' 
+#' Accumulate the branches missed values for the specified test reports.
+#' 
+#' ### LINE_COVERAGE
+#' 
+#' Accumulate the line coverage percentages for the specified test reports.
+#' 
+#' ### LINES_COVERED
+#' 
+#' Accumulate the lines covered values for the specified test reports.
+#' 
+#' ### LINES_MISSED
+#' 
+#' Accumulate the lines not covered values for the specified test reports.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2526,22 +2603,28 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
 }
 .codebuild$operations$list_builds <- codebuild_list_builds
 
-#' Gets a list of build IDs for the specified build project, with each
-#' build ID representing a single build
+#' Gets a list of build identifiers for the specified build project, with
+#' each build identifier representing a single build
 #'
 #' @description
-#' Gets a list of build IDs for the specified build project, with each
-#' build ID representing a single build.
+#' Gets a list of build identifiers for the specified build project, with
+#' each build identifier representing a single build.
 #'
 #' @usage
 #' codebuild_list_builds_for_project(projectName, sortOrder, nextToken)
 #'
 #' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
-#' @param sortOrder The order to list build IDs. Valid values include:
+#' @param sortOrder The order to list results in. The results are sorted by build number,
+#' not the build identifier.
+#' 
+#' Valid values include:
 #' 
 #' -   `ASCENDING`: List the build IDs in ascending order by build ID.
 #' 
 #' -   `DESCENDING`: List the build IDs in descending order by build ID.
+#' 
+#' If the project has more than 100 builds, setting the sort order will
+#' result in an error.
 #' @param nextToken During a previous call, if there are more than 100 items in the list,
 #' only the first 100 items are returned, along with a unique string called
 #' a *nextToken*. To get the next batch of items in the list, call this
@@ -3291,7 +3374,8 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -3300,7 +3384,8 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -3345,7 +3430,8 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     timeoutInMinutes = 123,
@@ -3532,7 +3618,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -3541,7 +3628,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -3580,7 +3668,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     buildTimeoutInMinutes = 123,
@@ -3666,7 +3755,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     debugSessionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -3748,7 +3838,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' branch's HEAD commit ID is used. If not specified, the default branch's
 #' HEAD commit ID is used.
 #' 
-#' ### Amazon Simple Storage Service (Amazon S3)
+#' ### Amazon S3
 #' 
 #' The version ID of the object that represents the build input ZIP file to
 #' use.
@@ -3796,7 +3886,14 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @param reportBuildStatusOverride Set to true to report to your source provider the status of a build's
 #' start and completion. If you use this option with a source provider
 #' other than GitHub, GitHub Enterprise, or Bitbucket, an
-#' invalidInputException is thrown.
+#' `invalidInputException` is thrown.
+#' 
+#' To be able to report the build status to the source provider, the user
+#' associated with the source provider must have write access to the repo.
+#' If the user does not have write access, the build status cannot be
+#' updated. For more information, see [Source provider
+#' access](https://docs.aws.amazon.com/codebuild/latest/userguide/access-tokens.html)
+#' in the *AWS CodeBuild User Guide*.
 #' 
 #' The status of a build triggered by a webhook is always reported to your
 #' source provider.
@@ -3950,7 +4047,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -3959,7 +4057,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -4004,7 +4103,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     timeoutInMinutes = 123,
@@ -4094,7 +4194,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'     packaging = "NONE"|"ZIP",
 #'     overrideArtifactName = TRUE|FALSE,
 #'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
+#'     artifactIdentifier = "string",
+#'     bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'   ),
 #'   secondaryArtifactsOverride = list(
 #'     list(
@@ -4106,7 +4207,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   environmentVariablesOverride = list(
@@ -4159,7 +4261,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
 #'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
+#'       encryptionDisabled = TRUE|FALSE,
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   registryCredentialOverride = list(
@@ -4208,7 +4311,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'   privilegedModeOverride, buildTimeoutInMinutesOverride,
 #'   queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
 #'   logsConfigOverride, registryCredentialOverride,
-#'   imagePullCredentialsTypeOverride, buildBatchConfigOverride)
+#'   imagePullCredentialsTypeOverride, buildBatchConfigOverride,
+#'   debugSessionEnabled)
 #'
 #' @param projectName &#91;required&#93; The name of the project.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects that override the secondary sources
@@ -4239,7 +4343,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' branch's HEAD commit ID is used. If not specified, the default branch's
 #' HEAD commit ID is used.
 #' 
-#' ### Amazon Simple Storage Service (Amazon S3)
+#' ### Amazon S3
 #' 
 #' The version ID of the object that represents the build input ZIP file to
 #' use.
@@ -4346,6 +4450,10 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' you must use `CODEBUILD` credentials.
 #' @param buildBatchConfigOverride A `BuildBatchConfigOverride` object that contains batch build
 #' configuration overrides.
+#' @param debugSessionEnabled Specifies if session debugging is enabled for this batch build. For more
+#' information, see [Viewing a running build in Session
+#' Manager](https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html).
+#' Batch session debugging is not supported for matrix batch builds.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4438,7 +4546,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -4447,7 +4556,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -4486,7 +4596,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     buildTimeoutInMinutes = 123,
@@ -4572,7 +4683,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     debugSessionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -4619,7 +4731,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'     packaging = "NONE"|"ZIP",
 #'     overrideArtifactName = TRUE|FALSE,
 #'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
+#'     artifactIdentifier = "string",
+#'     bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'   ),
 #'   secondaryArtifactsOverride = list(
 #'     list(
@@ -4631,7 +4744,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   environmentVariablesOverride = list(
@@ -4680,7 +4794,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
 #'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
+#'       encryptionDisabled = TRUE|FALSE,
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   registryCredentialOverride = list(
@@ -4698,21 +4813,22 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       )
 #'     ),
 #'     timeoutInMins = 123
-#'   )
+#'   ),
+#'   debugSessionEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_start_build_batch
-codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildBatchStatusOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, buildTimeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, buildBatchConfigOverride = NULL) {
+codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildBatchStatusOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, buildTimeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, buildBatchConfigOverride = NULL, debugSessionEnabled = NULL) {
   op <- new_operation(
     name = "StartBuildBatch",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$start_build_batch_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildBatchStatusOverride = reportBuildBatchStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, buildTimeoutInMinutesOverride = buildTimeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, buildBatchConfigOverride = buildBatchConfigOverride)
+  input <- .codebuild$start_build_batch_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildBatchStatusOverride = reportBuildBatchStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, buildTimeoutInMinutesOverride = buildTimeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, buildBatchConfigOverride = buildBatchConfigOverride, debugSessionEnabled = debugSessionEnabled)
   output <- .codebuild$start_build_batch_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -4824,7 +4940,8 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -4833,7 +4950,8 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -4878,7 +4996,8 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     timeoutInMinutes = 123,
@@ -5054,7 +5173,8 @@ codebuild_stop_build <- function(id) {
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -5063,7 +5183,8 @@ codebuild_stop_build <- function(id) {
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -5102,7 +5223,8 @@ codebuild_stop_build <- function(id) {
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     buildTimeoutInMinutes = 123,
@@ -5188,7 +5310,8 @@ codebuild_stop_build <- function(id) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     debugSessionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -5230,7 +5353,7 @@ codebuild_stop_build_batch <- function(id) {
 #'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
 #'   cache, environment, serviceRole, timeoutInMinutes,
 #'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-#'   logsConfig, fileSystemLocations, buildBatchConfig)
+#'   logsConfig, fileSystemLocations, buildBatchConfig, concurrentBuildLimit)
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' 
@@ -5256,8 +5379,8 @@ codebuild_stop_build_batch <- function(id) {
 #'     a branch name is specified, the branch's HEAD commit ID is used. If
 #'     not specified, the default branch's HEAD commit ID is used.
 #' 
-#' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
-#'     object that represents the build input ZIP file to use.
+#' -   For Amazon S3: the version ID of the object that represents the
+#'     build input ZIP file to use.
 #' 
 #' If `sourceVersion` is specified at the build level, then that version
 #' takes precedence over this `sourceVersion` (at the project level).
@@ -5306,6 +5429,14 @@ codebuild_stop_build_batch <- function(id) {
 #' `identifier`, `location`, `mountOptions`, `mountPoint`, and `type` of a
 #' file system created using Amazon Elastic File System.
 #' @param buildBatchConfig 
+#' @param concurrentBuildLimit The maximum number of concurrent builds that are allowed for this
+#' project.
+#' 
+#' New builds are only started if the current number of builds is less than
+#' or equal to this limit. If the current build count meets this limit, new
+#' builds are throttled and are not run.
+#' 
+#' To remove this limit, set this value to -1.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5373,7 +5504,8 @@ codebuild_stop_build_batch <- function(id) {
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -5385,7 +5517,8 @@ codebuild_stop_build_batch <- function(id) {
 #'         packaging = "NONE"|"ZIP",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -5471,7 +5604,8 @@ codebuild_stop_build_batch <- function(id) {
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     fileSystemLocations = list(
@@ -5493,7 +5627,8 @@ codebuild_stop_build_batch <- function(id) {
 #'         )
 #'       ),
 #'       timeoutInMins = 123
-#'     )
+#'     ),
+#'     concurrentBuildLimit = 123
 #'   )
 #' )
 #' ```
@@ -5561,7 +5696,8 @@ codebuild_stop_build_batch <- function(id) {
 #'     packaging = "NONE"|"ZIP",
 #'     overrideArtifactName = TRUE|FALSE,
 #'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
+#'     artifactIdentifier = "string",
+#'     bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'   ),
 #'   secondaryArtifacts = list(
 #'     list(
@@ -5573,7 +5709,8 @@ codebuild_stop_build_batch <- function(id) {
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   cache = list(
@@ -5631,7 +5768,8 @@ codebuild_stop_build_batch <- function(id) {
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
 #'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
+#'       encryptionDisabled = TRUE|FALSE,
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   fileSystemLocations = list(
@@ -5653,21 +5791,22 @@ codebuild_stop_build_batch <- function(id) {
 #'       )
 #'     ),
 #'     timeoutInMins = 123
-#'   )
+#'   ),
+#'   concurrentBuildLimit = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_update_project
-codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL) {
+codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig)
+  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
   output <- .codebuild$update_project_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -5709,6 +5848,7 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #'       exportConfigType = "S3"|"NO_EXPORT",
 #'       s3Destination = list(
 #'         bucket = "string",
+#'         bucketOwner = "string",
 #'         path = "string",
 #'         packaging = "ZIP"|"NONE",
 #'         encryptionKey = "string",
@@ -5740,6 +5880,7 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #'     exportConfigType = "S3"|"NO_EXPORT",
 #'     s3Destination = list(
 #'       bucket = "string",
+#'       bucketOwner = "string",
 #'       path = "string",
 #'       packaging = "ZIP"|"NONE",
 #'       encryptionKey = "string",

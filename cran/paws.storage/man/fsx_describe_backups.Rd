@@ -28,7 +28,7 @@ A list with the following syntax:\preformatted{list(
   Backups = list(
     list(
       BackupId = "string",
-      Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
+      Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"|"COPYING",
       FailureDetails = list(
         Message = "string"
       ),
@@ -141,8 +141,12 @@ A list with the following syntax:\preformatted{list(
       ),
       DirectoryInformation = list(
         DomainName = "string",
-        ActiveDirectoryId = "string"
-      )
+        ActiveDirectoryId = "string",
+        ResourceARN = "string"
+      ),
+      OwnerId = "string",
+      SourceBackupId = "string",
+      SourceBackupRegion = "string"
     )
   ),
   NextToken = "string"

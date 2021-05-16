@@ -71,7 +71,8 @@ A list with the following syntax:\preformatted{list(
         "string"
       )
     ),
-    Mode = "MULTI_CLASS"|"MULTI_LABEL"
+    Mode = "MULTI_CLASS"|"MULTI_LABEL",
+    ModelKmsKeyId = "string"
   )
 )
 }

@@ -17,13 +17,13 @@ NULL
 
 .secretsmanager$create_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), SecretBinary = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), SecretString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), SecretBinary = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), SecretString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AddReplicaRegions = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ForceOverwriteReplicaSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .secretsmanager$create_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), LastAccessedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .secretsmanager$describe_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), RotationEnabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), RotationLambdaARN = structure(logical(0), tags = list(type = "string")), RotationRules = structure(list(AutomaticallyAfterDays = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), LastRotatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastChangedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastAccessedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), DeletedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VersionIdsToStages = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), OwningService = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), RotationEnabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), RotationLambdaARN = structure(logical(0), tags = list(type = "string")), RotationRules = structure(list(AutomaticallyAfterDays = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), LastRotatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastChangedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastAccessedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), DeletedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VersionIdsToStages = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), OwningService = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), LastAccessedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,7 +119,7 @@ NULL
 
 .secretsmanager$list_secrets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretList = structure(list(structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), RotationEnabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), RotationLambdaARN = structure(logical(0), tags = list(type = "string")), RotationRules = structure(list(AutomaticallyAfterDays = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), LastRotatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastChangedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastAccessedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), DeletedDate = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SecretVersionsToStages = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), OwningService = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SecretList = structure(list(structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), RotationEnabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), RotationLambdaARN = structure(logical(0), tags = list(type = "string")), RotationRules = structure(list(AutomaticallyAfterDays = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), LastRotatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastChangedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastAccessedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), DeletedDate = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SecretVersionsToStages = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), OwningService = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), PrimaryRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -147,6 +147,30 @@ NULL
   return(populate(args, shape))
 }
 
+.secretsmanager$remove_regions_from_replication_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), RemoveReplicaRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.secretsmanager$remove_regions_from_replication_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), LastAccessedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.secretsmanager$replicate_secret_to_regions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), AddReplicaRegions = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ForceOverwriteReplicaSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.secretsmanager$replicate_secret_to_regions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), LastAccessedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .secretsmanager$restore_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -168,6 +192,18 @@ NULL
 .secretsmanager$rotate_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.secretsmanager$stop_replication_to_replica_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.secretsmanager$stop_replication_to_replica_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

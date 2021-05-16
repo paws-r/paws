@@ -2,25 +2,23 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_list_fleets}
 \alias{gamelift_list_fleets}
-\title{Retrieves a collection of fleet resources for this AWS account}
+\title{Retrieves a collection of fleet resources in an AWS Region}
 \usage{
 gamelift_list_fleets(BuildId, ScriptId, Limit, NextToken)
 }
 \arguments{
-\item{BuildId}{A unique identifier for a build to return fleets for. Use this parameter
-to return only fleets using a specified build. Use either the build ID
-or ARN value. To retrieve all fleets, do not include either a BuildId
-and ScriptID parameter.}
+\item{BuildId}{A unique identifier for the build to request fleets for. Use this
+parameter to return only fleets using a specified build. Use either the
+build ID or ARN value.}
 
-\item{ScriptId}{A unique identifier for a Realtime script to return fleets for. Use this
-parameter to return only fleets using a specified script. Use either the
-script ID or ARN value. To retrieve all fleets, leave this parameter
-empty.}
+\item{ScriptId}{A unique identifier for the Realtime script to request fleets for. Use
+this parameter to return only fleets using a specified script. Use
+either the script ID or ARN value.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
 \code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
@@ -34,27 +32,49 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Retrieves a collection of fleet resources for this AWS account. You can
-filter the result set to find only those fleets that are deployed with a
-specific build or script. Use the pagination parameters to retrieve
-results in sequential pages.
+Retrieves a collection of fleet resources in an AWS Region. You can call
+this operation to get fleets in a previously selected default Region
+(see
+\href{https://docs.aws.amazon.com/sdkref/latest/guide/setting-global-region.html}{https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-region.html}or
+specify a Region in your request. You can filter the result set to find
+only those fleets that are deployed with a specific build or script. For
+fleets that have multiple locations, this operation retrieves fleets
+based on their home Region only.
+
+This operation can be used in the following ways:
+\itemize{
+\item To get a list of all fleets in a Region, don't provide a build or
+script identifier.
+\item To get a list of all fleets where a specific custom game build is
+deployed, provide the build ID.
+\item To get a list of all Realtime Servers fleets with a specific
+configuration script, provide the script ID.
+}
+
+Use the pagination parameters to retrieve results as a set of sequential
+pages.
+
+If successful, a list of fleet IDs that match the request parameters is
+returned. A NextToken value is also returned if there are more result
+pages to retrieve.
 
 Fleet resources are not listed in a particular order.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift fleets}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_fleet]{create_fleet}}
-\item \code{\link[=gamelift_list_fleets]{list_fleets}}
-\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
-\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
-\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
-\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_fleet]{create_fleet}} |
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}} |
+\code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}} |
+\code{\link[=gamelift_describe_fleet_location_attributes]{describe_fleet_location_attributes}}
+| \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}} |
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} |
+\code{\link[=gamelift_delete_fleet]{delete_fleet}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$list_fleets(

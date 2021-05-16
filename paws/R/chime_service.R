@@ -37,10 +37,10 @@ NULL
 #' commands](https://docs.aws.amazon.com/cli/latest/reference/chime/index.html)
 #' in the *AWS CLI Command Reference*.
 #' 
-#' ### Using REST
+#' ### Using REST APIs
 #' 
 #' If you use REST to make API calls, you must authenticate your request by
-#' providing a signature. Amazon Chime supports Signature Version 4. For
+#' providing a signature. Amazon Chime supports signature version 4. For
 #' more information, see [Signature Version 4 Signing
 #' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)
 #' in the *Amazon Web Services General Reference*.
@@ -91,6 +91,7 @@ NULL
 #'  \link[=chime_associate_phone_number_with_user]{associate_phone_number_with_user} \tab Associates a phone number with the specified Amazon Chime user\cr
 #'  \link[=chime_associate_signin_delegate_groups_with_account]{associate_signin_delegate_groups_with_account} \tab Associates the specified sign-in delegate groups with the specified Amazon Chime account\cr
 #'  \link[=chime_batch_create_attendee]{batch_create_attendee} \tab Creates up to 100 new attendees for an active Amazon Chime SDK meeting\cr
+#'  \link[=chime_batch_create_channel_membership]{batch_create_channel_membership} \tab Adds a specified number of users to a channel\cr
 #'  \link[=chime_batch_create_room_membership]{batch_create_room_membership} \tab Adds up to 50 members to a chat room in an Amazon Chime Enterprise account\cr
 #'  \link[=chime_batch_delete_phone_number]{batch_delete_phone_number} \tab Moves phone numbers into the Deletion queue\cr
 #'  \link[=chime_batch_suspend_user]{batch_suspend_user} \tab Suspends up to 50 users from a Team or EnterpriseLWA Amazon Chime account\cr
@@ -98,7 +99,7 @@ NULL
 #'  \link[=chime_batch_update_phone_number]{batch_update_phone_number} \tab Updates phone number product types or calling names\cr
 #'  \link[=chime_batch_update_user]{batch_update_user} \tab Updates user details within the UpdateUserRequestItem object for up to 20 users for the specified Amazon Chime account\cr
 #'  \link[=chime_create_account]{create_account} \tab Creates an Amazon Chime account under the administrator's AWS account\cr
-#'  \link[=chime_create_app_instance]{create_app_instance} \tab Creates an Amazon Chime Messaging SDK AppInstance under an AWS Account\cr
+#'  \link[=chime_create_app_instance]{create_app_instance} \tab Creates an Amazon Chime SDK messaging AppInstance under an AWS account\cr
 #'  \link[=chime_create_app_instance_admin]{create_app_instance_admin} \tab Promotes an AppInstanceUser to an AppInstanceAdmin\cr
 #'  \link[=chime_create_app_instance_user]{create_app_instance_user} \tab Creates a user under an Amazon Chime AppInstance\cr
 #'  \link[=chime_create_attendee]{create_attendee} \tab Creates a new attendee for an active Amazon Chime SDK meeting\cr
@@ -108,7 +109,7 @@ NULL
 #'  \link[=chime_create_channel_membership]{create_channel_membership} \tab Adds a user to a channel\cr
 #'  \link[=chime_create_channel_moderator]{create_channel_moderator} \tab Creates a new ChannelModerator\cr
 #'  \link[=chime_create_meeting]{create_meeting} \tab Creates a new Amazon Chime SDK meeting in the specified media Region with no initial attendees\cr
-#'  \link[=chime_create_meeting_dial_out]{create_meeting_dial_out} \tab Uses the join token and call metadata in a meeting request (From number, To number, and so forth) to initiate an outbound call to a public switched telephone network (PSTN) and joins them into Chime meeting\cr
+#'  \link[=chime_create_meeting_dial_out]{create_meeting_dial_out} \tab Uses the join token and call metadata in a meeting request (From number, To number, and so forth) to initiate an outbound call to a public switched telephone network (PSTN) and join them into a Chime meeting\cr
 #'  \link[=chime_create_meeting_with_attendees]{create_meeting_with_attendees} \tab Creates a new Amazon Chime SDK meeting in the specified media Region, with attendees\cr
 #'  \link[=chime_create_phone_number_order]{create_phone_number_order} \tab Creates an order for phone numbers to be provisioned\cr
 #'  \link[=chime_create_proxy_session]{create_proxy_session} \tab Creates a proxy session on the specified Amazon Chime Voice Connector for the specified participant phone numbers\cr
@@ -123,7 +124,7 @@ NULL
 #'  \link[=chime_delete_account]{delete_account} \tab Deletes the specified Amazon Chime account\cr
 #'  \link[=chime_delete_app_instance]{delete_app_instance} \tab Deletes an AppInstance and all associated data asynchronously\cr
 #'  \link[=chime_delete_app_instance_admin]{delete_app_instance_admin} \tab Demotes an AppInstanceAdmin to an AppInstanceUser\cr
-#'  \link[=chime_delete_app_instance_streaming_configurations]{delete_app_instance_streaming_configurations} \tab Deletes the streaming configurations of an app instance\cr
+#'  \link[=chime_delete_app_instance_streaming_configurations]{delete_app_instance_streaming_configurations} \tab Deletes the streaming configurations of an AppInstance\cr
 #'  \link[=chime_delete_app_instance_user]{delete_app_instance_user} \tab Deletes an AppInstanceUser\cr
 #'  \link[=chime_delete_attendee]{delete_attendee} \tab Deletes an attendee from the specified Amazon Chime SDK meeting and deletes their JoinToken\cr
 #'  \link[=chime_delete_channel]{delete_channel} \tab Immediately makes a channel and its memberships inaccessible and marks them for deletion\cr
@@ -149,11 +150,11 @@ NULL
 #'  \link[=chime_delete_voice_connector_termination_credentials]{delete_voice_connector_termination_credentials} \tab Deletes the specified SIP credentials used by your equipment to authenticate during call termination\cr
 #'  \link[=chime_describe_app_instance]{describe_app_instance} \tab Returns the full details of an AppInstance\cr
 #'  \link[=chime_describe_app_instance_admin]{describe_app_instance_admin} \tab Returns the full details of an AppInstanceAdmin\cr
-#'  \link[=chime_describe_app_instance_user]{describe_app_instance_user} \tab Returns the full details of an AppInstanceUser\cr
-#'  \link[=chime_describe_channel]{describe_channel} \tab Returns the full details of a channel in an Amazon Chime app instance\cr
+#'  \link[=chime_describe_app_instance_user]{describe_app_instance_user} \tab Returns the full details of an AppInstanceUser \cr
+#'  \link[=chime_describe_channel]{describe_channel} \tab Returns the full details of a channel in an Amazon Chime AppInstance\cr
 #'  \link[=chime_describe_channel_ban]{describe_channel_ban} \tab Returns the full details of a channel ban\cr
 #'  \link[=chime_describe_channel_membership]{describe_channel_membership} \tab Returns the full details of a user's channel membership\cr
-#'  \link[=chime_describe_channel_membership_for_app_instance_user]{describe_channel_membership_for_app_instance_user} \tab Returns the details of a channel based on the membership of the AppInstanceUser specified\cr
+#'  \link[=chime_describe_channel_membership_for_app_instance_user]{describe_channel_membership_for_app_instance_user} \tab Returns the details of a channel based on the membership of the specified AppInstanceUser\cr
 #'  \link[=chime_describe_channel_moderated_by_app_instance_user]{describe_channel_moderated_by_app_instance_user} \tab Returns the full details of a channel moderated by the specified AppInstanceUser\cr
 #'  \link[=chime_describe_channel_moderator]{describe_channel_moderator} \tab Returns the full details of a single ChannelModerator\cr
 #'  \link[=chime_disassociate_phone_number_from_user]{disassociate_phone_number_from_user} \tab Disassociates the primary provisioned phone number from the specified Amazon Chime user\cr
@@ -161,18 +162,18 @@ NULL
 #'  \link[=chime_disassociate_phone_numbers_from_voice_connector_group]{disassociate_phone_numbers_from_voice_connector_group} \tab Disassociates the specified phone numbers from the specified Amazon Chime Voice Connector group\cr
 #'  \link[=chime_disassociate_signin_delegate_groups_from_account]{disassociate_signin_delegate_groups_from_account} \tab Disassociates the specified sign-in delegate groups from the specified Amazon Chime account\cr
 #'  \link[=chime_get_account]{get_account} \tab Retrieves details for the specified Amazon Chime account, such as account type and supported licenses\cr
-#'  \link[=chime_get_account_settings]{get_account_settings} \tab Retrieves account settings for the specified Amazon Chime account ID, such as remote control and dial out settings\cr
-#'  \link[=chime_get_app_instance_retention_settings]{get_app_instance_retention_settings} \tab Gets the retention settings for an app instance\cr
-#'  \link[=chime_get_app_instance_streaming_configurations]{get_app_instance_streaming_configurations} \tab Gets the streaming settings for an app instance\cr
+#'  \link[=chime_get_account_settings]{get_account_settings} \tab Retrieves account settings for the specified Amazon Chime account ID, such as remote control and dialout settings\cr
+#'  \link[=chime_get_app_instance_retention_settings]{get_app_instance_retention_settings} \tab Gets the retention settings for an AppInstance\cr
+#'  \link[=chime_get_app_instance_streaming_configurations]{get_app_instance_streaming_configurations} \tab Gets the streaming settings for an AppInstance\cr
 #'  \link[=chime_get_attendee]{get_attendee} \tab Gets the Amazon Chime SDK attendee details for a specified meeting ID and attendee ID\cr
 #'  \link[=chime_get_bot]{get_bot} \tab Retrieves details for the specified bot, such as bot email address, bot type, status, and display name\cr
 #'  \link[=chime_get_channel_message]{get_channel_message} \tab Gets the full details of a channel message\cr
 #'  \link[=chime_get_events_configuration]{get_events_configuration} \tab Gets details for an events configuration that allows a bot to receive outgoing events, such as an HTTPS endpoint or Lambda function ARN\cr
 #'  \link[=chime_get_global_settings]{get_global_settings} \tab Retrieves global settings for the administrator's AWS account, such as Amazon Chime Business Calling and Amazon Chime Voice Connector settings\cr
 #'  \link[=chime_get_meeting]{get_meeting} \tab Gets the Amazon Chime SDK meeting details for the specified meeting ID\cr
-#'  \link[=chime_get_messaging_session_endpoint]{get_messaging_session_endpoint} \tab The endpoint for the messaging session\cr
+#'  \link[=chime_get_messaging_session_endpoint]{get_messaging_session_endpoint} \tab The details of the endpoint for the messaging session\cr
 #'  \link[=chime_get_phone_number]{get_phone_number} \tab Retrieves details for the specified phone number ID, such as associations, capabilities, and product type\cr
-#'  \link[=chime_get_phone_number_order]{get_phone_number_order} \tab Retrieves details for the specified phone number order, such as order creation timestamp, phone numbers in E\cr
+#'  \link[=chime_get_phone_number_order]{get_phone_number_order} \tab Retrieves details for the specified phone number order, such as the order creation timestamp, phone numbers in E\cr
 #'  \link[=chime_get_phone_number_settings]{get_phone_number_settings} \tab Retrieves the phone number settings for the administrator's AWS account, such as the default outbound calling name\cr
 #'  \link[=chime_get_proxy_session]{get_proxy_session} \tab Gets the specified proxy session details for the specified Amazon Chime Voice Connector\cr
 #'  \link[=chime_get_retention_settings]{get_retention_settings} \tab Gets the retention settings for the specified Amazon Chime Enterprise account\cr
@@ -180,11 +181,11 @@ NULL
 #'  \link[=chime_get_sip_media_application]{get_sip_media_application} \tab Retrieves the information for a SIP media application, including name, AWS Region, and endpoints\cr
 #'  \link[=chime_get_sip_media_application_logging_configuration]{get_sip_media_application_logging_configuration} \tab Returns the logging configuration for the specified SIP media application\cr
 #'  \link[=chime_get_sip_rule]{get_sip_rule} \tab Retrieves the details of a SIP rule, such as the rule ID, name, triggers, and target endpoints\cr
-#'  \link[=chime_get_user]{get_user} \tab Retrieves details for the specified user ID, such as primary email address, license type, and personal meeting PIN\cr
+#'  \link[=chime_get_user]{get_user} \tab Retrieves details for the specified user ID, such as primary email address, license type,and personal meeting PIN\cr
 #'  \link[=chime_get_user_settings]{get_user_settings} \tab Retrieves settings for the specified user ID, such as any associated phone number settings\cr
-#'  \link[=chime_get_voice_connector]{get_voice_connector} \tab Retrieves details for the specified Amazon Chime Voice Connector, such as timestamps, name, outbound host, and encryption requirements\cr
+#'  \link[=chime_get_voice_connector]{get_voice_connector} \tab Retrieves details for the specified Amazon Chime Voice Connector, such as timestamps,name, outbound host, and encryption requirements\cr
 #'  \link[=chime_get_voice_connector_emergency_calling_configuration]{get_voice_connector_emergency_calling_configuration} \tab Gets the emergency calling configuration details for the specified Amazon Chime Voice Connector\cr
-#'  \link[=chime_get_voice_connector_group]{get_voice_connector_group} \tab Retrieves details for the specified Amazon Chime Voice Connector group, such as timestamps, name, and associated VoiceConnectorItems\cr
+#'  \link[=chime_get_voice_connector_group]{get_voice_connector_group} \tab Retrieves details for the specified Amazon Chime Voice Connector group, such as timestamps,name, and associated VoiceConnectorItems \cr
 #'  \link[=chime_get_voice_connector_logging_configuration]{get_voice_connector_logging_configuration} \tab Retrieves the logging configuration details for the specified Amazon Chime Voice Connector\cr
 #'  \link[=chime_get_voice_connector_origination]{get_voice_connector_origination} \tab Retrieves origination setting details for the specified Amazon Chime Voice Connector\cr
 #'  \link[=chime_get_voice_connector_proxy]{get_voice_connector_proxy} \tab Gets the proxy configuration details for the specified Amazon Chime Voice Connector\cr
@@ -193,9 +194,9 @@ NULL
 #'  \link[=chime_get_voice_connector_termination_health]{get_voice_connector_termination_health} \tab Retrieves information about the last time a SIP OPTIONS ping was received from your SIP infrastructure for the specified Amazon Chime Voice Connector\cr
 #'  \link[=chime_invite_users]{invite_users} \tab Sends email to a maximum of 50 users, inviting them to the specified Amazon Chime Team account\cr
 #'  \link[=chime_list_accounts]{list_accounts} \tab Lists the Amazon Chime accounts under the administrator's AWS account\cr
-#'  \link[=chime_list_app_instance_admins]{list_app_instance_admins} \tab Returns a list of the administrators in the app instance\cr
-#'  \link[=chime_list_app_instances]{list_app_instances} \tab Lists all Amazon Chime app instances created under a single AWS account\cr
-#'  \link[=chime_list_app_instance_users]{list_app_instance_users} \tab List all AppInstanceUsers created under a single app instance\cr
+#'  \link[=chime_list_app_instance_admins]{list_app_instance_admins} \tab Returns a list of the administrators in the AppInstance\cr
+#'  \link[=chime_list_app_instances]{list_app_instances} \tab Lists all Amazon Chime AppInstances created under a single AWS account\cr
+#'  \link[=chime_list_app_instance_users]{list_app_instance_users} \tab List all AppInstanceUsers created under a single AppInstance\cr
 #'  \link[=chime_list_attendees]{list_attendees} \tab Lists the attendees for the specified Amazon Chime SDK meeting\cr
 #'  \link[=chime_list_attendee_tags]{list_attendee_tags} \tab Lists the tags applied to an Amazon Chime SDK attendee resource\cr
 #'  \link[=chime_list_bots]{list_bots} \tab Lists the bots associated with the administrator's Amazon Chime Enterprise account ID\cr
@@ -205,7 +206,7 @@ NULL
 #'  \link[=chime_list_channel_messages]{list_channel_messages} \tab List all the messages in a channel\cr
 #'  \link[=chime_list_channel_moderators]{list_channel_moderators} \tab Lists all the moderators for a channel\cr
 #'  \link[=chime_list_channels]{list_channels} \tab Lists all Channels created under a single Chime App as a paginated list\cr
-#'  \link[=chime_list_channels_moderated_by_app_instance_user]{list_channels_moderated_by_app_instance_user} \tab A list of the channels moderated by an app instance user\cr
+#'  \link[=chime_list_channels_moderated_by_app_instance_user]{list_channels_moderated_by_app_instance_user} \tab A list of the channels moderated by an AppInstanceUser\cr
 #'  \link[=chime_list_meetings]{list_meetings} \tab Lists up to 100 active Amazon Chime SDK meetings\cr
 #'  \link[=chime_list_meeting_tags]{list_meeting_tags} \tab Lists the tags applied to an Amazon Chime SDK meeting resource\cr
 #'  \link[=chime_list_phone_number_orders]{list_phone_number_orders} \tab Lists the phone number orders for the administrator's Amazon Chime account\cr
@@ -215,14 +216,15 @@ NULL
 #'  \link[=chime_list_rooms]{list_rooms} \tab Lists the room details for the specified Amazon Chime Enterprise account\cr
 #'  \link[=chime_list_sip_media_applications]{list_sip_media_applications} \tab Lists the SIP media applications under the administrator's AWS account\cr
 #'  \link[=chime_list_sip_rules]{list_sip_rules} \tab Lists the SIP rules under the administrator's AWS account\cr
+#'  \link[=chime_list_supported_phone_number_countries]{list_supported_phone_number_countries} \tab Lists supported phone number countries\cr
 #'  \link[=chime_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags applied to an Amazon Chime SDK meeting resource\cr
 #'  \link[=chime_list_users]{list_users} \tab Lists the users that belong to the specified Amazon Chime account\cr
 #'  \link[=chime_list_voice_connector_groups]{list_voice_connector_groups} \tab Lists the Amazon Chime Voice Connector groups for the administrator's AWS account\cr
 #'  \link[=chime_list_voice_connectors]{list_voice_connectors} \tab Lists the Amazon Chime Voice Connectors for the administrator's AWS account\cr
 #'  \link[=chime_list_voice_connector_termination_credentials]{list_voice_connector_termination_credentials} \tab Lists the SIP credentials for the specified Amazon Chime Voice Connector\cr
 #'  \link[=chime_logout_user]{logout_user} \tab Logs out the specified user from all of the devices they are currently logged into\cr
-#'  \link[=chime_put_app_instance_retention_settings]{put_app_instance_retention_settings} \tab Sets the amount of time in days that a given app instance retains data\cr
-#'  \link[=chime_put_app_instance_streaming_configurations]{put_app_instance_streaming_configurations} \tab The data streaming configurations of an app instance\cr
+#'  \link[=chime_put_app_instance_retention_settings]{put_app_instance_retention_settings} \tab Sets the amount of time in days that a given AppInstance retains data\cr
+#'  \link[=chime_put_app_instance_streaming_configurations]{put_app_instance_streaming_configurations} \tab The data streaming configurations of an AppInstance\cr
 #'  \link[=chime_put_events_configuration]{put_events_configuration} \tab Creates an events configuration that allows a bot to receive outgoing events sent by Amazon Chime\cr
 #'  \link[=chime_put_retention_settings]{put_retention_settings} \tab Puts retention settings for the specified Amazon Chime Enterprise account\cr
 #'  \link[=chime_put_sip_media_application_logging_configuration]{put_sip_media_application_logging_configuration} \tab Updates the logging configuration for the specified SIP media application\cr
@@ -239,7 +241,7 @@ NULL
 #'  \link[=chime_regenerate_security_token]{regenerate_security_token} \tab Regenerates the security token for a bot\cr
 #'  \link[=chime_reset_personal_pin]{reset_personal_pin} \tab Resets the personal meeting PIN for the specified user on an Amazon Chime account\cr
 #'  \link[=chime_restore_phone_number]{restore_phone_number} \tab Moves a phone number from the Deletion queue back into the phone number Inventory\cr
-#'  \link[=chime_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches phone numbers that can be ordered\cr
+#'  \link[=chime_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for phone numbers that can be ordered\cr
 #'  \link[=chime_send_channel_message]{send_channel_message} \tab Sends a message to a particular channel that the member is a part of\cr
 #'  \link[=chime_tag_attendee]{tag_attendee} \tab Applies the specified tags to the specified Amazon Chime SDK attendee\cr
 #'  \link[=chime_tag_meeting]{tag_meeting} \tab Applies the specified tags to the specified Amazon Chime SDK meeting\cr
@@ -250,23 +252,23 @@ NULL
 #'  \link[=chime_update_account]{update_account} \tab Updates account details for the specified Amazon Chime account\cr
 #'  \link[=chime_update_account_settings]{update_account_settings} \tab Updates the settings for the specified Amazon Chime account\cr
 #'  \link[=chime_update_app_instance]{update_app_instance} \tab Updates AppInstance metadata\cr
-#'  \link[=chime_update_app_instance_user]{update_app_instance_user} \tab Updates the details for an AppInstanceUser\cr
+#'  \link[=chime_update_app_instance_user]{update_app_instance_user} \tab Updates the details of an AppInstanceUser\cr
 #'  \link[=chime_update_bot]{update_bot} \tab Updates the status of the specified bot, such as starting or stopping the bot from running in your Amazon Chime Enterprise account\cr
 #'  \link[=chime_update_channel]{update_channel} \tab Update a channel's attributes\cr
 #'  \link[=chime_update_channel_message]{update_channel_message} \tab Updates the content of a message\cr
-#'  \link[=chime_update_channel_read_marker]{update_channel_read_marker} \tab Sets the timestamp to the point when a user last read messages in a channel\cr
+#'  \link[=chime_update_channel_read_marker]{update_channel_read_marker} \tab The details of the time when a user last read messages in a channel\cr
 #'  \link[=chime_update_global_settings]{update_global_settings} \tab Updates global settings for the administrator's AWS account, such as Amazon Chime Business Calling and Amazon Chime Voice Connector settings\cr
 #'  \link[=chime_update_phone_number]{update_phone_number} \tab Updates phone number details, such as product type or calling name, for the specified phone number ID\cr
 #'  \link[=chime_update_phone_number_settings]{update_phone_number_settings} \tab Updates the phone number settings for the administrator's AWS account, such as the default outbound calling name\cr
 #'  \link[=chime_update_proxy_session]{update_proxy_session} \tab Updates the specified proxy session details, such as voice or SMS capabilities\cr
 #'  \link[=chime_update_room]{update_room} \tab Updates room details, such as the room name, for a room in an Amazon Chime Enterprise account\cr
 #'  \link[=chime_update_room_membership]{update_room_membership} \tab Updates room membership details, such as the member role, for a room in an Amazon Chime Enterprise account\cr
-#'  \link[=chime_update_sip_media_application]{update_sip_media_application} \tab Updates the details for the specified SIP media application\cr
-#'  \link[=chime_update_sip_rule]{update_sip_rule} \tab Updates the details for the specified SIP rule\cr
+#'  \link[=chime_update_sip_media_application]{update_sip_media_application} \tab Updates the details of the specified SIP media application\cr
+#'  \link[=chime_update_sip_rule]{update_sip_rule} \tab Updates the details of the specified SIP rule\cr
 #'  \link[=chime_update_user]{update_user} \tab Updates user details for a specified user ID\cr
 #'  \link[=chime_update_user_settings]{update_user_settings} \tab Updates the settings for the specified user, such as phone number settings\cr
 #'  \link[=chime_update_voice_connector]{update_voice_connector} \tab Updates details for the specified Amazon Chime Voice Connector\cr
-#'  \link[=chime_update_voice_connector_group]{update_voice_connector_group} \tab Updates details for the specified Amazon Chime Voice Connector group, such as the name and Amazon Chime Voice Connector priority ranking
+#'  \link[=chime_update_voice_connector_group]{update_voice_connector_group} \tab Updates details of the specified Amazon Chime Voice Connector group, such as the name and Amazon Chime Voice Connector priority ranking
 #' }
 #'
 #' @rdname chime

@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_create_job}
 \alias{s3control_create_job}
-\title{S3 Batch Operations performs large-scale Batch Operations on Amazon S3
-objects}
+\title{You can use S3 Batch Operations to perform large-scale batch actions on
+Amazon S3 objects}
 \usage{
 s3control_create_job(AccountId, ConfirmationRequired, Operation, Report,
   ClientRequestToken, Manifest, Description, Priority, RoleArn, Tags)
@@ -15,10 +15,10 @@ s3control_create_job(AccountId, ConfirmationRequired, Operation, Report,
 job. Confirmation is only required for jobs created through the Amazon
 S3 console.}
 
-\item{Operation}{[required] The operation that you want this job to perform on each object listed in
-the manifest. For more information about the available operations, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-operations.html}{Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+\item{Operation}{[required] The action that you want this job to perform on every object listed in
+the manifest. For more information about the available actions, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{Operations} in
+the \emph{Amazon S3 User Guide}.}
 
 \item{Report}{[required] Configuration parameters for the optional job-completion report.}
 
@@ -36,7 +36,7 @@ priority.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) for the AWS Identity and Access
 Management (IAM) role that Batch Operations will use to run this job's
-operation on each object in the manifest.}
+action on every object in the manifest.}
 
 \item{Tags}{A set of tags to associate with the S3 Batch Operations job. This is an
 optional parameter.}
@@ -48,12 +48,12 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-S3 Batch Operations performs large-scale Batch Operations on Amazon S3
-objects. Batch Operations can run a single operation or action on lists
-of Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+You can use S3 Batch Operations to perform large-scale batch actions on
+Amazon S3 objects. Batch Operations can run a single action on lists of
+Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
+in the \emph{Amazon S3 User Guide}.
 
-This operation creates an S3 Batch Operations job.
+This action creates a S3 Batch Operations job.
 
 Related actions include:
 \itemize{
@@ -61,6 +61,7 @@ Related actions include:
 \item \code{\link[=s3control_list_jobs]{list_jobs}}
 \item \code{\link[=s3control_update_job_priority]{update_job_priority}}
 \item \code{\link[=s3control_update_job_status]{update_job_status}}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_JobOperation.html}{JobOperation}
 }
 }
 \section{Request syntax}{
@@ -154,6 +155,7 @@ Related actions include:
         )
       )
     ),
+    S3DeleteObjectTagging = list(),
     S3InitiateRestoreObject = list(
       ExpirationInDays = 123,
       GlacierJobTier = "BULK"|"STANDARD"

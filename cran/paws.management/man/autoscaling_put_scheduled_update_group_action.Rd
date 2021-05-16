@@ -6,7 +6,7 @@
 \usage{
 autoscaling_put_scheduled_update_group_action(AutoScalingGroupName,
   ScheduledActionName, Time, StartTime, EndTime, Recurrence, MinSize,
-  MaxSize, DesiredCapacity)
+  MaxSize, DesiredCapacity, TimeZone)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -26,17 +26,18 @@ the specified recurrence.
 If you try to schedule your action in the past, Amazon EC2 Auto Scaling
 returns an error message.}
 
-\item{EndTime}{The date and time for the recurring schedule to end. Amazon EC2 Auto
-Scaling does not perform the action after this time.}
+\item{EndTime}{The date and time for the recurring schedule to end, in UTC.}
 
-\item{Recurrence}{The recurring schedule for this action, in Unix cron syntax format. This
-format consists of five fields separated by white spaces: [Minute]
-[Hour] [Day_of_Month] [Month_of_Year] [Day_of_Week]. The
-value must be in quotes (for example, \code{"30 0 1 1,6,12 *"}). For more
-information about this format, see \href{http://crontab.org/}{Crontab}.
+\item{Recurrence}{The recurring schedule for this action. This format consists of five
+fields separated by white spaces: [Minute] [Hour] [Day_of_Month]
+[Month_of_Year] [Day_of_Week]. The value must be in quotes (for
+example, \code{"30 0 1 1,6,12 *"}). For more information about this format,
+see \href{http://crontab.org/}{Crontab}.
 
 When \code{StartTime} and \code{EndTime} are specified with \code{Recurrence}, they
-form the boundaries of when the recurring action starts and stops.}
+form the boundaries of when the recurring action starts and stops.
+
+Cron expressions use Universal Coordinated Time (UTC) by default.}
 
 \item{MinSize}{The minimum size of the Auto Scaling group.}
 
@@ -46,14 +47,20 @@ form the boundaries of when the recurring action starts and stops.}
 after the scheduled action runs and the capacity it attempts to
 maintain. It can scale beyond this capacity if you add more scaling
 conditions.}
+
+\item{TimeZone}{Specifies the time zone for a cron expression. If a time zone is not
+provided, UTC is used by default.
+
+Valid values are the canonical names of the IANA time zones, derived
+from the IANA Time Zone Database (such as \code{Etc/GMT+9} or
+\code{Pacific/Tahiti}). For more information, see
+\url{https://en.wikipedia.org/wiki/List_of_tz_database_time_zones}.}
 }
 \value{
 An empty list.
 }
 \description{
 Creates or updates a scheduled scaling action for an Auto Scaling group.
-If you leave a parameter unspecified when updating a scheduled scaling
-action, the corresponding value remains unchanged.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html}{Scheduled scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
@@ -74,7 +81,8 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
   Recurrence = "string",
   MinSize = 123,
   MaxSize = 123,
-  DesiredCapacity = 123
+  DesiredCapacity = 123,
+  TimeZone = "string"
 )
 }
 }

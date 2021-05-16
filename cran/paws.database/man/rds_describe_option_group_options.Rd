@@ -9,7 +9,22 @@ rds_describe_option_group_options(EngineName, MajorEngineVersion,
 }
 \arguments{
 \item{EngineName}{[required] A required parameter. Options available for the given engine name are
-described.}
+described.
+
+Valid Values:
+\itemize{
+\item \code{mariadb}
+\item \code{mysql}
+\item \code{oracle-ee}
+\item \code{oracle-se2}
+\item \code{oracle-se1}
+\item \code{oracle-se}
+\item \code{postgres}
+\item \code{sqlserver-ee}
+\item \code{sqlserver-se}
+\item \code{sqlserver-ex}
+\item \code{sqlserver-web}
+}}
 
 \item{MajorEngineVersion}{If specified, filters the results to include only options for the
 specified major engine version.}

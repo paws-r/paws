@@ -5,7 +5,7 @@
 \title{Creates a static route for the specified local gateway route table}
 \usage{
 ec2_create_local_gateway_route(DestinationCidrBlock,
-  LocalGatewayRouteTableId, LocalGatewayVirtualInterfaceGroupId, DryRun)
+  LocalGatewayRouteTableId, DryRun, LocalGatewayVirtualInterfaceGroupId)
 }
 \arguments{
 \item{DestinationCidrBlock}{[required] The CIDR range used for destination matches. Routing decisions are based
@@ -13,12 +13,12 @@ on the most specific match.}
 
 \item{LocalGatewayRouteTableId}{[required] The ID of the local gateway route table.}
 
-\item{LocalGatewayVirtualInterfaceGroupId}{[required] The ID of the virtual interface group.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{LocalGatewayVirtualInterfaceGroupId}{[required] The ID of the virtual interface group.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -41,8 +41,8 @@ Creates a static route for the specified local gateway route table.
 \preformatted{svc$create_local_gateway_route(
   DestinationCidrBlock = "string",
   LocalGatewayRouteTableId = "string",
-  LocalGatewayVirtualInterfaceGroupId = "string",
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  LocalGatewayVirtualInterfaceGroupId = "string"
 )
 }
 }

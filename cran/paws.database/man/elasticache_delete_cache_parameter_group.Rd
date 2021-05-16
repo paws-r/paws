@@ -17,7 +17,8 @@ An empty list.
 }
 \description{
 Deletes the specified cache parameter group. You cannot delete a cache
-parameter group if it is associated with any cache clusters.
+parameter group if it is associated with any cache clusters. You cannot
+delete the default cache parameter groups in your account.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_cache_parameter_group(

@@ -20,7 +20,7 @@ A list with the following syntax:\preformatted{list(
     LastModifiedTime = as.POSIXct(
       "2015-01-01"
     ),
-    LanguageCode = "en-US",
+    LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
     BaseModelName = "NarrowBand"|"WideBand",
     ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
     UpgradeAvailability = TRUE|FALSE,

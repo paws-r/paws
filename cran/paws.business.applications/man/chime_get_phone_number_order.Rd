@@ -2,8 +2,8 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_get_phone_number_order}
 \alias{chime_get_phone_number_order}
-\title{Retrieves details for the specified phone number order, such as order
-creation timestamp, phone numbers in E}
+\title{Retrieves details for the specified phone number order, such as the
+order creation timestamp, phone numbers in E}
 \usage{
 chime_get_phone_number_order(PhoneNumberOrderId)
 }
@@ -14,7 +14,7 @@ chime_get_phone_number_order(PhoneNumberOrderId)
 A list with the following syntax:\preformatted{list(
   PhoneNumberOrder = list(
     PhoneNumberOrderId = "string",
-    ProductType = "BusinessCalling"|"VoiceConnector",
+    ProductType = "BusinessCalling"|"VoiceConnector"|"SipMediaApplicationDialIn",
     Status = "Processing"|"Successful"|"Failed"|"Partial",
     OrderedPhoneNumbers = list(
       list(
@@ -33,9 +33,9 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Retrieves details for the specified phone number order, such as order
-creation timestamp, phone numbers in E.164 format, product type, and
-order status.
+Retrieves details for the specified phone number order, such as the
+order creation timestamp, phone numbers in E.164 format, product type,
+and order status.
 }
 \section{Request syntax}{
 \preformatted{svc$get_phone_number_order(

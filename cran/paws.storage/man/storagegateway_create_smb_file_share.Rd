@@ -99,7 +99,7 @@ Acceptable formats include: \verb{DOMAIN\\User1}, \code{user1}, \verb{@group1}, 
 \verb{@DOMAIN\\group1}. Can only be set if Authentication is set to
 \code{ActiveDirectory}.}
 
-\item{AuditDestinationARN}{The Amazon Resource Name (ARN) of the storage used for the audit logs.}
+\item{AuditDestinationARN}{The Amazon Resource Name (ARN) of the storage used for audit logs.}
 
 \item{Authentication}{The authentication method that users use to access the file share. The
 default is \code{ActiveDirectory}.
@@ -124,9 +124,26 @@ the maximum length for a tag's value is 256.}
 \code{FileShareName} must be set if an S3 prefix name is set in
 \code{LocationARN}.}
 
-\item{CacheAttributes}{Refresh cache information.}
+\item{CacheAttributes}{Specifies refresh cache information for the file share.}
 
-\item{NotificationPolicy}{The notification policy of the file share.}
+\item{NotificationPolicy}{The notification policy of the file share. \code{SettlingTimeInSeconds}
+controls the number of seconds to wait after the last point in time a
+client wrote to a file before generating an \code{ObjectUploaded}
+notification. Because clients can make many small writes to files, it's
+best to set this parameter for as long as possible to avoid generating
+multiple notifications for the same file in a small time period.
+
+\code{SettlingTimeInSeconds} has no effect on the timing of the object
+uploading to Amazon S3, only the timing of the notification.
+
+The following example sets \code{NotificationPolicy} on with
+\code{SettlingTimeInSeconds} set to 60.
+
+\verb{\{\\"Upload\\": \{\\"SettlingTimeInSeconds\\": 60\}\}}
+
+The following example sets \code{NotificationPolicy} off.
+
+\code{{}}}
 }
 \value{
 A list with the following syntax:\preformatted{list(

@@ -10,13 +10,15 @@ NULL
 #'
 #' @usage
 #' iotwireless_associate_aws_account_with_partner_account(Sidewalk,
-#'   ClientRequestToken)
+#'   ClientRequestToken, Tags)
 #'
 #' @param Sidewalk &#91;required&#93; The Sidewalk account credentials.
 #' @param ClientRequestToken Each resource must have a unique client request token. If you try to
 #' create a new resource with the same token as a resource that already
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
+#' @param Tags The tags to attach to the specified resource. Tags are metadata that you
+#' can use to manage a resource.
 #'
 #' @return
 #' A list with the following syntax:
@@ -25,7 +27,8 @@ NULL
 #'   Sidewalk = list(
 #'     AmazonId = "string",
 #'     AppServerPrivateKey = "string"
-#'   )
+#'   ),
+#'   Arn = "string"
 #' )
 #' ```
 #'
@@ -36,21 +39,27 @@ NULL
 #'     AmazonId = "string",
 #'     AppServerPrivateKey = "string"
 #'   ),
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iotwireless_associate_aws_account_with_partner_account
-iotwireless_associate_aws_account_with_partner_account <- function(Sidewalk, ClientRequestToken = NULL) {
+iotwireless_associate_aws_account_with_partner_account <- function(Sidewalk, ClientRequestToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "AssociateAwsAccountWithPartnerAccount",
     http_method = "POST",
     http_path = "/partner-accounts",
     paginator = list()
   )
-  input <- .iotwireless$associate_aws_account_with_partner_account_input(Sidewalk = Sidewalk, ClientRequestToken = ClientRequestToken)
+  input <- .iotwireless$associate_aws_account_with_partner_account_input(Sidewalk = Sidewalk, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .iotwireless$associate_aws_account_with_partner_account_output()
   config <- get_config()
   svc <- .iotwireless$service(config)
@@ -206,8 +215,8 @@ iotwireless_associate_wireless_gateway_with_thing <- function(Id, ThingArn) {
 #' @param Expression &#91;required&#93; The rule name or topic rule to send messages to.
 #' @param Description The description of the new resource.
 #' @param RoleArn &#91;required&#93; The ARN of the IAM Role that authorizes the destination.
-#' @param Tags The tags to attach to the new destination. Tags are metadata that can be
-#' used to manage a resource.
+#' @param Tags The tags to attach to the new destination. Tags are metadata that you
+#' can use to manage a resource.
 #' @param ClientRequestToken Each resource must have a unique client request token. If you try to
 #' create a new resource with the same token as a resource that already
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
@@ -226,7 +235,7 @@ iotwireless_associate_wireless_gateway_with_thing <- function(Id, ThingArn) {
 #' ```
 #' svc$create_destination(
 #'   Name = "string",
-#'   ExpressionType = "RuleName",
+#'   ExpressionType = "RuleName"|"MqttTopic",
 #'   Expression = "string",
 #'   Description = "string",
 #'   RoleArn = "string",
@@ -271,8 +280,8 @@ iotwireless_create_destination <- function(Name, ExpressionType, Expression, Des
 #'
 #' @param Name The name of the new resource.
 #' @param LoRaWAN The device profile information to use to create the device profile.
-#' @param Tags The tags to attach to the new device profile Tags are metadata that can
-#' be used to manage a resource.
+#' @param Tags The tags to attach to the new device profile. Tags are metadata that you
+#' can use to manage a resource.
 #' @param ClientRequestToken Each resource must have a unique client request token. If you try to
 #' create a new resource with the same token as a resource that already
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
@@ -356,7 +365,7 @@ iotwireless_create_device_profile <- function(Name = NULL, LoRaWAN = NULL, Tags 
 #' @param Name The name of the new resource.
 #' @param LoRaWAN The service profile information to use to create the service profile.
 #' @param Tags The tags to attach to the new service profile. Tags are metadata that
-#' can be used to manage a resource.
+#' you can use to manage a resource.
 #' @param ClientRequestToken Each resource must have a unique client request token. If you try to
 #' create a new resource with the same token as a resource that already
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
@@ -415,7 +424,7 @@ iotwireless_create_service_profile <- function(Name = NULL, LoRaWAN = NULL, Tags
 #'
 #' @usage
 #' iotwireless_create_wireless_device(Type, Name, Description,
-#'   DestinationName, ClientRequestToken, LoRaWAN)
+#'   DestinationName, ClientRequestToken, LoRaWAN, Tags)
 #'
 #' @param Type &#91;required&#93; The wireless device type.
 #' @param Name The name of the new resource.
@@ -427,6 +436,8 @@ iotwireless_create_service_profile <- function(Name = NULL, LoRaWAN = NULL, Tags
 #' automatically generate a unique client request.
 #' @param LoRaWAN The device configuration information to use to create the wireless
 #' device.
+#' @param Tags The tags to attach to the new wireless device. Tags are metadata that
+#' you can use to manage a resource.
 #'
 #' @return
 #' A list with the following syntax:
@@ -474,6 +485,12 @@ iotwireless_create_service_profile <- function(Name = NULL, LoRaWAN = NULL, Tags
 #'         AppSKey = "string"
 #'       )
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -481,14 +498,14 @@ iotwireless_create_service_profile <- function(Name = NULL, LoRaWAN = NULL, Tags
 #' @keywords internal
 #'
 #' @rdname iotwireless_create_wireless_device
-iotwireless_create_wireless_device <- function(Type, Name = NULL, Description = NULL, DestinationName, ClientRequestToken = NULL, LoRaWAN = NULL) {
+iotwireless_create_wireless_device <- function(Type, Name = NULL, Description = NULL, DestinationName, ClientRequestToken = NULL, LoRaWAN = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateWirelessDevice",
     http_method = "POST",
     http_path = "/wireless-devices",
     paginator = list()
   )
-  input <- .iotwireless$create_wireless_device_input(Type = Type, Name = Name, Description = Description, DestinationName = DestinationName, ClientRequestToken = ClientRequestToken, LoRaWAN = LoRaWAN)
+  input <- .iotwireless$create_wireless_device_input(Type = Type, Name = Name, Description = Description, DestinationName = DestinationName, ClientRequestToken = ClientRequestToken, LoRaWAN = LoRaWAN, Tags = Tags)
   output <- .iotwireless$create_wireless_device_output()
   config <- get_config()
   svc <- .iotwireless$service(config)
@@ -512,7 +529,7 @@ iotwireless_create_wireless_device <- function(Type, Name = NULL, Description = 
 #' @param LoRaWAN &#91;required&#93; The gateway configuration information to use to create the wireless
 #' gateway.
 #' @param Tags The tags to attach to the new wireless gateway. Tags are metadata that
-#' can be used to manage a resource.
+#' you can use to manage a resource.
 #' @param ClientRequestToken Each resource must have a unique client request token. If you try to
 #' create a new resource with the same token as a resource that already
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
@@ -534,7 +551,18 @@ iotwireless_create_wireless_device <- function(Type, Name = NULL, Description = 
 #'   Description = "string",
 #'   LoRaWAN = list(
 #'     GatewayEui = "string",
-#'     RfRegion = "string"
+#'     RfRegion = "string",
+#'     JoinEuiFilters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     NetIdFilters = list(
+#'       "string"
+#'     ),
+#'     SubBands = list(
+#'       123
+#'     )
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -622,7 +650,7 @@ iotwireless_create_wireless_gateway_task <- function(Id, WirelessGatewayTaskDefi
 #'
 #' @usage
 #' iotwireless_create_wireless_gateway_task_definition(AutoCreateTasks,
-#'   Name, Update, ClientRequestToken)
+#'   Name, Update, ClientRequestToken, Tags)
 #'
 #' @param AutoCreateTasks &#91;required&#93; Whether to automatically create tasks using this task definition for all
 #' gateways with the specified current version. If `false`, the task must
@@ -634,12 +662,15 @@ iotwireless_create_wireless_gateway_task <- function(Id, WirelessGatewayTaskDefi
 #' create a new resource with the same token as a resource that already
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
+#' @param Tags The tags to attach to the specified resource. Tags are metadata that you
+#' can use to manage a resource.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Id = "string"
+#'   Id = "string",
+#'   Arn = "string"
 #' )
 #' ```
 #'
@@ -666,21 +697,27 @@ iotwireless_create_wireless_gateway_task <- function(Id, WirelessGatewayTaskDefi
 #'       )
 #'     )
 #'   ),
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iotwireless_create_wireless_gateway_task_definition
-iotwireless_create_wireless_gateway_task_definition <- function(AutoCreateTasks, Name = NULL, Update = NULL, ClientRequestToken = NULL) {
+iotwireless_create_wireless_gateway_task_definition <- function(AutoCreateTasks, Name = NULL, Update = NULL, ClientRequestToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateWirelessGatewayTaskDefinition",
     http_method = "POST",
     http_path = "/wireless-gateway-task-definitions",
     paginator = list()
   )
-  input <- .iotwireless$create_wireless_gateway_task_definition_input(AutoCreateTasks = AutoCreateTasks, Name = Name, Update = Update, ClientRequestToken = ClientRequestToken)
+  input <- .iotwireless$create_wireless_gateway_task_definition_input(AutoCreateTasks = AutoCreateTasks, Name = Name, Update = Update, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .iotwireless$create_wireless_gateway_task_definition_output()
   config <- get_config()
   svc <- .iotwireless$service(config)
@@ -1155,7 +1192,7 @@ iotwireless_disassociate_wireless_gateway_from_thing <- function(Id) {
 #'   Arn = "string",
 #'   Name = "string",
 #'   Expression = "string",
-#'   ExpressionType = "RuleName",
+#'   ExpressionType = "RuleName"|"MqttTopic",
 #'   Description = "string",
 #'   RoleArn = "string"
 #' )
@@ -1276,7 +1313,8 @@ iotwireless_get_device_profile <- function(Id) {
 #' list(
 #'   Sidewalk = list(
 #'     AmazonId = "string",
-#'     Fingerprint = "string"
+#'     Fingerprint = "string",
+#'     Arn = "string"
 #'   ),
 #'   AccountLinked = TRUE|FALSE
 #' )
@@ -1481,6 +1519,16 @@ iotwireless_get_service_profile <- function(Id) {
 #'         AppSKey = "string"
 #'       )
 #'     )
+#'   ),
+#'   Sidewalk = list(
+#'     SidewalkId = "string",
+#'     SidewalkManufacturingSn = "string",
+#'     DeviceCertificates = list(
+#'       list(
+#'         SigningAlg = "Ed25519"|"P256r1",
+#'         Value = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1542,6 +1590,12 @@ iotwireless_get_wireless_device <- function(Identifier, IdentifierType) {
 #'         Rssi = 123.0
 #'       )
 #'     )
+#'   ),
+#'   Sidewalk = list(
+#'     Rssi = 123,
+#'     BatteryLevel = "normal"|"low"|"critical",
+#'     Event = "discovered"|"lost"|"ack"|"nack"|"passthrough",
+#'     DeviceState = "Provisioned"|"RegisteredNotSeen"|"RegisteredReachable"|"RegisteredUnreachable"
 #'   )
 #' )
 #' ```
@@ -1593,7 +1647,18 @@ iotwireless_get_wireless_device_statistics <- function(WirelessDeviceId) {
 #'   Description = "string",
 #'   LoRaWAN = list(
 #'     GatewayEui = "string",
-#'     RfRegion = "string"
+#'     RfRegion = "string",
+#'     JoinEuiFilters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     NetIdFilters = list(
+#'       "string"
+#'     ),
+#'     SubBands = list(
+#'       123
+#'     )
 #'   ),
 #'   Arn = "string",
 #'   ThingName = "string",
@@ -1645,7 +1710,8 @@ iotwireless_get_wireless_gateway <- function(Identifier, IdentifierType) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   IotCertificateId = "string"
+#'   IotCertificateId = "string",
+#'   LoRaWANNetworkServerCertificateId = "string"
 #' )
 #' ```
 #'
@@ -1743,7 +1809,8 @@ iotwireless_get_wireless_gateway_firmware_information <- function(Id) {
 #' ```
 #' list(
 #'   WirelessGatewayId = "string",
-#'   LastUplinkReceivedAt = "string"
+#'   LastUplinkReceivedAt = "string",
+#'   ConnectionStatus = "Connected"|"Disconnected"
 #' )
 #' ```
 #'
@@ -1856,7 +1923,8 @@ iotwireless_get_wireless_gateway_task <- function(Id) {
 #'         Station = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   Arn = "string"
 #' )
 #' ```
 #'
@@ -1909,7 +1977,7 @@ iotwireless_get_wireless_gateway_task_definition <- function(Id) {
 #'     list(
 #'       Arn = "string",
 #'       Name = "string",
-#'       ExpressionType = "RuleName",
+#'       ExpressionType = "RuleName"|"MqttTopic",
 #'       Expression = "string",
 #'       Description = "string",
 #'       RoleArn = "string"
@@ -2023,7 +2091,8 @@ iotwireless_list_device_profiles <- function(NextToken = NULL, MaxResults = NULL
 #'   Sidewalk = list(
 #'     list(
 #'       AmazonId = "string",
-#'       Fingerprint = "string"
+#'       Fingerprint = "string",
+#'       Arn = "string"
 #'     )
 #'   )
 #' )
@@ -2121,7 +2190,7 @@ iotwireless_list_service_profiles <- function(NextToken = NULL, MaxResults = NUL
 #' @usage
 #' iotwireless_list_tags_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The ARN of the resource for which to list tags.
+#' @param ResourceArn &#91;required&#93; The ARN of the resource for which you want to list tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2200,7 +2269,15 @@ iotwireless_list_tags_for_resource <- function(ResourceArn) {
 #'         DevEui = "string"
 #'       ),
 #'       Sidewalk = list(
-#'         AmazonId = "string"
+#'         AmazonId = "string",
+#'         SidewalkId = "string",
+#'         SidewalkManufacturingSn = "string",
+#'         DeviceCertificates = list(
+#'           list(
+#'             SigningAlg = "Ed25519"|"P256r1",
+#'             Value = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   )
@@ -2276,7 +2353,8 @@ iotwireless_list_wireless_devices <- function(MaxResults = NULL, NextToken = NUL
 #'           Model = "string",
 #'           Station = "string"
 #'         )
-#'       )
+#'       ),
+#'       Arn = "string"
 #'     )
 #'   )
 #' )
@@ -2337,7 +2415,18 @@ iotwireless_list_wireless_gateway_task_definitions <- function(MaxResults = NULL
 #'       Description = "string",
 #'       LoRaWAN = list(
 #'         GatewayEui = "string",
-#'         RfRegion = "string"
+#'         RfRegion = "string",
+#'         JoinEuiFilters = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         NetIdFilters = list(
+#'           "string"
+#'         ),
+#'         SubBands = list(
+#'           123
+#'         )
 #'       ),
 #'       LastUplinkReceivedAt = "string"
 #'     )
@@ -2384,8 +2473,7 @@ iotwireless_list_wireless_gateways <- function(NextToken = NULL, MaxResults = NU
 #'
 #' @param Id &#91;required&#93; The ID of the wireless device to receive the data.
 #' @param TransmitMode &#91;required&#93; The transmit mode to use to send data to the wireless device. Can be:
-#' `0` for UM (unacknowledge mode), `1` for AM (acknowledge mode), or `2`
-#' for (TM) transparent mode.
+#' `0` for UM (unacknowledge mode) or `1` for AM (acknowledge mode).
 #' @param PayloadData &#91;required&#93; The message payload to send.
 #' @param WirelessMetadata Metadata about the message request.
 #'
@@ -2408,7 +2496,8 @@ iotwireless_list_wireless_gateways <- function(NextToken = NULL, MaxResults = NU
 #'       FPort = 123
 #'     ),
 #'     Sidewalk = list(
-#'       Seq = 123
+#'       Seq = 123,
+#'       MessageType = "CUSTOM_COMMAND_ID_NOTIFY"|"CUSTOM_COMMAND_ID_GET"|"CUSTOM_COMMAND_ID_SET"|"CUSTOM_COMMAND_ID_RESP"
 #'     )
 #'   )
 #' )
@@ -2444,7 +2533,7 @@ iotwireless_send_data_to_wireless_device <- function(Id, TransmitMode, PayloadDa
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource to add tags to.
 #' @param Tags &#91;required&#93; Adds to or modifies the tags of the given resource. Tags are metadata
-#' that can be used to manage a resource.
+#' that you can use to manage a resource.
 #'
 #' @return
 #' An empty list.
@@ -2595,7 +2684,7 @@ iotwireless_untag_resource <- function(ResourceArn, TagKeys) {
 #' ```
 #' svc$update_destination(
 #'   Name = "string",
-#'   ExpressionType = "RuleName",
+#'   ExpressionType = "RuleName"|"MqttTopic",
 #'   Expression = "string",
 #'   Description = "string",
 #'   RoleArn = "string"
@@ -2727,11 +2816,14 @@ iotwireless_update_wireless_device <- function(Id, DestinationName = NULL, Name 
 #' Updates properties of a wireless gateway.
 #'
 #' @usage
-#' iotwireless_update_wireless_gateway(Id, Name, Description)
+#' iotwireless_update_wireless_gateway(Id, Name, Description,
+#'   JoinEuiFilters, NetIdFilters)
 #'
 #' @param Id &#91;required&#93; The ID of the resource to update.
 #' @param Name The new name of the resource.
 #' @param Description A new description of the resource.
+#' @param JoinEuiFilters 
+#' @param NetIdFilters 
 #'
 #' @return
 #' An empty list.
@@ -2741,21 +2833,29 @@ iotwireless_update_wireless_device <- function(Id, DestinationName = NULL, Name 
 #' svc$update_wireless_gateway(
 #'   Id = "string",
 #'   Name = "string",
-#'   Description = "string"
+#'   Description = "string",
+#'   JoinEuiFilters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   NetIdFilters = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iotwireless_update_wireless_gateway
-iotwireless_update_wireless_gateway <- function(Id, Name = NULL, Description = NULL) {
+iotwireless_update_wireless_gateway <- function(Id, Name = NULL, Description = NULL, JoinEuiFilters = NULL, NetIdFilters = NULL) {
   op <- new_operation(
     name = "UpdateWirelessGateway",
     http_method = "PATCH",
     http_path = "/wireless-gateways/{Id}",
     paginator = list()
   )
-  input <- .iotwireless$update_wireless_gateway_input(Id = Id, Name = Name, Description = Description)
+  input <- .iotwireless$update_wireless_gateway_input(Id = Id, Name = Name, Description = Description, JoinEuiFilters = JoinEuiFilters, NetIdFilters = NetIdFilters)
   output <- .iotwireless$update_wireless_gateway_output()
   config <- get_config()
   svc <- .iotwireless$service(config)

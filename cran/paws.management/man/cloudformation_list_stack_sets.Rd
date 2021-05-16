@@ -5,7 +5,7 @@
 \title{Returns summary information about stack sets that are associated with
 the user}
 \usage{
-cloudformation_list_stack_sets(NextToken, MaxResults, Status)
+cloudformation_list_stack_sets(NextToken, MaxResults, Status, CallAs)
 }
 \arguments{
 \item{NextToken}{If the previous paginated request didn't return all of the remaining
@@ -23,6 +23,22 @@ parameter to get the next set of results.}
 
 \item{Status}{The status of the stack sets that you want to get summary information
 about.}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the management account or as a delegated
+administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your AWS account must be registered as a delegated administrator in
+the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{AWS CloudFormation User Guide}.
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -50,12 +66,28 @@ A list with the following syntax:\preformatted{list(
 \description{
 Returns summary information about stack sets that are associated with
 the user.
+\itemize{
+\item [Self-managed permissions] If you set the \code{CallAs} parameter to
+\code{SELF} while signed in to your AWS account,
+\code{\link[=cloudformation_list_stack_sets]{list_stack_sets}} returns all
+self-managed stack sets in your AWS account.
+\item [Service-managed permissions] If you set the \code{CallAs} parameter to
+\code{SELF} while signed in to the organization's management account,
+\code{\link[=cloudformation_list_stack_sets]{list_stack_sets}} returns all
+stack sets in the management account.
+\item [Service-managed permissions] If you set the \code{CallAs} parameter to
+\code{DELEGATED_ADMIN} while signed in to your member account,
+\code{\link[=cloudformation_list_stack_sets]{list_stack_sets}} returns all
+stack sets with service-managed permissions in the management
+account.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_stack_sets(
   NextToken = "string",
   MaxResults = 123,
-  Status = "ACTIVE"|"DELETED"
+  Status = "ACTIVE"|"DELETED",
+  CallAs = "SELF"|"DELEGATED_ADMIN"
 )
 }
 }

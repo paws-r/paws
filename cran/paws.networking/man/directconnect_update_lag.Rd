@@ -4,7 +4,7 @@
 \alias{directconnect_update_lag}
 \title{Updates the attributes of the specified link aggregation group (LAG)}
 \usage{
-directconnect_update_lag(lagId, lagName, minimumLinks)
+directconnect_update_lag(lagId, lagName, minimumLinks, encryptionMode)
 }
 \arguments{
 \item{lagId}{[required] The ID of the LAG.}
@@ -13,6 +13,10 @@ directconnect_update_lag(lagId, lagName, minimumLinks)
 
 \item{minimumLinks}{The minimum number of physical connections that must be operational for
 the LAG itself to be operational.}
+
+\item{encryptionMode}{The LAG MAC Security (MACsec) encryption mode.
+
+AWS applies the value to all connections which are part of the LAG.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -52,7 +56,18 @@ A list with the following syntax:\preformatted{list(
           value = "string"
         )
       ),
-      providerName = "string"
+      providerName = "string",
+      macSecCapable = TRUE|FALSE,
+      portEncryptionStatus = "string",
+      encryptionMode = "string",
+      macSecKeys = list(
+        list(
+          secretARN = "string",
+          ckn = "string",
+          state = "string",
+          startOn = "string"
+        )
+      )
     )
   ),
   allowsHostedConnections = TRUE|FALSE,
@@ -64,32 +79,44 @@ A list with the following syntax:\preformatted{list(
       value = "string"
     )
   ),
-  providerName = "string"
+  providerName = "string",
+  macSecCapable = TRUE|FALSE,
+  encryptionMode = "string",
+  macSecKeys = list(
+    list(
+      secretARN = "string",
+      ckn = "string",
+      state = "string",
+      startOn = "string"
+    )
+  )
 )
 }
 }
 \description{
 Updates the attributes of the specified link aggregation group (LAG).
 
-You can update the following attributes:
+You can update the following LAG attributes:
 \itemize{
 \item The name of the LAG.
 \item The value for the minimum number of connections that must be
 operational for the LAG itself to be operational.
+\item The LAG's MACsec encryption mode.
+
+AWS assigns this value to each connection which is part of the LAG.
+\item The tags
 }
 
-When you create a LAG, the default value for the minimum number of
-operational connections is zero (0). If you update this value and the
-number of operational connections falls below the specified value, the
-LAG automatically goes down to avoid over-utilization of the remaining
-connections. Adjust this value with care, as it could force the LAG down
-if it is set higher than the current number of operational connections.
+If you adjust the threshold value for the minimum number of operational
+connections, ensure that the new value does not cause the LAG to fall
+below the threshold and become non-operational.
 }
 \section{Request syntax}{
 \preformatted{svc$update_lag(
   lagId = "string",
   lagName = "string",
-  minimumLinks = 123
+  minimumLinks = 123,
+  encryptionMode = "string"
 )
 }
 }

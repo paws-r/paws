@@ -27,7 +27,7 @@ Returns a list of the tags assigned to the specified resource.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(
-  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
+  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem"|"OpsMetadata",
   ResourceId = "string"
 )
 }

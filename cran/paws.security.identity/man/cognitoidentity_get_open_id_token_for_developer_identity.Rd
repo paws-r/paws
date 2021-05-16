@@ -6,7 +6,7 @@
 token for a user authenticated by your backend authentication process}
 \usage{
 cognitoidentity_get_open_id_token_for_developer_identity(IdentityPoolId,
-  IdentityId, Logins, TokenDuration)
+  IdentityId, Logins, PrincipalTags, TokenDuration)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -23,6 +23,8 @@ provided this domain while creating/updating the identity pool. The
 developer user identifier is an identifier from your backend that
 uniquely identifies a user. When you create an identity pool, you can
 specify the supported logins.}
+
+\item{PrincipalTags}{Use this operation to configure attribute mappings for custom providers.}
 
 \item{TokenDuration}{The expiration time of the token, in seconds. You can specify a custom
 expiration time for the token so that you can cache it. If you don't
@@ -69,6 +71,9 @@ You must use AWS Developer credentials to call this API.
   IdentityPoolId = "string",
   IdentityId = "string",
   Logins = list(
+    "string"
+  ),
+  PrincipalTags = list(
     "string"
   ),
   TokenDuration = 123

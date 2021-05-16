@@ -20,7 +20,7 @@ A list with the following syntax:\preformatted{list(
     S3ModelArtifacts = "string"
   ),
   TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-  SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+  SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
   FailureReason = "string",
   HyperParameters = list(
     "string"
@@ -102,7 +102,7 @@ A list with the following syntax:\preformatted{list(
   ),
   SecondaryStatusTransitions = list(
     list(
-      Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+      Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
       StartTime = as.POSIXct(
         "2015-01-01"
       ),
@@ -209,12 +209,24 @@ A list with the following syntax:\preformatted{list(
       )
     )
   ),
-  ProfilingStatus = "Enabled"|"Disabled"
+  ProfilingStatus = "Enabled"|"Disabled",
+  RetryStrategy = list(
+    MaximumRetryAttempts = 123
+  ),
+  Environment = list(
+    "string"
+  )
 )
 }
 }
 \description{
 Returns information about a training job.
+
+Some of the attributes below only appear if the training job
+successfully starts. If the training job fails, \code{TrainingJobStatus} is
+\code{Failed} and, depending on the \code{FailureReason}, attributes like
+\code{TrainingStartTime}, \code{TrainingTimeInSeconds}, \code{TrainingEndTime}, and
+\code{BillableTimeInSeconds} may not be present in the response.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_training_job(

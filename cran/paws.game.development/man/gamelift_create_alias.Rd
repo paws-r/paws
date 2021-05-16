@@ -66,14 +66,15 @@ optional description. Each simple alias can point to only one fleet, but
 a fleet can have multiple aliases. If successful, a new alias record is
 returned, including an alias ID and an ARN. You can reassign an alias to
 another fleet by calling \code{\link[=gamelift_update_alias]{update_alias}}.
-\itemize{
-\item \code{\link[=gamelift_create_alias]{create_alias}}
-\item \code{\link[=gamelift_list_aliases]{list_aliases}}
-\item \code{\link[=gamelift_describe_alias]{describe_alias}}
-\item \code{\link[=gamelift_update_alias]{update_alias}}
-\item \code{\link[=gamelift_delete_alias]{delete_alias}}
-\item \code{\link[=gamelift_resolve_alias]{resolve_alias}}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_alias]{create_alias}} |
+\code{\link[=gamelift_list_aliases]{list_aliases}} |
+\code{\link[=gamelift_describe_alias]{describe_alias}} |
+\code{\link[=gamelift_update_alias]{update_alias}} |
+\code{\link[=gamelift_delete_alias]{delete_alias}} |
+\code{\link[=gamelift_resolve_alias]{resolve_alias}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$create_alias(

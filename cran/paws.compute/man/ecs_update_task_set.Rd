@@ -16,7 +16,8 @@ the task set exists in.}
 \item{taskSet}{[required] The short name or full Amazon Resource Name (ARN) of the task set to
 update.}
 
-\item{scale}{[required]}
+\item{scale}{[required] A floating-point percentage of the desired number of tasks to place and
+keep running in the task set.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

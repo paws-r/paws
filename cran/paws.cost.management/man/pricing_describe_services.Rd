@@ -59,7 +59,7 @@ available for EC2 are \code{volumeType}, \code{maxIopsVolume}, \code{operation},
 
 \examples{
 \dontrun{
-#
+# Retrieves the service for the given Service Code.
 svc$describe_services(
   FormatVersion = "aws_v1",
   MaxResults = 1L,

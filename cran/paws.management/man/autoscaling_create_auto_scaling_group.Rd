@@ -37,13 +37,13 @@ Auto Scaling group. For more information, see \href{https://docs.aws.amazon.com/
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MixedInstancesPolicy}{An embedded object that specifies a mixed instances policy. The required
-parameters must be specified. If optional parameters are unspecified,
+properties must be specified. If optional properties are unspecified,
 their default values are used.
 
-The policy includes parameters that not only define the distribution of
+The policy includes properties that not only define the distribution of
 On-Demand Instances and Spot Instances, the maximum price to pay for
 Spot Instances, and how the Auto Scaling group allocates instance types
-to fulfill On-Demand and Spot capacities, but also the parameters that
+to fulfill On-Demand and Spot capacities, but also the properties that
 specify the instance configuration information—the launch template and
 instance types. The policy can also include a weight for each instance
 type and different launch templates for individual instance types. For
@@ -311,9 +311,12 @@ svc$create_auto_scaling_group(
 # target group.
 svc$create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
-  HealthCheckGracePeriod = 120L,
+  HealthCheckGracePeriod = 300L,
   HealthCheckType = "ELB",
-  LaunchConfigurationName = "my-launch-config",
+  LaunchTemplate = list(
+    LaunchTemplateId = "lt-0a20c965061f64abc",
+    Version = "$Default"
+  ),
   MaxSize = 3L,
   MinSize = 1L,
   TargetGroupARNs = list(
@@ -322,21 +325,44 @@ svc$create_auto_scaling_group(
   VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
 )
 
-# This example creates an Auto Scaling group and attaches the specified
-# Classic Load Balancer.
+# This example creates an Auto Scaling group with a mixed instances
+# policy. It specifies the c5.large, c5a.large, and c6g.large instance
+# types and defines a different launch template for the c6g.large instance
+# type.
 svc$create_auto_scaling_group(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  AvailabilityZones = list(
-    "us-west-2c"
+  AutoScalingGroupName = "my-asg",
+  DesiredCapacity = 3L,
+  MaxSize = 5L,
+  MinSize = 1L,
+  MixedInstancesPolicy = list(
+    InstancesDistribution = list(
+      OnDemandBaseCapacity = 1L,
+      OnDemandPercentageAboveBaseCapacity = 50L,
+      SpotAllocationStrategy = "capacity-optimized"
+    ),
+    LaunchTemplate = list(
+      LaunchTemplateSpecification = list(
+        LaunchTemplateName = "my-launch-template-for-x86",
+        Version = "$Latest"
+      ),
+      Overrides = list(
+        list(
+          InstanceType = "c6g.large",
+          LaunchTemplateSpecification = list(
+            LaunchTemplateName = "my-launch-template-for-arm",
+            Version = "$Latest"
+          )
+        ),
+        list(
+          InstanceType = "c5.large"
+        ),
+        list(
+          InstanceType = "c5a.large"
+        )
+      )
+    )
   ),
-  HealthCheckGracePeriod = 120L,
-  HealthCheckType = "ELB",
-  LaunchConfigurationName = "my-launch-config",
-  LoadBalancerNames = list(
-    "my-load-balancer"
-  ),
-  MaxSize = 3L,
-  MinSize = 1L
+  VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
 )
 }
 

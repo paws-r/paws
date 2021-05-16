@@ -75,6 +75,12 @@ A list with the following syntax:\preformatted{list(
             Region = "string"
           )
         )
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
       )
     )
   ),
@@ -86,7 +92,13 @@ A list with the following syntax:\preformatted{list(
 \description{
 Lists the instance profiles that have the specified path prefix. If
 there are none, the operation returns an empty list. For more
-information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
+information about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About instance profiles}.
+
+IAM resource-listing operations return a subset of the available
+attributes for the resource. For example, this operation does not return
+tags, even though they are an attribute of the returned object. To view
+all of the information for an instance profile, see
+\code{\link[=iam_get_instance_profile]{get_instance_profile}}.
 
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.

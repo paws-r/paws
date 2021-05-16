@@ -14,6 +14,16 @@ NULL
 #' largest face and compares it with each face detected in the target
 #' image.
 #' 
+#' CompareFaces uses machine learning algorithms, which are probabilistic.
+#' A false negative is an incorrect prediction that a face in the target
+#' image has a low similarity confidence score when compared to the face in
+#' the source image. To reduce the probability of false negatives, we
+#' recommend that you compare the target image against multiple source
+#' images. If you plan to use [`compare_faces`][rekognition_compare_faces]
+#' to make a decision that impacts an individual's rights, privacy, or
+#' access to services, we recommend that you pass the result to a human for
+#' review and further validation before taking action.
+#' 
 #' You pass the input and target images either as base64-encoded image
 #' bytes or as references to images in an Amazon S3 bucket. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing image bytes isn't
@@ -255,9 +265,11 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' `rekognition:CreateCollection` action.
 #'
 #' @usage
-#' rekognition_create_collection(CollectionId)
+#' rekognition_create_collection(CollectionId, Tags)
 #'
 #' @param CollectionId &#91;required&#93; ID for the collection that you are creating.
+#' @param Tags A set of tags (key-value pairs) that you want to attach to the
+#' collection.
 #'
 #' @return
 #' A list with the following syntax:
@@ -272,7 +284,10 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' @section Request syntax:
 #' ```
 #' svc$create_collection(
-#'   CollectionId = "string"
+#'   CollectionId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -287,14 +302,14 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' @keywords internal
 #'
 #' @rdname rekognition_create_collection
-rekognition_create_collection <- function(CollectionId) {
+rekognition_create_collection <- function(CollectionId, Tags = NULL) {
   op <- new_operation(
     name = "CreateCollection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$create_collection_input(CollectionId = CollectionId)
+  input <- .rekognition$create_collection_input(CollectionId = CollectionId, Tags = Tags)
   output <- .rekognition$create_collection_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -379,7 +394,7 @@ rekognition_create_project <- function(ProjectName) {
 #'
 #' @usage
 #' rekognition_create_project_version(ProjectArn, VersionName,
-#'   OutputConfig, TrainingData, TestingData)
+#'   OutputConfig, TrainingData, TestingData, Tags)
 #'
 #' @param ProjectArn &#91;required&#93; The ARN of the Amazon Rekognition Custom Labels project that manages the
 #' model that you want to train.
@@ -387,6 +402,7 @@ rekognition_create_project <- function(ProjectName) {
 #' @param OutputConfig &#91;required&#93; The Amazon S3 location to store the results of training.
 #' @param TrainingData &#91;required&#93; The dataset to use for training.
 #' @param TestingData &#91;required&#93; The dataset to use for testing.
+#' @param Tags A set of tags (key-value pairs) that you want to attach to the model.
 #'
 #' @return
 #' A list with the following syntax:
@@ -431,6 +447,9 @@ rekognition_create_project <- function(ProjectName) {
 #'       )
 #'     ),
 #'     AutoCreate = TRUE|FALSE
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -438,14 +457,14 @@ rekognition_create_project <- function(ProjectName) {
 #' @keywords internal
 #'
 #' @rdname rekognition_create_project_version
-rekognition_create_project_version <- function(ProjectArn, VersionName, OutputConfig, TrainingData, TestingData) {
+rekognition_create_project_version <- function(ProjectArn, VersionName, OutputConfig, TrainingData, TestingData, Tags = NULL) {
   op <- new_operation(
     name = "CreateProjectVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$create_project_version_input(ProjectArn = ProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, TrainingData = TrainingData, TestingData = TestingData)
+  input <- .rekognition$create_project_version_input(ProjectArn = ProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, TrainingData = TrainingData, TestingData = TestingData, Tags = Tags)
   output <- .rekognition$create_project_version_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -482,7 +501,7 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #'
 #' @usage
 #' rekognition_create_stream_processor(Input, Output, Name, Settings,
-#'   RoleArn)
+#'   RoleArn, Tags)
 #'
 #' @param Input &#91;required&#93; Kinesis video stream stream that provides the source streaming video. If
 #' you are using the AWS CLI, the parameter name is `StreamProcessorInput`.
@@ -498,6 +517,8 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #' Includes the collection to use for face recognition and the face
 #' attributes to detect.
 #' @param RoleArn &#91;required&#93; ARN of the IAM role that allows access to the stream processor.
+#' @param Tags A set of tags (key-value pairs) that you want to attach to the stream
+#' processor.
 #'
 #' @return
 #' A list with the following syntax:
@@ -527,21 +548,24 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #'       FaceMatchThreshold = 123.0
 #'     )
 #'   ),
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_create_stream_processor
-rekognition_create_stream_processor <- function(Input, Output, Name, Settings, RoleArn) {
+rekognition_create_stream_processor <- function(Input, Output, Name, Settings, RoleArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateStreamProcessor",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$create_stream_processor_input(Input = Input, Output = Output, Name = Name, Settings = Settings, RoleArn = RoleArn)
+  input <- .rekognition$create_stream_processor_input(Input = Input, Output = Output, Name = Name, Settings = Settings, RoleArn = RoleArn, Tags = Tags)
   output <- .rekognition$create_stream_processor_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -4040,6 +4064,56 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 }
 .rekognition$operations$list_stream_processors <- rekognition_list_stream_processors
 
+#' Returns a list of tags in an Amazon Rekognition collection, stream
+#' processor, or Custom Labels model
+#'
+#' @description
+#' Returns a list of tags in an Amazon Rekognition collection, stream
+#' processor, or Custom Labels model.
+#'
+#' @usage
+#' rekognition_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the model, collection, or stream processor
+#' that contains the tags that you want a list of.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_list_tags_for_resource
+rekognition_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .rekognition$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$list_tags_for_resource <- rekognition_list_tags_for_resource
+
 #' Returns an array of celebrities recognized in the input image
 #'
 #' @description
@@ -5435,3 +5509,99 @@ rekognition_stop_stream_processor <- function(Name) {
   return(response)
 }
 .rekognition$operations$stop_stream_processor <- rekognition_stop_stream_processor
+
+#' Adds one or more key-value tags to an Amazon Rekognition collection,
+#' stream processor, or Custom Labels model
+#'
+#' @description
+#' Adds one or more key-value tags to an Amazon Rekognition collection,
+#' stream processor, or Custom Labels model. For more information, see
+#' [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#'
+#' @usage
+#' rekognition_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the model, collection, or stream processor
+#' that you want to assign the tags to.
+#' @param Tags &#91;required&#93; The key-value tags to assign to the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_tag_resource
+rekognition_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .rekognition$tag_resource_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$tag_resource <- rekognition_tag_resource
+
+#' Removes one or more tags from an Amazon Rekognition collection, stream
+#' processor, or Custom Labels model
+#'
+#' @description
+#' Removes one or more tags from an Amazon Rekognition collection, stream
+#' processor, or Custom Labels model.
+#'
+#' @usage
+#' rekognition_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the model, collection, or stream processor
+#' that you want to remove the tags from.
+#' @param TagKeys &#91;required&#93; A list of the tags that you want to remove.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_untag_resource
+rekognition_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .rekognition$untag_resource_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$untag_resource <- rekognition_untag_resource

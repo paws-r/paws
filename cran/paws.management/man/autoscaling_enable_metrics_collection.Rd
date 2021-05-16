@@ -33,6 +33,17 @@ metrics:
 \item \code{GroupTotalCapacity}
 }
 
+The warm pools feature supports the following additional metrics:
+\itemize{
+\item \code{WarmPoolDesiredCapacity}
+\item \code{WarmPoolWarmedCapacity}
+\item \code{WarmPoolPendingCapacity}
+\item \code{WarmPoolTerminatingCapacity}
+\item \code{WarmPoolTotalCapacity}
+\item \code{GroupAndWarmPoolDesiredCapacity}
+\item \code{GroupAndWarmPoolTotalCapacity}
+}
+
 If you omit this parameter, all metrics are enabled.}
 
 \item{Granularity}{[required] The granularity to associate with the metrics to collect. The only valid

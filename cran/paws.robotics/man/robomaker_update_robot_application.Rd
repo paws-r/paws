@@ -32,7 +32,7 @@ A list with the following syntax:\preformatted{list(
   ),
   robotSoftwareSuite = list(
     name = "ROS"|"ROS2",
-    version = "Kinetic"|"Melodic"|"Dashing"
+    version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
   ),
   lastUpdatedAt = as.POSIXct(
     "2015-01-01"
@@ -56,7 +56,7 @@ Updates a robot application.
   ),
   robotSoftwareSuite = list(
     name = "ROS"|"ROS2",
-    version = "Kinetic"|"Melodic"|"Dashing"
+    version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
   ),
   currentRevisionId = "string"
 )

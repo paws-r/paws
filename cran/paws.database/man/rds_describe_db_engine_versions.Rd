@@ -9,7 +9,25 @@ rds_describe_db_engine_versions(Engine, EngineVersion,
   ListSupportedCharacterSets, ListSupportedTimezones, IncludeAll)
 }
 \arguments{
-\item{Engine}{The database engine to return.}
+\item{Engine}{The database engine to return.
+
+Valid Values:
+\itemize{
+\item \code{aurora} (for MySQL 5.6-compatible Aurora)
+\item \code{aurora-mysql} (for MySQL 5.7-compatible Aurora)
+\item \code{aurora-postgresql}
+\item \code{mariadb}
+\item \code{mysql}
+\item \code{oracle-ee}
+\item \code{oracle-se2}
+\item \code{oracle-se1}
+\item \code{oracle-se}
+\item \code{postgres}
+\item \code{sqlserver-ee}
+\item \code{sqlserver-se}
+\item \code{sqlserver-ex}
+\item \code{sqlserver-web}
+}}
 
 \item{EngineVersion}{The database engine version to return.
 
@@ -91,7 +109,12 @@ A list with the following syntax:\preformatted{list(
           EngineVersion = "string",
           Description = "string",
           AutoUpgrade = TRUE|FALSE,
-          IsMajorVersionUpgrade = TRUE|FALSE
+          IsMajorVersionUpgrade = TRUE|FALSE,
+          SupportedEngineModes = list(
+            "string"
+          ),
+          SupportsParallelQuery = TRUE|FALSE,
+          SupportsGlobalDatabases = TRUE|FALSE
         )
       ),
       SupportedTimezones = list(

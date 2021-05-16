@@ -7,7 +7,7 @@ access AWS resources that you might not normally have access to}
 \usage{
 sts_assume_role(RoleArn, RoleSessionName, PolicyArns, Policy,
   DurationSeconds, Tags, TransitiveTagKeys, ExternalId, SerialNumber,
-  TokenCode)
+  TokenCode, SourceIdentity)
 }
 \arguments{
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role to assume.}
@@ -33,14 +33,14 @@ want to use as managed session policies. The policies must exist in the
 same account as the role.
 
 This parameter is optional. You can provide up to 10 managed policy
-ARNs. However, the plain text that you use for both inline and managed
+ARNs. However, the plaintext that you use for both inline and managed
 session policies can't exceed 2,048 characters. For more information
 about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the AWS General Reference.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
+can fail for this limit even if your plaintext meets the other
 requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -67,7 +67,7 @@ by the identity-based policy of the role that is being assumed. For more
 information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session Policies}
 in the \emph{IAM User Guide}.
 
-The plain text that you use for both inline and managed session policies
+The plaintext that you use for both inline and managed session policies
 can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
 character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
@@ -75,19 +75,20 @@ character list (\code{U+0020} through \verb{U+00FF}). It can also include the ta
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
+can fail for this limit even if your plaintext meets the other
 requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.}
 
-\item{DurationSeconds}{The duration, in seconds, of the role session. The value can range from
-900 seconds (15 minutes) up to the maximum session duration setting for
-the role. This setting can have a value from 1 hour to 12 hours. If you
-specify a value higher than this setting, the operation fails. For
-example, if you specify a session duration of 12 hours, but your
-administrator set the maximum session duration to 6 hours, your
-operation fails. To learn how to view the maximum value for your role,
-see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
+\item{DurationSeconds}{The duration, in seconds, of the role session. The value specified can
+can range from 900 seconds (15 minutes) up to the maximum session
+duration that is set for the role. The maximum session duration setting
+can have a value from 1 hour to 12 hours. If you specify a value higher
+than this setting or the administrator setting (whichever is lower), the
+operation fails. For example, if you specify a session duration of 12
+hours, but your administrator set the maximum session duration to 6
+hours, your operation fails. To learn how to view the maximum value for
+your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
 in the \emph{IAM User Guide}.
 
 By default, the value is set to \code{3600} seconds.
@@ -105,13 +106,13 @@ session tags, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_sess
 in the \emph{IAM User Guide}.
 
 This parameter is optional. You can pass up to 50 session tags. The
-plain text session tag keys can’t exceed 128 characters, and the values
+plaintext session tag keys can’t exceed 128 characters, and the values
 can’t exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
+can fail for this limit even if your plaintext meets the other
 requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -177,13 +178,31 @@ spaces. You can also include underscores or any of the following
 characters: =,.@-}
 
 \item{TokenCode}{The value provided by the MFA device, if the trust policy of the role
-being assumed requires MFA (that is, if the policy includes a condition
-that tests for MFA). If the role being assumed requires MFA and if the
-\code{TokenCode} value is missing or expired, the
+being assumed requires MFA. (In other words, if the policy includes a
+condition that tests for MFA). If the role being assumed requires MFA
+and if the \code{TokenCode} value is missing or expired, the
 \code{\link[=sts_assume_role]{assume_role}} call returns an "access denied" error.
 
 The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.}
+
+\item{SourceIdentity}{The source identity specified by the principal that is calling the
+\code{\link[=sts_assume_role]{assume_role}} operation.
+
+You can require users to specify a source identity when they assume a
+role. You do this by using the \code{sts:SourceIdentity} condition key in a
+role trust policy. You can use source identity information in AWS
+CloudTrail logs to determine who took actions with a role. You can use
+the \code{aws:SourceIdentity} condition key to further control access to AWS
+resources based on the value of source identity. For more information
+about using source identity, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html}{Monitor and control actions taken with assumed roles}
+in the \emph{IAM User Guide}.
+
+The regex used to validate this parameter is a string of characters
+consisting of upper- and lower-case alphanumeric characters with no
+spaces. You can also include underscores or any of the following
+characters: =,.@-. You cannot use a value that begins with the text
+\verb{aws:}. This prefix is reserved for AWS internal use.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -199,7 +218,8 @@ A list with the following syntax:\preformatted{list(
     AssumedRoleId = "string",
     Arn = "string"
   ),
-  PackedPolicySize = 123
+  PackedPolicySize = 123,
+  SourceIdentity = "string"
 )
 }
 }
@@ -215,35 +235,6 @@ temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuid
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the AWS STS API operations}
 in the \emph{IAM User Guide}.
 
-You cannot use AWS account root user credentials to call
-\code{\link[=sts_assume_role]{assume_role}}. You must use credentials for an IAM
-user or an IAM role to call \code{\link[=sts_assume_role]{assume_role}}.
-
-For cross-account access, imagine that you own multiple accounts and
-need to access resources in each account. You could create long-term
-credentials in each account to access those resources. However, managing
-all those credentials and remembering which one can access which account
-can be time consuming. Instead, you can create one set of long-term
-credentials in one account. Then use temporary security credentials to
-access all the other accounts by assuming roles in those accounts. For
-more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM Roles}
-in the \emph{IAM User Guide}.
-
-\strong{Session Duration}
-
-By default, the temporary security credentials created by
-\code{\link[=sts_assume_role]{assume_role}} last for one hour. However, you can use
-the optional \code{DurationSeconds} parameter to specify the duration of your
-session. You can provide a value from 900 seconds (15 minutes) up to the
-maximum session duration setting for the role. This setting can have a
-value from 1 hour to 12 hours. To learn how to view the maximum value
-for your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
-in the \emph{IAM User Guide}. The maximum session duration limit applies when
-you use the \verb{AssumeRole*} API operations or the \verb{assume-role*} CLI
-commands. However the limit does not apply when you use those operations
-to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM Roles}
-in the \emph{IAM User Guide}.
-
 \strong{Permissions}
 
 The temporary security credentials created by
@@ -255,7 +246,7 @@ AWS service with the following exception: You cannot call the AWS STS
 (Optional) You can pass inline or managed \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{session policies}
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed policies
-to use as managed session policies. The plain text that you use for both
+to use as managed session policies. The plaintext that you use for both
 inline and managed session policies can't exceed 2,048 characters.
 Passing policies to this operation returns new temporary credentials.
 The resulting session's permissions are the intersection of the role's
@@ -350,7 +341,8 @@ the time-based one-time password (TOTP) that the MFA device produces.
   ),
   ExternalId = "string",
   SerialNumber = "string",
-  TokenCode = "string"
+  TokenCode = "string",
+  SourceIdentity = "string"
 )
 }
 }

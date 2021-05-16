@@ -76,7 +76,8 @@ A list with the following syntax:\preformatted{list(
             Prefix = "string"
           )
         )
-      )
+      ),
+      InstanceType = "string"
     ),
     TargetClusterInfo = list(
       BrokerEBSVolumeInfo = list(
@@ -118,7 +119,8 @@ A list with the following syntax:\preformatted{list(
             Prefix = "string"
           )
         )
-      )
+      ),
+      InstanceType = "string"
     )
   )
 )

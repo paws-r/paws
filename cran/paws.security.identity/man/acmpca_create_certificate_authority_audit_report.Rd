@@ -38,8 +38,8 @@ bucket that you specify. If the IAM principal making the call does not
 have permission to write to the bucket, then an exception is thrown. For
 more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
 
-ACM Private CAA assets that are stored in Amazon S3 can be protected
-with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuditReport.html#audit-report-encryption}{Encrypting Your Audit Reports}.
+ACM Private CA assets that are stored in Amazon S3 can be protected with
+encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuditReport.html#audit-report-encryption}{Encrypting Your Audit Reports}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_certificate_authority_audit_report(

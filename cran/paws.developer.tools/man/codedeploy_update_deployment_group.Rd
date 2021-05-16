@@ -8,7 +8,8 @@ codedeploy_update_deployment_group(applicationName,
   currentDeploymentGroupName, newDeploymentGroupName,
   deploymentConfigName, ec2TagFilters, onPremisesInstanceTagFilters,
   autoScalingGroups, serviceRoleArn, triggerConfigurations,
-  alarmConfiguration, autoRollbackConfiguration, deploymentStyle,
+  alarmConfiguration, autoRollbackConfiguration,
+  outdatedInstancesStrategy, deploymentStyle,
   blueGreenDeploymentConfiguration, loadBalancerInfo, ec2TagSet,
   ecsServices, onPremisesTagSet)
 }
@@ -46,6 +47,17 @@ deployment group is updated.}
 
 \item{autoRollbackConfiguration}{Information for an automatic rollback configuration that is added or
 changed when a deployment group is updated.}
+
+\item{outdatedInstancesStrategy}{Indicates what happens when new EC2 instances are launched
+mid-deployment and do not receive the deployed application revision.
+
+If this option is set to \code{UPDATE} or is unspecified, CodeDeploy
+initiates one or more 'auto-update outdated instances' deployments to
+apply the deployed application revision to the new EC2 instances.
+
+If this option is set to \code{IGNORE}, CodeDeploy does not initiate a
+deployment to update the new EC2 instances. This may result in instances
+having different revisions.}
 
 \item{deploymentStyle}{Information about the type of deployment, either in-place or blue/green,
 you want to run and whether to route deployment traffic behind a load
@@ -129,6 +141,7 @@ Changes information about a deployment group.
       "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
     )
   ),
+  outdatedInstancesStrategy = "UPDATE"|"IGNORE",
   deploymentStyle = list(
     deploymentType = "IN_PLACE"|"BLUE_GREEN",
     deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"

@@ -3,7 +3,7 @@
 \name{elasticache_modify_replication_group_shard_configuration}
 \alias{elasticache_modify_replication_group_shard_configuration}
 \title{Modifies a replication group's shards (node groups) by allowing you to
-add shards, remove shards, or rebalance the keyspaces among exisiting
+add shards, remove shards, or rebalance the keyspaces among existing
 shards}
 \usage{
 elasticache_modify_replication_group_shard_configuration(
@@ -73,6 +73,21 @@ A list with the following syntax:\preformatted{list(
         UserGroupIdsToRemove = list(
           "string"
         )
+      ),
+      LogDeliveryConfigurations = list(
+        list(
+          LogType = "slow-log",
+          DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+          DestinationDetails = list(
+            CloudWatchLogsDetails = list(
+              LogGroup = "string"
+            ),
+            KinesisFirehoseDetails = list(
+              DeliveryStream = "string"
+            )
+          ),
+          LogFormat = "text"|"json"
+        )
       )
     ),
     MemberClusters = list(
@@ -130,6 +145,23 @@ A list with the following syntax:\preformatted{list(
     ARN = "string",
     UserGroupIds = list(
       "string"
+    ),
+    LogDeliveryConfigurations = list(
+      list(
+        LogType = "slow-log",
+        DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+        DestinationDetails = list(
+          CloudWatchLogsDetails = list(
+            LogGroup = "string"
+          ),
+          KinesisFirehoseDetails = list(
+            DeliveryStream = "string"
+          )
+        ),
+        LogFormat = "text"|"json",
+        Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+        Message = "string"
+      )
     )
   )
 )
@@ -137,7 +169,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Modifies a replication group's shards (node groups) by allowing you to
-add shards, remove shards, or rebalance the keyspaces among exisiting
+add shards, remove shards, or rebalance the keyspaces among existing
 shards.
 }
 \section{Request syntax}{

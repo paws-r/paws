@@ -43,9 +43,13 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Uploads an X.509 signing certificate and associates it with the
-specified IAM user. Some AWS services use X.509 signing certificates to
+specified IAM user. Some AWS services require you to use certificates to
 validate requests that are signed with a corresponding private key. When
 you upload the certificate, its default status is \code{Active}.
+
+For information about when you would use an X.509 signing certificate,
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Managing server certificates in IAM}
+in the \emph{IAM User Guide}.
 
 If the \code{UserName} is not specified, the IAM user name is determined
 implicitly based on the AWS access key ID used to sign the request. This
@@ -57,9 +61,9 @@ Because the body of an X.509 certificate can be large, you should use
 POST rather than GET when calling
 \code{\link[=iam_upload_signing_certificate]{upload_signing_certificate}}. For
 information about setting up signatures and authorization through the
-API, go to \href{https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
+API, see \href{https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API requests}
 in the \emph{AWS General Reference}. For general information about using the
-Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Making Query Requests}
+Query API with IAM, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Making query requests}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

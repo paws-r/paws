@@ -20,9 +20,9 @@ An empty list.
 \description{
 Cancels a job in an AWS Batch job queue. Jobs that are in the
 \code{SUBMITTED}, \code{PENDING}, or \code{RUNNABLE} state are canceled. Jobs that have
-progressed to \code{STARTING} or \code{RUNNING} are not canceled (but the API
-operation still succeeds, even if no job is canceled); these jobs must
-be terminated with the \code{\link[=batch_terminate_job]{terminate_job}} operation.
+progressed to \code{STARTING} or \code{RUNNING} aren't canceled, but the API
+operation still succeeds, even if no job is canceled. These jobs must be
+terminated with the \code{\link[=batch_terminate_job]{terminate_job}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_job(

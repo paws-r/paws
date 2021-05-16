@@ -723,6 +723,132 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 }
 .codepipeline$operations$enable_stage_transition <- codepipeline_enable_stage_transition
 
+#' Returns information about an action type created for an external
+#' provider, where the action is to be used by customers of the external
+#' provider
+#'
+#' @description
+#' Returns information about an action type created for an external
+#' provider, where the action is to be used by customers of the external
+#' provider. The action can be created with any supported integration
+#' model.
+#'
+#' @usage
+#' codepipeline_get_action_type(category, owner, provider, version)
+#'
+#' @param category &#91;required&#93; Defines what kind of action can be taken in the stage. The following are
+#' the valid values:
+#' 
+#' -   `Source`
+#' 
+#' -   `Build`
+#' 
+#' -   `Test`
+#' 
+#' -   `Deploy`
+#' 
+#' -   `Approval`
+#' 
+#' -   `Invoke`
+#' @param owner &#91;required&#93; The creator of an action type that was created with any supported
+#' integration model. There are two valid values: `AWS` and `ThirdParty`.
+#' @param provider &#91;required&#93; The provider of the action type being called. The provider name is
+#' specified when the action type is created.
+#' @param version &#91;required&#93; A string that describes the action type version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionType = list(
+#'     description = "string",
+#'     executor = list(
+#'       configuration = list(
+#'         lambdaExecutorConfiguration = list(
+#'           lambdaFunctionArn = "string"
+#'         ),
+#'         jobWorkerExecutorConfiguration = list(
+#'           pollingAccounts = list(
+#'             "string"
+#'           ),
+#'           pollingServicePrincipals = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       type = "JobWorker"|"Lambda",
+#'       policyStatementsTemplate = "string",
+#'       jobTimeout = 123
+#'     ),
+#'     id = list(
+#'       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'       owner = "string",
+#'       provider = "string",
+#'       version = "string"
+#'     ),
+#'     inputArtifactDetails = list(
+#'       minimumCount = 123,
+#'       maximumCount = 123
+#'     ),
+#'     outputArtifactDetails = list(
+#'       minimumCount = 123,
+#'       maximumCount = 123
+#'     ),
+#'     permissions = list(
+#'       allowedAccounts = list(
+#'         "string"
+#'       )
+#'     ),
+#'     properties = list(
+#'       list(
+#'         name = "string",
+#'         optional = TRUE|FALSE,
+#'         key = TRUE|FALSE,
+#'         noEcho = TRUE|FALSE,
+#'         queryable = TRUE|FALSE,
+#'         description = "string"
+#'       )
+#'     ),
+#'     urls = list(
+#'       configurationUrl = "string",
+#'       entityUrlTemplate = "string",
+#'       executionUrlTemplate = "string",
+#'       revisionUrlTemplate = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_action_type(
+#'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'   owner = "string",
+#'   provider = "string",
+#'   version = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_get_action_type
+codepipeline_get_action_type <- function(category, owner, provider, version) {
+  op <- new_operation(
+    name = "GetActionType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$get_action_type_input(category = category, owner = owner, provider = provider, version = version)
+  output <- .codepipeline$get_action_type_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$get_action_type <- codepipeline_get_action_type
+
 #' Returns information about a job
 #'
 #' @description
@@ -1391,12 +1517,14 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
 #' account.
 #'
 #' @usage
-#' codepipeline_list_action_types(actionOwnerFilter, nextToken)
+#' codepipeline_list_action_types(actionOwnerFilter, nextToken,
+#'   regionFilter)
 #'
 #' @param actionOwnerFilter Filters the list of action types to those created by a specified entity.
 #' @param nextToken An identifier that was returned from the previous list action types
 #' call, which can be used to return the next set of action types in the
 #' list.
+#' @param regionFilter The Region to filter on for the list of action types.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1445,21 +1573,22 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
 #' ```
 #' svc$list_action_types(
 #'   actionOwnerFilter = "AWS"|"ThirdParty"|"Custom",
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   regionFilter = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_action_types
-codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken = NULL) {
+codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken = NULL, regionFilter = NULL) {
   op <- new_operation(
     name = "ListActionTypes",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$list_action_types_input(actionOwnerFilter = actionOwnerFilter, nextToken = nextToken)
+  input <- .codepipeline$list_action_types_input(actionOwnerFilter = actionOwnerFilter, nextToken = nextToken, regionFilter = regionFilter)
   output <- .codepipeline$list_action_types_output()
   config <- get_config()
   svc <- .codepipeline$service(config)
@@ -1559,10 +1688,14 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 #' Gets a summary of all of the pipelines associated with your account.
 #'
 #' @usage
-#' codepipeline_list_pipelines(nextToken)
+#' codepipeline_list_pipelines(nextToken, maxResults)
 #'
 #' @param nextToken An identifier that was returned from the previous list pipelines call.
 #' It can be used to return the next set of pipelines in the list.
+#' @param maxResults The maximum number of pipelines to return in a single call. To retrieve
+#' the remaining pipelines, make another call with the returned nextToken
+#' value. The minimum value you can specify is 1. The maximum accepted
+#' value is 1000.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1587,21 +1720,22 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 #' @section Request syntax:
 #' ```
 #' svc$list_pipelines(
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_pipelines
-codepipeline_list_pipelines <- function(nextToken = NULL) {
+codepipeline_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPipelines",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$list_pipelines_input(nextToken = nextToken)
+  input <- .codepipeline$list_pipelines_input(nextToken = nextToken, maxResults = maxResults)
   output <- .codepipeline$list_pipelines_output()
   config <- get_config()
   svc <- .codepipeline$service(config)
@@ -2744,6 +2878,107 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .codepipeline$operations$untag_resource <- codepipeline_untag_resource
+
+#' Updates an action type that was created with any supported integration
+#' model, where the action type is to be used by customers of the action
+#' type provider
+#'
+#' @description
+#' Updates an action type that was created with any supported integration
+#' model, where the action type is to be used by customers of the action
+#' type provider. Use a JSON file with the action definition and
+#' [`update_action_type`][codepipeline_update_action_type] to provide the
+#' full structure.
+#'
+#' @usage
+#' codepipeline_update_action_type(actionType)
+#'
+#' @param actionType &#91;required&#93; The action type definition for the action type to be updated.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_action_type(
+#'   actionType = list(
+#'     description = "string",
+#'     executor = list(
+#'       configuration = list(
+#'         lambdaExecutorConfiguration = list(
+#'           lambdaFunctionArn = "string"
+#'         ),
+#'         jobWorkerExecutorConfiguration = list(
+#'           pollingAccounts = list(
+#'             "string"
+#'           ),
+#'           pollingServicePrincipals = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       type = "JobWorker"|"Lambda",
+#'       policyStatementsTemplate = "string",
+#'       jobTimeout = 123
+#'     ),
+#'     id = list(
+#'       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'       owner = "string",
+#'       provider = "string",
+#'       version = "string"
+#'     ),
+#'     inputArtifactDetails = list(
+#'       minimumCount = 123,
+#'       maximumCount = 123
+#'     ),
+#'     outputArtifactDetails = list(
+#'       minimumCount = 123,
+#'       maximumCount = 123
+#'     ),
+#'     permissions = list(
+#'       allowedAccounts = list(
+#'         "string"
+#'       )
+#'     ),
+#'     properties = list(
+#'       list(
+#'         name = "string",
+#'         optional = TRUE|FALSE,
+#'         key = TRUE|FALSE,
+#'         noEcho = TRUE|FALSE,
+#'         queryable = TRUE|FALSE,
+#'         description = "string"
+#'       )
+#'     ),
+#'     urls = list(
+#'       configurationUrl = "string",
+#'       entityUrlTemplate = "string",
+#'       executionUrlTemplate = "string",
+#'       revisionUrlTemplate = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_update_action_type
+codepipeline_update_action_type <- function(actionType) {
+  op <- new_operation(
+    name = "UpdateActionType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$update_action_type_input(actionType = actionType)
+  output <- .codepipeline$update_action_type_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$update_action_type <- codepipeline_update_action_type
 
 #' Updates a specified pipeline with edits or changes to its structure
 #'

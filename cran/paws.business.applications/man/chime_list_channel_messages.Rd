@@ -5,7 +5,7 @@
 \title{List all the messages in a channel}
 \usage{
 chime_list_channel_messages(ChannelArn, SortOrder, NotBefore, NotAfter,
-  MaxResults, NextToken)
+  MaxResults, NextToken, ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
@@ -21,6 +21,8 @@ based on time created.}
 
 \item{NextToken}{The token passed by previous API calls until all requested messages are
 returned.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -53,12 +55,16 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 List all the messages in a channel. Returns a paginated list of
-\code{ChannelMessages}. Sorted in descending order by default, based on the
-creation timestamp.
+\code{ChannelMessages}. By default, sorted by creation timestamp in
+descending order.
 
 Redacted messages appear in the results as empty, since they are only
 redacted, not deleted. Deleted messages do not appear in the results.
 This action always returns the latest version of an edited message.
+
+Also, the x-amz-chime-bearer request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$list_channel_messages(
@@ -71,7 +77,8 @@ This action always returns the latest version of an edited message.
     "2015-01-01"
   ),
   MaxResults = 123,
-  NextToken = "string"
+  NextToken = "string",
+  ChimeBearer = "string"
 )
 }
 }

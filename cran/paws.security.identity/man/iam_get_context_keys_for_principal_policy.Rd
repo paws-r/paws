@@ -18,7 +18,7 @@ that are found in policies attached to that entity. Note that all
 parameters are shown in unencoded form here for clarity, but must be URL
 encoded to be included as a part of a real HTML request.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 
 \item{PolicyInputList}{An optional list of additional policies for which you want the list of
@@ -57,8 +57,8 @@ by string, use
 \code{\link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy}}
 instead.
 
-\strong{Note:} This API discloses information about the permissions granted
-to other users. If you do not want users to see other user's
+\strong{Note:} This operation discloses information about the permissions
+granted to other users. If you do not want users to see other user's
 permissions, then consider allowing them to use
 \code{\link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy}}
 instead.

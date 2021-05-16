@@ -24,13 +24,11 @@ codes:
 \item{CountryCode}{Amazon Route 53 uses the two-letter country codes that are specified in
 \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO standard 3166-1 alpha-2}.}
 
-\item{SubdivisionCode}{For \code{SubdivisionCode}, Amazon Route 53 supports only states of the
-United States. For a list of state abbreviations, see Appendix B:
+\item{SubdivisionCode}{The code for the subdivision, such as a particular state within the
+United States. For a list of US state abbreviations, see Appendix B:
 Two–Letter State and Possession Abbreviations on the United States
-Postal Service website.
-
-If you specify \code{subdivisioncode}, you must also specify \code{US} for
-\code{CountryCode}.}
+Postal Service website. For a list of all supported subdivision codes,
+use the \code{\link[=route53_list_geo_locations]{list_geo_locations}} API.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -48,6 +46,9 @@ A list with the following syntax:\preformatted{list(
 \description{
 Gets information about whether a specified geographic location is
 supported for Amazon Route 53 geolocation resource record sets.
+
+Route 53 does not perform authorization for this API because it
+retrieves information that is already available to the public.
 
 Use the following syntax to determine whether a continent is supported
 for geolocation:

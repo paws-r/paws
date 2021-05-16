@@ -40,7 +40,7 @@ A list with the following syntax:\preformatted{list(
 Returns a list of all Outposts buckets in an Outpost that are owned by
 the authenticated sender of the request. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 For an example of the request syntax for Amazon S3 on Outposts that uses
 the S3 on Outposts endpoint hostname prefix and \code{x-amz-outpost-id} in

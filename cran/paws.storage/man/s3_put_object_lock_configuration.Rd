@@ -23,7 +23,7 @@ bucket.}
 For requests made using the AWS Command Line Interface (CLI) or AWS
 SDKs, this field is calculated automatically.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -36,14 +36,15 @@ A list with the following syntax:\preformatted{list(
 \description{
 Places an Object Lock configuration on the specified bucket. The rule
 specified in the Object Lock configuration will be applied by default to
-every new object placed in the specified bucket.
-
-\code{DefaultRetention} requires either Days or Years. You can't specify both
-at the same time.
-
-\strong{Related Resources}
+every new object placed in the specified bucket. For more information,
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}
+\item The \code{DefaultRetention} settings require both a mode and a period.
+\item The \code{DefaultRetention} period can be either \code{Days} or \code{Years} but
+you must select one. You cannot specify \code{Days} and \code{Years} at the
+same time.
+\item You can only enable Object Lock for new buckets. If you want to turn
+on Object Lock for an existing bucket, contact AWS Support.
 }
 }
 \section{Request syntax}{

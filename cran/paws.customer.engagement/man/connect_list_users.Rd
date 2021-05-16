@@ -14,7 +14,7 @@ connect_list_users(InstanceId, NextToken, MaxResults)
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

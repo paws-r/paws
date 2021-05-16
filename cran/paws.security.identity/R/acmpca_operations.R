@@ -18,8 +18,8 @@ NULL
 #' certificates issued by the CA. If successful, this action returns the
 #' Amazon Resource Name (ARN) of the CA.
 #' 
-#' ACM Private CAA assets that are stored in Amazon S3 can be protected
-#' with encryption. For more information, see [Encrypting Your
+#' ACM Private CA assets that are stored in Amazon S3 can be protected with
+#' encryption. For more information, see [Encrypting Your
 #' CRLs](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption).
 #' 
 #' Both PCA and the IAM principal must have permission to write to the S3
@@ -31,7 +31,7 @@ NULL
 #' @usage
 #' acmpca_create_certificate_authority(CertificateAuthorityConfiguration,
 #'   RevocationConfiguration, CertificateAuthorityType, IdempotencyToken,
-#'   Tags)
+#'   KeyStorageSecurityStandard, Tags)
 #'
 #' @param CertificateAuthorityConfiguration &#91;required&#93; Name and bit size of the private key algorithm, the name of the signing
 #' algorithm, and X.500 certificate subject information.
@@ -43,12 +43,25 @@ NULL
 #' [CrlConfiguration](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CrlConfiguration.html)
 #' structure.
 #' @param CertificateAuthorityType &#91;required&#93; The type of the certificate authority.
-#' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to
-#' **CreateCertificateAuthority**. For a given token, ACM Private CA
-#' creates exactly one CA. If you issue a subsequent call using the same
-#' token, ACM Private CA returns the ARN of the existing CA and takes no
-#' further action. If you change the idempotency token across multiple
-#' calls, ACM Private CA creates a unique CA for each unique token.
+#' @param IdempotencyToken Custom string that can be used to distinguish between calls to the
+#' **CreateCertificateAuthority** action. Idempotency tokens for
+#' **CreateCertificateAuthority** time out after five minutes. Therefore,
+#' if you call **CreateCertificateAuthority** multiple times with the same
+#' idempotency token within five minutes, ACM Private CA recognizes that
+#' you are requesting only certificate authority and will issue only one.
+#' If you change the idempotency token for each call, PCA recognizes that
+#' you are requesting multiple certificate authorities.
+#' @param KeyStorageSecurityStandard Specifies a cryptographic key management compliance standard used for
+#' handling CA keys.
+#' 
+#' Default: FIPS_140_2_LEVEL_3_OR_HIGHER
+#' 
+#' Note: AWS Region ap-northeast-3 supports only
+#' FIPS_140_2_LEVEL_2_OR_HIGHER. You must explicitly specify this
+#' parameter and value when creating a CA in that Region. Specifying a
+#' different value (or no value) results in an `InvalidArgsException` with
+#' the message "A certificate authority cannot be created in this region
+#' with the specified security standard."
 #' @param Tags Key-value pairs that will be attached to the new private CA. You can
 #' associate up to 50 tags with a private CA. For information using tags
 #' with IAM to manage permissions, see [Controlling Access Using IAM
@@ -147,6 +160,7 @@ NULL
 #'   ),
 #'   CertificateAuthorityType = "ROOT"|"SUBORDINATE",
 #'   IdempotencyToken = "string",
+#'   KeyStorageSecurityStandard = "FIPS_140_2_LEVEL_2_OR_HIGHER"|"FIPS_140_2_LEVEL_3_OR_HIGHER",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -159,14 +173,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname acmpca_create_certificate_authority
-acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguration, RevocationConfiguration = NULL, CertificateAuthorityType, IdempotencyToken = NULL, Tags = NULL) {
+acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguration, RevocationConfiguration = NULL, CertificateAuthorityType, IdempotencyToken = NULL, KeyStorageSecurityStandard = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCertificateAuthority",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .acmpca$create_certificate_authority_input(CertificateAuthorityConfiguration = CertificateAuthorityConfiguration, RevocationConfiguration = RevocationConfiguration, CertificateAuthorityType = CertificateAuthorityType, IdempotencyToken = IdempotencyToken, Tags = Tags)
+  input <- .acmpca$create_certificate_authority_input(CertificateAuthorityConfiguration = CertificateAuthorityConfiguration, RevocationConfiguration = RevocationConfiguration, CertificateAuthorityType = CertificateAuthorityType, IdempotencyToken = IdempotencyToken, KeyStorageSecurityStandard = KeyStorageSecurityStandard, Tags = Tags)
   output <- .acmpca$create_certificate_authority_output()
   config <- get_config()
   svc <- .acmpca$service(config)
@@ -192,8 +206,8 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 #' more information, see [Configure Access to ACM Private
 #' CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/).
 #' 
-#' ACM Private CAA assets that are stored in Amazon S3 can be protected
-#' with encryption. For more information, see [Encrypting Your Audit
+#' ACM Private CA assets that are stored in Amazon S3 can be protected with
+#' encryption. For more information, see [Encrypting Your Audit
 #' Reports](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuditReport.html#audit-report-encryption).
 #'
 #' @usage
@@ -594,7 +608,7 @@ acmpca_delete_policy <- function(ResourceArn) {
 #' -   `EXPIRED` - Your private CA certificate has expired.
 #' 
 #' -   `FAILED` - Your private CA has failed. Your CA can fail because of
-#'     problems such a network outage or backend AWS failure or other
+#'     problems such a network outage or back-end AWS failure or other
 #'     errors. A failed CA can never return to the pending state. You must
 #'     create a new CA.
 #' 
@@ -716,7 +730,8 @@ acmpca_delete_policy <- function(ResourceArn) {
 #'     ),
 #'     RestorableUntil = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     KeyStorageSecurityStandard = "FIPS_140_2_LEVEL_2_OR_HIGHER"|"FIPS_140_2_LEVEL_3_OR_HIGHER"
 #'   )
 #' )
 #' ```
@@ -1072,7 +1087,7 @@ acmpca_get_policy <- function(ResourceArn) {
 #' 
 #' 1.  In ACM Private CA, call the
 #'     [`create_certificate_authority`][acmpca_create_certificate_authority]
-#'     action to create the private CA that that you plan to back with the
+#'     action to create the private CA that you plan to back with the
 #'     imported certificate.
 #' 
 #' 2.  Call the
@@ -1095,7 +1110,7 @@ acmpca_get_policy <- function(ResourceArn) {
 #' -   Installing a subordinate CA certificate whose parent authority is
 #'     externally hosted.
 #' 
-#' The following addtitional requirements apply when you import a CA
+#' The following additional requirements apply when you import a CA
 #' certificate.
 #' 
 #' -   Only a self-signed certificate can be imported as a root CA.
@@ -1226,21 +1241,32 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' the ARNs of the certificates that you issue by using ACM Private CA.
 #'
 #' @usage
-#' acmpca_issue_certificate(CertificateAuthorityArn, Csr, SigningAlgorithm,
-#'   TemplateArn, Validity, IdempotencyToken)
+#' acmpca_issue_certificate(ApiPassthrough, CertificateAuthorityArn, Csr,
+#'   SigningAlgorithm, TemplateArn, Validity, ValidityNotBefore,
+#'   IdempotencyToken)
 #'
+#' @param ApiPassthrough Specifies X.509 certificate information to be included in the issued
+#' certificate. An `APIPassthrough` or `APICSRPassthrough` template variant
+#' must be selected, or else this parameter is ignored. For more
+#' information about using these templates, see [Understanding Certificate
+#' Templates](https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html).
+#' 
+#' If conflicting or duplicate certificate information is supplied during
+#' certificate issuance, ACM Private CA applies [order of operation
+#' rules](https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html#template-order-of-operations)
+#' to determine what information is used.
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
 #' [`create_certificate_authority`][acmpca_create_certificate_authority].
 #' This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param Csr &#91;required&#93; The certificate signing request (CSR) for the certificate you want to
-#' issue. You can use the following OpenSSL command to create the CSR and a
-#' 2048 bit RSA private key.
+#' issue. As an example, you can use the following OpenSSL command to
+#' create the CSR and a 2048 bit RSA private key.
 #' 
 #' `openssl req -new -newkey rsa:2048 -days 365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr`
 #' 
-#' If you have a configuration file, you can use the following OpenSSL
+#' If you have a configuration file, you can then use the following OpenSSL
 #' command. The `usr_cert` block in the configuration file contains your
 #' X509 version 3 extensions.
 #' 
@@ -1252,7 +1278,9 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' be issued.
 #' 
 #' This parameter should not be confused with the `SigningAlgorithm`
-#' parameter used to sign a CSR.
+#' parameter used to sign a CSR in the
+#' [`create_certificate_authority`][acmpca_create_certificate_authority]
+#' action.
 #' @param TemplateArn Specifies a custom configuration template to use when issuing a
 #' certificate. If this parameter is not provided, ACM Private CA defaults
 #' to the `EndEntityCertificate/V1` template. For CA certificates, you
@@ -1264,57 +1292,52 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' Note: The CA depth configured on a subordinate CA certificate must not
 #' exceed the limit set by its parents in the CA hierarchy.
 #' 
-#' The following service-owned `TemplateArn` values are supported by ACM
-#' Private CA:
-#' 
-#' -   arn:aws:acm-pca:::template/CodeSigningCertificate/V1
-#' 
-#' -   arn:aws:acm-pca:::template/CodeSigningCertificate_CSRPassthrough/V1
-#' 
-#' -   arn:aws:acm-pca:::template/EndEntityCertificate/V1
-#' 
-#' -   arn:aws:acm-pca:::template/EndEntityCertificate_CSRPassthrough/V1
-#' 
-#' -   arn:aws:acm-pca:::template/EndEntityClientAuthCertificate/V1
-#' 
-#' -   arn:aws:acm-pca:::template/EndEntityClientAuthCertificate_CSRPassthrough/V1
-#' 
-#' -   arn:aws:acm-pca:::template/EndEntityServerAuthCertificate/V1
-#' 
-#' -   arn:aws:acm-pca:::template/EndEntityServerAuthCertificate_CSRPassthrough/V1
-#' 
-#' -   arn:aws:acm-pca:::template/OCSPSigningCertificate/V1
-#' 
-#' -   arn:aws:acm-pca:::template/OCSPSigningCertificate_CSRPassthrough/V1
-#' 
-#' -   arn:aws:acm-pca:::template/RootCACertificate/V1
-#' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
-#' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
-#' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
-#' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
-#' 
-#' For more information, see [Using
+#' For a list of `TemplateArn` values supported by ACM Private CA, see
+#' [Understanding Certificate
 #' Templates](https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html).
-#' @param Validity &#91;required&#93; Information describing the validity period of the certificate.
+#' @param Validity &#91;required&#93; Information describing the end of the validity period of the
+#' certificate. This parameter sets the “Not After” date for the
+#' certificate.
 #' 
-#' When issuing a certificate, ACM Private CA sets the "Not Before" date in
-#' the validity field to date and time minus 60 minutes. This is intended
-#' to compensate for time inconsistencies across systems of 60 minutes or
-#' less.
+#' Certificate validity is the period of time during which a certificate is
+#' valid. Validity can be expressed as an explicit date and time when the
+#' certificate expires, or as a span of time after issuance, stated in
+#' days, months, or years. For more information, see
+#' [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5)
+#' in RFC 5280.
 #' 
-#' The validity period configured on a certificate must not exceed the
-#' limit set by its parents in the CA hierarchy.
-#' @param IdempotencyToken Custom string that can be used to distinguish between calls to the
-#' **IssueCertificate** action. Idempotency tokens time out after one hour.
-#' Therefore, if you call **IssueCertificate** multiple times with the same
-#' idempotency token within 5 minutes, ACM Private CA recognizes that you
-#' are requesting only one certificate and will issue only one. If you
-#' change the idempotency token for each call, PCA recognizes that you are
-#' requesting multiple certificates.
+#' This value is unaffected when `ValidityNotBefore` is also specified. For
+#' example, if `Validity` is set to 20 days in the future, the certificate
+#' will expire 20 days from issuance time regardless of the
+#' `ValidityNotBefore` value.
+#' 
+#' The end of the validity period configured on a certificate must not
+#' exceed the limit set on its parents in the CA hierarchy.
+#' @param ValidityNotBefore Information describing the start of the validity period of the
+#' certificate. This parameter sets the “Not Before" date for the
+#' certificate.
+#' 
+#' By default, when issuing a certificate, ACM Private CA sets the "Not
+#' Before" date to the issuance time minus 60 minutes. This compensates for
+#' clock inconsistencies across computer systems. The `ValidityNotBefore`
+#' parameter can be used to customize the “Not Before” value.
+#' 
+#' Unlike the `Validity` parameter, the `ValidityNotBefore` parameter is
+#' optional.
+#' 
+#' The `ValidityNotBefore` value is expressed as an explicit date and time,
+#' using the `Validity` type value `ABSOLUTE`. For more information, see
+#' [Validity](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_Validity.html)
+#' in this API reference and
+#' [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5)
+#' in RFC 5280.
+#' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to the
+#' **IssueCertificate** action. Idempotency tokens for **IssueCertificate**
+#' time out after one minute. Therefore, if you call **IssueCertificate**
+#' multiple times with the same idempotency token within one minute, ACM
+#' Private CA recognizes that you are requesting only one certificate and
+#' will issue only one. If you change the idempotency token for each call,
+#' PCA recognizes that you are requesting multiple certificates.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1327,11 +1350,98 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' @section Request syntax:
 #' ```
 #' svc$issue_certificate(
+#'   ApiPassthrough = list(
+#'     Extensions = list(
+#'       CertificatePolicies = list(
+#'         list(
+#'           CertPolicyId = "string",
+#'           PolicyQualifiers = list(
+#'             list(
+#'               PolicyQualifierId = "CPS",
+#'               Qualifier = list(
+#'                 CpsUri = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ExtendedKeyUsage = list(
+#'         list(
+#'           ExtendedKeyUsageType = "SERVER_AUTH"|"CLIENT_AUTH"|"CODE_SIGNING"|"EMAIL_PROTECTION"|"TIME_STAMPING"|"OCSP_SIGNING"|"SMART_CARD_LOGIN"|"DOCUMENT_SIGNING"|"CERTIFICATE_TRANSPARENCY",
+#'           ExtendedKeyUsageObjectIdentifier = "string"
+#'         )
+#'       ),
+#'       KeyUsage = list(
+#'         DigitalSignature = TRUE|FALSE,
+#'         NonRepudiation = TRUE|FALSE,
+#'         KeyEncipherment = TRUE|FALSE,
+#'         DataEncipherment = TRUE|FALSE,
+#'         KeyAgreement = TRUE|FALSE,
+#'         KeyCertSign = TRUE|FALSE,
+#'         CRLSign = TRUE|FALSE,
+#'         EncipherOnly = TRUE|FALSE,
+#'         DecipherOnly = TRUE|FALSE
+#'       ),
+#'       SubjectAlternativeNames = list(
+#'         list(
+#'           OtherName = list(
+#'             TypeId = "string",
+#'             Value = "string"
+#'           ),
+#'           Rfc822Name = "string",
+#'           DnsName = "string",
+#'           DirectoryName = list(
+#'             Country = "string",
+#'             Organization = "string",
+#'             OrganizationalUnit = "string",
+#'             DistinguishedNameQualifier = "string",
+#'             State = "string",
+#'             CommonName = "string",
+#'             SerialNumber = "string",
+#'             Locality = "string",
+#'             Title = "string",
+#'             Surname = "string",
+#'             GivenName = "string",
+#'             Initials = "string",
+#'             Pseudonym = "string",
+#'             GenerationQualifier = "string"
+#'           ),
+#'           EdiPartyName = list(
+#'             PartyName = "string",
+#'             NameAssigner = "string"
+#'           ),
+#'           UniformResourceIdentifier = "string",
+#'           IpAddress = "string",
+#'           RegisteredId = "string"
+#'         )
+#'       )
+#'     ),
+#'     Subject = list(
+#'       Country = "string",
+#'       Organization = "string",
+#'       OrganizationalUnit = "string",
+#'       DistinguishedNameQualifier = "string",
+#'       State = "string",
+#'       CommonName = "string",
+#'       SerialNumber = "string",
+#'       Locality = "string",
+#'       Title = "string",
+#'       Surname = "string",
+#'       GivenName = "string",
+#'       Initials = "string",
+#'       Pseudonym = "string",
+#'       GenerationQualifier = "string"
+#'     )
+#'   ),
 #'   CertificateAuthorityArn = "string",
 #'   Csr = raw,
 #'   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
 #'   TemplateArn = "string",
 #'   Validity = list(
+#'     Value = 123,
+#'     Type = "END_DATE"|"ABSOLUTE"|"DAYS"|"MONTHS"|"YEARS"
+#'   ),
+#'   ValidityNotBefore = list(
 #'     Value = 123,
 #'     Type = "END_DATE"|"ABSOLUTE"|"DAYS"|"MONTHS"|"YEARS"
 #'   ),
@@ -1342,14 +1452,14 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' @keywords internal
 #'
 #' @rdname acmpca_issue_certificate
-acmpca_issue_certificate <- function(CertificateAuthorityArn, Csr, SigningAlgorithm, TemplateArn = NULL, Validity, IdempotencyToken = NULL) {
+acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthorityArn, Csr, SigningAlgorithm, TemplateArn = NULL, Validity, ValidityNotBefore = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "IssueCertificate",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .acmpca$issue_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, Csr = Csr, SigningAlgorithm = SigningAlgorithm, TemplateArn = TemplateArn, Validity = Validity, IdempotencyToken = IdempotencyToken)
+  input <- .acmpca$issue_certificate_input(ApiPassthrough = ApiPassthrough, CertificateAuthorityArn = CertificateAuthorityArn, Csr = Csr, SigningAlgorithm = SigningAlgorithm, TemplateArn = TemplateArn, Validity = Validity, ValidityNotBefore = ValidityNotBefore, IdempotencyToken = IdempotencyToken)
   output <- .acmpca$issue_certificate_output()
   config <- get_config()
   svc <- .acmpca$service(config)
@@ -1488,7 +1598,8 @@ acmpca_issue_certificate <- function(CertificateAuthorityArn, Csr, SigningAlgori
 #'       ),
 #'       RestorableUntil = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       KeyStorageSecurityStandard = "FIPS_140_2_LEVEL_2_OR_HIGHER"|"FIPS_140_2_LEVEL_3_OR_HIGHER"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1744,7 +1855,7 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 #' policy. The ARN of the CA can be found by calling the
 #' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' action.
-#' @param Policy &#91;required&#93; The path and filename of a JSON-formatted IAM policy to attach to the
+#' @param Policy &#91;required&#93; The path and file name of a JSON-formatted IAM policy to attach to the
 #' specified private CA resource. If this policy does not contain all
 #' required statements or if it includes any statement that is not allowed,
 #' the [`put_policy`][acmpca_put_policy] action returns an

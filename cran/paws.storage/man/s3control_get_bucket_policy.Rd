@@ -32,18 +32,18 @@ A list with the following syntax:\preformatted{list(
 \description{
 This action gets a bucket policy for an Amazon S3 on Outposts bucket. To
 get a policy for an S3 bucket, see
-\code{\link[=s3control_get_bucket_policy]{get_bucket_policy}} in the \emph{Amazon Simple
-Storage Service API}.
+\code{\link[=s3control_get_bucket_policy]{get_bucket_policy}} in the \emph{Amazon S3 API
+Reference}.
 
 Returns the policy of a specified Outposts bucket. For more information,
 see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 If you are using an identity other than the root user of the AWS account
 that owns the bucket, the calling identity must have the
 \code{\link[=s3control_get_bucket_policy]{get_bucket_policy}} permissions on the
 specified bucket and belong to the bucket owner's account in order to
-use this operation.
+use this action.
 
 Only users from Outposts bucket owner account with the right permissions
 can perform actions on an Outposts bucket. If you don't have
@@ -52,8 +52,8 @@ identity that belongs to the bucket owner's account, Amazon S3 returns a
 \verb{403 Access Denied} error.
 
 As a security precaution, the root user of the AWS account that owns a
-bucket can always use this operation, even if the policy explicitly
-denies the root user the ability to perform this action.
+bucket can always use this action, even if the policy explicitly denies
+the root user the ability to perform this action.
 
 For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
 

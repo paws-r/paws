@@ -22,8 +22,8 @@ from a previous call.)}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 
-\item{ReverseOrder}{A boolean that indicates whether to list step executions in reverse
-order by start time. The default value is false.}
+\item{ReverseOrder}{Indicates whether to list step executions in reverse order by start
+time. The default value is 'false'.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

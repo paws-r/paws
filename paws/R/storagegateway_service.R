@@ -115,6 +115,7 @@ NULL
 #'  \link[=storagegateway_add_upload_buffer]{add_upload_buffer} \tab Configures one or more gateway local disks as upload buffer for a specified gateway\cr
 #'  \link[=storagegateway_add_working_storage]{add_working_storage} \tab Configures one or more gateway local disks as working storage for a gateway\cr
 #'  \link[=storagegateway_assign_tape_pool]{assign_tape_pool} \tab Assigns a tape to a tape pool for archiving\cr
+#'  \link[=storagegateway_associate_file_system]{associate_file_system} \tab Associate an Amazon FSx file system with the Amazon FSx file gateway\cr
 #'  \link[=storagegateway_attach_volume]{attach_volume} \tab Connects a volume to an iSCSI connection and then attaches the volume to the specified gateway\cr
 #'  \link[=storagegateway_cancel_archival]{cancel_archival} \tab Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated\cr
 #'  \link[=storagegateway_cancel_retrieval]{cancel_retrieval} \tab Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated\cr
@@ -137,12 +138,13 @@ NULL
 #'  \link[=storagegateway_delete_tape_archive]{delete_tape_archive} \tab Deletes the specified virtual tape from the virtual tape shelf (VTS)\cr
 #'  \link[=storagegateway_delete_tape_pool]{delete_tape_pool} \tab Delete a custom tape pool\cr
 #'  \link[=storagegateway_delete_volume]{delete_volume} \tab Deletes the specified storage volume that you previously created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume API\cr
-#'  \link[=storagegateway_describe_availability_monitor_test]{describe_availability_monitor_test} \tab Returns information about the most recent High Availability monitoring test that was performed on the host in a cluster\cr
+#'  \link[=storagegateway_describe_availability_monitor_test]{describe_availability_monitor_test} \tab Returns information about the most recent high availability monitoring test that was performed on the host in a cluster\cr
 #'  \link[=storagegateway_describe_bandwidth_rate_limit]{describe_bandwidth_rate_limit} \tab Returns the bandwidth rate limits of a gateway\cr
 #'  \link[=storagegateway_describe_bandwidth_rate_limit_schedule]{describe_bandwidth_rate_limit_schedule} \tab Returns information about the bandwidth rate limit schedule of a gateway\cr
 #'  \link[=storagegateway_describe_cache]{describe_cache} \tab Returns information about the cache of a gateway\cr
 #'  \link[=storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes} \tab Returns a description of the gateway volumes specified in the request\cr
 #'  \link[=storagegateway_describe_chap_credentials]{describe_chap_credentials} \tab Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair\cr
+#'  \link[=storagegateway_describe_file_system_associations]{describe_file_system_associations} \tab Gets the file system association information\cr
 #'  \link[=storagegateway_describe_gateway_information]{describe_gateway_information} \tab Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not)\cr
 #'  \link[=storagegateway_describe_maintenance_start_time]{describe_maintenance_start_time} \tab Returns your gateway's weekly maintenance start time including the day and time of the week\cr
 #'  \link[=storagegateway_describe_nfs_file_shares]{describe_nfs_file_shares} \tab Gets a description for one or more Network File System (NFS) file shares from a file gateway\cr
@@ -158,9 +160,11 @@ NULL
 #'  \link[=storagegateway_describe_working_storage]{describe_working_storage} \tab Returns information about the working storage of a gateway\cr
 #'  \link[=storagegateway_detach_volume]{detach_volume} \tab Disconnects a volume from an iSCSI connection and then detaches the volume from the specified gateway\cr
 #'  \link[=storagegateway_disable_gateway]{disable_gateway} \tab Disables a tape gateway when the gateway is no longer functioning\cr
+#'  \link[=storagegateway_disassociate_file_system]{disassociate_file_system} \tab Disassociates an Amazon FSx file system from the specified gateway\cr
 #'  \link[=storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain\cr
 #'  \link[=storagegateway_list_automatic_tape_creation_policies]{list_automatic_tape_creation_policies} \tab Lists the automatic tape creation policies for a gateway\cr
 #'  \link[=storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling user account\cr
+#'  \link[=storagegateway_list_file_system_associations]{list_file_system_associations} \tab Gets a list of FileSystemAssociationSummary objects\cr
 #'  \link[=storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an AWS account in an AWS Region specified in the request\cr
 #'  \link[=storagegateway_list_local_disks]{list_local_disks} \tab Returns a list of the gateway's local disks\cr
 #'  \link[=storagegateway_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that have been added to the specified resource\cr
@@ -170,7 +174,7 @@ NULL
 #'  \link[=storagegateway_list_volume_recovery_points]{list_volume_recovery_points} \tab Lists the recovery points for a specified gateway\cr
 #'  \link[=storagegateway_list_volumes]{list_volumes} \tab Lists the iSCSI stored volumes of a gateway\cr
 #'  \link[=storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to Amazon S3\cr
-#'  \link[=storagegateway_refresh_cache]{refresh_cache} \tab Refreshes the cache for the specified file share\cr
+#'  \link[=storagegateway_refresh_cache]{refresh_cache} \tab Refreshes the cached inventory of objects for the specified file share\cr
 #'  \link[=storagegateway_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes one or more tags from the specified resource\cr
 #'  \link[=storagegateway_reset_cache]{reset_cache} \tab Resets all cache disks that have encountered an error and makes the disks available for reconfiguration as cache storage\cr
 #'  \link[=storagegateway_retrieve_tape_archive]{retrieve_tape_archive} \tab Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway\cr
@@ -184,6 +188,7 @@ NULL
 #'  \link[=storagegateway_update_bandwidth_rate_limit]{update_bandwidth_rate_limit} \tab Updates the bandwidth rate limits of a gateway\cr
 #'  \link[=storagegateway_update_bandwidth_rate_limit_schedule]{update_bandwidth_rate_limit_schedule} \tab Updates the bandwidth rate limit schedule for a specified gateway\cr
 #'  \link[=storagegateway_update_chap_credentials]{update_chap_credentials} \tab Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target\cr
+#'  \link[=storagegateway_update_file_system_association]{update_file_system_association} \tab Updates a file system association\cr
 #'  \link[=storagegateway_update_gateway_information]{update_gateway_information} \tab Updates a gateway's metadata, which includes the gateway's name and time zone\cr
 #'  \link[=storagegateway_update_gateway_software_now]{update_gateway_software_now} \tab Updates the gateway virtual machine (VM) software\cr
 #'  \link[=storagegateway_update_maintenance_start_time]{update_maintenance_start_time} \tab Updates a gateway's weekly maintenance start time information, including day and time of the week\cr

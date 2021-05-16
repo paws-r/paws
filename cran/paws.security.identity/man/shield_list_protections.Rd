@@ -30,7 +30,8 @@ A list with the following syntax:\preformatted{list(
       ResourceArn = "string",
       HealthCheckIds = list(
         "string"
-      )
+      ),
+      ProtectionArn = "string"
     )
   ),
   NextToken = "string"

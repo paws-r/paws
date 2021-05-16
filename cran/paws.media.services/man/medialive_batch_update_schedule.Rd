@@ -58,6 +58,13 @@ A list with the following syntax:\preformatted{list(
               "string"
             )
           ),
+          MotionGraphicsImageActivateSettings = list(
+            Duration = 123,
+            PasswordParam = "string",
+            Url = "string",
+            Username = "string"
+          ),
+          MotionGraphicsImageDeactivateSettings = list(),
           PauseStateSettings = list(
             Pipelines = list(
               list(
@@ -175,6 +182,13 @@ A list with the following syntax:\preformatted{list(
               "string"
             )
           ),
+          MotionGraphicsImageActivateSettings = list(
+            Duration = 123,
+            PasswordParam = "string",
+            Url = "string",
+            Username = "string"
+          ),
+          MotionGraphicsImageDeactivateSettings = list(),
           PauseStateSettings = list(
             Pipelines = list(
               list(
@@ -301,6 +315,13 @@ Update a channel schedule
               "string"
             )
           ),
+          MotionGraphicsImageActivateSettings = list(
+            Duration = 123,
+            PasswordParam = "string",
+            Url = "string",
+            Username = "string"
+          ),
+          MotionGraphicsImageDeactivateSettings = list(),
           PauseStateSettings = list(
             Pipelines = list(
               list(

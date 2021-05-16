@@ -71,6 +71,7 @@ NULL
 #'  \link[=appstream_create_image_builder_streaming_url]{create_image_builder_streaming_url} \tab Creates a URL to start an image builder streaming session\cr
 #'  \link[=appstream_create_stack]{create_stack} \tab Creates a stack to start streaming applications to users\cr
 #'  \link[=appstream_create_streaming_url]{create_streaming_url} \tab Creates a temporary URL to start an AppStream 2\cr
+#'  \link[=appstream_create_updated_image]{create_updated_image} \tab Creates a new image with the latest Windows operating system updates, driver updates, and AppStream 2\cr
 #'  \link[=appstream_create_usage_report_subscription]{create_usage_report_subscription} \tab Creates a usage report subscription\cr
 #'  \link[=appstream_create_user]{create_user} \tab Creates a new user in the user pool\cr
 #'  \link[=appstream_delete_directory_config]{delete_directory_config} \tab Deletes the specified Directory Config object from AppStream 2\cr

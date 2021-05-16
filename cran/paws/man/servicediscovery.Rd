@@ -10,14 +10,14 @@ servicediscovery(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-AWS Cloud Map lets you configure public DNS, private DNS, or HTTP
+With AWS Cloud Map, you can configure public DNS, private DNS, or HTTP
 namespaces that your microservice applications run in. When an instance
-of the service becomes available, you can call the AWS Cloud Map API to
-register the instance with AWS Cloud Map. For public or private DNS
-namespaces, AWS Cloud Map automatically creates DNS records and an
-optional health check. Clients that submit public or private DNS
-queries, or HTTP requests, for the service receive an answer that
-contains up to eight healthy records.
+becomes available, you can call the AWS Cloud Map API to register the
+instance with AWS Cloud Map. For public or private DNS namespaces, AWS
+Cloud Map automatically creates DNS records and an optional health
+check. Clients that submit public or private DNS queries, or HTTP
+requests, for the service receive an answer that contains up to eight
+healthy records.
 }
 \section{Service syntax}{
 \preformatted{svc <- servicediscovery(
@@ -41,8 +41,8 @@ contains up to eight healthy records.
 
 \tabular{ll}{
 \link[=servicediscovery_create_http_namespace]{create_http_namespace} \tab Creates an HTTP namespace\cr
-\link[=servicediscovery_create_private_dns_namespace]{create_private_dns_namespace} \tab Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC\cr
-\link[=servicediscovery_create_public_dns_namespace]{create_public_dns_namespace} \tab Creates a public namespace based on DNS, which will be visible on the internet\cr
+\link[=servicediscovery_create_private_dns_namespace]{create_private_dns_namespace} \tab Creates a private namespace based on DNS, which is visible only inside a specified Amazon VPC\cr
+\link[=servicediscovery_create_public_dns_namespace]{create_public_dns_namespace} \tab Creates a public namespace based on DNS, which is visible on the internet\cr
 \link[=servicediscovery_create_service]{create_service} \tab Creates a service, which defines the configuration for the following entities:\cr
 \link[=servicediscovery_delete_namespace]{delete_namespace} \tab Deletes a namespace from the current account\cr
 \link[=servicediscovery_delete_service]{delete_service} \tab Deletes a specified service\cr

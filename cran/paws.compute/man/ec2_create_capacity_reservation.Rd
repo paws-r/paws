@@ -11,11 +11,11 @@ ec2_create_capacity_reservation(ClientToken, InstanceType,
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensure Idempotency}.}
 
 \item{InstanceType}{[required] The instance type for which to reserve capacity. For more information,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{InstancePlatform}{[required] The type of operating system for which to reserve capacity.}
 
@@ -107,6 +107,9 @@ A list with the following syntax:\preformatted{list(
     EbsOptimized = TRUE|FALSE,
     EphemeralStorage = TRUE|FALSE,
     State = "active"|"expired"|"cancelled"|"pending"|"failed",
+    StartDate = as.POSIXct(
+      "2015-01-01"
+    ),
     EndDate = as.POSIXct(
       "2015-01-01"
     ),
@@ -135,7 +138,7 @@ get the Regional RI discounts for that usage. By creating Capacity
 Reservations, you ensure that you always have access to Amazon EC2
 capacity when you need it, for as long as you need it. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html}{Capacity Reservations}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 
 Your request to create a Capacity Reservation could fail if Amazon EC2
 does not have sufficient capacity to fulfill the request. If your
@@ -149,8 +152,8 @@ Your request could also fail if the requested quantity exceeds your
 On-Demand Instance limit for the selected instance type. If your request
 fails due to limit constraints, increase your On-Demand Instance limit
 for the required instance type and try again. For more information about
-increasing your instance limits, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html}{Amazon EC2 Service Limits}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+increasing your instance limits, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html}{Amazon EC2 Service Quotas}
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_capacity_reservation(

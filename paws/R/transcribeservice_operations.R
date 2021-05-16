@@ -32,7 +32,7 @@ NULL
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   LanguageCode = "en-US",
+#'   LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
 #'   BaseModelName = "NarrowBand"|"WideBand",
 #'   ModelName = "string",
 #'   InputDataConfig = list(
@@ -47,7 +47,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_language_model(
-#'   LanguageCode = "en-US",
+#'   LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
 #'   BaseModelName = "NarrowBand"|"WideBand",
 #'   ModelName = "string",
 #'   InputDataConfig = list(
@@ -173,7 +173,8 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' account. The name is case sensitive. If you try to create a vocabulary
 #' with the same name as a previous vocabulary you will receive a
 #' `ConflictException` error.
-#' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries.
+#' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries. For a list of languages and
+#' their corresponding language codes, see what-is-transcribe.
 #' @param Phrases An array of strings that contains the vocabulary entries.
 #' @param VocabularyFileUri The S3 location of the text file that contains the definition of the
 #' custom vocabulary. The URI must be in the same region as the API
@@ -184,7 +185,7 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' in the *Amazon S3 Developer Guide*.
 #' 
 #' For more information about custom vocabularies, see [Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
+#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -588,7 +589,7 @@ transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     LanguageCode = "en-US",
+#'     LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
 #'     BaseModelName = "NarrowBand"|"WideBand",
 #'     ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'     UpgradeAvailability = TRUE|FALSE,
@@ -679,6 +680,7 @@ transcribeservice_describe_language_model <- function(ModelName) {
 #'       MaxAlternatives = 123,
 #'       VocabularyName = "string"
 #'     ),
+#'     ContentIdentificationType = "PHI",
 #'     Specialty = "PRIMARYCARE",
 #'     Type = "CONVERSATION"|"DICTATION"
 #'   )
@@ -815,7 +817,7 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #'       ShowAlternatives = TRUE|FALSE,
 #'       MaxAlternatives = 123,
 #'       VocabularyFilterName = "string",
-#'       VocabularyFilterMethod = "remove"|"mask"
+#'       VocabularyFilterMethod = "remove"|"mask"|"tag"
 #'     ),
 #'     ModelSettings = list(
 #'       LanguageModelName = "string"
@@ -1006,7 +1008,7 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       LanguageCode = "en-US",
+#'       LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
 #'       BaseModelName = "NarrowBand"|"WideBand",
 #'       ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'       UpgradeAvailability = TRUE|FALSE,
@@ -1098,6 +1100,7 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 #'       FailureReason = "string",
 #'       OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
 #'       Specialty = "PRIMARYCARE",
+#'       ContentIdentificationType = "PHI",
 #'       Type = "CONVERSATION"|"DICTATION"
 #'     )
 #'   )
@@ -1441,7 +1444,8 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' transcribeservice_start_medical_transcription_job(
 #'   MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz,
 #'   MediaFormat, Media, OutputBucketName, OutputKey,
-#'   OutputEncryptionKMSKeyId, Settings, Specialty, Type)
+#'   OutputEncryptionKMSKeyId, Settings, ContentIdentificationType,
+#'   Specialty, Type)
 #'
 #' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job. You can't use the strings
 #' "`.`" or "`..`" by themselves as the job name. The name must also be
@@ -1525,6 +1529,10 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' If you specify a KMS key to encrypt your output, you must also specify
 #' an output location in the `OutputBucketName` parameter.
 #' @param Settings Optional settings for the medical transcription job.
+#' @param ContentIdentificationType You can configure Amazon Transcribe Medical to label content in the
+#' transcription output. If you specify `PHI`, Amazon Transcribe Medical
+#' labels the personal health information (PHI) that it identifies in the
+#' transcription output.
 #' @param Specialty &#91;required&#93; The medical specialty of any clinician speaking in the input media.
 #' @param Type &#91;required&#93; The type of speech in the input audio. `CONVERSATION` refers to
 #' conversations between two or more speakers, e.g., a conversations
@@ -1565,6 +1573,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'       MaxAlternatives = 123,
 #'       VocabularyName = "string"
 #'     ),
+#'     ContentIdentificationType = "PHI",
 #'     Specialty = "PRIMARYCARE",
 #'     Type = "CONVERSATION"|"DICTATION"
 #'   )
@@ -1592,6 +1601,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'     MaxAlternatives = 123,
 #'     VocabularyName = "string"
 #'   ),
+#'   ContentIdentificationType = "PHI",
 #'   Specialty = "PRIMARYCARE",
 #'   Type = "CONVERSATION"|"DICTATION"
 #' )
@@ -1600,14 +1610,14 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname transcribeservice_start_medical_transcription_job
-transcribeservice_start_medical_transcription_job <- function(MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, Settings = NULL, Specialty, Type) {
+transcribeservice_start_medical_transcription_job <- function(MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, Settings = NULL, ContentIdentificationType = NULL, Specialty, Type) {
   op <- new_operation(
     name = "StartMedicalTranscriptionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$start_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, Settings = Settings, Specialty = Specialty, Type = Type)
+  input <- .transcribeservice$start_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, Settings = Settings, ContentIdentificationType = ContentIdentificationType, Specialty = Specialty, Type = Type)
   output <- .transcribeservice$start_medical_transcription_job_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -1634,6 +1644,9 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' account. If you try to create a transcription job with the same name as
 #' a previous transcription job, you get a `ConflictException` error.
 #' @param LanguageCode The language code for the language used in the input media file.
+#' 
+#' To transcribe speech in Modern Standard Arabic (ar-SA), your audio or
+#' video file must be encoded at a sample rate of 16000 Hz or higher.
 #' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in the input media file.
 #' 
 #' If you do not specify the media sample rate, Amazon Transcribe
@@ -1764,7 +1777,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'       ShowAlternatives = TRUE|FALSE,
 #'       MaxAlternatives = 123,
 #'       VocabularyFilterName = "string",
-#'       VocabularyFilterMethod = "remove"|"mask"
+#'       VocabularyFilterMethod = "remove"|"mask"|"tag"
 #'     ),
 #'     ModelSettings = list(
 #'       LanguageModelName = "string"
@@ -1807,7 +1820,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'     ShowAlternatives = TRUE|FALSE,
 #'     MaxAlternatives = 123,
 #'     VocabularyFilterName = "string",
-#'     VocabularyFilterMethod = "remove"|"mask"
+#'     VocabularyFilterMethod = "remove"|"mask"|"tag"
 #'   ),
 #'   ModelSettings = list(
 #'     LanguageModelName = "string"
@@ -1942,7 +1955,8 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' @param VocabularyName &#91;required&#93; The name of the vocabulary to update. The name is case sensitive. If you
 #' try to update a vocabulary with the same name as a previous vocabulary
 #' you will receive a `ConflictException` error.
-#' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries.
+#' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries. For a list of languages and
+#' their corresponding language codes, see what-is-transcribe.
 #' @param Phrases An array of strings containing the vocabulary entries.
 #' @param VocabularyFileUri The S3 location of the text file that contains the definition of the
 #' custom vocabulary. The URI must be in the same region as the API

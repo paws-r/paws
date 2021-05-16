@@ -11,7 +11,7 @@ s3_get_bucket_lifecycle_configuration(Bucket, ExpectedBucketOwner)
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to get the lifecycle information.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -78,7 +78,7 @@ combination of both. Accordingly, this section describes the latest API.
 The response describes the new filter element that you can use to
 specify a filter to select a subset of objects to which the rule
 applies. If you are using a previous version of the lifecycle
-configuration, it still works. For the earlier API description, see
+configuration, it still works. For the earlier action, see
 \code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}.
 
 Returns the lifecycle configuration information set on the bucket. For

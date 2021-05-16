@@ -133,7 +133,11 @@ athena_batch_get_named_query <- function(NamedQueryIds) {
 #'         QueryPlanningTimeInMillis = 123,
 #'         ServiceProcessingTimeInMillis = 123
 #'       ),
-#'       WorkGroup = "string"
+#'       WorkGroup = "string",
+#'       EngineVersion = list(
+#'         SelectedEngineVersion = "string",
+#'         EffectiveEngineVersion = "string"
+#'       )
 #'     )
 #'   ),
 #'   UnprocessedQueryExecutionIds = list(
@@ -189,8 +193,12 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #' @param Name &#91;required&#93; The name of the data catalog to create. The catalog name must be unique
 #' for the AWS account and can use a maximum of 128 alphanumeric,
 #' underscore, at sign, or hyphen characters.
-#' @param Type &#91;required&#93; The type of data catalog to create: `LAMBDA` for a federated catalog,
-#' `GLUE` for AWS Glue Catalog, or `HIVE` for an external hive metastore.
+#' @param Type &#91;required&#93; The type of data catalog to create: `LAMBDA` for a federated catalog or
+#' `HIVE` for an external hive metastore.
+#' 
+#' Do not use the `GLUE` type. This refers to the `AwsDataCatalog` that
+#' already exists in your account, of which you can have only one.
+#' Specifying the `GLUE` type will result in an `INVALID_INPUT` error.
 #' @param Description A description of the data catalog to be created.
 #' @param Parameters Specifies the Lambda function or functions to use for creating the data
 #' catalog. This is a mapping whose values depend on the catalog type.
@@ -216,8 +224,6 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #'         Lambda function.
 #' 
 #'         `function=lambda_arn `
-#' 
-#' -   The `GLUE` type has no parameters.
 #' @param Tags A list of comma separated tags to add to the data catalog that is
 #' created.
 #'
@@ -333,6 +339,53 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 }
 .athena$operations$create_named_query <- athena_create_named_query
 
+#' Creates a prepared statement for use with SQL queries in Athena
+#'
+#' @description
+#' Creates a prepared statement for use with SQL queries in Athena.
+#'
+#' @usage
+#' athena_create_prepared_statement(StatementName, WorkGroup,
+#'   QueryStatement, Description)
+#'
+#' @param StatementName &#91;required&#93; The name of the prepared statement.
+#' @param WorkGroup &#91;required&#93; The name of the workgroup to which the prepared statement belongs.
+#' @param QueryStatement &#91;required&#93; The query string for the prepared statement.
+#' @param Description The description of the prepared statement.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_prepared_statement(
+#'   StatementName = "string",
+#'   WorkGroup = "string",
+#'   QueryStatement = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_create_prepared_statement
+athena_create_prepared_statement <- function(StatementName, WorkGroup, QueryStatement, Description = NULL) {
+  op <- new_operation(
+    name = "CreatePreparedStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$create_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup, QueryStatement = QueryStatement, Description = Description)
+  output <- .athena$create_prepared_statement_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$create_prepared_statement <- athena_create_prepared_statement
+
 #' Creates a workgroup with the specified name
 #'
 #' @description
@@ -371,7 +424,11 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 #'     EnforceWorkGroupConfiguration = TRUE|FALSE,
 #'     PublishCloudWatchMetricsEnabled = TRUE|FALSE,
 #'     BytesScannedCutoffPerQuery = 123,
-#'     RequesterPaysEnabled = TRUE|FALSE
+#'     RequesterPaysEnabled = TRUE|FALSE,
+#'     EngineVersion = list(
+#'       SelectedEngineVersion = "string",
+#'       EffectiveEngineVersion = "string"
+#'     )
 #'   ),
 #'   Description = "string",
 #'   Tags = list(
@@ -489,6 +546,50 @@ athena_delete_named_query <- function(NamedQueryId) {
 }
 .athena$operations$delete_named_query <- athena_delete_named_query
 
+#' Deletes the prepared statement with the specified name from the
+#' specified workgroup
+#'
+#' @description
+#' Deletes the prepared statement with the specified name from the
+#' specified workgroup.
+#'
+#' @usage
+#' athena_delete_prepared_statement(StatementName, WorkGroup)
+#'
+#' @param StatementName &#91;required&#93; The name of the prepared statement to delete.
+#' @param WorkGroup &#91;required&#93; The workgroup to which the statement to be deleted belongs.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_prepared_statement(
+#'   StatementName = "string",
+#'   WorkGroup = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_delete_prepared_statement
+athena_delete_prepared_statement <- function(StatementName, WorkGroup) {
+  op <- new_operation(
+    name = "DeletePreparedStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$delete_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup)
+  output <- .athena$delete_prepared_statement_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$delete_prepared_statement <- athena_delete_prepared_statement
+
 #' Deletes the workgroup with the specified name
 #'
 #' @description
@@ -500,7 +601,7 @@ athena_delete_named_query <- function(NamedQueryId) {
 #'
 #' @param WorkGroup &#91;required&#93; The unique name of the workgroup to delete.
 #' @param RecursiveDeleteOption The option to delete the workgroup and its contents even if the
-#' workgroup contains any named queries.
+#' workgroup contains any named queries or query executions.
 #'
 #' @return
 #' An empty list.
@@ -585,10 +686,10 @@ athena_get_data_catalog <- function(Name) {
 }
 .athena$operations$get_data_catalog <- athena_get_data_catalog
 
-#' Returns a database object for the specfied database and data catalog
+#' Returns a database object for the specified database and data catalog
 #'
 #' @description
-#' Returns a database object for the specfied database and data catalog.
+#' Returns a database object for the specified database and data catalog.
 #'
 #' @usage
 #' athena_get_database(CatalogName, DatabaseName)
@@ -692,6 +793,63 @@ athena_get_named_query <- function(NamedQueryId) {
 }
 .athena$operations$get_named_query <- athena_get_named_query
 
+#' Retrieves the prepared statement with the specified name from the
+#' specified workgroup
+#'
+#' @description
+#' Retrieves the prepared statement with the specified name from the
+#' specified workgroup.
+#'
+#' @usage
+#' athena_get_prepared_statement(StatementName, WorkGroup)
+#'
+#' @param StatementName &#91;required&#93; The name of the prepared statement to retrieve.
+#' @param WorkGroup &#91;required&#93; The workgroup to which the statement to be retrieved belongs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PreparedStatement = list(
+#'     StatementName = "string",
+#'     QueryStatement = "string",
+#'     WorkGroupName = "string",
+#'     Description = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_prepared_statement(
+#'   StatementName = "string",
+#'   WorkGroup = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_prepared_statement
+athena_get_prepared_statement <- function(StatementName, WorkGroup) {
+  op <- new_operation(
+    name = "GetPreparedStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup)
+  output <- .athena$get_prepared_statement_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_prepared_statement <- athena_get_prepared_statement
+
 #' Returns information about a single execution of a query if you have
 #' access to the workgroup in which the query ran
 #'
@@ -744,7 +902,11 @@ athena_get_named_query <- function(NamedQueryId) {
 #'       QueryPlanningTimeInMillis = 123,
 #'       ServiceProcessingTimeInMillis = 123
 #'     ),
-#'     WorkGroup = "string"
+#'     WorkGroup = "string",
+#'     EngineVersion = list(
+#'       SelectedEngineVersion = "string",
+#'       EffectiveEngineVersion = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -979,7 +1141,11 @@ athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName) {
 #'       EnforceWorkGroupConfiguration = TRUE|FALSE,
 #'       PublishCloudWatchMetricsEnabled = TRUE|FALSE,
 #'       BytesScannedCutoffPerQuery = 123,
-#'       RequesterPaysEnabled = TRUE|FALSE
+#'       RequesterPaysEnabled = TRUE|FALSE,
+#'       EngineVersion = list(
+#'         SelectedEngineVersion = "string",
+#'         EffectiveEngineVersion = "string"
+#'       )
 #'     ),
 #'     Description = "string",
 #'     CreationTime = as.POSIXct(
@@ -1133,6 +1299,64 @@ athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NU
 }
 .athena$operations$list_databases <- athena_list_databases
 
+#' Returns a list of engine versions that are available to choose from,
+#' including the Auto option
+#'
+#' @description
+#' Returns a list of engine versions that are available to choose from,
+#' including the Auto option.
+#'
+#' @usage
+#' athena_list_engine_versions(NextToken, MaxResults)
+#'
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
+#' @param MaxResults The maximum number of engine versions to return in this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EngineVersions = list(
+#'     list(
+#'       SelectedEngineVersion = "string",
+#'       EffectiveEngineVersion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_engine_versions(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_engine_versions
+athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEngineVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_engine_versions_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .athena$list_engine_versions_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_engine_versions <- athena_list_engine_versions
+
 #' Provides a list of available query IDs only for queries saved in the
 #' specified workgroup
 #'
@@ -1197,6 +1421,66 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
   return(response)
 }
 .athena$operations$list_named_queries <- athena_list_named_queries
+
+#' Lists the prepared statements in the specfied workgroup
+#'
+#' @description
+#' Lists the prepared statements in the specfied workgroup.
+#'
+#' @usage
+#' athena_list_prepared_statements(WorkGroup, NextToken, MaxResults)
+#'
+#' @param WorkGroup &#91;required&#93; The workgroup to list the prepared statements for.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
+#' @param MaxResults The maximum number of results to return in this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PreparedStatements = list(
+#'     list(
+#'       StatementName = "string",
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_prepared_statements(
+#'   WorkGroup = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_prepared_statements
+athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPreparedStatements",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_prepared_statements_input(WorkGroup = WorkGroup, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .athena$list_prepared_statements_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_prepared_statements <- athena_list_prepared_statements
 
 #' Provides a list of available query execution IDs for the queries in the
 #' specified workgroup
@@ -1437,6 +1721,10 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
 #'       Description = "string",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       EngineVersion = list(
+#'         SelectedEngineVersion = "string",
+#'         EffectiveEngineVersion = "string"
 #'       )
 #'     )
 #'   ),
@@ -1721,8 +2009,11 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 #' for the AWS account and can use a maximum of 128 alphanumeric,
 #' underscore, at sign, or hyphen characters.
 #' @param Type &#91;required&#93; Specifies the type of data catalog to update. Specify `LAMBDA` for a
-#' federated catalog, `GLUE` for AWS Glue Catalog, or `HIVE` for an
-#' external hive metastore.
+#' federated catalog or `HIVE` for an external hive metastore.
+#' 
+#' Do not use the `GLUE` type. This refers to the `AwsDataCatalog` that
+#' already exists in your account, of which you can have only one.
+#' Specifying the `GLUE` type will result in an `INVALID_INPUT` error.
 #' @param Description New or modified text that describes the data catalog.
 #' @param Parameters Specifies the Lambda function or functions to use for updating the data
 #' catalog. This is a mapping whose values depend on the catalog type.
@@ -1748,8 +2039,6 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 #'         Lambda function.
 #' 
 #'         `function=lambda_arn `
-#' 
-#' -   The `GLUE` type has no parameters.
 #'
 #' @return
 #' An empty list.
@@ -1785,6 +2074,53 @@ athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameter
   return(response)
 }
 .athena$operations$update_data_catalog <- athena_update_data_catalog
+
+#' Updates a prepared statement
+#'
+#' @description
+#' Updates a prepared statement.
+#'
+#' @usage
+#' athena_update_prepared_statement(StatementName, WorkGroup,
+#'   QueryStatement, Description)
+#'
+#' @param StatementName &#91;required&#93; The name of the prepared statement.
+#' @param WorkGroup &#91;required&#93; The workgroup for the prepared statement.
+#' @param QueryStatement &#91;required&#93; The query string for the prepared statement.
+#' @param Description The description of the prepared statement.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_prepared_statement(
+#'   StatementName = "string",
+#'   WorkGroup = "string",
+#'   QueryStatement = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_update_prepared_statement
+athena_update_prepared_statement <- function(StatementName, WorkGroup, QueryStatement, Description = NULL) {
+  op <- new_operation(
+    name = "UpdatePreparedStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$update_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup, QueryStatement = QueryStatement, Description = Description)
+  output <- .athena$update_prepared_statement_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$update_prepared_statement <- athena_update_prepared_statement
 
 #' Updates the workgroup with the specified name
 #'
@@ -1824,7 +2160,11 @@ athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameter
 #'     PublishCloudWatchMetricsEnabled = TRUE|FALSE,
 #'     BytesScannedCutoffPerQuery = 123,
 #'     RemoveBytesScannedCutoffPerQuery = TRUE|FALSE,
-#'     RequesterPaysEnabled = TRUE|FALSE
+#'     RequesterPaysEnabled = TRUE|FALSE,
+#'     EngineVersion = list(
+#'       SelectedEngineVersion = "string",
+#'       EffectiveEngineVersion = "string"
+#'     )
 #'   ),
 #'   State = "ENABLED"|"DISABLED"
 #' )

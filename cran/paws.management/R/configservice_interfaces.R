@@ -209,6 +209,18 @@ NULL
   return(populate(args, shape))
 }
 
+.configservice$describe_aggregate_compliance_by_conformance_packs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), Filters = structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), ComplianceType = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_aggregate_compliance_by_conformance_packs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AggregateComplianceByConformancePacks = structure(list(structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), Compliance = structure(list(ComplianceType = structure(logical(0), tags = list(type = "string")), CompliantRuleCount = structure(logical(0), tags = list(type = "integer")), NonCompliantRuleCount = structure(logical(0), tags = list(type = "integer")), TotalRuleCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AccountId = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$describe_aggregation_authorizations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -325,7 +337,7 @@ NULL
 
 .configservice$describe_conformance_pack_compliance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), ConformancePackRuleComplianceList = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ComplianceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConformancePackName = structure(logical(0), tags = list(type = "string")), ConformancePackRuleComplianceList = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ComplianceType = structure(logical(0), tags = list(type = "string")), Controls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -373,7 +385,7 @@ NULL
 
 .configservice$describe_delivery_channels_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeliveryChannels = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), s3BucketName = structure(logical(0), tags = list(type = "string")), s3KeyPrefix = structure(logical(0), tags = list(type = "string")), snsTopicARN = structure(logical(0), tags = list(type = "string")), configSnapshotDeliveryProperties = structure(list(deliveryFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(DeliveryChannels = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), s3BucketName = structure(logical(0), tags = list(type = "string")), s3KeyPrefix = structure(logical(0), tags = list(type = "string")), s3KmsKeyArn = structure(logical(0), tags = list(type = "string")), snsTopicARN = structure(logical(0), tags = list(type = "string")), configSnapshotDeliveryProperties = structure(list(deliveryFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -506,6 +518,18 @@ NULL
 .configservice$get_aggregate_config_rule_compliance_summary_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupByKey = structure(logical(0), tags = list(type = "string")), AggregateComplianceCounts = structure(list(structure(list(GroupName = structure(logical(0), tags = list(type = "string")), ComplianceSummary = structure(list(CompliantResourceCount = structure(list(CappedCount = structure(logical(0), tags = list(type = "integer")), CapExceeded = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NonCompliantResourceCount = structure(list(CappedCount = structure(logical(0), tags = list(type = "integer")), CapExceeded = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ComplianceSummaryTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$get_aggregate_conformance_pack_compliance_summary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), Filters = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GroupByKey = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$get_aggregate_conformance_pack_compliance_summary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AggregateConformancePackComplianceSummaries = structure(list(structure(list(ComplianceSummary = structure(list(CompliantConformancePackCount = structure(logical(0), tags = list(type = "integer")), NonCompliantConformancePackCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), GroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), GroupByKey = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -769,7 +793,7 @@ NULL
 
 .configservice$put_delivery_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeliveryChannel = structure(list(name = structure(logical(0), tags = list(type = "string")), s3BucketName = structure(logical(0), tags = list(type = "string")), s3KeyPrefix = structure(logical(0), tags = list(type = "string")), snsTopicARN = structure(logical(0), tags = list(type = "string")), configSnapshotDeliveryProperties = structure(list(deliveryFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DeliveryChannel = structure(list(name = structure(logical(0), tags = list(type = "string")), s3BucketName = structure(logical(0), tags = list(type = "string")), s3KeyPrefix = structure(logical(0), tags = list(type = "string")), s3KmsKeyArn = structure(logical(0), tags = list(type = "string")), snsTopicARN = structure(logical(0), tags = list(type = "string")), configSnapshotDeliveryProperties = structure(list(deliveryFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -19,8 +19,9 @@ A list with the following syntax:\preformatted{list(
   PhoneNumber = list(
     PhoneNumberId = "string",
     E164PhoneNumber = "string",
+    Country = "string",
     Type = "Local"|"TollFree",
-    ProductType = "BusinessCalling"|"VoiceConnector",
+    ProductType = "BusinessCalling"|"VoiceConnector"|"SipMediaApplicationDialIn",
     Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
     Capabilities = list(
       InboundCall = TRUE|FALSE,
@@ -60,17 +61,18 @@ the specified phone number ID. You can update one phone number detail at
 a time. For example, you can update either the product type or the
 calling name in one action.
 
-For toll-free numbers, you must use the Amazon Chime Voice Connector
-product type.
+For toll-free numbers, you cannot use the Amazon Chime Business Calling
+product type. For numbers outside the U.S., you must use the Amazon
+Chime SIP Media Application Dial-In product type.
 
-Updates to outbound calling names can take up to 72 hours to complete.
-Pending updates to outbound calling names must be complete before you
-can request another update.
+Updates to outbound calling names can take 72 hours to complete. Pending
+updates to outbound calling names must be complete before you can
+request another update.
 }
 \section{Request syntax}{
 \preformatted{svc$update_phone_number(
   PhoneNumberId = "string",
-  ProductType = "BusinessCalling"|"VoiceConnector",
+  ProductType = "BusinessCalling"|"VoiceConnector"|"SipMediaApplicationDialIn",
   CallingName = "string"
 )
 }

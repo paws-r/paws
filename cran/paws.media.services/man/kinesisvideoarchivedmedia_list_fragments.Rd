@@ -5,11 +5,16 @@
 \title{Returns a list of Fragment objects from the specified stream and
 timestamp range within the archived data}
 \usage{
-kinesisvideoarchivedmedia_list_fragments(StreamName, MaxResults,
-  NextToken, FragmentSelector)
+kinesisvideoarchivedmedia_list_fragments(StreamName, StreamARN,
+  MaxResults, NextToken, FragmentSelector)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream from which to retrieve a fragment list.}
+\item{StreamName}{The name of the stream from which to retrieve a fragment list. Specify
+either this parameter or the \code{StreamARN} parameter.}
+
+\item{StreamARN}{The Amazon Resource Name (ARN) of the stream from which to retrieve a
+fragment list. Specify either this parameter or the \code{StreamName}
+parameter.}
 
 \item{MaxResults}{The total number of fragments to return. If the total number of
 fragments available is more than the value specified in \code{max-results},
@@ -78,6 +83,7 @@ topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/d
 \section{Request syntax}{
 \preformatted{svc$list_fragments(
   StreamName = "string",
+  StreamARN = "string",
   MaxResults = 123,
   NextToken = "string",
   FragmentSelector = list(

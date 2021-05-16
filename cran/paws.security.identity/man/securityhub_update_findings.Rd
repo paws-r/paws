@@ -581,6 +581,50 @@ view the finding also sees the update to the finding.
       list(
         Value = "string"
       )
+    ),
+    FindingProviderFieldsConfidence = list(
+      list(
+        Gte = 123.0,
+        Lte = 123.0,
+        Eq = 123.0
+      )
+    ),
+    FindingProviderFieldsCriticality = list(
+      list(
+        Gte = 123.0,
+        Lte = 123.0,
+        Eq = 123.0
+      )
+    ),
+    FindingProviderFieldsRelatedFindingsId = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+      )
+    ),
+    FindingProviderFieldsRelatedFindingsProductArn = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+      )
+    ),
+    FindingProviderFieldsSeverityLabel = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+      )
+    ),
+    FindingProviderFieldsSeverityOriginal = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+      )
+    ),
+    FindingProviderFieldsTypes = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+      )
     )
   ),
   Note = list(

@@ -26,7 +26,7 @@ fleets for this build.
 \item{Limit}{The maximum number of results to return. Use this parameter with
 \code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
@@ -62,14 +62,13 @@ Build resources are not listed in any particular order.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Upload a Custom Server Build}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_build]{create_build}}
-\item \code{\link[=gamelift_list_builds]{list_builds}}
-\item \code{\link[=gamelift_describe_build]{describe_build}}
-\item \code{\link[=gamelift_update_build]{update_build}}
-\item \code{\link[=gamelift_delete_build]{delete_build}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_build]{create_build}} |
+\code{\link[=gamelift_list_builds]{list_builds}} |
+\code{\link[=gamelift_describe_build]{describe_build}} |
+\code{\link[=gamelift_update_build]{update_build}} |
+\code{\link[=gamelift_delete_build]{delete_build}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$list_builds(

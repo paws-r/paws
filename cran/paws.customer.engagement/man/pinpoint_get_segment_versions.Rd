@@ -32,7 +32,7 @@ A list with the following syntax:\preformatted{list(
         Dimensions = list(
           Attributes = list(
             list(
-              AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+              AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
               Values = list(
                 "string"
               )
@@ -105,7 +105,7 @@ A list with the following syntax:\preformatted{list(
           ),
           UserAttributes = list(
             list(
-              AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+              AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
               Values = list(
                 "string"
               )
@@ -132,7 +132,7 @@ A list with the following syntax:\preformatted{list(
                 list(
                   Attributes = list(
                     list(
-                      AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                      AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                       Values = list(
                         "string"
                       )
@@ -205,7 +205,7 @@ A list with the following syntax:\preformatted{list(
                   ),
                   UserAttributes = list(
                     list(
-                      AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                      AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                       Values = list(
                         "string"
                       )

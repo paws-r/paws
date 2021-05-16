@@ -10,7 +10,9 @@ efs_create_mount_target(FileSystemId, SubnetId, IpAddress,
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system for which to create the mount target.}
 
-\item{SubnetId}{[required] The ID of the subnet to add the mount target in.}
+\item{SubnetId}{[required] The ID of the subnet to add the mount target in. For file systems that
+use One Zone storage classes, use the subnet that is associated with the
+file system's Availability Zone.}
 
 \item{IpAddress}{Valid IPv4 address within the address range of the specified subnet.}
 
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
   MountTargetId = "string",
   FileSystemId = "string",
   SubnetId = "string",
-  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error",
   IpAddress = "string",
   NetworkInterfaceId = "string",
   AvailabilityZoneId = "string",
@@ -41,21 +43,34 @@ All EC2 instances in a VPC within a given Availability Zone share a
 single mount target for a given file system. If you have multiple
 subnets in an Availability Zone, you create a mount target in one of the
 subnets. EC2 instances do not need to be in the same subnet as the mount
-target in order to access their file system. For more information, see
-\href{https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html}{Amazon EFS: How it Works}.
+target in order to access their file system.
 
-In the request, you also specify a file system ID for which you are
-creating the mount target and the file system's lifecycle state must be
-\code{available}. For more information, see
+You can create only one mount target for an EFS file system using One
+Zone storage classes. You must create that mount target in the same
+Availability Zone in which the file system is located. Use the
+\code{AvailabilityZoneName} and \code{AvailabiltyZoneId} properties in the
+\code{\link[=efs_describe_file_systems]{describe_file_systems}} response object to
+get this information. Use the \code{subnetId} associated with the file
+system's Availability Zone when creating the mount target.
+
+For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html}{Amazon EFS: How it Works}.
+
+To create a mount target for a file system, the file system's lifecycle
+state must be \code{available}. For more information, see
 \code{\link[=efs_describe_file_systems]{describe_file_systems}}.
 
-In the request, you also provide a subnet ID, which determines the
-following:
+In the request, provide the following:
 \itemize{
-\item VPC in which Amazon EFS creates the mount target
-\item Availability Zone in which Amazon EFS creates the mount target
-\item IP address range from which Amazon EFS selects the IP address of the
-mount target (if you don't specify an IP address in the request)
+\item The file system ID for which you are creating the mount target.
+\item A subnet ID, which determines the following:
+\itemize{
+\item The VPC in which Amazon EFS creates the mount target
+\item The Availability Zone in which Amazon EFS creates the mount
+target
+\item The IP address range from which Amazon EFS selects the IP
+address of the mount target (if you don't specify an IP address
+in the request)
+}
 }
 
 After creating the mount target, Amazon EFS returns a response that

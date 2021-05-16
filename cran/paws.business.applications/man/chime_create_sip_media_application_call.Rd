@@ -10,9 +10,10 @@ chime_create_sip_media_application_call(FromPhoneNumber, ToPhoneNumber,
   SipMediaApplicationId)
 }
 \arguments{
-\item{FromPhoneNumber}{The phone number that a user calls from.}
+\item{FromPhoneNumber}{[required] The phone number that a user calls from. This is a phone number in your
+Amazon Chime phone number inventory.}
 
-\item{ToPhoneNumber}{The phone number that the user dials in order to connect to a meeting}
+\item{ToPhoneNumber}{[required] The phone number that the service should call.}
 
 \item{SipMediaApplicationId}{[required] The ID of the SIP media application.}
 }

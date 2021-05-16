@@ -136,16 +136,16 @@ Instance status includes the following components:
 instances to identify hardware and software issues. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html}{Status checks for your instances}
 and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html}{Troubleshooting instances with failed status checks}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 \item \strong{Scheduled events} - Amazon EC2 can schedule events (such as
 reboot, stop, or terminate) for your instances related to hardware
 issues, software updates, or system maintenance. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-instances-status-check_sched.html}{Scheduled events for your instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 \item \strong{Instance state} - You can manage your instances from the moment
 you launch them through their termination. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance lifecycle}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 }
 }
 \section{Request syntax}{

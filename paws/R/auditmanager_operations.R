@@ -605,13 +605,14 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #'
 #' @usage
 #' auditmanager_create_assessment_framework(name, description,
-#'   complianceType, controlSets)
+#'   complianceType, controlSets, tags)
 #'
 #' @param name &#91;required&#93; The name of the new custom framework.
 #' @param description An optional description for the new custom framework.
 #' @param complianceType The compliance type that the new custom framework supports, such as CIS
 #' or HIPAA.
 #' @param controlSets &#91;required&#93; The control sets to be associated with the framework.
+#' @param tags The tags associated with the framework.
 #'
 #' @return
 #' A list with the following syntax:
@@ -678,7 +679,10 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
-#'     lastUpdatedBy = "string"
+#'     lastUpdatedBy = "string",
+#'     tags = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -698,6 +702,9 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -705,14 +712,14 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #' @keywords internal
 #'
 #' @rdname auditmanager_create_assessment_framework
-auditmanager_create_assessment_framework <- function(name, description = NULL, complianceType = NULL, controlSets) {
+auditmanager_create_assessment_framework <- function(name, description = NULL, complianceType = NULL, controlSets, tags = NULL) {
   op <- new_operation(
     name = "CreateAssessmentFramework",
     http_method = "POST",
     http_path = "/assessmentFrameworks",
     paginator = list()
   )
-  input <- .auditmanager$create_assessment_framework_input(name = name, description = description, complianceType = complianceType, controlSets = controlSets)
+  input <- .auditmanager$create_assessment_framework_input(name = name, description = description, complianceType = complianceType, controlSets = controlSets, tags = tags)
   output <- .auditmanager$create_assessment_framework_output()
   config <- get_config()
   svc <- .auditmanager$service(config)
@@ -797,8 +804,7 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #' @param testingInformation The steps to follow to determine if the control has been satisfied.
 #' @param actionPlanTitle The title of the action plan for remediating the control.
 #' @param actionPlanInstructions The recommended actions to carry out if the control is not fulfilled.
-#' @param controlMappingSources &#91;required&#93; The data source that determines from where AWS Audit Manager collects
-#' evidence for the control.
+#' @param controlMappingSources &#91;required&#93; The data mapping sources for the specified control.
 #' @param tags The tags associated with the control.
 #'
 #' @return
@@ -1371,6 +1377,10 @@ auditmanager_get_account_status <- function() {
 #'     tags = list(
 #'       "string"
 #'     )
+#'   ),
+#'   userRole = list(
+#'     roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'     roleArn = "string"
 #'   )
 #' )
 #' ```
@@ -1477,7 +1487,10 @@ auditmanager_get_assessment <- function(assessmentId) {
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
-#'     lastUpdatedBy = "string"
+#'     lastUpdatedBy = "string",
+#'     tags = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2334,6 +2347,7 @@ auditmanager_get_settings <- function(attribute) {
 #' list(
 #'   frameworkMetadataList = list(
 #'     list(
+#'       arn = "string",
 #'       id = "string",
 #'       type = "Standard"|"Custom",
 #'       name = "string",
@@ -3416,7 +3430,10 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
-#'     lastUpdatedBy = "string"
+#'     lastUpdatedBy = "string",
+#'     tags = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3658,8 +3675,7 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 #' @param testingInformation The steps that to follow to determine if the control has been satisfied.
 #' @param actionPlanTitle The title of the action plan for remediating the control.
 #' @param actionPlanInstructions The recommended actions to carry out if the control is not fulfilled.
-#' @param controlMappingSources &#91;required&#93; The data source that determines from where AWS Audit Manager collects
-#' evidence for the control.
+#' @param controlMappingSources &#91;required&#93; The data mapping sources for the specified control.
 #'
 #' @return
 #' A list with the following syntax:

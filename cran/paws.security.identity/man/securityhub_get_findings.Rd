@@ -177,6 +177,130 @@ A list with the following syntax:\preformatted{list(
           Tags = list(
             "string"
           ),
+          DataClassification = list(
+            DetailedResultsLocation = "string",
+            Result = list(
+              MimeType = "string",
+              SizeClassified = 123,
+              AdditionalOccurrences = TRUE|FALSE,
+              Status = list(
+                Code = "string",
+                Reason = "string"
+              ),
+              SensitiveData = list(
+                list(
+                  Category = "string",
+                  Detections = list(
+                    list(
+                      Count = 123,
+                      Type = "string",
+                      Occurrences = list(
+                        LineRanges = list(
+                          list(
+                            Start = 123,
+                            End = 123,
+                            StartColumn = 123
+                          )
+                        ),
+                        OffsetRanges = list(
+                          list(
+                            Start = 123,
+                            End = 123,
+                            StartColumn = 123
+                          )
+                        ),
+                        Pages = list(
+                          list(
+                            PageNumber = 123,
+                            LineRange = list(
+                              Start = 123,
+                              End = 123,
+                              StartColumn = 123
+                            ),
+                            OffsetRange = list(
+                              Start = 123,
+                              End = 123,
+                              StartColumn = 123
+                            )
+                          )
+                        ),
+                        Records = list(
+                          list(
+                            JsonPath = "string",
+                            RecordIndex = 123
+                          )
+                        ),
+                        Cells = list(
+                          list(
+                            Column = 123,
+                            Row = 123,
+                            ColumnName = "string",
+                            CellReference = "string"
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  TotalCount = 123
+                )
+              ),
+              CustomDataIdentifiers = list(
+                Detections = list(
+                  list(
+                    Count = 123,
+                    Arn = "string",
+                    Name = "string",
+                    Occurrences = list(
+                      LineRanges = list(
+                        list(
+                          Start = 123,
+                          End = 123,
+                          StartColumn = 123
+                        )
+                      ),
+                      OffsetRanges = list(
+                        list(
+                          Start = 123,
+                          End = 123,
+                          StartColumn = 123
+                        )
+                      ),
+                      Pages = list(
+                        list(
+                          PageNumber = 123,
+                          LineRange = list(
+                            Start = 123,
+                            End = 123,
+                            StartColumn = 123
+                          ),
+                          OffsetRange = list(
+                            Start = 123,
+                            End = 123,
+                            StartColumn = 123
+                          )
+                        )
+                      ),
+                      Records = list(
+                        list(
+                          JsonPath = "string",
+                          RecordIndex = 123
+                        )
+                      ),
+                      Cells = list(
+                        list(
+                          Column = 123,
+                          Row = 123,
+                          ColumnName = "string",
+                          CellReference = "string"
+                        )
+                      )
+                    )
+                  )
+                ),
+                TotalCount = 123
+              )
+            )
+          ),
           Details = list(
             AwsAutoScalingAutoScalingGroup = list(
               LaunchConfigurationName = "string",
@@ -298,7 +422,20 @@ A list with the following syntax:\preformatted{list(
                   GroupId = "string"
                 )
               ),
-              SourceDestCheck = TRUE|FALSE
+              SourceDestCheck = TRUE|FALSE,
+              IpV6Addresses = list(
+                list(
+                  IpV6Address = "string"
+                )
+              ),
+              PrivateIpAddresses = list(
+                list(
+                  PrivateIpAddress = "string",
+                  PrivateDnsName = "string"
+                )
+              ),
+              PublicDnsName = "string",
+              PublicIp = "string"
             ),
             AwsEc2SecurityGroup = list(
               GroupName = "string",
@@ -416,6 +553,58 @@ A list with the following syntax:\preformatted{list(
               NetworkInterfaceOwnerId = "string",
               PrivateIpAddress = "string"
             ),
+            AwsEc2Subnet = list(
+              AssignIpv6AddressOnCreation = TRUE|FALSE,
+              AvailabilityZone = "string",
+              AvailabilityZoneId = "string",
+              AvailableIpAddressCount = 123,
+              CidrBlock = "string",
+              DefaultForAz = TRUE|FALSE,
+              MapPublicIpOnLaunch = TRUE|FALSE,
+              OwnerId = "string",
+              State = "string",
+              SubnetArn = "string",
+              SubnetId = "string",
+              VpcId = "string",
+              Ipv6CidrBlockAssociationSet = list(
+                list(
+                  AssociationId = "string",
+                  Ipv6CidrBlock = "string",
+                  CidrBlockState = "string"
+                )
+              )
+            ),
+            AwsEc2NetworkAcl = list(
+              IsDefault = TRUE|FALSE,
+              NetworkAclId = "string",
+              OwnerId = "string",
+              VpcId = "string",
+              Associations = list(
+                list(
+                  NetworkAclAssociationId = "string",
+                  NetworkAclId = "string",
+                  SubnetId = "string"
+                )
+              ),
+              Entries = list(
+                list(
+                  CidrBlock = "string",
+                  Egress = TRUE|FALSE,
+                  IcmpTypeCode = list(
+                    Code = 123,
+                    Type = 123
+                  ),
+                  Ipv6CidrBlock = "string",
+                  PortRange = list(
+                    From = 123,
+                    To = 123
+                  ),
+                  Protocol = "string",
+                  RuleAction = "string",
+                  RuleNumber = 123
+                )
+              )
+            ),
             AwsElbv2LoadBalancer = list(
               AvailabilityZones = list(
                 list(
@@ -437,6 +626,40 @@ A list with the following syntax:\preformatted{list(
               ),
               Type = "string",
               VpcId = "string"
+            ),
+            AwsElasticBeanstalkEnvironment = list(
+              ApplicationName = "string",
+              Cname = "string",
+              DateCreated = "string",
+              DateUpdated = "string",
+              Description = "string",
+              EndpointUrl = "string",
+              EnvironmentArn = "string",
+              EnvironmentId = "string",
+              EnvironmentLinks = list(
+                list(
+                  EnvironmentName = "string",
+                  LinkName = "string"
+                )
+              ),
+              EnvironmentName = "string",
+              OptionSettings = list(
+                list(
+                  Namespace = "string",
+                  OptionName = "string",
+                  ResourceName = "string",
+                  Value = "string"
+                )
+              ),
+              PlatformArn = "string",
+              SolutionStackName = "string",
+              Status = "string",
+              Tier = list(
+                Name = "string",
+                Type = "string",
+                Version = "string"
+              ),
+              VersionLabel = "string"
             ),
             AwsElasticsearchDomain = list(
               AccessPolicies = "string",
@@ -484,7 +707,19 @@ A list with the following syntax:\preformatted{list(
                     )
                   )
                 )
+              ),
+              PublicAccessBlockConfiguration = list(
+                BlockPublicAcls = TRUE|FALSE,
+                BlockPublicPolicy = TRUE|FALSE,
+                IgnorePublicAcls = TRUE|FALSE,
+                RestrictPublicBuckets = TRUE|FALSE
               )
+            ),
+            AwsS3AccountPublicAccessBlock = list(
+              BlockPublicAcls = TRUE|FALSE,
+              BlockPublicPolicy = TRUE|FALSE,
+              IgnorePublicAcls = TRUE|FALSE,
+              RestrictPublicBuckets = TRUE|FALSE
             ),
             AwsS3Object = list(
               LastModified = "string",
@@ -824,6 +1059,30 @@ A list with the following syntax:\preformatted{list(
               SnsTopicArn = "string",
               SnsTopicName = "string",
               TrailArn = "string"
+            ),
+            AwsSsmPatchCompliance = list(
+              Patch = list(
+                ComplianceSummary = list(
+                  Status = "string",
+                  CompliantCriticalCount = 123,
+                  CompliantHighCount = 123,
+                  CompliantMediumCount = 123,
+                  ExecutionType = "string",
+                  NonCompliantCriticalCount = 123,
+                  CompliantInformationalCount = 123,
+                  NonCompliantInformationalCount = 123,
+                  CompliantUnspecifiedCount = 123,
+                  NonCompliantLowCount = 123,
+                  NonCompliantHighCount = 123,
+                  CompliantLowCount = 123,
+                  ComplianceType = "string",
+                  PatchBaselineId = "string",
+                  OverallSeverity = "string",
+                  NonCompliantMediumCount = 123,
+                  NonCompliantUnspecifiedCount = 123,
+                  PatchGroup = "string"
+                )
+              )
             ),
             AwsCertificateManagerCertificate = list(
               CertificateAuthorityArn = "string",
@@ -1656,6 +1915,131 @@ A list with the following syntax:\preformatted{list(
         OperationEndTime = "string",
         RebootOption = "string",
         Operation = "string"
+      ),
+      Action = list(
+        ActionType = "string",
+        NetworkConnectionAction = list(
+          ConnectionDirection = "string",
+          RemoteIpDetails = list(
+            IpAddressV4 = "string",
+            Organization = list(
+              Asn = 123,
+              AsnOrg = "string",
+              Isp = "string",
+              Org = "string"
+            ),
+            Country = list(
+              CountryCode = "string",
+              CountryName = "string"
+            ),
+            City = list(
+              CityName = "string"
+            ),
+            GeoLocation = list(
+              Lon = 123.0,
+              Lat = 123.0
+            )
+          ),
+          RemotePortDetails = list(
+            Port = 123,
+            PortName = "string"
+          ),
+          LocalPortDetails = list(
+            Port = 123,
+            PortName = "string"
+          ),
+          Protocol = "string",
+          Blocked = TRUE|FALSE
+        ),
+        AwsApiCallAction = list(
+          Api = "string",
+          ServiceName = "string",
+          CallerType = "string",
+          RemoteIpDetails = list(
+            IpAddressV4 = "string",
+            Organization = list(
+              Asn = 123,
+              AsnOrg = "string",
+              Isp = "string",
+              Org = "string"
+            ),
+            Country = list(
+              CountryCode = "string",
+              CountryName = "string"
+            ),
+            City = list(
+              CityName = "string"
+            ),
+            GeoLocation = list(
+              Lon = 123.0,
+              Lat = 123.0
+            )
+          ),
+          DomainDetails = list(
+            Domain = "string"
+          ),
+          AffectedResources = list(
+            "string"
+          ),
+          FirstSeen = "string",
+          LastSeen = "string"
+        ),
+        DnsRequestAction = list(
+          Domain = "string",
+          Protocol = "string",
+          Blocked = TRUE|FALSE
+        ),
+        PortProbeAction = list(
+          PortProbeDetails = list(
+            list(
+              LocalPortDetails = list(
+                Port = 123,
+                PortName = "string"
+              ),
+              LocalIpDetails = list(
+                IpAddressV4 = "string"
+              ),
+              RemoteIpDetails = list(
+                IpAddressV4 = "string",
+                Organization = list(
+                  Asn = 123,
+                  AsnOrg = "string",
+                  Isp = "string",
+                  Org = "string"
+                ),
+                Country = list(
+                  CountryCode = "string",
+                  CountryName = "string"
+                ),
+                City = list(
+                  CityName = "string"
+                ),
+                GeoLocation = list(
+                  Lon = 123.0,
+                  Lat = 123.0
+                )
+              )
+            )
+          ),
+          Blocked = TRUE|FALSE
+        )
+      ),
+      FindingProviderFields = list(
+        Confidence = 123,
+        Criticality = 123,
+        RelatedFindings = list(
+          list(
+            ProductArn = "string",
+            Id = "string"
+          )
+        ),
+        Severity = list(
+          Label = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+          Original = "string"
+        ),
+        Types = list(
+          "string"
+        )
       )
     )
   ),
@@ -2220,6 +2604,50 @@ Returns a list of findings that match the specified criteria.
     Keyword = list(
       list(
         Value = "string"
+      )
+    ),
+    FindingProviderFieldsConfidence = list(
+      list(
+        Gte = 123.0,
+        Lte = 123.0,
+        Eq = 123.0
+      )
+    ),
+    FindingProviderFieldsCriticality = list(
+      list(
+        Gte = 123.0,
+        Lte = 123.0,
+        Eq = 123.0
+      )
+    ),
+    FindingProviderFieldsRelatedFindingsId = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+      )
+    ),
+    FindingProviderFieldsRelatedFindingsProductArn = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+      )
+    ),
+    FindingProviderFieldsSeverityLabel = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+      )
+    ),
+    FindingProviderFieldsSeverityOriginal = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+      )
+    ),
+    FindingProviderFieldsTypes = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     )
   ),

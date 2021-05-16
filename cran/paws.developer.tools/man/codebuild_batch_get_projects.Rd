@@ -76,7 +76,8 @@ A list with the following syntax:\preformatted{list(
         packaging = "NONE"|"ZIP",
         overrideArtifactName = TRUE|FALSE,
         encryptionDisabled = TRUE|FALSE,
-        artifactIdentifier = "string"
+        artifactIdentifier = "string",
+        bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
       ),
       secondaryArtifacts = list(
         list(
@@ -88,7 +89,8 @@ A list with the following syntax:\preformatted{list(
           packaging = "NONE"|"ZIP",
           overrideArtifactName = TRUE|FALSE,
           encryptionDisabled = TRUE|FALSE,
-          artifactIdentifier = "string"
+          artifactIdentifier = "string",
+          bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
         )
       ),
       cache = list(
@@ -174,7 +176,8 @@ A list with the following syntax:\preformatted{list(
         s3Logs = list(
           status = "ENABLED"|"DISABLED",
           location = "string",
-          encryptionDisabled = TRUE|FALSE
+          encryptionDisabled = TRUE|FALSE,
+          bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
         )
       ),
       fileSystemLocations = list(
@@ -196,7 +199,8 @@ A list with the following syntax:\preformatted{list(
           )
         ),
         timeoutInMins = 123
-      )
+      ),
+      concurrentBuildLimit = 123
     )
   ),
   projectsNotFound = list(

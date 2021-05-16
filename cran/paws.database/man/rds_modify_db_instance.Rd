@@ -18,7 +18,8 @@ rds_modify_db_instance(DBInstanceIdentifier, AllocatedStorage,
   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
   CloudwatchLogsExportConfiguration, ProcessorFeatures,
   UseDefaultProcessorFeatures, DeletionProtection, MaxAllocatedStorage,
-  CertificateRotationRestart, ReplicaMode, EnableCustomerOwnedIp)
+  CertificateRotationRestart, ReplicaMode, EnableCustomerOwnedIp,
+  AwsBackupRecoveryPointArn)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
@@ -161,12 +162,14 @@ group family as this DB instance.}
 to a positive number enables backups. Setting this parameter to 0
 disables automated backups.
 
-Changing this parameter can result in an outage if you change from 0 to
-a non-zero value or from a non-zero value to 0. These changes are
-applied during the next maintenance window unless the \code{ApplyImmediately}
-parameter is enabled for this request. If you change the parameter from
-one non-zero value to another non-zero value, the change is
-asynchronously applied as soon as possible.
+Enabling and disabling backups can result in a brief I/O suspension that
+lasts from a few seconds to a few minutes, depending on the size and
+class of your DB instance.
+
+These changes are applied during the next maintenance window unless the
+\code{ApplyImmediately} parameter is enabled for this request. If you change
+the parameter from one non-zero value to another non-zero value, the
+change is asynchronously applied as soon as possible.
 
 \strong{Amazon Aurora}
 
@@ -190,7 +193,10 @@ running PostgreSQL 9.3.5
 automated backups are enabled, as determined by the
 \code{BackupRetentionPeriod} parameter. Changing this parameter doesn't
 result in an outage and the change is asynchronously applied as soon as
-possible.
+possible. The default is a 30-minute window selected at random from an
+8-hour block of time for each AWS Region. For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{Backup window}
+in the \emph{Amazon RDS User Guide.}
 
 \strong{Amazon Aurora}
 
@@ -216,6 +222,9 @@ reboot of the DB instance. If moving this window to the current time,
 there must be at least 30 minutes between the current time and end of
 the window to ensure pending changes are applied.
 
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance}{Amazon RDS Maintenance Window}
+in the \emph{Amazon RDS User Guide.}
+
 Default: Uses existing setting
 
 Format: ddd:hh24:mi-ddd:hh24:mi
@@ -239,7 +248,9 @@ currently in use, a new DB parameter group in the DB parameter group
 family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.
 
-For information about valid engine versions, see
+If you specify only a major version, Amazon RDS will update the DB
+instance to the default minor version if the current minor version is
+lower. For information about valid engine versions, see
 \code{\link[=rds_create_db_instance]{create_db_instance}}, or call
 \code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}.}
 
@@ -296,14 +307,14 @@ so that they are 10\% greater than the current value.
 
 Default: Uses existing setting}
 
-\item{OptionGroupName}{Indicates that the DB instance should be associated with the specified
-option group. Changing this parameter doesn't result in an outage except
-in the following case and the change is applied during the next
-maintenance window unless the \code{ApplyImmediately} parameter is enabled
-for this request. If the parameter change results in an option group
-that enables OEM, this change can cause a brief (sub-second) period
-during which new connections are rejected but existing connections are
-not interrupted.
+\item{OptionGroupName}{A value that indicates the DB instance should be associated with the
+specified option group. Changing this parameter doesn't result in an
+outage except in the following case and the change is applied during the
+next maintenance window unless the \code{ApplyImmediately} parameter is
+enabled for this request. If the parameter change results in an option
+group that enables OEM, this change can cause a brief (sub-second)
+period during which new connections are rejected but existing
+connections are not interrupted.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, can't be removed from an option group, and that option group can't
@@ -519,7 +530,11 @@ enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
-of the DB instance.}
+of the DB instance.
+
+For more information about this setting, including limitations that
+apply to it, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling}{Managing capacity automatically with Amazon RDS storage autoscaling}
+in the \emph{Amazon RDS User Guide}.}
 
 \item{CertificateRotationRestart}{A value that indicates whether the DB instance is restarted when you
 rotate your SSL/TLS certificate.
@@ -569,6 +584,8 @@ in the \emph{Amazon RDS User Guide}.
 
 For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing}{Customer-owned IP addresses}
 in the \emph{AWS Outposts User Guide}.}
+
+\item{AwsBackupRecoveryPointArn}{The Amazon Resource Name (ARN) of the recovery point in AWS Backup.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -754,7 +771,8 @@ A list with the following syntax:\preformatted{list(
         DBInstanceAutomatedBackupsArn = "string"
       )
     ),
-    CustomerOwnedIpEnabled = TRUE|FALSE
+    CustomerOwnedIpEnabled = TRUE|FALSE,
+    AwsBackupRecoveryPointArn = "string"
   )
 )
 }
@@ -828,7 +846,8 @@ before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.
   MaxAllocatedStorage = 123,
   CertificateRotationRestart = TRUE|FALSE,
   ReplicaMode = "open-read-only"|"mounted",
-  EnableCustomerOwnedIp = TRUE|FALSE
+  EnableCustomerOwnedIp = TRUE|FALSE,
+  AwsBackupRecoveryPointArn = "string"
 )
 }
 }

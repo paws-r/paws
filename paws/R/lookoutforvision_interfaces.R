@@ -17,7 +17,7 @@ NULL
 
 .lookoutforvision$create_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProjectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), Description = structure(list(ModelVersion = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), CreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Performance = structure(list(F1Score = structure(logical(0), tags = list(type = "float")), Recall = structure(logical(0), tags = list(type = "float")), Precision = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), OutputConfig = structure(list(S3Location = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EvaluationManifest = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EvaluationResult = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EvaluationEndTimestamp = structure(logical(0), tags = list(type = "timestamp")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "header", locationName = "X-Amzn-Client-Token", type = "string")), OutputConfig = structure(list(S3Location = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ProjectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), Description = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "header", locationName = "X-Amzn-Client-Token", type = "string")), OutputConfig = structure(list(S3Location = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -113,7 +113,7 @@ NULL
 
 .lookoutforvision$detect_anomalies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProjectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), ModelVersion = structure(logical(0), tags = list(location = "uri", locationName = "modelVersion", type = "string")), Body = structure(logical(0), tags = list(type = "blob", requiresLength = TRUE, streaming = TRUE)), ContentType = structure(logical(0), tags = list(location = "header", locationName = "content-type", type = "string"))), tags = list(type = "structure", payload = "Body"))
+  shape <- structure(list(ProjectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), ModelVersion = structure(logical(0), tags = list(location = "uri", locationName = "modelVersion", type = "string")), Body = structure(logical(0), tags = list(type = "blob", requiresLength = TRUE, streaming = TRUE)), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Body"))
   return(populate(args, shape))
 }
 
@@ -159,6 +159,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lookoutforvision$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutforvision$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lookoutforvision$start_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ProjectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), ModelVersion = structure(logical(0), tags = list(location = "uri", locationName = "modelVersion", type = "string")), MinInferenceUnits = structure(logical(0), tags = list(type = "integer")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "header", locationName = "X-Amzn-Client-Token", type = "string"))), tags = list(type = "structure"))
@@ -180,6 +192,30 @@ NULL
 .lookoutforvision$stop_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutforvision$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutforvision$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutforvision$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutforvision$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

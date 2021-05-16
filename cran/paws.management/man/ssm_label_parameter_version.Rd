@@ -41,9 +41,8 @@ you can't attach Production to version 2.
 \item You can move a label from one version of a parameter to another.
 \item You can't create a label when you create a new parameter. You must
 attach a label to a specific version of a parameter.
-\item You can't delete a parameter label. If you no longer want to use a
-parameter label, then you must move it to a different version of a
-parameter.
+\item If you no longer want to use a parameter label, then you can either
+delete it or move it to a different version of a parameter.
 \item A label can have a maximum of 100 characters.
 \item Labels can contain letters (case sensitive), numbers, periods (.),
 hyphens (-), or underscores (_).

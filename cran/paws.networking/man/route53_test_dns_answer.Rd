@@ -59,6 +59,8 @@ Gets the value that Amazon Route 53 returns in response to a DNS request
 for a specified record name and type. You can optionally specify the IP
 address of a DNS resolver, an EDNS0 client subnet IP address, and a
 subnet mask.
+
+This call only supports querying public hosted zones.
 }
 \section{Request syntax}{
 \preformatted{svc$test_dns_answer(

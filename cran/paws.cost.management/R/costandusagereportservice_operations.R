@@ -90,7 +90,8 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 #'         "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
 #'       ),
 #'       RefreshClosedReports = TRUE|FALSE,
-#'       ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
+#'       ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT",
+#'       BillingViewArn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -168,7 +169,8 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #'       "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
 #'     ),
 #'     RefreshClosedReports = TRUE|FALSE,
-#'     ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
+#'     ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT",
+#'     BillingViewArn = "string"
 #'   )
 #' )
 #' ```
@@ -225,7 +227,8 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
 #'       "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
 #'     ),
 #'     RefreshClosedReports = TRUE|FALSE,
-#'     ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
+#'     ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT",
+#'     BillingViewArn = "string"
 #'   )
 #' )
 #' ```

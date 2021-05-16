@@ -62,6 +62,9 @@ EC2 Fleet events are delayed by up to 30 seconds before they can be
 described. This ensures that you can query by the last evaluated time
 and not miss a recorded event. EC2 Fleet events are available for 48
 hours.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html#monitor-ec2-fleet}{Monitoring your EC2 Fleet}
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_fleet_history(

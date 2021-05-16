@@ -117,8 +117,8 @@ The following policy types are supported:
 \code{StepScaling}—Not supported for DynamoDB, Amazon Comprehend, Lambda,
 Amazon Keyspaces (for Apache Cassandra), or Amazon MSK.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target Tracking Scaling Policies}
-and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step Scaling Policies}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target tracking scaling policies}
+and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step scaling policies}
 in the \emph{Application Auto Scaling User Guide}.}
 
 \item{StepScalingPolicyConfiguration}{A step scaling policy.
@@ -172,8 +172,8 @@ policy is ready to scale in, the scale-in activity will not be blocked.
 After the scale-in activity completes, the target tracking policy could
 instruct the scalable target to scale out again.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target Tracking Scaling Policies}
-and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step Scaling Policies}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target tracking scaling policies}
+and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step scaling policies}
 in the \emph{Application Auto Scaling User Guide}.
 
 If a scalable target is deregistered, the scalable target is no longer

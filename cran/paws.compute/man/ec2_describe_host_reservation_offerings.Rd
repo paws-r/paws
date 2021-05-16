@@ -63,8 +63,8 @@ including offerings that might not match the instance family and Region
 of your Dedicated Hosts. When purchasing an offering, ensure that the
 instance family and Region of the offering matches that of the Dedicated
 Hosts with which it is to be associated. For more information about
-supported instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html}{Dedicated Hosts Overview}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+supported instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html}{Dedicated Hosts}
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_host_reservation_offerings(

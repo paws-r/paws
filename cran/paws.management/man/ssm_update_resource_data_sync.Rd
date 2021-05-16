@@ -46,7 +46,8 @@ a SyncFromSource \code{SyncType}.
     SourceRegions = list(
       "string"
     ),
-    IncludeFutureRegions = TRUE|FALSE
+    IncludeFutureRegions = TRUE|FALSE,
+    EnableAllOpsDataSources = TRUE|FALSE
   )
 )
 }

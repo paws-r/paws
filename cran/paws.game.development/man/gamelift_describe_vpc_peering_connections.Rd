@@ -7,8 +7,8 @@
 gamelift_describe_vpc_peering_connections(FleetId)
 }
 \arguments{
-\item{FleetId}{A unique identifier for a fleet. You can use either the fleet ID or ARN
-value.}
+\item{FleetId}{A unique identifier for the fleet. You can use either the fleet ID or
+ARN value.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -39,14 +39,21 @@ fleet ID or leave the parameter empty to retrieve all connection
 records. If successful, the retrieved information includes both active
 and pending connections. Active connections identify the IpV4 CIDR block
 that the VPC uses to connect.
-\itemize{
-\item \code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
-\item \code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
-\item \code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
-\item \code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
-\item \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
-\item \code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
+|
+\code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
+|
+\code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
+|
+\code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
+|
+\code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
+|
+\code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_vpc_peering_connections(

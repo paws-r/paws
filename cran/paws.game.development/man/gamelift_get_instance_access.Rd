@@ -7,13 +7,13 @@
 gamelift_get_instance_access(FleetId, InstanceId)
 }
 \arguments{
-\item{FleetId}{[required] A unique identifier for a fleet that contains the instance you want
+\item{FleetId}{[required] A unique identifier for the fleet that contains the instance you want
 access to. You can use either the fleet ID or ARN value. The fleet can
 be in any of the following statuses: \code{ACTIVATING}, \code{ACTIVE}, or \code{ERROR}.
 Fleets with an \code{ERROR} status may be accessible for a short time before
 they are deleted.}
 
-\item{InstanceId}{[required] A unique identifier for an instance you want to get access to. You can
+\item{InstanceId}{[required] A unique identifier for the instance you want to get access to. You can
 access an instance in any status.}
 }
 \value{
@@ -37,14 +37,15 @@ debugging, gathering benchmarking data, or observing activity in real
 time.
 
 To remotely access an instance, you need credentials that match the
-operating system of the instance. For a Windows instance, Amazon
-GameLift returns a user name and password as strings for use with a
-Windows Remote Desktop client. For a Linux instance, Amazon GameLift
-returns a user name and RSA private key, also as strings, for use with
-an SSH client. The private key must be saved in the proper format to a
-\code{.pem} file before using. If you're making this request using the AWS
-CLI, saving the secret can be handled as part of the GetInstanceAccess
-request, as shown in one of the examples for this operation.
+operating system of the instance. For a Windows instance, GameLift
+returns a user name and password as strings for use with a Windows
+Remote Desktop client. For a Linux instance, GameLift returns a user
+name and RSA private key, also as strings, for use with an SSH client.
+The private key must be saved in the proper format to a \code{.pem} file
+before using. If you're making this request using the AWS CLI, saving
+the secret can be handled as part of the
+\code{\link[=gamelift_get_instance_access]{get_instance_access}} request, as shown
+in one of the examples for this operation.
 
 To request access to a specific instance, specify the IDs of both the
 instance and the fleet it belongs to. You can retrieve a fleet's
@@ -59,11 +60,12 @@ address and a set of credentials.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html}{Debug Fleet Issues}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_describe_instances]{describe_instances}}
-\item \code{\link[=gamelift_get_instance_access]{get_instance_access}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_describe_instances]{describe_instances}} |
+\code{\link[=gamelift_get_instance_access]{get_instance_access}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$get_instance_access(

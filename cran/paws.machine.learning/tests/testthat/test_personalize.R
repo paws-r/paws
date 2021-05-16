@@ -8,6 +8,10 @@ test_that("list_campaigns", {
   expect_error(svc$list_campaigns(), NA)
 })
 
+test_that("list_dataset_export_jobs", {
+  expect_error(svc$list_dataset_export_jobs(), NA)
+})
+
 test_that("list_dataset_groups", {
   expect_error(svc$list_dataset_groups(), NA)
 })

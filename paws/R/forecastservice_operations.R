@@ -1407,6 +1407,69 @@ forecastservice_delete_predictor_backtest_export_job <- function(PredictorBackte
 }
 .forecastservice$operations$delete_predictor_backtest_export_job <- forecastservice_delete_predictor_backtest_export_job
 
+#' Deletes an entire resource tree
+#'
+#' @description
+#' Deletes an entire resource tree. This operation will delete the parent
+#' resource and its child resources.
+#' 
+#' Child resources are resources that were created from another resource.
+#' For example, when a forecast is generated from a predictor, the forecast
+#' is the child resource and the predictor is the parent resource.
+#' 
+#' Amazon Forecast resources possess the following parent-child resource
+#' hierarchies:
+#' 
+#' -   **Dataset Group**: predictors, predictor backtest export jobs,
+#'     forecasts, forecast export jobs
+#' 
+#' -   **Dataset**: dataset import jobs
+#' 
+#' -   **Predictor**: predictor backtest export jobs, forecasts, forecast
+#'     export jobs
+#' 
+#' -   **Forecast**: forecast export jobs
+#' 
+#' [`delete_resource_tree`][forecastservice_delete_resource_tree] will only
+#' delete Amazon Forecast resources, and will not delete datasets or
+#' exported files stored in Amazon S3.
+#'
+#' @usage
+#' forecastservice_delete_resource_tree(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the parent resource to delete. All
+#' child resources of the parent resource will also be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_tree(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_delete_resource_tree
+forecastservice_delete_resource_tree <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourceTree",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$delete_resource_tree_input(ResourceArn = ResourceArn)
+  output <- .forecastservice$delete_resource_tree_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$delete_resource_tree <- forecastservice_delete_resource_tree
+
 #' Describes an Amazon Forecast dataset created using the CreateDataset
 #' operation
 #'
@@ -1605,6 +1668,7 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
 #'       KMSKeyArn = "string"
 #'     )
 #'   ),
+#'   EstimatedTimeRemainingInMinutes = 123,
 #'   FieldStatistics = list(
 #'     list(
 #'       Count = 123,
@@ -1693,6 +1757,7 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
 #'   ),
 #'   PredictorArn = "string",
 #'   DatasetGroupArn = "string",
+#'   EstimatedTimeRemainingInMinutes = 123,
 #'   Status = "string",
 #'   Message = "string",
 #'   CreationTime = as.POSIXct(
@@ -1937,6 +2002,7 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
 #'       )
 #'     )
 #'   ),
+#'   EstimatedTimeRemainingInMinutes = 123,
 #'   DatasetImportJobArns = list(
 #'     "string"
 #'   ),
@@ -2645,7 +2711,7 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
 #'     export jobs, specify `IS_NOT`.
 #' 
 #' -   `Key` - The name of the parameter to filter on. Valid values are
-#'     `PredictorBacktestExportJobArn` and `Status`.
+#'     `PredictorArn` and `Status`.
 #' 
 #' -   `Value` - The value to match.
 #'
@@ -2863,6 +2929,65 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
   return(response)
 }
 .forecastservice$operations$list_tags_for_resource <- forecastservice_list_tags_for_resource
+
+#' Stops a resource
+#'
+#' @description
+#' Stops a resource.
+#' 
+#' The resource undergoes the following states: `CREATE_STOPPING` and
+#' `CREATE_STOPPED`. You cannot resume a resource once it has been stopped.
+#' 
+#' This operation can be applied to the following resources (and their
+#' corresponding child resources):
+#' 
+#' -   Dataset Import Job
+#' 
+#' -   Predictor Job
+#' 
+#' -   Forecast Job
+#' 
+#' -   Forecast Export Job
+#' 
+#' -   Predictor Backtest Export Job
+#'
+#' @usage
+#' forecastservice_stop_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to stop. The
+#' supported ARNs are `DatasetImportJobArn`, `PredictorArn`,
+#' `PredictorBacktestExportJobArn`, `ForecastArn`, and
+#' `ForecastExportJobArn`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_stop_resource
+forecastservice_stop_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "StopResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$stop_resource_input(ResourceArn = ResourceArn)
+  output <- .forecastservice$stop_resource_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$stop_resource <- forecastservice_stop_resource
 
 #' Associates the specified tags to a resource with the specified
 #' resourceArn

@@ -85,7 +85,7 @@ determining whether a resource could access a service. These other
 policy types include resource-based policies, access control lists, AWS
 Organizations policies, IAM permissions boundaries, and AWS STS assume
 role policies. It only applies permissions policy logic. For more about
-the evaluation of policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating Policies}
+the evaluation of policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating policies}
 in the \emph{IAM User Guide}.
 
 For each service that the resource could access using permissions
@@ -119,7 +119,7 @@ This includes the most recent access attempt for each tracked action
 within a service. Otherwise, this operation returns only service data.
 
 For more information about service and action last accessed data, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html}{Reducing Permissions Using Service Last Accessed Data}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html}{Reducing permissions using service last accessed data}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

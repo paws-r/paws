@@ -32,25 +32,35 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- lakeformation()
-#' svc$batch_grant_permissions(
+#' svc$add_lf_tags_to_resource(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=lakeformation_add_lf_tags_to_resource]{add_lf_tags_to_resource} \tab Attaches one or more tags to an existing resource\cr
 #'  \link[=lakeformation_batch_grant_permissions]{batch_grant_permissions} \tab Batch operation to grant permissions to the principal\cr
 #'  \link[=lakeformation_batch_revoke_permissions]{batch_revoke_permissions} \tab Batch operation to revoke permissions from the principal\cr
+#'  \link[=lakeformation_create_lf_tag]{create_lf_tag} \tab Creates a tag with the specified name and values\cr
+#'  \link[=lakeformation_delete_lf_tag]{delete_lf_tag} \tab Deletes the specified tag key name\cr
 #'  \link[=lakeformation_deregister_resource]{deregister_resource} \tab Deregisters the resource as managed by the Data Catalog\cr
 #'  \link[=lakeformation_describe_resource]{describe_resource} \tab Retrieves the current data access role for the given resource registered in AWS Lake Formation\cr
 #'  \link[=lakeformation_get_data_lake_settings]{get_data_lake_settings} \tab Retrieves the list of the data lake administrators of a Lake Formation-managed data lake\cr
 #'  \link[=lakeformation_get_effective_permissions_for_path]{get_effective_permissions_for_path} \tab Returns the Lake Formation permissions for a specified table or database resource located at a path in Amazon S3\cr
+#'  \link[=lakeformation_get_lf_tag]{get_lf_tag} \tab Returns a tag definition\cr
+#'  \link[=lakeformation_get_resource_lf_tags]{get_resource_lf_tags} \tab Returns the tags applied to a resource\cr
 #'  \link[=lakeformation_grant_permissions]{grant_permissions} \tab Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3\cr
+#'  \link[=lakeformation_list_lf_tags]{list_lf_tags} \tab Lists tags that the requester has permission to view\cr
 #'  \link[=lakeformation_list_permissions]{list_permissions} \tab Returns a list of the principal permissions on the resource, filtered by the permissions of the caller\cr
 #'  \link[=lakeformation_list_resources]{list_resources} \tab Lists the resources registered to be managed by the Data Catalog\cr
 #'  \link[=lakeformation_put_data_lake_settings]{put_data_lake_settings} \tab Sets the list of data lake administrators who have admin privileges on all resources managed by Lake Formation\cr
 #'  \link[=lakeformation_register_resource]{register_resource} \tab Registers the resource as managed by the Data Catalog\cr
+#'  \link[=lakeformation_remove_lf_tags_from_resource]{remove_lf_tags_from_resource} \tab Removes a tag from the resource\cr
 #'  \link[=lakeformation_revoke_permissions]{revoke_permissions} \tab Revokes permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3\cr
+#'  \link[=lakeformation_search_databases_by_lf_tags]{search_databases_by_lf_tags} \tab This operation allows a search on DATABASE resources by TagCondition\cr
+#'  \link[=lakeformation_search_tables_by_lf_tags]{search_tables_by_lf_tags} \tab This operation allows a search on TABLE resources by LFTags\cr
+#'  \link[=lakeformation_update_lf_tag]{update_lf_tag} \tab Updates the list of possible values for the specified tag key\cr
 #'  \link[=lakeformation_update_resource]{update_resource} \tab Updates the data access role used for vending access to the given (registered) resource in AWS Lake Formation
 #' }
 #'

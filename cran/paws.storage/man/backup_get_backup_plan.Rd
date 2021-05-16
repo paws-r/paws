@@ -39,7 +39,8 @@ A list with the following syntax:\preformatted{list(
             ),
             DestinationBackupVaultArn = "string"
           )
-        )
+        ),
+        EnableContinuousBackup = TRUE|FALSE
       )
     ),
     AdvancedBackupSettings = list(
@@ -76,8 +77,9 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns \code{BackupPlan} details for the specified \code{BackupPlanId}. Returns
-the body of a backup plan in JSON format, in addition to plan metadata.
+Returns \code{BackupPlan} details for the specified \code{BackupPlanId}. The
+details are the body of a backup plan in JSON format, in addition to
+plan metadata.
 }
 \section{Request syntax}{
 \preformatted{svc$get_backup_plan(

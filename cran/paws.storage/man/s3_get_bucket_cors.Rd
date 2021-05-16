@@ -9,7 +9,7 @@ s3_get_bucket_cors(Bucket, ExpectedBucketOwner)
 \arguments{
 \item{Bucket}{[required] The bucket name for which to get the cors configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -17,6 +17,7 @@ different account, the request will fail with an HTTP
 A list with the following syntax:\preformatted{list(
   CORSRules = list(
     list(
+      ID = "string",
       AllowedHeaders = list(
         "string"
       ),

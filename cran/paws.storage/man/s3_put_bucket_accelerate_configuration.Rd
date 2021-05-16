@@ -12,7 +12,7 @@ s3_put_bucket_accelerate_configuration(Bucket, AccelerateConfiguration,
 
 \item{AccelerateConfiguration}{[required] Container for setting the transfer acceleration state.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -39,7 +39,7 @@ following two values:
 
 The
 \code{\link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration}}
-operation returns the transfer acceleration state of a bucket.
+action returns the transfer acceleration state of a bucket.
 
 After setting the Transfer Acceleration state of a bucket to Enabled, it
 might take up to thirty minutes before the data transfer rates to the

@@ -16,7 +16,10 @@ themselves as the job name. The name must also be unique within an AWS
 account. If you try to create a transcription job with the same name as
 a previous transcription job, you get a \code{ConflictException} error.}
 
-\item{LanguageCode}{The language code for the language used in the input media file.}
+\item{LanguageCode}{The language code for the language used in the input media file.
+
+To transcribe speech in Modern Standard Arabic (ar-SA), your audio or
+video file must be encoded at a sample rate of 16000 Hz or higher.}
 
 \item{MediaSampleRateHertz}{The sample rate, in Hertz, of the audio track in the input media file.
 
@@ -155,7 +158,7 @@ A list with the following syntax:\preformatted{list(
       ShowAlternatives = TRUE|FALSE,
       MaxAlternatives = 123,
       VocabularyFilterName = "string",
-      VocabularyFilterMethod = "remove"|"mask"
+      VocabularyFilterMethod = "remove"|"mask"|"tag"
     ),
     ModelSettings = list(
       LanguageModelName = "string"
@@ -200,7 +203,7 @@ Starts an asynchronous job to transcribe speech to text.
     ShowAlternatives = TRUE|FALSE,
     MaxAlternatives = 123,
     VocabularyFilterName = "string",
-    VocabularyFilterMethod = "remove"|"mask"
+    VocabularyFilterMethod = "remove"|"mask"|"tag"
   ),
   ModelSettings = list(
     LanguageModelName = "string"

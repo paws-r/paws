@@ -2,14 +2,14 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_update_studio_session_mapping}
 \alias{emr_update_studio_session_mapping}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Updates the session policy attached to the user or group for the
+specified Amazon EMR Studio}
 \usage{
 emr_update_studio_session_mapping(StudioId, IdentityId, IdentityName,
   IdentityType, SessionPolicyArn)
 }
 \arguments{
-\item{StudioId}{[required] The ID of the EMR Studio.}
+\item{StudioId}{[required] The ID of the Amazon EMR Studio.}
 
 \item{IdentityId}{The globally unique identifier (GUID) of the user or group. For more
 information, see
@@ -20,7 +20,7 @@ in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} o
 \code{IdentityId} must be specified.}
 
 \item{IdentityName}{The name of the user or group to update. For more information, see
-\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId}{UserName}
+\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName}{UserName}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName}{DisplayName}
 in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} or
@@ -35,9 +35,6 @@ the specified user or group.}
 An empty list.
 }
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
-
 Updates the session policy attached to the user or group for the
 specified Amazon EMR Studio.
 }

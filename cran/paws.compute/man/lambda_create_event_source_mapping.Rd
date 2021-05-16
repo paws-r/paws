@@ -77,8 +77,8 @@ retry.}
 default value is infinite (-1). When set to infinite (-1), failed
 records will be retried until the record expires.}
 
-\item{TumblingWindowInSeconds}{(Streams) The duration of a processing window in seconds. The range is
-between 1 second up to 15 minutes.}
+\item{TumblingWindowInSeconds}{(Streams) The duration in seconds of a processing window. The range is
+between 1 second up to 900 seconds.}
 
 \item{Topics}{The name of the Kafka topic.}
 

@@ -12,7 +12,7 @@ s3_put_bucket_notification_configuration(Bucket,
 
 \item{NotificationConfiguration}{[required]}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -37,7 +37,7 @@ the notification configuration will be an empty
 
 \verb{</NotificationConfiguration>}
 
-This operation replaces the existing notification configuration with the
+This action replaces the existing notification configuration with the
 configuration you include in the request body.
 
 After Amazon S3 receives this request, it first verifies that any Amazon
@@ -60,8 +60,8 @@ The PUT notification is an atomic operation. For example, suppose your
 notification configuration includes SNS topic, SQS queue, and Lambda
 function configurations. When you send a PUT request with this
 configuration, Amazon S3 sends test messages to your SNS topic. If the
-message fails, the entire PUT operation will fail, and Amazon S3 will
-not add the configuration to your bucket.
+message fails, the entire PUT action will fail, and Amazon S3 will not
+add the configuration to your bucket.
 
 \strong{Responses}
 
@@ -71,7 +71,7 @@ If the configuration in the request body includes only one
 include the \code{x-amz-sns-test-message-id} header containing the message ID
 of the test notification sent to the topic.
 
-The following operation is related to
+The following action is related to
 \code{\link[=s3_put_bucket_notification_configuration]{put_bucket_notification_configuration}}:
 \itemize{
 \item \code{\link[=s3_get_bucket_notification_configuration]{get_bucket_notification_configuration}}

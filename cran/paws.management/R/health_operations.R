@@ -15,7 +15,7 @@ NULL
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
 #' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
-#' operation from your organization's master account.
+#' operation from your organization's management account.
 #' 
 #' This API operation uses pagination. Specify the `nextToken` parameter in
 #' the next request to return more results.
@@ -24,10 +24,13 @@ NULL
 #' health_describe_affected_accounts_for_organization(eventArn, nextToken,
 #'   maxResults)
 #'
-#' @param eventArn &#91;required&#93; The unique identifier for the event. Format:
-#' `arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID `.
-#' Example:
-#' `Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456`
+#' @param eventArn &#91;required&#93; The unique identifier for the event. The event ARN has the
+#' `arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID `
+#' format.
+#' 
+#' For example, an event ARN might look like the following:
+#' 
+#' `arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456`
 #' @param nextToken If the results of a search are large, only a portion of the results are
 #' returned, and a `nextToken` pagination token is returned in the
 #' response. To retrieve the next batch of results, reissue the search
@@ -91,8 +94,14 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #' At least one event ARN is required. Results are sorted by the
 #' `lastUpdatedTime` of the entity, starting with the most recent.
 #' 
-#' This API operation uses pagination. Specify the `nextToken` parameter in
-#' the next request to return more results.
+#' -   This API operation uses pagination. Specify the `nextToken`
+#'     parameter in the next request to return more results.
+#' 
+#' -   This operation supports resource-level permissions. You can use this
+#'     operation to allow or deny access to specific AWS Health events. For
+#'     more information, see [Resource- and action-based
+#'     conditions](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
+#'     in the *AWS Health User Guide*.
 #'
 #' @usage
 #' health_describe_affected_entities(filter, locale, nextToken, maxResults)
@@ -209,10 +218,16 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
 #' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
-#' operation from your organization's master account.
+#' operation from your organization's management account.
 #' 
-#' This API operation uses pagination. Specify the `nextToken` parameter in
-#' the next request to return more results.
+#' -   This API operation uses pagination. Specify the `nextToken`
+#'     parameter in the next request to return more results.
+#' 
+#' -   This operation doesn't support resource-level permissions. You can't
+#'     use this operation to allow or deny access to specific AWS Health
+#'     events. For more information, see [Resource- and action-based
+#'     conditions](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
+#'     in the *AWS Health User Guide*.
 #'
 #' @usage
 #' health_describe_affected_entities_for_organization(
@@ -488,16 +503,22 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #'
 #' @description
 #' Returns detailed information about one or more specified events.
-#' Information includes standard event data (Region, service, and so on, as
-#' returned by [`describe_events`][health_describe_events]), a detailed
-#' event description, and possible additional metadata that depends upon
-#' the nature of the event. Affected entities are not included. To retrieve
-#' those, use the
+#' Information includes standard event data (AWS Region, service, and so
+#' on, as returned by [`describe_events`][health_describe_events]), a
+#' detailed event description, and possible additional metadata that
+#' depends upon the nature of the event. Affected entities are not
+#' included. To retrieve the entities, use the
 #' [`describe_affected_entities`][health_describe_affected_entities]
 #' operation.
 #' 
-#' If a specified event cannot be retrieved, an error message is returned
+#' If a specified event can't be retrieved, an error message is returned
 #' for that event.
+#' 
+#' This operation supports resource-level permissions. You can use this
+#' operation to allow or deny access to specific AWS Health events. For
+#' more information, see [Resource- and action-based
+#' conditions](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
+#' in the *AWS Health User Guide*.
 #'
 #' @usage
 #' health_describe_event_details(eventArns, locale)
@@ -581,42 +602,48 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 .health$operations$describe_event_details <- health_describe_event_details
 
 #' Returns detailed information about one or more specified events for one
-#' or more accounts in your organization
+#' or more AWS accounts in your organization
 #'
 #' @description
 #' Returns detailed information about one or more specified events for one
-#' or more accounts in your organization. Information includes standard
-#' event data (Region, service, and so on, as returned by
-#' [`describe_events_for_organization`][health_describe_events_for_organization]),
-#' a detailed event description, and possible additional metadata that
-#' depends upon the nature of the event. Affected entities are not
-#' included; to retrieve those, use the
+#' or more AWS accounts in your organization. This information includes
+#' standard event data (such as the AWS Region and service), an event
+#' description, and (depending on the event) possible metadata. This
+#' operation doesn't return affected entities, such as the resources
+#' related to the event. To return affected entities, use the
 #' [`describe_affected_entities_for_organization`][health_describe_affected_entities_for_organization]
 #' operation.
 #' 
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
 #' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
-#' operation from your organization's master account.
+#' operation from your organization's management account.
 #' 
 #' When you call the
 #' [`describe_event_details_for_organization`][health_describe_event_details_for_organization]
-#' operation, you specify the `organizationEventDetailFilters` object in
-#' the request. Depending on the AWS Health event type, note the following
+#' operation, specify the `organizationEventDetailFilters` object in the
+#' request. Depending on the AWS Health event type, note the following
 #' differences:
 #' 
-#' -   If the event is public, the `awsAccountId` parameter must be empty.
-#'     If you specify an account ID for a public event, then an error
-#'     message is returned. That's because the event might apply to all AWS
-#'     accounts and isn't specific to an account in your organization.
+#' -   To return event details for a public event, you must specify a null
+#'     value for the `awsAccountId` parameter. If you specify an account ID
+#'     for a public event, AWS Health returns an error message because
+#'     public events aren't specific to an account.
 #' 
-#' -   If the event is specific to an account, then you must specify the
-#'     `awsAccountId` parameter in the request. If you don't specify an
-#'     account ID, an error message returns because the event is specific
-#'     to an AWS account in your organization.
+#' -   To return event details for an event that is specific to an account
+#'     in your organization, you must specify the `awsAccountId` parameter
+#'     in the request. If you don't specify an account ID, AWS Health
+#'     returns an error message because the event is specific to an account
+#'     in your organization.
 #' 
 #' For more information, see
 #' [Event](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
+#' 
+#' This operation doesn't support resource-level permissions. You can't use
+#' this operation to allow or deny access to specific AWS Health events.
+#' For more information, see [Resource- and action-based
+#' conditions](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
+#' in the *AWS Health User Guide*.
 #'
 #' @usage
 #' health_describe_event_details_for_organization(
@@ -708,9 +735,15 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #' Returns the event types that meet the specified filter criteria
 #'
 #' @description
-#' Returns the event types that meet the specified filter criteria. If no
-#' filter criteria are specified, all event types are returned, in no
-#' particular order.
+#' Returns the event types that meet the specified filter criteria. You can
+#' use this API operation to find information about the AWS Health event,
+#' such as the category, AWS service, and event code. The metadata for each
+#' event appears in the
+#' [EventType](https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html)
+#' object.
+#' 
+#' If you don't specify a filter criteria, the API operation returns all
+#' event types, in no particular order.
 #' 
 #' This API operation uses pagination. Specify the `nextToken` parameter in
 #' the next request to return more results.
@@ -975,7 +1008,7 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
 #' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
-#' operation from your organization's master AWS account.
+#' operation from your organization's management account.
 #' 
 #' This API operation uses pagination. Specify the `nextToken` parameter in
 #' the next request to return more results.
@@ -1109,7 +1142,7 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
 #' This operation provides status information on enabling or disabling AWS
 #' Health to work with your organization. To call this operation, you must
 #' sign in as an IAM user, assume an IAM role, or sign in as the root user
-#' (not recommended) in the organization's master account.
+#' (not recommended) in the organization's management account.
 #'
 #' @usage
 #' health_describe_health_service_status_for_organization()
@@ -1152,15 +1185,16 @@ health_describe_health_service_status_for_organization <- function() {
 #' Disables AWS Health from working with AWS Organizations. To call this
 #' operation, you must sign in as an AWS Identity and Access Management
 #' (IAM) user, assume an IAM role, or sign in as the root user (not
-#' recommended) in the organization's master AWS account. For more
+#' recommended) in the organization's management account. For more
 #' information, see [Aggregating AWS Health
 #' events](https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html)
 #' in the *AWS Health User Guide*.
 #' 
-#' This operation doesn't remove the service-linked role (SLR) from the AWS
-#' master account in your organization. You must use the IAM console, API,
-#' or AWS Command Line Interface (AWS CLI) to remove the SLR. For more
-#' information, see [Deleting a Service-Linked
+#' This operation doesn't remove the service-linked role from the
+#' management account in your organization. You must use the IAM console,
+#' API, or AWS Command Line Interface (AWS CLI) to remove the
+#' service-linked role. For more information, see [Deleting a
+#' Service-Linked
 #' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#delete-service-linked-role)
 #' in the *IAM User Guide*.
 #' 
@@ -1203,16 +1237,32 @@ health_disable_health_service_access_for_organization <- function() {
 }
 .health$operations$disable_health_service_access_for_organization <- health_disable_health_service_access_for_organization
 
-#' Calling this operation enables AWS Health to work with AWS Organizations
+#' Enables AWS Health to work with AWS Organizations
 #'
 #' @description
-#' Calling this operation enables AWS Health to work with AWS
-#' Organizations. This applies a service-linked role (SLR) to the master
-#' account in the organization. To call this operation, you must sign in as
-#' an IAM user, assume an IAM role, or sign in as the root user (not
-#' recommended) in the organization's master account.
+#' Enables AWS Health to work with AWS Organizations. You can use the
+#' organizational view feature to aggregate events from all AWS accounts in
+#' your organization in a centralized location.
 #' 
-#' For more information, see [Aggregating AWS Health
+#' This operation also creates a service-linked role for the management
+#' account in the organization.
+#' 
+#' To call this operation, you must meet the following requirements:
+#' 
+#' -   You must have a Business or Enterprise Support plan from [AWS
+#'     Support](https://aws.amazon.com/premiumsupport/) to use the AWS
+#'     Health API. If you call the AWS Health API from an AWS account that
+#'     doesn't have a Business or Enterprise Support plan, you receive a
+#'     `SubscriptionRequiredException` error.
+#' 
+#' -   You must have permission to call this operation from the
+#'     organization's management account. For example IAM policies, see
+#'     [AWS Health identity-based policy
+#'     examples](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html).
+#' 
+#' If you don't have the required support plan, you can instead use the AWS
+#' Health console to enable the organizational view feature. For more
+#' information, see [Aggregating AWS Health
 #' events](https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html)
 #' in the *AWS Health User Guide*.
 #'

@@ -5,7 +5,7 @@
 \title{Returns information about a new or existing template}
 \usage{
 cloudformation_get_template_summary(TemplateBody, TemplateURL,
-  StackName, StackSetName)
+  StackName, StackSetName, CallAs)
 }
 \arguments{
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
@@ -18,7 +18,8 @@ Conditional: You must specify only one of the following parameters:
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket. For more information about templates, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
+bucket or a Systems Manager document. For more information about
+templates, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
@@ -36,6 +37,22 @@ Conditional: You must specify only one of the following parameters:
 
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your AWS account must be registered as a delegated administrator in
+the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{AWS CloudFormation User Guide}.
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -103,7 +120,8 @@ returned.
   TemplateBody = "string",
   TemplateURL = "string",
   StackName = "string",
-  StackSetName = "string"
+  StackSetName = "string",
+  CallAs = "SELF"|"DELEGATED_ADMIN"
 )
 }
 }

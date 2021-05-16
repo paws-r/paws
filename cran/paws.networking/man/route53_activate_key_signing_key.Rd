@@ -2,7 +2,7 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_activate_key_signing_key}
 \alias{route53_activate_key_signing_key}
-\title{Activates a key signing key (KSK) so that it can be used for signing by
+\title{Activates a key-signing key (KSK) so that it can be used for signing by
 DNSSEC}
 \usage{
 route53_activate_key_signing_key(HostedZoneId, Name)
@@ -10,7 +10,9 @@ route53_activate_key_signing_key(HostedZoneId, Name)
 \arguments{
 \item{HostedZoneId}{[required] A unique string used to identify a hosted zone.}
 
-\item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK).}
+\item{Name}{[required] A string used to identify a key-signing key (KSK). \code{Name} can include
+numbers, letters, and underscores (_). \code{Name} must be unique for each
+key-signing key in the same hosted zone.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Activates a key signing key (KSK) so that it can be used for signing by
+Activates a key-signing key (KSK) so that it can be used for signing by
 DNSSEC. This operation changes the KSK status to \code{ACTIVE}.
 }
 \section{Request syntax}{

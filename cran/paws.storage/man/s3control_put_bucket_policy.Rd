@@ -37,18 +37,18 @@ An empty list.
 \description{
 This action puts a bucket policy to an Amazon S3 on Outposts bucket. To
 put a policy on an S3 bucket, see
-\code{\link[=s3control_put_bucket_policy]{put_bucket_policy}} in the \emph{Amazon Simple
-Storage Service API}.
+\code{\link[=s3control_put_bucket_policy]{put_bucket_policy}} in the \emph{Amazon S3 API
+Reference}.
 
 Applies an Amazon S3 bucket policy to an Outposts bucket. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 If you are using an identity other than the root user of the AWS account
 that owns the Outposts bucket, the calling identity must have the
 \code{\link[=s3control_put_bucket_policy]{put_bucket_policy}} permissions on the
 specified Outposts bucket and belong to the bucket owner's account in
-order to use this operation.
+order to use this action.
 
 If you don't have \code{\link[=s3control_put_bucket_policy]{put_bucket_policy}}
 permissions, Amazon S3 returns a \verb{403 Access Denied} error. If you have
@@ -57,8 +57,8 @@ to the bucket owner's account, Amazon S3 returns a
 \verb{405 Method Not Allowed} error.
 
 As a security precaution, the root user of the AWS account that owns a
-bucket can always use this operation, even if the policy explicitly
-denies the root user the ability to perform this action.
+bucket can always use this action, even if the policy explicitly denies
+the root user the ability to perform this action.
 
 For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
 

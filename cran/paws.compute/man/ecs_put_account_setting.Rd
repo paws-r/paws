@@ -25,7 +25,10 @@ values are \code{enabled} and \code{disabled}.}
 root user. If you specify the root user, it modifies the account setting
 for all IAM users, IAM roles, and the root user of the account unless an
 IAM user or role explicitly overrides these settings. If this field is
-omitted, the setting is changed only for the authenticated user.}
+omitted, the setting is changed only for the authenticated user.
+
+Federated users assume the account setting of the root user and can't
+have explicit account settings set for them.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -83,25 +86,4 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 \examples{
 \dontrun{
 # This example modifies your account settings to opt in to the new ARN and
-# resource ID format for Amazon ECS services. If youâ€™re using this command
-# as the root user, then changes apply to the entire AWS account, unless
-# an IAM user or role explicitly overrides these settings for themselves.
-svc$put_account_setting(
-  name = "serviceLongArnFormat",
-  value = "enabled"
-)
-
-# This example modifies the account setting for a specific IAM user or IAM
-# role to opt in to the new ARN and resource ID format for Amazon ECS
-# container instances. If youâ€™re using this command as the root user, then
-# changes apply to the entire AWS account, unless an IAM user or role
-# explicitly overrides these settings for themselves.
-svc$put_account_setting(
-  name = "containerInstanceLongArnFormat",
-  value = "enabled",
-  principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
-)
-}
-
-}
-\keyword{internal}
+# resource ID format for Amazon ECS services. If youb

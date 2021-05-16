@@ -2,7 +2,7 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_create_key_signing_key}
 \alias{route53_create_key_signing_key}
-\title{Creates a new key signing key (KSK) associated with a hosted zone}
+\title{Creates a new key-signing key (KSK) associated with a hosted zone}
 \usage{
 route53_create_key_signing_key(CallerReference, HostedZoneId,
   KeyManagementServiceArn, Name, Status)
@@ -12,13 +12,14 @@ route53_create_key_signing_key(CallerReference, HostedZoneId,
 
 \item{HostedZoneId}{[required] The unique string (ID) used to identify a hosted zone.}
 
-\item{KeyManagementServiceArn}{[required] The Amazon resource name (ARN) for a customer managed key (CMK) in AWS
-Key Management Service (KMS). The \code{KeyManagementServiceArn} must be
-unique for each key signing key (KSK) in a single hosted zone. To see an
-example of \code{KeyManagementServiceArn} that grants the correct permissions
-for DNSSEC, scroll down to \strong{Example}.
+\item{KeyManagementServiceArn}{[required] The Amazon resource name (ARN) for a customer managed customer master
+key (CMK) in AWS Key Management Service (AWS KMS). The
+\code{KeyManagementServiceArn} must be unique for each key-signing key (KSK)
+in a single hosted zone. To see an example of \code{KeyManagementServiceArn}
+that grants the correct permissions for DNSSEC, scroll down to
+\strong{Example}.
 
-You must configure the CMK as follows:
+You must configure the customer managed CMK as follows:
 \subsection{Status}{
 
 Enabled
@@ -46,16 +47,18 @@ The key policy must give permission for the following actions:
 The key policy must also include the Amazon Route 53 service in the
 principal for your account. Specify the following:
 \itemize{
-\item \code{"Service": "api-service.dnssec.route53.aws.internal"}
+\item \code{"Service": "dnssec.route53.aws.amazonaws.com"}
 }
 
-For more information about working with CMK in KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html}{AWS Key Management Service concepts}.
+For more information about working with a customer managed CMK in AWS
+KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html}{AWS Key Management Service concepts}.
 }}
 
-\item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK). \code{Name}
-must be unique for each key signing key in the same hosted zone.}
+\item{Name}{[required] A string used to identify a key-signing key (KSK). \code{Name} can include
+numbers, letters, and underscores (_). \code{Name} must be unique for each
+key-signing key in the same hosted zone.}
 
-\item{Status}{[required] A string specifying the initial status of the key signing key (KSK). You
+\item{Status}{[required] A string specifying the initial status of the key-signing key (KSK). You
 can set the value to \code{ACTIVE} or \code{INACTIVE}.}
 }
 \value{
@@ -95,7 +98,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates a new key signing key (KSK) associated with a hosted zone. You
+Creates a new key-signing key (KSK) associated with a hosted zone. You
 can only have two KSKs per hosted zone.
 }
 \section{Request syntax}{

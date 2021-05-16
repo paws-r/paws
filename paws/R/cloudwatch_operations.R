@@ -223,6 +223,46 @@ cloudwatch_delete_insight_rules <- function(RuleNames) {
 }
 .cloudwatch$operations$delete_insight_rules <- cloudwatch_delete_insight_rules
 
+#' Permanently deletes the metric stream that you specify
+#'
+#' @description
+#' Permanently deletes the metric stream that you specify.
+#'
+#' @usage
+#' cloudwatch_delete_metric_stream(Name)
+#'
+#' @param Name &#91;required&#93; The name of the metric stream to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_metric_stream(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_delete_metric_stream
+cloudwatch_delete_metric_stream <- function(Name) {
+  op <- new_operation(
+    name = "DeleteMetricStream",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$delete_metric_stream_input(Name = Name)
+  output <- .cloudwatch$delete_metric_stream_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$delete_metric_stream <- cloudwatch_delete_metric_stream
+
 #' Retrieves the history for the specified alarm
 #'
 #' @description
@@ -1297,7 +1337,7 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #'
 #' @usage
 #' cloudwatch_get_metric_data(MetricDataQueries, StartTime, EndTime,
-#'   NextToken, ScanBy, MaxDatapoints)
+#'   NextToken, ScanBy, MaxDatapoints, LabelOptions)
 #'
 #' @param MetricDataQueries &#91;required&#93; The metric queries to be returned. A single
 #' [`get_metric_data`][cloudwatch_get_metric_data] call can include as many
@@ -1355,6 +1395,9 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #' paginates when the `MaxDatapoints` limit is reached.
 #' @param MaxDatapoints The maximum number of data points the request should return before
 #' paginating. If you omit this, the default of 100,800 is used.
+#' @param LabelOptions This structure includes the `Timezone` parameter, which you can use to
+#' specify your time zone so that the labels of returned data display the
+#' correct time for your time zone.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1426,21 +1469,24 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #'   ),
 #'   NextToken = "string",
 #'   ScanBy = "TimestampDescending"|"TimestampAscending",
-#'   MaxDatapoints = 123
+#'   MaxDatapoints = 123,
+#'   LabelOptions = list(
+#'     Timezone = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatch_get_metric_data
-cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, NextToken = NULL, ScanBy = NULL, MaxDatapoints = NULL) {
+cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, NextToken = NULL, ScanBy = NULL, MaxDatapoints = NULL, LabelOptions = NULL) {
   op <- new_operation(
     name = "GetMetricData",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatch$get_metric_data_input(MetricDataQueries = MetricDataQueries, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, ScanBy = ScanBy, MaxDatapoints = MaxDatapoints)
+  input <- .cloudwatch$get_metric_data_input(MetricDataQueries = MetricDataQueries, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, ScanBy = ScanBy, MaxDatapoints = MaxDatapoints, LabelOptions = LabelOptions)
   output <- .cloudwatch$get_metric_data_output()
   config <- get_config()
   svc <- .cloudwatch$service(config)
@@ -1672,6 +1718,72 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 }
 .cloudwatch$operations$get_metric_statistics <- cloudwatch_get_metric_statistics
 
+#' Returns information about the metric stream that you specify
+#'
+#' @description
+#' Returns information about the metric stream that you specify.
+#'
+#' @usage
+#' cloudwatch_get_metric_stream(Name)
+#'
+#' @param Name &#91;required&#93; The name of the metric stream to retrieve information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Name = "string",
+#'   IncludeFilters = list(
+#'     list(
+#'       Namespace = "string"
+#'     )
+#'   ),
+#'   ExcludeFilters = list(
+#'     list(
+#'       Namespace = "string"
+#'     )
+#'   ),
+#'   FirehoseArn = "string",
+#'   RoleArn = "string",
+#'   State = "string",
+#'   CreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   OutputFormat = "json"|"opentelemetry0.7"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_metric_stream(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_get_metric_stream
+cloudwatch_get_metric_stream <- function(Name) {
+  op <- new_operation(
+    name = "GetMetricStream",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$get_metric_stream_input(Name = Name)
+  output <- .cloudwatch$get_metric_stream_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$get_metric_stream <- cloudwatch_get_metric_stream
+
 #' You can use the GetMetricWidgetImage API to retrieve a snapshot graph of
 #' one or more Amazon CloudWatch metrics as a bitmap image
 #'
@@ -1846,6 +1958,69 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
   return(response)
 }
 .cloudwatch$operations$list_dashboards <- cloudwatch_list_dashboards
+
+#' Returns a list of metric streams in this account
+#'
+#' @description
+#' Returns a list of metric streams in this account.
+#'
+#' @usage
+#' cloudwatch_list_metric_streams(NextToken, MaxResults)
+#'
+#' @param NextToken Include this value, if it was returned by the previous call, to get the
+#' next set of metric streams.
+#' @param MaxResults The maximum number of results to return in one operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Entries = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       FirehoseArn = "string",
+#'       State = "string",
+#'       OutputFormat = "json"|"opentelemetry0.7"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_metric_streams(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_list_metric_streams
+cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListMetricStreams",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$list_metric_streams_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudwatch$list_metric_streams_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$list_metric_streams <- cloudwatch_list_metric_streams
 
 #' List the specified metrics
 #'
@@ -2455,7 +2630,7 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' 
 #' The first time you create an alarm in the AWS Management Console, the
 #' CLI, or by using the PutMetricAlarm API, CloudWatch creates the
-#' necessary service-linked rolea for you. The service-linked roles are
+#' necessary service-linked role for you. The service-linked roles are
 #' called `AWSServiceRoleForCloudWatchEvents` and
 #' `AWSServiceRoleForCloudWatchAlarms_ActionSSM`. For more information, see
 #' [AWS service-linked
@@ -2490,6 +2665,8 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
 #' |
 #' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
+#' |
+#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0`
 #' @param AlarmActions The actions to execute when this alarm transitions to the `ALARM` state
 #' from any other state. Each action is specified as an Amazon Resource
 #' Name (ARN).
@@ -2881,6 +3058,134 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 }
 .cloudwatch$operations$put_metric_data <- cloudwatch_put_metric_data
 
+#' Creates or updates a metric stream
+#'
+#' @description
+#' Creates or updates a metric stream. Metric streams can automatically
+#' stream CloudWatch metrics to AWS destinations including Amazon S3 and to
+#' many third-party solutions.
+#' 
+#' For more information, see [Using Metric
+#' Streams](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/).
+#' 
+#' To create a metric stream, you must be logged on to an account that has
+#' the `iam:PassRole` permission and either the `CloudWatchFullAccess`
+#' policy or the `cloudwatch:PutMetricStream` permission.
+#' 
+#' When you create or update a metric stream, you choose one of the
+#' following:
+#' 
+#' -   Stream metrics from all metric namespaces in the account.
+#' 
+#' -   Stream metrics from all metric namespaces in the account, except for
+#'     the namespaces that you list in `ExcludeFilters`.
+#' 
+#' -   Stream metrics from only the metric namespaces that you list in
+#'     `IncludeFilters`.
+#' 
+#' When you use [`put_metric_stream`][cloudwatch_put_metric_stream] to
+#' create a new metric stream, the stream is created in the `running`
+#' state. If you use it to update an existing stream, the state of the
+#' stream is not changed.
+#'
+#' @usage
+#' cloudwatch_put_metric_stream(Name, IncludeFilters, ExcludeFilters,
+#'   FirehoseArn, RoleArn, OutputFormat, Tags)
+#'
+#' @param Name &#91;required&#93; If you are creating a new metric stream, this is the name for the new
+#' stream. The name must be different than the names of other metric
+#' streams in this account and Region.
+#' 
+#' If you are updating a metric stream, specify the name of that stream
+#' here.
+#' 
+#' Valid characters are A-Z, a-z, 0-9, "-" and "_".
+#' @param IncludeFilters If you specify this parameter, the stream sends only the metrics from
+#' the metric namespaces that you specify here.
+#' 
+#' You cannot include `IncludeFilters` and `ExcludeFilters` in the same
+#' operation.
+#' @param ExcludeFilters If you specify this parameter, the stream sends metrics from all metric
+#' namespaces except for the namespaces that you specify here.
+#' 
+#' You cannot include `ExcludeFilters` and `IncludeFilters` in the same
+#' operation.
+#' @param FirehoseArn &#91;required&#93; The ARN of the Amazon Kinesis Firehose delivery stream to use for this
+#' metric stream. This Amazon Kinesis Firehose delivery stream must already
+#' exist and must be in the same account as the metric stream.
+#' @param RoleArn &#91;required&#93; The ARN of an IAM role that this metric stream will use to access Amazon
+#' Kinesis Firehose resources. This IAM role must already exist and must be
+#' in the same account as the metric stream. This IAM role must include the
+#' following permissions:
+#' 
+#' -   firehose:PutRecord
+#' 
+#' -   firehose:PutRecordBatch
+#' @param OutputFormat &#91;required&#93; The output format for the stream. Valid values are `json` and
+#' `opentelemetry0.7`. For more information about metric stream output
+#' formats, see [Metric streams output
+#' formats](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-formats.html).
+#' @param Tags A list of key-value pairs to associate with the metric stream. You can
+#' associate as many as 50 tags with a metric stream.
+#' 
+#' Tags can help you organize and categorize your resources. You can also
+#' use them to scope user permissions by granting a user permission to
+#' access or change only resources with certain tag values.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_metric_stream(
+#'   Name = "string",
+#'   IncludeFilters = list(
+#'     list(
+#'       Namespace = "string"
+#'     )
+#'   ),
+#'   ExcludeFilters = list(
+#'     list(
+#'       Namespace = "string"
+#'     )
+#'   ),
+#'   FirehoseArn = "string",
+#'   RoleArn = "string",
+#'   OutputFormat = "json"|"opentelemetry0.7",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_put_metric_stream
+cloudwatch_put_metric_stream <- function(Name, IncludeFilters = NULL, ExcludeFilters = NULL, FirehoseArn, RoleArn, OutputFormat, Tags = NULL) {
+  op <- new_operation(
+    name = "PutMetricStream",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$put_metric_stream_input(Name = Name, IncludeFilters = IncludeFilters, ExcludeFilters = ExcludeFilters, FirehoseArn = FirehoseArn, RoleArn = RoleArn, OutputFormat = OutputFormat, Tags = Tags)
+  output <- .cloudwatch$put_metric_stream_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$put_metric_stream <- cloudwatch_put_metric_stream
+
 #' Temporarily sets the state of an alarm for testing purposes
 #'
 #' @description
@@ -2953,6 +3258,98 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
   return(response)
 }
 .cloudwatch$operations$set_alarm_state <- cloudwatch_set_alarm_state
+
+#' Starts the streaming of metrics for one or more of your metric streams
+#'
+#' @description
+#' Starts the streaming of metrics for one or more of your metric streams.
+#'
+#' @usage
+#' cloudwatch_start_metric_streams(Names)
+#'
+#' @param Names &#91;required&#93; The array of the names of metric streams to start streaming.
+#' 
+#' This is an "all or nothing" operation. If you do not have permission to
+#' access all of the metric streams that you list here, then none of the
+#' streams that you list in the operation will start streaming.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_metric_streams(
+#'   Names = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_start_metric_streams
+cloudwatch_start_metric_streams <- function(Names) {
+  op <- new_operation(
+    name = "StartMetricStreams",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$start_metric_streams_input(Names = Names)
+  output <- .cloudwatch$start_metric_streams_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$start_metric_streams <- cloudwatch_start_metric_streams
+
+#' Stops the streaming of metrics for one or more of your metric streams
+#'
+#' @description
+#' Stops the streaming of metrics for one or more of your metric streams.
+#'
+#' @usage
+#' cloudwatch_stop_metric_streams(Names)
+#'
+#' @param Names &#91;required&#93; The array of the names of metric streams to stop streaming.
+#' 
+#' This is an "all or nothing" operation. If you do not have permission to
+#' access all of the metric streams that you list here, then none of the
+#' streams that you list in the operation will stop streaming.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_metric_streams(
+#'   Names = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_stop_metric_streams
+cloudwatch_stop_metric_streams <- function(Names) {
+  op <- new_operation(
+    name = "StopMetricStreams",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$stop_metric_streams_input(Names = Names)
+  output <- .cloudwatch$stop_metric_streams_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$stop_metric_streams <- cloudwatch_stop_metric_streams
 
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch
 #' resource

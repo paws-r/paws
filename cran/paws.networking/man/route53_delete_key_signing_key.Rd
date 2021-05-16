@@ -2,14 +2,14 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_delete_key_signing_key}
 \alias{route53_delete_key_signing_key}
-\title{Deletes a key signing key (KSK)}
+\title{Deletes a key-signing key (KSK)}
 \usage{
 route53_delete_key_signing_key(HostedZoneId, Name)
 }
 \arguments{
 \item{HostedZoneId}{[required] A unique string used to identify a hosted zone.}
 
-\item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK).}
+\item{Name}{[required] A string used to identify a key-signing key (KSK).}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -25,8 +25,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Deletes a key signing key (KSK). Before you can delete a KSK, you must
-deactivate it. The KSK must be deactived before you can delete it
+Deletes a key-signing key (KSK). Before you can delete a KSK, you must
+deactivate it. The KSK must be deactivated before you can delete it
 regardless of whether the hosted zone is enabled for DNSSEC signing.
 }
 \section{Request syntax}{

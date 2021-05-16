@@ -2,8 +2,7 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_create_login_profile}
 \alias{iam_create_login_profile}
-\title{Creates a password for the specified user, giving the user the ability
-to access AWS services through the AWS Management Console}
+\title{Creates a password for the specified IAM user}
 \usage{
 iam_create_login_profile(UserName, Password, PasswordResetRequired)
 }
@@ -43,9 +42,16 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates a password for the specified user, giving the user the ability
-to access AWS services through the AWS Management Console. For more
-information about managing passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
+Creates a password for the specified IAM user. A password allows an IAM
+user to access AWS services through the AWS Management Console.
+
+You can use the AWS CLI, the AWS API, or the \strong{Users} page in the IAM
+console to create a password for any IAM user. Use
+\code{\link[=iam_change_password]{change_password}} to update your own existing
+password in the \strong{My Security Credentials} page in the AWS Management
+Console.
+
+For more information about managing passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

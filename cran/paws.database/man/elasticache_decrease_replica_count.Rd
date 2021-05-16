@@ -68,6 +68,21 @@ A list with the following syntax:\preformatted{list(
         UserGroupIdsToRemove = list(
           "string"
         )
+      ),
+      LogDeliveryConfigurations = list(
+        list(
+          LogType = "slow-log",
+          DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+          DestinationDetails = list(
+            CloudWatchLogsDetails = list(
+              LogGroup = "string"
+            ),
+            KinesisFirehoseDetails = list(
+              DeliveryStream = "string"
+            )
+          ),
+          LogFormat = "text"|"json"
+        )
       )
     ),
     MemberClusters = list(
@@ -125,6 +140,23 @@ A list with the following syntax:\preformatted{list(
     ARN = "string",
     UserGroupIds = list(
       "string"
+    ),
+    LogDeliveryConfigurations = list(
+      list(
+        LogType = "slow-log",
+        DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+        DestinationDetails = list(
+          CloudWatchLogsDetails = list(
+            LogGroup = "string"
+          ),
+          KinesisFirehoseDetails = list(
+            DeliveryStream = "string"
+          )
+        ),
+        LogFormat = "text"|"json",
+        Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+        Message = "string"
+      )
     )
   )
 )

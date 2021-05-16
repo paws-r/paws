@@ -2,23 +2,23 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_list_candidates_for_auto_ml_job}
 \alias{sagemaker_list_candidates_for_auto_ml_job}
-\title{List the Candidates created for the job}
+\title{List the candidates created for the job}
 \usage{
 sagemaker_list_candidates_for_auto_ml_job(AutoMLJobName, StatusEquals,
   CandidateNameEquals, SortOrder, SortBy, MaxResults, NextToken)
 }
 \arguments{
-\item{AutoMLJobName}{[required] List the Candidates created for the job by providing the job's name.}
+\item{AutoMLJobName}{[required] List the candidates created for the job by providing the job's name.}
 
-\item{StatusEquals}{List the Candidates for the job and filter by status.}
+\item{StatusEquals}{List the candidates for the job and filter by status.}
 
-\item{CandidateNameEquals}{List the Candidates for the job and filter by candidate name.}
+\item{CandidateNameEquals}{List the candidates for the job and filter by candidate name.}
 
-\item{SortOrder}{The sort order for the results. The default is Ascending.}
+\item{SortOrder}{The sort order for the results. The default is \code{Ascending}.}
 
-\item{SortBy}{The parameter by which to sort the results. The default is Descending.}
+\item{SortBy}{The parameter by which to sort the results. The default is \code{Descending}.}
 
-\item{MaxResults}{List the job's Candidates up to a specified limit.}
+\item{MaxResults}{List the job's candidates up to a specified limit.}
 
 \item{NextToken}{If the previous response was truncated, you receive this token. Use it
 in your next request to receive the next set of results.}
@@ -60,7 +60,12 @@ A list with the following syntax:\preformatted{list(
       LastModifiedTime = as.POSIXct(
         "2015-01-01"
       ),
-      FailureReason = "string"
+      FailureReason = "string",
+      CandidateProperties = list(
+        CandidateArtifactLocations = list(
+          Explainability = "string"
+        )
+      )
     )
   ),
   NextToken = "string"
@@ -68,7 +73,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-List the Candidates created for the job.
+List the candidates created for the job.
 }
 \section{Request syntax}{
 \preformatted{svc$list_candidates_for_auto_ml_job(

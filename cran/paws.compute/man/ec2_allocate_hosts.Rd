@@ -11,15 +11,15 @@ ec2_allocate_hosts(AutoPlacement, AvailabilityZone, ClientToken,
 \item{AutoPlacement}{Indicates whether the host accepts any untargeted instance launches that
 match its instance type configuration, or if it only accepts Host
 tenancy instance launches that specify its unique host ID. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding}{Understanding Instance Placement and Host Affinity}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding}{Understanding auto-placement and affinity}
+in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{on}}
 
 \item{AvailabilityZone}{[required] The Availability Zone in which to allocate the Dedicated Host.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
 \item{InstanceType}{Specifies the instance type to be supported by the Dedicated Hosts. If
 you specify an instance type, the Dedicated Hosts support instances of
@@ -46,8 +46,8 @@ parameters.}
 
 \item{HostRecovery}{Indicates whether to enable or disable host recovery for the Dedicated
 Host. Host recovery is disabled by default. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html}{Host Recovery}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html}{Host recovery}
+in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{off}}
 }

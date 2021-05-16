@@ -15,7 +15,7 @@ cognitoidentityprovider_delete_group(GroupName, UserPoolId)
 An empty list.
 }
 \description{
-Deletes a group. Currently only groups with no members can be deleted.
+Deletes a group.
 
 Calling this action requires developer credentials.
 }

@@ -2,21 +2,23 @@
 % Please edit documentation in R/datasync_operations.R
 \name{datasync_create_location_fsx_windows}
 \alias{datasync_create_location_fsx_windows}
-\title{Creates an endpoint for an Amazon FSx for Windows file system}
+\title{Creates an endpoint for an Amazon FSx for Windows File Server file
+system}
 \usage{
 datasync_create_location_fsx_windows(Subdirectory, FsxFilesystemArn,
   SecurityGroupArns, Tags, User, Domain, Password)
 }
 \arguments{
 \item{Subdirectory}{A subdirectory in the location’s path. This subdirectory in the Amazon
-FSx for Windows file system is used to read data from the Amazon FSx for
-Windows source location or write data to the FSx for Windows
-destination.}
+FSx for Windows File Server file system is used to read data from the
+Amazon FSx for Windows File Server source location or write data to the
+FSx for Windows File Server destination.}
 
-\item{FsxFilesystemArn}{[required] The Amazon Resource Name (ARN) for the FSx for Windows file system.}
+\item{FsxFilesystemArn}{[required] The Amazon Resource Name (ARN) for the FSx for Windows File Server file
+system.}
 
 \item{SecurityGroupArns}{[required] The Amazon Resource Names (ARNs) of the security groups that are to use
-to configure the FSx for Windows file system.}
+to configure the FSx for Windows File Server file system.}
 
 \item{Tags}{The key-value pair that represents a tag that you want to add to the
 resource. The value can be an empty string. This value helps you manage,
@@ -24,13 +26,13 @@ filter, and search for your resources. We recommend that you create a
 name tag for your location.}
 
 \item{User}{[required] The user who has the permissions to access files and folders in the FSx
-for Windows file system.}
+for Windows File Server file system.}
 
-\item{Domain}{The name of the Windows domain that the FSx for Windows server belongs
-to.}
+\item{Domain}{The name of the Windows domain that the FSx for Windows File Server
+belongs to.}
 
 \item{Password}{[required] The password of the user who has the permissions to access files and
-folders in the FSx for Windows file system.}
+folders in the FSx for Windows File Server file system.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -39,7 +41,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates an endpoint for an Amazon FSx for Windows file system.
+Creates an endpoint for an Amazon FSx for Windows File Server file
+system.
 }
 \section{Request syntax}{
 \preformatted{svc$create_location_fsx_windows(

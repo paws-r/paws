@@ -46,7 +46,7 @@ uses the default value of \code{false}. The result is that passwords do not
 require at least one lowercase character.}
 
 \item{AllowUsersToChangePassword}{Allows all IAM users in your account to use the AWS Management Console
-to change their own passwords. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_enable-user-change.html}{Letting IAM Users Change Their Own Passwords}
+to change their own passwords. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_enable-user-change.html}{Letting IAM users change their own passwords}
 in the \emph{IAM User Guide}.
 
 If you do not specify a value for this parameter, then the operation
@@ -91,7 +91,7 @@ Instead, to invoke the default value, do not include that parameter
 when you invoke the operation.
 }
 
-For more information about using a password policy, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html}{Managing an IAM Password Policy}
+For more information about using a password policy, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html}{Managing an IAM password policy}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

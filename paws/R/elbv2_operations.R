@@ -148,11 +148,11 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 .elbv2$operations$add_tags <- elbv2_add_tags
 
 #' Creates a listener for the specified Application Load Balancer, Network
-#' Load Balancer
+#' Load Balancer, or Gateway Load Balancer
 #'
 #' @description
 #' Creates a listener for the specified Application Load Balancer, Network
-#' Load Balancer. or Gateway Load Balancer.
+#' Load Balancer, or Gateway Load Balancer.
 #' 
 #' For more information, see the following:
 #' 
@@ -1037,10 +1037,11 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' \[GRPC protocol version\] The path of a custom health check method with
 #' the format /package.service/method. The default is /AWS.ALB/healthcheck.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
-#' individual target. For TCP health checks, the supported values are 10
-#' and 30 seconds. If the target type is `instance` or `ip`, the default is
-#' 30 seconds. If the target group protocol is GENEVE, the default is 10
-#' seconds. If the target type is `lambda`, the default is 35 seconds.
+#' individual target. If the target group protocol is TCP, TLS, UDP, or
+#' TCP_UDP, the supported values are 10 and 30 seconds. If the target
+#' group protocol is HTTP or HTTPS, the default is 30 seconds. If the
+#' target group protocol is GENEVE, the default is 10 seconds. If the
+#' target type is `lambda`, the default is 35 seconds.
 #' @param HealthCheckTimeoutSeconds The amount of time, in seconds, during which no response from a target
 #' means a failed health check. For target groups with a protocol of HTTP,
 #' HTTPS, or GENEVE, the default is 5 seconds. For target groups with a

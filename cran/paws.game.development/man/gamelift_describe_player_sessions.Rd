@@ -34,7 +34,7 @@ limit (60 seconds).
 \code{NextToken} to get results as a set of sequential pages. If a player
 session ID is specified, this parameter is ignored.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value. If
 a player session ID is specified, this parameter is ignored.}
@@ -66,31 +66,37 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Retrieves properties for one or more player sessions. This operation can
-be used in several ways: (1) provide a \code{PlayerSessionId} to request
-properties for a specific player session; (2) provide a \code{GameSessionId}
-to request properties for all player sessions in the specified game
-session; (3) provide a \code{PlayerId} to request properties for all player
-sessions of a specified player.
+Retrieves properties for one or more player sessions.
 
-To get game session record(s), specify only one of the following: a
-player session ID, a game session ID, or a player ID. You can filter
-this request by player session status. Use the pagination parameters to
-retrieve results as a set of sequential pages. If successful, a
-PlayerSession object is returned for each session matching the request.
+This action can be used in the following ways:
+\itemize{
+\item To retrieve a specific player session, provide the player session ID
+only.
+\item To retrieve all player sessions in a game session, provide the game
+session ID only.
+\item To retrieve all player sessions for a specific player, provide a
+player ID only.
+}
+
+To request player sessions, specify either a player session ID, game
+session ID, or player ID. You can filter this request by player session
+status. Use the pagination parameters to retrieve results as a set of
+sequential pages.
+
+If successful, a \code{PlayerSession} object is returned for each session
+that matches the request.
 
 \emph{Available in Amazon GameLift Local.}
-\itemize{
-\item \code{\link[=gamelift_create_player_session]{create_player_session}}
-\item \code{\link[=gamelift_create_player_sessions]{create_player_sessions}}
-\item \code{\link[=gamelift_describe_player_sessions]{describe_player_sessions}}
-\item Game session placements
-\itemize{
-\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
-\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
-\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
-}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_player_session]{create_player_session}} |
+\code{\link[=gamelift_create_player_sessions]{create_player_sessions}} |
+\code{\link[=gamelift_describe_player_sessions]{describe_player_sessions}} |
+\code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+|
+\code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_player_sessions(

@@ -30,14 +30,16 @@ A list with the following syntax:\preformatted{list(
     StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
     StatusMessage = "string",
     Progress = 123,
-    Details = "string"
+    Details = "string",
+    AutoScalingGroupState = "string",
+    AutoScalingGroupARN = "string"
   )
 )
 }
 }
 \description{
 Terminates the specified instance and optionally adjusts the desired
-group size.
+group size. This operation cannot be called on instances in a warm pool.
 
 This call simply makes a termination request. The instance is not
 terminated immediately. When an instance is terminated, the instance

@@ -5,16 +5,22 @@
 \title{Removes a VPC configuration from a Kinesis Data Analytics application}
 \usage{
 kinesisanalyticsv2_delete_application_vpc_configuration(ApplicationName,
-  CurrentApplicationVersionId, VpcConfigurationId)
+  CurrentApplicationVersionId, VpcConfigurationId, ConditionalToken)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
 
-\item{CurrentApplicationVersionId}{[required] The current application version ID. You can retrieve the application
-version ID using
+\item{CurrentApplicationVersionId}{The current application version ID. You must provide the
+\code{ApplicationVersionID} or the \code{ConditionalToken}.You can retrieve the
+application version ID using
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 
 \item{VpcConfigurationId}{[required] The ID of the VPC configuration to delete.}
+
+\item{ConditionalToken}{A value you use to implement strong concurrency for application updates.
+You must provide the \code{ApplicationVersionID} or the \code{ConditionalToken}.
+You get the application's current \code{ConditionalToken} using
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -30,7 +36,8 @@ Removes a VPC configuration from a Kinesis Data Analytics application.
 \preformatted{svc$delete_application_vpc_configuration(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
-  VpcConfigurationId = "string"
+  VpcConfigurationId = "string",
+  ConditionalToken = "string"
 )
 }
 }

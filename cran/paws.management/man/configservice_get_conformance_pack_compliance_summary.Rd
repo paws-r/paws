@@ -21,7 +21,7 @@ A list with the following syntax:\preformatted{list(
   ConformancePackComplianceSummaryList = list(
     list(
       ConformancePackName = "string",
-      ConformancePackComplianceStatus = "COMPLIANT"|"NON_COMPLIANT"
+      ConformancePackComplianceStatus = "COMPLIANT"|"NON_COMPLIANT"|"INSUFFICIENT_DATA"
     )
   ),
   NextToken = "string"

@@ -803,11 +803,27 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -816,6 +832,9 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -857,9 +876,29 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -889,11 +928,27 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'     backendDefaults = list(
 #'       clientPolicy = list(
 #'         tls = list(
+#'           certificate = list(
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
+#'             )
+#'           ),
 #'           enforce = TRUE|FALSE,
 #'           ports = list(
 #'             123
 #'           ),
 #'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             trust = list(
 #'               acm = list(
 #'                 certificateAuthorityArns = list(
@@ -902,6 +957,9 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'               ),
 #'               file = list(
 #'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             )
 #'           )
@@ -943,9 +1001,29 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'             file = list(
 #'               certificateChain = "string",
 #'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
 #'             )
 #'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             trust = list(
+#'               file = list(
+#'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1069,11 +1147,27 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -1082,6 +1176,9 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -1093,11 +1190,27 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'           virtualService = list(
 #'             clientPolicy = list(
 #'               tls = list(
+#'                 certificate = list(
+#'                   file = list(
+#'                     certificateChain = "string",
+#'                     privateKey = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
+#'                   )
+#'                 ),
 #'                 enforce = TRUE|FALSE,
 #'                 ports = list(
 #'                   123
 #'                 ),
 #'                 validation = list(
+#'                   subjectAlternativeNames = list(
+#'                     match = list(
+#'                       exact = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   ),
 #'                   trust = list(
 #'                     acm = list(
 #'                       certificateAuthorityArns = list(
@@ -1106,6 +1219,9 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                     ),
 #'                     file = list(
 #'                       certificateChain = "string"
+#'                     ),
+#'                     sds = list(
+#'                       secretName = "string"
 #'                     )
 #'                   )
 #'                 )
@@ -1203,9 +1319,29 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -1250,11 +1386,27 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'     backendDefaults = list(
 #'       clientPolicy = list(
 #'         tls = list(
+#'           certificate = list(
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
+#'             )
+#'           ),
 #'           enforce = TRUE|FALSE,
 #'           ports = list(
 #'             123
 #'           ),
 #'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             trust = list(
 #'               acm = list(
 #'                 certificateAuthorityArns = list(
@@ -1263,6 +1415,9 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               ),
 #'               file = list(
 #'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             )
 #'           )
@@ -1274,11 +1429,27 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'         virtualService = list(
 #'           clientPolicy = list(
 #'             tls = list(
+#'               certificate = list(
+#'                 file = list(
+#'                   certificateChain = "string",
+#'                   privateKey = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               ),
 #'               enforce = TRUE|FALSE,
 #'               ports = list(
 #'                 123
 #'               ),
 #'               validation = list(
+#'                 subjectAlternativeNames = list(
+#'                   match = list(
+#'                     exact = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
 #'                 trust = list(
 #'                   acm = list(
 #'                     certificateAuthorityArns = list(
@@ -1287,6 +1458,9 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                   ),
 #'                   file = list(
 #'                     certificateChain = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1384,9 +1558,29 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'             file = list(
 #'               certificateChain = "string",
 #'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
 #'             )
 #'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             trust = list(
+#'               file = list(
+#'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2165,11 +2359,27 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -2178,6 +2388,9 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -2219,9 +2432,29 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -2312,11 +2545,27 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -2325,6 +2574,9 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -2336,11 +2588,27 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'           virtualService = list(
 #'             clientPolicy = list(
 #'               tls = list(
+#'                 certificate = list(
+#'                   file = list(
+#'                     certificateChain = "string",
+#'                     privateKey = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
+#'                   )
+#'                 ),
 #'                 enforce = TRUE|FALSE,
 #'                 ports = list(
 #'                   123
 #'                 ),
 #'                 validation = list(
+#'                   subjectAlternativeNames = list(
+#'                     match = list(
+#'                       exact = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   ),
 #'                   trust = list(
 #'                     acm = list(
 #'                       certificateAuthorityArns = list(
@@ -2349,6 +2617,9 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'                     ),
 #'                     file = list(
 #'                       certificateChain = "string"
+#'                     ),
+#'                     sds = list(
+#'                       secretName = "string"
 #'                     )
 #'                   )
 #'                 )
@@ -2446,9 +2717,29 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -3167,11 +3458,27 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -3180,6 +3487,9 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -3221,9 +3531,29 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -3311,11 +3641,27 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -3324,6 +3670,9 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -3335,11 +3684,27 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'           virtualService = list(
 #'             clientPolicy = list(
 #'               tls = list(
+#'                 certificate = list(
+#'                   file = list(
+#'                     certificateChain = "string",
+#'                     privateKey = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
+#'                   )
+#'                 ),
 #'                 enforce = TRUE|FALSE,
 #'                 ports = list(
 #'                   123
 #'                 ),
 #'                 validation = list(
+#'                   subjectAlternativeNames = list(
+#'                     match = list(
+#'                       exact = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   ),
 #'                   trust = list(
 #'                     acm = list(
 #'                       certificateAuthorityArns = list(
@@ -3348,6 +3713,9 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'                     ),
 #'                     file = list(
 #'                       certificateChain = "string"
+#'                     ),
+#'                     sds = list(
+#'                       secretName = "string"
 #'                     )
 #'                   )
 #'                 )
@@ -3445,9 +3813,29 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -5173,11 +5561,27 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -5186,6 +5590,9 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -5227,9 +5634,29 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -5259,11 +5686,27 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'     backendDefaults = list(
 #'       clientPolicy = list(
 #'         tls = list(
+#'           certificate = list(
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
+#'             )
+#'           ),
 #'           enforce = TRUE|FALSE,
 #'           ports = list(
 #'             123
 #'           ),
 #'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             trust = list(
 #'               acm = list(
 #'                 certificateAuthorityArns = list(
@@ -5272,6 +5715,9 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'               ),
 #'               file = list(
 #'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             )
 #'           )
@@ -5313,9 +5759,29 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'             file = list(
 #'               certificateChain = "string",
 #'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
 #'             )
 #'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             trust = list(
+#'               file = list(
+#'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -5396,11 +5862,27 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -5409,6 +5891,9 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -5420,11 +5905,27 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'           virtualService = list(
 #'             clientPolicy = list(
 #'               tls = list(
+#'                 certificate = list(
+#'                   file = list(
+#'                     certificateChain = "string",
+#'                     privateKey = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
+#'                   )
+#'                 ),
 #'                 enforce = TRUE|FALSE,
 #'                 ports = list(
 #'                   123
 #'                 ),
 #'                 validation = list(
+#'                   subjectAlternativeNames = list(
+#'                     match = list(
+#'                       exact = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   ),
 #'                   trust = list(
 #'                     acm = list(
 #'                       certificateAuthorityArns = list(
@@ -5433,6 +5934,9 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                     ),
 #'                     file = list(
 #'                       certificateChain = "string"
+#'                     ),
+#'                     sds = list(
+#'                       secretName = "string"
 #'                     )
 #'                   )
 #'                 )
@@ -5530,9 +6034,29 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -5577,11 +6101,27 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'     backendDefaults = list(
 #'       clientPolicy = list(
 #'         tls = list(
+#'           certificate = list(
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
+#'             )
+#'           ),
 #'           enforce = TRUE|FALSE,
 #'           ports = list(
 #'             123
 #'           ),
 #'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             trust = list(
 #'               acm = list(
 #'                 certificateAuthorityArns = list(
@@ -5590,6 +6130,9 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               ),
 #'               file = list(
 #'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             )
 #'           )
@@ -5601,11 +6144,27 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'         virtualService = list(
 #'           clientPolicy = list(
 #'             tls = list(
+#'               certificate = list(
+#'                 file = list(
+#'                   certificateChain = "string",
+#'                   privateKey = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               ),
 #'               enforce = TRUE|FALSE,
 #'               ports = list(
 #'                 123
 #'               ),
 #'               validation = list(
+#'                 subjectAlternativeNames = list(
+#'                   match = list(
+#'                     exact = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
 #'                 trust = list(
 #'                   acm = list(
 #'                     certificateAuthorityArns = list(
@@ -5614,6 +6173,9 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                   ),
 #'                   file = list(
 #'                     certificateChain = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
 #'                   )
 #'                 )
 #'               )
@@ -5711,9 +6273,29 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'             file = list(
 #'               certificateChain = "string",
 #'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
 #'             )
 #'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             trust = list(
+#'               file = list(
+#'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),

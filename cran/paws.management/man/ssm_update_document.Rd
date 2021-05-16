@@ -4,8 +4,8 @@
 \alias{ssm_update_document}
 \title{Updates one or more values for an SSM document}
 \usage{
-ssm_update_document(Content, Attachments, Name, VersionName,
-  DocumentVersion, DocumentFormat, TargetType)
+ssm_update_document(Content, Attachments, Name, DisplayName,
+  VersionName, DocumentVersion, DocumentFormat, TargetType)
 }
 \arguments{
 \item{Content}{[required] A valid JSON or YAML string.}
@@ -13,17 +13,22 @@ ssm_update_document(Content, Attachments, Name, VersionName,
 \item{Attachments}{A list of key and value pairs that describe attachments to a version of
 a document.}
 
-\item{Name}{[required] The name of the document that you want to update.}
+\item{Name}{[required] The name of the Systems Manager document that you want to update.}
+
+\item{DisplayName}{The friendly name of the Systems Manager document that you want to
+update. This value can differ for each version of the document. If you
+do not specify a value for this parameter in your request, the existing
+value is applied to the new document version.}
 
 \item{VersionName}{An optional field specifying the version of the artifact you are
 updating with the document. For example, "Release 12, Update 6". This
 value is unique across all versions of a document, and cannot be
 changed.}
 
-\item{DocumentVersion}{(Required) The latest version of the document that you want to update.
-The latest document version can be specified using the $LATEST variable
-or by the version number. Updating a previous version of a document is
-not supported.}
+\item{DocumentVersion}{The version of the document that you want to update. Currently, Systems
+Manager supports updating only the latest version of the document. You
+can specify the version number of the latest version or use the
+\verb{$LATEST} variable.}
 
 \item{DocumentFormat}{Specify the document format for the new document version. Systems
 Manager supports JSON and YAML documents. JSON is the default format.}
@@ -37,6 +42,7 @@ A list with the following syntax:\preformatted{list(
     Hash = "string",
     HashType = "Sha256"|"Sha1",
     Name = "string",
+    DisplayName = "string",
     VersionName = "string",
     Owner = "string",
     CreatedDate = as.POSIXct(
@@ -57,7 +63,7 @@ A list with the following syntax:\preformatted{list(
     PlatformTypes = list(
       "Windows"|"Linux"
     ),
-    DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+    DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
     SchemaVersion = "string",
     LatestVersion = "string",
     DefaultVersion = "string",
@@ -113,6 +119,7 @@ Updates one or more values for an SSM document.
     )
   ),
   Name = "string",
+  DisplayName = "string",
   VersionName = "string",
   DocumentVersion = "string",
   DocumentFormat = "YAML"|"JSON"|"TEXT",

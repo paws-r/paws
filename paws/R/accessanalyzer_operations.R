@@ -49,6 +49,177 @@ accessanalyzer_apply_archive_rule <- function(analyzerArn, clientToken = NULL, r
 }
 .accessanalyzer$operations$apply_archive_rule <- accessanalyzer_apply_archive_rule
 
+#' Cancels the requested policy generation
+#'
+#' @description
+#' Cancels the requested policy generation.
+#'
+#' @usage
+#' accessanalyzer_cancel_policy_generation(jobId)
+#'
+#' @param jobId &#91;required&#93; The `JobId` that is returned by the
+#' [`start_policy_generation`][accessanalyzer_start_policy_generation]
+#' operation. The `JobId` can be used with
+#' [`get_generated_policy`][accessanalyzer_get_generated_policy] to
+#' retrieve the generated policies or used with
+#' [`cancel_policy_generation`][accessanalyzer_cancel_policy_generation] to
+#' cancel the policy generation request.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_policy_generation(
+#'   jobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_cancel_policy_generation
+accessanalyzer_cancel_policy_generation <- function(jobId) {
+  op <- new_operation(
+    name = "CancelPolicyGeneration",
+    http_method = "PUT",
+    http_path = "/policy/generation/{jobId}",
+    paginator = list()
+  )
+  input <- .accessanalyzer$cancel_policy_generation_input(jobId = jobId)
+  output <- .accessanalyzer$cancel_policy_generation_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$cancel_policy_generation <- accessanalyzer_cancel_policy_generation
+
+#' Creates an access preview that allows you to preview Access Analyzer
+#' findings for your resource before deploying resource permissions
+#'
+#' @description
+#' Creates an access preview that allows you to preview Access Analyzer
+#' findings for your resource before deploying resource permissions.
+#'
+#' @usage
+#' accessanalyzer_create_access_preview(analyzerArn, clientToken,
+#'   configurations)
+#'
+#' @param analyzerArn &#91;required&#93; The [ARN of the account
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' used to generate the access preview. You can only create an access
+#' preview for analyzers with an `Account` type and `Active` status.
+#' @param clientToken A client token.
+#' @param configurations &#91;required&#93; Access control configuration for your resource that is used to generate
+#' the access preview. The access preview includes findings for external
+#' access allowed to the resource with the proposed access control
+#' configuration. The configuration must contain exactly one element.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_access_preview(
+#'   analyzerArn = "string",
+#'   clientToken = "string",
+#'   configurations = list(
+#'     list(
+#'       iamRole = list(
+#'         trustPolicy = "string"
+#'       ),
+#'       kmsKey = list(
+#'         grants = list(
+#'           list(
+#'             constraints = list(
+#'               encryptionContextEquals = list(
+#'                 "string"
+#'               ),
+#'               encryptionContextSubset = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             granteePrincipal = "string",
+#'             issuingAccount = "string",
+#'             operations = list(
+#'               "CreateGrant"|"Decrypt"|"DescribeKey"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"|"GenerateDataKeyWithoutPlaintext"|"GetPublicKey"|"ReEncryptFrom"|"ReEncryptTo"|"RetireGrant"|"Sign"|"Verify"
+#'             ),
+#'             retiringPrincipal = "string"
+#'           )
+#'         ),
+#'         keyPolicies = list(
+#'           "string"
+#'         )
+#'       ),
+#'       s3Bucket = list(
+#'         accessPoints = list(
+#'           list(
+#'             accessPointPolicy = "string",
+#'             networkOrigin = list(
+#'               internetConfiguration = list(),
+#'               vpcConfiguration = list(
+#'                 vpcId = "string"
+#'               )
+#'             ),
+#'             publicAccessBlock = list(
+#'               ignorePublicAcls = TRUE|FALSE,
+#'               restrictPublicBuckets = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         bucketAclGrants = list(
+#'           list(
+#'             grantee = list(
+#'               id = "string",
+#'               uri = "string"
+#'             ),
+#'             permission = "READ"|"WRITE"|"READ_ACP"|"WRITE_ACP"|"FULL_CONTROL"
+#'           )
+#'         ),
+#'         bucketPolicy = "string",
+#'         bucketPublicAccessBlock = list(
+#'           ignorePublicAcls = TRUE|FALSE,
+#'           restrictPublicBuckets = TRUE|FALSE
+#'         )
+#'       ),
+#'       secretsManagerSecret = list(
+#'         kmsKeyId = "string",
+#'         secretPolicy = "string"
+#'       ),
+#'       sqsQueue = list(
+#'         queuePolicy = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_create_access_preview
+accessanalyzer_create_access_preview <- function(analyzerArn, clientToken = NULL, configurations) {
+  op <- new_operation(
+    name = "CreateAccessPreview",
+    http_method = "PUT",
+    http_path = "/access-preview",
+    paginator = list()
+  )
+  input <- .accessanalyzer$create_access_preview_input(analyzerArn = analyzerArn, clientToken = clientToken, configurations = configurations)
+  output <- .accessanalyzer$create_access_preview_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$create_access_preview <- accessanalyzer_create_access_preview
+
 #' Creates an analyzer for your account
 #'
 #' @description
@@ -64,8 +235,9 @@ accessanalyzer_apply_archive_rule <- function(analyzerArn, clientToken = NULL, r
 #' rule.
 #' @param clientToken A client token.
 #' @param tags The tags to apply to the analyzer.
-#' @param type &#91;required&#93; The type of analyzer to create. Only ACCOUNT analyzers are supported.
-#' You can create only one analyzer per account per Region.
+#' @param type &#91;required&#93; The type of analyzer to create. Only ACCOUNT and ORGANIZATION analyzers
+#' are supported. You can create only one analyzer per account per Region.
+#' You can create up to 5 analyzers per organization per Region.
 #'
 #' @return
 #' A list with the following syntax:
@@ -132,6 +304,11 @@ accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, cl
 #' Creates an archive rule for the specified analyzer. Archive rules
 #' automatically archive new findings that meet the criteria you define
 #' when you create the rule.
+#' 
+#' To learn about filter keys that you can use to create an archive rule,
+#' see [Access Analyzer filter
+#' keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html)
+#' in the **IAM User Guide**.
 #'
 #' @usage
 #' accessanalyzer_create_archive_rule(analyzerName, clientToken, filter,
@@ -192,9 +369,9 @@ accessanalyzer_create_archive_rule <- function(analyzerName, clientToken = NULL,
 #'
 #' @description
 #' Deletes the specified analyzer. When you delete an analyzer, Access
-#' Analyzer is disabled for the account in the current or specific Region.
-#' All findings that were generated by the analyzer are deleted. You cannot
-#' undo this action.
+#' Analyzer is disabled for the account or organization in the current or
+#' specific Region. All findings that were generated by the analyzer are
+#' deleted. You cannot undo this action.
 #'
 #' @usage
 #' accessanalyzer_delete_analyzer(analyzerName, clientToken)
@@ -278,6 +455,134 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL,
 }
 .accessanalyzer$operations$delete_archive_rule <- accessanalyzer_delete_archive_rule
 
+#' Retrieves information about an access preview for the specified analyzer
+#'
+#' @description
+#' Retrieves information about an access preview for the specified
+#' analyzer.
+#'
+#' @usage
+#' accessanalyzer_get_access_preview(accessPreviewId, analyzerArn)
+#'
+#' @param accessPreviewId &#91;required&#93; The unique ID for the access preview.
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' used to generate the access preview.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accessPreview = list(
+#'     analyzerArn = "string",
+#'     configurations = list(
+#'       list(
+#'         iamRole = list(
+#'           trustPolicy = "string"
+#'         ),
+#'         kmsKey = list(
+#'           grants = list(
+#'             list(
+#'               constraints = list(
+#'                 encryptionContextEquals = list(
+#'                   "string"
+#'                 ),
+#'                 encryptionContextSubset = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               granteePrincipal = "string",
+#'               issuingAccount = "string",
+#'               operations = list(
+#'                 "CreateGrant"|"Decrypt"|"DescribeKey"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"|"GenerateDataKeyWithoutPlaintext"|"GetPublicKey"|"ReEncryptFrom"|"ReEncryptTo"|"RetireGrant"|"Sign"|"Verify"
+#'               ),
+#'               retiringPrincipal = "string"
+#'             )
+#'           ),
+#'           keyPolicies = list(
+#'             "string"
+#'           )
+#'         ),
+#'         s3Bucket = list(
+#'           accessPoints = list(
+#'             list(
+#'               accessPointPolicy = "string",
+#'               networkOrigin = list(
+#'                 internetConfiguration = list(),
+#'                 vpcConfiguration = list(
+#'                   vpcId = "string"
+#'                 )
+#'               ),
+#'               publicAccessBlock = list(
+#'                 ignorePublicAcls = TRUE|FALSE,
+#'                 restrictPublicBuckets = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           bucketAclGrants = list(
+#'             list(
+#'               grantee = list(
+#'                 id = "string",
+#'                 uri = "string"
+#'               ),
+#'               permission = "READ"|"WRITE"|"READ_ACP"|"WRITE_ACP"|"FULL_CONTROL"
+#'             )
+#'           ),
+#'           bucketPolicy = "string",
+#'           bucketPublicAccessBlock = list(
+#'             ignorePublicAcls = TRUE|FALSE,
+#'             restrictPublicBuckets = TRUE|FALSE
+#'           )
+#'         ),
+#'         secretsManagerSecret = list(
+#'           kmsKeyId = "string",
+#'           secretPolicy = "string"
+#'         ),
+#'         sqsQueue = list(
+#'           queuePolicy = "string"
+#'         )
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     id = "string",
+#'     status = "COMPLETED"|"CREATING"|"FAILED",
+#'     statusReason = list(
+#'       code = "INTERNAL_ERROR"|"INVALID_CONFIGURATION"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_access_preview(
+#'   accessPreviewId = "string",
+#'   analyzerArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_get_access_preview
+accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
+  op <- new_operation(
+    name = "GetAccessPreview",
+    http_method = "GET",
+    http_path = "/access-preview/{accessPreviewId}",
+    paginator = list()
+  )
+  input <- .accessanalyzer$get_access_preview_input(accessPreviewId = accessPreviewId, analyzerArn = analyzerArn)
+  output <- .accessanalyzer$get_access_preview_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$get_access_preview <- accessanalyzer_get_access_preview
+
 #' Retrieves information about a resource that was analyzed
 #'
 #' @description
@@ -286,7 +591,9 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @usage
 #' accessanalyzer_get_analyzed_resource(analyzerArn, resourceArn)
 #'
-#' @param analyzerArn &#91;required&#93; The ARN of the analyzer to retrieve information from.
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' to retrieve information from.
 #' @param resourceArn &#91;required&#93; The ARN of the resource to retrieve information about.
 #'
 #' @return
@@ -307,7 +614,7 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL,
 #'     isPublic = TRUE|FALSE,
 #'     resourceArn = "string",
 #'     resourceOwnerAccount = "string",
-#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret",
 #'     sharedVia = list(
 #'       "string"
 #'     ),
@@ -492,7 +799,9 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #' @usage
 #' accessanalyzer_get_finding(analyzerArn, id)
 #'
-#' @param analyzerArn &#91;required&#93; The ARN of the analyzer that generated the finding.
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' that generated the finding.
 #' @param id &#91;required&#93; The ID of the finding to retrieve.
 #'
 #' @return
@@ -520,7 +829,7 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #'     ),
 #'     resource = "string",
 #'     resourceOwnerAccount = "string",
-#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret",
 #'     sources = list(
 #'       list(
 #'         detail = list(
@@ -565,6 +874,283 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 }
 .accessanalyzer$operations$get_finding <- accessanalyzer_get_finding
 
+#' Retrieves the policy that was generated using StartPolicyGeneration
+#'
+#' @description
+#' Retrieves the policy that was generated using
+#' [`start_policy_generation`][accessanalyzer_start_policy_generation].
+#'
+#' @usage
+#' accessanalyzer_get_generated_policy(includeResourcePlaceholders,
+#'   includeServiceLevelTemplate, jobId)
+#'
+#' @param includeResourcePlaceholders The level of detail that you want to generate. You can specify whether
+#' to generate policies with placeholders for resource ARNs for actions
+#' that support resource level granularity in policies.
+#' 
+#' For example, in the resource section of a policy, you can receive a
+#' placeholder such as `"Resource":"arn:aws:s3:::${BucketName}"` instead of
+#' `"*"`.
+#' @param includeServiceLevelTemplate The level of detail that you want to generate. You can specify whether
+#' to generate service-level policies.
+#' 
+#' Access Analyzer uses `iam:servicelastaccessed` to identify services that
+#' have been used recently to create this service-level template.
+#' @param jobId &#91;required&#93; The `JobId` that is returned by the
+#' [`start_policy_generation`][accessanalyzer_start_policy_generation]
+#' operation. The `JobId` can be used with
+#' [`get_generated_policy`][accessanalyzer_get_generated_policy] to
+#' retrieve the generated policies or used with
+#' [`cancel_policy_generation`][accessanalyzer_cancel_policy_generation] to
+#' cancel the policy generation request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   generatedPolicyResult = list(
+#'     generatedPolicies = list(
+#'       list(
+#'         policy = "string"
+#'       )
+#'     ),
+#'     properties = list(
+#'       cloudTrailProperties = list(
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         trailProperties = list(
+#'           list(
+#'             allRegions = TRUE|FALSE,
+#'             cloudTrailArn = "string",
+#'             regions = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       isComplete = TRUE|FALSE,
+#'       principalArn = "string"
+#'     )
+#'   ),
+#'   jobDetails = list(
+#'     completedOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     jobError = list(
+#'       code = "AUTHORIZATION_ERROR"|"RESOURCE_NOT_FOUND_ERROR"|"SERVICE_QUOTA_EXCEEDED_ERROR"|"SERVICE_ERROR",
+#'       message = "string"
+#'     ),
+#'     jobId = "string",
+#'     startedOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_generated_policy(
+#'   includeResourcePlaceholders = TRUE|FALSE,
+#'   includeServiceLevelTemplate = TRUE|FALSE,
+#'   jobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_get_generated_policy
+accessanalyzer_get_generated_policy <- function(includeResourcePlaceholders = NULL, includeServiceLevelTemplate = NULL, jobId) {
+  op <- new_operation(
+    name = "GetGeneratedPolicy",
+    http_method = "GET",
+    http_path = "/policy/generation/{jobId}",
+    paginator = list()
+  )
+  input <- .accessanalyzer$get_generated_policy_input(includeResourcePlaceholders = includeResourcePlaceholders, includeServiceLevelTemplate = includeServiceLevelTemplate, jobId = jobId)
+  output <- .accessanalyzer$get_generated_policy_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$get_generated_policy <- accessanalyzer_get_generated_policy
+
+#' Retrieves a list of access preview findings generated by the specified
+#' access preview
+#'
+#' @description
+#' Retrieves a list of access preview findings generated by the specified
+#' access preview.
+#'
+#' @usage
+#' accessanalyzer_list_access_preview_findings(accessPreviewId,
+#'   analyzerArn, filter, maxResults, nextToken)
+#'
+#' @param accessPreviewId &#91;required&#93; The unique ID for the access preview.
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' used to generate the access.
+#' @param filter Criteria to filter the returned findings.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken A token used for pagination of results returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   findings = list(
+#'     list(
+#'       action = list(
+#'         "string"
+#'       ),
+#'       changeType = "CHANGED"|"NEW"|"UNCHANGED",
+#'       condition = list(
+#'         "string"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       error = "string",
+#'       existingFindingId = "string",
+#'       existingFindingStatus = "ACTIVE"|"ARCHIVED"|"RESOLVED",
+#'       id = "string",
+#'       isPublic = TRUE|FALSE,
+#'       principal = list(
+#'         "string"
+#'       ),
+#'       resource = "string",
+#'       resourceOwnerAccount = "string",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret",
+#'       sources = list(
+#'         list(
+#'           detail = list(
+#'             accessPointArn = "string"
+#'           ),
+#'           type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"
+#'         )
+#'       ),
+#'       status = "ACTIVE"|"ARCHIVED"|"RESOLVED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_access_preview_findings(
+#'   accessPreviewId = "string",
+#'   analyzerArn = "string",
+#'   filter = list(
+#'     list(
+#'       contains = list(
+#'         "string"
+#'       ),
+#'       eq = list(
+#'         "string"
+#'       ),
+#'       exists = TRUE|FALSE,
+#'       neq = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_list_access_preview_findings
+accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyzerArn, filter = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAccessPreviewFindings",
+    http_method = "POST",
+    http_path = "/access-preview/{accessPreviewId}",
+    paginator = list()
+  )
+  input <- .accessanalyzer$list_access_preview_findings_input(accessPreviewId = accessPreviewId, analyzerArn = analyzerArn, filter = filter, maxResults = maxResults, nextToken = nextToken)
+  output <- .accessanalyzer$list_access_preview_findings_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$list_access_preview_findings <- accessanalyzer_list_access_preview_findings
+
+#' Retrieves a list of access previews for the specified analyzer
+#'
+#' @description
+#' Retrieves a list of access previews for the specified analyzer.
+#'
+#' @usage
+#' accessanalyzer_list_access_previews(analyzerArn, maxResults, nextToken)
+#'
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' used to generate the access preview.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken A token used for pagination of results returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accessPreviews = list(
+#'     list(
+#'       analyzerArn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       id = "string",
+#'       status = "COMPLETED"|"CREATING"|"FAILED",
+#'       statusReason = list(
+#'         code = "INTERNAL_ERROR"|"INVALID_CONFIGURATION"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_access_previews(
+#'   analyzerArn = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_list_access_previews
+accessanalyzer_list_access_previews <- function(analyzerArn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAccessPreviews",
+    http_method = "GET",
+    http_path = "/access-preview",
+    paginator = list()
+  )
+  input <- .accessanalyzer$list_access_previews_input(analyzerArn = analyzerArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .accessanalyzer$list_access_previews_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$list_access_previews <- accessanalyzer_list_access_previews
+
 #' Retrieves a list of resources of the specified type that have been
 #' analyzed by the specified analyzer
 #'
@@ -576,7 +1162,9 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' accessanalyzer_list_analyzed_resources(analyzerArn, maxResults,
 #'   nextToken, resourceType)
 #'
-#' @param analyzerArn &#91;required&#93; The ARN of the analyzer to retrieve a list of analyzed resources from.
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' to retrieve a list of analyzed resources from.
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
 #' @param resourceType The type of resource.
@@ -589,7 +1177,7 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #'     list(
 #'       resourceArn = "string",
 #'       resourceOwnerAccount = "string",
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -602,7 +1190,7 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #'   analyzerArn = "string",
 #'   maxResults = 123,
 #'   nextToken = "string",
-#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"
+#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"
 #' )
 #' ```
 #'
@@ -775,8 +1363,8 @@ accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, n
 #' @description
 #' Retrieves a list of findings generated by the specified analyzer.
 #' 
-#' To learn about filter keys that you can use to create an archive rule,
-#' see [Access Analyzer filter
+#' To learn about filter keys that you can use to retrieve a list of
+#' findings, see [Access Analyzer filter
 #' keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html)
 #' in the **IAM User Guide**.
 #'
@@ -784,7 +1372,9 @@ accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, n
 #' accessanalyzer_list_findings(analyzerArn, filter, maxResults, nextToken,
 #'   sort)
 #'
-#' @param analyzerArn &#91;required&#93; The ARN of the analyzer to retrieve findings from.
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' to retrieve findings from.
 #' @param filter A filter to match for the findings to return.
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
@@ -816,7 +1406,7 @@ accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, n
 #'       ),
 #'       resource = "string",
 #'       resourceOwnerAccount = "string",
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret",
 #'       sources = list(
 #'         list(
 #'           detail = list(
@@ -882,6 +1472,71 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, maxResults 
 }
 .accessanalyzer$operations$list_findings <- accessanalyzer_list_findings
 
+#' Lists all of the policy generations requested in the last seven days
+#'
+#' @description
+#' Lists all of the policy generations requested in the last seven days.
+#'
+#' @usage
+#' accessanalyzer_list_policy_generations(maxResults, nextToken,
+#'   principalArn)
+#'
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken A token used for pagination of results returned.
+#' @param principalArn The ARN of the IAM entity (user or role) for which you are generating a
+#' policy. Use this with `ListGeneratedPolicies` to filter the results to
+#' only include results for a specific principal.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   policyGenerations = list(
+#'     list(
+#'       completedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       jobId = "string",
+#'       principalArn = "string",
+#'       startedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_policy_generations(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   principalArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_list_policy_generations
+accessanalyzer_list_policy_generations <- function(maxResults = NULL, nextToken = NULL, principalArn = NULL) {
+  op <- new_operation(
+    name = "ListPolicyGenerations",
+    http_method = "GET",
+    http_path = "/policy/generation",
+    paginator = list()
+  )
+  input <- .accessanalyzer$list_policy_generations_input(maxResults = maxResults, nextToken = nextToken, principalArn = principalArn)
+  output <- .accessanalyzer$list_policy_generations_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$list_policy_generations <- accessanalyzer_list_policy_generations
+
 #' Retrieves a list of tags applied to the specified resource
 #'
 #' @description
@@ -929,6 +1584,85 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 }
 .accessanalyzer$operations$list_tags_for_resource <- accessanalyzer_list_tags_for_resource
 
+#' Starts the policy generation request
+#'
+#' @description
+#' Starts the policy generation request.
+#'
+#' @usage
+#' accessanalyzer_start_policy_generation(clientToken, cloudTrailDetails,
+#'   policyGenerationDetails)
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes only once. With an idempotent request, if the original request
+#' completes successfully, the subsequent retries with the same client
+#' token return the result from the original successful request and they
+#' have no additional effect.
+#' 
+#' If you do not specify a client token, one is automatically generated by
+#' the AWS SDK.
+#' @param cloudTrailDetails A `CloudTrailDetails` object that contains details about a `Trail` that
+#' you want to analyze to generate policies.
+#' @param policyGenerationDetails &#91;required&#93; Contains the ARN of the IAM entity (user or role) for which you are
+#' generating a policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_policy_generation(
+#'   clientToken = "string",
+#'   cloudTrailDetails = list(
+#'     accessRole = "string",
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     trails = list(
+#'       list(
+#'         allRegions = TRUE|FALSE,
+#'         cloudTrailArn = "string",
+#'         regions = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   policyGenerationDetails = list(
+#'     principalArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_start_policy_generation
+accessanalyzer_start_policy_generation <- function(clientToken = NULL, cloudTrailDetails = NULL, policyGenerationDetails) {
+  op <- new_operation(
+    name = "StartPolicyGeneration",
+    http_method = "PUT",
+    http_path = "/policy/generation",
+    paginator = list()
+  )
+  input <- .accessanalyzer$start_policy_generation_input(clientToken = clientToken, cloudTrailDetails = cloudTrailDetails, policyGenerationDetails = policyGenerationDetails)
+  output <- .accessanalyzer$start_policy_generation_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$start_policy_generation <- accessanalyzer_start_policy_generation
+
 #' Immediately starts a scan of the policies applied to the specified
 #' resource
 #'
@@ -939,8 +1673,9 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 #' @usage
 #' accessanalyzer_start_resource_scan(analyzerArn, resourceArn)
 #'
-#' @param analyzerArn &#91;required&#93; The ARN of the analyzer to use to scan the policies applied to the
-#' specified resource.
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' to use to scan the policies applied to the specified resource.
 #' @param resourceArn &#91;required&#93; The ARN of the resource to scan.
 #'
 #' @return
@@ -1132,7 +1867,9 @@ accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL,
 #' accessanalyzer_update_findings(analyzerArn, clientToken, ids,
 #'   resourceArn, status)
 #'
-#' @param analyzerArn &#91;required&#93; The ARN of the analyzer that generated the findings to update.
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' that generated the findings to update.
 #' @param clientToken A client token.
 #' @param ids The IDs of the findings to update.
 #' @param resourceArn The ARN of the resource identified in the finding.
@@ -1175,3 +1912,104 @@ accessanalyzer_update_findings <- function(analyzerArn, clientToken = NULL, ids 
   return(response)
 }
 .accessanalyzer$operations$update_findings <- accessanalyzer_update_findings
+
+#' Requests the validation of a policy and returns a list of findings
+#'
+#' @description
+#' Requests the validation of a policy and returns a list of findings. The
+#' findings help you identify issues and provide actionable recommendations
+#' to resolve the issue and enable you to author functional policies that
+#' meet security best practices.
+#'
+#' @usage
+#' accessanalyzer_validate_policy(locale, maxResults, nextToken,
+#'   policyDocument, policyType)
+#'
+#' @param locale The locale to use for localizing the findings.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken A token used for pagination of results returned.
+#' @param policyDocument &#91;required&#93; The JSON policy document to use as the content for the policy.
+#' @param policyType &#91;required&#93; The type of policy to validate. Identity policies grant permissions to
+#' IAM principals. Identity policies include managed and inline policies
+#' for IAM roles, users, and groups. They also include service-control
+#' policies (SCPs) that are attached to an AWS organization, organizational
+#' unit (OU), or an account.
+#' 
+#' Resource policies grant permissions on AWS resources. Resource policies
+#' include trust policies for IAM roles and bucket policies for S3 buckets.
+#' You can provide a generic input such as identity policy or resource
+#' policy or a specific input such as managed policy or S3 bucket policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   findings = list(
+#'     list(
+#'       findingDetails = "string",
+#'       findingType = "ERROR"|"SECURITY_WARNING"|"SUGGESTION"|"WARNING",
+#'       issueCode = "string",
+#'       learnMoreLink = "string",
+#'       locations = list(
+#'         list(
+#'           path = list(
+#'             list(
+#'               index = 123,
+#'               key = "string",
+#'               substring = list(
+#'                 length = 123,
+#'                 start = 123
+#'               ),
+#'               value = "string"
+#'             )
+#'           ),
+#'           span = list(
+#'             end = list(
+#'               column = 123,
+#'               line = 123,
+#'               offset = 123
+#'             ),
+#'             start = list(
+#'               column = 123,
+#'               line = 123,
+#'               offset = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$validate_policy(
+#'   locale = "DE"|"EN"|"ES"|"FR"|"IT"|"JA"|"KO"|"PT_BR"|"ZH_CN"|"ZH_TW",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   policyDocument = "string",
+#'   policyType = "IDENTITY_POLICY"|"RESOURCE_POLICY"|"SERVICE_CONTROL_POLICY"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_validate_policy
+accessanalyzer_validate_policy <- function(locale = NULL, maxResults = NULL, nextToken = NULL, policyDocument, policyType) {
+  op <- new_operation(
+    name = "ValidatePolicy",
+    http_method = "POST",
+    http_path = "/policy/validation",
+    paginator = list()
+  )
+  input <- .accessanalyzer$validate_policy_input(locale = locale, maxResults = maxResults, nextToken = nextToken, policyDocument = policyDocument, policyType = policyType)
+  output <- .accessanalyzer$validate_policy_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$validate_policy <- accessanalyzer_validate_policy

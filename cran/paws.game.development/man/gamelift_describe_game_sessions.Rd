@@ -2,28 +2,34 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_game_sessions}
 \alias{gamelift_describe_game_sessions}
-\title{Retrieves a set of one or more game sessions}
+\title{Retrieves a set of one or more game sessions in a specific fleet
+location}
 \usage{
 gamelift_describe_game_sessions(FleetId, GameSessionId, AliasId,
-  StatusFilter, Limit, NextToken)
+  Location, StatusFilter, Limit, NextToken)
 }
 \arguments{
-\item{FleetId}{A unique identifier for a fleet to retrieve all game sessions for. You
-can use either the fleet ID or ARN value.}
+\item{FleetId}{A unique identifier for the fleet to retrieve game sessions for. You can
+use either the fleet ID or ARN value.}
 
 \item{GameSessionId}{A unique identifier for the game session to retrieve.}
 
-\item{AliasId}{A unique identifier for an alias associated with the fleet to retrieve
-all game sessions for. You can use either the alias ID or ARN value.}
+\item{AliasId}{A unique identifier for the alias associated with the fleet to retrieve
+game sessions for. You can use either the alias ID or ARN value.}
 
-\item{StatusFilter}{Game session status to filter results on. Possible game session statuses
-include \code{ACTIVE}, \code{TERMINATED}, \code{ACTIVATING}, and \code{TERMINATING} (the
-last two are transitory).}
+\item{Location}{A fleet location to get game session details for. You can specify a
+fleet's home Region or a remote location. Use the AWS Region code
+format, such as \code{us-west-2}.}
+
+\item{StatusFilter}{Game session status to filter results on. You can filter on the
+following states: \code{ACTIVE}, \code{TERMINATED}, \code{ACTIVATING}, and
+\code{TERMINATING}. The last two are transitory and used for only very brief
+periods of time.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
 \code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
@@ -57,7 +63,8 @@ A list with the following syntax:\preformatted{list(
       PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
       CreatorId = "string",
       GameSessionData = "string",
-      MatchmakerData = "string"
+      MatchmakerData = "string",
+      Location = "string"
     )
   ),
   NextToken = "string"
@@ -65,40 +72,61 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Retrieves a set of one or more game sessions. Request a specific game
-session or request all game sessions on a fleet. Alternatively, use
+Retrieves a set of one or more game sessions in a specific fleet
+location. You can optionally filter the results by current game session
+status. Alternatively, use
 \code{\link[=gamelift_search_game_sessions]{search_game_sessions}} to request a set
 of active game sessions that are filtered by certain criteria. To
-retrieve protection policy settings for game sessions, use
+retrieve the protection policy for game sessions, use
 \code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}.
 
-To get game sessions, specify one of the following: game session ID,
-fleet ID, or alias ID. You can filter this request by game session
-status. Use the pagination parameters to retrieve results as a set of
-sequential pages. If successful, a GameSession object is returned for
-each game session matching the request.
+This operation can be used in the following ways:
+\itemize{
+\item To retrieve all game sessions that are currently running on all
+locations in a fleet, provide a fleet or alias ID, with an optional
+status filter. This approach returns all game sessions in the
+fleet's home Region and all remote locations.
+\item To retrieve all game sessions that are currently running on a
+specific fleet location, provide a fleet or alias ID and a location
+name, with optional status filter. The location can be the fleet's
+home Region or any remote location.
+\item To retrieve a specific game session, provide the game session ID.
+This approach looks for the game session ID in all fleets that
+reside in the AWS Region defined in the request.
+}
 
-\emph{Available in Amazon GameLift Local.}
-\itemize{
-\item \code{\link[=gamelift_create_game_session]{create_game_session}}
-\item \code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}}
-\item \code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
-\item \code{\link[=gamelift_search_game_sessions]{search_game_sessions}}
-\item \code{\link[=gamelift_update_game_session]{update_game_session}}
-\item \code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}}
-\item Game session placements
-\itemize{
-\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
-\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
-\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
-}
-}
+Use the pagination parameters to retrieve results as a set of sequential
+pages.
+
+If successful, a \code{GameSession} object is returned for each game session
+that matches the request.
+
+\emph{Available in GameLift Local.}
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#gamelift-sdk-client-api-find}{Find a game session}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_session]{create_game_session}} |
+\code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}} |
+\code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
+| \code{\link[=gamelift_search_game_sessions]{search_game_sessions}} |
+\code{\link[=gamelift_update_game_session]{update_game_session}} |
+\code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}} |
+\code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+|
+\code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+| \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_game_sessions(
   FleetId = "string",
   GameSessionId = "string",
   AliasId = "string",
+  Location = "string",
   StatusFilter = "string",
   Limit = 123,
   NextToken = "string"

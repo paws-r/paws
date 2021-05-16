@@ -14,8 +14,8 @@ NULL
 #'
 #' @usage
 #' cloud9_create_environment_ec2(name, description, clientRequestToken,
-#'   instanceType, subnetId, automaticStopTimeMinutes, ownerArn, tags,
-#'   connectionType)
+#'   instanceType, subnetId, imageId, automaticStopTimeMinutes, ownerArn,
+#'   tags, connectionType)
 #'
 #' @param name &#91;required&#93; The name of the environment to create.
 #' 
@@ -31,6 +31,31 @@ NULL
 #' `t2.micro`).
 #' @param subnetId The ID of the subnet in Amazon VPC that AWS Cloud9 will use to
 #' communicate with the Amazon EC2 instance.
+#' @param imageId The identifier for the Amazon Machine Image (AMI) that's used to create
+#' the EC2 instance. To choose an AMI for the instance, you must specify a
+#' valid AMI alias or a valid AWS Systems Manager (SSM) path.
+#' 
+#' The default AMI is used if the parameter isn't explicitly assigned a
+#' value in the request.
+#' 
+#' **AMI aliases**
+#' 
+#' -   **Amazon Linux (default): `amazonlinux-1-x86_64`**
+#' 
+#' -   Amazon Linux 2: `amazonlinux-2-x86_64`
+#' 
+#' -   Ubuntu 18.04: `ubuntu-18.04-x86_64`
+#' 
+#' **SSM paths**
+#' 
+#' -   **Amazon Linux (default):
+#'     `resolve:ssm:/aws/service/cloud9/amis/amazonlinux-1-x86_64`**
+#' 
+#' -   Amazon Linux 2:
+#'     `resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2-x86_64`
+#' 
+#' -   Ubuntu 18.04:
+#'     `resolve:ssm:/aws/service/cloud9/amis/ubuntu-18.04-x86_64`
 #' @param automaticStopTimeMinutes The number of minutes until the running instance is shut down after the
 #' environment has last been used.
 #' @param ownerArn The Amazon Resource Name (ARN) of the environment owner. This ARN can be
@@ -39,6 +64,13 @@ NULL
 #' @param tags An array of key-value pairs that will be associated with the new AWS
 #' Cloud9 development environment.
 #' @param connectionType The connection type used for connecting to an Amazon EC2 environment.
+#' Valid values are `CONNECT_SSH` (default) and `CONNECT_SSM` (connected
+#' through AWS Systems Manager).
+#' 
+#' For more information, see [Accessing no-ingress EC2 instances with AWS
+#' Systems
+#' Manager](https://docs.aws.amazon.com/cloud9/latest/user-guide/ec2-ssm.html)
+#' in the *AWS Cloud9 User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -56,6 +88,7 @@ NULL
 #'   clientRequestToken = "string",
 #'   instanceType = "string",
 #'   subnetId = "string",
+#'   imageId = "string",
 #'   automaticStopTimeMinutes = 123,
 #'   ownerArn = "string",
 #'   tags = list(
@@ -77,21 +110,21 @@ NULL
 #'   description = "This is my demonstration environment.",
 #'   instanceType = "t2.micro",
 #'   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
-#'   subnetId = "subnet-1fab8aEX"
+#'   subnetId = "subnet-6300cd1b"
 #' )
 #' }
 #'
 #' @keywords internal
 #'
 #' @rdname cloud9_create_environment_ec2
-cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, automaticStopTimeMinutes = NULL, ownerArn = NULL, tags = NULL, connectionType = NULL) {
+cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, imageId = NULL, automaticStopTimeMinutes = NULL, ownerArn = NULL, tags = NULL, connectionType = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentEC2",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloud9$create_environment_ec2_input(name = name, description = description, clientRequestToken = clientRequestToken, instanceType = instanceType, subnetId = subnetId, automaticStopTimeMinutes = automaticStopTimeMinutes, ownerArn = ownerArn, tags = tags, connectionType = connectionType)
+  input <- .cloud9$create_environment_ec2_input(name = name, description = description, clientRequestToken = clientRequestToken, instanceType = instanceType, subnetId = subnetId, imageId = imageId, automaticStopTimeMinutes = automaticStopTimeMinutes, ownerArn = ownerArn, tags = tags, connectionType = connectionType)
   output <- .cloud9$create_environment_ec2_output()
   config <- get_config()
   svc <- .cloud9$service(config)
@@ -469,7 +502,8 @@ cloud9_describe_environment_status <- function(environmentId) {
 #'         status = "CREATING"|"CREATED"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED",
 #'         reason = "string",
 #'         failureResource = "string"
-#'       )
+#'       ),
+#'       managedCredentialsStatus = "ENABLED_ON_CREATE"|"ENABLED_BY_OWNER"|"DISABLED_BY_DEFAULT"|"DISABLED_BY_OWNER"|"DISABLED_BY_COLLABORATOR"|"PENDING_REMOVAL_BY_COLLABORATOR"|"PENDING_START_REMOVAL_BY_COLLABORATOR"|"PENDING_REMOVAL_BY_OWNER"|"PENDING_START_REMOVAL_BY_OWNER"|"FAILED_REMOVAL_BY_COLLABORATOR"|"FAILED_REMOVAL_BY_OWNER"
 #'     )
 #'   )
 #' )

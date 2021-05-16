@@ -4,7 +4,8 @@
 \alias{chime_list_channel_moderators}
 \title{Lists all the moderators for a channel}
 \usage{
-chime_list_channel_moderators(ChannelArn, MaxResults, NextToken)
+chime_list_channel_moderators(ChannelArn, MaxResults, NextToken,
+  ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
@@ -13,6 +14,8 @@ chime_list_channel_moderators(ChannelArn, MaxResults, NextToken)
 
 \item{NextToken}{The token passed by previous API calls until all requested moderators
 are returned.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -31,12 +34,17 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Lists all the moderators for a channel.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$list_channel_moderators(
   ChannelArn = "string",
   MaxResults = 123,
-  NextToken = "string"
+  NextToken = "string",
+  ChimeBearer = "string"
 )
 }
 }

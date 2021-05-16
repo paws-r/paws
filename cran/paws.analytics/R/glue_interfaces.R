@@ -977,7 +977,7 @@ NULL
 
 .glue$get_partitions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Segment = structure(list(SegmentNumber = structure(logical(0), tags = list(type = "integer")), TotalSegments = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Segment = structure(list(SegmentNumber = structure(logical(0), tags = list(type = "integer")), TotalSegments = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), ExcludeColumnSchema = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1439,7 +1439,7 @@ NULL
 
 .glue$query_schema_version_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MetadataInfoMap = structure(list(structure(list(MetadataValue = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), SchemaVersionId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(MetadataInfoMap = structure(list(structure(list(MetadataValue = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "string")), OtherMetadataValueList = structure(list(structure(list(MetadataValue = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), SchemaVersionId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -2,14 +2,14 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_website}
 \alias{s3_delete_bucket_website}
-\title{This operation removes the website configuration for a bucket}
+\title{This action removes the website configuration for a bucket}
 \usage{
 s3_delete_bucket_website(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name for which you want to remove the website configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -17,15 +17,15 @@ different account, the request will fail with an HTTP
 An empty list.
 }
 \description{
-This operation removes the website configuration for a bucket. Amazon S3
+This action removes the website configuration for a bucket. Amazon S3
 returns a \verb{200 OK} response upon successfully deleting a website
 configuration on the specified bucket. You will get a \verb{200 OK} response
 if the website configuration you are trying to delete does not exist on
 the bucket. Amazon S3 returns a \code{404} response if the bucket specified
 in the request does not exist.
 
-This DELETE operation requires the \code{S3:DeleteBucketWebsite} permission.
-By default, only the bucket owner can delete the website configuration
+This DELETE action requires the \code{S3:DeleteBucketWebsite} permission. By
+default, only the bucket owner can delete the website configuration
 attached to a bucket. However, bucket owners can grant other users
 permission to delete the website configuration by writing a bucket
 policy granting them the \code{S3:DeleteBucketWebsite} permission.

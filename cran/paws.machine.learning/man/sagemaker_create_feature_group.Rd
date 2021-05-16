@@ -128,7 +128,8 @@ You must include at least one of \code{OnlineStoreConfig} and
   OfflineStoreConfig = list(
     S3StorageConfig = list(
       S3Uri = "string",
-      KmsKeyId = "string"
+      KmsKeyId = "string",
+      ResolvedOutputS3Uri = "string"
     ),
     DisableGlueTableCreation = TRUE|FALSE,
     DataCatalogConfig = list(

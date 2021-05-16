@@ -2,19 +2,18 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_list_game_server_groups}
 \alias{gamelift_list_game_server_groups}
-\title{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups}
+\title{This operation is used with the GameLift FleetIQ solution and game
+server groups}
 \usage{
 gamelift_list_game_server_groups(Limit, NextToken)
 }
 \arguments{
 \item{Limit}{The maximum number of results to return. Use this parameter with
-\code{NextToken} to get results as a set of sequential segments.}
+\code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{A token that indicates the start of the next sequential segment of
-results. Use the token returned with the previous call to this
-operation. To start at the beginning of the result set, do not specify a
-value.}
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -25,7 +24,7 @@ A list with the following syntax:\preformatted{list(
       RoleArn = "string",
       InstanceDefinitions = list(
         list(
-          InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+          InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
           WeightedCapacity = "string"
         )
       ),
@@ -50,8 +49,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-\strong{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups.}
+\strong{This operation is used with the GameLift FleetIQ solution and game
+server groups.}
 
 Retrieves information on all game servers groups that exist in the
 current AWS account for the selected Region. Use the pagination
@@ -61,17 +60,17 @@ parameters to retrieve results in a set of sequential segments.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_game_server_group]{create_game_server_group}}
-\item \code{\link[=gamelift_list_game_server_groups]{list_game_server_groups}}
-\item \code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}}
-\item \code{\link[=gamelift_update_game_server_group]{update_game_server_group}}
-\item \code{\link[=gamelift_delete_game_server_group]{delete_game_server_group}}
-\item \code{\link[=gamelift_resume_game_server_group]{resume_game_server_group}}
-\item \code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}}
-\item \code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_server_group]{create_game_server_group}} |
+\code{\link[=gamelift_list_game_server_groups]{list_game_server_groups}} |
+\code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}} |
+\code{\link[=gamelift_update_game_server_group]{update_game_server_group}} |
+\code{\link[=gamelift_delete_game_server_group]{delete_game_server_group}} |
+\code{\link[=gamelift_resume_game_server_group]{resume_game_server_group}} |
+\code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}} |
+\code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/reference-awssdk-fleetiq.html}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$list_game_server_groups(

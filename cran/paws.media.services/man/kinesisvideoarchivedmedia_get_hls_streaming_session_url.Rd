@@ -63,11 +63,12 @@ display.
 
 In all playback modes, if \code{FragmentSelectorType} is
 \code{PRODUCER_TIMESTAMP}, and if there are multiple fragments with the same
-start timestamp, the fragment that has the larger fragment number (that
-is, the newer fragment) is included in the HLS media playlist. The other
-fragments are not included. Fragments that have different timestamps but
-have overlapping durations are still included in the HLS media playlist.
-This can lead to unexpected behavior in the media player.
+start timestamp, the fragment that has the largest fragment number (that
+is, the newest fragment) is included in the HLS media playlist. The
+other fragments are not included. Fragments that have different
+timestamps but have overlapping durations are still included in the HLS
+media playlist. This can lead to unexpected behavior in the media
+player.
 
 The default is \code{LIVE}.}
 
@@ -114,7 +115,7 @@ if the fragment timestamps are not accurate.
 \item \code{NEVER}: no discontinuity markers are placed anywhere. It is
 recommended to use a value of \code{NEVER} to ensure the media player
 timeline most accurately maps to the producer timestamps.
-\item \code{ON_DISCONTIUNITY}: a discontinuity marker is placed between
+\item \code{ON_DISCONTINUITY}: a discontinuity marker is placed between
 fragments that have a gap or overlap of more than 50 milliseconds.
 For most playback scenarios, it is recommended to use a value of
 \code{ON_DISCONTINUITY} so that the media player timeline is only reset
@@ -165,9 +166,9 @@ fragments and a maximum of 10 fragments.
 The default is 5 fragments if \code{PlaybackMode} is \code{LIVE} or \code{LIVE_REPLAY},
 and 1,000 if \code{PlaybackMode} is \code{ON_DEMAND}.
 
-The maximum value of 1,000 fragments corresponds to more than 16 minutes
-of video on streams with 1-second fragments, and more than 2 1/2 hours
-of video on streams with 10-second fragments.}
+The maximum value of 5,000 fragments corresponds to more than 80 minutes
+of video on streams with 1-second fragments, and more than 13 hours of
+video on streams with 10-second fragments.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -202,7 +203,7 @@ private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{A
 Kinesis Video Streams HLS sessions contain fragments in the fragmented
 MPEG-4 form (also called fMP4 or CMAF) or the MPEG-2 form (also called
 TS chunks, which the HLS specification also supports). For more
-information about HLS fragment types, see the \href{https://tools.ietf.org/html/draft-pantos-http-live-streaming-23}{HLS specification}.
+information about HLS fragment types, see the \href{https://datatracker.ietf.org/doc/html/draft-pantos-http-live-streaming-23}{HLS specification}.
 
 The following procedure shows how to use HLS with Kinesis Video Streams:
 \enumerate{
@@ -294,22 +295,9 @@ information, see \href{https://aws.amazon.com/kinesis/video-streams/pricing/}{Ki
 }
 }
 
-The following restrictions apply to HLS sessions:
-\itemize{
-\item A streaming session URL should not be shared between players. The
-service might throttle a session if multiple media players are
-sharing it. For connection limits, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html}{Kinesis Video Streams Limits}.
-\item A Kinesis video stream can have a maximum of ten active HLS
-streaming sessions. If a new session is created when the maximum
-number of sessions is already active, the oldest (earliest created)
-session is closed. The number of active \code{GetMedia} connections on a
-Kinesis video stream does not count against this limit, and the
-number of active HLS sessions does not count against the active
-\code{GetMedia} connection limit.
-
-The maximum limits for active HLS and MPEG-DASH streaming sessions
-are independent of each other.
-}
+A streaming session URL must not be shared between players. The service
+might throttle a session if multiple media players are sharing it. For
+connection limits, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html}{Kinesis Video Streams Limits}.
 
 You can monitor the amount of data that the media player consumes by
 monitoring the \code{GetMP4MediaFragment.OutgoingBytes} Amazon CloudWatch

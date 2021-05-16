@@ -61,8 +61,11 @@ NULL
 #'  \link[=lookoutforvision_list_dataset_entries]{list_dataset_entries} \tab Lists the JSON Lines within a dataset\cr
 #'  \link[=lookoutforvision_list_models]{list_models} \tab Lists the versions of a model in an Amazon Lookout for Vision project\cr
 #'  \link[=lookoutforvision_list_projects]{list_projects} \tab Lists the Amazon Lookout for Vision projects in your AWS account\cr
+#'  \link[=lookoutforvision_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags attached to the specified Amazon Lookout for Vision model\cr
 #'  \link[=lookoutforvision_start_model]{start_model} \tab Starts the running of the version of an Amazon Lookout for Vision model\cr
-#'  \link[=lookoutforvision_stop_model]{stop_model} \tab Stops a running model\cr
+#'  \link[=lookoutforvision_stop_model]{stop_model} \tab Stops the hosting of a running model\cr
+#'  \link[=lookoutforvision_tag_resource]{tag_resource} \tab Adds one or more key-value tags to an Amazon Lookout for Vision model\cr
+#'  \link[=lookoutforvision_untag_resource]{untag_resource} \tab Removes one or more tags from an Amazon Lookout for Vision model\cr
 #'  \link[=lookoutforvision_update_dataset_entries]{update_dataset_entries} \tab Adds one or more JSON Line entries to a dataset
 #' }
 #'

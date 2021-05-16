@@ -25,7 +25,7 @@ in the \emph{Amazon Cognito Developer Guide}.}
 
 \item{DeveloperProviderName}{The "domain" by which Cognito will refer to your users.}
 
-\item{OpenIdConnectProviderARNs}{A list of OpendID Connect provider ARNs.}
+\item{OpenIdConnectProviderARNs}{The ARNs of the OpenID Connect providers.}
 
 \item{CognitoIdentityProviders}{A list representing an Amazon Cognito user pool and its client ID.}
 

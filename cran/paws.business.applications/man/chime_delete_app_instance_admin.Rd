@@ -7,9 +7,9 @@
 chime_delete_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
 }
 \arguments{
-\item{AppInstanceAdminArn}{[required] The ARN of the app instance's administrator.}
+\item{AppInstanceAdminArn}{[required] The ARN of the \code{AppInstance}'s administrator.}
 
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 }
 \value{
 An empty list.

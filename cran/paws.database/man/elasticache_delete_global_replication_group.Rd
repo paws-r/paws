@@ -2,13 +2,13 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_delete_global_replication_group}
 \alias{elasticache_delete_global_replication_group}
-\title{Deleting a Global Datastore is a two-step process:}
+\title{Deleting a Global datastore is a two-step process:}
 \usage{
 elasticache_delete_global_replication_group(GlobalReplicationGroupId,
   RetainPrimaryReplicationGroup)
 }
 \arguments{
-\item{GlobalReplicationGroupId}{[required] The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{[required] The name of the Global datastore}
 
 \item{RetainPrimaryReplicationGroup}{[required] The primary replication group is retained as a standalone replication
 group.}
@@ -47,19 +47,23 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Deleting a Global Datastore is a two-step process:
+Deleting a Global datastore is a two-step process:
 \itemize{
 \item First, you must
 \code{\link[=elasticache_disassociate_global_replication_group]{disassociate_global_replication_group}}
-to remove the secondary clusters in the Global Datastore.
-\item Once the Global Datastore contains only the primary cluster, you can
-use DeleteGlobalReplicationGroup API to delete the Global Datastore
-while retainining the primary cluster using Retain…= true.
+to remove the secondary clusters in the Global datastore.
+\item Once the Global datastore contains only the primary cluster, you can
+use the
+\code{\link[=elasticache_delete_global_replication_group]{delete_global_replication_group}}
+API to delete the Global datastore while retainining the primary
+cluster using \code{RetainPrimaryReplicationGroup=true}.
 }
 
 Since the Global Datastore has only a primary cluster, you can delete
 the Global Datastore while retaining the primary by setting
-\code{RetainPrimaryCluster=true}.
+\code{RetainPrimaryReplicationGroup=true}. The primary cluster is never
+deleted when deleting a Global Datastore. It can only be deleted when it
+no longer is associated with any Global Datastore.
 
 When you receive a successful response from this operation, Amazon
 ElastiCache immediately begins deleting the selected resources; you

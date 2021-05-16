@@ -4,7 +4,8 @@
 \alias{costexplorer_create_cost_category_definition}
 \title{Creates a new Cost Category with the requested name and rules}
 \usage{
-costexplorer_create_cost_category_definition(Name, RuleVersion, Rules)
+costexplorer_create_cost_category_definition(Name, RuleVersion, Rules,
+  DefaultValue)
 }
 \arguments{
 \item{Name}{[required]}
@@ -14,6 +15,8 @@ costexplorer_create_cost_category_definition(Name, RuleVersion, Rules)
 \item{Rules}{[required] The Cost Category rules used to categorize costs. For more information,
 see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html}{CostCategoryRule}.}
+
+\item{DefaultValue}{}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -67,9 +70,15 @@ Creates a new Cost Category with the requested name and rules.
             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
           )
         )
-      )
+      ),
+      InheritedValue = list(
+        DimensionName = "LINKED_ACCOUNT_NAME"|"TAG",
+        DimensionKey = "string"
+      ),
+      Type = "REGULAR"|"INHERITED_VALUE"
     )
-  )
+  ),
+  DefaultValue = "string"
 )
 }
 }

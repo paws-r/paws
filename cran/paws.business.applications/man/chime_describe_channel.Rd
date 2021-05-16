@@ -2,12 +2,14 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_describe_channel}
 \alias{chime_describe_channel}
-\title{Returns the full details of a channel in an Amazon Chime app instance}
+\title{Returns the full details of a channel in an Amazon Chime AppInstance}
 \usage{
-chime_describe_channel(ChannelArn)
+chime_describe_channel(ChannelArn, ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -35,11 +37,16 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns the full details of a channel in an Amazon Chime app instance.
+Returns the full details of a channel in an Amazon Chime \code{AppInstance}.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_channel(
-  ChannelArn = "string"
+  ChannelArn = "string",
+  ChimeBearer = "string"
 )
 }
 }

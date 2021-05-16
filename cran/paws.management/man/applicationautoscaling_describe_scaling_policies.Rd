@@ -16,8 +16,7 @@ resource provided by your own application or service, use
 \code{custom-resource} instead.}
 
 \item{ResourceId}{The identifier of the resource associated with the scaling policy. This
-string consists of the resource type and unique identifier. If you
-specify a scalable dimension, you must also specify a resource ID.
+string consists of the resource type and unique identifier.
 \itemize{
 \item ECS service - The resource type is \code{service} and the unique
 identifier is the cluster name and service name. Example:
@@ -185,8 +184,8 @@ specified service namespace.
 You can filter the results using \code{ResourceId}, \code{ScalableDimension}, and
 \code{PolicyNames}.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target Tracking Scaling Policies}
-and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step Scaling Policies}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target tracking scaling policies}
+and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step scaling policies}
 in the \emph{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{

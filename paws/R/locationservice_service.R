@@ -42,10 +42,10 @@ NULL
 #' \tabular{ll}{
 #'  \link[=locationservice_associate_tracker_consumer]{associate_tracker_consumer} \tab Creates an association between a geofence collection and a tracker resource\cr
 #'  \link[=locationservice_batch_delete_geofence]{batch_delete_geofence} \tab Deletes a batch of geofences from a geofence collection\cr
-#'  \link[=locationservice_batch_evaluate_geofences]{batch_evaluate_geofences} \tab Used in geofence monitoring\cr
-#'  \link[=locationservice_batch_get_device_position]{batch_get_device_position} \tab A batch request to retrieve device positions\cr
-#'  \link[=locationservice_batch_put_geofence]{batch_put_geofence} \tab A batch request for storing geofences into a given geofence collection\cr
-#'  \link[=locationservice_batch_update_device_position]{batch_update_device_position} \tab Uploads a position update for one or more devices to a tracker resource\cr
+#'  \link[=locationservice_batch_evaluate_geofences]{batch_evaluate_geofences} \tab Evaluates device positions against the geofence geometries from a given geofence collection\cr
+#'  \link[=locationservice_batch_get_device_position]{batch_get_device_position} \tab A batch request to retrieve all device positions\cr
+#'  \link[=locationservice_batch_put_geofence]{batch_put_geofence} \tab A batch request for storing geofence geometries into a given geofence collection\cr
+#'  \link[=locationservice_batch_update_device_position]{batch_update_device_position} \tab Uploads position update data for one or more devices to a tracker resource\cr
 #'  \link[=locationservice_create_geofence_collection]{create_geofence_collection} \tab Creates a geofence collection, which manages and stores geofences\cr
 #'  \link[=locationservice_create_map]{create_map} \tab Creates a map resource in your AWS account, which provides map tiles of different styles sourced from global location data providers\cr
 #'  \link[=locationservice_create_place_index]{create_place_index} \tab Creates a Place index resource in your AWS account, which supports Places functions with geospatial data sourced from your chosen data provider\cr
@@ -58,8 +58,8 @@ NULL
 #'  \link[=locationservice_describe_map]{describe_map} \tab Retrieves the map resource details\cr
 #'  \link[=locationservice_describe_place_index]{describe_place_index} \tab Retrieves the Place index resource details\cr
 #'  \link[=locationservice_describe_tracker]{describe_tracker} \tab Retrieves the tracker resource details\cr
-#'  \link[=locationservice_disassociate_tracker_consumer]{disassociate_tracker_consumer} \tab Removes the association bewteen a tracker resource and a geofence collection\cr
-#'  \link[=locationservice_get_device_position]{get_device_position} \tab Retrieves the latest device position\cr
+#'  \link[=locationservice_disassociate_tracker_consumer]{disassociate_tracker_consumer} \tab Removes the association between a tracker resource and a geofence collection\cr
+#'  \link[=locationservice_get_device_position]{get_device_position} \tab Retrieves a device's most recent position according to its sample time\cr
 #'  \link[=locationservice_get_device_position_history]{get_device_position_history} \tab Retrieves the device position history from a tracker resource within a specified range of time\cr
 #'  \link[=locationservice_get_geofence]{get_geofence} \tab Retrieves the geofence details from a geofence collection\cr
 #'  \link[=locationservice_get_map_glyphs]{get_map_glyphs} \tab Retrieves glyphs used to display labels on a map\cr
@@ -72,7 +72,7 @@ NULL
 #'  \link[=locationservice_list_place_indexes]{list_place_indexes} \tab Lists Place index resources in your AWS account\cr
 #'  \link[=locationservice_list_tracker_consumers]{list_tracker_consumers} \tab Lists geofence collections currently associated to the given tracker resource\cr
 #'  \link[=locationservice_list_trackers]{list_trackers} \tab Lists tracker resources in your AWS account\cr
-#'  \link[=locationservice_put_geofence]{put_geofence} \tab Stores a geofence to a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request\cr
+#'  \link[=locationservice_put_geofence]{put_geofence} \tab Stores a geofence geometry in a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request\cr
 #'  \link[=locationservice_search_place_index_for_position]{search_place_index_for_position} \tab Reverse geocodes a given coordinate and returns a legible address\cr
 #'  \link[=locationservice_search_place_index_for_text]{search_place_index_for_text} \tab Geocodes free-form text, such as an address, name, city, or region to allow you to search for Places or points of interest
 #' }

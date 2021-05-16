@@ -2,8 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_start_outbound_voice_contact}
 \alias{connect_start_outbound_voice_contact}
-\title{This API places an outbound call to a contact, and then initiates the
-contact flow}
+\title{Places an outbound call to a contact, and then initiates the contact
+flow}
 \usage{
 connect_start_outbound_voice_contact(DestinationPhoneNumber,
   ContactFlowId, InstanceId, ClientToken, SourcePhoneNumber, QueueId,
@@ -52,16 +52,16 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This API places an outbound call to a contact, and then initiates the
-contact flow. It performs the actions in the contact flow that's
-specified (in \code{ContactFlowId}).
+Places an outbound call to a contact, and then initiates the contact
+flow. It performs the actions in the contact flow that's specified (in
+\code{ContactFlowId}).
 
-Agents are not involved in initiating the outbound API (that is, dialing
-the contact). If the contact flow places an outbound call to a contact,
-and then puts the contact in queue, that's when the call is routed to
+Agents do not initiate the outbound API, which means that they do not
+dial the contact. If the contact flow places an outbound call to a
+contact, and then puts the contact in queue, the call is then routed to
 the agent, like any other inbound case.
 
-There is a 60 second dialing timeout for this operation. If the call is
+There is a 60-second dialing timeout for this operation. If the call is
 not connected after 60 seconds, it fails.
 
 UK numbers with a 447 prefix are not allowed by default. Before you can

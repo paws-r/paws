@@ -24,8 +24,10 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Retrieves the password policy for the AWS account. For more information
-about using a password policy, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html}{Managing an IAM Password Policy}.
+Retrieves the password policy for the AWS account. This tells you the
+complexity requirements and mandatory rotation periods for the IAM user
+passwords in your account. For more information about using a password
+policy, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html}{Managing an IAM password policy}.
 }
 \examples{
 \dontrun{

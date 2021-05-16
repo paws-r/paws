@@ -11,7 +11,8 @@ elasticache_create_cache_cluster(CacheClusterId, ReplicationGroupId,
   SecurityGroupIds, Tags, SnapshotArns, SnapshotName,
   PreferredMaintenanceWindow, Port, NotificationTopicArn,
   AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
-  AuthToken, OutpostMode, PreferredOutpostArn, PreferredOutpostArns)
+  AuthToken, OutpostMode, PreferredOutpostArn, PreferredOutpostArns,
+  LogDeliveryConfigurations)
 }
 \arguments{
 \item{CacheClusterId}{[required] The node group (shard) identifier. This parameter is stored as a
@@ -74,7 +75,7 @@ Default: System chosen Availability Zones.}
 \item{NumCacheNodes}{The initial number of cache nodes that the cluster has.
 
 For clusters running Redis, this value must be 1. For clusters running
-Memcached, this value must be between 1 and 20.
+Memcached, this value must be between 1 and 40.
 
 If you need more than 20 nodes for your Memcached cluster, please fill
 out the ElastiCache Limit Increase Request form at
@@ -98,9 +99,7 @@ previous generation counterparts.
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
 \code{cache.m6g.16xlarge}
 
-At this time, M6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{M5 node types:} \code{cache.m5.large}, \code{cache.m5.xlarge},
 \code{cache.m5.2xlarge}, \code{cache.m5.4xlarge}, \code{cache.m5.12xlarge},
@@ -141,9 +140,7 @@ eu-west-1 and ap-northeast-1.
 \code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
 \code{cache.r6g.16xlarge}
 
-At this time, R6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{R5 node types:} \code{cache.r5.large}, \code{cache.r5.xlarge},
 \code{cache.r5.2xlarge}, \code{cache.r5.4xlarge}, \code{cache.r5.12xlarge},
@@ -211,7 +208,7 @@ Amazon Virtual Private Cloud (Amazon VPC).}
 Use this parameter only when you are creating a cluster in an Amazon
 Virtual Private Cloud (Amazon VPC).}
 
-\item{Tags}{A list of cost allocation tags to be added to this resource.}
+\item{Tags}{A list of tags to be added to this resource.}
 
 \item{SnapshotArns}{A single-element string list containing an Amazon Resource Name (ARN)
 that uniquely identifies a Redis RDB snapshot file stored in Amazon S3.
@@ -231,25 +228,7 @@ This parameter is only valid if the \code{Engine} parameter is \code{redis}.}
 \item{PreferredMaintenanceWindow}{Specifies the weekly time range during which maintenance on the cluster
 is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-is a 60 minute period. Valid values for \code{ddd} are:
-
-Specifies the weekly time range during which maintenance on the cluster
-is performed. It is specified as a range in the format
-ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-is a 60 minute period.
-
-Valid values for \code{ddd} are:
-\itemize{
-\item \code{sun}
-\item \code{mon}
-\item \code{tue}
-\item \code{wed}
-\item \code{thu}
-\item \code{fri}
-\item \code{sat}
-}
-
-Example: \code{sun:23:00-mon:01:30}}
+is a 60 minute period. Valid values for \code{ddd} are:}
 
 \item{Port}{The port number on which each of the cache nodes accepts connections.}
 
@@ -302,6 +281,8 @@ outpost or across multiple outposts.}
 \item{PreferredOutpostArn}{The outpost ARN in which the cache cluster is created.}
 
 \item{PreferredOutpostArns}{The outpost ARNs in which the cache cluster is created.}
+
+\item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -330,7 +311,22 @@ A list with the following syntax:\preformatted{list(
       ),
       EngineVersion = "string",
       CacheNodeType = "string",
-      AuthTokenStatus = "SETTING"|"ROTATING"
+      AuthTokenStatus = "SETTING"|"ROTATING",
+      LogDeliveryConfigurations = list(
+        list(
+          LogType = "slow-log",
+          DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+          DestinationDetails = list(
+            CloudWatchLogsDetails = list(
+              LogGroup = "string"
+            ),
+            KinesisFirehoseDetails = list(
+              DeliveryStream = "string"
+            )
+          ),
+          LogFormat = "text"|"json"
+        )
+      )
     ),
     NotificationConfiguration = list(
       TopicArn = "string",
@@ -383,7 +379,25 @@ A list with the following syntax:\preformatted{list(
     ),
     TransitEncryptionEnabled = TRUE|FALSE,
     AtRestEncryptionEnabled = TRUE|FALSE,
-    ARN = "string"
+    ARN = "string",
+    ReplicationGroupLogDeliveryEnabled = TRUE|FALSE,
+    LogDeliveryConfigurations = list(
+      list(
+        LogType = "slow-log",
+        DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+        DestinationDetails = list(
+          CloudWatchLogsDetails = list(
+            LogGroup = "string"
+          ),
+          KinesisFirehoseDetails = list(
+            DeliveryStream = "string"
+          )
+        ),
+        LogFormat = "text"|"json",
+        Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+        Message = "string"
+      )
+    )
   )
 )
 }
@@ -437,6 +451,22 @@ clusters.
   PreferredOutpostArn = "string",
   PreferredOutpostArns = list(
     "string"
+  ),
+  LogDeliveryConfigurations = list(
+    list(
+      LogType = "slow-log",
+      DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+      DestinationDetails = list(
+        CloudWatchLogsDetails = list(
+          LogGroup = "string"
+        ),
+        KinesisFirehoseDetails = list(
+          DeliveryStream = "string"
+        )
+      ),
+      LogFormat = "text"|"json",
+      Enabled = TRUE|FALSE
+    )
   )
 )
 }

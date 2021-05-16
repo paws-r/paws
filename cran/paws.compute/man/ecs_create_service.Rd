@@ -10,7 +10,8 @@ ecs_create_service(cluster, serviceName, taskDefinition, loadBalancers,
   capacityProviderStrategy, platformVersion, role,
   deploymentConfiguration, placementConstraints, placementStrategy,
   networkConfiguration, healthCheckGracePeriodSeconds, schedulingStrategy,
-  deploymentController, tags, enableECSManagedTags, propagateTags)
+  deploymentController, tags, enableECSManagedTags, propagateTags,
+  enableExecuteCommand)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster on
@@ -18,9 +19,9 @@ which to run your service. If you do not specify a cluster, the default
 cluster is assumed.}
 
 \item{serviceName}{[required] The name of your service. Up to 255 letters (uppercase and lowercase),
-numbers, and hyphens are allowed. Service names must be unique within a
-cluster, but you can have similarly named services in multiple clusters
-within a Region or across multiple Regions.}
+numbers, underscores, and hyphens are allowed. Service names must be
+unique within a cluster, but you can have similarly named services in
+multiple clusters within a Region or across multiple Regions.}
 
 \item{taskDefinition}{The \code{family} and \code{revision} (\code{family:revision}) or full ARN of the task
 definition to run in your service. If a \code{revision} is not specified, the
@@ -37,7 +38,7 @@ If the service is using the rolling update (\code{ECS}) deployment controller
 and using either an Application Load Balancer or Network Load Balancer,
 you must specify one or more target group ARNs to attach to the service.
 The service-linked role is required for services that make use of
-multiple target groups. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
+multiple target groups. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using service-linked roles for Amazon ECS}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 If the service is using the \code{CODE_DEPLOY} deployment controller, the
@@ -81,11 +82,11 @@ you must choose \code{ip} as the target type, not \code{instance}, because tasks
 that use the \code{awsvpc} network mode are associated with an elastic
 network interface, not an Amazon EC2 instance.}
 
-\item{serviceRegistries}{The details of the service discovery registries to assign to this
-service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html}{Service Discovery}.
+\item{serviceRegistries}{The details of the service discovery registry to associate with this
+service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html}{Service discovery}.
 
-Service discovery is supported for Fargate tasks if you are using
-platform version v1.1.0 or later. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions}.}
+Each service may be associated with one service registry. Multiple
+service registries per service isn't supported.}
 
 \item{desiredCount}{The number of instantiations of the specified task definition to place
 and keep running on your cluster.
@@ -97,48 +98,31 @@ required.}
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. Up to 32 ASCII characters are allowed.}
 
-\item{launchType}{The launch type on which to run your service. For more information, see
-\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types}
+\item{launchType}{The launch type on which to run your service. The accepted values are
+\code{FARGATE} and \code{EC2}. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS launch types}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+When a value of \code{FARGATE} is specified, your tasks are launched on AWS
+Fargate On-Demand infrastructure. To use Fargate Spot, you must use a
+capacity provider strategy with the \code{FARGATE_SPOT} capacity provider.
+
+When a value of \code{EC2} is specified, your tasks are launched on Amazon
+EC2 instances registered to your cluster.
 
 If a \code{launchType} is specified, the \code{capacityProviderStrategy} parameter
 must be omitted.}
 
 \item{capacityProviderStrategy}{The capacity provider strategy to use for the service.
 
-A capacity provider strategy consists of one or more capacity providers
-along with the \code{base} and \code{weight} to assign to them. A capacity
-provider must be associated with the cluster to be used in a capacity
-provider strategy. The
-\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
-API is used to associate a capacity provider with a cluster. Only
-capacity providers with an \code{ACTIVE} or \code{UPDATING} status can be used.
-
 If a \code{capacityProviderStrategy} is specified, the \code{launchType} parameter
 must be omitted. If no \code{capacityProviderStrategy} or \code{launchType} is
 specified, the \code{defaultCapacityProviderStrategy} for the cluster is
-used.
-
-If specifying a capacity provider that uses an Auto Scaling group, the
-capacity provider must already be created. New capacity providers can be
-created with the
-\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
-operation.
-
-To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
-\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
-are available to all accounts and only need to be associated with a
-cluster to be used.
-
-The
-\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
-API operation is used to update the list of available capacity providers
-for a cluster after the cluster is created.}
+used.}
 
 \item{platformVersion}{The platform version that your tasks in the service are running on. A
 platform version is specified only for tasks using the Fargate launch
 type. If one isn't specified, the \code{LATEST} platform version is used by
-default. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions}
+default. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate platform versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{role}{The name or full Amazon Resource Name (ARN) of the IAM role that allows
@@ -154,14 +138,14 @@ here. The service-linked role is required if your task definition uses
 the \code{awsvpc} network mode or if the service is configured to use service
 discovery, an external deployment controller, multiple target groups, or
 Elastic Inference accelerators in which case you should not specify a
-role here. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
+role here. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using service-linked roles for Amazon ECS}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 If your specified role has a path other than \code{/}, then you must either
 specify the full role ARN (this is recommended) or prefix the role name
 with the path. For example, if a role with the name \code{bar} has a path of
 \verb{/foo/} then you would specify \verb{/foo/bar} as the role name. For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names}{Friendly Names and Paths}
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names}{Friendly names and paths}
 in the \emph{IAM User Guide}.}
 
 \item{deploymentConfiguration}{Optional deployment parameters that control how many tasks run during
@@ -178,7 +162,7 @@ specify a maximum of five strategy rules per service.}
 \item{networkConfiguration}{The network configuration for the service. This parameter is required
 for task definitions that use the \code{awsvpc} network mode to receive their
 own elastic network interface, and it is not supported for other network
-modes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
+modes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task networking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler
@@ -221,7 +205,8 @@ Tasks using the Fargate launch type or the \code{CODE_DEPLOY} or
 scheduling strategy.
 }}
 
-\item{deploymentController}{The deployment controller to use for the service.}
+\item{deploymentController}{The deployment controller to use for the service. If no deployment
+controller is specified, the default value of \code{ECS} is used.}
 
 \item{tags}{The metadata that you apply to the service to help you categorize and
 organize them. Each tag consists of a key and an optional value, both of
@@ -257,6 +242,10 @@ service to the tasks in the service. If no value is specified, the tags
 are not propagated. Tags can only be propagated to the tasks within the
 service during service creation. To add tags to a task after service
 creation, use the \code{\link[=ecs_tag_resource]{tag_resource}} API action.}
+
+\item{enableExecuteCommand}{Whether or not the execute command functionality is enabled for the
+service. If \code{true}, this enables execute command functionality on all
+containers in the service tasks.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -461,7 +450,8 @@ A list with the following syntax:\preformatted{list(
     ),
     createdBy = "string",
     enableECSManagedTags = TRUE|FALSE,
-    propagateTags = "TASK_DEFINITION"|"SERVICE"
+    propagateTags = "TASK_DEFINITION"|"SERVICE",
+    enableExecuteCommand = TRUE|FALSE
   )
 )
 }
@@ -656,7 +646,8 @@ tasks for this service.
     )
   ),
   enableECSManagedTags = TRUE|FALSE,
-  propagateTags = "TASK_DEFINITION"|"SERVICE"
+  propagateTags = "TASK_DEFINITION"|"SERVICE",
+  enableExecuteCommand = TRUE|FALSE
 )
 }
 }

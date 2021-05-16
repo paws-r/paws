@@ -67,7 +67,8 @@ A list with the following syntax:\preformatted{list(
       OwningService = "string",
       CreatedDate = as.POSIXct(
         "2015-01-01"
-      )
+      ),
+      PrimaryRegion = "string"
     )
   ),
   NextToken = "string"
@@ -108,7 +109,7 @@ To run this command, you must have the following permissions:
   NextToken = "string",
   Filters = list(
     list(
-      Key = "description"|"name"|"tag-key"|"tag-value"|"all",
+      Key = "description"|"name"|"tag-key"|"tag-value"|"primary-region"|"all",
       Values = list(
         "string"
       )

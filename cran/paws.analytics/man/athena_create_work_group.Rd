@@ -42,7 +42,11 @@ Creates a workgroup with the specified name.
     EnforceWorkGroupConfiguration = TRUE|FALSE,
     PublishCloudWatchMetricsEnabled = TRUE|FALSE,
     BytesScannedCutoffPerQuery = 123,
-    RequesterPaysEnabled = TRUE|FALSE
+    RequesterPaysEnabled = TRUE|FALSE,
+    EngineVersion = list(
+      SelectedEngineVersion = "string",
+      EffectiveEngineVersion = "string"
+    )
   ),
   Description = "string",
   Tags = list(

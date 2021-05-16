@@ -14,7 +14,7 @@ ARNs by using the
 \code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
 operation.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 }
 \value{
@@ -28,6 +28,12 @@ A list with the following syntax:\preformatted{list(
   ),
   CreateDate = as.POSIXct(
     "2015-01-01"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

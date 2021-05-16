@@ -26,12 +26,15 @@ within that tool.}
 An empty list.
 }
 \description{
-Changes the password of the IAM user who is calling this operation. The
-AWS account root user password is not affected by this operation.
+Changes the password of the IAM user who is calling this operation. This
+operation can be performed using the AWS CLI, the AWS API, or the \strong{My
+Security Credentials} page in the AWS Management Console. The AWS
+account root user password is not affected by this operation.
 
-To change the password for a different user, see
-\code{\link[=iam_update_login_profile]{update_login_profile}}. For more information
-about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
+Use \code{\link[=iam_update_login_profile]{update_login_profile}} to use the AWS
+CLI, the AWS API, or the \strong{Users} page in the IAM console to change the
+password for any IAM user. For more information about modifying
+passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

@@ -74,7 +74,8 @@ NULL
 #'             ),
 #'             DestinationBackupVaultArn = "string"
 #'           )
-#'         )
+#'         ),
+#'         EnableContinuousBackup = TRUE|FALSE
 #'       )
 #'     ),
 #'     AdvancedBackupSettings = list(
@@ -230,8 +231,8 @@ backup_create_backup_selection <- function(BackupPlanId, BackupSelection, Creato
 #'
 #' @param BackupVaultName &#91;required&#93; The name of a logical container where backups are stored. Backup vaults
 #' are identified by names that are unique to the account used to create
-#' them and the AWS Region where they are created. They consist of
-#' lowercase letters, numbers, and hyphens.
+#' them and the AWS Region where they are created. They consist of letters,
+#' numbers, and hyphens.
 #' @param BackupVaultTags Metadata that you can assign to help organize the resources that you
 #' create. Each tag is a key-value pair.
 #' @param EncryptionKeyArn The server-side encryption key that is used to protect your backups; for
@@ -516,6 +517,10 @@ backup_delete_backup_vault_notifications <- function(BackupVaultName) {
 #'
 #' @description
 #' Deletes the recovery point specified by a recovery point ID.
+#' 
+#' If the recovery point ID belongs to a continuous backup, calling this
+#' endpoint deletes the existing continuous backup and stops future
+#' continuous backup.
 #'
 #' @usage
 #' backup_delete_recovery_point(BackupVaultName, RecoveryPointArn)
@@ -763,10 +768,12 @@ backup_describe_copy_job <- function(CopyJobId) {
 }
 .backup$operations$describe_copy_job <- backup_describe_copy_job
 
-#' The current feature settings for the AWS Account
+#' Describes the global settings of the AWS account, including whether it
+#' is opted in to cross-account backup
 #'
 #' @description
-#' The current feature settings for the AWS Account.
+#' Describes the global settings of the AWS account, including whether it
+#' is opted in to cross-account backup.
 #'
 #' @usage
 #' backup_describe_global_settings()
@@ -1066,6 +1073,57 @@ backup_describe_restore_job <- function(RestoreJobId) {
 }
 .backup$operations$describe_restore_job <- backup_describe_restore_job
 
+#' Deletes the specified continuous backup recovery point from AWS Backup
+#' and releases control of that continuous backup to the source service,
+#' such as Amazon RDS
+#'
+#' @description
+#' Deletes the specified continuous backup recovery point from AWS Backup
+#' and releases control of that continuous backup to the source service,
+#' such as Amazon RDS. The source service will continue to create and
+#' retain continuous backups using the lifecycle that you specified in your
+#' original backup plan.
+#' 
+#' Does not support snapshot backup recovery points.
+#'
+#' @usage
+#' backup_disassociate_recovery_point(BackupVaultName, RecoveryPointArn)
+#'
+#' @param BackupVaultName &#91;required&#93; The unique name of an AWS Backup vault. Required.
+#' @param RecoveryPointArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies an AWS Backup
+#' recovery point. Required.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_recovery_point(
+#'   BackupVaultName = "string",
+#'   RecoveryPointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_disassociate_recovery_point
+backup_disassociate_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
+  op <- new_operation(
+    name = "DisassociateRecoveryPoint",
+    http_method = "POST",
+    http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/disassociate",
+    paginator = list()
+  )
+  input <- .backup$disassociate_recovery_point_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
+  output <- .backup$disassociate_recovery_point_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$disassociate_recovery_point <- backup_disassociate_recovery_point
+
 #' Returns the backup plan that is specified by the plan ID as a backup
 #' template
 #'
@@ -1116,8 +1174,9 @@ backup_export_backup_plan_template <- function(BackupPlanId) {
 #' Returns BackupPlan details for the specified BackupPlanId
 #'
 #' @description
-#' Returns `BackupPlan` details for the specified `BackupPlanId`. Returns
-#' the body of a backup plan in JSON format, in addition to plan metadata.
+#' Returns `BackupPlan` details for the specified `BackupPlanId`. The
+#' details are the body of a backup plan in JSON format, in addition to
+#' plan metadata.
 #'
 #' @usage
 #' backup_get_backup_plan(BackupPlanId, VersionId)
@@ -1155,7 +1214,8 @@ backup_export_backup_plan_template <- function(BackupPlanId) {
 #'             ),
 #'             DestinationBackupVaultArn = "string"
 #'           )
-#'         )
+#'         ),
+#'         EnableContinuousBackup = TRUE|FALSE
 #'       )
 #'     ),
 #'     AdvancedBackupSettings = list(
@@ -1258,7 +1318,8 @@ backup_get_backup_plan <- function(BackupPlanId, VersionId = NULL) {
 #'             ),
 #'             DestinationBackupVaultArn = "string"
 #'           )
-#'         )
+#'         ),
+#'         EnableContinuousBackup = TRUE|FALSE
 #'       )
 #'     ),
 #'     AdvancedBackupSettings = list(
@@ -1339,7 +1400,8 @@ backup_get_backup_plan_from_json <- function(BackupPlanTemplateJson) {
 #'             ),
 #'             DestinationBackupVaultArn = "string"
 #'           )
-#'         )
+#'         ),
+#'         EnableContinuousBackup = TRUE|FALSE
 #'       )
 #'     ),
 #'     AdvancedBackupSettings = list(
@@ -1656,10 +1718,14 @@ backup_get_supported_resource_types <- function() {
 }
 .backup$operations$get_supported_resource_types <- backup_get_supported_resource_types
 
-#' Returns a list of existing backup jobs for an authenticated account
+#' Returns a list of existing backup jobs for an authenticated account for
+#' the last 30 days
 #'
 #' @description
-#' Returns a list of existing backup jobs for an authenticated account.
+#' Returns a list of existing backup jobs for an authenticated account for
+#' the last 30 days. For a longer period of time, consider using these
+#' [monitoring
+#' tools](https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html).
 #'
 #' @usage
 #' backup_list_backup_jobs(NextToken, MaxResults, ByResourceArn, ByState,
@@ -1692,9 +1758,14 @@ backup_get_supported_resource_types <- function() {
 #' 
 #' -   `RDS` for Amazon Relational Database Service
 #' 
+#' -   `Aurora` for Amazon Aurora
+#' 
 #' -   `Storage Gateway` for AWS Storage Gateway
 #' @param ByAccountId The account ID to list the jobs from. Returns only backup jobs
 #' associated with the specified account ID.
+#' 
+#' If used from an AWS Organizations management account, passing `*`
+#' returns all jobs across the organization.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2166,6 +2237,8 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 #' -   `EFS` for Amazon Elastic File System
 #' 
 #' -   `RDS` for Amazon Relational Database Service
+#' 
+#' -   `Aurora` for Amazon Aurora
 #' 
 #' -   `Storage Gateway` for AWS Storage Gateway
 #' @param ByDestinationVaultArn An Amazon Resource Name (ARN) that uniquely identifies a source backup
@@ -2772,10 +2845,13 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' @param IdempotencyToken A customer chosen string that can be used to distinguish between calls
 #' to [`start_backup_job`][backup_start_backup_job].
 #' @param StartWindowMinutes A value in minutes after a backup is scheduled before a job will be
-#' canceled if it doesn't start successfully. This value is optional.
-#' @param CompleteWindowMinutes A value in minutes after a backup job is successfully started before it
-#' must be completed or it will be canceled by AWS Backup. This value is
-#' optional.
+#' canceled if it doesn't start successfully. This value is optional, and
+#' the default is 8 hours.
+#' @param CompleteWindowMinutes A value in minutes during which a successfully started backup must
+#' complete, or else AWS Backup will cancel the job. This value is
+#' optional. This value begins counting down from when the backup was
+#' scheduled. It does not add additional time for `StartWindowMinutes`, or
+#' if the backup started later than scheduled.
 #' @param Lifecycle The lifecycle defines when a protected resource is transitioned to cold
 #' storage and when it expires. AWS Backup will transition and expire
 #' backups automatically according to the lifecycle that you define.
@@ -2785,6 +2861,8 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' 90 days greater than the “transition to cold after days” setting. The
 #' “transition to cold after days” setting cannot be changed after a backup
 #' has been transitioned to cold.
+#' 
+#' Only Amazon EFS file system backups can be transitioned to cold storage.
 #' @param RecoveryPointTags To help organize your resources, you can assign your own metadata to the
 #' resources that you create. Each tag is a key-value pair.
 #' @param BackupOptions Specifies the backup option for a selected resource. This option is only
@@ -2853,6 +2931,8 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
 #'
 #' @description
 #' Starts a job to create a one-time copy of the specified resource.
+#' 
+#' Does not support continuous backups.
 #'
 #' @usage
 #' backup_start_copy_job(RecoveryPointArn, SourceBackupVaultName,
@@ -2966,10 +3046,10 @@ backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, Desti
 #' -   `newFileSystem`: A Boolean value that, if true, specifies that the
 #'     recovery point is restored to a new Amazon EFS file system.
 #' 
-#' -   `ItemsToRestore `: A serialized list of up to five strings where
-#'     each string is a file path. Use `ItemsToRestore` to restore specific
-#'     files or directories rather than the entire file system. This
-#'     parameter is optional.
+#' -   `ItemsToRestore `: An array of one to five strings where each string
+#'     is a file path. Use `ItemsToRestore` to restore specific files or
+#'     directories rather than the entire file system. This parameter is
+#'     optional. For example, `"itemsToRestore":"[\"/my.test\"]"`.
 #' @param IamRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that AWS Backup uses to
 #' create the target recovery point; for example,
 #' `arn:aws:iam::123456789012:role/S3Access`.
@@ -2987,6 +3067,8 @@ backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, Desti
 #' -   `EFS` for Amazon Elastic File System
 #' 
 #' -   `RDS` for Amazon Relational Database Service
+#' 
+#' -   `Aurora` for Amazon Aurora
 #' 
 #' -   `Storage Gateway` for AWS Storage Gateway
 #'
@@ -3231,7 +3313,8 @@ backup_untag_resource <- function(ResourceArn, TagKeyList) {
 #'             ),
 #'             DestinationBackupVaultArn = "string"
 #'           )
-#'         )
+#'         ),
+#'         EnableContinuousBackup = TRUE|FALSE
 #'       )
 #'     ),
 #'     AdvancedBackupSettings = list(
@@ -3266,10 +3349,10 @@ backup_update_backup_plan <- function(BackupPlanId, BackupPlan) {
 }
 .backup$operations$update_backup_plan <- backup_update_backup_plan
 
-#' Updates the current global settings for the AWS Account
+#' Updates the current global settings for the AWS account
 #'
 #' @description
-#' Updates the current global settings for the AWS Account. Use the
+#' Updates the current global settings for the AWS account. Use the
 #' [`describe_global_settings`][backup_describe_global_settings] API to
 #' determine the current settings.
 #'
@@ -3324,6 +3407,10 @@ backup_update_global_settings <- function(GlobalSettings = NULL) {
 #' 90 days greater than the “transition to cold after days” setting. The
 #' “transition to cold after days” setting cannot be changed after a backup
 #' has been transitioned to cold.
+#' 
+#' Only Amazon EFS file system backups can be transitioned to cold storage.
+#' 
+#' Does not support continuous backups.
 #'
 #' @usage
 #' backup_update_recovery_point_lifecycle(BackupVaultName,

@@ -48,6 +48,7 @@ Note the following guidelines when importing third party certificates:
 importing.
 \item The private key must be unencrypted. You cannot import a private key
 that is protected by a password or a passphrase.
+\item The private key must be no larger than 5 KB (5,120 bytes).
 \item If the certificate you are importing is not self-signed, you must
 enter its certificate chain.
 \item If a certificate chain is included, the issuer must be the subject
@@ -60,12 +61,12 @@ certificate fields.
 \item The OCSP authority URL, if present, must not exceed 1000 characters.
 \item To import a new certificate, omit the \code{CertificateArn} argument.
 Include this argument only when you want to replace a previously
-imported certifica
+imported certificate.
 \item When you import a certificate by using the CLI, you must specify the
 certificate, the certificate chain, and the private key by their
-file names preceded by \verb{file://}. For example, you can specify a
+file names preceded by \verb{fileb://}. For example, you can specify a
 certificate saved in the \verb{C:\\temp} folder as
-\verb{file://C:\\temp\\certificate_to_import.pem}. If you are making an
+\verb{fileb://C:\\temp\\certificate_to_import.pem}. If you are making an
 HTTP or HTTPS Query request, include these arguments as BLOBs.
 \item When you import a certificate by using an SDK, you must specify the
 certificate, the certificate chain, and the private key files in the

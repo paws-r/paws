@@ -2,7 +2,8 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_list_stored_queries}
 \alias{configservice_list_stored_queries}
-\title{List the stored queries for an AWS account in an AWS Region}
+\title{Lists the stored queries for a single AWS account and a single AWS
+Region}
 \usage{
 configservice_list_stored_queries(NextToken, MaxResults)
 }
@@ -27,8 +28,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-List the stored queries for an AWS account in an AWS Region. The default
-is 100.
+Lists the stored queries for a single AWS account and a single AWS
+Region. The default is 100.
 }
 \section{Request syntax}{
 \preformatted{svc$list_stored_queries(

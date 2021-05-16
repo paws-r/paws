@@ -17,7 +17,7 @@ A list with the following syntax:\preformatted{list(
     JobId = "string",
     JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
     JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
-    SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+    SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
     CreationDate = as.POSIXct(
       "2015-01-01"
     ),
@@ -63,7 +63,7 @@ A list with the following syntax:\preformatted{list(
         TrackingNumber = "string"
       )
     ),
-    SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+    SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"T14"|"NoPreference",
     Notification = list(
       SnsTopicARN = "string",
       JobStatesToNotify = list(
@@ -95,14 +95,15 @@ A list with the following syntax:\preformatted{list(
           IsWifiEnabled = TRUE|FALSE
         )
       )
-    )
+    ),
+    LongTermPricingId = "string"
   ),
   SubJobMetadata = list(
     list(
       JobId = "string",
       JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
       JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
-      SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+      SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
       CreationDate = as.POSIXct(
         "2015-01-01"
       ),
@@ -148,7 +149,7 @@ A list with the following syntax:\preformatted{list(
           TrackingNumber = "string"
         )
       ),
-      SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+      SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"T14"|"NoPreference",
       Notification = list(
         SnsTopicARN = "string",
         JobStatesToNotify = list(
@@ -180,7 +181,8 @@ A list with the following syntax:\preformatted{list(
             IsWifiEnabled = TRUE|FALSE
           )
         )
-      )
+      ),
+      LongTermPricingId = "string"
     )
   )
 )

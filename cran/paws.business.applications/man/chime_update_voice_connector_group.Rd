@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_update_voice_connector_group}
 \alias{chime_update_voice_connector_group}
-\title{Updates details for the specified Amazon Chime Voice Connector group,
+\title{Updates details of the specified Amazon Chime Voice Connector group,
 such as the name and Amazon Chime Voice Connector priority ranking}
 \usage{
 chime_update_voice_connector_group(VoiceConnectorGroupId, Name,
@@ -37,7 +37,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Updates details for the specified Amazon Chime Voice Connector group,
+Updates details of the specified Amazon Chime Voice Connector group,
 such as the name and Amazon Chime Voice Connector priority ranking.
 }
 \section{Request syntax}{

@@ -165,13 +165,15 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription) {
 #' Creates a new Cost Category with the requested name and rules.
 #'
 #' @usage
-#' costexplorer_create_cost_category_definition(Name, RuleVersion, Rules)
+#' costexplorer_create_cost_category_definition(Name, RuleVersion, Rules,
+#'   DefaultValue)
 #'
 #' @param Name &#91;required&#93; 
 #' @param RuleVersion &#91;required&#93; 
 #' @param Rules &#91;required&#93; The Cost Category rules used to categorize costs. For more information,
 #' see
 #' [CostCategoryRule](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html).
+#' @param DefaultValue 
 #'
 #' @return
 #' A list with the following syntax:
@@ -225,23 +227,29 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription) {
 #'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       InheritedValue = list(
+#'         DimensionName = "LINKED_ACCOUNT_NAME"|"TAG",
+#'         DimensionKey = "string"
+#'       ),
+#'       Type = "REGULAR"|"INHERITED_VALUE"
 #'     )
-#'   )
+#'   ),
+#'   DefaultValue = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname costexplorer_create_cost_category_definition
-costexplorer_create_cost_category_definition <- function(Name, RuleVersion, Rules) {
+costexplorer_create_cost_category_definition <- function(Name, RuleVersion, Rules, DefaultValue = NULL) {
   op <- new_operation(
     name = "CreateCostCategoryDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .costexplorer$create_cost_category_definition_input(Name = Name, RuleVersion = RuleVersion, Rules = Rules)
+  input <- .costexplorer$create_cost_category_definition_input(Name = Name, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue)
   output <- .costexplorer$create_cost_category_definition_output()
   config <- get_config()
   svc <- .costexplorer$service(config)
@@ -448,7 +456,12 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 #'               "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         InheritedValue = list(
+#'           DimensionName = "LINKED_ACCOUNT_NAME"|"TAG",
+#'           DimensionKey = "string"
+#'         ),
+#'         Type = "REGULAR"|"INHERITED_VALUE"
 #'       )
 #'     ),
 #'     ProcessingStatus = list(
@@ -456,7 +469,8 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 #'         Component = "COST_EXPLORER",
 #'         Status = "PROCESSING"|"APPLIED"
 #'       )
-#'     )
+#'     ),
+#'     DefaultValue = "string"
 #'   )
 #' )
 #' ```
@@ -793,7 +807,7 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 #' `2017-01-01` and `end` is `2017-05-01`, then the cost and usage data is
 #' retrieved from `2017-01-01` up to and including `2017-04-30` but not
 #' including `2017-05-01`.
-#' @param Granularity Sets the AWS cost granularity to `MONTHLY` or `DAILY`, or `HOURLY`. If
+#' @param Granularity &#91;required&#93; Sets the AWS cost granularity to `MONTHLY` or `DAILY`, or `HOURLY`. If
 #' `Granularity` isn't set, the response object doesn't include the
 #' `Granularity`, either `MONTHLY` or `DAILY`, or `HOURLY`.
 #' @param Filter Filters AWS costs by different dimensions. For example, you can specify
@@ -944,7 +958,7 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_cost_and_usage
-costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filter = NULL, Metrics, GroupBy = NULL, NextPageToken = NULL) {
+costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NULL, Metrics, GroupBy = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetCostAndUsage",
     http_method = "POST",
@@ -991,7 +1005,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filt
 #' `2017-05-01`, then the cost and usage data is retrieved from
 #' `2017-01-01` up to and including `2017-04-30` but not including
 #' `2017-05-01`.
-#' @param Granularity Sets the AWS cost granularity to `MONTHLY`, `DAILY`, or `HOURLY`. If
+#' @param Granularity &#91;required&#93; Sets the AWS cost granularity to `MONTHLY`, `DAILY`, or `HOURLY`. If
 #' `Granularity` isn't set, the response object doesn't include the
 #' `Granularity`, `MONTHLY`, `DAILY`, or `HOURLY`.
 #' @param Filter &#91;required&#93; Filters Amazon Web Services costs by different dimensions. For example,
@@ -1143,7 +1157,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filt
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_cost_and_usage_with_resources
-costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granularity = NULL, Filter, Metrics = NULL, GroupBy = NULL, NextPageToken = NULL) {
+costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granularity, Filter, Metrics = NULL, GroupBy = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetCostAndUsageWithResources",
     http_method = "POST",
@@ -1209,6 +1223,9 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #' The maximum number of objects that to be returned for this request. If
 #' `MaxResults` is not specified with `SortBy`, the request will return
 #' 1000 results as the default value for this parameter.
+#' 
+#' For [`get_cost_categories`][costexplorer_get_cost_categories],
+#' MaxResults has an upper limit of 1000.
 #' @param NextPageToken If the number of objects that are still available for retrieval exceeds
 #' the limit, AWS returns a NextPageToken value in the response. To
 #' retrieve the next batch of objects, provide the NextPageToken from the
@@ -1344,8 +1361,55 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' 
 #' The [`get_cost_forecast`][costexplorer_get_cost_forecast] operation
 #' supports only `DAILY` and `MONTHLY` granularities.
-#' @param Filter The filters that you want to use to filter your forecast. Cost Explorer
-#' API supports all of the Cost Explorer filters.
+#' @param Filter The filters that you want to use to filter your forecast. The
+#' [`get_cost_forecast`][costexplorer_get_cost_forecast] API supports
+#' filtering by the following dimensions:
+#' 
+#' -   `AZ`
+#' 
+#' -   `INSTANCE_TYPE`
+#' 
+#' -   `LINKED_ACCOUNT`
+#' 
+#' -   `LINKED_ACCOUNT_NAME`
+#' 
+#' -   `OPERATION`
+#' 
+#' -   `PURCHASE_TYPE`
+#' 
+#' -   `REGION`
+#' 
+#' -   `SERVICE`
+#' 
+#' -   `USAGE_TYPE`
+#' 
+#' -   `USAGE_TYPE_GROUP`
+#' 
+#' -   `RECORD_TYPE`
+#' 
+#' -   `OPERATING_SYSTEM`
+#' 
+#' -   `TENANCY`
+#' 
+#' -   `SCOPE`
+#' 
+#' -   `PLATFORM`
+#' 
+#' -   `SUBSCRIPTION_ID`
+#' 
+#' -   `LEGAL_ENTITY_NAME`
+#' 
+#' -   `DEPLOYMENT_OPTION`
+#' 
+#' -   `DATABASE_ENGINE`
+#' 
+#' -   `INSTANCE_TYPE_FAMILY`
+#' 
+#' -   `BILLING_ENTITY`
+#' 
+#' -   `RESERVATION_ID`
+#' 
+#' -   `SAVINGS_PLAN_ARN`
 #' @param PredictionIntervalLevel Cost Explorer always returns the mean forecast as a single point. You
 #' can request a prediction interval around the mean by specifying a
 #' confidence level. The higher the confidence level, the more confident
@@ -1603,6 +1667,9 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' maximum number of objects that to be returned for this request. If
 #' MaxResults is not specified with SortBy, the request will return 1000
 #' results as the default value for this parameter.
+#' 
+#' For [`get_dimension_values`][costexplorer_get_dimension_values],
+#' MaxResults has an upper limit of 1000.
 #' @param NextPageToken The token to retrieve the next set of results. AWS provides the token
 #' when the response from a previous call has more results than the maximum
 #' page size.
@@ -2959,7 +3026,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #'   ),
 #'   SavingsPlansPurchaseRecommendation = list(
 #'     AccountScope = "PAYER"|"LINKED",
-#'     SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP",
+#'     SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
 #'     TermInYears = "ONE_YEAR"|"THREE_YEARS",
 #'     PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
 #'     LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
@@ -3008,7 +3075,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$get_savings_plans_purchase_recommendation(
-#'   SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP",
+#'   SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
 #'   TermInYears = "ONE_YEAR"|"THREE_YEARS",
 #'   PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
 #'   AccountScope = "PAYER"|"LINKED",
@@ -3495,6 +3562,9 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #' maximum number of objects that to be returned for this request. If
 #' MaxResults is not specified with SortBy, the request will return 1000
 #' results as the default value for this parameter.
+#' 
+#' For [`get_tags`][costexplorer_get_tags], MaxResults has an upper limit
+#' of 1000.
 #' @param NextPageToken The token to retrieve the next set of results. AWS provides the token
 #' when the response from a previous call has more results than the maximum
 #' page size.
@@ -3622,8 +3692,55 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #' 
 #' The [`get_usage_forecast`][costexplorer_get_usage_forecast] operation
 #' supports only `DAILY` and `MONTHLY` granularities.
-#' @param Filter The filters that you want to use to filter your forecast. Cost Explorer
-#' API supports all of the Cost Explorer filters.
+#' @param Filter The filters that you want to use to filter your forecast. The
+#' [`get_usage_forecast`][costexplorer_get_usage_forecast] API supports
+#' filtering by the following dimensions:
+#' 
+#' -   `AZ`
+#' 
+#' -   `INSTANCE_TYPE`
+#' 
+#' -   `LINKED_ACCOUNT`
+#' 
+#' -   `LINKED_ACCOUNT_NAME`
+#' 
+#' -   `OPERATION`
+#' 
+#' -   `PURCHASE_TYPE`
+#' 
+#' -   `REGION`
+#' 
+#' -   `SERVICE`
+#' 
+#' -   `USAGE_TYPE`
+#' 
+#' -   `USAGE_TYPE_GROUP`
+#' 
+#' -   `RECORD_TYPE`
+#' 
+#' -   `OPERATING_SYSTEM`
+#' 
+#' -   `TENANCY`
+#' 
+#' -   `SCOPE`
+#' 
+#' -   `PLATFORM`
+#' 
+#' -   `SUBSCRIPTION_ID`
+#' 
+#' -   `LEGAL_ENTITY_NAME`
+#' 
+#' -   `DEPLOYMENT_OPTION`
+#' 
+#' -   `DATABASE_ENGINE`
+#' 
+#' -   `INSTANCE_TYPE_FAMILY`
+#' 
+#' -   `BILLING_ENTITY`
+#' 
+#' -   `RESERVATION_ID`
+#' 
+#' -   `SAVINGS_PLAN_ARN`
 #' @param PredictionIntervalLevel Cost Explorer always returns the mean forecast as a single point. You
 #' can request a prediction interval around the mean by specifying a
 #' confidence level. The higher the confidence level, the more confident
@@ -3764,7 +3881,8 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 #'       ),
 #'       Values = list(
 #'         "string"
-#'       )
+#'       ),
+#'       DefaultValue = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3970,7 +4088,7 @@ costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold 
 #'
 #' @usage
 #' costexplorer_update_cost_category_definition(CostCategoryArn,
-#'   RuleVersion, Rules)
+#'   RuleVersion, Rules, DefaultValue)
 #'
 #' @param CostCategoryArn &#91;required&#93; The unique identifier for your Cost Category.
 #' @param RuleVersion &#91;required&#93; 
@@ -3978,6 +4096,7 @@ costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold 
 #' see
 #' [CostCategoryRule](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html)
 #' .
+#' @param DefaultValue 
 #'
 #' @return
 #' A list with the following syntax:
@@ -4031,23 +4150,29 @@ costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold 
 #'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       InheritedValue = list(
+#'         DimensionName = "LINKED_ACCOUNT_NAME"|"TAG",
+#'         DimensionKey = "string"
+#'       ),
+#'       Type = "REGULAR"|"INHERITED_VALUE"
 #'     )
-#'   )
+#'   ),
+#'   DefaultValue = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname costexplorer_update_cost_category_definition
-costexplorer_update_cost_category_definition <- function(CostCategoryArn, RuleVersion, Rules) {
+costexplorer_update_cost_category_definition <- function(CostCategoryArn, RuleVersion, Rules, DefaultValue = NULL) {
   op <- new_operation(
     name = "UpdateCostCategoryDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .costexplorer$update_cost_category_definition_input(CostCategoryArn = CostCategoryArn, RuleVersion = RuleVersion, Rules = Rules)
+  input <- .costexplorer$update_cost_category_definition_input(CostCategoryArn = CostCategoryArn, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue)
   output <- .costexplorer$update_cost_category_definition_output()
   config <- get_config()
   svc <- .costexplorer$service(config)

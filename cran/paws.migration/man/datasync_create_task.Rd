@@ -48,24 +48,26 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates a task. A task is a set of two locations (source and
-destination) and a set of Options that you use to control the behavior
-of a task. If you don't specify Options when you create a task, AWS
-DataSync populates them with service defaults.
+Creates a task.
 
-When you create a task, it first enters the CREATING state. During
-CREATING AWS DataSync attempts to mount the on-premises Network File
-System (NFS) location. The task transitions to the AVAILABLE state
-without waiting for the AWS location to become mounted. If required, AWS
-DataSync mounts the AWS location before each task execution.
+A task includes a source location and a destination location, and a
+configuration that specifies how data is transferred. A task always
+transfers data from the source location to the destination location. The
+configuration specifies options such as task scheduling, bandwidth
+limits, etc. A task is the complete definition of a data transfer.
 
-If an agent that is associated with a source (NFS) location goes
-offline, the task transitions to the UNAVAILABLE status. If the status
-of the task remains in the CREATING status for more than a few minutes,
-it means that your agent might be having trouble mounting the source NFS
-file system. Check the task's ErrorCode and ErrorDetail. Mount issues
-are often caused by either a misconfigured firewall or a mistyped NFS
-server hostname.
+When you create a task that transfers data between AWS services in
+different AWS Regions, one of the two locations that you specify must
+reside in the Region where DataSync is being used. The other location
+must be specified in a different Region.
+
+You can transfer data between commercial AWS Regions except for China,
+or between AWS GovCloud (US-East and US-West) Regions.
+
+When you use DataSync to copy files or objects between AWS Regions, you
+pay for data transfer between Regions. This is billed as data transfer
+OUT from your source Region to your destination Region. For more
+information, see \href{https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer}{Data Transfer pricing}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_task(

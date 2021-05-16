@@ -143,6 +143,24 @@ A list with the following syntax:\preformatted{list(
               )
             )
           )
+        ),
+        DnsRuleGroupPriorityConflictViolation = list(
+          ViolationTarget = "string",
+          ViolationTargetDescription = "string",
+          ConflictingPriority = 123,
+          ConflictingPolicyId = "string",
+          UnavailablePriorities = list(
+            123
+          )
+        ),
+        DnsDuplicateRuleGroupViolation = list(
+          ViolationTarget = "string",
+          ViolationTargetDescription = "string"
+        ),
+        DnsRuleGroupLimitExceededViolation = list(
+          ViolationTarget = "string",
+          ViolationTargetDescription = "string",
+          NumberOfRuleGroupsAlreadyAssociated = 123
         )
       )
     ),

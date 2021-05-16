@@ -22,8 +22,8 @@ response.}
 \item{KeyMarker}{Specifies the key to start with when listing objects in a bucket.}
 
 \item{MaxKeys}{Sets the maximum number of keys returned in the response. By default the
-API returns up to 1,000 key names. The response might contain fewer keys
-but will never contain more. If additional keys satisfy the search
+action returns up to 1,000 key names. The response might contain fewer
+keys but will never contain more. If additional keys satisfy the search
 criteria, but were not returned because max-keys was exceeded, the
 response contains <isTruncated>true</isTruncated>. To return
 the additional keys, see key-marker and version-id-marker.}
@@ -37,7 +37,7 @@ under CommonPrefixes.}
 
 \item{VersionIdMarker}{Specifies the object version you want to start listing from.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -96,6 +96,9 @@ A list with the following syntax:\preformatted{list(
 Returns metadata about all versions of the objects in a bucket. You can
 also use request parameters as selection criteria to return metadata
 about a subset of all the object versions.
+
+To use this operation, you must have permissions to perform the
+\code{s3:ListBucketVersions} action. Be aware of the name difference.
 
 A 200 OK response can contain valid or invalid XML. Make sure to design
 your application to parse the contents of the response and handle it

@@ -12,13 +12,19 @@ NULL
 #'
 #' @usage
 #' kinesisanalyticsv2_add_application_cloud_watch_logging_option(
-#'   ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOption)
+#'   ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOption,
+#'   ConditionalToken)
 #'
 #' @param ApplicationName &#91;required&#93; The Kinesis Data Analytics application name.
-#' @param CurrentApplicationVersionId &#91;required&#93; The version ID of the Kinesis Data Analytics application. You can
+#' @param CurrentApplicationVersionId The version ID of the Kinesis Data Analytics application. You must
+#' provide the `ApplicationVersionID` or the `ConditionalToken`.You can
 #' retrieve the application version ID using
 #' [`describe_application`][kinesisanalyticsv2_describe_application].
 #' @param CloudWatchLoggingOption &#91;required&#93; Provides the Amazon CloudWatch log stream Amazon Resource Name (ARN).
+#' @param ConditionalToken A value you use to implement strong concurrency for application updates.
+#' You must provide the `ApplicationVersionID` or the `ConditionalToken`.
+#' You get the application's current `ConditionalToken` using
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
 #'
 #' @return
 #' A list with the following syntax:
@@ -43,21 +49,22 @@ NULL
 #'   CurrentApplicationVersionId = 123,
 #'   CloudWatchLoggingOption = list(
 #'     LogStreamARN = "string"
-#'   )
+#'   ),
+#'   ConditionalToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_add_application_cloud_watch_logging_option
-kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOption) {
+kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId = NULL, CloudWatchLoggingOption, ConditionalToken = NULL) {
   op <- new_operation(
     name = "AddApplicationCloudWatchLoggingOption",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesisanalyticsv2$add_application_cloud_watch_logging_option_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, CloudWatchLoggingOption = CloudWatchLoggingOption)
+  input <- .kinesisanalyticsv2$add_application_cloud_watch_logging_option_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, CloudWatchLoggingOption = CloudWatchLoggingOption, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$add_application_cloud_watch_logging_option_output()
   config <- get_config()
   svc <- .kinesisanalyticsv2$service(config)
@@ -90,7 +97,8 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(Applic
 #'
 #' @param ApplicationName &#91;required&#93; The name of your existing application to which you want to add the
 #' streaming source.
-#' @param CurrentApplicationVersionId &#91;required&#93; The current version of your application. You can use the
+#' @param CurrentApplicationVersionId &#91;required&#93; The current version of your application. You must provide the
+#' `ApplicationVersionID` or the `ConditionalToken`.You can use the
 #' [`describe_application`][kinesisanalyticsv2_describe_application]
 #' operation to find the current application version.
 #' @param Input &#91;required&#93; The Input to add.
@@ -240,7 +248,8 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
 #' @param ApplicationName &#91;required&#93; The name of the application to which you want to add the input
 #' processing configuration.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version of the application to which you want to add the input
-#' processing configuration. You can use the
+#' processing configuration. You must provide the `ApplicationVersionID` or
+#' the `ConditionalToken`. You can use the
 #' [`describe_application`][kinesisanalyticsv2_describe_application]
 #' operation to get the current application version. If the version
 #' specified is not the current version, the
@@ -333,7 +342,8 @@ kinesisanalyticsv2_add_application_input_processing_configuration <- function(Ap
 #' @param ApplicationName &#91;required&#93; The name of the application to which you want to add the output
 #' configuration.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version of the application to which you want to add the output
-#' configuration. You can use the
+#' configuration. You must provide the `ApplicationVersionID` or the
+#' `ConditionalToken`. You can use the
 #' [`describe_application`][kinesisanalyticsv2_describe_application]
 #' operation to get the current application version. If the version
 #' specified is not the current version, the
@@ -564,16 +574,21 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #'
 #' @usage
 #' kinesisanalyticsv2_add_application_vpc_configuration(ApplicationName,
-#'   CurrentApplicationVersionId, VpcConfiguration)
+#'   CurrentApplicationVersionId, VpcConfiguration, ConditionalToken)
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
-#' @param CurrentApplicationVersionId &#91;required&#93; The version of the application to which you want to add the VPC
-#' configuration. You can use the
+#' @param CurrentApplicationVersionId The version of the application to which you want to add the VPC
+#' configuration. You must provide the `ApplicationVersionID` or the
+#' `ConditionalToken`. You can use the
 #' [`describe_application`][kinesisanalyticsv2_describe_application]
 #' operation to get the current application version. If the version
 #' specified is not the current version, the
 #' `ConcurrentModificationException` is returned.
 #' @param VpcConfiguration &#91;required&#93; Description of the VPC to add to the application.
+#' @param ConditionalToken A value you use to implement strong concurrency for application updates.
+#' You must provide the `ApplicationVersionID` or the `ConditionalToken`.
+#' You get the application's current `ConditionalToken` using
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
 #'
 #' @return
 #' A list with the following syntax:
@@ -606,21 +621,22 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #'     SecurityGroupIds = list(
 #'       "string"
 #'     )
-#'   )
+#'   ),
+#'   ConditionalToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_add_application_vpc_configuration
-kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName, CurrentApplicationVersionId, VpcConfiguration) {
+kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName, CurrentApplicationVersionId = NULL, VpcConfiguration, ConditionalToken = NULL) {
   op <- new_operation(
     name = "AddApplicationVpcConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesisanalyticsv2$add_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfiguration = VpcConfiguration)
+  input <- .kinesisanalyticsv2$add_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfiguration = VpcConfiguration, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$add_application_vpc_configuration_output()
   config <- get_config()
   svc <- .kinesisanalyticsv2$service(config)
@@ -644,8 +660,8 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'
 #' @param ApplicationName &#91;required&#93; The name of your application (for example, `sample-app`).
 #' @param ApplicationDescription A summary description of the application.
-#' @param RuntimeEnvironment &#91;required&#93; The runtime environment for the application (`SQL-1.0`, `FLINK-1_6`, or
-#' `FLINK-1_8`).
+#' @param RuntimeEnvironment &#91;required&#93; The runtime environment for the application (`SQL-1_0`, `FLINK-1_6`,
+#' `FLINK-1_8`, or `FLINK-1_11`).
 #' @param ServiceExecutionRole &#91;required&#93; The IAM role used by the application to access Kinesis data streams,
 #' Kinesis Data Firehose delivery streams, Amazon S3 objects, and other
 #' external resources.
@@ -668,7 +684,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'     ApplicationName = "string",
 #'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11",
 #'     ServiceExecutionRole = "string",
-#'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING",
+#'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"MAINTENANCE"|"ROLLING_BACK"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
 #'     CreateTimestamp = as.POSIXct(
 #'       "2015-01-01"
@@ -859,7 +875,15 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'         LogStreamARN = "string",
 #'         RoleARN = "string"
 #'       )
-#'     )
+#'     ),
+#'     ApplicationMaintenanceConfigurationDescription = list(
+#'       ApplicationMaintenanceWindowStartTime = "string",
+#'       ApplicationMaintenanceWindowEndTime = "string"
+#'     ),
+#'     ApplicationVersionUpdatedFrom = 123,
+#'     ApplicationVersionRolledBackFrom = 123,
+#'     ConditionalToken = "string",
+#'     ApplicationVersionRolledBackTo = 123
 #'   )
 #' )
 #' ```
@@ -1061,10 +1085,14 @@ kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDe
 #' Apache Flink dashboard.
 #' 
 #' The IAM role or user used to call this API defines the permissions to
-#' access the extension. Once the presigned URL is created, no additional
+#' access the extension. After the presigned URL is created, no additional
 #' permission is required to access this URL. IAM authorization policies
 #' for this API are also enforced for every HTTP request that attempts to
 #' connect to the extension.
+#' 
+#' You control the amount of time that the URL will be valid using the
+#' `SessionExpirationDurationInSeconds` parameter. If you do not provide
+#' this parameter, the returned URL is valid for twelve hours.
 #' 
 #' The URL that you get from a call to CreateApplicationPresignedUrl must
 #' be used within 3 minutes to be valid. If you first try to use the URL
@@ -1216,16 +1244,22 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
 #'
 #' @usage
 #' kinesisanalyticsv2_delete_application_cloud_watch_logging_option(
-#'   ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId)
+#'   ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId,
+#'   ConditionalToken)
 #'
 #' @param ApplicationName &#91;required&#93; The application name.
-#' @param CurrentApplicationVersionId &#91;required&#93; The version ID of the application. You can retrieve the application
-#' version ID using
+#' @param CurrentApplicationVersionId The version ID of the application. You must provide the
+#' `ApplicationVersionID` or the `ConditionalToken`. You can retrieve the
+#' application version ID using
 #' [`describe_application`][kinesisanalyticsv2_describe_application].
 #' @param CloudWatchLoggingOptionId &#91;required&#93; The `CloudWatchLoggingOptionId` of the Amazon CloudWatch logging option
 #' to delete. You can get the `CloudWatchLoggingOptionId` by using the
 #' [`describe_application`][kinesisanalyticsv2_describe_application]
 #' operation.
+#' @param ConditionalToken A value you use to implement strong concurrency for application updates.
+#' You must provide the `ApplicationVersionID` or the `ConditionalToken`.
+#' You get the application's current `ConditionalToken` using
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
 #'
 #' @return
 #' A list with the following syntax:
@@ -1248,21 +1282,22 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
 #' svc$delete_application_cloud_watch_logging_option(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
-#'   CloudWatchLoggingOptionId = "string"
+#'   CloudWatchLoggingOptionId = "string",
+#'   ConditionalToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_delete_application_cloud_watch_logging_option
-kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId) {
+kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId = NULL, CloudWatchLoggingOptionId, ConditionalToken = NULL) {
   op <- new_operation(
     name = "DeleteApplicationCloudWatchLoggingOption",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesisanalyticsv2$delete_application_cloud_watch_logging_option_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, CloudWatchLoggingOptionId = CloudWatchLoggingOptionId)
+  input <- .kinesisanalyticsv2$delete_application_cloud_watch_logging_option_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, CloudWatchLoggingOptionId = CloudWatchLoggingOptionId, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$delete_application_cloud_watch_logging_option_output()
   config <- get_config()
   svc <- .kinesisanalyticsv2$service(config)
@@ -1520,13 +1555,18 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
 #'
 #' @usage
 #' kinesisanalyticsv2_delete_application_vpc_configuration(ApplicationName,
-#'   CurrentApplicationVersionId, VpcConfigurationId)
+#'   CurrentApplicationVersionId, VpcConfigurationId, ConditionalToken)
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
-#' @param CurrentApplicationVersionId &#91;required&#93; The current application version ID. You can retrieve the application
-#' version ID using
+#' @param CurrentApplicationVersionId The current application version ID. You must provide the
+#' `ApplicationVersionID` or the `ConditionalToken`.You can retrieve the
+#' application version ID using
 #' [`describe_application`][kinesisanalyticsv2_describe_application].
 #' @param VpcConfigurationId &#91;required&#93; The ID of the VPC configuration to delete.
+#' @param ConditionalToken A value you use to implement strong concurrency for application updates.
+#' You must provide the `ApplicationVersionID` or the `ConditionalToken`.
+#' You get the application's current `ConditionalToken` using
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
 #'
 #' @return
 #' A list with the following syntax:
@@ -1542,21 +1582,22 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
 #' svc$delete_application_vpc_configuration(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
-#'   VpcConfigurationId = "string"
+#'   VpcConfigurationId = "string",
+#'   ConditionalToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_delete_application_vpc_configuration
-kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationName, CurrentApplicationVersionId, VpcConfigurationId) {
+kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationName, CurrentApplicationVersionId = NULL, VpcConfigurationId, ConditionalToken = NULL) {
   op <- new_operation(
     name = "DeleteApplicationVpcConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesisanalyticsv2$delete_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfigurationId = VpcConfigurationId)
+  input <- .kinesisanalyticsv2$delete_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfigurationId = VpcConfigurationId, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$delete_application_vpc_configuration_output()
   config <- get_config()
   svc <- .kinesisanalyticsv2$service(config)
@@ -1593,7 +1634,7 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #'     ApplicationName = "string",
 #'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11",
 #'     ServiceExecutionRole = "string",
-#'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING",
+#'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"MAINTENANCE"|"ROLLING_BACK"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
 #'     CreateTimestamp = as.POSIXct(
 #'       "2015-01-01"
@@ -1784,7 +1825,15 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #'         LogStreamARN = "string",
 #'         RoleARN = "string"
 #'       )
-#'     )
+#'     ),
+#'     ApplicationMaintenanceConfigurationDescription = list(
+#'       ApplicationMaintenanceWindowStartTime = "string",
+#'       ApplicationMaintenanceWindowEndTime = "string"
+#'     ),
+#'     ApplicationVersionUpdatedFrom = 123,
+#'     ApplicationVersionRolledBackFrom = 123,
+#'     ConditionalToken = "string",
+#'     ApplicationVersionRolledBackTo = 123
 #'   )
 #' )
 #' ```
@@ -1872,6 +1921,270 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
   return(response)
 }
 .kinesisanalyticsv2$operations$describe_application_snapshot <- kinesisanalyticsv2_describe_application_snapshot
+
+#' Provides a detailed description of a specified version of the
+#' application
+#'
+#' @description
+#' Provides a detailed description of a specified version of the
+#' application. To see a list of all the versions of an application, invoke
+#' the
+#' [`list_application_versions`][kinesisanalyticsv2_list_application_versions]
+#' operation.
+#' 
+#' This operation is supported only for Amazon Kinesis Data Analytics for
+#' Apache Flink.
+#'
+#' @usage
+#' kinesisanalyticsv2_describe_application_version(ApplicationName,
+#'   ApplicationVersionId)
+#'
+#' @param ApplicationName &#91;required&#93; The name of the application for which you want to get the version
+#' description.
+#' @param ApplicationVersionId &#91;required&#93; The ID of the application version for which you want to get the
+#' description.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationVersionDetail = list(
+#'     ApplicationARN = "string",
+#'     ApplicationDescription = "string",
+#'     ApplicationName = "string",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11",
+#'     ServiceExecutionRole = "string",
+#'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"MAINTENANCE"|"ROLLING_BACK"|"ROLLED_BACK",
+#'     ApplicationVersionId = 123,
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ApplicationConfigurationDescription = list(
+#'       SqlApplicationConfigurationDescription = list(
+#'         InputDescriptions = list(
+#'           list(
+#'             InputId = "string",
+#'             NamePrefix = "string",
+#'             InAppStreamNames = list(
+#'               "string"
+#'             ),
+#'             InputProcessingConfigurationDescription = list(
+#'               InputLambdaProcessorDescription = list(
+#'                 ResourceARN = "string",
+#'                 RoleARN = "string"
+#'               )
+#'             ),
+#'             KinesisStreamsInputDescription = list(
+#'               ResourceARN = "string",
+#'               RoleARN = "string"
+#'             ),
+#'             KinesisFirehoseInputDescription = list(
+#'               ResourceARN = "string",
+#'               RoleARN = "string"
+#'             ),
+#'             InputSchema = list(
+#'               RecordFormat = list(
+#'                 RecordFormatType = "JSON"|"CSV",
+#'                 MappingParameters = list(
+#'                   JSONMappingParameters = list(
+#'                     RecordRowPath = "string"
+#'                   ),
+#'                   CSVMappingParameters = list(
+#'                     RecordRowDelimiter = "string",
+#'                     RecordColumnDelimiter = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               RecordEncoding = "string",
+#'               RecordColumns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Mapping = "string",
+#'                   SqlType = "string"
+#'                 )
+#'               )
+#'             ),
+#'             InputParallelism = list(
+#'               Count = 123
+#'             ),
+#'             InputStartingPositionConfiguration = list(
+#'               InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
+#'             )
+#'           )
+#'         ),
+#'         OutputDescriptions = list(
+#'           list(
+#'             OutputId = "string",
+#'             Name = "string",
+#'             KinesisStreamsOutputDescription = list(
+#'               ResourceARN = "string",
+#'               RoleARN = "string"
+#'             ),
+#'             KinesisFirehoseOutputDescription = list(
+#'               ResourceARN = "string",
+#'               RoleARN = "string"
+#'             ),
+#'             LambdaOutputDescription = list(
+#'               ResourceARN = "string",
+#'               RoleARN = "string"
+#'             ),
+#'             DestinationSchema = list(
+#'               RecordFormatType = "JSON"|"CSV"
+#'             )
+#'           )
+#'         ),
+#'         ReferenceDataSourceDescriptions = list(
+#'           list(
+#'             ReferenceId = "string",
+#'             TableName = "string",
+#'             S3ReferenceDataSourceDescription = list(
+#'               BucketARN = "string",
+#'               FileKey = "string",
+#'               ReferenceRoleARN = "string"
+#'             ),
+#'             ReferenceSchema = list(
+#'               RecordFormat = list(
+#'                 RecordFormatType = "JSON"|"CSV",
+#'                 MappingParameters = list(
+#'                   JSONMappingParameters = list(
+#'                     RecordRowPath = "string"
+#'                   ),
+#'                   CSVMappingParameters = list(
+#'                     RecordRowDelimiter = "string",
+#'                     RecordColumnDelimiter = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               RecordEncoding = "string",
+#'               RecordColumns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Mapping = "string",
+#'                   SqlType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ApplicationCodeConfigurationDescription = list(
+#'         CodeContentType = "PLAINTEXT"|"ZIPFILE",
+#'         CodeContentDescription = list(
+#'           TextContent = "string",
+#'           CodeMD5 = "string",
+#'           CodeSize = 123,
+#'           S3ApplicationCodeLocationDescription = list(
+#'             BucketARN = "string",
+#'             FileKey = "string",
+#'             ObjectVersion = "string"
+#'           )
+#'         )
+#'       ),
+#'       RunConfigurationDescription = list(
+#'         ApplicationRestoreConfigurationDescription = list(
+#'           ApplicationRestoreType = "SKIP_RESTORE_FROM_SNAPSHOT"|"RESTORE_FROM_LATEST_SNAPSHOT"|"RESTORE_FROM_CUSTOM_SNAPSHOT",
+#'           SnapshotName = "string"
+#'         ),
+#'         FlinkRunConfigurationDescription = list(
+#'           AllowNonRestoredState = TRUE|FALSE
+#'         )
+#'       ),
+#'       FlinkApplicationConfigurationDescription = list(
+#'         CheckpointConfigurationDescription = list(
+#'           ConfigurationType = "DEFAULT"|"CUSTOM",
+#'           CheckpointingEnabled = TRUE|FALSE,
+#'           CheckpointInterval = 123,
+#'           MinPauseBetweenCheckpoints = 123
+#'         ),
+#'         MonitoringConfigurationDescription = list(
+#'           ConfigurationType = "DEFAULT"|"CUSTOM",
+#'           MetricsLevel = "APPLICATION"|"TASK"|"OPERATOR"|"PARALLELISM",
+#'           LogLevel = "INFO"|"WARN"|"ERROR"|"DEBUG"
+#'         ),
+#'         ParallelismConfigurationDescription = list(
+#'           ConfigurationType = "DEFAULT"|"CUSTOM",
+#'           Parallelism = 123,
+#'           ParallelismPerKPU = 123,
+#'           CurrentParallelism = 123,
+#'           AutoScalingEnabled = TRUE|FALSE
+#'         ),
+#'         JobPlanDescription = "string"
+#'       ),
+#'       EnvironmentPropertyDescriptions = list(
+#'         PropertyGroupDescriptions = list(
+#'           list(
+#'             PropertyGroupId = "string",
+#'             PropertyMap = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ApplicationSnapshotConfigurationDescription = list(
+#'         SnapshotsEnabled = TRUE|FALSE
+#'       ),
+#'       VpcConfigurationDescriptions = list(
+#'         list(
+#'           VpcConfigurationId = "string",
+#'           VpcId = "string",
+#'           SubnetIds = list(
+#'             "string"
+#'           ),
+#'           SecurityGroupIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CloudWatchLoggingOptionDescriptions = list(
+#'       list(
+#'         CloudWatchLoggingOptionId = "string",
+#'         LogStreamARN = "string",
+#'         RoleARN = "string"
+#'       )
+#'     ),
+#'     ApplicationMaintenanceConfigurationDescription = list(
+#'       ApplicationMaintenanceWindowStartTime = "string",
+#'       ApplicationMaintenanceWindowEndTime = "string"
+#'     ),
+#'     ApplicationVersionUpdatedFrom = 123,
+#'     ApplicationVersionRolledBackFrom = 123,
+#'     ConditionalToken = "string",
+#'     ApplicationVersionRolledBackTo = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_application_version(
+#'   ApplicationName = "string",
+#'   ApplicationVersionId = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_describe_application_version
+kinesisanalyticsv2_describe_application_version <- function(ApplicationName, ApplicationVersionId) {
+  op <- new_operation(
+    name = "DescribeApplicationVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$describe_application_version_input(ApplicationName = ApplicationName, ApplicationVersionId = ApplicationVersionId)
+  output <- .kinesisanalyticsv2$describe_application_version_output()
+  config <- get_config()
+  svc <- .kinesisanalyticsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$describe_application_version <- kinesisanalyticsv2_describe_application_version
 
 #' Infers a schema for a SQL-based Kinesis Data Analytics application by
 #' evaluating sample records on the specified streaming source (Kinesis
@@ -2047,6 +2360,78 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
 }
 .kinesisanalyticsv2$operations$list_application_snapshots <- kinesisanalyticsv2_list_application_snapshots
 
+#' Lists all the versions for the specified application, including versions
+#' that were rolled back
+#'
+#' @description
+#' Lists all the versions for the specified application, including versions
+#' that were rolled back. The response also includes a summary of the
+#' configuration associated with each version.
+#' 
+#' To get the complete description of a specific application version,
+#' invoke the
+#' [`describe_application_version`][kinesisanalyticsv2_describe_application_version]
+#' operation.
+#' 
+#' This operation is supported only for Amazon Kinesis Data Analytics for
+#' Apache Flink.
+#'
+#' @usage
+#' kinesisanalyticsv2_list_application_versions(ApplicationName, Limit,
+#'   NextToken)
+#'
+#' @param ApplicationName &#91;required&#93; The name of the application for which you want to list all versions.
+#' @param Limit The maximum number of versions to list in this invocation of the
+#' operation.
+#' @param NextToken If a previous invocation of this operation returned a pagination token,
+#' pass it into this value to retrieve the next set of results. For more
+#' information about pagination, see [Using the AWS Command Line
+#' Interface's Pagination
+#' Options](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationVersionSummaries = list(
+#'     list(
+#'       ApplicationVersionId = 123,
+#'       ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"MAINTENANCE"|"ROLLING_BACK"|"ROLLED_BACK"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_application_versions(
+#'   ApplicationName = "string",
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_list_application_versions
+kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListApplicationVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$list_application_versions_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken)
+  output <- .kinesisanalyticsv2$list_application_versions_output()
+  config <- get_config()
+  svc <- .kinesisanalyticsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$list_application_versions <- kinesisanalyticsv2_list_application_versions
+
 #' Returns a list of Kinesis Data Analytics applications in your account
 #'
 #' @description
@@ -2074,7 +2459,7 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
 #'     list(
 #'       ApplicationName = "string",
 #'       ApplicationARN = "string",
-#'       ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING",
+#'       ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"MAINTENANCE"|"ROLLING_BACK"|"ROLLED_BACK",
 #'       ApplicationVersionId = 123,
 #'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11"
 #'     )
@@ -2162,6 +2547,273 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
   return(response)
 }
 .kinesisanalyticsv2$operations$list_tags_for_resource <- kinesisanalyticsv2_list_tags_for_resource
+
+#' Reverts the application to the previous running version
+#'
+#' @description
+#' Reverts the application to the previous running version. You can roll
+#' back an application if you suspect it is stuck in a transient status.
+#' 
+#' You can roll back an application only if it is in the `UPDATING` or
+#' `AUTOSCALING` status.
+#' 
+#' When you rollback an application, it loads state data from the last
+#' successful snapshot. If the application has no snapshots, Kinesis Data
+#' Analytics rejects the rollback request.
+#' 
+#' This action is not supported for Kinesis Data Analytics for SQL
+#' applications.
+#'
+#' @usage
+#' kinesisanalyticsv2_rollback_application(ApplicationName,
+#'   CurrentApplicationVersionId)
+#'
+#' @param ApplicationName &#91;required&#93; The name of the application.
+#' @param CurrentApplicationVersionId &#91;required&#93; The current application version ID. You can retrieve the application
+#' version ID using
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationDetail = list(
+#'     ApplicationARN = "string",
+#'     ApplicationDescription = "string",
+#'     ApplicationName = "string",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11",
+#'     ServiceExecutionRole = "string",
+#'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"MAINTENANCE"|"ROLLING_BACK"|"ROLLED_BACK",
+#'     ApplicationVersionId = 123,
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ApplicationConfigurationDescription = list(
+#'       SqlApplicationConfigurationDescription = list(
+#'         InputDescriptions = list(
+#'           list(
+#'             InputId = "string",
+#'             NamePrefix = "string",
+#'             InAppStreamNames = list(
+#'               "string"
+#'             ),
+#'             InputProcessingConfigurationDescription = list(
+#'               InputLambdaProcessorDescription = list(
+#'                 ResourceARN = "string",
+#'                 RoleARN = "string"
+#'               )
+#'             ),
+#'             KinesisStreamsInputDescription = list(
+#'               ResourceARN = "string",
+#'               RoleARN = "string"
+#'             ),
+#'             KinesisFirehoseInputDescription = list(
+#'               ResourceARN = "string",
+#'               RoleARN = "string"
+#'             ),
+#'             InputSchema = list(
+#'               RecordFormat = list(
+#'                 RecordFormatType = "JSON"|"CSV",
+#'                 MappingParameters = list(
+#'                   JSONMappingParameters = list(
+#'                     RecordRowPath = "string"
+#'                   ),
+#'                   CSVMappingParameters = list(
+#'                     RecordRowDelimiter = "string",
+#'                     RecordColumnDelimiter = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               RecordEncoding = "string",
+#'               RecordColumns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Mapping = "string",
+#'                   SqlType = "string"
+#'                 )
+#'               )
+#'             ),
+#'             InputParallelism = list(
+#'               Count = 123
+#'             ),
+#'             InputStartingPositionConfiguration = list(
+#'               InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
+#'             )
+#'           )
+#'         ),
+#'         OutputDescriptions = list(
+#'           list(
+#'             OutputId = "string",
+#'             Name = "string",
+#'             KinesisStreamsOutputDescription = list(
+#'               ResourceARN = "string",
+#'               RoleARN = "string"
+#'             ),
+#'             KinesisFirehoseOutputDescription = list(
+#'               ResourceARN = "string",
+#'               RoleARN = "string"
+#'             ),
+#'             LambdaOutputDescription = list(
+#'               ResourceARN = "string",
+#'               RoleARN = "string"
+#'             ),
+#'             DestinationSchema = list(
+#'               RecordFormatType = "JSON"|"CSV"
+#'             )
+#'           )
+#'         ),
+#'         ReferenceDataSourceDescriptions = list(
+#'           list(
+#'             ReferenceId = "string",
+#'             TableName = "string",
+#'             S3ReferenceDataSourceDescription = list(
+#'               BucketARN = "string",
+#'               FileKey = "string",
+#'               ReferenceRoleARN = "string"
+#'             ),
+#'             ReferenceSchema = list(
+#'               RecordFormat = list(
+#'                 RecordFormatType = "JSON"|"CSV",
+#'                 MappingParameters = list(
+#'                   JSONMappingParameters = list(
+#'                     RecordRowPath = "string"
+#'                   ),
+#'                   CSVMappingParameters = list(
+#'                     RecordRowDelimiter = "string",
+#'                     RecordColumnDelimiter = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               RecordEncoding = "string",
+#'               RecordColumns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Mapping = "string",
+#'                   SqlType = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ApplicationCodeConfigurationDescription = list(
+#'         CodeContentType = "PLAINTEXT"|"ZIPFILE",
+#'         CodeContentDescription = list(
+#'           TextContent = "string",
+#'           CodeMD5 = "string",
+#'           CodeSize = 123,
+#'           S3ApplicationCodeLocationDescription = list(
+#'             BucketARN = "string",
+#'             FileKey = "string",
+#'             ObjectVersion = "string"
+#'           )
+#'         )
+#'       ),
+#'       RunConfigurationDescription = list(
+#'         ApplicationRestoreConfigurationDescription = list(
+#'           ApplicationRestoreType = "SKIP_RESTORE_FROM_SNAPSHOT"|"RESTORE_FROM_LATEST_SNAPSHOT"|"RESTORE_FROM_CUSTOM_SNAPSHOT",
+#'           SnapshotName = "string"
+#'         ),
+#'         FlinkRunConfigurationDescription = list(
+#'           AllowNonRestoredState = TRUE|FALSE
+#'         )
+#'       ),
+#'       FlinkApplicationConfigurationDescription = list(
+#'         CheckpointConfigurationDescription = list(
+#'           ConfigurationType = "DEFAULT"|"CUSTOM",
+#'           CheckpointingEnabled = TRUE|FALSE,
+#'           CheckpointInterval = 123,
+#'           MinPauseBetweenCheckpoints = 123
+#'         ),
+#'         MonitoringConfigurationDescription = list(
+#'           ConfigurationType = "DEFAULT"|"CUSTOM",
+#'           MetricsLevel = "APPLICATION"|"TASK"|"OPERATOR"|"PARALLELISM",
+#'           LogLevel = "INFO"|"WARN"|"ERROR"|"DEBUG"
+#'         ),
+#'         ParallelismConfigurationDescription = list(
+#'           ConfigurationType = "DEFAULT"|"CUSTOM",
+#'           Parallelism = 123,
+#'           ParallelismPerKPU = 123,
+#'           CurrentParallelism = 123,
+#'           AutoScalingEnabled = TRUE|FALSE
+#'         ),
+#'         JobPlanDescription = "string"
+#'       ),
+#'       EnvironmentPropertyDescriptions = list(
+#'         PropertyGroupDescriptions = list(
+#'           list(
+#'             PropertyGroupId = "string",
+#'             PropertyMap = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ApplicationSnapshotConfigurationDescription = list(
+#'         SnapshotsEnabled = TRUE|FALSE
+#'       ),
+#'       VpcConfigurationDescriptions = list(
+#'         list(
+#'           VpcConfigurationId = "string",
+#'           VpcId = "string",
+#'           SubnetIds = list(
+#'             "string"
+#'           ),
+#'           SecurityGroupIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CloudWatchLoggingOptionDescriptions = list(
+#'       list(
+#'         CloudWatchLoggingOptionId = "string",
+#'         LogStreamARN = "string",
+#'         RoleARN = "string"
+#'       )
+#'     ),
+#'     ApplicationMaintenanceConfigurationDescription = list(
+#'       ApplicationMaintenanceWindowStartTime = "string",
+#'       ApplicationMaintenanceWindowEndTime = "string"
+#'     ),
+#'     ApplicationVersionUpdatedFrom = 123,
+#'     ApplicationVersionRolledBackFrom = 123,
+#'     ConditionalToken = "string",
+#'     ApplicationVersionRolledBackTo = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$rollback_application(
+#'   ApplicationName = "string",
+#'   CurrentApplicationVersionId = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_rollback_application
+kinesisanalyticsv2_rollback_application <- function(ApplicationName, CurrentApplicationVersionId) {
+  op <- new_operation(
+    name = "RollbackApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$rollback_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId)
+  output <- .kinesisanalyticsv2$rollback_application_output()
+  config <- get_config()
+  svc <- .kinesisanalyticsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$rollback_application <- kinesisanalyticsv2_rollback_application
 
 #' Starts the specified Kinesis Data Analytics application
 #'
@@ -2405,11 +3057,12 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' kinesisanalyticsv2_update_application(ApplicationName,
 #'   CurrentApplicationVersionId, ApplicationConfigurationUpdate,
 #'   ServiceExecutionRoleUpdate, RunConfigurationUpdate,
-#'   CloudWatchLoggingOptionUpdates)
+#'   CloudWatchLoggingOptionUpdates, ConditionalToken)
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to update.
-#' @param CurrentApplicationVersionId &#91;required&#93; The current application version ID. You can retrieve the application
-#' version ID using
+#' @param CurrentApplicationVersionId The current application version ID. You must provide the
+#' `ApplicationVersionID` or the `ConditionalToken`.You can retrieve the
+#' application version ID using
 #' [`describe_application`][kinesisanalyticsv2_describe_application].
 #' @param ApplicationConfigurationUpdate Describes application configuration updates.
 #' @param ServiceExecutionRoleUpdate Describes updates to the service execution role.
@@ -2418,6 +3071,10 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' only update existing CloudWatch logging options with this action. To add
 #' a new CloudWatch logging option, use
 #' [`add_application_cloud_watch_logging_option`][kinesisanalyticsv2_add_application_cloud_watch_logging_option].
+#' @param ConditionalToken A value you use to implement strong concurrency for application updates.
+#' You must provide the `ApplicationVersionID` or the `ConditionalToken`.
+#' You get the application's current `ConditionalToken` using
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
 #'
 #' @return
 #' A list with the following syntax:
@@ -2429,7 +3086,7 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'     ApplicationName = "string",
 #'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11",
 #'     ServiceExecutionRole = "string",
-#'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING",
+#'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"MAINTENANCE"|"ROLLING_BACK"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
 #'     CreateTimestamp = as.POSIXct(
 #'       "2015-01-01"
@@ -2620,7 +3277,15 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'         LogStreamARN = "string",
 #'         RoleARN = "string"
 #'       )
-#'     )
+#'     ),
+#'     ApplicationMaintenanceConfigurationDescription = list(
+#'       ApplicationMaintenanceWindowStartTime = "string",
+#'       ApplicationMaintenanceWindowEndTime = "string"
+#'     ),
+#'     ApplicationVersionUpdatedFrom = 123,
+#'     ApplicationVersionRolledBackFrom = 123,
+#'     ConditionalToken = "string",
+#'     ApplicationVersionRolledBackTo = 123
 #'   )
 #' )
 #' ```
@@ -2796,21 +3461,22 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'       CloudWatchLoggingOptionId = "string",
 #'       LogStreamARNUpdate = "string"
 #'     )
-#'   )
+#'   ),
+#'   ConditionalToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_update_application
-kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplicationVersionId, ApplicationConfigurationUpdate = NULL, ServiceExecutionRoleUpdate = NULL, RunConfigurationUpdate = NULL, CloudWatchLoggingOptionUpdates = NULL) {
+kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplicationVersionId = NULL, ApplicationConfigurationUpdate = NULL, ServiceExecutionRoleUpdate = NULL, RunConfigurationUpdate = NULL, CloudWatchLoggingOptionUpdates = NULL, ConditionalToken = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesisanalyticsv2$update_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ApplicationConfigurationUpdate = ApplicationConfigurationUpdate, ServiceExecutionRoleUpdate = ServiceExecutionRoleUpdate, RunConfigurationUpdate = RunConfigurationUpdate, CloudWatchLoggingOptionUpdates = CloudWatchLoggingOptionUpdates)
+  input <- .kinesisanalyticsv2$update_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ApplicationConfigurationUpdate = ApplicationConfigurationUpdate, ServiceExecutionRoleUpdate = ServiceExecutionRoleUpdate, RunConfigurationUpdate = RunConfigurationUpdate, CloudWatchLoggingOptionUpdates = CloudWatchLoggingOptionUpdates, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$update_application_output()
   config <- get_config()
   svc <- .kinesisanalyticsv2$service(config)
@@ -2819,3 +3485,83 @@ kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplic
   return(response)
 }
 .kinesisanalyticsv2$operations$update_application <- kinesisanalyticsv2_update_application
+
+#' Updates the maintenance configuration of the Kinesis Data Analytics
+#' application
+#'
+#' @description
+#' Updates the maintenance configuration of the Kinesis Data Analytics
+#' application.
+#' 
+#' You can invoke this operation on an application that is in one of the
+#' two following states: `READY` or `RUNNING`. If you invoke it when the
+#' application is in a state other than these two states, it throws a
+#' `ResourceInUseException`. The service makes use of the updated
+#' configuration the next time it schedules maintenance for the
+#' application. If you invoke this operation after the service schedules
+#' maintenance, the service will apply the configuration update the next
+#' time it schedules maintenance for the application. This means that you
+#' might not see the maintenance configuration update applied to the
+#' maintenance process that follows a successful invocation of this
+#' operation, but to the following maintenance process instead.
+#' 
+#' To see the current maintenance configuration of your application, invoke
+#' the [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation.
+#' 
+#' For information about application maintenance, see [Kinesis Data
+#' Analytics for Apache Flink
+#' Maintenance](https://docs.aws.amazon.com/kinesisanalytics/latest/java/maintenance.html).
+#' 
+#' This operation is supported only for Amazon Kinesis Data Analytics for
+#' Apache Flink.
+#'
+#' @usage
+#' kinesisanalyticsv2_update_application_maintenance_configuration(
+#'   ApplicationName, ApplicationMaintenanceConfigurationUpdate)
+#'
+#' @param ApplicationName &#91;required&#93; The name of the application for which you want to update the maintenance
+#' configuration.
+#' @param ApplicationMaintenanceConfigurationUpdate &#91;required&#93; Describes the application maintenance configuration update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationARN = "string",
+#'   ApplicationMaintenanceConfigurationDescription = list(
+#'     ApplicationMaintenanceWindowStartTime = "string",
+#'     ApplicationMaintenanceWindowEndTime = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_application_maintenance_configuration(
+#'   ApplicationName = "string",
+#'   ApplicationMaintenanceConfigurationUpdate = list(
+#'     ApplicationMaintenanceWindowStartTimeUpdate = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_update_application_maintenance_configuration
+kinesisanalyticsv2_update_application_maintenance_configuration <- function(ApplicationName, ApplicationMaintenanceConfigurationUpdate) {
+  op <- new_operation(
+    name = "UpdateApplicationMaintenanceConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$update_application_maintenance_configuration_input(ApplicationName = ApplicationName, ApplicationMaintenanceConfigurationUpdate = ApplicationMaintenanceConfigurationUpdate)
+  output <- .kinesisanalyticsv2$update_application_maintenance_configuration_output()
+  config <- get_config()
+  svc <- .kinesisanalyticsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$update_application_maintenance_configuration <- kinesisanalyticsv2_update_application_maintenance_configuration

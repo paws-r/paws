@@ -5,7 +5,7 @@
 \title{Creates a contact with the specified details}
 \usage{
 alexaforbusiness_create_contact(DisplayName, FirstName, LastName,
-  PhoneNumber, PhoneNumbers, SipAddresses, ClientRequestToken)
+  PhoneNumber, PhoneNumbers, SipAddresses, ClientRequestToken, Tags)
 }
 \arguments{
 \item{DisplayName}{The name of the contact to display on the console.}
@@ -27,6 +27,9 @@ number type and multiple numbers.}
 
 \item{ClientRequestToken}{A unique, user-specified identifier for this request that ensures
 idempotency.}
+
+\item{Tags}{The tags to be added to the specified resource. Do not provide system
+tags.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -55,7 +58,13 @@ Creates a contact with the specified details.
       Type = "WORK"
     )
   ),
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

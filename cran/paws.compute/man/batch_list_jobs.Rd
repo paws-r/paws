@@ -24,8 +24,8 @@ specify a status, only \code{RUNNING} jobs are returned.}
 \item{maxResults}{The maximum number of results returned by \code{\link[=batch_list_jobs]{list_jobs}}
 in paginated output. When this parameter is used,
 \code{\link[=batch_list_jobs]{list_jobs}} only returns \code{maxResults} results in a
-single page along with a \code{nextToken} response element. The remaining
-results of the initial request can be seen by sending another
+single page and a \code{nextToken} response element. The remaining results of
+the initial request can be seen by sending another
 \code{\link[=batch_list_jobs]{list_jobs}} request with the returned \code{nextToken}
 value. This value can be between 1 and 100. If this parameter isn't
 used, then \code{\link[=batch_list_jobs]{list_jobs}} returns up to 100 results and
@@ -78,8 +78,8 @@ Returns a list of AWS Batch jobs.
 You must specify only one of the following items:
 \itemize{
 \item A job queue ID to return a list of jobs in that job queue
-\item A multi-node parallel job ID to return a list of that job's nodes
-\item An array job ID to return a list of that job's children
+\item A multi-node parallel job ID to return a list of nodes for that job
+\item An array job ID to return a list of the children for that job
 }
 
 You can filter the results by job status with the \code{jobStatus} parameter.

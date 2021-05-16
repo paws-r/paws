@@ -2,12 +2,12 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_list_app_instance_users}
 \alias{chime_list_app_instance_users}
-\title{List all AppInstanceUsers created under a single app instance}
+\title{List all AppInstanceUsers created under a single AppInstance}
 \usage{
 chime_list_app_instance_users(AppInstanceArn, MaxResults, NextToken)
 }
 \arguments{
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 
 \item{MaxResults}{The maximum number of requests that you want returned.}
 
@@ -29,7 +29,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-List all \code{AppInstanceUsers} created under a single app instance.
+List all \code{AppInstanceUsers} created under a single \code{AppInstance}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_app_instance_users(

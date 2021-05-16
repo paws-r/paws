@@ -74,7 +74,12 @@ A list with the following syntax:\preformatted{list(
 \description{
 Lists the IAM roles that have the specified path prefix. If there are
 none, the operation returns an empty list. For more information about
-roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
+roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with roles}.
+
+IAM resource-listing operations return a subset of the available
+attributes for the resource. For example, this operation does not return
+tags, even though they are an attribute of the returned object. To view
+all of the information for a role, see \code{\link[=iam_get_role]{get_role}}.
 
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.

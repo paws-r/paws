@@ -12,8 +12,12 @@ athena_create_data_catalog(Name, Type, Description, Parameters, Tags)
 for the AWS account and can use a maximum of 128 alphanumeric,
 underscore, at sign, or hyphen characters.}
 
-\item{Type}{[required] The type of data catalog to create: \code{LAMBDA} for a federated catalog,
-\code{GLUE} for AWS Glue Catalog, or \code{HIVE} for an external hive metastore.}
+\item{Type}{[required] The type of data catalog to create: \code{LAMBDA} for a federated catalog or
+\code{HIVE} for an external hive metastore.
+
+Do not use the \code{GLUE} type. This refers to the \code{AwsDataCatalog} that
+already exists in your account, of which you can have only one.
+Specifying the \code{GLUE} type will result in an \code{INVALID_INPUT} error.}
 
 \item{Description}{A description of the data catalog to be created.}
 
@@ -40,7 +44,6 @@ Lambda function.
 
 \verb{function=lambda_arn }
 }
-\item The \code{GLUE} type has no parameters.
 }}
 
 \item{Tags}{A list of comma separated tags to add to the data catalog that is

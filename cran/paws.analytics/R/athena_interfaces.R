@@ -23,7 +23,7 @@ NULL
 
 .athena$batch_get_query_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryExecutions = structure(list(structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatementType = structure(logical(0), tags = list(type = "string")), ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryExecutionContext = structure(list(Database = structure(logical(0), tags = list(type = "string")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string")), SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Statistics = structure(list(EngineExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), DataScannedInBytes = structure(logical(0), tags = list(type = "long")), DataManifestLocation = structure(logical(0), tags = list(type = "string")), TotalExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryQueueTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryPlanningTimeInMillis = structure(logical(0), tags = list(type = "long")), ServiceProcessingTimeInMillis = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedQueryExecutionIds = structure(list(structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(QueryExecutions = structure(list(structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatementType = structure(logical(0), tags = list(type = "string")), ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryExecutionContext = structure(list(Database = structure(logical(0), tags = list(type = "string")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string")), SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Statistics = structure(list(EngineExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), DataScannedInBytes = structure(logical(0), tags = list(type = "long")), DataManifestLocation = structure(logical(0), tags = list(type = "string")), TotalExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryQueueTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryPlanningTimeInMillis = structure(logical(0), tags = list(type = "long")), ServiceProcessingTimeInMillis = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedQueryExecutionIds = structure(list(structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -51,9 +51,21 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$create_prepared_statement_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StatementName = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), QueryStatement = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$create_prepared_statement_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$create_work_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -82,6 +94,18 @@ NULL
 }
 
 .athena$delete_named_query_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$delete_prepared_statement_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StatementName = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$delete_prepared_statement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -135,6 +159,18 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$get_prepared_statement_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StatementName = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_prepared_statement_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PreparedStatement = structure(list(StatementName = structure(logical(0), tags = list(type = "string")), QueryStatement = structure(logical(0), tags = list(type = "string")), WorkGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$get_query_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -143,7 +179,7 @@ NULL
 
 .athena$get_query_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryExecution = structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatementType = structure(logical(0), tags = list(type = "string")), ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryExecutionContext = structure(list(Database = structure(logical(0), tags = list(type = "string")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string")), SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Statistics = structure(list(EngineExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), DataScannedInBytes = structure(logical(0), tags = list(type = "long")), DataManifestLocation = structure(logical(0), tags = list(type = "string")), TotalExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryQueueTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryPlanningTimeInMillis = structure(logical(0), tags = list(type = "long")), ServiceProcessingTimeInMillis = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(QueryExecution = structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatementType = structure(logical(0), tags = list(type = "string")), ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryExecutionContext = structure(list(Database = structure(logical(0), tags = list(type = "string")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string")), SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Statistics = structure(list(EngineExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), DataScannedInBytes = structure(logical(0), tags = list(type = "long")), DataManifestLocation = structure(logical(0), tags = list(type = "string")), TotalExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryQueueTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryPlanningTimeInMillis = structure(logical(0), tags = list(type = "long")), ServiceProcessingTimeInMillis = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -179,7 +215,7 @@ NULL
 
 .athena$get_work_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(WorkGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -207,6 +243,18 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$list_engine_versions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_engine_versions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EngineVersions = structure(list(structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$list_named_queries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -216,6 +264,18 @@ NULL
 .athena$list_named_queries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NamedQueryIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_prepared_statements_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WorkGroup = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_prepared_statements_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PreparedStatements = structure(list(structure(list(StatementName = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -263,7 +323,7 @@ NULL
 
 .athena$list_work_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(WorkGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -327,9 +387,21 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$update_prepared_statement_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StatementName = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), QueryStatement = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$update_prepared_statement_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$update_work_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkGroup = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ConfigurationUpdates = structure(list(EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), ResultConfigurationUpdates = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), RemoveOutputLocation = structure(logical(0), tags = list(type = "boolean")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RemoveEncryptionConfiguration = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RemoveBytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "boolean")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(WorkGroup = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ConfigurationUpdates = structure(list(EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), ResultConfigurationUpdates = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), RemoveOutputLocation = structure(logical(0), tags = list(type = "boolean")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RemoveEncryptionConfiguration = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RemoveBytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "boolean")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

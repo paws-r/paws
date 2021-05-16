@@ -19,7 +19,10 @@ your solution version instead of creating an entirely new one.
 
 The \code{UPDATE} option can only be used when you already have an active
 solution version created from the input solution using the \code{FULL} option
-and the input solution was trained with the native-recipe-hrnn-coldstart
+and the input solution was trained with the
+\href{https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html}{User-Personalization}
+recipe or the
+\href{https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-hrnn-coldstart.html}{HRNN-Coldstart}
 recipe.}
 }
 \value{

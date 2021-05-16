@@ -15,7 +15,8 @@ codebuild_start_build_batch(projectName, secondarySourcesOverride,
   privilegedModeOverride, buildTimeoutInMinutesOverride,
   queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
   logsConfigOverride, registryCredentialOverride,
-  imagePullCredentialsTypeOverride, buildBatchConfigOverride)
+  imagePullCredentialsTypeOverride, buildBatchConfigOverride,
+  debugSessionEnabled)
 }
 \arguments{
 \item{projectName}{[required] The name of the project.}
@@ -52,7 +53,7 @@ branch's HEAD commit ID is used. If not specified, the default branch's
 HEAD commit ID is used.
 }
 
-\subsection{Amazon Simple Storage Service (Amazon S3)}{
+\subsection{Amazon S3}{
 
 The version ID of the object that represents the build input ZIP file to
 use.
@@ -185,6 +186,10 @@ you must use \code{CODEBUILD} credentials.
 
 \item{buildBatchConfigOverride}{A \code{BuildBatchConfigOverride} object that contains batch build
 configuration overrides.}
+
+\item{debugSessionEnabled}{Specifies if session debugging is enabled for this batch build. For more
+information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html}{Viewing a running build in Session Manager}.
+Batch session debugging is not supported for matrix batch builds.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -275,7 +280,8 @@ A list with the following syntax:\preformatted{list(
       md5sum = "string",
       overrideArtifactName = TRUE|FALSE,
       encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
+      artifactIdentifier = "string",
+      bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
     ),
     secondaryArtifacts = list(
       list(
@@ -284,7 +290,8 @@ A list with the following syntax:\preformatted{list(
         md5sum = "string",
         overrideArtifactName = TRUE|FALSE,
         encryptionDisabled = TRUE|FALSE,
-        artifactIdentifier = "string"
+        artifactIdentifier = "string",
+        bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
       )
     ),
     cache = list(
@@ -323,7 +330,8 @@ A list with the following syntax:\preformatted{list(
       s3Logs = list(
         status = "ENABLED"|"DISABLED",
         location = "string",
-        encryptionDisabled = TRUE|FALSE
+        encryptionDisabled = TRUE|FALSE,
+        bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
       )
     ),
     buildTimeoutInMinutes = 123,
@@ -409,7 +417,8 @@ A list with the following syntax:\preformatted{list(
           )
         )
       )
-    )
+    ),
+    debugSessionEnabled = TRUE|FALSE
   )
 )
 }
@@ -458,7 +467,8 @@ Starts a batch build for a project.
     packaging = "NONE"|"ZIP",
     overrideArtifactName = TRUE|FALSE,
     encryptionDisabled = TRUE|FALSE,
-    artifactIdentifier = "string"
+    artifactIdentifier = "string",
+    bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
   ),
   secondaryArtifactsOverride = list(
     list(
@@ -470,7 +480,8 @@ Starts a batch build for a project.
       packaging = "NONE"|"ZIP",
       overrideArtifactName = TRUE|FALSE,
       encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
+      artifactIdentifier = "string",
+      bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
     )
   ),
   environmentVariablesOverride = list(
@@ -519,7 +530,8 @@ Starts a batch build for a project.
     s3Logs = list(
       status = "ENABLED"|"DISABLED",
       location = "string",
-      encryptionDisabled = TRUE|FALSE
+      encryptionDisabled = TRUE|FALSE,
+      bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
     )
   ),
   registryCredentialOverride = list(
@@ -537,7 +549,8 @@ Starts a batch build for a project.
       )
     ),
     timeoutInMins = 123
-  )
+  ),
+  debugSessionEnabled = TRUE|FALSE
 )
 }
 }

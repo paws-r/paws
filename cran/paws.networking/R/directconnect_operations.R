@@ -144,7 +144,18 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -236,7 +247,18 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -703,7 +725,18 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -781,7 +814,18 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -812,6 +856,106 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
   return(response)
 }
 .directconnect$operations$associate_hosted_connection <- directconnect_associate_hosted_connection
+
+#' Associates a MAC Security (MACsec) Connection Key Name (CKN)/
+#' Connectivity Association Key (CAK) pair with an AWS Direct Connect
+#' dedicated connection
+#'
+#' @description
+#' Associates a MAC Security (MACsec) Connection Key Name (CKN)/
+#' Connectivity Association Key (CAK) pair with an AWS Direct Connect
+#' dedicated connection.
+#' 
+#' You must supply either the `secretARN,` or the CKN/CAK (`ckn` and `cak`)
+#' pair in the request.
+#' 
+#' For information about MAC Security (MACsec) key considerations, see
+#' [MACsec pre-shared CKN/CAK key
+#' considerations](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-key-consideration)
+#' in the *AWS Direct Connect User Guide*.
+#'
+#' @usage
+#' directconnect_associate_mac_sec_key(connectionId, secretARN, ckn, cak)
+#'
+#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), or the ID of the LAG
+#' (dxlag-xxxx).
+#' 
+#' You can use [`describe_connections`][directconnect_describe_connections]
+#' or [`describe_lags`][directconnect_describe_lags] to retrieve connection
+#' ID.
+#' @param secretARN The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key
+#' to associate with the dedicated connection.
+#' 
+#' You can use [`describe_connections`][directconnect_describe_connections]
+#' or [`describe_lags`][directconnect_describe_lags] to retrieve the MAC
+#' Security (MACsec) secret key.
+#' 
+#' If you use this request parameter, you do not use the `ckn` and `cak`
+#' request parameters.
+#' @param ckn The MAC Security (MACsec) CKN to associate with the dedicated
+#' connection.
+#' 
+#' You can create the CKN/CAK pair using an industry standard tool.
+#' 
+#' The valid values are 64 hexadecimal characters (0-9, A-E).
+#' 
+#' If you use this request parameter, you must use the `cak` request
+#' parameter and not use the `secretARN` request parameter.
+#' @param cak The MAC Security (MACsec) CAK to associate with the dedicated
+#' connection.
+#' 
+#' You can create the CKN/CAK pair using an industry standard tool.
+#' 
+#' The valid values are 64 hexadecimal characters (0-9, A-E).
+#' 
+#' If you use this request parameter, you must use the `ckn` request
+#' parameter and not use the `secretARN` request parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionId = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_mac_sec_key(
+#'   connectionId = "string",
+#'   secretARN = "string",
+#'   ckn = "string",
+#'   cak = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_associate_mac_sec_key
+directconnect_associate_mac_sec_key <- function(connectionId, secretARN = NULL, ckn = NULL, cak = NULL) {
+  op <- new_operation(
+    name = "AssociateMacSecKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$associate_mac_sec_key_input(connectionId = connectionId, secretARN = secretARN, ckn = ckn, cak = cak)
+  output <- .directconnect$associate_mac_sec_key_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$associate_mac_sec_key <- directconnect_associate_mac_sec_key
 
 #' Associates a virtual interface with a specified link aggregation group
 #' (LAG) or connection
@@ -1149,7 +1293,7 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #' of IPv6 addresses; you cannot specify custom IPv6 addresses.
 #' 
 #' For a public virtual interface, the Autonomous System Number (ASN) must
-#' be private or already whitelisted for the virtual interface.
+#' be private or already on the allow list for the virtual interface.
 #'
 #' @usage
 #' directconnect_create_bgp_peer(virtualInterfaceId, newBGPPeer)
@@ -1268,7 +1412,7 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'
 #' @usage
 #' directconnect_create_connection(location, bandwidth, connectionName,
-#'   lagId, tags, providerName)
+#'   lagId, tags, providerName, requestMACSec)
 #'
 #' @param location &#91;required&#93; The location of the connection.
 #' @param bandwidth &#91;required&#93; The bandwidth of the connection.
@@ -1277,6 +1421,13 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' @param tags The tags to associate with the lag.
 #' @param providerName The name of the service provider associated with the requested
 #' connection.
+#' @param requestMACSec Indicates whether you want the connection to support MAC Security
+#' (MACsec).
+#' 
+#' MAC Security (MACsec) is only available on dedicated connections. For
+#' information about MAC Security (MACsec) prerequisties, see [MACsec
+#' prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites)
+#' in the *AWS Direct Connect User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1305,7 +1456,18 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1322,21 +1484,22 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   requestMACSec = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_create_connection
-directconnect_create_connection <- function(location, bandwidth, connectionName, lagId = NULL, tags = NULL, providerName = NULL) {
+directconnect_create_connection <- function(location, bandwidth, connectionName, lagId = NULL, tags = NULL, providerName = NULL, requestMACSec = NULL) {
   op <- new_operation(
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$create_connection_input(location = location, bandwidth = bandwidth, connectionName = connectionName, lagId = lagId, tags = tags, providerName = providerName)
+  input <- .directconnect$create_connection_input(location = location, bandwidth = bandwidth, connectionName = connectionName, lagId = lagId, tags = tags, providerName = providerName, requestMACSec = requestMACSec)
   output <- .directconnect$create_connection_output()
   config <- get_config()
   svc <- .directconnect$service(config)
@@ -1732,7 +1895,7 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' @usage
 #' directconnect_create_lag(numberOfConnections, location,
 #'   connectionsBandwidth, lagName, connectionId, tags, childConnectionTags,
-#'   providerName)
+#'   providerName, requestMACSec)
 #'
 #' @param numberOfConnections &#91;required&#93; The number of physical dedicated connections initially provisioned and
 #' bundled by the LAG.
@@ -1744,6 +1907,13 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' @param tags The tags to associate with the LAG.
 #' @param childConnectionTags The tags to associate with the automtically created LAGs.
 #' @param providerName The name of the service provider associated with the LAG.
+#' @param requestMACSec Indicates whether the connection will support MAC Security (MACsec).
+#' 
+#' All connections in the LAG must be capable of supporting MAC Security
+#' (MACsec). For information about MAC Security (MACsec) prerequisties, see
+#' [MACsec
+#' prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites)
+#' in the *AWS Direct Connect User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1785,7 +1955,18 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -1797,7 +1978,17 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1821,21 +2012,22 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   requestMACSec = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_create_lag
-directconnect_create_lag <- function(numberOfConnections, location, connectionsBandwidth, lagName, connectionId = NULL, tags = NULL, childConnectionTags = NULL, providerName = NULL) {
+directconnect_create_lag <- function(numberOfConnections, location, connectionsBandwidth, lagName, connectionId = NULL, tags = NULL, childConnectionTags = NULL, providerName = NULL, requestMACSec = NULL) {
   op <- new_operation(
     name = "CreateLag",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$create_lag_input(numberOfConnections = numberOfConnections, location = location, connectionsBandwidth = connectionsBandwidth, lagName = lagName, connectionId = connectionId, tags = tags, childConnectionTags = childConnectionTags, providerName = providerName)
+  input <- .directconnect$create_lag_input(numberOfConnections = numberOfConnections, location = location, connectionsBandwidth = connectionsBandwidth, lagName = lagName, connectionId = connectionId, tags = tags, childConnectionTags = childConnectionTags, providerName = providerName, requestMACSec = requestMACSec)
   output <- .directconnect$create_lag_output()
   config <- get_config()
   svc <- .directconnect$service(config)
@@ -2362,7 +2554,18 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2692,7 +2895,18 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -2704,7 +2918,17 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2885,7 +3109,18 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2964,7 +3199,18 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3084,18 +3330,35 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 .directconnect$operations$describe_direct_connect_gateway_association_proposals <- directconnect_describe_direct_connect_gateway_association_proposals
 
 #' Lists the associations between your Direct Connect gateways and virtual
-#' private gateways
+#' private gateways and transit gateways
 #'
 #' @description
 #' Lists the associations between your Direct Connect gateways and virtual
-#' private gateways. You must specify a Direct Connect gateway, a virtual
-#' private gateway, or both. If you specify a Direct Connect gateway, the
-#' response contains all virtual private gateways associated with the
-#' Direct Connect gateway. If you specify a virtual private gateway, the
-#' response contains all Direct Connect gateways associated with the
-#' virtual private gateway. If you specify both, the response contains the
-#' association between the Direct Connect gateway and the virtual private
-#' gateway.
+#' private gateways and transit gateways. You must specify one of the
+#' following:
+#' 
+#' -   A Direct Connect gateway
+#' 
+#'     The response contains all virtual private gateways and transit
+#'     gateways associated with the Direct Connect gateway.
+#' 
+#' -   A virtual private gateway
+#' 
+#'     The response contains the Direct Connect gateway.
+#' 
+#' -   A transit gateway
+#' 
+#'     The response contains the Direct Connect gateway.
+#' 
+#' -   A Direct Connect gateway and a virtual private gateway
+#' 
+#'     The response contains the association between the Direct Connect
+#'     gateway and virtual private gateway.
+#' 
+#' -   A Direct Connect gateway and a transit gateway
+#' 
+#'     The response contains the association between the Direct Connect
+#'     gateway and transit gateway.
 #'
 #' @usage
 #' directconnect_describe_direct_connect_gateway_associations(
@@ -3112,7 +3375,7 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 #' If `MaxResults` is given a value larger than 100, only 100 results are
 #' returned.
 #' @param nextToken The token provided in the previous call to retrieve the next page.
-#' @param virtualGatewayId The ID of the virtual private gateway.
+#' @param virtualGatewayId The ID of the virtual private gateway or transit gateway.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3363,7 +3626,18 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3584,7 +3858,18 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #'               value = "string"
 #'             )
 #'           ),
-#'           providerName = "string"
+#'           providerName = "string",
+#'           macSecCapable = TRUE|FALSE,
+#'           portEncryptionStatus = "string",
+#'           encryptionMode = "string",
+#'           macSecKeys = list(
+#'             list(
+#'               secretARN = "string",
+#'               ckn = "string",
+#'               state = "string",
+#'               startOn = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       allowsHostedConnections = TRUE|FALSE,
@@ -3596,7 +3881,17 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3717,6 +4012,9 @@ directconnect_describe_loa <- function(connectionId, providerName = NULL, loaCon
 #'         "string"
 #'       ),
 #'       availableProviders = list(
+#'         "string"
+#'       ),
+#'       availableMacSecPortSpeeds = list(
 #'         "string"
 #'       )
 #'     )
@@ -4006,7 +4304,18 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4037,6 +4346,71 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
   return(response)
 }
 .directconnect$operations$disassociate_connection_from_lag <- directconnect_disassociate_connection_from_lag
+
+#' Removes the association between a MAC Security (MACsec) security key and
+#' an AWS Direct Connect dedicated connection
+#'
+#' @description
+#' Removes the association between a MAC Security (MACsec) security key and
+#' an AWS Direct Connect dedicated connection.
+#'
+#' @usage
+#' directconnect_disassociate_mac_sec_key(connectionId, secretARN)
+#'
+#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), or the ID of the LAG
+#' (dxlag-xxxx).
+#' 
+#' You can use [`describe_connections`][directconnect_describe_connections]
+#' or [`describe_lags`][directconnect_describe_lags] to retrieve connection
+#' ID.
+#' @param secretARN &#91;required&#93; The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key.
+#' 
+#' You can use [`describe_connections`][directconnect_describe_connections]
+#' to retrieve the ARN of the MAC Security (MACsec) secret key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionId = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_mac_sec_key(
+#'   connectionId = "string",
+#'   secretARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_disassociate_mac_sec_key
+directconnect_disassociate_mac_sec_key <- function(connectionId, secretARN) {
+  op <- new_operation(
+    name = "DisassociateMacSecKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$disassociate_mac_sec_key_input(connectionId = connectionId, secretARN = secretARN)
+  output <- .directconnect$disassociate_mac_sec_key_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$disassociate_mac_sec_key <- directconnect_disassociate_mac_sec_key
 
 #' Lists the virtual interface failover test history
 #'
@@ -4362,6 +4736,101 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 }
 .directconnect$operations$untag_resource <- directconnect_untag_resource
 
+#' Updates the AWS Direct Connect dedicated connection configuration
+#'
+#' @description
+#' Updates the AWS Direct Connect dedicated connection configuration.
+#' 
+#' You can update the following parameters for a connection:
+#' 
+#' -   The connection name
+#' 
+#' -   The connection's MAC Security (MACsec) encryption mode.
+#'
+#' @usage
+#' directconnect_update_connection(connectionId, connectionName,
+#'   encryptionMode)
+#'
+#' @param connectionId &#91;required&#93; The ID of the dedicated connection.
+#' 
+#' You can use [`describe_connections`][directconnect_describe_connections]
+#' to retrieve the connection ID.
+#' @param connectionName The name of the connection.
+#' @param encryptionMode The connection MAC Security (MACsec) encryption mode.
+#' 
+#' The valid values are `no_encrypt`, `should_encrypt`, and `must_encrypt`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   region = "string",
+#'   location = "string",
+#'   bandwidth = "string",
+#'   vlan = 123,
+#'   partnerName = "string",
+#'   loaIssueTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lagId = "string",
+#'   awsDevice = "string",
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   awsDeviceV2 = "string",
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connection(
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   encryptionMode = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_update_connection
+directconnect_update_connection <- function(connectionId, connectionName = NULL, encryptionMode = NULL) {
+  op <- new_operation(
+    name = "UpdateConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$update_connection_input(connectionId = connectionId, connectionName = connectionName, encryptionMode = encryptionMode)
+  output <- .directconnect$update_connection_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$update_connection <- directconnect_update_connection
+
 #' Updates the specified attributes of the Direct Connect gateway
 #' association
 #'
@@ -4451,27 +4920,33 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #' @description
 #' Updates the attributes of the specified link aggregation group (LAG).
 #' 
-#' You can update the following attributes:
+#' You can update the following LAG attributes:
 #' 
 #' -   The name of the LAG.
 #' 
 #' -   The value for the minimum number of connections that must be
 #'     operational for the LAG itself to be operational.
 #' 
-#' When you create a LAG, the default value for the minimum number of
-#' operational connections is zero (0). If you update this value and the
-#' number of operational connections falls below the specified value, the
-#' LAG automatically goes down to avoid over-utilization of the remaining
-#' connections. Adjust this value with care, as it could force the LAG down
-#' if it is set higher than the current number of operational connections.
+#' -   The LAG's MACsec encryption mode.
+#' 
+#'     AWS assigns this value to each connection which is part of the LAG.
+#' 
+#' -   The tags
+#' 
+#' If you adjust the threshold value for the minimum number of operational
+#' connections, ensure that the new value does not cause the LAG to fall
+#' below the threshold and become non-operational.
 #'
 #' @usage
-#' directconnect_update_lag(lagId, lagName, minimumLinks)
+#' directconnect_update_lag(lagId, lagName, minimumLinks, encryptionMode)
 #'
 #' @param lagId &#91;required&#93; The ID of the LAG.
 #' @param lagName The name of the LAG.
 #' @param minimumLinks The minimum number of physical connections that must be operational for
 #' the LAG itself to be operational.
+#' @param encryptionMode The LAG MAC Security (MACsec) encryption mode.
+#' 
+#' AWS applies the value to all connections which are part of the LAG.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4513,7 +4988,18 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -4525,7 +5011,17 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4534,21 +5030,22 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #' svc$update_lag(
 #'   lagId = "string",
 #'   lagName = "string",
-#'   minimumLinks = 123
+#'   minimumLinks = 123,
+#'   encryptionMode = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_update_lag
-directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL) {
+directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL, encryptionMode = NULL) {
   op <- new_operation(
     name = "UpdateLag",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$update_lag_input(lagId = lagId, lagName = lagName, minimumLinks = minimumLinks)
+  input <- .directconnect$update_lag_input(lagId = lagId, lagName = lagName, minimumLinks = minimumLinks, encryptionMode = encryptionMode)
   output <- .directconnect$update_lag_output()
   config <- get_config()
   svc <- .directconnect$service(config)

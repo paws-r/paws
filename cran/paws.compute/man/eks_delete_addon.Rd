@@ -23,7 +23,7 @@ A list with the following syntax:\preformatted{list(
     health = list(
       issues = list(
         list(
-          code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+          code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
           message = "string",
           resourceIds = list(
             "string"

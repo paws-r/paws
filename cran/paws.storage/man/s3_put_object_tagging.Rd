@@ -5,27 +5,27 @@
 \title{Sets the supplied tag-set to an object that already exists in a bucket}
 \usage{
 s3_put_object_tagging(Bucket, Key, VersionId, ContentMD5, Tagging,
-  ExpectedBucketOwner)
+  ExpectedBucketOwner, RequestPayer)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name containing the object.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Name of the object key.}
 
@@ -38,9 +38,11 @@ SDKs, this field is calculated automatically.}
 
 \item{Tagging}{[required] Container for the \code{TagSet} and \code{Tag} elements}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
+
+\item{RequestPayer}{}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -87,7 +89,7 @@ information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/obj
 \item 
 \itemize{
 \item \emph{Code: OperationAbortedError}
-\item \emph{Cause: A conflicting conditional operation is currently in
+\item \emph{Cause: A conflicting conditional action is currently in
 progress against this resource. Please try again.}
 }
 \item 
@@ -101,6 +103,7 @@ object.}
 \strong{Related Resources}
 \itemize{
 \item \code{\link[=s3_get_object_tagging]{get_object_tagging}}
+\item \code{\link[=s3_delete_object_tagging]{delete_object_tagging}}
 }
 }
 \section{Request syntax}{
@@ -117,7 +120,8 @@ object.}
       )
     )
   ),
-  ExpectedBucketOwner = "string"
+  ExpectedBucketOwner = "string",
+  RequestPayer = "requester"
 )
 }
 }

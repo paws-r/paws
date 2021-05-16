@@ -9,7 +9,7 @@ chime_get_sip_media_application_logging_configuration(
   SipMediaApplicationId)
 }
 \arguments{
-\item{SipMediaApplicationId}{[required] The ID of the SIP media application.}
+\item{SipMediaApplicationId}{[required] The SIP media application ID.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

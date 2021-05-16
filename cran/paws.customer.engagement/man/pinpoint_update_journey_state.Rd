@@ -40,7 +40,7 @@ A list with the following syntax:\preformatted{list(
                   Dimensions = list(
                     Attributes = list(
                       list(
-                        AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                        AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                         Values = list(
                           "string"
                         )
@@ -67,7 +67,7 @@ A list with the following syntax:\preformatted{list(
                 SegmentDimensions = list(
                   Attributes = list(
                     list(
-                      AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                      AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                       Values = list(
                         "string"
                       )
@@ -140,7 +140,7 @@ A list with the following syntax:\preformatted{list(
                   ),
                   UserAttributes = list(
                     list(
-                      AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                      AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                       Values = list(
                         "string"
                       )
@@ -179,7 +179,7 @@ A list with the following syntax:\preformatted{list(
                   Dimensions = list(
                     Attributes = list(
                       list(
-                        AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                        AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                         Values = list(
                           "string"
                         )
@@ -206,7 +206,7 @@ A list with the following syntax:\preformatted{list(
                 SegmentDimensions = list(
                   Attributes = list(
                     list(
-                      AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                      AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                       Values = list(
                         "string"
                       )
@@ -279,7 +279,7 @@ A list with the following syntax:\preformatted{list(
                   ),
                   UserAttributes = list(
                     list(
-                      AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                      AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                       Values = list(
                         "string"
                       )
@@ -315,7 +315,10 @@ A list with the following syntax:\preformatted{list(
         SMS = list(
           MessageConfig = list(
             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-            SenderId = "string"
+            OriginationNumber = "string",
+            SenderId = "string",
+            EntityId = "string",
+            TemplateId = "string"
           ),
           NextActivity = "string",
           TemplateName = "string",
@@ -337,7 +340,8 @@ A list with the following syntax:\preformatted{list(
     Limits = list(
       DailyCap = 123,
       EndpointReentryCap = 123,
-      MessagesPerSecond = 123
+      MessagesPerSecond = 123,
+      EndpointReentryInterval = "string"
     ),
     LocalTime = TRUE|FALSE,
     Name = "string",
@@ -363,7 +367,7 @@ A list with the following syntax:\preformatted{list(
           Dimensions = list(
             Attributes = list(
               list(
-                AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                 Values = list(
                   "string"
                 )
@@ -390,10 +394,12 @@ A list with the following syntax:\preformatted{list(
         SegmentId = "string"
       )
     ),
-    State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+    State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
     tags = list(
       "string"
-    )
+    ),
+    WaitForQuietTime = TRUE|FALSE,
+    RefreshOnSegmentUpdate = TRUE|FALSE
   )
 )
 }
@@ -406,7 +412,7 @@ Cancels (stops) an active journey.
   ApplicationId = "string",
   JourneyId = "string",
   JourneyStateRequest = list(
-    State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
+    State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED"
   )
 )
 }

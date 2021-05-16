@@ -33,6 +33,7 @@ Amazon DocumentDB API documentation
 \section{Operations}{
 
 \tabular{ll}{
+\link[=docdb_add_source_identifier_to_subscription]{add_source_identifier_to_subscription} \tab Adds a source identifier to an existing event notification subscription\cr
 \link[=docdb_add_tags_to_resource]{add_tags_to_resource} \tab Adds metadata tags to an Amazon DocumentDB resource\cr
 \link[=docdb_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to an Amazon DocumentDB instance)\cr
 \link[=docdb_copy_db_cluster_parameter_group]{copy_db_cluster_parameter_group} \tab Copies the specified cluster parameter group\cr
@@ -42,11 +43,13 @@ Amazon DocumentDB API documentation
 \link[=docdb_create_db_cluster_snapshot]{create_db_cluster_snapshot} \tab Creates a snapshot of a cluster\cr
 \link[=docdb_create_db_instance]{create_db_instance} \tab Creates a new instance\cr
 \link[=docdb_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new subnet group\cr
+\link[=docdb_create_event_subscription]{create_event_subscription} \tab Creates an Amazon DocumentDB event notification subscription\cr
 \link[=docdb_delete_db_cluster]{delete_db_cluster} \tab Deletes a previously provisioned cluster\cr
 \link[=docdb_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified cluster parameter group\cr
 \link[=docdb_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a cluster snapshot\cr
 \link[=docdb_delete_db_instance]{delete_db_instance} \tab Deletes a previously provisioned instance\cr
 \link[=docdb_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a subnet group\cr
+\link[=docdb_delete_event_subscription]{delete_event_subscription} \tab Deletes an Amazon DocumentDB event notification subscription\cr
 \link[=docdb_describe_certificates]{describe_certificates} \tab Returns a list of certificate authority (CA) certificates provided by Amazon DocumentDB for this AWS account\cr
 \link[=docdb_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions\cr
 \link[=docdb_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular cluster parameter group\cr
@@ -59,6 +62,7 @@ Amazon DocumentDB API documentation
 \link[=docdb_describe_engine_default_cluster_parameters]{describe_engine_default_cluster_parameters} \tab Returns the default engine and system parameter information for the cluster database engine\cr
 \link[=docdb_describe_event_categories]{describe_event_categories} \tab Displays a list of categories for all event source types, or, if specified, for a specified source type\cr
 \link[=docdb_describe_events]{describe_events} \tab Returns events related to instances, security groups, snapshots, and DB parameter groups for the past 14 days\cr
+\link[=docdb_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account\cr
 \link[=docdb_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable instance options for the specified engine\cr
 \link[=docdb_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, instances) that have at least one pending maintenance action\cr
 \link[=docdb_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a cluster\cr
@@ -68,7 +72,9 @@ Amazon DocumentDB API documentation
 \link[=docdb_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot\cr
 \link[=docdb_modify_db_instance]{modify_db_instance} \tab Modifies settings for an instance\cr
 \link[=docdb_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing subnet group\cr
+\link[=docdb_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon DocumentDB event notification subscription\cr
 \link[=docdb_reboot_db_instance]{reboot_db_instance} \tab You might need to reboot your instance, usually for maintenance reasons\cr
+\link[=docdb_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription} \tab Removes a source identifier from an existing Amazon DocumentDB event notification subscription\cr
 \link[=docdb_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes metadata tags from an Amazon DocumentDB resource\cr
 \link[=docdb_reset_db_cluster_parameter_group]{reset_db_cluster_parameter_group} \tab Modifies the parameters of a cluster parameter group to the default value\cr
 \link[=docdb_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot} \tab Creates a new cluster from a snapshot or cluster snapshot\cr
@@ -81,7 +87,7 @@ Amazon DocumentDB API documentation
 \examples{
 \dontrun{
 svc <- docdb()
-svc$add_tags_to_resource(
+svc$add_source_identifier_to_subscription(
   Foo = 123
 )
 }

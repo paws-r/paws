@@ -2,33 +2,31 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_describe_type}
 \alias{cloudformation_describe_type}
-\title{Returns detailed information about a type that has been registered}
+\title{Returns detailed information about an extension that has been registered}
 \usage{
 cloudformation_describe_type(Type, TypeName, Arn, VersionId)
 }
 \arguments{
-\item{Type}{The kind of type.
-
-Currently the only valid value is \code{RESOURCE}.
+\item{Type}{The kind of extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{TypeName}{The name of the type.
+\item{TypeName}{The name of the extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{Arn}{The Amazon Resource Name (ARN) of the type.
+\item{Arn}{The Amazon Resource Name (ARN) of the extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{VersionId}{The ID of a specific version of the type. The version ID is the value at
-the end of the Amazon Resource Name (ARN) assigned to the type version
-when it is registered.
+\item{VersionId}{The ID of a specific version of the extension. The version ID is the
+value at the end of the Amazon Resource Name (ARN) assigned to the
+extension version when it is registered.
 
 If you specify a \code{VersionId},
 \code{\link[=cloudformation_describe_type]{describe_type}} returns information
-about that specific type version. Otherwise, it returns information
-about the default type version.}
+about that specific extension version. Otherwise, it returns information
+about the default extension version.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -59,12 +57,13 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns detailed information about a type that has been registered.
+Returns detailed information about an extension that has been
+registered.
 
 If you specify a \code{VersionId},
 \code{\link[=cloudformation_describe_type]{describe_type}} returns information
-about that specific type version. Otherwise, it returns information
-about the default type version.
+about that specific extension version. Otherwise, it returns information
+about the default extension version.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_type(

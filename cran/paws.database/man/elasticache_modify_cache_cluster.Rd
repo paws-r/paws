@@ -10,7 +10,7 @@ elasticache_modify_cache_cluster(CacheClusterId, NumCacheNodes,
   NotificationTopicArn, CacheParameterGroupName, NotificationTopicStatus,
   ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
   SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
-  AuthTokenUpdateStrategy)
+  AuthTokenUpdateStrategy, LogDeliveryConfigurations)
 }
 \arguments{
 \item{CacheClusterId}{[required] The cluster identifier. This value is stored as a lowercase string.}
@@ -27,7 +27,7 @@ If you are removing cache nodes, you must use the \code{CacheNodeIdsToRemove}
 parameter to provide the IDs of the specific cache nodes to remove.
 
 For clusters running Redis, this value must be 1. For clusters running
-Memcached, this value must be between 1 and 20.
+Memcached, this value must be between 1 and 40.
 
 Adding or removing Memcached cache nodes can be applied immediately or
 as a pending operation (see \code{ApplyImmediately}).
@@ -78,7 +78,9 @@ existing Memcached nodes remain in their current Availability Zone.
 
 Only newly created nodes are located in different Availability Zones.}
 
-\item{NewAvailabilityZones}{The list of Availability Zones where the new Memcached cache nodes are
+\item{NewAvailabilityZones}{This option is only supported on Memcached clusters.
+
+The list of Availability Zones where the new Memcached cache nodes are
 created.
 
 This parameter is only valid when \code{NumCacheNodes} in the request is
@@ -86,8 +88,6 @@ greater than the sum of the number of active cache nodes and the number
 of cache nodes pending creation (which may be zero). The number of
 Availability Zones supplied in this list must match the cache nodes
 being added in this request.
-
-This option is only supported on Memcached clusters.
 
 Scenarios:
 \itemize{
@@ -255,6 +255,8 @@ must be specified with the \code{auth-token} parameter. Possible values:
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis AUTH}}
+
+\item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -283,7 +285,22 @@ A list with the following syntax:\preformatted{list(
       ),
       EngineVersion = "string",
       CacheNodeType = "string",
-      AuthTokenStatus = "SETTING"|"ROTATING"
+      AuthTokenStatus = "SETTING"|"ROTATING",
+      LogDeliveryConfigurations = list(
+        list(
+          LogType = "slow-log",
+          DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+          DestinationDetails = list(
+            CloudWatchLogsDetails = list(
+              LogGroup = "string"
+            ),
+            KinesisFirehoseDetails = list(
+              DeliveryStream = "string"
+            )
+          ),
+          LogFormat = "text"|"json"
+        )
+      )
     ),
     NotificationConfiguration = list(
       TopicArn = "string",
@@ -336,7 +353,25 @@ A list with the following syntax:\preformatted{list(
     ),
     TransitEncryptionEnabled = TRUE|FALSE,
     AtRestEncryptionEnabled = TRUE|FALSE,
-    ARN = "string"
+    ARN = "string",
+    ReplicationGroupLogDeliveryEnabled = TRUE|FALSE,
+    LogDeliveryConfigurations = list(
+      list(
+        LogType = "slow-log",
+        DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+        DestinationDetails = list(
+          CloudWatchLogsDetails = list(
+            LogGroup = "string"
+          ),
+          KinesisFirehoseDetails = list(
+            DeliveryStream = "string"
+          )
+        ),
+        LogFormat = "text"|"json",
+        Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+        Message = "string"
+      )
+    )
   )
 )
 }
@@ -374,7 +409,23 @@ parameters and the new values.
   SnapshotWindow = "string",
   CacheNodeType = "string",
   AuthToken = "string",
-  AuthTokenUpdateStrategy = "SET"|"ROTATE"|"DELETE"
+  AuthTokenUpdateStrategy = "SET"|"ROTATE"|"DELETE",
+  LogDeliveryConfigurations = list(
+    list(
+      LogType = "slow-log",
+      DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+      DestinationDetails = list(
+        CloudWatchLogsDetails = list(
+          LogGroup = "string"
+        ),
+        KinesisFirehoseDetails = list(
+          DeliveryStream = "string"
+        )
+      ),
+      LogFormat = "text"|"json",
+      Enabled = TRUE|FALSE
+    )
+  )
 )
 }
 }

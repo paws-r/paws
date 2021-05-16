@@ -11,7 +11,7 @@ NULL
 #' access token upon successful authentication and authorization with AWS
 #' SSO. This service conforms with the OAuth 2.0 based implementation of
 #' the device authorization grant standard
-#' (<https://tools.ietf.org/html/rfc8628>).
+#' ([https://tools.ietf.org/html/rfc8628](https://datatracker.ietf.org/doc/html/rfc8628)).
 #' 
 #' For general information about AWS SSO, see [What is AWS Single
 #' Sign-On?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)

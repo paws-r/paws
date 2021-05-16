@@ -16,7 +16,7 @@ using the AWS CLI or SDK.}
 \value{
 A list with the following syntax:\preformatted{list(
   BackupId = "string",
-  Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"
+  Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"|"COPYING"
 )
 }
 }

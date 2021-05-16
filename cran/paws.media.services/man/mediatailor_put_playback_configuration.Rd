@@ -5,10 +5,10 @@
 \title{Adds a new playback configuration to AWS Elemental MediaTailor}
 \usage{
 mediatailor_put_playback_configuration(AdDecisionServerUrl,
-  AvailSuppression, Bumper, CdnConfiguration, DashConfiguration,
-  LivePreRollConfiguration, ManifestProcessingRules, Name,
-  PersonalizationThresholdSeconds, SlateAdUrl, Tags, TranscodeProfileName,
-  VideoContentSourceUrl)
+  AvailSuppression, Bumper, CdnConfiguration, ConfigurationAliases,
+  DashConfiguration, LivePreRollConfiguration, ManifestProcessingRules,
+  Name, PersonalizationThresholdSeconds, SlateAdUrl, Tags,
+  TranscodeProfileName, VideoContentSourceUrl)
 }
 \arguments{
 \item{AdDecisionServerUrl}{The URL for the ad decision server (ADS). This includes the
@@ -18,15 +18,19 @@ session-specific parameters as needed when calling the ADS. Alternately,
 for testing you can provide a static VAST URL. The maximum length is
 25,000 characters.}
 
-\item{AvailSuppression}{The configuration for Avail Suppression. Ad suppression can be used to
-turn off ad personalization in a long manifest, or if a viewer joins
-mid-break.}
+\item{AvailSuppression}{The configuration for avail suppression, also known as ad suppression.
+For more information about ad suppression, see \href{https://docs.aws.amazon.com/mediatailor/latest/ug/ad-behavior.html}{Ad Suppression}.}
 
 \item{Bumper}{The configuration for bumpers. Bumpers are short audio or video clips
-that play at the start or before the end of an ad break.}
+that play at the start or before the end of an ad break. To learn more
+about bumpers, see
+\href{https://docs.aws.amazon.com/mediatailor/latest/ug/bumpers.html}{Bumpers}.}
 
 \item{CdnConfiguration}{The configuration for using a content delivery network (CDN), like
 Amazon CloudFront, for content and ad segment management.}
+
+\item{ConfigurationAliases}{The player parameters and aliases used as dynamic variables during
+session initialization. For more information, see \href{https://docs.aws.amazon.com/mediatailor/latest/ug/}{Domain Variables}.}
 
 \item{DashConfiguration}{The configuration for DASH content.}
 
@@ -38,8 +42,13 @@ MediaTailor.}
 
 \item{Name}{The identifier for the playback configuration.}
 
-\item{PersonalizationThresholdSeconds}{The maximum duration of underfilled ad time (in seconds) allowed in an
-ad break.}
+\item{PersonalizationThresholdSeconds}{Defines the maximum duration of underfilled ad time (in seconds) allowed
+in an ad break. If the duration of underfilled ad time exceeds the
+personalization threshold, then the personalization of the ad break is
+abandoned and the underlying content is shown. This feature applies to
+\emph{ad replacement} in live and VOD streams, rather than ad insertion,
+because it relies on an underlying content stream. For more information
+about ad break behavior, including ad replacement and insertion, see \href{https://docs.aws.amazon.com/mediatailor/latest/ug/ad-behavior.html}{Ad Behavior in AWS Elemental MediaTailor}.}
 
 \item{SlateAdUrl}{The URL for a high-quality video asset to transcode and use to fill in
 time that's not used by ads. AWS Elemental MediaTailor shows the slate
@@ -56,7 +65,7 @@ custom transcode profile. This overrides the dynamic transcoding
 defaults of MediaTailor. Use this only if you have already set up custom
 profiles with the help of AWS Support.}
 
-\item{VideoContentSourceUrl}{The URL prefix for the master playlist for the stream, minus the asset
+\item{VideoContentSourceUrl}{The URL prefix for the parent manifest for the stream, minus the asset
 ID. The maximum length is 512 characters.}
 }
 \value{
@@ -73,6 +82,11 @@ A list with the following syntax:\preformatted{list(
   CdnConfiguration = list(
     AdSegmentUrlPrefix = "string",
     ContentSegmentUrlPrefix = "string"
+  ),
+  ConfigurationAliases = list(
+    list(
+      "string"
+    )
   ),
   DashConfiguration = list(
     ManifestEndpointPrefix = "string",
@@ -122,6 +136,11 @@ Adds a new playback configuration to AWS Elemental MediaTailor.
   CdnConfiguration = list(
     AdSegmentUrlPrefix = "string",
     ContentSegmentUrlPrefix = "string"
+  ),
+  ConfigurationAliases = list(
+    list(
+      "string"
+    )
   ),
   DashConfiguration = list(
     MpdLocation = "string",

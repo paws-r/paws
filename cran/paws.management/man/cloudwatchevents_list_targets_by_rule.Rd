@@ -96,6 +96,14 @@ A list with the following syntax:\preformatted{list(
         StatementName = "string",
         WithEvent = TRUE|FALSE
       ),
+      SageMakerPipelineParameters = list(
+        PipelineParameterList = list(
+          list(
+            Name = "string",
+            Value = "string"
+          )
+        )
+      ),
       DeadLetterConfig = list(
         Arn = "string"
       ),

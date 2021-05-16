@@ -31,7 +31,13 @@ A list with the following syntax:\preformatted{list(
       )
     ),
     CertificateBody = "string",
-    CertificateChain = "string"
+    CertificateChain = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
   )
 )
 }
@@ -41,7 +47,7 @@ Retrieves information about the specified server certificate stored in
 IAM.
 
 For more information about working with server certificates, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with server certificates}
 in the \emph{IAM User Guide}. This topic includes a list of AWS services that
 can use the server certificates that you manage with IAM.
 }

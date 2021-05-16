@@ -30,7 +30,7 @@ tasks such as the following automatically:
 \item Handle error responses
 }
 
-\strong{Additional Information}
+\strong{Additional information}
 \itemize{
 \item \href{https://aws.amazon.com/sqs/}{Amazon SQS Product Page}
 \item \emph{Amazon Simple Queue Service Developer Guide}

@@ -2,17 +2,20 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_ec2_instance_limits}
 \alias{gamelift_describe_ec2_instance_limits}
-\title{Retrieves the following information for the specified EC2 instance type:}
+\title{The GameLift service limits and current utilization for an AWS Region or
+location}
 \usage{
-gamelift_describe_ec2_instance_limits(EC2InstanceType)
+gamelift_describe_ec2_instance_limits(EC2InstanceType, Location)
 }
 \arguments{
-\item{EC2InstanceType}{Name of an EC2 instance type that is supported in Amazon GameLift. A
-fleet instance type determines the computing resources of each instance
-in the fleet, including CPU, memory, storage, and networking capacity.
-Amazon GameLift supports the following EC2 instance types. See \href{https://aws.amazon.com/ec2/instance-types/}{Amazon EC2 Instance Types} for
-detailed descriptions. Leave this parameter blank to retrieve limits for
-all types.}
+\item{EC2InstanceType}{Name of an EC2 instance type that is supported in GameLift. A fleet
+instance type determines the computing resources of each instance in the
+fleet, including CPU, memory, storage, and networking capacity. Do not
+specify a value for this parameter to retrieve limits for all instance
+types.}
+
+\item{Location}{The name of a remote location to request instance limits for, in the
+form of an AWS Region code such as \code{us-west-2}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -20,40 +23,81 @@ A list with the following syntax:\preformatted{list(
     list(
       EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
       CurrentInstances = 123,
-      InstanceLimit = 123
+      InstanceLimit = 123,
+      Location = "string"
     )
   )
 )
 }
 }
 \description{
-Retrieves the following information for the specified EC2 instance type:
+The GameLift service limits and current utilization for an AWS Region or
+location. Instance limits control the number of instances, per instance
+type, per location, that your AWS account can use. Learn more at \href{https://aws.amazon.com/ec2/instance-types/}{Amazon EC2 Instance Types}. The
+information returned includes the maximum number of instances allowed
+and your account's current usage across all fleets. This information can
+affect your ability to scale your GameLift fleets. You can request a
+limit increase for your account by using the \strong{Service limits} page in
+the GameLift console.
+
+Instance limits differ based on whether the instances are deployed in a
+fleet's home Region or in a remote location. For remote locations,
+limits also differ based on the combination of home Region and remote
+location. All requests must specify an AWS Region (either explicitly or
+as your default settings). To get the limit for a remote location, you
+must also specify the location. For example, the following requests all
+return different results:
 \itemize{
-\item Maximum number of instances allowed per AWS account (service limit).
-\item Current usage for the AWS account.
+\item Request specifies the Region \code{ap-northeast-1} with no location. The
+result is limits and usage data on all instance types that are
+deployed in \code{us-east-2}, by all of the fleets that reside in
+\code{ap-northeast-1}.
+\item Request specifies the Region \code{us-east-1} with location
+\code{ca-central-1}. The result is limits and usage data on all instance
+types that are deployed in \code{ca-central-1}, by all of the fleets that
+reside in \code{us-east-2}. These limits do not affect fleets in any
+other Regions that deploy instances to \code{ca-central-1}.
+\item Request specifies the Region \code{eu-west-1} with location
+\code{ca-central-1}. The result is limits and usage data on all instance
+types that are deployed in \code{ca-central-1}, by all of the fleets that
+reside in \code{eu-west-1}.
 }
 
-To learn more about the capabilities of each instance type, see \href{https://aws.amazon.com/ec2/instance-types/}{Amazon EC2 Instance Types}. Note
-that the instance types offered may vary depending on the region.
+This operation can be used in the following ways:
+\itemize{
+\item To get limit and usage data for all instance types that are deployed
+in an AWS Region by fleets that reside in the same Region: Specify
+the Region only. Optionally, specify a single instance type to
+retrieve information for.
+\item To get limit and usage data for all instance types that are deployed
+to a remote location by fleets that reside in different AWS Region:
+Provide both the AWS Region and the remote location. Optionally,
+specify a single instance type to retrieve information for.
+}
+
+If successful, an \code{EC2InstanceLimits} object is returned with limits and
+usage data for each requested instance type.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift fleets}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_fleet]{create_fleet}}
-\item \code{\link[=gamelift_list_fleets]{list_fleets}}
-\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
-\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
-\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
-\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_fleet]{create_fleet}} |
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}} |
+\code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}} |
+\code{\link[=gamelift_describe_fleet_location_attributes]{describe_fleet_location_attributes}}
+| \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}} |
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} |
+\code{\link[=gamelift_delete_fleet]{delete_fleet}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_ec2_instance_limits(
-  EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"
+  EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
+  Location = "string"
 )
 }
 }

@@ -16,8 +16,6 @@ in the \emph{Amazon RDS User Guide}.
 Constraints:
 \itemize{
 \item Must specify a valid DB parameter group.
-\item Must specify a valid DB parameter group identifier, for example
-\code{my-db-param-group}, or a valid ARN.
 }}
 
 \item{TargetDBParameterGroupIdentifier}{[required] The identifier for the copied DB parameter group.

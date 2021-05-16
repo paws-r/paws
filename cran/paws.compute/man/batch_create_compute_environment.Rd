@@ -36,14 +36,23 @@ This parameter is required for managed compute environments. For more
 information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html}{Compute Environments}
 in the \emph{AWS Batch User Guide}.}
 
-\item{serviceRole}{[required] The full Amazon Resource Name (ARN) of the IAM role that allows AWS
+\item{serviceRole}{The full Amazon Resource Name (ARN) of the IAM role that allows AWS
 Batch to make calls to other AWS services on your behalf. For more
 information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html}{AWS Batch service IAM role}
 in the \emph{AWS Batch User Guide}.
 
-If your specified role has a path other than \code{/}, then you must either
-specify the full role ARN (this is recommended) or prefix the role name
-with the path.
+If your account has already created the AWS Batch service-linked role,
+that role is used by default for your compute environment unless you
+specify a role here. If the AWS Batch service-linked role does not exist
+in your account, and no role is specified here, the service will try to
+create the AWS Batch service-linked role in your account.
+
+If your specified role has a path other than \code{/}, then you must specify
+either the full role ARN (recommended) or prefix the role name with the
+path. For example, if a role with the name \code{bar} has a path of \verb{/foo/}
+then you would specify \verb{/foo/bar} as the role name. For more
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names}{Friendly names and paths}
+in the \emph{IAM User Guide}.
 
 Depending on how you created your AWS Batch service role, its ARN might
 contain the \code{service-role} path prefix. When you only specify the name
@@ -79,35 +88,35 @@ In a managed compute environment, AWS Batch manages the capacity and
 instance types of the compute resources within the environment. This is
 based on the compute resource specification that you define or the
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html}{launch template}
-that you specify when you create the compute environment. You can choose
-either to use EC2 On-Demand Instances and EC2 Spot Instances, or to use
-Fargate and Fargate Spot capacity in your managed compute environment.
-You can optionally set a maximum price so that Spot Instances only
-launch when the Spot Instance price is less than a specified percentage
-of the On-Demand price.
+that you specify when you create the compute environment. Either, you
+can choose to use EC2 On-Demand Instances and EC2 Spot Instances. Or,
+you can use Fargate and Fargate Spot capacity in your managed compute
+environment. You can optionally set a maximum price so that Spot
+Instances only launch when the Spot Instance price is less than a
+specified percentage of the On-Demand price.
 
-Multi-node parallel jobs are not supported on Spot Instances.
+Multi-node parallel jobs aren't supported on Spot Instances.
 
 In an unmanaged compute environment, you can manage your own EC2 compute
 resources and have a lot of flexibility with how you configure your
-compute resources. For example, you can use custom AMI. However, you
-need to verify that your AMI meets the Amazon ECS container instance AMI
-specification. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{container instance AMIs} in
-the \emph{Amazon Elastic Container Service Developer Guide}. After you have
+compute resources. For example, you can use custom AMIs. However, you
+must verify that each of your AMIs meet the Amazon ECS container
+instance AMI specification. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{container instance AMIs} in
+the \emph{Amazon Elastic Container Service Developer Guide}. After you
 created your unmanaged compute environment, you can use the
 \code{\link[=batch_describe_compute_environments]{describe_compute_environments}}
 operation to find the Amazon ECS cluster that's associated with it.
-Then, manually launch your container instances into that Amazon ECS
-cluster. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html}{Launching an Amazon ECS container instance}
+Then, launch your container instances into that Amazon ECS cluster. For
+more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html}{Launching an Amazon ECS container instance}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-AWS Batch doesn't upgrade the AMIs in a compute environment after it's
-created. For example, it doesn't update the AMIs when a newer version of
-the Amazon ECS-optimized AMI is available. Therefore, you're responsible
-for the management of the guest operating system (including updates and
-security patches) and any additional application software or utilities
-that you install on the compute resources. To use a new AMI for your AWS
-Batch jobs, complete these steps:
+AWS Batch doesn't upgrade the AMIs in a compute environment after the
+environment is created. For example, it doesn't update the AMIs when a
+newer version of the Amazon ECS optimized AMI is available. Therefore,
+you're responsible for managing the guest operating system (including
+its updates and security patches) and any additional application
+software or utilities that you install on the compute resources. To use
+a new AMI for your AWS Batch jobs, complete these steps:
 \enumerate{
 \item Create a new compute environment with the new AMI.
 \item Add the compute environment to an existing job queue.

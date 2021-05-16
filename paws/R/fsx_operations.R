@@ -148,69 +148,60 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 }
 .fsx$operations$cancel_data_repository_task <- fsx_cancel_data_repository_task
 
-#' Creates a backup of an existing Amazon FSx file system
+#' Copies an existing backup within the same AWS account to another Region
+#' (cross-Region copy) or within the same Region (in-Region copy)
 #'
 #' @description
-#' Creates a backup of an existing Amazon FSx file system. Creating regular
-#' backups for your file system is a best practice, enabling you to restore
-#' a file system from a backup if an issue arises with the original file
-#' system.
+#' Copies an existing backup within the same AWS account to another Region
+#' (cross-Region copy) or within the same Region (in-Region copy). You can
+#' have up to five backup copy requests in progress to a single destination
+#' Region per account.
 #' 
-#' For Amazon FSx for Lustre file systems, you can create a backup only for
-#' file systems with the following configuration:
+#' You can use cross-Region backup copies for cross-region disaster
+#' recovery. You periodically take backups and copy them to another Region
+#' so that in the event of a disaster in the primary Region, you can
+#' restore from backup and recover availability quickly in the other
+#' Region. You can make cross-Region copies only within your AWS partition.
 #' 
-#' -   a Persistent deployment type
+#' You can also use backup copies to clone your file data set to another
+#' Region or within the same Region.
 #' 
-#' -   is *not* linked to a data respository.
+#' You can use the `SourceRegion` parameter to specify the AWS Region from
+#' which the backup will be copied. For example, if you make the call from
+#' the `us-west-1` Region and want to copy a backup from the `us-east-2`
+#' Region, you specify `us-east-2` in the `SourceRegion` parameter to make
+#' a cross-Region copy. If you don't specify a Region, the backup copy is
+#' created in the same Region where the request is sent from (in-Region
+#' copy).
 #' 
-#' For more information about backing up Amazon FSx for Lustre file
-#' systems, see [Working with FSx for Lustre
-#' backups](https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html).
-#' 
-#' For more information about backing up Amazon FSx for Windows file
-#' systems, see [Working with FSx for Windows
-#' backups](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html).
-#' 
-#' If a backup with the specified client request token exists, and the
-#' parameters match, this operation returns the description of the existing
-#' backup. If a backup specified client request token exists, and the
-#' parameters don't match, this operation returns
-#' `IncompatibleParameterError`. If a backup with the specified client
-#' request token doesn't exist, [`create_backup`][fsx_create_backup] does
-#' the following:
-#' 
-#' -   Creates a new Amazon FSx backup with an assigned ID, and an initial
-#'     lifecycle state of `CREATING`.
-#' 
-#' -   Returns the description of the backup.
-#' 
-#' By using the idempotent operation, you can retry a
-#' [`create_backup`][fsx_create_backup] operation without the risk of
-#' creating an extra backup. This approach can be useful when an initial
-#' call fails in a way that makes it unclear whether a backup was created.
-#' If you use the same client request token and the initial call created a
-#' backup, the operation returns a successful result because all the
-#' parameters are the same.
-#' 
-#' The [`create_backup`][fsx_create_backup] operation returns while the
-#' backup's lifecycle state is still `CREATING`. You can check the backup
-#' creation status by calling the
-#' [`describe_backups`][fsx_describe_backups] operation, which returns the
-#' backup state along with other information.
+#' For more information on creating backup copies, see [Copying
+#' backups](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/) in the
+#' *Amazon FSx for Windows User Guide* and [Copying
+#' backups](https://docs.aws.amazon.com/fsx/latest/LustreGuide/) in the
+#' *Amazon FSx for Lustre User Guide*.
 #'
 #' @usage
-#' fsx_create_backup(FileSystemId, ClientRequestToken, Tags)
+#' fsx_copy_backup(ClientRequestToken, SourceBackupId, SourceRegion,
+#'   KmsKeyId, CopyTags, Tags)
 #'
-#' @param FileSystemId &#91;required&#93; The ID of the file system to back up.
-#' @param ClientRequestToken (Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
-#' ensure idempotent creation. This string is automatically filled on your
-#' behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
-#' SDK.
-#' @param Tags (Optional) The tags to apply to the backup at backup creation. The key
-#' value of the `Name` tag appears in the console as the backup name. If
-#' you have set `CopyTagsToBackups` to true, and you specify one or more
-#' tags using the [`create_backup`][fsx_create_backup] action, no existing
-#' file system tags are copied from the file system to the backup.
+#' @param ClientRequestToken 
+#' @param SourceBackupId &#91;required&#93; The ID of the source backup. Specifies the ID of the backup that is
+#' being copied.
+#' @param SourceRegion The source AWS Region of the backup. Specifies the AWS Region from which
+#' the backup is being copied. The source and destination Regions must be
+#' in the same AWS partition. If you don't specify a Region, it defaults to
+#' the Region where the request is sent from (in-Region copy).
+#' @param KmsKeyId 
+#' @param CopyTags A boolean flag indicating whether tags from the source backup should be
+#' copied to the backup copy. This value defaults to false.
+#' 
+#' If you set `CopyTags` to true and the source backup has existing tags,
+#' you can use the `Tags` parameter to create new tags, provided that the
+#' sum of the source backup tags and the new tags doesn't exceed 50. Both
+#' sets of tags are merged. If there are tag conflicts (for example, two
+#' tags with the same key but different values), the tags created with the
+#' `Tags` parameter take precedence.
+#' @param Tags 
 #'
 #' @return
 #' A list with the following syntax:
@@ -218,7 +209,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #' list(
 #'   Backup = list(
 #'     BackupId = "string",
-#'     Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
+#'     Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"|"COPYING",
 #'     FailureDetails = list(
 #'       Message = "string"
 #'     ),
@@ -331,8 +322,251 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'     ),
 #'     DirectoryInformation = list(
 #'       DomainName = "string",
-#'       ActiveDirectoryId = "string"
+#'       ActiveDirectoryId = "string",
+#'       ResourceARN = "string"
+#'     ),
+#'     OwnerId = "string",
+#'     SourceBackupId = "string",
+#'     SourceBackupRegion = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$copy_backup(
+#'   ClientRequestToken = "string",
+#'   SourceBackupId = "string",
+#'   SourceRegion = "string",
+#'   KmsKeyId = "string",
+#'   CopyTags = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
 #'     )
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation copies an Amazon FSx backup.
+#' svc$copy_backup(
+#'   SourceBackupId = "backup-03e3c82e0183b7b6b",
+#'   SourceRegion = "us-east-2"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_copy_backup
+fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceRegion = NULL, KmsKeyId = NULL, CopyTags = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CopyBackup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$copy_backup_input(ClientRequestToken = ClientRequestToken, SourceBackupId = SourceBackupId, SourceRegion = SourceRegion, KmsKeyId = KmsKeyId, CopyTags = CopyTags, Tags = Tags)
+  output <- .fsx$copy_backup_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$copy_backup <- fsx_copy_backup
+
+#' Creates a backup of an existing Amazon FSx file system
+#'
+#' @description
+#' Creates a backup of an existing Amazon FSx file system. Creating regular
+#' backups for your file system is a best practice, enabling you to restore
+#' a file system from a backup if an issue arises with the original file
+#' system.
+#' 
+#' For Amazon FSx for Lustre file systems, you can create a backup only for
+#' file systems with the following configuration:
+#' 
+#' -   a Persistent deployment type
+#' 
+#' -   is *not* linked to a data respository.
+#' 
+#' For more information about backing up Amazon FSx for Lustre file
+#' systems, see [Working with FSx for Lustre
+#' backups](https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html).
+#' 
+#' For more information about backing up Amazon FSx for Windows file
+#' systems, see [Working with FSx for Windows
+#' backups](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html).
+#' 
+#' If a backup with the specified client request token exists, and the
+#' parameters match, this operation returns the description of the existing
+#' backup. If a backup specified client request token exists, and the
+#' parameters don't match, this operation returns
+#' `IncompatibleParameterError`. If a backup with the specified client
+#' request token doesn't exist, [`create_backup`][fsx_create_backup] does
+#' the following:
+#' 
+#' -   Creates a new Amazon FSx backup with an assigned ID, and an initial
+#'     lifecycle state of `CREATING`.
+#' 
+#' -   Returns the description of the backup.
+#' 
+#' By using the idempotent operation, you can retry a
+#' [`create_backup`][fsx_create_backup] operation without the risk of
+#' creating an extra backup. This approach can be useful when an initial
+#' call fails in a way that makes it unclear whether a backup was created.
+#' If you use the same client request token and the initial call created a
+#' backup, the operation returns a successful result because all the
+#' parameters are the same.
+#' 
+#' The [`create_backup`][fsx_create_backup] operation returns while the
+#' backup's lifecycle state is still `CREATING`. You can check the backup
+#' creation status by calling the
+#' [`describe_backups`][fsx_describe_backups] operation, which returns the
+#' backup state along with other information.
+#'
+#' @usage
+#' fsx_create_backup(FileSystemId, ClientRequestToken, Tags)
+#'
+#' @param FileSystemId &#91;required&#93; The ID of the file system to back up.
+#' @param ClientRequestToken (Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
+#' ensure idempotent creation. This string is automatically filled on your
+#' behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
+#' SDK.
+#' @param Tags (Optional) The tags to apply to the backup at backup creation. The key
+#' value of the `Name` tag appears in the console as the backup name. If
+#' you have set `CopyTagsToBackups` to true, and you specify one or more
+#' tags using the [`create_backup`][fsx_create_backup] action, no existing
+#' file system tags are copied from the file system to the backup.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Backup = list(
+#'     BackupId = "string",
+#'     Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"|"COPYING",
+#'     FailureDetails = list(
+#'       Message = "string"
+#'     ),
+#'     Type = "AUTOMATIC"|"USER_INITIATED"|"AWS_BACKUP",
+#'     ProgressPercent = 123,
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     KmsKeyId = "string",
+#'     ResourceARN = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     FileSystem = list(
+#'       OwnerId = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FileSystemId = "string",
+#'       FileSystemType = "WINDOWS"|"LUSTRE",
+#'       Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
+#'       FailureDetails = list(
+#'         Message = "string"
+#'       ),
+#'       StorageCapacity = 123,
+#'       StorageType = "SSD"|"HDD",
+#'       VpcId = "string",
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       NetworkInterfaceIds = list(
+#'         "string"
+#'       ),
+#'       DNSName = "string",
+#'       KmsKeyId = "string",
+#'       ResourceARN = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       WindowsConfiguration = list(
+#'         ActiveDirectoryId = "string",
+#'         SelfManagedActiveDirectoryConfiguration = list(
+#'           DomainName = "string",
+#'           OrganizationalUnitDistinguishedName = "string",
+#'           FileSystemAdministratorsGroup = "string",
+#'           UserName = "string",
+#'           DnsIps = list(
+#'             "string"
+#'           )
+#'         ),
+#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'         RemoteAdministrationEndpoint = "string",
+#'         PreferredSubnetId = "string",
+#'         PreferredFileServerIp = "string",
+#'         ThroughputCapacity = 123,
+#'         MaintenanceOperationsInProgress = list(
+#'           "PATCHING"|"BACKING_UP"
+#'         ),
+#'         WeeklyMaintenanceStartTime = "string",
+#'         DailyAutomaticBackupStartTime = "string",
+#'         AutomaticBackupRetentionDays = 123,
+#'         CopyTagsToBackups = TRUE|FALSE,
+#'         Aliases = list(
+#'           list(
+#'             Name = "string",
+#'             Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'           )
+#'         )
+#'       ),
+#'       LustreConfiguration = list(
+#'         WeeklyMaintenanceStartTime = "string",
+#'         DataRepositoryConfiguration = list(
+#'           Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
+#'           ImportPath = "string",
+#'           ExportPath = "string",
+#'           ImportedFileChunkSize = 123,
+#'           AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           )
+#'         ),
+#'         DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+#'         PerUnitStorageThroughput = 123,
+#'         MountName = "string",
+#'         DailyAutomaticBackupStartTime = "string",
+#'         AutomaticBackupRetentionDays = 123,
+#'         CopyTagsToBackups = TRUE|FALSE,
+#'         DriveCacheType = "NONE"|"READ"
+#'       ),
+#'       AdministrativeActions = list(
+#'         list(
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
+#'           ProgressPercent = 123,
+#'           RequestTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'           TargetFileSystemValues = list(),
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     DirectoryInformation = list(
+#'       DomainName = "string",
+#'       ActiveDirectoryId = "string",
+#'       ResourceARN = "string"
+#'     ),
+#'     OwnerId = "string",
+#'     SourceBackupId = "string",
+#'     SourceBackupRegion = "string"
 #'   )
 #' )
 #' ```
@@ -603,7 +837,9 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' exactly two subnet IDs, one for the preferred file server and one for
 #' the standby file server. You specify one of these subnets as the
 #' preferred subnet using the `WindowsConfiguration > PreferredSubnetID`
-#' property.
+#' property. For more information, see [Availability and durability:
+#' Single-AZ and Multi-AZ file
+#' systems](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html).
 #' 
 #' For Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` file system deployment types
 #' and Lustre file systems, provide exactly one subnet ID. The file server
@@ -873,7 +1109,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' @usage
 #' fsx_create_file_system_from_backup(BackupId, ClientRequestToken,
 #'   SubnetIds, SecurityGroupIds, Tags, WindowsConfiguration,
-#'   LustreConfiguration, StorageType)
+#'   LustreConfiguration, StorageType, KmsKeyId)
 #'
 #' @param BackupId &#91;required&#93; 
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
@@ -915,6 +1151,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' HDD storage from a backup of a file system that used SSD storage only if
 #' the original SSD file system had a storage capacity of at least 2000
 #' GiB.
+#' @param KmsKeyId 
 #'
 #' @return
 #' A list with the following syntax:
@@ -1070,7 +1307,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     CopyTagsToBackups = TRUE|FALSE,
 #'     DriveCacheType = "NONE"|"READ"
 #'   ),
-#'   StorageType = "SSD"|"HDD"
+#'   StorageType = "SSD"|"HDD",
+#'   KmsKeyId = "string"
 #' )
 #' ```
 #'
@@ -1101,14 +1339,14 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' @keywords internal
 #'
 #' @rdname fsx_create_file_system_from_backup
-fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL) {
+fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL, KmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateFileSystemFromBackup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$create_file_system_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, StorageType = StorageType)
+  input <- .fsx$create_file_system_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, StorageType = StorageType, KmsKeyId = KmsKeyId)
   output <- .fsx$create_file_system_from_backup_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -1144,7 +1382,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #' ```
 #' list(
 #'   BackupId = "string",
-#'   Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"
+#'   Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"|"COPYING"
 #' )
 #' ```
 #'
@@ -1357,7 +1595,7 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #'   Backups = list(
 #'     list(
 #'       BackupId = "string",
-#'       Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
+#'       Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"|"COPYING",
 #'       FailureDetails = list(
 #'         Message = "string"
 #'       ),
@@ -1470,8 +1708,12 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #'       ),
 #'       DirectoryInformation = list(
 #'         DomainName = "string",
-#'         ActiveDirectoryId = "string"
-#'       )
+#'         ActiveDirectoryId = "string",
+#'         ResourceARN = "string"
+#'       ),
+#'       OwnerId = "string",
+#'       SourceBackupId = "string",
+#'       SourceBackupRegion = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"

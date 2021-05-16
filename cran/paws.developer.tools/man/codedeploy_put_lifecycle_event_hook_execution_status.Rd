@@ -15,7 +15,7 @@ validates a deployment lifecycle event.}
 lifecycle hook is specified in the \code{hooks} section of the AppSpec file.}
 
 \item{status}{The result of a Lambda function that validates a deployment lifecycle
-event (\code{Succeeded} or \code{Failed}).}
+event. \code{Succeeded} and \code{Failed} are the only valid values for \code{status}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

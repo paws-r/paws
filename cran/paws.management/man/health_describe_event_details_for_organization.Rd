@@ -3,7 +3,7 @@
 \name{health_describe_event_details_for_organization}
 \alias{health_describe_event_details_for_organization}
 \title{Returns detailed information about one or more specified events for one
-or more accounts in your organization}
+or more AWS accounts in your organization}
 \usage{
 health_describe_event_details_for_organization(
   organizationEventDetailFilters, locale)
@@ -60,38 +60,43 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Returns detailed information about one or more specified events for one
-or more accounts in your organization. Information includes standard
-event data (Region, service, and so on, as returned by
-\code{\link[=health_describe_events_for_organization]{describe_events_for_organization}}),
-a detailed event description, and possible additional metadata that
-depends upon the nature of the event. Affected entities are not
-included; to retrieve those, use the
+or more AWS accounts in your organization. This information includes
+standard event data (such as the AWS Region and service), an event
+description, and (depending on the event) possible metadata. This
+operation doesn't return affected entities, such as the resources
+related to the event. To return affected entities, use the
 \code{\link[=health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization}}
 operation.
 
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
 \code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
-operation from your organization's master account.
+operation from your organization's management account.
 
 When you call the
 \code{\link[=health_describe_event_details_for_organization]{describe_event_details_for_organization}}
-operation, you specify the \code{organizationEventDetailFilters} object in
-the request. Depending on the AWS Health event type, note the following
+operation, specify the \code{organizationEventDetailFilters} object in the
+request. Depending on the AWS Health event type, note the following
 differences:
 \itemize{
-\item If the event is public, the \code{awsAccountId} parameter must be empty.
-If you specify an account ID for a public event, then an error
-message is returned. That's because the event might apply to all AWS
-accounts and isn't specific to an account in your organization.
-\item If the event is specific to an account, then you must specify the
-\code{awsAccountId} parameter in the request. If you don't specify an
-account ID, an error message returns because the event is specific
-to an AWS account in your organization.
+\item To return event details for a public event, you must specify a null
+value for the \code{awsAccountId} parameter. If you specify an account ID
+for a public event, AWS Health returns an error message because
+public events aren't specific to an account.
+\item To return event details for an event that is specific to an account
+in your organization, you must specify the \code{awsAccountId} parameter
+in the request. If you don't specify an account ID, AWS Health
+returns an error message because the event is specific to an account
+in your organization.
 }
 
 For more information, see
 \href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
+
+This operation doesn't support resource-level permissions. You can't use
+this operation to allow or deny access to specific AWS Health events.
+For more information, see \href{https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions}{Resource- and action-based conditions}
+in the \emph{AWS Health User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_event_details_for_organization(

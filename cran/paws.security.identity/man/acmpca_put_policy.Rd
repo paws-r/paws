@@ -12,7 +12,7 @@ policy. The ARN of the CA can be found by calling the
 \code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}}
 action.}
 
-\item{Policy}{[required] The path and filename of a JSON-formatted IAM policy to attach to the
+\item{Policy}{[required] The path and file name of a JSON-formatted IAM policy to attach to the
 specified private CA resource. If this policy does not contain all
 required statements or if it includes any statement that is not allowed,
 the \code{\link[=acmpca_put_policy]{put_policy}} action returns an

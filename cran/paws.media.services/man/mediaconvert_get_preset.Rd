@@ -56,7 +56,9 @@ A list with the following syntax:\preformatted{list(
               BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
               CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
               Dialnorm = 123,
+              DynamicRangeCompressionLine = "FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH"|"NONE",
               DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+              DynamicRangeCompressionRf = "FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH"|"NONE",
               LfeFilter = "ENABLED"|"DISABLED",
               MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
               SampleRate = 123
@@ -186,11 +188,15 @@ A list with the following syntax:\preformatted{list(
               Alignment = "CENTERED"|"LEFT",
               BackgroundColor = "NONE"|"BLACK"|"WHITE",
               BackgroundOpacity = 123,
+              DdsHandling = "NONE"|"SPECIFIED"|"NO_DISPLAY_WINDOW",
+              DdsXCoordinate = 123,
+              DdsYCoordinate = 123,
               FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
               FontOpacity = 123,
               FontResolution = 123,
               FontScript = "AUTOMATIC"|"HANS"|"HANT",
               FontSize = 123,
+              Height = 123,
               OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
               OutlineSize = 123,
               ShadowColor = "NONE"|"BLACK"|"WHITE",
@@ -199,6 +205,7 @@ A list with the following syntax:\preformatted{list(
               ShadowYOffset = 123,
               SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
               TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+              Width = 123,
               XPosition = 123,
               YPosition = 123
             ),
@@ -220,6 +227,9 @@ A list with the following syntax:\preformatted{list(
             ),
             TtmlDestinationSettings = list(
               StylePassthrough = "ENABLED"|"DISABLED"
+            ),
+            WebvttDestinationSettings = list(
+              StylePassthrough = "ENABLED"|"DISABLED"
             )
           ),
           LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
@@ -229,6 +239,10 @@ A list with the following syntax:\preformatted{list(
       ContainerSettings = list(
         CmfcSettings = list(
           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+          AudioGroupId = "string",
+          AudioRenditionSets = "string",
+          AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT",
+          DescriptiveVideoServiceFlag = "DONT_FLAG"|"FLAG",
           IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
           Scte35Esam = "INSERT"|"NONE",
           Scte35Source = "PASSTHROUGH"|"NONE"
@@ -299,6 +313,7 @@ A list with the following syntax:\preformatted{list(
           AudioPids = list(
             123
           ),
+          MaxPcrInterval = 123,
           NielsenId3 = "INSERT"|"NONE",
           PatInterval = 123,
           PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",

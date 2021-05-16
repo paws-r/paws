@@ -20,7 +20,7 @@ SDKs, this field is calculated automatically.}
 
 \item{WebsiteConfiguration}{[required] Container for the request.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -34,7 +34,7 @@ subresource on the bucket with website configuration information such as
 the file name of the index document and any redirect rules. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
 
-This PUT operation requires the \code{S3:PutBucketWebsite} permission. By
+This PUT action requires the \code{S3:PutBucketWebsite} permission. By
 default, only the bucket owner can configure the website attached to a
 bucket; however, bucket owners can allow other users to set the website
 configuration by writing a bucket policy that grants them the
@@ -78,7 +78,7 @@ because some requests might not be redirected.
 Amazon S3 has a limitation of 50 routing rules per website
 configuration. If you require more than 50 routing rules, you can use
 object redirect. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html}{Configuring an Object Redirect}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_website(

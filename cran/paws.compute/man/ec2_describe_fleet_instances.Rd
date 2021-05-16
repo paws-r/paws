@@ -44,6 +44,9 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Describes the running instances for the specified EC2 Fleet.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html#monitor-ec2-fleet}{Monitoring your EC2 Fleet}
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_fleet_instances(

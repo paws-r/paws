@@ -5,7 +5,7 @@
 \title{Creates a new version of a model and begins training}
 \usage{
 rekognition_create_project_version(ProjectArn, VersionName,
-  OutputConfig, TrainingData, TestingData)
+  OutputConfig, TrainingData, TestingData, Tags)
 }
 \arguments{
 \item{ProjectArn}{[required] The ARN of the Amazon Rekognition Custom Labels project that manages the
@@ -18,6 +18,8 @@ model that you want to train.}
 \item{TrainingData}{[required] The dataset to use for training.}
 
 \item{TestingData}{[required] The dataset to use for testing.}
+
+\item{Tags}{A set of tags (key-value pairs) that you want to attach to the model.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -80,6 +82,9 @@ This operation requires permissions to perform the
       )
     ),
     AutoCreate = TRUE|FALSE
+  ),
+  Tags = list(
+    "string"
   )
 )
 }

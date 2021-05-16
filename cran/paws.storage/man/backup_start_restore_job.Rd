@@ -40,10 +40,10 @@ KMS.
 (idempotency) of the request.
 \item \code{newFileSystem}: A Boolean value that, if true, specifies that the
 recovery point is restored to a new Amazon EFS file system.
-\item \code{ItemsToRestore }: A serialized list of up to five strings where
-each string is a file path. Use \code{ItemsToRestore} to restore specific
-files or directories rather than the entire file system. This
-parameter is optional.
+\item \code{ItemsToRestore }: An array of one to five strings where each string
+is a file path. Use \code{ItemsToRestore} to restore specific files or
+directories rather than the entire file system. This parameter is
+optional. For example, \verb{"itemsToRestore":"[\\"/my.test\\"]"}.
 }}
 
 \item{IamRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that AWS Backup uses to
@@ -61,6 +61,7 @@ resources:
 \item \code{EC2} for Amazon Elastic Compute Cloud
 \item \code{EFS} for Amazon Elastic File System
 \item \code{RDS} for Amazon Relational Database Service
+\item \code{Aurora} for Amazon Aurora
 \item \verb{Storage Gateway} for AWS Storage Gateway
 }}
 }

@@ -29,7 +29,13 @@ Identity and Access Management (IAM) API action.}
 \item{Description}{The updated description of this job's JobMetadata object.}
 
 \item{SnowballCapacityPreference}{The updated \code{SnowballCapacityPreference} of this job's JobMetadata
-object. The 50 TB Snowballs are only available in the US regions.}
+object. The 50 TB Snowballs are only available in the US regions.
+
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide} or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide}.}
 
 \item{ForwardingAddressId}{The updated ID for the forwarding address for a job. This field is not
 supported in most regions.}
@@ -84,7 +90,7 @@ action is no longer available.
   AddressId = "string",
   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
   Description = "string",
-  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"T14"|"NoPreference",
   ForwardingAddressId = "string"
 )
 }

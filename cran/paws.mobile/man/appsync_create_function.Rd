@@ -5,7 +5,8 @@
 \title{Creates a Function object}
 \usage{
 appsync_create_function(apiId, name, description, dataSourceName,
-  requestMappingTemplate, responseMappingTemplate, functionVersion)
+  requestMappingTemplate, responseMappingTemplate, functionVersion,
+  syncConfig)
 }
 \arguments{
 \item{apiId}{[required] The GraphQL API ID.}
@@ -23,6 +24,8 @@ appsync_create_function(apiId, name, description, dataSourceName,
 
 \item{functionVersion}{[required] The \code{version} of the request mapping template. Currently the supported
 value is 2018-05-29.}
+
+\item{syncConfig}{}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -34,7 +37,14 @@ A list with the following syntax:\preformatted{list(
     dataSourceName = "string",
     requestMappingTemplate = "string",
     responseMappingTemplate = "string",
-    functionVersion = "string"
+    functionVersion = "string",
+    syncConfig = list(
+      conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+      conflictDetection = "VERSION"|"NONE",
+      lambdaConflictHandlerConfig = list(
+        lambdaConflictHandlerArn = "string"
+      )
+    )
   )
 )
 }
@@ -53,7 +63,14 @@ compose the resolver logic.
   dataSourceName = "string",
   requestMappingTemplate = "string",
   responseMappingTemplate = "string",
-  functionVersion = "string"
+  functionVersion = "string",
+  syncConfig = list(
+    conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+    conflictDetection = "VERSION"|"NONE",
+    lambdaConflictHandlerConfig = list(
+      lambdaConflictHandlerArn = "string"
+    )
+  )
 )
 }
 }

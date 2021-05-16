@@ -57,10 +57,10 @@ mwaa_create_cli_token <- function(Name) {
 #' @usage
 #' mwaa_create_environment(AirflowConfigurationOptions, AirflowVersion,
 #'   DagS3Path, EnvironmentClass, ExecutionRoleArn, KmsKey,
-#'   LoggingConfiguration, MaxWorkers, Name, NetworkConfiguration,
-#'   PluginsS3ObjectVersion, PluginsS3Path, RequirementsS3ObjectVersion,
-#'   RequirementsS3Path, SourceBucketArn, Tags, WebserverAccessMode,
-#'   WeeklyMaintenanceWindowStart)
+#'   LoggingConfiguration, MaxWorkers, MinWorkers, Name,
+#'   NetworkConfiguration, PluginsS3ObjectVersion, PluginsS3Path,
+#'   RequirementsS3ObjectVersion, RequirementsS3Path, SourceBucketArn, Tags,
+#'   WebserverAccessMode, WeeklyMaintenanceWindowStart)
 #'
 #' @param AirflowConfigurationOptions The Apache Airflow configuration setting you want to override in your
 #' environment. For more information, see [Environment
@@ -92,6 +92,12 @@ mwaa_create_cli_token <- function(Name) {
 #' field. When there are no more tasks running, and no more in the queue,
 #' MWAA disposes of the extra containers leaving the one worker that is
 #' included with your environment.
+#' @param MinWorkers The minimum number of workers that you want to run in your environment.
+#' MWAA scales the number of Apache Airflow workers and the Fargate
+#' containers that run your tasks up to the number you specify in the
+#' `MaxWorkers` field. When there are no more tasks running, and no more in
+#' the queue, MWAA disposes of the extra containers leaving the worker
+#' count you specify in the `MinWorkers` field.
 #' @param Name &#91;required&#93; The name of your MWAA environment.
 #' @param NetworkConfiguration &#91;required&#93; The VPC networking components you want to use for your environment. At
 #' least two private subnet identifiers and one VPC security group
@@ -166,6 +172,7 @@ mwaa_create_cli_token <- function(Name) {
 #'     )
 #'   ),
 #'   MaxWorkers = 123,
+#'   MinWorkers = 123,
 #'   Name = "string",
 #'   NetworkConfiguration = list(
 #'     SecurityGroupIds = list(
@@ -191,14 +198,14 @@ mwaa_create_cli_token <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname mwaa_create_environment
-mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path, EnvironmentClass = NULL, ExecutionRoleArn, KmsKey = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, Name, NetworkConfiguration, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, SourceBucketArn, Tags = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
+mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path, EnvironmentClass = NULL, ExecutionRoleArn, KmsKey = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, MinWorkers = NULL, Name, NetworkConfiguration, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, SourceBucketArn, Tags = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
   op <- new_operation(
     name = "CreateEnvironment",
     http_method = "PUT",
     http_path = "/environments/{Name}",
     paginator = list()
   )
-  input <- .mwaa$create_environment_input(AirflowConfigurationOptions = AirflowConfigurationOptions, AirflowVersion = AirflowVersion, DagS3Path = DagS3Path, EnvironmentClass = EnvironmentClass, ExecutionRoleArn = ExecutionRoleArn, KmsKey = KmsKey, LoggingConfiguration = LoggingConfiguration, MaxWorkers = MaxWorkers, Name = Name, NetworkConfiguration = NetworkConfiguration, PluginsS3ObjectVersion = PluginsS3ObjectVersion, PluginsS3Path = PluginsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, SourceBucketArn = SourceBucketArn, Tags = Tags, WebserverAccessMode = WebserverAccessMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
+  input <- .mwaa$create_environment_input(AirflowConfigurationOptions = AirflowConfigurationOptions, AirflowVersion = AirflowVersion, DagS3Path = DagS3Path, EnvironmentClass = EnvironmentClass, ExecutionRoleArn = ExecutionRoleArn, KmsKey = KmsKey, LoggingConfiguration = LoggingConfiguration, MaxWorkers = MaxWorkers, MinWorkers = MinWorkers, Name = Name, NetworkConfiguration = NetworkConfiguration, PluginsS3ObjectVersion = PluginsS3ObjectVersion, PluginsS3Path = PluginsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, SourceBucketArn = SourceBucketArn, Tags = Tags, WebserverAccessMode = WebserverAccessMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
   output <- .mwaa$create_environment_output()
   config <- get_config()
   svc <- .mwaa$service(config)
@@ -361,6 +368,7 @@ mwaa_delete_environment <- function(Name) {
 #'       )
 #'     ),
 #'     MaxWorkers = 123,
+#'     MinWorkers = 123,
 #'     Name = "string",
 #'     NetworkConfiguration = list(
 #'       SecurityGroupIds = list(
@@ -376,7 +384,7 @@ mwaa_delete_environment <- function(Name) {
 #'     RequirementsS3Path = "string",
 #'     ServiceRoleArn = "string",
 #'     SourceBucketArn = "string",
-#'     Status = "CREATING"|"CREATE_FAILED"|"AVAILABLE"|"UPDATING"|"DELETING"|"DELETED",
+#'     Status = "CREATING"|"CREATE_FAILED"|"AVAILABLE"|"UPDATING"|"DELETING"|"DELETED"|"UNAVAILABLE"|"UPDATE_FAILED",
 #'     Tags = list(
 #'       "string"
 #'     ),
@@ -671,9 +679,10 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' @usage
 #' mwaa_update_environment(AirflowConfigurationOptions, AirflowVersion,
 #'   DagS3Path, EnvironmentClass, ExecutionRoleArn, LoggingConfiguration,
-#'   MaxWorkers, Name, NetworkConfiguration, PluginsS3ObjectVersion,
-#'   PluginsS3Path, RequirementsS3ObjectVersion, RequirementsS3Path,
-#'   SourceBucketArn, WebserverAccessMode, WeeklyMaintenanceWindowStart)
+#'   MaxWorkers, MinWorkers, Name, NetworkConfiguration,
+#'   PluginsS3ObjectVersion, PluginsS3Path, RequirementsS3ObjectVersion,
+#'   RequirementsS3Path, SourceBucketArn, WebserverAccessMode,
+#'   WeeklyMaintenanceWindowStart)
 #'
 #' @param AirflowConfigurationOptions The Airflow Configuration Options to update of your Amazon MWAA
 #' environment.
@@ -682,7 +691,8 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' @param EnvironmentClass The Environment Class to update of your Amazon MWAA environment.
 #' @param ExecutionRoleArn The Executio Role ARN to update of your Amazon MWAA environment.
 #' @param LoggingConfiguration The Logging Configuration to update of your Amazon MWAA environment.
-#' @param MaxWorkers The Maximum Workers to update of your Amazon MWAA environment.
+#' @param MaxWorkers The maximum number of workers to update of your Amazon MWAA environment.
+#' @param MinWorkers The minimum number of workers to update of your Amazon MWAA environment.
 #' @param Name &#91;required&#93; The name of your Amazon MWAA environment that you wish to update.
 #' @param NetworkConfiguration The Network Configuration to update of your Amazon MWAA environment.
 #' @param PluginsS3ObjectVersion The Plugins.zip S3 Object Version to update of your Amazon MWAA
@@ -737,6 +747,7 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #'     )
 #'   ),
 #'   MaxWorkers = 123,
+#'   MinWorkers = 123,
 #'   Name = "string",
 #'   NetworkConfiguration = list(
 #'     SecurityGroupIds = list(
@@ -756,14 +767,14 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname mwaa_update_environment
-mwaa_update_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path = NULL, EnvironmentClass = NULL, ExecutionRoleArn = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, Name, NetworkConfiguration = NULL, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, SourceBucketArn = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
+mwaa_update_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path = NULL, EnvironmentClass = NULL, ExecutionRoleArn = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, MinWorkers = NULL, Name, NetworkConfiguration = NULL, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, SourceBucketArn = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
     http_method = "PATCH",
     http_path = "/environments/{Name}",
     paginator = list()
   )
-  input <- .mwaa$update_environment_input(AirflowConfigurationOptions = AirflowConfigurationOptions, AirflowVersion = AirflowVersion, DagS3Path = DagS3Path, EnvironmentClass = EnvironmentClass, ExecutionRoleArn = ExecutionRoleArn, LoggingConfiguration = LoggingConfiguration, MaxWorkers = MaxWorkers, Name = Name, NetworkConfiguration = NetworkConfiguration, PluginsS3ObjectVersion = PluginsS3ObjectVersion, PluginsS3Path = PluginsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, SourceBucketArn = SourceBucketArn, WebserverAccessMode = WebserverAccessMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
+  input <- .mwaa$update_environment_input(AirflowConfigurationOptions = AirflowConfigurationOptions, AirflowVersion = AirflowVersion, DagS3Path = DagS3Path, EnvironmentClass = EnvironmentClass, ExecutionRoleArn = ExecutionRoleArn, LoggingConfiguration = LoggingConfiguration, MaxWorkers = MaxWorkers, MinWorkers = MinWorkers, Name = Name, NetworkConfiguration = NetworkConfiguration, PluginsS3ObjectVersion = PluginsS3ObjectVersion, PluginsS3Path = PluginsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, SourceBucketArn = SourceBucketArn, WebserverAccessMode = WebserverAccessMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
   output <- .mwaa$update_environment_output()
   config <- get_config()
   svc <- .mwaa$service(config)

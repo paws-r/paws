@@ -9,7 +9,11 @@ ssm_start_automation_execution(DocumentName, DocumentVersion,
   MaxConcurrency, MaxErrors, TargetLocations, Tags)
 }
 \arguments{
-\item{DocumentName}{[required] The name of the Automation document to use for this execution.}
+\item{DocumentName}{[required] The name of the Systems Manager document to run. This can be a public
+document or a custom document. To run a shared document belonging to
+another account, specify the document ARN. For more information about
+how to use shared documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html}{Using shared SSM documents}
+in the \emph{AWS Systems Manager User Guide}.}
 
 \item{DocumentVersion}{The version of the Automation document to use for this execution.}
 

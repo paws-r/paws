@@ -78,6 +78,12 @@ A list with the following syntax:\preformatted{list(
       ),
       UpdateDate = as.POSIXct(
         "2015-01-01"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
       )
     )
   ),
@@ -99,8 +105,14 @@ to \code{Local}. To list only AWS managed policies, set \code{Scope} to \code{AW
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 
-For more information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed policies and inline policies}
 in the \emph{IAM User Guide}.
+
+IAM resource-listing operations return a subset of the available
+attributes for the resource. For example, this operation does not return
+tags, even though they are an attribute of the returned object. To view
+all of the information for a customer manged policy, see
+\code{\link[=iam_get_policy]{get_policy}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_policies(

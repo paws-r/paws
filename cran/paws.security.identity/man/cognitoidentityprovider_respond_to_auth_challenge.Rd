@@ -43,6 +43,10 @@ required attributes.
 \code{SECRET_HASH}).
 \item \code{DEVICE_PASSWORD_VERIFIER} requires everything that
 \code{PASSWORD_VERIFIER} requires plus \code{DEVICE_KEY}.
+\item \code{MFA_SETUP} requires \code{USERNAME}, plus you need to use the session
+value returned by
+\code{\link[=cognitoidentityprovider_verify_software_token]{verify_software_token}}
+in the \code{Session} parameter.
 }}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for

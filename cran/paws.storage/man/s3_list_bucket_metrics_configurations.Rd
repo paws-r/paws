@@ -16,7 +16,7 @@ has been truncated. Use the NextContinuationToken from a previously
 truncated list response to continue the listing. The continuation token
 is an opaque value that Amazon S3 understands.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -55,11 +55,11 @@ configurations are only for the request metrics of the bucket and do not
 provide information on daily storage metrics. You can have up to 1,000
 configurations per bucket.
 
-This operation supports list pagination and does not return more than
-100 configurations at a time. Always check the \code{IsTruncated} element in
-the response. If there are no more configurations to list, \code{IsTruncated}
-is set to false. If there are more configurations to list, \code{IsTruncated}
-is set to true, and there is a value in \code{NextContinuationToken}. You use
+This action supports list pagination and does not return more than 100
+configurations at a time. Always check the \code{IsTruncated} element in the
+response. If there are no more configurations to list, \code{IsTruncated} is
+set to false. If there are more configurations to list, \code{IsTruncated} is
+set to true, and there is a value in \code{NextContinuationToken}. You use
 the \code{NextContinuationToken} value to continue the pagination of the list
 by passing the value in \code{continuation-token} in the request to \code{GET} the
 next page.

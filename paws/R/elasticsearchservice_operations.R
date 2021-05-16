@@ -254,7 +254,8 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'   ElasticsearchVersion, ElasticsearchClusterConfig, EBSOptions,
 #'   AccessPolicies, SnapshotOptions, VPCOptions, CognitoOptions,
 #'   EncryptionAtRestOptions, NodeToNodeEncryptionOptions, AdvancedOptions,
-#'   LogPublishingOptions, DomainEndpointOptions, AdvancedSecurityOptions)
+#'   LogPublishingOptions, DomainEndpointOptions, AdvancedSecurityOptions,
+#'   AutoTuneOptions, TagList)
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are creating. Domain names
 #' are unique across the domains owned by an account within an AWS region.
@@ -291,6 +292,8 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' @param DomainEndpointOptions Options to specify configuration that will be applied to the domain
 #' endpoint.
 #' @param AdvancedSecurityOptions Specifies advanced security options.
+#' @param AutoTuneOptions Specifies Auto-Tune options.
+#' @param TagList A list of `Tag` added during domain creation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -321,7 +324,10 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'       DedicatedMasterCount = 123,
 #'       WarmEnabled = TRUE|FALSE,
 #'       WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'       WarmCount = 123
+#'       WarmCount = 123,
+#'       ColdStorageOptions = list(
+#'         Enabled = TRUE|FALSE
+#'       )
 #'     ),
 #'     EBSOptions = list(
 #'       EBSEnabled = TRUE|FALSE,
@@ -399,6 +405,10 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'         RolesKey = "string",
 #'         SessionTimeoutMinutes = 123
 #'       )
+#'     ),
+#'     AutoTuneOptions = list(
+#'       State = "ENABLED"|"DISABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_SCHEDULED"|"DISABLED_AND_ROLLBACK_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_COMPLETE"|"DISABLED_AND_ROLLBACK_ERROR"|"ERROR",
+#'       ErrorMessage = "string"
 #'     )
 #'   )
 #' )
@@ -421,7 +431,10 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'     DedicatedMasterCount = 123,
 #'     WarmEnabled = TRUE|FALSE,
 #'     WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'     WarmCount = 123
+#'     WarmCount = 123,
+#'     ColdStorageOptions = list(
+#'       Enabled = TRUE|FALSE
+#'     )
 #'   ),
 #'   EBSOptions = list(
 #'     EBSEnabled = TRUE|FALSE,
@@ -490,6 +503,27 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'       RolesKey = "string",
 #'       SessionTimeoutMinutes = 123
 #'     )
+#'   ),
+#'   AutoTuneOptions = list(
+#'     DesiredState = "ENABLED"|"DISABLED",
+#'     MaintenanceSchedules = list(
+#'       list(
+#'         StartAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Duration = list(
+#'           Value = 123,
+#'           Unit = "HOURS"
+#'         ),
+#'         CronExpressionForRecurrence = "string"
+#'       )
+#'     )
+#'   ),
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -497,14 +531,14 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_create_elasticsearch_domain
-elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL) {
+elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, TagList = NULL) {
   op <- new_operation(
     name = "CreateElasticsearchDomain",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain",
     paginator = list()
   )
-  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions)
+  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, TagList = TagList)
   output <- .elasticsearchservice$create_elasticsearch_domain_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config)
@@ -705,7 +739,10 @@ elasticsearchservice_create_package <- function(PackageName, PackageType, Packag
 #'       DedicatedMasterCount = 123,
 #'       WarmEnabled = TRUE|FALSE,
 #'       WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'       WarmCount = 123
+#'       WarmCount = 123,
+#'       ColdStorageOptions = list(
+#'         Enabled = TRUE|FALSE
+#'       )
 #'     ),
 #'     EBSOptions = list(
 #'       EBSEnabled = TRUE|FALSE,
@@ -783,6 +820,10 @@ elasticsearchservice_create_package <- function(PackageName, PackageType, Packag
 #'         RolesKey = "string",
 #'         SessionTimeoutMinutes = 123
 #'       )
+#'     ),
+#'     AutoTuneOptions = list(
+#'       State = "ENABLED"|"DISABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_SCHEDULED"|"DISABLED_AND_ROLLBACK_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_COMPLETE"|"DISABLED_AND_ROLLBACK_ERROR"|"ERROR",
+#'       ErrorMessage = "string"
 #'     )
 #'   )
 #' )
@@ -1049,6 +1090,77 @@ elasticsearchservice_delete_package <- function(PackageID) {
 }
 .elasticsearchservice$operations$delete_package <- elasticsearchservice_delete_package
 
+#' Provides scheduled Auto-Tune action details for the Elasticsearch
+#' domain, such as Auto-Tune action type, description, severity, and
+#' scheduled date
+#'
+#' @description
+#' Provides scheduled Auto-Tune action details for the Elasticsearch
+#' domain, such as Auto-Tune action type, description, severity, and
+#' scheduled date.
+#'
+#' @usage
+#' elasticsearchservice_describe_domain_auto_tunes(DomainName, MaxResults,
+#'   NextToken)
+#'
+#' @param DomainName &#91;required&#93; Specifies the domain name for which you want Auto-Tune action details.
+#' @param MaxResults Set this value to limit the number of results returned. If not
+#' specified, defaults to 100.
+#' @param NextToken NextToken is sent in case the earlier API call results contain the
+#' NextToken. It is used for pagination.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoTunes = list(
+#'     list(
+#'       AutoTuneType = "SCHEDULED_ACTION",
+#'       AutoTuneDetails = list(
+#'         ScheduledAutoTuneDetails = list(
+#'           Date = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ActionType = "JVM_HEAP_SIZE_TUNING"|"JVM_YOUNG_GEN_TUNING",
+#'           Action = "string",
+#'           Severity = "LOW"|"MEDIUM"|"HIGH"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_domain_auto_tunes(
+#'   DomainName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_describe_domain_auto_tunes
+elasticsearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeDomainAutoTunes",
+    http_method = "GET",
+    http_path = "/2015-01-01/es/domain/{DomainName}/autoTunes",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$describe_domain_auto_tunes_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .elasticsearchservice$describe_domain_auto_tunes_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$describe_domain_auto_tunes <- elasticsearchservice_describe_domain_auto_tunes
+
 #' Returns domain configuration information about the specified
 #' Elasticsearch domain, including the domain ID, domain endpoint, and
 #' domain ARN
@@ -1092,7 +1204,10 @@ elasticsearchservice_delete_package <- function(PackageID) {
 #'       DedicatedMasterCount = 123,
 #'       WarmEnabled = TRUE|FALSE,
 #'       WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'       WarmCount = 123
+#'       WarmCount = 123,
+#'       ColdStorageOptions = list(
+#'         Enabled = TRUE|FALSE
+#'       )
 #'     ),
 #'     EBSOptions = list(
 #'       EBSEnabled = TRUE|FALSE,
@@ -1170,6 +1285,10 @@ elasticsearchservice_delete_package <- function(PackageID) {
 #'         RolesKey = "string",
 #'         SessionTimeoutMinutes = 123
 #'       )
+#'     ),
+#'     AutoTuneOptions = list(
+#'       State = "ENABLED"|"DISABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_SCHEDULED"|"DISABLED_AND_ROLLBACK_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_COMPLETE"|"DISABLED_AND_ROLLBACK_ERROR"|"ERROR",
+#'       ErrorMessage = "string"
 #'     )
 #'   )
 #' )
@@ -1248,7 +1367,10 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #'         DedicatedMasterCount = 123,
 #'         WarmEnabled = TRUE|FALSE,
 #'         WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'         WarmCount = 123
+#'         WarmCount = 123,
+#'         ColdStorageOptions = list(
+#'           Enabled = TRUE|FALSE
+#'         )
 #'       ),
 #'       Status = list(
 #'         CreationDate = as.POSIXct(
@@ -1469,6 +1591,36 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #'         State = "RequiresIndexDocuments"|"Processing"|"Active",
 #'         PendingDeletion = TRUE|FALSE
 #'       )
+#'     ),
+#'     AutoTuneOptions = list(
+#'       Options = list(
+#'         DesiredState = "ENABLED"|"DISABLED",
+#'         RollbackOnDisable = "NO_ROLLBACK"|"DEFAULT_ROLLBACK",
+#'         MaintenanceSchedules = list(
+#'           list(
+#'             StartAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Duration = list(
+#'               Value = 123,
+#'               Unit = "HOURS"
+#'             ),
+#'             CronExpressionForRecurrence = "string"
+#'           )
+#'         )
+#'       ),
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "ENABLED"|"DISABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_SCHEDULED"|"DISABLED_AND_ROLLBACK_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_COMPLETE"|"DISABLED_AND_ROLLBACK_ERROR"|"ERROR",
+#'         ErrorMessage = "string",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
 #'     )
 #'   )
 #' )
@@ -1545,7 +1697,10 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #'         DedicatedMasterCount = 123,
 #'         WarmEnabled = TRUE|FALSE,
 #'         WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'         WarmCount = 123
+#'         WarmCount = 123,
+#'         ColdStorageOptions = list(
+#'           Enabled = TRUE|FALSE
+#'         )
 #'       ),
 #'       EBSOptions = list(
 #'         EBSEnabled = TRUE|FALSE,
@@ -1623,6 +1778,10 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #'           RolesKey = "string",
 #'           SessionTimeoutMinutes = 123
 #'         )
+#'       ),
+#'       AutoTuneOptions = list(
+#'         State = "ENABLED"|"DISABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_SCHEDULED"|"DISABLED_AND_ROLLBACK_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_COMPLETE"|"DISABLED_AND_ROLLBACK_ERROR"|"ERROR",
+#'         ErrorMessage = "string"
 #'       )
 #'     )
 #'   )
@@ -3036,7 +3195,8 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' elasticsearchservice_update_elasticsearch_domain_config(DomainName,
 #'   ElasticsearchClusterConfig, EBSOptions, SnapshotOptions, VPCOptions,
 #'   CognitoOptions, AdvancedOptions, AccessPolicies, LogPublishingOptions,
-#'   DomainEndpointOptions, AdvancedSecurityOptions)
+#'   DomainEndpointOptions, AdvancedSecurityOptions,
+#'   NodeToNodeEncryptionOptions, EncryptionAtRestOptions, AutoTuneOptions)
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are updating.
 #' @param ElasticsearchClusterConfig The type and number of instances to instantiate for the domain cluster.
@@ -3063,6 +3223,9 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' @param DomainEndpointOptions Options to specify configuration that will be applied to the domain
 #' endpoint.
 #' @param AdvancedSecurityOptions Specifies advanced security options.
+#' @param NodeToNodeEncryptionOptions Specifies the NodeToNodeEncryptionOptions.
+#' @param EncryptionAtRestOptions Specifies the Encryption At Rest Options.
+#' @param AutoTuneOptions Specifies Auto-Tune options.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3096,7 +3259,10 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'         DedicatedMasterCount = 123,
 #'         WarmEnabled = TRUE|FALSE,
 #'         WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'         WarmCount = 123
+#'         WarmCount = 123,
+#'         ColdStorageOptions = list(
+#'           Enabled = TRUE|FALSE
+#'         )
 #'       ),
 #'       Status = list(
 #'         CreationDate = as.POSIXct(
@@ -3317,6 +3483,36 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'         State = "RequiresIndexDocuments"|"Processing"|"Active",
 #'         PendingDeletion = TRUE|FALSE
 #'       )
+#'     ),
+#'     AutoTuneOptions = list(
+#'       Options = list(
+#'         DesiredState = "ENABLED"|"DISABLED",
+#'         RollbackOnDisable = "NO_ROLLBACK"|"DEFAULT_ROLLBACK",
+#'         MaintenanceSchedules = list(
+#'           list(
+#'             StartAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Duration = list(
+#'               Value = 123,
+#'               Unit = "HOURS"
+#'             ),
+#'             CronExpressionForRecurrence = "string"
+#'           )
+#'         )
+#'       ),
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "ENABLED"|"DISABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_SCHEDULED"|"DISABLED_AND_ROLLBACK_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_COMPLETE"|"DISABLED_AND_ROLLBACK_ERROR"|"ERROR",
+#'         ErrorMessage = "string",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
 #'     )
 #'   )
 #' )
@@ -3338,7 +3534,10 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'     DedicatedMasterCount = 123,
 #'     WarmEnabled = TRUE|FALSE,
 #'     WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'     WarmCount = 123
+#'     WarmCount = 123,
+#'     ColdStorageOptions = list(
+#'       Enabled = TRUE|FALSE
+#'     )
 #'   ),
 #'   EBSOptions = list(
 #'     EBSEnabled = TRUE|FALSE,
@@ -3400,6 +3599,29 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'       RolesKey = "string",
 #'       SessionTimeoutMinutes = 123
 #'     )
+#'   ),
+#'   NodeToNodeEncryptionOptions = list(
+#'     Enabled = TRUE|FALSE
+#'   ),
+#'   EncryptionAtRestOptions = list(
+#'     Enabled = TRUE|FALSE,
+#'     KmsKeyId = "string"
+#'   ),
+#'   AutoTuneOptions = list(
+#'     DesiredState = "ENABLED"|"DISABLED",
+#'     RollbackOnDisable = "NO_ROLLBACK"|"DEFAULT_ROLLBACK",
+#'     MaintenanceSchedules = list(
+#'       list(
+#'         StartAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Duration = list(
+#'           Value = 123,
+#'           Unit = "HOURS"
+#'         ),
+#'         CronExpressionForRecurrence = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3407,14 +3629,14 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_update_elasticsearch_domain_config
-elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL) {
+elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, NodeToNodeEncryptionOptions = NULL, EncryptionAtRestOptions = NULL, AutoTuneOptions = NULL) {
   op <- new_operation(
     name = "UpdateElasticsearchDomainConfig",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain/{DomainName}/config",
     paginator = list()
   )
-  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions)
+  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, AutoTuneOptions = AutoTuneOptions)
   output <- .elasticsearchservice$update_elasticsearch_domain_config_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config)

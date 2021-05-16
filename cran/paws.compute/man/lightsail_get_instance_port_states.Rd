@@ -22,6 +22,9 @@ A list with the following syntax:\preformatted{list(
       cidrs = list(
         "string"
       ),
+      ipv6Cidrs = list(
+        "string"
+      ),
       cidrListAliases = list(
         "string"
       )

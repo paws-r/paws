@@ -258,7 +258,7 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #' @param IpAddresses Optionally, if you've added your own IP address pool to Global
 #' Accelerator (BYOIP), you can choose IP addresses from your own pool to
 #' use for the accelerator's static IP addresses when you create an
-#' accelerator. You can specify one or two addresses, separated by a comma.
+#' accelerator. You can specify one or two addresses, separated by a space.
 #' Do not include the /32 suffix.
 #' 
 #' Only one IP address from each of your IP address ranges can be used for
@@ -367,15 +367,36 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' traffic, see the
 #' [AllowCustomRoutingTraffic](https://docs.aws.amazon.com/global-accelerator/latest/api/API_AllowCustomRoutingTraffic.html)
 #' operation.
+#' 
+#' Global Accelerator is a global service that supports endpoints in
+#' multiple AWS Regions but you must specify the US West (Oregon) Region to
+#' create or update accelerators.
 #'
 #' @usage
 #' globalaccelerator_create_custom_routing_accelerator(Name, IpAddressType,
-#'   Enabled, IdempotencyToken, Tags)
+#'   IpAddresses, Enabled, IdempotencyToken, Tags)
 #'
 #' @param Name &#91;required&#93; The name of a custom routing accelerator. The name can have a maximum of
 #' 64 characters, must contain only alphanumeric characters or hyphens (-),
 #' and must not begin or end with a hyphen.
 #' @param IpAddressType The value for the address type must be IPv4.
+#' @param IpAddresses Optionally, if you've added your own IP address pool to Global
+#' Accelerator (BYOIP), you can choose IP addresses from your own pool to
+#' use for the accelerator's static IP addresses when you create an
+#' accelerator. You can specify one or two addresses, separated by a space.
+#' Do not include the /32 suffix.
+#' 
+#' Only one IP address from each of your IP address ranges can be used for
+#' each accelerator. If you specify only one IP address from your IP
+#' address range, Global Accelerator assigns a second static IP address for
+#' the accelerator from the AWS IP address pool.
+#' 
+#' Note that you can't update IP addresses for an existing accelerator. To
+#' change them, you must create a new accelerator with the new addresses.
+#' 
+#' For more information, see [Bring your own IP addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the *AWS Global Accelerator Developer Guide*.
 #' @param Enabled Indicates whether an accelerator is enabled. The value is true or false.
 #' The default value is true.
 #' 
@@ -423,6 +444,9 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' svc$create_custom_routing_accelerator(
 #'   Name = "string",
 #'   IpAddressType = "IPV4",
+#'   IpAddresses = list(
+#'     "string"
+#'   ),
 #'   Enabled = TRUE|FALSE,
 #'   IdempotencyToken = "string",
 #'   Tags = list(
@@ -437,14 +461,14 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_create_custom_routing_accelerator
-globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressType = NULL, Enabled = NULL, IdempotencyToken, Tags = NULL) {
+globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressType = NULL, IpAddresses = NULL, Enabled = NULL, IdempotencyToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateCustomRoutingAccelerator",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .globalaccelerator$create_custom_routing_accelerator_input(Name = Name, IpAddressType = IpAddressType, Enabled = Enabled, IdempotencyToken = IdempotencyToken, Tags = Tags)
+  input <- .globalaccelerator$create_custom_routing_accelerator_input(Name = Name, IpAddressType = IpAddressType, IpAddresses = IpAddresses, Enabled = Enabled, IdempotencyToken = IdempotencyToken, Tags = Tags)
   output <- .globalaccelerator$create_custom_routing_accelerator_output()
   config <- get_config()
   svc <- .globalaccelerator$service(config)

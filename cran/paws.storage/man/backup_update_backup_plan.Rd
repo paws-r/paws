@@ -64,7 +64,8 @@ identified by a \code{VersionId}.
             ),
             DestinationBackupVaultArn = "string"
           )
-        )
+        ),
+        EnableContinuousBackup = TRUE|FALSE
       )
     ),
     AdvancedBackupSettings = list(

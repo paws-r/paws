@@ -5,12 +5,14 @@
 \title{Start an input device transfer to another AWS account}
 \usage{
 medialive_transfer_input_device(InputDeviceId, TargetCustomerId,
-  TransferMessage)
+  TargetRegion, TransferMessage)
 }
 \arguments{
 \item{InputDeviceId}{[required] The unique ID of this input device. For example, hd-123456789abcdef.}
 
 \item{TargetCustomerId}{The AWS account ID (12 digits) for the recipient of the device transfer.}
+
+\item{TargetRegion}{The target AWS region to transfer the device.}
 
 \item{TransferMessage}{An optional message for the recipient. Maximum 280 characters.}
 }
@@ -25,6 +27,7 @@ the request, the other account must accept or reject the transfer.
 \preformatted{svc$transfer_input_device(
   InputDeviceId = "string",
   TargetCustomerId = "string",
+  TargetRegion = "string",
   TransferMessage = "string"
 )
 }

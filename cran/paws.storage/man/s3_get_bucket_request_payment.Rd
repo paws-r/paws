@@ -10,7 +10,7 @@ s3_get_bucket_request_payment(Bucket, ExpectedBucketOwner)
 \item{Bucket}{[required] The name of the bucket for which to get the payment request
 configuration}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }

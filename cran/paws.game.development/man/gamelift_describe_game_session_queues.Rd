@@ -36,7 +36,22 @@ A list with the following syntax:\preformatted{list(
         list(
           DestinationArn = "string"
         )
-      )
+      ),
+      FilterConfiguration = list(
+        AllowedLocations = list(
+          "string"
+        )
+      ),
+      PriorityConfiguration = list(
+        PriorityOrder = list(
+          "LATENCY"|"COST"|"DESTINATION"|"LOCATION"
+        ),
+        LocationOrder = list(
+          "string"
+        )
+      ),
+      CustomEventData = "string",
+      NotificationTarget = "string"
     )
   ),
   NextToken = "string"
@@ -55,13 +70,12 @@ Region.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-console.html}{View Your Queues}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}}
-\item \code{\link[=gamelift_describe_game_session_queues]{describe_game_session_queues}}
-\item \code{\link[=gamelift_update_game_session_queue]{update_game_session_queue}}
-\item \code{\link[=gamelift_delete_game_session_queue]{delete_game_session_queue}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}} |
+\code{\link[=gamelift_describe_game_session_queues]{describe_game_session_queues}}
+| \code{\link[=gamelift_update_game_session_queue]{update_game_session_queue}} |
+\code{\link[=gamelift_delete_game_session_queue]{delete_game_session_queue}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_game_session_queues(

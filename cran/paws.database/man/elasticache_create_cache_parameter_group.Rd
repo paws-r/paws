@@ -5,7 +5,7 @@
 \title{Creates a new Amazon ElastiCache cache parameter group}
 \usage{
 elasticache_create_cache_parameter_group(CacheParameterGroupName,
-  CacheParameterGroupFamily, Description)
+  CacheParameterGroupFamily, Description, Tags)
 }
 \arguments{
 \item{CacheParameterGroupName}{[required] A user-specified name for the cache parameter group.}
@@ -18,6 +18,9 @@ Valid values are: \code{memcached1.4} | \code{memcached1.5} | \code{memcached1.6
 \code{redis6.x} |}
 
 \item{Description}{[required] A user-specified description for the cache parameter group.}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -52,7 +55,13 @@ in the ElastiCache User Guide.
 \preformatted{svc$create_cache_parameter_group(
   CacheParameterGroupName = "string",
   CacheParameterGroupFamily = "string",
-  Description = "string"
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

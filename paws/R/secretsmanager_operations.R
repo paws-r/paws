@@ -215,7 +215,8 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'
 #' @usage
 #' secretsmanager_create_secret(Name, ClientRequestToken, Description,
-#'   KmsKeyId, SecretBinary, SecretString, Tags)
+#'   KmsKeyId, SecretBinary, SecretString, Tags, AddReplicaRegions,
+#'   ForceOverwriteReplicaSecret)
 #'
 #' @param Name &#91;required&#93; Specifies the friendly name of the new secret.
 #' 
@@ -253,7 +254,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' 
 #' -   If a version with this value already exists and that version's
 #'     `SecretString` and `SecretBinary` values are different from those in
-#'     the request then the request fails because you cannot modify an
+#'     the request, then the request fails because you cannot modify an
 #'     existing version. Instead, use
 #'     [`put_secret_value`][secretsmanager_put_secret_value] to create a
 #'     new version.
@@ -359,6 +360,11 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'     allowed characters. Generally allowed characters: letters, spaces,
 #'     and numbers representable in UTF-8, plus the following special
 #'     characters: + - = . _ : / @@.
+#' @param AddReplicaRegions (Optional) Add a list of regions to replicate secrets. Secrets Manager
+#' replicates the KMSKeyID objects to the list of regions specified in the
+#' parameter.
+#' @param ForceOverwriteReplicaSecret (Optional) If set, the replication overwrites a secret with the same
+#' name in the destination region.
 #'
 #' @return
 #' A list with the following syntax:
@@ -366,7 +372,18 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' list(
 #'   ARN = "string",
 #'   Name = "string",
-#'   VersionId = "string"
+#'   VersionId = "string",
+#'   ReplicationStatus = list(
+#'     list(
+#'       Region = "string",
+#'       KmsKeyId = "string",
+#'       Status = "InSync"|"Failed"|"InProgress",
+#'       StatusMessage = "string",
+#'       LastAccessedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -384,7 +401,14 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   AddReplicaRegions = list(
+#'     list(
+#'       Region = "string",
+#'       KmsKeyId = "string"
+#'     )
+#'   ),
+#'   ForceOverwriteReplicaSecret = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -404,14 +428,14 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' @keywords internal
 #'
 #' @rdname secretsmanager_create_secret
-secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL, Tags = NULL) {
+secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL, Tags = NULL, AddReplicaRegions = NULL, ForceOverwriteReplicaSecret = NULL) {
   op <- new_operation(
     name = "CreateSecret",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags)
+  input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
   output <- .secretsmanager$create_secret_output()
   config <- get_config()
   svc <- .secretsmanager$service(config)
@@ -437,9 +461,8 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' -   To attach a resource policy to a secret, use
 #'     [`put_resource_policy`][secretsmanager_put_resource_policy].
 #' 
-#' -   To retrieve the current resource-based policy that's attached to a
-#'     secret, use
-#'     [`get_resource_policy`][secretsmanager_get_resource_policy].
+#' -   To retrieve the current resource-based policy attached to a secret,
+#'     use [`get_resource_policy`][secretsmanager_get_resource_policy].
 #' 
 #' -   To list all of the currently available secrets, use
 #'     [`list_secrets`][secretsmanager_list_secrets].
@@ -515,10 +538,10 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 }
 .secretsmanager$operations$delete_resource_policy <- secretsmanager_delete_resource_policy
 
-#' Deletes an entire secret and all of its versions
+#' Deletes an entire secret and all of the versions
 #'
 #' @description
-#' Deletes an entire secret and all of its versions. You can optionally
+#' Deletes an entire secret and all of the versions. You can optionally
 #' include a recovery window during which you can restore the secret. If
 #' you don't specify a recovery window value, the operation defaults to 30
 #' days. Secrets Manager attaches a `DeletionDate` stamp to the secret that
@@ -529,7 +552,7 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' [`restore_secret`][secretsmanager_restore_secret] to remove the
 #' `DeletionDate` and cancel the deletion of the secret.
 #' 
-#' You cannot access the encrypted secret information in any secret that is
+#' You cannot access the encrypted secret information in any secret
 #' scheduled for deletion. If you need to access that information, you must
 #' cancel the deletion with
 #' [`restore_secret`][secretsmanager_restore_secret] and then retrieve the
@@ -538,8 +561,8 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' -   There is no explicit operation to delete a version of a secret.
 #'     Instead, remove all staging labels from the `VersionStage` field of
 #'     a version. That marks the version as deprecated and allows Secrets
-#'     Manager to delete it as needed. Versions that do not have any
-#'     staging labels do not show up in
+#'     Manager to delete it as needed. Versions without any staging labels
+#'     do not show up in
 #'     [`list_secret_version_ids`][secretsmanager_list_secret_version_ids]
 #'     unless you specify `IncludeDeprecated`.
 #' 
@@ -567,8 +590,8 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' secretsmanager_delete_secret(SecretId, RecoveryWindowInDays,
 #'   ForceDeleteWithoutRecovery)
 #'
-#' @param SecretId &#91;required&#93; Specifies the secret that you want to delete. You can specify either the
-#' Amazon Resource Name (ARN) or the friendly name of the secret.
+#' @param SecretId &#91;required&#93; Specifies the secret to delete. You can specify either the Amazon
+#' Resource Name (ARN) or the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
 #' complete ARN. You can specify a partial ARN too—for example, if you
@@ -589,10 +612,11 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
 #' @param RecoveryWindowInDays (Optional) Specifies the number of days that Secrets Manager waits
-#' before it can delete the secret. You can't use both this parameter and
-#' the `ForceDeleteWithoutRecovery` parameter in the same API call.
+#' before Secrets Manager can delete the secret. You can't use both this
+#' parameter and the `ForceDeleteWithoutRecovery` parameter in the same API
+#' call.
 #' 
-#' This value can range from 7 to 30 days. The default value is 30.
+#' This value can range from 7 to 30 days with a default value of 30.
 #' @param ForceDeleteWithoutRecovery (Optional) Specifies that the secret is to be deleted without any
 #' recovery window. You can't use both this parameter and the
 #' `RecoveryWindowInDays` parameter in the same API call.
@@ -607,7 +631,12 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' skip the normal waiting period before the permanent deletion that AWS
 #' would normally impose with the `RecoveryWindowInDays` parameter. If you
 #' delete a secret with the `ForceDeleteWithouRecovery` parameter, then you
-#' have no opportunity to recover the secret. It is permanently lost.
+#' have no opportunity to recover the secret. You lose the secret
+#' permanently.
+#' 
+#' If you use this parameter and include a previously deleted or
+#' nonexistent secret, the operation does not return the error
+#' `ResourceNotFoundException` in order to correctly handle retries.
 #'
 #' @return
 #' A list with the following syntax:
@@ -754,6 +783,18 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #'   OwningService = "string",
 #'   CreatedDate = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   PrimaryRegion = "string",
+#'   ReplicationStatus = list(
+#'     list(
+#'       Region = "string",
+#'       KmsKeyId = "string",
+#'       Status = "InSync"|"Failed"|"InProgress",
+#'       StatusMessage = "string",
+#'       LastAccessedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1051,10 +1092,11 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
 #' @param VersionId Specifies the unique identifier of the version of the secret that you
-#' want to retrieve. If you specify this parameter then don't specify
-#' `VersionStage`. If you don't specify either a `VersionStage` or
-#' `VersionId` then the default is to perform the operation on the version
-#' with the `VersionStage` value of `AWSCURRENT`.
+#' want to retrieve. If you specify both this parameter and `VersionStage`,
+#' the two parameters must refer to the same secret version. If you don't
+#' specify either a `VersionStage` or `VersionId` then the default is to
+#' perform the operation on the version with the `VersionStage` value of
+#' `AWSCURRENT`.
 #' 
 #' This value is typically a
 #' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
@@ -1063,10 +1105,11 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' label attached to the version.
 #' 
 #' Staging labels are used to keep track of different versions during the
-#' rotation process. If you use this parameter then don't specify
-#' `VersionId`. If you don't specify either a `VersionStage` or
-#' `VersionId`, then the default is to perform the operation on the version
-#' with the `VersionStage` value of `AWSCURRENT`.
+#' rotation process. If you specify both this parameter and `VersionId`,
+#' the two parameters must refer to the same secret version . If you don't
+#' specify either a `VersionStage` or `VersionId`, then the default is to
+#' perform the operation on the version with the `VersionStage` value of
+#' `AWSCURRENT`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1353,7 +1396,8 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #'       OwningService = "string",
 #'       CreatedDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       PrimaryRegion = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1367,7 +1411,7 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #'   NextToken = "string",
 #'   Filters = list(
 #'     list(
-#'       Key = "description"|"name"|"tag-key"|"tag-value"|"all",
+#'       Key = "description"|"name"|"tag-key"|"tag-value"|"primary-region"|"all",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -1433,7 +1477,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' -   To retrieve the resource policy attached to a secret, use
 #'     [`get_resource_policy`][secretsmanager_get_resource_policy].
 #' 
-#' -   To delete the resource-based policy that's attached to a secret, use
+#' -   To delete the resource-based policy attached to a secret, use
 #'     [`delete_resource_policy`][secretsmanager_delete_resource_policy].
 #' 
 #' -   To list all of the currently available secrets, use
@@ -1443,8 +1487,8 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' secretsmanager_put_resource_policy(SecretId, ResourcePolicy,
 #'   BlockPublicPolicy)
 #'
-#' @param SecretId &#91;required&#93; Specifies the secret that you want to attach the resource-based policy
-#' to. You can specify either the ARN or the friendly name of the secret.
+#' @param SecretId &#91;required&#93; Specifies the secret that you want to attach the resource-based policy.
+#' You can specify either the ARN or the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
 #' complete ARN. You can specify a partial ARN too—for example, if you
@@ -1464,15 +1508,15 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
-#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string that's constructed according to the grammar and
-#' syntax for an AWS resource-based policy. The policy in the string
-#' identifies who can access or manage this secret and its versions. For
-#' information on how to format a JSON parameter for the various command
-#' line tool environments, see [Using JSON for
+#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string constructed according to the grammar and syntax
+#' for an AWS resource-based policy. The policy in the string identifies
+#' who can access or manage this secret and its versions. For information
+#' on how to format a JSON parameter for the various command line tool
+#' environments, see [Using JSON for
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*.
-#' @param BlockPublicPolicy Makes an optional API call to Zelkova to validate the Resource Policy to
-#' prevent broad access to your secret.
+#' @param BlockPublicPolicy (Optional) If you set the parameter, `BlockPublicPolicy` to true, then
+#' you block resource-based policies that allow broad access to the secret.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1539,13 +1583,12 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #'     Secrets Manager automatically attaches the staging label
 #'     `AWSCURRENT` to the new version.
 #' 
-#' -   If another version of this secret already exists, then this
-#'     operation does not automatically move any staging labels other than
-#'     those that you explicitly specify in the `VersionStages` parameter.
+#' -   If you do not specify a value for VersionStages then Secrets Manager
+#'     automatically moves the staging label `AWSCURRENT` to this new
+#'     version.
 #' 
 #' -   If this operation moves the staging label `AWSCURRENT` from another
-#'     version to this version (because you included it in the
-#'     `StagingLabels` parameter) then Secrets Manager also automatically
+#'     version to this version, then Secrets Manager also automatically
 #'     moves the staging label `AWSPREVIOUS` to the version that
 #'     `AWSCURRENT` was removed from.
 #' 
@@ -1763,6 +1806,136 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
   return(response)
 }
 .secretsmanager$operations$put_secret_value <- secretsmanager_put_secret_value
+
+#' Remove regions from replication
+#'
+#' @description
+#' Remove regions from replication.
+#'
+#' @usage
+#' secretsmanager_remove_regions_from_replication(SecretId,
+#'   RemoveReplicaRegions)
+#'
+#' @param SecretId &#91;required&#93; Remove a secret by `SecretId` from replica Regions.
+#' @param RemoveReplicaRegions &#91;required&#93; Remove replication from specific Regions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   ReplicationStatus = list(
+#'     list(
+#'       Region = "string",
+#'       KmsKeyId = "string",
+#'       Status = "InSync"|"Failed"|"InProgress",
+#'       StatusMessage = "string",
+#'       LastAccessedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_regions_from_replication(
+#'   SecretId = "string",
+#'   RemoveReplicaRegions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname secretsmanager_remove_regions_from_replication
+secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveReplicaRegions) {
+  op <- new_operation(
+    name = "RemoveRegionsFromReplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .secretsmanager$remove_regions_from_replication_input(SecretId = SecretId, RemoveReplicaRegions = RemoveReplicaRegions)
+  output <- .secretsmanager$remove_regions_from_replication_output()
+  config <- get_config()
+  svc <- .secretsmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.secretsmanager$operations$remove_regions_from_replication <- secretsmanager_remove_regions_from_replication
+
+#' Converts an existing secret to a multi-Region secret and begins
+#' replication the secret to a list of new regions
+#'
+#' @description
+#' Converts an existing secret to a multi-Region secret and begins
+#' replication the secret to a list of new regions.
+#'
+#' @usage
+#' secretsmanager_replicate_secret_to_regions(SecretId, AddReplicaRegions,
+#'   ForceOverwriteReplicaSecret)
+#'
+#' @param SecretId &#91;required&#93; Use the `Secret Id` to replicate a secret to regions.
+#' @param AddReplicaRegions &#91;required&#93; Add Regions to replicate the secret.
+#' @param ForceOverwriteReplicaSecret (Optional) If set, Secrets Manager replication overwrites a secret with
+#' the same name in the destination region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   ReplicationStatus = list(
+#'     list(
+#'       Region = "string",
+#'       KmsKeyId = "string",
+#'       Status = "InSync"|"Failed"|"InProgress",
+#'       StatusMessage = "string",
+#'       LastAccessedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$replicate_secret_to_regions(
+#'   SecretId = "string",
+#'   AddReplicaRegions = list(
+#'     list(
+#'       Region = "string",
+#'       KmsKeyId = "string"
+#'     )
+#'   ),
+#'   ForceOverwriteReplicaSecret = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname secretsmanager_replicate_secret_to_regions
+secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegions, ForceOverwriteReplicaSecret = NULL) {
+  op <- new_operation(
+    name = "ReplicateSecretToRegions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .secretsmanager$replicate_secret_to_regions_input(SecretId = SecretId, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
+  output <- .secretsmanager$replicate_secret_to_regions_output()
+  config <- get_config()
+  svc <- .secretsmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.secretsmanager$operations$replicate_secret_to_regions <- secretsmanager_replicate_secret_to_regions
 
 #' Cancels the scheduled deletion of a secret by removing the DeletedDate
 #' time stamp
@@ -2038,6 +2211,55 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 }
 .secretsmanager$operations$rotate_secret <- secretsmanager_rotate_secret
 
+#' Removes the secret from replication and promotes the secret to a
+#' regional secret in the replica Region
+#'
+#' @description
+#' Removes the secret from replication and promotes the secret to a
+#' regional secret in the replica Region.
+#'
+#' @usage
+#' secretsmanager_stop_replication_to_replica(SecretId)
+#'
+#' @param SecretId &#91;required&#93; Response to
+#' [`stop_replication_to_replica`][secretsmanager_stop_replication_to_replica]
+#' of a secret, based on the `SecretId`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_replication_to_replica(
+#'   SecretId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname secretsmanager_stop_replication_to_replica
+secretsmanager_stop_replication_to_replica <- function(SecretId) {
+  op <- new_operation(
+    name = "StopReplicationToReplica",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .secretsmanager$stop_replication_to_replica_input(SecretId = SecretId)
+  output <- .secretsmanager$stop_replication_to_replica_output()
+  config <- get_config()
+  svc <- .secretsmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.secretsmanager$operations$stop_replication_to_replica <- secretsmanager_stop_replication_to_replica
+
 #' Attaches one or more tags, each consisting of a key name and a value, to
 #' the specified secret
 #'
@@ -2121,7 +2343,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' line tool environments, see [Using JSON for
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For the AWS CLI, you can also use the
-#' syntax: `--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"[,…]`
+#' syntax: `--Tags Key="Key1",Value="Value1" Key="Key2",Value="Value2"[,…]`
 #'
 #' @return
 #' An empty list.
@@ -2696,22 +2918,41 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 }
 .secretsmanager$operations$update_secret_version_stage <- secretsmanager_update_secret_version_stage
 
-#' Validates the JSON text of the resource-based policy document attached
-#' to the specified secret
+#' Validates that the resource policy does not grant a wide range of IAM
+#' principals access to your secret
 #'
 #' @description
-#' Validates the JSON text of the resource-based policy document attached
-#' to the specified secret. The JSON request string input and response
-#' output displays formatted code with white space and line breaks for
-#' better readability. Submit your input as a single line JSON string. A
-#' resource-based policy is optional.
+#' Validates that the resource policy does not grant a wide range of IAM
+#' principals access to your secret. The JSON request string input and
+#' response output displays formatted code with white space and line breaks
+#' for better readability. Submit your input as a single line JSON string.
+#' A resource-based policy is optional for secrets.
+#' 
+#' The API performs three checks when validating the secret:
+#' 
+#' -   Sends a call to
+#'     [Zelkova](https://aws.amazon.com/blogs/security/protect-sensitive-data-in-the-cloud-with-automated-reasoning-zelkova/),
+#'     an automated reasoning engine, to ensure your Resource Policy does
+#'     not allow broad access to your secret.
+#' 
+#' -   Checks for correct syntax in a policy.
+#' 
+#' -   Verifies the policy does not lock out a caller.
+#' 
+#' **Minimum Permissions**
+#' 
+#' You must have the permissions required to access the following APIs:
+#' 
+#' -   `secretsmanager:PutResourcePolicy`
+#' 
+#' -   `secretsmanager:ValidateResourcePolicy`
 #'
 #' @usage
 #' secretsmanager_validate_resource_policy(SecretId, ResourcePolicy)
 #'
-#' @param SecretId The identifier for the secret that you want to validate a resource
-#' policy. You can specify either the Amazon Resource Name (ARN) or the
-#' friendly name of the secret.
+#' @param SecretId (Optional) The identifier of the secret with the resource-based policy
+#' you want to validate. You can specify either the Amazon Resource Name
+#' (ARN) or the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
 #' complete ARN. You can specify a partial ARN too—for example, if you
@@ -2731,7 +2972,13 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
-#' @param ResourcePolicy &#91;required&#93; Identifies the Resource Policy attached to the secret.
+#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string constructed according to the grammar and syntax
+#' for an AWS resource-based policy. The policy in the string identifies
+#' who can access or manage this secret and its versions. For information
+#' on how to format a JSON parameter for the various command line tool
+#' environments, see [Using JSON for
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
+#' in the *AWS CLI User Guide*.publi
 #'
 #' @return
 #' A list with the following syntax:

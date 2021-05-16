@@ -10,7 +10,13 @@ snowball_create_cluster(JobType, Resources, Description, AddressId,
 }
 \arguments{
 \item{JobType}{[required] The type of job for this cluster. Currently, the only job type supported
-for clusters is \code{LOCAL_USE}.}
+for clusters is \code{LOCAL_USE}.
+
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide} or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide}.}
 
 \item{Resources}{[required] The resources associated with the cluster job. These resources include
 Amazon S3 buckets and optional AWS Lambda functions written in the
@@ -31,10 +37,16 @@ values are created by using the
 \href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole}
 API action in AWS Identity and Access Management (IAM).}
 
-\item{SnowballType}{The type of AWS Snow Family device to use for this cluster.
+\item{SnowballType}{[required] The type of AWS Snow Family device to use for this cluster.
 
 For cluster jobs, AWS Snow Family currently supports only the \code{EDGE}
-device type.}
+device type.
+
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide} or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide}.}
 
 \item{ShippingOption}{[required] The shipping speed for each node in this cluster. This speed doesn't
 dictate how soon you'll get each Snowball Edge device, rather it
@@ -114,7 +126,7 @@ jobs have been created.
   AddressId = "string",
   KmsKeyARN = "string",
   RoleARN = "string",
-  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
   Notification = list(
     SnsTopicARN = "string",

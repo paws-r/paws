@@ -12,8 +12,11 @@ for the AWS account and can use a maximum of 128 alphanumeric,
 underscore, at sign, or hyphen characters.}
 
 \item{Type}{[required] Specifies the type of data catalog to update. Specify \code{LAMBDA} for a
-federated catalog, \code{GLUE} for AWS Glue Catalog, or \code{HIVE} for an
-external hive metastore.}
+federated catalog or \code{HIVE} for an external hive metastore.
+
+Do not use the \code{GLUE} type. This refers to the \code{AwsDataCatalog} that
+already exists in your account, of which you can have only one.
+Specifying the \code{GLUE} type will result in an \code{INVALID_INPUT} error.}
 
 \item{Description}{New or modified text that describes the data catalog.}
 
@@ -40,7 +43,6 @@ Lambda function.
 
 \verb{function=lambda_arn }
 }
-\item The \code{GLUE} type has no parameters.
 }}
 }
 \value{

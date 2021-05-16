@@ -11,18 +11,19 @@ gamelift_create_matchmaking_configuration(Name, Description,
   BackfillMode, FlexMatchMode, Tags)
 }
 \arguments{
-\item{Name}{[required] A unique identifier for a matchmaking configuration. This name is used
+\item{Name}{[required] A unique identifier for the matchmaking configuration. This name is used
 to identify the configuration associated with a matchmaking request or
 ticket.}
 
 \item{Description}{A human-readable description of the matchmaking configuration.}
 
-\item{GameSessionQueueArns}{Amazon Resource Name
-(\href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{ARN})
+\item{GameSessionQueueArns}{The Amazon Resource Name
+(\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html}{ARN})
 that is assigned to a GameLift game session queue resource and uniquely
-identifies it. ARNs are unique across all Regions. Queues can be located
-in any Region. Queues are used to start new GameLift-hosted game
-sessions for matches that are created with this matchmaking
+identifies it. ARNs are unique across all Regions. Format is
+\verb{arn:aws:gamelift:<region>::gamesessionqueue/<queue name>}. Queues can
+be located in any Region. Queues are used to start new GameLift-hosted
+game sessions for matches that are created with this matchmaking
 configuration. If \code{FlexMatchMode} is set to \code{STANDALONE}, do not set
 this parameter.}
 
@@ -31,9 +32,7 @@ in process before timing out. Requests that fail due to timing out can
 be resubmitted as needed.}
 
 \item{AcceptanceTimeoutSeconds}{The length of time (in seconds) to wait for players to accept a proposed
-match, if acceptance is required. If any player rejects the match or
-fails to accept before the timeout, the tickets are returned to the
-ticket pool and continue to be evaluated for an acceptable match.}
+match, if acceptance is required.}
 
 \item{AcceptanceRequired}{[required] A flag that determines whether a match that was created with this
 configuration must be accepted by the matched players. To require
@@ -41,23 +40,25 @@ acceptance, set to \code{TRUE}. With this option enabled, matchmaking tickets
 use the status \code{REQUIRES_ACCEPTANCE} to indicate when a completed
 potential match is waiting for player acceptance.}
 
-\item{RuleSetName}{[required] A unique identifier for a matchmaking rule set to use with this
+\item{RuleSetName}{[required] A unique identifier for the matchmaking rule set to use with this
 configuration. You can use either the rule set name or ARN value. A
 matchmaking configuration can only use rule sets that are defined in the
 same Region.}
 
-\item{NotificationTarget}{An SNS topic ARN that is set up to receive matchmaking notifications.}
+\item{NotificationTarget}{An SNS topic ARN that is set up to receive matchmaking notifications.
+See \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html}{Setting up notifications for matchmaking}
+for more information.}
 
 \item{AdditionalPlayerCount}{The number of player slots in a match to keep open for future players.
-For example, assume that the configuration's rule set specifies a match
-for a single 12-person team. If the additional player count is set to 2,
-only 10 players are initially selected for the match. This parameter is
-not used if \code{FlexMatchMode} is set to \code{STANDALONE}.}
+For example, if the configuration's rule set specifies a match for a
+single 12-person team, and the additional player count is set to 2, only
+10 players are selected for the match. This parameter is not used if
+\code{FlexMatchMode} is set to \code{STANDALONE}.}
 
 \item{CustomEventData}{Information to be added to all events related to this matchmaking
 configuration.}
 
-\item{GameProperties}{A set of custom properties for a game session, formatted as key-value
+\item{GameProperties}{A set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).
@@ -159,7 +160,7 @@ with GameLift hosting, you also need to identify the game session queue
 to use when starting a game session for the match.
 
 In addition, you must set up an Amazon Simple Notification Service (SNS)
-to receive matchmaking notifications, and provide the topic ARN in the
+topic to receive matchmaking notifications. Provide the topic ARN in the
 matchmaking configuration. An alternative method, continuously polling
 ticket status with
 \code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}}, is only
@@ -167,23 +168,26 @@ suitable for games in development with low matchmaking usage.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html}{FlexMatch Developer Guide}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html}{Design a FlexMatch matchmaker}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html}{Design a FlexMatch Matchmaker}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html}{Set up FlexMatch event notification}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html}{Set Up FlexMatch Event Notification}
+\strong{Related actions}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_matchmaking_configuration]{create_matchmaking_configuration}}
-\item \code{\link[=gamelift_describe_matchmaking_configurations]{describe_matchmaking_configurations}}
-\item \code{\link[=gamelift_update_matchmaking_configuration]{update_matchmaking_configuration}}
-\item \code{\link[=gamelift_delete_matchmaking_configuration]{delete_matchmaking_configuration}}
-\item \code{\link[=gamelift_create_matchmaking_rule_set]{create_matchmaking_rule_set}}
-\item \code{\link[=gamelift_describe_matchmaking_rule_sets]{describe_matchmaking_rule_sets}}
-\item \code{\link[=gamelift_validate_matchmaking_rule_set]{validate_matchmaking_rule_set}}
-\item \code{\link[=gamelift_delete_matchmaking_rule_set]{delete_matchmaking_rule_set}}
-}
+\code{\link[=gamelift_create_matchmaking_configuration]{create_matchmaking_configuration}}
+|
+\code{\link[=gamelift_describe_matchmaking_configurations]{describe_matchmaking_configurations}}
+|
+\code{\link[=gamelift_update_matchmaking_configuration]{update_matchmaking_configuration}}
+|
+\code{\link[=gamelift_delete_matchmaking_configuration]{delete_matchmaking_configuration}}
+| \code{\link[=gamelift_create_matchmaking_rule_set]{create_matchmaking_rule_set}}
+|
+\code{\link[=gamelift_describe_matchmaking_rule_sets]{describe_matchmaking_rule_sets}}
+|
+\code{\link[=gamelift_validate_matchmaking_rule_set]{validate_matchmaking_rule_set}}
+| \code{\link[=gamelift_delete_matchmaking_rule_set]{delete_matchmaking_rule_set}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$create_matchmaking_configuration(

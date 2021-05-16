@@ -9,7 +9,7 @@ chime_put_sip_media_application_logging_configuration(
   SipMediaApplicationId, SipMediaApplicationLoggingConfiguration)
 }
 \arguments{
-\item{SipMediaApplicationId}{[required] The ID of the specified SIP media application}
+\item{SipMediaApplicationId}{[required] The SIP media application ID.}
 
 \item{SipMediaApplicationLoggingConfiguration}{The actual logging configuration.}
 }

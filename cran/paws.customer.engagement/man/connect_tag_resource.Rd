@@ -18,7 +18,7 @@ An empty list.
 \description{
 Adds the specified tags to the specified resource.
 
-The supported resource types are users, routing profiles, quick
+The supported resource types are users, routing profiles, queues, quick
 connects, and contact flows.
 
 For sample policies that use tags, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html}{Amazon Connect Identity-Based Policy Examples}

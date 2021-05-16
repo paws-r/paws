@@ -20,7 +20,22 @@ Constraints:
 Example: \code{myoptiongroup}}
 
 \item{EngineName}{[required] Specifies the name of the engine that this option group should be
-associated with.}
+associated with.
+
+Valid Values:
+\itemize{
+\item \code{mariadb}
+\item \code{mysql}
+\item \code{oracle-ee}
+\item \code{oracle-se2}
+\item \code{oracle-se1}
+\item \code{oracle-se}
+\item \code{postgres}
+\item \code{sqlserver-ee}
+\item \code{sqlserver-se}
+\item \code{sqlserver-ex}
+\item \code{sqlserver-web}
+}}
 
 \item{MajorEngineVersion}{[required] Specifies the major version of the engine that this option group should
 be associated with.}

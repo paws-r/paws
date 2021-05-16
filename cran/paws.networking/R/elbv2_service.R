@@ -82,7 +82,7 @@ NULL
 #' \tabular{ll}{
 #'  \link[=elbv2_add_listener_certificates]{add_listener_certificates} \tab Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS listener\cr
 #'  \link[=elbv2_add_tags]{add_tags} \tab Adds the specified tags to the specified Elastic Load Balancing resource\cr
-#'  \link[=elbv2_create_listener]{create_listener} \tab Creates a listener for the specified Application Load Balancer, Network Load Balancer\cr
+#'  \link[=elbv2_create_listener]{create_listener} \tab Creates a listener for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 #'  \link[=elbv2_create_load_balancer]{create_load_balancer} \tab Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 #'  \link[=elbv2_create_rule]{create_rule} \tab Creates a rule for the specified listener\cr
 #'  \link[=elbv2_create_target_group]{create_target_group} \tab Creates a target group\cr

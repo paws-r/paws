@@ -3,15 +3,15 @@
 \name{securityhub_create_members}
 \alias{securityhub_create_members}
 \title{Creates a member association in Security Hub between the specified
-accounts and the account used to make the request, which is the master
-account}
+accounts and the account used to make the request, which is the
+administrator account}
 \usage{
 securityhub_create_members(AccountDetails)
 }
 \arguments{
-\item{AccountDetails}{[required] The list of accounts to associate with the Security Hub master account.
-For each account, the list includes the account ID and optionally the
-email address.}
+\item{AccountDetails}{[required] The list of accounts to associate with the Security Hub administrator
+account. For each account, the list includes the account ID and
+optionally the email address.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -26,10 +26,10 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Creates a member association in Security Hub between the specified
-accounts and the account used to make the request, which is the master
-account. If you are integrated with Organizations, then the master
-account is the Security Hub administrator account that is designated by
-the organization management account.
+accounts and the account used to make the request, which is the
+administrator account. If you are integrated with Organizations, then
+the administrator account is designated by the organization management
+account.
 
 \code{\link[=securityhub_create_members]{create_members}} is always used to add
 accounts that are not organization members.
@@ -57,13 +57,13 @@ Security Hub.
 Accounts that are part of an organization do not receive an invitation.
 They automatically become a member account in Security Hub.
 
-A permissions policy is added that permits the master account to view
-the findings generated in the member account. When Security Hub is
-enabled in a member account, findings are sent to both the member and
-master accounts.
+A permissions policy is added that permits the administrator account to
+view the findings generated in the member account. When Security Hub is
+enabled in a member account, the member account findings are also
+visible to the administrator account.
 
-To remove the association between the master and member accounts, use
-the
+To remove the association between the administrator and member accounts,
+use the
 \code{\link[=securityhub_disassociate_from_master_account]{disassociate_from_master_account}}
 or \code{\link[=securityhub_disassociate_members]{disassociate_members}} operation.
 }

@@ -14,22 +14,22 @@ s3_get_object(Bucket, IfMatch, IfModifiedSince, IfNoneMatch,
 \arguments{
 \item{Bucket}{[required] The bucket name containing the object.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
 specified, otherwise return a 412 (precondition failed).}
@@ -66,13 +66,13 @@ request.}
 
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
-\item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (for
+\item{SSECustomerAlgorithm}{Specifies the algorithm to use to when decrypting the object (for
 example, AES256).}
 
-\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in
-encrypting data. This value is used to store the object and then it is
-discarded; Amazon S3 does not store the encryption key. The key must be
-appropriate for use with the algorithm specified in the
+\item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 used to
+encrypt the data. This value is used to decrypt the object when
+recovering it and must match the one used when storing the data. The key
+must be appropriate for use with the algorithm specified in the
 \code{x-amz-server-side-encryption-customer-algorithm} header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
@@ -85,7 +85,7 @@ that the encryption key was transmitted without error.}
 1 and 10,000. Effectively performs a 'ranged' GET request for the part
 specified. Useful for downloading just a part of an object.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -156,7 +156,7 @@ named \code{examplebucket}, specify the resource as
 about request types, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html#VirtualHostingSpecifyBucket}{HTTP Host Header Bucket Specification}.
 
 To distribute large files to many people, you can save bandwidth costs
-by using BitTorrent. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3Torrent.html}{Amazon S3 Torrent}.
+by using BitTorrent. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html}{Amazon S3 Torrent}.
 For more information about returning the ACL of an object, see
 \code{\link[=s3_get_object_acl]{get_object_acl}}.
 
@@ -164,8 +164,8 @@ If the object you are retrieving is stored in the S3 Glacier or S3
 Glacier Deep Archive storage class, or S3 Intelligent-Tiering Archive or
 S3 Intelligent-Tiering Deep Archive tiers, before you can retrieve the
 object you must first restore a copy using
-\code{\link[=s3_restore_object]{restore_object}}. Otherwise, this operation returns
-an \code{InvalidObjectStateError} error. For information about restoring
+\code{\link[=s3_restore_object]{restore_object}}. Otherwise, this action returns an
+\code{InvalidObjectStateError} error. For information about restoring
 archived objects, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects.html}{Restoring Archived Objects}.
 
 Encryption request headers, like \code{x-amz-server-side-encryption}, should
@@ -208,8 +208,8 @@ return an HTTP status code 403 ("access denied") error.
 
 \strong{Versioning}
 
-By default, the GET operation returns the current version of an object.
-To return a different version, use the \code{versionId} subresource.
+By default, the GET action returns the current version of an object. To
+return a different version, use the \code{versionId} subresource.
 
 If the current version of the object is a delete marker, Amazon S3
 behaves as if the object was deleted and includes
@@ -258,7 +258,7 @@ present in the request as follows:\code{ If-None-Match} condition evaluates
 to \code{false}, and; \code{If-Modified-Since} condition evaluates to \code{true};
 then, S3 returns 304 Not Modified response code.
 
-For more information about conditional requests, see \href{https://tools.ietf.org/html/rfc7232}{RFC 7232}.
+For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.
 
 The following operations are related to \code{\link[=s3_get_object]{get_object}}:
 \itemize{
@@ -300,18 +300,18 @@ The following operations are related to \code{\link[=s3_get_object]{get_object}}
 
 \examples{
 \dontrun{
+# The following example retrieves an object for an S3 bucket.
+svc$get_object(
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg"
+)
+
 # The following example retrieves an object for an S3 bucket. The request
 # specifies the range header to retrieve a specific byte range.
 svc$get_object(
   Bucket = "examplebucket",
   Key = "SampleFile.txt",
   Range = "bytes=0-9"
-)
-
-# The following example retrieves an object for an S3 bucket.
-svc$get_object(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
 )
 }
 

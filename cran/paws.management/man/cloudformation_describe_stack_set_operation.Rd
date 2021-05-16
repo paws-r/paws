@@ -4,13 +4,30 @@
 \alias{cloudformation_describe_stack_set_operation}
 \title{Returns the description of the specified stack set operation}
 \usage{
-cloudformation_describe_stack_set_operation(StackSetName, OperationId)
+cloudformation_describe_stack_set_operation(StackSetName, OperationId,
+  CallAs)
 }
 \arguments{
 \item{StackSetName}{[required] The name or the unique stack ID of the stack set for the stack
 operation.}
 
 \item{OperationId}{[required] The unique ID of the stack set operation.}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your AWS account must be registered as a delegated administrator in
+the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{AWS CloudFormation User Guide}.
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -20,6 +37,7 @@ A list with the following syntax:\preformatted{list(
     Action = "CREATE"|"UPDATE"|"DELETE"|"DETECT_DRIFT",
     Status = "RUNNING"|"SUCCEEDED"|"FAILED"|"STOPPING"|"STOPPED"|"QUEUED",
     OperationPreferences = list(
+      RegionConcurrencyType = "SEQUENTIAL"|"PARALLEL",
       RegionOrder = list(
         "string"
       ),
@@ -41,6 +59,7 @@ A list with the following syntax:\preformatted{list(
       Accounts = list(
         "string"
       ),
+      AccountsUrl = "string",
       OrganizationalUnitIds = list(
         "string"
       )
@@ -67,7 +86,8 @@ Returns the description of the specified stack set operation.
 \section{Request syntax}{
 \preformatted{svc$describe_stack_set_operation(
   StackSetName = "string",
-  OperationId = "string"
+  OperationId = "string",
+  CallAs = "SELF"|"DELEGATED_ADMIN"
 )
 }
 }

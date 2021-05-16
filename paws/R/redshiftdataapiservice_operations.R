@@ -80,6 +80,7 @@ redshiftdataapiservice_cancel_statement <- function(Id) {
 #'   DbUser = "string",
 #'   Duration = 123,
 #'   Error = "string",
+#'   HasResultSet = TRUE|FALSE,
 #'   Id = "string",
 #'   QueryString = "string",
 #'   RedshiftPid = 123,
@@ -87,7 +88,7 @@ redshiftdataapiservice_cancel_statement <- function(Id) {
 #'   ResultRows = 123,
 #'   ResultSize = 123,
 #'   SecretArn = "string",
-#'   Status = "ABORTED"|"ALL"|"FAILED"|"FINISHED"|"PICKED"|"STARTED"|"SUBMITTED",
+#'   Status = "SUBMITTED"|"PICKED"|"STARTED"|"FINISHED"|"ABORTED"|"FAILED"|"ALL",
 #'   UpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -140,13 +141,17 @@ redshiftdataapiservice_describe_statement <- function(Id) {
 #'     method.
 #'
 #' @usage
-#' redshiftdataapiservice_describe_table(ClusterIdentifier, Database,
-#'   DbUser, MaxResults, NextToken, Schema, SecretArn, Table)
+#' redshiftdataapiservice_describe_table(ClusterIdentifier,
+#'   ConnectedDatabase, Database, DbUser, MaxResults, NextToken, Schema,
+#'   SecretArn, Table)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The cluster identifier. This parameter is required when authenticating
 #' using either AWS Secrets Manager or temporary credentials.
-#' @param Database The name of the database. This parameter is required when authenticating
-#' using temporary credentials.
+#' @param ConnectedDatabase A database name. The connected database is specified when you connect
+#' with your authentication credentials.
+#' @param Database &#91;required&#93; The name of the database that contains the tables to be described. If
+#' `ConnectedDatabase` is not specified, this is also the database to
+#' connect to with your authentication credentials.
 #' @param DbUser The database user name. This parameter is required when authenticating
 #' using temporary credentials.
 #' @param MaxResults The maximum number of tables to return in the response. If more tables
@@ -196,6 +201,7 @@ redshiftdataapiservice_describe_statement <- function(Id) {
 #' ```
 #' svc$describe_table(
 #'   ClusterIdentifier = "string",
+#'   ConnectedDatabase = "string",
 #'   Database = "string",
 #'   DbUser = "string",
 #'   MaxResults = 123,
@@ -209,14 +215,14 @@ redshiftdataapiservice_describe_statement <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_describe_table
-redshiftdataapiservice_describe_table <- function(ClusterIdentifier, Database = NULL, DbUser = NULL, MaxResults = NULL, NextToken = NULL, Schema = NULL, SecretArn = NULL, Table = NULL) {
+redshiftdataapiservice_describe_table <- function(ClusterIdentifier, ConnectedDatabase = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, Schema = NULL, SecretArn = NULL, Table = NULL) {
   op <- new_operation(
     name = "DescribeTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftdataapiservice$describe_table_input(ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, Schema = Schema, SecretArn = SecretArn, Table = Table)
+  input <- .redshiftdataapiservice$describe_table_input(ClusterIdentifier = ClusterIdentifier, ConnectedDatabase = ConnectedDatabase, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, Schema = Schema, SecretArn = SecretArn, Table = Table)
   output <- .redshiftdataapiservice$describe_table_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config)
@@ -494,13 +500,17 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier, Database = 
 #'     method.
 #'
 #' @usage
-#' redshiftdataapiservice_list_schemas(ClusterIdentifier, Database, DbUser,
-#'   MaxResults, NextToken, SchemaPattern, SecretArn)
+#' redshiftdataapiservice_list_schemas(ClusterIdentifier,
+#'   ConnectedDatabase, Database, DbUser, MaxResults, NextToken,
+#'   SchemaPattern, SecretArn)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The cluster identifier. This parameter is required when authenticating
 #' using either AWS Secrets Manager or temporary credentials.
-#' @param Database &#91;required&#93; The name of the database. This parameter is required when authenticating
-#' using temporary credentials.
+#' @param ConnectedDatabase A database name. The connected database is specified when you connect
+#' with your authentication credentials.
+#' @param Database &#91;required&#93; The name of the database that contains the schemas to list. If
+#' `ConnectedDatabase` is not specified, this is also the database to
+#' connect to with your authentication credentials.
 #' @param DbUser The database user name. This parameter is required when authenticating
 #' using temporary credentials.
 #' @param MaxResults The maximum number of schemas to return in the response. If more schemas
@@ -534,6 +544,7 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier, Database = 
 #' ```
 #' svc$list_schemas(
 #'   ClusterIdentifier = "string",
+#'   ConnectedDatabase = "string",
 #'   Database = "string",
 #'   DbUser = "string",
 #'   MaxResults = 123,
@@ -546,14 +557,14 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier, Database = 
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_schemas
-redshiftdataapiservice_list_schemas <- function(ClusterIdentifier, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, SchemaPattern = NULL, SecretArn = NULL) {
+redshiftdataapiservice_list_schemas <- function(ClusterIdentifier, ConnectedDatabase = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, SchemaPattern = NULL, SecretArn = NULL) {
   op <- new_operation(
     name = "ListSchemas",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftdataapiservice$list_schemas_input(ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, SchemaPattern = SchemaPattern, SecretArn = SecretArn)
+  input <- .redshiftdataapiservice$list_schemas_input(ClusterIdentifier = ClusterIdentifier, ConnectedDatabase = ConnectedDatabase, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, SchemaPattern = SchemaPattern, SecretArn = SecretArn)
   output <- .redshiftdataapiservice$list_schemas_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config)
@@ -570,7 +581,7 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier, Database, DbU
 #' A token is returned to page through the statement list.
 #'
 #' @usage
-#' redshiftdataapiservice_list_statements(MaxResults, NextToken,
+#' redshiftdataapiservice_list_statements(MaxResults, NextToken, RoleLevel,
 #'   StatementName, Status)
 #'
 #' @param MaxResults The maximum number of SQL statements to return in the response. If more
@@ -582,6 +593,10 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier, Database, DbU
 #' NextToken value in the next NextToken parameter and retrying the
 #' command. If the NextToken field is empty, all response records have been
 #' retrieved for the request.
+#' @param RoleLevel A value that filters which statements to return in the response. If
+#' true, all statements run by the caller's IAM role are returned. If
+#' false, only statements run by the caller's IAM role in the current IAM
+#' session are returned. The default is true.
 #' @param StatementName The name of the SQL statement specified as input to
 #' [`execute_statement`][redshiftdataapiservice_execute_statement] to
 #' identify the query. You can list multiple statements by providing a
@@ -621,7 +636,7 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier, Database, DbU
 #'       QueryString = "string",
 #'       SecretArn = "string",
 #'       StatementName = "string",
-#'       Status = "ABORTED"|"ALL"|"FAILED"|"FINISHED"|"PICKED"|"STARTED"|"SUBMITTED",
+#'       Status = "SUBMITTED"|"PICKED"|"STARTED"|"FINISHED"|"ABORTED"|"FAILED"|"ALL",
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -635,22 +650,23 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier, Database, DbU
 #' svc$list_statements(
 #'   MaxResults = 123,
 #'   NextToken = "string",
+#'   RoleLevel = TRUE|FALSE,
 #'   StatementName = "string",
-#'   Status = "ABORTED"|"ALL"|"FAILED"|"FINISHED"|"PICKED"|"STARTED"|"SUBMITTED"
+#'   Status = "SUBMITTED"|"PICKED"|"STARTED"|"FINISHED"|"ABORTED"|"FAILED"|"ALL"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_statements
-redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken = NULL, StatementName = NULL, Status = NULL) {
+redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken = NULL, RoleLevel = NULL, StatementName = NULL, Status = NULL) {
   op <- new_operation(
     name = "ListStatements",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftdataapiservice$list_statements_input(MaxResults = MaxResults, NextToken = NextToken, StatementName = StatementName, Status = Status)
+  input <- .redshiftdataapiservice$list_statements_input(MaxResults = MaxResults, NextToken = NextToken, RoleLevel = RoleLevel, StatementName = StatementName, Status = Status)
   output <- .redshiftdataapiservice$list_statements_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config)
@@ -679,13 +695,17 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 #'     method.
 #'
 #' @usage
-#' redshiftdataapiservice_list_tables(ClusterIdentifier, Database, DbUser,
-#'   MaxResults, NextToken, SchemaPattern, SecretArn, TablePattern)
+#' redshiftdataapiservice_list_tables(ClusterIdentifier, ConnectedDatabase,
+#'   Database, DbUser, MaxResults, NextToken, SchemaPattern, SecretArn,
+#'   TablePattern)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The cluster identifier. This parameter is required when authenticating
 #' using either AWS Secrets Manager or temporary credentials.
-#' @param Database &#91;required&#93; The name of the database. This parameter is required when authenticating
-#' using temporary credentials.
+#' @param ConnectedDatabase A database name. The connected database is specified when you connect
+#' with your authentication credentials.
+#' @param Database &#91;required&#93; The name of the database that contains the tables to list. If
+#' `ConnectedDatabase` is not specified, this is also the database to
+#' connect to with your authentication credentials.
 #' @param DbUser The database user name. This parameter is required when authenticating
 #' using temporary credentials.
 #' @param MaxResults The maximum number of tables to return in the response. If more tables
@@ -731,6 +751,7 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 #' ```
 #' svc$list_tables(
 #'   ClusterIdentifier = "string",
+#'   ConnectedDatabase = "string",
 #'   Database = "string",
 #'   DbUser = "string",
 #'   MaxResults = 123,
@@ -744,14 +765,14 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_tables
-redshiftdataapiservice_list_tables <- function(ClusterIdentifier, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, SchemaPattern = NULL, SecretArn = NULL, TablePattern = NULL) {
+redshiftdataapiservice_list_tables <- function(ClusterIdentifier, ConnectedDatabase = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, SchemaPattern = NULL, SecretArn = NULL, TablePattern = NULL) {
   op <- new_operation(
     name = "ListTables",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftdataapiservice$list_tables_input(ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, SchemaPattern = SchemaPattern, SecretArn = SecretArn, TablePattern = TablePattern)
+  input <- .redshiftdataapiservice$list_tables_input(ClusterIdentifier = ClusterIdentifier, ConnectedDatabase = ConnectedDatabase, Database = Database, DbUser = DbUser, MaxResults = MaxResults, NextToken = NextToken, SchemaPattern = SchemaPattern, SecretArn = SecretArn, TablePattern = TablePattern)
   output <- .redshiftdataapiservice$list_tables_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config)

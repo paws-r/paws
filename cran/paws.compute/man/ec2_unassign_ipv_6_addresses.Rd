@@ -4,12 +4,12 @@
 \alias{ec2_unassign_ipv_6_addresses}
 \title{Unassigns one or more IPv6 addresses from a network interface}
 \usage{
-ec2_unassign_ipv_6_addresses(Ipv6Addresses, NetworkInterfaceId)
+ec2_unassign_ipv_6_addresses(NetworkInterfaceId, Ipv6Addresses)
 }
 \arguments{
-\item{Ipv6Addresses}{[required] The IPv6 addresses to unassign from the network interface.}
-
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
+
+\item{Ipv6Addresses}{[required] The IPv6 addresses to unassign from the network interface.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -25,10 +25,10 @@ Unassigns one or more IPv6 addresses from a network interface.
 }
 \section{Request syntax}{
 \preformatted{svc$unassign_ipv_6_addresses(
+  NetworkInterfaceId = "string",
   Ipv6Addresses = list(
     "string"
-  ),
-  NetworkInterfaceId = "string"
+  )
 )
 }
 }

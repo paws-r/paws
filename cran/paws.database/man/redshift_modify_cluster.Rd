@@ -105,6 +105,9 @@ If you decrease the automated snapshot retention period from its current
 value, existing automated snapshots that fall outside of the new
 retention period will be immediately deleted.
 
+You can't disable automated snapshots for RA3 node types. Set the
+automated retention period from 1-35 days.
+
 Default: Uses existing setting.
 
 Constraints: Must be a value from 0 to 35.}
@@ -231,7 +234,16 @@ A list with the following syntax:\preformatted{list(
       Port = 123,
       VpcEndpoints = list(
         list(
-          VpcEndpointId = "string"
+          VpcEndpointId = "string",
+          VpcId = "string",
+          NetworkInterfaces = list(
+            list(
+              NetworkInterfaceId = "string",
+              SubnetId = "string",
+              PrivateIpAddress = "string",
+              AvailabilityZone = "string"
+            )
+          )
         )
       )
     ),
@@ -371,7 +383,12 @@ A list with the following syntax:\preformatted{list(
       AllowCancelResize = TRUE|FALSE
     ),
     AvailabilityZoneRelocationStatus = "string",
-    ClusterNamespaceArn = "string"
+    ClusterNamespaceArn = "string",
+    TotalStorageCapacityInMegaBytes = 123,
+    AquaConfiguration = list(
+      AquaStatus = "enabled"|"disabled"|"applying",
+      AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+    )
   )
 )
 }

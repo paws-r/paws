@@ -24,6 +24,11 @@ A list with the following syntax:\preformatted{list(
     AdSegmentUrlPrefix = "string",
     ContentSegmentUrlPrefix = "string"
   ),
+  ConfigurationAliases = list(
+    list(
+      "string"
+    )
+  ),
   DashConfiguration = list(
     ManifestEndpointPrefix = "string",
     MpdLocation = "string",

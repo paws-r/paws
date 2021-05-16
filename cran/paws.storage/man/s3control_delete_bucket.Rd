@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_delete_bucket}
 \alias{s3control_delete_bucket}
-\title{This API operation deletes an Amazon S3 on Outposts bucket}
+\title{This action deletes an Amazon S3 on Outposts bucket}
 \usage{
 s3control_delete_bucket(AccountId, Bucket)
 }
@@ -27,14 +27,14 @@ The value must be URL encoded.}
 An empty list.
 }
 \description{
-This API operation deletes an Amazon S3 on Outposts bucket. To delete an
-S3 bucket, see \code{\link[=s3control_delete_bucket]{delete_bucket}} in the \emph{Amazon
-Simple Storage Service API}.
+This action deletes an Amazon S3 on Outposts bucket. To delete an S3
+bucket, see \code{\link[=s3control_delete_bucket]{delete_bucket}} in the \emph{Amazon S3
+API Reference}.
 
 Deletes the Amazon S3 on Outposts bucket. All objects (including all
 object versions and delete markers) in the bucket must be deleted before
 the bucket itself can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in \emph{Amazon Simple Storage Service Developer Guide}.
+in \emph{Amazon S3 User Guide}.
 
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request

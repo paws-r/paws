@@ -5,7 +5,7 @@
 \title{Creates crash-consistent snapshots of multiple EBS volumes and stores
 the data in S3}
 \usage{
-ec2_create_snapshots(Description, InstanceSpecification,
+ec2_create_snapshots(Description, InstanceSpecification, OutpostArn,
   TagSpecifications, DryRun, CopyTagsFromSource)
 }
 \arguments{
@@ -13,6 +13,23 @@ ec2_create_snapshots(Description, InstanceSpecification,
 
 \item{InstanceSpecification}{[required] The instance to specify which volumes should be included in the
 snapshots.}
+
+\item{OutpostArn}{The Amazon Resource Name (ARN) of the AWS Outpost on which to create the
+local snapshots.
+\itemize{
+\item To create snapshots from an instance in a Region, omit this
+parameter. The snapshots are created in the same Region as the
+instance.
+\item To create snapshots from an instance on an Outpost and store the
+snapshots in the Region, omit this parameter. The snapshots are
+created in the Region for the Outpost.
+\item To create snapshots from an instance on an Outpost and store the
+snapshots on an Outpost, specify the ARN of the destination Outpost.
+The snapshots must be created on the same Outpost as the instance.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-multivol-snapshot}{Creating multi-volume local snapshots from instances on an Outpost}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{TagSpecifications}{Tags to apply to every snapshot specified by the instance.}
 
@@ -43,7 +60,8 @@ A list with the following syntax:\preformatted{list(
       ),
       Progress = "string",
       OwnerId = "string",
-      SnapshotId = "string"
+      SnapshotId = "string",
+      OutpostArn = "string"
     )
   )
 )
@@ -55,6 +73,13 @@ the data in S3. Volumes are chosen by specifying an instance. Any
 attached volumes will produce one snapshot each that is crash-consistent
 across the instance. Boot volumes can be excluded by changing the
 parameters.
+
+You can create multi-volume snapshots of instances in a Region and
+instances on an Outpost. If you create snapshots from an instance in a
+Region, the snapshots must be stored in the same Region as the instance.
+If you create snapshots from an instance on an Outpost, the snapshots
+can be stored on the same Outpost as the instance, or in the Region for
+that Outpost.
 }
 \section{Request syntax}{
 \preformatted{svc$create_snapshots(
@@ -63,6 +88,7 @@ parameters.
     InstanceId = "string",
     ExcludeBootVolume = TRUE|FALSE
   ),
+  OutpostArn = "string",
   TagSpecifications = list(
     list(
       ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",

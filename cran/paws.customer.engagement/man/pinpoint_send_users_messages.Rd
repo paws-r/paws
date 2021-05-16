@@ -205,7 +205,9 @@ Creates and sends a message to a list of users.
           list(
             "string"
           )
-        )
+        ),
+        EntityId = "string",
+        TemplateId = "string"
       ),
       VoiceMessage = list(
         Body = "string",

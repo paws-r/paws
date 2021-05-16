@@ -526,9 +526,20 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' object, you provide a selector (a component of the DNS record name that
 #' identifies the public key that you want to use for DKIM authentication)
 #' and a private key.
+#' 
+#' When you verify a domain, this operation provides a set of DKIM tokens,
+#' which you can convert into CNAME tokens. You add these CNAME tokens to
+#' the DNS configuration for your domain. Your domain is verified when
+#' Amazon SES detects these records in the DNS configuration for your
+#' domain. For some DNS providers, it can take 72 hours or more to complete
+#' the domain verification process.
+#' 
+#' Additionally, you can associate an existing configuration set with the
+#' email identity that you're verifying.
 #'
 #' @usage
-#' sesv2_create_email_identity(EmailIdentity, Tags, DkimSigningAttributes)
+#' sesv2_create_email_identity(EmailIdentity, Tags, DkimSigningAttributes,
+#'   ConfigurationSetName)
 #'
 #' @param EmailIdentity &#91;required&#93; The email address or domain that you want to verify.
 #' @param Tags An array of objects that define the tags (keys and values) that you want
@@ -540,6 +551,9 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' 
 #' You can only specify this object if the email identity is a domain, as
 #' opposed to an address.
+#' @param ConfigurationSetName The configuration set to use by default when sending from this identity.
+#' Note that any configuration set defined in the email sending request
+#' takes precedence.
 #'
 #' @return
 #' A list with the following syntax:
@@ -571,21 +585,22 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #'   DkimSigningAttributes = list(
 #'     DomainSigningSelector = "string",
 #'     DomainSigningPrivateKey = "string"
-#'   )
+#'   ),
+#'   ConfigurationSetName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_create_email_identity
-sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningAttributes = NULL) {
+sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningAttributes = NULL, ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "CreateEmailIdentity",
     http_method = "POST",
     http_path = "/v2/email/identities",
     paginator = list()
   )
-  input <- .sesv2$create_email_identity_input(EmailIdentity = EmailIdentity, Tags = Tags, DkimSigningAttributes = DkimSigningAttributes)
+  input <- .sesv2$create_email_identity_input(EmailIdentity = EmailIdentity, Tags = Tags, DkimSigningAttributes = DkimSigningAttributes, ConfigurationSetName = ConfigurationSetName)
   output <- .sesv2$create_email_identity_output()
   config <- get_config()
   svc <- .sesv2$service(config)
@@ -2201,7 +2216,8 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   ConfigurationSetName = "string"
 #' )
 #' ```
 #'
@@ -3961,6 +3977,50 @@ sesv2_put_deliverability_dashboard_option <- function(DashboardEnabled, Subscrib
   return(response)
 }
 .sesv2$operations$put_deliverability_dashboard_option <- sesv2_put_deliverability_dashboard_option
+
+#' Used to associate a configuration set with an email identity
+#'
+#' @description
+#' Used to associate a configuration set with an email identity.
+#'
+#' @usage
+#' sesv2_put_email_identity_configuration_set_attributes(EmailIdentity,
+#'   ConfigurationSetName)
+#'
+#' @param EmailIdentity &#91;required&#93; The email address or domain that you want to associate with a
+#' configuration set.
+#' @param ConfigurationSetName The configuration set that you want to associate with an email identity.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_email_identity_configuration_set_attributes(
+#'   EmailIdentity = "string",
+#'   ConfigurationSetName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_put_email_identity_configuration_set_attributes
+sesv2_put_email_identity_configuration_set_attributes <- function(EmailIdentity, ConfigurationSetName = NULL) {
+  op <- new_operation(
+    name = "PutEmailIdentityConfigurationSetAttributes",
+    http_method = "PUT",
+    http_path = "/v2/email/identities/{EmailIdentity}/configuration-set",
+    paginator = list()
+  )
+  input <- .sesv2$put_email_identity_configuration_set_attributes_input(EmailIdentity = EmailIdentity, ConfigurationSetName = ConfigurationSetName)
+  output <- .sesv2$put_email_identity_configuration_set_attributes_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$put_email_identity_configuration_set_attributes <- sesv2_put_email_identity_configuration_set_attributes
 
 #' Used to enable or disable DKIM authentication for an email identity
 #'

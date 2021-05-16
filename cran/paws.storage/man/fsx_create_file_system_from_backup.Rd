@@ -6,7 +6,7 @@
 \usage{
 fsx_create_file_system_from_backup(BackupId, ClientRequestToken,
   SubnetIds, SecurityGroupIds, Tags, WindowsConfiguration,
-  LustreConfiguration, StorageType)
+  LustreConfiguration, StorageType, KmsKeyId)
 }
 \arguments{
 \item{BackupId}{[required]}
@@ -56,6 +56,8 @@ file system that was backed up. You can create a file system that uses
 HDD storage from a backup of a file system that used SSD storage only if
 the original SSD file system had a storage capacity of at least 2000
 GiB.}
+
+\item{KmsKeyId}{}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -244,7 +246,8 @@ returns the file system state along with other information.
     CopyTagsToBackups = TRUE|FALSE,
     DriveCacheType = "NONE"|"READ"
   ),
-  StorageType = "SSD"|"HDD"
+  StorageType = "SSD"|"HDD",
+  KmsKeyId = "string"
 )
 }
 }

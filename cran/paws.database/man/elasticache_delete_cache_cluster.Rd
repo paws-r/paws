@@ -42,7 +42,22 @@ A list with the following syntax:\preformatted{list(
       ),
       EngineVersion = "string",
       CacheNodeType = "string",
-      AuthTokenStatus = "SETTING"|"ROTATING"
+      AuthTokenStatus = "SETTING"|"ROTATING",
+      LogDeliveryConfigurations = list(
+        list(
+          LogType = "slow-log",
+          DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+          DestinationDetails = list(
+            CloudWatchLogsDetails = list(
+              LogGroup = "string"
+            ),
+            KinesisFirehoseDetails = list(
+              DeliveryStream = "string"
+            )
+          ),
+          LogFormat = "text"|"json"
+        )
+      )
     ),
     NotificationConfiguration = list(
       TopicArn = "string",
@@ -95,7 +110,25 @@ A list with the following syntax:\preformatted{list(
     ),
     TransitEncryptionEnabled = TRUE|FALSE,
     AtRestEncryptionEnabled = TRUE|FALSE,
-    ARN = "string"
+    ARN = "string",
+    ReplicationGroupLogDeliveryEnabled = TRUE|FALSE,
+    LogDeliveryConfigurations = list(
+      list(
+        LogType = "slow-log",
+        DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+        DestinationDetails = list(
+          CloudWatchLogsDetails = list(
+            LogGroup = "string"
+          ),
+          KinesisFirehoseDetails = list(
+            DeliveryStream = "string"
+          )
+        ),
+        LogFormat = "text"|"json",
+        Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+        Message = "string"
+      )
+    )
   )
 )
 }
@@ -111,7 +144,9 @@ this operation.
 This operation is not valid for:
 \itemize{
 \item Redis (cluster mode enabled) clusters
+\item Redis (cluster mode disabled) clusters
 \item A cluster that is the last read replica of a replication group
+\item A cluster that is the primary node of a replication group
 \item A node group (shard) that has Multi-AZ mode enabled
 \item A cluster from a Redis (cluster mode enabled) replication group
 \item A cluster that is not in the \code{available} state

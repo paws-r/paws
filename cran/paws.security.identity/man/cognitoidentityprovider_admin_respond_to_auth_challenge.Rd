@@ -29,6 +29,10 @@ client is configured with client secret).
 \item \code{NEW_PASSWORD_REQUIRED}: \code{NEW_PASSWORD}, any other required
 attributes, \code{USERNAME}, \code{SECRET_HASH} (if app client is configured
 with client secret).
+\item \code{MFA_SETUP} requires \code{USERNAME}, plus you need to use the session
+value returned by
+\code{\link[=cognitoidentityprovider_verify_software_token]{verify_software_token}}
+in the \code{Session} parameter.
 }
 
 The value of the \code{USERNAME} attribute must be the user's actual

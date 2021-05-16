@@ -186,6 +186,7 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' -   DatabaseInformation -
 #' 
 #'     -   `DatabaseName` - The name of the Amazon RDS database.
+#' 
 #'     -   `InstanceIdentifier ` - A unique identifier for the Amazon RDS
 #'         database instance.
 #' 
@@ -224,8 +225,6 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' 
 #' -   DataRearrangement - A JSON string that represents the splitting and
 #'     rearrangement requirements for the `Datasource`.
-#' 
-#'       
 #' 
 #'     Sample -
 #'     ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
@@ -358,6 +357,7 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' -   DatabaseInformation -
 #' 
 #'     -   `DatabaseName` - The name of the Amazon Redshift database.
+#' 
 #'     -   ` ClusterIdentifier` - The unique ID for the Amazon Redshift
 #'         cluster.
 #' 
@@ -679,7 +679,9 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' 
 #' -   Choose `REGRESSION` if the `MLModel` will be used to predict a
 #'     numeric value.
+#' 
 #' -   Choose `BINARY` if the `MLModel` result has two possible values.
+#' 
 #' -   Choose `MULTICLASS` if the `MLModel` result has a limited number of
 #'     values.
 #' 
@@ -954,9 +956,7 @@ machinelearning_delete_data_source <- function(DataSourceId) {
 #' can use the [`get_evaluation`][machinelearning_get_evaluation] operation
 #' to verify that the status of the `Evaluation` changed to `DELETED`.
 #' 
-#' Caution
-#' 
-#' The results of the
+#' **Caution:** The results of the
 #' [`delete_evaluation`][machinelearning_delete_evaluation] operation are
 #' irreversible.
 #'
@@ -1178,15 +1178,21 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #' 
 #' -   `CreatedAt` - Sets the search criteria to the `BatchPrediction`
 #'     creation date.
+#' 
 #' -   `Status` - Sets the search criteria to the `BatchPrediction` status.
+#' 
 #' -   `Name` - Sets the search criteria to the contents of the
 #'     `BatchPrediction` `Name`.
+#' 
 #' -   `IAMUser` - Sets the search criteria to the user account that
 #'     invoked the `BatchPrediction` creation.
+#' 
 #' -   `MLModelId` - Sets the search criteria to the `MLModel` used in the
 #'     `BatchPrediction`.
+#' 
 #' -   `DataSourceId` - Sets the search criteria to the `DataSource` used
 #'     in the `BatchPrediction`.
+#' 
 #' -   `DataURI` - Sets the search criteria to the data file(s) used in the
 #'     `BatchPrediction`. The URL can identify either a file or an Amazon
 #'     Simple Storage Solution (Amazon S3) bucket or directory.
@@ -1224,6 +1230,7 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #' of `MLModel`s.
 #' 
 #' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' 
 #' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
@@ -1319,12 +1326,16 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #' 
 #' -   `CreatedAt` - Sets the search criteria to `DataSource` creation
 #'     dates.
+#' 
 #' -   `Status` - Sets the search criteria to `DataSource` statuses.
+#' 
 #' -   `Name` - Sets the search criteria to the contents of `DataSource`
 #'     `Name`.
+#' 
 #' -   `DataUri` - Sets the search criteria to the URI of data files used
 #'     to create the `DataSource`. The URI can identify either a file or an
 #'     Amazon Simple Storage Service (Amazon S3) bucket or directory.
+#' 
 #' -   `IAMUser` - Sets the search criteria to the user account that
 #'     invoked the `DataSource` creation.
 #' @param EQ The equal to operator. The `DataSource` results will have
@@ -1361,6 +1372,7 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #' of `DataSource`.
 #' 
 #' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' 
 #' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
@@ -1476,15 +1488,21 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' 
 #' -   `CreatedAt` - Sets the search criteria to the `Evaluation` creation
 #'     date.
+#' 
 #' -   `Status` - Sets the search criteria to the `Evaluation` status.
+#' 
 #' -   `Name` - Sets the search criteria to the contents of `Evaluation`
 #'     `Name`.
+#' 
 #' -   `IAMUser` - Sets the search criteria to the user account that
 #'     invoked an `Evaluation`.
+#' 
 #' -   `MLModelId` - Sets the search criteria to the `MLModel` that was
 #'     evaluated.
+#' 
 #' -   `DataSourceId` - Sets the search criteria to the `DataSource` used
 #'     in `Evaluation`.
+#' 
 #' -   `DataUri` - Sets the search criteria to the data file(s) used in
 #'     `Evaluation`. The URL can identify either a file or an Amazon Simple
 #'     Storage Solution (Amazon S3) bucket or directory.
@@ -1522,6 +1540,7 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' of `Evaluation`.
 #' 
 #' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' 
 #' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
@@ -1616,19 +1635,27 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 #' @param FilterVariable Use one of the following variables to filter a list of `MLModel`:
 #' 
 #' -   `CreatedAt` - Sets the search criteria to `MLModel` creation date.
+#' 
 #' -   `Status` - Sets the search criteria to `MLModel` status.
+#' 
 #' -   `Name` - Sets the search criteria to the contents of `MLModel`
 #'     `Name`.
+#' 
 #' -   `IAMUser` - Sets the search criteria to the user account that
 #'     invoked the `MLModel` creation.
+#' 
 #' -   `TrainingDataSourceId` - Sets the search criteria to the
 #'     `DataSource` used to train one or more `MLModel`.
+#' 
 #' -   `RealtimeEndpointStatus` - Sets the search criteria to the `MLModel`
 #'     real-time endpoint status.
+#' 
 #' -   `MLModelType` - Sets the search criteria to `MLModel` type: binary,
 #'     regression, or multi-class.
+#' 
 #' -   `Algorithm` - Sets the search criteria to the algorithm that the
 #'     `MLModel` uses.
+#' 
 #' -   `TrainingDataURI` - Sets the search criteria to the data file(s)
 #'     used in training a `MLModel`. The URL can identify either a file or
 #'     an Amazon Simple Storage Service (Amazon S3) bucket or directory.
@@ -1664,6 +1691,7 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 #' of `MLModel`.
 #' 
 #' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' 
 #' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
@@ -2163,10 +2191,8 @@ machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
 #' Generates a prediction for the observation using the specified
 #' `ML Model`.
 #' 
-#' Note
-#' 
-#' Not all response parameters will be populated. Whether a response
-#' parameter is populated depends on the type of model requested.
+#' **Note:** Not all response parameters will be populated. Whether a
+#' response parameter is populated depends on the type of model requested.
 #'
 #' @usage
 #' machinelearning_predict(MLModelId, Record, PredictEndpoint)

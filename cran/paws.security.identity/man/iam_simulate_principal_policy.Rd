@@ -18,7 +18,7 @@ role, the simulation includes all policies that are associated with that
 entity. If you specify a user, the simulation also includes all policies
 that are attached to any groups the user belongs to.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 
 \item{PolicyInputList}{An optional list of additional policy documents to include in the
@@ -45,7 +45,7 @@ effect at a time. For example, if a permissions boundary is attached to
 an entity and you pass in a different permissions boundary policy using
 this parameter, then the new permissions boundary policy is used for the
 simulation. For more information about permissions boundaries, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions Boundaries for IAM Entities}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions boundaries for IAM entities}
 in the \emph{IAM User Guide}. The policy input is specified as a string
 containing the complete, valid JSON text of a permissions boundary
 policy.
@@ -71,13 +71,14 @@ parameter is not provided, then the value defaults to \code{*} (all
 resources). Each API in the \code{ActionNames} parameter is evaluated for
 each resource in this list. The simulation determines the access result
 (allowed or denied) of each combination and reports it in the response.
+You can simulate resources that don't exist in your account.
 
 The simulation does not automatically retrieve policies for the
 specified resources. If you want to include a resource policy in the
 simulation, then you must include the policy as a string in the
 \code{ResourcePolicy} parameter.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 
 \item{ResourcePolicy}{A resource-based policy to include in the simulation provided as a
@@ -124,7 +125,7 @@ of an assumed role, federated user, or a service principal.
 that the resource-based policy's \code{Principal} element has a value to use
 in evaluating the policy.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 
 \item{ContextEntries}{A list of context keys and corresponding values for the simulation to
@@ -145,7 +146,7 @@ security group resources. If your scenario includes an EBS volume, then
 you must specify that volume as a resource. If the EC2 scenario includes
 VPC, then you must supply the network interface resource. If it includes
 an IP subnet, then you must specify the subnet resource. For more
-information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported Platforms}
+information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported platforms}
 in the \emph{Amazon EC2 User Guide}.
 \itemize{
 \item \strong{EC2-Classic-InstanceStore}
@@ -257,7 +258,8 @@ Simulate how a set of IAM policies attached to an IAM entity works with
 a list of API operations and AWS resources to determine the policies'
 effective permissions. The entity can be an IAM user, group, or role. If
 you specify a user, then the simulation also includes all of the
-policies that are attached to groups that the user belongs to.
+policies that are attached to groups that the user belongs to. You can
+simulate resources that don't exist in your account.
 
 You can optionally include a list of one or more additional policies
 specified as strings to include in the simulation. If you want to
@@ -271,8 +273,8 @@ The simulation does not perform the API operations; it only checks the
 authorization to determine if the simulated policies allow or deny the
 operations.
 
-\strong{Note:} This API discloses information about the permissions granted
-to other users. If you do not want users to see other user's
+\strong{Note:} This operation discloses information about the permissions
+granted to other users. If you do not want users to see other user's
 permissions, then consider allowing them to use
 \code{\link[=iam_simulate_custom_policy]{simulate_custom_policy}} instead.
 
@@ -285,6 +287,9 @@ simulation, use
 
 If the output is long, you can use the \code{MaxItems} and \code{Marker}
 parameters to paginate the results.
+
+For more information about using the policy simulator, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html}{Testing IAM policies with the IAM policy simulator}
+in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$simulate_principal_policy(

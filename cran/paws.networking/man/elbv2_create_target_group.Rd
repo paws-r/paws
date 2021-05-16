@@ -65,10 +65,11 @@ targets.
 the format /package.service/method. The default is /AWS.ALB/healthcheck.}
 
 \item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an
-individual target. For TCP health checks, the supported values are 10
-and 30 seconds. If the target type is \code{instance} or \code{ip}, the default is
-30 seconds. If the target group protocol is GENEVE, the default is 10
-seconds. If the target type is \code{lambda}, the default is 35 seconds.}
+individual target. If the target group protocol is TCP, TLS, UDP, or
+TCP_UDP, the supported values are 10 and 30 seconds. If the target
+group protocol is HTTP or HTTPS, the default is 30 seconds. If the
+target group protocol is GENEVE, the default is 10 seconds. If the
+target type is \code{lambda}, the default is 35 seconds.}
 
 \item{HealthCheckTimeoutSeconds}{The amount of time, in seconds, during which no response from a target
 means a failed health check. For target groups with a protocol of HTTP,

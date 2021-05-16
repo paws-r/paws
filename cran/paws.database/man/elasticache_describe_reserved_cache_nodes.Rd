@@ -35,9 +35,7 @@ previous generation counterparts.
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
 \code{cache.m6g.16xlarge}
 
-At this time, M6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{M5 node types:} \code{cache.m5.large}, \code{cache.m5.xlarge},
 \code{cache.m5.2xlarge}, \code{cache.m5.4xlarge}, \code{cache.m5.12xlarge},
@@ -78,9 +76,7 @@ eu-west-1 and ap-northeast-1.
 \code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
 \code{cache.r6g.16xlarge}
 
-At this time, R6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{R5 node types:} \code{cache.r5.large}, \code{cache.r5.xlarge},
 \code{cache.r5.2xlarge}, \code{cache.r5.4xlarge}, \code{cache.r5.12xlarge},

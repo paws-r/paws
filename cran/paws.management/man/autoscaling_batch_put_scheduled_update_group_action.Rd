@@ -27,8 +27,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Creates or updates one or more scheduled scaling actions for an Auto
-Scaling group. If you leave a parameter unspecified when updating a
-scheduled scaling action, the corresponding value remains unchanged.
+Scaling group.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_put_scheduled_update_group_action(
@@ -45,7 +44,8 @@ scheduled scaling action, the corresponding value remains unchanged.
       Recurrence = "string",
       MinSize = 123,
       MaxSize = 123,
-      DesiredCapacity = 123
+      DesiredCapacity = 123,
+      TimeZone = "string"
     )
   )
 )

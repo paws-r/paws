@@ -24,6 +24,7 @@ A list with the following syntax:\preformatted{list(
       "2015-01-01"
     ),
     Engine = "string",
+    EngineMode = "string",
     AllocatedStorage = 123,
     Status = "string",
     Port = 123,

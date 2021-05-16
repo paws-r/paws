@@ -15,7 +15,7 @@ s3_put_bucket_metrics_configuration(Bucket, Id, MetricsConfiguration,
 
 \item{MetricsConfiguration}{[required] Specifies the metrics configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }

@@ -8,6 +8,14 @@ test_that("describe_addresses", {
   expect_error(svc$describe_addresses(), NA)
 })
 
+test_that("describe_addresses_attribute", {
+  expect_error(svc$describe_addresses_attribute(), NA)
+})
+
+test_that("describe_addresses_attribute", {
+  expect_error(svc$describe_addresses_attribute(MaxResults = 20), NA)
+})
+
 test_that("describe_aggregate_id_format", {
   expect_error(svc$describe_aggregate_id_format(), NA)
 })
@@ -396,6 +404,14 @@ test_that("describe_regions", {
   expect_error(svc$describe_regions(), NA)
 })
 
+test_that("describe_replace_root_volume_tasks", {
+  expect_error(svc$describe_replace_root_volume_tasks(), NA)
+})
+
+test_that("describe_replace_root_volume_tasks", {
+  expect_error(svc$describe_replace_root_volume_tasks(MaxResults = 20), NA)
+})
+
 test_that("describe_reserved_instances", {
   expect_error(svc$describe_reserved_instances(), NA)
 })
@@ -466,6 +482,14 @@ test_that("describe_spot_price_history", {
 
 test_that("describe_spot_price_history", {
   expect_error(svc$describe_spot_price_history(MaxResults = 20), NA)
+})
+
+test_that("describe_store_image_tasks", {
+  expect_error(svc$describe_store_image_tasks(), NA)
+})
+
+test_that("describe_store_image_tasks", {
+  expect_error(svc$describe_store_image_tasks(MaxResults = 20), NA)
 })
 
 test_that("describe_subnets", {

@@ -66,6 +66,7 @@ This is the Amazon Rekognition API reference.
 \link[=rekognition_list_collections]{list_collections} \tab Returns list of collection IDs in your account\cr
 \link[=rekognition_list_faces]{list_faces} \tab Returns metadata for faces in the specified collection\cr
 \link[=rekognition_list_stream_processors]{list_stream_processors} \tab Gets a list of stream processors that you have created with CreateStreamProcessor\cr
+\link[=rekognition_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags in an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
 \link[=rekognition_recognize_celebrities]{recognize_celebrities} \tab Returns an array of celebrities recognized in the input image\cr
 \link[=rekognition_search_faces]{search_faces} \tab For a given input face ID, searches for matching faces in the collection the face belongs to\cr
 \link[=rekognition_search_faces_by_image]{search_faces_by_image} \tab For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces\cr
@@ -80,7 +81,9 @@ This is the Amazon Rekognition API reference.
 \link[=rekognition_start_stream_processor]{start_stream_processor} \tab Starts processing a stream processor\cr
 \link[=rekognition_start_text_detection]{start_text_detection} \tab Starts asynchronous detection of text in a stored video\cr
 \link[=rekognition_stop_project_version]{stop_project_version} \tab Stops a running model\cr
-\link[=rekognition_stop_stream_processor]{stop_stream_processor} \tab Stops a running stream processor that was created by CreateStreamProcessor
+\link[=rekognition_stop_stream_processor]{stop_stream_processor} \tab Stops a running stream processor that was created by CreateStreamProcessor\cr
+\link[=rekognition_tag_resource]{tag_resource} \tab Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
+\link[=rekognition_untag_resource]{untag_resource} \tab Removes one or more tags from an Amazon Rekognition collection, stream processor, or Custom Labels model
 }
 }
 

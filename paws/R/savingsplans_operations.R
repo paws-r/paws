@@ -134,8 +134,8 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
 #'       rate = "string",
 #'       currency = "CNY"|"USD",
 #'       unit = "Hrs"|"Lambda-GB-Second"|"Request",
-#'       productType = "EC2"|"Fargate"|"Lambda",
-#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AWSLambda",
+#'       productType = "EC2"|"Fargate"|"Lambda"|"SageMaker",
+#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker",
 #'       usageType = "string",
 #'       operation = "string",
 #'       properties = list(
@@ -219,10 +219,10 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #'       state = "payment-pending"|"payment-failed"|"active"|"retired"|"queued"|"queued-deleted",
 #'       region = "string",
 #'       ec2InstanceFamily = "string",
-#'       savingsPlanType = "Compute"|"EC2Instance",
+#'       savingsPlanType = "Compute"|"EC2Instance"|"SageMaker",
 #'       paymentOption = "All Upfront"|"Partial Upfront"|"No Upfront",
 #'       productTypes = list(
-#'         "EC2"|"Fargate"|"Lambda"
+#'         "EC2"|"Fargate"|"Lambda"|"SageMaker"
 #'       ),
 #'       currency = "CNY"|"USD",
 #'       commitment = "string",
@@ -315,15 +315,15 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #'       savingsPlanOffering = list(
 #'         offeringId = "string",
 #'         paymentOption = "All Upfront"|"Partial Upfront"|"No Upfront",
-#'         planType = "Compute"|"EC2Instance",
+#'         planType = "Compute"|"EC2Instance"|"SageMaker",
 #'         durationSeconds = 123,
 #'         currency = "CNY"|"USD",
 #'         planDescription = "string"
 #'       ),
 #'       rate = "string",
 #'       unit = "Hrs"|"Lambda-GB-Second"|"Request",
-#'       productType = "EC2"|"Fargate"|"Lambda",
-#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AWSLambda",
+#'       productType = "EC2"|"Fargate"|"Lambda"|"SageMaker",
+#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker",
 #'       usageType = "string",
 #'       operation = "string",
 #'       properties = list(
@@ -348,13 +348,13 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #'     "All Upfront"|"Partial Upfront"|"No Upfront"
 #'   ),
 #'   savingsPlanTypes = list(
-#'     "Compute"|"EC2Instance"
+#'     "Compute"|"EC2Instance"|"SageMaker"
 #'   ),
 #'   products = list(
-#'     "EC2"|"Fargate"|"Lambda"
+#'     "EC2"|"Fargate"|"Lambda"|"SageMaker"
 #'   ),
 #'   serviceCodes = list(
-#'     "AmazonEC2"|"AmazonECS"|"AWSLambda"
+#'     "AmazonEC2"|"AmazonECS"|"AmazonEKS"|"AWSLambda"|"AmazonSageMaker"
 #'   ),
 #'   usageTypes = list(
 #'     "string"
@@ -429,9 +429,9 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #'     list(
 #'       offeringId = "string",
 #'       productTypes = list(
-#'         "EC2"|"Fargate"|"Lambda"
+#'         "EC2"|"Fargate"|"Lambda"|"SageMaker"
 #'       ),
-#'       planType = "Compute"|"EC2Instance",
+#'       planType = "Compute"|"EC2Instance"|"SageMaker",
 #'       description = "string",
 #'       paymentOption = "All Upfront"|"Partial Upfront"|"No Upfront",
 #'       durationSeconds = 123,
@@ -460,9 +460,9 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #'   paymentOptions = list(
 #'     "All Upfront"|"Partial Upfront"|"No Upfront"
 #'   ),
-#'   productType = "EC2"|"Fargate"|"Lambda",
+#'   productType = "EC2"|"Fargate"|"Lambda"|"SageMaker",
 #'   planTypes = list(
-#'     "Compute"|"EC2Instance"
+#'     "Compute"|"EC2Instance"|"SageMaker"
 #'   ),
 #'   durations = list(
 #'     123

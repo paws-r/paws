@@ -4,10 +4,13 @@
 \alias{rekognition_create_collection}
 \title{Creates a collection in an AWS Region}
 \usage{
-rekognition_create_collection(CollectionId)
+rekognition_create_collection(CollectionId, Tags)
 }
 \arguments{
 \item{CollectionId}{[required] ID for the collection that you are creating.}
+
+\item{Tags}{A set of tags (key-value pairs) that you want to attach to the
+collection.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -37,7 +40,10 @@ This operation requires permissions to perform the
 }
 \section{Request syntax}{
 \preformatted{svc$create_collection(
-  CollectionId = "string"
+  CollectionId = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

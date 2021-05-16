@@ -38,8 +38,8 @@ operation works for access keys under the AWS account. Consequently, you
 can use this operation to manage AWS account root user credentials. This
 is true even if the AWS account has no associated users.
 
-The number and size of IAM resources in an AWS account are limited. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
+For information about quotas on the number of keys you can create, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS quotas}
 in the \emph{IAM User Guide}.
 
 To ensure the security of your AWS account, the secret access key is

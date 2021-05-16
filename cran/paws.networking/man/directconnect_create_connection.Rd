@@ -6,7 +6,7 @@
 Direct Connect location}
 \usage{
 directconnect_create_connection(location, bandwidth, connectionName,
-  lagId, tags, providerName)
+  lagId, tags, providerName, requestMACSec)
 }
 \arguments{
 \item{location}{[required] The location of the connection.}
@@ -21,6 +21,13 @@ directconnect_create_connection(location, bandwidth, connectionName,
 
 \item{providerName}{The name of the service provider associated with the requested
 connection.}
+
+\item{requestMACSec}{Indicates whether you want the connection to support MAC Security
+(MACsec).
+
+MAC Security (MACsec) is only available on dedicated connections. For
+information about MAC Security (MACsec) prerequisties, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites}{MACsec prerequisties}
+in the \emph{AWS Direct Connect User Guide}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -47,7 +54,18 @@ A list with the following syntax:\preformatted{list(
       value = "string"
     )
   ),
-  providerName = "string"
+  providerName = "string",
+  macSecCapable = TRUE|FALSE,
+  portEncryptionStatus = "string",
+  encryptionMode = "string",
+  macSecKeys = list(
+    list(
+      secretARN = "string",
+      ckn = "string",
+      state = "string",
+      startOn = "string"
+    )
+  )
 )
 }
 }
@@ -81,7 +99,8 @@ endpoint, the request fails and no connection is created.
       value = "string"
     )
   ),
-  providerName = "string"
+  providerName = "string",
+  requestMACSec = TRUE|FALSE
 )
 }
 }

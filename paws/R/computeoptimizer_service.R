@@ -63,7 +63,7 @@ NULL
 #'  \link[=computeoptimizer_get_enrollment_status]{get_enrollment_status} \tab Returns the enrollment (opt in) status of an account to the AWS Compute Optimizer service\cr
 #'  \link[=computeoptimizer_get_lambda_function_recommendations]{get_lambda_function_recommendations} \tab Returns AWS Lambda function recommendations\cr
 #'  \link[=computeoptimizer_get_recommendation_summaries]{get_recommendation_summaries} \tab Returns the optimization findings for an account\cr
-#'  \link[=computeoptimizer_update_enrollment_status]{update_enrollment_status} \tab Updates the enrollment (opt in) status of an account to the AWS Compute Optimizer service
+#'  \link[=computeoptimizer_update_enrollment_status]{update_enrollment_status} \tab Updates the enrollment (opt in and opt out) status of an account to the AWS Compute Optimizer service
 #' }
 #'
 #' @rdname computeoptimizer

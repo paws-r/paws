@@ -71,7 +71,12 @@ versions 4.8.0 and later, excluding 5.0.x.
         AllocationStrategy = "capacity-optimized"
       ),
       OnDemandSpecification = list(
-        AllocationStrategy = "lowest-price"
+        AllocationStrategy = "lowest-price",
+        CapacityReservationOptions = list(
+          UsageStrategy = "use-capacity-reservations-first",
+          CapacityReservationPreference = "open"|"none",
+          CapacityReservationResourceGroupArn = "string"
+        )
       )
     )
   )

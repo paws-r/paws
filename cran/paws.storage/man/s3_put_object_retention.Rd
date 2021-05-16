@@ -11,13 +11,13 @@ s3_put_object_retention(Bucket, Key, Retention, RequestPayer, VersionId,
 \item{Bucket}{[required] The bucket name that contains the object you want to apply this Object
 Retention configuration to.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] The key name for the object that you want to apply this Object Retention
 configuration to.}
@@ -29,7 +29,7 @@ configuration to.}
 \item{VersionId}{The version ID for the object that you want to apply this Object
 Retention configuration to.}
 
-\item{BypassGovernanceRetention}{Indicates whether this operation should bypass Governance-mode
+\item{BypassGovernanceRetention}{Indicates whether this action should bypass Governance-mode
 restrictions.}
 
 \item{ContentMD5}{The MD5 hash for the request body.
@@ -37,7 +37,7 @@ restrictions.}
 For requests made using the AWS Command Line Interface (CLI) or AWS
 SDKs, this field is calculated automatically.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -48,14 +48,10 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Places an Object Retention configuration on an object.
+Places an Object Retention configuration on an object. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}.
 
 This action is not supported by Amazon S3 on Outposts.
-
-\strong{Related Resources}
-\itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}
-}
 }
 \section{Request syntax}{
 \preformatted{svc$put_object_retention(

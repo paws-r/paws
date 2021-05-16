@@ -66,6 +66,9 @@ Creates a new MSK cluster.
     Sasl = list(
       Scram = list(
         Enabled = TRUE|FALSE
+      ),
+      Iam = list(
+        Enabled = TRUE|FALSE
       )
     ),
     Tls = list(

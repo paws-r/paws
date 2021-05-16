@@ -44,10 +44,17 @@ A list with the following syntax:\preformatted{list(
         "string"
       )
     ),
-    amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+    amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM",
     nodeRole = "string",
     labels = list(
       "string"
+    ),
+    taints = list(
+      list(
+        key = "string",
+        value = "string",
+        effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+      )
     ),
     resources = list(
       autoScalingGroups = list(

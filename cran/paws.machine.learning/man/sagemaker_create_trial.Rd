@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_trial}
 \alias{sagemaker_create_trial}
-\title{Creates an Amazon SageMaker trial}
+\title{Creates an SageMaker trial}
 \usage{
 sagemaker_create_trial(TrialName, DisplayName, ExperimentName,
   MetadataProperties, Tags)
@@ -28,12 +28,12 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates an Amazon SageMaker \emph{trial}. A trial is a set of steps called
-\emph{trial components} that produce a machine learning model. A trial is
-part of a single Amazon SageMaker \emph{experiment}.
+Creates an SageMaker \emph{trial}. A trial is a set of steps called \emph{trial
+components} that produce a machine learning model. A trial is part of a
+single SageMaker \emph{experiment}.
 
-When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-all experiments, trials, and trial components are automatically tracked,
+When you use SageMaker Studio or the SageMaker Python SDK, all
+experiments, trials, and trial components are automatically tracked,
 logged, and indexed. When you use the AWS SDK for Python (Boto), you
 must use the logging APIs provided by the SDK.
 

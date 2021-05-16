@@ -59,7 +59,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Describes the specified placement groups or all of your placement
 groups. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_placement_groups(

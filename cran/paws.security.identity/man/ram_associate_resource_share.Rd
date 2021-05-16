@@ -13,7 +13,9 @@ ram_associate_resource_share(resourceShareArn, resourceArns, principals,
 
 \item{resourceArns}{The Amazon Resource Names (ARN) of the resources.}
 
-\item{principals}{The principals.}
+\item{principals}{The principals to associate with the resource share. The possible values
+are IDs of AWS accounts, and the ARNs of organizational units (OU) or
+organizations from AWS Organizations.}
 
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}

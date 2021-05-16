@@ -5,11 +5,21 @@
 \title{Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
 S3}
 \usage{
-ec2_copy_snapshot(Description, DestinationRegion, Encrypted, KmsKeyId,
-  PresignedUrl, SourceRegion, SourceSnapshotId, TagSpecifications, DryRun)
+ec2_copy_snapshot(Description, DestinationOutpostArn, DestinationRegion,
+  Encrypted, KmsKeyId, PresignedUrl, SourceRegion, SourceSnapshotId,
+  TagSpecifications, DryRun)
 }
 \arguments{
 \item{Description}{A description for the EBS snapshot.}
+
+\item{DestinationOutpostArn}{The Amazon Resource Name (ARN) of the Outpost to which to copy the
+snapshot. Only specify this parameter when copying a snapshot from an
+AWS Region to an Outpost. The snapshot must be in the Region for the
+destination Outpost. You cannot copy a snapshot from an Outpost to a
+Region, from one Outpost to another, or within the same Outpost.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#copy-snapshots}{Copying snapshots from an AWS Region to an Outpost}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{DestinationRegion}{The destination Region to use in the \code{PresignedUrl} parameter of a
 snapshot copy operation. This parameter is only valid for specifying the
@@ -85,18 +95,28 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
-S3. You can copy the snapshot within the same Region or from one Region
-to another. You can use the snapshot to create EBS volumes or Amazon
-Machine Images (AMIs).
+S3. You can copy a snapshot within the same Region, from one Region to
+another, or from a Region to an Outpost. You can't copy a snapshot from
+an Outpost to a Region, from one Outpost to another, or within the same
+Outpost.
 
-Copies of encrypted EBS snapshots remain encrypted. Copies of
-unencrypted snapshots remain unencrypted, unless you enable encryption
-for the snapshot copy operation. By default, encrypted snapshot copies
-use the default AWS Key Management Service (AWS KMS) customer master key
-(CMK); however, you can specify a different CMK.
+You can use the snapshot to create EBS volumes or Amazon Machine Images
+(AMIs).
 
-To copy an encrypted snapshot that has been shared from another account,
-you must have permissions for the CMK used to encrypt the snapshot.
+When copying snapshots to a Region, copies of encrypted EBS snapshots
+remain encrypted. Copies of unencrypted snapshots remain unencrypted,
+unless you enable encryption for the snapshot copy operation. By
+default, encrypted snapshot copies use the default AWS Key Management
+Service (AWS KMS) customer master key (CMK); however, you can specify a
+different CMK. To copy an encrypted snapshot that has been shared from
+another account, you must have permissions for the CMK used to encrypt
+the snapshot.
+
+Snapshots copied to an Outpost are encrypted by default using the
+default encryption key for the Region, or a different key that you
+specify in the request using \strong{KmsKeyId}. Outposts do not support
+unencrypted snapshots. For more information, \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami}{Amazon EBS local snapshots on Outposts}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 Snapshots created by copying another snapshot have an arbitrary volume
 ID that should not be used for any purpose.
@@ -107,6 +127,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \section{Request syntax}{
 \preformatted{svc$copy_snapshot(
   Description = "string",
+  DestinationOutpostArn = "string",
   DestinationRegion = "string",
   Encrypted = TRUE|FALSE,
   KmsKeyId = "string",

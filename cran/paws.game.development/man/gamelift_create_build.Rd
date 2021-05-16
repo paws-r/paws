@@ -17,14 +17,12 @@ to change this value later.}
 strings do not need to be unique. You can use
 \code{\link[=gamelift_update_build]{update_build}} to change this value later.}
 
-\item{StorageLocation}{The location where your game build files are stored. Use this parameter
-only when creating a build using files that are stored in an S3 bucket
-that you own. Identify an S3 bucket name and key, which must in the same
-Region where you're creating a build. This parameter must also specify
-the ARN for an IAM role that you've set up to give Amazon GameLift
-access your S3 bucket. To call this operation with a storage location,
-you must have IAM PassRole permission. For more details on IAM roles and
-PassRole permissions, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html}{Set up a role for GameLift access}.}
+\item{StorageLocation}{Information indicating where your game build files are stored. Use this
+parameter only when creating a build with files stored in an Amazon S3
+bucket that you own. The storage location must specify an Amazon S3
+bucket name and key. The location must also specify a role ARN that you
+set up to allow Amazon GameLift to access your Amazon S3 bucket. The S3
+bucket and your new build must be in the same Region.}
 
 \item{OperatingSystem}{The operating system that the game server binaries are built to run on.
 This value determines the type of fleet resources that you can use for
@@ -87,21 +85,23 @@ creates a new build resource.
 The \code{\link[=gamelift_create_build]{create_build}} operation can used in the
 following scenarios:
 \itemize{
-\item To create a new game build with build files that are in an S3
+\item To create a new game build with build files that are in an Amazon S3
 location under an AWS account that you control. To use this option,
-you must first give Amazon GameLift access to the S3 bucket. With
-permissions in place, call \code{\link[=gamelift_create_build]{create_build}}
-and specify a build name, operating system, and the S3 storage
-location of your game build.
-\item To directly upload your build files to a GameLift S3 location. To
-use this option, first call \code{\link[=gamelift_create_build]{create_build}}
-and specify a build name and operating system. This operation
-creates a new build resource and also returns an S3 location with
-temporary access credentials. Use the credentials to manually upload
-your build files to the specified S3 location. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html}{Uploading Objects}
+you must first give Amazon GameLift access to the Amazon S3 bucket.
+With permissions in place, call
+\code{\link[=gamelift_create_build]{create_build}} and specify a build name,
+operating system, and the Amazon S3 storage location of your game
+build.
+\item To directly upload your build files to a GameLift Amazon S3
+location. To use this option, first call
+\code{\link[=gamelift_create_build]{create_build}} and specify a build name and
+operating system. This operation creates a new build resource and
+also returns an Amazon S3 location with temporary access
+credentials. Use the credentials to manually upload your build files
+to the specified Amazon S3 location. For more information, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html}{Uploading Objects}
 in the \emph{Amazon S3 Developer Guide}. Build files can be uploaded to
-the GameLift S3 location once only; that can't be updated.
+the GameLift Amazon S3 location once only; that can't be updated.
 }
 
 If successful, this operation creates a new build resource with a unique
@@ -114,14 +114,13 @@ build ID and places it in \code{INITIALIZED} status. A build must be in
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build}{Create a Build with Files in Amazon S3}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_build]{create_build}}
-\item \code{\link[=gamelift_list_builds]{list_builds}}
-\item \code{\link[=gamelift_describe_build]{describe_build}}
-\item \code{\link[=gamelift_update_build]{update_build}}
-\item \code{\link[=gamelift_delete_build]{delete_build}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_build]{create_build}} |
+\code{\link[=gamelift_list_builds]{list_builds}} |
+\code{\link[=gamelift_describe_build]{describe_build}} |
+\code{\link[=gamelift_update_build]{update_build}} |
+\code{\link[=gamelift_delete_build]{delete_build}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$create_build(

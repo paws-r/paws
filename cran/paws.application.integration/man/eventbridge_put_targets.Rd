@@ -53,6 +53,8 @@ You can configure the following as targets for Events:
 \item The default event bus of another AWS account
 \item Amazon API Gateway REST APIs
 \item Redshift Clusters to invoke Data API ExecuteStatement on
+\item Custom/SaaS HTTPS APIs via EventBridge API Destinations
+\item Amazon SageMaker Model Building Pipelines
 }
 
 Creating rules with built-in targets is supported only in the AWS
@@ -73,7 +75,7 @@ resource-based policies. For EC2 instances, Kinesis data streams, AWS
 Step Functions state machines and API Gateway REST APIs, EventBridge
 relies on IAM roles that you specify in the \code{RoleARN} argument in
 \code{\link[=eventbridge_put_targets]{put_targets}}. For more information, see
-\href{https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html}{Authentication and Access Control}
+\href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-iam.html}{Authentication and Access Control}
 in the \emph{Amazon EventBridge User Guide}.
 
 If another AWS account is in the same region and has granted you
@@ -94,7 +96,7 @@ If you are setting the event bus of another account as the target, and
 that account granted permission to your account through an organization
 instead of directly by the account ID, then you must specify a \code{RoleArn}
 with proper permissions in the \code{Target} structure. For more information,
-see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html}{Sending and Receiving Events Between AWS Accounts}
+see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html}{Sending and Receiving Events Between AWS Accounts}
 in the \emph{Amazon EventBridge User Guide}.
 
 For more information about enabling cross-account events, see
@@ -210,6 +212,14 @@ and the error code.
         Sql = "string",
         StatementName = "string",
         WithEvent = TRUE|FALSE
+      ),
+      SageMakerPipelineParameters = list(
+        PipelineParameterList = list(
+          list(
+            Name = "string",
+            Value = "string"
+          )
+        )
       ),
       DeadLetterConfig = list(
         Arn = "string"

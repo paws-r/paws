@@ -116,6 +116,9 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #'     Sasl = list(
 #'       Scram = list(
 #'         Enabled = TRUE|FALSE
+#'       ),
+#'       Iam = list(
+#'         Enabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     Tls = list(
@@ -398,6 +401,9 @@ kafka_delete_configuration <- function(Arn) {
 #'       Sasl = list(
 #'         Scram = list(
 #'           Enabled = TRUE|FALSE
+#'         ),
+#'         Iam = list(
+#'           Enabled = TRUE|FALSE
 #'         )
 #'       ),
 #'       Tls = list(
@@ -575,7 +581,8 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'             Prefix = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       InstanceType = "string"
 #'     ),
 #'     TargetClusterInfo = list(
 #'       BrokerEBSVolumeInfo = list(
@@ -617,7 +624,8 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'             Prefix = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       InstanceType = "string"
 #'     )
 #'   )
 #' )
@@ -838,7 +846,8 @@ kafka_batch_disassociate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' list(
 #'   BootstrapBrokerString = "string",
 #'   BootstrapBrokerStringTls = "string",
-#'   BootstrapBrokerStringSaslScram = "string"
+#'   BootstrapBrokerStringSaslScram = "string",
+#'   BootstrapBrokerStringSaslIam = "string"
 #' )
 #' ```
 #'
@@ -1007,7 +1016,8 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #'               Prefix = "string"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         InstanceType = "string"
 #'       ),
 #'       TargetClusterInfo = list(
 #'         BrokerEBSVolumeInfo = list(
@@ -1049,7 +1059,8 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #'               Prefix = "string"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         InstanceType = "string"
 #'       )
 #'     )
 #'   ),
@@ -1127,6 +1138,9 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
 #'       ClientAuthentication = list(
 #'         Sasl = list(
 #'           Scram = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           Iam = list(
 #'             Enabled = TRUE|FALSE
 #'           )
 #'         ),
@@ -1812,6 +1826,58 @@ kafka_update_broker_count <- function(ClusterArn, CurrentVersion, TargetNumberOf
   return(response)
 }
 .kafka$operations$update_broker_count <- kafka_update_broker_count
+
+#' Updates EC2 instance type
+#'
+#' @description
+#' Updates EC2 instance type.
+#'
+#' @usage
+#' kafka_update_broker_type(ClusterArn, CurrentVersion, TargetInstanceType)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param CurrentVersion &#91;required&#93; The cluster version that you want to change. After this operation
+#' completes successfully, the cluster will have a new version.
+#' @param TargetInstanceType &#91;required&#93; The Amazon MSK broker type that you want all of the brokers in this
+#' cluster to be.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterArn = "string",
+#'   ClusterOperationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_broker_type(
+#'   ClusterArn = "string",
+#'   CurrentVersion = "string",
+#'   TargetInstanceType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_broker_type
+kafka_update_broker_type <- function(ClusterArn, CurrentVersion, TargetInstanceType) {
+  op <- new_operation(
+    name = "UpdateBrokerType",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/nodes/type",
+    paginator = list()
+  )
+  input <- .kafka$update_broker_type_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, TargetInstanceType = TargetInstanceType)
+  output <- .kafka$update_broker_type_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_broker_type <- kafka_update_broker_type
 
 #' Updates the EBS storage associated with MSK brokers
 #'

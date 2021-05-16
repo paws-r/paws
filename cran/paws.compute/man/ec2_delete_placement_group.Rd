@@ -21,7 +21,7 @@ An empty list.
 Deletes the specified placement group. You must terminate all instances
 in the placement group before you can delete the placement group. For
 more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_placement_group(

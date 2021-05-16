@@ -2,7 +2,7 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_get_login_profile}
 \alias{iam_get_login_profile}
-\title{Retrieves the user name and password-creation date for the specified IAM
+\title{Retrieves the user name and password creation date for the specified IAM
 user}
 \usage{
 iam_get_login_profile(UserName)
@@ -27,7 +27,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Retrieves the user name and password-creation date for the specified IAM
+Retrieves the user name and password creation date for the specified IAM
 user. If the user has not been assigned a password, the operation
 returns a 404 (\code{NoSuchEntity}) error.
 }

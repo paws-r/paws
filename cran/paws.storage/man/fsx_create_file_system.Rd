@@ -55,7 +55,7 @@ from. For Windows \code{MULTI_AZ_1} file system deployment types, provide
 exactly two subnet IDs, one for the preferred file server and one for
 the standby file server. You specify one of these subnets as the
 preferred subnet using the \code{WindowsConfiguration > PreferredSubnetID}
-property.
+property. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html}{Availability and durability: Single-AZ and Multi-AZ file systems}.
 
 For Windows \code{SINGLE_AZ_1} and \code{SINGLE_AZ_2} file system deployment types
 and Lustre file systems, provide exactly one subnet ID. The file server

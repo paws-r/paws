@@ -28,9 +28,18 @@ To get started, verify prerequisites and configure managed instances.
 For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html}{Setting up AWS Systems Manager}
 in the \emph{AWS Systems Manager User Guide}.
 
-For information about other API actions you can perform on EC2
-instances, see the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{Amazon EC2 API Reference}. For
-information about how to use a Query API, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html}{Making API requests}.
+\strong{Related resources}
+\itemize{
+\item For information about how to use a Query API, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html}{Making API requests}.
+\item For information about other API actions you can perform on EC2
+instances, see the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{Amazon EC2 API Reference}.
+\item For information about AWS AppConfig, a capability of Systems
+Manager, see the \href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AWS AppConfig User Guide} and
+the \href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AWS AppConfig API Reference}.
+\item For information about AWS Incident Manager, a capability of Systems
+Manager, see the \href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{AWS Incident Manager User Guide}
+and the \href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{AWS Incident Manager API Reference}.
+}
 }
 \section{Service syntax}{
 \preformatted{svc <- ssm(
@@ -54,6 +63,7 @@ information about how to use a Query API, see \href{https://docs.aws.amazon.com/
 
 \tabular{ll}{
 \link[=ssm_add_tags_to_resource]{add_tags_to_resource} \tab Adds or overwrites one or more tags for the specified resource\cr
+\link[=ssm_associate_ops_item_related_item]{associate_ops_item_related_item} \tab Associates a related resource to a Systems Manager OpsCenter OpsItem\cr
 \link[=ssm_cancel_command]{cancel_command} \tab Attempts to cancel the command specified by the Command ID\cr
 \link[=ssm_cancel_maintenance_window_execution]{cancel_maintenance_window_execution} \tab Stops a maintenance window execution that is already in progress and cancels any tasks in the window that have not already starting running\cr
 \link[=ssm_create_activation]{create_activation} \tab Generates an activation code and activation ID you can use to register your on-premises server or virtual machine (VM) with Systems Manager\cr
@@ -111,6 +121,7 @@ information about how to use a Query API, see \href{https://docs.aws.amazon.com/
 \link[=ssm_describe_patch_group_state]{describe_patch_group_state} \tab Returns high-level aggregated patch compliance state for a patch group\cr
 \link[=ssm_describe_patch_properties]{describe_patch_properties} \tab Lists the properties of available patches organized by product, product family, classification, severity, and other properties of available patches\cr
 \link[=ssm_describe_sessions]{describe_sessions} \tab Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days\cr
+\link[=ssm_disassociate_ops_item_related_item]{disassociate_ops_item_related_item} \tab Deletes the association between an OpsItem and a related resource\cr
 \link[=ssm_get_automation_execution]{get_automation_execution} \tab Get detailed information about a particular Automation execution\cr
 \link[=ssm_get_calendar_state]{get_calendar_state} \tab Gets the state of the AWS Systems Manager Change Calendar at an optional, specified time\cr
 \link[=ssm_get_command_invocation]{get_command_invocation} \tab Returns detailed information about command execution for an invocation or plugin\cr
@@ -147,6 +158,7 @@ information about how to use a Query API, see \href{https://docs.aws.amazon.com/
 \link[=ssm_list_document_versions]{list_document_versions} \tab List all versions for a document\cr
 \link[=ssm_list_inventory_entries]{list_inventory_entries} \tab A list of inventory items returned by the request\cr
 \link[=ssm_list_ops_item_events]{list_ops_item_events} \tab Returns a list of all OpsItem events in the current AWS account and Region\cr
+\link[=ssm_list_ops_item_related_items]{list_ops_item_related_items} \tab Lists all related-item resources associated with an OpsItem\cr
 \link[=ssm_list_ops_metadata]{list_ops_metadata} \tab Systems Manager calls this API action when displaying all Application Manager OpsMetadata objects or blobs\cr
 \link[=ssm_list_resource_compliance_summaries]{list_resource_compliance_summaries} \tab Returns a resource-level summary count\cr
 \link[=ssm_list_resource_data_sync]{list_resource_data_sync} \tab Lists your resource data sync configurations\cr
@@ -170,6 +182,7 @@ information about how to use a Query API, see \href{https://docs.aws.amazon.com/
 \link[=ssm_start_session]{start_session} \tab Initiates a connection to a target (for example, an instance) for a Session Manager session\cr
 \link[=ssm_stop_automation_execution]{stop_automation_execution} \tab Stop an Automation that is currently running\cr
 \link[=ssm_terminate_session]{terminate_session} \tab Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the instance\cr
+\link[=ssm_unlabel_parameter_version]{unlabel_parameter_version} \tab Remove a label or labels from a parameter\cr
 \link[=ssm_update_association]{update_association} \tab Updates an association\cr
 \link[=ssm_update_association_status]{update_association_status} \tab Updates the status of the Systems Manager document associated with the specified instance\cr
 \link[=ssm_update_document]{update_document} \tab Updates one or more values for an SSM document\cr

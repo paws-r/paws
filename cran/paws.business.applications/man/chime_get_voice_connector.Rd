@@ -3,7 +3,7 @@
 \name{chime_get_voice_connector}
 \alias{chime_get_voice_connector}
 \title{Retrieves details for the specified Amazon Chime Voice Connector, such
-as timestamps, name, outbound host, and encryption requirements}
+as timestamps,name, outbound host, and encryption requirements}
 \usage{
 chime_get_voice_connector(VoiceConnectorId)
 }
@@ -30,7 +30,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Retrieves details for the specified Amazon Chime Voice Connector, such
-as timestamps, name, outbound host, and encryption requirements.
+as timestamps,name, outbound host, and encryption requirements.
 }
 \section{Request syntax}{
 \preformatted{svc$get_voice_connector(

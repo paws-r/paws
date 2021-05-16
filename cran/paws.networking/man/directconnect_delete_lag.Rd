@@ -47,7 +47,18 @@ A list with the following syntax:\preformatted{list(
           value = "string"
         )
       ),
-      providerName = "string"
+      providerName = "string",
+      macSecCapable = TRUE|FALSE,
+      portEncryptionStatus = "string",
+      encryptionMode = "string",
+      macSecKeys = list(
+        list(
+          secretARN = "string",
+          ckn = "string",
+          state = "string",
+          startOn = "string"
+        )
+      )
     )
   ),
   allowsHostedConnections = TRUE|FALSE,
@@ -59,7 +70,17 @@ A list with the following syntax:\preformatted{list(
       value = "string"
     )
   ),
-  providerName = "string"
+  providerName = "string",
+  macSecCapable = TRUE|FALSE,
+  encryptionMode = "string",
+  macSecKeys = list(
+    list(
+      secretARN = "string",
+      ckn = "string",
+      state = "string",
+      startOn = "string"
+    )
+  )
 )
 }
 }

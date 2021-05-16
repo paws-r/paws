@@ -33,9 +33,9 @@ A list with the following syntax:\preformatted{list(
 Associates specified S3 resources with Amazon Macie Classic for
 monitoring and data classification. If memberAccountId isn't specified,
 the action associates specified S3 resources with Macie Classic for the
-current master account. If memberAccountId is specified, the action
-associates specified S3 resources with Macie Classic for the specified
-member account.
+current Macie Classic administrator account. If memberAccountId is
+specified, the action associates specified S3 resources with Macie
+Classic for the specified member account.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_s3_resources(

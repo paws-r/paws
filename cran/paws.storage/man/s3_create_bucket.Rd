@@ -140,11 +140,6 @@ The following operations are related to
 
 \examples{
 \dontrun{
-# The following example creates a bucket.
-svc$create_bucket(
-  Bucket = "examplebucket"
-)
-
 # The following example creates a bucket. The request specifies an AWS
 # region where to create the bucket.
 svc$create_bucket(
@@ -152,6 +147,11 @@ svc$create_bucket(
   CreateBucketConfiguration = list(
     LocationConstraint = "eu-west-1"
   )
+)
+
+# The following example creates a bucket.
+svc$create_bucket(
+  Bucket = "examplebucket"
 )
 }
 

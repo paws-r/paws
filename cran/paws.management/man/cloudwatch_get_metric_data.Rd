@@ -7,7 +7,7 @@ metrics in a single request, with a total of as many as 100,800 data
 points}
 \usage{
 cloudwatch_get_metric_data(MetricDataQueries, StartTime, EndTime,
-  NextToken, ScanBy, MaxDatapoints)
+  NextToken, ScanBy, MaxDatapoints, LabelOptions)
 }
 \arguments{
 \item{MetricDataQueries}{[required] The metric queries to be returned. A single
@@ -70,6 +70,10 @@ paginates when the \code{MaxDatapoints} limit is reached.}
 
 \item{MaxDatapoints}{The maximum number of data points the request should return before
 paginating. If you omit this, the default of 100,800 is used.}
+
+\item{LabelOptions}{This structure includes the \code{Timezone} parameter, which you can use to
+specify your time zone so that the labels of returned data display the
+correct time for your time zone.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -184,7 +188,10 @@ conversions.
   ),
   NextToken = "string",
   ScanBy = "TimestampDescending"|"TimestampAscending",
-  MaxDatapoints = 123
+  MaxDatapoints = 123,
+  LabelOptions = list(
+    Timezone = "string"
+  )
 )
 }
 }

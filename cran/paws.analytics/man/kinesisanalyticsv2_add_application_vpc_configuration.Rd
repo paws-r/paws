@@ -5,19 +5,25 @@
 \title{Adds a Virtual Private Cloud (VPC) configuration to the application}
 \usage{
 kinesisanalyticsv2_add_application_vpc_configuration(ApplicationName,
-  CurrentApplicationVersionId, VpcConfiguration)
+  CurrentApplicationVersionId, VpcConfiguration, ConditionalToken)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
 
-\item{CurrentApplicationVersionId}{[required] The version of the application to which you want to add the VPC
-configuration. You can use the
+\item{CurrentApplicationVersionId}{The version of the application to which you want to add the VPC
+configuration. You must provide the \code{ApplicationVersionID} or the
+\code{ConditionalToken}. You can use the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation to get the current application version. If the version
 specified is not the current version, the
 \code{ConcurrentModificationException} is returned.}
 
 \item{VpcConfiguration}{[required] Description of the VPC to add to the application.}
+
+\item{ConditionalToken}{A value you use to implement strong concurrency for application updates.
+You must provide the \code{ApplicationVersionID} or the \code{ConditionalToken}.
+You get the application's current \code{ConditionalToken} using
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -61,7 +67,8 @@ to your VPC.
     SecurityGroupIds = list(
       "string"
     )
-  )
+  ),
+  ConditionalToken = "string"
 )
 }
 }

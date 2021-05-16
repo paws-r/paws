@@ -21,6 +21,7 @@ A list with the following syntax:\preformatted{list(
   DocumentVersions = list(
     list(
       Name = "string",
+      DisplayName = "string",
       DocumentVersion = "string",
       VersionName = "string",
       CreatedDate = as.POSIXct(

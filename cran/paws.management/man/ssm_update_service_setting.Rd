@@ -12,6 +12,8 @@ example,
 \code{arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled}.
 The setting ID can be one of the following.
 \itemize{
+\item \verb{/ssm/automation/customer-script-log-destination}
+\item \verb{/ssm/automation/customer-script-log-group-name}
 \item \verb{/ssm/parameter-store/default-parameter-tier}
 \item \verb{/ssm/parameter-store/high-throughput-enabled}
 \item \verb{/ssm/managed-instance/activation-tier}
@@ -28,7 +30,13 @@ value can be one of the following.
 
 For the \verb{/ssm/parameter-store/high-throughput-enabled}, and
 \verb{/ssm/managed-instance/activation-tier} setting IDs, the setting value
-can be true or false.}
+can be true or false.
+
+For the \verb{/ssm/automation/customer-script-log-destination} setting ID,
+the setting value can be CloudWatch.
+
+For the \verb{/ssm/automation/customer-script-log-group-name} setting ID, the
+setting value can be the name of a CloudWatch Logs log group.}
 }
 \value{
 An empty list.

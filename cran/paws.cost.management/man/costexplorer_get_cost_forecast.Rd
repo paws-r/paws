@@ -33,8 +33,34 @@ call are the following:
 The \code{\link[=costexplorer_get_cost_forecast]{get_cost_forecast}} operation
 supports only \code{DAILY} and \code{MONTHLY} granularities.}
 
-\item{Filter}{The filters that you want to use to filter your forecast. Cost Explorer
-API supports all of the Cost Explorer filters.}
+\item{Filter}{The filters that you want to use to filter your forecast. The
+\code{\link[=costexplorer_get_cost_forecast]{get_cost_forecast}} API supports
+filtering by the following dimensions:
+\itemize{
+\item \code{AZ}
+\item \code{INSTANCE_TYPE}
+\item \code{LINKED_ACCOUNT}
+\item \code{LINKED_ACCOUNT_NAME}
+\item \code{OPERATION}
+\item \code{PURCHASE_TYPE}
+\item \code{REGION}
+\item \code{SERVICE}
+\item \code{USAGE_TYPE}
+\item \code{USAGE_TYPE_GROUP}
+\item \code{RECORD_TYPE}
+\item \code{OPERATING_SYSTEM}
+\item \code{TENANCY}
+\item \code{SCOPE}
+\item \code{PLATFORM}
+\item \code{SUBSCRIPTION_ID}
+\item \code{LEGAL_ENTITY_NAME}
+\item \code{DEPLOYMENT_OPTION}
+\item \code{DATABASE_ENGINE}
+\item \code{INSTANCE_TYPE_FAMILY}
+\item \code{BILLING_ENTITY}
+\item \code{RESERVATION_ID}
+\item \code{SAVINGS_PLAN_ARN}
+}}
 
 \item{PredictionIntervalLevel}{Cost Explorer always returns the mean forecast as a single point. You
 can request a prediction interval around the mean by specifying a

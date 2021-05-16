@@ -46,7 +46,7 @@ specified IAM group.
 An IAM group can also have managed policies attached to it. To list the
 managed policies that are attached to a group, use
 \code{\link[=iam_list_attached_group_policies]{list_attached_group_policies}}. For
-more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed policies and inline policies}
 in the \emph{IAM User Guide}.
 
 You can paginate the results using the \code{MaxItems} and \code{Marker}

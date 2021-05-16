@@ -779,7 +779,7 @@ greengrass_create_function_definition_version <- function(AmznClientToken = NULL
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param InitialVersion Information about the initial version of the group.
-#' @param Name The name of the group.
+#' @param Name &#91;required&#93; The name of the group.
 #' @param tags Tag(s) to add to the new resource.
 #'
 #' @return
@@ -819,7 +819,7 @@ greengrass_create_function_definition_version <- function(AmznClientToken = NULL
 #' @keywords internal
 #'
 #' @rdname greengrass_create_group
-greengrass_create_group <- function(AmznClientToken = NULL, InitialVersion = NULL, Name = NULL, tags = NULL) {
+greengrass_create_group <- function(AmznClientToken = NULL, InitialVersion = NULL, Name, tags = NULL) {
   op <- new_operation(
     name = "CreateGroup",
     http_method = "POST",

@@ -2,22 +2,22 @@
 % Please edit documentation in R/ec2instanceconnect_operations.R
 \name{ec2instanceconnect_send_ssh_public_key}
 \alias{ec2instanceconnect_send_ssh_public_key}
-\title{Pushes an SSH public key to a particular OS user on a given EC2 instance
-for 60 seconds}
+\title{Pushes an SSH public key to the specified EC2 instance for use by the
+specified user}
 \usage{
 ec2instanceconnect_send_ssh_public_key(InstanceId, InstanceOSUser,
   SSHPublicKey, AvailabilityZone)
 }
 \arguments{
-\item{InstanceId}{[required] The EC2 instance you wish to publish the SSH key to.}
+\item{InstanceId}{[required] The ID of the EC2 instance.}
 
-\item{InstanceOSUser}{[required] The OS user on the EC2 instance whom the key may be used to authenticate
-as.}
+\item{InstanceOSUser}{[required] The OS user on the EC2 instance for whom the key can be used to
+authenticate.}
 
-\item{SSHPublicKey}{[required] The public key to be published to the instance. To use it after
-publication you must have the matching private key.}
+\item{SSHPublicKey}{[required] The public key material. To use the public key, you must have the
+matching private key.}
 
-\item{AvailabilityZone}{[required] The availability zone the EC2 instance was launched in.}
+\item{AvailabilityZone}{[required] The Availability Zone in which the EC2 instance was launched.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -27,8 +27,10 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Pushes an SSH public key to a particular OS user on a given EC2 instance
-for 60 seconds.
+Pushes an SSH public key to the specified EC2 instance for use by the
+specified user. The key remains for 60 seconds. For more information,
+see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html}{Connect to your Linux instance using EC2 Instance Connect}
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$send_ssh_public_key(

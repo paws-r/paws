@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_inventory_configuration}
 \alias{s3_put_bucket_inventory_configuration}
-\title{This implementation of the PUT operation adds an inventory configuration
+\title{This implementation of the PUT action adds an inventory configuration
 (identified by the inventory ID) to the bucket}
 \usage{
 s3_put_bucket_inventory_configuration(Bucket, Id,
@@ -15,7 +15,7 @@ s3_put_bucket_inventory_configuration(Bucket, Id,
 
 \item{InventoryConfiguration}{[required] Specifies the inventory configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -23,9 +23,9 @@ different account, the request will fail with an HTTP
 An empty list.
 }
 \description{
-This implementation of the \code{PUT} operation adds an inventory
-configuration (identified by the inventory ID) to the bucket. You can
-have up to 1,000 inventory configurations per bucket.
+This implementation of the \code{PUT} action adds an inventory configuration
+(identified by the inventory ID) to the bucket. You can have up to 1,000
+inventory configurations per bucket.
 
 Amazon S3 inventory generates inventories of the objects in the bucket
 on a daily or weekly basis, and the results are published to a flat
@@ -40,7 +40,7 @@ whether to generate the inventory daily or weekly. You can also
 configure what object metadata to include and whether to inventory all
 object versions or only current versions. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html}{Amazon S3 Inventory}
-in the Amazon Simple Storage Service Developer Guide.
+in the Amazon S3 User Guide.
 
 You must create a bucket policy on the \emph{destination} bucket to grant
 permissions to Amazon S3 to write objects to the bucket in the defined
@@ -51,7 +51,7 @@ To use this operation, you must have permissions to perform the
 permission by default and can grant this permission to others. For more
 information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
-in the Amazon Simple Storage Service Developer Guide.
+in the Amazon S3 User Guide.
 
 \strong{Special Errors}
 \itemize{

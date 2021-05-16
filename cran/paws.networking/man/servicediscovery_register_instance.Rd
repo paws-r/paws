@@ -49,8 +49,7 @@ service.
 }
 
 Supported attribute keys include the following:
-
-\strong{AWS_ALIAS_DNS_NAME}
+\subsection{AWS_ALIAS_DNS_NAME}{
 
 If you want AWS Cloud Map to create an Amazon Route 53 alias record that
 routes traffic to an Elastic Load Balancing load balancer, specify the
@@ -67,16 +66,17 @@ must include settings for an \code{A} record, an \code{AAAA} record, or both.
 \code{RoutingPolicy} must be \code{WEIGHTED}.
 \item If the service that is specified by \code{ServiceId} includes
 \code{HealthCheckConfig} settings, AWS Cloud Map will create the Route 53
-health check, but it won't associate the health check with the alias
-record.
+health check, but it doesn't associate the health check with the
+alias record.
 \item Auto naming currently doesn't support creating alias records that
 route traffic to AWS resources other than Elastic Load Balancing
 load balancers.
 \item If you specify a value for \code{AWS_ALIAS_DNS_NAME}, don't specify
 values for any of the \code{AWS_INSTANCE} attributes.
 }
+}
 
-\strong{AWS_EC2_INSTANCE_ID}
+\subsection{AWS_EC2_INSTANCE_ID}{
 
 \emph{HTTP namespaces only.} The Amazon EC2 instance ID for the instance. If
 the \code{AWS_EC2_INSTANCE_ID} attribute is specified, then the only other
@@ -84,15 +84,17 @@ attribute that can be specified is \code{AWS_INIT_HEALTH_STATUS}. When the
 \code{AWS_EC2_INSTANCE_ID} attribute is specified, then the
 \code{AWS_INSTANCE_IPV4} attribute will be filled out with the primary
 private IPv4 address.
+}
 
-\strong{AWS_INIT_HEALTH_STATUS}
+\subsection{AWS_INIT_HEALTH_STATUS}{
 
 If the service configuration includes \code{HealthCheckCustomConfig}, you can
 optionally use \code{AWS_INIT_HEALTH_STATUS} to specify the initial status of
 the custom health check, \code{HEALTHY} or \code{UNHEALTHY}. If you don't specify
 a value for \code{AWS_INIT_HEALTH_STATUS}, the initial status is \code{HEALTHY}.
+}
 
-\strong{AWS_INSTANCE_CNAME}
+\subsection{AWS_INSTANCE_CNAME}{
 
 If the service configuration includes a \code{CNAME} record, the domain name
 that you want Route 53 to return in response to DNS queries, for
@@ -100,8 +102,9 @@ example, \code{example.com}.
 
 This value is required if the service specified by \code{ServiceId} includes
 settings for an \code{CNAME} record.
+}
 
-\strong{AWS_INSTANCE_IPV4}
+\subsection{AWS_INSTANCE_IPV4}{
 
 If the service configuration includes an \code{A} record, the IPv4 address
 that you want Route 53 to return in response to DNS queries, for
@@ -111,8 +114,9 @@ This value is required if the service specified by \code{ServiceId} includes
 settings for an \code{A} record. If the service includes settings for an
 \code{SRV} record, you must specify a value for \code{AWS_INSTANCE_IPV4},
 \code{AWS_INSTANCE_IPV6}, or both.
+}
 
-\strong{AWS_INSTANCE_IPV6}
+\subsection{AWS_INSTANCE_IPV6}{
 
 If the service configuration includes an \code{AAAA} record, the IPv6 address
 that you want Route 53 to return in response to DNS queries, for
@@ -122,8 +126,9 @@ This value is required if the service specified by \code{ServiceId} includes
 settings for an \code{AAAA} record. If the service includes settings for an
 \code{SRV} record, you must specify a value for \code{AWS_INSTANCE_IPV4},
 \code{AWS_INSTANCE_IPV6}, or both.
+}
 
-\strong{AWS_INSTANCE_PORT}
+\subsection{AWS_INSTANCE_PORT}{
 
 If the service includes an \code{SRV} record, the value that you want
 Route 53 to return for the port.
@@ -133,14 +138,16 @@ that you want Route 53 to send requests to.
 
 This value is required if you specified settings for an \code{SRV} record or
 a Route 53 health check when you created the service.
+}
 
-\strong{Custom attributes}
+\subsection{Custom attributes}{
 
 You can add up to 30 custom attributes. For each key-value pair, the
 maximum length of the attribute name is 255 characters, and the maximum
 length of the attribute value is 1,024 characters. The total size of all
 provided attributes (sum of all keys and values) must not exceed 5,000
-characters.}
+characters.
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(

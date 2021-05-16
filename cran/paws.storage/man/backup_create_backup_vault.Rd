@@ -10,8 +10,8 @@ backup_create_backup_vault(BackupVaultName, BackupVaultTags,
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
+them and the AWS Region where they are created. They consist of letters,
+numbers, and hyphens.}
 
 \item{BackupVaultTags}{Metadata that you can assign to help organize the resources that you
 create. Each tag is a key-value pair.}

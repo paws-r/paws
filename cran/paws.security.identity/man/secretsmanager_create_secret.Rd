@@ -5,7 +5,8 @@
 \title{Creates a new secret}
 \usage{
 secretsmanager_create_secret(Name, ClientRequestToken, Description,
-  KmsKeyId, SecretBinary, SecretString, Tags)
+  KmsKeyId, SecretBinary, SecretString, Tags, AddReplicaRegions,
+  ForceOverwriteReplicaSecret)
 }
 \arguments{
 \item{Name}{[required] Specifies the friendly name of the new secret.
@@ -43,7 +44,7 @@ version of the secret then a new version of the secret is created.
 the request, then the request is ignored.
 \item If a version with this value already exists and that version's
 \code{SecretString} and \code{SecretBinary} values are different from those in
-the request then the request fails because you cannot modify an
+the request, then the request fails because you cannot modify an
 existing version. Instead, use
 \code{\link[=secretsmanager_put_secret_value]{put_secret_value}} to create a
 new version.
@@ -149,12 +150,30 @@ allowed characters. Generally allowed characters: letters, spaces,
 and numbers representable in UTF-8, plus the following special
 characters: + - = . _ : / @.
 }}
+
+\item{AddReplicaRegions}{(Optional) Add a list of regions to replicate secrets. Secrets Manager
+replicates the KMSKeyID objects to the list of regions specified in the
+parameter.}
+
+\item{ForceOverwriteReplicaSecret}{(Optional) If set, the replication overwrites a secret with the same
+name in the destination region.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string",
-  VersionId = "string"
+  VersionId = "string",
+  ReplicationStatus = list(
+    list(
+      Region = "string",
+      KmsKeyId = "string",
+      Status = "InSync"|"Failed"|"InProgress",
+      StatusMessage = "string",
+      LastAccessedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
 )
 }
 }
@@ -249,7 +268,14 @@ examine the \code{SecretVersionsToStages} response value.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  AddReplicaRegions = list(
+    list(
+      Region = "string",
+      KmsKeyId = "string"
+    )
+  ),
+  ForceOverwriteReplicaSecret = TRUE|FALSE
 )
 }
 }

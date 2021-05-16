@@ -3214,7 +3214,9 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' specify the custom key store ID.
 #' 
 #' For more information about entropy and random number generation, see the
-#' AWS Key Management Service Cryptographic Details whitepaper.
+#' [AWS Key Management Service Cryptographic
+#' Details](https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf)
+#' whitepaper.
 #' 
 #' **Required permissions**:
 #' [kms:GenerateRandom](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
@@ -4026,6 +4028,9 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' @description
 #' Gets a list of all grants for the specified customer master key (CMK).
 #' 
+#' You must specify the CMK in all requests. You can filter the grant list
+#' by grant ID or grantee principal.
+#' 
 #' The `GranteePrincipal` field in the [`list_grants`][kms_list_grants]
 #' response usually contains the user or role designated as the grantee
 #' principal in the grant. However, when the grantee principal in the grant
@@ -4052,7 +4057,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' -   [`revoke_grant`][kms_revoke_grant]
 #'
 #' @usage
-#' kms_list_grants(Limit, Marker, KeyId)
+#' kms_list_grants(Limit, Marker, KeyId, GrantId, GranteePrincipal)
 #'
 #' @param Limit Use this parameter to specify the maximum number of items to return.
 #' When this value is present, AWS KMS does not return more than the
@@ -4063,7 +4068,8 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' @param Marker Use this parameter in a subsequent request after you receive a response
 #' with truncated results. Set it to the value of `NextMarker` from the
 #' truncated response you just received.
-#' @param KeyId &#91;required&#93; A unique identifier for the customer master key (CMK).
+#' @param KeyId &#91;required&#93; Returns only grants for the specified customer master key (CMK). This
+#' parameter is required.
 #' 
 #' Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To
 #' specify a CMK in a different AWS account, you must use the key ARN.
@@ -4077,6 +4083,10 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' 
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param GrantId Returns only the grant with the specified grant ID. The grant ID
+#' uniquely identifies the grant.
+#' @param GranteePrincipal Returns only grants where the specified principal is the grantee
+#' principal for the grant.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4116,7 +4126,9 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' svc$list_grants(
 #'   Limit = 123,
 #'   Marker = "string",
-#'   KeyId = "string"
+#'   KeyId = "string",
+#'   GrantId = "string",
+#'   GranteePrincipal = "string"
 #' )
 #' ```
 #'
@@ -4131,14 +4143,14 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_list_grants
-kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId) {
+kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, GranteePrincipal = NULL) {
   op <- new_operation(
     name = "ListGrants",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId)
+  input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal)
   output <- .kms$list_grants_output()
   config <- get_config()
   svc <- .kms$service(config)

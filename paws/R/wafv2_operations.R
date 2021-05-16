@@ -3,15 +3,10 @@
 #' @include wafv2_service.R
 NULL
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Associates a Web ACL with a regional application resource, to protect
+#' the resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Associates a Web ACL with a regional application resource, to protect
 #' the resource. A regional application can be an Application Load Balancer
 #' (ALB), an API Gateway REST API, or an AppSync GraphQL API.
@@ -72,15 +67,10 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 }
 .wafv2$operations$associate_web_acl <- wafv2_associate_web_acl
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Returns the web ACL capacity unit (WCU) requirements for a specified
+#' scope and set of rules
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Returns the web ACL capacity unit (WCU) requirements for a specified
 #' scope and set of rules. You can use this to check the capacity
 #' requirements for the rules you want to use in a RuleGroup or WebACL.
@@ -141,7 +131,17 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -163,7 +163,17 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -184,7 +194,17 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -205,7 +225,17 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'           Size = 123,
@@ -254,7 +284,17 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -292,17 +332,65 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             list(
 #'               Name = "string"
 #'             )
-#'           )
+#'           ),
+#'           ScopeDownStatement = list()
+#'         ),
+#'         LabelMatchStatement = list(
+#'           Scope = "LABEL"|"NAMESPACE",
+#'           Key = "string"
 #'         )
 #'       ),
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       OverrideAction = list(
-#'         Count = list(),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         None = list()
+#'       ),
+#'       RuleLabels = list(
+#'         list(
+#'           Name = "string"
+#'         )
 #'       ),
 #'       VisibilityConfig = list(
 #'         SampledRequestsEnabled = TRUE|FALSE,
@@ -334,15 +422,10 @@ wafv2_check_capacity <- function(Scope, Rules) {
 }
 .wafv2$operations$check_capacity <- wafv2_check_capacity
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Creates an IPSet, which you use to identify web requests that originate
+#' from specific IP addresses or ranges of IP addresses
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Creates an IPSet, which you use to identify web requests that originate
 #' from specific IP addresses or ranges of IP addresses. For example, if
 #' you're receiving a lot of requests from a ranges of IP addresses, you
@@ -366,13 +449,11 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Description A description of the IP set that helps with identification. You cannot
-#' change the description of an IP set after you create it.
+#' @param Description A description of the IP set that helps with identification.
 #' @param IPAddressVersion &#91;required&#93; Specify IPV4 or IPV6.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specify one or more IP addresses or
 #' blocks of IP addresses in Classless Inter-Domain Routing (CIDR)
-#' notation. AWS WAF supports all address ranges for IP versions IPv4 and
-#' IPv6.
+#' notation. AWS WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
 #' 
 #' Examples:
 #' 
@@ -451,15 +532,11 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 }
 .wafv2$operations$create_ip_set <- wafv2_create_ip_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Creates a RegexPatternSet, which you reference in a
+#' RegexPatternSetReferenceStatement, to have AWS WAF inspect a web request
+#' component for the specified patterns
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Creates a RegexPatternSet, which you reference in a
 #' RegexPatternSetReferenceStatement, to have AWS WAF inspect a web request
 #' component for the specified patterns.
@@ -481,8 +558,7 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Description A description of the set that helps with identification. You cannot
-#' change the description of a set after you create it.
+#' @param Description A description of the set that helps with identification.
 #' @param RegularExpressionList &#91;required&#93; Array of regular expression strings.
 #' @param Tags An array of key:value pairs to associate with the resource.
 #'
@@ -540,15 +616,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 }
 .wafv2$operations$create_regex_pattern_set <- wafv2_create_regex_pattern_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Creates a RuleGroup per the specifications provided
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Creates a RuleGroup per the specifications provided.
 #' 
 #' A rule group defines a collection of rules to inspect and control web
@@ -559,7 +629,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'
 #' @usage
 #' wafv2_create_rule_group(Name, Scope, Capacity, Description, Rules,
-#'   VisibilityConfig, Tags)
+#'   VisibilityConfig, Tags, CustomResponseBodies)
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
@@ -589,8 +659,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' group capacity is fixed at creation, which helps users plan their web
 #' ACL WCU usage when they use a rule group. The WCU limit for web ACLs is
 #' 1,500.
-#' @param Description A description of the rule group that helps with identification. You
-#' cannot change the description of a rule group after you create it.
+#' @param Description A description of the rule group that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
 #' AWS WAF uses to identify matching web requests, and parameters that
@@ -598,6 +667,22 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
+#' with a block action, you can send a custom response to the web request.
+#' You define these for the rule group, and then use them in the rules that
+#' you define in the rule group.
+#' 
+#' For information about customizing web requests and responses, see
+#' [Customizing web requests and responses in AWS
+#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
+#' in the [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' 
+#' For information about the limits on count and size for custom request
+#' and response settings, see [AWS WAF
+#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
+#' in the [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -638,7 +723,17 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -660,7 +755,17 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -681,7 +786,17 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -702,7 +817,17 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'           Size = 123,
@@ -751,7 +876,17 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -789,17 +924,65 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             list(
 #'               Name = "string"
 #'             )
-#'           )
+#'           ),
+#'           ScopeDownStatement = list()
+#'         ),
+#'         LabelMatchStatement = list(
+#'           Scope = "LABEL"|"NAMESPACE",
+#'           Key = "string"
 #'         )
 #'       ),
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       OverrideAction = list(
-#'         Count = list(),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         None = list()
+#'       ),
+#'       RuleLabels = list(
+#'         list(
+#'           Name = "string"
+#'         )
 #'       ),
 #'       VisibilityConfig = list(
 #'         SampledRequestsEnabled = TRUE|FALSE,
@@ -818,6 +1001,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   CustomResponseBodies = list(
+#'     list(
+#'       ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'       Content = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -825,14 +1014,14 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' @keywords internal
 #'
 #' @rdname wafv2_create_rule_group
-wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL) {
+wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags)
+  input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$create_rule_group_output()
   config <- get_config()
   svc <- .wafv2$service(config)
@@ -842,15 +1031,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 }
 .wafv2$operations$create_rule_group <- wafv2_create_rule_group
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Creates a WebACL per the specifications provided
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Creates a WebACL per the specifications provided.
 #' 
 #' A Web ACL defines a collection of rules to use to inspect and control
@@ -865,7 +1048,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'
 #' @usage
 #' wafv2_create_web_acl(Name, Scope, DefaultAction, Description, Rules,
-#'   VisibilityConfig, Tags)
+#'   VisibilityConfig, Tags, CustomResponseBodies)
 #'
 #' @param Name &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
 #' you create it.
@@ -882,8 +1065,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL`
 #' match.
-#' @param Description A description of the Web ACL that helps with identification. You cannot
-#' change the description of a Web ACL after you create it.
+#' @param Description A description of the Web ACL that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
 #' AWS WAF uses to identify matching web requests, and parameters that
@@ -891,6 +1073,22 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
+#' with a block action, you can send a custom response to the web request.
+#' You define these for the web ACL, and then use them in the rules and
+#' default actions that you define in the web ACL.
+#' 
+#' For information about customizing web requests and responses, see
+#' [Customizing web requests and responses in AWS
+#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
+#' in the [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' 
+#' For information about the limits on count and size for custom request
+#' and response settings, see [AWS WAF
+#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
+#' in the [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -912,8 +1110,28 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'   Name = "string",
 #'   Scope = "CLOUDFRONT"|"REGIONAL",
 #'   DefaultAction = list(
-#'     Block = list(),
-#'     Allow = list()
+#'     Block = list(
+#'       CustomResponse = list(
+#'         ResponseCode = 123,
+#'         CustomResponseBodyKey = "string",
+#'         ResponseHeaders = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Allow = list(
+#'       CustomRequestHandling = list(
+#'         InsertHeaders = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   Description = "string",
 #'   Rules = list(
@@ -934,7 +1152,17 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -956,7 +1184,17 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -977,7 +1215,17 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -998,7 +1246,17 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'           Size = 123,
@@ -1047,7 +1305,17 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -1085,17 +1353,65 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             list(
 #'               Name = "string"
 #'             )
-#'           )
+#'           ),
+#'           ScopeDownStatement = list()
+#'         ),
+#'         LabelMatchStatement = list(
+#'           Scope = "LABEL"|"NAMESPACE",
+#'           Key = "string"
 #'         )
 #'       ),
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       OverrideAction = list(
-#'         Count = list(),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         None = list()
+#'       ),
+#'       RuleLabels = list(
+#'         list(
+#'           Name = "string"
+#'         )
 #'       ),
 #'       VisibilityConfig = list(
 #'         SampledRequestsEnabled = TRUE|FALSE,
@@ -1114,6 +1430,12 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   CustomResponseBodies = list(
+#'     list(
+#'       ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'       Content = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1121,14 +1443,14 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @keywords internal
 #'
 #' @rdname wafv2_create_web_acl
-wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL) {
+wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags)
+  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$create_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config)
@@ -1197,15 +1519,9 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 }
 .wafv2$operations$delete_firewall_manager_rule_groups <- wafv2_delete_firewall_manager_rule_groups
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Deletes the specified IPSet
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Deletes the specified IPSet.
 #'
 #' @usage
@@ -1269,15 +1585,9 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 }
 .wafv2$operations$delete_ip_set <- wafv2_delete_ip_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Deletes the LoggingConfiguration from the specified web ACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Deletes the LoggingConfiguration from the specified web ACL.
 #'
 #' @usage
@@ -1361,15 +1671,9 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 }
 .wafv2$operations$delete_permission_policy <- wafv2_delete_permission_policy
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Deletes the specified RegexPatternSet
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Deletes the specified RegexPatternSet.
 #'
 #' @usage
@@ -1433,15 +1737,9 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 }
 .wafv2$operations$delete_regex_pattern_set <- wafv2_delete_regex_pattern_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Deletes the specified RuleGroup
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Deletes the specified RuleGroup.
 #'
 #' @usage
@@ -1505,15 +1803,9 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 }
 .wafv2$operations$delete_rule_group <- wafv2_delete_rule_group
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Deletes the specified WebACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Deletes the specified WebACL.
 #' 
 #' You can only use this if `ManagedByFirewallManager` is false in the
@@ -1580,15 +1872,10 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 }
 .wafv2$operations$delete_web_acl <- wafv2_delete_web_acl
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Provides high-level information for a managed rule group, including
+#' descriptions of the rules
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Provides high-level information for a managed rule group, including
 #' descriptions of the rules.
 #'
@@ -1620,10 +1907,50 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #'     list(
 #'       Name = "string",
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
+#'     )
+#'   ),
+#'   LabelNamespace = "string",
+#'   AvailableLabels = list(
+#'     list(
+#'       Name = "string"
+#'     )
+#'   ),
+#'   ConsumedLabels = list(
+#'     list(
+#'       Name = "string"
 #'     )
 #'   )
 #' )
@@ -1658,15 +1985,9 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope) {
 }
 .wafv2$operations$describe_managed_rule_group <- wafv2_describe_managed_rule_group
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Disassociates a Web ACL from a regional application resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Disassociates a Web ACL from a regional application resource. A regional
 #' application can be an Application Load Balancer (ALB), an API Gateway
 #' REST API, or an AppSync GraphQL API.
@@ -1724,15 +2045,9 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
 }
 .wafv2$operations$disassociate_web_acl <- wafv2_disassociate_web_acl
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the specified IPSet
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the specified IPSet.
 #'
 #' @usage
@@ -1802,15 +2117,9 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 }
 .wafv2$operations$get_ip_set <- wafv2_get_ip_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Returns the LoggingConfiguration for the specified web ACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Returns the LoggingConfiguration for the specified web ACL.
 #'
 #' @usage
@@ -1840,10 +2149,39 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #'         UriPath = list(),
 #'         QueryString = list(),
 #'         Body = list(),
-#'         Method = list()
+#'         Method = list(),
+#'         JsonBody = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedPaths = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'         )
 #'       )
 #'     ),
-#'     ManagedByFirewallManager = TRUE|FALSE
+#'     ManagedByFirewallManager = TRUE|FALSE,
+#'     LoggingFilter = list(
+#'       Filters = list(
+#'         list(
+#'           Behavior = "KEEP"|"DROP",
+#'           Requirement = "MEETS_ALL"|"MEETS_ANY",
+#'           Conditions = list(
+#'             list(
+#'               ActionCondition = list(
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"
+#'               ),
+#'               LabelNameCondition = list(
+#'                 LabelName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultBehavior = "KEEP"|"DROP"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1923,15 +2261,9 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 }
 .wafv2$operations$get_permission_policy <- wafv2_get_permission_policy
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the keys that are currently blocked by a rate-based rule
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the keys that are currently blocked by a rate-based rule. The
 #' maximum number of managed keys that can be blocked for a single
 #' rate-based rule is 10,000. If more than 10,000 addresses exceed the rate
@@ -2008,15 +2340,9 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 }
 .wafv2$operations$get_rate_based_statement_managed_keys <- wafv2_get_rate_based_statement_managed_keys
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the specified RegexPatternSet
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the specified RegexPatternSet.
 #'
 #' @usage
@@ -2087,15 +2413,9 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 }
 .wafv2$operations$get_regex_pattern_set <- wafv2_get_regex_pattern_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the specified RuleGroup
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the specified RuleGroup.
 #'
 #' @usage
@@ -2146,7 +2466,17 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2168,7 +2498,17 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2189,7 +2529,17 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2210,7 +2560,17 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'             Size = 123,
@@ -2259,7 +2619,17 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2297,17 +2667,65 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               list(
 #'                 Name = "string"
 #'               )
-#'             )
+#'             ),
+#'             ScopeDownStatement = list()
+#'           ),
+#'           LabelMatchStatement = list(
+#'             Scope = "LABEL"|"NAMESPACE",
+#'             Key = "string"
 #'           )
 #'         ),
 #'         Action = list(
-#'           Block = list(),
-#'           Allow = list(),
-#'           Count = list()
+#'           Block = list(
+#'             CustomResponse = list(
+#'               ResponseCode = 123,
+#'               CustomResponseBodyKey = "string",
+#'               ResponseHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Allow = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
+#'         ),
+#'         RuleLabels = list(
+#'           list(
+#'             Name = "string"
+#'           )
 #'         ),
 #'         VisibilityConfig = list(
 #'           SampledRequestsEnabled = TRUE|FALSE,
@@ -2320,6 +2738,23 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'       SampledRequestsEnabled = TRUE|FALSE,
 #'       CloudWatchMetricsEnabled = TRUE|FALSE,
 #'       MetricName = "string"
+#'     ),
+#'     LabelNamespace = "string",
+#'     CustomResponseBodies = list(
+#'       list(
+#'         ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'         Content = "string"
+#'       )
+#'     ),
+#'     AvailableLabels = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     ),
+#'     ConsumedLabels = list(
+#'       list(
+#'         Name = "string"
+#'       )
 #'     )
 #'   ),
 #'   LockToken = "string"
@@ -2355,15 +2790,12 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 }
 .wafv2$operations$get_rule_group <- wafv2_get_rule_group
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Gets detailed information about a specified number of requests--a
+#' sample--that AWS WAF randomly selects from among the first 5,000
+#' requests that your AWS resource received during a time range that you
+#' choose
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Gets detailed information about a specified number of requests--a
 #' sample--that AWS WAF randomly selects from among the first 5,000
 #' requests that your AWS resource received during a time range that you
@@ -2402,7 +2834,8 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #' a sample of requests. You must specify the times in Coordinated
 #' Universal Time (UTC) format. UTC format includes the special designator,
 #' `Z`. For example, `"2016-09-27T14:50Z"`. You can specify any time range
-#' in the previous three hours.
+#' in the previous three hours. If you specify a start time that's earlier
+#' than three hours ago, AWS WAF sets it to three hours ago.
 #' @param MaxItems &#91;required&#93; The number of requests that you want AWS WAF to return from among the
 #' first 5,000 requests that your AWS resource received during the time
 #' range. If your resource received fewer requests than the value of
@@ -2433,7 +2866,19 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #'         "2015-01-01"
 #'       ),
 #'       Action = "string",
-#'       RuleNameWithinRuleGroup = "string"
+#'       RuleNameWithinRuleGroup = "string",
+#'       RequestHeadersInserted = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ResponseCodeSent = 123,
+#'       Labels = list(
+#'         list(
+#'           Name = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   PopulationSize = 123,
@@ -2486,15 +2931,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 }
 .wafv2$operations$get_sampled_requests <- wafv2_get_sampled_requests
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the specified WebACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the specified WebACL.
 #'
 #' @usage
@@ -2526,8 +2965,28 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'     Id = "string",
 #'     ARN = "string",
 #'     DefaultAction = list(
-#'       Block = list(),
-#'       Allow = list()
+#'       Block = list(
+#'         CustomResponse = list(
+#'           ResponseCode = 123,
+#'           CustomResponseBodyKey = "string",
+#'           ResponseHeaders = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Allow = list(
+#'         CustomRequestHandling = list(
+#'           InsertHeaders = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     Description = "string",
 #'     Rules = list(
@@ -2548,7 +3007,17 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2570,7 +3039,17 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2591,7 +3070,17 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2612,7 +3101,17 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'             Size = 123,
@@ -2661,7 +3160,17 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2699,17 +3208,65 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               list(
 #'                 Name = "string"
 #'               )
-#'             )
+#'             ),
+#'             ScopeDownStatement = list()
+#'           ),
+#'           LabelMatchStatement = list(
+#'             Scope = "LABEL"|"NAMESPACE",
+#'             Key = "string"
 #'           )
 #'         ),
 #'         Action = list(
-#'           Block = list(),
-#'           Allow = list(),
-#'           Count = list()
+#'           Block = list(
+#'             CustomResponse = list(
+#'               ResponseCode = 123,
+#'               CustomResponseBodyKey = "string",
+#'               ResponseHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Allow = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
+#'         ),
+#'         RuleLabels = list(
+#'           list(
+#'             Name = "string"
+#'           )
 #'         ),
 #'         VisibilityConfig = list(
 #'           SampledRequestsEnabled = TRUE|FALSE,
@@ -2736,6 +3293,220 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               list(
 #'                 Name = "string"
 #'               )
+#'             ),
+#'             ScopeDownStatement = list(
+#'               ByteMatchStatement = list(
+#'                 SearchString = raw,
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 ),
+#'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'               ),
+#'               SqliMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               XssMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               SizeConstraintStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'                 Size = 123,
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               GeoMatchStatement = list(
+#'                 CountryCodes = list(
+#'                   "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               RuleGroupReferenceStatement = list(
+#'                 ARN = "string",
+#'                 ExcludedRules = list(
+#'                   list(
+#'                     Name = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               IPSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 IPSetForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH",
+#'                   Position = "FIRST"|"LAST"|"ANY"
+#'                 )
+#'               ),
+#'               RegexPatternSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               RateBasedStatement = list(
+#'                 Limit = 123,
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 ScopeDownStatement = list(),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               AndStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               OrStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               NotStatement = list(
+#'                 Statement = list()
+#'               ),
+#'               ManagedRuleGroupStatement = list(),
+#'               LabelMatchStatement = list(
+#'                 Scope = "LABEL"|"NAMESPACE",
+#'                 Key = "string"
+#'               )
 #'             )
 #'           ),
 #'           RuleGroupReferenceStatement = list(
@@ -2748,7 +3519,16 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
 #'         ),
 #'         VisibilityConfig = list(
@@ -2770,6 +3550,220 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               list(
 #'                 Name = "string"
 #'               )
+#'             ),
+#'             ScopeDownStatement = list(
+#'               ByteMatchStatement = list(
+#'                 SearchString = raw,
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 ),
+#'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'               ),
+#'               SqliMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               XssMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               SizeConstraintStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'                 Size = 123,
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               GeoMatchStatement = list(
+#'                 CountryCodes = list(
+#'                   "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               RuleGroupReferenceStatement = list(
+#'                 ARN = "string",
+#'                 ExcludedRules = list(
+#'                   list(
+#'                     Name = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               IPSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 IPSetForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH",
+#'                   Position = "FIRST"|"LAST"|"ANY"
+#'                 )
+#'               ),
+#'               RegexPatternSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               RateBasedStatement = list(
+#'                 Limit = 123,
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 ScopeDownStatement = list(),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               AndStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               OrStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               NotStatement = list(
+#'                 Statement = list()
+#'               ),
+#'               ManagedRuleGroupStatement = list(),
+#'               LabelMatchStatement = list(
+#'                 Scope = "LABEL"|"NAMESPACE",
+#'                 Key = "string"
+#'               )
 #'             )
 #'           ),
 #'           RuleGroupReferenceStatement = list(
@@ -2782,7 +3776,16 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
 #'         ),
 #'         VisibilityConfig = list(
@@ -2792,7 +3795,14 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'         )
 #'       )
 #'     ),
-#'     ManagedByFirewallManager = TRUE|FALSE
+#'     ManagedByFirewallManager = TRUE|FALSE,
+#'     LabelNamespace = "string",
+#'     CustomResponseBodies = list(
+#'       list(
+#'         ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'         Content = "string"
+#'       )
+#'     )
 #'   ),
 #'   LockToken = "string"
 #' )
@@ -2827,15 +3837,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 }
 .wafv2$operations$get_web_acl <- wafv2_get_web_acl
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the WebACL for the specified resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the WebACL for the specified resource.
 #'
 #' @usage
@@ -2852,8 +3856,28 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'     Id = "string",
 #'     ARN = "string",
 #'     DefaultAction = list(
-#'       Block = list(),
-#'       Allow = list()
+#'       Block = list(
+#'         CustomResponse = list(
+#'           ResponseCode = 123,
+#'           CustomResponseBodyKey = "string",
+#'           ResponseHeaders = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Allow = list(
+#'         CustomRequestHandling = list(
+#'           InsertHeaders = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     Description = "string",
 #'     Rules = list(
@@ -2874,7 +3898,17 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2896,7 +3930,17 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2917,7 +3961,17 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -2938,7 +3992,17 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'             Size = 123,
@@ -2987,7 +4051,17 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               UriPath = list(),
 #'               QueryString = list(),
 #'               Body = list(),
-#'               Method = list()
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
@@ -3025,17 +4099,65 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               list(
 #'                 Name = "string"
 #'               )
-#'             )
+#'             ),
+#'             ScopeDownStatement = list()
+#'           ),
+#'           LabelMatchStatement = list(
+#'             Scope = "LABEL"|"NAMESPACE",
+#'             Key = "string"
 #'           )
 #'         ),
 #'         Action = list(
-#'           Block = list(),
-#'           Allow = list(),
-#'           Count = list()
+#'           Block = list(
+#'             CustomResponse = list(
+#'               ResponseCode = 123,
+#'               CustomResponseBodyKey = "string",
+#'               ResponseHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Allow = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
+#'         ),
+#'         RuleLabels = list(
+#'           list(
+#'             Name = "string"
+#'           )
 #'         ),
 #'         VisibilityConfig = list(
 #'           SampledRequestsEnabled = TRUE|FALSE,
@@ -3062,6 +4184,220 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               list(
 #'                 Name = "string"
 #'               )
+#'             ),
+#'             ScopeDownStatement = list(
+#'               ByteMatchStatement = list(
+#'                 SearchString = raw,
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 ),
+#'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'               ),
+#'               SqliMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               XssMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               SizeConstraintStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'                 Size = 123,
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               GeoMatchStatement = list(
+#'                 CountryCodes = list(
+#'                   "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               RuleGroupReferenceStatement = list(
+#'                 ARN = "string",
+#'                 ExcludedRules = list(
+#'                   list(
+#'                     Name = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               IPSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 IPSetForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH",
+#'                   Position = "FIRST"|"LAST"|"ANY"
+#'                 )
+#'               ),
+#'               RegexPatternSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               RateBasedStatement = list(
+#'                 Limit = 123,
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 ScopeDownStatement = list(),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               AndStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               OrStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               NotStatement = list(
+#'                 Statement = list()
+#'               ),
+#'               ManagedRuleGroupStatement = list(),
+#'               LabelMatchStatement = list(
+#'                 Scope = "LABEL"|"NAMESPACE",
+#'                 Key = "string"
+#'               )
 #'             )
 #'           ),
 #'           RuleGroupReferenceStatement = list(
@@ -3074,7 +4410,16 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
 #'         ),
 #'         VisibilityConfig = list(
@@ -3096,6 +4441,220 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               list(
 #'                 Name = "string"
 #'               )
+#'             ),
+#'             ScopeDownStatement = list(
+#'               ByteMatchStatement = list(
+#'                 SearchString = raw,
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 ),
+#'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'               ),
+#'               SqliMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               XssMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               SizeConstraintStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'                 Size = 123,
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               GeoMatchStatement = list(
+#'                 CountryCodes = list(
+#'                   "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               RuleGroupReferenceStatement = list(
+#'                 ARN = "string",
+#'                 ExcludedRules = list(
+#'                   list(
+#'                     Name = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               IPSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 IPSetForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH",
+#'                   Position = "FIRST"|"LAST"|"ANY"
+#'                 )
+#'               ),
+#'               RegexPatternSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                   )
+#'                 )
+#'               ),
+#'               RateBasedStatement = list(
+#'                 Limit = 123,
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 ScopeDownStatement = list(),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               AndStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               OrStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               NotStatement = list(
+#'                 Statement = list()
+#'               ),
+#'               ManagedRuleGroupStatement = list(),
+#'               LabelMatchStatement = list(
+#'                 Scope = "LABEL"|"NAMESPACE",
+#'                 Key = "string"
+#'               )
 #'             )
 #'           ),
 #'           RuleGroupReferenceStatement = list(
@@ -3108,7 +4667,16 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
 #'         ),
 #'         VisibilityConfig = list(
@@ -3118,7 +4686,14 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'         )
 #'       )
 #'     ),
-#'     ManagedByFirewallManager = TRUE|FALSE
+#'     ManagedByFirewallManager = TRUE|FALSE,
+#'     LabelNamespace = "string",
+#'     CustomResponseBodies = list(
+#'       list(
+#'         ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'         Content = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3150,15 +4725,10 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 }
 .wafv2$operations$get_web_acl_for_resource <- wafv2_get_web_acl_for_resource
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of managed rule groups that are available for you to
+#' use
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of managed rule groups that are available for you to
 #' use. This list includes all AWS Managed Rules rule groups and the AWS
 #' Marketplace managed rule groups that you're subscribed to.
@@ -3231,15 +4801,10 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 }
 .wafv2$operations$list_available_managed_rule_groups <- wafv2_list_available_managed_rule_groups
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of IPSetSummary objects for the IP sets that you
+#' manage
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of IPSetSummary objects for the IP sets that you
 #' manage.
 #'
@@ -3313,15 +4878,9 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 }
 .wafv2$operations$list_ip_sets <- wafv2_list_ip_sets
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of your LoggingConfiguration objects
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of your LoggingConfiguration objects.
 #'
 #' @usage
@@ -3370,10 +4929,39 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'           UriPath = list(),
 #'           QueryString = list(),
 #'           Body = list(),
-#'           Method = list()
+#'           Method = list(),
+#'           JsonBody = list(
+#'             MatchPattern = list(
+#'               All = list(),
+#'               IncludedPaths = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             MatchScope = "ALL"|"KEY"|"VALUE",
+#'             InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'           )
 #'         )
 #'       ),
-#'       ManagedByFirewallManager = TRUE|FALSE
+#'       ManagedByFirewallManager = TRUE|FALSE,
+#'       LoggingFilter = list(
+#'         Filters = list(
+#'           list(
+#'             Behavior = "KEEP"|"DROP",
+#'             Requirement = "MEETS_ALL"|"MEETS_ANY",
+#'             Conditions = list(
+#'               list(
+#'                 ActionCondition = list(
+#'                   Action = "ALLOW"|"BLOCK"|"COUNT"
+#'                 ),
+#'                 LabelNameCondition = list(
+#'                   LabelName = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DefaultBehavior = "KEEP"|"DROP"
+#'       )
 #'     )
 #'   ),
 #'   NextMarker = "string"
@@ -3409,15 +4997,10 @@ wafv2_list_logging_configurations <- function(Scope = NULL, NextMarker = NULL, L
 }
 .wafv2$operations$list_logging_configurations <- wafv2_list_logging_configurations
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of RegexPatternSetSummary objects for the regex
+#' pattern sets that you manage
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of RegexPatternSetSummary objects for the regex
 #' pattern sets that you manage.
 #'
@@ -3491,15 +5074,10 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 }
 .wafv2$operations$list_regex_pattern_sets <- wafv2_list_regex_pattern_sets
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of the Amazon Resource Names (ARNs) for the regional
+#' resources that are associated with the specified web ACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of the Amazon Resource Names (ARNs) for the regional
 #' resources that are associated with the specified web ACL. If you want
 #' the list of AWS CloudFront resources, use the AWS CloudFront call
@@ -3551,15 +5129,10 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 }
 .wafv2$operations$list_resources_for_web_acl <- wafv2_list_resources_for_web_acl
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of RuleGroupSummary objects for the rule groups that
+#' you manage
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of RuleGroupSummary objects for the rule groups that
 #' you manage.
 #'
@@ -3633,15 +5206,9 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
 }
 .wafv2$operations$list_rule_groups <- wafv2_list_rule_groups
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the TagInfoForResource for the specified resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the TagInfoForResource for the specified resource. Tags are
 #' key:value pairs that you can use to categorize and manage your
 #' resources, for purposes like billing. For example, you might set the tag
@@ -3713,15 +5280,10 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 }
 .wafv2$operations$list_tags_for_resource <- wafv2_list_tags_for_resource
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of WebACLSummary objects for the web ACLs that you
+#' manage
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of WebACLSummary objects for the web ACLs that you
 #' manage.
 #'
@@ -3795,15 +5357,10 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 }
 .wafv2$operations$list_web_ac_ls <- wafv2_list_web_ac_ls
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Enables the specified LoggingConfiguration, to start logging from a web
+#' ACL, according to the configuration provided
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Enables the specified LoggingConfiguration, to start logging from a web
 #' ACL, according to the configuration provided.
 #' 
@@ -3860,10 +5417,39 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'         UriPath = list(),
 #'         QueryString = list(),
 #'         Body = list(),
-#'         Method = list()
+#'         Method = list(),
+#'         JsonBody = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedPaths = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'         )
 #'       )
 #'     ),
-#'     ManagedByFirewallManager = TRUE|FALSE
+#'     ManagedByFirewallManager = TRUE|FALSE,
+#'     LoggingFilter = list(
+#'       Filters = list(
+#'         list(
+#'           Behavior = "KEEP"|"DROP",
+#'           Requirement = "MEETS_ALL"|"MEETS_ANY",
+#'           Conditions = list(
+#'             list(
+#'               ActionCondition = list(
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"
+#'               ),
+#'               LabelNameCondition = list(
+#'                 LabelName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultBehavior = "KEEP"|"DROP"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3888,10 +5474,39 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'         UriPath = list(),
 #'         QueryString = list(),
 #'         Body = list(),
-#'         Method = list()
+#'         Method = list(),
+#'         JsonBody = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedPaths = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'         )
 #'       )
 #'     ),
-#'     ManagedByFirewallManager = TRUE|FALSE
+#'     ManagedByFirewallManager = TRUE|FALSE,
+#'     LoggingFilter = list(
+#'       Filters = list(
+#'         list(
+#'           Behavior = "KEEP"|"DROP",
+#'           Requirement = "MEETS_ALL"|"MEETS_ANY",
+#'           Conditions = list(
+#'             list(
+#'               ActionCondition = list(
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"
+#'               ),
+#'               LabelNameCondition = list(
+#'                 LabelName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultBehavior = "KEEP"|"DROP"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3991,15 +5606,9 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
 }
 .wafv2$operations$put_permission_policy <- wafv2_put_permission_policy
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Associates tags with the specified AWS resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Associates tags with the specified AWS resource. Tags are key:value
 #' pairs that you can use to categorize and manage your resources, for
 #' purposes like billing. For example, you might set the tag key to
@@ -4052,15 +5661,9 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
 }
 .wafv2$operations$tag_resource <- wafv2_tag_resource
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Disassociates tags from an AWS resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Disassociates tags from an AWS resource. Tags are key:value pairs that
 #' you can associate with AWS resources. For example, the tag key might be
 #' "customer" and the tag value might be "companyA." You can specify one or
@@ -4106,16 +5709,17 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .wafv2$operations$untag_resource <- wafv2_untag_resource
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Updates the specified IPSet
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Updates the specified IPSet.
+#' 
+#' This operation completely replaces any IP address specifications that
+#' you already have in the IP set with the ones that you provide to this
+#' call. If you want to add to or modify the addresses that are already in
+#' the IP set, retrieve those by calling [`get_ip_set`][wafv2_get_ip_set],
+#' update them, and provide the complete updated array of IP addresses to
+#' this call.
 #'
 #' @usage
 #' wafv2_update_ip_set(Name, Scope, Id, Description, Addresses, LockToken)
@@ -4136,12 +5740,10 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
-#' @param Description A description of the IP set that helps with identification. You cannot
-#' change the description of an IP set after you create it.
+#' @param Description A description of the IP set that helps with identification.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specify one or more IP addresses or
 #' blocks of IP addresses in Classless Inter-Domain Routing (CIDR)
-#' notation. AWS WAF supports all address ranges for IP versions IPv4 and
-#' IPv6.
+#' notation. AWS WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
 #' 
 #' Examples:
 #' 
@@ -4216,15 +5818,9 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 }
 .wafv2$operations$update_ip_set <- wafv2_update_ip_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Updates the specified RegexPatternSet
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Updates the specified RegexPatternSet.
 #'
 #' @usage
@@ -4247,8 +5843,7 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
-#' @param Description A description of the set that helps with identification. You cannot
-#' change the description of a set after you create it.
+#' @param Description A description of the set that helps with identification.
 #' @param RegularExpressionList &#91;required&#93; 
 #' @param LockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
 #' and list requests, to mark the state of the entity at the time of the
@@ -4303,15 +5898,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 }
 .wafv2$operations$update_regex_pattern_set <- wafv2_update_regex_pattern_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Updates the specified RuleGroup
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Updates the specified RuleGroup.
 #' 
 #' A rule group defines a collection of rules to inspect and control web
@@ -4322,7 +5911,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'
 #' @usage
 #' wafv2_update_rule_group(Name, Scope, Id, Description, Rules,
-#'   VisibilityConfig, LockToken)
+#'   VisibilityConfig, LockToken, CustomResponseBodies)
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
@@ -4340,8 +5929,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
-#' @param Description A description of the rule group that helps with identification. You
-#' cannot change the description of a rule group after you create it.
+#' @param Description A description of the rule group that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
 #' AWS WAF uses to identify matching web requests, and parameters that
@@ -4356,6 +5944,22 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' last retrieved it. If a change has been made, the update fails with a
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
+#' with a block action, you can send a custom response to the web request.
+#' You define these for the rule group, and then use them in the rules that
+#' you define in the rule group.
+#' 
+#' For information about customizing web requests and responses, see
+#' [Customizing web requests and responses in AWS
+#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
+#' in the [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' 
+#' For information about the limits on count and size for custom request
+#' and response settings, see [AWS WAF
+#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
+#' in the [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -4390,7 +5994,17 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -4412,7 +6026,17 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -4433,7 +6057,17 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -4454,7 +6088,17 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'           Size = 123,
@@ -4503,7 +6147,17 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -4541,17 +6195,65 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             list(
 #'               Name = "string"
 #'             )
-#'           )
+#'           ),
+#'           ScopeDownStatement = list()
+#'         ),
+#'         LabelMatchStatement = list(
+#'           Scope = "LABEL"|"NAMESPACE",
+#'           Key = "string"
 #'         )
 #'       ),
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       OverrideAction = list(
-#'         Count = list(),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         None = list()
+#'       ),
+#'       RuleLabels = list(
+#'         list(
+#'           Name = "string"
+#'         )
 #'       ),
 #'       VisibilityConfig = list(
 #'         SampledRequestsEnabled = TRUE|FALSE,
@@ -4565,21 +6267,27 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
 #'     MetricName = "string"
 #'   ),
-#'   LockToken = "string"
+#'   LockToken = "string",
+#'   CustomResponseBodies = list(
+#'     list(
+#'       ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'       Content = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_update_rule_group
-wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules = NULL, VisibilityConfig, LockToken) {
+wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL) {
   op <- new_operation(
     name = "UpdateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken)
+  input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$update_rule_group_output()
   config <- get_config()
   svc <- .wafv2$service(config)
@@ -4589,15 +6297,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 }
 .wafv2$operations$update_rule_group <- wafv2_update_rule_group
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Updates the specified WebACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Updates the specified WebACL.
 #' 
 #' A Web ACL defines a collection of rules to use to inspect and control
@@ -4612,7 +6314,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'
 #' @usage
 #' wafv2_update_web_acl(Name, Scope, Id, DefaultAction, Description, Rules,
-#'   VisibilityConfig, LockToken)
+#'   VisibilityConfig, LockToken, CustomResponseBodies)
 #'
 #' @param Name &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
 #' you create it.
@@ -4632,8 +6334,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' update and delete.
 #' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL`
 #' match.
-#' @param Description A description of the Web ACL that helps with identification. You cannot
-#' change the description of a Web ACL after you create it.
+#' @param Description A description of the Web ACL that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
 #' AWS WAF uses to identify matching web requests, and parameters that
@@ -4648,6 +6349,22 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' last retrieved it. If a change has been made, the update fails with a
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
+#' with a block action, you can send a custom response to the web request.
+#' You define these for the web ACL, and then use them in the rules and
+#' default actions that you define in the web ACL.
+#' 
+#' For information about customizing web requests and responses, see
+#' [Customizing web requests and responses in AWS
+#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
+#' in the [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' 
+#' For information about the limits on count and size for custom request
+#' and response settings, see [AWS WAF
+#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
+#' in the [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -4664,8 +6381,28 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'   Scope = "CLOUDFRONT"|"REGIONAL",
 #'   Id = "string",
 #'   DefaultAction = list(
-#'     Block = list(),
-#'     Allow = list()
+#'     Block = list(
+#'       CustomResponse = list(
+#'         ResponseCode = 123,
+#'         CustomResponseBodyKey = "string",
+#'         ResponseHeaders = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Allow = list(
+#'       CustomRequestHandling = list(
+#'         InsertHeaders = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   Description = "string",
 #'   Rules = list(
@@ -4686,7 +6423,17 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -4708,7 +6455,17 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -4729,7 +6486,17 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -4750,7 +6517,17 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'           Size = 123,
@@ -4799,7 +6576,17 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             UriPath = list(),
 #'             QueryString = list(),
 #'             Body = list(),
-#'             Method = list()
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
@@ -4837,17 +6624,65 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             list(
 #'               Name = "string"
 #'             )
-#'           )
+#'           ),
+#'           ScopeDownStatement = list()
+#'         ),
+#'         LabelMatchStatement = list(
+#'           Scope = "LABEL"|"NAMESPACE",
+#'           Key = "string"
 #'         )
 #'       ),
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       OverrideAction = list(
-#'         Count = list(),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         None = list()
+#'       ),
+#'       RuleLabels = list(
+#'         list(
+#'           Name = "string"
+#'         )
 #'       ),
 #'       VisibilityConfig = list(
 #'         SampledRequestsEnabled = TRUE|FALSE,
@@ -4861,21 +6696,27 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
 #'     MetricName = "string"
 #'   ),
-#'   LockToken = "string"
+#'   LockToken = "string",
+#'   CustomResponseBodies = list(
+#'     list(
+#'       ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'       Content = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_update_web_acl
-wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, LockToken) {
+wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken)
+  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$update_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config)

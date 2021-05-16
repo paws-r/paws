@@ -11,16 +11,22 @@ ec2(config = list())
 }
 \description{
 Amazon Elastic Compute Cloud (Amazon EC2) provides secure and resizable
-computing capacity in the AWS cloud. Using Amazon EC2 eliminates the
+computing capacity in the AWS Cloud. Using Amazon EC2 eliminates the
 need to invest in hardware up front, so you can develop and deploy
-applications faster.
+applications faster. Amazon Virtual Private Cloud (Amazon VPC) enables
+you to provision a logically isolated section of the AWS Cloud where you
+can launch AWS resources in a virtual network that you've defined.
+Amazon Elastic Block Store (Amazon EBS) provides block level storage
+volumes for use with EC2 instances. EBS volumes are highly available and
+reliable storage volumes that can be attached to any running instance
+and used like a hard drive.
 
 To learn more, see the following resources:
 \itemize{
 \item Amazon EC2: \href{https://aws.amazon.com/ec2/}{AmazonEC2 product page},
 \href{https://docs.aws.amazon.com/ec2/index.html}{Amazon EC2 documentation}
 \item Amazon EBS: \href{https://aws.amazon.com/ebs/}{Amazon EBS product page},
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html}{Amazon EBS documentation}
+Amazon EBS documentation
 \item Amazon VPC: \href{https://aws.amazon.com/vpc/}{Amazon VPC product page},
 \href{https://docs.aws.amazon.com/vpc/index.html}{Amazon VPC documentation}
 \item AWS VPN: \href{https://aws.amazon.com/vpn/}{AWS VPN product page}, AWS
@@ -89,7 +95,7 @@ VPN documentation
 \link[=ec2_cancel_spot_instance_requests]{cancel_spot_instance_requests} \tab Cancels one or more Spot Instance requests\cr
 \link[=ec2_confirm_product_instance]{confirm_product_instance} \tab Determines whether a product code is associated with an instance\cr
 \link[=ec2_copy_fpga_image]{copy_fpga_image} \tab Copies the specified Amazon FPGA Image (AFI) to the current Region\cr
-\link[=ec2_copy_image]{copy_image} \tab Initiates the copy of an AMI from the specified source Region to the current Region\cr
+\link[=ec2_copy_image]{copy_image} \tab Initiates the copy of an AMI\cr
 \link[=ec2_copy_snapshot]{copy_snapshot} \tab Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3\cr
 \link[=ec2_create_capacity_reservation]{create_capacity_reservation} \tab Creates a new Capacity Reservation with the specified attributes\cr
 \link[=ec2_create_carrier_gateway]{create_carrier_gateway} \tab Creates a carrier gateway\cr
@@ -119,13 +125,16 @@ VPN documentation
 \link[=ec2_create_network_interface]{create_network_interface} \tab Creates a network interface in the specified subnet\cr
 \link[=ec2_create_network_interface_permission]{create_network_interface_permission} \tab Grants an AWS-authorized account permission to attach the specified network interface to an instance in their account\cr
 \link[=ec2_create_placement_group]{create_placement_group} \tab Creates a placement group in which to launch instances\cr
+\link[=ec2_create_replace_root_volume_task]{create_replace_root_volume_task} \tab Creates a root volume replacement task for an Amazon EC2 instance\cr
 \link[=ec2_create_reserved_instances_listing]{create_reserved_instances_listing} \tab Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace\cr
+\link[=ec2_create_restore_image_task]{create_restore_image_task} \tab Starts a task that restores an AMI from an S3 object that was previously created by using CreateStoreImageTask\cr
 \link[=ec2_create_route]{create_route} \tab Creates a route in a route table within a VPC\cr
 \link[=ec2_create_route_table]{create_route_table} \tab Creates a route table for the specified VPC\cr
 \link[=ec2_create_security_group]{create_security_group} \tab Creates a security group\cr
 \link[=ec2_create_snapshot]{create_snapshot} \tab Creates a snapshot of an EBS volume and stores it in Amazon S3\cr
 \link[=ec2_create_snapshots]{create_snapshots} \tab Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3\cr
 \link[=ec2_create_spot_datafeed_subscription]{create_spot_datafeed_subscription} \tab Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs\cr
+\link[=ec2_create_store_image_task]{create_store_image_task} \tab Stores an AMI as a single object in an S3 bucket\cr
 \link[=ec2_create_subnet]{create_subnet} \tab Creates a subnet in a specified VPC\cr
 \link[=ec2_create_tags]{create_tags} \tab Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources\cr
 \link[=ec2_create_traffic_mirror_filter]{create_traffic_mirror_filter} \tab Creates a Traffic Mirror filter\cr
@@ -211,6 +220,7 @@ VPN documentation
 \link[=ec2_deregister_transit_gateway_multicast_group_sources]{deregister_transit_gateway_multicast_group_sources} \tab Deregisters the specified sources (network interfaces) from the transit gateway multicast group\cr
 \link[=ec2_describe_account_attributes]{describe_account_attributes} \tab Describes attributes of your AWS account\cr
 \link[=ec2_describe_addresses]{describe_addresses} \tab Describes the specified Elastic IP addresses or all of your Elastic IP addresses\cr
+\link[=ec2_describe_addresses_attribute]{describe_addresses_attribute} \tab Describes the attributes of the specified Elastic IP addresses\cr
 \link[=ec2_describe_aggregate_id_format]{describe_aggregate_id_format} \tab Describes the longer ID format settings for all resource types in a specific Region\cr
 \link[=ec2_describe_availability_zones]{describe_availability_zones} \tab Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you\cr
 \link[=ec2_describe_bundle_tasks]{describe_bundle_tasks} \tab Describes the specified bundle tasks or all of your bundle tasks\cr
@@ -280,6 +290,7 @@ VPN documentation
 \link[=ec2_describe_principal_id_format]{describe_principal_id_format} \tab Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference\cr
 \link[=ec2_describe_public_ipv_4_pools]{describe_public_ipv_4_pools} \tab Describes the specified IPv4 address pools\cr
 \link[=ec2_describe_regions]{describe_regions} \tab Describes the Regions that are enabled for your account, or all Regions\cr
+\link[=ec2_describe_replace_root_volume_tasks]{describe_replace_root_volume_tasks} \tab Describes a root volume replacement task\cr
 \link[=ec2_describe_reserved_instances]{describe_reserved_instances} \tab Describes one or more of the Reserved Instances that you purchased\cr
 \link[=ec2_describe_reserved_instances_listings]{describe_reserved_instances_listings} \tab Describes your account's Reserved Instance listings in the Reserved Instance Marketplace\cr
 \link[=ec2_describe_reserved_instances_modifications]{describe_reserved_instances_modifications} \tab Describes the modifications made to your Reserved Instances\cr
@@ -298,6 +309,7 @@ VPN documentation
 \link[=ec2_describe_spot_instance_requests]{describe_spot_instance_requests} \tab Describes the specified Spot Instance requests\cr
 \link[=ec2_describe_spot_price_history]{describe_spot_price_history} \tab Describes the Spot price history\cr
 \link[=ec2_describe_stale_security_groups]{describe_stale_security_groups} \tab [VPC only] Describes the stale security group rules for security groups in a specified VPC\cr
+\link[=ec2_describe_store_image_tasks]{describe_store_image_tasks} \tab Describes the progress of the AMI store tasks\cr
 \link[=ec2_describe_subnets]{describe_subnets} \tab Describes one or more of your subnets\cr
 \link[=ec2_describe_tags]{describe_tags} \tab Describes the specified tags for your EC2 resources\cr
 \link[=ec2_describe_traffic_mirror_filters]{describe_traffic_mirror_filters} \tab Describes one or more Traffic Mirror filters\cr
@@ -335,6 +347,7 @@ VPN documentation
 \link[=ec2_detach_vpn_gateway]{detach_vpn_gateway} \tab Detaches a virtual private gateway from a VPC\cr
 \link[=ec2_disable_ebs_encryption_by_default]{disable_ebs_encryption_by_default} \tab Disables EBS encryption by default for your account in the current Region\cr
 \link[=ec2_disable_fast_snapshot_restores]{disable_fast_snapshot_restores} \tab Disables fast snapshot restores for the specified snapshots in the specified Availability Zones\cr
+\link[=ec2_disable_serial_console_access]{disable_serial_console_access} \tab Disables access to the EC2 serial console of all instances for your account\cr
 \link[=ec2_disable_transit_gateway_route_table_propagation]{disable_transit_gateway_route_table_propagation} \tab Disables the specified resource attachment from propagating routes to the specified propagation route table\cr
 \link[=ec2_disable_vgw_route_propagation]{disable_vgw_route_propagation} \tab Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC\cr
 \link[=ec2_disable_vpc_classic_link]{disable_vpc_classic_link} \tab Disables ClassicLink for a VPC\cr
@@ -350,6 +363,7 @@ VPN documentation
 \link[=ec2_disassociate_vpc_cidr_block]{disassociate_vpc_cidr_block} \tab Disassociates a CIDR block from a VPC\cr
 \link[=ec2_enable_ebs_encryption_by_default]{enable_ebs_encryption_by_default} \tab Enables EBS encryption by default for your account in the current Region\cr
 \link[=ec2_enable_fast_snapshot_restores]{enable_fast_snapshot_restores} \tab Enables fast snapshot restores for the specified snapshots in the specified Availability Zones\cr
+\link[=ec2_enable_serial_console_access]{enable_serial_console_access} \tab Enables access to the EC2 serial console of all instances for your account\cr
 \link[=ec2_enable_transit_gateway_route_table_propagation]{enable_transit_gateway_route_table_propagation} \tab Enables the specified attachment to propagate routes to the specified propagation route table\cr
 \link[=ec2_enable_vgw_route_propagation]{enable_vgw_route_propagation} \tab Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC\cr
 \link[=ec2_enable_volume_io]{enable_volume_io} \tab Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent\cr
@@ -368,6 +382,7 @@ VPN documentation
 \link[=ec2_get_default_credit_specification]{get_default_credit_specification} \tab Describes the default credit option for CPU usage of a burstable performance instance family\cr
 \link[=ec2_get_ebs_default_kms_key_id]{get_ebs_default_kms_key_id} \tab Describes the default customer master key (CMK) for EBS encryption by default for your account in this Region\cr
 \link[=ec2_get_ebs_encryption_by_default]{get_ebs_encryption_by_default} \tab Describes whether EBS encryption by default is enabled for your account in the current Region\cr
+\link[=ec2_get_flow_logs_integration_template]{get_flow_logs_integration_template} \tab Generates a CloudFormation template that streamlines and automates the integration of VPC flow logs with Amazon Athena\cr
 \link[=ec2_get_groups_for_capacity_reservation]{get_groups_for_capacity_reservation} \tab Lists the resource groups to which a Capacity Reservation has been added\cr
 \link[=ec2_get_host_reservation_purchase_preview]{get_host_reservation_purchase_preview} \tab Preview a reservation purchase with configurations that match those of your Dedicated Host\cr
 \link[=ec2_get_launch_template_data]{get_launch_template_data} \tab Retrieves the configuration data of the specified instance\cr
@@ -375,6 +390,7 @@ VPN documentation
 \link[=ec2_get_managed_prefix_list_entries]{get_managed_prefix_list_entries} \tab Gets information about the entries for a specified managed prefix list\cr
 \link[=ec2_get_password_data]{get_password_data} \tab Retrieves the encrypted administrator password for a running Windows instance\cr
 \link[=ec2_get_reserved_instances_exchange_quote]{get_reserved_instances_exchange_quote} \tab Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance\cr
+\link[=ec2_get_serial_console_access_status]{get_serial_console_access_status} \tab Retrieves the access status of your account to the EC2 serial console of all instances\cr
 \link[=ec2_get_transit_gateway_attachment_propagations]{get_transit_gateway_attachment_propagations} \tab Lists the route tables to which the specified resource attachment propagates routes\cr
 \link[=ec2_get_transit_gateway_multicast_domain_associations]{get_transit_gateway_multicast_domain_associations} \tab Gets information about the associations for the transit gateway multicast domain\cr
 \link[=ec2_get_transit_gateway_prefix_list_references]{get_transit_gateway_prefix_list_references} \tab Gets information about the prefix list references in a specified transit gateway route table\cr
@@ -386,6 +402,7 @@ VPN documentation
 \link[=ec2_import_key_pair]{import_key_pair} \tab Imports the public key from an RSA key pair that you created with a third-party tool\cr
 \link[=ec2_import_snapshot]{import_snapshot} \tab Imports a disk into an EBS snapshot\cr
 \link[=ec2_import_volume]{import_volume} \tab Creates an import volume task using metadata from the specified disk image\cr
+\link[=ec2_modify_address_attribute]{modify_address_attribute} \tab Modifies an attribute of the specified Elastic IP address\cr
 \link[=ec2_modify_availability_zone_group]{modify_availability_zone_group} \tab Changes the opt-in status of the Local Zone and Wavelength Zone group for your account\cr
 \link[=ec2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies a Capacity Reservation's capacity and the conditions under which it is to be released\cr
 \link[=ec2_modify_client_vpn_endpoint]{modify_client_vpn_endpoint} \tab Modifies the specified Client VPN endpoint\cr
@@ -456,6 +473,7 @@ VPN documentation
 \link[=ec2_report_instance_status]{report_instance_status} \tab Submits feedback about the status of an instance\cr
 \link[=ec2_request_spot_fleet]{request_spot_fleet} \tab Creates a Spot Fleet request\cr
 \link[=ec2_request_spot_instances]{request_spot_instances} \tab Creates a Spot Instance request\cr
+\link[=ec2_reset_address_attribute]{reset_address_attribute} \tab Resets the attribute of the specified IP address\cr
 \link[=ec2_reset_ebs_default_kms_key_id]{reset_ebs_default_kms_key_id} \tab Resets the default customer master key (CMK) for EBS encryption for your account in this Region to the AWS managed CMK for EBS\cr
 \link[=ec2_reset_fpga_image_attribute]{reset_fpga_image_attribute} \tab Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value\cr
 \link[=ec2_reset_image_attribute]{reset_image_attribute} \tab Resets an attribute of an AMI to its default value\cr

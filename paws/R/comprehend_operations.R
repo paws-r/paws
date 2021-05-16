@@ -437,6 +437,64 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 }
 .comprehend$operations$classify_document <- comprehend_classify_document
 
+#' Analyzes input text for the presence of personally identifiable
+#' information (PII) and returns the labels of identified PII entity types
+#' such as name, address, bank account number, or phone number
+#'
+#' @description
+#' Analyzes input text for the presence of personally identifiable
+#' information (PII) and returns the labels of identified PII entity types
+#' such as name, address, bank account number, or phone number.
+#'
+#' @usage
+#' comprehend_contains_pii_entities(Text, LanguageCode)
+#'
+#' @param Text &#91;required&#93; Creates a new document classification request to analyze a single
+#' document in real-time, returning personally identifiable information
+#' (PII) entity labels.
+#' @param LanguageCode &#91;required&#93; The language of the input documents.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Labels = list(
+#'     list(
+#'       Name = "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL",
+#'       Score = 123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$contains_pii_entities(
+#'   Text = "string",
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_contains_pii_entities
+comprehend_contains_pii_entities <- function(Text, LanguageCode) {
+  op <- new_operation(
+    name = "ContainsPiiEntities",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$contains_pii_entities_input(Text = Text, LanguageCode = LanguageCode)
+  output <- .comprehend$contains_pii_entities_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$contains_pii_entities <- comprehend_contains_pii_entities
+
 #' Creates a new document classifier that you can use to categorize
 #' documents
 #'
@@ -451,7 +509,8 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' @usage
 #' comprehend_create_document_classifier(DocumentClassifierName,
 #'   DataAccessRoleArn, Tags, InputDataConfig, OutputDataConfig,
-#'   ClientRequestToken, LanguageCode, VolumeKmsKeyId, VpcConfig, Mode)
+#'   ClientRequestToken, LanguageCode, VolumeKmsKeyId, VpcConfig, Mode,
+#'   ModelKmsKeyId)
 #'
 #' @param DocumentClassifierName &#91;required&#93; The name of the document classifier.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
@@ -488,6 +547,14 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' one or more labels for each document. In multi-label mode, multiple
 #' labels for an individual document are separated by a delimiter. The
 #' default delimiter between labels is a pipe (|).
+#' @param ModelKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt trained custom models. The ModelKmsKeyId can be either
+#' of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #'
 #' @return
 #' A list with the following syntax:
@@ -536,21 +603,22 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #'       "string"
 #'     )
 #'   ),
-#'   Mode = "MULTI_CLASS"|"MULTI_LABEL"
+#'   Mode = "MULTI_CLASS"|"MULTI_LABEL",
+#'   ModelKmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_document_classifier
-comprehend_create_document_classifier <- function(DocumentClassifierName, DataAccessRoleArn, Tags = NULL, InputDataConfig, OutputDataConfig = NULL, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL, Mode = NULL) {
+comprehend_create_document_classifier <- function(DocumentClassifierName, DataAccessRoleArn, Tags = NULL, InputDataConfig, OutputDataConfig = NULL, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL, Mode = NULL, ModelKmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateDocumentClassifier",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Mode = Mode)
+  input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Mode = Mode, ModelKmsKeyId = ModelKmsKeyId)
   output <- .comprehend$create_document_classifier_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -569,7 +637,7 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #'
 #' @usage
 #' comprehend_create_endpoint(EndpointName, ModelArn,
-#'   DesiredInferenceUnits, ClientRequestToken, Tags)
+#'   DesiredInferenceUnits, ClientRequestToken, Tags, DataAccessRoleArn)
 #'
 #' @param EndpointName &#91;required&#93; This is the descriptive suffix that becomes part of the `EndpointArn`
 #' used for all subsequent requests to this resource.
@@ -585,6 +653,9 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #' pair that adds metadata to the endpoint. For example, a tag with "Sales"
 #' as the key might be added to an endpoint to indicate its use by the
 #' sales department.
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of the AWS identity and Access Management
+#' (IAM) role that grants Amazon Comprehend read access to trained custom
+#' models encrypted with a customer managed key (ModelKmsKeyId).
 #'
 #' @return
 #' A list with the following syntax:
@@ -606,21 +677,22 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   DataAccessRoleArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_endpoint
-comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceUnits, ClientRequestToken = NULL, Tags = NULL) {
+comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceUnits, ClientRequestToken = NULL, Tags = NULL, DataAccessRoleArn = NULL) {
   op <- new_operation(
     name = "CreateEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_endpoint_input(EndpointName = EndpointName, ModelArn = ModelArn, DesiredInferenceUnits = DesiredInferenceUnits, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  input <- .comprehend$create_endpoint_input(EndpointName = EndpointName, ModelArn = ModelArn, DesiredInferenceUnits = DesiredInferenceUnits, ClientRequestToken = ClientRequestToken, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn)
   output <- .comprehend$create_endpoint_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -640,7 +712,7 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #' @usage
 #' comprehend_create_entity_recognizer(RecognizerName, DataAccessRoleArn,
 #'   Tags, InputDataConfig, ClientRequestToken, LanguageCode, VolumeKmsKeyId,
-#'   VpcConfig)
+#'   VpcConfig, ModelKmsKeyId)
 #'
 #' @param RecognizerName &#91;required&#93; The name given to the newly created recognizer. Recognizer names can be
 #' a maximum of 256 characters. Alphanumeric characters, hyphens (-) and
@@ -674,6 +746,14 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #' (VPC) containing the resources you are using for your custom entity
 #' recognizer. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
+#' @param ModelKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt trained custom models. The ModelKmsKeyId can be either
+#' of the following formats
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #'
 #' @return
 #' A list with the following syntax:
@@ -729,21 +809,22 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #'     Subnets = list(
 #'       "string"
 #'     )
-#'   )
+#'   ),
+#'   ModelKmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_entity_recognizer
-comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleArn, Tags = NULL, InputDataConfig, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
+comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleArn, Tags = NULL, InputDataConfig, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL, ModelKmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateEntityRecognizer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_entity_recognizer_input(RecognizerName = RecognizerName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
+  input <- .comprehend$create_entity_recognizer_input(RecognizerName = RecognizerName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, ModelKmsKeyId = ModelKmsKeyId)
   output <- .comprehend$create_entity_recognizer_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -1043,7 +1124,8 @@ comprehend_describe_document_classification_job <- function(JobId) {
 #'         "string"
 #'       )
 #'     ),
-#'     Mode = "MULTI_CLASS"|"MULTI_LABEL"
+#'     Mode = "MULTI_CLASS"|"MULTI_LABEL",
+#'     ModelKmsKeyId = "string"
 #'   )
 #' )
 #' ```
@@ -1178,7 +1260,8 @@ comprehend_describe_dominant_language_detection_job <- function(JobId) {
 #'     ),
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     DataAccessRoleArn = "string"
 #'   )
 #' )
 #' ```
@@ -1375,7 +1458,8 @@ comprehend_describe_entities_detection_job <- function(JobId) {
 #'       Subnets = list(
 #'         "string"
 #'       )
-#'     )
+#'     ),
+#'     ModelKmsKeyId = "string"
 #'   )
 #' )
 #' ```
@@ -2319,7 +2403,8 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
 #'           "string"
 #'         )
 #'       ),
-#'       Mode = "MULTI_CLASS"|"MULTI_LABEL"
+#'       Mode = "MULTI_CLASS"|"MULTI_LABEL",
+#'       ModelKmsKeyId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2491,7 +2576,8 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
 #'       ),
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       DataAccessRoleArn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2730,7 +2816,8 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
 #'         Subnets = list(
 #'           "string"
 #'         )
-#'       )
+#'       ),
+#'       ModelKmsKeyId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"

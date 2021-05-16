@@ -2,36 +2,47 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_search_available_phone_numbers}
 \alias{chime_search_available_phone_numbers}
-\title{Searches phone numbers that can be ordered}
+\title{Searches for phone numbers that can be ordered}
 \usage{
 chime_search_available_phone_numbers(AreaCode, City, Country, State,
-  TollFreePrefix, MaxResults, NextToken)
+  TollFreePrefix, PhoneNumberType, MaxResults, NextToken)
 }
 \arguments{
-\item{AreaCode}{The area code used to filter results.}
+\item{AreaCode}{The area code used to filter results. Only applies to the US.}
 
-\item{City}{The city used to filter results.}
+\item{City}{The city used to filter results. Only applies to the US.}
 
-\item{Country}{The country used to filter results.}
+\item{Country}{The country used to filter results. Defaults to the US Format: ISO
+3166-1 alpha-2.}
 
-\item{State}{The state used to filter results.}
+\item{State}{The state used to filter results. Required only if you provide \code{City}.
+Only applies to the US.}
 
-\item{TollFreePrefix}{The toll-free prefix that you use to filter results.}
+\item{TollFreePrefix}{The toll-free prefix that you use to filter results. Only applies to the
+US.}
+
+\item{PhoneNumberType}{The phone number type used to filter results. Required for non-US
+numbers.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 
-\item{NextToken}{The token to use to retrieve the next page of results.}
+\item{NextToken}{The token used to retrieve the next page of results.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
   E164PhoneNumbers = list(
     "string"
-  )
+  ),
+  NextToken = "string"
 )
 }
 }
 \description{
-Searches phone numbers that can be ordered.
+Searches for phone numbers that can be ordered. For US numbers, provide
+at least one of the following search filters: \code{AreaCode}, \code{City},
+\code{State}, or \code{TollFreePrefix}. If you provide \code{City}, you must also
+provide \code{State}. Numbers outside the US only support the
+\code{PhoneNumberType} filter, which you must use.
 }
 \section{Request syntax}{
 \preformatted{svc$search_available_phone_numbers(
@@ -40,6 +51,7 @@ Searches phone numbers that can be ordered.
   Country = "string",
   State = "string",
   TollFreePrefix = "string",
+  PhoneNumberType = "Local"|"TollFree",
   MaxResults = 123,
   NextToken = "string"
 )

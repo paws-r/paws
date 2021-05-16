@@ -37,7 +37,7 @@ job. Saving these separately helps prevent unauthorized parties from
 gaining access to the Snow device associated with that job.
 
 The credentials of a given job, including its manifest file and unlock
-code, expire 90 days after the job is created.
+code, expire 360 days after the job is created.
 }
 \section{Request syntax}{
 \preformatted{svc$get_job_manifest(

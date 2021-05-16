@@ -11,9 +11,9 @@ batch_update_job_queue(jobQueue, state, priority,
 \item{jobQueue}{[required] The name or the Amazon Resource Name (ARN) of the job queue.}
 
 \item{state}{Describes the queue's ability to accept new jobs. If the job queue state
-is \code{ENABLED}, it is able to accept jobs. If the job queue state is
-\code{DISABLED}, new jobs cannot be added to the queue, but jobs already in
-the queue can finish.}
+is \code{ENABLED}, it can accept jobs. If the job queue state is \code{DISABLED},
+new jobs can't be added to the queue, but jobs already in the queue can
+finish.}
 
 \item{priority}{The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the \code{priority} parameter) are evaluated first
@@ -21,15 +21,15 @@ when associated with the same compute environment. Priority is
 determined in descending order, for example, a job queue with a priority
 value of \code{10} is given scheduling preference over a job queue with a
 priority value of \code{1}. All of the compute environments must be either
-EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT}); EC2 and
-Fargate compute environments cannot be mixed.}
+EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT}). EC2 and
+Fargate compute environments can't be mixed.}
 
 \item{computeEnvironmentOrder}{Details the set of compute environments mapped to a job queue and their
 order relative to each other. This is one of the parameters used by the
 job scheduler to determine which compute environment should run a given
 job. Compute environments must be in the \code{VALID} state before you can
 associate them with a job queue. All of the compute environments must be
-either EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT});
+either EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT}).
 EC2 and Fargate compute environments can't be mixed.
 
 All compute environments that are associated with a job queue must share

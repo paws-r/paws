@@ -33,15 +33,10 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- fsx()
-#' # This operation creates a new backup.
-#' svc$create_backup(
-#'   FileSystemId = "fs-0498eed5fe91001ec",
-#'   Tags = list(
-#'     list(
-#'       Key = "Name",
-#'       Value = "MyBackup"
-#'     )
-#'   )
+#' # This operation copies an Amazon FSx backup.
+#' svc$copy_backup(
+#'   SourceBackupId = "backup-03e3c82e0183b7b6b",
+#'   SourceRegion = "us-east-2"
 #' )
 #' }
 #'
@@ -49,6 +44,7 @@ NULL
 #' \tabular{ll}{
 #'  \link[=fsx_associate_file_system_aliases]{associate_file_system_aliases} \tab Use this action to associate one or more Domain Name Server (DNS) aliases with an existing Amazon FSx for Windows File Server file system\cr
 #'  \link[=fsx_cancel_data_repository_task]{cancel_data_repository_task} \tab Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the PENDING or EXECUTING state\cr
+#'  \link[=fsx_copy_backup]{copy_backup} \tab Copies an existing backup within the same AWS account to another Region (cross-Region copy) or within the same Region (in-Region copy)\cr
 #'  \link[=fsx_create_backup]{create_backup} \tab Creates a backup of an existing Amazon FSx file system\cr
 #'  \link[=fsx_create_data_repository_task]{create_data_repository_task} \tab Creates an Amazon FSx for Lustre data repository task\cr
 #'  \link[=fsx_create_file_system]{create_file_system} \tab Creates a new, empty Amazon FSx file system\cr

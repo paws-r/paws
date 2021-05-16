@@ -40,7 +40,7 @@ A list with the following syntax:\preformatted{list(
   ),
   robotSoftwareSuite = list(
     name = "ROS"|"ROS2",
-    version = "Kinetic"|"Melodic"|"Dashing"
+    version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
   ),
   renderingEngine = list(
     name = "OGRE",
@@ -72,7 +72,7 @@ Updates a simulation application.
   ),
   robotSoftwareSuite = list(
     name = "ROS"|"ROS2",
-    version = "Kinetic"|"Melodic"|"Dashing"
+    version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
   ),
   renderingEngine = list(
     name = "OGRE",

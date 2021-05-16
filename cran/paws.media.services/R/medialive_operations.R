@@ -308,6 +308,13 @@ medialive_batch_stop <- function(ChannelIds = NULL, MultiplexIds = NULL) {
 #'               "string"
 #'             )
 #'           ),
+#'           MotionGraphicsImageActivateSettings = list(
+#'             Duration = 123,
+#'             PasswordParam = "string",
+#'             Url = "string",
+#'             Username = "string"
+#'           ),
+#'           MotionGraphicsImageDeactivateSettings = list(),
 #'           PauseStateSettings = list(
 #'             Pipelines = list(
 #'               list(
@@ -425,6 +432,13 @@ medialive_batch_stop <- function(ChannelIds = NULL, MultiplexIds = NULL) {
 #'               "string"
 #'             )
 #'           ),
+#'           MotionGraphicsImageActivateSettings = list(
+#'             Duration = 123,
+#'             PasswordParam = "string",
+#'             Url = "string",
+#'             Username = "string"
+#'           ),
+#'           MotionGraphicsImageDeactivateSettings = list(),
 #'           PauseStateSettings = list(
 #'             Pipelines = list(
 #'               list(
@@ -549,6 +563,13 @@ medialive_batch_stop <- function(ChannelIds = NULL, MultiplexIds = NULL) {
 #'               "string"
 #'             )
 #'           ),
+#'           MotionGraphicsImageActivateSettings = list(
+#'             Duration = 123,
+#'             PasswordParam = "string",
+#'             Url = "string",
+#'             Username = "string"
+#'           ),
+#'           MotionGraphicsImageDeactivateSettings = list(),
 #'           PauseStateSettings = list(
 #'             Pipelines = list(
 #'               list(
@@ -700,7 +721,7 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #' @usage
 #' medialive_create_channel(CdiInputSpecification, ChannelClass,
 #'   Destinations, EncoderSettings, InputAttachments, InputSpecification,
-#'   LogLevel, Name, RequestId, Reserved, RoleArn, Tags)
+#'   LogLevel, Name, RequestId, Reserved, RoleArn, Tags, Vpc)
 #'
 #' @param CdiInputSpecification Specification of CDI inputs for this channel
 #' @param ChannelClass The class for this channel. STANDARD for a channel with two pipelines or
@@ -717,6 +738,7 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #' @param RoleArn An optional Amazon Resource Name (ARN) of the role to assume when
 #' running the Channel.
 #' @param Tags A collection of key-value pairs.
+#' @param Vpc Settings for VPC output
 #'
 #' @return
 #' A list with the following syntax:
@@ -931,6 +953,7 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'               YPosition = 123
 #'             ),
 #'             EbuTtDDestinationSettings = list(
+#'               CopyrightHolder = "string",
 #'               FillLineGap = "DISABLED"|"ENABLED",
 #'               FontFamily = "string",
 #'               StyleControl = "EXCLUDE"|"INCLUDE"
@@ -973,6 +996,12 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'         OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'         SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'       ),
+#'       MotionGraphicsConfiguration = list(
+#'         MotionGraphicsInsertion = "DISABLED"|"ENABLED",
+#'         MotionGraphicsSettings = list(
+#'           HtmlMotionGraphicsSettings = list()
+#'         )
+#'       ),
 #'       NielsenConfiguration = list(
 #'         DistributorId = "string",
 #'         NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
@@ -982,6 +1011,11 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'           Name = "string",
 #'           OutputGroupSettings = list(
 #'             ArchiveGroupSettings = list(
+#'               ArchiveCdnSettings = list(
+#'                 ArchiveS3Settings = list(
+#'                   CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'                 )
+#'               ),
 #'               Destination = list(
 #'                 DestinationRefId = "string"
 #'               ),
@@ -990,6 +1024,11 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'             FrameCaptureGroupSettings = list(
 #'               Destination = list(
 #'                 DestinationRefId = "string"
+#'               ),
+#'               FrameCaptureCdnSettings = list(
+#'                 FrameCaptureS3Settings = list(
+#'                   CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'                 )
 #'               )
 #'             ),
 #'             HlsGroupSettings = list(
@@ -1039,6 +1078,9 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'                   MediaStoreStorageClass = "TEMPORAL",
 #'                   NumRetries = 123,
 #'                   RestartDelay = 123
+#'                 ),
+#'                 HlsS3Settings = list(
+#'                   CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
 #'                 ),
 #'                 HlsWebdavSettings = list(
 #'                   ConnectionRetryInterval = 123,
@@ -1229,6 +1271,7 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'                       NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                       TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                     ),
+#'                     FrameCaptureHlsSettings = list(),
 #'                     StandardHlsSettings = list(
 #'                       AudioRenditionSets = "string",
 #'                       M3u8Settings = list(
@@ -1567,6 +1610,12 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'                   Pid = 123
 #'                 ),
 #'                 TeletextSourceSettings = list(
+#'                   OutputRectangle = list(
+#'                     Height = 123.0,
+#'                     LeftOffset = 123.0,
+#'                     TopOffset = 123.0,
+#'                     Width = 123.0
+#'                   ),
 #'                   PageNumber = "string"
 #'                 )
 #'               )
@@ -1588,7 +1637,13 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'           Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'           SourceEndBehavior = "CONTINUE"|"LOOP",
 #'           VideoSelector = list(
-#'             ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+#'             ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+#'             ColorSpaceSettings = list(
+#'               Hdr10Settings = list(
+#'                 MaxCll = 123,
+#'                 MaxFall = 123
+#'               )
+#'             ),
 #'             ColorSpaceUsage = "FALLBACK"|"FORCE",
 #'             SelectorSettings = list(
 #'               VideoSelectorPid = list(
@@ -1613,6 +1668,8 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'       list(
 #'         ActiveInputAttachmentName = "string",
 #'         ActiveInputSwitchActionName = "string",
+#'         ActiveMotionGraphicsActionName = "string",
+#'         ActiveMotionGraphicsUri = "string",
 #'         PipelineId = "string"
 #'       )
 #'     ),
@@ -1621,6 +1678,20 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'     State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
 #'     Tags = list(
 #'       "string"
+#'     ),
+#'     Vpc = list(
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       NetworkInterfaceIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       SubnetIds = list(
+#'         "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1831,6 +1902,7 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'             YPosition = 123
 #'           ),
 #'           EbuTtDDestinationSettings = list(
+#'             CopyrightHolder = "string",
 #'             FillLineGap = "DISABLED"|"ENABLED",
 #'             FontFamily = "string",
 #'             StyleControl = "EXCLUDE"|"INCLUDE"
@@ -1873,6 +1945,12 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'     ),
+#'     MotionGraphicsConfiguration = list(
+#'       MotionGraphicsInsertion = "DISABLED"|"ENABLED",
+#'       MotionGraphicsSettings = list(
+#'         HtmlMotionGraphicsSettings = list()
+#'       )
+#'     ),
 #'     NielsenConfiguration = list(
 #'       DistributorId = "string",
 #'       NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
@@ -1882,6 +1960,11 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'         Name = "string",
 #'         OutputGroupSettings = list(
 #'           ArchiveGroupSettings = list(
+#'             ArchiveCdnSettings = list(
+#'               ArchiveS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
+#'             ),
 #'             Destination = list(
 #'               DestinationRefId = "string"
 #'             ),
@@ -1890,6 +1973,11 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'           FrameCaptureGroupSettings = list(
 #'             Destination = list(
 #'               DestinationRefId = "string"
+#'             ),
+#'             FrameCaptureCdnSettings = list(
+#'               FrameCaptureS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
 #'             )
 #'           ),
 #'           HlsGroupSettings = list(
@@ -1939,6 +2027,9 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'                 MediaStoreStorageClass = "TEMPORAL",
 #'                 NumRetries = 123,
 #'                 RestartDelay = 123
+#'               ),
+#'               HlsS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
 #'               ),
 #'               HlsWebdavSettings = list(
 #'                 ConnectionRetryInterval = 123,
@@ -2129,6 +2220,7 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                     TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                   ),
+#'                   FrameCaptureHlsSettings = list(),
 #'                   StandardHlsSettings = list(
 #'                     AudioRenditionSets = "string",
 #'                     M3u8Settings = list(
@@ -2466,6 +2558,12 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'                 Pid = 123
 #'               ),
 #'               TeletextSourceSettings = list(
+#'                 OutputRectangle = list(
+#'                   Height = 123.0,
+#'                   LeftOffset = 123.0,
+#'                   TopOffset = 123.0,
+#'                   Width = 123.0
+#'                 ),
 #'                 PageNumber = "string"
 #'               )
 #'             )
@@ -2487,7 +2585,13 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'         Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'         SourceEndBehavior = "CONTINUE"|"LOOP",
 #'         VideoSelector = list(
-#'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+#'           ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+#'           ColorSpaceSettings = list(
+#'             Hdr10Settings = list(
+#'               MaxCll = 123,
+#'               MaxFall = 123
+#'             )
+#'           ),
 #'           ColorSpaceUsage = "FALLBACK"|"FORCE",
 #'           SelectorSettings = list(
 #'             VideoSelectorPid = list(
@@ -2513,6 +2617,17 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #'   RoleArn = "string",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   Vpc = list(
+#'     PublicAddressAllocationIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     SubnetIds = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2520,14 +2635,14 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 #' @keywords internal
 #'
 #' @rdname medialive_create_channel
-medialive_create_channel <- function(CdiInputSpecification = NULL, ChannelClass = NULL, Destinations = NULL, EncoderSettings = NULL, InputAttachments = NULL, InputSpecification = NULL, LogLevel = NULL, Name = NULL, RequestId = NULL, Reserved = NULL, RoleArn = NULL, Tags = NULL) {
+medialive_create_channel <- function(CdiInputSpecification = NULL, ChannelClass = NULL, Destinations = NULL, EncoderSettings = NULL, InputAttachments = NULL, InputSpecification = NULL, LogLevel = NULL, Name = NULL, RequestId = NULL, Reserved = NULL, RoleArn = NULL, Tags = NULL, Vpc = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/prod/channels",
     paginator = list()
   )
-  input <- .medialive$create_channel_input(CdiInputSpecification = CdiInputSpecification, ChannelClass = ChannelClass, Destinations = Destinations, EncoderSettings = EncoderSettings, InputAttachments = InputAttachments, InputSpecification = InputSpecification, LogLevel = LogLevel, Name = Name, RequestId = RequestId, Reserved = Reserved, RoleArn = RoleArn, Tags = Tags)
+  input <- .medialive$create_channel_input(CdiInputSpecification = CdiInputSpecification, ChannelClass = ChannelClass, Destinations = Destinations, EncoderSettings = EncoderSettings, InputAttachments = InputAttachments, InputSpecification = InputSpecification, LogLevel = LogLevel, Name = Name, RequestId = RequestId, Reserved = Reserved, RoleArn = RoleArn, Tags = Tags, Vpc = Vpc)
   output <- .medialive$create_channel_output()
   config <- get_config()
   svc <- .medialive$service(config)
@@ -2592,6 +2707,9 @@ medialive_create_channel <- function(CdiInputSpecification = NULL, ChannelClass 
 #'       list(
 #'         Id = "string"
 #'       )
+#'     ),
+#'     InputPartnerIds = list(
+#'       "string"
 #'     ),
 #'     InputSourceType = "STATIC"|"DYNAMIC",
 #'     MediaConnectFlows = list(
@@ -2961,6 +3079,107 @@ medialive_create_multiplex_program <- function(MultiplexId, MultiplexProgramSett
 }
 .medialive$operations$create_multiplex_program <- medialive_create_multiplex_program
 
+#' Create a partner input
+#'
+#' @description
+#' Create a partner input
+#'
+#' @usage
+#' medialive_create_partner_input(InputId, RequestId, Tags)
+#'
+#' @param InputId &#91;required&#93; Unique ID of the input.
+#' @param RequestId Unique identifier of the request to ensure the request is handled
+#' exactly once in case of retries.
+#' @param Tags A collection of key-value pairs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Input = list(
+#'     Arn = "string",
+#'     AttachedChannels = list(
+#'       "string"
+#'     ),
+#'     Destinations = list(
+#'       list(
+#'         Ip = "string",
+#'         Port = "string",
+#'         Url = "string",
+#'         Vpc = list(
+#'           AvailabilityZone = "string",
+#'           NetworkInterfaceId = "string"
+#'         )
+#'       )
+#'     ),
+#'     Id = "string",
+#'     InputClass = "STANDARD"|"SINGLE_PIPELINE",
+#'     InputDevices = list(
+#'       list(
+#'         Id = "string"
+#'       )
+#'     ),
+#'     InputPartnerIds = list(
+#'       "string"
+#'     ),
+#'     InputSourceType = "STATIC"|"DYNAMIC",
+#'     MediaConnectFlows = list(
+#'       list(
+#'         FlowArn = "string"
+#'       )
+#'     ),
+#'     Name = "string",
+#'     RoleArn = "string",
+#'     SecurityGroups = list(
+#'       "string"
+#'     ),
+#'     Sources = list(
+#'       list(
+#'         PasswordParam = "string",
+#'         Url = "string",
+#'         Username = "string"
+#'       )
+#'     ),
+#'     State = "CREATING"|"DETACHED"|"ATTACHED"|"DELETING"|"DELETED",
+#'     Tags = list(
+#'       "string"
+#'     ),
+#'     Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"|"INPUT_DEVICE"|"AWS_CDI"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_partner_input(
+#'   InputId = "string",
+#'   RequestId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_create_partner_input
+medialive_create_partner_input <- function(InputId, RequestId = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreatePartnerInput",
+    http_method = "POST",
+    http_path = "/prod/inputs/{inputId}/partners",
+    paginator = list()
+  )
+  input <- .medialive$create_partner_input_input(InputId = InputId, RequestId = RequestId, Tags = Tags)
+  output <- .medialive$create_partner_input_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$create_partner_input <- medialive_create_partner_input
+
 #' Create tags for a resource
 #'
 #' @description
@@ -3227,6 +3446,7 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'             YPosition = 123
 #'           ),
 #'           EbuTtDDestinationSettings = list(
+#'             CopyrightHolder = "string",
 #'             FillLineGap = "DISABLED"|"ENABLED",
 #'             FontFamily = "string",
 #'             StyleControl = "EXCLUDE"|"INCLUDE"
@@ -3269,6 +3489,12 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'     ),
+#'     MotionGraphicsConfiguration = list(
+#'       MotionGraphicsInsertion = "DISABLED"|"ENABLED",
+#'       MotionGraphicsSettings = list(
+#'         HtmlMotionGraphicsSettings = list()
+#'       )
+#'     ),
 #'     NielsenConfiguration = list(
 #'       DistributorId = "string",
 #'       NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
@@ -3278,6 +3504,11 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'         Name = "string",
 #'         OutputGroupSettings = list(
 #'           ArchiveGroupSettings = list(
+#'             ArchiveCdnSettings = list(
+#'               ArchiveS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
+#'             ),
 #'             Destination = list(
 #'               DestinationRefId = "string"
 #'             ),
@@ -3286,6 +3517,11 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'           FrameCaptureGroupSettings = list(
 #'             Destination = list(
 #'               DestinationRefId = "string"
+#'             ),
+#'             FrameCaptureCdnSettings = list(
+#'               FrameCaptureS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
 #'             )
 #'           ),
 #'           HlsGroupSettings = list(
@@ -3335,6 +3571,9 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'                 MediaStoreStorageClass = "TEMPORAL",
 #'                 NumRetries = 123,
 #'                 RestartDelay = 123
+#'               ),
+#'               HlsS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
 #'               ),
 #'               HlsWebdavSettings = list(
 #'                 ConnectionRetryInterval = 123,
@@ -3525,6 +3764,7 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                     TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                   ),
+#'                   FrameCaptureHlsSettings = list(),
 #'                   StandardHlsSettings = list(
 #'                     AudioRenditionSets = "string",
 #'                     M3u8Settings = list(
@@ -3863,6 +4103,12 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'                 Pid = 123
 #'               ),
 #'               TeletextSourceSettings = list(
+#'                 OutputRectangle = list(
+#'                   Height = 123.0,
+#'                   LeftOffset = 123.0,
+#'                   TopOffset = 123.0,
+#'                   Width = 123.0
+#'                 ),
 #'                 PageNumber = "string"
 #'               )
 #'             )
@@ -3884,7 +4130,13 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'         Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'         SourceEndBehavior = "CONTINUE"|"LOOP",
 #'         VideoSelector = list(
-#'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+#'           ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+#'           ColorSpaceSettings = list(
+#'             Hdr10Settings = list(
+#'               MaxCll = 123,
+#'               MaxFall = 123
+#'             )
+#'           ),
 #'           ColorSpaceUsage = "FALLBACK"|"FORCE",
 #'           SelectorSettings = list(
 #'             VideoSelectorPid = list(
@@ -3909,6 +4161,8 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'     list(
 #'       ActiveInputAttachmentName = "string",
 #'       ActiveInputSwitchActionName = "string",
+#'       ActiveMotionGraphicsActionName = "string",
+#'       ActiveMotionGraphicsUri = "string",
 #'       PipelineId = "string"
 #'     )
 #'   ),
@@ -3917,6 +4171,20 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'   State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   Vpc = list(
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     NetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     SubnetIds = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4569,6 +4837,7 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'             YPosition = 123
 #'           ),
 #'           EbuTtDDestinationSettings = list(
+#'             CopyrightHolder = "string",
 #'             FillLineGap = "DISABLED"|"ENABLED",
 #'             FontFamily = "string",
 #'             StyleControl = "EXCLUDE"|"INCLUDE"
@@ -4611,6 +4880,12 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'     ),
+#'     MotionGraphicsConfiguration = list(
+#'       MotionGraphicsInsertion = "DISABLED"|"ENABLED",
+#'       MotionGraphicsSettings = list(
+#'         HtmlMotionGraphicsSettings = list()
+#'       )
+#'     ),
 #'     NielsenConfiguration = list(
 #'       DistributorId = "string",
 #'       NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
@@ -4620,6 +4895,11 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'         Name = "string",
 #'         OutputGroupSettings = list(
 #'           ArchiveGroupSettings = list(
+#'             ArchiveCdnSettings = list(
+#'               ArchiveS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
+#'             ),
 #'             Destination = list(
 #'               DestinationRefId = "string"
 #'             ),
@@ -4628,6 +4908,11 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'           FrameCaptureGroupSettings = list(
 #'             Destination = list(
 #'               DestinationRefId = "string"
+#'             ),
+#'             FrameCaptureCdnSettings = list(
+#'               FrameCaptureS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
 #'             )
 #'           ),
 #'           HlsGroupSettings = list(
@@ -4677,6 +4962,9 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'                 MediaStoreStorageClass = "TEMPORAL",
 #'                 NumRetries = 123,
 #'                 RestartDelay = 123
+#'               ),
+#'               HlsS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
 #'               ),
 #'               HlsWebdavSettings = list(
 #'                 ConnectionRetryInterval = 123,
@@ -4867,6 +5155,7 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                     TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                   ),
+#'                   FrameCaptureHlsSettings = list(),
 #'                   StandardHlsSettings = list(
 #'                     AudioRenditionSets = "string",
 #'                     M3u8Settings = list(
@@ -5205,6 +5494,12 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'                 Pid = 123
 #'               ),
 #'               TeletextSourceSettings = list(
+#'                 OutputRectangle = list(
+#'                   Height = 123.0,
+#'                   LeftOffset = 123.0,
+#'                   TopOffset = 123.0,
+#'                   Width = 123.0
+#'                 ),
 #'                 PageNumber = "string"
 #'               )
 #'             )
@@ -5226,7 +5521,13 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'         Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'         SourceEndBehavior = "CONTINUE"|"LOOP",
 #'         VideoSelector = list(
-#'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+#'           ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+#'           ColorSpaceSettings = list(
+#'             Hdr10Settings = list(
+#'               MaxCll = 123,
+#'               MaxFall = 123
+#'             )
+#'           ),
 #'           ColorSpaceUsage = "FALLBACK"|"FORCE",
 #'           SelectorSettings = list(
 #'             VideoSelectorPid = list(
@@ -5251,6 +5552,8 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'     list(
 #'       ActiveInputAttachmentName = "string",
 #'       ActiveInputSwitchActionName = "string",
+#'       ActiveMotionGraphicsActionName = "string",
+#'       ActiveMotionGraphicsUri = "string",
 #'       PipelineId = "string"
 #'     )
 #'   ),
@@ -5259,6 +5562,20 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'   State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   Vpc = list(
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     NetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     SubnetIds = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -5325,6 +5642,9 @@ medialive_describe_channel <- function(ChannelId) {
 #'     list(
 #'       Id = "string"
 #'     )
+#'   ),
+#'   InputPartnerIds = list(
+#'     "string"
 #'   ),
 #'   InputSourceType = "STATIC"|"DYNAMIC",
 #'   MediaConnectFlows = list(
@@ -5930,6 +6250,13 @@ medialive_describe_reservation <- function(ReservationId) {
 #'             "string"
 #'           )
 #'         ),
+#'         MotionGraphicsImageActivateSettings = list(
+#'           Duration = 123,
+#'           PasswordParam = "string",
+#'           Url = "string",
+#'           Username = "string"
+#'         ),
+#'         MotionGraphicsImageDeactivateSettings = list(),
 #'         PauseStateSettings = list(
 #'           Pipelines = list(
 #'             list(
@@ -6159,6 +6486,12 @@ medialive_describe_schedule <- function(ChannelId, MaxResults = NULL, NextToken 
 #'                     Pid = 123
 #'                   ),
 #'                   TeletextSourceSettings = list(
+#'                     OutputRectangle = list(
+#'                       Height = 123.0,
+#'                       LeftOffset = 123.0,
+#'                       TopOffset = 123.0,
+#'                       Width = 123.0
+#'                     ),
 #'                     PageNumber = "string"
 #'                   )
 #'                 )
@@ -6180,7 +6513,13 @@ medialive_describe_schedule <- function(ChannelId, MaxResults = NULL, NextToken 
 #'             Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'             SourceEndBehavior = "CONTINUE"|"LOOP",
 #'             VideoSelector = list(
-#'               ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+#'               ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+#'               ColorSpaceSettings = list(
+#'                 Hdr10Settings = list(
+#'                   MaxCll = 123,
+#'                   MaxFall = 123
+#'                 )
+#'               ),
 #'               ColorSpaceUsage = "FALLBACK"|"FORCE",
 #'               SelectorSettings = list(
 #'                 VideoSelectorPid = list(
@@ -6206,6 +6545,20 @@ medialive_describe_schedule <- function(ChannelId, MaxResults = NULL, NextToken 
 #'       State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
 #'       Tags = list(
 #'         "string"
+#'       ),
+#'       Vpc = list(
+#'         AvailabilityZones = list(
+#'           "string"
+#'         ),
+#'         NetworkInterfaceIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         SubnetIds = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -6493,6 +6846,9 @@ medialive_list_input_security_groups <- function(MaxResults = NULL, NextToken = 
 #'         list(
 #'           Id = "string"
 #'         )
+#'       ),
+#'       InputPartnerIds = list(
+#'         "string"
 #'       ),
 #'       InputSourceType = "STATIC"|"DYNAMIC",
 #'       MediaConnectFlows = list(
@@ -7265,6 +7621,7 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 #'             YPosition = 123
 #'           ),
 #'           EbuTtDDestinationSettings = list(
+#'             CopyrightHolder = "string",
 #'             FillLineGap = "DISABLED"|"ENABLED",
 #'             FontFamily = "string",
 #'             StyleControl = "EXCLUDE"|"INCLUDE"
@@ -7307,6 +7664,12 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 #'       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'     ),
+#'     MotionGraphicsConfiguration = list(
+#'       MotionGraphicsInsertion = "DISABLED"|"ENABLED",
+#'       MotionGraphicsSettings = list(
+#'         HtmlMotionGraphicsSettings = list()
+#'       )
+#'     ),
 #'     NielsenConfiguration = list(
 #'       DistributorId = "string",
 #'       NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
@@ -7316,6 +7679,11 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 #'         Name = "string",
 #'         OutputGroupSettings = list(
 #'           ArchiveGroupSettings = list(
+#'             ArchiveCdnSettings = list(
+#'               ArchiveS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
+#'             ),
 #'             Destination = list(
 #'               DestinationRefId = "string"
 #'             ),
@@ -7324,6 +7692,11 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 #'           FrameCaptureGroupSettings = list(
 #'             Destination = list(
 #'               DestinationRefId = "string"
+#'             ),
+#'             FrameCaptureCdnSettings = list(
+#'               FrameCaptureS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
 #'             )
 #'           ),
 #'           HlsGroupSettings = list(
@@ -7373,6 +7746,9 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 #'                 MediaStoreStorageClass = "TEMPORAL",
 #'                 NumRetries = 123,
 #'                 RestartDelay = 123
+#'               ),
+#'               HlsS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
 #'               ),
 #'               HlsWebdavSettings = list(
 #'                 ConnectionRetryInterval = 123,
@@ -7563,6 +7939,7 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 #'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                     TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                   ),
+#'                   FrameCaptureHlsSettings = list(),
 #'                   StandardHlsSettings = list(
 #'                     AudioRenditionSets = "string",
 #'                     M3u8Settings = list(
@@ -7901,6 +8278,12 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 #'                 Pid = 123
 #'               ),
 #'               TeletextSourceSettings = list(
+#'                 OutputRectangle = list(
+#'                   Height = 123.0,
+#'                   LeftOffset = 123.0,
+#'                   TopOffset = 123.0,
+#'                   Width = 123.0
+#'                 ),
 #'                 PageNumber = "string"
 #'               )
 #'             )
@@ -7922,7 +8305,13 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 #'         Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'         SourceEndBehavior = "CONTINUE"|"LOOP",
 #'         VideoSelector = list(
-#'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+#'           ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+#'           ColorSpaceSettings = list(
+#'             Hdr10Settings = list(
+#'               MaxCll = 123,
+#'               MaxFall = 123
+#'             )
+#'           ),
 #'           ColorSpaceUsage = "FALLBACK"|"FORCE",
 #'           SelectorSettings = list(
 #'             VideoSelectorPid = list(
@@ -7947,6 +8336,8 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 #'     list(
 #'       ActiveInputAttachmentName = "string",
 #'       ActiveInputSwitchActionName = "string",
+#'       ActiveMotionGraphicsActionName = "string",
+#'       ActiveMotionGraphicsUri = "string",
 #'       PipelineId = "string"
 #'     )
 #'   ),
@@ -7955,6 +8346,20 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 #'   State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   Vpc = list(
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     NetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     SubnetIds = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -8278,6 +8683,7 @@ medialive_start_multiplex <- function(MultiplexId) {
 #'             YPosition = 123
 #'           ),
 #'           EbuTtDDestinationSettings = list(
+#'             CopyrightHolder = "string",
 #'             FillLineGap = "DISABLED"|"ENABLED",
 #'             FontFamily = "string",
 #'             StyleControl = "EXCLUDE"|"INCLUDE"
@@ -8320,6 +8726,12 @@ medialive_start_multiplex <- function(MultiplexId) {
 #'       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'     ),
+#'     MotionGraphicsConfiguration = list(
+#'       MotionGraphicsInsertion = "DISABLED"|"ENABLED",
+#'       MotionGraphicsSettings = list(
+#'         HtmlMotionGraphicsSettings = list()
+#'       )
+#'     ),
 #'     NielsenConfiguration = list(
 #'       DistributorId = "string",
 #'       NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
@@ -8329,6 +8741,11 @@ medialive_start_multiplex <- function(MultiplexId) {
 #'         Name = "string",
 #'         OutputGroupSettings = list(
 #'           ArchiveGroupSettings = list(
+#'             ArchiveCdnSettings = list(
+#'               ArchiveS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
+#'             ),
 #'             Destination = list(
 #'               DestinationRefId = "string"
 #'             ),
@@ -8337,6 +8754,11 @@ medialive_start_multiplex <- function(MultiplexId) {
 #'           FrameCaptureGroupSettings = list(
 #'             Destination = list(
 #'               DestinationRefId = "string"
+#'             ),
+#'             FrameCaptureCdnSettings = list(
+#'               FrameCaptureS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
 #'             )
 #'           ),
 #'           HlsGroupSettings = list(
@@ -8386,6 +8808,9 @@ medialive_start_multiplex <- function(MultiplexId) {
 #'                 MediaStoreStorageClass = "TEMPORAL",
 #'                 NumRetries = 123,
 #'                 RestartDelay = 123
+#'               ),
+#'               HlsS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
 #'               ),
 #'               HlsWebdavSettings = list(
 #'                 ConnectionRetryInterval = 123,
@@ -8576,6 +9001,7 @@ medialive_start_multiplex <- function(MultiplexId) {
 #'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                     TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                   ),
+#'                   FrameCaptureHlsSettings = list(),
 #'                   StandardHlsSettings = list(
 #'                     AudioRenditionSets = "string",
 #'                     M3u8Settings = list(
@@ -8914,6 +9340,12 @@ medialive_start_multiplex <- function(MultiplexId) {
 #'                 Pid = 123
 #'               ),
 #'               TeletextSourceSettings = list(
+#'                 OutputRectangle = list(
+#'                   Height = 123.0,
+#'                   LeftOffset = 123.0,
+#'                   TopOffset = 123.0,
+#'                   Width = 123.0
+#'                 ),
 #'                 PageNumber = "string"
 #'               )
 #'             )
@@ -8935,7 +9367,13 @@ medialive_start_multiplex <- function(MultiplexId) {
 #'         Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'         SourceEndBehavior = "CONTINUE"|"LOOP",
 #'         VideoSelector = list(
-#'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+#'           ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+#'           ColorSpaceSettings = list(
+#'             Hdr10Settings = list(
+#'               MaxCll = 123,
+#'               MaxFall = 123
+#'             )
+#'           ),
 #'           ColorSpaceUsage = "FALLBACK"|"FORCE",
 #'           SelectorSettings = list(
 #'             VideoSelectorPid = list(
@@ -8960,6 +9398,8 @@ medialive_start_multiplex <- function(MultiplexId) {
 #'     list(
 #'       ActiveInputAttachmentName = "string",
 #'       ActiveInputSwitchActionName = "string",
+#'       ActiveMotionGraphicsActionName = "string",
+#'       ActiveMotionGraphicsUri = "string",
 #'       PipelineId = "string"
 #'     )
 #'   ),
@@ -8968,6 +9408,20 @@ medialive_start_multiplex <- function(MultiplexId) {
 #'   State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   Vpc = list(
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     NetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     SubnetIds = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -9077,10 +9531,11 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'
 #' @usage
 #' medialive_transfer_input_device(InputDeviceId, TargetCustomerId,
-#'   TransferMessage)
+#'   TargetRegion, TransferMessage)
 #'
 #' @param InputDeviceId &#91;required&#93; The unique ID of this input device. For example, hd-123456789abcdef.
 #' @param TargetCustomerId The AWS account ID (12 digits) for the recipient of the device transfer.
+#' @param TargetRegion The target AWS region to transfer the device.
 #' @param TransferMessage An optional message for the recipient. Maximum 280 characters.
 #'
 #' @return
@@ -9091,6 +9546,7 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #' svc$transfer_input_device(
 #'   InputDeviceId = "string",
 #'   TargetCustomerId = "string",
+#'   TargetRegion = "string",
 #'   TransferMessage = "string"
 #' )
 #' ```
@@ -9098,14 +9554,14 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #' @keywords internal
 #'
 #' @rdname medialive_transfer_input_device
-medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NULL, TransferMessage = NULL) {
+medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NULL, TargetRegion = NULL, TransferMessage = NULL) {
   op <- new_operation(
     name = "TransferInputDevice",
     http_method = "POST",
     http_path = "/prod/inputDevices/{inputDeviceId}/transfer",
     paginator = list()
   )
-  input <- .medialive$transfer_input_device_input(InputDeviceId = InputDeviceId, TargetCustomerId = TargetCustomerId, TransferMessage = TransferMessage)
+  input <- .medialive$transfer_input_device_input(InputDeviceId = InputDeviceId, TargetCustomerId = TargetCustomerId, TargetRegion = TargetRegion, TransferMessage = TransferMessage)
   output <- .medialive$transfer_input_device_output()
   config <- get_config()
   svc <- .medialive$service(config)
@@ -9350,6 +9806,7 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'               YPosition = 123
 #'             ),
 #'             EbuTtDDestinationSettings = list(
+#'               CopyrightHolder = "string",
 #'               FillLineGap = "DISABLED"|"ENABLED",
 #'               FontFamily = "string",
 #'               StyleControl = "EXCLUDE"|"INCLUDE"
@@ -9392,6 +9849,12 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'         OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'         SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'       ),
+#'       MotionGraphicsConfiguration = list(
+#'         MotionGraphicsInsertion = "DISABLED"|"ENABLED",
+#'         MotionGraphicsSettings = list(
+#'           HtmlMotionGraphicsSettings = list()
+#'         )
+#'       ),
 #'       NielsenConfiguration = list(
 #'         DistributorId = "string",
 #'         NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
@@ -9401,6 +9864,11 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'           Name = "string",
 #'           OutputGroupSettings = list(
 #'             ArchiveGroupSettings = list(
+#'               ArchiveCdnSettings = list(
+#'                 ArchiveS3Settings = list(
+#'                   CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'                 )
+#'               ),
 #'               Destination = list(
 #'                 DestinationRefId = "string"
 #'               ),
@@ -9409,6 +9877,11 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'             FrameCaptureGroupSettings = list(
 #'               Destination = list(
 #'                 DestinationRefId = "string"
+#'               ),
+#'               FrameCaptureCdnSettings = list(
+#'                 FrameCaptureS3Settings = list(
+#'                   CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'                 )
 #'               )
 #'             ),
 #'             HlsGroupSettings = list(
@@ -9458,6 +9931,9 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'                   MediaStoreStorageClass = "TEMPORAL",
 #'                   NumRetries = 123,
 #'                   RestartDelay = 123
+#'                 ),
+#'                 HlsS3Settings = list(
+#'                   CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
 #'                 ),
 #'                 HlsWebdavSettings = list(
 #'                   ConnectionRetryInterval = 123,
@@ -9648,6 +10124,7 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'                       NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                       TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                     ),
+#'                     FrameCaptureHlsSettings = list(),
 #'                     StandardHlsSettings = list(
 #'                       AudioRenditionSets = "string",
 #'                       M3u8Settings = list(
@@ -9986,6 +10463,12 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'                   Pid = 123
 #'                 ),
 #'                 TeletextSourceSettings = list(
+#'                   OutputRectangle = list(
+#'                     Height = 123.0,
+#'                     LeftOffset = 123.0,
+#'                     TopOffset = 123.0,
+#'                     Width = 123.0
+#'                   ),
 #'                   PageNumber = "string"
 #'                 )
 #'               )
@@ -10007,7 +10490,13 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'           Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'           SourceEndBehavior = "CONTINUE"|"LOOP",
 #'           VideoSelector = list(
-#'             ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+#'             ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+#'             ColorSpaceSettings = list(
+#'               Hdr10Settings = list(
+#'                 MaxCll = 123,
+#'                 MaxFall = 123
+#'               )
+#'             ),
 #'             ColorSpaceUsage = "FALLBACK"|"FORCE",
 #'             SelectorSettings = list(
 #'               VideoSelectorPid = list(
@@ -10032,6 +10521,8 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'       list(
 #'         ActiveInputAttachmentName = "string",
 #'         ActiveInputSwitchActionName = "string",
+#'         ActiveMotionGraphicsActionName = "string",
+#'         ActiveMotionGraphicsUri = "string",
 #'         PipelineId = "string"
 #'       )
 #'     ),
@@ -10040,6 +10531,20 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'     State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
 #'     Tags = list(
 #'       "string"
+#'     ),
+#'     Vpc = list(
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       NetworkInterfaceIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       SubnetIds = list(
+#'         "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -10250,6 +10755,7 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'             YPosition = 123
 #'           ),
 #'           EbuTtDDestinationSettings = list(
+#'             CopyrightHolder = "string",
 #'             FillLineGap = "DISABLED"|"ENABLED",
 #'             FontFamily = "string",
 #'             StyleControl = "EXCLUDE"|"INCLUDE"
@@ -10292,6 +10798,12 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'       OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'       SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'     ),
+#'     MotionGraphicsConfiguration = list(
+#'       MotionGraphicsInsertion = "DISABLED"|"ENABLED",
+#'       MotionGraphicsSettings = list(
+#'         HtmlMotionGraphicsSettings = list()
+#'       )
+#'     ),
 #'     NielsenConfiguration = list(
 #'       DistributorId = "string",
 #'       NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
@@ -10301,6 +10813,11 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'         Name = "string",
 #'         OutputGroupSettings = list(
 #'           ArchiveGroupSettings = list(
+#'             ArchiveCdnSettings = list(
+#'               ArchiveS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
+#'             ),
 #'             Destination = list(
 #'               DestinationRefId = "string"
 #'             ),
@@ -10309,6 +10826,11 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'           FrameCaptureGroupSettings = list(
 #'             Destination = list(
 #'               DestinationRefId = "string"
+#'             ),
+#'             FrameCaptureCdnSettings = list(
+#'               FrameCaptureS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'               )
 #'             )
 #'           ),
 #'           HlsGroupSettings = list(
@@ -10358,6 +10880,9 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'                 MediaStoreStorageClass = "TEMPORAL",
 #'                 NumRetries = 123,
 #'                 RestartDelay = 123
+#'               ),
+#'               HlsS3Settings = list(
+#'                 CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
 #'               ),
 #'               HlsWebdavSettings = list(
 #'                 ConnectionRetryInterval = 123,
@@ -10548,6 +11073,7 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                     TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                   ),
+#'                   FrameCaptureHlsSettings = list(),
 #'                   StandardHlsSettings = list(
 #'                     AudioRenditionSets = "string",
 #'                     M3u8Settings = list(
@@ -10885,6 +11411,12 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'                 Pid = 123
 #'               ),
 #'               TeletextSourceSettings = list(
+#'                 OutputRectangle = list(
+#'                   Height = 123.0,
+#'                   LeftOffset = 123.0,
+#'                   TopOffset = 123.0,
+#'                   Width = 123.0
+#'                 ),
 #'                 PageNumber = "string"
 #'               )
 #'             )
@@ -10906,7 +11438,13 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 #'         Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'         SourceEndBehavior = "CONTINUE"|"LOOP",
 #'         VideoSelector = list(
-#'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+#'           ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+#'           ColorSpaceSettings = list(
+#'             Hdr10Settings = list(
+#'               MaxCll = 123,
+#'               MaxFall = 123
+#'             )
+#'           ),
 #'           ColorSpaceUsage = "FALLBACK"|"FORCE",
 #'           SelectorSettings = list(
 #'             VideoSelectorPid = list(
@@ -11176,6 +11714,7 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 #'               YPosition = 123
 #'             ),
 #'             EbuTtDDestinationSettings = list(
+#'               CopyrightHolder = "string",
 #'               FillLineGap = "DISABLED"|"ENABLED",
 #'               FontFamily = "string",
 #'               StyleControl = "EXCLUDE"|"INCLUDE"
@@ -11218,6 +11757,12 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 #'         OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
 #'         SupportLowFramerateInputs = "DISABLED"|"ENABLED"
 #'       ),
+#'       MotionGraphicsConfiguration = list(
+#'         MotionGraphicsInsertion = "DISABLED"|"ENABLED",
+#'         MotionGraphicsSettings = list(
+#'           HtmlMotionGraphicsSettings = list()
+#'         )
+#'       ),
 #'       NielsenConfiguration = list(
 #'         DistributorId = "string",
 #'         NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
@@ -11227,6 +11772,11 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 #'           Name = "string",
 #'           OutputGroupSettings = list(
 #'             ArchiveGroupSettings = list(
+#'               ArchiveCdnSettings = list(
+#'                 ArchiveS3Settings = list(
+#'                   CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'                 )
+#'               ),
 #'               Destination = list(
 #'                 DestinationRefId = "string"
 #'               ),
@@ -11235,6 +11785,11 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 #'             FrameCaptureGroupSettings = list(
 #'               Destination = list(
 #'                 DestinationRefId = "string"
+#'               ),
+#'               FrameCaptureCdnSettings = list(
+#'                 FrameCaptureS3Settings = list(
+#'                   CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+#'                 )
 #'               )
 #'             ),
 #'             HlsGroupSettings = list(
@@ -11284,6 +11839,9 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 #'                   MediaStoreStorageClass = "TEMPORAL",
 #'                   NumRetries = 123,
 #'                   RestartDelay = 123
+#'                 ),
+#'                 HlsS3Settings = list(
+#'                   CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
 #'                 ),
 #'                 HlsWebdavSettings = list(
 #'                   ConnectionRetryInterval = 123,
@@ -11474,6 +12032,7 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 #'                       NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
 #'                       TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                     ),
+#'                     FrameCaptureHlsSettings = list(),
 #'                     StandardHlsSettings = list(
 #'                       AudioRenditionSets = "string",
 #'                       M3u8Settings = list(
@@ -11812,6 +12371,12 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 #'                   Pid = 123
 #'                 ),
 #'                 TeletextSourceSettings = list(
+#'                   OutputRectangle = list(
+#'                     Height = 123.0,
+#'                     LeftOffset = 123.0,
+#'                     TopOffset = 123.0,
+#'                     Width = 123.0
+#'                   ),
 #'                   PageNumber = "string"
 #'                 )
 #'               )
@@ -11833,7 +12398,13 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 #'           Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'           SourceEndBehavior = "CONTINUE"|"LOOP",
 #'           VideoSelector = list(
-#'             ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+#'             ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+#'             ColorSpaceSettings = list(
+#'               Hdr10Settings = list(
+#'                 MaxCll = 123,
+#'                 MaxFall = 123
+#'               )
+#'             ),
 #'             ColorSpaceUsage = "FALLBACK"|"FORCE",
 #'             SelectorSettings = list(
 #'               VideoSelectorPid = list(
@@ -11858,6 +12429,8 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 #'       list(
 #'         ActiveInputAttachmentName = "string",
 #'         ActiveInputSwitchActionName = "string",
+#'         ActiveMotionGraphicsActionName = "string",
+#'         ActiveMotionGraphicsUri = "string",
 #'         PipelineId = "string"
 #'       )
 #'     ),
@@ -11866,6 +12439,20 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 #'     State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
 #'     Tags = list(
 #'       "string"
+#'     ),
+#'     Vpc = list(
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       NetworkInterfaceIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       SubnetIds = list(
+#'         "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -11972,6 +12559,9 @@ medialive_update_channel_class <- function(ChannelClass, ChannelId, Destinations
 #'       list(
 #'         Id = "string"
 #'       )
+#'     ),
+#'     InputPartnerIds = list(
+#'       "string"
 #'     ),
 #'     InputSourceType = "STATIC"|"DYNAMIC",
 #'     MediaConnectFlows = list(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_delete_bucket_tagging}
 \alias{s3control_delete_bucket_tagging}
-\title{This operation deletes an Amazon S3 on Outposts bucket's tags}
+\title{This action deletes an Amazon S3 on Outposts bucket's tags}
 \usage{
 s3control_delete_bucket_tagging(AccountId, Bucket)
 }
@@ -27,16 +27,16 @@ The value must be URL encoded.}
 An empty list.
 }
 \description{
-This operation deletes an Amazon S3 on Outposts bucket's tags. To delete
-an S3 bucket tags, see
+This action deletes an Amazon S3 on Outposts bucket's tags. To delete an
+S3 bucket tags, see
 \code{\link[=s3control_delete_bucket_tagging]{delete_bucket_tagging}} in the
-\emph{Amazon Simple Storage Service API}.
+\emph{Amazon S3 API Reference}.
 
 Deletes the tags from the Outposts bucket. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in \emph{Amazon Simple Storage Service Developer Guide}.
+in \emph{Amazon S3 User Guide}.
 
-To use this operation, you must have permission to perform the
+To use this action, you must have permission to perform the
 \code{\link[=s3control_put_bucket_tagging]{put_bucket_tagging}} action. By default,
 the bucket owner has this permission and can grant this permission to
 others.

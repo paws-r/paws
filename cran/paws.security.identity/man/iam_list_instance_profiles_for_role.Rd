@@ -68,6 +68,12 @@ A list with the following syntax:\preformatted{list(
             Region = "string"
           )
         )
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
       )
     )
   ),
@@ -79,7 +85,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Lists the instance profiles that have the specified associated IAM role.
 If there are none, the operation returns an empty list. For more
-information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
+information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About instance profiles}.
 
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.

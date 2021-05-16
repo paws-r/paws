@@ -14,15 +14,15 @@ An empty list.
 }
 \description{
 Deletes the specified Amazon Chime account. You must suspend all users
-before deleting a \code{Team} account. You can use the
-\code{\link[=chime_batch_suspend_user]{batch_suspend_user}} action to do so.
+before deleting \code{Team} account. You can use the
+\code{\link[=chime_batch_suspend_user]{batch_suspend_user}} action to dodo.
 
 For \code{EnterpriseLWA} and \code{EnterpriseAD} accounts, you must release the
 claimed domains for your Amazon Chime account before deletion. As soon
 as you release the domain, all users under that account are suspended.
 
 Deleted accounts appear in your \code{Disabled} accounts list for 90 days. To
-restore a deleted account from your \code{Disabled} accounts list, you must
+restore deleted account from your \code{Disabled} accounts list, you must
 contact AWS Support.
 
 After 90 days, deleted accounts are permanently removed from your

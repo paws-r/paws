@@ -86,7 +86,7 @@ NULL
 #'   description = "This is my demonstration environment.",
 #'   instanceType = "t2.micro",
 #'   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
-#'   subnetId = "subnet-1fab8aEX"
+#'   subnetId = "subnet-6300cd1b"
 #' )
 #' }
 #'

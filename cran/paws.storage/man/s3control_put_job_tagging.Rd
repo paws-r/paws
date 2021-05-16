@@ -27,7 +27,7 @@ existing tag set by retrieving the existing tag set using
 \code{\link[=s3control_get_job_tagging]{get_job_tagging}}, modify that tag set, and
 use this action to replace the tag set with the one you modified. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 \itemize{
 \item If you send this request with an empty tag set, Amazon S3 deletes
 the existing tag set on the Batch Operations job. If you use this
@@ -51,7 +51,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.
 }
 }
 
-To use this operation, you must have permission to perform the
+To use this action, you must have permission to perform the
 \code{s3:PutJobTagging} action.
 
 Related actions include:

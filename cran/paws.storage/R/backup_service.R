@@ -54,11 +54,12 @@ NULL
 #'  \link[=backup_describe_backup_job]{describe_backup_job} \tab Returns backup job details for the specified BackupJobId\cr
 #'  \link[=backup_describe_backup_vault]{describe_backup_vault} \tab Returns metadata about a backup vault specified by its name\cr
 #'  \link[=backup_describe_copy_job]{describe_copy_job} \tab Returns metadata associated with creating a copy of a resource\cr
-#'  \link[=backup_describe_global_settings]{describe_global_settings} \tab The current feature settings for the AWS Account\cr
+#'  \link[=backup_describe_global_settings]{describe_global_settings} \tab Describes the global settings of the AWS account, including whether it is opted in to cross-account backup\cr
 #'  \link[=backup_describe_protected_resource]{describe_protected_resource} \tab Returns information about a saved resource, including the last time it was backed up, its Amazon Resource Name (ARN), and the AWS service type of the saved resource\cr
 #'  \link[=backup_describe_recovery_point]{describe_recovery_point} \tab Returns metadata associated with a recovery point, including ID, status, encryption, and lifecycle\cr
 #'  \link[=backup_describe_region_settings]{describe_region_settings} \tab Returns the current service opt-in settings for the Region\cr
 #'  \link[=backup_describe_restore_job]{describe_restore_job} \tab Returns metadata associated with a restore job that is specified by a job ID\cr
+#'  \link[=backup_disassociate_recovery_point]{disassociate_recovery_point} \tab Deletes the specified continuous backup recovery point from AWS Backup and releases control of that continuous backup to the source service, such as Amazon RDS\cr
 #'  \link[=backup_export_backup_plan_template]{export_backup_plan_template} \tab Returns the backup plan that is specified by the plan ID as a backup template\cr
 #'  \link[=backup_get_backup_plan]{get_backup_plan} \tab Returns BackupPlan details for the specified BackupPlanId\cr
 #'  \link[=backup_get_backup_plan_from_json]{get_backup_plan_from_json} \tab Returns a valid JSON document specifying a backup plan or an error\cr
@@ -68,7 +69,7 @@ NULL
 #'  \link[=backup_get_backup_vault_notifications]{get_backup_vault_notifications} \tab Returns event notifications for the specified backup vault\cr
 #'  \link[=backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns a set of metadata key-value pairs that were used to create the backup\cr
 #'  \link[=backup_get_supported_resource_types]{get_supported_resource_types} \tab Returns the AWS resource types supported by AWS Backup\cr
-#'  \link[=backup_list_backup_jobs]{list_backup_jobs} \tab Returns a list of existing backup jobs for an authenticated account\cr
+#'  \link[=backup_list_backup_jobs]{list_backup_jobs} \tab Returns a list of existing backup jobs for an authenticated account for the last 30 days\cr
 #'  \link[=backup_list_backup_plans]{list_backup_plans} \tab Returns a list of existing backup plans for an authenticated account\cr
 #'  \link[=backup_list_backup_plan_templates]{list_backup_plan_templates} \tab Returns metadata of your saved backup plan templates, including the template ID, name, and the creation and deletion dates\cr
 #'  \link[=backup_list_backup_plan_versions]{list_backup_plan_versions} \tab Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan names, and version IDs\cr
@@ -89,7 +90,7 @@ NULL
 #'  \link[=backup_tag_resource]{tag_resource} \tab Assigns a set of key-value pairs to a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN)\cr
 #'  \link[=backup_untag_resource]{untag_resource} \tab Removes a set of key-value pairs from a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN)\cr
 #'  \link[=backup_update_backup_plan]{update_backup_plan} \tab Updates an existing backup plan identified by its backupPlanId with the input document in JSON format\cr
-#'  \link[=backup_update_global_settings]{update_global_settings} \tab Updates the current global settings for the AWS Account\cr
+#'  \link[=backup_update_global_settings]{update_global_settings} \tab Updates the current global settings for the AWS account\cr
 #'  \link[=backup_update_recovery_point_lifecycle]{update_recovery_point_lifecycle} \tab Sets the transition lifecycle of a recovery point\cr
 #'  \link[=backup_update_region_settings]{update_region_settings} \tab Updates the current service opt-in settings for the Region
 #' }

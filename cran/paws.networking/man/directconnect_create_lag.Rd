@@ -8,7 +8,7 @@ a specific AWS Direct Connect location}
 \usage{
 directconnect_create_lag(numberOfConnections, location,
   connectionsBandwidth, lagName, connectionId, tags, childConnectionTags,
-  providerName)
+  providerName, requestMACSec)
 }
 \arguments{
 \item{numberOfConnections}{[required] The number of physical dedicated connections initially provisioned and
@@ -28,6 +28,13 @@ by the LAG. The possible values are 1Gbps and 10Gbps.}
 \item{childConnectionTags}{The tags to associate with the automtically created LAGs.}
 
 \item{providerName}{The name of the service provider associated with the LAG.}
+
+\item{requestMACSec}{Indicates whether the connection will support MAC Security (MACsec).
+
+All connections in the LAG must be capable of supporting MAC Security
+(MACsec). For information about MAC Security (MACsec) prerequisties, see
+\href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites}{MACsec prerequisties}
+in the \emph{AWS Direct Connect User Guide}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -67,7 +74,18 @@ A list with the following syntax:\preformatted{list(
           value = "string"
         )
       ),
-      providerName = "string"
+      providerName = "string",
+      macSecCapable = TRUE|FALSE,
+      portEncryptionStatus = "string",
+      encryptionMode = "string",
+      macSecKeys = list(
+        list(
+          secretARN = "string",
+          ckn = "string",
+          state = "string",
+          startOn = "string"
+        )
+      )
     )
   ),
   allowsHostedConnections = TRUE|FALSE,
@@ -79,7 +97,17 @@ A list with the following syntax:\preformatted{list(
       value = "string"
     )
   ),
-  providerName = "string"
+  providerName = "string",
+  macSecCapable = TRUE|FALSE,
+  encryptionMode = "string",
+  macSecKeys = list(
+    list(
+      secretARN = "string",
+      ckn = "string",
+      state = "string",
+      startOn = "string"
+    )
+  )
 )
 }
 }
@@ -130,7 +158,8 @@ interfaces cannot be directly configured.
       value = "string"
     )
   ),
-  providerName = "string"
+  providerName = "string",
+  requestMACSec = TRUE|FALSE
 )
 }
 }

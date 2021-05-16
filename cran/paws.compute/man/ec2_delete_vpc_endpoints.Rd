@@ -29,12 +29,26 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Deletes one or more specified VPC endpoints. Deleting a gateway endpoint
-also deletes the endpoint routes in the route tables that were
-associated with the endpoint. Deleting an interface endpoint or a
-Gateway Load Balancer endpoint deletes the endpoint network interfaces.
-Gateway Load Balancer endpoints can only be deleted if the routes that
-are associated with the endpoint are deleted.
+Deletes one or more specified VPC endpoints. You can delete any of the
+following types of VPC endpoints.
+\itemize{
+\item Gateway endpoint,
+\item Gateway Load Balancer endpoint,
+\item Interface endpoint
+}
+
+The following rules apply when you delete a VPC endpoint:
+\itemize{
+\item When you delete a gateway endpoint, we delete the endpoint routes in
+the route tables that are associated with the endpoint.
+\item When you delete a Gateway Load Balancer endpoint, we delete the
+endpoint network interfaces.
+
+You can only delete Gateway Load Balancer endpoints when the routes
+that are associated with the endpoint are deleted.
+\item When you delete an interface endpoint, we delete the endpoint
+network interfaces.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_vpc_endpoints(

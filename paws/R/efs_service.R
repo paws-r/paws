@@ -37,10 +37,12 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- efs()
-#' # This operation creates a new file system with the default generalpurpose
-#' # performance mode.
+#' # This operation creates a new, encrypted file system with automatic
+#' # backups enabled, and the default generalpurpose performance mode.
 #' svc$create_file_system(
+#'   Backup = TRUE,
 #'   CreationToken = "tokenstring",
+#'   Encrypted = TRUE,
 #'   PerformanceMode = "generalPurpose",
 #'   Tags = list(
 #'     list(

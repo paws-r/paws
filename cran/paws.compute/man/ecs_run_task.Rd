@@ -5,41 +5,18 @@
 \title{Starts a new task using the specified task definition}
 \usage{
 ecs_run_task(capacityProviderStrategy, cluster, count,
-  enableECSManagedTags, group, launchType, networkConfiguration,
-  overrides, placementConstraints, placementStrategy, platformVersion,
-  propagateTags, referenceId, startedBy, tags, taskDefinition)
+  enableECSManagedTags, enableExecuteCommand, group, launchType,
+  networkConfiguration, overrides, placementConstraints,
+  placementStrategy, platformVersion, propagateTags, referenceId,
+  startedBy, tags, taskDefinition)
 }
 \arguments{
 \item{capacityProviderStrategy}{The capacity provider strategy to use for the task.
 
-A capacity provider strategy consists of one or more capacity providers
-along with the \code{base} and \code{weight} to assign to them. A capacity
-provider must be associated with the cluster to be used in a capacity
-provider strategy. The
-\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
-API is used to associate a capacity provider with a cluster. Only
-capacity providers with an \code{ACTIVE} or \code{UPDATING} status can be used.
-
 If a \code{capacityProviderStrategy} is specified, the \code{launchType} parameter
 must be omitted. If no \code{capacityProviderStrategy} or \code{launchType} is
 specified, the \code{defaultCapacityProviderStrategy} for the cluster is
-used.
-
-If specifying a capacity provider that uses an Auto Scaling group, the
-capacity provider must already be created. New capacity providers can be
-created with the
-\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
-operation.
-
-To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
-\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
-are available to all accounts and only need to be associated with a
-cluster to be used.
-
-The
-\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
-API operation is used to update the list of available capacity providers
-for a cluster after the cluster is created.}
+used.}
 
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster on
 which to run your task. If you do not specify a cluster, the default
@@ -52,13 +29,24 @@ cluster. You can specify up to 10 tasks per call.}
 more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
+\item{enableExecuteCommand}{Whether or not to enable the execute command functionality for the
+containers in this task. If \code{true}, this enables execute command
+functionality on all containers in the task.}
+
 \item{group}{The name of the task group to associate with the task. The default value
 is the family name of the task definition (for example,
 family:my-family-name).}
 
-\item{launchType}{The launch type on which to run your task. For more information, see
-\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types}
+\item{launchType}{The launch type on which to run your task. The accepted values are
+\code{FARGATE} and \code{EC2}. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+When a value of \code{FARGATE} is specified, your tasks are launched on AWS
+Fargate On-Demand infrastructure. To use Fargate Spot, you must use a
+capacity provider strategy with the \code{FARGATE_SPOT} capacity provider.
+
+When a value of \code{EC2} is specified, your tasks are launched on Amazon
+EC2 instances registered to your cluster.
 
 If a \code{launchType} is specified, the \code{capacityProviderStrategy} parameter
 must be omitted.}
@@ -203,6 +191,16 @@ A list with the following syntax:\preformatted{list(
             )
           ),
           healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+          managedAgents = list(
+            list(
+              lastStartedAt = as.POSIXct(
+                "2015-01-01"
+              ),
+              name = "ExecuteCommandAgent",
+              reason = "string",
+              lastStatus = "string"
+            )
+          ),
           cpu = "string",
           memory = "string",
           memoryReservation = "string",
@@ -216,6 +214,7 @@ A list with the following syntax:\preformatted{list(
         "2015-01-01"
       ),
       desiredStatus = "string",
+      enableExecuteCommand = TRUE|FALSE,
       executionStoppedAt = as.POSIXct(
         "2015-01-01"
       ),
@@ -269,7 +268,10 @@ A list with the following syntax:\preformatted{list(
         ),
         executionRoleArn = "string",
         memory = "string",
-        taskRoleArn = "string"
+        taskRoleArn = "string",
+        ephemeralStorage = list(
+          sizeInGiB = 123
+        )
       ),
       platformVersion = "string",
       pullStartedAt = as.POSIXct(
@@ -298,7 +300,10 @@ A list with the following syntax:\preformatted{list(
       ),
       taskArn = "string",
       taskDefinitionArn = "string",
-      version = 123
+      version = 123,
+      ephemeralStorage = list(
+        sizeInGiB = 123
+      )
     )
   ),
   failures = list(
@@ -356,6 +361,7 @@ increase gradually up to about five minutes of wait time.
   cluster = "string",
   count = 123,
   enableECSManagedTags = TRUE|FALSE,
+  enableExecuteCommand = TRUE|FALSE,
   group = "string",
   launchType = "EC2"|"FARGATE",
   networkConfiguration = list(
@@ -408,7 +414,10 @@ increase gradually up to about five minutes of wait time.
     ),
     executionRoleArn = "string",
     memory = "string",
-    taskRoleArn = "string"
+    taskRoleArn = "string",
+    ephemeralStorage = list(
+      sizeInGiB = 123
+    )
   ),
   placementConstraints = list(
     list(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_start_match_backfill}
 \alias{gamelift_start_match_backfill}
-\title{Finds new players to fill open slots in an existing game session}
+\title{Finds new players to fill open slots in currently running game sessions}
 \usage{
 gamelift_start_match_backfill(TicketId, ConfigurationName,
   GameSessionArn, Players)
@@ -18,21 +18,20 @@ configuration name or ARN value. The ARN of the matchmaker that was used
 with the original game session is listed in the GameSession object,
 \code{MatchmakerData} property.}
 
-\item{GameSessionArn}{Amazon Resource Name
-(\href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{ARN})
-that is assigned to a game session and uniquely identifies it. This is
-the same as the game session ID.}
+\item{GameSessionArn}{A unique identifier for the game session. Use the game session ID. When
+using FlexMatch as a standalone matchmaking solution, this parameter is
+not needed.}
 
 \item{Players}{[required] Match information on all players that are currently assigned to the game
 session. This information is used by the matchmaker to find new players
 and add them to the existing game.
 \itemize{
-\item PlayerID, PlayerAttributes, Team -\\\\- This information is
-maintained in the GameSession object, \code{MatchmakerData} property, for
-all players who are currently assigned to the game session. The
+\item PlayerID, PlayerAttributes, Team -- This information is maintained
+in the GameSession object, \code{MatchmakerData} property, for all
+players who are currently assigned to the game session. The
 matchmaker data is in JSON syntax, formatted as a string. For more
 details, see \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-server.html#match-server-data}{Match Data}.
-\item LatencyInMs -\\\\- If the matchmaker uses player latency, include a
+\item LatencyInMs -- If the matchmaker uses player latency, include a
 latency value, in milliseconds, for the Region that the game session
 is currently in. Do not include latency values for any other Region.
 }}
@@ -91,45 +90,54 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Finds new players to fill open slots in an existing game session. This
-operation can be used to add players to matched games that start with
-fewer than the maximum number of players or to replace players when they
-drop out. By backfilling with the same matchmaker used to create the
-original match, you ensure that new players meet the match criteria and
-maintain a consistent experience throughout the game session. You can
-backfill a match anytime after a game session has been created.
+Finds new players to fill open slots in currently running game sessions.
+The backfill match process is essentially identical to the process of
+forming new matches. Backfill requests use the same matchmaker that was
+used to make the original match, and they provide matchmaking data for
+all players currently in the game session. FlexMatch uses this
+information to select new players so that backfilled match continues to
+meet the original match requirements.
 
-To request a match backfill, specify a unique ticket ID, the existing
-game session's ARN, a matchmaking configuration, and a set of data that
-describes all current players in the game session. If successful, a
-match backfill ticket is created and returned with status set to QUEUED.
-The ticket is placed in the matchmaker's ticket pool and processed.
-Track the status of the ticket to respond as needed.
+When using FlexMatch with GameLift managed hosting, you can request a
+backfill match from a client service by calling this operation with a
+GameSession identifier. You also have the option of making backfill
+requests directly from your game server. In response to a request,
+FlexMatch creates player sessions for the new players, updates the
+\code{GameSession} resource, and sends updated matchmaking data to the game
+server. You can request a backfill match at any point after a game
+session is started. Each game session can have only one active backfill
+request at a time; a subsequent request automatically replaces the
+earlier request.
 
-The process of finding backfill matches is essentially identical to the
-initial matchmaking process. The matchmaker searches the pool and groups
-tickets together to form potential matches, allowing only one backfill
-ticket per potential match. Once the a match is formed, the matchmaker
-creates player sessions for the new players. All tickets in the match
-are updated with the game session's connection information, and the
-GameSession object is updated to include matchmaker data on the new
-players. For more detail on how match backfill requests are processed,
-see \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html}{How Amazon GameLift FlexMatch Works}.
+When using FlexMatch as a standalone component, request a backfill match
+by calling this operation without a game session identifier. As with
+newly formed matches, matchmaking results are returned in a matchmaking
+event so that your game can update the game session that is being
+backfilled.
+
+To request a backfill match, specify a unique ticket ID, the original
+matchmaking configuration, and matchmaking data for all current players
+in the game session being backfilled. Optionally, specify the
+\code{GameSession} ARN. If successful, a match backfill ticket is created and
+returned with status set to QUEUED. Track the status of backfill tickets
+using the same method for tracking tickets for new matches.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html}{Backfill Existing Games with FlexMatch}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html}{Backfill existing games with FlexMatch}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html}{How GameLift FlexMatch Works}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html}{Matchmaking events}
+(reference)
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_start_matchmaking]{start_matchmaking}}
-\item \code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}}
-\item \code{\link[=gamelift_stop_matchmaking]{stop_matchmaking}}
-\item \code{\link[=gamelift_accept_match]{accept_match}}
-\item \code{\link[=gamelift_start_match_backfill]{start_match_backfill}}
-}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html}{How GameLift FlexMatch works}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_start_matchmaking]{start_matchmaking}} |
+\code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}} |
+\code{\link[=gamelift_stop_matchmaking]{stop_matchmaking}} |
+\code{\link[=gamelift_accept_match]{accept_match}} |
+\code{\link[=gamelift_start_match_backfill]{start_match_backfill}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$start_match_backfill(

@@ -77,9 +77,10 @@ NULL
 #'  \link[=configservice_delete_remediation_exceptions]{delete_remediation_exceptions} \tab Deletes one or more remediation exceptions mentioned in the resource keys\cr
 #'  \link[=configservice_delete_resource_config]{delete_resource_config} \tab Records the configuration state for a custom resource that has been deleted\cr
 #'  \link[=configservice_delete_retention_configuration]{delete_retention_configuration} \tab Deletes the retention configuration\cr
-#'  \link[=configservice_delete_stored_query]{delete_stored_query} \tab Deletes the stored query for an AWS account in an AWS Region\cr
+#'  \link[=configservice_delete_stored_query]{delete_stored_query} \tab Deletes the stored query for a single AWS account and a single AWS Region\cr
 #'  \link[=configservice_deliver_config_snapshot]{deliver_config_snapshot} \tab Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the specified delivery channel\cr
 #'  \link[=configservice_describe_aggregate_compliance_by_config_rules]{describe_aggregate_compliance_by_config_rules} \tab Returns a list of compliant and noncompliant rules with the number of resources for compliant and noncompliant rules\cr
+#'  \link[=configservice_describe_aggregate_compliance_by_conformance_packs]{describe_aggregate_compliance_by_conformance_packs} \tab Returns a list of the conformance packs and their associated compliance status with the count of compliant and noncompliant AWS Config rules within each conformance pack\cr
 #'  \link[=configservice_describe_aggregation_authorizations]{describe_aggregation_authorizations} \tab Returns a list of authorizations granted to various aggregator accounts and regions\cr
 #'  \link[=configservice_describe_compliance_by_config_rule]{describe_compliance_by_config_rule} \tab Indicates whether the specified AWS Config rules are compliant\cr
 #'  \link[=configservice_describe_compliance_by_resource]{describe_compliance_by_resource} \tab Indicates whether the specified AWS resources are compliant\cr
@@ -105,6 +106,7 @@ NULL
 #'  \link[=configservice_describe_retention_configurations]{describe_retention_configurations} \tab Returns the details of one or more retention configurations\cr
 #'  \link[=configservice_get_aggregate_compliance_details_by_config_rule]{get_aggregate_compliance_details_by_config_rule} \tab Returns the evaluation results for the specified AWS Config rule for a specific resource in a rule\cr
 #'  \link[=configservice_get_aggregate_config_rule_compliance_summary]{get_aggregate_config_rule_compliance_summary} \tab Returns the number of compliant and noncompliant rules for one or more accounts and regions in an aggregator\cr
+#'  \link[=configservice_get_aggregate_conformance_pack_compliance_summary]{get_aggregate_conformance_pack_compliance_summary} \tab Returns the count of compliant and noncompliant conformance packs across all AWS Accounts and AWS Regions in an aggregator\cr
 #'  \link[=configservice_get_aggregate_discovered_resource_counts]{get_aggregate_discovered_resource_counts} \tab Returns the resource counts across accounts and regions that are present in your AWS Config aggregator\cr
 #'  \link[=configservice_get_aggregate_resource_config]{get_aggregate_resource_config} \tab Returns configuration item that is aggregated for your specific resource in a specific source account and region\cr
 #'  \link[=configservice_get_compliance_details_by_config_rule]{get_compliance_details_by_config_rule} \tab Returns the evaluation results for the specified AWS Config rule\cr
@@ -120,7 +122,7 @@ NULL
 #'  \link[=configservice_get_stored_query]{get_stored_query} \tab Returns the details of a specific stored query\cr
 #'  \link[=configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions\cr
 #'  \link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers for the resources of that type\cr
-#'  \link[=configservice_list_stored_queries]{list_stored_queries} \tab List the stored queries for an AWS account in an AWS Region\cr
+#'  \link[=configservice_list_stored_queries]{list_stored_queries} \tab Lists the stored queries for a single AWS account and a single AWS Region\cr
 #'  \link[=configservice_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for AWS Config resource\cr
 #'  \link[=configservice_put_aggregation_authorization]{put_aggregation_authorization} \tab Authorizes the aggregator account and region to collect data from the source account and region\cr
 #'  \link[=configservice_put_config_rule]{put_config_rule} \tab Adds or updates an AWS Config rule for evaluating whether your AWS resources comply with your desired configurations\cr
@@ -129,7 +131,7 @@ NULL
 #'  \link[=configservice_put_conformance_pack]{put_conformance_pack} \tab Creates or updates a conformance pack\cr
 #'  \link[=configservice_put_delivery_channel]{put_delivery_channel} \tab Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic\cr
 #'  \link[=configservice_put_evaluations]{put_evaluations} \tab Used by an AWS Lambda function to deliver evaluation results to AWS Config\cr
-#'  \link[=configservice_put_external_evaluation]{put_external_evaluation} \tab Put external evaluation\cr
+#'  \link[=configservice_put_external_evaluation]{put_external_evaluation} \tab Add or updates the evaluations for process checks\cr
 #'  \link[=configservice_put_organization_config_rule]{put_organization_config_rule} \tab Adds or updates organization config rule for your entire organization evaluating whether your AWS resources comply with your desired configurations\cr
 #'  \link[=configservice_put_organization_conformance_pack]{put_organization_conformance_pack} \tab Deploys conformance packs across member accounts in an AWS Organization\cr
 #'  \link[=configservice_put_remediation_configurations]{put_remediation_configurations} \tab Adds or updates the remediation configuration with a specific AWS Config rule with the selected target or action\cr

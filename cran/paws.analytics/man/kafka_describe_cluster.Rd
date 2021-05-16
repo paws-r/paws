@@ -33,6 +33,9 @@ A list with the following syntax:\preformatted{list(
       Sasl = list(
         Scram = list(
           Enabled = TRUE|FALSE
+        ),
+        Iam = list(
+          Enabled = TRUE|FALSE
         )
       ),
       Tls = list(

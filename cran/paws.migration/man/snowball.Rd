@@ -46,6 +46,7 @@ OpsHub for Snow Family. For more information, see the \href{https://aws.amazon.c
 \link[=snowball_create_address]{create_address} \tab Creates an address for a Snow device to be shipped to\cr
 \link[=snowball_create_cluster]{create_cluster} \tab Creates an empty cluster\cr
 \link[=snowball_create_job]{create_job} \tab Creates a job to import or export data between Amazon S3 and your on-premises data center\cr
+\link[=snowball_create_long_term_pricing]{create_long_term_pricing} \tab Creates a job with long term usage option for a device\cr
 \link[=snowball_create_return_shipping_label]{create_return_shipping_label} \tab Creates a shipping label that will be used to return the Snow device to AWS\cr
 \link[=snowball_describe_address]{describe_address} \tab Takes an AddressId and returns specific details about that address in the form of an Address object\cr
 \link[=snowball_describe_addresses]{describe_addresses} \tab Returns a specified number of ADDRESS objects\cr
@@ -60,9 +61,11 @@ OpsHub for Snow Family. For more information, see the \href{https://aws.amazon.c
 \link[=snowball_list_clusters]{list_clusters} \tab Returns an array of ClusterListEntry objects of the specified length\cr
 \link[=snowball_list_compatible_images]{list_compatible_images} \tab This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on a Snow device\cr
 \link[=snowball_list_jobs]{list_jobs} \tab Returns an array of JobListEntry objects of the specified length\cr
+\link[=snowball_list_long_term_pricing]{list_long_term_pricing} \tab Lists all long term pricing types\cr
 \link[=snowball_update_cluster]{update_cluster} \tab While a cluster's ClusterState value is in the AwaitingQuorum state, you can update some of the information associated with a cluster\cr
 \link[=snowball_update_job]{update_job} \tab While a job's JobState value is New, you can update some of the information associated with a job\cr
-\link[=snowball_update_job_shipment_state]{update_job_shipment_state} \tab Updates the state when a the shipment states changes to a different state
+\link[=snowball_update_job_shipment_state]{update_job_shipment_state} \tab Updates the state when a the shipment states changes to a different state\cr
+\link[=snowball_update_long_term_pricing]{update_long_term_pricing} \tab Updates the long term pricing type
 }
 }
 

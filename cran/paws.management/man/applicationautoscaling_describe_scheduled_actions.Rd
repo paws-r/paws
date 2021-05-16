@@ -16,8 +16,7 @@ resource provided by your own application or service, use
 \code{custom-resource} instead.}
 
 \item{ResourceId}{The identifier of the resource associated with the scheduled action.
-This string consists of the resource type and unique identifier. If you
-specify a scalable dimension, you must also specify a resource ID.
+This string consists of the resource type and unique identifier.
 \itemize{
 \item ECS service - The resource type is \code{service} and the unique
 identifier is the cluster name and service name. Example:
@@ -126,6 +125,7 @@ A list with the following syntax:\preformatted{list(
       ScheduledActionARN = "string",
       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
       Schedule = "string",
+      Timezone = "string",
       ResourceId = "string",
       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
       StartTime = as.POSIXct(
@@ -154,7 +154,8 @@ specified service namespace.
 You can filter the results using the \code{ResourceId}, \code{ScalableDimension},
 and \code{ScheduledActionNames} parameters.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled Scaling}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled scaling}
+and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html}{Managing scheduled scaling}
 in the \emph{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{

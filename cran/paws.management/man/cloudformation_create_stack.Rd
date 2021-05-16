@@ -28,7 +28,8 @@ Conditional: You must specify either the \code{TemplateBody} or the
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket. For more information, go to the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
+bucket or a Systems Manager document. For more information, go to the
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the \code{TemplateBody} or the

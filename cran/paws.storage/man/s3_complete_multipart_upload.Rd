@@ -18,7 +18,7 @@ s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -42,11 +42,11 @@ Completes a multipart upload by assembling previously uploaded parts.
 
 You first initiate the multipart upload and then upload all parts using
 the \code{\link[=s3_upload_part]{upload_part}} operation. After successfully
-uploading all relevant parts of an upload, you call this operation to
+uploading all relevant parts of an upload, you call this action to
 complete the upload. Upon receiving this request, Amazon S3 concatenates
 all the parts in ascending order by part number to create a new object.
 In the Complete Multipart Upload request, you must provide the parts
-list. You must ensure that the parts list is complete. This operation
+list. You must ensure that the parts list is complete. This action
 concatenates the parts that you provide in the list. For each part in
 the list, you must provide the part number and the \code{ETag} value,
 returned after that part was uploaded.
@@ -67,7 +67,7 @@ more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguid
 For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading Objects Using Multipart Upload}.
 
 For information about permissions required to use the multipart upload
-API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}.
+API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload and Permissions}.
 
 \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}} has the
 following special errors:

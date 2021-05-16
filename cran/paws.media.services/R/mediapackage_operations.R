@@ -272,9 +272,14 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #'   ChannelId = "string",
 #'   CmafPackage = list(
 #'     Encryption = list(
+#'       ConstantInitializationVector = "string",
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -312,6 +317,10 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -353,6 +362,10 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #'       RepeatExtXKey = TRUE|FALSE,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -379,6 +392,10 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #'     Encryption = list(
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -418,9 +435,14 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #'   ChannelId = "string",
 #'   CmafPackage = list(
 #'     Encryption = list(
+#'       ConstantInitializationVector = "string",
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -461,6 +483,10 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -502,6 +528,10 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #'       RepeatExtXKey = TRUE|FALSE,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -528,6 +558,10 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #'     Encryption = list(
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -801,9 +835,14 @@ mediapackage_describe_harvest_job <- function(Id) {
 #'   ChannelId = "string",
 #'   CmafPackage = list(
 #'     Encryption = list(
+#'       ConstantInitializationVector = "string",
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -841,6 +880,10 @@ mediapackage_describe_harvest_job <- function(Id) {
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -882,6 +925,10 @@ mediapackage_describe_harvest_job <- function(Id) {
 #'       RepeatExtXKey = TRUE|FALSE,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -908,6 +955,10 @@ mediapackage_describe_harvest_job <- function(Id) {
 #'     Encryption = list(
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -1136,9 +1187,14 @@ mediapackage_list_harvest_jobs <- function(IncludeChannelId = NULL, IncludeStatu
 #'       ChannelId = "string",
 #'       CmafPackage = list(
 #'         Encryption = list(
+#'           ConstantInitializationVector = "string",
 #'           KeyRotationIntervalSeconds = 123,
 #'           SpekeKeyProvider = list(
 #'             CertificateArn = "string",
+#'             EncryptionContractConfiguration = list(
+#'               PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'               PresetSpeke20Video = "PRESET-VIDEO-1"
+#'             ),
 #'             ResourceId = "string",
 #'             RoleArn = "string",
 #'             SystemIds = list(
@@ -1176,6 +1232,10 @@ mediapackage_list_harvest_jobs <- function(IncludeChannelId = NULL, IncludeStatu
 #'           KeyRotationIntervalSeconds = 123,
 #'           SpekeKeyProvider = list(
 #'             CertificateArn = "string",
+#'             EncryptionContractConfiguration = list(
+#'               PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'               PresetSpeke20Video = "PRESET-VIDEO-1"
+#'             ),
 #'             ResourceId = "string",
 #'             RoleArn = "string",
 #'             SystemIds = list(
@@ -1217,6 +1277,10 @@ mediapackage_list_harvest_jobs <- function(IncludeChannelId = NULL, IncludeStatu
 #'           RepeatExtXKey = TRUE|FALSE,
 #'           SpekeKeyProvider = list(
 #'             CertificateArn = "string",
+#'             EncryptionContractConfiguration = list(
+#'               PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'               PresetSpeke20Video = "PRESET-VIDEO-1"
+#'             ),
 #'             ResourceId = "string",
 #'             RoleArn = "string",
 #'             SystemIds = list(
@@ -1243,6 +1307,10 @@ mediapackage_list_harvest_jobs <- function(IncludeChannelId = NULL, IncludeStatu
 #'         Encryption = list(
 #'           SpekeKeyProvider = list(
 #'             CertificateArn = "string",
+#'             EncryptionContractConfiguration = list(
+#'               PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'               PresetSpeke20Video = "PRESET-VIDEO-1"
+#'             ),
 #'             ResourceId = "string",
 #'             RoleArn = "string",
 #'             SystemIds = list(
@@ -1688,9 +1756,14 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'   ChannelId = "string",
 #'   CmafPackage = list(
 #'     Encryption = list(
+#'       ConstantInitializationVector = "string",
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -1728,6 +1801,10 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -1769,6 +1846,10 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'       RepeatExtXKey = TRUE|FALSE,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -1795,6 +1876,10 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'     Encryption = list(
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -1833,9 +1918,14 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'   ),
 #'   CmafPackage = list(
 #'     Encryption = list(
+#'       ConstantInitializationVector = "string",
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -1876,6 +1966,10 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -1917,6 +2011,10 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'       RepeatExtXKey = TRUE|FALSE,
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(
@@ -1943,6 +2041,10 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'     Encryption = list(
 #'       SpekeKeyProvider = list(
 #'         CertificateArn = "string",
+#'         EncryptionContractConfiguration = list(
+#'           PresetSpeke20Audio = "PRESET-AUDIO-1",
+#'           PresetSpeke20Video = "PRESET-VIDEO-1"
+#'         ),
 #'         ResourceId = "string",
 #'         RoleArn = "string",
 #'         SystemIds = list(

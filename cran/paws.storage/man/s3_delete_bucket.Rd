@@ -9,7 +9,7 @@ s3_delete_bucket(Bucket, ExpectedBucketOwner)
 \arguments{
 \item{Bucket}{[required] Specifies the bucket being deleted.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }

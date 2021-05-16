@@ -32,6 +32,7 @@ Name (ARN).}
 \item \code{EC2} for Amazon Elastic Compute Cloud
 \item \code{EFS} for Amazon Elastic File System
 \item \code{RDS} for Amazon Relational Database Service
+\item \code{Aurora} for Amazon Aurora
 \item \verb{Storage Gateway} for AWS Storage Gateway
 }}
 

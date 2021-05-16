@@ -6,8 +6,8 @@
 scalable target}
 \usage{
 applicationautoscaling_put_scheduled_action(ServiceNamespace, Schedule,
-  ScheduledActionName, ResourceId, ScalableDimension, StartTime, EndTime,
-  ScalableTargetAction)
+  Timezone, ScheduledActionName, ResourceId, ScalableDimension, StartTime,
+  EndTime, ScalableTargetAction)
 }
 \arguments{
 \item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
@@ -21,18 +21,30 @@ resource provided by your own application or service, use
 \item Cron expressions - "\code{cron(fields)}"
 }
 
-At expressions are useful for one-time schedules. Specify the time in
-UTC.
+At expressions are useful for one-time schedules. Cron expressions are
+useful for scheduled actions that run periodically at a specified date
+and time, and rate expressions are useful for scheduled actions that run
+at a regular interval.
+
+At and cron expressions use Universal Coordinated Time (UTC) by default.
+
+The cron format consists of six fields separated by white spaces:
+[Minutes] [Hours] [Day_of_Month] [Month] [Day_of_Week]
+[Year].
 
 For rate expressions, \emph{value} is a positive integer and \emph{unit} is
 \code{minute} | \code{minutes} | \code{hour} | \code{hours} | \code{day} | \code{days}.
 
-For cron expressions, \emph{fields} is a cron expression. The supported cron
-format consists of six fields separated by white spaces: [Minutes]
-[Hours] [Day_of_Month] [Month] [Day_of_Week] [Year].
-
-For more information and examples, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled Scaling}
+For more information and examples, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/examples-scheduled-actions.html}{Example scheduled actions for Application Auto Scaling}
 in the \emph{Application Auto Scaling User Guide}.}
+
+\item{Timezone}{Specifies the time zone used when setting a scheduled action by using an
+at or cron expression. If a time zone is not provided, UTC is used by
+default.
+
+Valid values are the canonical names of the IANA time zones supported by
+Joda-Time (such as \code{Etc/GMT+9} or \code{Pacific/Tahiti}). For more
+information, see \url{https://www.joda.org/joda-time/timezones.html}.}
 
 \item{ScheduledActionName}{[required] The name of the scheduled action. This name must be unique among all
 other scheduled actions on the specified scalable target.}
@@ -127,9 +139,9 @@ capacity for an Amazon Keyspaces table.
 GiB) for brokers in an Amazon MSK cluster.
 }}
 
-\item{StartTime}{The date and time for this scheduled action to start.}
+\item{StartTime}{The date and time for this scheduled action to start, in UTC.}
 
-\item{EndTime}{The date and time for the recurring schedule to end.}
+\item{EndTime}{The date and time for the recurring schedule to end, in UTC.}
 
 \item{ScalableTargetAction}{The new minimum and maximum capacity. You can set both values or just
 one. At the scheduled time, if the current capacity is below the minimum
@@ -151,14 +163,14 @@ scheduled action until you have registered the resource as a scalable
 target.
 
 When start and end times are specified with a recurring schedule using a
-cron expression or rates, they form the boundaries of when the recurring
-action starts and stops.
+cron expression or rates, they form the boundaries for when the
+recurring action starts and stops.
 
 To update a scheduled action, specify the parameters that you want to
 change. If you don't specify start and end times, the old values are
 deleted.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled Scaling}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled scaling}
 in the \emph{Application Auto Scaling User Guide}.
 
 If a scalable target is deregistered, the scalable target is no longer
@@ -169,6 +181,7 @@ specified for the scalable target are deleted.
 \preformatted{svc$put_scheduled_action(
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
   Schedule = "string",
+  Timezone = "string",
   ScheduledActionName = "string",
   ResourceId = "string",
   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",

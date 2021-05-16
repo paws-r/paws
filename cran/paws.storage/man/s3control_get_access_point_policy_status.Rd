@@ -23,8 +23,8 @@ A list with the following syntax:\preformatted{list(
 \description{
 Indicates whether the specified access point currently has a policy that
 allows public access. For more information about public access through
-access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 access points}
+in the \emph{Amazon S3 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_access_point_policy_status(

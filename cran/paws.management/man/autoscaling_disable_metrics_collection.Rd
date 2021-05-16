@@ -24,6 +24,13 @@ autoscaling_disable_metrics_collection(AutoScalingGroupName, Metrics)
 \item \code{GroupStandbyCapacity}
 \item \code{GroupTerminatingCapacity}
 \item \code{GroupTotalCapacity}
+\item \code{WarmPoolDesiredCapacity}
+\item \code{WarmPoolWarmedCapacity}
+\item \code{WarmPoolPendingCapacity}
+\item \code{WarmPoolTerminatingCapacity}
+\item \code{WarmPoolTotalCapacity}
+\item \code{GroupAndWarmPoolDesiredCapacity}
+\item \code{GroupAndWarmPoolTotalCapacity}
 }
 
 If you omit this parameter, all metrics are disabled.}

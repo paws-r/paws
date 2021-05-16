@@ -4,28 +4,21 @@
 \alias{chime_create_meeting_dial_out}
 \title{Uses the join token and call metadata in a meeting request (From number,
 To number, and so forth) to initiate an outbound call to a public
-switched telephone network (PSTN) and joins them into Chime meeting}
+switched telephone network (PSTN) and join them into a Chime meeting}
 \usage{
 chime_create_meeting_dial_out(MeetingId, FromPhoneNumber, ToPhoneNumber,
   JoinToken)
 }
 \arguments{
-\item{MeetingId}{[required] The Amazon Chime SDK meeting ID.
-
-Type: String
-
-Pattern:
-[a-fA-F0-9]\{8\}(?:-[a-fA-F0-9]\{4\})\{3\}-[a-fA-F0-9]\{12\}
-
-Required: No}
+\item{MeetingId}{[required] The Amazon Chime SDK meeting ID.}
 
 \item{FromPhoneNumber}{[required] Phone number used as the caller ID when the remote party receives a
 call.}
 
 \item{ToPhoneNumber}{[required] Phone number called when inviting someone to a meeting.}
 
-\item{JoinToken}{[required] Token used by the Amazon Chime SDK attendee. Call the CreateAttendee API
-to get a join token.}
+\item{JoinToken}{[required] Token used by the Amazon Chime SDK attendee. Call the
+\code{\link[=chime_create_attendee]{create_attendee}} action to get a join token.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -36,13 +29,13 @@ A list with the following syntax:\preformatted{list(
 \description{
 Uses the join token and call metadata in a meeting request (From number,
 To number, and so forth) to initiate an outbound call to a public
-switched telephone network (PSTN) and joins them into Chime meeting.
+switched telephone network (PSTN) and join them into a Chime meeting.
 Also ensures that the From number belongs to the customer.
 
 To play welcome audio or implement an interactive voice response (IVR),
 use the
 \code{\link[=chime_create_sip_media_application_call]{create_sip_media_application_call}}
-API with the corresponding SIP media application ID.
+action with the corresponding SIP media application ID.
 }
 \section{Request syntax}{
 \preformatted{svc$create_meeting_dial_out(

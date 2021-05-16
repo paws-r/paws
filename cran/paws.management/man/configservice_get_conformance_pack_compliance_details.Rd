@@ -24,7 +24,7 @@ A list with the following syntax:\preformatted{list(
   ConformancePackName = "string",
   ConformancePackRuleEvaluationResults = list(
     list(
-      ComplianceType = "COMPLIANT"|"NON_COMPLIANT",
+      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"INSUFFICIENT_DATA",
       EvaluationResultIdentifier = list(
         EvaluationResultQualifier = list(
           ConfigRuleName = "string",
@@ -59,7 +59,7 @@ that are monitered by conformance pack.
     ConfigRuleNames = list(
       "string"
     ),
-    ComplianceType = "COMPLIANT"|"NON_COMPLIANT",
+    ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"INSUFFICIENT_DATA",
     ResourceType = "string",
     ResourceIds = list(
       "string"

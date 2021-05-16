@@ -3,7 +3,7 @@
 \name{securityhub_invite_members}
 \alias{securityhub_invite_members}
 \title{Invites other AWS accounts to become member accounts for the Security
-Hub master account that the invitation is sent from}
+Hub administrator account that the invitation is sent from}
 \usage{
 securityhub_invite_members(AccountIds)
 }
@@ -24,7 +24,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Invites other AWS accounts to become member accounts for the Security
-Hub master account that the invitation is sent from.
+Hub administrator account that the invitation is sent from.
 
 This operation is only used to invite accounts that do not belong to an
 organization. Organization accounts do not receive invitations.
@@ -34,8 +34,8 @@ the \code{\link[=securityhub_create_members]{create_members}} action to create t
 member account in Security Hub.
 
 When the account owner enables Security Hub and accepts the invitation
-to become a member account, the master account can view the findings
-generated from the member account.
+to become a member account, the administrator account can view the
+findings generated from the member account.
 }
 \section{Request syntax}{
 \preformatted{svc$invite_members(

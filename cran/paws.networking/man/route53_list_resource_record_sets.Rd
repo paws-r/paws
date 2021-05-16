@@ -96,7 +96,7 @@ A list with the following syntax:\preformatted{list(
 Lists the resource record sets in a specified hosted zone.
 
 \code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}} returns
-up to 100 resource record sets at a time in ASCII order, beginning at a
+up to 300 resource record sets at a time in ASCII order, beginning at a
 position specified by the \code{name} and \code{type} elements.
 
 \strong{Sort order}

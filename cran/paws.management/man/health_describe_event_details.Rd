@@ -56,16 +56,21 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Returns detailed information about one or more specified events.
-Information includes standard event data (Region, service, and so on, as
-returned by \code{\link[=health_describe_events]{describe_events}}), a detailed
-event description, and possible additional metadata that depends upon
-the nature of the event. Affected entities are not included. To retrieve
-those, use the
+Information includes standard event data (AWS Region, service, and so
+on, as returned by \code{\link[=health_describe_events]{describe_events}}), a
+detailed event description, and possible additional metadata that
+depends upon the nature of the event. Affected entities are not
+included. To retrieve the entities, use the
 \code{\link[=health_describe_affected_entities]{describe_affected_entities}}
 operation.
 
-If a specified event cannot be retrieved, an error message is returned
+If a specified event can't be retrieved, an error message is returned
 for that event.
+
+This operation supports resource-level permissions. You can use this
+operation to allow or deny access to specific AWS Health events. For
+more information, see \href{https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions}{Resource- and action-based conditions}
+in the \emph{AWS Health User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_event_details(

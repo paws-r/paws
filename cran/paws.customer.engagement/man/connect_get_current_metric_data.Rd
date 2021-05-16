@@ -144,7 +144,7 @@ The token expires after 5 minutes from the time it is created.
 Subsequent requests that use the token must use the same request
 parameters as the request that generated the token.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

@@ -21,15 +21,19 @@ Naming Constraints:
 \item A parameter name can't be prefixed with "aws" or "ssm"
 (case-insensitive).
 \item Parameter names can include only the following symbols and letters:
-\verb{a-zA-Z0-9_.-/}
+\verb{a-zA-Z0-9_.-}
+
+In addition, the slash character ( / ) is used to delineate
+hierarchies in parameter names. For example:
+\verb{/Dev/Production/East/Project-ABC/MyParameter}
 \item A parameter name can't include spaces.
 \item Parameter hierarchies are limited to a maximum depth of fifteen
 levels.
 }
 
 For additional information about valid values for parameter names, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{About requirements and constraints for parameter names} in
-the \emph{AWS Systems Manager User Guide}.
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html}{Creating Systems Manager parameters}
+in the \emph{AWS Systems Manager User Guide}.
 
 The maximum length constraint listed below includes capacity for
 additional system attributes that are not part of the name. The maximum
@@ -81,8 +85,7 @@ default KMS key.
 the \verb{Key ID} parameter.
 }}
 
-\item{Overwrite}{Overwrite an existing parameter. If not specified, will default to
-"false".}
+\item{Overwrite}{Overwrite an existing parameter. The default value is 'false'.}
 
 \item{AllowedPattern}{A regular expression used to validate the parameter value. For example,
 for String types with values restricted to numbers, you can specify the

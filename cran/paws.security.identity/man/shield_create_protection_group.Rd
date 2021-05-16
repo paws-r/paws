@@ -6,7 +6,7 @@
 collective}
 \usage{
 shield_create_protection_group(ProtectionGroupId, Aggregation, Pattern,
-  ResourceType, Members)
+  ResourceType, Members, Tags)
 }
 \arguments{
 \item{ProtectionGroupId}{[required] The name of the protection group. You use this to identify the
@@ -42,6 +42,8 @@ must not set it for any other \code{Pattern} setting.}
 \item{Members}{The Amazon Resource Names (ARNs) of the resources to include in the
 protection group. You must set this when you set \code{Pattern} to
 \code{ARBITRARY} and you must not set it for any other \code{Pattern} setting.}
+
+\item{Tags}{One or more tag key-value pairs for the protection group.}
 }
 \value{
 An empty list.
@@ -59,6 +61,12 @@ and reduces false positives.
   ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
   Members = list(
     "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

@@ -13,7 +13,7 @@ connect_update_routing_profile_concurrency(InstanceId, RoutingProfileId,
 
 \item{RoutingProfileId}{[required] The identifier of the routing profile.}
 
-\item{MediaConcurrencies}{[required] The channels agents can handle in the Contact Control Panel (CCP).}
+\item{MediaConcurrencies}{[required] The channels that agents can handle in the Contact Control Panel (CCP).}
 }
 \value{
 An empty list.

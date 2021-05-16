@@ -4,19 +4,22 @@
 \alias{chime_list_channels}
 \title{Lists all Channels created under a single Chime App as a paginated list}
 \usage{
-chime_list_channels(AppInstanceArn, Privacy, MaxResults, NextToken)
+chime_list_channels(AppInstanceArn, Privacy, MaxResults, NextToken,
+  ChimeBearer)
 }
 \arguments{
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 
 \item{Privacy}{The privacy setting. \code{PUBLIC} retrieves all the public channels.
-\code{PRIVATE} retrieves private channels. Only an app instance administrator
-can retrieve private channels.}
+\code{PRIVATE} retrieves private channels. Only an \code{AppInstanceAdmin} can
+retrieve private channels.}
 
 \item{MaxResults}{The maximum number of channels that you want to return.}
 
 \item{NextToken}{The token passed by previous API calls until all requested channels are
 returned.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -43,17 +46,22 @@ You can specify filters to narrow results.
 \strong{Functionality & restrictions}
 \itemize{
 \item Use privacy = \code{PUBLIC} to retrieve all public channels in the
-account
+account.
 \item Only an \code{AppInstanceAdmin} can set privacy = \code{PRIVATE} to list the
 private channels in an account.
 }
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$list_channels(
   AppInstanceArn = "string",
   Privacy = "PUBLIC"|"PRIVATE",
   MaxResults = 123,
-  NextToken = "string"
+  NextToken = "string",
+  ChimeBearer = "string"
 )
 }
 }

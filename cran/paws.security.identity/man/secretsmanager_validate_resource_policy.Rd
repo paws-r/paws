@@ -2,15 +2,15 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_validate_resource_policy}
 \alias{secretsmanager_validate_resource_policy}
-\title{Validates the JSON text of the resource-based policy document attached
-to the specified secret}
+\title{Validates that the resource policy does not grant a wide range of IAM
+principals access to your secret}
 \usage{
 secretsmanager_validate_resource_policy(SecretId, ResourcePolicy)
 }
 \arguments{
-\item{SecretId}{The identifier for the secret that you want to validate a resource
-policy. You can specify either the Amazon Resource Name (ARN) or the
-friendly name of the secret.
+\item{SecretId}{(Optional) The identifier of the secret with the resource-based policy
+you want to validate. You can specify either the Amazon Resource Name
+(ARN) or the friendly name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
 complete ARN. You can specify a partial ARN too—for example, if you
@@ -31,7 +31,12 @@ If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 
-\item{ResourcePolicy}{[required] Identifies the Resource Policy attached to the secret.}
+\item{ResourcePolicy}{[required] A JSON-formatted string constructed according to the grammar and syntax
+for an AWS resource-based policy. The policy in the string identifies
+who can access or manage this secret and its versions. For information
+on how to format a JSON parameter for the various command line tool
+environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
+in the \emph{AWS CLI User Guide}.publi}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -46,11 +51,29 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Validates the JSON text of the resource-based policy document attached
-to the specified secret. The JSON request string input and response
-output displays formatted code with white space and line breaks for
-better readability. Submit your input as a single line JSON string. A
-resource-based policy is optional.
+Validates that the resource policy does not grant a wide range of IAM
+principals access to your secret. The JSON request string input and
+response output displays formatted code with white space and line breaks
+for better readability. Submit your input as a single line JSON string.
+A resource-based policy is optional for secrets.
+
+The API performs three checks when validating the secret:
+\itemize{
+\item Sends a call to
+\href{https://aws.amazon.com/blogs/security/protect-sensitive-data-in-the-cloud-with-automated-reasoning-zelkova/}{Zelkova},
+an automated reasoning engine, to ensure your Resource Policy does
+not allow broad access to your secret.
+\item Checks for correct syntax in a policy.
+\item Verifies the policy does not lock out a caller.
+}
+
+\strong{Minimum Permissions}
+
+You must have the permissions required to access the following APIs:
+\itemize{
+\item \code{secretsmanager:PutResourcePolicy}
+\item \code{secretsmanager:ValidateResourcePolicy}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$validate_resource_policy(

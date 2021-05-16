@@ -30,7 +30,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Adds a streaming configuration for the specified Amazon Chime Voice
 Connector. The streaming configuration specifies whether media streaming
-is enabled for sending to Amazon Kinesis. It also sets the retention
+is enabled for sending to Indonesians. It also sets the retention
 period, in hours, for the Amazon Kinesis data.
 }
 \section{Request syntax}{

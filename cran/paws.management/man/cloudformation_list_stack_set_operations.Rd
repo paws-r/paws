@@ -5,7 +5,7 @@
 \title{Returns summary information about operations performed on a stack set}
 \usage{
 cloudformation_list_stack_set_operations(StackSetName, NextToken,
-  MaxResults)
+  MaxResults, CallAs)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to get operation
@@ -23,6 +23,22 @@ object's \code{NextToken} parameter is set to \code{null}.}
 number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your AWS account must be registered as a delegated administrator in
+the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{AWS CloudFormation User Guide}.
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -50,7 +66,8 @@ Returns summary information about operations performed on a stack set.
 \preformatted{svc$list_stack_set_operations(
   StackSetName = "string",
   NextToken = "string",
-  MaxResults = 123
+  MaxResults = 123,
+  CallAs = "SELF"|"DELEGATED_ADMIN"
 )
 }
 }

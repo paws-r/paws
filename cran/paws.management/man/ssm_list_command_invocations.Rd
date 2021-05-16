@@ -23,7 +23,7 @@ this token from a previous call.)}
 list of results.}
 
 \item{Details}{(Optional) If set this returns the response of the command executions
-and any command output. By default this is set to False.}
+and any command output. The default value is 'false'.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

@@ -7,9 +7,9 @@
 gamelift_delete_matchmaking_rule_set(Name)
 }
 \arguments{
-\item{Name}{[required] A unique identifier for a matchmaking rule set to be deleted. (Note: The
-rule set name is different from the optional "name" field in the rule
-set body.) You can use either the rule set name or ARN value.}
+\item{Name}{[required] A unique identifier for the matchmaking rule set to be deleted. (Note:
+The rule set name is different from the optional "name" field in the
+rule set body.) You can use either the rule set name or ARN value.}
 }
 \value{
 An empty list.
@@ -21,20 +21,25 @@ currently being used by a matchmaking configuration.
 
 \strong{Learn more}
 \itemize{
-\item \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html}{Build a Rule Set}
+\item \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html}{Build a rule set}
 }
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_matchmaking_configuration]{create_matchmaking_configuration}}
-\item \code{\link[=gamelift_describe_matchmaking_configurations]{describe_matchmaking_configurations}}
-\item \code{\link[=gamelift_update_matchmaking_configuration]{update_matchmaking_configuration}}
-\item \code{\link[=gamelift_delete_matchmaking_configuration]{delete_matchmaking_configuration}}
-\item \code{\link[=gamelift_create_matchmaking_rule_set]{create_matchmaking_rule_set}}
-\item \code{\link[=gamelift_describe_matchmaking_rule_sets]{describe_matchmaking_rule_sets}}
-\item \code{\link[=gamelift_validate_matchmaking_rule_set]{validate_matchmaking_rule_set}}
-\item \code{\link[=gamelift_delete_matchmaking_rule_set]{delete_matchmaking_rule_set}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_matchmaking_configuration]{create_matchmaking_configuration}}
+|
+\code{\link[=gamelift_describe_matchmaking_configurations]{describe_matchmaking_configurations}}
+|
+\code{\link[=gamelift_update_matchmaking_configuration]{update_matchmaking_configuration}}
+|
+\code{\link[=gamelift_delete_matchmaking_configuration]{delete_matchmaking_configuration}}
+| \code{\link[=gamelift_create_matchmaking_rule_set]{create_matchmaking_rule_set}}
+|
+\code{\link[=gamelift_describe_matchmaking_rule_sets]{describe_matchmaking_rule_sets}}
+|
+\code{\link[=gamelift_validate_matchmaking_rule_set]{validate_matchmaking_rule_set}}
+| \code{\link[=gamelift_delete_matchmaking_rule_set]{delete_matchmaking_rule_set}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_matchmaking_rule_set(

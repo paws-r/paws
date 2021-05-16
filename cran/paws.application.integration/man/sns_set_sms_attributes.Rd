@@ -91,6 +91,9 @@ use the \code{\link[=sns_publish]{publish}} action with the
 \code{MessageAttributes.entry.N} parameter. For more information, see
 \href{https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html}{Publishing to a mobile phone}
 in the \emph{Amazon SNS Developer Guide}.
+
+To use this operation, you must grant the Amazon SNS service principal
+(\code{sns.amazonaws.com}) permission to perform the \code{s3:ListBucket} action.
 }
 \section{Request syntax}{
 \preformatted{svc$set_sms_attributes(

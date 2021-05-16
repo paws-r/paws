@@ -8,7 +8,11 @@ configservice_put_stored_query(StoredQuery, Tags)
 }
 \arguments{
 \item{StoredQuery}{[required] A list of \code{StoredQuery} objects. The mandatory fields are \code{QueryName}
-and \code{Expression}.}
+and \code{Expression}.
+
+When you are creating a query, you must provide a query name and an
+expression. When you are updating a query, you must provide a query name
+but updating the description is optional.}
 
 \item{Tags}{A list of \code{Tags} object.}
 }
@@ -20,8 +24,8 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Saves a new query or updates an existing saved query. The \code{QueryName}
-must be unique for an AWS account in an AWS Region. You can create upto
-300 queries in an AWS account in an AWS Region.
+must be unique for a single AWS account and a single AWS Region. You can
+create upto 300 queries in a single AWS account and a single AWS Region.
 }
 \section{Request syntax}{
 \preformatted{svc$put_stored_query(

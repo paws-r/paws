@@ -6,7 +6,7 @@
 \usage{
 comprehend_create_entity_recognizer(RecognizerName, DataAccessRoleArn,
   Tags, InputDataConfig, ClientRequestToken, LanguageCode, VolumeKmsKeyId,
-  VpcConfig)
+  VpcConfig, ModelKmsKeyId)
 }
 \arguments{
 \item{RecognizerName}{[required] The name given to the newly created recognizer. Recognizer names can be
@@ -47,6 +47,15 @@ either of the following formats:
 \item{VpcConfig}{Configuration parameters for an optional private Virtual Private Cloud
 (VPC) containing the resources you are using for your custom entity
 recognizer. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
+
+\item{ModelKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt trained custom models. The ModelKmsKeyId can be either
+of the following formats
+\itemize{
+\item KMS Key ID: \code{"1234abcd-12ab-34cd-56ef-1234567890ab"}
+\item Amazon Resource Name (ARN) of a KMS Key:
+\code{"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"}
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -104,7 +113,8 @@ request is submitted, you can check job status using the API.
     Subnets = list(
       "string"
     )
-  )
+  ),
+  ModelKmsKeyId = "string"
 )
 }
 }

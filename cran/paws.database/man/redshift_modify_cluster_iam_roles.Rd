@@ -35,7 +35,16 @@ A list with the following syntax:\preformatted{list(
       Port = 123,
       VpcEndpoints = list(
         list(
-          VpcEndpointId = "string"
+          VpcEndpointId = "string",
+          VpcId = "string",
+          NetworkInterfaces = list(
+            list(
+              NetworkInterfaceId = "string",
+              SubnetId = "string",
+              PrivateIpAddress = "string",
+              AvailabilityZone = "string"
+            )
+          )
         )
       )
     ),
@@ -175,7 +184,12 @@ A list with the following syntax:\preformatted{list(
       AllowCancelResize = TRUE|FALSE
     ),
     AvailabilityZoneRelocationStatus = "string",
-    ClusterNamespaceArn = "string"
+    ClusterNamespaceArn = "string",
+    TotalStorageCapacityInMegaBytes = 123,
+    AquaConfiguration = list(
+      AquaStatus = "enabled"|"disabled"|"applying",
+      AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+    )
   )
 )
 }

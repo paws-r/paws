@@ -2,19 +2,19 @@
 % Please edit documentation in R/resourcegroupstaggingapi_operations.R
 \name{resourcegroupstaggingapi_get_tag_values}
 \alias{resourcegroupstaggingapi_get_tag_values}
-\title{Returns all tag values for the specified key in the specified Region for
-the AWS account}
+\title{Returns all tag values for the specified key that are used in the
+specified AWS Region for the calling AWS account}
 \usage{
 resourcegroupstaggingapi_get_tag_values(PaginationToken, Key)
 }
 \arguments{
-\item{PaginationToken}{A string that indicates that additional data is available. Leave this
-value empty for your initial request. If the response includes a
-\code{PaginationToken}, use that string for this value to request an
-additional page of data.}
+\item{PaginationToken}{Specifies a \code{PaginationToken} response value from a previous request to
+indicate that you want the next page of results. Leave this parameter
+empty in your initial request.}
 
-\item{Key}{[required] The key for which you want to list all existing values in the specified
-Region for the AWS account.}
+\item{Key}{[required] Specifies the tag key for which you want to list all existing values
+that are currently used in the specified AWS Region for the calling AWS
+account.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -26,8 +26,16 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns all tag values for the specified key in the specified Region for
-the AWS account.
+Returns all tag values for the specified key that are used in the
+specified AWS Region for the calling AWS account.
+
+This operation supports pagination, where the response can be sent in
+multiple pages. You should check the \code{PaginationToken} response
+parameter to determine if there are additional results available to
+return. Repeat the query, passing the \code{PaginationToken} response
+parameter value as an input to the next request until you recieve a
+\code{null} value. A null value for \code{PaginationToken} indicates that there
+are no more results waiting to be returned.
 }
 \section{Request syntax}{
 \preformatted{svc$get_tag_values(

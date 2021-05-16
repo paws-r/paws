@@ -30,7 +30,9 @@ Array parameters are not supported.}
 
 \item{resultSetOptions}{Options that control how the result set is returned.}
 
-\item{schema}{The name of the database schema.}
+\item{schema}{The name of the database schema.
+
+Currently, the \code{schema} parameter isn't supported.}
 
 \item{secretArn}{[required] The name or ARN of the secret that enables access to the DB cluster.}
 
@@ -142,7 +144,7 @@ response data, the call is terminated.
   parameters = list(
     list(
       name = "string",
-      typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
+      typeHint = "JSON"|"UUID"|"TIMESTAMP"|"DATE"|"TIME"|"DECIMAL",
       value = list(
         arrayValue = list(
           arrayValues = list(
@@ -172,7 +174,7 @@ response data, the call is terminated.
   ),
   resourceArn = "string",
   resultSetOptions = list(
-    decimalReturnType = "DOUBLE_OR_LONG"|"STRING"
+    decimalReturnType = "STRING"|"DOUBLE_OR_LONG"
   ),
   schema = "string",
   secretArn = "string",

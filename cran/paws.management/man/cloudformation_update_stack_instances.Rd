@@ -7,25 +7,25 @@ accounts, within the specified Regions}
 \usage{
 cloudformation_update_stack_instances(StackSetName, Accounts,
   DeploymentTargets, Regions, ParameterOverrides, OperationPreferences,
-  OperationId)
+  OperationId, CallAs)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set associated with the stack
 instances.}
 
-\item{Accounts}{[\code{Self-managed} permissions] The names of one or more AWS accounts for
+\item{Accounts}{[Self-managed permissions] The names of one or more AWS accounts for
 which you want to update parameter values for stack instances. The
 overridden parameter values will be applied to all stack instances in
 the specified accounts and Regions.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{DeploymentTargets}{[\code{Service-managed} permissions] The AWS Organizations accounts for
-which you want to update parameter values for stack instances. If your
-update targets OUs, the overridden parameter values only apply to the
-accounts that are currently in the target OUs and their child OUs.
-Accounts added to the target OUs and their child OUs in the future won't
-use the overridden values.
+\item{DeploymentTargets}{[Service-managed permissions] The AWS Organizations accounts for which
+you want to update parameter values for stack instances. If your update
+targets OUs, the overridden parameter values only apply to the accounts
+that are currently in the target OUs and their child OUs. Accounts added
+to the target OUs and their child OUs in the future won't use the
+overridden values.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
@@ -85,6 +85,22 @@ received them.
 
 If you don't specify an operation ID, the SDK generates one
 automatically.}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your AWS account must be registered as a delegated administrator in
+the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{AWS CloudFormation User Guide}.
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -125,6 +141,7 @@ parameter, you can then override the parameter value using
     Accounts = list(
       "string"
     ),
+    AccountsUrl = "string",
     OrganizationalUnitIds = list(
       "string"
     )
@@ -141,6 +158,7 @@ parameter, you can then override the parameter value using
     )
   ),
   OperationPreferences = list(
+    RegionConcurrencyType = "SEQUENTIAL"|"PARALLEL",
     RegionOrder = list(
       "string"
     ),
@@ -149,7 +167,8 @@ parameter, you can then override the parameter value using
     MaxConcurrentCount = 123,
     MaxConcurrentPercentage = 123
   ),
-  OperationId = "string"
+  OperationId = "string",
+  CallAs = "SELF"|"DELEGATED_ADMIN"
 )
 }
 }

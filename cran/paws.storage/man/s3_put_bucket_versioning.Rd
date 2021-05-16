@@ -22,7 +22,7 @@ and the value that is displayed on your authentication device.}
 
 \item{VersioningConfiguration}{[required] Container for setting the versioning state.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }

@@ -103,8 +103,8 @@ kinesisvideo_create_signaling_channel <- function(ChannelName, ChannelType = NUL
 #' types, see [Media
 #' Types](http://www.iana.org/assignments/media-types/media-types.xhtml).
 #' If you choose to specify the `MediaType`, see [Naming
-#' Requirements](https://tools.ietf.org/html/rfc6838#section-4.2) for
-#' guidelines.
+#' Requirements](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2)
+#' for guidelines.
 #' 
 #' Example valid values include "video/h264" and "video/h264,audio/aac".
 #' 
@@ -1189,7 +1189,7 @@ kinesisvideo_update_signaling_channel <- function(ChannelARN, CurrentVersion, Si
 #' information about media types, see [Media
 #' Types](http://www.iana.org/assignments/media-types/media-types.xhtml).
 #' If you choose to specify the `MediaType`, see [Naming
-#' Requirements](https://tools.ietf.org/html/rfc6838#section-4.2).
+#' Requirements](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2).
 #' 
 #' To play video on the console, you must specify the correct video type.
 #' For example, if the video in the stream is H.264, specify `video/h264`

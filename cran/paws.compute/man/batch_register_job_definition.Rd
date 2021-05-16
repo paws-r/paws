@@ -104,7 +104,17 @@ Registers an AWS Batch job definition.
         host = list(
           sourcePath = "string"
         ),
-        name = "string"
+        name = "string",
+        efsVolumeConfiguration = list(
+          fileSystemId = "string",
+          rootDirectory = "string",
+          transitEncryption = "ENABLED"|"DISABLED",
+          transitEncryptionPort = 123,
+          authorizationConfig = list(
+            accessPointId = "string",
+            iam = "ENABLED"|"DISABLED"
+          )
+        )
       )
     ),
     environment = list(
@@ -206,7 +216,17 @@ Registers an AWS Batch job definition.
               host = list(
                 sourcePath = "string"
               ),
-              name = "string"
+              name = "string",
+              efsVolumeConfiguration = list(
+                fileSystemId = "string",
+                rootDirectory = "string",
+                transitEncryption = "ENABLED"|"DISABLED",
+                transitEncryptionPort = 123,
+                authorizationConfig = list(
+                  accessPointId = "string",
+                  iam = "ENABLED"|"DISABLED"
+                )
+              )
             )
           ),
           environment = list(

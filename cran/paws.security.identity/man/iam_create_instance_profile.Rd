@@ -4,7 +4,7 @@
 \alias{iam_create_instance_profile}
 \title{Creates a new instance profile}
 \usage{
-iam_create_instance_profile(InstanceProfileName, Path)
+iam_create_instance_profile(InstanceProfileName, Path, Tags)
 }
 \arguments{
 \item{InstanceProfileName}{[required] The name of the instance profile to create.
@@ -26,6 +26,15 @@ begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\verb{\\u0021}) through the DEL character
 (\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
+
+\item{Tags}{A list of tags that you want to attach to the newly created IAM instance
+profile. Each tag consists of a key name and an associated value. For
+more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
+in the \emph{IAM User Guide}.
+
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
+created.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -66,6 +75,12 @@ A list with the following syntax:\preformatted{list(
           Region = "string"
         )
       )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
     )
   )
 )
@@ -73,16 +88,24 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Creates a new instance profile. For information about instance profiles,
-go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html}{Using roles for applications on Amazon EC2}
+in the \emph{IAM User Guide}, and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#ec2-instance-profile}{Instance profiles}
+in the \emph{Amazon EC2 User Guide}.
 
-The number and size of IAM resources in an AWS account are limited. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
+For information about the number of instance profiles you can create,
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM object quotas}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_instance_profile(
   InstanceProfileName = "string",
-  Path = "string"
+  Path = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

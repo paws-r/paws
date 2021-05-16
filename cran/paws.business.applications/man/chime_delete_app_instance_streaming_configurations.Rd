@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_delete_app_instance_streaming_configurations}
 \alias{chime_delete_app_instance_streaming_configurations}
-\title{Deletes the streaming configurations of an app instance}
+\title{Deletes the streaming configurations of an AppInstance}
 \usage{
 chime_delete_app_instance_streaming_configurations(AppInstanceArn)
 }
@@ -13,7 +13,7 @@ chime_delete_app_instance_streaming_configurations(AppInstanceArn)
 An empty list.
 }
 \description{
-Deletes the streaming configurations of an app instance.
+Deletes the streaming configurations of an \code{AppInstance}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_app_instance_streaming_configurations(

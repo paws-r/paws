@@ -3,7 +3,7 @@
 \name{chime_get_user}
 \alias{chime_get_user}
 \title{Retrieves details for the specified user ID, such as primary email
-address, license type, and personal meeting PIN}
+address, license type,and personal meeting PIN}
 \usage{
 chime_get_user(AccountId, UserId)
 }
@@ -41,7 +41,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Retrieves details for the specified user ID, such as primary email
-address, license type, and personal meeting PIN.
+address, license type,and personal meeting PIN.
 
 To retrieve user details with an email address instead of a user ID, use
 the \code{\link[=chime_list_users]{list_users}} action, and then filter by email

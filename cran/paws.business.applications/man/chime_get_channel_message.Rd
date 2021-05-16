@@ -4,12 +4,14 @@
 \alias{chime_get_channel_message}
 \title{Gets the full details of a channel message}
 \usage{
-chime_get_channel_message(ChannelArn, MessageId)
+chime_get_channel_message(ChannelArn, MessageId, ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
 
 \item{MessageId}{[required] The ID of the message.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -40,11 +42,16 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Gets the full details of a channel message.
+
+The x-amz-chime-bearer request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$get_channel_message(
   ChannelArn = "string",
-  MessageId = "string"
+  MessageId = "string",
+  ChimeBearer = "string"
 )
 }
 }

@@ -47,7 +47,8 @@ A list with the following syntax:\preformatted{list(
       Recurrence = "string",
       MinSize = 123,
       MaxSize = 123,
-      DesiredCapacity = 123
+      DesiredCapacity = 123,
+      TimeZone = "string"
     )
   ),
   NextToken = "string"

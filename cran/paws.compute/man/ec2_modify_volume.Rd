@@ -45,7 +45,8 @@ The following are the supported values for each volume type:
 \item \code{io2}: 100-64,000 IOPS
 }
 
-Default: If no IOPS value is specified, the existing value is retained.}
+Default: If no IOPS value is specified, the existing value is retained,
+unless a volume type is modified that supports different values.}
 
 \item{Throughput}{The target throughput of the volume, in MiB/s. This parameter is valid
 only for \code{gp3} volumes. The maximum value is 1,000.

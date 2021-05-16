@@ -17,7 +17,7 @@ NULL
 
 .rekognition$create_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CollectionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CollectionId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -41,7 +41,7 @@ NULL
 
 .rekognition$create_project_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProjectArn = structure(logical(0), tags = list(type = "string")), VersionName = structure(logical(0), tags = list(type = "string")), OutputConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingData = structure(list(Assets = structure(list(structure(list(GroundTruthManifest = structure(list(S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TestingData = structure(list(Assets = structure(list(structure(list(GroundTruthManifest = structure(list(S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), AutoCreate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ProjectArn = structure(logical(0), tags = list(type = "string")), VersionName = structure(logical(0), tags = list(type = "string")), OutputConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingData = structure(list(Assets = structure(list(structure(list(GroundTruthManifest = structure(list(S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TestingData = structure(list(Assets = structure(list(structure(list(GroundTruthManifest = structure(list(S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), AutoCreate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .rekognition$create_stream_processor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Input = structure(list(KinesisVideoStream = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Output = structure(list(KinesisDataStream = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), Settings = structure(list(FaceSearch = structure(list(CollectionId = structure(logical(0), tags = list(type = "string")), FaceMatchThreshold = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Input = structure(list(KinesisVideoStream = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Output = structure(list(KinesisDataStream = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), Settings = structure(list(FaceSearch = structure(list(CollectionId = structure(logical(0), tags = list(type = "string")), FaceMatchThreshold = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -399,6 +399,18 @@ NULL
   return(populate(args, shape))
 }
 
+.rekognition$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .rekognition$recognize_celebrities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Image = structure(list(Bytes = structure(logical(0), tags = list(type = "blob")), S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -574,6 +586,30 @@ NULL
 }
 
 .rekognition$stop_stream_processor_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

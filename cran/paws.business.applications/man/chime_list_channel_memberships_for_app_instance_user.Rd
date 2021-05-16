@@ -5,15 +5,17 @@
 \title{Lists all channels that a particular AppInstanceUser is a part of}
 \usage{
 chime_list_channel_memberships_for_app_instance_user(AppInstanceUserArn,
-  MaxResults, NextToken)
+  MaxResults, NextToken, ChimeBearer)
 }
 \arguments{
-\item{AppInstanceUserArn}{The ARN of the app instance users}
+\item{AppInstanceUserArn}{The ARN of the \code{AppInstanceUser}s}
 
 \item{MaxResults}{The maximum number of users that you want returned.}
 
 \item{NextToken}{The token returned from previous API requests until the number of
 channel memberships is reached.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -45,12 +47,17 @@ A list with the following syntax:\preformatted{list(
 Lists all channels that a particular \code{AppInstanceUser} is a part of.
 Only an \code{AppInstanceAdmin} can call the API with a user ARN that is not
 their own.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$list_channel_memberships_for_app_instance_user(
   AppInstanceUserArn = "string",
   MaxResults = 123,
-  NextToken = "string"
+  NextToken = "string",
+  ChimeBearer = "string"
 )
 }
 }

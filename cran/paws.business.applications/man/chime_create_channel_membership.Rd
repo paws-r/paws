@@ -4,7 +4,8 @@
 \alias{chime_create_channel_membership}
 \title{Adds a user to a channel}
 \usage{
-chime_create_channel_membership(ChannelArn, MemberArn, Type)
+chime_create_channel_membership(ChannelArn, MemberArn, Type,
+  ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel to which you're adding users.}
@@ -18,6 +19,8 @@ members are only returned if the type filter in
 \code{\link[=chime_list_channel_memberships]{list_channel_memberships}} equals
 \code{HIDDEN}. Otherwise hidden members are not returned. This is only
 supported by moderators.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -46,12 +49,17 @@ Privacy settings impact this action as follows:
 but you must be a member to send messages.
 \item Private Channels: You must be a member to list or send messages.
 }
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$create_channel_membership(
   ChannelArn = "string",
   MemberArn = "string",
-  Type = "DEFAULT"|"HIDDEN"
+  Type = "DEFAULT"|"HIDDEN",
+  ChimeBearer = "string"
 )
 }
 }

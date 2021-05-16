@@ -4,12 +4,14 @@
 \alias{chime_describe_channel_ban}
 \title{Returns the full details of a channel ban}
 \usage{
-chime_describe_channel_ban(ChannelArn, MemberArn)
+chime_describe_channel_ban(ChannelArn, MemberArn, ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel from which the user is banned.}
 
 \item{MemberArn}{[required] The ARN of the member being banned.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -32,11 +34,16 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Returns the full details of a channel ban.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_channel_ban(
   ChannelArn = "string",
-  MemberArn = "string"
+  MemberArn = "string",
+  ChimeBearer = "string"
 )
 }
 }

@@ -22,8 +22,9 @@ NULL
 #' 
 #' Bitbucket and GitHub Enterprise Server repositories are managed by AWS
 #' CodeStar Connections to connect to CodeGuru Reviewer. For more
-#' information, see Connect to a repository source provider in the *Amazon
-#' CodeGuru Reviewer User Guide.*
+#' information, see [Associate a
+#' repository](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-associate-repository.html)
+#' in the *Amazon CodeGuru Reviewer User Guide.*
 #' 
 #' You cannot use the CodeGuru Reviewer SDK or the AWS CLI to associate a
 #' GitHub repository with Amazon CodeGuru Reviewer. To associate a GitHub
@@ -34,7 +35,7 @@ NULL
 #'
 #' @usage
 #' codegurureviewer_associate_repository(Repository, ClientRequestToken,
-#'   Tags)
+#'   Tags, KMSKeyDetails)
 #'
 #' @param Repository &#91;required&#93; The repository to associate.
 #' @param ClientRequestToken Amazon CodeGuru Reviewer uses this value to prevent the accidental
@@ -50,6 +51,14 @@ NULL
 #'     `111122223333`, `Production`, or a team name). Omitting the tag
 #'     value is the same as using an empty string. Like tag keys, tag
 #'     values are case sensitive.
+#' @param KMSKeyDetails A `KMSKeyDetails` object that contains:
+#' 
+#' -   The encryption option for this repository association. It is either
+#'     owned by AWS Key Management Service (KMS) (`AWS_OWNED_CMK`) or
+#'     customer managed (`CUSTOMER_MANAGED_CMK`).
+#' 
+#' -   The ID of the AWS KMS key that is associated with this respository
+#'     association.
 #'
 #' @return
 #' A list with the following syntax:
@@ -69,6 +78,10 @@ NULL
 #'     ),
 #'     CreatedTimeStamp = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     KMSKeyDetails = list(
+#'       KMSKeyId = "string",
+#'       EncryptionOption = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -98,6 +111,10 @@ NULL
 #'   ClientRequestToken = "string",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   KMSKeyDetails = list(
+#'     KMSKeyId = "string",
+#'     EncryptionOption = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
 #'   )
 #' )
 #' ```
@@ -105,14 +122,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_associate_repository
-codegurureviewer_associate_repository <- function(Repository, ClientRequestToken = NULL, Tags = NULL) {
+codegurureviewer_associate_repository <- function(Repository, ClientRequestToken = NULL, Tags = NULL, KMSKeyDetails = NULL) {
   op <- new_operation(
     name = "AssociateRepository",
     http_method = "POST",
     http_path = "/associations",
     paginator = list()
   )
-  input <- .codegurureviewer$associate_repository_input(Repository = Repository, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  input <- .codegurureviewer$associate_repository_input(Repository = Repository, ClientRequestToken = ClientRequestToken, Tags = Tags, KMSKeyDetails = KMSKeyDetails)
   output <- .codegurureviewer$associate_repository_output()
   config <- get_config()
   svc <- .codegurureviewer$service(config)
@@ -414,6 +431,10 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
 #'     ),
 #'     CreatedTimeStamp = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     KMSKeyDetails = list(
+#'       KMSKeyId = "string",
+#'       EncryptionOption = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -483,6 +504,10 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
 #'     ),
 #'     CreatedTimeStamp = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     KMSKeyDetails = list(
+#'       KMSKeyId = "string",
+#'       EncryptionOption = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
 #'     )
 #'   ),
 #'   Tags = list(

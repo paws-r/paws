@@ -130,6 +130,9 @@ request, the initial status of the hosted zone is \code{PENDING}. For public
 hosted zones, this means that the NS and SOA records are not yet
 available on all Route 53 DNS servers. When the NS and SOA records are
 available, the status of the zone changes to \code{INSYNC}.
+
+The \code{\link[=route53_create_hosted_zone]{create_hosted_zone}} request requires
+the caller to have an \code{ec2:DescribeVpcs} permission.
 }
 \section{Request syntax}{
 \preformatted{svc$create_hosted_zone(

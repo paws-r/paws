@@ -15,7 +15,7 @@ in the \emph{Alexa Skills Kit}.}
 A list with the following syntax:\preformatted{list(
   signature = "string",
   supportedLocales = list(
-    "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+    "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"
   ),
   slots = list(
     list(

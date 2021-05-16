@@ -39,11 +39,13 @@ IAM user to set a new password on next sign-in.}
 An empty list.
 }
 \description{
-Changes the password for the specified IAM user.
+Changes the password for the specified IAM user. You can use the AWS
+CLI, the AWS API, or the \strong{Users} page in the IAM console to change the
+password for any IAM user. Use \code{\link[=iam_change_password]{change_password}}
+to change your own password in the \strong{My Security Credentials} page in
+the AWS Management Console.
 
-IAM users can change their own passwords by calling
-\code{\link[=iam_change_password]{change_password}}. For more information about
-modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
+For more information about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

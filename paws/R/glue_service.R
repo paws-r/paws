@@ -123,7 +123,7 @@ NULL
 #'  \link[=glue_get_partitions]{get_partitions} \tab Retrieves information about the partitions in a table\cr
 #'  \link[=glue_get_plan]{get_plan} \tab Gets code to perform a specified mapping\cr
 #'  \link[=glue_get_registry]{get_registry} \tab Describes the specified registry in detail\cr
-#'  \link[=glue_get_resource_policies]{get_resource_policies} \tab Retrieves the security configurations for the resource policies set on individual resources, and also the account-level policy\cr
+#'  \link[=glue_get_resource_policies]{get_resource_policies} \tab Retrieves the resource policies set on individual resources by AWS Resource Access Manager during cross-account permission grants\cr
 #'  \link[=glue_get_resource_policy]{get_resource_policy} \tab Retrieves a specified resource policy\cr
 #'  \link[=glue_get_schema]{get_schema} \tab Describes the specified schema in detail\cr
 #'  \link[=glue_get_schema_by_definition]{get_schema_by_definition} \tab Retrieves a schema by the SchemaDefinition\cr

@@ -2,7 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_update_global_settings}
 \alias{backup_update_global_settings}
-\title{Updates the current global settings for the AWS Account}
+\title{Updates the current global settings for the AWS account}
 \usage{
 backup_update_global_settings(GlobalSettings)
 }
@@ -13,7 +13,7 @@ backup_update_global_settings(GlobalSettings)
 An empty list.
 }
 \description{
-Updates the current global settings for the AWS Account. Use the
+Updates the current global settings for the AWS account. Use the
 \code{\link[=backup_describe_global_settings]{describe_global_settings}} API to
 determine the current settings.
 }

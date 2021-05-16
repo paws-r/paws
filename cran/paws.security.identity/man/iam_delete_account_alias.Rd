@@ -18,7 +18,7 @@ An empty list.
 }
 \description{
 Deletes the specified AWS account alias. For information about using an
-AWS account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html}{Using an Alias for Your AWS Account ID}
+AWS account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html}{Using an alias for your AWS account ID}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

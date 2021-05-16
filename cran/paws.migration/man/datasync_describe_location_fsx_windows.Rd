@@ -3,13 +3,13 @@
 \name{datasync_describe_location_fsx_windows}
 \alias{datasync_describe_location_fsx_windows}
 \title{Returns metadata, such as the path information about an Amazon FSx for
-Windows location}
+Windows File Server location}
 \usage{
 datasync_describe_location_fsx_windows(LocationArn)
 }
 \arguments{
-\item{LocationArn}{[required] The Amazon Resource Name (ARN) of the FSx for Windows location to
-describe.}
+\item{LocationArn}{[required] The Amazon Resource Name (ARN) of the FSx for Windows File Server
+location to describe.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -28,7 +28,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Returns metadata, such as the path information about an Amazon FSx for
-Windows location.
+Windows File Server location.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_location_fsx_windows(

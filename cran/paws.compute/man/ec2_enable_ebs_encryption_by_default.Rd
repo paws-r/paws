@@ -23,8 +23,8 @@ Enables EBS encryption by default for your account in the current
 Region.
 
 After you enable encryption by default, the EBS volumes that you create
-are are always encrypted, either using the default CMK or the CMK that
-you specified when you created each volume. For more information, see
+are always encrypted, either using the default CMK or the CMK that you
+specified when you created each volume. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 

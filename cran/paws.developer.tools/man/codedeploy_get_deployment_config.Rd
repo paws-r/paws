@@ -16,8 +16,8 @@ A list with the following syntax:\preformatted{list(
     deploymentConfigId = "string",
     deploymentConfigName = "string",
     minimumHealthyHosts = list(
-      value = 123,
-      type = "HOST_COUNT"|"FLEET_PERCENT"
+      type = "HOST_COUNT"|"FLEET_PERCENT",
+      value = 123
     ),
     createTime = as.POSIXct(
       "2015-01-01"

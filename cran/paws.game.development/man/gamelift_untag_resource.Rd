@@ -48,12 +48,11 @@ in the \emph{AWS General Reference}
 
 \href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_tag_resource]{tag_resource}}
-\item \code{\link[=gamelift_untag_resource]{untag_resource}}
-\item \code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_tag_resource]{tag_resource}} |
+\code{\link[=gamelift_untag_resource]{untag_resource}} |
+\code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

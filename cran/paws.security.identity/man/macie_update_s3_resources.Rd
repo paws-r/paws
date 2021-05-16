@@ -31,9 +31,10 @@ A list with the following syntax:\preformatted{list(
 Updates the classification types for the specified S3 resources. If
 memberAccountId isn't specified, the action updates the classification
 types of the S3 resources associated with Amazon Macie Classic for the
-current master account. If memberAccountId is specified, the action
-updates the classification types of the S3 resources associated with
-Amazon Macie Classic for the specified member account.
+current Macie Classic administrator account. If memberAccountId is
+specified, the action updates the classification types of the S3
+resources associated with Macie Classic for the specified member
+account.
 }
 \section{Request syntax}{
 \preformatted{svc$update_s3_resources(

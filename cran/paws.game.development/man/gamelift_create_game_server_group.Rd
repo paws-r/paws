@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_create_game_server_group}
 \alias{gamelift_create_game_server_group}
-\title{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups}
+\title{This operation is used with the GameLift FleetIQ solution and game
+server groups}
 \usage{
 gamelift_create_game_server_group(GameServerGroupName, RoleArn, MinSize,
   MaxSize, LaunchTemplate, InstanceDefinitions, AutoScalingPolicy,
@@ -38,7 +38,12 @@ You can specify the template using either the template name or ID. For
 help with creating a launch template, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html}{Creating a Launch Template for an Auto Scaling Group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}. After the Auto Scaling
 group is created, update this value directly in the Auto Scaling group
-using the AWS console or APIs.}
+using the AWS console or APIs.
+
+If you specify network interfaces in your launch template, you must
+explicitly set the property \code{AssociatePublicIpAddress} to "true". If no
+network interface is specified in the launch template, GameLift FleetIQ
+uses your account's default VPC.}
 
 \item{InstanceDefinitions}{[required] The EC2 instance types and sizes to use in the Auto Scaling group. The
 instance definitions must specify at least two different instance types
@@ -115,7 +120,7 @@ A list with the following syntax:\preformatted{list(
     RoleArn = "string",
     InstanceDefinitions = list(
       list(
-        InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+        InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
         WeightedCapacity = "string"
       )
     ),
@@ -138,8 +143,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-\strong{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups.}
+\strong{This operation is used with the GameLift FleetIQ solution and game
+server groups.}
 
 Creates a GameLift FleetIQ game server group for managing game hosting
 on a collection of Amazon EC2 instances for game hosting. This operation
@@ -180,17 +185,17 @@ optimize for availability and cost.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_game_server_group]{create_game_server_group}}
-\item \code{\link[=gamelift_list_game_server_groups]{list_game_server_groups}}
-\item \code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}}
-\item \code{\link[=gamelift_update_game_server_group]{update_game_server_group}}
-\item \code{\link[=gamelift_delete_game_server_group]{delete_game_server_group}}
-\item \code{\link[=gamelift_resume_game_server_group]{resume_game_server_group}}
-\item \code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}}
-\item \code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_server_group]{create_game_server_group}} |
+\code{\link[=gamelift_list_game_server_groups]{list_game_server_groups}} |
+\code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}} |
+\code{\link[=gamelift_update_game_server_group]{update_game_server_group}} |
+\code{\link[=gamelift_delete_game_server_group]{delete_game_server_group}} |
+\code{\link[=gamelift_resume_game_server_group]{resume_game_server_group}} |
+\code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}} |
+\code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/reference-awssdk-fleetiq.html}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$create_game_server_group(
@@ -205,7 +210,7 @@ optimize for availability and cost.
   ),
   InstanceDefinitions = list(
     list(
-      InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+      InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
       WeightedCapacity = "string"
     )
   ),

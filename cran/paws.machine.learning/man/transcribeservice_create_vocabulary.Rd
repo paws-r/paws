@@ -14,7 +14,8 @@ account. The name is case sensitive. If you try to create a vocabulary
 with the same name as a previous vocabulary you will receive a
 \code{ConflictException} error.}
 
-\item{LanguageCode}{[required] The language code of the vocabulary entries.}
+\item{LanguageCode}{[required] The language code of the vocabulary entries. For a list of languages and
+their corresponding language codes, see what-is-transcribe.}
 
 \item{Phrases}{An array of strings that contains the vocabulary entries.}
 
@@ -25,7 +26,7 @@ endpoint that you are calling. The general form is
 For more information about S3 object names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys}{Object Keys}
 in the \emph{Amazon S3 Developer Guide}.
 
-For more information about custom vocabularies, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary}{Custom Vocabularies}.}
+For more information about custom vocabularies, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html}{Custom Vocabularies}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

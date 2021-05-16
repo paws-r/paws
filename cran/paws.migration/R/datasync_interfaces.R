@@ -363,6 +363,42 @@ NULL
   return(populate(args, shape))
 }
 
+.datasync$update_location_nfs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LocationArn = structure(logical(0), tags = list(type = "string")), Subdirectory = structure(logical(0), tags = list(type = "string")), OnPremConfig = structure(list(AgentArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), MountOptions = structure(list(Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.datasync$update_location_nfs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.datasync$update_location_object_storage_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LocationArn = structure(logical(0), tags = list(type = "string")), ServerPort = structure(logical(0), tags = list(type = "integer", box = TRUE)), ServerProtocol = structure(logical(0), tags = list(type = "string")), Subdirectory = structure(logical(0), tags = list(type = "string")), AccessKey = structure(logical(0), tags = list(type = "string")), SecretKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AgentArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.datasync$update_location_object_storage_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.datasync$update_location_smb_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LocationArn = structure(logical(0), tags = list(type = "string")), Subdirectory = structure(logical(0), tags = list(type = "string")), User = structure(logical(0), tags = list(type = "string")), Domain = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AgentArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MountOptions = structure(list(Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.datasync$update_location_smb_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .datasync$update_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TaskArn = structure(logical(0), tags = list(type = "string")), Options = structure(list(VerifyMode = structure(logical(0), tags = list(type = "string")), OverwriteMode = structure(logical(0), tags = list(type = "string")), Atime = structure(logical(0), tags = list(type = "string")), Mtime = structure(logical(0), tags = list(type = "string")), Uid = structure(logical(0), tags = list(type = "string")), Gid = structure(logical(0), tags = list(type = "string")), PreserveDeletedFiles = structure(logical(0), tags = list(type = "string")), PreserveDevices = structure(logical(0), tags = list(type = "string")), PosixPermissions = structure(logical(0), tags = list(type = "string")), BytesPerSecond = structure(logical(0), tags = list(type = "long")), TaskQueueing = structure(logical(0), tags = list(type = "string")), LogLevel = structure(logical(0), tags = list(type = "string")), TransferMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Excludes = structure(list(structure(list(FilterType = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Schedule = structure(list(ScheduleExpression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), CloudWatchLogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

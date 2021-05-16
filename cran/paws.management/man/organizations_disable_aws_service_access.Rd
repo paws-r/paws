@@ -25,19 +25,51 @@ perform operations on your behalf on any new accounts in your
 organization. The service can still perform operations in older accounts
 until the service completes its clean-up from AWS Organizations.
 
-We recommend that you disable integration between AWS Organizations and
-the specified AWS service by using the console or commands that are
-provided by the specified service. Doing so ensures that the other
-service is aware that it can clean up any resources that are required
-only for the integration. How the service cleans up its resources in the
-organization's accounts depends on that service. For more information,
-see the documentation for the other AWS service.
+We \emph{\strong{strongly recommend}} that you don't use this command to disable
+integration between AWS Organizations and the specified AWS service.
+Instead, use the console or commands that are provided by the specified
+service. This lets the trusted service perform any required
+initialization when enabling trusted access, such as creating any
+required resources and any required clean up of resources when disabling
+trusted access.
+
+For information about how to disable trusted service access to your
+organization using the trusted service, see the \strong{Learn more} link
+under the \strong{Supports Trusted Access} column at \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html}{AWS services that you can use with AWS Organizations}.
+on this page.
+
+If you disable access by using this command, it causes the following
+actions to occur:
+\itemize{
+\item The service can no longer create a service-linked role in the
+accounts in your organization. This means that the service can't
+perform operations on your behalf on any new accounts in your
+organization. The service can still perform operations in older
+accounts until the service completes its clean-up from AWS
+Organizations.
+\item The service can no longer perform tasks in the member accounts in
+the organization, unless those operations are explicitly permitted
+by the IAM policies that are attached to your roles. This includes
+any data aggregation from the member accounts to the management
+account, or to a delegated administrator account, where relevant.
+\item Some services detect this and clean up any remaining data or
+resources related to the integration, while other services stop
+accessing the organization but leave any historical data and
+configuration in place to support a possible re-enabling of the
+integration.
+}
+
+Using the other service's console or commands to disable the integration
+ensures that the other service is aware that it can clean up any
+resources that are required only for the integration. How the service
+cleans up its resources in the organization's accounts depends on that
+service. For more information, see the documentation for the other AWS
+service.
 
 After you perform the
 \code{\link[=organizations_disable_aws_service_access]{disable_aws_service_access}}
 operation, the specified service can no longer perform operations in
-your organization's accounts unless the operations are explicitly
-permitted by the IAM policies that are attached to your roles.
+your organization's accounts
 
 For more information about integrating other services with AWS
 Organizations, including the list of services that work with

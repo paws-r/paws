@@ -42,7 +42,10 @@ supported.}
 \item{MaxResults}{This field is only used when SortBy is provided in the request. The
 maximum number of objects that to be returned for this request. If
 MaxResults is not specified with SortBy, the request will return 1000
-results as the default value for this parameter.}
+results as the default value for this parameter.
+
+For \code{\link[=costexplorer_get_tags]{get_tags}}, MaxResults has an upper limit
+of 1000.}
 
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
 when the response from a previous call has more results than the maximum

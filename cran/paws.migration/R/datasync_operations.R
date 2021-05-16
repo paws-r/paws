@@ -260,32 +260,35 @@ datasync_create_location_efs <- function(Subdirectory = NULL, EfsFilesystemArn, 
 }
 .datasync$operations$create_location_efs <- datasync_create_location_efs
 
-#' Creates an endpoint for an Amazon FSx for Windows file system
+#' Creates an endpoint for an Amazon FSx for Windows File Server file
+#' system
 #'
 #' @description
-#' Creates an endpoint for an Amazon FSx for Windows file system.
+#' Creates an endpoint for an Amazon FSx for Windows File Server file
+#' system.
 #'
 #' @usage
 #' datasync_create_location_fsx_windows(Subdirectory, FsxFilesystemArn,
 #'   SecurityGroupArns, Tags, User, Domain, Password)
 #'
 #' @param Subdirectory A subdirectory in the location’s path. This subdirectory in the Amazon
-#' FSx for Windows file system is used to read data from the Amazon FSx for
-#' Windows source location or write data to the FSx for Windows
-#' destination.
-#' @param FsxFilesystemArn &#91;required&#93; The Amazon Resource Name (ARN) for the FSx for Windows file system.
+#' FSx for Windows File Server file system is used to read data from the
+#' Amazon FSx for Windows File Server source location or write data to the
+#' FSx for Windows File Server destination.
+#' @param FsxFilesystemArn &#91;required&#93; The Amazon Resource Name (ARN) for the FSx for Windows File Server file
+#' system.
 #' @param SecurityGroupArns &#91;required&#93; The Amazon Resource Names (ARNs) of the security groups that are to use
-#' to configure the FSx for Windows file system.
+#' to configure the FSx for Windows File Server file system.
 #' @param Tags The key-value pair that represents a tag that you want to add to the
 #' resource. The value can be an empty string. This value helps you manage,
 #' filter, and search for your resources. We recommend that you create a
 #' name tag for your location.
 #' @param User &#91;required&#93; The user who has the permissions to access files and folders in the FSx
-#' for Windows file system.
-#' @param Domain The name of the Windows domain that the FSx for Windows server belongs
-#' to.
+#' for Windows File Server file system.
+#' @param Domain The name of the Windows domain that the FSx for Windows File Server
+#' belongs to.
 #' @param Password &#91;required&#93; The password of the user who has the permissions to access files and
-#' folders in the FSx for Windows file system.
+#' folders in the FSx for Windows File Server file system.
 #'
 #' @return
 #' A list with the following syntax:
@@ -722,24 +725,27 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #' Creates a task
 #'
 #' @description
-#' Creates a task. A task is a set of two locations (source and
-#' destination) and a set of Options that you use to control the behavior
-#' of a task. If you don't specify Options when you create a task, AWS
-#' DataSync populates them with service defaults.
+#' Creates a task.
 #' 
-#' When you create a task, it first enters the CREATING state. During
-#' CREATING AWS DataSync attempts to mount the on-premises Network File
-#' System (NFS) location. The task transitions to the AVAILABLE state
-#' without waiting for the AWS location to become mounted. If required, AWS
-#' DataSync mounts the AWS location before each task execution.
+#' A task includes a source location and a destination location, and a
+#' configuration that specifies how data is transferred. A task always
+#' transfers data from the source location to the destination location. The
+#' configuration specifies options such as task scheduling, bandwidth
+#' limits, etc. A task is the complete definition of a data transfer.
 #' 
-#' If an agent that is associated with a source (NFS) location goes
-#' offline, the task transitions to the UNAVAILABLE status. If the status
-#' of the task remains in the CREATING status for more than a few minutes,
-#' it means that your agent might be having trouble mounting the source NFS
-#' file system. Check the task's ErrorCode and ErrorDetail. Mount issues
-#' are often caused by either a misconfigured firewall or a mistyped NFS
-#' server hostname.
+#' When you create a task that transfers data between AWS services in
+#' different AWS Regions, one of the two locations that you specify must
+#' reside in the Region where DataSync is being used. The other location
+#' must be specified in a different Region.
+#' 
+#' You can transfer data between commercial AWS Regions except for China,
+#' or between AWS GovCloud (US-East and US-West) Regions.
+#' 
+#' When you use DataSync to copy files or objects between AWS Regions, you
+#' pay for data transfer between Regions. This is billed as data transfer
+#' OUT from your source Region to your destination Region. For more
+#' information, see [Data Transfer
+#' pricing](https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer).
 #'
 #' @usage
 #' datasync_create_task(SourceLocationArn, DestinationLocationArn,
@@ -1090,17 +1096,17 @@ datasync_describe_location_efs <- function(LocationArn) {
 .datasync$operations$describe_location_efs <- datasync_describe_location_efs
 
 #' Returns metadata, such as the path information about an Amazon FSx for
-#' Windows location
+#' Windows File Server location
 #'
 #' @description
 #' Returns metadata, such as the path information about an Amazon FSx for
-#' Windows location.
+#' Windows File Server location.
 #'
 #' @usage
 #' datasync_describe_location_fsx_windows(LocationArn)
 #'
-#' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the FSx for Windows location to
-#' describe.
+#' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the FSx for Windows File Server
+#' location to describe.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2090,6 +2096,246 @@ datasync_update_agent <- function(AgentArn, Name = NULL) {
 }
 .datasync$operations$update_agent <- datasync_update_agent
 
+#' Updates some of the parameters of a previously created location for
+#' Network File System (NFS) access
+#'
+#' @description
+#' Updates some of the parameters of a previously created location for
+#' Network File System (NFS) access. For information about creating an NFS
+#' location, see create-nfs-location.
+#'
+#' @usage
+#' datasync_update_location_nfs(LocationArn, Subdirectory, OnPremConfig,
+#'   MountOptions)
+#'
+#' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the NFS location to update.
+#' @param Subdirectory The subdirectory in the NFS file system that is used to read data from
+#' the NFS source location or write data to the NFS destination. The NFS
+#' path should be a path that's exported by the NFS server, or a
+#' subdirectory of that path. The path should be such that it can be
+#' mounted by other NFS clients in your network.
+#' 
+#' To see all the paths exported by your NFS server, run
+#' "`showmount -e nfs-server-name`" from an NFS client that has access to
+#' your server. You can specify any directory that appears in the results,
+#' and any subdirectory of that directory. Ensure that the NFS export is
+#' accessible without Kerberos authentication.
+#' 
+#' To transfer all the data in the folder that you specified, DataSync must
+#' have permissions to read all the data. To ensure this, either configure
+#' the NFS export with `no_root_squash`, or ensure that the files you want
+#' DataSync to access have permissions that allow read access for all
+#' users. Doing either option enables the agent to read the files. For the
+#' agent to access directories, you must additionally enable all execute
+#' access.
+#' 
+#' If you are copying data to or from your AWS Snowcone device, see [NFS
+#' Server on AWS
+#' Snowcone](https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#nfs-on-snowcone)
+#' for more information.
+#' 
+#' For information about NFS export configuration, see 18.7. The
+#' /etc/exports Configuration File in the Red Hat Enterprise Linux
+#' documentation.
+#' @param OnPremConfig 
+#' @param MountOptions 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_location_nfs(
+#'   LocationArn = "string",
+#'   Subdirectory = "string",
+#'   OnPremConfig = list(
+#'     AgentArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   MountOptions = list(
+#'     Version = "AUTOMATIC"|"NFS3"|"NFS4_0"|"NFS4_1"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datasync_update_location_nfs
+datasync_update_location_nfs <- function(LocationArn, Subdirectory = NULL, OnPremConfig = NULL, MountOptions = NULL) {
+  op <- new_operation(
+    name = "UpdateLocationNfs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .datasync$update_location_nfs_input(LocationArn = LocationArn, Subdirectory = Subdirectory, OnPremConfig = OnPremConfig, MountOptions = MountOptions)
+  output <- .datasync$update_location_nfs_output()
+  config <- get_config()
+  svc <- .datasync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datasync$operations$update_location_nfs <- datasync_update_location_nfs
+
+#' Updates some of the parameters of a previously created location for
+#' self-managed object storage server access
+#'
+#' @description
+#' Updates some of the parameters of a previously created location for
+#' self-managed object storage server access. For information about
+#' creating a self-managed object storage location, see
+#' create-object-location.
+#'
+#' @usage
+#' datasync_update_location_object_storage(LocationArn, ServerPort,
+#'   ServerProtocol, Subdirectory, AccessKey, SecretKey, AgentArns)
+#'
+#' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the self-managed object storage server
+#' location to be updated.
+#' @param ServerPort The port that your self-managed object storage server accepts inbound
+#' network traffic on. The server port is set by default to TCP 80 (HTTP)
+#' or TCP 443 (HTTPS). You can specify a custom port if your self-managed
+#' object storage server requires one.
+#' @param ServerProtocol The protocol that the object storage server uses to communicate. Valid
+#' values are `HTTP` or `HTTPS`.
+#' @param Subdirectory The subdirectory in the self-managed object storage server that is used
+#' to read data from.
+#' @param AccessKey Optional. The access key is used if credentials are required to access
+#' the self-managed object storage server. If your object storage requires
+#' a user name and password to authenticate, use `AccessKey` and
+#' `SecretKey` to provide the user name and password, respectively.
+#' @param SecretKey Optional. The secret key is used if credentials are required to access
+#' the self-managed object storage server. If your object storage requires
+#' a user name and password to authenticate, use `AccessKey` and
+#' `SecretKey` to provide the user name and password, respectively.
+#' @param AgentArns The Amazon Resource Name (ARN) of the agents associated with the
+#' self-managed object storage server location.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_location_object_storage(
+#'   LocationArn = "string",
+#'   ServerPort = 123,
+#'   ServerProtocol = "HTTPS"|"HTTP",
+#'   Subdirectory = "string",
+#'   AccessKey = "string",
+#'   SecretKey = "string",
+#'   AgentArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datasync_update_location_object_storage
+datasync_update_location_object_storage <- function(LocationArn, ServerPort = NULL, ServerProtocol = NULL, Subdirectory = NULL, AccessKey = NULL, SecretKey = NULL, AgentArns = NULL) {
+  op <- new_operation(
+    name = "UpdateLocationObjectStorage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .datasync$update_location_object_storage_input(LocationArn = LocationArn, ServerPort = ServerPort, ServerProtocol = ServerProtocol, Subdirectory = Subdirectory, AccessKey = AccessKey, SecretKey = SecretKey, AgentArns = AgentArns)
+  output <- .datasync$update_location_object_storage_output()
+  config <- get_config()
+  svc <- .datasync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datasync$operations$update_location_object_storage <- datasync_update_location_object_storage
+
+#' Updates some of the parameters of a previously created location for
+#' Server Message Block (SMB) file system access
+#'
+#' @description
+#' Updates some of the parameters of a previously created location for
+#' Server Message Block (SMB) file system access. For information about
+#' creating an SMB location, see create-smb-location.
+#'
+#' @usage
+#' datasync_update_location_smb(LocationArn, Subdirectory, User, Domain,
+#'   Password, AgentArns, MountOptions)
+#'
+#' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the SMB location to update.
+#' @param Subdirectory The subdirectory in the SMB file system that is used to read data from
+#' the SMB source location or write data to the SMB destination. The SMB
+#' path should be a path that's exported by the SMB server, or a
+#' subdirectory of that path. The path should be such that it can be
+#' mounted by other SMB clients in your network.
+#' 
+#' `Subdirectory` must be specified with forward slashes. For example,
+#' `/path/to/folder`.
+#' 
+#' To transfer all the data in the folder that you specified, DataSync must
+#' have permissions to mount the SMB share and to access all the data in
+#' that share. To ensure this, do either of the following:
+#' 
+#' -   Ensure that the user/password specified belongs to the user who can
+#'     mount the share and who has the appropriate permissions for all of
+#'     the files and directories that you want DataSync to access.
+#' 
+#' -   Use credentials of a member of the Backup Operators group to mount
+#'     the share.
+#' 
+#' Doing either of these options enables the agent to access the data. For
+#' the agent to access directories, you must also enable all execute
+#' access.
+#' @param User The user who can mount the share has the permissions to access files and
+#' folders in the SMB share.
+#' @param Domain The name of the Windows domain that the SMB server belongs to.
+#' @param Password The password of the user who can mount the share has the permissions to
+#' access files and folders in the SMB share.
+#' @param AgentArns The Amazon Resource Names (ARNs) of agents to use for a Simple Message
+#' Block (SMB) location.
+#' @param MountOptions 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_location_smb(
+#'   LocationArn = "string",
+#'   Subdirectory = "string",
+#'   User = "string",
+#'   Domain = "string",
+#'   Password = "string",
+#'   AgentArns = list(
+#'     "string"
+#'   ),
+#'   MountOptions = list(
+#'     Version = "AUTOMATIC"|"SMB2"|"SMB3"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datasync_update_location_smb
+datasync_update_location_smb <- function(LocationArn, Subdirectory = NULL, User = NULL, Domain = NULL, Password = NULL, AgentArns = NULL, MountOptions = NULL) {
+  op <- new_operation(
+    name = "UpdateLocationSmb",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .datasync$update_location_smb_input(LocationArn = LocationArn, Subdirectory = Subdirectory, User = User, Domain = Domain, Password = Password, AgentArns = AgentArns, MountOptions = MountOptions)
+  output <- .datasync$update_location_smb_output()
+  config <- get_config()
+  svc <- .datasync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datasync$operations$update_location_smb <- datasync_update_location_smb
+
 #' Updates the metadata associated with a task
 #'
 #' @description
@@ -2177,8 +2423,9 @@ datasync_update_task <- function(TaskArn, Options = NULL, Excludes = NULL, Sched
 #' Updates execution of a task.
 #' 
 #' You can modify bandwidth throttling for a task execution that is running
-#' or queued. For more information, see Adjusting Bandwidth Throttling for
-#' a Task Execution.
+#' or queued. For more information, see [Adjusting Bandwidth Throttling for
+#' a Task
+#' Execution](https://docs.aws.amazon.com/datasync/latest/userguide/working-with-task-executions.html#adjust-bandwidth-throttling).
 #' 
 #' The only `Option` that can be modified by
 #' [`update_task_execution`][datasync_update_task_execution] is

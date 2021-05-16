@@ -42,7 +42,7 @@ A list with the following syntax:\preformatted{list(
       MountTargetId = "string",
       FileSystemId = "string",
       SubnetId = "string",
-      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error",
       IpAddress = "string",
       NetworkInterfaceId = "string",
       AvailabilityZoneId = "string",

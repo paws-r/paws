@@ -8,9 +8,9 @@ elasticache_failover_global_replication_group(GlobalReplicationGroupId,
   PrimaryRegion, PrimaryReplicationGroupId)
 }
 \arguments{
-\item{GlobalReplicationGroupId}{[required] The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{[required] The name of the Global datastore}
 
-\item{PrimaryRegion}{[required] The AWS region of the primary cluster of the Global Datastore}
+\item{PrimaryRegion}{[required] The AWS region of the primary cluster of the Global datastore}
 
 \item{PrimaryReplicationGroupId}{[required] The name of the primary replication group}
 }

@@ -16,7 +16,7 @@ connect_list_queues(InstanceId, QueueTypes, NextToken, MaxResults)
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -35,6 +35,11 @@ A list with the following syntax:\preformatted{list(
 \description{
 Provides information about the queues for the specified Amazon Connect
 instance.
+
+If you do not specify a \code{QueueTypes} parameter, both standard and agent
+queues are returned. This might cause an unexpected truncation of
+results if you have more than 1000 agents and you limit the number of
+results of the API call in code.
 
 For more information about queues, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/concepts-queues-standard-and-agent.html}{Queues: Standard and Agent}
 in the \emph{Amazon Connect Administrator Guide}.

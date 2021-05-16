@@ -12,7 +12,8 @@ transcribeservice_update_vocabulary(VocabularyName, LanguageCode,
 try to update a vocabulary with the same name as a previous vocabulary
 you will receive a \code{ConflictException} error.}
 
-\item{LanguageCode}{[required] The language code of the vocabulary entries.}
+\item{LanguageCode}{[required] The language code of the vocabulary entries. For a list of languages and
+their corresponding language codes, see what-is-transcribe.}
 
 \item{Phrases}{An array of strings containing the vocabulary entries.}
 

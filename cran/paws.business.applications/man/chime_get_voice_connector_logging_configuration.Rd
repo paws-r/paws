@@ -21,7 +21,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Retrieves the logging configuration details for the specified Amazon
 Chime Voice Connector. Shows whether SIP message logs are enabled for
-sending to Amazon CloudWatch.
+sending to Amazon CloudWatch Logs.
 }
 \section{Request syntax}{
 \preformatted{svc$get_voice_connector_logging_configuration(

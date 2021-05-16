@@ -43,6 +43,7 @@ A list with the following syntax:\preformatted{list(
       MaxAlternatives = 123,
       VocabularyName = "string"
     ),
+    ContentIdentificationType = "PHI",
     Specialty = "PRIMARYCARE",
     Type = "CONVERSATION"|"DICTATION"
   )

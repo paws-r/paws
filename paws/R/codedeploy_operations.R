@@ -325,6 +325,7 @@ codedeploy_batch_get_applications <- function(applicationNames) {
 #'         deploymentType = "IN_PLACE"|"BLUE_GREEN",
 #'         deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
 #'       ),
+#'       outdatedInstancesStrategy = "UPDATE"|"IGNORE",
 #'       blueGreenDeploymentConfiguration = list(
 #'         terminateBlueInstancesOnDeploymentSuccess = list(
 #'           action = "TERMINATE"|"KEEP_ALIVE",
@@ -850,7 +851,7 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId = NULL, targetI
 #'         Ready = 123
 #'       ),
 #'       description = "string",
-#'       creator = "user"|"autoscaling"|"codeDeployRollback"|"CodeDeploy"|"CloudFormation"|"CloudFormationRollback",
+#'       creator = "user"|"autoscaling"|"codeDeployRollback"|"CodeDeploy"|"CodeDeployAutoUpdate"|"CloudFormation"|"CloudFormationRollback",
 #'       ignoreApplicationStopFailures = TRUE|FALSE,
 #'       autoRollbackConfiguration = list(
 #'         enabled = TRUE|FALSE,
@@ -942,7 +943,13 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId = NULL, targetI
 #'         "string"
 #'       ),
 #'       computePlatform = "Server"|"Lambda"|"ECS",
-#'       externalId = "string"
+#'       externalId = "string",
+#'       relatedDeployments = list(
+#'         autoUpdateOutdatedInstancesRootDeploymentId = "string",
+#'         autoUpdateOutdatedInstancesDeploymentIds = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -1367,8 +1374,8 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' svc$create_deployment_config(
 #'   deploymentConfigName = "string",
 #'   minimumHealthyHosts = list(
-#'     value = 123,
-#'     type = "HOST_COUNT"|"FLEET_PERCENT"
+#'     type = "HOST_COUNT"|"FLEET_PERCENT",
+#'     value = 123
 #'   ),
 #'   trafficRoutingConfig = list(
 #'     type = "TimeBasedCanary"|"TimeBasedLinear"|"AllAtOnce",
@@ -1414,7 +1421,8 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' codedeploy_create_deployment_group(applicationName, deploymentGroupName,
 #'   deploymentConfigName, ec2TagFilters, onPremisesInstanceTagFilters,
 #'   autoScalingGroups, serviceRoleArn, triggerConfigurations,
-#'   alarmConfiguration, autoRollbackConfiguration, deploymentStyle,
+#'   alarmConfiguration, autoRollbackConfiguration,
+#'   outdatedInstancesStrategy, deploymentStyle,
 #'   blueGreenDeploymentConfiguration, loadBalancerInfo, ec2TagSet,
 #'   ecsServices, onPremisesTagSet, tags)
 #'
@@ -1451,6 +1459,16 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' group is created.
 #' @param autoRollbackConfiguration Configuration information for an automatic rollback that is added when a
 #' deployment group is created.
+#' @param outdatedInstancesStrategy Indicates what happens when new EC2 instances are launched
+#' mid-deployment and do not receive the deployed application revision.
+#' 
+#' If this option is set to `UPDATE` or is unspecified, CodeDeploy
+#' initiates one or more 'auto-update outdated instances' deployments to
+#' apply the deployed application revision to the new EC2 instances.
+#' 
+#' If this option is set to `IGNORE`, CodeDeploy does not initiate a
+#' deployment to update the new EC2 instances. This may result in instances
+#' having different revisions.
 #' @param deploymentStyle Information about the type of deployment, in-place or blue/green, that
 #' you want to run and whether to route deployment traffic behind a load
 #' balancer.
@@ -1527,6 +1545,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #'       "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
 #'     )
 #'   ),
+#'   outdatedInstancesStrategy = "UPDATE"|"IGNORE",
 #'   deploymentStyle = list(
 #'     deploymentType = "IN_PLACE"|"BLUE_GREEN",
 #'     deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
@@ -1615,14 +1634,14 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_deployment_group
-codedeploy_create_deployment_group <- function(applicationName, deploymentGroupName, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL, tags = NULL) {
+codedeploy_create_deployment_group <- function(applicationName, deploymentGroupName, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, outdatedInstancesStrategy = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDeploymentGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, tags = tags)
+  input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, tags = tags)
   output <- .codedeploy$create_deployment_group_output()
   config <- get_config()
   svc <- .codedeploy$service(config)
@@ -2150,7 +2169,7 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 #'       Ready = 123
 #'     ),
 #'     description = "string",
-#'     creator = "user"|"autoscaling"|"codeDeployRollback"|"CodeDeploy"|"CloudFormation"|"CloudFormationRollback",
+#'     creator = "user"|"autoscaling"|"codeDeployRollback"|"CodeDeploy"|"CodeDeployAutoUpdate"|"CloudFormation"|"CloudFormationRollback",
 #'     ignoreApplicationStopFailures = TRUE|FALSE,
 #'     autoRollbackConfiguration = list(
 #'       enabled = TRUE|FALSE,
@@ -2242,7 +2261,13 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 #'       "string"
 #'     ),
 #'     computePlatform = "Server"|"Lambda"|"ECS",
-#'     externalId = "string"
+#'     externalId = "string",
+#'     relatedDeployments = list(
+#'       autoUpdateOutdatedInstancesRootDeploymentId = "string",
+#'       autoUpdateOutdatedInstancesDeploymentIds = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2293,8 +2318,8 @@ codedeploy_get_deployment <- function(deploymentId) {
 #'     deploymentConfigId = "string",
 #'     deploymentConfigName = "string",
 #'     minimumHealthyHosts = list(
-#'       value = 123,
-#'       type = "HOST_COUNT"|"FLEET_PERCENT"
+#'       type = "HOST_COUNT"|"FLEET_PERCENT",
+#'       value = 123
 #'     ),
 #'     createTime = as.POSIXct(
 #'       "2015-01-01"
@@ -2434,6 +2459,7 @@ codedeploy_get_deployment_config <- function(deploymentConfigName) {
 #'       deploymentType = "IN_PLACE"|"BLUE_GREEN",
 #'       deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
 #'     ),
+#'     outdatedInstancesStrategy = "UPDATE"|"IGNORE",
 #'     blueGreenDeploymentConfiguration = list(
 #'       terminateBlueInstancesOnDeploymentSuccess = list(
 #'         action = "TERMINATE"|"KEEP_ALIVE",
@@ -3601,7 +3627,7 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
 #' @param lifecycleEventHookExecutionId The execution ID of a deployment's lifecycle hook. A deployment
 #' lifecycle hook is specified in the `hooks` section of the AppSpec file.
 #' @param status The result of a Lambda function that validates a deployment lifecycle
-#' event (`Succeeded` or `Failed`).
+#' event. `Succeeded` and `Failed` are the only valid values for `status`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4051,7 +4077,8 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #'   currentDeploymentGroupName, newDeploymentGroupName,
 #'   deploymentConfigName, ec2TagFilters, onPremisesInstanceTagFilters,
 #'   autoScalingGroups, serviceRoleArn, triggerConfigurations,
-#'   alarmConfiguration, autoRollbackConfiguration, deploymentStyle,
+#'   alarmConfiguration, autoRollbackConfiguration,
+#'   outdatedInstancesStrategy, deploymentStyle,
 #'   blueGreenDeploymentConfiguration, loadBalancerInfo, ec2TagSet,
 #'   ecsServices, onPremisesTagSet)
 #'
@@ -4079,6 +4106,16 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' deployment group is updated.
 #' @param autoRollbackConfiguration Information for an automatic rollback configuration that is added or
 #' changed when a deployment group is updated.
+#' @param outdatedInstancesStrategy Indicates what happens when new EC2 instances are launched
+#' mid-deployment and do not receive the deployed application revision.
+#' 
+#' If this option is set to `UPDATE` or is unspecified, CodeDeploy
+#' initiates one or more 'auto-update outdated instances' deployments to
+#' apply the deployed application revision to the new EC2 instances.
+#' 
+#' If this option is set to `IGNORE`, CodeDeploy does not initiate a
+#' deployment to update the new EC2 instances. This may result in instances
+#' having different revisions.
 #' @param deploymentStyle Information about the type of deployment, either in-place or blue/green,
 #' you want to run and whether to route deployment traffic behind a load
 #' balancer.
@@ -4156,6 +4193,7 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #'       "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
 #'     )
 #'   ),
+#'   outdatedInstancesStrategy = "UPDATE"|"IGNORE",
 #'   deploymentStyle = list(
 #'     deploymentType = "IN_PLACE"|"BLUE_GREEN",
 #'     deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
@@ -4238,14 +4276,14 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' @keywords internal
 #'
 #' @rdname codedeploy_update_deployment_group
-codedeploy_update_deployment_group <- function(applicationName, currentDeploymentGroupName, newDeploymentGroupName = NULL, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn = NULL, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL) {
+codedeploy_update_deployment_group <- function(applicationName, currentDeploymentGroupName, newDeploymentGroupName = NULL, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn = NULL, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, outdatedInstancesStrategy = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL) {
   op <- new_operation(
     name = "UpdateDeploymentGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codedeploy$update_deployment_group_input(applicationName = applicationName, currentDeploymentGroupName = currentDeploymentGroupName, newDeploymentGroupName = newDeploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet)
+  input <- .codedeploy$update_deployment_group_input(applicationName = applicationName, currentDeploymentGroupName = currentDeploymentGroupName, newDeploymentGroupName = newDeploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet)
   output <- .codedeploy$update_deployment_group_output()
   config <- get_config()
   svc <- .codedeploy$service(config)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_bucket_tagging}
 \alias{s3control_get_bucket_tagging}
-\title{This operation gets an Amazon S3 on Outposts bucket's tags}
+\title{This action gets an Amazon S3 on Outposts bucket's tags}
 \usage{
 s3control_get_bucket_tagging(AccountId, Bucket)
 }
@@ -35,15 +35,15 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This operation gets an Amazon S3 on Outposts bucket's tags. To get an S3
+This action gets an Amazon S3 on Outposts bucket's tags. To get an S3
 bucket tags, see \code{\link[=s3control_get_bucket_tagging]{get_bucket_tagging}} in
-the \emph{Amazon Simple Storage Service API}.
+the \emph{Amazon S3 API Reference}.
 
 Returns the tag set associated with the Outposts bucket. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-To use this operation, you must have permission to perform the
+To use this action, you must have permission to perform the
 \code{\link[=s3control_get_bucket_tagging]{get_bucket_tagging}} action. By default,
 the bucket owner has this permission and can grant this permission to
 others.

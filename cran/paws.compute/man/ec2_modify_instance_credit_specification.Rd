@@ -44,7 +44,7 @@ burstable performance instance. The credit options are \code{standard} and
 \code{unlimited}.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable performance instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_instance_credit_specification(

@@ -18,6 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{service-name} - The name of the service.
+\item \code{service-type} - The type of service (\code{Interface} | \code{Gateway}).
 \item \code{tag}:<key> - The key/value combination of a tag assigned to
 the resource. Use the tag key in the filter name and the tag value
 as the filter value. For example, to find all resources that have a
@@ -84,13 +85,13 @@ A list with the following syntax:\preformatted{list(
 \description{
 Describes available services to which you can create a VPC endpoint.
 
-When the service provider and the consumer have different accounts
+When the service provider and the consumer have different accounts in
 multiple Availability Zones, and the consumer views the VPC endpoint
 service information, the response only includes the common Availability
 Zones. For example, when the service provider account uses \verb{us-east-1a}
-and \verb{us-east-1c} and the consumer uses \verb{us-east-1a} and us-east-1a and
-us-east-1b, the response includes the VPC endpoint services in the
-common Availability Zone, \verb{us-east-1a}.
+and \verb{us-east-1c} and the consumer uses \verb{us-east-1a} and \verb{us-east-1b},
+the response includes the VPC endpoint services in the common
+Availability Zone, \verb{us-east-1a}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_vpc_endpoint_services(

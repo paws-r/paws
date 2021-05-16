@@ -294,8 +294,7 @@ autoscaling_batch_delete_scheduled_action <- function(AutoScalingGroupName, Sche
 #'
 #' @description
 #' Creates or updates one or more scheduled scaling actions for an Auto
-#' Scaling group. If you leave a parameter unspecified when updating a
-#' scheduled scaling action, the corresponding value remains unchanged.
+#' Scaling group.
 #'
 #' @usage
 #' autoscaling_batch_put_scheduled_update_group_action(
@@ -334,7 +333,8 @@ autoscaling_batch_delete_scheduled_action <- function(AutoScalingGroupName, Sche
 #'       Recurrence = "string",
 #'       MinSize = 123,
 #'       MaxSize = 123,
-#'       DesiredCapacity = 123
+#'       DesiredCapacity = 123,
+#'       TimeZone = "string"
 #'     )
 #'   )
 #' )
@@ -367,9 +367,10 @@ autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroup
 #' roll back any replacements that have already been completed, but it
 #' prevents new replacements from being started.
 #' 
-#' For more information, see [Replacing Auto Scaling Instances Based on an
-#' Instance
-#' Refresh](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html).
+#' For more information, see [Replacing Auto Scaling instances based on an
+#' instance
+#' refresh](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
 #' autoscaling_cancel_instance_refresh(AutoScalingGroupName)
@@ -578,13 +579,13 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MixedInstancesPolicy An embedded object that specifies a mixed instances policy. The required
-#' parameters must be specified. If optional parameters are unspecified,
+#' properties must be specified. If optional properties are unspecified,
 #' their default values are used.
 #' 
-#' The policy includes parameters that not only define the distribution of
+#' The policy includes properties that not only define the distribution of
 #' On-Demand Instances and Spot Instances, the maximum price to pay for
 #' Spot Instances, and how the Auto Scaling group allocates instance types
-#' to fulfill On-Demand and Spot capacities, but also the parameters that
+#' to fulfill On-Demand and Spot capacities, but also the properties that
 #' specify the instance configuration information—the launch template and
 #' instance types. The policy can also include a weight for each instance
 #' type and different launch templates for individual instance types. For
@@ -824,9 +825,12 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' # target group.
 #' svc$create_auto_scaling_group(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
-#'   HealthCheckGracePeriod = 120L,
+#'   HealthCheckGracePeriod = 300L,
 #'   HealthCheckType = "ELB",
-#'   LaunchConfigurationName = "my-launch-config",
+#'   LaunchTemplate = list(
+#'     LaunchTemplateId = "lt-0a20c965061f64abc",
+#'     Version = "$Default"
+#'   ),
 #'   MaxSize = 3L,
 #'   MinSize = 1L,
 #'   TargetGroupARNs = list(
@@ -835,21 +839,44 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'   VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
 #' )
 #' 
-#' # This example creates an Auto Scaling group and attaches the specified
-#' # Classic Load Balancer.
+#' # This example creates an Auto Scaling group with a mixed instances
+#' # policy. It specifies the c5.large, c5a.large, and c6g.large instance
+#' # types and defines a different launch template for the c6g.large instance
+#' # type.
 #' svc$create_auto_scaling_group(
-#'   AutoScalingGroupName = "my-auto-scaling-group",
-#'   AvailabilityZones = list(
-#'     "us-west-2c"
+#'   AutoScalingGroupName = "my-asg",
+#'   DesiredCapacity = 3L,
+#'   MaxSize = 5L,
+#'   MinSize = 1L,
+#'   MixedInstancesPolicy = list(
+#'     InstancesDistribution = list(
+#'       OnDemandBaseCapacity = 1L,
+#'       OnDemandPercentageAboveBaseCapacity = 50L,
+#'       SpotAllocationStrategy = "capacity-optimized"
+#'     ),
+#'     LaunchTemplate = list(
+#'       LaunchTemplateSpecification = list(
+#'         LaunchTemplateName = "my-launch-template-for-x86",
+#'         Version = "$Latest"
+#'       ),
+#'       Overrides = list(
+#'         list(
+#'           InstanceType = "c6g.large",
+#'           LaunchTemplateSpecification = list(
+#'             LaunchTemplateName = "my-launch-template-for-arm",
+#'             Version = "$Latest"
+#'           )
+#'         ),
+#'         list(
+#'           InstanceType = "c5.large"
+#'         ),
+#'         list(
+#'           InstanceType = "c5a.large"
+#'         )
+#'       )
+#'     )
 #'   ),
-#'   HealthCheckGracePeriod = 120L,
-#'   HealthCheckType = "ELB",
-#'   LaunchConfigurationName = "my-launch-config",
-#'   LoadBalancerNames = list(
-#'     "my-load-balancer"
-#'   ),
-#'   MaxSize = 3L,
-#'   MinSize = 1L
+#'   VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
 #' )
 #' }
 #'
@@ -1249,8 +1276,8 @@ autoscaling_create_or_update_tags <- function(Tags) {
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ForceDelete Specifies that the group is to be deleted along with all instances
 #' associated with the group, without waiting for all instances to be
-#' terminated. This parameter also deletes any lifecycle actions associated
-#' with the group.
+#' terminated. This parameter also deletes any outstanding lifecycle
+#' actions associated with the group.
 #'
 #' @return
 #' An empty list.
@@ -1636,6 +1663,51 @@ autoscaling_delete_tags <- function(Tags) {
 }
 .autoscaling$operations$delete_tags <- autoscaling_delete_tags
 
+#' Deletes the warm pool for the specified Auto Scaling group
+#'
+#' @description
+#' Deletes the warm pool for the specified Auto Scaling group.
+#'
+#' @usage
+#' autoscaling_delete_warm_pool(AutoScalingGroupName, ForceDelete)
+#'
+#' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
+#' @param ForceDelete Specifies that the warm pool is to be deleted along with all instances
+#' associated with the warm pool, without waiting for all instances to be
+#' terminated. This parameter also deletes any outstanding lifecycle
+#' actions associated with the warm pool instances.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_warm_pool(
+#'   AutoScalingGroupName = "string",
+#'   ForceDelete = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname autoscaling_delete_warm_pool
+autoscaling_delete_warm_pool <- function(AutoScalingGroupName, ForceDelete = NULL) {
+  op <- new_operation(
+    name = "DeleteWarmPool",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .autoscaling$delete_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, ForceDelete = ForceDelete)
+  output <- .autoscaling$delete_warm_pool_output()
+  config <- get_config()
+  svc <- .autoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.autoscaling$operations$delete_warm_pool <- autoscaling_delete_warm_pool
+
 #' Describes the current Amazon EC2 Auto Scaling resource quotas for your
 #' AWS account
 #'
@@ -1835,7 +1907,7 @@ autoscaling_describe_adjustment_types <- function() {
 #'           InstanceId = "string",
 #'           InstanceType = "string",
 #'           AvailabilityZone = "string",
-#'           LifecycleState = "Pending"|"Pending:Wait"|"Pending:Proceed"|"Quarantined"|"InService"|"Terminating"|"Terminating:Wait"|"Terminating:Proceed"|"Terminated"|"Detaching"|"Detached"|"EnteringStandby"|"Standby",
+#'           LifecycleState = "Pending"|"Pending:Wait"|"Pending:Proceed"|"Quarantined"|"InService"|"Terminating"|"Terminating:Wait"|"Terminating:Proceed"|"Terminated"|"Detaching"|"Detached"|"EnteringStandby"|"Standby"|"Warmed:Pending"|"Warmed:Pending:Wait"|"Warmed:Pending:Proceed"|"Warmed:Terminating"|"Warmed:Terminating:Wait"|"Warmed:Terminating:Proceed"|"Warmed:Terminated"|"Warmed:Stopped"|"Warmed:Running",
 #'           HealthStatus = "string",
 #'           LaunchConfigurationName = "string",
 #'           LaunchTemplate = list(
@@ -1880,7 +1952,14 @@ autoscaling_describe_adjustment_types <- function() {
 #'       NewInstancesProtectedFromScaleIn = TRUE|FALSE,
 #'       ServiceLinkedRoleARN = "string",
 #'       MaxInstanceLifetime = 123,
-#'       CapacityRebalance = TRUE|FALSE
+#'       CapacityRebalance = TRUE|FALSE,
+#'       WarmPoolConfiguration = list(
+#'         MaxGroupPreparedCapacity = 123,
+#'         MinSize = 123,
+#'         PoolState = "Stopped"|"Running",
+#'         Status = "PendingDelete"
+#'       ),
+#'       WarmPoolSize = 123
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2086,9 +2165,10 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #' 
 #' -   `Cancelled` - The operation is cancelled.
 #' 
-#' For more information, see [Replacing Auto Scaling Instances Based on an
-#' Instance
-#' Refresh](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html).
+#' For more information, see [Replacing Auto Scaling instances based on an
+#' instance
+#' refresh](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
 #' autoscaling_describe_instance_refreshes(AutoScalingGroupName,
@@ -2118,7 +2198,17 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #'         "2015-01-01"
 #'       ),
 #'       PercentageComplete = 123,
-#'       InstancesToUpdate = 123
+#'       InstancesToUpdate = 123,
+#'       ProgressDetails = list(
+#'         LivePoolProgress = list(
+#'           PercentageComplete = 123,
+#'           InstancesToUpdate = 123
+#'         ),
+#'         WarmPoolProgress = list(
+#'           PercentageComplete = 123,
+#'           InstancesToUpdate = 123
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2809,10 +2899,18 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #' @description
 #' Describes one or more scaling activities for the specified Auto Scaling
 #' group.
+#' 
+#' To view the scaling activities from the Amazon EC2 Auto Scaling console,
+#' choose the **Activity** tab of the Auto Scaling group. When scaling
+#' events occur, you see scaling activity messages in the **Activity
+#' history**. For more information, see [Verifying a scaling activity for
+#' an Auto Scaling
+#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-verify-scaling-activity.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
 #' autoscaling_describe_scaling_activities(ActivityIds,
-#'   AutoScalingGroupName, MaxRecords, NextToken)
+#'   AutoScalingGroupName, IncludeDeletedGroups, MaxRecords, NextToken)
 #'
 #' @param ActivityIds The activity IDs of the desired scaling activities. You can specify up
 #' to 50 IDs. If you omit this parameter, all activities for the past six
@@ -2820,6 +2918,8 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #' ignored with no error. If you specify an Auto Scaling group, the results
 #' are limited to that group.
 #' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param IncludeDeletedGroups Indicates whether to include scaling activity from deleted Auto Scaling
+#' groups.
 #' @param MaxRecords The maximum number of items to return with this call. The default value
 #' is `100` and the maximum value is `100`.
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -2844,7 +2944,9 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
 #'       StatusMessage = "string",
 #'       Progress = 123,
-#'       Details = "string"
+#'       Details = "string",
+#'       AutoScalingGroupState = "string",
+#'       AutoScalingGroupARN = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2858,6 +2960,7 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #'     "string"
 #'   ),
 #'   AutoScalingGroupName = "string",
+#'   IncludeDeletedGroups = TRUE|FALSE,
 #'   MaxRecords = 123,
 #'   NextToken = "string"
 #' )
@@ -2875,14 +2978,14 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_scaling_activities
-autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScalingGroupName = NULL, MaxRecords = NULL, NextToken = NULL) {
+autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScalingGroupName = NULL, IncludeDeletedGroups = NULL, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeScalingActivities",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .autoscaling$describe_scaling_activities_input(ActivityIds = ActivityIds, AutoScalingGroupName = AutoScalingGroupName, MaxRecords = MaxRecords, NextToken = NextToken)
+  input <- .autoscaling$describe_scaling_activities_input(ActivityIds = ActivityIds, AutoScalingGroupName = AutoScalingGroupName, IncludeDeletedGroups = IncludeDeletedGroups, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_scaling_activities_output()
   config <- get_config()
   svc <- .autoscaling$service(config)
@@ -2994,7 +3097,8 @@ autoscaling_describe_scaling_process_types <- function() {
 #'       Recurrence = "string",
 #'       MinSize = 123,
 #'       MaxSize = 123,
-#'       DesiredCapacity = 123
+#'       DesiredCapacity = 123,
+#'       TimeZone = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3197,6 +3301,81 @@ autoscaling_describe_termination_policy_types <- function() {
 }
 .autoscaling$operations$describe_termination_policy_types <- autoscaling_describe_termination_policy_types
 
+#' Describes a warm pool and its instances
+#'
+#' @description
+#' Describes a warm pool and its instances.
+#'
+#' @usage
+#' autoscaling_describe_warm_pool(AutoScalingGroupName, MaxRecords,
+#'   NextToken)
+#'
+#' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
+#' @param MaxRecords The maximum number of instances to return with this call. The maximum
+#' value is `50`.
+#' @param NextToken The token for the next set of instances to return. (You received this
+#' token from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WarmPoolConfiguration = list(
+#'     MaxGroupPreparedCapacity = 123,
+#'     MinSize = 123,
+#'     PoolState = "Stopped"|"Running",
+#'     Status = "PendingDelete"
+#'   ),
+#'   Instances = list(
+#'     list(
+#'       InstanceId = "string",
+#'       InstanceType = "string",
+#'       AvailabilityZone = "string",
+#'       LifecycleState = "Pending"|"Pending:Wait"|"Pending:Proceed"|"Quarantined"|"InService"|"Terminating"|"Terminating:Wait"|"Terminating:Proceed"|"Terminated"|"Detaching"|"Detached"|"EnteringStandby"|"Standby"|"Warmed:Pending"|"Warmed:Pending:Wait"|"Warmed:Pending:Proceed"|"Warmed:Terminating"|"Warmed:Terminating:Wait"|"Warmed:Terminating:Proceed"|"Warmed:Terminated"|"Warmed:Stopped"|"Warmed:Running",
+#'       HealthStatus = "string",
+#'       LaunchConfigurationName = "string",
+#'       LaunchTemplate = list(
+#'         LaunchTemplateId = "string",
+#'         LaunchTemplateName = "string",
+#'         Version = "string"
+#'       ),
+#'       ProtectedFromScaleIn = TRUE|FALSE,
+#'       WeightedCapacity = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_warm_pool(
+#'   AutoScalingGroupName = "string",
+#'   MaxRecords = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname autoscaling_describe_warm_pool
+autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeWarmPool",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .autoscaling$describe_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, MaxRecords = MaxRecords, NextToken = NextToken)
+  output <- .autoscaling$describe_warm_pool_output()
+  config <- get_config()
+  svc <- .autoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.autoscaling$operations$describe_warm_pool <- autoscaling_describe_warm_pool
+
 #' Removes one or more instances from the specified Auto Scaling group
 #'
 #' @description
@@ -3246,7 +3425,9 @@ autoscaling_describe_termination_policy_types <- function() {
 #'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
 #'       StatusMessage = "string",
 #'       Progress = 123,
-#'       Details = "string"
+#'       Details = "string",
+#'       AutoScalingGroupState = "string",
+#'       AutoScalingGroupARN = "string"
 #'     )
 #'   )
 #' )
@@ -3464,6 +3645,20 @@ autoscaling_detach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' 
 #' -   `GroupTotalCapacity`
 #' 
+#' -   `WarmPoolDesiredCapacity`
+#' 
+#' -   `WarmPoolWarmedCapacity`
+#' 
+#' -   `WarmPoolPendingCapacity`
+#' 
+#' -   `WarmPoolTerminatingCapacity`
+#' 
+#' -   `WarmPoolTotalCapacity`
+#' 
+#' -   `GroupAndWarmPoolDesiredCapacity`
+#' 
+#' -   `GroupAndWarmPoolTotalCapacity`
+#' 
 #' If you omit this parameter, all metrics are disabled.
 #'
 #' @return
@@ -3556,6 +3751,22 @@ autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics
 #' -   `GroupTerminatingCapacity`
 #' 
 #' -   `GroupTotalCapacity`
+#' 
+#' The warm pools feature supports the following additional metrics:
+#' 
+#' -   `WarmPoolDesiredCapacity`
+#' 
+#' -   `WarmPoolWarmedCapacity`
+#' 
+#' -   `WarmPoolPendingCapacity`
+#' 
+#' -   `WarmPoolTerminatingCapacity`
+#' 
+#' -   `WarmPoolTotalCapacity`
+#' 
+#' -   `GroupAndWarmPoolDesiredCapacity`
+#' 
+#' -   `GroupAndWarmPoolTotalCapacity`
 #' 
 #' If you omit this parameter, all metrics are enabled.
 #' @param Granularity &#91;required&#93; The granularity to associate with the metrics to collect. The only valid
@@ -3652,7 +3863,9 @@ autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics 
 #'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
 #'       StatusMessage = "string",
 #'       Progress = 123,
-#'       Details = "string"
+#'       Details = "string",
+#'       AutoScalingGroupState = "string",
+#'       AutoScalingGroupARN = "string"
 #'     )
 #'   )
 #' )
@@ -3819,7 +4032,9 @@ autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, 
 #'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
 #'       StatusMessage = "string",
 #'       Progress = 123,
-#'       Details = "string"
+#'       Details = "string",
+#'       AutoScalingGroupState = "string",
+#'       AutoScalingGroupARN = "string"
 #'     )
 #'   )
 #' )
@@ -4272,7 +4487,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #'   TargetTrackingConfiguration = list(
 #'     PredefinedMetricSpecification = list(
 #'       PredefinedMetricType = "ALBRequestCountPerTarget",
-#'       ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targe..."
+#'       ResourceLabel = "app/my-alb/778d41231b141a0f/targetgroup/my-alb-targe..."
 #'     ),
 #'     TargetValue = 1000
 #'   )
@@ -4303,8 +4518,6 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #'
 #' @description
 #' Creates or updates a scheduled scaling action for an Auto Scaling group.
-#' If you leave a parameter unspecified when updating a scheduled scaling
-#' action, the corresponding value remains unchanged.
 #' 
 #' For more information, see [Scheduled
 #' scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html)
@@ -4313,7 +4526,7 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' @usage
 #' autoscaling_put_scheduled_update_group_action(AutoScalingGroupName,
 #'   ScheduledActionName, Time, StartTime, EndTime, Recurrence, MinSize,
-#'   MaxSize, DesiredCapacity)
+#'   MaxSize, DesiredCapacity, TimeZone)
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ScheduledActionName &#91;required&#93; The name of this scaling action.
@@ -4328,22 +4541,30 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' 
 #' If you try to schedule your action in the past, Amazon EC2 Auto Scaling
 #' returns an error message.
-#' @param EndTime The date and time for the recurring schedule to end. Amazon EC2 Auto
-#' Scaling does not perform the action after this time.
-#' @param Recurrence The recurring schedule for this action, in Unix cron syntax format. This
-#' format consists of five fields separated by white spaces: \[Minute\]
-#' \[Hour\] \[Day_of_Month\] \[Month_of_Year\] \[Day_of_Week\]. The
-#' value must be in quotes (for example, `"30 0 1 1,6,12 *"`). For more
-#' information about this format, see [Crontab](http://crontab.org/).
+#' @param EndTime The date and time for the recurring schedule to end, in UTC.
+#' @param Recurrence The recurring schedule for this action. This format consists of five
+#' fields separated by white spaces: \[Minute\] \[Hour\] \[Day_of_Month\]
+#' \[Month_of_Year\] \[Day_of_Week\]. The value must be in quotes (for
+#' example, `"30 0 1 1,6,12 *"`). For more information about this format,
+#' see [Crontab](http://crontab.org/).
 #' 
 #' When `StartTime` and `EndTime` are specified with `Recurrence`, they
 #' form the boundaries of when the recurring action starts and stops.
+#' 
+#' Cron expressions use Universal Coordinated Time (UTC) by default.
 #' @param MinSize The minimum size of the Auto Scaling group.
 #' @param MaxSize The maximum size of the Auto Scaling group.
 #' @param DesiredCapacity The desired capacity is the initial capacity of the Auto Scaling group
 #' after the scheduled action runs and the capacity it attempts to
 #' maintain. It can scale beyond this capacity if you add more scaling
 #' conditions.
+#' @param TimeZone Specifies the time zone for a cron expression. If a time zone is not
+#' provided, UTC is used by default.
+#' 
+#' Valid values are the canonical names of the IANA time zones, derived
+#' from the IANA Time Zone Database (such as `Etc/GMT+9` or
+#' `Pacific/Tahiti`). For more information, see
+#' <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>.
 #'
 #' @return
 #' An empty list.
@@ -4365,7 +4586,8 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #'   Recurrence = "string",
 #'   MinSize = 123,
 #'   MaxSize = 123,
-#'   DesiredCapacity = 123
+#'   DesiredCapacity = 123,
+#'   TimeZone = "string"
 #' )
 #' ```
 #'
@@ -4387,14 +4609,14 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' @keywords internal
 #'
 #' @rdname autoscaling_put_scheduled_update_group_action
-autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, ScheduledActionName, Time = NULL, StartTime = NULL, EndTime = NULL, Recurrence = NULL, MinSize = NULL, MaxSize = NULL, DesiredCapacity = NULL) {
+autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, ScheduledActionName, Time = NULL, StartTime = NULL, EndTime = NULL, Recurrence = NULL, MinSize = NULL, MaxSize = NULL, DesiredCapacity = NULL, TimeZone = NULL) {
   op <- new_operation(
     name = "PutScheduledUpdateGroupAction",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .autoscaling$put_scheduled_update_group_action_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionName = ScheduledActionName, Time = Time, StartTime = StartTime, EndTime = EndTime, Recurrence = Recurrence, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity)
+  input <- .autoscaling$put_scheduled_update_group_action_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionName = ScheduledActionName, Time = Time, StartTime = StartTime, EndTime = EndTime, Recurrence = Recurrence, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, TimeZone = TimeZone)
   output <- .autoscaling$put_scheduled_update_group_action_output()
   config <- get_config()
   svc <- .autoscaling$service(config)
@@ -4403,6 +4625,102 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
   return(response)
 }
 .autoscaling$operations$put_scheduled_update_group_action <- autoscaling_put_scheduled_update_group_action
+
+#' Adds a warm pool to the specified Auto Scaling group
+#'
+#' @description
+#' Adds a warm pool to the specified Auto Scaling group. A warm pool is a
+#' pool of pre-initialized EC2 instances that sits alongside the Auto
+#' Scaling group. Whenever your application needs to scale out, the Auto
+#' Scaling group can draw on the warm pool to meet its new desired
+#' capacity. For more information, see [Warm pools for Amazon EC2 Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' This operation must be called from the Region in which the Auto Scaling
+#' group was created. This operation cannot be called on an Auto Scaling
+#' group that has a mixed instances policy or a launch template or launch
+#' configuration that requests Spot Instances.
+#' 
+#' You can view the instances in the warm pool using the
+#' [`describe_warm_pool`][autoscaling_describe_warm_pool] API call. If you
+#' are no longer using a warm pool, you can delete it by calling the
+#' [`delete_warm_pool`][autoscaling_delete_warm_pool] API.
+#'
+#' @usage
+#' autoscaling_put_warm_pool(AutoScalingGroupName,
+#'   MaxGroupPreparedCapacity, MinSize, PoolState)
+#'
+#' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
+#' @param MaxGroupPreparedCapacity Specifies the total maximum number of instances that are allowed to be
+#' in the warm pool or in any state except `Terminated` for the Auto
+#' Scaling group. This is an optional property. Specify it only if the warm
+#' pool size should not be determined by the difference between the group's
+#' maximum capacity and its desired capacity.
+#' 
+#' Amazon EC2 Auto Scaling will launch and maintain either the difference
+#' between the group's maximum capacity and its desired capacity, if a
+#' value for `MaxGroupPreparedCapacity` is not specified, or the difference
+#' between the `MaxGroupPreparedCapacity` and the desired capacity, if a
+#' value for `MaxGroupPreparedCapacity` is specified.
+#' 
+#' The size of the warm pool is dynamic. Only when
+#' `MaxGroupPreparedCapacity` and `MinSize` are set to the same value does
+#' the warm pool have an absolute size.
+#' 
+#' If the desired capacity of the Auto Scaling group is higher than the
+#' `MaxGroupPreparedCapacity`, the capacity of the warm pool is 0. To
+#' remove a value that you previously set, include the property but specify
+#' -1 for the value.
+#' @param MinSize Specifies the minimum number of instances to maintain in the warm pool.
+#' This helps you to ensure that there is always a certain number of warmed
+#' instances available to handle traffic spikes. Defaults to 0 if not
+#' specified.
+#' @param PoolState Sets the instance state to transition to after the lifecycle hooks
+#' finish. Valid values are: `Stopped` (default) or `Running`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_warm_pool(
+#'   AutoScalingGroupName = "string",
+#'   MaxGroupPreparedCapacity = 123,
+#'   MinSize = 123,
+#'   PoolState = "Stopped"|"Running"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example adds a warm pool to the specified Auto Scaling group.
+#' svc$put_warm_pool(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   MinSize = 30L,
+#'   PoolState = "Stopped"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname autoscaling_put_warm_pool
+autoscaling_put_warm_pool <- function(AutoScalingGroupName, MaxGroupPreparedCapacity = NULL, MinSize = NULL, PoolState = NULL) {
+  op <- new_operation(
+    name = "PutWarmPool",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .autoscaling$put_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, MaxGroupPreparedCapacity = MaxGroupPreparedCapacity, MinSize = MinSize, PoolState = PoolState)
+  output <- .autoscaling$put_warm_pool_output()
+  config <- get_config()
+  svc <- .autoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.autoscaling$operations$put_warm_pool <- autoscaling_put_warm_pool
 
 #' Records a heartbeat for the lifecycle action associated with the
 #' specified token or instance
@@ -4434,8 +4752,8 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
 #' 5.  If you finish before the timeout period ends, complete the lifecycle
 #'     action.
 #' 
-#' For more information, see [Auto Scaling
-#' lifecycle](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+#' For more information, see [Amazon EC2 Auto Scaling lifecycle
+#' hooks](https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -4718,6 +5036,7 @@ autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldResp
 #'
 #' @description
 #' Updates the instance protection settings of the specified instances.
+#' This operation cannot be called on instances in a warm pool.
 #' 
 #' For more information about preventing instances that are part of an Auto
 #' Scaling group from terminating on scale in, see [Instance scale-in
@@ -4792,13 +5111,13 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 .autoscaling$operations$set_instance_protection <- autoscaling_set_instance_protection
 
 #' Starts a new instance refresh operation, which triggers a rolling
-#' replacement of all previously launched instances in the Auto Scaling
-#' group with a new group of instances
+#' replacement of previously launched instances in the Auto Scaling group
+#' with a new group of instances
 #'
 #' @description
 #' Starts a new instance refresh operation, which triggers a rolling
-#' replacement of all previously launched instances in the Auto Scaling
-#' group with a new group of instances.
+#' replacement of previously launched instances in the Auto Scaling group
+#' with a new group of instances.
 #' 
 #' If successful, this call creates a new instance refresh request with a
 #' unique ID that you can use to track its progress. To query its status,
@@ -4809,9 +5128,10 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' API. To cancel an instance refresh operation in progress, use the
 #' [`cancel_instance_refresh`][autoscaling_cancel_instance_refresh] API.
 #' 
-#' For more information, see [Replacing Auto Scaling Instances Based on an
-#' Instance
-#' Refresh](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html).
+#' For more information, see [Replacing Auto Scaling instances based on an
+#' instance
+#' refresh](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
 #' autoscaling_start_instance_refresh(AutoScalingGroupName, Strategy,
@@ -4853,7 +5173,11 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #'   Strategy = "Rolling",
 #'   Preferences = list(
 #'     MinHealthyPercentage = 123,
-#'     InstanceWarmup = 123
+#'     InstanceWarmup = 123,
+#'     CheckpointPercentages = list(
+#'       123
+#'     ),
+#'     CheckpointDelay = 123
 #'   )
 #' )
 #' ```
@@ -4983,7 +5307,7 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #'
 #' @description
 #' Terminates the specified instance and optionally adjusts the desired
-#' group size.
+#' group size. This operation cannot be called on instances in a warm pool.
 #' 
 #' This call simply makes a termination request. The instance is not
 #' terminated immediately. When an instance is terminated, the instance
@@ -5029,7 +5353,9 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #'     StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
 #'     StatusMessage = "string",
 #'     Progress = 123,
-#'     Details = "string"
+#'     Details = "string",
+#'     AutoScalingGroupState = "string",
+#'     AutoScalingGroupARN = "string"
 #'   )
 #' )
 #' ```
@@ -5144,7 +5470,7 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' specify `LaunchTemplate` in your update request, you can't specify
 #' `LaunchConfigurationName` or `MixedInstancesPolicy`.
 #' @param MixedInstancesPolicy An embedded object that specifies a mixed instances policy. When you
-#' make changes to an existing policy, all optional parameters are left
+#' make changes to an existing policy, all optional properties are left
 #' unchanged if not specified. For more information, see [Auto Scaling
 #' groups with multiple instance types and purchase
 #' options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html)

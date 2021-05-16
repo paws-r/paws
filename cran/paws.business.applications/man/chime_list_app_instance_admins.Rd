@@ -2,12 +2,12 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_list_app_instance_admins}
 \alias{chime_list_app_instance_admins}
-\title{Returns a list of the administrators in the app instance}
+\title{Returns a list of the administrators in the AppInstance}
 \usage{
 chime_list_app_instance_admins(AppInstanceArn, MaxResults, NextToken)
 }
 \arguments{
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 
 \item{MaxResults}{The maximum number of administrators that you want to return.}
 
@@ -30,7 +30,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns a list of the administrators in the app instance.
+Returns a list of the administrators in the \code{AppInstance}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_app_instance_admins(

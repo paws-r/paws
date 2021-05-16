@@ -2,22 +2,22 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_list_types}
 \alias{cloudformation_list_types}
-\title{Returns summary information about types that have been registered with
-CloudFormation}
+\title{Returns summary information about extension that have been registered
+with CloudFormation}
 \usage{
 cloudformation_list_types(Visibility, ProvisioningType,
   DeprecatedStatus, Type, MaxResults, NextToken)
 }
 \arguments{
-\item{Visibility}{The scope at which the type is visible and usable in CloudFormation
+\item{Visibility}{The scope at which the extension is visible and usable in CloudFormation
 operations.
 
 Valid values include:
 \itemize{
-\item \code{PRIVATE}: The type is only visible and usable within the account in
-which it is registered. Currently, AWS CloudFormation marks any
-types you create as \code{PRIVATE}.
-\item \code{PUBLIC}: The type is publically visible and usable within any
+\item \code{PRIVATE}: The extension is only visible and usable within the
+account in which it is registered. Currently, AWS CloudFormation
+marks any extension you create as \code{PRIVATE}.
+\item \code{PUBLIC}: The extension is publically visible and usable within any
 Amazon account.
 }
 
@@ -29,23 +29,24 @@ the schema handler package submitted.
 
 Valid values include:
 \itemize{
-\item \code{FULLY_MUTABLE}: The type includes an update handler to process
-updates to the type during stack update operations.
-\item \code{IMMUTABLE}: The type does not include an update handler, so the
-type cannot be updated and must instead be replaced during stack
-update operations.
-\item \code{NON_PROVISIONABLE}: The type does not include create, read, and
-delete handlers, and therefore cannot actually be provisioned.
+\item \code{FULLY_MUTABLE}: The extension includes an update handler to process
+updates to the extension during stack update operations.
+\item \code{IMMUTABLE}: The extension does not include an update handler, so
+the extension cannot be updated and must instead be replaced during
+stack update operations.
+\item \code{NON_PROVISIONABLE}: The extension does not include create, read,
+and delete handlers, and therefore cannot actually be provisioned.
 }}
 
-\item{DeprecatedStatus}{The deprecation status of the types that you want to get summary
+\item{DeprecatedStatus}{The deprecation status of the extension that you want to get summary
 information about.
 
 Valid values include:
 \itemize{
-\item \code{LIVE}: The type is registered for use in CloudFormation operations.
-\item \code{DEPRECATED}: The type has been deregistered and can no longer be
-used in CloudFormation operations.
+\item \code{LIVE}: The extension is registered for use in CloudFormation
+operations.
+\item \code{DEPRECATED}: The extension has been deregistered and can no longer
+be used in CloudFormation operations.
 }}
 
 \item{Type}{The type of extension.}
@@ -81,8 +82,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns summary information about types that have been registered with
-CloudFormation.
+Returns summary information about extension that have been registered
+with CloudFormation.
 }
 \section{Request syntax}{
 \preformatted{svc$list_types(

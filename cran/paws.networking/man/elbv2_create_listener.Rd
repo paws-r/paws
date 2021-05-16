@@ -3,7 +3,7 @@
 \name{elbv2_create_listener}
 \alias{elbv2_create_listener}
 \title{Creates a listener for the specified Application Load Balancer, Network
-Load Balancer}
+Load Balancer, or Gateway Load Balancer}
 \usage{
 elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
   Certificates, DefaultActions, AlpnPolicy, Tags)
@@ -135,7 +135,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Creates a listener for the specified Application Load Balancer, Network
-Load Balancer. or Gateway Load Balancer.
+Load Balancer, or Gateway Load Balancer.
 
 For more information, see the following:
 \itemize{

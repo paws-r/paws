@@ -48,6 +48,10 @@ test_that("describe_db_proxies", {
   expect_error(svc$describe_db_proxies(), NA)
 })
 
+test_that("describe_db_proxy_endpoints", {
+  expect_error(svc$describe_db_proxy_endpoints(), NA)
+})
+
 test_that("describe_db_security_groups", {
   expect_error(svc$describe_db_security_groups(), NA)
 })

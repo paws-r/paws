@@ -80,7 +80,7 @@ A list with the following syntax:\preformatted{list(
           InstanceId = "string",
           InstanceType = "string",
           AvailabilityZone = "string",
-          LifecycleState = "Pending"|"Pending:Wait"|"Pending:Proceed"|"Quarantined"|"InService"|"Terminating"|"Terminating:Wait"|"Terminating:Proceed"|"Terminated"|"Detaching"|"Detached"|"EnteringStandby"|"Standby",
+          LifecycleState = "Pending"|"Pending:Wait"|"Pending:Proceed"|"Quarantined"|"InService"|"Terminating"|"Terminating:Wait"|"Terminating:Proceed"|"Terminated"|"Detaching"|"Detached"|"EnteringStandby"|"Standby"|"Warmed:Pending"|"Warmed:Pending:Wait"|"Warmed:Pending:Proceed"|"Warmed:Terminating"|"Warmed:Terminating:Wait"|"Warmed:Terminating:Proceed"|"Warmed:Terminated"|"Warmed:Stopped"|"Warmed:Running",
           HealthStatus = "string",
           LaunchConfigurationName = "string",
           LaunchTemplate = list(
@@ -125,7 +125,14 @@ A list with the following syntax:\preformatted{list(
       NewInstancesProtectedFromScaleIn = TRUE|FALSE,
       ServiceLinkedRoleARN = "string",
       MaxInstanceLifetime = 123,
-      CapacityRebalance = TRUE|FALSE
+      CapacityRebalance = TRUE|FALSE,
+      WarmPoolConfiguration = list(
+        MaxGroupPreparedCapacity = 123,
+        MinSize = 123,
+        PoolState = "Stopped"|"Running",
+        Status = "PendingDelete"
+      ),
+      WarmPoolSize = 123
     )
   ),
   NextToken = "string"

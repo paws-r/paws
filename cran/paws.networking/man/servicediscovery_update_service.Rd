@@ -35,7 +35,7 @@ configurations from an
 configurations are deleted from the service.
 \item If you omit an existing \code{HealthCheckCustomConfig} configuration from
 an \code{\link[=servicediscovery_update_service]{update_service}} request, the
-configuration is not deleted from the service.
+configuration isn't deleted from the service.
 }
 
 When you update settings for a service, AWS Cloud Map also updates the

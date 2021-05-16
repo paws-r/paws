@@ -312,12 +312,14 @@ alexaforbusiness_associate_skill_with_users <- function(SkillId) {
 #'
 #' @usage
 #' alexaforbusiness_create_address_book(Name, Description,
-#'   ClientRequestToken)
+#'   ClientRequestToken, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the address book.
 #' @param Description The description of the address book.
 #' @param ClientRequestToken A unique, user-specified identifier for the request that ensures
 #' idempotency.
+#' @param Tags The tags to be added to the specified resource. Do not provide system
+#' tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -332,21 +334,27 @@ alexaforbusiness_associate_skill_with_users <- function(SkillId) {
 #' svc$create_address_book(
 #'   Name = "string",
 #'   Description = "string",
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_create_address_book
-alexaforbusiness_create_address_book <- function(Name, Description = NULL, ClientRequestToken = NULL) {
+alexaforbusiness_create_address_book <- function(Name, Description = NULL, ClientRequestToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAddressBook",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$create_address_book_input(Name = Name, Description = Description, ClientRequestToken = ClientRequestToken)
+  input <- .alexaforbusiness$create_address_book_input(Name = Name, Description = Description, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .alexaforbusiness$create_address_book_output()
   config <- get_config()
   svc <- .alexaforbusiness$service(config)
@@ -440,7 +448,7 @@ alexaforbusiness_create_business_report_schedule <- function(ScheduleName = NULL
 #' @usage
 #' alexaforbusiness_create_conference_provider(ConferenceProviderName,
 #'   ConferenceProviderType, IPDialIn, PSTNDialIn, MeetingSetting,
-#'   ClientRequestToken)
+#'   ClientRequestToken, Tags)
 #'
 #' @param ConferenceProviderName &#91;required&#93; The name of the conference provider.
 #' @param ConferenceProviderType &#91;required&#93; Represents a type within a list of predefined types.
@@ -448,6 +456,8 @@ alexaforbusiness_create_business_report_schedule <- function(ScheduleName = NULL
 #' @param PSTNDialIn The information for PSTN conferencing.
 #' @param MeetingSetting &#91;required&#93; The meeting settings for the conference provider.
 #' @param ClientRequestToken The request token of the client.
+#' @param Tags The tags to be added to the specified resource. Do not provide system
+#' tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -475,21 +485,27 @@ alexaforbusiness_create_business_report_schedule <- function(ScheduleName = NULL
 #'   MeetingSetting = list(
 #'     RequirePin = "YES"|"NO"|"OPTIONAL"
 #'   ),
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_create_conference_provider
-alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, ConferenceProviderType, IPDialIn = NULL, PSTNDialIn = NULL, MeetingSetting, ClientRequestToken = NULL) {
+alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, ConferenceProviderType, IPDialIn = NULL, PSTNDialIn = NULL, MeetingSetting, ClientRequestToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateConferenceProvider",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$create_conference_provider_input(ConferenceProviderName = ConferenceProviderName, ConferenceProviderType = ConferenceProviderType, IPDialIn = IPDialIn, PSTNDialIn = PSTNDialIn, MeetingSetting = MeetingSetting, ClientRequestToken = ClientRequestToken)
+  input <- .alexaforbusiness$create_conference_provider_input(ConferenceProviderName = ConferenceProviderName, ConferenceProviderType = ConferenceProviderType, IPDialIn = IPDialIn, PSTNDialIn = PSTNDialIn, MeetingSetting = MeetingSetting, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .alexaforbusiness$create_conference_provider_output()
   config <- get_config()
   svc <- .alexaforbusiness$service(config)
@@ -506,7 +522,7 @@ alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, 
 #'
 #' @usage
 #' alexaforbusiness_create_contact(DisplayName, FirstName, LastName,
-#'   PhoneNumber, PhoneNumbers, SipAddresses, ClientRequestToken)
+#'   PhoneNumber, PhoneNumbers, SipAddresses, ClientRequestToken, Tags)
 #'
 #' @param DisplayName The name of the contact to display on the console.
 #' @param FirstName &#91;required&#93; The first name of the contact that is used to call the contact on the
@@ -521,6 +537,8 @@ alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, 
 #' @param SipAddresses The list of SIP addresses for the contact.
 #' @param ClientRequestToken A unique, user-specified identifier for this request that ensures
 #' idempotency.
+#' @param Tags The tags to be added to the specified resource. Do not provide system
+#' tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -549,21 +567,27 @@ alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, 
 #'       Type = "WORK"
 #'     )
 #'   ),
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_create_contact
-alexaforbusiness_create_contact <- function(DisplayName = NULL, FirstName, LastName = NULL, PhoneNumber = NULL, PhoneNumbers = NULL, SipAddresses = NULL, ClientRequestToken = NULL) {
+alexaforbusiness_create_contact <- function(DisplayName = NULL, FirstName, LastName = NULL, PhoneNumber = NULL, PhoneNumbers = NULL, SipAddresses = NULL, ClientRequestToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateContact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$create_contact_input(DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, PhoneNumber = PhoneNumber, PhoneNumbers = PhoneNumbers, SipAddresses = SipAddresses, ClientRequestToken = ClientRequestToken)
+  input <- .alexaforbusiness$create_contact_input(DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, PhoneNumber = PhoneNumber, PhoneNumbers = PhoneNumbers, SipAddresses = SipAddresses, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .alexaforbusiness$create_contact_output()
   config <- get_config()
   svc <- .alexaforbusiness$service(config)
@@ -580,12 +604,14 @@ alexaforbusiness_create_contact <- function(DisplayName = NULL, FirstName, LastN
 #'
 #' @usage
 #' alexaforbusiness_create_gateway_group(Name, Description,
-#'   ClientRequestToken)
+#'   ClientRequestToken, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the gateway group.
 #' @param Description The description of the gateway group.
 #' @param ClientRequestToken &#91;required&#93; A unique, user-specified identifier for the request that ensures
 #' idempotency.
+#' @param Tags The tags to be added to the specified resource. Do not provide system
+#' tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -600,21 +626,27 @@ alexaforbusiness_create_contact <- function(DisplayName = NULL, FirstName, LastN
 #' svc$create_gateway_group(
 #'   Name = "string",
 #'   Description = "string",
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_create_gateway_group
-alexaforbusiness_create_gateway_group <- function(Name, Description = NULL, ClientRequestToken) {
+alexaforbusiness_create_gateway_group <- function(Name, Description = NULL, ClientRequestToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateGatewayGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$create_gateway_group_input(Name = Name, Description = Description, ClientRequestToken = ClientRequestToken)
+  input <- .alexaforbusiness$create_gateway_group_input(Name = Name, Description = Description, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .alexaforbusiness$create_gateway_group_output()
   config <- get_config()
   svc <- .alexaforbusiness$service(config)
@@ -632,7 +664,7 @@ alexaforbusiness_create_gateway_group <- function(Name, Description = NULL, Clie
 #' @usage
 #' alexaforbusiness_create_network_profile(NetworkProfileName, Description,
 #'   Ssid, SecurityType, EapMethod, CurrentPassword, NextPassword,
-#'   CertificateAuthorityArn, TrustAnchors, ClientRequestToken)
+#'   CertificateAuthorityArn, TrustAnchors, ClientRequestToken, Tags)
 #'
 #' @param NetworkProfileName &#91;required&#93; The name of the network profile associated with a device.
 #' @param Description Detailed information about a device's network profile.
@@ -652,6 +684,8 @@ alexaforbusiness_create_gateway_group <- function(Name, Description = NULL, Clie
 #' your devices and used to trust your authentication server during EAP
 #' negotiation.
 #' @param ClientRequestToken &#91;required&#93; 
+#' @param Tags The tags to be added to the specified resource. Do not provide system
+#' tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -675,21 +709,27 @@ alexaforbusiness_create_gateway_group <- function(Name, Description = NULL, Clie
 #'   TrustAnchors = list(
 #'     "string"
 #'   ),
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_create_network_profile
-alexaforbusiness_create_network_profile <- function(NetworkProfileName, Description = NULL, Ssid, SecurityType, EapMethod = NULL, CurrentPassword = NULL, NextPassword = NULL, CertificateAuthorityArn = NULL, TrustAnchors = NULL, ClientRequestToken) {
+alexaforbusiness_create_network_profile <- function(NetworkProfileName, Description = NULL, Ssid, SecurityType, EapMethod = NULL, CurrentPassword = NULL, NextPassword = NULL, CertificateAuthorityArn = NULL, TrustAnchors = NULL, ClientRequestToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateNetworkProfile",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$create_network_profile_input(NetworkProfileName = NetworkProfileName, Description = Description, Ssid = Ssid, SecurityType = SecurityType, EapMethod = EapMethod, CurrentPassword = CurrentPassword, NextPassword = NextPassword, CertificateAuthorityArn = CertificateAuthorityArn, TrustAnchors = TrustAnchors, ClientRequestToken = ClientRequestToken)
+  input <- .alexaforbusiness$create_network_profile_input(NetworkProfileName = NetworkProfileName, Description = Description, Ssid = Ssid, SecurityType = SecurityType, EapMethod = EapMethod, CurrentPassword = CurrentPassword, NextPassword = NextPassword, CertificateAuthorityArn = CertificateAuthorityArn, TrustAnchors = TrustAnchors, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .alexaforbusiness$create_network_profile_output()
   config <- get_config()
   svc <- .alexaforbusiness$service(config)
@@ -707,7 +747,7 @@ alexaforbusiness_create_network_profile <- function(NetworkProfileName, Descript
 #' @usage
 #' alexaforbusiness_create_profile(ProfileName, Timezone, Address,
 #'   DistanceUnit, TemperatureUnit, WakeWord, Locale, ClientRequestToken,
-#'   SetupModeDisabled, MaxVolumeLimit, PSTNEnabled,
+#'   SetupModeDisabled, MaxVolumeLimit, PSTNEnabled, DataRetentionOptIn,
 #'   MeetingRoomConfiguration, Tags)
 #'
 #' @param ProfileName &#91;required&#93; The name of a room profile.
@@ -722,6 +762,7 @@ alexaforbusiness_create_network_profile <- function(NetworkProfileName, Descript
 #' @param SetupModeDisabled Whether room profile setup is enabled.
 #' @param MaxVolumeLimit The maximum volume limit for a room profile.
 #' @param PSTNEnabled Whether PSTN calling is enabled.
+#' @param DataRetentionOptIn Whether data retention of the profile is enabled.
 #' @param MeetingRoomConfiguration The meeting room settings of a room profile.
 #' @param Tags The tags for the profile.
 #'
@@ -747,6 +788,7 @@ alexaforbusiness_create_network_profile <- function(NetworkProfileName, Descript
 #'   SetupModeDisabled = TRUE|FALSE,
 #'   MaxVolumeLimit = 123,
 #'   PSTNEnabled = TRUE|FALSE,
+#'   DataRetentionOptIn = TRUE|FALSE,
 #'   MeetingRoomConfiguration = list(
 #'     RoomUtilizationMetricsEnabled = TRUE|FALSE,
 #'     EndOfMeetingReminder = list(
@@ -777,14 +819,14 @@ alexaforbusiness_create_network_profile <- function(NetworkProfileName, Descript
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_create_profile
-alexaforbusiness_create_profile <- function(ProfileName, Timezone, Address, DistanceUnit, TemperatureUnit, WakeWord, Locale = NULL, ClientRequestToken = NULL, SetupModeDisabled = NULL, MaxVolumeLimit = NULL, PSTNEnabled = NULL, MeetingRoomConfiguration = NULL, Tags = NULL) {
+alexaforbusiness_create_profile <- function(ProfileName, Timezone, Address, DistanceUnit, TemperatureUnit, WakeWord, Locale = NULL, ClientRequestToken = NULL, SetupModeDisabled = NULL, MaxVolumeLimit = NULL, PSTNEnabled = NULL, DataRetentionOptIn = NULL, MeetingRoomConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateProfile",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$create_profile_input(ProfileName = ProfileName, Timezone = Timezone, Address = Address, DistanceUnit = DistanceUnit, TemperatureUnit = TemperatureUnit, WakeWord = WakeWord, Locale = Locale, ClientRequestToken = ClientRequestToken, SetupModeDisabled = SetupModeDisabled, MaxVolumeLimit = MaxVolumeLimit, PSTNEnabled = PSTNEnabled, MeetingRoomConfiguration = MeetingRoomConfiguration, Tags = Tags)
+  input <- .alexaforbusiness$create_profile_input(ProfileName = ProfileName, Timezone = Timezone, Address = Address, DistanceUnit = DistanceUnit, TemperatureUnit = TemperatureUnit, WakeWord = WakeWord, Locale = Locale, ClientRequestToken = ClientRequestToken, SetupModeDisabled = SetupModeDisabled, MaxVolumeLimit = MaxVolumeLimit, PSTNEnabled = PSTNEnabled, DataRetentionOptIn = DataRetentionOptIn, MeetingRoomConfiguration = MeetingRoomConfiguration, Tags = Tags)
   output <- .alexaforbusiness$create_profile_output()
   config <- get_config()
   svc <- .alexaforbusiness$service(config)
@@ -2335,6 +2377,7 @@ alexaforbusiness_get_network_profile <- function(NetworkProfileArn) {
 #'     SetupModeDisabled = TRUE|FALSE,
 #'     MaxVolumeLimit = 123,
 #'     PSTNEnabled = TRUE|FALSE,
+#'     DataRetentionOptIn = TRUE|FALSE,
 #'     AddressBookArn = "string",
 #'     MeetingRoomConfiguration = list(
 #'       RoomUtilizationMetricsEnabled = TRUE|FALSE,
@@ -3410,7 +3453,7 @@ alexaforbusiness_put_skill_authorization <- function(AuthorizationResult, SkillI
 #'
 #' @usage
 #' alexaforbusiness_register_avs_device(ClientId, UserCode, ProductId,
-#'   DeviceSerialNumber, AmazonId, RoomArn)
+#'   DeviceSerialNumber, AmazonId, RoomArn, Tags)
 #'
 #' @param ClientId &#91;required&#93; The client ID of the OEM used for code-based linking authorization on an
 #' AVS device.
@@ -3422,7 +3465,10 @@ alexaforbusiness_put_skill_authorization <- function(AuthorizationResult, SkillI
 #' instance of your AVS device.
 #' @param AmazonId &#91;required&#93; The device type ID for your AVS device generated by Amazon when the OEM
 #' creates a new product on Amazon's Developer Console.
-#' @param RoomArn The ARN of the room with which to associate your AVS device.
+#' @param RoomArn The Amazon Resource Name (ARN) of the room with which to associate your
+#' AVS device.
+#' @param Tags The tags to be added to the specified resource. Do not provide system
+#' tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3440,21 +3486,27 @@ alexaforbusiness_put_skill_authorization <- function(AuthorizationResult, SkillI
 #'   ProductId = "string",
 #'   DeviceSerialNumber = "string",
 #'   AmazonId = "string",
-#'   RoomArn = "string"
+#'   RoomArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_register_avs_device
-alexaforbusiness_register_avs_device <- function(ClientId, UserCode, ProductId, DeviceSerialNumber = NULL, AmazonId, RoomArn = NULL) {
+alexaforbusiness_register_avs_device <- function(ClientId, UserCode, ProductId, DeviceSerialNumber = NULL, AmazonId, RoomArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "RegisterAVSDevice",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$register_avs_device_input(ClientId = ClientId, UserCode = UserCode, ProductId = ProductId, DeviceSerialNumber = DeviceSerialNumber, AmazonId = AmazonId, RoomArn = RoomArn)
+  input <- .alexaforbusiness$register_avs_device_input(ClientId = ClientId, UserCode = UserCode, ProductId = ProductId, DeviceSerialNumber = DeviceSerialNumber, AmazonId = AmazonId, RoomArn = RoomArn, Tags = Tags)
   output <- .alexaforbusiness$register_avs_device_output()
   config <- get_config()
   svc <- .alexaforbusiness$service(config)
@@ -3513,6 +3565,14 @@ alexaforbusiness_reject_skill <- function(SkillId) {
 #' @description
 #' Determines the details for the room from which a skill request was
 #' invoked. This operation is used by skill developers.
+#' 
+#' To query ResolveRoom from an Alexa skill, the skill ID needs to be
+#' authorized. When the skill is using an AWS Lambda function, the skill is
+#' automatically authorized when you publish your skill as a private skill
+#' to your AWS account. Skills that are hosted using a custom web service
+#' must be manually authorized. To get your skill authorized, contact AWS
+#' Support with your AWS account ID that queries the ResolveRoom API and
+#' skill ID.
 #'
 #' @usage
 #' alexaforbusiness_resolve_room(UserId, SkillId)
@@ -5071,7 +5131,7 @@ alexaforbusiness_update_network_profile <- function(NetworkProfileArn, NetworkPr
 #' @usage
 #' alexaforbusiness_update_profile(ProfileArn, ProfileName, IsDefault,
 #'   Timezone, Address, DistanceUnit, TemperatureUnit, WakeWord, Locale,
-#'   SetupModeDisabled, MaxVolumeLimit, PSTNEnabled,
+#'   SetupModeDisabled, MaxVolumeLimit, PSTNEnabled, DataRetentionOptIn,
 #'   MeetingRoomConfiguration)
 #'
 #' @param ProfileArn The ARN of the room profile to update. Required.
@@ -5088,6 +5148,7 @@ alexaforbusiness_update_network_profile <- function(NetworkProfileArn, NetworkPr
 #' @param SetupModeDisabled Whether the setup mode of the profile is enabled.
 #' @param MaxVolumeLimit The updated maximum volume limit for the room profile.
 #' @param PSTNEnabled Whether the PSTN setting of the room profile is enabled.
+#' @param DataRetentionOptIn Whether data retention of the profile is enabled.
 #' @param MeetingRoomConfiguration The updated meeting room settings of a room profile.
 #'
 #' @return
@@ -5108,6 +5169,7 @@ alexaforbusiness_update_network_profile <- function(NetworkProfileArn, NetworkPr
 #'   SetupModeDisabled = TRUE|FALSE,
 #'   MaxVolumeLimit = 123,
 #'   PSTNEnabled = TRUE|FALSE,
+#'   DataRetentionOptIn = TRUE|FALSE,
 #'   MeetingRoomConfiguration = list(
 #'     RoomUtilizationMetricsEnabled = TRUE|FALSE,
 #'     EndOfMeetingReminder = list(
@@ -5132,14 +5194,14 @@ alexaforbusiness_update_network_profile <- function(NetworkProfileArn, NetworkPr
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_update_profile
-alexaforbusiness_update_profile <- function(ProfileArn = NULL, ProfileName = NULL, IsDefault = NULL, Timezone = NULL, Address = NULL, DistanceUnit = NULL, TemperatureUnit = NULL, WakeWord = NULL, Locale = NULL, SetupModeDisabled = NULL, MaxVolumeLimit = NULL, PSTNEnabled = NULL, MeetingRoomConfiguration = NULL) {
+alexaforbusiness_update_profile <- function(ProfileArn = NULL, ProfileName = NULL, IsDefault = NULL, Timezone = NULL, Address = NULL, DistanceUnit = NULL, TemperatureUnit = NULL, WakeWord = NULL, Locale = NULL, SetupModeDisabled = NULL, MaxVolumeLimit = NULL, PSTNEnabled = NULL, DataRetentionOptIn = NULL, MeetingRoomConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateProfile",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$update_profile_input(ProfileArn = ProfileArn, ProfileName = ProfileName, IsDefault = IsDefault, Timezone = Timezone, Address = Address, DistanceUnit = DistanceUnit, TemperatureUnit = TemperatureUnit, WakeWord = WakeWord, Locale = Locale, SetupModeDisabled = SetupModeDisabled, MaxVolumeLimit = MaxVolumeLimit, PSTNEnabled = PSTNEnabled, MeetingRoomConfiguration = MeetingRoomConfiguration)
+  input <- .alexaforbusiness$update_profile_input(ProfileArn = ProfileArn, ProfileName = ProfileName, IsDefault = IsDefault, Timezone = Timezone, Address = Address, DistanceUnit = DistanceUnit, TemperatureUnit = TemperatureUnit, WakeWord = WakeWord, Locale = Locale, SetupModeDisabled = SetupModeDisabled, MaxVolumeLimit = MaxVolumeLimit, PSTNEnabled = PSTNEnabled, DataRetentionOptIn = DataRetentionOptIn, MeetingRoomConfiguration = MeetingRoomConfiguration)
   output <- .alexaforbusiness$update_profile_output()
   config <- get_config()
   svc <- .alexaforbusiness$service(config)

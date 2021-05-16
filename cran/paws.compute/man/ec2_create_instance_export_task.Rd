@@ -11,13 +11,13 @@ ec2_create_instance_export_task(Description, ExportToS3Task, InstanceId,
 \item{Description}{A description for the conversion task or the resource being exported.
 The maximum length is 255 characters.}
 
-\item{ExportToS3Task}{[required] The format and location for an instance export task.}
+\item{ExportToS3Task}{[required] The format and location for an export instance task.}
 
 \item{InstanceId}{[required] The ID of the instance.}
 
 \item{TargetEnvironment}{[required] The target virtualization environment.}
 
-\item{TagSpecifications}{The tags to apply to the instance export task during creation.}
+\item{TagSpecifications}{The tags to apply to the export instance task during creation.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -51,7 +51,7 @@ Exports a running or stopped instance to an Amazon S3 bucket.
 
 For information about the supported operating systems, image formats,
 and known limitations for the types of instances you can export, see
-\href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html}{Exporting an Instance as a VM Using VM Import/Export}
+\href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html}{Exporting an instance as a VM Using VM Import/Export}
 in the \emph{VM Import/Export User Guide}.
 }
 \section{Request syntax}{

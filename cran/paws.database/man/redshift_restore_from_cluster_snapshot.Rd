@@ -13,7 +13,7 @@ redshift_restore_from_cluster_snapshot(ClusterIdentifier,
   AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod,
   KmsKeyId, NodeType, EnhancedVpcRouting, AdditionalInfo, IamRoles,
   MaintenanceTrackName, SnapshotScheduleIdentifier, NumberOfNodes,
-  AvailabilityZoneRelocation)
+  AvailabilityZoneRelocation, AquaConfigurationStatus)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster that will be created from restoring the
@@ -119,6 +119,9 @@ is 0, automated snapshots are disabled. Even if automated snapshots are
 disabled, you can still create manual snapshots when you want with
 \code{\link[=redshift_create_cluster_snapshot]{create_cluster_snapshot}}.
 
+You can't disable automated snapshots for RA3 node types. Set the
+automated retention period from 1-35 days.
+
 Default: The value selected for the cluster from which the snapshot was
 taken.
 
@@ -180,6 +183,16 @@ source cluster are on different tracks.}
 
 \item{AvailabilityZoneRelocation}{The option to enable relocation for an Amazon Redshift cluster between
 Availability Zones after the cluster is restored.}
+
+\item{AquaConfigurationStatus}{The value represents how the cluster is configured to use AQUA (Advanced
+Query Accelerator) after the cluster is restored. Possible values
+include the following.
+\itemize{
+\item enabled - Use AQUA if it is available for the current AWS Region and
+Amazon Redshift node type.
+\item disabled - Don't use AQUA.
+\item auto - Amazon Redshift determines whether to use AQUA.
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -196,7 +209,16 @@ A list with the following syntax:\preformatted{list(
       Port = 123,
       VpcEndpoints = list(
         list(
-          VpcEndpointId = "string"
+          VpcEndpointId = "string",
+          VpcId = "string",
+          NetworkInterfaces = list(
+            list(
+              NetworkInterfaceId = "string",
+              SubnetId = "string",
+              PrivateIpAddress = "string",
+              AvailabilityZone = "string"
+            )
+          )
         )
       )
     ),
@@ -336,7 +358,12 @@ A list with the following syntax:\preformatted{list(
       AllowCancelResize = TRUE|FALSE
     ),
     AvailabilityZoneRelocationStatus = "string",
-    ClusterNamespaceArn = "string"
+    ClusterNamespaceArn = "string",
+    TotalStorageCapacityInMegaBytes = 123,
+    AquaConfiguration = list(
+      AquaStatus = "enabled"|"disabled"|"applying",
+      AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+    )
   )
 )
 }
@@ -392,7 +419,8 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
   MaintenanceTrackName = "string",
   SnapshotScheduleIdentifier = "string",
   NumberOfNodes = 123,
-  AvailabilityZoneRelocation = TRUE|FALSE
+  AvailabilityZoneRelocation = TRUE|FALSE,
+  AquaConfigurationStatus = "enabled"|"disabled"|"auto"
 )
 }
 }

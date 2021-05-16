@@ -65,19 +65,19 @@ parameter. If users don't specify a value for the \code{DurationSeconds}
 parameter, their security credentials are valid for one hour by default.
 This applies when you use the \verb{AssumeRole*} API operations or the
 \verb{assume-role*} CLI operations but does not apply when you use those
-operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM Roles}
+operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM roles}
 in the \emph{IAM User Guide}.}
 
 \item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for
 the role.}
 
-\item{Tags}{A list of tags that you want to attach to the newly created role. Each
-tag consists of a key name and an associated value. For more information
-about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+\item{Tags}{A list of tags that you want to attach to the new role. Each tag
+consists of a key name and an associated value. For more information
+about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
 in the \emph{IAM User Guide}.
 
-If any one of the tags is invalid or if you exceed the allowed number of
-tags per role, then the entire request fails and the role is not
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
 created.}
 }
 \value{
@@ -115,9 +115,9 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Creates a new role for your AWS account. For more information about
-roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM Roles}.
-The number and size of IAM resources in an AWS account are limited. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
+roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM roles}.
+For information about quotas for role names and the number of roles you
+can create, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS quotas}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

@@ -59,6 +59,7 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- pricing()
+#' # Retrieves the service for the given Service Code.
 #' svc$describe_services(
 #'   FormatVersion = "aws_v1",
 #'   MaxResults = 1L,

@@ -116,7 +116,7 @@ this parameter to a positive number enables backups. For more
 information, see \code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
 \item{PreferredBackupWindow}{The time range each day during which automated backups are created if
-automated backups are enabled. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{The Backup Window}
+automated backups are enabled. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{Backup window}
 in the \emph{Amazon RDS User Guide.}
 
 Constraints:
@@ -284,7 +284,11 @@ enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
-of the DB instance.}
+of the DB instance.
+
+For more information about this setting, including limitations that
+apply to it, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling}{Managing capacity automatically with Amazon RDS storage autoscaling}
+in the \emph{Amazon RDS User Guide}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -470,7 +474,8 @@ A list with the following syntax:\preformatted{list(
         DBInstanceAutomatedBackupsArn = "string"
       )
     ),
-    CustomerOwnedIpEnabled = TRUE|FALSE
+    CustomerOwnedIpEnabled = TRUE|FALSE,
+    AwsBackupRecoveryPointArn = "string"
   )
 )
 }

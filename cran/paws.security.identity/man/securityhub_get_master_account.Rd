@@ -2,8 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_master_account}
 \alias{securityhub_get_master_account}
-\title{Provides the details for the Security Hub master account for the current
-member account}
+\title{This method is deprecated}
 \usage{
 securityhub_get_master_account()
 }
@@ -21,11 +20,26 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Provides the details for the Security Hub master account for the current
-member account.
+This method is deprecated. Instead, use
+\code{\link[=securityhub_get_administrator_account]{get_administrator_account}}.
 
-Can be used by both member accounts that are in an organization and
-accounts that were invited manually.
+The Security Hub console continues to use
+\code{\link[=securityhub_get_master_account]{get_master_account}}. It will
+eventually change to use
+\code{\link[=securityhub_get_administrator_account]{get_administrator_account}}.
+Any IAM policies that specifically control access to this function must
+continue to use \code{\link[=securityhub_get_master_account]{get_master_account}}.
+You should also add
+\code{\link[=securityhub_get_administrator_account]{get_administrator_account}} to
+your policies to ensure that the correct permissions are in place after
+the console begins to use
+\code{\link[=securityhub_get_administrator_account]{get_administrator_account}}.
+
+Provides the details for the Security Hub administrator account for the
+current member account.
+
+Can be used by both member accounts that are managed using Organizations
+and accounts that were invited manually.
 }
 \section{Request syntax}{
 \preformatted{svc$get_master_account()

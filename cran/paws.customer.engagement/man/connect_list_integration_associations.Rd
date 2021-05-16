@@ -2,8 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_integration_associations}
 \alias{connect_list_integration_associations}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Provides summary information about the AppIntegration associations for
+the specified Amazon Connect instance}
 \usage{
 connect_list_integration_associations(InstanceId, NextToken, MaxResults)
 }
@@ -14,7 +14,7 @@ connect_list_integration_associations(InstanceId, NextToken, MaxResults)
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -35,9 +35,6 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Provides summary information about the AppIntegration associations for
 the specified Amazon Connect instance.
 }

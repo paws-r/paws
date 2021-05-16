@@ -51,6 +51,18 @@ NULL
   return(populate(args, shape))
 }
 
+.devopsguru$describe_feedback_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InsightId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devopsguru$describe_feedback_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InsightFeedback = structure(list(Id = structure(logical(0), tags = list(type = "string")), Feedback = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .devopsguru$describe_insight_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string"))), tags = list(type = "structure"))
@@ -71,7 +83,7 @@ NULL
 
 .devopsguru$describe_resource_collection_health_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CloudFormation = structure(list(structure(list(StackName = structure(logical(0), tags = list(type = "string")), Insight = structure(list(OpenProactiveInsights = structure(logical(0), tags = list(type = "integer")), OpenReactiveInsights = structure(logical(0), tags = list(type = "integer")), MeanTimeToRecoverInMilliseconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CloudFormation = structure(list(structure(list(StackName = structure(logical(0), tags = list(type = "string")), Insight = structure(list(OpenProactiveInsights = structure(logical(0), tags = list(type = "integer")), OpenReactiveInsights = structure(logical(0), tags = list(type = "integer")), MeanTimeToRecoverInMilliseconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Service = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), Insight = structure(list(OpenProactiveInsights = structure(logical(0), tags = list(type = "integer")), OpenReactiveInsights = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -84,6 +96,18 @@ NULL
 .devopsguru$describe_service_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ServiceIntegration = structure(list(OpsCenter = structure(list(OptInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devopsguru$get_cost_estimation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devopsguru$get_cost_estimation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Costs = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer")), UnitCost = structure(logical(0), tags = list(type = "double")), Cost = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), TimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), TotalCost = structure(logical(0), tags = list(type = "double")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -131,7 +155,7 @@ NULL
 
 .devopsguru$list_insights_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProactiveInsights = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InsightTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), PredictionTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ReactiveInsights = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InsightTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ProactiveInsights = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InsightTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), PredictionTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), ServiceCollection = structure(list(ServiceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ReactiveInsights = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InsightTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), ServiceCollection = structure(list(ServiceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -149,7 +173,7 @@ NULL
 
 .devopsguru$list_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InsightId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InsightId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -185,13 +209,25 @@ NULL
 
 .devopsguru$search_insights_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StartTimeRange = structure(list(FromTime = structure(logical(0), tags = list(type = "timestamp")), ToTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Filters = structure(list(Severities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StartTimeRange = structure(list(FromTime = structure(logical(0), tags = list(type = "timestamp")), ToTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Filters = structure(list(Severities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), ServiceCollection = structure(list(ServiceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .devopsguru$search_insights_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProactiveInsights = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InsightTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), PredictionTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ReactiveInsights = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InsightTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ProactiveInsights = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InsightTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), PredictionTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), ServiceCollection = structure(list(ServiceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ReactiveInsights = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InsightTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), ServiceCollection = structure(list(ServiceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devopsguru$start_cost_estimation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceCollection = structure(list(CloudFormation = structure(list(StackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devopsguru$start_cost_estimation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

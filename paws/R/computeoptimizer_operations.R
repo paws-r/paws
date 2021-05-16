@@ -130,7 +130,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to export
+#' parameter to specify the member account for which you want to export
 #' recommendations.
 #' 
 #' This parameter cannot be specified together with the include member
@@ -260,7 +260,7 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #' recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to export
+#' parameter to specify the member account for which you want to export
 #' recommendations.
 #' 
 #' This parameter cannot be specified together with the include member
@@ -378,11 +378,11 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #' computeoptimizer_get_auto_scaling_group_recommendations(accountIds,
 #'   autoScalingGroupArns, nextToken, maxResults, filters)
 #'
-#' @param accountIds The IDs of the AWS accounts for which to return Auto Scaling group
+#' @param accountIds The ID of the AWS account for which to return Auto Scaling group
 #' recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to return
+#' parameter to specify the member account for which you want to return
 #' Auto Scaling group recommendations.
 #' 
 #' Only one account ID can be specified per request.
@@ -524,10 +524,10 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #' returned `NextToken` value.
 #' @param filters An array of objects that describe a filter that returns a more specific
 #' list of volume recommendations.
-#' @param accountIds The IDs of the AWS accounts for which to return volume recommendations.
+#' @param accountIds The ID of the AWS account for which to return volume recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to return
+#' parameter to specify the member account for which you want to return
 #' volume recommendations.
 #' 
 #' Only one account ID can be specified per request.
@@ -654,11 +654,10 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #' returned `NextToken` value.
 #' @param filters An array of objects that describe a filter that returns a more specific
 #' list of instance recommendations.
-#' @param accountIds The IDs of the AWS accounts for which to return instance
-#' recommendations.
+#' @param accountIds The ID of the AWS account for which to return instance recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to return
+#' parameter to specify the member account for which you want to return
 #' instance recommendations.
 #' 
 #' Only one account ID can be specified per request.
@@ -921,11 +920,10 @@ computeoptimizer_get_enrollment_status <- function() {
 #' version. For more information about using function versions, see [Using
 #' versions](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using)
 #' in the *AWS Lambda Developer Guide*.
-#' @param accountIds The IDs of the AWS accounts for which to return function
-#' recommendations.
+#' @param accountIds The ID of the AWS account for which to return function recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to return
+#' parameter to specify the member account for which you want to return
 #' function recommendations.
 #' 
 #' Only one account ID can be specified per request.
@@ -1030,20 +1028,28 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 #' @description
 #' Returns the optimization findings for an account.
 #' 
-#' For example, it returns the number of Amazon EC2 instances in an account
-#' that are under-provisioned, over-provisioned, or optimized. It also
-#' returns the number of Auto Scaling groups in an account that are not
-#' optimized, or optimized.
+#' It returns the number of:
+#' 
+#' -   Amazon EC2 instances in an account that are `Underprovisioned`,
+#'     `Overprovisioned`, or `Optimized`.
+#' 
+#' -   Auto Scaling groups in an account that are `NotOptimized`, or
+#'     `Optimized`.
+#' 
+#' -   Amazon EBS volumes in an account that are `NotOptimized`, or
+#'     `Optimized`.
+#' 
+#' -   Lambda functions in an account that are `NotOptimized`, or
+#'     `Optimized`.
 #'
 #' @usage
 #' computeoptimizer_get_recommendation_summaries(accountIds, nextToken,
 #'   maxResults)
 #'
-#' @param accountIds The IDs of the AWS accounts for which to return recommendation
-#' summaries.
+#' @param accountIds The ID of the AWS account for which to return recommendation summaries.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to return
+#' parameter to specify the member account for which you want to return
 #' recommendation summaries.
 #' 
 #' Only one account ID can be specified per request.
@@ -1111,25 +1117,48 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 }
 .computeoptimizer$operations$get_recommendation_summaries <- computeoptimizer_get_recommendation_summaries
 
-#' Updates the enrollment (opt in) status of an account to the AWS Compute
-#' Optimizer service
+#' Updates the enrollment (opt in and opt out) status of an account to the
+#' AWS Compute Optimizer service
 #'
 #' @description
-#' Updates the enrollment (opt in) status of an account to the AWS Compute
-#' Optimizer service.
+#' Updates the enrollment (opt in and opt out) status of an account to the
+#' AWS Compute Optimizer service.
 #' 
 #' If the account is a management account of an organization, this action
 #' can also be used to enroll member accounts within the organization.
+#' 
+#' You must have the appropriate permissions to opt in to Compute
+#' Optimizer, to view its recommendations, and to opt out. For more
+#' information, see Controlling access with AWS Identity and Access
+#' Management in the *Compute Optimizer User Guide*.
+#' 
+#' When you opt in, Compute Optimizer automatically creates a
+#' Service-Linked Role in your account to access its data. For more
+#' information, see Using Service-Linked Roles for AWS Compute Optimizer in
+#' the *Compute Optimizer User Guide*.
 #'
 #' @usage
 #' computeoptimizer_update_enrollment_status(status, includeMemberAccounts)
 #'
 #' @param status &#91;required&#93; The new enrollment status of the account.
 #' 
-#' Accepted options are `Active` or `Inactive`. You will get an error if
-#' `Pending` or `Failed` are specified.
+#' The following status options are available:
+#' 
+#' -   `Active` - Opts in your account to the Compute Optimizer service.
+#'     Compute Optimizer begins analyzing the configuration and utilization
+#'     metrics of your AWS resources after you opt in. For more
+#'     information, see Metrics analyzed by AWS Compute Optimizer in the
+#'     *Compute Optimizer User Guide*.
+#' 
+#' -   `Inactive` - Opts out your account from the Compute Optimizer
+#'     service. Your account's recommendations and related metrics data
+#'     will be deleted from Compute Optimizer after you opt out.
+#' 
+#' The `Pending` and `Failed` options cannot be used to update the
+#' enrollment status of an account. They are returned in the response of a
+#' request to update the enrollment status of an account.
 #' @param includeMemberAccounts Indicates whether to enroll member accounts of the organization if the
-#' your account is the management account of an organization.
+#' account is the management account of an organization.
 #'
 #' @return
 #' A list with the following syntax:

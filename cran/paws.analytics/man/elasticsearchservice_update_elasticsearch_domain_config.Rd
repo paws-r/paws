@@ -8,7 +8,8 @@ domain, setting as setting the instance type and the number of instances}
 elasticsearchservice_update_elasticsearch_domain_config(DomainName,
   ElasticsearchClusterConfig, EBSOptions, SnapshotOptions, VPCOptions,
   CognitoOptions, AdvancedOptions, AccessPolicies, LogPublishingOptions,
-  DomainEndpointOptions, AdvancedSecurityOptions)
+  DomainEndpointOptions, AdvancedSecurityOptions,
+  NodeToNodeEncryptionOptions, EncryptionAtRestOptions, AutoTuneOptions)
 }
 \arguments{
 \item{DomainName}{[required] The name of the Elasticsearch domain that you are updating.}
@@ -41,6 +42,12 @@ publish a given type of Elasticsearch log.}
 endpoint.}
 
 \item{AdvancedSecurityOptions}{Specifies advanced security options.}
+
+\item{NodeToNodeEncryptionOptions}{Specifies the NodeToNodeEncryptionOptions.}
+
+\item{EncryptionAtRestOptions}{Specifies the Encryption At Rest Options.}
+
+\item{AutoTuneOptions}{Specifies Auto-Tune options.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -72,7 +79,10 @@ A list with the following syntax:\preformatted{list(
         DedicatedMasterCount = 123,
         WarmEnabled = TRUE|FALSE,
         WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-        WarmCount = 123
+        WarmCount = 123,
+        ColdStorageOptions = list(
+          Enabled = TRUE|FALSE
+        )
       ),
       Status = list(
         CreationDate = as.POSIXct(
@@ -293,6 +303,36 @@ A list with the following syntax:\preformatted{list(
         State = "RequiresIndexDocuments"|"Processing"|"Active",
         PendingDeletion = TRUE|FALSE
       )
+    ),
+    AutoTuneOptions = list(
+      Options = list(
+        DesiredState = "ENABLED"|"DISABLED",
+        RollbackOnDisable = "NO_ROLLBACK"|"DEFAULT_ROLLBACK",
+        MaintenanceSchedules = list(
+          list(
+            StartAt = as.POSIXct(
+              "2015-01-01"
+            ),
+            Duration = list(
+              Value = 123,
+              Unit = "HOURS"
+            ),
+            CronExpressionForRecurrence = "string"
+          )
+        )
+      ),
+      Status = list(
+        CreationDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        UpdateDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        UpdateVersion = 123,
+        State = "ENABLED"|"DISABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_SCHEDULED"|"DISABLED_AND_ROLLBACK_IN_PROGRESS"|"DISABLED_AND_ROLLBACK_COMPLETE"|"DISABLED_AND_ROLLBACK_ERROR"|"ERROR",
+        ErrorMessage = "string",
+        PendingDeletion = TRUE|FALSE
+      )
     )
   )
 )
@@ -318,7 +358,10 @@ instances.
     DedicatedMasterCount = 123,
     WarmEnabled = TRUE|FALSE,
     WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-    WarmCount = 123
+    WarmCount = 123,
+    ColdStorageOptions = list(
+      Enabled = TRUE|FALSE
+    )
   ),
   EBSOptions = list(
     EBSEnabled = TRUE|FALSE,
@@ -379,6 +422,29 @@ instances.
       SubjectKey = "string",
       RolesKey = "string",
       SessionTimeoutMinutes = 123
+    )
+  ),
+  NodeToNodeEncryptionOptions = list(
+    Enabled = TRUE|FALSE
+  ),
+  EncryptionAtRestOptions = list(
+    Enabled = TRUE|FALSE,
+    KmsKeyId = "string"
+  ),
+  AutoTuneOptions = list(
+    DesiredState = "ENABLED"|"DISABLED",
+    RollbackOnDisable = "NO_ROLLBACK"|"DEFAULT_ROLLBACK",
+    MaintenanceSchedules = list(
+      list(
+        StartAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        Duration = list(
+          Value = 123,
+          Unit = "HOURS"
+        ),
+        CronExpressionForRecurrence = "string"
+      )
     )
   )
 )

@@ -25,7 +25,7 @@ name.}
 \item{MediaType}{The stream's media type. Use \code{MediaType} to specify the type of content
 that the stream contains to the consumers of the stream. For more
 information about media types, see \href{http://www.iana.org/assignments/media-types/media-types.xhtml}{Media Types}.
-If you choose to specify the \code{MediaType}, see \href{https://tools.ietf.org/html/rfc6838#section-4.2}{Naming Requirements}.
+If you choose to specify the \code{MediaType}, see \href{https://datatracker.ietf.org/doc/html/rfc6838#section-4.2}{Naming Requirements}.
 
 To play video on the console, you must specify the correct video type.
 For example, if the video in the stream is H.264, specify \code{video/h264}

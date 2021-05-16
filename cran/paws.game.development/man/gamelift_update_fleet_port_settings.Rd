@@ -2,14 +2,15 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_update_fleet_port_settings}
 \alias{gamelift_update_fleet_port_settings}
-\title{Updates port settings for a fleet}
+\title{Updates permissions that allow inbound traffic to connect to game
+sessions that are being hosted on instances in the fleet}
 \usage{
 gamelift_update_fleet_port_settings(FleetId,
   InboundPermissionAuthorizations, InboundPermissionRevocations)
 }
 \arguments{
-\item{FleetId}{[required] A unique identifier for a fleet to update port settings for. You can use
-either the fleet ID or ARN value.}
+\item{FleetId}{[required] A unique identifier for the fleet to update port settings for. You can
+use either the fleet ID or ARN value.}
 
 \item{InboundPermissionAuthorizations}{A collection of port settings to be added to the fleet resource.}
 
@@ -22,33 +23,39 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Updates port settings for a fleet. To update settings, specify the fleet
-ID to be updated and list the permissions you want to update. List the
-permissions you want to add in \code{InboundPermissionAuthorizations}, and
-permissions you want to remove in \code{InboundPermissionRevocations}.
-Permissions to be removed must match existing fleet permissions. If
-successful, the fleet ID for the updated fleet is returned.
+Updates permissions that allow inbound traffic to connect to game
+sessions that are being hosted on instances in the fleet.
+
+To update settings, specify the fleet ID to be updated and specify the
+changes to be made. List the permissions you want to add in
+\code{InboundPermissionAuthorizations}, and permissions you want to remove in
+\code{InboundPermissionRevocations}. Permissions to be removed must match
+existing fleet permissions.
+
+If successful, the fleet ID for the updated fleet is returned. For
+fleets with remote locations, port setting updates can take time to
+propagate across all locations. You can check the status of updates in
+each location by calling
+\code{\link[=gamelift_describe_fleet_port_settings]{describe_fleet_port_settings}}
+with a location name.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift fleets}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_fleet]{create_fleet}}
-\item \code{\link[=gamelift_list_fleets]{list_fleets}}
-\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
-\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
-\item Update fleets:
-\itemize{
-\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
-\item \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}
-\item \code{\link[=gamelift_update_fleet_port_settings]{update_fleet_port_settings}}
-\item \code{\link[=gamelift_update_runtime_configuration]{update_runtime_configuration}}
-}
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
-\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_fleet_locations]{create_fleet_locations}} |
+\code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}} |
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}} |
+\code{\link[=gamelift_update_fleet_port_settings]{update_fleet_port_settings}} |
+\code{\link[=gamelift_update_runtime_configuration]{update_runtime_configuration}}
+| \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} |
+\code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} |
+\code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}} |
+\code{\link[=gamelift_delete_fleet]{delete_fleet}} |
+\code{\link[=gamelift_delete_fleet_locations]{delete_fleet_locations}} |
+\code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$update_fleet_port_settings(

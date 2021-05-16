@@ -2,8 +2,7 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_delete_studio}
 \alias{emr_delete_studio}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Removes an Amazon EMR Studio from the Studio metadata store}
 \usage{
 emr_delete_studio(StudioId)
 }
@@ -14,9 +13,6 @@ emr_delete_studio(StudioId)
 An empty list.
 }
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
-
 Removes an Amazon EMR Studio from the Studio metadata store.
 }
 \section{Request syntax}{

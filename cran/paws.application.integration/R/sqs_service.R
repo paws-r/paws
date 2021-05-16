@@ -27,7 +27,7 @@ NULL
 #' 
 #' -   Handle error responses
 #' 
-#' **Additional Information**
+#' **Additional information**
 #' 
 #' -   [Amazon SQS Product Page](https://aws.amazon.com/sqs/)
 #' 

@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_register_game_server}
 \alias{gamelift_register_game_server}
-\title{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups}
+\title{This operation is used with the GameLift FleetIQ solution and game
+server groups}
 \usage{
 gamelift_register_game_server(GameServerGroupName, GameServerId,
   InstanceId, ConnectionInfo, GameServerData)
@@ -55,8 +55,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-\strong{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups.}
+\strong{This operation is used with the GameLift FleetIQ solution and game
+server groups.}
 
 Creates a new game server resource and notifies GameLift FleetIQ that
 the game server is ready to host gameplay and players. This operation is
@@ -81,15 +81,14 @@ instance balancing or scale-down activity.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_register_game_server]{register_game_server}}
-\item \code{\link[=gamelift_list_game_servers]{list_game_servers}}
-\item \code{\link[=gamelift_claim_game_server]{claim_game_server}}
-\item \code{\link[=gamelift_describe_game_server]{describe_game_server}}
-\item \code{\link[=gamelift_update_game_server]{update_game_server}}
-\item \code{\link[=gamelift_deregister_game_server]{deregister_game_server}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_register_game_server]{register_game_server}} |
+\code{\link[=gamelift_list_game_servers]{list_game_servers}} |
+\code{\link[=gamelift_claim_game_server]{claim_game_server}} |
+\code{\link[=gamelift_describe_game_server]{describe_game_server}} |
+\code{\link[=gamelift_update_game_server]{update_game_server}} |
+\code{\link[=gamelift_deregister_game_server]{deregister_game_server}} | \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/reference-awssdk-fleetiq.html}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$register_game_server(

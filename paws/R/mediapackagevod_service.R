@@ -32,13 +32,14 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- mediapackagevod()
-#' svc$create_asset(
+#' svc$configure_logs(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=mediapackagevod_configure_logs]{configure_logs} \tab Changes the packaging group's properities to configure log subscription\cr
 #'  \link[=mediapackagevod_create_asset]{create_asset} \tab Creates a new MediaPackage VOD Asset resource\cr
 #'  \link[=mediapackagevod_create_packaging_configuration]{create_packaging_configuration} \tab Creates a new MediaPackage VOD PackagingConfiguration resource\cr
 #'  \link[=mediapackagevod_create_packaging_group]{create_packaging_group} \tab Creates a new MediaPackage VOD PackagingGroup resource\cr

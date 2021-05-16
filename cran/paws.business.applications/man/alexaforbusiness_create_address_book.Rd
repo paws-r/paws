@@ -5,7 +5,7 @@
 \title{Creates an address book with the specified details}
 \usage{
 alexaforbusiness_create_address_book(Name, Description,
-  ClientRequestToken)
+  ClientRequestToken, Tags)
 }
 \arguments{
 \item{Name}{[required] The name of the address book.}
@@ -14,6 +14,9 @@ alexaforbusiness_create_address_book(Name, Description,
 
 \item{ClientRequestToken}{A unique, user-specified identifier for the request that ensures
 idempotency.}
+
+\item{Tags}{The tags to be added to the specified resource. Do not provide system
+tags.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -28,7 +31,13 @@ Creates an address book with the specified details.
 \preformatted{svc$create_address_book(
   Name = "string",
   Description = "string",
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

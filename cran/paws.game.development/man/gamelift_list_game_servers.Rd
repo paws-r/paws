@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_list_game_servers}
 \alias{gamelift_list_game_servers}
-\title{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups}
+\title{This operation is used with the GameLift FleetIQ solution and game
+server groups}
 \usage{
 gamelift_list_game_servers(GameServerGroupName, SortOrder, Limit,
   NextToken)
@@ -13,18 +13,17 @@ gamelift_list_game_servers(GameServerGroupName, SortOrder, Limit,
 servers from. Use either the GameServerGroup name or ARN value.}
 
 \item{SortOrder}{Indicates how to sort the returned data based on game server
-registration timestamp. Use ASCENDING to retrieve oldest game servers
-first, or use DESCENDING to retrieve newest game servers first. If this
-parameter is left empty, game servers are returned in no particular
+registration timestamp. Use \code{ASCENDING} to retrieve oldest game servers
+first, or use \code{DESCENDING} to retrieve newest game servers first. If
+this parameter is left empty, game servers are returned in no particular
 order.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
-\code{NextToken} to get results as a set of sequential segments.}
+\code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{A token that indicates the start of the next sequential segment of
-results. Use the token returned with the previous call to this
-operation. To start at the beginning of the result set, do not specify a
-value.}
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -54,8 +53,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-\strong{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups.}
+\strong{This operation is used with the GameLift FleetIQ solution and game
+server groups.}
 
 Retrieves information on all game servers that are currently active in a
 specified game server group. You can opt to sort the list by game server
@@ -66,15 +65,14 @@ sequential segments.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_register_game_server]{register_game_server}}
-\item \code{\link[=gamelift_list_game_servers]{list_game_servers}}
-\item \code{\link[=gamelift_claim_game_server]{claim_game_server}}
-\item \code{\link[=gamelift_describe_game_server]{describe_game_server}}
-\item \code{\link[=gamelift_update_game_server]{update_game_server}}
-\item \code{\link[=gamelift_deregister_game_server]{deregister_game_server}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_register_game_server]{register_game_server}} |
+\code{\link[=gamelift_list_game_servers]{list_game_servers}} |
+\code{\link[=gamelift_claim_game_server]{claim_game_server}} |
+\code{\link[=gamelift_describe_game_server]{describe_game_server}} |
+\code{\link[=gamelift_update_game_server]{update_game_server}} |
+\code{\link[=gamelift_deregister_game_server]{deregister_game_server}} | \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/reference-awssdk-fleetiq.html}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$list_game_servers(

@@ -20,8 +20,8 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 that can consist of any upper or lowercased letter or digit.}
 
 \item{Status}{[required] The status you want to assign to the certificate. \code{Active} means that
-the certificate can be used for API calls to AWS \code{Inactive} means that
-the certificate cannot be used.}
+the certificate can be used for programmatic calls to AWS \code{Inactive}
+means that the certificate cannot be used.}
 }
 \value{
 An empty list.

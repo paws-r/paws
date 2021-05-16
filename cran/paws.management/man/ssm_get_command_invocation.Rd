@@ -11,15 +11,23 @@ ssm_get_command_invocation(CommandId, InstanceId, PluginName)
 \item{CommandId}{[required] (Required) The parent command ID of the invocation plugin.}
 
 \item{InstanceId}{[required] (Required) The ID of the managed instance targeted by the command. A
-managed instance can be an EC2 instance or an instance in your hybrid
-environment that is configured for Systems Manager.}
+managed instance can be an Amazon Elastic Compute Cloud (Amazon EC2)
+instance or an instance in your hybrid environment that is configured
+for AWS Systems Manager.}
 
-\item{PluginName}{(Optional) The name of the plugin for which you want detailed results.
-If the document contains only one plugin, the name can be omitted and
-the details will be returned.
+\item{PluginName}{The name of the plugin for which you want detailed results. If the
+document contains only one plugin, you can omit the name and details for
+that plugin. If the document contains more than one plugin, you must
+specify the name of the plugin for which you want to view details.
 
-Plugin names are also referred to as step names in Systems Manager
-documents.}
+Plugin names are also referred to as \emph{step names} in Systems Manager
+documents. For example, \code{aws:RunShellScript} is a plugin.
+
+To find the \code{PluginName}, check the document content and find the name
+of the plugin. Alternatively, use
+\code{\link[=ssm_list_command_invocations]{list_command_invocations}} with the
+\code{CommandId} and \code{Details} parameters. The \code{PluginName} is the \code{Name}
+attribute of the \code{CommandPlugin} object in the \code{CommandPlugins} list.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -49,6 +57,13 @@ A list with the following syntax:\preformatted{list(
 \description{
 Returns detailed information about command execution for an invocation
 or plugin.
+
+\code{\link[=ssm_get_command_invocation]{get_command_invocation}} only gives the
+execution status of a plugin in a document. To get the command execution
+status on a specific instance, use
+\code{\link[=ssm_list_command_invocations]{list_command_invocations}}. To get the
+command execution status across instances, use
+\code{\link[=ssm_list_commands]{list_commands}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_command_invocation(

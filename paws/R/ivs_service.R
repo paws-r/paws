@@ -8,9 +8,8 @@ NULL
 #' **Introduction**
 #' 
 #' The Amazon Interactive Video Service (IVS) API is REST compatible, using
-#' a standard HTTP API and an [AWS SNS](https://aws.amazon.com/sns/) event
-#' stream for responses. JSON is used for both requests and responses,
-#' including errors.
+#' a standard HTTP API and an AWS EventBridge event stream for responses.
+#' JSON is used for both requests and responses, including errors.
 #' 
 #' The API is an AWS regional service, currently in these regions:
 #' us-west-2, us-east-1, and eu-west-1.
@@ -73,6 +72,11 @@ NULL
 #'     and validate the playback-authorization token. See the
 #'     PlaybackKeyPair endpoints for more information.
 #' 
+#' -   Recording configuration — Stores configuration related to recording
+#'     a live stream and where to store the recorded content. Multiple
+#'     channels can reference the same recording configuration. See the
+#'     Recording Configuration endpoints for more information.
+#' 
 #' **Tagging**
 #' 
 #' A *tag* is a metadata label that you assign to an AWS resource. A tag
@@ -91,8 +95,45 @@ NULL
 #' [`tag_resource`][ivs_tag_resource],
 #' [`untag_resource`][ivs_untag_resource], and
 #' [`list_tags_for_resource`][ivs_list_tags_for_resource]. The following
-#' resources support tagging: Channels, Stream Keys, and Playback Key
-#' Pairs.
+#' resources support tagging: Channels, Stream Keys, Playback Key Pairs,
+#' and Recording Configurations.
+#' 
+#' **Authentication versus Authorization**
+#' 
+#' Note the differences between these concepts:
+#' 
+#' -   *Authentication* is about verifying identity. You need to be
+#'     authenticated to sign Amazon IVS API requests.
+#' 
+#' -   *Authorization* is about granting permissions. You need to be
+#'     authorized to view [Amazon IVS private
+#'     channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html).
+#'     (Private channels are channels that are enabled for "playback
+#'     authorization.")
+#' 
+#' **Authentication**
+#' 
+#' All Amazon IVS API requests must be authenticated with a signature. The
+#' AWS Command-Line Interface (CLI) and Amazon IVS Player SDKs take care of
+#' signing the underlying API calls for you. However, if your application
+#' calls the Amazon IVS API directly, it’s your responsibility to sign the
+#' requests.
+#' 
+#' You generate a signature using valid AWS credentials that have
+#' permission to perform the requested action. For example, you must sign
+#' PutMetadata requests with a signature generated from an IAM user account
+#' that has the `ivs:PutMetadata` permission.
+#' 
+#' For more information:
+#' 
+#' -   Authentication and generating signatures — See [Authenticating
+#'     Requests (AWS Signature
+#'     Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
+#'     in the *AWS General Reference*.
+#' 
+#' -   Managing Amazon IVS permissions — See [Identity and Access
+#'     Management](https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html)
+#'     on the Security page of the *Amazon IVS User Guide*.
 #' 
 #' **Channel Endpoints**
 #' 
@@ -108,7 +149,9 @@ NULL
 #' -   [`list_channels`][ivs_list_channels] — Gets summary information
 #'     about all channels in your account, in the AWS region where the API
 #'     request is processed. This list can be filtered to match a specified
-#'     string.
+#'     name or recording-configuration ARN. Filters are mutually exclusive
+#'     and cannot be used together. If you try to use both filters, you
+#'     will get an error (409 Conflict Exception).
 #' 
 #' -   [`update_channel`][ivs_update_channel] — Updates a channel's
 #'     configuration. This does not affect an ongoing stream of this
@@ -150,23 +193,29 @@ NULL
 #'     [`delete_stream_key`][ivs_delete_stream_key] to prevent further
 #'     streaming to a channel.
 #' 
-#' -   [`put_metadata`][ivs_put_metadata] — Inserts metadata into an RTMPS
-#'     stream for the specified channel. A maximum of 5 requests per second
-#'     per channel is allowed, each with a maximum 1KB payload.
+#' -   [`put_metadata`][ivs_put_metadata] — Inserts metadata into the
+#'     active stream of the specified channel. A maximum of 5 requests per
+#'     second per channel is allowed, each with a maximum 1 KB payload. (If
+#'     5 TPS is not sufficient for your needs, we recommend batching your
+#'     data into a single PutMetadata call.)
 #' 
 #' **PlaybackKeyPair Endpoints**
+#' 
+#' For more information, see [Setting Up Private
+#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
+#' in the *Amazon IVS User Guide*.
 #' 
 #' -   [`import_playback_key_pair`][ivs_import_playback_key_pair] — Imports
 #'     the public portion of a new key pair and returns its `arn` and
 #'     `fingerprint`. The `privateKey` can then be used to generate viewer
-#'     authorization tokens, to grant viewers access to authorized
-#'     channels.
+#'     authorization tokens, to grant viewers access to private channels
+#'     (channels enabled for playback authorization).
 #' 
 #' -   [`get_playback_key_pair`][ivs_get_playback_key_pair] — Gets a
 #'     specified playback authorization key pair and returns the `arn` and
 #'     `fingerprint`. The `privateKey` held by the caller can be used to
 #'     generate viewer authorization tokens, to grant viewers access to
-#'     authorized channels.
+#'     private channels.
 #' 
 #' -   [`list_playback_key_pairs`][ivs_list_playback_key_pairs] — Gets
 #'     summary information about playback key pairs.
@@ -174,6 +223,22 @@ NULL
 #' -   [`delete_playback_key_pair`][ivs_delete_playback_key_pair] — Deletes
 #'     a specified authorization key pair. This invalidates future viewer
 #'     tokens generated using the key pair’s `privateKey`.
+#' 
+#' **RecordingConfiguration Endpoints**
+#' 
+#' -   [`create_recording_configuration`][ivs_create_recording_configuration]
+#'     — Creates a new recording configuration, used to enable recording to
+#'     Amazon S3.
+#' 
+#' -   [`get_recording_configuration`][ivs_get_recording_configuration] —
+#'     Gets the recording-configuration metadata for the specified ARN.
+#' 
+#' -   [`list_recording_configurations`][ivs_list_recording_configurations]
+#'     — Gets summary information about all recording configurations in
+#'     your account, in the AWS region where the API request is processed.
+#' 
+#' -   [`delete_recording_configuration`][ivs_delete_recording_configuration]
+#'     — Deletes the recording configuration for the specified ARN.
 #' 
 #' **AWS Tags Endpoints**
 #' 
@@ -221,21 +286,25 @@ NULL
 #'  \link[=ivs_batch_get_channel]{batch_get_channel} \tab Performs GetChannel on multiple ARNs simultaneously\cr
 #'  \link[=ivs_batch_get_stream_key]{batch_get_stream_key} \tab Performs GetStreamKey on multiple ARNs simultaneously\cr
 #'  \link[=ivs_create_channel]{create_channel} \tab Creates a new channel and an associated stream key to start streaming\cr
+#'  \link[=ivs_create_recording_configuration]{create_recording_configuration} \tab Creates a new recording configuration, used to enable recording to Amazon S3\cr
 #'  \link[=ivs_create_stream_key]{create_stream_key} \tab Creates a stream key, used to initiate a stream, for the specified channel ARN\cr
 #'  \link[=ivs_delete_channel]{delete_channel} \tab Deletes the specified channel and its associated stream keys\cr
 #'  \link[=ivs_delete_playback_key_pair]{delete_playback_key_pair} \tab Deletes a specified authorization key pair\cr
+#'  \link[=ivs_delete_recording_configuration]{delete_recording_configuration} \tab Deletes the recording configuration for the specified ARN\cr
 #'  \link[=ivs_delete_stream_key]{delete_stream_key} \tab Deletes the stream key for the specified ARN, so it can no longer be used to stream\cr
 #'  \link[=ivs_get_channel]{get_channel} \tab Gets the channel configuration for the specified channel ARN\cr
 #'  \link[=ivs_get_playback_key_pair]{get_playback_key_pair} \tab Gets a specified playback authorization key pair and returns the arn and fingerprint\cr
+#'  \link[=ivs_get_recording_configuration]{get_recording_configuration} \tab Gets the recording configuration for the specified ARN\cr
 #'  \link[=ivs_get_stream]{get_stream} \tab Gets information about the active (live) stream on a specified channel\cr
 #'  \link[=ivs_get_stream_key]{get_stream_key} \tab Gets stream-key information for a specified ARN\cr
 #'  \link[=ivs_import_playback_key_pair]{import_playback_key_pair} \tab Imports the public portion of a new key pair and returns its arn and fingerprint\cr
 #'  \link[=ivs_list_channels]{list_channels} \tab Gets summary information about all channels in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivs_list_playback_key_pairs]{list_playback_key_pairs} \tab Gets summary information about playback key pairs\cr
+#'  \link[=ivs_list_recording_configurations]{list_recording_configurations} \tab Gets summary information about all recording configurations in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivs_list_stream_keys]{list_stream_keys} \tab Gets summary information about stream keys for the specified channel\cr
 #'  \link[=ivs_list_streams]{list_streams} \tab Gets summary information about live streams in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivs_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for the specified ARN\cr
-#'  \link[=ivs_put_metadata]{put_metadata} \tab Inserts metadata into an RTMPS stream for the specified channel\cr
+#'  \link[=ivs_put_metadata]{put_metadata} \tab Inserts metadata into the active stream of the specified channel\cr
 #'  \link[=ivs_stop_stream]{stop_stream} \tab Disconnects the incoming RTMPS stream for the specified channel\cr
 #'  \link[=ivs_tag_resource]{tag_resource} \tab Adds or updates tags for the AWS resource with the specified ARN\cr
 #'  \link[=ivs_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr

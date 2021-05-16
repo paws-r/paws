@@ -3,6 +3,78 @@
 #' @include mediatailor_service.R
 NULL
 
+.mediatailor$create_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string")), Outputs = structure(list(structure(list(DashPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer")), MinBufferTimeSeconds = structure(logical(0), tags = list(type = "integer")), MinUpdatePeriodSeconds = structure(logical(0), tags = list(type = "integer")), SuggestedPresentationDelaySeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HlsPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestName = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PlaybackMode = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$create_channel_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), ChannelName = structure(logical(0), tags = list(type = "string")), ChannelState = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), Outputs = structure(list(structure(list(DashPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer")), MinBufferTimeSeconds = structure(logical(0), tags = list(type = "integer")), MinUpdatePeriodSeconds = structure(logical(0), tags = list(type = "integer")), SuggestedPresentationDelaySeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HlsPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestName = structure(logical(0), tags = list(type = "string")), PlaybackUrl = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PlaybackMode = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$create_program_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdBreaks = structure(list(structure(list(MessageType = structure(logical(0), tags = list(type = "string")), OffsetMillis = structure(logical(0), tags = list(type = "long")), Slate = structure(list(SourceLocationName = structure(logical(0), tags = list(type = "string")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SpliceInsertMessage = structure(list(AvailNum = structure(logical(0), tags = list(type = "integer")), AvailsExpected = structure(logical(0), tags = list(type = "integer")), SpliceEventId = structure(logical(0), tags = list(type = "integer")), UniqueProgramId = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string")), ProgramName = structure(logical(0), tags = list(location = "uri", locationName = "programName", type = "string")), ScheduleConfiguration = structure(list(Transition = structure(list(RelativePosition = structure(logical(0), tags = list(type = "string")), RelativeProgram = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), SourceLocationName = structure(logical(0), tags = list(type = "string")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$create_program_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdBreaks = structure(list(structure(list(MessageType = structure(logical(0), tags = list(type = "string")), OffsetMillis = structure(logical(0), tags = list(type = "long")), Slate = structure(list(SourceLocationName = structure(logical(0), tags = list(type = "string")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SpliceInsertMessage = structure(list(AvailNum = structure(logical(0), tags = list(type = "integer")), AvailsExpected = structure(logical(0), tags = list(type = "integer")), SpliceEventId = structure(logical(0), tags = list(type = "integer")), UniqueProgramId = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Arn = structure(logical(0), tags = list(type = "string")), ChannelName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), ProgramName = structure(logical(0), tags = list(type = "string")), SourceLocationName = structure(logical(0), tags = list(type = "string")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$create_source_location_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccessConfiguration = structure(list(AccessType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DefaultSegmentDeliveryConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceLocationName = structure(logical(0), tags = list(location = "uri", locationName = "sourceLocationName", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$create_source_location_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccessConfiguration = structure(list(AccessType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), DefaultSegmentDeliveryConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), SourceLocationName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$create_vod_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(HttpPackageConfigurations = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourceLocationName = structure(logical(0), tags = list(location = "uri", locationName = "sourceLocationName", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), VodSourceName = structure(logical(0), tags = list(location = "uri", locationName = "vodSourceName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$create_vod_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), HttpPackageConfigurations = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), SourceLocationName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$delete_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$delete_channel_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$delete_channel_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$delete_channel_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .mediatailor$delete_playback_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
@@ -15,6 +87,114 @@ NULL
   return(populate(args, shape))
 }
 
+.mediatailor$delete_program_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string")), ProgramName = structure(logical(0), tags = list(location = "uri", locationName = "programName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$delete_program_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$delete_source_location_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SourceLocationName = structure(logical(0), tags = list(location = "uri", locationName = "sourceLocationName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$delete_source_location_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$delete_vod_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SourceLocationName = structure(logical(0), tags = list(location = "uri", locationName = "sourceLocationName", type = "string")), VodSourceName = structure(logical(0), tags = list(location = "uri", locationName = "vodSourceName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$delete_vod_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$describe_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$describe_channel_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), ChannelName = structure(logical(0), tags = list(type = "string")), ChannelState = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), Outputs = structure(list(structure(list(DashPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer")), MinBufferTimeSeconds = structure(logical(0), tags = list(type = "integer")), MinUpdatePeriodSeconds = structure(logical(0), tags = list(type = "integer")), SuggestedPresentationDelaySeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HlsPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestName = structure(logical(0), tags = list(type = "string")), PlaybackUrl = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PlaybackMode = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$describe_program_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string")), ProgramName = structure(logical(0), tags = list(location = "uri", locationName = "programName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$describe_program_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdBreaks = structure(list(structure(list(MessageType = structure(logical(0), tags = list(type = "string")), OffsetMillis = structure(logical(0), tags = list(type = "long")), Slate = structure(list(SourceLocationName = structure(logical(0), tags = list(type = "string")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SpliceInsertMessage = structure(list(AvailNum = structure(logical(0), tags = list(type = "integer")), AvailsExpected = structure(logical(0), tags = list(type = "integer")), SpliceEventId = structure(logical(0), tags = list(type = "integer")), UniqueProgramId = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Arn = structure(logical(0), tags = list(type = "string")), ChannelName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), ProgramName = structure(logical(0), tags = list(type = "string")), SourceLocationName = structure(logical(0), tags = list(type = "string")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$describe_source_location_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SourceLocationName = structure(logical(0), tags = list(location = "uri", locationName = "sourceLocationName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$describe_source_location_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccessConfiguration = structure(list(AccessType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), DefaultSegmentDeliveryConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), SourceLocationName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$describe_vod_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SourceLocationName = structure(logical(0), tags = list(location = "uri", locationName = "sourceLocationName", type = "string")), VodSourceName = structure(logical(0), tags = list(location = "uri", locationName = "vodSourceName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$describe_vod_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), HttpPackageConfigurations = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), SourceLocationName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$get_channel_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$get_channel_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$get_channel_schedule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string")), DurationMinutes = structure(logical(0), tags = list(location = "querystring", locationName = "durationMinutes", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$get_channel_schedule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Items = structure(list(structure(list(ApproximateDurationSeconds = structure(logical(0), tags = list(type = "long")), ApproximateStartTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), Arn = structure(logical(0), tags = list(type = "string")), ChannelName = structure(logical(0), tags = list(type = "string")), ProgramName = structure(logical(0), tags = list(type = "string")), SourceLocationName = structure(logical(0), tags = list(type = "string")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .mediatailor$get_playback_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
@@ -23,7 +203,19 @@ NULL
 
 .mediatailor$get_playback_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), AvailSuppression = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bumper = structure(list(EndUrl = structure(logical(0), tags = list(type = "string")), StartUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DashConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string")), MpdLocation = structure(logical(0), tags = list(type = "string")), OriginManifestType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HlsConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LivePreRollConfiguration = structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), MaxDurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestProcessingRules = structure(list(AdMarkerPassthrough = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), PersonalizationThresholdSeconds = structure(logical(0), tags = list(type = "integer")), PlaybackConfigurationArn = structure(logical(0), tags = list(type = "string")), PlaybackEndpointPrefix = structure(logical(0), tags = list(type = "string")), SessionInitializationEndpointPrefix = structure(logical(0), tags = list(type = "string")), SlateAdUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), TranscodeProfileName = structure(logical(0), tags = list(type = "string")), VideoContentSourceUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), AvailSuppression = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bumper = structure(list(EndUrl = structure(logical(0), tags = list(type = "string")), StartUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConfigurationAliases = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "map")), DashConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string")), MpdLocation = structure(logical(0), tags = list(type = "string")), OriginManifestType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HlsConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LivePreRollConfiguration = structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), MaxDurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestProcessingRules = structure(list(AdMarkerPassthrough = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), PersonalizationThresholdSeconds = structure(logical(0), tags = list(type = "integer")), PlaybackConfigurationArn = structure(logical(0), tags = list(type = "string")), PlaybackEndpointPrefix = structure(logical(0), tags = list(type = "string")), SessionInitializationEndpointPrefix = structure(logical(0), tags = list(type = "string")), SlateAdUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), TranscodeProfileName = structure(logical(0), tags = list(type = "string")), VideoContentSourceUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$list_channels_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$list_channels_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Items = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), ChannelName = structure(logical(0), tags = list(type = "string")), ChannelState = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), Outputs = structure(list(structure(list(DashPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer")), MinBufferTimeSeconds = structure(logical(0), tags = list(type = "integer")), MinUpdatePeriodSeconds = structure(logical(0), tags = list(type = "integer")), SuggestedPresentationDelaySeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HlsPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestName = structure(logical(0), tags = list(type = "string")), PlaybackUrl = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PlaybackMode = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -35,7 +227,19 @@ NULL
 
 .mediatailor$list_playback_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), AvailSuppression = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bumper = structure(list(EndUrl = structure(logical(0), tags = list(type = "string")), StartUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DashConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string")), MpdLocation = structure(logical(0), tags = list(type = "string")), OriginManifestType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HlsConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ManifestProcessingRules = structure(list(AdMarkerPassthrough = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), PlaybackConfigurationArn = structure(logical(0), tags = list(type = "string")), PlaybackEndpointPrefix = structure(logical(0), tags = list(type = "string")), SessionInitializationEndpointPrefix = structure(logical(0), tags = list(type = "string")), SlateAdUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), TranscodeProfileName = structure(logical(0), tags = list(type = "string")), PersonalizationThresholdSeconds = structure(logical(0), tags = list(type = "integer")), VideoContentSourceUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Items = structure(list(structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), AvailSuppression = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bumper = structure(list(EndUrl = structure(logical(0), tags = list(type = "string")), StartUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConfigurationAliases = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "map")), DashConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string")), MpdLocation = structure(logical(0), tags = list(type = "string")), OriginManifestType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HlsConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LivePreRollConfiguration = structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), MaxDurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestProcessingRules = structure(list(AdMarkerPassthrough = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), PersonalizationThresholdSeconds = structure(logical(0), tags = list(type = "integer")), PlaybackConfigurationArn = structure(logical(0), tags = list(type = "string")), PlaybackEndpointPrefix = structure(logical(0), tags = list(type = "string")), SessionInitializationEndpointPrefix = structure(logical(0), tags = list(type = "string")), SlateAdUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), TranscodeProfileName = structure(logical(0), tags = list(type = "string")), VideoContentSourceUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$list_source_locations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$list_source_locations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Items = structure(list(structure(list(AccessConfiguration = structure(list(AccessType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), DefaultSegmentDeliveryConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), SourceLocationName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -51,15 +255,63 @@ NULL
   return(populate(args, shape))
 }
 
+.mediatailor$list_vod_sources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), SourceLocationName = structure(logical(0), tags = list(location = "uri", locationName = "sourceLocationName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$list_vod_sources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Items = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), HttpPackageConfigurations = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), SourceLocationName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$put_channel_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$put_channel_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .mediatailor$put_playback_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), AvailSuppression = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bumper = structure(list(EndUrl = structure(logical(0), tags = list(type = "string")), StartUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DashConfiguration = structure(list(MpdLocation = structure(logical(0), tags = list(type = "string")), OriginManifestType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LivePreRollConfiguration = structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), MaxDurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestProcessingRules = structure(list(AdMarkerPassthrough = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), PersonalizationThresholdSeconds = structure(logical(0), tags = list(type = "integer")), SlateAdUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), TranscodeProfileName = structure(logical(0), tags = list(type = "string")), VideoContentSourceUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), AvailSuppression = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bumper = structure(list(EndUrl = structure(logical(0), tags = list(type = "string")), StartUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConfigurationAliases = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "map")), DashConfiguration = structure(list(MpdLocation = structure(logical(0), tags = list(type = "string")), OriginManifestType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LivePreRollConfiguration = structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), MaxDurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestProcessingRules = structure(list(AdMarkerPassthrough = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), PersonalizationThresholdSeconds = structure(logical(0), tags = list(type = "integer")), SlateAdUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), TranscodeProfileName = structure(logical(0), tags = list(type = "string")), VideoContentSourceUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .mediatailor$put_playback_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), AvailSuppression = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bumper = structure(list(EndUrl = structure(logical(0), tags = list(type = "string")), StartUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DashConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string")), MpdLocation = structure(logical(0), tags = list(type = "string")), OriginManifestType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HlsConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LivePreRollConfiguration = structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), MaxDurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestProcessingRules = structure(list(AdMarkerPassthrough = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), PersonalizationThresholdSeconds = structure(logical(0), tags = list(type = "integer")), PlaybackConfigurationArn = structure(logical(0), tags = list(type = "string")), PlaybackEndpointPrefix = structure(logical(0), tags = list(type = "string")), SessionInitializationEndpointPrefix = structure(logical(0), tags = list(type = "string")), SlateAdUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), TranscodeProfileName = structure(logical(0), tags = list(type = "string")), VideoContentSourceUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), AvailSuppression = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bumper = structure(list(EndUrl = structure(logical(0), tags = list(type = "string")), StartUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CdnConfiguration = structure(list(AdSegmentUrlPrefix = structure(logical(0), tags = list(type = "string")), ContentSegmentUrlPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConfigurationAliases = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "map")), DashConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string")), MpdLocation = structure(logical(0), tags = list(type = "string")), OriginManifestType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HlsConfiguration = structure(list(ManifestEndpointPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LivePreRollConfiguration = structure(list(AdDecisionServerUrl = structure(logical(0), tags = list(type = "string")), MaxDurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestProcessingRules = structure(list(AdMarkerPassthrough = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Name = structure(logical(0), tags = list(type = "string")), PersonalizationThresholdSeconds = structure(logical(0), tags = list(type = "integer")), PlaybackConfigurationArn = structure(logical(0), tags = list(type = "string")), PlaybackEndpointPrefix = structure(logical(0), tags = list(type = "string")), SessionInitializationEndpointPrefix = structure(logical(0), tags = list(type = "string")), SlateAdUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), TranscodeProfileName = structure(logical(0), tags = list(type = "string")), VideoContentSourceUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$start_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$start_channel_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$stop_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$stop_channel_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -81,4 +333,40 @@ NULL
 
 .mediatailor$untag_resource_output <- function(...) {
   list()
+}
+
+.mediatailor$update_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChannelName = structure(logical(0), tags = list(location = "uri", locationName = "channelName", type = "string")), Outputs = structure(list(structure(list(DashPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer")), MinBufferTimeSeconds = structure(logical(0), tags = list(type = "integer")), MinUpdatePeriodSeconds = structure(logical(0), tags = list(type = "integer")), SuggestedPresentationDelaySeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HlsPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestName = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$update_channel_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), ChannelName = structure(logical(0), tags = list(type = "string")), ChannelState = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), Outputs = structure(list(structure(list(DashPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer")), MinBufferTimeSeconds = structure(logical(0), tags = list(type = "integer")), MinUpdatePeriodSeconds = structure(logical(0), tags = list(type = "integer")), SuggestedPresentationDelaySeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HlsPlaylistSettings = structure(list(ManifestWindowSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ManifestName = structure(logical(0), tags = list(type = "string")), PlaybackUrl = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PlaybackMode = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$update_source_location_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccessConfiguration = structure(list(AccessType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DefaultSegmentDeliveryConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceLocationName = structure(logical(0), tags = list(location = "uri", locationName = "sourceLocationName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$update_source_location_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccessConfiguration = structure(list(AccessType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), DefaultSegmentDeliveryConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpConfiguration = structure(list(BaseUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), SourceLocationName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$update_vod_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(HttpPackageConfigurations = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourceLocationName = structure(logical(0), tags = list(location = "uri", locationName = "sourceLocationName", type = "string")), VodSourceName = structure(logical(0), tags = list(location = "uri", locationName = "vodSourceName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediatailor$update_vod_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), HttpPackageConfigurations = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), SourceGroup = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastModifiedTime = structure(logical(0), tags = list(timestampFormat = "unixTimestamp", type = "timestamp")), SourceLocationName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), VodSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }

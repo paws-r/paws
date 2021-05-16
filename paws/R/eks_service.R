@@ -64,10 +64,12 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=eks_associate_encryption_config]{associate_encryption_config} \tab Associate encryption configuration to an existing cluster\cr
+#'  \link[=eks_associate_identity_provider_config]{associate_identity_provider_config} \tab Associate an identity provider configuration to a cluster\cr
 #'  \link[=eks_create_addon]{create_addon} \tab Creates an Amazon EKS add-on\cr
 #'  \link[=eks_create_cluster]{create_cluster} \tab Creates an Amazon EKS control plane\cr
 #'  \link[=eks_create_fargate_profile]{create_fargate_profile} \tab Creates an AWS Fargate profile for your Amazon EKS cluster\cr
-#'  \link[=eks_create_nodegroup]{create_nodegroup} \tab Creates a managed worker node group for an Amazon EKS cluster\cr
+#'  \link[=eks_create_nodegroup]{create_nodegroup} \tab Creates a managed node group for an Amazon EKS cluster\cr
 #'  \link[=eks_delete_addon]{delete_addon} \tab Delete an Amazon EKS add-on\cr
 #'  \link[=eks_delete_cluster]{delete_cluster} \tab Deletes the Amazon EKS cluster control plane\cr
 #'  \link[=eks_delete_fargate_profile]{delete_fargate_profile} \tab Deletes an AWS Fargate profile\cr
@@ -76,11 +78,14 @@ NULL
 #'  \link[=eks_describe_addon_versions]{describe_addon_versions} \tab Describes the Kubernetes versions that the add-on can be used with\cr
 #'  \link[=eks_describe_cluster]{describe_cluster} \tab Returns descriptive information about an Amazon EKS cluster\cr
 #'  \link[=eks_describe_fargate_profile]{describe_fargate_profile} \tab Returns descriptive information about an AWS Fargate profile\cr
+#'  \link[=eks_describe_identity_provider_config]{describe_identity_provider_config} \tab Returns descriptive information about an identity provider configuration\cr
 #'  \link[=eks_describe_nodegroup]{describe_nodegroup} \tab Returns descriptive information about an Amazon EKS node group\cr
 #'  \link[=eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group\cr
+#'  \link[=eks_disassociate_identity_provider_config]{disassociate_identity_provider_config} \tab Disassociates an identity provider configuration from a cluster\cr
 #'  \link[=eks_list_addons]{list_addons} \tab Lists the available add-ons\cr
 #'  \link[=eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your AWS account in the specified Region\cr
 #'  \link[=eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the AWS Fargate profiles associated with the specified cluster in your AWS account in the specified Region\cr
+#'  \link[=eks_list_identity_provider_configs]{list_identity_provider_configs} \tab A list of identity provider configurations\cr
 #'  \link[=eks_list_nodegroups]{list_nodegroups} \tab Lists the Amazon EKS managed node groups associated with the specified cluster in your AWS account in the specified Region\cr
 #'  \link[=eks_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon EKS resource\cr
 #'  \link[=eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS cluster or managed node group in your AWS account, in the specified Region\cr

@@ -62,10 +62,13 @@ NULL
 #'  \link[=ecrpublic_get_repository_catalog_data]{get_repository_catalog_data} \tab Retrieve catalog metadata for a repository in a public registry\cr
 #'  \link[=ecrpublic_get_repository_policy]{get_repository_policy} \tab Retrieves the repository policy for the specified repository\cr
 #'  \link[=ecrpublic_initiate_layer_upload]{initiate_layer_upload} \tab Notifies Amazon ECR that you intend to upload an image layer\cr
+#'  \link[=ecrpublic_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECR Public resource\cr
 #'  \link[=ecrpublic_put_image]{put_image} \tab Creates or updates the image manifest and tags associated with an image\cr
 #'  \link[=ecrpublic_put_registry_catalog_data]{put_registry_catalog_data} \tab Create or updates the catalog data for a public registry\cr
 #'  \link[=ecrpublic_put_repository_catalog_data]{put_repository_catalog_data} \tab Creates or updates the catalog data for a repository in a public registry\cr
 #'  \link[=ecrpublic_set_repository_policy]{set_repository_policy} \tab Applies a repository policy to the specified public repository to control access permissions\cr
+#'  \link[=ecrpublic_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
+#'  \link[=ecrpublic_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
 #'  \link[=ecrpublic_upload_layer_part]{upload_layer_part} \tab Uploads an image layer part to Amazon ECR
 #' }
 #'

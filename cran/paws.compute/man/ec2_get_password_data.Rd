@@ -36,7 +36,7 @@ see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-service.html}{EC2Config}
 and
 \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html}{EC2Launch}
-in the Amazon Elastic Compute Cloud User Guide.
+in the \emph{Amazon EC2 User Guide}.
 
 For the \code{EC2Config} service, the password is not generated for rebundled
 AMIs unless \code{Ec2SetPassword} is enabled before bundling.

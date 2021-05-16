@@ -32,10 +32,8 @@ A list with the following syntax:\preformatted{list(
 Generates a prediction for the observation using the specified
 \verb{ML Model}.
 
-Note
-
-Not all response parameters will be populated. Whether a response
-parameter is populated depends on the type of model requested.
+\strong{Note:} Not all response parameters will be populated. Whether a
+response parameter is populated depends on the type of model requested.
 }
 \section{Request syntax}{
 \preformatted{svc$predict(

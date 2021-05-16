@@ -3,7 +3,7 @@
 \name{chime_get_voice_connector_group}
 \alias{chime_get_voice_connector_group}
 \title{Retrieves details for the specified Amazon Chime Voice Connector group,
-such as timestamps, name, and associated VoiceConnectorItems}
+such as timestamps,name, and associated VoiceConnectorItems}
 \usage{
 chime_get_voice_connector_group(VoiceConnectorGroupId)
 }
@@ -33,7 +33,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Retrieves details for the specified Amazon Chime Voice Connector group,
-such as timestamps, name, and associated \code{VoiceConnectorItems}.
+such as timestamps,name, and associated \code{VoiceConnectorItems} .
 }
 \section{Request syntax}{
 \preformatted{svc$get_voice_connector_group(

@@ -5,7 +5,7 @@
 \title{Creates a new cache security group}
 \usage{
 elasticache_create_cache_security_group(CacheSecurityGroupName,
-  Description)
+  Description, Tags)
 }
 \arguments{
 \item{CacheSecurityGroupName}{[required] A name for the cache security group. This value is stored as a lowercase
@@ -17,6 +17,9 @@ Cannot be the word "Default".
 Example: \code{mysecuritygroup}}
 
 \item{Description}{[required] A description for the cache security group.}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -49,7 +52,13 @@ For more information, see
 \section{Request syntax}{
 \preformatted{svc$create_cache_security_group(
   CacheSecurityGroupName = "string",
-  Description = "string"
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

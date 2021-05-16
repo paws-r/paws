@@ -33,8 +33,8 @@ PostgreSQL, or SQL Server DB instance.
 source is running MySQL 5.6 or later.
 \item For the limitations of Oracle read replicas, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html}{Read Replica Limitations with Oracle}
 in the \emph{Amazon RDS User Guide}.
-\item For the limitations of SQL Server read replicas, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Read Replica Limitations with Microsoft SQL Server} in
-the \emph{Amazon RDS User Guide}.
+\item For the limitations of SQL Server read replicas, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.html}{Read Replica Limitations with Microsoft SQL Server}
+in the \emph{Amazon RDS User Guide}.
 \item Can specify a PostgreSQL DB instance only if the source is running
 PostgreSQL 9.3.5 or later (9.4.7 and higher for cross-region
 replication).
@@ -333,7 +333,11 @@ the same primary DB instance. For more information, see \href{https://docs.aws.a
 in the \emph{Amazon RDS User Guide}.}
 
 \item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
-of the DB instance.}
+of the DB instance.
+
+For more information about this setting, including limitations that
+apply to it, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling}{Managing capacity automatically with Amazon RDS storage autoscaling}
+in the \emph{Amazon RDS User Guide}.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
@@ -521,7 +525,8 @@ A list with the following syntax:\preformatted{list(
         DBInstanceAutomatedBackupsArn = "string"
       )
     ),
-    CustomerOwnedIpEnabled = TRUE|FALSE
+    CustomerOwnedIpEnabled = TRUE|FALSE,
+    AwsBackupRecoveryPointArn = "string"
   )
 )
 }

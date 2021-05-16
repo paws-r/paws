@@ -64,6 +64,7 @@ NULL
 #'  \link[=kafka_untag_resource]{untag_resource} \tab Removes the tags associated with the keys that are provided in the query\cr
 #'  \link[=kafka_update_broker_count]{update_broker_count} \tab Updates the number of broker nodes in the cluster\cr
 #'  \link[=kafka_update_broker_storage]{update_broker_storage} \tab Updates the EBS storage associated with MSK brokers\cr
+#'  \link[=kafka_update_broker_type]{update_broker_type} \tab Updates EC2 instance type\cr
 #'  \link[=kafka_update_cluster_configuration]{update_cluster_configuration} \tab Updates the cluster with the configuration that is specified in the request body\cr
 #'  \link[=kafka_update_cluster_kafka_version]{update_cluster_kafka_version} \tab Updates the Apache Kafka version for the cluster\cr
 #'  \link[=kafka_update_configuration]{update_configuration} \tab Updates an MSK configuration\cr

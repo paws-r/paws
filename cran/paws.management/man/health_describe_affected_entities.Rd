@@ -55,9 +55,14 @@ unknown, include at least one entity indicating this.
 
 At least one event ARN is required. Results are sorted by the
 \code{lastUpdatedTime} of the entity, starting with the most recent.
-
-This API operation uses pagination. Specify the \code{nextToken} parameter in
-the next request to return more results.
+\itemize{
+\item This API operation uses pagination. Specify the \code{nextToken}
+parameter in the next request to return more results.
+\item This operation supports resource-level permissions. You can use this
+operation to allow or deny access to specific AWS Health events. For
+more information, see \href{https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions}{Resource- and action-based conditions}
+in the \emph{AWS Health User Guide}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_affected_entities(

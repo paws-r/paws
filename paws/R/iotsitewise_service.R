@@ -80,6 +80,7 @@ NULL
 #'  \link[=iotsitewise_get_asset_property_aggregates]{get_asset_property_aggregates} \tab Gets aggregated values for an asset property\cr
 #'  \link[=iotsitewise_get_asset_property_value]{get_asset_property_value} \tab Gets an asset property's current value\cr
 #'  \link[=iotsitewise_get_asset_property_value_history]{get_asset_property_value_history} \tab Gets the history of an asset property's values\cr
+#'  \link[=iotsitewise_get_interpolated_asset_property_values]{get_interpolated_asset_property_values} \tab Get interpolated values for an asset property for a specified time interval, during a period of time\cr
 #'  \link[=iotsitewise_list_access_policies]{list_access_policies} \tab Retrieves a paginated list of access policies for an identity (an AWS SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise Monitor resource (a portal or project)\cr
 #'  \link[=iotsitewise_list_asset_models]{list_asset_models} \tab Retrieves a paginated list of summaries of all asset models\cr
 #'  \link[=iotsitewise_list_asset_relationships]{list_asset_relationships} \tab Retrieves a paginated list of asset relationships for an asset\cr

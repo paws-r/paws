@@ -40,12 +40,13 @@ with ENA is enabled.
 \item \code{kernel-id} - The kernel ID.
 \item \code{manifest-location} - The location of the image manifest.
 \item \code{name} - The name of the AMI (provided during image creation).
-\item \code{owner-alias} - The owner alias, from an Amazon-maintained list
-(\code{amazon} | \code{aws-marketplace}). This is not the user-configured AWS
-account alias set using the IAM console. We recommend that you use
-the related parameter instead of this filter.
+\item \code{owner-alias} - The owner alias (\code{amazon} | \code{aws-marketplace}). The
+valid aliases are defined in an Amazon-maintained list. This is not
+the AWS account alias that can be set using the IAM console. We
+recommend that you use the \strong{Owner} request parameter instead of
+this filter.
 \item \code{owner-id} - The AWS account ID of the owner. We recommend that you
-use the related parameter instead of this filter.
+use the \strong{Owner} request parameter instead of this filter.
 \item \code{platform} - The platform. To only list Windows-based AMIs, use
 \code{windows}.
 \item \code{product-code} - The product code.
@@ -123,6 +124,7 @@ A list with the following syntax:\preformatted{list(
             VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
             KmsKeyId = "string",
             Throughput = 123,
+            OutpostArn = "string",
             Encrypted = TRUE|FALSE
           ),
           NoDevice = "string"
@@ -146,7 +148,8 @@ A list with the following syntax:\preformatted{list(
           Value = "string"
         )
       ),
-      VirtualizationType = "hvm"|"paravirtual"
+      VirtualizationType = "hvm"|"paravirtual",
+      BootMode = "legacy-bios"|"uefi"
     )
   )
 )

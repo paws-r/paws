@@ -9,10 +9,10 @@ ec2_describe_image_attribute(Attribute, ImageId, DryRun)
 \arguments{
 \item{Attribute}{[required] The AMI attribute.
 
-\strong{Note}: Depending on your account privileges, the \code{blockDeviceMapping}
-attribute may return a \code{Client.AuthFailure} error. If this happens, use
-\code{\link[=ec2_describe_images]{describe_images}} to get information about the
-block device mapping for the AMI.}
+\strong{Note}: The \code{blockDeviceMapping} attribute is deprecated. Using this
+attribute returns the \code{Client.AuthFailure} error. To get information
+about the block device mappings for an AMI, use the
+\code{\link[=ec2_describe_images]{describe_images}} action.}
 
 \item{ImageId}{[required] The ID of the AMI.}
 
@@ -35,6 +35,7 @@ A list with the following syntax:\preformatted{list(
         VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
         KmsKeyId = "string",
         Throughput = 123,
+        OutpostArn = "string",
         Encrypted = TRUE|FALSE
       ),
       NoDevice = "string"
@@ -64,6 +65,9 @@ A list with the following syntax:\preformatted{list(
   ),
   SriovNetSupport = list(
     Value = "string"
+  ),
+  BootMode = list(
+    Value = "string"
   )
 )
 }
@@ -74,7 +78,7 @@ only one attribute at a time.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_image_attribute(
-  Attribute = "description"|"kernel"|"ramdisk"|"launchPermission"|"productCodes"|"blockDeviceMapping"|"sriovNetSupport",
+  Attribute = "description"|"kernel"|"ramdisk"|"launchPermission"|"productCodes"|"blockDeviceMapping"|"sriovNetSupport"|"bootMode",
   ImageId = "string",
   DryRun = TRUE|FALSE
 )

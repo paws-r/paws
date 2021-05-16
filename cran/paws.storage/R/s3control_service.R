@@ -5,7 +5,7 @@ NULL
 #' AWS S3 Control
 #'
 #' @description
-#' AWS S3 Control provides access to Amazon S3 control plane operations.
+#' AWS S3 Control provides access to Amazon S3 control plane actions.
 #'
 #' @param
 #' config
@@ -40,35 +40,45 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=s3control_create_access_point]{create_access_point} \tab Creates an access point and associates it with the specified bucket\cr
-#'  \link[=s3control_create_bucket]{create_bucket} \tab This API operation creates an Amazon S3 on Outposts bucket\cr
-#'  \link[=s3control_create_job]{create_job} \tab S3 Batch Operations performs large-scale Batch Operations on Amazon S3 objects\cr
+#'  \link[=s3control_create_access_point_for_object_lambda]{create_access_point_for_object_lambda} \tab Creates an Object Lambda Access Point\cr
+#'  \link[=s3control_create_bucket]{create_bucket} \tab This action creates an Amazon S3 on Outposts bucket\cr
+#'  \link[=s3control_create_job]{create_job} \tab You can use S3 Batch Operations to perform large-scale batch actions on Amazon S3 objects\cr
 #'  \link[=s3control_delete_access_point]{delete_access_point} \tab Deletes the specified access point\cr
+#'  \link[=s3control_delete_access_point_for_object_lambda]{delete_access_point_for_object_lambda} \tab Deletes the specified Object Lambda Access Point\cr
 #'  \link[=s3control_delete_access_point_policy]{delete_access_point_policy} \tab Deletes the access point policy for the specified access point\cr
-#'  \link[=s3control_delete_bucket]{delete_bucket} \tab This API operation deletes an Amazon S3 on Outposts bucket\cr
-#'  \link[=s3control_delete_bucket_lifecycle_configuration]{delete_bucket_lifecycle_configuration} \tab This API action deletes an Amazon S3 on Outposts bucket's lifecycle configuration\cr
-#'  \link[=s3control_delete_bucket_policy]{delete_bucket_policy} \tab This API operation deletes an Amazon S3 on Outposts bucket policy\cr
-#'  \link[=s3control_delete_bucket_tagging]{delete_bucket_tagging} \tab This operation deletes an Amazon S3 on Outposts bucket's tags\cr
+#'  \link[=s3control_delete_access_point_policy_for_object_lambda]{delete_access_point_policy_for_object_lambda} \tab Removes the resource policy for an Object Lambda Access Point\cr
+#'  \link[=s3control_delete_bucket]{delete_bucket} \tab This action deletes an Amazon S3 on Outposts bucket\cr
+#'  \link[=s3control_delete_bucket_lifecycle_configuration]{delete_bucket_lifecycle_configuration} \tab This action deletes an Amazon S3 on Outposts bucket's lifecycle configuration\cr
+#'  \link[=s3control_delete_bucket_policy]{delete_bucket_policy} \tab This action deletes an Amazon S3 on Outposts bucket policy\cr
+#'  \link[=s3control_delete_bucket_tagging]{delete_bucket_tagging} \tab This action deletes an Amazon S3 on Outposts bucket's tags\cr
 #'  \link[=s3control_delete_job_tagging]{delete_job_tagging} \tab Removes the entire tag set from the specified S3 Batch Operations job\cr
 #'  \link[=s3control_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an AWS account\cr
 #'  \link[=s3control_delete_storage_lens_configuration]{delete_storage_lens_configuration} \tab Deletes the Amazon S3 Storage Lens configuration\cr
 #'  \link[=s3control_delete_storage_lens_configuration_tagging]{delete_storage_lens_configuration_tagging} \tab Deletes the Amazon S3 Storage Lens configuration tags\cr
 #'  \link[=s3control_describe_job]{describe_job} \tab Retrieves the configuration parameters and status for a Batch Operations job\cr
 #'  \link[=s3control_get_access_point]{get_access_point} \tab Returns configuration information about the specified access point\cr
+#'  \link[=s3control_get_access_point_configuration_for_object_lambda]{get_access_point_configuration_for_object_lambda} \tab Returns configuration for an Object Lambda Access Point\cr
+#'  \link[=s3control_get_access_point_for_object_lambda]{get_access_point_for_object_lambda} \tab Returns configuration information about the specified Object Lambda Access Point\cr
 #'  \link[=s3control_get_access_point_policy]{get_access_point_policy} \tab Returns the access point policy associated with the specified access point\cr
+#'  \link[=s3control_get_access_point_policy_for_object_lambda]{get_access_point_policy_for_object_lambda} \tab Returns the resource policy for an Object Lambda Access Point\cr
 #'  \link[=s3control_get_access_point_policy_status]{get_access_point_policy_status} \tab Indicates whether the specified access point currently has a policy that allows public access\cr
+#'  \link[=s3control_get_access_point_policy_status_for_object_lambda]{get_access_point_policy_status_for_object_lambda} \tab Returns the status of the resource policy associated with an Object Lambda Access Point\cr
 #'  \link[=s3control_get_bucket]{get_bucket} \tab Gets an Amazon S3 on Outposts bucket\cr
-#'  \link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab This operation gets an Amazon S3 on Outposts bucket's lifecycle configuration\cr
+#'  \link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab This action gets an Amazon S3 on Outposts bucket's lifecycle configuration\cr
 #'  \link[=s3control_get_bucket_policy]{get_bucket_policy} \tab This action gets a bucket policy for an Amazon S3 on Outposts bucket\cr
-#'  \link[=s3control_get_bucket_tagging]{get_bucket_tagging} \tab This operation gets an Amazon S3 on Outposts bucket's tags\cr
+#'  \link[=s3control_get_bucket_tagging]{get_bucket_tagging} \tab This action gets an Amazon S3 on Outposts bucket's tags\cr
 #'  \link[=s3control_get_job_tagging]{get_job_tagging} \tab Returns the tags on an S3 Batch Operations job\cr
 #'  \link[=s3control_get_public_access_block]{get_public_access_block} \tab Retrieves the PublicAccessBlock configuration for an AWS account\cr
 #'  \link[=s3control_get_storage_lens_configuration]{get_storage_lens_configuration} \tab Gets the Amazon S3 Storage Lens configuration\cr
 #'  \link[=s3control_get_storage_lens_configuration_tagging]{get_storage_lens_configuration_tagging} \tab Gets the tags of Amazon S3 Storage Lens configuration\cr
 #'  \link[=s3control_list_access_points]{list_access_points} \tab Returns a list of the access points currently associated with the specified bucket\cr
+#'  \link[=s3control_list_access_points_for_object_lambda]{list_access_points_for_object_lambda} \tab Returns a list of the access points associated with the Object Lambda Access Point\cr
 #'  \link[=s3control_list_jobs]{list_jobs} \tab Lists current S3 Batch Operations jobs and jobs that have ended within the last 30 days for the AWS account making the request\cr
 #'  \link[=s3control_list_regional_buckets]{list_regional_buckets} \tab Returns a list of all Outposts buckets in an Outpost that are owned by the authenticated sender of the request\cr
 #'  \link[=s3control_list_storage_lens_configurations]{list_storage_lens_configurations} \tab Gets a list of Amazon S3 Storage Lens configurations\cr
+#'  \link[=s3control_put_access_point_configuration_for_object_lambda]{put_access_point_configuration_for_object_lambda} \tab Replaces configuration for an Object Lambda Access Point\cr
 #'  \link[=s3control_put_access_point_policy]{put_access_point_policy} \tab Associates an access policy with the specified access point\cr
+#'  \link[=s3control_put_access_point_policy_for_object_lambda]{put_access_point_policy_for_object_lambda} \tab Creates or replaces resource policy for an Object Lambda Access Point\cr
 #'  \link[=s3control_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab This action puts a lifecycle configuration to an Amazon S3 on Outposts bucket\cr
 #'  \link[=s3control_put_bucket_policy]{put_bucket_policy} \tab This action puts a bucket policy to an Amazon S3 on Outposts bucket\cr
 #'  \link[=s3control_put_bucket_tagging]{put_bucket_tagging} \tab This action puts tags on an Amazon S3 on Outposts bucket\cr

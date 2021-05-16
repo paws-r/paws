@@ -4,7 +4,7 @@
 \alias{kms_list_grants}
 \title{Gets a list of all grants for the specified customer master key (CMK)}
 \usage{
-kms_list_grants(Limit, Marker, KeyId)
+kms_list_grants(Limit, Marker, KeyId, GrantId, GranteePrincipal)
 }
 \arguments{
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
@@ -18,7 +18,8 @@ This value is optional. If you include a value, it must be between 1 and
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 
-\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] Returns only grants for the specified customer master key (CMK). This
+parameter is required.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To
 specify a CMK in a different AWS account, you must use the key ARN.
@@ -32,6 +33,12 @@ For example:
 
 To get the key ID and key ARN for a CMK, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+
+\item{GrantId}{Returns only the grant with the specified grant ID. The grant ID
+uniquely identifies the grant.}
+
+\item{GranteePrincipal}{Returns only grants where the specified principal is the grantee
+principal for the grant.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -67,6 +74,9 @@ A list with the following syntax:\preformatted{list(
 \description{
 Gets a list of all grants for the specified customer master key (CMK).
 
+You must specify the CMK in all requests. You can filter the grant list
+by grant ID or grantee principal.
+
 The \code{GranteePrincipal} field in the \code{\link[=kms_list_grants]{list_grants}}
 response usually contains the user or role designated as the grantee
 principal in the grant. However, when the grantee principal in the grant
@@ -93,7 +103,9 @@ parameter.
 \preformatted{svc$list_grants(
   Limit = 123,
   Marker = "string",
-  KeyId = "string"
+  KeyId = "string",
+  GrantId = "string",
+  GranteePrincipal = "string"
 )
 }
 }

@@ -35,8 +35,9 @@ Both the StreamName and the StreamARN parameters are optional, but you
 must specify either the StreamName or the StreamARN when invoking this
 API operation.
 
-As a prerequsite to using GetCLip API, you must obtain an endpoint using
-\code{GetDataEndpoint}, specifying GET_CLIP for`` the \code{APIName} parameter.
+As a prerequisite to using GetCLip API, you must obtain an endpoint
+using \code{GetDataEndpoint}, specifying GET_CLIP for`` the \code{APIName}
+parameter.
 
 An Amazon Kinesis video stream has the following requirements for
 providing data through MP4:
@@ -49,8 +50,9 @@ AAC) or A_MS/ACM (for G.711).
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265
-format. For more information, see \href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}. For information
-about adapting stream data to a given format, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
+format. For more information, see MPEG-4 specification ISO/IEC
+14496-15. For information about adapting stream data to a given
+format, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
 private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}) or the \href{http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html}{MS Wave format}.
 }

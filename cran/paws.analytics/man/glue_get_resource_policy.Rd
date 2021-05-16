@@ -7,9 +7,10 @@
 glue_get_resource_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{The ARN of the AWS Glue resource for the resource policy to be
-retrieved. For more information about AWS Glue resource ARNs, see the
-\href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id}{AWS Glue ARN string pattern}}
+\item{ResourceArn}{The ARN of the AWS Glue resource for which to retrieve the resource
+policy. If not supplied, the Data Catalog resource policy is returned.
+Use \code{\link[=glue_get_resource_policies]{get_resource_policies}} to view all
+existing resource policies. For more information see \href{https://docs.aws.amazon.com/glue/latest/dg/glue-specifying-resource-arns.html}{Specifying AWS Glue Resource ARNs}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

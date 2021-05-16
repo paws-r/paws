@@ -14,7 +14,7 @@ sts_assume_role_with_saml(RoleArn, PrincipalArn, SAMLAssertion,
 \item{PrincipalArn}{[required] The Amazon Resource Name (ARN) of the SAML provider in IAM that
 describes the IdP.}
 
-\item{SAMLAssertion}{[required] The base-64 encoded SAML authentication response provided by the IdP.
+\item{SAMLAssertion}{[required] The base64 encoded SAML authentication response provided by the IdP.
 
 For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml_relying-party.html}{Configuring a Relying Party and Adding Claims}
 in the \emph{IAM User Guide}.}
@@ -24,14 +24,14 @@ want to use as managed session policies. The policies must exist in the
 same account as the role.
 
 This parameter is optional. You can provide up to 10 managed policy
-ARNs. However, the plain text that you use for both inline and managed
+ARNs. However, the plaintext that you use for both inline and managed
 session policies can't exceed 2,048 characters. For more information
 about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the AWS General Reference.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
+can fail for this limit even if your plaintext meets the other
 requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -58,7 +58,7 @@ by the identity-based policy of the role that is being assumed. For more
 information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session Policies}
 in the \emph{IAM User Guide}.
 
-The plain text that you use for both inline and managed session policies
+The plaintext that you use for both inline and managed session policies
 can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
 character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
@@ -66,7 +66,7 @@ character list (\code{U+0020} through \verb{U+00FF}). It can also include the ta
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
+can fail for this limit even if your plaintext meets the other
 requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.}
@@ -112,7 +112,8 @@ A list with the following syntax:\preformatted{list(
   SubjectType = "string",
   Issuer = "string",
   Audience = "string",
-  NameQualifier = "string"
+  NameQualifier = "string",
+  SourceIdentity = "string"
 )
 }
 }
@@ -150,6 +151,16 @@ commands. However the limit does not apply when you use those operations
 to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM Roles}
 in the \emph{IAM User Guide}.
 
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-role-chaining}{Role chaining}
+limits your AWS CLI or AWS API role session to a maximum of one hour.
+When you use the \code{\link[=sts_assume_role]{assume_role}} API operation to
+assume a role, you can specify the duration of your role session with
+the \code{DurationSeconds} parameter. You can specify a parameter value of up
+to 43200 seconds (12 hours), depending on the maximum session duration
+setting for your role. However, if you assume a role using role chaining
+and provide a \code{DurationSeconds} parameter value greater than one hour,
+the operation fails.
+
 \strong{Permissions}
 
 The temporary security credentials created by
@@ -161,7 +172,7 @@ call the STS \code{\link[=sts_get_federation_token]{get_federation_token}} or
 (Optional) You can pass inline or managed \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{session policies}
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed policies
-to use as managed session policies. The plain text that you use for both
+to use as managed session policies. The plaintext that you use for both
 inline and managed session policies can't exceed 2,048 characters.
 Passing policies to this operation returns new temporary credentials.
 The resulting session's permissions are the intersection of the role's
@@ -192,14 +203,14 @@ an associated value. For more information about session tags, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html}{Passing Session Tags in STS}
 in the \emph{IAM User Guide}.
 
-You can pass up to 50 session tags. The plain text session tag keys
-can’t exceed 128 characters and the values can’t exceed 256 characters.
-For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
+You can pass up to 50 session tags. The plaintext session tag keys can’t
+exceed 128 characters and the values can’t exceed 256 characters. For
+these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
+can fail for this limit even if your plaintext meets the other
 requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.

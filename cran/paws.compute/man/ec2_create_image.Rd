@@ -82,6 +82,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
         VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
         KmsKeyId = "string",
         Throughput = 123,
+        OutpostArn = "string",
         Encrypted = TRUE|FALSE
       ),
       NoDevice = "string"

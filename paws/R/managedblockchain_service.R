@@ -72,7 +72,10 @@ NULL
 #'  \link[=managedblockchain_list_nodes]{list_nodes} \tab Returns information about the nodes within a network\cr
 #'  \link[=managedblockchain_list_proposals]{list_proposals} \tab Returns a list of proposals for the network\cr
 #'  \link[=managedblockchain_list_proposal_votes]{list_proposal_votes} \tab Returns the list of votes for a specified proposal, including the value of each vote and the unique identifier of the member that cast the vote\cr
+#'  \link[=managedblockchain_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the specified resource\cr
 #'  \link[=managedblockchain_reject_invitation]{reject_invitation} \tab Rejects an invitation to join a network\cr
+#'  \link[=managedblockchain_tag_resource]{tag_resource} \tab Adds or overwrites the specified tags for the specified Amazon Managed Blockchain resource\cr
+#'  \link[=managedblockchain_untag_resource]{untag_resource} \tab Removes the specified tags from the Amazon Managed Blockchain resource\cr
 #'  \link[=managedblockchain_update_member]{update_member} \tab Updates a member configuration with new parameters\cr
 #'  \link[=managedblockchain_update_node]{update_node} \tab Updates a node configuration with new parameters\cr
 #'  \link[=managedblockchain_vote_on_proposal]{vote_on_proposal} \tab Casts a vote for a specified ProposalId on behalf of a member

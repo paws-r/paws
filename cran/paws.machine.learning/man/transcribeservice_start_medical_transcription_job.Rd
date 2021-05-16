@@ -7,7 +7,8 @@
 transcribeservice_start_medical_transcription_job(
   MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz,
   MediaFormat, Media, OutputBucketName, OutputKey,
-  OutputEncryptionKMSKeyId, Settings, Specialty, Type)
+  OutputEncryptionKMSKeyId, Settings, ContentIdentificationType,
+  Specialty, Type)
 }
 \arguments{
 \item{MedicalTranscriptionJobName}{[required] The name of the medical transcription job. You can't use the strings
@@ -99,6 +100,11 @@ an output location in the \code{OutputBucketName} parameter.}
 
 \item{Settings}{Optional settings for the medical transcription job.}
 
+\item{ContentIdentificationType}{You can configure Amazon Transcribe Medical to label content in the
+transcription output. If you specify \code{PHI}, Amazon Transcribe Medical
+labels the personal health information (PHI) that it identifies in the
+transcription output.}
+
 \item{Specialty}{[required] The medical specialty of any clinician speaking in the input media.}
 
 \item{Type}{[required] The type of speech in the input audio. \code{CONVERSATION} refers to
@@ -138,6 +144,7 @@ A list with the following syntax:\preformatted{list(
       MaxAlternatives = 123,
       VocabularyName = "string"
     ),
+    ContentIdentificationType = "PHI",
     Specialty = "PRIMARYCARE",
     Type = "CONVERSATION"|"DICTATION"
   )
@@ -167,6 +174,7 @@ Starts a batch job to transcribe medical speech to text.
     MaxAlternatives = 123,
     VocabularyName = "string"
   ),
+  ContentIdentificationType = "PHI",
   Specialty = "PRIMARYCARE",
   Type = "CONVERSATION"|"DICTATION"
 )

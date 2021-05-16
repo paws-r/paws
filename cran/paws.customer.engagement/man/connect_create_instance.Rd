@@ -17,9 +17,9 @@ connect_create_instance(ClientToken, IdentityManagementType,
 
 \item{DirectoryId}{The identifier for the directory.}
 
-\item{InboundCallsEnabled}{[required] Whether your contact center handles incoming contacts.}
+\item{InboundCallsEnabled}{[required] Your contact center handles incoming contacts.}
 
-\item{OutboundCallsEnabled}{[required] Whether your contact center allows outbound calls.}
+\item{OutboundCallsEnabled}{[required] Your contact center allows outbound calls.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -33,9 +33,15 @@ This API is in preview release for Amazon Connect and is subject to
 change.
 
 Initiates an Amazon Connect instance with all the supported channels
-enabled. It does not attach any storage (such as Amazon S3, or Kinesis)
-or allow for any configurations on features such as Contact Lens for
-Amazon Connect.
+enabled. It does not attach any storage, such as Amazon Simple Storage
+Service (Amazon S3) or Amazon Kinesis. It also does not allow for any
+configurations on features, such as Contact Lens for Amazon Connect.
+
+Amazon Connect enforces a limit on the total number of instances that
+you can create or delete in 30 days. If you exceed this limit, you will
+get an error message indicating there has been an excessive number of
+attempts at creating or deleting instances. You must wait 30 days before
+you can restart creating and deleting instances in your account.
 }
 \section{Request syntax}{
 \preformatted{svc$create_instance(

@@ -6,12 +6,23 @@
 calls this API action to specify information about the new application,
 including the application type}
 \usage{
-ssm_create_ops_metadata(ResourceId, Metadata)
+ssm_create_ops_metadata(ResourceId, Metadata, Tags)
 }
 \arguments{
 \item{ResourceId}{[required] A resource ID for a new Application Manager application.}
 
 \item{Metadata}{Metadata for a new Application Manager application.}
+
+\item{Tags}{Optional metadata that you assign to a resource. You can specify a
+maximum of five tags for an OpsMetadata object. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag an OpsMetadata object to
+identify an environment or target AWS Region. In this case, you could
+specify the following key-value pairs:
+\itemize{
+\item \verb{Key=Environment,Value=Production}
+\item \verb{Key=Region,Value=us-east-2}
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -29,6 +40,12 @@ including the application type.
   ResourceId = "string",
   Metadata = list(
     list(
+      Value = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
       Value = "string"
     )
   )

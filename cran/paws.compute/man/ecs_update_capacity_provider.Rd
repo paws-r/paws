@@ -7,10 +7,10 @@
 ecs_update_capacity_provider(name, autoScalingGroupProvider)
 }
 \arguments{
-\item{name}{[required] An object representing the parameters to update for the Auto Scaling
-group capacity provider.}
+\item{name}{[required] The name of the capacity provider to update.}
 
-\item{autoScalingGroupProvider}{[required] The name of the capacity provider to update.}
+\item{autoScalingGroupProvider}{[required] An object representing the parameters to update for the Auto Scaling
+group capacity provider.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

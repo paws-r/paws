@@ -112,8 +112,9 @@ greengrassv2_cancel_deployment <- function(deploymentId) {
 #' 
 #' You must specify either `inlineRecipe` or `lambdaFunction`.
 #' @param tags A list of key-value pairs that contain metadata for the resource. For
-#' more information, see Tag your resources in the *AWS IoT Greengrass V2
-#' Developer Guide*.
+#' more information, see [Tag your
+#' resources](https://docs.aws.amazon.com/greengrass/v2/developerguide/tag-resources.html)
+#' in the *AWS IoT Greengrass V2 Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -246,8 +247,9 @@ greengrassv2_create_component_version <- function(inlineRecipe = NULL, lambdaFun
 #' create a new revision of an existing deployment. This operation returns
 #' the revision number of the new deployment when you create it.
 #' 
-#' For more information, see the Create deployments in the *AWS IoT
-#' Greengrass V2 Developer Guide*.
+#' For more information, see the [Create
+#' deployments](https://docs.aws.amazon.com/greengrass/v2/developerguide/create-deployments.html)
+#' in the *AWS IoT Greengrass V2 Developer Guide*.
 #'
 #' @usage
 #' greengrassv2_create_deployment(targetArn, deploymentName, components,
@@ -271,8 +273,9 @@ greengrassv2_create_component_version <- function(inlineRecipe = NULL, lambdaFun
 #' @param deploymentPolicies The deployment policies for the deployment. These policies define how
 #' the deployment updates components and handles failure.
 #' @param tags A list of key-value pairs that contain metadata for the resource. For
-#' more information, see Tag your resources in the *AWS IoT Greengrass V2
-#' Developer Guide*.
+#' more information, see [Tag your
+#' resources](https://docs.aws.amazon.com/greengrass/v2/developerguide/tag-resources.html)
+#' in the *AWS IoT Greengrass V2 Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -585,11 +588,11 @@ greengrassv2_get_component <- function(recipeOutputFormat = NULL, arn) {
 }
 .greengrassv2$operations$get_component <- greengrassv2_get_component
 
-#' Gets the pre-signed URL to a component artifact in an S3 bucket
+#' Gets the pre-signed URL to download a public component artifact
 #'
 #' @description
-#' Gets the pre-signed URL to a component artifact in an S3 bucket. Core
-#' devices can call this operation to identify the URL that they can use to
+#' Gets the pre-signed URL to download a public component artifact. Core
+#' devices call this operation to identify the URL that they can use to
 #' download an artifact to install.
 #'
 #' @usage
@@ -597,8 +600,14 @@ greengrassv2_get_component <- function(recipeOutputFormat = NULL, arn) {
 #'
 #' @param arn &#91;required&#93; The
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
-#' of the component version.
+#' of the component version. Specify the ARN of a public component version.
 #' @param artifactName &#91;required&#93; The name of the artifact.
+#' 
+#' You can use the [`get_component`][greengrassv2_get_component] operation
+#' to download the component recipe, which includes the URI of the
+#' artifact. The artifact name is the section of the URI after the scheme.
+#' For example, in the artifact URI `greengrass:SomeArtifact.zip`, the
+#' artifact name is `SomeArtifact.zip`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1283,7 +1292,8 @@ greengrassv2_list_tags_for_resource <- function(resourceArn) {
 #' 
 #' To use this operation, you must use the data plane API endpoint and
 #' authenticate with an AWS IoT device certificate. For more information,
-#' see AWS IoT Greengrass endpoints and quotas.
+#' see [AWS IoT Greengrass endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/greengrass.html).
 #'
 #' @usage
 #' greengrassv2_resolve_component_candidates(platform, componentCandidates)
@@ -1360,8 +1370,9 @@ greengrassv2_resolve_component_candidates <- function(platform, componentCandida
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the resource to tag.
 #' @param tags &#91;required&#93; A list of key-value pairs that contain metadata for the resource. For
-#' more information, see Tag your resources in the *AWS IoT Greengrass V2
-#' Developer Guide*.
+#' more information, see [Tag your
+#' resources](https://docs.aws.amazon.com/greengrass/v2/developerguide/tag-resources.html)
+#' in the *AWS IoT Greengrass V2 Developer Guide*.
 #'
 #' @return
 #' An empty list.

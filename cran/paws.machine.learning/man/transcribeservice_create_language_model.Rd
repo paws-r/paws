@@ -27,7 +27,7 @@ required input files to create a custom language model.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
-  LanguageCode = "en-US",
+  LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
   BaseModelName = "NarrowBand"|"WideBand",
   ModelName = "string",
   InputDataConfig = list(
@@ -46,7 +46,7 @@ depends on the size of your training data.
 }
 \section{Request syntax}{
 \preformatted{svc$create_language_model(
-  LanguageCode = "en-US",
+  LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
   BaseModelName = "NarrowBand"|"WideBand",
   ModelName = "string",
   InputDataConfig = list(

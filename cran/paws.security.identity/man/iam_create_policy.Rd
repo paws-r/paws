@@ -4,7 +4,7 @@
 \alias{iam_create_policy}
 \title{Creates a new managed policy for your AWS account}
 \usage{
-iam_create_policy(PolicyName, Path, PolicyDocument, Description)
+iam_create_policy(PolicyName, Path, PolicyDocument, Description, Tags)
 }
 \arguments{
 \item{PolicyName}{[required] The friendly name of the policy.
@@ -15,7 +15,7 @@ create resources named both "MyResource" and "myresource".}
 
 \item{Path}{The path for the policy.
 
-For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
+For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -55,6 +55,15 @@ policy. For example, "Grants access to production DynamoDB tables."
 
 The policy description is immutable. After a value is assigned, it
 cannot be changed.}
+
+\item{Tags}{A list of tags that you want to attach to the new IAM customer managed
+policy. Each tag consists of a key name and an associated value. For
+more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
+in the \emph{IAM User Guide}.
+
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
+created.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -73,6 +82,12 @@ A list with the following syntax:\preformatted{list(
     ),
     UpdateDate = as.POSIXct(
       "2015-01-01"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
     )
   )
 )
@@ -83,10 +98,14 @@ Creates a new managed policy for your AWS account.
 
 This operation creates a policy version with a version identifier of
 \code{v1} and sets v1 as the policy's default version. For more information
-about policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
+about policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for managed policies}
 in the \emph{IAM User Guide}.
 
-For more information about managed policies in general, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+As a best practice, you can validate your IAM policies. To learn more,
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_policy-validator.html}{Validating IAM policies}
+in the \emph{IAM User Guide}.
+
+For more information about managed policies in general, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed policies and inline policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
@@ -94,7 +113,13 @@ in the \emph{IAM User Guide}.
   PolicyName = "string",
   Path = "string",
   PolicyDocument = "string",
-  Description = "string"
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

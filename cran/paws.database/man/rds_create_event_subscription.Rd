@@ -39,8 +39,7 @@ contain two consecutive hyphens.
 
 Constraints:
 \itemize{
-\item If a \code{SourceIds} value is supplied, \code{SourceType} must also be
-provided.
+\item If \code{SourceIds} are supplied, \code{SourceType} must also be provided.
 \item If the source type is a DB instance, a \code{DBInstanceIdentifier} value
 must be supplied.
 \item If the source type is a DB cluster, a \code{DBClusterIdentifier} value

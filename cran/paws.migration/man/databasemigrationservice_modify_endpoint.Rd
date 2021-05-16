@@ -239,7 +239,14 @@ A list with the following syntax:\preformatted{list(
       IncludeTableAlterOperations = TRUE|FALSE,
       IncludeControlDetails = TRUE|FALSE,
       MessageMaxBytes = 123,
-      IncludeNullAndEmpty = TRUE|FALSE
+      IncludeNullAndEmpty = TRUE|FALSE,
+      SecurityProtocol = "plaintext"|"ssl-authentication"|"ssl-encryption"|"sasl-ssl",
+      SslClientCertificateArn = "string",
+      SslClientKeyArn = "string",
+      SslClientKeyPassword = "string",
+      SslCaCertificateArn = "string",
+      SaslUsername = "string",
+      SaslPassword = "string"
     ),
     ElasticsearchSettings = list(
       ServiceAccessRoleArn = "string",
@@ -306,6 +313,7 @@ A list with the following syntax:\preformatted{list(
     ),
     MySQLSettings = list(
       AfterConnectScript = "string",
+      CleanSourceMetadataOnMismatch = TRUE|FALSE,
       DatabaseName = "string",
       EventsPollInterval = 123,
       TargetDbType = "specific-database"|"multiple-databases",
@@ -349,6 +357,7 @@ A list with the following syntax:\preformatted{list(
       SecurityDbEncryption = "string",
       SecurityDbEncryptionName = "string",
       ServerName = "string",
+      SpatialDataOptionToGeoJsonFunctionName = "string",
       Username = "string",
       SecretsManagerAccessRoleArn = "string",
       SecretsManagerSecretId = "string",
@@ -370,11 +379,13 @@ A list with the following syntax:\preformatted{list(
       DatabaseName = "string",
       ControlTablesFileGroup = "string",
       Password = "string",
+      QuerySingleAlwaysOnNode = TRUE|FALSE,
       ReadBackupOnly = TRUE|FALSE,
       SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
       ServerName = "string",
       Username = "string",
       UseBcpFullLoad = TRUE|FALSE,
+      UseThirdPartyBackupDevice = TRUE|FALSE,
       SecretsManagerAccessRoleArn = "string",
       SecretsManagerSecretId = "string"
     ),
@@ -500,7 +511,14 @@ Modifies the specified endpoint.
     IncludeTableAlterOperations = TRUE|FALSE,
     IncludeControlDetails = TRUE|FALSE,
     MessageMaxBytes = 123,
-    IncludeNullAndEmpty = TRUE|FALSE
+    IncludeNullAndEmpty = TRUE|FALSE,
+    SecurityProtocol = "plaintext"|"ssl-authentication"|"ssl-encryption"|"sasl-ssl",
+    SslClientCertificateArn = "string",
+    SslClientKeyArn = "string",
+    SslClientKeyPassword = "string",
+    SslCaCertificateArn = "string",
+    SaslUsername = "string",
+    SaslPassword = "string"
   ),
   ElasticsearchSettings = list(
     ServiceAccessRoleArn = "string",
@@ -567,6 +585,7 @@ Modifies the specified endpoint.
   ),
   MySQLSettings = list(
     AfterConnectScript = "string",
+    CleanSourceMetadataOnMismatch = TRUE|FALSE,
     DatabaseName = "string",
     EventsPollInterval = 123,
     TargetDbType = "specific-database"|"multiple-databases",
@@ -610,6 +629,7 @@ Modifies the specified endpoint.
     SecurityDbEncryption = "string",
     SecurityDbEncryptionName = "string",
     ServerName = "string",
+    SpatialDataOptionToGeoJsonFunctionName = "string",
     Username = "string",
     SecretsManagerAccessRoleArn = "string",
     SecretsManagerSecretId = "string",
@@ -631,11 +651,13 @@ Modifies the specified endpoint.
     DatabaseName = "string",
     ControlTablesFileGroup = "string",
     Password = "string",
+    QuerySingleAlwaysOnNode = TRUE|FALSE,
     ReadBackupOnly = TRUE|FALSE,
     SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
     ServerName = "string",
     Username = "string",
     UseBcpFullLoad = TRUE|FALSE,
+    UseThirdPartyBackupDevice = TRUE|FALSE,
     SecretsManagerAccessRoleArn = "string",
     SecretsManagerSecretId = "string"
   ),

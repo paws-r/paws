@@ -19,8 +19,8 @@ Describes the status of the
 \code{\link[=resourcegroupstaggingapi_start_report_creation]{start_report_creation}}
 operation.
 
-You can call this operation only from the organization's master account
-and from the us-east-1 Region.
+You can call this operation only from the organization's management
+account and from the us-east-1 Region.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_report_creation()

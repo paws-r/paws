@@ -117,7 +117,8 @@ A list with the following syntax:\preformatted{list(
     ),
     RestorableUntil = as.POSIXct(
       "2015-01-01"
-    )
+    ),
+    KeyStorageSecurityStandard = "FIPS_140_2_LEVEL_2_OR_HIGHER"|"FIPS_140_2_LEVEL_3_OR_HIGHER"
   )
 )
 }
@@ -137,7 +138,7 @@ sign your private CA CSR and then import it into PCA.
 \item \code{DISABLED} - Your private CA has been disabled.
 \item \code{EXPIRED} - Your private CA certificate has expired.
 \item \code{FAILED} - Your private CA has failed. Your CA can fail because of
-problems such a network outage or backend AWS failure or other
+problems such a network outage or back-end AWS failure or other
 errors. A failed CA can never return to the pending state. You must
 create a new CA.
 \item \code{DELETED} - Your private CA is within the restoration period, after

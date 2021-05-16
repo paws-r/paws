@@ -7,7 +7,7 @@
 chime_update_app_instance(AppInstanceArn, Name, Metadata)
 }
 \arguments{
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 
 \item{Name}{[required] The name that you want to change.}
 

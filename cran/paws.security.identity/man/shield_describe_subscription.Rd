@@ -42,7 +42,8 @@ A list with the following syntax:\preformatted{list(
           )
         )
       )
-    )
+    ),
+    SubscriptionArn = "string"
   )
 )
 }

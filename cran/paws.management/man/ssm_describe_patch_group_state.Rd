@@ -19,7 +19,10 @@ A list with the following syntax:\preformatted{list(
   InstancesWithMissingPatches = 123,
   InstancesWithFailedPatches = 123,
   InstancesWithNotApplicablePatches = 123,
-  InstancesWithUnreportedNotApplicablePatches = 123
+  InstancesWithUnreportedNotApplicablePatches = 123,
+  InstancesWithCriticalNonCompliantPatches = 123,
+  InstancesWithSecurityNonCompliantPatches = 123,
+  InstancesWithOtherNonCompliantPatches = 123
 )
 }
 }

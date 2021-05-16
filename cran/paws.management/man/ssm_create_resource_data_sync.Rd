@@ -84,7 +84,8 @@ creating a restrictive bucket policy.
     SourceRegions = list(
       "string"
     ),
-    IncludeFutureRegions = TRUE|FALSE
+    IncludeFutureRegions = TRUE|FALSE,
+    EnableAllOpsDataSources = TRUE|FALSE
   )
 )
 }

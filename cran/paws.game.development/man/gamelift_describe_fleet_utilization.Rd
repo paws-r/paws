@@ -7,17 +7,15 @@
 gamelift_describe_fleet_utilization(FleetIds, Limit, NextToken)
 }
 \arguments{
-\item{FleetIds}{A unique identifier for a fleet(s) to retrieve utilization data for. You
-can use either the fleet ID or ARN value. To retrieve attributes for all
-current fleets, do not include this parameter. If the list of fleet
-identifiers includes fleets that don't currently exist, the request
-succeeds but no attributes for that fleet are returned.}
+\item{FleetIds}{A unique identifier for the fleet(s) to retrieve utilization data for.
+You can use either the fleet ID or ARN value. To retrieve attributes for
+all current fleets, do not include this parameter.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
 \code{NextToken} to get results as a set of sequential pages. This parameter
 is ignored when the request specifies one or a list of fleet IDs.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.
 This parameter is ignored when the request specifies one or a list of
@@ -28,10 +26,12 @@ A list with the following syntax:\preformatted{list(
   FleetUtilization = list(
     list(
       FleetId = "string",
+      FleetArn = "string",
       ActiveServerProcessCount = 123,
       ActiveGameSessionCount = 123,
       CurrentPlayerSessionCount = 123,
-      MaximumPlayerSessionCount = 123
+      MaximumPlayerSessionCount = 123,
+      Location = "string"
     )
   ),
   NextToken = "string"
@@ -39,16 +39,28 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Retrieves utilization statistics for one or more fleets. These
-statistics provide insight into how available hosting resources are
-currently being used. To get statistics on available hosting resources,
-see \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}.
+Retrieves utilization statistics for one or more fleets. Utilization
+data provides a snapshot of how the fleet's hosting resources are
+currently being used. For fleets with remote locations, this operation
+retrieves data for the fleet's home Region only. See
+\code{\link[=gamelift_describe_fleet_location_utilization]{describe_fleet_location_utilization}}
+to get utilization statistics for a fleet's remote locations.
 
-You can request utilization data for all fleets, or specify a list of
-one or more fleet IDs. When requesting multiple fleets, use the
-pagination parameters to retrieve results as a set of sequential pages.
+This operation can be used in the following ways:
+\itemize{
+\item To get utilization data for one or more specific fleets, provide a
+list of fleet IDs or fleet ARNs.
+\item To get utilization data for all fleets, do not provide a fleet
+identifier.
+}
+
+When requesting multiple fleets, use the pagination parameters to
+retrieve results as a set of sequential pages.
+
 If successful, a FleetUtilization object is returned for each requested
-fleet ID, unless the fleet identifier is not found.
+fleet ID, unless the fleet identifier is not found. Each fleet
+utilization object includes a \code{Location} property, which is set to the
+fleet's home Region.
 
 Some API operations may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
@@ -60,25 +72,20 @@ error message includes the maximum allowed.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet}{GameLift Metrics for Fleets}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_fleet]{create_fleet}}
-\item \code{\link[=gamelift_list_fleets]{list_fleets}}
-\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
-\item Describe fleets:
-\itemize{
-\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
-\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
-\item \code{\link[=gamelift_describe_fleet_port_settings]{describe_fleet_port_settings}}
-\item \code{\link[=gamelift_describe_fleet_utilization]{describe_fleet_utilization}}
-\item \code{\link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration}}
-\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
-\item \code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}}
-}
-\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
-\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_list_fleets]{list_fleets}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}} |
+\code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}} |
+\code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}} |
+\code{\link[=gamelift_describe_fleet_location_attributes]{describe_fleet_location_attributes}}
+|
+\code{\link[=gamelift_describe_fleet_port_settings]{describe_fleet_port_settings}}
+| \code{\link[=gamelift_describe_fleet_utilization]{describe_fleet_utilization}} |
+\code{\link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration}}
+| \code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}} |
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_fleet_utilization(

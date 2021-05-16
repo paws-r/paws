@@ -11,15 +11,13 @@ NULL
 #' fast, container management service that makes it easy to run, stop, and
 #' manage Docker containers on a cluster. You can host your cluster on a
 #' serverless infrastructure that is managed by Amazon ECS by launching
-#' your services or tasks using the Fargate launch type. For more control,
-#' you can host your tasks on a cluster of Amazon Elastic Compute Cloud
-#' (Amazon EC2) instances that you manage by using the EC2 launch type. For
-#' more information about launch types, see [Amazon ECS Launch
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
+#' your services or tasks on AWS Fargate. For more control, you can host
+#' your tasks on a cluster of Amazon Elastic Compute Cloud (Amazon EC2)
+#' instances that you manage.
 #' 
-#' Amazon ECS lets you launch and stop container-based applications with
-#' simple API calls, allows you to get the state of your cluster from a
-#' centralized service, and gives you access to many familiar Amazon EC2
+#' Amazon ECS makes it easy to launch and stop container-based applications
+#' with simple API calls, allows you to get the state of your cluster from
+#' a centralized service, and gives you access to many familiar Amazon EC2
 #' features.
 #' 
 #' You can use Amazon ECS to schedule the placement of containers across
@@ -81,6 +79,7 @@ NULL
 #'  \link[=ecs_describe_tasks]{describe_tasks} \tab Describes a specified task or tasks\cr
 #'  \link[=ecs_describe_task_sets]{describe_task_sets} \tab Describes the task sets in the specified cluster and service\cr
 #'  \link[=ecs_discover_poll_endpoint]{discover_poll_endpoint} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent\cr
+#'  \link[=ecs_execute_command]{execute_command} \tab Runs a command remotely on a container within a task\cr
 #'  \link[=ecs_list_account_settings]{list_account_settings} \tab Lists the account settings for a specified principal\cr
 #'  \link[=ecs_list_attributes]{list_attributes} \tab Lists the attributes for Amazon ECS resources within a specified target type and cluster\cr
 #'  \link[=ecs_list_clusters]{list_clusters} \tab Returns a list of existing clusters\cr
@@ -105,6 +104,7 @@ NULL
 #'  \link[=ecs_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
 #'  \link[=ecs_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
 #'  \link[=ecs_update_capacity_provider]{update_capacity_provider} \tab Modifies the parameters for a capacity provider\cr
+#'  \link[=ecs_update_cluster]{update_cluster} \tab Updates the cluster\cr
 #'  \link[=ecs_update_cluster_settings]{update_cluster_settings} \tab Modifies the settings to use for a cluster\cr
 #'  \link[=ecs_update_container_agent]{update_container_agent} \tab Updates the Amazon ECS container agent on a specified container instance\cr
 #'  \link[=ecs_update_container_instances_state]{update_container_instances_state} \tab Modifies the status of an Amazon ECS container instance\cr

@@ -2,20 +2,20 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_increase_node_groups_in_global_replication_group}
 \alias{elasticache_increase_node_groups_in_global_replication_group}
-\title{Increase the number of node groups in the Global Datastore}
+\title{Increase the number of node groups in the Global datastore}
 \usage{
 elasticache_increase_node_groups_in_global_replication_group(
   GlobalReplicationGroupId, NodeGroupCount, RegionalConfigurations,
   ApplyImmediately)
 }
 \arguments{
-\item{GlobalReplicationGroupId}{[required] The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{[required] The name of the Global datastore}
 
 \item{NodeGroupCount}{[required] The number of node groups you wish to add}
 
 \item{RegionalConfigurations}{Describes the replication group IDs, the AWS regions where they are
 stored and the shard configuration for each that comprise the Global
-Datastore}
+datastore}
 
 \item{ApplyImmediately}{[required] Indicates that the process begins immediately. At present, the only
 permitted value for this parameter is true.}
@@ -54,7 +54,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Increase the number of node groups in the Global Datastore
+Increase the number of node groups in the Global datastore
 }
 \section{Request syntax}{
 \preformatted{svc$increase_node_groups_in_global_replication_group(

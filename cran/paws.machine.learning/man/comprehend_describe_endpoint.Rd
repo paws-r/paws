@@ -23,7 +23,8 @@ A list with the following syntax:\preformatted{list(
     ),
     LastModifiedTime = as.POSIXct(
       "2015-01-01"
-    )
+    ),
+    DataAccessRoleArn = "string"
   )
 )
 }

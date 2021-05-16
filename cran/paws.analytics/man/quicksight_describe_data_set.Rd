@@ -148,6 +148,14 @@ A list with the following syntax:\preformatted{list(
         )
       )
     ),
+    FieldFolders = list(
+      list(
+        description = "string",
+        columns = list(
+          "string"
+        )
+      )
+    ),
     RowLevelPermissionDataSet = list(
       Namespace = "string",
       Arn = "string",

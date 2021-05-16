@@ -2,7 +2,7 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_update_game_session}
 \alias{gamelift_update_game_session}
-\title{Updates game session properties}
+\title{Updates the mutable properties of a game session}
 \usage{
 gamelift_update_game_session(GameSessionId, MaximumPlayerSessionCount,
   Name, PlayerSessionCreationPolicy, ProtectionPolicy)
@@ -16,7 +16,8 @@ the game session.}
 \item{Name}{A descriptive label that is associated with a game session. Session
 names do not need to be unique.}
 
-\item{PlayerSessionCreationPolicy}{Policy determining whether or not the game session accepts new players.}
+\item{PlayerSessionCreationPolicy}{A policy that determines whether the game session is accepting new
+players.}
 
 \item{ProtectionPolicy}{Game session protection policy to apply to this game session only.
 \itemize{
@@ -55,33 +56,33 @@ A list with the following syntax:\preformatted{list(
     PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
     CreatorId = "string",
     GameSessionData = "string",
-    MatchmakerData = "string"
+    MatchmakerData = "string",
+    Location = "string"
   )
 )
 }
 }
 \description{
-Updates game session properties. This includes the session name, maximum
-player count, protection policy, which controls whether or not an active
-game session can be terminated during a scale-down event, and the player
-session creation policy, which controls whether or not new players can
-join the session. To update a game session, specify the game session ID
-and the values you want to change. If successful, an updated GameSession
-object is returned.
-\itemize{
-\item \code{\link[=gamelift_create_game_session]{create_game_session}}
-\item \code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}}
-\item \code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
-\item \code{\link[=gamelift_search_game_sessions]{search_game_sessions}}
-\item \code{\link[=gamelift_update_game_session]{update_game_session}}
-\item \code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}}
-\item Game session placements
-\itemize{
-\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
-\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
-\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
-}
-}
+Updates the mutable properties of a game session.
+
+To update a game session, specify the game session ID and the values you
+want to change.
+
+If successful, the updated \code{GameSession} object is returned.
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_session]{create_game_session}} |
+\code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}} |
+\code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
+| \code{\link[=gamelift_search_game_sessions]{search_game_sessions}} |
+\code{\link[=gamelift_update_game_session]{update_game_session}} |
+\code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}} |
+\code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+|
+\code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+| \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$update_game_session(

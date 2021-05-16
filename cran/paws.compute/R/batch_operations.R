@@ -8,9 +8,9 @@ NULL
 #' @description
 #' Cancels a job in an AWS Batch job queue. Jobs that are in the
 #' `SUBMITTED`, `PENDING`, or `RUNNABLE` state are canceled. Jobs that have
-#' progressed to `STARTING` or `RUNNING` are not canceled (but the API
-#' operation still succeeds, even if no job is canceled); these jobs must
-#' be terminated with the [`terminate_job`][batch_terminate_job] operation.
+#' progressed to `STARTING` or `RUNNING` aren't canceled, but the API
+#' operation still succeeds, even if no job is canceled. These jobs must be
+#' terminated with the [`terminate_job`][batch_terminate_job] operation.
 #'
 #' @usage
 #' batch_cancel_job(jobId, reason)
@@ -74,37 +74,38 @@ batch_cancel_job <- function(jobId, reason) {
 #' based on the compute resource specification that you define or the
 #' [launch
 #' template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
-#' that you specify when you create the compute environment. You can choose
-#' either to use EC2 On-Demand Instances and EC2 Spot Instances, or to use
-#' Fargate and Fargate Spot capacity in your managed compute environment.
-#' You can optionally set a maximum price so that Spot Instances only
-#' launch when the Spot Instance price is less than a specified percentage
-#' of the On-Demand price.
+#' that you specify when you create the compute environment. Either, you
+#' can choose to use EC2 On-Demand Instances and EC2 Spot Instances. Or,
+#' you can use Fargate and Fargate Spot capacity in your managed compute
+#' environment. You can optionally set a maximum price so that Spot
+#' Instances only launch when the Spot Instance price is less than a
+#' specified percentage of the On-Demand price.
 #' 
-#' Multi-node parallel jobs are not supported on Spot Instances.
+#' Multi-node parallel jobs aren't supported on Spot Instances.
 #' 
 #' In an unmanaged compute environment, you can manage your own EC2 compute
 #' resources and have a lot of flexibility with how you configure your
-#' compute resources. For example, you can use custom AMI. However, you
-#' need to verify that your AMI meets the Amazon ECS container instance AMI
-#' specification. For more information, see [container instance
+#' compute resources. For example, you can use custom AMIs. However, you
+#' must verify that each of your AMIs meet the Amazon ECS container
+#' instance AMI specification. For more information, see [container
+#' instance
 #' AMIs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
-#' the *Amazon Elastic Container Service Developer Guide*. After you have
+#' the *Amazon Elastic Container Service Developer Guide*. After you
 #' created your unmanaged compute environment, you can use the
 #' [`describe_compute_environments`][batch_describe_compute_environments]
 #' operation to find the Amazon ECS cluster that's associated with it.
-#' Then, manually launch your container instances into that Amazon ECS
-#' cluster. For more information, see [Launching an Amazon ECS container
+#' Then, launch your container instances into that Amazon ECS cluster. For
+#' more information, see [Launching an Amazon ECS container
 #' instance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' AWS Batch doesn't upgrade the AMIs in a compute environment after it's
-#' created. For example, it doesn't update the AMIs when a newer version of
-#' the Amazon ECS-optimized AMI is available. Therefore, you're responsible
-#' for the management of the guest operating system (including updates and
-#' security patches) and any additional application software or utilities
-#' that you install on the compute resources. To use a new AMI for your AWS
-#' Batch jobs, complete these steps:
+#' AWS Batch doesn't upgrade the AMIs in a compute environment after the
+#' environment is created. For example, it doesn't update the AMIs when a
+#' newer version of the Amazon ECS optimized AMI is available. Therefore,
+#' you're responsible for managing the guest operating system (including
+#' its updates and security patches) and any additional application
+#' software or utilities that you install on the compute resources. To use
+#' a new AMI for your AWS Batch jobs, complete these steps:
 #' 
 #' 1.  Create a new compute environment with the new AMI.
 #' 
@@ -144,15 +145,25 @@ batch_cancel_job <- function(jobId, reason) {
 #' information, see [Compute
 #' Environments](https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
 #' in the *AWS Batch User Guide*.
-#' @param serviceRole &#91;required&#93; The full Amazon Resource Name (ARN) of the IAM role that allows AWS
+#' @param serviceRole The full Amazon Resource Name (ARN) of the IAM role that allows AWS
 #' Batch to make calls to other AWS services on your behalf. For more
 #' information, see [AWS Batch service IAM
 #' role](https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html)
 #' in the *AWS Batch User Guide*.
 #' 
-#' If your specified role has a path other than `/`, then you must either
-#' specify the full role ARN (this is recommended) or prefix the role name
-#' with the path.
+#' If your account has already created the AWS Batch service-linked role,
+#' that role is used by default for your compute environment unless you
+#' specify a role here. If the AWS Batch service-linked role does not exist
+#' in your account, and no role is specified here, the service will try to
+#' create the AWS Batch service-linked role in your account.
+#' 
+#' If your specified role has a path other than `/`, then you must specify
+#' either the full role ARN (recommended) or prefix the role name with the
+#' path. For example, if a role with the name `bar` has a path of `/foo/`
+#' then you would specify `/foo/bar` as the role name. For more
+#' information, see [Friendly names and
+#' paths](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names)
+#' in the *IAM User Guide*.
 #' 
 #' Depending on how you created your AWS Batch service role, its ARN might
 #' contain the `service-role` path prefix. When you only specify the name
@@ -306,7 +317,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' @keywords internal
 #'
 #' @rdname batch_create_compute_environment
-batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, computeResources = NULL, serviceRole, tags = NULL) {
+batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, computeResources = NULL, serviceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateComputeEnvironment",
     http_method = "POST",
@@ -330,8 +341,8 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' associate one or more compute environments to the queue and assign an
 #' order of preference for the compute environments.
 #' 
-#' You also set a priority to the job queue that determines the order in
-#' which the AWS Batch scheduler places jobs onto its associated compute
+#' You also set a priority to the job queue that determines the order that
+#' the AWS Batch scheduler places jobs onto its associated compute
 #' environments. For example, if a compute environment is associated with
 #' more than one job queue, the job queue with a higher priority is given
 #' preference for scheduling jobs to that compute environment.
@@ -466,8 +477,8 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, priority, compute
 #' [`update_job_queue`][batch_update_job_queue] API operation. Compute
 #' environments that use AWS Fargate resources must terminate all active
 #' jobs on that compute environment before deleting the compute
-#' environment. If this isn't done, the compute environment will end up in
-#' an invalid state.
+#' environment. If this isn't done, the compute environment enters an
+#' invalid state.
 #'
 #' @usage
 #' batch_delete_compute_environment(computeEnvironment)
@@ -773,9 +784,9 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #' [`describe_job_definitions`][batch_describe_job_definitions] in
 #' paginated output. When this parameter is used,
 #' [`describe_job_definitions`][batch_describe_job_definitions] only
-#' returns `maxResults` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another
+#' returns `maxResults` results in a single page and a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another
 #' [`describe_job_definitions`][batch_describe_job_definitions] request
 #' with the returned `nextToken` value. This value can be between 1 and
 #' 100. If this parameter isn't used, then
@@ -833,7 +844,17 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'             host = list(
 #'               sourcePath = "string"
 #'             ),
-#'             name = "string"
+#'             name = "string",
+#'             efsVolumeConfiguration = list(
+#'               fileSystemId = "string",
+#'               rootDirectory = "string",
+#'               transitEncryption = "ENABLED"|"DISABLED",
+#'               transitEncryptionPort = 123,
+#'               authorizationConfig = list(
+#'                 accessPointId = "string",
+#'                 iam = "ENABLED"|"DISABLED"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         environment = list(
@@ -938,7 +959,17 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'                   host = list(
 #'                     sourcePath = "string"
 #'                   ),
-#'                   name = "string"
+#'                   name = "string",
+#'                   efsVolumeConfiguration = list(
+#'                     fileSystemId = "string",
+#'                     rootDirectory = "string",
+#'                     transitEncryption = "ENABLED"|"DISABLED",
+#'                     transitEncryptionPort = 123,
+#'                     authorizationConfig = list(
+#'                       accessPointId = "string",
+#'                       iam = "ENABLED"|"DISABLED"
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               environment = list(
@@ -1091,7 +1122,7 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #' [`describe_job_queues`][batch_describe_job_queues] in paginated output.
 #' When this parameter is used,
 #' [`describe_job_queues`][batch_describe_job_queues] only returns
-#' `maxResults` results in a single page along with a `nextToken` response
+#' `maxResults` results in a single page and a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
 #' sending another [`describe_job_queues`][batch_describe_job_queues]
 #' request with the returned `nextToken` value. This value can be between 1
@@ -1258,7 +1289,17 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'             host = list(
 #'               sourcePath = "string"
 #'             ),
-#'             name = "string"
+#'             name = "string",
+#'             efsVolumeConfiguration = list(
+#'               fileSystemId = "string",
+#'               rootDirectory = "string",
+#'               transitEncryption = "ENABLED"|"DISABLED",
+#'               transitEncryptionPort = 123,
+#'               authorizationConfig = list(
+#'                 accessPointId = "string",
+#'                 iam = "ENABLED"|"DISABLED"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         environment = list(
@@ -1376,7 +1417,17 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'                   host = list(
 #'                     sourcePath = "string"
 #'                   ),
-#'                   name = "string"
+#'                   name = "string",
+#'                   efsVolumeConfiguration = list(
+#'                     fileSystemId = "string",
+#'                     rootDirectory = "string",
+#'                     transitEncryption = "ENABLED"|"DISABLED",
+#'                     transitEncryptionPort = 123,
+#'                     authorizationConfig = list(
+#'                       accessPointId = "string",
+#'                       iam = "ENABLED"|"DISABLED"
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               environment = list(
@@ -1531,9 +1582,9 @@ batch_describe_jobs <- function(jobs) {
 #' 
 #' -   A job queue ID to return a list of jobs in that job queue
 #' 
-#' -   A multi-node parallel job ID to return a list of that job's nodes
+#' -   A multi-node parallel job ID to return a list of nodes for that job
 #' 
-#' -   An array job ID to return a list of that job's children
+#' -   An array job ID to return a list of the children for that job
 #' 
 #' You can filter the results by job status with the `jobStatus` parameter.
 #' If you don't specify a status, only `RUNNING` jobs are returned.
@@ -1554,8 +1605,8 @@ batch_describe_jobs <- function(jobs) {
 #' @param maxResults The maximum number of results returned by [`list_jobs`][batch_list_jobs]
 #' in paginated output. When this parameter is used,
 #' [`list_jobs`][batch_list_jobs] only returns `maxResults` results in a
-#' single page along with a `nextToken` response element. The remaining
-#' results of the initial request can be seen by sending another
+#' single page and a `nextToken` response element. The remaining results of
+#' the initial request can be seen by sending another
 #' [`list_jobs`][batch_list_jobs] request with the returned `nextToken`
 #' value. This value can be between 1 and 100. If this parameter isn't
 #' used, then [`list_jobs`][batch_list_jobs] returns up to 100 results and
@@ -1811,7 +1862,17 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'         host = list(
 #'           sourcePath = "string"
 #'         ),
-#'         name = "string"
+#'         name = "string",
+#'         efsVolumeConfiguration = list(
+#'           fileSystemId = "string",
+#'           rootDirectory = "string",
+#'           transitEncryption = "ENABLED"|"DISABLED",
+#'           transitEncryptionPort = 123,
+#'           authorizationConfig = list(
+#'             accessPointId = "string",
+#'             iam = "ENABLED"|"DISABLED"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     environment = list(
@@ -1913,7 +1974,17 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'               host = list(
 #'                 sourcePath = "string"
 #'               ),
-#'               name = "string"
+#'               name = "string",
+#'               efsVolumeConfiguration = list(
+#'                 fileSystemId = "string",
+#'                 rootDirectory = "string",
+#'                 transitEncryption = "ENABLED"|"DISABLED",
+#'                 transitEncryptionPort = 123,
+#'                 authorizationConfig = list(
+#'                   accessPointId = "string",
+#'                   iam = "ENABLED"|"DISABLED"
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           environment = list(
@@ -2083,13 +2154,18 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' Submits an AWS Batch job from a job definition
 #'
 #' @description
-#' Submits an AWS Batch job from a job definition. Parameters specified
-#' during [`submit_job`][batch_submit_job] override parameters defined in
-#' the job definition.
+#' Submits an AWS Batch job from a job definition. Parameters that are
+#' specified during [`submit_job`][batch_submit_job] override parameters
+#' defined in the job definition. vCPU and memory requirements that are
+#' specified in the `ResourceRequirements` objects in the job definition
+#' are the exception. They can't be overridden this way using the `memory`
+#' and `vcpus` parameters. Rather, you must specify updates to job
+#' definition parameters in a `ResourceRequirements` object that's included
+#' in the `containerOverrides` parameter.
 #' 
-#' Jobs run on Fargate resources don't run for more than 14 days. After 14
-#' days, the Fargate resources might no longer be available and the job is
-#' terminated.
+#' Jobs that run on Fargate resources can't be guaranteed to run for more
+#' than 14 days. This is because, after 14 days, Fargate resources might
+#' become unavailable and job might be terminated.
 #'
 #' @usage
 #' batch_submit_job(jobName, jobQueue, arrayProperties, dependsOn,
@@ -2099,8 +2175,8 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' @param jobName &#91;required&#93; The name of the job. The first character must be alphanumeric, and up to
 #' 128 letters (uppercase and lowercase), numbers, hyphens, and underscores
 #' are allowed.
-#' @param jobQueue &#91;required&#93; The job queue into which the job is submitted. You can specify either
-#' the name or the Amazon Resource Name (ARN) of the queue.
+#' @param jobQueue &#91;required&#93; The job queue where the job is submitted. You can specify either the
+#' name or the Amazon Resource Name (ARN) of the queue.
 #' @param arrayProperties The array properties for the submitted job, such as the size of the
 #' array. The array size can be between 2 and 10,000. If you specify array
 #' properties for a job, it becomes an array job. For more information, see
@@ -2123,13 +2199,13 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' are specified as a key and value pair mapping. Parameters in a
 #' [`submit_job`][batch_submit_job] request override any corresponding
 #' parameter defaults from the job definition.
-#' @param containerOverrides A list of container overrides in JSON format that specify the name of a
-#' container in the specified job definition and the overrides it should
-#' receive. You can override the default command for a container (that's
-#' specified in the job definition or the Docker image) with a `command`
-#' override. You can also override existing environment variables (that are
-#' specified in the job definition or Docker image) on a container or add
-#' new environment variables to it with an `environment` override.
+#' @param containerOverrides A list of container overrides in the JSON format that specify the name
+#' of a container in the specified job definition and the overrides it
+#' should receive. You can override the default command for a container,
+#' which is specified in the job definition or the Docker image, with a
+#' `command` override. You can also override existing environment variables
+#' on a container or add new environment variables to it with an
+#' `environment` override.
 #' @param nodeOverrides A list of node overrides in JSON format that specify the node range to
 #' target and the container overrides for that node range.
 #' 
@@ -2512,13 +2588,17 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' role](https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html)
 #' in the *AWS Batch User Guide*.
 #' 
+#' If the compute environment has a service-linked role, it cannot be
+#' changed to use a regular IAM role. If the compute environment has a
+#' regular IAM role, it cannot be changed to use a service-linked role.
+#' 
 #' If your specified role has a path other than `/`, then you must either
 #' specify the full role ARN (this is recommended) or prefix the role name
 #' with the path.
 #' 
 #' Depending on how you created your AWS Batch service role, its ARN might
 #' contain the `service-role` path prefix. When you only specify the name
-#' of the service role, AWS Batch assumes that your ARN does not use the
+#' of the service role, AWS Batch assumes that your ARN doesn't use the
 #' `service-role` path prefix. Because of this, we recommend that you
 #' specify the full ARN of your service role when you create compute
 #' environments.
@@ -2593,23 +2673,23 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, c
 #'
 #' @param jobQueue &#91;required&#93; The name or the Amazon Resource Name (ARN) of the job queue.
 #' @param state Describes the queue's ability to accept new jobs. If the job queue state
-#' is `ENABLED`, it is able to accept jobs. If the job queue state is
-#' `DISABLED`, new jobs cannot be added to the queue, but jobs already in
-#' the queue can finish.
+#' is `ENABLED`, it can accept jobs. If the job queue state is `DISABLED`,
+#' new jobs can't be added to the queue, but jobs already in the queue can
+#' finish.
 #' @param priority The priority of the job queue. Job queues with a higher priority (or a
 #' higher integer value for the `priority` parameter) are evaluated first
 #' when associated with the same compute environment. Priority is
 #' determined in descending order, for example, a job queue with a priority
 #' value of `10` is given scheduling preference over a job queue with a
 #' priority value of `1`. All of the compute environments must be either
-#' EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`); EC2 and
-#' Fargate compute environments cannot be mixed.
+#' EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`). EC2 and
+#' Fargate compute environments can't be mixed.
 #' @param computeEnvironmentOrder Details the set of compute environments mapped to a job queue and their
 #' order relative to each other. This is one of the parameters used by the
 #' job scheduler to determine which compute environment should run a given
 #' job. Compute environments must be in the `VALID` state before you can
 #' associate them with a job queue. All of the compute environments must be
-#' either EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`);
+#' either EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`).
 #' EC2 and Fargate compute environments can't be mixed.
 #' 
 #' All compute environments that are associated with a job queue must share

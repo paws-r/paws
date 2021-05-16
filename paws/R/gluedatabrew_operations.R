@@ -7,12 +7,41 @@ NULL
 #'
 #' @description
 #' Deletes one or more versions of a recipe at a time.
+#' 
+#' The entire request will be rejected if:
+#' 
+#' -   The recipe does not exist.
+#' 
+#' -   There is an invalid version identifier in the list of versions.
+#' 
+#' -   The version list is empty.
+#' 
+#' -   The version list size exceeds 50.
+#' 
+#' -   The version list contains duplicate entries.
+#' 
+#' The request will complete successfully, but with partial failures, if:
+#' 
+#' -   A version does not exist.
+#' 
+#' -   A version is being used by a job.
+#' 
+#' -   You specify `LATEST_WORKING`, but it's being used by a project.
+#' 
+#' -   The version fails to be deleted.
+#' 
+#' The `LATEST_WORKING` version will only be deleted if the recipe has no
+#' other versions. If you try to delete `LATEST_WORKING` while other
+#' versions exist (or if they can't be deleted), then `LATEST_WORKING` will
+#' be listed as partial failure in the response.
 #'
 #' @usage
 #' gluedatabrew_batch_delete_recipe_version(Name, RecipeVersions)
 #'
-#' @param Name &#91;required&#93; The name of the recipe to be modified.
-#' @param RecipeVersions &#91;required&#93; An array of version identifiers to be deleted.
+#' @param Name &#91;required&#93; The name of the recipe whose versions are to be deleted.
+#' @param RecipeVersions &#91;required&#93; An array of version identifiers, for the recipe versions to be deleted.
+#' You can specify numeric versions (`X.Y`) or `LATEST_WORKING`.
+#' `LATEST_PUBLISHED` is not supported.
 #'
 #' @return
 #' A list with the following syntax:
@@ -59,17 +88,22 @@ gluedatabrew_batch_delete_recipe_version <- function(Name, RecipeVersions) {
 }
 .gluedatabrew$operations$batch_delete_recipe_version <- gluedatabrew_batch_delete_recipe_version
 
-#' Creates a new AWS Glue DataBrew dataset for this AWS account
+#' Creates a new DataBrew dataset
 #'
 #' @description
-#' Creates a new AWS Glue DataBrew dataset for this AWS account.
+#' Creates a new DataBrew dataset.
 #'
 #' @usage
-#' gluedatabrew_create_dataset(Name, FormatOptions, Input, Tags)
+#' gluedatabrew_create_dataset(Name, Format, FormatOptions, Input,
+#'   PathOptions, Tags)
 #'
-#' @param Name &#91;required&#93; The name of the dataset to be created.
+#' @param Name &#91;required&#93; The name of the dataset to be created. Valid characters are alphanumeric
+#' (A-Z, a-z, 0-9), hyphen (-), period (.), and space.
+#' @param Format The file format of a dataset that is created from an S3 file or folder.
 #' @param FormatOptions 
 #' @param Input &#91;required&#93; 
+#' @param PathOptions A set of options that defines how DataBrew interprets an S3 path of the
+#' dataset.
 #' @param Tags Metadata tags to apply to this dataset.
 #'
 #' @return
@@ -84,6 +118,7 @@ gluedatabrew_batch_delete_recipe_version <- function(Name, RecipeVersions) {
 #' ```
 #' svc$create_dataset(
 #'   Name = "string",
+#'   Format = "CSV"|"JSON"|"PARQUET"|"EXCEL",
 #'   FormatOptions = list(
 #'     Json = list(
 #'       MultiLine = TRUE|FALSE
@@ -94,7 +129,12 @@ gluedatabrew_batch_delete_recipe_version <- function(Name, RecipeVersions) {
 #'       ),
 #'       SheetIndexes = list(
 #'         123
-#'       )
+#'       ),
+#'       HeaderRow = TRUE|FALSE
+#'     ),
+#'     Csv = list(
+#'       Delimiter = "string",
+#'       HeaderRow = TRUE|FALSE
 #'     )
 #'   ),
 #'   Input = list(
@@ -110,6 +150,45 @@ gluedatabrew_batch_delete_recipe_version <- function(Name, RecipeVersions) {
 #'         Bucket = "string",
 #'         Key = "string"
 #'       )
+#'     ),
+#'     DatabaseInputDefinition = list(
+#'       GlueConnectionName = "string",
+#'       DatabaseTableName = "string",
+#'       TempDirectory = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       )
+#'     )
+#'   ),
+#'   PathOptions = list(
+#'     LastModifiedDateCondition = list(
+#'       Expression = "string",
+#'       ValuesMap = list(
+#'         "string"
+#'       )
+#'     ),
+#'     FilesLimit = list(
+#'       MaxFiles = 123,
+#'       OrderedBy = "LAST_MODIFIED_DATE",
+#'       Order = "DESCENDING"|"ASCENDING"
+#'     ),
+#'     Parameters = list(
+#'       list(
+#'         Name = "string",
+#'         Type = "Datetime"|"Number"|"String",
+#'         DatetimeOptions = list(
+#'           Format = "string",
+#'           TimezoneOffset = "string",
+#'           LocaleCode = "string"
+#'         ),
+#'         CreateColumn = TRUE|FALSE,
+#'         Filter = list(
+#'           Expression = "string",
+#'           ValuesMap = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Tags = list(
@@ -121,14 +200,14 @@ gluedatabrew_batch_delete_recipe_version <- function(Name, RecipeVersions) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_create_dataset
-gluedatabrew_create_dataset <- function(Name, FormatOptions = NULL, Input, Tags = NULL) {
+gluedatabrew_create_dataset <- function(Name, Format = NULL, FormatOptions = NULL, Input, PathOptions = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataset",
     http_method = "POST",
     http_path = "/datasets",
     paginator = list()
   )
-  input <- .gluedatabrew$create_dataset_input(Name = Name, FormatOptions = FormatOptions, Input = Input, Tags = Tags)
+  input <- .gluedatabrew$create_dataset_input(Name = Name, Format = Format, FormatOptions = FormatOptions, Input = Input, PathOptions = PathOptions, Tags = Tags)
   output <- .gluedatabrew$create_dataset_output()
   config <- get_config()
   svc <- .gluedatabrew$service(config)
@@ -138,40 +217,42 @@ gluedatabrew_create_dataset <- function(Name, FormatOptions = NULL, Input, Tags 
 }
 .gluedatabrew$operations$create_dataset <- gluedatabrew_create_dataset
 
-#' Creates a new job to profile an AWS Glue DataBrew dataset that exists in
-#' the current AWS account
+#' Creates a new job to analyze a dataset and create its data profile
 #'
 #' @description
-#' Creates a new job to profile an AWS Glue DataBrew dataset that exists in
-#' the current AWS account.
+#' Creates a new job to analyze a dataset and create its data profile.
 #'
 #' @usage
 #' gluedatabrew_create_profile_job(DatasetName, EncryptionKeyArn,
 #'   EncryptionMode, Name, LogSubscription, MaxCapacity, MaxRetries,
-#'   OutputLocation, RoleArn, Tags, Timeout)
+#'   OutputLocation, RoleArn, Tags, Timeout, JobSample)
 #'
 #' @param DatasetName &#91;required&#93; The name of the dataset that this job is to act upon.
 #' @param EncryptionKeyArn The Amazon Resource Name (ARN) of an encryption key that is used to
 #' protect the job.
 #' @param EncryptionMode The encryption mode for the job, which can be one of the following:
 #' 
-#' -   `SSE-KMS` - para&gt;`SSE-KMS` - server-side encryption with AWS
-#'     KMS-managed keys.
+#' -   `SSE-KMS` - `SSE-KMS` - Server-side encryption with AWS KMS-managed
+#'     keys.
 #' 
 #' -   `SSE-S3` - Server-side encryption with keys managed by Amazon S3.
-#' @param Name &#91;required&#93; The name of the job to be created.
-#' @param LogSubscription A value that enables or disables Amazon CloudWatch logging for the
-#' current AWS account. If logging is enabled, CloudWatch writes one log
-#' stream for each job run.
+#' @param Name &#91;required&#93; The name of the job to be created. Valid characters are alphanumeric
+#' (A-Z, a-z, 0-9), hyphen (-), period (.), and space.
+#' @param LogSubscription Enables or disables Amazon CloudWatch logging for the job. If logging is
+#' enabled, CloudWatch writes one log stream for each job run.
 #' @param MaxCapacity The maximum number of nodes that DataBrew can use when the job processes
 #' data.
 #' @param MaxRetries The maximum number of times to retry the job after a job run fails.
 #' @param OutputLocation &#91;required&#93; 
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role to be assumed for this request.
+#' (IAM) role to be assumed when DataBrew runs the job.
 #' @param Tags Metadata tags to apply to this job.
 #' @param Timeout The job's timeout in minutes. A job that attempts to run longer than
 #' this timeout period ends with a status of `TIMEOUT`.
+#' @param JobSample Sample configuration for profile jobs only. Determines the number of
+#' rows on which the profile job will be executed. If a JobSample value is
+#' not provided, the default value will be used. The default value is
+#' CUSTOM_ROWS for the mode parameter and 20000 for the size parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -199,21 +280,25 @@ gluedatabrew_create_dataset <- function(Name, FormatOptions = NULL, Input, Tags 
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   Timeout = 123
+#'   Timeout = 123,
+#'   JobSample = list(
+#'     Mode = "FULL_DATASET"|"CUSTOM_ROWS",
+#'     Size = 123
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_create_profile_job
-gluedatabrew_create_profile_job <- function(DatasetName, EncryptionKeyArn = NULL, EncryptionMode = NULL, Name, LogSubscription = NULL, MaxCapacity = NULL, MaxRetries = NULL, OutputLocation, RoleArn, Tags = NULL, Timeout = NULL) {
+gluedatabrew_create_profile_job <- function(DatasetName, EncryptionKeyArn = NULL, EncryptionMode = NULL, Name, LogSubscription = NULL, MaxCapacity = NULL, MaxRetries = NULL, OutputLocation, RoleArn, Tags = NULL, Timeout = NULL, JobSample = NULL) {
   op <- new_operation(
     name = "CreateProfileJob",
     http_method = "POST",
     http_path = "/profileJobs",
     paginator = list()
   )
-  input <- .gluedatabrew$create_profile_job_input(DatasetName = DatasetName, EncryptionKeyArn = EncryptionKeyArn, EncryptionMode = EncryptionMode, Name = Name, LogSubscription = LogSubscription, MaxCapacity = MaxCapacity, MaxRetries = MaxRetries, OutputLocation = OutputLocation, RoleArn = RoleArn, Tags = Tags, Timeout = Timeout)
+  input <- .gluedatabrew$create_profile_job_input(DatasetName = DatasetName, EncryptionKeyArn = EncryptionKeyArn, EncryptionMode = EncryptionMode, Name = Name, LogSubscription = LogSubscription, MaxCapacity = MaxCapacity, MaxRetries = MaxRetries, OutputLocation = OutputLocation, RoleArn = RoleArn, Tags = Tags, Timeout = Timeout, JobSample = JobSample)
   output <- .gluedatabrew$create_profile_job_output()
   config <- get_config()
   svc <- .gluedatabrew$service(config)
@@ -223,17 +308,18 @@ gluedatabrew_create_profile_job <- function(DatasetName, EncryptionKeyArn = NULL
 }
 .gluedatabrew$operations$create_profile_job <- gluedatabrew_create_profile_job
 
-#' Creates a new AWS Glue DataBrew project in the current AWS account
+#' Creates a new DataBrew project
 #'
 #' @description
-#' Creates a new AWS Glue DataBrew project in the current AWS account.
+#' Creates a new DataBrew project.
 #'
 #' @usage
 #' gluedatabrew_create_project(DatasetName, Name, RecipeName, Sample,
 #'   RoleArn, Tags)
 #'
-#' @param DatasetName &#91;required&#93; The name of the dataset to associate this project with.
-#' @param Name &#91;required&#93; A unique name for the new project.
+#' @param DatasetName &#91;required&#93; The name of an existing dataset to associate this project with.
+#' @param Name &#91;required&#93; A unique name for the new project. Valid characters are alphanumeric
+#' (A-Z, a-z, 0-9), hyphen (-), period (.), and space.
 #' @param RecipeName &#91;required&#93; The name of an existing recipe to associate with the project.
 #' @param Sample 
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
@@ -285,16 +371,17 @@ gluedatabrew_create_project <- function(DatasetName, Name, RecipeName, Sample = 
 }
 .gluedatabrew$operations$create_project <- gluedatabrew_create_project
 
-#' Creates a new AWS Glue DataBrew recipe for the current AWS account
+#' Creates a new DataBrew recipe
 #'
 #' @description
-#' Creates a new AWS Glue DataBrew recipe for the current AWS account.
+#' Creates a new DataBrew recipe.
 #'
 #' @usage
 #' gluedatabrew_create_recipe(Description, Name, Steps, Tags)
 #'
 #' @param Description A description for the recipe.
-#' @param Name &#91;required&#93; A unique name for the recipe.
+#' @param Name &#91;required&#93; A unique name for the recipe. Valid characters are alphanumeric (A-Z,
+#' a-z, 0-9), hyphen (-), period (.), and space.
 #' @param Steps &#91;required&#93; An array containing the steps to be performed by the recipe. Each recipe
 #' step consists of one recipe action and (optionally) an array of
 #' condition expressions.
@@ -356,13 +443,12 @@ gluedatabrew_create_recipe <- function(Description = NULL, Name, Steps, Tags = N
 }
 .gluedatabrew$operations$create_recipe <- gluedatabrew_create_recipe
 
-#' Creates a new job for an existing AWS Glue DataBrew recipe in the
-#' current AWS account
+#' Creates a new job to transform input data, using steps defined in an
+#' existing AWS Glue DataBrew recipe
 #'
 #' @description
-#' Creates a new job for an existing AWS Glue DataBrew recipe in the
-#' current AWS account. You can create a standalone job using either a
-#' project, or a combination of a recipe and a dataset.
+#' Creates a new job to transform input data, using steps defined in an
+#' existing AWS Glue DataBrew recipe
 #'
 #' @usage
 #' gluedatabrew_create_recipe_job(DatasetName, EncryptionKeyArn,
@@ -374,13 +460,13 @@ gluedatabrew_create_recipe <- function(Description = NULL, Name, Steps, Tags = N
 #' protect the job.
 #' @param EncryptionMode The encryption mode for the job, which can be one of the following:
 #' 
-#' -   `SSE-KMS` - Server-side encryption with AWS KMS-managed keys.
+#' -   `SSE-KMS` - Server-side encryption with keys managed by AWS KMS.
 #' 
 #' -   `SSE-S3` - Server-side encryption with keys managed by Amazon S3.
-#' @param Name &#91;required&#93; A unique name for the job.
-#' @param LogSubscription A value that enables or disables Amazon CloudWatch logging for the
-#' current AWS account. If logging is enabled, CloudWatch writes one log
-#' stream for each job run.
+#' @param Name &#91;required&#93; A unique name for the job. Valid characters are alphanumeric (A-Z, a-z,
+#' 0-9), hyphen (-), period (.), and space.
+#' @param LogSubscription Enables or disables Amazon CloudWatch logging for the job. If logging is
+#' enabled, CloudWatch writes one log stream for each job run.
 #' @param MaxCapacity The maximum number of nodes that DataBrew can consume when the job
 #' processes data.
 #' @param MaxRetries The maximum number of times to retry the job after a job run fails.
@@ -389,8 +475,8 @@ gluedatabrew_create_recipe <- function(Description = NULL, Name, Steps, Tags = N
 #' a dataset to associate with the recipe.
 #' @param RecipeReference 
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role to be assumed for this request.
-#' @param Tags Metadata tags to apply to this job dataset.
+#' (IAM) role to be assumed when DataBrew runs the job.
+#' @param Tags Metadata tags to apply to this job.
 #' @param Timeout The job's timeout in minutes. A job that attempts to run longer than
 #' this timeout period ends with a status of `TIMEOUT`.
 #'
@@ -423,7 +509,12 @@ gluedatabrew_create_recipe <- function(Description = NULL, Name, Steps, Tags = N
 #'         Bucket = "string",
 #'         Key = "string"
 #'       ),
-#'       Overwrite = TRUE|FALSE
+#'       Overwrite = TRUE|FALSE,
+#'       FormatOptions = list(
+#'         Csv = list(
+#'           Delimiter = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   ProjectName = "string",
@@ -459,20 +550,23 @@ gluedatabrew_create_recipe_job <- function(DatasetName = NULL, EncryptionKeyArn 
 }
 .gluedatabrew$operations$create_recipe_job <- gluedatabrew_create_recipe_job
 
-#' Creates a new schedule for one or more AWS Glue DataBrew jobs
+#' Creates a new schedule for one or more DataBrew jobs
 #'
 #' @description
-#' Creates a new schedule for one or more AWS Glue DataBrew jobs. Jobs can
-#' be run at a specific date and time, or at regular intervals.
+#' Creates a new schedule for one or more DataBrew jobs. Jobs can be run at
+#' a specific date and time, or at regular intervals.
 #'
 #' @usage
 #' gluedatabrew_create_schedule(JobNames, CronExpression, Tags, Name)
 #'
 #' @param JobNames The name or names of one or more jobs to be run.
-#' @param CronExpression &#91;required&#93; The date or dates and time or times, in `cron` format, when the jobs are
-#' to be run.
+#' @param CronExpression &#91;required&#93; The date or dates and time or times when the jobs are to be run. For
+#' more information, see [Cron
+#' expressions](https://docs.aws.amazon.com/databrew/latest/dg/) in the
+#' *AWS Glue DataBrew Developer Guide*.
 #' @param Tags Metadata tags to apply to this schedule.
-#' @param Name &#91;required&#93; A unique name for the schedule.
+#' @param Name &#91;required&#93; A unique name for the schedule. Valid characters are alphanumeric (A-Z,
+#' a-z, 0-9), hyphen (-), period (.), and space.
 #'
 #' @return
 #' A list with the following syntax:
@@ -516,10 +610,10 @@ gluedatabrew_create_schedule <- function(JobNames = NULL, CronExpression, Tags =
 }
 .gluedatabrew$operations$create_schedule <- gluedatabrew_create_schedule
 
-#' Deletes a dataset from AWS Glue DataBrew
+#' Deletes a dataset from DataBrew
 #'
 #' @description
-#' Deletes a dataset from AWS Glue DataBrew.
+#' Deletes a dataset from DataBrew.
 #'
 #' @usage
 #' gluedatabrew_delete_dataset(Name)
@@ -561,11 +655,10 @@ gluedatabrew_delete_dataset <- function(Name) {
 }
 .gluedatabrew$operations$delete_dataset <- gluedatabrew_delete_dataset
 
-#' Deletes the specified AWS Glue DataBrew job from the current AWS account
+#' Deletes the specified DataBrew job
 #'
 #' @description
-#' Deletes the specified AWS Glue DataBrew job from the current AWS
-#' account. The job can be for a recipe or for a profile.
+#' Deletes the specified DataBrew job.
 #'
 #' @usage
 #' gluedatabrew_delete_job(Name)
@@ -607,12 +700,10 @@ gluedatabrew_delete_job <- function(Name) {
 }
 .gluedatabrew$operations$delete_job <- gluedatabrew_delete_job
 
-#' Deletes an existing AWS Glue DataBrew project from the current AWS
-#' account
+#' Deletes an existing DataBrew project
 #'
 #' @description
-#' Deletes an existing AWS Glue DataBrew project from the current AWS
-#' account.
+#' Deletes an existing DataBrew project.
 #'
 #' @usage
 #' gluedatabrew_delete_project(Name)
@@ -654,16 +745,18 @@ gluedatabrew_delete_project <- function(Name) {
 }
 .gluedatabrew$operations$delete_project <- gluedatabrew_delete_project
 
-#' Deletes a single version of an AWS Glue DataBrew recipe
+#' Deletes a single version of a DataBrew recipe
 #'
 #' @description
-#' Deletes a single version of an AWS Glue DataBrew recipe.
+#' Deletes a single version of a DataBrew recipe.
 #'
 #' @usage
 #' gluedatabrew_delete_recipe_version(Name, RecipeVersion)
 #'
-#' @param Name &#91;required&#93; The name of the recipe to be deleted.
-#' @param RecipeVersion &#91;required&#93; The version of the recipe to be deleted.
+#' @param Name &#91;required&#93; The name of the recipe.
+#' @param RecipeVersion &#91;required&#93; The version of the recipe to be deleted. You can specify a numeric
+#' versions (`X.Y`) or `LATEST_WORKING`. `LATEST_PUBLISHED` is not
+#' supported.
 #'
 #' @return
 #' A list with the following syntax:
@@ -702,12 +795,10 @@ gluedatabrew_delete_recipe_version <- function(Name, RecipeVersion) {
 }
 .gluedatabrew$operations$delete_recipe_version <- gluedatabrew_delete_recipe_version
 
-#' Deletes the specified AWS Glue DataBrew schedule from the current AWS
-#' account
+#' Deletes the specified DataBrew schedule
 #'
 #' @description
-#' Deletes the specified AWS Glue DataBrew schedule from the current AWS
-#' account.
+#' Deletes the specified DataBrew schedule.
 #'
 #' @usage
 #' gluedatabrew_delete_schedule(Name)
@@ -749,12 +840,10 @@ gluedatabrew_delete_schedule <- function(Name) {
 }
 .gluedatabrew$operations$delete_schedule <- gluedatabrew_delete_schedule
 
-#' Returns the definition of a specific AWS Glue DataBrew dataset that is
-#' in the current AWS account
+#' Returns the definition of a specific DataBrew dataset
 #'
 #' @description
-#' Returns the definition of a specific AWS Glue DataBrew dataset that is
-#' in the current AWS account.
+#' Returns the definition of a specific DataBrew dataset.
 #'
 #' @usage
 #' gluedatabrew_describe_dataset(Name)
@@ -770,6 +859,7 @@ gluedatabrew_delete_schedule <- function(Name) {
 #'     "2015-01-01"
 #'   ),
 #'   Name = "string",
+#'   Format = "CSV"|"JSON"|"PARQUET"|"EXCEL",
 #'   FormatOptions = list(
 #'     Json = list(
 #'       MultiLine = TRUE|FALSE
@@ -780,7 +870,12 @@ gluedatabrew_delete_schedule <- function(Name) {
 #'       ),
 #'       SheetIndexes = list(
 #'         123
-#'       )
+#'       ),
+#'       HeaderRow = TRUE|FALSE
+#'     ),
+#'     Csv = list(
+#'       Delimiter = "string",
+#'       HeaderRow = TRUE|FALSE
 #'     )
 #'   ),
 #'   Input = list(
@@ -796,13 +891,52 @@ gluedatabrew_delete_schedule <- function(Name) {
 #'         Bucket = "string",
 #'         Key = "string"
 #'       )
+#'     ),
+#'     DatabaseInputDefinition = list(
+#'       GlueConnectionName = "string",
+#'       DatabaseTableName = "string",
+#'       TempDirectory = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       )
 #'     )
 #'   ),
 #'   LastModifiedDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   LastModifiedBy = "string",
-#'   Source = "S3"|"DATA-CATALOG",
+#'   Source = "S3"|"DATA-CATALOG"|"DATABASE",
+#'   PathOptions = list(
+#'     LastModifiedDateCondition = list(
+#'       Expression = "string",
+#'       ValuesMap = list(
+#'         "string"
+#'       )
+#'     ),
+#'     FilesLimit = list(
+#'       MaxFiles = 123,
+#'       OrderedBy = "LAST_MODIFIED_DATE",
+#'       Order = "DESCENDING"|"ASCENDING"
+#'     ),
+#'     Parameters = list(
+#'       list(
+#'         Name = "string",
+#'         Type = "Datetime"|"Number"|"String",
+#'         DatetimeOptions = list(
+#'           Format = "string",
+#'           TimezoneOffset = "string",
+#'           LocaleCode = "string"
+#'         ),
+#'         CreateColumn = TRUE|FALSE,
+#'         Filter = list(
+#'           Expression = "string",
+#'           ValuesMap = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   ),
@@ -837,12 +971,10 @@ gluedatabrew_describe_dataset <- function(Name) {
 }
 .gluedatabrew$operations$describe_dataset <- gluedatabrew_describe_dataset
 
-#' Returns the definition of a specific AWS Glue DataBrew job that is in
-#' the current AWS account
+#' Returns the definition of a specific DataBrew job
 #'
 #' @description
-#' Returns the definition of a specific AWS Glue DataBrew job that is in
-#' the current AWS account.
+#' Returns the definition of a specific DataBrew job.
 #'
 #' @usage
 #' gluedatabrew_describe_job(Name)
@@ -880,7 +1012,12 @@ gluedatabrew_describe_dataset <- function(Name) {
 #'         Bucket = "string",
 #'         Key = "string"
 #'       ),
-#'       Overwrite = TRUE|FALSE
+#'       Overwrite = TRUE|FALSE,
+#'       FormatOptions = list(
+#'         Csv = list(
+#'           Delimiter = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   ProjectName = "string",
@@ -893,7 +1030,11 @@ gluedatabrew_describe_dataset <- function(Name) {
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   Timeout = 123
+#'   Timeout = 123,
+#'   JobSample = list(
+#'     Mode = "FULL_DATASET"|"CUSTOM_ROWS",
+#'     Size = 123
+#'   )
 #' )
 #' ```
 #'
@@ -924,12 +1065,99 @@ gluedatabrew_describe_job <- function(Name) {
 }
 .gluedatabrew$operations$describe_job <- gluedatabrew_describe_job
 
-#' Returns the definition of a specific AWS Glue DataBrew project that is
-#' in the current AWS account
+#' Represents one run of a DataBrew job
 #'
 #' @description
-#' Returns the definition of a specific AWS Glue DataBrew project that is
-#' in the current AWS account.
+#' Represents one run of a DataBrew job.
+#'
+#' @usage
+#' gluedatabrew_describe_job_run(Name, RunId)
+#'
+#' @param Name &#91;required&#93; The name of the job being processed during this run.
+#' @param RunId &#91;required&#93; The unique identifier of the job run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attempt = 123,
+#'   CompletedOn = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DatasetName = "string",
+#'   ErrorMessage = "string",
+#'   ExecutionTime = 123,
+#'   JobName = "string",
+#'   RunId = "string",
+#'   State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
+#'   LogSubscription = "ENABLE"|"DISABLE",
+#'   LogGroupName = "string",
+#'   Outputs = list(
+#'     list(
+#'       CompressionFormat = "GZIP"|"LZ4"|"SNAPPY"|"BZIP2"|"DEFLATE"|"LZO"|"BROTLI"|"ZSTD"|"ZLIB",
+#'       Format = "CSV"|"JSON"|"PARQUET"|"GLUEPARQUET"|"AVRO"|"ORC"|"XML",
+#'       PartitionColumns = list(
+#'         "string"
+#'       ),
+#'       Location = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       ),
+#'       Overwrite = TRUE|FALSE,
+#'       FormatOptions = list(
+#'         Csv = list(
+#'           Delimiter = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   RecipeReference = list(
+#'     Name = "string",
+#'     RecipeVersion = "string"
+#'   ),
+#'   StartedBy = "string",
+#'   StartedOn = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   JobSample = list(
+#'     Mode = "FULL_DATASET"|"CUSTOM_ROWS",
+#'     Size = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_job_run(
+#'   Name = "string",
+#'   RunId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname gluedatabrew_describe_job_run
+gluedatabrew_describe_job_run <- function(Name, RunId) {
+  op <- new_operation(
+    name = "DescribeJobRun",
+    http_method = "GET",
+    http_path = "/jobs/{name}/jobRun/{runId}",
+    paginator = list()
+  )
+  input <- .gluedatabrew$describe_job_run_input(Name = Name, RunId = RunId)
+  output <- .gluedatabrew$describe_job_run_output()
+  config <- get_config()
+  svc <- .gluedatabrew$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.gluedatabrew$operations$describe_job_run <- gluedatabrew_describe_job_run
+
+#' Returns the definition of a specific DataBrew project
+#'
+#' @description
+#' Returns the definition of a specific DataBrew project.
 #'
 #' @usage
 #' gluedatabrew_describe_project(Name)
@@ -995,12 +1223,12 @@ gluedatabrew_describe_project <- function(Name) {
 }
 .gluedatabrew$operations$describe_project <- gluedatabrew_describe_project
 
-#' Returns the definition of a specific AWS Glue DataBrew recipe that is in
-#' the current AWS account
+#' Returns the definition of a specific DataBrew recipe corresponding to a
+#' particular version
 #'
 #' @description
-#' Returns the definition of a specific AWS Glue DataBrew recipe that is in
-#' the current AWS account.
+#' Returns the definition of a specific DataBrew recipe corresponding to a
+#' particular version.
 #'
 #' @usage
 #' gluedatabrew_describe_recipe(Name, RecipeVersion)
@@ -1081,12 +1309,10 @@ gluedatabrew_describe_recipe <- function(Name, RecipeVersion = NULL) {
 }
 .gluedatabrew$operations$describe_recipe <- gluedatabrew_describe_recipe
 
-#' Returns the definition of a specific AWS Glue DataBrew schedule that is
-#' in the current AWS account
+#' Returns the definition of a specific DataBrew schedule
 #'
 #' @description
-#' Returns the definition of a specific AWS Glue DataBrew schedule that is
-#' in the current AWS account.
+#' Returns the definition of a specific DataBrew schedule.
 #'
 #' @usage
 #' gluedatabrew_describe_schedule(Name)
@@ -1144,19 +1370,17 @@ gluedatabrew_describe_schedule <- function(Name) {
 }
 .gluedatabrew$operations$describe_schedule <- gluedatabrew_describe_schedule
 
-#' Lists all of the AWS Glue DataBrew datasets for the current AWS account
+#' Lists all of the DataBrew datasets
 #'
 #' @description
-#' Lists all of the AWS Glue DataBrew datasets for the current AWS account.
+#' Lists all of the DataBrew datasets.
 #'
 #' @usage
 #' gluedatabrew_list_datasets(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to return in this request.
-#' @param NextToken A token generated by DataBrew that specifies where to continue
-#' pagination if a previous request was truncated. To get the next set of
-#' pages, pass in the NextToken value from the response object of the
-#' previous page call.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1170,6 +1394,7 @@ gluedatabrew_describe_schedule <- function(Name) {
 #'         "2015-01-01"
 #'       ),
 #'       Name = "string",
+#'       Format = "CSV"|"JSON"|"PARQUET"|"EXCEL",
 #'       FormatOptions = list(
 #'         Json = list(
 #'           MultiLine = TRUE|FALSE
@@ -1180,7 +1405,12 @@ gluedatabrew_describe_schedule <- function(Name) {
 #'           ),
 #'           SheetIndexes = list(
 #'             123
-#'           )
+#'           ),
+#'           HeaderRow = TRUE|FALSE
+#'         ),
+#'         Csv = list(
+#'           Delimiter = "string",
+#'           HeaderRow = TRUE|FALSE
 #'         )
 #'       ),
 #'       Input = list(
@@ -1196,13 +1426,52 @@ gluedatabrew_describe_schedule <- function(Name) {
 #'             Bucket = "string",
 #'             Key = "string"
 #'           )
+#'         ),
+#'         DatabaseInputDefinition = list(
+#'           GlueConnectionName = "string",
+#'           DatabaseTableName = "string",
+#'           TempDirectory = list(
+#'             Bucket = "string",
+#'             Key = "string"
+#'           )
 #'         )
 #'       ),
 #'       LastModifiedDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       LastModifiedBy = "string",
-#'       Source = "S3"|"DATA-CATALOG",
+#'       Source = "S3"|"DATA-CATALOG"|"DATABASE",
+#'       PathOptions = list(
+#'         LastModifiedDateCondition = list(
+#'           Expression = "string",
+#'           ValuesMap = list(
+#'             "string"
+#'           )
+#'         ),
+#'         FilesLimit = list(
+#'           MaxFiles = 123,
+#'           OrderedBy = "LAST_MODIFIED_DATE",
+#'           Order = "DESCENDING"|"ASCENDING"
+#'         ),
+#'         Parameters = list(
+#'           list(
+#'             Name = "string",
+#'             Type = "Datetime"|"Number"|"String",
+#'             DatetimeOptions = list(
+#'               Format = "string",
+#'               TimezoneOffset = "string",
+#'               LocaleCode = "string"
+#'             ),
+#'             CreateColumn = TRUE|FALSE,
+#'             Filter = list(
+#'               Expression = "string",
+#'               ValuesMap = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       Tags = list(
 #'         "string"
 #'       ),
@@ -1241,22 +1510,18 @@ gluedatabrew_list_datasets <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .gluedatabrew$operations$list_datasets <- gluedatabrew_list_datasets
 
-#' Lists all of the previous runs of a particular AWS Glue DataBrew job in
-#' the current AWS account
+#' Lists all of the previous runs of a particular DataBrew job
 #'
 #' @description
-#' Lists all of the previous runs of a particular AWS Glue DataBrew job in
-#' the current AWS account.
+#' Lists all of the previous runs of a particular DataBrew job.
 #'
 #' @usage
 #' gluedatabrew_list_job_runs(Name, MaxResults, NextToken)
 #'
 #' @param Name &#91;required&#93; The name of the job.
 #' @param MaxResults The maximum number of results to return in this request.
-#' @param NextToken A token generated by AWS Glue DataBrew that specifies where to continue
-#' pagination if a previous request was truncated. To get the next set of
-#' pages, pass in the NextToken value from the response object of the
-#' previous page call.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1287,7 +1552,12 @@ gluedatabrew_list_datasets <- function(MaxResults = NULL, NextToken = NULL) {
 #'             Bucket = "string",
 #'             Key = "string"
 #'           ),
-#'           Overwrite = TRUE|FALSE
+#'           Overwrite = TRUE|FALSE,
+#'           FormatOptions = list(
+#'             Csv = list(
+#'               Delimiter = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       RecipeReference = list(
@@ -1297,6 +1567,10 @@ gluedatabrew_list_datasets <- function(MaxResults = NULL, NextToken = NULL) {
 #'       StartedBy = "string",
 #'       StartedOn = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       JobSample = list(
+#'         Mode = "FULL_DATASET"|"CUSTOM_ROWS",
+#'         Size = 123
 #'       )
 #'     )
 #'   ),
@@ -1333,10 +1607,10 @@ gluedatabrew_list_job_runs <- function(Name, MaxResults = NULL, NextToken = NULL
 }
 .gluedatabrew$operations$list_job_runs <- gluedatabrew_list_job_runs
 
-#' Lists the AWS Glue DataBrew jobs in the current AWS account
+#' Lists all of the DataBrew jobs that are defined
 #'
 #' @description
-#' Lists the AWS Glue DataBrew jobs in the current AWS account.
+#' Lists all of the DataBrew jobs that are defined.
 #'
 #' @usage
 #' gluedatabrew_list_jobs(DatasetName, MaxResults, NextToken, ProjectName)
@@ -1385,7 +1659,12 @@ gluedatabrew_list_job_runs <- function(Name, MaxResults = NULL, NextToken = NULL
 #'             Bucket = "string",
 #'             Key = "string"
 #'           ),
-#'           Overwrite = TRUE|FALSE
+#'           Overwrite = TRUE|FALSE,
+#'           FormatOptions = list(
+#'             Csv = list(
+#'               Delimiter = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       ProjectName = "string",
@@ -1398,6 +1677,10 @@ gluedatabrew_list_job_runs <- function(Name, MaxResults = NULL, NextToken = NULL
 #'       Timeout = 123,
 #'       Tags = list(
 #'         "string"
+#'       ),
+#'       JobSample = list(
+#'         Mode = "FULL_DATASET"|"CUSTOM_ROWS",
+#'         Size = 123
 #'       )
 #'     )
 #'   ),
@@ -1435,15 +1718,16 @@ gluedatabrew_list_jobs <- function(DatasetName = NULL, MaxResults = NULL, NextTo
 }
 .gluedatabrew$operations$list_jobs <- gluedatabrew_list_jobs
 
-#' Lists all of the DataBrew projects in the current AWS account
+#' Lists all of the DataBrew projects that are defined
 #'
 #' @description
-#' Lists all of the DataBrew projects in the current AWS account.
+#' Lists all of the DataBrew projects that are defined.
 #'
 #' @usage
 #' gluedatabrew_list_projects(NextToken, MaxResults)
 #'
-#' @param NextToken A pagination token that can be used in a subsequent request.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
 #' @param MaxResults The maximum number of results to return in this request.
 #'
 #' @return
@@ -1511,18 +1795,19 @@ gluedatabrew_list_projects <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .gluedatabrew$operations$list_projects <- gluedatabrew_list_projects
 
-#' Lists all of the versions of a particular AWS Glue DataBrew recipe in
-#' the current AWS account
+#' Lists the versions of a particular DataBrew recipe, except for
+#' LATEST_WORKING
 #'
 #' @description
-#' Lists all of the versions of a particular AWS Glue DataBrew recipe in
-#' the current AWS account.
+#' Lists the versions of a particular DataBrew recipe, except for
+#' `LATEST_WORKING`.
 #'
 #' @usage
 #' gluedatabrew_list_recipe_versions(MaxResults, NextToken, Name)
 #'
 #' @param MaxResults The maximum number of results to return in this request.
-#' @param NextToken A pagination token that can be used in a subsequent request.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
 #' @param Name &#91;required&#93; The name of the recipe for which to return version information.
 #'
 #' @return
@@ -1603,18 +1888,23 @@ gluedatabrew_list_recipe_versions <- function(MaxResults = NULL, NextToken = NUL
 }
 .gluedatabrew$operations$list_recipe_versions <- gluedatabrew_list_recipe_versions
 
-#' Lists all of the AWS Glue DataBrew recipes in the current AWS account
+#' Lists all of the DataBrew recipes that are defined
 #'
 #' @description
-#' Lists all of the AWS Glue DataBrew recipes in the current AWS account.
+#' Lists all of the DataBrew recipes that are defined.
 #'
 #' @usage
 #' gluedatabrew_list_recipes(MaxResults, NextToken, RecipeVersion)
 #'
 #' @param MaxResults The maximum number of results to return in this request.
-#' @param NextToken A pagination token that can be used in a subsequent request.
-#' @param RecipeVersion A version identifier. Using this parameter indicates to return only
-#' those recipes that have this version identifier.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param RecipeVersion Return only those recipes with a version identifier of `LATEST_WORKING`
+#' or `LATEST_PUBLISHED`. If `RecipeVersion` is omitted,
+#' [`list_recipes`][gluedatabrew_list_recipes] returns all of the
+#' `LATEST_PUBLISHED` recipe versions.
+#' 
+#' Valid values: `LATEST_WORKING` | `LATEST_PUBLISHED`
 #'
 #' @return
 #' A list with the following syntax:
@@ -1694,17 +1984,18 @@ gluedatabrew_list_recipes <- function(MaxResults = NULL, NextToken = NULL, Recip
 }
 .gluedatabrew$operations$list_recipes <- gluedatabrew_list_recipes
 
-#' Lists the AWS Glue DataBrew schedules in the current AWS account
+#' Lists the DataBrew schedules that are defined
 #'
 #' @description
-#' Lists the AWS Glue DataBrew schedules in the current AWS account.
+#' Lists the DataBrew schedules that are defined.
 #'
 #' @usage
 #' gluedatabrew_list_schedules(JobName, MaxResults, NextToken)
 #'
 #' @param JobName The name of the job that these schedules apply to.
 #' @param MaxResults The maximum number of results to return in this request.
-#' @param NextToken A pagination token that can be used in a subsequent request.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1765,10 +2056,10 @@ gluedatabrew_list_schedules <- function(JobName = NULL, MaxResults = NULL, NextT
 }
 .gluedatabrew$operations$list_schedules <- gluedatabrew_list_schedules
 
-#' Lists all the tags for an AWS Glue DataBrew resource
+#' Lists all the tags for a DataBrew resource
 #'
 #' @description
-#' Lists all the tags for an AWS Glue DataBrew resource.
+#' Lists all the tags for a DataBrew resource.
 #'
 #' @usage
 #' gluedatabrew_list_tags_for_resource(ResourceArn)
@@ -1813,12 +2104,10 @@ gluedatabrew_list_tags_for_resource <- function(ResourceArn) {
 }
 .gluedatabrew$operations$list_tags_for_resource <- gluedatabrew_list_tags_for_resource
 
-#' Publishes a new major version of an AWS Glue DataBrew recipe that exists
-#' in the current AWS account
+#' Publishes a new version of a DataBrew recipe
 #'
 #' @description
-#' Publishes a new major version of an AWS Glue DataBrew recipe that exists
-#' in the current AWS account.
+#' Publishes a new version of a DataBrew recipe.
 #'
 #' @usage
 #' gluedatabrew_publish_recipe(Description, Name)
@@ -1863,19 +2152,19 @@ gluedatabrew_publish_recipe <- function(Description = NULL, Name) {
 }
 .gluedatabrew$operations$publish_recipe <- gluedatabrew_publish_recipe
 
-#' Performs a recipe step within an interactive AWS Glue DataBrew session
-#' that's currently open
+#' Performs a recipe step within an interactive DataBrew session that's
+#' currently open
 #'
 #' @description
-#' Performs a recipe step within an interactive AWS Glue DataBrew session
-#' that's currently open.
+#' Performs a recipe step within an interactive DataBrew session that's
+#' currently open.
 #'
 #' @usage
 #' gluedatabrew_send_project_session_action(Preview, Name, RecipeStep,
 #'   StepIndex, ClientSessionId, ViewFrame)
 #'
-#' @param Preview Returns the result of the recipe step, without applying it. The result
-#' isn't added to the view frame stack.
+#' @param Preview If true, the result of the recipe step will be returned, but not
+#' applied.
 #' @param Name &#91;required&#93; The name of the project to apply the action to.
 #' @param RecipeStep 
 #' @param StepIndex The index from which to preview a step. This index is used to preview
@@ -1947,10 +2236,10 @@ gluedatabrew_send_project_session_action <- function(Preview = NULL, Name, Recip
 }
 .gluedatabrew$operations$send_project_session_action <- gluedatabrew_send_project_session_action
 
-#' Runs an AWS Glue DataBrew job that exists in the current AWS account
+#' Runs a DataBrew job
 #'
 #' @description
-#' Runs an AWS Glue DataBrew job that exists in the current AWS account.
+#' Runs a DataBrew job.
 #'
 #' @usage
 #' gluedatabrew_start_job_run(Name)
@@ -1992,11 +2281,11 @@ gluedatabrew_start_job_run <- function(Name) {
 }
 .gluedatabrew$operations$start_job_run <- gluedatabrew_start_job_run
 
-#' Creates an interactive session, enabling you to manipulate an AWS Glue
+#' Creates an interactive session, enabling you to manipulate data in a
 #' DataBrew project
 #'
 #' @description
-#' Creates an interactive session, enabling you to manipulate an AWS Glue
+#' Creates an interactive session, enabling you to manipulate data in a
 #' DataBrew project.
 #'
 #' @usage
@@ -2043,10 +2332,10 @@ gluedatabrew_start_project_session <- function(Name, AssumeControl = NULL) {
 }
 .gluedatabrew$operations$start_project_session <- gluedatabrew_start_project_session
 
-#' Stops the specified job from running in the current AWS account
+#' Stops a particular run of a job
 #'
 #' @description
-#' Stops the specified job from running in the current AWS account.
+#' Stops a particular run of a job.
 #'
 #' @usage
 #' gluedatabrew_stop_job_run(Name, RunId)
@@ -2090,12 +2379,12 @@ gluedatabrew_stop_job_run <- function(Name, RunId) {
 }
 .gluedatabrew$operations$stop_job_run <- gluedatabrew_stop_job_run
 
-#' Adds metadata tags to an AWS Glue DataBrew resource, such as a dataset,
-#' job, project, or recipe
+#' Adds metadata tags to a DataBrew resource, such as a dataset, project,
+#' recipe, job, or schedule
 #'
 #' @description
-#' Adds metadata tags to an AWS Glue DataBrew resource, such as a dataset,
-#' job, project, or recipe.
+#' Adds metadata tags to a DataBrew resource, such as a dataset, project,
+#' recipe, job, or schedule.
 #'
 #' @usage
 #' gluedatabrew_tag_resource(ResourceArn, Tags)
@@ -2138,15 +2427,15 @@ gluedatabrew_tag_resource <- function(ResourceArn, Tags) {
 }
 .gluedatabrew$operations$tag_resource <- gluedatabrew_tag_resource
 
-#' Removes metadata tags from an AWS Glue DataBrew resource
+#' Removes metadata tags from a DataBrew resource
 #'
 #' @description
-#' Removes metadata tags from an AWS Glue DataBrew resource.
+#' Removes metadata tags from a DataBrew resource.
 #'
 #' @usage
 #' gluedatabrew_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; An DataBrew resource from which you want to remove a tag or tags. The
+#' @param ResourceArn &#91;required&#93; A DataBrew resource from which you want to remove a tag or tags. The
 #' value for this parameter is an Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; The tag keys (names) of one or more tags to be removed.
 #'
@@ -2183,19 +2472,21 @@ gluedatabrew_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .gluedatabrew$operations$untag_resource <- gluedatabrew_untag_resource
 
-#' Modifies the definition of an existing AWS Glue DataBrew dataset in the
-#' current AWS account
+#' Modifies the definition of an existing DataBrew dataset
 #'
 #' @description
-#' Modifies the definition of an existing AWS Glue DataBrew dataset in the
-#' current AWS account.
+#' Modifies the definition of an existing DataBrew dataset.
 #'
 #' @usage
-#' gluedatabrew_update_dataset(Name, FormatOptions, Input)
+#' gluedatabrew_update_dataset(Name, Format, FormatOptions, Input,
+#'   PathOptions)
 #'
 #' @param Name &#91;required&#93; The name of the dataset to be updated.
+#' @param Format The file format of a dataset that is created from an S3 file or folder.
 #' @param FormatOptions 
 #' @param Input &#91;required&#93; 
+#' @param PathOptions A set of options that defines how DataBrew interprets an S3 path of the
+#' dataset.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2209,6 +2500,7 @@ gluedatabrew_untag_resource <- function(ResourceArn, TagKeys) {
 #' ```
 #' svc$update_dataset(
 #'   Name = "string",
+#'   Format = "CSV"|"JSON"|"PARQUET"|"EXCEL",
 #'   FormatOptions = list(
 #'     Json = list(
 #'       MultiLine = TRUE|FALSE
@@ -2219,7 +2511,12 @@ gluedatabrew_untag_resource <- function(ResourceArn, TagKeys) {
 #'       ),
 #'       SheetIndexes = list(
 #'         123
-#'       )
+#'       ),
+#'       HeaderRow = TRUE|FALSE
+#'     ),
+#'     Csv = list(
+#'       Delimiter = "string",
+#'       HeaderRow = TRUE|FALSE
 #'     )
 #'   ),
 #'   Input = list(
@@ -2235,6 +2532,45 @@ gluedatabrew_untag_resource <- function(ResourceArn, TagKeys) {
 #'         Bucket = "string",
 #'         Key = "string"
 #'       )
+#'     ),
+#'     DatabaseInputDefinition = list(
+#'       GlueConnectionName = "string",
+#'       DatabaseTableName = "string",
+#'       TempDirectory = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       )
+#'     )
+#'   ),
+#'   PathOptions = list(
+#'     LastModifiedDateCondition = list(
+#'       Expression = "string",
+#'       ValuesMap = list(
+#'         "string"
+#'       )
+#'     ),
+#'     FilesLimit = list(
+#'       MaxFiles = 123,
+#'       OrderedBy = "LAST_MODIFIED_DATE",
+#'       Order = "DESCENDING"|"ASCENDING"
+#'     ),
+#'     Parameters = list(
+#'       list(
+#'         Name = "string",
+#'         Type = "Datetime"|"Number"|"String",
+#'         DatetimeOptions = list(
+#'           Format = "string",
+#'           TimezoneOffset = "string",
+#'           LocaleCode = "string"
+#'         ),
+#'         CreateColumn = TRUE|FALSE,
+#'         Filter = list(
+#'           Expression = "string",
+#'           ValuesMap = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2243,14 +2579,14 @@ gluedatabrew_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_update_dataset
-gluedatabrew_update_dataset <- function(Name, FormatOptions = NULL, Input) {
+gluedatabrew_update_dataset <- function(Name, Format = NULL, FormatOptions = NULL, Input, PathOptions = NULL) {
   op <- new_operation(
     name = "UpdateDataset",
     http_method = "PUT",
     http_path = "/datasets/{name}",
     paginator = list()
   )
-  input <- .gluedatabrew$update_dataset_input(Name = Name, FormatOptions = FormatOptions, Input = Input)
+  input <- .gluedatabrew$update_dataset_input(Name = Name, Format = Format, FormatOptions = FormatOptions, Input = Input, PathOptions = PathOptions)
   output <- .gluedatabrew$update_dataset_output()
   config <- get_config()
   svc <- .gluedatabrew$service(config)
@@ -2260,37 +2596,39 @@ gluedatabrew_update_dataset <- function(Name, FormatOptions = NULL, Input) {
 }
 .gluedatabrew$operations$update_dataset <- gluedatabrew_update_dataset
 
-#' Modifies the definition of an existing AWS Glue DataBrew job in the
-#' current AWS account
+#' Modifies the definition of an existing profile job
 #'
 #' @description
-#' Modifies the definition of an existing AWS Glue DataBrew job in the
-#' current AWS account.
+#' Modifies the definition of an existing profile job.
 #'
 #' @usage
 #' gluedatabrew_update_profile_job(EncryptionKeyArn, EncryptionMode, Name,
 #'   LogSubscription, MaxCapacity, MaxRetries, OutputLocation, RoleArn,
-#'   Timeout)
+#'   Timeout, JobSample)
 #'
 #' @param EncryptionKeyArn The Amazon Resource Name (ARN) of an encryption key that is used to
 #' protect the job.
 #' @param EncryptionMode The encryption mode for the job, which can be one of the following:
 #' 
-#' -   `SSE-KMS` - Server-side encryption with AWS KMS-managed keys.
+#' -   `SSE-KMS` - Server-side encryption with keys managed by AWS KMS.
 #' 
 #' -   `SSE-S3` - Server-side encryption with keys managed by Amazon S3.
 #' @param Name &#91;required&#93; The name of the job to be updated.
-#' @param LogSubscription A value that enables or disables Amazon CloudWatch logging for the
-#' current AWS account. If logging is enabled, CloudWatch writes one log
-#' stream for each job run.
-#' @param MaxCapacity The maximum number of nodes that DataBrew can use when the job processes
-#' data.
+#' @param LogSubscription Enables or disables Amazon CloudWatch logging for the job. If logging is
+#' enabled, CloudWatch writes one log stream for each job run.
+#' @param MaxCapacity The maximum number of compute nodes that DataBrew can use when the job
+#' processes data.
 #' @param MaxRetries The maximum number of times to retry the job after a job run fails.
 #' @param OutputLocation &#91;required&#93; 
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role to be assumed for this request.
+#' (IAM) role to be assumed when DataBrew runs the job.
 #' @param Timeout The job's timeout in minutes. A job that attempts to run longer than
 #' this timeout period ends with a status of `TIMEOUT`.
+#' @param JobSample Sample configuration for Profile Jobs only. Determines the number of
+#' rows on which the Profile job will be executed. If a JobSample value is
+#' not provided for profile jobs, the default value will be used. The
+#' default value is CUSTOM_ROWS for the mode parameter and 20000 for the
+#' size parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2314,21 +2652,25 @@ gluedatabrew_update_dataset <- function(Name, FormatOptions = NULL, Input) {
 #'     Key = "string"
 #'   ),
 #'   RoleArn = "string",
-#'   Timeout = 123
+#'   Timeout = 123,
+#'   JobSample = list(
+#'     Mode = "FULL_DATASET"|"CUSTOM_ROWS",
+#'     Size = 123
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_update_profile_job
-gluedatabrew_update_profile_job <- function(EncryptionKeyArn = NULL, EncryptionMode = NULL, Name, LogSubscription = NULL, MaxCapacity = NULL, MaxRetries = NULL, OutputLocation, RoleArn, Timeout = NULL) {
+gluedatabrew_update_profile_job <- function(EncryptionKeyArn = NULL, EncryptionMode = NULL, Name, LogSubscription = NULL, MaxCapacity = NULL, MaxRetries = NULL, OutputLocation, RoleArn, Timeout = NULL, JobSample = NULL) {
   op <- new_operation(
     name = "UpdateProfileJob",
     http_method = "PUT",
     http_path = "/profileJobs/{name}",
     paginator = list()
   )
-  input <- .gluedatabrew$update_profile_job_input(EncryptionKeyArn = EncryptionKeyArn, EncryptionMode = EncryptionMode, Name = Name, LogSubscription = LogSubscription, MaxCapacity = MaxCapacity, MaxRetries = MaxRetries, OutputLocation = OutputLocation, RoleArn = RoleArn, Timeout = Timeout)
+  input <- .gluedatabrew$update_profile_job_input(EncryptionKeyArn = EncryptionKeyArn, EncryptionMode = EncryptionMode, Name = Name, LogSubscription = LogSubscription, MaxCapacity = MaxCapacity, MaxRetries = MaxRetries, OutputLocation = OutputLocation, RoleArn = RoleArn, Timeout = Timeout, JobSample = JobSample)
   output <- .gluedatabrew$update_profile_job_output()
   config <- get_config()
   svc <- .gluedatabrew$service(config)
@@ -2338,12 +2680,10 @@ gluedatabrew_update_profile_job <- function(EncryptionKeyArn = NULL, EncryptionM
 }
 .gluedatabrew$operations$update_profile_job <- gluedatabrew_update_profile_job
 
-#' Modifies the definition of an existing AWS Glue DataBrew project in the
-#' current AWS account
+#' Modifies the definition of an existing DataBrew project
 #'
 #' @description
-#' Modifies the definition of an existing AWS Glue DataBrew project in the
-#' current AWS account.
+#' Modifies the definition of an existing DataBrew project.
 #'
 #' @usage
 #' gluedatabrew_update_project(Sample, RoleArn, Name)
@@ -2396,12 +2736,12 @@ gluedatabrew_update_project <- function(Sample = NULL, RoleArn, Name) {
 }
 .gluedatabrew$operations$update_project <- gluedatabrew_update_project
 
-#' Modifies the definition of the latest working version of an AWS Glue
-#' DataBrew recipe in the current AWS account
+#' Modifies the definition of the LATEST_WORKING version of a DataBrew
+#' recipe
 #'
 #' @description
-#' Modifies the definition of the latest working version of an AWS Glue
-#' DataBrew recipe in the current AWS account.
+#' Modifies the definition of the `LATEST_WORKING` version of a DataBrew
+#' recipe.
 #'
 #' @usage
 #' gluedatabrew_update_recipe(Description, Name, Steps)
@@ -2464,12 +2804,10 @@ gluedatabrew_update_recipe <- function(Description = NULL, Name, Steps = NULL) {
 }
 .gluedatabrew$operations$update_recipe <- gluedatabrew_update_recipe
 
-#' Modifies the definition of an existing AWS Glue DataBrew recipe job in
-#' the current AWS account
+#' Modifies the definition of an existing DataBrew recipe job
 #'
 #' @description
-#' Modifies the definition of an existing AWS Glue DataBrew recipe job in
-#' the current AWS account.
+#' Modifies the definition of an existing DataBrew recipe job.
 #'
 #' @usage
 #' gluedatabrew_update_recipe_job(EncryptionKeyArn, EncryptionMode, Name,
@@ -2479,19 +2817,18 @@ gluedatabrew_update_recipe <- function(Description = NULL, Name, Steps = NULL) {
 #' protect the job.
 #' @param EncryptionMode The encryption mode for the job, which can be one of the following:
 #' 
-#' -   `SSE-KMS` - Server-side encryption with AWS KMS-managed keys.
+#' -   `SSE-KMS` - Server-side encryption with keys managed by AWS KMS.
 #' 
 #' -   `SSE-S3` - Server-side encryption with keys managed by Amazon S3.
 #' @param Name &#91;required&#93; The name of the job to update.
-#' @param LogSubscription A value that enables or disables Amazon CloudWatch logging for the
-#' current AWS account. If logging is enabled, CloudWatch writes one log
-#' stream for each job run.
+#' @param LogSubscription Enables or disables Amazon CloudWatch logging for the job. If logging is
+#' enabled, CloudWatch writes one log stream for each job run.
 #' @param MaxCapacity The maximum number of nodes that DataBrew can consume when the job
 #' processes data.
 #' @param MaxRetries The maximum number of times to retry the job after a job run fails.
 #' @param Outputs &#91;required&#93; One or more artifacts that represent the output from running the job.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role to be assumed for this request.
+#' (IAM) role to be assumed when DataBrew runs the job.
 #' @param Timeout The job's timeout in minutes. A job that attempts to run longer than
 #' this timeout period ends with a status of `TIMEOUT`.
 #'
@@ -2523,7 +2860,12 @@ gluedatabrew_update_recipe <- function(Description = NULL, Name, Steps = NULL) {
 #'         Bucket = "string",
 #'         Key = "string"
 #'       ),
-#'       Overwrite = TRUE|FALSE
+#'       Overwrite = TRUE|FALSE,
+#'       FormatOptions = list(
+#'         Csv = list(
+#'           Delimiter = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   RoleArn = "string",
@@ -2551,19 +2893,19 @@ gluedatabrew_update_recipe_job <- function(EncryptionKeyArn = NULL, EncryptionMo
 }
 .gluedatabrew$operations$update_recipe_job <- gluedatabrew_update_recipe_job
 
-#' Modifies the definition of an existing AWS Glue DataBrew schedule in the
-#' current AWS account
+#' Modifies the definition of an existing DataBrew schedule
 #'
 #' @description
-#' Modifies the definition of an existing AWS Glue DataBrew schedule in the
-#' current AWS account.
+#' Modifies the definition of an existing DataBrew schedule.
 #'
 #' @usage
 #' gluedatabrew_update_schedule(JobNames, CronExpression, Name)
 #'
 #' @param JobNames The name or names of one or more jobs to be run for this schedule.
-#' @param CronExpression &#91;required&#93; The date or dates and time or times, in `cron` format, when the jobs are
-#' to be run.
+#' @param CronExpression &#91;required&#93; The date or dates and time or times when the jobs are to be run. For
+#' more information, see [Cron
+#' expressions](https://docs.aws.amazon.com/databrew/latest/dg/) in the
+#' *AWS Glue DataBrew Developer Guide*.
 #' @param Name &#91;required&#93; The name of the schedule to update.
 #'
 #' @return

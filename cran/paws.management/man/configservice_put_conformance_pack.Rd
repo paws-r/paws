@@ -25,10 +25,13 @@ maximum length of 51,200 bytes.
 You can only use a YAML template with one resource type, that is, config
 rule and a remediation action.}
 
-\item{DeliveryS3Bucket}{AWS Config stores intermediate files while processing conformance pack
-template.}
+\item{DeliveryS3Bucket}{Amazon S3 bucket where AWS Config stores conformance pack templates.
 
-\item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.}
+This field is optional.}
+
+\item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.
+
+This field is optional.}
 
 \item{ConformancePackInputParameters}{A list of \code{ConformancePackInputParameter} objects.}
 }

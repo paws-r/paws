@@ -118,7 +118,10 @@ A list with the following syntax:\preformatted{list(
               SMSMessage = list(
                 Body = "string",
                 MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-                SenderId = "string"
+                OriginationNumber = "string",
+                SenderId = "string",
+                EntityId = "string",
+                TemplateId = "string"
               )
             ),
             Schedule = list(
@@ -127,7 +130,7 @@ A list with the following syntax:\preformatted{list(
                 Dimensions = list(
                   Attributes = list(
                     list(
-                      AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                      AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                       Values = list(
                         "string"
                       )
@@ -294,7 +297,10 @@ A list with the following syntax:\preformatted{list(
           SMSMessage = list(
             Body = "string",
             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-            SenderId = "string"
+            OriginationNumber = "string",
+            SenderId = "string",
+            EntityId = "string",
+            TemplateId = "string"
           )
         ),
         Name = "string",
@@ -304,7 +310,7 @@ A list with the following syntax:\preformatted{list(
             Dimensions = list(
               Attributes = list(
                 list(
-                  AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                  AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
                   Values = list(
                     "string"
                   )

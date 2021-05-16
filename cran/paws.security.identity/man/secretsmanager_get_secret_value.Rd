@@ -33,10 +33,11 @@ receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 
 \item{VersionId}{Specifies the unique identifier of the version of the secret that you
-want to retrieve. If you specify this parameter then don't specify
-\code{VersionStage}. If you don't specify either a \code{VersionStage} or
-\code{VersionId} then the default is to perform the operation on the version
-with the \code{VersionStage} value of \code{AWSCURRENT}.
+want to retrieve. If you specify both this parameter and \code{VersionStage},
+the two parameters must refer to the same secret version. If you don't
+specify either a \code{VersionStage} or \code{VersionId} then the default is to
+perform the operation on the version with the \code{VersionStage} value of
+\code{AWSCURRENT}.
 
 This value is typically a
 \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
@@ -46,10 +47,11 @@ value with 32 hexadecimal digits.}
 label attached to the version.
 
 Staging labels are used to keep track of different versions during the
-rotation process. If you use this parameter then don't specify
-\code{VersionId}. If you don't specify either a \code{VersionStage} or
-\code{VersionId}, then the default is to perform the operation on the version
-with the \code{VersionStage} value of \code{AWSCURRENT}.}
+rotation process. If you specify both this parameter and \code{VersionId},
+the two parameters must refer to the same secret version . If you don't
+specify either a \code{VersionStage} or \code{VersionId}, then the default is to
+perform the operation on the version with the \code{VersionStage} value of
+\code{AWSCURRENT}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

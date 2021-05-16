@@ -6,37 +6,50 @@
 \usage{
 sagemaker_create_auto_ml_job(AutoMLJobName, InputDataConfig,
   OutputDataConfig, ProblemType, AutoMLJobObjective, AutoMLJobConfig,
-  RoleArn, GenerateCandidateDefinitionsOnly, Tags)
+  RoleArn, GenerateCandidateDefinitionsOnly, Tags, ModelDeployConfig)
 }
 \arguments{
-\item{AutoMLJobName}{[required] Identifies an Autopilot job. Must be unique to your account and is
-case-insensitive.}
+\item{AutoMLJobName}{[required] Identifies an Autopilot job. The name must be unique to your account and
+is case-insensitive.}
 
-\item{InputDataConfig}{[required] Similar to InputDataConfig supported by Tuning. Format(s) supported:
-CSV. Minimum of 500 rows.}
+\item{InputDataConfig}{[required] An array of channel objects that describes the input data and its
+location. Each channel is a named input source. Similar to
+\code{InputDataConfig} supported by . Format(s) supported: CSV. Minimum of
+500 rows.}
 
-\item{OutputDataConfig}{[required] Similar to OutputDataConfig supported by Tuning. Format(s) supported:
-CSV.}
+\item{OutputDataConfig}{[required] Provides information about encryption and the Amazon S3 output path
+needed to store artifacts from an AutoML job. Format(s) supported: CSV.
 
-\item{ProblemType}{Defines the kind of preprocessing and algorithms intended for the
-candidates. Options include: BinaryClassification,
-MulticlassClassification, and Regression.}
+<para>Specifies whether to automatically deploy the best &ATP;
+model to an endpoint and the name of that endpoint if deployed
+automatically.</para>}
 
-\item{AutoMLJobObjective}{Defines the objective of a an AutoML job. You provide a
-AutoMLJobObjective$MetricName and Autopilot infers whether to minimize
-or maximize it. If a metric is not specified, the most commonly used
-ObjectiveMetric for problem type is automaically selected.}
+\item{ProblemType}{Defines the type of supervised learning available for the candidates.
+Options include: \code{BinaryClassification}, \code{MulticlassClassification}, and
+\code{Regression}. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-problem-types.html}{Amazon SageMaker Autopilot problem types and algorithm support}.}
 
-\item{AutoMLJobConfig}{Contains CompletionCriteria and SecurityConfig.}
+\item{AutoMLJobObjective}{Defines the objective metric used to measure the predictive quality of
+an AutoML job. You provide an AutoMLJobObjective$MetricName and
+Autopilot infers whether to minimize or maximize it.}
 
-\item{RoleArn}{[required] The ARN of the role that is used to access the data.}
+\item{AutoMLJobConfig}{Contains \code{CompletionCriteria} and \code{SecurityConfig} settings for the
+AutoML job.}
 
-\item{GenerateCandidateDefinitionsOnly}{Generates possible candidates without training a model. A candidate is a
-combination of data preprocessors, algorithms, and algorithm parameter
-settings.}
+\item{RoleArn}{[required] The ARN of the role that is used to access the data.
+
+<para>Specifies whether to automatically deploy the best &ATP;
+model to an endpoint and the name of that endpoint if deployed
+automatically.</para>}
+
+\item{GenerateCandidateDefinitionsOnly}{Generates possible candidates without training the models. A candidate
+is a combination of data preprocessors, algorithms, and algorithm
+parameter settings.}
 
 \item{Tags}{Each tag consists of a key and an optional value. Tag keys must be
 unique per resource.}
+
+\item{ModelDeployConfig}{Specifies how to generate the endpoint name for an automatic one-click
+Autopilot model deployment.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -48,7 +61,7 @@ A list with the following syntax:\preformatted{list(
 Creates an Autopilot job.
 
 Find the best performing model after you run an Autopilot job by calling
-. Deploy that model by following the steps described in \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{Step 6.1: Deploy the Model to Amazon SageMaker Hosting Services}.
+.
 
 For information about how to use Autopilot, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html}{Automate Model Development with Amazon SageMaker Autopilot}.
 }
@@ -101,6 +114,10 @@ For information about how to use Autopilot, see \href{https://docs.aws.amazon.co
       Key = "string",
       Value = "string"
     )
+  ),
+  ModelDeployConfig = list(
+    AutoGenerateEndpointName = TRUE|FALSE,
+    EndpointName = "string"
   )
 )
 }

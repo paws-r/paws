@@ -22,9 +22,9 @@ SDKs, this field is calculated automatically.}
 Amazon S3 bucket. You can enable the configuration options in any
 combination. For more information about when Amazon S3 considers a
 bucket or object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of "Public"}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }

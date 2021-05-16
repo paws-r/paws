@@ -28,6 +28,14 @@ test_that("list_dashboards", {
   expect_error(svc$list_dashboards(), NA)
 })
 
+test_that("list_metric_streams", {
+  expect_error(svc$list_metric_streams(), NA)
+})
+
+test_that("list_metric_streams", {
+  expect_error(svc$list_metric_streams(MaxResults = 20), NA)
+})
+
 test_that("list_metrics", {
   expect_error(svc$list_metrics(), NA)
 })

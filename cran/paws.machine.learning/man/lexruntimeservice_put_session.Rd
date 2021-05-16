@@ -85,6 +85,7 @@ A list with the following syntax:\preformatted{list(
   slots = "string",
   sessionAttributes = "string",
   message = "string",
+  encodedMessage = "string",
   messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
   dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
   slotToElicit = "string",

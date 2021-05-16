@@ -23,9 +23,7 @@ After invoking the
 can use the \code{\link[=machinelearning_get_evaluation]{get_evaluation}} operation
 to verify that the status of the \code{Evaluation} changed to \code{DELETED}.
 
-Caution
-
-The results of the
+\strong{Caution:} The results of the
 \code{\link[=machinelearning_delete_evaluation]{delete_evaluation}} operation are
 irreversible.
 }

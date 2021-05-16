@@ -2,15 +2,15 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_policy}
 \alias{s3_delete_bucket_policy}
-\title{This implementation of the DELETE operation uses the policy subresource
-to delete the policy of a specified bucket}
+\title{This implementation of the DELETE action uses the policy subresource to
+delete the policy of a specified bucket}
 \usage{
 s3_delete_bucket_policy(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -18,8 +18,8 @@ different account, the request will fail with an HTTP
 An empty list.
 }
 \description{
-This implementation of the DELETE operation uses the policy subresource
-to delete the policy of a specified bucket. If you are using an identity
+This implementation of the DELETE action uses the policy subresource to
+delete the policy of a specified bucket. If you are using an identity
 other than the root user of the AWS account that owns the bucket, the
 calling identity must have the
 \code{\link[=s3_delete_bucket_policy]{delete_bucket_policy}} permissions on the
@@ -36,8 +36,7 @@ As a security precaution, the root user of the AWS account that owns a
 bucket can always use this operation, even if the policy explicitly
 denies the root user the ability to perform this action.
 
-For more information about bucket policies, see Using Bucket Policies
-and UserPolicies.
+For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and UserPolicies}.
 
 The following operations are related to
 \code{\link[=s3_delete_bucket_policy]{delete_bucket_policy}}

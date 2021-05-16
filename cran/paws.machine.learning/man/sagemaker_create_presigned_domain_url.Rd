@@ -5,14 +5,18 @@
 \title{Creates a URL for a specified UserProfile in a Domain}
 \usage{
 sagemaker_create_presigned_domain_url(DomainId, UserProfileName,
-  SessionExpirationDurationInSeconds)
+  SessionExpirationDurationInSeconds, ExpiresInSeconds)
 }
 \arguments{
 \item{DomainId}{[required] The domain ID.}
 
 \item{UserProfileName}{[required] The name of the UserProfile to sign-in as.}
 
-\item{SessionExpirationDurationInSeconds}{The session expiration duration in seconds.}
+\item{SessionExpirationDurationInSeconds}{The session expiration duration in seconds. This value defaults to
+43200.}
+
+\item{ExpiresInSeconds}{The number of seconds until the pre-signed URL expires. This value
+defaults to 300.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -30,15 +34,16 @@ IAM.
 
 The URL that you get from a call to
 \code{\link[=sagemaker_create_presigned_domain_url]{create_presigned_domain_url}}
-is valid only for 5 minutes. If you try to use the URL after the
-5-minute limit expires, you are directed to the AWS console sign-in
-page.
+has a default timeout of 5 minutes. You can configure this value using
+\code{ExpiresInSeconds}. If you try to use the URL after the timeout limit
+expires, you are directed to the AWS console sign-in page.
 }
 \section{Request syntax}{
 \preformatted{svc$create_presigned_domain_url(
   DomainId = "string",
   UserProfileName = "string",
-  SessionExpirationDurationInSeconds = 123
+  SessionExpirationDurationInSeconds = 123,
+  ExpiresInSeconds = 123
 )
 }
 }

@@ -11,7 +11,7 @@ NULL
 
 .ivs$batch_get_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(channels = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ingestEndpoint = structure(logical(0), tags = list(type = "string")), playbackUrl = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(channels = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), recordingConfigurationArn = structure(logical(0), tags = list(type = "string")), ingestEndpoint = structure(logical(0), tags = list(type = "string")), playbackUrl = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,13 +29,25 @@ NULL
 
 .ivs$create_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), recordingConfigurationArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivs$create_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(channel = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ingestEndpoint = structure(logical(0), tags = list(type = "string")), playbackUrl = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), streamKey = structure(list(arn = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), channelArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(channel = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), recordingConfigurationArn = structure(logical(0), tags = list(type = "string")), ingestEndpoint = structure(logical(0), tags = list(type = "string")), playbackUrl = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), streamKey = structure(list(arn = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), channelArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivs$create_recording_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), destinationConfiguration = structure(list(s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivs$create_recording_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recordingConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), destinationConfiguration = structure(list(s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -73,6 +85,16 @@ NULL
   return(populate(args, shape))
 }
 
+.ivs$delete_recording_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivs$delete_recording_configuration_output <- function(...) {
+  list()
+}
+
 .ivs$delete_stream_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -91,7 +113,7 @@ NULL
 
 .ivs$get_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(channel = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ingestEndpoint = structure(logical(0), tags = list(type = "string")), playbackUrl = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(channel = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), recordingConfigurationArn = structure(logical(0), tags = list(type = "string")), ingestEndpoint = structure(logical(0), tags = list(type = "string")), playbackUrl = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -107,6 +129,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ivs$get_recording_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivs$get_recording_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recordingConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), destinationConfiguration = structure(list(s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ivs$get_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(channelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -115,7 +149,7 @@ NULL
 
 .ivs$get_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stream = structure(list(channelArn = structure(logical(0), tags = list(type = "string")), playbackUrl = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), state = structure(logical(0), tags = list(type = "string")), health = structure(logical(0), tags = list(type = "string")), viewerCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(stream = structure(list(channelArn = structure(logical(0), tags = list(type = "string")), playbackUrl = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string")), health = structure(logical(0), tags = list(type = "string")), viewerCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -145,13 +179,13 @@ NULL
 
 .ivs$list_channels_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filterByName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(filterByName = structure(logical(0), tags = list(type = "string")), filterByRecordingConfigurationArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivs$list_channels_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(channels = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(channels = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), recordingConfigurationArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -164,6 +198,18 @@ NULL
 .ivs$list_playback_key_pairs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(keyPairs = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivs$list_recording_configurations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ivs$list_recording_configurations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recordingConfigurations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), destinationConfiguration = structure(list(s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -187,7 +233,7 @@ NULL
 
 .ivs$list_streams_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(streams = structure(list(structure(list(channelArn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), health = structure(logical(0), tags = list(type = "string")), viewerCount = structure(logical(0), tags = list(type = "long")), startTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(streams = structure(list(structure(list(channelArn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), health = structure(logical(0), tags = list(type = "string")), viewerCount = structure(logical(0), tags = list(type = "long")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -251,12 +297,12 @@ NULL
 
 .ivs$update_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), recordingConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ivs$update_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(channel = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ingestEndpoint = structure(logical(0), tags = list(type = "string")), playbackUrl = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(channel = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), latencyMode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), recordingConfigurationArn = structure(logical(0), tags = list(type = "string")), ingestEndpoint = structure(logical(0), tags = list(type = "string")), playbackUrl = structure(logical(0), tags = list(type = "string")), authorized = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

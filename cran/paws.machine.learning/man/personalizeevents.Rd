@@ -12,8 +12,7 @@ personalizeevents(config = list())
 \description{
 Amazon Personalize can consume real-time user event data, such as
 \emph{stream} or \emph{click} data, and use it for model training either alone or
-combined with historical data. For more information see
-recording-events.
+combined with historical data. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html}{Recording Events}.
 }
 \section{Service syntax}{
 \preformatted{svc <- personalizeevents(

@@ -39,7 +39,8 @@ A list with the following syntax:\preformatted{list(
           "string"
         ),
         IncludeFutureRegions = TRUE|FALSE,
-        State = "string"
+        State = "string",
+        EnableAllOpsDataSources = TRUE|FALSE
       ),
       S3Destination = list(
         BucketName = "string",

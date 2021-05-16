@@ -2,12 +2,12 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_get_app_instance_retention_settings}
 \alias{chime_get_app_instance_retention_settings}
-\title{Gets the retention settings for an app instance}
+\title{Gets the retention settings for an AppInstance}
 \usage{
 chime_get_app_instance_retention_settings(AppInstanceArn)
 }
 \arguments{
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -23,7 +23,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Gets the retention settings for an app instance.
+Gets the retention settings for an \code{AppInstance}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_app_instance_retention_settings(

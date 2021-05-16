@@ -40,6 +40,8 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Starts a job to create a one-time copy of the specified resource.
+
+Does not support continuous backups.
 }
 \section{Request syntax}{
 \preformatted{svc$start_copy_job(

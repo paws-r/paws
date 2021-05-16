@@ -12,7 +12,7 @@ s3_put_bucket_cors(Bucket, CORSConfiguration, ContentMD5,
 
 \item{CORSConfiguration}{[required] Describes the cross-origin access configuration for objects in an Amazon
 S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html}{Enabling Cross-Origin Resource Sharing}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
 used as a message integrity check to verify that the request body was
@@ -21,7 +21,7 @@ not corrupted in transit. For more information, go to \href{https://www.ietf.org
 For requests made using the AWS Command Line Interface (CLI) or AWS
 SDKs, this field is calculated automatically.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -64,7 +64,7 @@ element.
 }
 
 For more information about CORS, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html}{Enabling Cross-Origin Resource Sharing}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 \strong{Related Resources}
 \itemize{
@@ -79,6 +79,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
   CORSConfiguration = list(
     CORSRules = list(
       list(
+        ID = "string",
         AllowedHeaders = list(
           "string"
         ),

@@ -33,7 +33,8 @@ Creates a new report using the description that you provide.
       "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
     ),
     RefreshClosedReports = TRUE|FALSE,
-    ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
+    ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT",
+    BillingViewArn = "string"
   )
 )
 }

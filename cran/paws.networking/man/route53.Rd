@@ -34,23 +34,23 @@ Amazon Route 53 is a highly available and scalable Domain Name System
 \section{Operations}{
 
 \tabular{ll}{
-\link[=route53_activate_key_signing_key]{activate_key_signing_key} \tab Activates a key signing key (KSK) so that it can be used for signing by DNSSEC\cr
+\link[=route53_activate_key_signing_key]{activate_key_signing_key} \tab Activates a key-signing key (KSK) so that it can be used for signing by DNSSEC\cr
 \link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone} \tab Associates an Amazon VPC with a private hosted zone\cr
 \link[=route53_change_resource_record_sets]{change_resource_record_sets} \tab Creates, changes, or deletes a resource record set, which contains authoritative DNS information for a specified domain name or subdomain name\cr
 \link[=route53_change_tags_for_resource]{change_tags_for_resource} \tab Adds, edits, or deletes tags for a health check or a hosted zone\cr
 \link[=route53_create_health_check]{create_health_check} \tab Creates a new health check\cr
 \link[=route53_create_hosted_zone]{create_hosted_zone} \tab Creates a new public or private hosted zone\cr
-\link[=route53_create_key_signing_key]{create_key_signing_key} \tab Creates a new key signing key (KSK) associated with a hosted zone\cr
+\link[=route53_create_key_signing_key]{create_key_signing_key} \tab Creates a new key-signing key (KSK) associated with a hosted zone\cr
 \link[=route53_create_query_logging_config]{create_query_logging_config} \tab Creates a configuration for DNS query logging\cr
 \link[=route53_create_reusable_delegation_set]{create_reusable_delegation_set} \tab Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones that were created by the same AWS account\cr
 \link[=route53_create_traffic_policy]{create_traffic_policy} \tab Creates a traffic policy, which you use to create multiple DNS resource record sets for one domain name (such as example\cr
 \link[=route53_create_traffic_policy_instance]{create_traffic_policy_instance} \tab Creates resource record sets in a specified hosted zone based on the settings in a specified traffic policy version\cr
 \link[=route53_create_traffic_policy_version]{create_traffic_policy_version} \tab Creates a new version of an existing traffic policy\cr
 \link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization} \tab Authorizes the AWS account that created a specified VPC to submit an AssociateVPCWithHostedZone request to associate the VPC with a specified hosted zone that was created by a different account\cr
-\link[=route53_deactivate_key_signing_key]{deactivate_key_signing_key} \tab Deactivates a key signing key (KSK) so that it will not be used for signing by DNSSEC\cr
+\link[=route53_deactivate_key_signing_key]{deactivate_key_signing_key} \tab Deactivates a key-signing key (KSK) so that it will not be used for signing by DNSSEC\cr
 \link[=route53_delete_health_check]{delete_health_check} \tab Deletes a health check\cr
 \link[=route53_delete_hosted_zone]{delete_hosted_zone} \tab Deletes a hosted zone\cr
-\link[=route53_delete_key_signing_key]{delete_key_signing_key} \tab Deletes a key signing key (KSK)\cr
+\link[=route53_delete_key_signing_key]{delete_key_signing_key} \tab Deletes a key-signing key (KSK)\cr
 \link[=route53_delete_query_logging_config]{delete_query_logging_config} \tab Deletes a configuration for DNS query logging\cr
 \link[=route53_delete_reusable_delegation_set]{delete_reusable_delegation_set} \tab Deletes a reusable delegation set\cr
 \link[=route53_delete_traffic_policy]{delete_traffic_policy} \tab Deletes a traffic policy\cr
@@ -61,8 +61,8 @@ Amazon Route 53 is a highly available and scalable Domain Name System
 \link[=route53_enable_hosted_zone_dnssec]{enable_hosted_zone_dnssec} \tab Enables DNSSEC signing in a specific hosted zone\cr
 \link[=route53_get_account_limit]{get_account_limit} \tab Gets the specified limit for the current account, for example, the maximum number of health checks that you can create using the account\cr
 \link[=route53_get_change]{get_change} \tab Returns the current status of a change batch request\cr
-\link[=route53_get_checker_ip_ranges]{get_checker_ip_ranges} \tab GetCheckerIpRanges still works, but we recommend that you download ip-ranges\cr
-\link[=route53_get_dnssec]{get_dnssec} \tab Returns information about DNSSEC for a specific hosted zone, including the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted zone\cr
+\link[=route53_get_checker_ip_ranges]{get_checker_ip_ranges} \tab Route 53 does not perform authorization for this API because it retrieves information that is already available to the public\cr
+\link[=route53_get_dnssec]{get_dnssec} \tab Returns information about DNSSEC for a specific hosted zone, including the key-signing keys (KSKs) in the hosted zone\cr
 \link[=route53_get_geo_location]{get_geo_location} \tab Gets information about whether a specified geographic location is supported for Amazon Route 53 geolocation resource record sets\cr
 \link[=route53_get_health_check]{get_health_check} \tab Gets information about a specified health check\cr
 \link[=route53_get_health_check_count]{get_health_check_count} \tab Retrieves the number of health checks that are associated with the current AWS account\cr

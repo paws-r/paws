@@ -33,8 +33,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-For Redis engine version 6.x onwards: Deletes a ser group. The user
-group must first be disassociated from the replcation group before it
+For Redis engine version 6.x onwards: Deletes a user group. The user
+group must first be disassociated from the replication group before it
 can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 }
 \section{Request syntax}{

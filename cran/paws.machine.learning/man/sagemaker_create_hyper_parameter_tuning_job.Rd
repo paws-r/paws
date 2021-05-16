@@ -213,6 +213,9 @@ objective metric that you choose.
     CheckpointConfig = list(
       S3Uri = "string",
       LocalPath = "string"
+    ),
+    RetryStrategy = list(
+      MaximumRetryAttempts = 123
     )
   ),
   TrainingJobDefinitions = list(
@@ -319,6 +322,9 @@ objective metric that you choose.
       CheckpointConfig = list(
         S3Uri = "string",
         LocalPath = "string"
+      ),
+      RetryStrategy = list(
+        MaximumRetryAttempts = 123
       )
     )
   ),

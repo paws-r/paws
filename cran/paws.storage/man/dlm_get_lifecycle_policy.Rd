@@ -28,6 +28,9 @@ A list with the following syntax:\preformatted{list(
       ResourceTypes = list(
         "VOLUME"|"INSTANCE"
       ),
+      ResourceLocations = list(
+        "CLOUD"|"OUTPOST"
+      ),
       TargetTags = list(
         list(
           Key = "string",
@@ -51,6 +54,7 @@ A list with the following syntax:\preformatted{list(
             )
           ),
           CreateRule = list(
+            Location = "CLOUD"|"OUTPOST_LOCAL",
             Interval = 123,
             IntervalUnit = "HOURS",
             Times = list(
@@ -74,6 +78,7 @@ A list with the following syntax:\preformatted{list(
           CrossRegionCopyRules = list(
             list(
               TargetRegion = "string",
+              Target = "string",
               Encrypted = TRUE|FALSE,
               CmkArn = "string",
               CopyTags = TRUE|FALSE,

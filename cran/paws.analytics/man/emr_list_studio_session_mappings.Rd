@@ -2,8 +2,8 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_list_studio_session_mappings}
 \alias{emr_list_studio_session_mappings}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Returns a list of all user or group session mappings for the Amazon EMR
+Studio specified by StudioId}
 \usage{
 emr_list_studio_session_mappings(StudioId, IdentityType, Marker)
 }
@@ -35,11 +35,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
-
-Returns a list of all user or group session mappings for the EMR Studio
-specified by \code{StudioId}.
+Returns a list of all user or group session mappings for the Amazon EMR
+Studio specified by \code{StudioId}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_studio_session_mappings(

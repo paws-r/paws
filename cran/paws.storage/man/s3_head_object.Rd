@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_head_object}
 \alias{s3_head_object}
-\title{The HEAD operation retrieves metadata from an object without returning
-the object itself}
+\title{The HEAD action retrieves metadata from an object without returning the
+object itself}
 \usage{
 s3_head_object(Bucket, IfMatch, IfModifiedSince, IfNoneMatch,
   IfUnmodifiedSince, Key, Range, VersionId, SSECustomerAlgorithm,
@@ -13,22 +13,22 @@ s3_head_object(Bucket, IfMatch, IfModifiedSince, IfNoneMatch,
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the object.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
 specified, otherwise return a 412 (precondition failed).}
@@ -73,7 +73,7 @@ that the encryption key was transmitted without error.}
 specified. Useful querying about the size of the part and the number of
 parts in this object.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -121,14 +121,16 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-The HEAD operation retrieves metadata from an object without returning
-the object itself. This operation is useful if you're only interested in
-an object's metadata. To use HEAD, you must have READ access to the
-object.
+The HEAD action retrieves metadata from an object without returning the
+object itself. This action is useful if you're only interested in an
+object's metadata. To use HEAD, you must have READ access to the object.
 
-A \code{HEAD} request has the same options as a \code{GET} operation on an object.
+A \code{HEAD} request has the same options as a \code{GET} action on an object.
 The response is identical to the \code{GET} response except that there is no
-response body.
+response body. Because of this, if the \code{HEAD} request generates an
+error, it returns a generic \verb{404 Not Found} or \verb{403 Forbidden} code. It
+is not possible to retrieve the exact exception beyond these error
+codes.
 
 If you encrypt an object by using server-side encryption with
 customer-provided encryption keys (SSE-C) when you store the object in
@@ -141,12 +143,16 @@ use the following headers:
 }
 
 For more information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}.
-
-Encryption request headers, like \code{x-amz-server-side-encryption}, should
-not be sent for GET requests if your object uses server-side encryption
-with CMKs stored in AWS KMS (SSE-KMS) or server-side encryption with
-Amazon S3–managed encryption keys (SSE-S3). If your object does use
-these types of keys, you’ll get an HTTP 400 BadRequest error.
+\itemize{
+\item Encryption request headers, like \code{x-amz-server-side-encryption},
+should not be sent for GET requests if your object uses server-side
+encryption with CMKs stored in AWS KMS (SSE-KMS) or server-side
+encryption with Amazon S3–managed encryption keys (SSE-S3). If your
+object does use these types of keys, you’ll get an HTTP 400
+BadRequest error.
+\item The last modified property in this case is the creation date of the
+object.
+}
 
 Request headers are limited to 8 KB in size. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html}{Common Request Headers}.
@@ -171,7 +177,7 @@ Then Amazon S3 returns \verb{200 OK} and the data requested.
 Then Amazon S3 returns the \verb{304 Not Modified} response code.
 }
 
-For more information about conditional requests, see \href{https://tools.ietf.org/html/rfc7232}{RFC 7232}.
+For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.
 
 \strong{Permissions}
 
@@ -186,7 +192,7 @@ returns an HTTP status code 404 ("no such key") error.
 an HTTP status code 403 ("access denied") error.
 }
 
-The following operation is related to \code{\link[=s3_head_object]{head_object}}:
+The following action is related to \code{\link[=s3_head_object]{head_object}}:
 \itemize{
 \item \code{\link[=s3_get_object]{get_object}}
 }

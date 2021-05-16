@@ -5,7 +5,7 @@
 \title{Makes a copy of an existing snapshot}
 \usage{
 elasticache_copy_snapshot(SourceSnapshotName, TargetSnapshotName,
-  TargetBucket, KmsKeyId)
+  TargetBucket, KmsKeyId, Tags)
 }
 \arguments{
 \item{SourceSnapshotName}{[required] The name of an existing snapshot from which to make a copy.}
@@ -22,10 +22,13 @@ ElastiCache has the needed permissions to this S3 bucket. For more
 information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the \emph{Amazon ElastiCache User Guide}.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/}{Exporting a Snapshot}
+For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html}{Exporting a Snapshot}
 in the \emph{Amazon ElastiCache User Guide}.}
 
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the target snapshot.}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -159,7 +162,13 @@ in the ElastiCache User Guide.
   SourceSnapshotName = "string",
   TargetSnapshotName = "string",
   TargetBucket = "string",
-  KmsKeyId = "string"
+  KmsKeyId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

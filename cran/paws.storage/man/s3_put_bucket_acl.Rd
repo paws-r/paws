@@ -36,7 +36,7 @@ bucket.}
 
 \item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -45,7 +45,7 @@ An empty list.
 }
 \description{
 Sets the permissions on an existing bucket using access control lists
-(ACL). For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html}{Using ACLs}.
+(ACL). For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Using ACLs}.
 To set the ACL of a bucket, you must have \code{WRITE_ACP} permission.
 
 You can use one of the following two ways to set a bucket's permissions:

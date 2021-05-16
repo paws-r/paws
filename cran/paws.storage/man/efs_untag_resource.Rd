@@ -9,7 +9,7 @@ efs_untag_resource(ResourceId, TagKeys)
 \arguments{
 \item{ResourceId}{[required] Specifies the EFS resource that you want to remove tags from.}
 
-\item{TagKeys}{[required] The keys of the key:value tag pairs that you want to remove from the
+\item{TagKeys}{[required] The keys of the key-value tag pairs that you want to remove from the
 specified EFS resource.}
 }
 \value{

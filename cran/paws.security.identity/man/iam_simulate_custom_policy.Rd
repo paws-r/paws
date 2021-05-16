@@ -40,7 +40,7 @@ carriage return (\verb{\\u000D})
 boundary sets the maximum permissions that an IAM entity can have. You
 can input only one permissions boundary when you pass a policy to this
 operation. For more information about permissions boundaries, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions Boundaries for IAM Entities}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions boundaries for IAM entities}
 in the \emph{IAM User Guide}. The policy input is specified as a string that
 contains the complete, valid JSON text of a permissions boundary policy.
 
@@ -66,6 +66,7 @@ parameter is not provided, then the value defaults to \code{*} (all
 resources). Each API in the \code{ActionNames} parameter is evaluated for
 each resource in this list. The simulation determines the access result
 (allowed or denied) of each combination and reports it in the response.
+You can simulate resources that don't exist in your account.
 
 The simulation does not automatically retrieve policies for the
 specified resources. If you want to include a resource policy in the
@@ -76,7 +77,7 @@ If you include a \code{ResourcePolicy}, then it must be applicable to all of
 the resources included in the simulation or you receive an invalid input
 error.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 
 \item{ResourcePolicy}{A resource-based policy to include in the simulation provided as a
@@ -138,7 +139,7 @@ security-group resources. If your scenario includes an EBS volume, then
 you must specify that volume as a resource. If the EC2 scenario includes
 VPC, then you must supply the network-interface resource. If it includes
 an IP subnet, then you must specify the subnet resource. For more
-information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported Platforms}
+information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported platforms}
 in the \emph{Amazon EC2 User Guide}.
 \itemize{
 \item \strong{EC2-Classic-InstanceStore}
@@ -253,7 +254,7 @@ as strings.
 
 The simulation does not perform the API operations; it only checks the
 authorization to determine if the simulated policies allow or deny the
-operations.
+operations. You can simulate resources that don't exist in your account.
 
 If you want to simulate existing policies that are attached to an IAM
 user, group, or role, use
@@ -268,6 +269,9 @@ correct simulation, use
 
 If the output is long, you can use \code{MaxItems} and \code{Marker} parameters to
 paginate the results.
+
+For more information about using the policy simulator, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html}{Testing IAM policies with the IAM policy simulator}
+in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$simulate_custom_policy(

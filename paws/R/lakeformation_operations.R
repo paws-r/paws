@@ -3,6 +3,128 @@
 #' @include lakeformation_service.R
 NULL
 
+#' Attaches one or more tags to an existing resource
+#'
+#' @description
+#' Attaches one or more tags to an existing resource.
+#'
+#' @usage
+#' lakeformation_add_lf_tags_to_resource(CatalogId, Resource, LFTags)
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your AWS Lake Formation environment.
+#' @param Resource &#91;required&#93; The resource to which to attach a tag.
+#' @param LFTags &#91;required&#93; The tags to attach to the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       LFTag = list(
+#'         CatalogId = "string",
+#'         TagKey = "string",
+#'         TagValues = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Error = list(
+#'         ErrorCode = "string",
+#'         ErrorMessage = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_lf_tags_to_resource(
+#'   CatalogId = "string",
+#'   Resource = list(
+#'     Catalog = list(),
+#'     Database = list(
+#'       CatalogId = "string",
+#'       Name = "string"
+#'     ),
+#'     Table = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       TableWildcard = list()
+#'     ),
+#'     TableWithColumns = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       ColumnNames = list(
+#'         "string"
+#'       ),
+#'       ColumnWildcard = list(
+#'         ExcludedColumnNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DataLocation = list(
+#'       CatalogId = "string",
+#'       ResourceArn = "string"
+#'     ),
+#'     LFTag = list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LFTagPolicy = list(
+#'       CatalogId = "string",
+#'       ResourceType = "DATABASE"|"TABLE",
+#'       Expression = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   LFTags = list(
+#'     list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_add_lf_tags_to_resource
+lakeformation_add_lf_tags_to_resource <- function(CatalogId = NULL, Resource, LFTags) {
+  op <- new_operation(
+    name = "AddLFTagsToResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lakeformation$add_lf_tags_to_resource_input(CatalogId = CatalogId, Resource = Resource, LFTags = LFTags)
+  output <- .lakeformation$add_lf_tags_to_resource_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$add_lf_tags_to_resource <- lakeformation_add_lf_tags_to_resource
+
 #' Batch operation to grant permissions to the principal
 #'
 #' @description
@@ -57,13 +179,32 @@ NULL
 #'           DataLocation = list(
 #'             CatalogId = "string",
 #'             ResourceArn = "string"
+#'           ),
+#'           LFTag = list(
+#'             CatalogId = "string",
+#'             TagKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           ),
+#'           LFTagPolicy = list(
+#'             CatalogId = "string",
+#'             ResourceType = "DATABASE"|"TABLE",
+#'             Expression = list(
+#'               list(
+#'                 TagKey = "string",
+#'                 TagValues = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'         ),
 #'         PermissionsWithGrantOption = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'         )
 #'       ),
 #'       Error = list(
@@ -113,13 +254,32 @@ NULL
 #'         DataLocation = list(
 #'           CatalogId = "string",
 #'           ResourceArn = "string"
+#'         ),
+#'         LFTag = list(
+#'           CatalogId = "string",
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         ),
+#'         LFTagPolicy = list(
+#'           CatalogId = "string",
+#'           ResourceType = "DATABASE"|"TABLE",
+#'           Expression = list(
+#'             list(
+#'               TagKey = "string",
+#'               TagValues = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'       )
 #'     )
 #'   )
@@ -200,13 +360,32 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'           DataLocation = list(
 #'             CatalogId = "string",
 #'             ResourceArn = "string"
+#'           ),
+#'           LFTag = list(
+#'             CatalogId = "string",
+#'             TagKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           ),
+#'           LFTagPolicy = list(
+#'             CatalogId = "string",
+#'             ResourceType = "DATABASE"|"TABLE",
+#'             Expression = list(
+#'               list(
+#'                 TagKey = "string",
+#'                 TagValues = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'         ),
 #'         PermissionsWithGrantOption = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'         )
 #'       ),
 #'       Error = list(
@@ -256,13 +435,32 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'         DataLocation = list(
 #'           CatalogId = "string",
 #'           ResourceArn = "string"
+#'         ),
+#'         LFTag = list(
+#'           CatalogId = "string",
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         ),
+#'         LFTagPolicy = list(
+#'           CatalogId = "string",
+#'           ResourceType = "DATABASE"|"TABLE",
+#'           Expression = list(
+#'             list(
+#'               TagKey = "string",
+#'               TagValues = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'       )
 #'     )
 #'   )
@@ -288,6 +486,105 @@ lakeformation_batch_revoke_permissions <- function(CatalogId = NULL, Entries) {
   return(response)
 }
 .lakeformation$operations$batch_revoke_permissions <- lakeformation_batch_revoke_permissions
+
+#' Creates a tag with the specified name and values
+#'
+#' @description
+#' Creates a tag with the specified name and values.
+#'
+#' @usage
+#' lakeformation_create_lf_tag(CatalogId, TagKey, TagValues)
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your AWS Lake Formation environment.
+#' @param TagKey &#91;required&#93; The key-name for the tag.
+#' @param TagValues &#91;required&#93; A list of possible values an attribute can take.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_lf_tag(
+#'   CatalogId = "string",
+#'   TagKey = "string",
+#'   TagValues = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_create_lf_tag
+lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
+  op <- new_operation(
+    name = "CreateLFTag",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lakeformation$create_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey, TagValues = TagValues)
+  output <- .lakeformation$create_lf_tag_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$create_lf_tag <- lakeformation_create_lf_tag
+
+#' Deletes the specified tag key name
+#'
+#' @description
+#' Deletes the specified tag key name. If the attribute key does not exist
+#' or the tag does not exist, then the operation will not do anything. If
+#' the attribute key exists, then the operation checks if any resources are
+#' tagged with this attribute key, if yes, the API throws a 400 Exception
+#' with the message "Delete not allowed" as the tag key is still attached
+#' with resources. You can consider untagging resources with this tag key.
+#'
+#' @usage
+#' lakeformation_delete_lf_tag(CatalogId, TagKey)
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your AWS Lake Formation environment.
+#' @param TagKey &#91;required&#93; The key-name for the tag to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_lf_tag(
+#'   CatalogId = "string",
+#'   TagKey = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_delete_lf_tag
+lakeformation_delete_lf_tag <- function(CatalogId = NULL, TagKey) {
+  op <- new_operation(
+    name = "DeleteLFTag",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lakeformation$delete_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey)
+  output <- .lakeformation$delete_lf_tag_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$delete_lf_tag <- lakeformation_delete_lf_tag
 
 #' Deregisters the resource as managed by the Data Catalog
 #'
@@ -417,7 +714,7 @@ lakeformation_describe_resource <- function(ResourceArn) {
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'         )
 #'       )
 #'     ),
@@ -427,7 +724,7 @@ lakeformation_describe_resource <- function(ResourceArn) {
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'         )
 #'       )
 #'     ),
@@ -525,13 +822,32 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 #'         DataLocation = list(
 #'           CatalogId = "string",
 #'           ResourceArn = "string"
+#'         ),
+#'         LFTag = list(
+#'           CatalogId = "string",
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         ),
+#'         LFTagPolicy = list(
+#'           CatalogId = "string",
+#'           ResourceType = "DATABASE"|"TABLE",
+#'           Expression = list(
+#'             list(
+#'               TagKey = "string",
+#'               TagValues = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'       ),
 #'       AdditionalDetails = list(
 #'         ResourceShare = list(
@@ -573,6 +889,192 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
   return(response)
 }
 .lakeformation$operations$get_effective_permissions_for_path <- lakeformation_get_effective_permissions_for_path
+
+#' Returns a tag definition
+#'
+#' @description
+#' Returns a tag definition.
+#'
+#' @usage
+#' lakeformation_get_lf_tag(CatalogId, TagKey)
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your AWS Lake Formation environment.
+#' @param TagKey &#91;required&#93; The key-name for the tag.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CatalogId = "string",
+#'   TagKey = "string",
+#'   TagValues = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_lf_tag(
+#'   CatalogId = "string",
+#'   TagKey = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_get_lf_tag
+lakeformation_get_lf_tag <- function(CatalogId = NULL, TagKey) {
+  op <- new_operation(
+    name = "GetLFTag",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lakeformation$get_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey)
+  output <- .lakeformation$get_lf_tag_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$get_lf_tag <- lakeformation_get_lf_tag
+
+#' Returns the tags applied to a resource
+#'
+#' @description
+#' Returns the tags applied to a resource.
+#'
+#' @usage
+#' lakeformation_get_resource_lf_tags(CatalogId, Resource,
+#'   ShowAssignedLFTags)
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your AWS Lake Formation environment.
+#' @param Resource &#91;required&#93; The resource for which you want to return tags.
+#' @param ShowAssignedLFTags Indicates whether to show the assigned tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LFTagOnDatabase = list(
+#'     list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   LFTagsOnTable = list(
+#'     list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   LFTagsOnColumns = list(
+#'     list(
+#'       Name = "string",
+#'       LFTags = list(
+#'         list(
+#'           CatalogId = "string",
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_lf_tags(
+#'   CatalogId = "string",
+#'   Resource = list(
+#'     Catalog = list(),
+#'     Database = list(
+#'       CatalogId = "string",
+#'       Name = "string"
+#'     ),
+#'     Table = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       TableWildcard = list()
+#'     ),
+#'     TableWithColumns = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       ColumnNames = list(
+#'         "string"
+#'       ),
+#'       ColumnWildcard = list(
+#'         ExcludedColumnNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DataLocation = list(
+#'       CatalogId = "string",
+#'       ResourceArn = "string"
+#'     ),
+#'     LFTag = list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LFTagPolicy = list(
+#'       CatalogId = "string",
+#'       ResourceType = "DATABASE"|"TABLE",
+#'       Expression = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ShowAssignedLFTags = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_get_resource_lf_tags
+lakeformation_get_resource_lf_tags <- function(CatalogId = NULL, Resource, ShowAssignedLFTags = NULL) {
+  op <- new_operation(
+    name = "GetResourceLFTags",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lakeformation$get_resource_lf_tags_input(CatalogId = CatalogId, Resource = Resource, ShowAssignedLFTags = ShowAssignedLFTags)
+  output <- .lakeformation$get_resource_lf_tags_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$get_resource_lf_tags <- lakeformation_get_resource_lf_tags
 
 #' Grants permissions to the principal to access metadata in the Data
 #' Catalog and data organized in underlying data storage such as Amazon S3
@@ -648,13 +1150,32 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
 #'     DataLocation = list(
 #'       CatalogId = "string",
 #'       ResourceArn = "string"
+#'     ),
+#'     LFTag = list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LFTagPolicy = list(
+#'       CatalogId = "string",
+#'       ResourceType = "DATABASE"|"TABLE",
+#'       Expression = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'   ),
 #'   PermissionsWithGrantOption = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'   )
 #' )
 #' ```
@@ -678,6 +1199,75 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
   return(response)
 }
 .lakeformation$operations$grant_permissions <- lakeformation_grant_permissions
+
+#' Lists tags that the requester has permission to view
+#'
+#' @description
+#' Lists tags that the requester has permission to view.
+#'
+#' @usage
+#' lakeformation_list_lf_tags(CatalogId, ResourceShareType, MaxResults,
+#'   NextToken)
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your AWS Lake Formation environment.
+#' @param ResourceShareType If resource share type is `ALL`, returns both in-account tags and shared
+#' tags that the requester has permission to view. If resource share type
+#' is `FOREIGN`, returns all share tags that the requester can view. If no
+#' resource share type is passed, lists tags in the given catalog ID that
+#' the requester has permission to view.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken A continuation token, if this is not the first call to retrieve this
+#' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LFTags = list(
+#'     list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_lf_tags(
+#'   CatalogId = "string",
+#'   ResourceShareType = "FOREIGN"|"ALL",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_list_lf_tags
+lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLFTags",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lakeformation$list_lf_tags_input(CatalogId = CatalogId, ResourceShareType = ResourceShareType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .lakeformation$list_lf_tags_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$list_lf_tags <- lakeformation_list_lf_tags
 
 #' Returns a list of the principal permissions on the resource, filtered by
 #' the permissions of the caller
@@ -750,13 +1340,32 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
 #'         DataLocation = list(
 #'           CatalogId = "string",
 #'           ResourceArn = "string"
+#'         ),
+#'         LFTag = list(
+#'           CatalogId = "string",
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         ),
+#'         LFTagPolicy = list(
+#'           CatalogId = "string",
+#'           ResourceType = "DATABASE"|"TABLE",
+#'           Expression = list(
+#'             list(
+#'               TagKey = "string",
+#'               TagValues = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'       ),
 #'       AdditionalDetails = list(
 #'         ResourceShare = list(
@@ -776,7 +1385,7 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
 #'   Principal = list(
 #'     DataLakePrincipalIdentifier = "string"
 #'   ),
-#'   ResourceType = "CATALOG"|"DATABASE"|"TABLE"|"DATA_LOCATION",
+#'   ResourceType = "CATALOG"|"DATABASE"|"TABLE"|"DATA_LOCATION"|"LF_TAG"|"LF_TAG_POLICY"|"LF_TAG_POLICY_DATABASE"|"LF_TAG_POLICY_TABLE",
 #'   Resource = list(
 #'     Catalog = list(),
 #'     Database = list(
@@ -805,6 +1414,25 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
 #'     DataLocation = list(
 #'       CatalogId = "string",
 #'       ResourceArn = "string"
+#'     ),
+#'     LFTag = list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LFTagPolicy = list(
+#'       CatalogId = "string",
+#'       ResourceType = "DATABASE"|"TABLE",
+#'       Expression = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string",
@@ -942,7 +1570,7 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'         )
 #'       )
 #'     ),
@@ -952,7 +1580,7 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'         )
 #'       )
 #'     ),
@@ -1054,6 +1682,130 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
 }
 .lakeformation$operations$register_resource <- lakeformation_register_resource
 
+#' Removes a tag from the resource
+#'
+#' @description
+#' Removes a tag from the resource. Only database, table, or
+#' tableWithColumns resource are allowed. To tag columns, use the column
+#' inclusion list in `tableWithColumns` to specify column input.
+#'
+#' @usage
+#' lakeformation_remove_lf_tags_from_resource(CatalogId, Resource, LFTags)
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your AWS Lake Formation environment.
+#' @param Resource &#91;required&#93; The resource where you want to remove a tag.
+#' @param LFTags &#91;required&#93; The tags to be removed from the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       LFTag = list(
+#'         CatalogId = "string",
+#'         TagKey = "string",
+#'         TagValues = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Error = list(
+#'         ErrorCode = "string",
+#'         ErrorMessage = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_lf_tags_from_resource(
+#'   CatalogId = "string",
+#'   Resource = list(
+#'     Catalog = list(),
+#'     Database = list(
+#'       CatalogId = "string",
+#'       Name = "string"
+#'     ),
+#'     Table = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       TableWildcard = list()
+#'     ),
+#'     TableWithColumns = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       ColumnNames = list(
+#'         "string"
+#'       ),
+#'       ColumnWildcard = list(
+#'         ExcludedColumnNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DataLocation = list(
+#'       CatalogId = "string",
+#'       ResourceArn = "string"
+#'     ),
+#'     LFTag = list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LFTagPolicy = list(
+#'       CatalogId = "string",
+#'       ResourceType = "DATABASE"|"TABLE",
+#'       Expression = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   LFTags = list(
+#'     list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_remove_lf_tags_from_resource
+lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resource, LFTags) {
+  op <- new_operation(
+    name = "RemoveLFTagsFromResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lakeformation$remove_lf_tags_from_resource_input(CatalogId = CatalogId, Resource = Resource, LFTags = LFTags)
+  output <- .lakeformation$remove_lf_tags_from_resource_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$remove_lf_tags_from_resource <- lakeformation_remove_lf_tags_from_resource
+
 #' Revokes permissions to the principal to access metadata in the Data
 #' Catalog and data organized in underlying data storage such as Amazon S3
 #'
@@ -1115,13 +1867,32 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
 #'     DataLocation = list(
 #'       CatalogId = "string",
 #'       ResourceArn = "string"
+#'     ),
+#'     LFTag = list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LFTagPolicy = list(
+#'       CatalogId = "string",
+#'       ResourceType = "DATABASE"|"TABLE",
+#'       Expression = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'   ),
 #'   PermissionsWithGrantOption = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ALTER_TAG"|"DELETE_TAG"|"DESCRIBE_TAG"|"ASSOCIATE_TAG"
 #'   )
 #' )
 #' ```
@@ -1145,6 +1916,262 @@ lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resour
   return(response)
 }
 .lakeformation$operations$revoke_permissions <- lakeformation_revoke_permissions
+
+#' This operation allows a search on DATABASE resources by TagCondition
+#'
+#' @description
+#' This operation allows a search on `DATABASE` resources by
+#' `TagCondition`. This operation is used by admins who want to grant user
+#' permissions on certain `TagConditions`. Before making a grant, the admin
+#' can use `SearchDatabasesByTags` to find all resources where the given
+#' `TagConditions` are valid to verify whether the returned resources can
+#' be shared.
+#'
+#' @usage
+#' lakeformation_search_databases_by_lf_tags(NextToken, MaxResults,
+#'   CatalogId, Expression)
+#'
+#' @param NextToken A continuation token, if this is not the first call to retrieve this
+#' list.
+#' @param MaxResults The maximum number of results to return.
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your AWS Lake Formation environment.
+#' @param Expression &#91;required&#93; A list of conditions (`LFTag` structures) to search for in database
+#' resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   DatabaseList = list(
+#'     list(
+#'       Database = list(
+#'         CatalogId = "string",
+#'         Name = "string"
+#'       ),
+#'       LFTags = list(
+#'         list(
+#'           CatalogId = "string",
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_databases_by_lf_tags(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   CatalogId = "string",
+#'   Expression = list(
+#'     list(
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_search_databases_by_lf_tags
+lakeformation_search_databases_by_lf_tags <- function(NextToken = NULL, MaxResults = NULL, CatalogId = NULL, Expression) {
+  op <- new_operation(
+    name = "SearchDatabasesByLFTags",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lakeformation$search_databases_by_lf_tags_input(NextToken = NextToken, MaxResults = MaxResults, CatalogId = CatalogId, Expression = Expression)
+  output <- .lakeformation$search_databases_by_lf_tags_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$search_databases_by_lf_tags <- lakeformation_search_databases_by_lf_tags
+
+#' This operation allows a search on TABLE resources by LFTags
+#'
+#' @description
+#' This operation allows a search on `TABLE` resources by `LFTag`s. This
+#' will be used by admins who want to grant user permissions on certain
+#' LFTags. Before making a grant, the admin can use
+#' [`search_tables_by_lf_tags`][lakeformation_search_tables_by_lf_tags] to
+#' find all resources where the given `LFTag`s are valid to verify whether
+#' the returned resources can be shared.
+#'
+#' @usage
+#' lakeformation_search_tables_by_lf_tags(NextToken, MaxResults, CatalogId,
+#'   Expression)
+#'
+#' @param NextToken A continuation token, if this is not the first call to retrieve this
+#' list.
+#' @param MaxResults The maximum number of results to return.
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your AWS Lake Formation environment.
+#' @param Expression &#91;required&#93; A list of conditions (`LFTag` structures) to search for in table
+#' resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   TableList = list(
+#'     list(
+#'       Table = list(
+#'         CatalogId = "string",
+#'         DatabaseName = "string",
+#'         Name = "string",
+#'         TableWildcard = list()
+#'       ),
+#'       LFTagOnDatabase = list(
+#'         list(
+#'           CatalogId = "string",
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       LFTagsOnTable = list(
+#'         list(
+#'           CatalogId = "string",
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       LFTagsOnColumns = list(
+#'         list(
+#'           Name = "string",
+#'           LFTags = list(
+#'             list(
+#'               CatalogId = "string",
+#'               TagKey = "string",
+#'               TagValues = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_tables_by_lf_tags(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   CatalogId = "string",
+#'   Expression = list(
+#'     list(
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_search_tables_by_lf_tags
+lakeformation_search_tables_by_lf_tags <- function(NextToken = NULL, MaxResults = NULL, CatalogId = NULL, Expression) {
+  op <- new_operation(
+    name = "SearchTablesByLFTags",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lakeformation$search_tables_by_lf_tags_input(NextToken = NextToken, MaxResults = MaxResults, CatalogId = CatalogId, Expression = Expression)
+  output <- .lakeformation$search_tables_by_lf_tags_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$search_tables_by_lf_tags <- lakeformation_search_tables_by_lf_tags
+
+#' Updates the list of possible values for the specified tag key
+#'
+#' @description
+#' Updates the list of possible values for the specified tag key. If the
+#' tag does not exist, the operation throws an EntityNotFoundException. The
+#' values in the delete key values will be deleted from list of possible
+#' values. If any value in the delete key values is attached to a resource,
+#' then API errors out with a 400 Exception - "Update not allowed". Untag
+#' the attribute before deleting the tag key's value.
+#'
+#' @usage
+#' lakeformation_update_lf_tag(CatalogId, TagKey, TagValuesToDelete,
+#'   TagValuesToAdd)
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your AWS Lake Formation environment.
+#' @param TagKey &#91;required&#93; The key-name for the tag for which to add or delete values.
+#' @param TagValuesToDelete A list of tag values to delete from the tag.
+#' @param TagValuesToAdd A list of tag values to add from the tag.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_lf_tag(
+#'   CatalogId = "string",
+#'   TagKey = "string",
+#'   TagValuesToDelete = list(
+#'     "string"
+#'   ),
+#'   TagValuesToAdd = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_update_lf_tag
+lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDelete = NULL, TagValuesToAdd = NULL) {
+  op <- new_operation(
+    name = "UpdateLFTag",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lakeformation$update_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey, TagValuesToDelete = TagValuesToDelete, TagValuesToAdd = TagValuesToAdd)
+  output <- .lakeformation$update_lf_tag_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$update_lf_tag <- lakeformation_update_lf_tag
 
 #' Updates the data access role used for vending access to the given
 #' (registered) resource in AWS Lake Formation

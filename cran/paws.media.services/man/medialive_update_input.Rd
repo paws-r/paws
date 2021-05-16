@@ -56,6 +56,9 @@ A list with the following syntax:\preformatted{list(
         Id = "string"
       )
     ),
+    InputPartnerIds = list(
+      "string"
+    ),
     InputSourceType = "STATIC"|"DYNAMIC",
     MediaConnectFlows = list(
       list(

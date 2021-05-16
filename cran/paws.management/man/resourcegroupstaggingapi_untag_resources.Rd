@@ -7,11 +7,14 @@
 resourcegroupstaggingapi_untag_resources(ResourceARNList, TagKeys)
 }
 \arguments{
-\item{ResourceARNList}{[required] A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
-resource. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+\item{ResourceARNList}{[required] Specifies a list of ARNs of the resources that you want to remove tags
+from.
+
+An ARN (Amazon Resource Name) uniquely identifies a resource. For more
+information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
-\item{TagKeys}{[required] A list of the tag keys that you want to remove from the specified
+\item{TagKeys}{[required] Specifies a list of tag keys that you want to remove from the specified
 resources.}
 }
 \value{
@@ -34,9 +37,10 @@ resource that were already removed. Note the following:
 \itemize{
 \item To remove tags from a resource, you need the necessary permissions
 for the service that the resource belongs to as well as permissions
-for removing tags. For more information, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/}{this list}.
-\item You can only tag resources that are located in the specified Region
-for the AWS account.
+for removing tags. For more information, see the documentation for
+the service whose resource you want to untag.
+\item You can only tag resources that are located in the specified AWS
+Region for the calling AWS account.
 }
 }
 \section{Request syntax}{

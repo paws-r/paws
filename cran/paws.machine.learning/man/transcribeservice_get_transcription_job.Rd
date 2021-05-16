@@ -42,7 +42,7 @@ A list with the following syntax:\preformatted{list(
       ShowAlternatives = TRUE|FALSE,
       MaxAlternatives = 123,
       VocabularyFilterName = "string",
-      VocabularyFilterMethod = "remove"|"mask"
+      VocabularyFilterMethod = "remove"|"mask"|"tag"
     ),
     ModelSettings = list(
       LanguageModelName = "string"

@@ -15,8 +15,9 @@ A list with the following syntax:\preformatted{list(
   PhoneNumber = list(
     PhoneNumberId = "string",
     E164PhoneNumber = "string",
+    Country = "string",
     Type = "Local"|"TollFree",
-    ProductType = "BusinessCalling"|"VoiceConnector",
+    ProductType = "BusinessCalling"|"VoiceConnector"|"SipMediaApplicationDialIn",
     Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
     Capabilities = list(
       InboundCall = TRUE|FALSE,

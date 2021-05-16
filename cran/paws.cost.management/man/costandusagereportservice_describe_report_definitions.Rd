@@ -30,7 +30,8 @@ A list with the following syntax:\preformatted{list(
         "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
       ),
       RefreshClosedReports = TRUE|FALSE,
-      ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
+      ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT",
+      BillingViewArn = "string"
     )
   ),
   NextToken = "string"

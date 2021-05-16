@@ -7,7 +7,8 @@
 rds_describe_db_proxies(DBProxyName, Filters, Marker, MaxRecords)
 }
 \arguments{
-\item{DBProxyName}{The name of the DB proxy.}
+\item{DBProxyName}{The name of the DB proxy. If you omit this parameter, the output
+includes information about all DB proxies owned by your AWS account ID.}
 
 \item{Filters}{This parameter is not currently supported.}
 
@@ -32,6 +33,7 @@ A list with the following syntax:\preformatted{list(
       DBProxyArn = "string",
       Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
       EngineFamily = "string",
+      VpcId = "string",
       VpcSecurityGroupIds = list(
         "string"
       ),

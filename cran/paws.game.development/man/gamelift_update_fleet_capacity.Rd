@@ -5,76 +5,100 @@
 \title{Updates capacity settings for a fleet}
 \usage{
 gamelift_update_fleet_capacity(FleetId, DesiredInstances, MinSize,
-  MaxSize)
+  MaxSize, Location)
 }
 \arguments{
-\item{FleetId}{[required] A unique identifier for a fleet to update capacity for. You can use
-either the fleet ID or ARN value.}
+\item{FleetId}{[required] A unique identifier for the fleet to update capacity settings for. You
+can use either the fleet ID or ARN value.}
 
-\item{DesiredInstances}{Number of EC2 instances you want this fleet to host.}
+\item{DesiredInstances}{The number of EC2 instances you want to maintain in the specified fleet
+location. This value must fall between the minimum and maximum size
+limits.}
 
-\item{MinSize}{The minimum value allowed for the fleet's instance count. Default if not
-set is 0.}
+\item{MinSize}{The minimum number of instances that are allowed in the specified fleet
+location. If this parameter is not set, the default is 0.}
 
-\item{MaxSize}{The maximum value allowed for the fleet's instance count. Default if not
-set is 1.}
+\item{MaxSize}{The maximum number of instances that are allowed in the specified fleet
+location. If this parameter is not set, the default is 1.}
+
+\item{Location}{The name of a remote location to update fleet capacity settings for, in
+the form of an AWS Region code such as \code{us-west-2}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
-  FleetId = "string"
+  FleetId = "string",
+  FleetArn = "string",
+  Location = "string"
 )
 }
 }
 \description{
-Updates capacity settings for a fleet. Use this operation to specify the
-number of EC2 instances (hosts) that you want this fleet to contain.
-Before calling this operation, you may want to call
+Updates capacity settings for a fleet. For fleets with multiple
+locations, use this operation to manage capacity settings in each
+location individually. Fleet capacity determines the number of game
+sessions and players that can be hosted based on the fleet
+configuration. Use this operation to set the following fleet capacity
+properties:
+\itemize{
+\item Minimum/maximum size: Set hard limits on fleet capacity. GameLift
+cannot set the fleet's capacity to a value outside of this range,
+whether the capacity is changed manually or through automatic
+scaling.
+\item Desired capacity: Manually set the number of EC2 instances to be
+maintained in a fleet location. Before changing a fleet's desired
+capacity, you may want to call
 \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
-to get the maximum capacity based on the fleet's EC2 instance type.
+to get the maximum capacity of the fleet's EC2 instance type.
+Alternatively, consider using automatic scaling to adjust capacity
+based on player demand.
+}
 
-Specify minimum and maximum number of instances. Amazon GameLift will
-not change fleet capacity to values fall outside of this range. This is
-particularly important when using auto-scaling (see
-\code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}}) to allow capacity
-to adjust based on player demand while imposing limits on automatic
-adjustments.
+This operation can be used in the following ways:
+\itemize{
+\item To update capacity for a fleet's home Region, or if the fleet has no
+remote locations, omit the \code{Location} parameter. The fleet must be
+in \code{ACTIVE} status.
+\item To update capacity for a fleet's remote location, include the
+\code{Location} parameter set to the location to be updated. The location
+must be in \code{ACTIVE} status.
+}
 
-To update fleet capacity, specify the fleet ID and the number of
-instances you want the fleet to host. If successful, Amazon GameLift
-starts or terminates instances so that the fleet's active instance count
-matches the desired instance count. You can view a fleet's current
-capacity information by calling
-\code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}. If the
-desired instance count is higher than the instance type's limit, the
-"Limit Exceeded" exception occurs.
+If successful, capacity settings are updated immediately. In response a
+change in desired capacity, GameLift initiates steps to start new
+instances or terminate existing instances in the requested fleet
+location. This continues until the location's active instance count
+matches the new desired instance count. You can track a fleet's current
+capacity by calling
+\code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}} or
+\code{\link[=gamelift_describe_fleet_location_capacity]{describe_fleet_location_capacity}}.
+If the requested desired instance count is higher than the instance
+type's limit, the \code{LimitExceeded} exception occurs.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-manage-capacity.html}{Scaling fleet capacity}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_fleet]{create_fleet}}
-\item \code{\link[=gamelift_list_fleets]{list_fleets}}
-\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
-\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
-\item Update fleets:
-\itemize{
-\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
-\item \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}
-\item \code{\link[=gamelift_update_fleet_port_settings]{update_fleet_port_settings}}
-\item \code{\link[=gamelift_update_runtime_configuration]{update_runtime_configuration}}
-}
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
-\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_fleet_locations]{create_fleet_locations}} |
+\code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}} |
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}} |
+\code{\link[=gamelift_update_fleet_port_settings]{update_fleet_port_settings}} |
+\code{\link[=gamelift_update_runtime_configuration]{update_runtime_configuration}}
+| \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} |
+\code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} |
+\code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}} |
+\code{\link[=gamelift_delete_fleet]{delete_fleet}} |
+\code{\link[=gamelift_delete_fleet_locations]{delete_fleet_locations}} |
+\code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$update_fleet_capacity(
   FleetId = "string",
   DesiredInstances = 123,
   MinSize = 123,
-  MaxSize = 123
+  MaxSize = 123,
+  Location = "string"
 )
 }
 }

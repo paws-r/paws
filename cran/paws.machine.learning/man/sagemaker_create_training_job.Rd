@@ -10,7 +10,7 @@ sagemaker_create_training_job(TrainingJobName, HyperParameters,
   EnableNetworkIsolation, EnableInterContainerTrafficEncryption,
   EnableManagedSpotTraining, CheckpointConfig, DebugHookConfig,
   DebugRuleConfigurations, TensorBoardOutputConfig, ExperimentConfig,
-  ProfilerConfig, ProfilerRuleConfigurations)
+  ProfilerConfig, ProfilerRuleConfigurations, Environment, RetryStrategy)
 }
 \arguments{
 \item{TrainingJobName}{[required] The name of the training job. The name must be unique within an AWS
@@ -79,9 +79,10 @@ count greater than 1.}
 job to connect to. Control access to and from your training container by
 configuring the VPC. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html}{Protect Training Jobs by Using an Amazon Virtual Private Cloud}.}
 
-\item{StoppingCondition}{[required] Specifies a limit to how long a model training job can run. When the job
-reaches the time limit, Amazon SageMaker ends the training job. Use this
-API to cap model training costs.
+\item{StoppingCondition}{[required] Specifies a limit to how long a model training job can run. It also
+specifies how long a managed Spot training job has to complete. When the
+job reaches the time limit, Amazon SageMaker ends the training job. Use
+this API to cap model training costs.
 
 To stop a job, Amazon SageMaker sends the algorithm the \code{SIGTERM}
 signal, which delays job termination for 120 seconds. Algorithms can use
@@ -134,6 +135,11 @@ tensors.}
 
 \item{ProfilerRuleConfigurations}{Configuration information for Debugger rules for profiling system and
 framework metrics.}
+
+\item{Environment}{The environment variables to set in the Docker container.}
+
+\item{RetryStrategy}{The number of times to retry the job when the job fails due to an
+\code{InternalServerError}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -171,14 +177,18 @@ training, you specify more than one instance.
 \item \code{EnableManagedSpotTraining} - Optimize the cost of training machine
 learning models by up to 80\% by using Amazon EC2 Spot instances. For
 more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html}{Managed Spot Training}.
-\item \code{RoleArn} - The Amazon Resource Number (ARN) that Amazon SageMaker
+\item \code{RoleArn} - The Amazon Resource Name (ARN) that Amazon SageMaker
 assumes to perform tasks on your behalf during model training. You
 must grant this role the necessary permissions so that Amazon
 SageMaker can successfully complete model training.
 \item \code{StoppingCondition} - To help cap training costs, use
 \code{MaxRuntimeInSeconds} to set a time limit for training. Use
-\code{MaxWaitTimeInSeconds} to specify how long you are willing to wait
-for a managed spot training job to complete.
+\code{MaxWaitTimeInSeconds} to specify how long a managed spot training
+job has to complete.
+\item \code{Environment} - The environment variables to set in the Docker
+container.
+\item \code{RetryStrategy} - The number of times to retry the job when the job
+fails due to an \code{InternalServerError}.
 }
 
 For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{How It Works}.
@@ -321,6 +331,12 @@ For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.c
         "string"
       )
     )
+  ),
+  Environment = list(
+    "string"
+  ),
+  RetryStrategy = list(
+    MaximumRetryAttempts = 123
   )
 )
 }

@@ -11,18 +11,70 @@ sagemaker_create_labeling_job(LabelingJobName, LabelAttributeName,
 }
 \arguments{
 \item{LabelingJobName}{[required] The name of the labeling job. This name is used to identify the job in a
-list of labeling jobs.}
+list of labeling jobs. Labeling job names must be unique within an AWS
+account and region. \code{LabelingJobName} is not case sensitive. For
+example, Example-job and example-job are considered the same labeling
+job name by Ground Truth.}
 
 \item{LabelAttributeName}{[required] The attribute name to use for the label in the output manifest file.
 This is the key for the key/value pair formed with the label that a
-worker assigns to the object. The name can't end with "-metadata". If
-you are running a semantic segmentation labeling job, the attribute name
-must end with "-ref". If you are running any other kind of labeling job,
-the attribute name must not end with "-ref".}
+worker assigns to the object. The \code{LabelAttributeName} must meet the
+following requirements.
+\itemize{
+\item The name can't end with "-metadata".
+\item If you are using one of the following \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html}{built-in task types},
+the attribute name \emph{must} end with "-ref". If the task type you are
+using is not listed below, the attribute name \emph{must not} end with
+"-ref".
+\itemize{
+\item Image semantic segmentation (\verb{SemanticSegmentation)}, and
+adjustment (\code{AdjustmentSemanticSegmentation}) and verification
+(\code{VerificationSemanticSegmentation}) labeling jobs for this task
+type.
+\item Video frame object detection (\code{VideoObjectDetection}), and
+adjustment and verification (\code{AdjustmentVideoObjectDetection})
+labeling jobs for this task type.
+\item Video frame object tracking (\code{VideoObjectTracking}), and
+adjustment and verification (\code{AdjustmentVideoObjectTracking})
+labeling jobs for this task type.
+\item 3D point cloud semantic segmentation
+(\verb{3DPointCloudSemanticSegmentation}), and adjustment and
+verification (\code{Adjustment3DPointCloudSemanticSegmentation})
+labeling jobs for this task type.
+\item 3D point cloud object tracking (\verb{3DPointCloudObjectTracking}),
+and adjustment and verification
+(\code{Adjustment3DPointCloudObjectTracking}) labeling jobs for this
+task type.
+}
+}
+
+If you are creating an adjustment or verification labeling job, you must
+use a \emph{different} \code{LabelAttributeName} than the one used in the original
+labeling job. The original labeling job is the Ground Truth labeling job
+that produced the labels that you want verified or adjusted. To learn
+more about adjustment and verification labeling jobs, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-verification-data.html}{Verify and Adjust Labels}.}
 
 \item{InputConfig}{[required] Input data for the labeling job, such as the Amazon S3 location of the
 data objects and the location of the manifest file that describes the
-data objects.}
+data objects.
+
+You must specify at least one of the following: \code{S3DataSource} or
+\code{SnsDataSource}.
+\itemize{
+\item Use \code{SnsDataSource} to specify an SNS input topic for a streaming
+labeling job. If you do not specify and SNS input topic ARN, Ground
+Truth will create a one-time labeling job that stops after all data
+objects in the input manifest file have been labeled.
+\item Use \code{S3DataSource} to specify an input manifest file for both
+streaming and one-time labeling jobs. Adding an \code{S3DataSource} is
+optional if you use \code{SnsDataSource} to create a streaming labeling
+job.
+}
+
+If you use the Amazon Mechanical Turk workforce, your input data should
+not include confidential information, personal information or protected
+health information. Use \code{ContentClassifiers} to specify that your data
+is free of personally identifiable information and adult content.}
 
 \item{OutputConfig}{[required] The location of the output data and the AWS Key Management Service key
 ID for the key used to encrypt the output data, if any.}
@@ -32,10 +84,12 @@ perform tasks on your behalf during data labeling. You must grant this
 role the necessary permissions so that Amazon SageMaker can successfully
 complete data labeling.}
 
-\item{LabelCategoryConfigS3Uri}{The S3 URI of the file that defines the categories used to label the
-data objects.
+\item{LabelCategoryConfigS3Uri}{The S3 URI of the file, referred to as a \emph{label category configuration
+file}, that defines the categories used to label the data objects.
 
-For 3D point cloud task types, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-label-cat-config-attributes.html}{Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs}.
+For 3D point cloud and video frame task types, you can add label
+category attributes and frame attributes to your label category
+configuration file. To learn how, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-label-cat-config-attributes.html}{Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs}.
 
 For all other \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html}{built-in task types}
 and \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html}{custom tasks},
@@ -43,59 +97,29 @@ your label category configuration file must be a JSON file in the
 following format. Identify the labels you want to use by replacing
 \code{label_1}, \code{label_2},\code{...},\code{label_n} with your label categories.
 
-\verb{\\\{}
+\verb{\\\{ }
 
-\code{ "document-version": "2018-11-28"}
+\verb{"document-version": "2018-11-28",}
 
-\verb{ "labels": [}
-
-\verb{ \\\{}
-
-\code{ "label": "label_1"}
-
-\verb{ \\\},}
-
-\verb{ \\\{}
-
-\code{ "label": "label_2"}
-
-\verb{ \\\},}
-
-\code{ ...}
-
-\verb{ \\\{}
-
-\code{ "label": "label_n"}
-
-\verb{ \\\}}
-
-\verb{ ]}
+\verb{"labels": [\{"label": "label_1"\},\{"label": "label_2"\},...\{"label": "label_n"\}]}
 
 \verb{\\\}}
 
-[`
-
-\verb{ \\\{}
-
-\code{ "label": "label_1"}
-
-\verb{ \\\},}
-
-\verb{ \\\{}
-
-\code{ "label": "label_2"}
-
-\verb{ \\\},}
-
-\code{ ...}
-
-\verb{ \\\{}
-
-\code{ "label": "label_n"}
-
-\verb{ \\\}}
-
-` ]: R:\%60\%0A\%0A\%60\%20\%5C\%5C\%7B\%60\%0A\%0A\%60\%20\%22label\%22:\%20\%22label_1\%22\%60\%0A\%0A\%60\%20\%5C\%5C\%7D,\%60\%0A\%0A\%60\%20\%5C\%5C\%7B\%60\%0A\%0A\%60\%20\%22label\%22:\%20\%22label_2\%22\%60\%0A\%0A\%60\%20\%5C\%5C\%7D,\%60\%0A\%0A\%60\%20...\%60\%0A\%0A\%60\%20\%5C\%5C\%7B\%60\%0A\%0A\%60\%20\%22label\%22:\%20\%22label_n\%22\%60\%0A\%0A\%60\%20\%5C\%5C\%7D\%60\%0A\%0A\%60\%20}
+Note the following about the label category configuration file:
+\itemize{
+\item For image classification and text classification (single and
+multi-label) you must specify at least two label categories. For all
+other task types, the minimum number of label categories required is
+one.
+\item Each label category must be unique, you cannot specify duplicate
+label categories.
+\item If you create a 3D point cloud or video frame adjustment or
+verification labeling job, you must include
+\code{auditLabelAttributeName} in the label category configuration. Use
+this parameter to enter the
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName}{\code{LabelAttributeName}}
+of the labeling job you want to adjust or verify annotations of.
+}}
 
 \item{StoppingConditions}{A set of conditions for stopping the labeling job. If any of the
 conditions are met, the job is automatically stopped. You can use these
@@ -145,6 +169,16 @@ more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-
 
 The output can be used as the manifest file for another labeling job or
 as training data for your machine learning models.
+
+You can use this operation to create a static labeling job or a
+streaming labeling job. A static labeling job stops if all data objects
+in the input manifest file identified in \code{ManifestS3Uri} have been
+labeled. A streaming labeling job runs perpetually until it is manually
+stopped, or remains idle for 10 days. You can send new data objects to
+an active (\code{InProgress}) streaming labeling job in real time. To learn
+how to create a static labeling job, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-create-labeling-job-api.html}{Create a Labeling Job (API)}
+in the Amazon SageMaker Developer Guide. To learn how to create a
+streaming labeling job, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-streaming-create-job.html}{Create a Streaming Labeling Job}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_labeling_job(

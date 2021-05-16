@@ -18,6 +18,9 @@ A list with the following syntax:\preformatted{list(
       ),
       availableProviders = list(
         "string"
+      ),
+      availableMacSecPortSpeeds = list(
+        "string"
       )
     )
   )

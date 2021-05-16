@@ -656,13 +656,13 @@ comprehendmedical_detect_phi <- function(Text) {
 #'       Id = 123,
 #'       Text = "string",
 #'       Category = "MEDICAL_CONDITION",
-#'       Type = "DX_NAME",
+#'       Type = "DX_NAME"|"TIME_EXPRESSION",
 #'       Score = 123.0,
 #'       BeginOffset = 123,
 #'       EndOffset = 123,
 #'       Attributes = list(
 #'         list(
-#'           Type = "ACUITY"|"DIRECTION"|"SYSTEM_ORGAN_SITE"|"QUALITY"|"QUANTITY",
+#'           Type = "ACUITY"|"DIRECTION"|"SYSTEM_ORGAN_SITE"|"QUALITY"|"QUANTITY"|"TIME_TO_DX_NAME"|"TIME_EXPRESSION",
 #'           Score = 123.0,
 #'           RelationshipScore = 123.0,
 #'           Id = 123,
@@ -674,7 +674,9 @@ comprehendmedical_detect_phi <- function(Text) {
 #'               Name = "NEGATION"|"DIAGNOSIS"|"SIGN"|"SYMPTOM",
 #'               Score = 123.0
 #'             )
-#'           )
+#'           ),
+#'           Category = "DX_NAME"|"TIME_EXPRESSION",
+#'           RelationshipType = "OVERLAP"|"SYSTEM_ORGAN_SITE"
 #'         )
 #'       ),
 #'       Traits = list(

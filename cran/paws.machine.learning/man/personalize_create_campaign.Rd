@@ -39,13 +39,17 @@ A transaction is a single \code{GetRecommendations} or
 throughput and unit of billing for Amazon Personalize. The minimum
 provisioned TPS (\code{minProvisionedTPS}) specifies the baseline throughput
 provisioned by Amazon Personalize, and thus, the minimum billing charge.
+
 If your TPS increases beyond \code{minProvisionedTPS}, Amazon Personalize
 auto-scales the provisioned capacity up and down, but never below
-\code{minProvisionedTPS}, to maintain a 70\% utilization. There's a short time
-delay while the capacity is increased that might cause loss of
-transactions. It's recommended to start with a low \code{minProvisionedTPS},
-track your usage using Amazon CloudWatch metrics, and then increase the
-\code{minProvisionedTPS} as necessary.
+\code{minProvisionedTPS}. There's a short time delay while the capacity is
+increased that might cause loss of transactions.
+
+The actual TPS used is calculated as the average requests/second within
+a 5-minute window. You pay for maximum of either the minimum provisioned
+TPS or the actual TPS. We recommend starting with a low
+\code{minProvisionedTPS}, track your usage using Amazon CloudWatch metrics,
+and then increase the \code{minProvisionedTPS} as necessary.
 
 \strong{Status}
 

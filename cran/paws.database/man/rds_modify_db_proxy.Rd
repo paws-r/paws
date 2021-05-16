@@ -45,6 +45,7 @@ A list with the following syntax:\preformatted{list(
     DBProxyArn = "string",
     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
     EngineFamily = "string",
+    VpcId = "string",
     VpcSecurityGroupIds = list(
       "string"
     ),

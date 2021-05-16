@@ -85,18 +85,17 @@ used for games in development with low matchmaking usage.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html}{Add FlexMatch to a Game Client}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html}{Add FlexMatch to a game client}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html}{Set Up FlexMatch Event Notification}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html}{Set Up FlexMatch event notification}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_start_matchmaking]{start_matchmaking}}
-\item \code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}}
-\item \code{\link[=gamelift_stop_matchmaking]{stop_matchmaking}}
-\item \code{\link[=gamelift_accept_match]{accept_match}}
-\item \code{\link[=gamelift_start_match_backfill]{start_match_backfill}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_start_matchmaking]{start_matchmaking}} |
+\code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}} |
+\code{\link[=gamelift_stop_matchmaking]{stop_matchmaking}} |
+\code{\link[=gamelift_accept_match]{accept_match}} |
+\code{\link[=gamelift_start_match_backfill]{start_match_backfill}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_matchmaking(

@@ -3837,10 +3837,13 @@ iot_delete_mitigation_action <- function(actionName) {
 #' iot_delete_ota_update(otaUpdateId, deleteStream, forceDeleteAWSJob)
 #'
 #' @param otaUpdateId &#91;required&#93; The ID of the OTA update to delete.
-#' @param deleteStream Specifies if the stream associated with an OTA update should be deleted
-#' when the OTA update is deleted.
-#' @param forceDeleteAWSJob Specifies if the AWS Job associated with the OTA update should be
-#' deleted when the OTA update is deleted.
+#' @param deleteStream When true, the stream created by the OTAUpdate process is deleted when
+#' the OTA update is deleted. Ignored if the stream specified in the
+#' OTAUpdate is supplied by the user.
+#' @param forceDeleteAWSJob When true, deletes the AWS job created by the OTAUpdate process even if
+#' it is "IN_PROGRESS". Otherwise, if the job is not in a terminal state
+#' ("COMPLETED" or "CANCELED") an exception will occur. The default is
+#' false.
 #'
 #' @return
 #' An empty list.
@@ -11234,7 +11237,7 @@ iot_list_thing_types <- function(nextToken = NULL, maxResults = NULL, thingTypeN
 #'
 #' @usage
 #' iot_list_things(nextToken, maxResults, attributeName, attributeValue,
-#'   thingTypeName)
+#'   thingTypeName, usePrefixAttributeValue)
 #'
 #' @param nextToken To retrieve the next set of results, the `nextToken` value from a
 #' previous response; otherwise **null** to receive the first set of
@@ -11243,6 +11246,12 @@ iot_list_thing_types <- function(nextToken = NULL, maxResults = NULL, thingTypeN
 #' @param attributeName The attribute name used to search for things.
 #' @param attributeValue The attribute value used to search for things.
 #' @param thingTypeName The name of the thing type used to search for things.
+#' @param usePrefixAttributeValue When `true`, the action returns the thing resources with attribute
+#' values that start with the `attributeValue` provided.
+#' 
+#' When `false`, or not present, the action returns only the thing
+#' resources with attribute values that match the entire `attributeValue`
+#' provided.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11270,21 +11279,22 @@ iot_list_thing_types <- function(nextToken = NULL, maxResults = NULL, thingTypeN
 #'   maxResults = 123,
 #'   attributeName = "string",
 #'   attributeValue = "string",
-#'   thingTypeName = "string"
+#'   thingTypeName = "string",
+#'   usePrefixAttributeValue = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_list_things
-iot_list_things <- function(nextToken = NULL, maxResults = NULL, attributeName = NULL, attributeValue = NULL, thingTypeName = NULL) {
+iot_list_things <- function(nextToken = NULL, maxResults = NULL, attributeName = NULL, attributeValue = NULL, thingTypeName = NULL, usePrefixAttributeValue = NULL) {
   op <- new_operation(
     name = "ListThings",
     http_method = "GET",
     http_path = "/things",
     paginator = list()
   )
-  input <- .iot$list_things_input(nextToken = nextToken, maxResults = maxResults, attributeName = attributeName, attributeValue = attributeValue, thingTypeName = thingTypeName)
+  input <- .iot$list_things_input(nextToken = nextToken, maxResults = maxResults, attributeName = attributeName, attributeValue = attributeValue, thingTypeName = thingTypeName, usePrefixAttributeValue = usePrefixAttributeValue)
   output <- .iot$list_things_output()
   config <- get_config()
   svc <- .iot$service(config)

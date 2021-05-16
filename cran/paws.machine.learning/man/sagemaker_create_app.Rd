@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_app}
 \alias{sagemaker_create_app}
-\title{Creates a running App for the specified UserProfile}
+\title{Creates a running app for the specified UserProfile}
 \usage{
 sagemaker_create_app(DomainId, UserProfileName, AppType, AppName, Tags,
   ResourceSpec)
@@ -12,7 +12,8 @@ sagemaker_create_app(DomainId, UserProfileName, AppType, AppName, Tags,
 
 \item{UserProfileName}{[required] The user profile name.}
 
-\item{AppType}{[required] The type of app.}
+\item{AppType}{[required] The type of app. Supported apps are \code{JupyterServer} and \code{KernelGateway}.
+\code{TensorBoard} is not supported.}
 
 \item{AppName}{[required] The name of the app.}
 
@@ -29,11 +30,11 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates a running App for the specified UserProfile. Supported Apps are
-JupyterServer and KernelGateway. This operation is automatically invoked
-by Amazon SageMaker Studio upon access to the associated Domain, and
-when new kernel configurations are selected by the user. A user may have
-multiple Apps active simultaneously.
+Creates a running app for the specified UserProfile. Supported apps are
+\code{JupyterServer} and \code{KernelGateway}. This operation is automatically
+invoked by Amazon SageMaker Studio upon access to the associated Domain,
+and when new kernel configurations are selected by the user. A user may
+have multiple Apps active simultaneously.
 }
 \section{Request syntax}{
 \preformatted{svc$create_app(

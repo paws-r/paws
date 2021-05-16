@@ -37,6 +37,7 @@ You can have only one delivery channel per region in your account.
     name = "string",
     s3BucketName = "string",
     s3KeyPrefix = "string",
+    s3KmsKeyArn = "string",
     snsTopicARN = "string",
     configSnapshotDeliveryProperties = list(
       deliveryFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"

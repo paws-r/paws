@@ -44,7 +44,10 @@ supported.}
 
 The maximum number of objects that to be returned for this request. If
 \code{MaxResults} is not specified with \code{SortBy}, the request will return
-1000 results as the default value for this parameter.}
+1000 results as the default value for this parameter.
+
+For \code{\link[=costexplorer_get_cost_categories]{get_cost_categories}},
+MaxResults has an upper limit of 1000.}
 
 \item{NextPageToken}{If the number of objects that are still available for retrieval exceeds
 the limit, AWS returns a NextPageToken value in the response. To

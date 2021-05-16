@@ -91,7 +91,7 @@ Valid values: \code{Windows} | \code{Linux}}
 
 \item{LicenseSpecifications}{The ARNs of the license configurations.}
 
-\item{TagSpecifications}{The tags to apply to the image being imported.}
+\item{TagSpecifications}{The tags to apply to the import image task during creation.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -140,7 +140,9 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Import single or multi-volume disk images or EBS snapshots into an
-Amazon Machine Image (AMI). For more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html}{Importing a VM as an Image Using VM Import/Export}
+Amazon Machine Image (AMI).
+
+For more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html}{Importing a VM as an image using VM Import/Export}
 in the \emph{VM Import/Export User Guide}.
 }
 \section{Request syntax}{

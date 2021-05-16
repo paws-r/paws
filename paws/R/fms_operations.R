@@ -453,7 +453,7 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
 #'     Violators = list(
 #'       list(
 #'         ResourceId = "string",
-#'         ViolationReason = "WEB_ACL_MISSING_RULE_GROUP"|"RESOURCE_MISSING_WEB_ACL"|"RESOURCE_INCORRECT_WEB_ACL"|"RESOURCE_MISSING_SHIELD_PROTECTION"|"RESOURCE_MISSING_WEB_ACL_OR_SHIELD_PROTECTION"|"RESOURCE_MISSING_SECURITY_GROUP"|"RESOURCE_VIOLATES_AUDIT_SECURITY_GROUP"|"SECURITY_GROUP_UNUSED"|"SECURITY_GROUP_REDUNDANT"|"MISSING_FIREWALL"|"MISSING_FIREWALL_SUBNET_IN_AZ"|"MISSING_EXPECTED_ROUTE_TABLE"|"NETWORK_FIREWALL_POLICY_MODIFIED",
+#'         ViolationReason = "WEB_ACL_MISSING_RULE_GROUP"|"RESOURCE_MISSING_WEB_ACL"|"RESOURCE_INCORRECT_WEB_ACL"|"RESOURCE_MISSING_SHIELD_PROTECTION"|"RESOURCE_MISSING_WEB_ACL_OR_SHIELD_PROTECTION"|"RESOURCE_MISSING_SECURITY_GROUP"|"RESOURCE_VIOLATES_AUDIT_SECURITY_GROUP"|"SECURITY_GROUP_UNUSED"|"SECURITY_GROUP_REDUNDANT"|"FMS_CREATED_SECURITY_GROUP_EDITED"|"MISSING_FIREWALL"|"MISSING_FIREWALL_SUBNET_IN_AZ"|"MISSING_EXPECTED_ROUTE_TABLE"|"NETWORK_FIREWALL_POLICY_MODIFIED"|"RESOURCE_MISSING_DNS_FIREWALL",
 #'         ResourceType = "string"
 #'       )
 #'     ),
@@ -559,7 +559,7 @@ fms_get_notification_channel <- function() {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
+#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL",
 #'       ManagedServiceData = "string"
 #'     ),
 #'     ResourceType = "string",
@@ -656,7 +656,7 @@ fms_get_policy <- function(PolicyId) {
 #' ```
 #' list(
 #'   AdminAccountId = "string",
-#'   ServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
+#'   ServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL",
 #'   Data = "string",
 #'   NextToken = "string"
 #' )
@@ -914,6 +914,24 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         DnsRuleGroupPriorityConflictViolation = list(
+#'           ViolationTarget = "string",
+#'           ViolationTargetDescription = "string",
+#'           ConflictingPriority = 123,
+#'           ConflictingPolicyId = "string",
+#'           UnavailablePriorities = list(
+#'             123
+#'           )
+#'         ),
+#'         DnsDuplicateRuleGroupViolation = list(
+#'           ViolationTarget = "string",
+#'           ViolationTargetDescription = "string"
+#'         ),
+#'         DnsRuleGroupLimitExceededViolation = list(
+#'           ViolationTarget = "string",
+#'           ViolationTargetDescription = "string",
+#'           NumberOfRuleGroupsAlreadyAssociated = 123
 #'         )
 #'       )
 #'     ),
@@ -1211,7 +1229,7 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #'       PolicyId = "string",
 #'       PolicyName = "string",
 #'       ResourceType = "string",
-#'       SecurityServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
+#'       SecurityServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL",
 #'       RemediationEnabled = TRUE|FALSE
 #'     )
 #'   ),
@@ -1572,7 +1590,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
+#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL",
 #'       ManagedServiceData = "string"
 #'     ),
 #'     ResourceType = "string",
@@ -1610,7 +1628,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
+#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL",
 #'       ManagedServiceData = "string"
 #'     ),
 #'     ResourceType = "string",

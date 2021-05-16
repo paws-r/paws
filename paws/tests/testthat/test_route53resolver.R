@@ -1,5 +1,37 @@
 svc <- paws::route53resolver()
 
+test_that("list_firewall_configs", {
+  expect_error(svc$list_firewall_configs(), NA)
+})
+
+test_that("list_firewall_configs", {
+  expect_error(svc$list_firewall_configs(MaxResults = 20), NA)
+})
+
+test_that("list_firewall_domain_lists", {
+  expect_error(svc$list_firewall_domain_lists(), NA)
+})
+
+test_that("list_firewall_domain_lists", {
+  expect_error(svc$list_firewall_domain_lists(MaxResults = 20), NA)
+})
+
+test_that("list_firewall_rule_group_associations", {
+  expect_error(svc$list_firewall_rule_group_associations(), NA)
+})
+
+test_that("list_firewall_rule_group_associations", {
+  expect_error(svc$list_firewall_rule_group_associations(MaxResults = 20), NA)
+})
+
+test_that("list_firewall_rule_groups", {
+  expect_error(svc$list_firewall_rule_groups(), NA)
+})
+
+test_that("list_firewall_rule_groups", {
+  expect_error(svc$list_firewall_rule_groups(MaxResults = 20), NA)
+})
+
 test_that("list_resolver_dnssec_configs", {
   expect_error(svc$list_resolver_dnssec_configs(), NA)
 })

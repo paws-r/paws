@@ -44,7 +44,7 @@ NULL
 #' 
 #' Once you have set a developer provider name, you cannot change it.
 #' Please take care in setting this parameter.
-#' @param OpenIdConnectProviderARNs A list of OpendID Connect provider ARNs.
+#' @param OpenIdConnectProviderARNs The Amazon Resource Names (ARN) of the OpenID Connect providers.
 #' @param CognitoIdentityProviders An array of Amazon Cognito user pools and their client IDs.
 #' @param SamlProviderARNs An array of Amazon Resource Names (ARNs) of the SAML provider for your
 #' identity pool.
@@ -383,7 +383,7 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #' unauthenticated identity.
 #' 
 #' The Logins parameter is required when using identities associated with
-#' external identity providers such as FaceBook. For examples of `Logins`
+#' external identity providers such as Facebook. For examples of `Logins`
 #' maps, see the code examples in the [External Identity
 #' Providers](https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html)
 #' section of the Amazon Cognito Developer Guide.
@@ -582,7 +582,7 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #' additional logins for the identity. Supplying multiple logins creates an
 #' implicit link.
 #' 
-#' The OpenId token is valid for 10 minutes.
+#' The OpenID token is valid for 10 minutes.
 #' 
 #' This is a public API. You do not need any credentials to call this API.
 #'
@@ -594,7 +594,7 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #' tokens. When using graph.facebook.com and www.amazon.com, supply the
 #' access_token returned from the provider's authflow. For
 #' accounts.google.com, an Amazon Cognito user pool provider, or any other
-#' OpenId Connect provider, always include the `id_token`.
+#' OpenID Connect provider, always include the `id_token`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -660,7 +660,7 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #'
 #' @usage
 #' cognitoidentity_get_open_id_token_for_developer_identity(IdentityPoolId,
-#'   IdentityId, Logins, TokenDuration)
+#'   IdentityId, Logins, PrincipalTags, TokenDuration)
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param IdentityId A unique identifier in the format REGION:GUID.
@@ -674,6 +674,7 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' developer user identifier is an identifier from your backend that
 #' uniquely identifies a user. When you create an identity pool, you can
 #' specify the supported logins.
+#' @param PrincipalTags Use this operation to configure attribute mappings for custom providers.
 #' @param TokenDuration The expiration time of the token, in seconds. You can specify a custom
 #' expiration time for the token so that you can cache it. If you don't
 #' provide an expiration time, the token is valid for 15 minutes. You can
@@ -704,6 +705,9 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #'   Logins = list(
 #'     "string"
 #'   ),
+#'   PrincipalTags = list(
+#'     "string"
+#'   ),
 #'   TokenDuration = 123
 #' )
 #' ```
@@ -711,14 +715,14 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_get_open_id_token_for_developer_identity
-cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoolId, IdentityId = NULL, Logins, TokenDuration = NULL) {
+cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoolId, IdentityId = NULL, Logins, PrincipalTags = NULL, TokenDuration = NULL) {
   op <- new_operation(
     name = "GetOpenIdTokenForDeveloperIdentity",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cognitoidentity$get_open_id_token_for_developer_identity_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, Logins = Logins, TokenDuration = TokenDuration)
+  input <- .cognitoidentity$get_open_id_token_for_developer_identity_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, Logins = Logins, PrincipalTags = PrincipalTags, TokenDuration = TokenDuration)
   output <- .cognitoidentity$get_open_id_token_for_developer_identity_output()
   config <- get_config()
   svc <- .cognitoidentity$service(config)
@@ -727,6 +731,63 @@ cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoo
   return(response)
 }
 .cognitoidentity$operations$get_open_id_token_for_developer_identity <- cognitoidentity_get_open_id_token_for_developer_identity
+
+#' Use GetPrincipalTagAttributeMap to list all mappings between
+#' PrincipalTags and user attributes
+#'
+#' @description
+#' Use
+#' [`get_principal_tag_attribute_map`][cognitoidentity_get_principal_tag_attribute_map]
+#' to list all mappings between `PrincipalTags` and user attributes.
+#'
+#' @usage
+#' cognitoidentity_get_principal_tag_attribute_map(IdentityPoolId,
+#'   IdentityProviderName)
+#'
+#' @param IdentityPoolId &#91;required&#93; You can use this operation to get the ID of the Identity Pool you setup
+#' attribute mappings for.
+#' @param IdentityProviderName &#91;required&#93; You can use this operation to get the provider name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string",
+#'   IdentityProviderName = "string",
+#'   UseDefaults = TRUE|FALSE,
+#'   PrincipalTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_principal_tag_attribute_map(
+#'   IdentityPoolId = "string",
+#'   IdentityProviderName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentity_get_principal_tag_attribute_map
+cognitoidentity_get_principal_tag_attribute_map <- function(IdentityPoolId, IdentityProviderName) {
+  op <- new_operation(
+    name = "GetPrincipalTagAttributeMap",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cognitoidentity$get_principal_tag_attribute_map_input(IdentityPoolId = IdentityPoolId, IdentityProviderName = IdentityProviderName)
+  output <- .cognitoidentity$get_principal_tag_attribute_map_output()
+  config <- get_config()
+  svc <- .cognitoidentity$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentity$operations$get_principal_tag_attribute_map <- cognitoidentity_get_principal_tag_attribute_map
 
 #' Lists the identities in an identity pool
 #'
@@ -1089,7 +1150,7 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #' @param RoleMappings How users for a specific identity provider are to mapped to roles. This
 #' is a string to RoleMapping object map. The string identifies the
 #' identity provider, for example, "graph.facebook.com" or
-#' "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+#' "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
 #' 
 #' Up to 25 rules can be specified per identity provider.
 #'
@@ -1142,12 +1203,74 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 }
 .cognitoidentity$operations$set_identity_pool_roles <- cognitoidentity_set_identity_pool_roles
 
-#' Assigns a set of tags to an Amazon Cognito identity pool
+#' You can use this operation to use default (username and clientID)
+#' attribute or custom attribute mappings
 #'
 #' @description
-#' Assigns a set of tags to an Amazon Cognito identity pool. A tag is a
-#' label that you can use to categorize and manage identity pools in
-#' different ways, such as by purpose, owner, environment, or other
+#' You can use this operation to use default (username and clientID)
+#' attribute or custom attribute mappings.
+#'
+#' @usage
+#' cognitoidentity_set_principal_tag_attribute_map(IdentityPoolId,
+#'   IdentityProviderName, UseDefaults, PrincipalTags)
+#'
+#' @param IdentityPoolId &#91;required&#93; The ID of the Identity Pool you want to set attribute mappings for.
+#' @param IdentityProviderName &#91;required&#93; The provider name you want to use for attribute mappings.
+#' @param UseDefaults You can use this operation to use default (username and clientID)
+#' attribute mappings.
+#' @param PrincipalTags You can use this operation to add principal tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string",
+#'   IdentityProviderName = "string",
+#'   UseDefaults = TRUE|FALSE,
+#'   PrincipalTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$set_principal_tag_attribute_map(
+#'   IdentityPoolId = "string",
+#'   IdentityProviderName = "string",
+#'   UseDefaults = TRUE|FALSE,
+#'   PrincipalTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentity_set_principal_tag_attribute_map
+cognitoidentity_set_principal_tag_attribute_map <- function(IdentityPoolId, IdentityProviderName, UseDefaults = NULL, PrincipalTags = NULL) {
+  op <- new_operation(
+    name = "SetPrincipalTagAttributeMap",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cognitoidentity$set_principal_tag_attribute_map_input(IdentityPoolId = IdentityPoolId, IdentityProviderName = IdentityProviderName, UseDefaults = UseDefaults, PrincipalTags = PrincipalTags)
+  output <- .cognitoidentity$set_principal_tag_attribute_map_output()
+  config <- get_config()
+  svc <- .cognitoidentity$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentity$operations$set_principal_tag_attribute_map <- cognitoidentity_set_principal_tag_attribute_map
+
+#' Assigns a set of tags to the specified Amazon Cognito identity pool
+#'
+#' @description
+#' Assigns a set of tags to the specified Amazon Cognito identity pool. A
+#' tag is a label that you can use to categorize and manage identity pools
+#' in different ways, such as by purpose, owner, environment, or other
 #' criteria.
 #' 
 #' Each tag consists of a key and value, both of which you define. A key is
@@ -1169,8 +1292,7 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 #' @usage
 #' cognitoidentity_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool to assign the tags
-#' to.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool.
 #' @param Tags &#91;required&#93; The tags to assign to the identity pool.
 #'
 #' @return
@@ -1313,17 +1435,17 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 }
 .cognitoidentity$operations$unlink_identity <- cognitoidentity_unlink_identity
 
-#' Removes the specified tags from an Amazon Cognito identity pool
+#' Removes the specified tags from the specified Amazon Cognito identity
+#' pool
 #'
 #' @description
-#' Removes the specified tags from an Amazon Cognito identity pool. You can
-#' use this action up to 5 times per second, per account
+#' Removes the specified tags from the specified Amazon Cognito identity
+#' pool. You can use this action up to 5 times per second, per account
 #'
 #' @usage
 #' cognitoidentity_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool that the tags are
-#' assigned to.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool.
 #' @param TagKeys &#91;required&#93; The keys of the tags to remove from the user pool.
 #'
 #' @return
@@ -1382,7 +1504,7 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
 #' in the *Amazon Cognito Developer Guide*.
 #' @param SupportedLoginProviders Optional key:value pairs mapping provider names to provider app IDs.
 #' @param DeveloperProviderName The "domain" by which Cognito will refer to your users.
-#' @param OpenIdConnectProviderARNs A list of OpendID Connect provider ARNs.
+#' @param OpenIdConnectProviderARNs The ARNs of the OpenID Connect providers.
 #' @param CognitoIdentityProviders A list representing an Amazon Cognito user pool and its client ID.
 #' @param SamlProviderARNs An array of Amazon Resource Names (ARNs) of the SAML provider for your
 #' identity pool.

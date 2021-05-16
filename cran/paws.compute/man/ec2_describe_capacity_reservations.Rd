@@ -46,8 +46,8 @@ available for your use.
 \item \code{expired} - The Capacity Reservation expired automatically at
 the date and time specified in your request. The reserved
 capacity is no longer available for your use.
-\item \code{cancelled} - The Capacity Reservation was manually cancelled.
-The reserved capacity is no longer available for your use.
+\item \code{cancelled} - The Capacity Reservation was cancelled. The
+reserved capacity is no longer available for your use.
 \item \code{pending} - The Capacity Reservation request was successful but
 the capacity provisioning is still pending.
 \item \code{failed} - The Capacity Reservation request has failed. A
@@ -55,6 +55,8 @@ request might fail due to invalid request parameters, capacity
 constraints, or instance limit constraints. Failed requests are
 retained for 60 minutes.
 }
+\item \code{start-date} - The date and time at which the Capacity Reservation
+was started.
 \item \code{end-date} - The date and time at which the Capacity Reservation
 expires. When a Capacity Reservation expires, the reserved capacity
 is released and you can no longer launch instances into it. The
@@ -108,6 +110,9 @@ A list with the following syntax:\preformatted{list(
       EbsOptimized = TRUE|FALSE,
       EphemeralStorage = TRUE|FALSE,
       State = "active"|"expired"|"cancelled"|"pending"|"failed",
+      StartDate = as.POSIXct(
+        "2015-01-01"
+      ),
       EndDate = as.POSIXct(
         "2015-01-01"
       ),

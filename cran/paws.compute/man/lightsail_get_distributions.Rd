@@ -88,6 +88,7 @@ A list with the following syntax:\preformatted{list(
         )
       ),
       ableToUpdateBundle = TRUE|FALSE,
+      ipAddressType = "dualstack"|"ipv4",
       tags = list(
         list(
           key = "string",

@@ -10,13 +10,17 @@ ssm_list_documents(DocumentFilterList, Filters, MaxResults, NextToken)
 \arguments{
 \item{DocumentFilterList}{This data type is deprecated. Instead, use \code{Filters}.}
 
-\item{Filters}{One or more DocumentKeyValuesFilter objects. Use a filter to return a
+\item{Filters}{One or more \code{DocumentKeyValuesFilter} objects. Use a filter to return a
 more specific list of results. For keys, you can specify one or more
 key-value pair tags that have been applied to a document. Other valid
 keys include \code{Owner}, \code{Name}, \code{PlatformTypes}, \code{DocumentType}, and
 \code{TargetType}. For example, to return documents you own use
 \verb{Key=Owner,Values=Self}. To specify a custom key-value pair, use the
-format \verb{Key=tag:tagName,Values=valueName}.}
+format \verb{Key=tag:tagName,Values=valueName}.
+
+This API action only supports filtering documents by using a single tag
+key and one or more tag values. For example:
+\verb{Key=tag:tagName,Values=valueName1,valueName2}}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -30,13 +34,17 @@ A list with the following syntax:\preformatted{list(
   DocumentIdentifiers = list(
     list(
       Name = "string",
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DisplayName = "string",
       Owner = "string",
       VersionName = "string",
       PlatformTypes = list(
         "Windows"|"Linux"
       ),
       DocumentVersion = "string",
-      DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+      DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
       SchemaVersion = "string",
       DocumentFormat = "YAML"|"JSON"|"TEXT",
       TargetType = "string",

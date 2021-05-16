@@ -89,7 +89,7 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #'
 #' @usage
 #' codestarconnections_create_host(Name, ProviderType, ProviderEndpoint,
-#'   VpcConfiguration)
+#'   VpcConfiguration, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the host to be created. The name must be unique in the
 #' calling AWS account.
@@ -102,12 +102,19 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' @param VpcConfiguration The VPC configuration to be provisioned for the host. A VPC must be
 #' configured and the infrastructure to be represented by the host must
 #' already be connected to the VPC.
+#' @param Tags 
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   HostArn = "string"
+#'   HostArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -126,6 +133,12 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #'       "string"
 #'     ),
 #'     TlsCertificate = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -133,14 +146,14 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' @keywords internal
 #'
 #' @rdname codestarconnections_create_host
-codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint, VpcConfiguration = NULL) {
+codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint, VpcConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateHost",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codestarconnections$create_host_input(Name = Name, ProviderType = ProviderType, ProviderEndpoint = ProviderEndpoint, VpcConfiguration = VpcConfiguration)
+  input <- .codestarconnections$create_host_input(Name = Name, ProviderType = ProviderType, ProviderEndpoint = ProviderEndpoint, VpcConfiguration = VpcConfiguration, Tags = Tags)
   output <- .codestarconnections$create_host_output()
   config <- get_config()
   svc <- .codestarconnections$service(config)

@@ -17,7 +17,10 @@ NULL
 #' To have a project with separate training and test datasets, call
 #' [`create_dataset`][lookoutforvision_create_dataset] twice. On the first
 #' call, specify `train` for the value of `DatasetType`. On the second
-#' call, specify `test` for the value of `DatasetType`. of dataset with
+#' call, specify `test` for the value of `DatasetType`.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:CreateDataset` operation.
 #'
 #' @usage
 #' lookoutforvision_create_dataset(ProjectName, DatasetType, DatasetSource,
@@ -125,10 +128,15 @@ lookoutforvision_create_dataset <- function(ProjectName, DatasetType, DatasetSou
 #' 
 #' After training completes, the evaluation metrics are stored at the
 #' location specified in `OutputConfig`.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:CreateModel` operation. If you want to tag your model,
+#' you also require permission to the `lookoutvision:TagResource`
+#' operation.
 #'
 #' @usage
 #' lookoutforvision_create_model(ProjectName, Description, ClientToken,
-#'   OutputConfig, KmsKeyId)
+#'   OutputConfig, KmsKeyId, Tags)
 #'
 #' @param ProjectName &#91;required&#93; The name of the project in which you want to create a model version.
 #' @param Description A description for the version of the model.
@@ -144,10 +152,12 @@ lookoutforvision_create_dataset <- function(ProjectName, DatasetType, DatasetSou
 #' [`create_model`][lookoutforvision_create_model]. An idempotency token is
 #' active for 8 hours.
 #' @param OutputConfig &#91;required&#93; The location where Amazon Lookout for Vision saves the training results.
-#' @param KmsKeyId The identifier of the AWS Key Management Service (AWS KMS) customer
-#' master key (CMK) to use for encypting the model. If this parameter is
-#' not specified, the model is encrypted by a key that AWS owns and
-#' manages.
+#' @param KmsKeyId The identifier for your AWS Key Management Service (AWS KMS) customer
+#' master key (CMK). The key is used to encrypt training and test images
+#' copied into the service for model training. Your source images are
+#' unaffected. If this parameter is not specified, the copied images are
+#' encrypted by a key that AWS owns and manages.
+#' @param Tags A set of tags (key-value pairs) that you want to attach to the model.
 #'
 #' @return
 #' A list with the following syntax:
@@ -175,39 +185,7 @@ lookoutforvision_create_dataset <- function(ProjectName, DatasetType, DatasetSou
 #' ```
 #' svc$create_model(
 #'   ProjectName = "string",
-#'   Description = list(
-#'     ModelVersion = "string",
-#'     ModelArn = "string",
-#'     CreationTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Description = "string",
-#'     Status = "TRAINING"|"TRAINED"|"TRAINING_FAILED"|"STARTING_HOSTING"|"HOSTED"|"HOSTING_FAILED"|"STOPPING_HOSTING"|"SYSTEM_UPDATING"|"DELETING",
-#'     StatusMessage = "string",
-#'     Performance = list(
-#'       F1Score = 123.0,
-#'       Recall = 123.0,
-#'       Precision = 123.0
-#'     ),
-#'     OutputConfig = list(
-#'       S3Location = list(
-#'         Bucket = "string",
-#'         Prefix = "string"
-#'       )
-#'     ),
-#'     EvaluationManifest = list(
-#'       Bucket = "string",
-#'       Key = "string"
-#'     ),
-#'     EvaluationResult = list(
-#'       Bucket = "string",
-#'       Key = "string"
-#'     ),
-#'     EvaluationEndTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     KmsKeyId = "string"
-#'   ),
+#'   Description = "string",
 #'   ClientToken = "string",
 #'   OutputConfig = list(
 #'     S3Location = list(
@@ -215,21 +193,27 @@ lookoutforvision_create_dataset <- function(ProjectName, DatasetType, DatasetSou
 #'       Prefix = "string"
 #'     )
 #'   ),
-#'   KmsKeyId = "string"
+#'   KmsKeyId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname lookoutforvision_create_model
-lookoutforvision_create_model <- function(ProjectName, Description = NULL, ClientToken = NULL, OutputConfig, KmsKeyId = NULL) {
+lookoutforvision_create_model <- function(ProjectName, Description = NULL, ClientToken = NULL, OutputConfig, KmsKeyId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateModel",
     http_method = "POST",
     http_path = "/2020-11-20/projects/{projectName}/models",
     paginator = list()
   )
-  input <- .lookoutforvision$create_model_input(ProjectName = ProjectName, Description = Description, ClientToken = ClientToken, OutputConfig = OutputConfig, KmsKeyId = KmsKeyId)
+  input <- .lookoutforvision$create_model_input(ProjectName = ProjectName, Description = Description, ClientToken = ClientToken, OutputConfig = OutputConfig, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .lookoutforvision$create_model_output()
   config <- get_config()
   svc <- .lookoutforvision$service(config)
@@ -245,11 +229,14 @@ lookoutforvision_create_model <- function(ProjectName, Description = NULL, Clien
 #' Creates an empty Amazon Lookout for Vision project. After you create the
 #' project, add a dataset by calling
 #' [`create_dataset`][lookoutforvision_create_dataset].
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:CreateProject` operation.
 #'
 #' @usage
 #' lookoutforvision_create_project(ProjectName, ClientToken)
 #'
-#' @param ProjectName &#91;required&#93; S nsme for the project.
+#' @param ProjectName &#91;required&#93; The name for the project.
 #' @param ClientToken ClientToken is an idempotency token that ensures a call to
 #' [`create_project`][lookoutforvision_create_project] completes only once.
 #' You choose the value to pass. For example, An issue, such as an network
@@ -324,9 +311,8 @@ lookoutforvision_create_project <- function(ProjectName, ClientToken = NULL) {
 #' -   If you delete the training dataset, you must create a training
 #'     dataset before you can create a model.
 #' 
-#' It might take a while to delete the dataset. To check the current
-#' status, check the `Status` field in the response from a call to
-#' [`describe_dataset`][lookoutforvision_describe_dataset].
+#' This operation requires permissions to perform the
+#' `lookoutvision:DeleteDataset` operation.
 #'
 #' @usage
 #' lookoutforvision_delete_dataset(ProjectName, DatasetType, ClientToken)
@@ -387,6 +373,14 @@ lookoutforvision_delete_dataset <- function(ProjectName, DatasetType, ClientToke
 #' Deletes an Amazon Lookout for Vision model. You can't delete a running
 #' model. To stop a running model, use the
 #' [`stop_model`][lookoutforvision_stop_model] operation.
+#' 
+#' It might take a few seconds to delete a model. To determine if a model
+#' has been deleted, call [`list_projects`][lookoutforvision_list_projects]
+#' and check if the version of the model (`ModelVersion`) is in the
+#' `Models` array.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:DeleteModel` operation.
 #'
 #' @usage
 #' lookoutforvision_delete_model(ProjectName, ModelVersion, ClientToken)
@@ -451,8 +445,13 @@ lookoutforvision_delete_model <- function(ProjectName, ModelVersion, ClientToken
 #' associated with the project. To delete a model use the
 #' [`delete_model`][lookoutforvision_delete_model] operation.
 #' 
-#' The training and test datasets are deleted automatically for you. The
-#' images referenced by the training and test datasets aren't deleted.
+#' You also have to delete the dataset(s) associated with the model. For
+#' more information, see
+#' [`delete_dataset`][lookoutforvision_delete_dataset]. The images
+#' referenced by the training and test datasets aren't deleted.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:DeleteProject` operation.
 #'
 #' @usage
 #' lookoutforvision_delete_project(ProjectName, ClientToken)
@@ -511,6 +510,9 @@ lookoutforvision_delete_project <- function(ProjectName, ClientToken = NULL) {
 #'
 #' @description
 #' Describe an Amazon Lookout for Vision dataset.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:DescribeDataset` operation.
 #'
 #' @usage
 #' lookoutforvision_describe_dataset(ProjectName, DatasetType)
@@ -578,6 +580,9 @@ lookoutforvision_describe_dataset <- function(ProjectName, DatasetType) {
 #'
 #' @description
 #' Describes a version of an Amazon Lookout for Vision model.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:DescribeModel` operation.
 #'
 #' @usage
 #' lookoutforvision_describe_model(ProjectName, ModelVersion)
@@ -658,6 +663,9 @@ lookoutforvision_describe_model <- function(ProjectName, ModelVersion) {
 #'
 #' @description
 #' Describes an Amazon Lookout for Vision project.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:DescribeProject` operation.
 #'
 #' @usage
 #' lookoutforvision_describe_project(ProjectName)
@@ -732,6 +740,9 @@ lookoutforvision_describe_project <- function(ProjectName) {
 #' of anomaly detection units that your model uses. If you are not using a
 #' model, use the [`stop_model`][lookoutforvision_stop_model] operation to
 #' stop your model.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:DetectAnomalies` operation.
 #'
 #' @usage
 #' lookoutforvision_detect_anomalies(ProjectName, ModelVersion, Body,
@@ -794,6 +805,9 @@ lookoutforvision_detect_anomalies <- function(ProjectName, ModelVersion, Body, C
 #' Lists the JSON Lines within a dataset. An Amazon Lookout for Vision JSON
 #' Line contains the anomaly information for a single image, including the
 #' image location and the assigned label.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:ListDatasetEntries` operation.
 #'
 #' @usage
 #' lookoutforvision_list_dataset_entries(ProjectName, DatasetType, Labeled,
@@ -878,6 +892,9 @@ lookoutforvision_list_dataset_entries <- function(ProjectName, DatasetType, Labe
 #'
 #' @description
 #' Lists the versions of a model in an Amazon Lookout for Vision project.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:ListModels` operation.
 #'
 #' @usage
 #' lookoutforvision_list_models(ProjectName, NextToken, MaxResults)
@@ -950,6 +967,9 @@ lookoutforvision_list_models <- function(ProjectName, NextToken = NULL, MaxResul
 #'
 #' @description
 #' Lists the Amazon Lookout for Vision projects in your AWS account.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:ListProjects` operation.
 #'
 #' @usage
 #' lookoutforvision_list_projects(NextToken, MaxResults)
@@ -1007,6 +1027,62 @@ lookoutforvision_list_projects <- function(NextToken = NULL, MaxResults = NULL) 
 }
 .lookoutforvision$operations$list_projects <- lookoutforvision_list_projects
 
+#' Returns a list of tags attached to the specified Amazon Lookout for
+#' Vision model
+#'
+#' @description
+#' Returns a list of tags attached to the specified Amazon Lookout for
+#' Vision model.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:ListTagsForResource` operation.
+#'
+#' @usage
+#' lookoutforvision_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the model for which you want to list
+#' tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutforvision_list_tags_for_resource
+lookoutforvision_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/2020-11-20/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .lookoutforvision$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .lookoutforvision$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .lookoutforvision$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutforvision$operations$list_tags_for_resource <- lookoutforvision_list_tags_for_resource
+
 #' Starts the running of the version of an Amazon Lookout for Vision model
 #'
 #' @description
@@ -1014,11 +1090,16 @@ lookoutforvision_list_projects <- function(NextToken = NULL, MaxResults = NULL) 
 #' Starting a model takes a while to complete. To check the current state
 #' of the model, use [`describe_model`][lookoutforvision_describe_model].
 #' 
+#' A model is ready to use when its status is `HOSTED`.
+#' 
 #' Once the model is running, you can detect custom labels in new images by
 #' calling [`detect_anomalies`][lookoutforvision_detect_anomalies].
 #' 
 #' You are charged for the amount of time that the model is running. To
 #' stop a running model, call [`stop_model`][lookoutforvision_stop_model].
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:StartModel` operation.
 #'
 #' @usage
 #' lookoutforvision_start_model(ProjectName, ModelVersion,
@@ -1046,7 +1127,7 @@ lookoutforvision_list_projects <- function(NextToken = NULL, MaxResults = NULL) 
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Status = "RUNNING"|"STARTING"|"STOPPED"|"FAILED"
+#'   Status = "STARTING_HOSTING"|"HOSTED"|"HOSTING_FAILED"|"STOPPING_HOSTING"|"SYSTEM_UPDATING"
 #' )
 #' ```
 #'
@@ -1080,12 +1161,17 @@ lookoutforvision_start_model <- function(ProjectName, ModelVersion, MinInference
 }
 .lookoutforvision$operations$start_model <- lookoutforvision_start_model
 
-#' Stops a running model
+#' Stops the hosting of a running model
 #'
 #' @description
-#' Stops a running model. The operation might take a while to complete. To
-#' check the current status, call
+#' Stops the hosting of a running model. The operation might take a while
+#' to complete. To check the current status, call
 #' [`describe_model`][lookoutforvision_describe_model].
+#' 
+#' After the model hosting stops, the `Status` of the model is `TRAINED`.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:StopModel` operation.
 #'
 #' @usage
 #' lookoutforvision_stop_model(ProjectName, ModelVersion, ClientToken)
@@ -1108,7 +1194,7 @@ lookoutforvision_start_model <- function(ProjectName, ModelVersion, MinInference
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Status = "RUNNING"|"STARTING"|"STOPPED"|"FAILED"
+#'   Status = "STARTING_HOSTING"|"HOSTED"|"HOSTING_FAILED"|"STOPPING_HOSTING"|"SYSTEM_UPDATING"
 #' )
 #' ```
 #'
@@ -1141,6 +1227,108 @@ lookoutforvision_stop_model <- function(ProjectName, ModelVersion, ClientToken =
 }
 .lookoutforvision$operations$stop_model <- lookoutforvision_stop_model
 
+#' Adds one or more key-value tags to an Amazon Lookout for Vision model
+#'
+#' @description
+#' Adds one or more key-value tags to an Amazon Lookout for Vision model.
+#' For more information, see *Tagging a model* in the *Amazon Lookout for
+#' Vision Developer Guide*.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:TagResource` operation.
+#'
+#' @usage
+#' lookoutforvision_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the model to assign the tags.
+#' @param Tags &#91;required&#93; The key-value tags to assign to the model.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutforvision_tag_resource
+lookoutforvision_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/2020-11-20/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .lookoutforvision$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .lookoutforvision$tag_resource_output()
+  config <- get_config()
+  svc <- .lookoutforvision$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutforvision$operations$tag_resource <- lookoutforvision_tag_resource
+
+#' Removes one or more tags from an Amazon Lookout for Vision model
+#'
+#' @description
+#' Removes one or more tags from an Amazon Lookout for Vision model. For
+#' more information, see *Tagging a model* in the *Amazon Lookout for
+#' Vision Developer Guide*.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:UntagResource` operation.
+#'
+#' @usage
+#' lookoutforvision_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the model from which you want to
+#' remove tags.
+#' @param TagKeys &#91;required&#93; A list of the keys of the tags that you want to remove.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutforvision_untag_resource
+lookoutforvision_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/2020-11-20/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .lookoutforvision$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .lookoutforvision$untag_resource_output()
+  config <- get_config()
+  svc <- .lookoutforvision$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutforvision$operations$untag_resource <- lookoutforvision_untag_resource
+
 #' Adds one or more JSON Line entries to a dataset
 #'
 #' @description
@@ -1151,6 +1339,9 @@ lookoutforvision_stop_model <- function(ProjectName, ModelVersion, ClientToken =
 #' Updating a dataset might take a while to complete. To check the current
 #' status, call [`describe_dataset`][lookoutforvision_describe_dataset] and
 #' check the `Status` field in the response.
+#' 
+#' This operation requires permissions to perform the
+#' `lookoutvision:UpdateDatasetEntries` operation.
 #'
 #' @usage
 #' lookoutforvision_update_dataset_entries(ProjectName, DatasetType,

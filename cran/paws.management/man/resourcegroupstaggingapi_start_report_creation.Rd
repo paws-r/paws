@@ -2,9 +2,9 @@
 % Please edit documentation in R/resourcegroupstaggingapi_operations.R
 \name{resourcegroupstaggingapi_start_report_creation}
 \alias{resourcegroupstaggingapi_start_report_creation}
-\title{Generates a report that lists all tagged resources in accounts across
-your organization and tells whether each resource is compliant with the
-effective tag policy}
+\title{Generates a report that lists all tagged resources in the accounts
+across your organization and tells whether each resource is compliant
+with the effective tag policy}
 \usage{
 resourcegroupstaggingapi_start_report_creation(S3Bucket)
 }
@@ -21,16 +21,17 @@ bucket policy, see the example S3 bucket policy on this page.}
 An empty list.
 }
 \description{
-Generates a report that lists all tagged resources in accounts across
-your organization and tells whether each resource is compliant with the
-effective tag policy. Compliance data is refreshed daily.
+Generates a report that lists all tagged resources in the accounts
+across your organization and tells whether each resource is compliant
+with the effective tag policy. Compliance data is refreshed daily. The
+report is generated asynchronously.
 
 The generated report is saved to the following location:
 
 \verb{s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv}
 
-You can call this operation only from the organization's master account
-and from the us-east-1 Region.
+You can call this operation only from the organization's management
+account and from the us-east-1 Region.
 }
 \section{Request syntax}{
 \preformatted{svc$start_report_creation(

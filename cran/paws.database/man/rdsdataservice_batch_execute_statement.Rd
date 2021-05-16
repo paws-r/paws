@@ -96,7 +96,7 @@ committed automatically.
     list(
       list(
         name = "string",
-        typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
+        typeHint = "JSON"|"UUID"|"TIMESTAMP"|"DATE"|"TIME"|"DECIMAL",
         value = list(
           arrayValue = list(
             arrayValues = list(

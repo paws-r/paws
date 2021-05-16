@@ -3,18 +3,20 @@
 #' @include route53_service.R
 NULL
 
-#' Activates a key signing key (KSK) so that it can be used for signing by
+#' Activates a key-signing key (KSK) so that it can be used for signing by
 #' DNSSEC
 #'
 #' @description
-#' Activates a key signing key (KSK) so that it can be used for signing by
+#' Activates a key-signing key (KSK) so that it can be used for signing by
 #' DNSSEC. This operation changes the KSK status to `ACTIVE`.
 #'
 #' @usage
 #' route53_activate_key_signing_key(HostedZoneId, Name)
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK). `Name` can include
+#' numbers, letters, and underscores (_). `Name` must be unique for each
+#' key-signing key in the same hosted zone.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1122,6 +1124,9 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' hosted zones, this means that the NS and SOA records are not yet
 #' available on all Route 53 DNS servers. When the NS and SOA records are
 #' available, the status of the zone changes to `INSYNC`.
+#' 
+#' The [`create_hosted_zone`][route53_create_hosted_zone] request requires
+#' the caller to have an `ec2:DescribeVpcs` permission.
 #'
 #' @usage
 #' route53_create_hosted_zone(Name, VPC, CallerReference, HostedZoneConfig,
@@ -1245,10 +1250,10 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 }
 .route53$operations$create_hosted_zone <- route53_create_hosted_zone
 
-#' Creates a new key signing key (KSK) associated with a hosted zone
+#' Creates a new key-signing key (KSK) associated with a hosted zone
 #'
 #' @description
-#' Creates a new key signing key (KSK) associated with a hosted zone. You
+#' Creates a new key-signing key (KSK) associated with a hosted zone. You
 #' can only have two KSKs per hosted zone.
 #'
 #' @usage
@@ -1257,13 +1262,14 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #'
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request.
 #' @param HostedZoneId &#91;required&#93; The unique string (ID) used to identify a hosted zone.
-#' @param KeyManagementServiceArn &#91;required&#93; The Amazon resource name (ARN) for a customer managed key (CMK) in AWS
-#' Key Management Service (KMS). The `KeyManagementServiceArn` must be
-#' unique for each key signing key (KSK) in a single hosted zone. To see an
-#' example of `KeyManagementServiceArn` that grants the correct permissions
-#' for DNSSEC, scroll down to **Example**.
+#' @param KeyManagementServiceArn &#91;required&#93; The Amazon resource name (ARN) for a customer managed customer master
+#' key (CMK) in AWS Key Management Service (AWS KMS). The
+#' `KeyManagementServiceArn` must be unique for each key-signing key (KSK)
+#' in a single hosted zone. To see an example of `KeyManagementServiceArn`
+#' that grants the correct permissions for DNSSEC, scroll down to
+#' **Example**.
 #' 
-#' You must configure the CMK as follows:
+#' You must configure the customer managed CMK as follows:
 #' 
 #' ### Status
 #' 
@@ -1290,14 +1296,15 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' The key policy must also include the Amazon Route 53 service in the
 #' principal for your account. Specify the following:
 #' 
-#' -   `"Service": "api-service.dnssec.route53.aws.internal"`
+#' -   `"Service": "dnssec.route53.aws.amazonaws.com"`
 #' 
-#' For more information about working with CMK in KMS, see [AWS Key
-#' Management Service
+#' For more information about working with a customer managed CMK in AWS
+#' KMS, see [AWS Key Management Service
 #' concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html).
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK). `Name`
-#' must be unique for each key signing key in the same hosted zone.
-#' @param Status &#91;required&#93; A string specifying the initial status of the key signing key (KSK). You
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK). `Name` can include
+#' numbers, letters, and underscores (_). `Name` must be unique for each
+#' key-signing key in the same hosted zone.
+#' @param Status &#91;required&#93; A string specifying the initial status of the key-signing key (KSK). You
 #' can set the value to `ACTIVE` or `INACTIVE`.
 #'
 #' @return
@@ -1947,18 +1954,18 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
 }
 .route53$operations$create_vpc_association_authorization <- route53_create_vpc_association_authorization
 
-#' Deactivates a key signing key (KSK) so that it will not be used for
+#' Deactivates a key-signing key (KSK) so that it will not be used for
 #' signing by DNSSEC
 #'
 #' @description
-#' Deactivates a key signing key (KSK) so that it will not be used for
+#' Deactivates a key-signing key (KSK) so that it will not be used for
 #' signing by DNSSEC. This operation changes the KSK status to `INACTIVE`.
 #'
 #' @usage
 #' route53_deactivate_key_signing_key(HostedZoneId, Name)
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2163,18 +2170,18 @@ route53_delete_hosted_zone <- function(Id) {
 }
 .route53$operations$delete_hosted_zone <- route53_delete_hosted_zone
 
-#' Deletes a key signing key (KSK)
+#' Deletes a key-signing key (KSK)
 #'
 #' @description
-#' Deletes a key signing key (KSK). Before you can delete a KSK, you must
-#' deactivate it. The KSK must be deactived before you can delete it
+#' Deletes a key-signing key (KSK). Before you can delete a KSK, you must
+#' deactivate it. The KSK must be deactivated before you can delete it
 #' regardless of whether the hosted zone is enabled for DNSSEC signing.
 #'
 #' @usage
 #' route53_delete_key_signing_key(HostedZoneId, Name)
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2487,7 +2494,7 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #'
 #' @description
 #' Disables DNSSEC signing in a specific hosted zone. This action does not
-#' deactivate any key signing keys (KSKs) that are active in the hosted
+#' deactivate any key-signing keys (KSKs) that are active in the hosted
 #' zone.
 #'
 #' @usage
@@ -2818,10 +2825,13 @@ route53_get_change <- function(Id) {
 }
 .route53$operations$get_change <- route53_get_change
 
-#' GetCheckerIpRanges still works, but we recommend that you download
-#' ip-ranges
+#' Route 53 does not perform authorization for this API because it
+#' retrieves information that is already available to the public
 #'
 #' @description
+#' Route 53 does not perform authorization for this API because it
+#' retrieves information that is already available to the public.
+#' 
 #' [`get_checker_ip_ranges`][route53_get_checker_ip_ranges] still works,
 #' but we recommend that you download ip-ranges.json, which includes IP
 #' address ranges for all AWS services. For more information, see [IP
@@ -2868,13 +2878,11 @@ route53_get_checker_ip_ranges <- function() {
 .route53$operations$get_checker_ip_ranges <- route53_get_checker_ip_ranges
 
 #' Returns information about DNSSEC for a specific hosted zone, including
-#' the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
-#' zone
+#' the key-signing keys (KSKs) in the hosted zone
 #'
 #' @description
 #' Returns information about DNSSEC for a specific hosted zone, including
-#' the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
-#' zone.
+#' the key-signing keys (KSKs) in the hosted zone.
 #'
 #' @usage
 #' route53_get_dnssec(HostedZoneId)
@@ -2950,6 +2958,9 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' Gets information about whether a specified geographic location is
 #' supported for Amazon Route 53 geolocation resource record sets.
 #' 
+#' Route 53 does not perform authorization for this API because it
+#' retrieves information that is already available to the public.
+#' 
 #' Use the following syntax to determine whether a continent is supported
 #' for geolocation:
 #' 
@@ -2988,13 +2999,11 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' @param CountryCode Amazon Route 53 uses the two-letter country codes that are specified in
 #' [ISO standard 3166-1
 #' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-#' @param SubdivisionCode For `SubdivisionCode`, Amazon Route 53 supports only states of the
-#' United States. For a list of state abbreviations, see Appendix B:
+#' @param SubdivisionCode The code for the subdivision, such as a particular state within the
+#' United States. For a list of US state abbreviations, see Appendix B:
 #' Two–Letter State and Possession Abbreviations on the United States
-#' Postal Service website.
-#' 
-#' If you specify `subdivisioncode`, you must also specify `US` for
-#' `CountryCode`.
+#' Postal Service website. For a list of all supported subdivision codes,
+#' use the [`list_geo_locations`][route53_list_geo_locations] API.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3846,6 +3855,9 @@ route53_get_traffic_policy_instance_count <- function() {
 #' provinces), the subdivisions for that country are listed in alphabetical
 #' order immediately after the corresponding country.
 #' 
+#' Route 53 does not perform authorization for this API because it
+#' retrieves information that is already available to the public.
+#' 
 #' For a list of supported geolocation codes, see the
 #' [GeoLocation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html)
 #' data type.
@@ -4478,7 +4490,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' Lists the resource record sets in a specified hosted zone.
 #' 
 #' [`list_resource_record_sets`][route53_list_resource_record_sets] returns
-#' up to 100 resource record sets at a time in ASCII order, beginning at a
+#' up to 300 resource record sets at a time in ASCII order, beginning at a
 #' position specified by the `name` and `type` elements.
 #' 
 #' **Sort order**
@@ -5487,6 +5499,8 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' for a specified record name and type. You can optionally specify the IP
 #' address of a DNS resolver, an EDNS0 client subnet IP address, and a
 #' subnet mask.
+#' 
+#' This call only supports querying public hosted zones.
 #'
 #' @usage
 #' route53_test_dns_answer(HostedZoneId, RecordName, RecordType,
@@ -5653,13 +5667,13 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' checks, see the following documents:
 #' 
 #' -   [RFC 5735, Special Use IPv4
-#'     Addresses](https://tools.ietf.org/html/rfc5735)
+#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5735)
 #' 
 #' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
-#'     Space](https://tools.ietf.org/html/rfc6598)
+#'     Space](https://datatracker.ietf.org/doc/html/rfc6598)
 #' 
 #' -   [RFC 5156, Special-Use IPv6
-#'     Addresses](https://tools.ietf.org/html/rfc5156)
+#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5156)
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health
 #' checks on.
 #' 

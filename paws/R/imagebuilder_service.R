@@ -74,6 +74,7 @@ NULL
 #'  \link[=imagebuilder_list_container_recipes]{list_container_recipes} \tab Returns a list of container recipes\cr
 #'  \link[=imagebuilder_list_distribution_configurations]{list_distribution_configurations} \tab Returns a list of distribution configurations\cr
 #'  \link[=imagebuilder_list_image_build_versions]{list_image_build_versions} \tab Returns a list of image build versions\cr
+#'  \link[=imagebuilder_list_image_packages]{list_image_packages} \tab List the Packages that are associated with an Image Build Version, as determined by AWS Systems Manager Inventory at build time\cr
 #'  \link[=imagebuilder_list_image_pipeline_images]{list_image_pipeline_images} \tab Returns a list of images created by the specified pipeline\cr
 #'  \link[=imagebuilder_list_image_pipelines]{list_image_pipelines} \tab Returns a list of image pipelines\cr
 #'  \link[=imagebuilder_list_image_recipes]{list_image_recipes} \tab Returns a list of image recipes\cr
@@ -88,7 +89,7 @@ NULL
 #'  \link[=imagebuilder_tag_resource]{tag_resource} \tab Adds a tag to a resource\cr
 #'  \link[=imagebuilder_untag_resource]{untag_resource} \tab Removes a tag from a resource\cr
 #'  \link[=imagebuilder_update_distribution_configuration]{update_distribution_configuration} \tab Updates a new distribution configuration\cr
-#'  \link[=imagebuilder_update_image_pipeline]{update_image_pipeline} \tab Updates a new image pipeline\cr
+#'  \link[=imagebuilder_update_image_pipeline]{update_image_pipeline} \tab Updates an image pipeline\cr
 #'  \link[=imagebuilder_update_infrastructure_configuration]{update_infrastructure_configuration} \tab Updates a new infrastructure configuration
 #' }
 #'

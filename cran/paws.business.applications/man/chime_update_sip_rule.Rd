@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_update_sip_rule}
 \alias{chime_update_sip_rule}
-\title{Updates the details for the specified SIP rule}
+\title{Updates the details of the specified SIP rule}
 \usage{
 chime_update_sip_rule(SipRuleId, Name, Disabled, TargetApplications)
 }
@@ -41,7 +41,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Updates the details for the specified SIP rule.
+Updates the details of the specified SIP rule.
 }
 \section{Request syntax}{
 \preformatted{svc$update_sip_rule(

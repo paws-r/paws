@@ -28,7 +28,13 @@ A list with the following syntax:\preformatted{list(
   MetadataInfoMap = list(
     list(
       MetadataValue = "string",
-      CreatedTime = "string"
+      CreatedTime = "string",
+      OtherMetadataValueList = list(
+        list(
+          MetadataValue = "string",
+          CreatedTime = "string"
+        )
+      )
     )
   ),
   SchemaVersionId = "string",

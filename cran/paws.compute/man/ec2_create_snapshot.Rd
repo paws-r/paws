@@ -4,10 +4,27 @@
 \alias{ec2_create_snapshot}
 \title{Creates a snapshot of an EBS volume and stores it in Amazon S3}
 \usage{
-ec2_create_snapshot(Description, VolumeId, TagSpecifications, DryRun)
+ec2_create_snapshot(Description, OutpostArn, VolumeId,
+  TagSpecifications, DryRun)
 }
 \arguments{
 \item{Description}{A description for the snapshot.}
+
+\item{OutpostArn}{The Amazon Resource Name (ARN) of the AWS Outpost on which to create a
+local snapshot.
+\itemize{
+\item To create a snapshot of a volume in a Region, omit this parameter.
+The snapshot is created in the same Region as the volume.
+\item To create a snapshot of a volume on an Outpost and store the
+snapshot in the Region, omit this parameter. The snapshot is created
+in the Region for the Outpost.
+\item To create a snapshot of a volume on an Outpost and store the
+snapshot on an Outpost, specify the ARN of the destination Outpost.
+The snapshot must be created on the same Outpost as the volume.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-snapshot}{Creating local snapshots from volumes on an Outpost}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{VolumeId}{[required] The ID of the EBS volume.}
 
@@ -35,6 +52,7 @@ A list with the following syntax:\preformatted{list(
   VolumeId = "string",
   VolumeSize = 123,
   OwnerAlias = "string",
+  OutpostArn = "string",
   Tags = list(
     list(
       Key = "string",
@@ -48,6 +66,12 @@ A list with the following syntax:\preformatted{list(
 Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
 use snapshots for backups, to make copies of EBS volumes, and to save
 data before shutting down an instance.
+
+You can create snapshots of volumes in a Region and volumes on an
+Outpost. If you create a snapshot of a volume in a Region, the snapshot
+must be stored in the same Region as the volume. If you create a
+snapshot of a volume on an Outpost, the snapshot can be stored on the
+same Outpost as the volume, or in the Region for that Outpost.
 
 When a snapshot is created, any AWS Marketplace product codes that are
 associated with the source volume are propagated to the snapshot.
@@ -82,6 +106,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \section{Request syntax}{
 \preformatted{svc$create_snapshot(
   Description = "string",
+  OutpostArn = "string",
   VolumeId = "string",
   TagSpecifications = list(
     list(

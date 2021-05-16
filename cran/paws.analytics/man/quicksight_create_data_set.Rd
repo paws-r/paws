@@ -6,8 +6,8 @@
 \usage{
 quicksight_create_data_set(AwsAccountId, DataSetId, Name,
   PhysicalTableMap, LogicalTableMap, ImportMode, ColumnGroups,
-  Permissions, RowLevelPermissionDataSet, ColumnLevelPermissionRules,
-  Tags)
+  FieldFolders, Permissions, RowLevelPermissionDataSet,
+  ColumnLevelPermissionRules, Tags)
 }
 \arguments{
 \item{AwsAccountId}{[required] The AWS account ID.}
@@ -27,6 +27,8 @@ physical tables.}
 
 \item{ColumnGroups}{Groupings of columns that work together in certain QuickSight features.
 Currently, only geospatial hierarchy is supported.}
+
+\item{FieldFolders}{The folder that contains fields and nested subfolders for your dataset.}
 
 \item{Permissions}{A list of resource permissions on the dataset.}
 
@@ -170,6 +172,14 @@ Creates a dataset.
         Columns = list(
           "string"
         )
+      )
+    )
+  ),
+  FieldFolders = list(
+    list(
+      description = "string",
+      columns = list(
+        "string"
       )
     )
   ),

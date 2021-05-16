@@ -13,7 +13,14 @@ sagemaker_create_domain(DomainName, AuthMode, DefaultUserSettings,
 
 \item{AuthMode}{[required] The mode of authentication that members use to access the domain.}
 
-\item{DefaultUserSettings}{[required] The default user settings.}
+\item{DefaultUserSettings}{[required] The default settings to use to create a user profile when \code{UserSettings}
+isn't specified in the call to the
+\code{\link[=sagemaker_create_user_profile]{create_user_profile}} API.
+
+\code{SecurityGroups} is aggregated when specified in both calls. For all
+other settings in \code{UserSettings}, the values specified in
+\code{\link[=sagemaker_create_user_profile]{create_user_profile}} take precedence
+over those specified in \code{\link[=sagemaker_create_domain]{create_domain}}.}
 
 \item{SubnetIds}{[required] The VPC subnets that Studio uses for communication.}
 
@@ -22,7 +29,10 @@ communication.}
 
 \item{Tags}{Tags to associated with the Domain. Each tag consists of a key and an
 optional value. Tag keys must be unique per resource. Tags are
-searchable using the \code{\link[=sagemaker_search]{search}} API.}
+searchable using the \code{\link[=sagemaker_search]{search}} API.
+
+Tags that you specify for the Domain are also added to all Apps that the
+Domain launches.}
 
 \item{AppNetworkAccessType}{Specifies the VPC used for non-EFS traffic. The default value is
 \code{PublicInternetOnly}.

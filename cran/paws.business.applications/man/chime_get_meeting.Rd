@@ -31,7 +31,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Gets the Amazon Chime SDK meeting details for the specified meeting ID.
 For more information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in
-the \emph{Amazon Chime Developer Guide}.
+the \emph{Amazon Chime Developer Guide} .
 }
 \section{Request syntax}{
 \preformatted{svc$get_meeting(

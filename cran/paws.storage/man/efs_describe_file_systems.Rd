@@ -37,7 +37,7 @@ A list with the following syntax:\preformatted{list(
       CreationTime = as.POSIXct(
         "2015-01-01"
       ),
-      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error",
       Name = "string",
       NumberOfMountTargets = 123,
       SizeInBytes = list(
@@ -53,6 +53,8 @@ A list with the following syntax:\preformatted{list(
       KmsKeyId = "string",
       ThroughputMode = "bursting"|"provisioned",
       ProvisionedThroughputInMibps = 123.0,
+      AvailabilityZoneName = "string",
+      AvailabilityZoneId = "string",
       Tags = list(
         list(
           Key = "string",

@@ -15,7 +15,7 @@ connect_list_quick_connects(InstanceId, NextToken, MaxResults,
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 
 \item{QuickConnectTypes}{The type of quick connect. In the Amazon Connect console, when you
 create a quick connect, you are prompted to assign one of the following

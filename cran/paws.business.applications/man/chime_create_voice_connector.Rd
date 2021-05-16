@@ -11,7 +11,7 @@ chime_create_voice_connector(Name, AwsRegion, RequireEncryption)
 \item{Name}{[required] The name of the Amazon Chime Voice Connector.}
 
 \item{AwsRegion}{The AWS Region in which the Amazon Chime Voice Connector is created.
-Default value: \code{us-east-1}.}
+Default value: \code{us-east-1} .}
 
 \item{RequireEncryption}{[required] When enabled, requires encryption for the Amazon Chime Voice Connector.}
 }

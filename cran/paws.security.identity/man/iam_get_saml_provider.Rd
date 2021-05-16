@@ -11,7 +11,7 @@ iam_get_saml_provider(SAMLProviderArn)
 \item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider resource object in
 IAM to get information about.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 }
 \value{
@@ -22,6 +22,12 @@ A list with the following syntax:\preformatted{list(
   ),
   ValidUntil = as.POSIXct(
     "2015-01-01"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

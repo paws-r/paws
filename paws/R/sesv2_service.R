@@ -134,6 +134,7 @@ NULL
 #'  \link[=sesv2_put_dedicated_ip_in_pool]{put_dedicated_ip_in_pool} \tab Move a dedicated IP address to an existing dedicated IP pool\cr
 #'  \link[=sesv2_put_dedicated_ip_warmup_attributes]{put_dedicated_ip_warmup_attributes} \tab Put dedicated ip warmup attributes\cr
 #'  \link[=sesv2_put_deliverability_dashboard_option]{put_deliverability_dashboard_option} \tab Enable or disable the Deliverability dashboard\cr
+#'  \link[=sesv2_put_email_identity_configuration_set_attributes]{put_email_identity_configuration_set_attributes} \tab Used to associate a configuration set with an email identity\cr
 #'  \link[=sesv2_put_email_identity_dkim_attributes]{put_email_identity_dkim_attributes} \tab Used to enable or disable DKIM authentication for an email identity\cr
 #'  \link[=sesv2_put_email_identity_dkim_signing_attributes]{put_email_identity_dkim_signing_attributes} \tab Used to configure or change the DKIM authentication settings for an email domain identity\cr
 #'  \link[=sesv2_put_email_identity_feedback_attributes]{put_email_identity_feedback_attributes} \tab Used to enable or disable feedback forwarding for an identity\cr

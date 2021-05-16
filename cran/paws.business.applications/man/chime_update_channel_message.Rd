@@ -4,7 +4,8 @@
 \alias{chime_update_channel_message}
 \title{Updates the content of a message}
 \usage{
-chime_update_channel_message(ChannelArn, MessageId, Content, Metadata)
+chime_update_channel_message(ChannelArn, MessageId, Content, Metadata,
+  ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
@@ -14,6 +15,8 @@ chime_update_channel_message(ChannelArn, MessageId, Content, Metadata)
 \item{Content}{The content of the message being updated.}
 
 \item{Metadata}{The metadata of the message being updated.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -24,13 +27,18 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Updates the content of a message.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$update_channel_message(
   ChannelArn = "string",
   MessageId = "string",
   Content = "string",
-  Metadata = "string"
+  Metadata = "string",
+  ChimeBearer = "string"
 )
 }
 }

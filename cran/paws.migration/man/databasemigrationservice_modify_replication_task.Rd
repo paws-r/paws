@@ -25,9 +25,9 @@ Constraints:
 \code{full-load-and-cdc}}
 
 \item{TableMappings}{When using the AWS CLI or boto3, provide the path of the JSON file that
-contains the table mappings. Precede the path with \verb{file://}. When
-working with the DMS API, provide the JSON as the parameter value, for
-example: \verb{--table-mappings file://mappingfile.json}}
+contains the table mappings. Precede the path with \verb{file://}. For
+example, \verb{--table-mappings file://mappingfile.json}. When working with
+the DMS API, provide the JSON as the parameter value.}
 
 \item{ReplicationTaskSettings}{JSON file that contains settings for the task, such as task metadata
 settings.}

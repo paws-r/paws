@@ -4,12 +4,14 @@
 \alias{chime_delete_channel_message}
 \title{Deletes a channel message}
 \usage{
-chime_delete_channel_message(ChannelArn, MessageId)
+chime_delete_channel_message(ChannelArn, MessageId, ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
 
 \item{MessageId}{[required] The ID of the message being deleted.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 An empty list.
@@ -19,11 +21,16 @@ Deletes a channel message. Only admins can perform this action. Deletion
 makes messages inaccessible immediately. A background process deletes
 any revisions created by
 \code{\link[=chime_update_channel_message]{update_channel_message}}.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_channel_message(
   ChannelArn = "string",
-  MessageId = "string"
+  MessageId = "string",
+  ChimeBearer = "string"
 )
 }
 }

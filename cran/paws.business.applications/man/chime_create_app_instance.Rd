@@ -2,16 +2,18 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_create_app_instance}
 \alias{chime_create_app_instance}
-\title{Creates an Amazon Chime Messaging SDK AppInstance under an AWS Account}
+\title{Creates an Amazon Chime SDK messaging AppInstance under an AWS account}
 \usage{
-chime_create_app_instance(Name, Metadata, ClientRequestToken)
+chime_create_app_instance(Name, Metadata, ClientRequestToken, Tags)
 }
 \arguments{
-\item{Name}{[required] The name of the app instance.}
+\item{Name}{[required] The name of the \code{AppInstance}.}
 
-\item{Metadata}{The metadata of the app instance. Limited to a 1KB string in UTF-8.}
+\item{Metadata}{The metadata of the \code{AppInstance}. Limited to a 1KB string in UTF-8.}
 
-\item{ClientRequestToken}{[required] The \code{ClientRequestToken} of the app instance.}
+\item{ClientRequestToken}{[required] The \code{ClientRequestToken} of the \code{AppInstance}.}
+
+\item{Tags}{Tags assigned to the \code{AppInstanceUser}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -20,16 +22,22 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates an Amazon Chime Messaging SDK \code{AppInstance} under an AWS
-Account. Only Messaging SDK customers use this API.
-\code{\link[=chime_create_app_instance]{create_app_instance}} supports
-\code{idempotency} behavior as described in the AWS API Standard.
+Creates an Amazon Chime SDK messaging \code{AppInstance} under an AWS
+account. Only SDK messaging customers use this API.
+\code{\link[=chime_create_app_instance]{create_app_instance}} supports idempotency
+behavior as described in the AWS API Standard.
 }
 \section{Request syntax}{
 \preformatted{svc$create_app_instance(
   Name = "string",
   Metadata = "string",
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

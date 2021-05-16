@@ -43,7 +43,7 @@ A list with the following syntax:\preformatted{list(
           S3ModelArtifacts = "string"
         ),
         TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-        SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+        SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
         FailureReason = "string",
         HyperParameters = list(
           "string"
@@ -125,7 +125,7 @@ A list with the following syntax:\preformatted{list(
         ),
         SecondaryStatusTransitions = list(
           list(
-            Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+            Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
             StartTime = as.POSIXct(
               "2015-01-01"
             ),
@@ -200,6 +200,12 @@ A list with the following syntax:\preformatted{list(
               "2015-01-01"
             )
           )
+        ),
+        Environment = list(
+          "string"
+        ),
+        RetryStrategy = list(
+          MaximumRetryAttempts = 123
         ),
         Tags = list(
           list(
@@ -381,7 +387,7 @@ A list with the following syntax:\preformatted{list(
               S3ModelArtifacts = "string"
             ),
             TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-            SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+            SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
             FailureReason = "string",
             HyperParameters = list(
               "string"
@@ -463,7 +469,7 @@ A list with the following syntax:\preformatted{list(
             ),
             SecondaryStatusTransitions = list(
               list(
-                Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+                Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
                 StartTime = as.POSIXct(
                   "2015-01-01"
                 ),
@@ -538,6 +544,12 @@ A list with the following syntax:\preformatted{list(
                   "2015-01-01"
                 )
               )
+            ),
+            Environment = list(
+              "string"
+            ),
+            RetryStrategy = list(
+              MaximumRetryAttempts = 123
             ),
             Tags = list(
               list(
@@ -1189,7 +1201,8 @@ A list with the following syntax:\preformatted{list(
         OfflineStoreConfig = list(
           S3StorageConfig = list(
             S3Uri = "string",
-            KmsKeyId = "string"
+            KmsKeyId = "string",
+            ResolvedOutputS3Uri = "string"
           ),
           DisableGlueTableCreation = TRUE|FALSE,
           DataCatalogConfig = list(

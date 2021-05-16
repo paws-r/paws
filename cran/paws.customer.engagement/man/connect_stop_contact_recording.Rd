@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_stop_contact_recording}
 \alias{connect_stop_contact_recording}
-\title{When a contact is being recorded, this API stops recording the call}
+\title{Stops recording a call when a contact is being recorded}
 \usage{
 connect_stop_contact_recording(InstanceId, ContactId, InitialContactId)
 }
@@ -18,7 +18,7 @@ associated with the first interaction with the contact center.}
 An empty list.
 }
 \description{
-When a contact is being recorded, this API stops recording the call.
+Stops recording a call when a contact is being recorded.
 StopContactRecording is a one-time action. If you use
 StopContactRecording to stop recording an ongoing call, you can't use
 StartContactRecording to restart it. For scenarios where the recording

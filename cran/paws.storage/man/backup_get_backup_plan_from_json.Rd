@@ -36,7 +36,8 @@ A list with the following syntax:\preformatted{list(
             ),
             DestinationBackupVaultArn = "string"
           )
-        )
+        ),
+        EnableContinuousBackup = TRUE|FALSE
       )
     ),
     AdvancedBackupSettings = list(

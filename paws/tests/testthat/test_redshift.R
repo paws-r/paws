@@ -32,6 +32,14 @@ test_that("describe_clusters", {
   expect_error(svc$describe_clusters(), NA)
 })
 
+test_that("describe_endpoint_access", {
+  expect_error(svc$describe_endpoint_access(), NA)
+})
+
+test_that("describe_endpoint_authorization", {
+  expect_error(svc$describe_endpoint_authorization(), NA)
+})
+
 test_that("describe_event_categories", {
   expect_error(svc$describe_event_categories(), NA)
 })

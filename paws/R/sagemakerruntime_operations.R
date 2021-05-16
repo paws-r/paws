@@ -38,7 +38,8 @@ NULL
 #'
 #' @usage
 #' sagemakerruntime_invoke_endpoint(EndpointName, Body, ContentType,
-#'   Accept, CustomAttributes, TargetModel, TargetVariant, InferenceId)
+#'   Accept, CustomAttributes, TargetModel, TargetVariant,
+#'   TargetContainerHostname, InferenceId)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
 #' endpoint using the
@@ -59,8 +60,8 @@ NULL
 #' request or to provide other metadata that a service endpoint was
 #' programmed to process. The value must consist of no more than 1024
 #' visible US-ASCII characters as specified in [Section 3.3.6. Field Value
-#' Components](https://tools.ietf.org/html/rfc7230#section-3.2.6) of the
-#' Hypertext Transfer Protocol (HTTP/1.1).
+#' Components](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.6)
+#' of the Hypertext Transfer Protocol (HTTP/1.1).
 #' 
 #' The code in your model is responsible for setting or updating any custom
 #' attributes in the response. If your code does not set this value in the
@@ -79,6 +80,9 @@ NULL
 #' For information about how to use variant targeting to perform a/b
 #' testing, see [Test models in
 #' production](https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
+#' @param TargetContainerHostname If the endpoint hosts multiple containers and is configured to use
+#' direct invocation, this parameter specifies the host name of the
+#' container to invoke.
 #' @param InferenceId If you provide a value, it is added to the captured data when you enable
 #' data capture on the endpoint. For information about data capture, see
 #' [Capture
@@ -105,6 +109,7 @@ NULL
 #'   CustomAttributes = "string",
 #'   TargetModel = "string",
 #'   TargetVariant = "string",
+#'   TargetContainerHostname = "string",
 #'   InferenceId = "string"
 #' )
 #' ```
@@ -112,14 +117,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sagemakerruntime_invoke_endpoint
-sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, InferenceId = NULL) {
+sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL) {
   op <- new_operation(
     name = "InvokeEndpoint",
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations",
     paginator = list()
   )
-  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, InferenceId = InferenceId)
+  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId)
   output <- .sagemakerruntime$invoke_endpoint_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config)

@@ -26,6 +26,12 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Retrieves a token for federation.
+
+This API doesn't support root users. If you try to invoke
+GetFederationToken with root credentials, an error message similar to
+the following one appears:
+
+\verb{Provided identity: Principal: .... User: .... cannot be used for federation with Amazon Connect}
 }
 \section{Request syntax}{
 \preformatted{svc$get_federation_token(

@@ -11,10 +11,15 @@ NULL
 #' specific account.
 #'
 #' @usage
-#' macie2_accept_invitation(invitationId, masterAccount)
+#' macie2_accept_invitation(administratorAccountId, invitationId,
+#'   masterAccount)
 #'
+#' @param administratorAccountId The AWS account ID for the account that sent the invitation.
 #' @param invitationId &#91;required&#93; The unique identifier for the invitation to accept.
-#' @param masterAccount &#91;required&#93; The AWS account ID for the account that sent the invitation.
+#' @param masterAccount (Deprecated) The AWS account ID for the account that sent the
+#' invitation. This property has been replaced by the
+#' administratorAccountId property and is retained only for backward
+#' compatibility.
 #'
 #' @return
 #' An empty list.
@@ -22,6 +27,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$accept_invitation(
+#'   administratorAccountId = "string",
 #'   invitationId = "string",
 #'   masterAccount = "string"
 #' )
@@ -30,14 +36,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname macie2_accept_invitation
-macie2_accept_invitation <- function(invitationId, masterAccount) {
+macie2_accept_invitation <- function(administratorAccountId = NULL, invitationId, masterAccount = NULL) {
   op <- new_operation(
     name = "AcceptInvitation",
     http_method = "POST",
     http_path = "/invitations/accept",
     paginator = list()
   )
-  input <- .macie2$accept_invitation_input(invitationId = invitationId, masterAccount = masterAccount)
+  input <- .macie2$accept_invitation_input(administratorAccountId = administratorAccountId, invitationId = invitationId, masterAccount = masterAccount)
   output <- .macie2$accept_invitation_output()
   config <- get_config()
   svc <- .macie2$service(config)
@@ -187,14 +193,14 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #'         and = list(
 #'           list(
 #'             simpleScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
-#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG"|"OBJECT_KEY",
 #'               values = list(
 #'                 "string"
 #'               )
 #'             ),
 #'             tagScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'               key = "string",
 #'               tagValues = list(
 #'                 list(
@@ -211,14 +217,14 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #'         and = list(
 #'           list(
 #'             simpleScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
-#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG"|"OBJECT_KEY",
 #'               values = list(
 #'                 "string"
 #'               )
 #'             ),
 #'             tagScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'               key = "string",
 #'               tagValues = list(
 #'                 list(
@@ -227,6 +233,52 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #'                 )
 #'               ),
 #'               target = "S3_OBJECT"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     bucketCriteria = list(
+#'       excludes = list(
+#'         and = list(
+#'           list(
+#'             simpleCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             tagCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               tagValues = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       includes = list(
+#'         and = list(
+#'           list(
+#'             simpleCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             tagCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               tagValues = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -297,7 +349,7 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #' @param keywords An array that lists specific character sequences (keywords), one of
 #' which must be within proximity (maximumMatchDistance) of the regular
 #' expression to match. The array can contain as many as 50 keywords. Each
-#' keyword can contain 4 - 90 characters. Keywords aren't case sensitive.
+#' keyword can contain 3 - 90 characters. Keywords aren't case sensitive.
 #' @param maximumMatchDistance The maximum number of characters that can exist between text that
 #' matches the regex pattern and the character sequences specified by the
 #' keywords array. Macie includes or excludes a result based on the
@@ -536,15 +588,15 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
 }
 .macie2$operations$create_invitations <- macie2_create_invitations
 
-#' Associates an account with an Amazon Macie master account
+#' Associates an account with an Amazon Macie administrator account
 #'
 #' @description
-#' Associates an account with an Amazon Macie master account.
+#' Associates an account with an Amazon Macie administrator account.
 #'
 #' @usage
 #' macie2_create_member(account, tags)
 #'
-#' @param account &#91;required&#93; The details for the account to associate with the master account.
+#' @param account &#91;required&#93; The details for the account to associate with the administrator account.
 #' @param tags A map of key-value pairs that specifies the tags to associate with the
 #' account in Amazon Macie.
 #' 
@@ -831,12 +883,12 @@ macie2_delete_invitations <- function(accountIds) {
 }
 .macie2$operations$delete_invitations <- macie2_delete_invitations
 
-#' Deletes the association between an Amazon Macie master account and an
-#' account
+#' Deletes the association between an Amazon Macie administrator account
+#' and an account
 #'
 #' @description
-#' Deletes the association between an Amazon Macie master account and an
-#' account.
+#' Deletes the association between an Amazon Macie administrator account
+#' and an account.
 #'
 #' @usage
 #' macie2_delete_member(id)
@@ -898,6 +950,7 @@ macie2_delete_member <- function(id) {
 #'   buckets = list(
 #'     list(
 #'       accountId = "string",
+#'       allowsUnencryptedObjectUploads = "TRUE"|"FALSE"|"UNKNOWN",
 #'       bucketArn = "string",
 #'       bucketCreatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -921,7 +974,8 @@ macie2_delete_member <- function(id) {
 #'         customerManaged = 123,
 #'         kmsManaged = 123,
 #'         s3Managed = 123,
-#'         unencrypted = 123
+#'         unencrypted = 123,
+#'         unknown = 123
 #'       ),
 #'       publicAccess = list(
 #'         effectivePermission = "PUBLIC"|"NOT_PUBLIC"|"UNKNOWN",
@@ -959,6 +1013,10 @@ macie2_delete_member <- function(id) {
 #'         replicationAccounts = list(
 #'           "string"
 #'         )
+#'       ),
+#'       serverSideEncryption = list(
+#'         kmsMasterKeyId = "string",
+#'         type = "NONE"|"AES256"|"aws:kms"
 #'       ),
 #'       sharedAccess = "EXTERNAL"|"INTERNAL"|"NOT_SHARED"|"UNKNOWN",
 #'       sizeInBytes = 123,
@@ -1081,14 +1139,14 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #'         and = list(
 #'           list(
 #'             simpleScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
-#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG"|"OBJECT_KEY",
 #'               values = list(
 #'                 "string"
 #'               )
 #'             ),
 #'             tagScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'               key = "string",
 #'               tagValues = list(
 #'                 list(
@@ -1105,14 +1163,14 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #'         and = list(
 #'           list(
 #'             simpleScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
-#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG"|"OBJECT_KEY",
 #'               values = list(
 #'                 "string"
 #'               )
 #'             ),
 #'             tagScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'               key = "string",
 #'               tagValues = list(
 #'                 list(
@@ -1121,6 +1179,52 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #'                 )
 #'               ),
 #'               target = "S3_OBJECT"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     bucketCriteria = list(
+#'       excludes = list(
+#'         and = list(
+#'           list(
+#'             simpleCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             tagCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               tagValues = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       includes = list(
+#'         and = list(
+#'           list(
+#'             simpleCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             tagCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               tagValues = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -1275,7 +1379,7 @@ macie2_disable_macie <- function() {
 #' @usage
 #' macie2_disable_organization_admin_account(adminAccountId)
 #'
-#' @param adminAccountId &#91;required&#93; The AWS account ID of the delegated administrator account.
+#' @param adminAccountId &#91;required&#93; The AWS account ID of the delegated Amazon Macie administrator account.
 #'
 #' @return
 #' An empty list.
@@ -1307,10 +1411,51 @@ macie2_disable_organization_admin_account <- function(adminAccountId) {
 }
 .macie2$operations$disable_organization_admin_account <- macie2_disable_organization_admin_account
 
-#' Disassociates a member account from its Amazon Macie master account
+#' Disassociates a member account from its Amazon Macie administrator
+#' account
 #'
 #' @description
-#' Disassociates a member account from its Amazon Macie master account.
+#' Disassociates a member account from its Amazon Macie administrator
+#' account.
+#'
+#' @usage
+#' macie2_disassociate_from_administrator_account()
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_from_administrator_account()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_disassociate_from_administrator_account
+macie2_disassociate_from_administrator_account <- function() {
+  op <- new_operation(
+    name = "DisassociateFromAdministratorAccount",
+    http_method = "POST",
+    http_path = "/administrator/disassociate",
+    paginator = list()
+  )
+  input <- .macie2$disassociate_from_administrator_account_input()
+  output <- .macie2$disassociate_from_administrator_account_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$disassociate_from_administrator_account <- macie2_disassociate_from_administrator_account
+
+#' (Deprecated) Disassociates a member account from its Amazon Macie
+#' administrator account
+#'
+#' @description
+#' (Deprecated) Disassociates a member account from its Amazon Macie
+#' administrator account. This operation has been replaced by the
+#' DisassociateFromAdministratorAccount operation.
 #'
 #' @usage
 #' macie2_disassociate_from_master_account()
@@ -1343,10 +1488,12 @@ macie2_disassociate_from_master_account <- function() {
 }
 .macie2$operations$disassociate_from_master_account <- macie2_disassociate_from_master_account
 
-#' Disassociates an Amazon Macie master account from a member account
+#' Disassociates an Amazon Macie administrator account from a member
+#' account
 #'
 #' @description
-#' Disassociates an Amazon Macie master account from a member account.
+#' Disassociates an Amazon Macie administrator account from a member
+#' account.
 #'
 #' @usage
 #' macie2_disassociate_member(id)
@@ -1399,8 +1546,8 @@ macie2_disassociate_member <- function(id) {
 #' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the
 #' account. This includes publishing updates to AWS Security Hub and Amazon
 #' EventBridge (formerly called Amazon CloudWatch Events).
-#' @param status Specifies the status for the account. To enable Amazon Macie and start
-#' all Amazon Macie activities for the account, set this value to ENABLED.
+#' @param status Specifies the new status for the account. To enable Amazon Macie and
+#' start all Macie activities for the account, set this value to ENABLED.
 #'
 #' @return
 #' An empty list.
@@ -1480,6 +1627,56 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
 }
 .macie2$operations$enable_organization_admin_account <- macie2_enable_organization_admin_account
 
+#' Retrieves information about the Amazon Macie administrator account for
+#' an account
+#'
+#' @description
+#' Retrieves information about the Amazon Macie administrator account for
+#' an account.
+#'
+#' @usage
+#' macie2_get_administrator_account()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   administrator = list(
+#'     accountId = "string",
+#'     invitationId = "string",
+#'     invitedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     relationshipStatus = "Enabled"|"Paused"|"Invited"|"Created"|"Removed"|"Resigned"|"EmailVerificationInProgress"|"EmailVerificationFailed"|"RegionDisabled"|"AccountSuspended"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_administrator_account()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_get_administrator_account
+macie2_get_administrator_account <- function() {
+  op <- new_operation(
+    name = "GetAdministratorAccount",
+    http_method = "GET",
+    http_path = "/administrator",
+    paginator = list()
+  )
+  input <- .macie2$get_administrator_account_input()
+  output <- .macie2$get_administrator_account_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$get_administrator_account <- macie2_get_administrator_account
+
 #' Retrieves (queries) aggregated statistical data for all the S3 buckets
 #' that Amazon Macie monitors and analyzes
 #'
@@ -1506,7 +1703,13 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
 #'   bucketCountByEncryptionType = list(
 #'     kmsManaged = 123,
 #'     s3Managed = 123,
-#'     unencrypted = 123
+#'     unencrypted = 123,
+#'     unknown = 123
+#'   ),
+#'   bucketCountByObjectEncryptionRequirement = list(
+#'     allowsUnencryptedObjectUploads = 123,
+#'     deniesUnencryptedObjectUploads = 123,
+#'     unknown = 123
 #'   ),
 #'   bucketCountBySharedAccessType = list(
 #'     external = 123,
@@ -2026,6 +2229,7 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 #'       region = "string",
 #'       resourcesAffected = list(
 #'         s3Bucket = list(
+#'           allowsUnencryptedObjectUploads = "TRUE"|"FALSE"|"UNKNOWN",
 #'           arn = "string",
 #'           createdAt = as.POSIXct(
 #'             "2015-01-01"
@@ -2222,6 +2426,52 @@ macie2_get_findings_filter <- function(id) {
 }
 .macie2$operations$get_findings_filter <- macie2_get_findings_filter
 
+#' Retrieves the configuration settings for publishing findings to AWS
+#' Security Hub
+#'
+#' @description
+#' Retrieves the configuration settings for publishing findings to AWS
+#' Security Hub.
+#'
+#' @usage
+#' macie2_get_findings_publication_configuration()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   securityHubConfiguration = list(
+#'     publishClassificationFindings = TRUE|FALSE,
+#'     publishPolicyFindings = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_findings_publication_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_get_findings_publication_configuration
+macie2_get_findings_publication_configuration <- function() {
+  op <- new_operation(
+    name = "GetFindingsPublicationConfiguration",
+    http_method = "GET",
+    http_path = "/findings-publication-configuration",
+    paginator = list()
+  )
+  input <- .macie2$get_findings_publication_configuration_input()
+  output <- .macie2$get_findings_publication_configuration_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$get_findings_publication_configuration <- macie2_get_findings_publication_configuration
+
 #' Retrieves the count of Amazon Macie membership invitations that were
 #' received by an account
 #'
@@ -2316,12 +2566,13 @@ macie2_get_macie_session <- function() {
 }
 .macie2$operations$get_macie_session <- macie2_get_macie_session
 
-#' Retrieves information about the Amazon Macie master account for an
-#' account
+#' (Deprecated) Retrieves information about the Amazon Macie administrator
+#' account for an account
 #'
 #' @description
-#' Retrieves information about the Amazon Macie master account for an
-#' account.
+#' (Deprecated) Retrieves information about the Amazon Macie administrator
+#' account for an account. This operation has been replaced by the
+#' GetAdministratorAccount operation.
 #'
 #' @usage
 #' macie2_get_master_account()
@@ -2366,12 +2617,12 @@ macie2_get_master_account <- function() {
 }
 .macie2$operations$get_master_account <- macie2_get_master_account
 
-#' Retrieves information about a member account that's associated with an
-#' Amazon Macie master account
+#' Retrieves information about an account that's associated with an Amazon
+#' Macie administrator account
 #'
 #' @description
-#' Retrieves information about a member account that's associated with an
-#' Amazon Macie master account.
+#' Retrieves information about an account that's associated with an Amazon
+#' Macie administrator account.
 #'
 #' @usage
 #' macie2_get_member(id)
@@ -2384,6 +2635,7 @@ macie2_get_master_account <- function() {
 #' ```
 #' list(
 #'   accountId = "string",
+#'   administratorAccountId = "string",
 #'   arn = "string",
 #'   email = "string",
 #'   invitedAt = as.POSIXct(
@@ -2435,15 +2687,20 @@ macie2_get_member <- function(id) {
 #' accounts.
 #'
 #' @usage
-#' macie2_get_usage_statistics(filterBy, maxResults, nextToken, sortBy)
+#' macie2_get_usage_statistics(filterBy, maxResults, nextToken, sortBy,
+#'   timeRange)
 #'
 #' @param filterBy An array of objects, one for each condition to use to filter the query
-#' results. If the array contains more than one object, Amazon Macie uses
-#' an AND operator to join the conditions specified by the objects.
+#' results. If you specify more than one condition, Amazon Macie uses an
+#' AND operator to join the conditions.
 #' @param maxResults The maximum number of items to include in each page of the response.
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #' @param sortBy The criteria to use to sort the query results.
+#' @param timeRange The inclusive time period to query usage data for. Valid values are:
+#' MONTH_TO_DATE, for the current calendar month to date; and,
+#' PAST_30_DAYS, for the preceding 30 days. If you don't specify a value,
+#' Amazon Macie provides usage data for the preceding 30 days.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2469,7 +2726,8 @@ macie2_get_member <- function(id) {
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   timeRange = "MONTH_TO_DATE"|"PAST_30_DAYS"
 #' )
 #' ```
 #'
@@ -2490,21 +2748,22 @@ macie2_get_member <- function(id) {
 #'   sortBy = list(
 #'     key = "accountId"|"total"|"serviceLimitValue"|"freeTrialStartDate",
 #'     orderBy = "ASC"|"DESC"
-#'   )
+#'   ),
+#'   timeRange = "MONTH_TO_DATE"|"PAST_30_DAYS"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname macie2_get_usage_statistics
-macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL) {
+macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, timeRange = NULL) {
   op <- new_operation(
     name = "GetUsageStatistics",
     http_method = "POST",
     http_path = "/usage/statistics",
     paginator = list()
   )
-  input <- .macie2$get_usage_statistics_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy)
+  input <- .macie2$get_usage_statistics_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, timeRange = timeRange)
   output <- .macie2$get_usage_statistics_output()
   config <- get_config()
   svc <- .macie2$service(config)
@@ -2520,12 +2779,19 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
 #' Retrieves (queries) aggregated usage data for an account.
 #'
 #' @usage
-#' macie2_get_usage_totals()
+#' macie2_get_usage_totals(timeRange)
+#'
+#' @param timeRange The inclusive time period to retrieve the data for. Valid values are:
+#' MONTH_TO_DATE, for the current calendar month to date; and,
+#' PAST_30_DAYS, for the preceding 30 days. If you don't specify a value
+#' for this parameter, Amazon Macie provides aggregated usage data for the
+#' preceding 30 days.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   timeRange = "MONTH_TO_DATE"|"PAST_30_DAYS",
 #'   usageTotals = list(
 #'     list(
 #'       currency = "USD",
@@ -2538,20 +2804,22 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
 #'
 #' @section Request syntax:
 #' ```
-#' svc$get_usage_totals()
+#' svc$get_usage_totals(
+#'   timeRange = "string"
+#' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname macie2_get_usage_totals
-macie2_get_usage_totals <- function() {
+macie2_get_usage_totals <- function(timeRange = NULL) {
   op <- new_operation(
     name = "GetUsageTotals",
     http_method = "GET",
     http_path = "/usage",
     paginator = list()
   )
-  input <- .macie2$get_usage_totals_input()
+  input <- .macie2$get_usage_totals_input(timeRange = timeRange)
   output <- .macie2$get_usage_totals_output()
   config <- get_config()
   svc <- .macie2$service(config)
@@ -2608,6 +2876,52 @@ macie2_get_usage_totals <- function() {
 #'         jobPausedAt = as.POSIXct(
 #'           "2015-01-01"
 #'         )
+#'       ),
+#'       bucketCriteria = list(
+#'         excludes = list(
+#'           and = list(
+#'             list(
+#'               simpleCriterion = list(
+#'                 comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'                 key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'                 values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               tagCriterion = list(
+#'                 comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'                 tagValues = list(
+#'                   list(
+#'                     key = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         includes = list(
+#'           and = list(
+#'             list(
+#'               simpleCriterion = list(
+#'                 comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'                 key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'                 values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               tagCriterion = list(
+#'                 comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'                 tagValues = list(
+#'                   list(
+#'                     key = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2621,7 +2935,7 @@ macie2_get_usage_totals <- function() {
 #'   filterCriteria = list(
 #'     excludes = list(
 #'       list(
-#'         comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'         comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'         key = "jobType"|"jobStatus"|"createdAt"|"name",
 #'         values = list(
 #'           "string"
@@ -2630,7 +2944,7 @@ macie2_get_usage_totals <- function() {
 #'     ),
 #'     includes = list(
 #'       list(
-#'         comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'         comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'         key = "jobType"|"jobStatus"|"createdAt"|"name",
 #'         values = list(
 #'           "string"
@@ -2929,11 +3243,11 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 .macie2$operations$list_invitations <- macie2_list_invitations
 
 #' Retrieves information about the accounts that are associated with an
-#' Amazon Macie master account
+#' Amazon Macie administrator account
 #'
 #' @description
 #' Retrieves information about the accounts that are associated with an
-#' Amazon Macie master account.
+#' Amazon Macie administrator account.
 #'
 #' @usage
 #' macie2_list_members(maxResults, nextToken, onlyAssociated)
@@ -2943,9 +3257,9 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #' @param onlyAssociated Specifies which accounts to include in the response, based on the status
-#' of an account's relationship with the master account. By default, the
-#' response includes only current member accounts. To include all accounts,
-#' set the value for this parameter to false.
+#' of an account's relationship with the administrator account. By default,
+#' the response includes only current member accounts. To include all
+#' accounts, set this value to false.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2954,6 +3268,7 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 #'   members = list(
 #'     list(
 #'       accountId = "string",
+#'       administratorAccountId = "string",
 #'       arn = "string",
 #'       email = "string",
 #'       invitedAt = as.POSIXct(
@@ -3171,6 +3486,199 @@ macie2_put_classification_export_configuration <- function(configuration) {
 }
 .macie2$operations$put_classification_export_configuration <- macie2_put_classification_export_configuration
 
+#' Updates the configuration settings for publishing findings to AWS
+#' Security Hub
+#'
+#' @description
+#' Updates the configuration settings for publishing findings to AWS
+#' Security Hub.
+#'
+#' @usage
+#' macie2_put_findings_publication_configuration(clientToken,
+#'   securityHubConfiguration)
+#'
+#' @param clientToken A unique, case-sensitive token that you provide to ensure the
+#' idempotency of the request.
+#' @param securityHubConfiguration The configuration settings that determine which findings to publish to
+#' AWS Security Hub.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_findings_publication_configuration(
+#'   clientToken = "string",
+#'   securityHubConfiguration = list(
+#'     publishClassificationFindings = TRUE|FALSE,
+#'     publishPolicyFindings = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_put_findings_publication_configuration
+macie2_put_findings_publication_configuration <- function(clientToken = NULL, securityHubConfiguration = NULL) {
+  op <- new_operation(
+    name = "PutFindingsPublicationConfiguration",
+    http_method = "PUT",
+    http_path = "/findings-publication-configuration",
+    paginator = list()
+  )
+  input <- .macie2$put_findings_publication_configuration_input(clientToken = clientToken, securityHubConfiguration = securityHubConfiguration)
+  output <- .macie2$put_findings_publication_configuration_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$put_findings_publication_configuration <- macie2_put_findings_publication_configuration
+
+#' Retrieves (queries) statistical data and other information about AWS
+#' resources that Amazon Macie monitors and analyzes
+#'
+#' @description
+#' Retrieves (queries) statistical data and other information about AWS
+#' resources that Amazon Macie monitors and analyzes.
+#'
+#' @usage
+#' macie2_search_resources(bucketCriteria, maxResults, nextToken,
+#'   sortCriteria)
+#'
+#' @param bucketCriteria The filter conditions that determine which S3 buckets to include or
+#' exclude from the query results.
+#' @param maxResults The maximum number of items to include in each page of the response. The
+#' default value is 50.
+#' @param nextToken The nextToken string that specifies which page of results to return in a
+#' paginated response.
+#' @param sortCriteria The criteria to use to sort the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   matchingResources = list(
+#'     list(
+#'       matchingBucket = list(
+#'         accountId = "string",
+#'         bucketName = "string",
+#'         classifiableObjectCount = 123,
+#'         classifiableSizeInBytes = 123,
+#'         jobDetails = list(
+#'           isDefinedInJob = "TRUE"|"FALSE"|"UNKNOWN",
+#'           isMonitoredByJob = "TRUE"|"FALSE"|"UNKNOWN",
+#'           lastJobId = "string",
+#'           lastJobRunTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         objectCount = 123,
+#'         objectCountByEncryptionType = list(
+#'           customerManaged = 123,
+#'           kmsManaged = 123,
+#'           s3Managed = 123,
+#'           unencrypted = 123,
+#'           unknown = 123
+#'         ),
+#'         sizeInBytes = 123,
+#'         sizeInBytesCompressed = 123,
+#'         unclassifiableObjectCount = list(
+#'           fileType = 123,
+#'           storageClass = 123,
+#'           total = 123
+#'         ),
+#'         unclassifiableObjectSizeInBytes = list(
+#'           fileType = 123,
+#'           storageClass = 123,
+#'           total = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_resources(
+#'   bucketCriteria = list(
+#'     excludes = list(
+#'       and = list(
+#'         list(
+#'           simpleCriterion = list(
+#'             comparator = "EQ"|"NE",
+#'             key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'             values = list(
+#'               "string"
+#'             )
+#'           ),
+#'           tagCriterion = list(
+#'             comparator = "EQ"|"NE",
+#'             tagValues = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     includes = list(
+#'       and = list(
+#'         list(
+#'           simpleCriterion = list(
+#'             comparator = "EQ"|"NE",
+#'             key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'             values = list(
+#'               "string"
+#'             )
+#'           ),
+#'           tagCriterion = list(
+#'             comparator = "EQ"|"NE",
+#'             tagValues = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sortCriteria = list(
+#'     attributeName = "ACCOUNT_ID"|"RESOURCE_NAME"|"S3_CLASSIFIABLE_OBJECT_COUNT"|"S3_CLASSIFIABLE_SIZE_IN_BYTES",
+#'     orderBy = "ASC"|"DESC"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_search_resources
+macie2_search_resources <- function(bucketCriteria = NULL, maxResults = NULL, nextToken = NULL, sortCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchResources",
+    http_method = "POST",
+    http_path = "/datasources/search-resources",
+    paginator = list()
+  )
+  input <- .macie2$search_resources_input(bucketCriteria = bucketCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
+  output <- .macie2$search_resources_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$search_resources <- macie2_search_resources
+
 #' Adds or updates one or more tags (keys and values) that are associated
 #' with a classification job, custom data identifier, findings filter, or
 #' member account
@@ -3242,7 +3750,7 @@ macie2_tag_resource <- function(resourceArn, tags) {
 #' @param keywords An array that lists specific character sequences (keywords), one of
 #' which must be within proximity (maximumMatchDistance) of the regular
 #' expression to match. The array can contain as many as 50 keywords. Each
-#' keyword can contain 4 - 90 characters. Keywords aren't case sensitive.
+#' keyword can contain 3 - 90 characters. Keywords aren't case sensitive.
 #' @param maximumMatchDistance The maximum number of characters that can exist between text that
 #' matches the regex pattern and the character sequences specified by the
 #' keywords array. Macie includes or excludes a result based on the
@@ -3374,9 +3882,9 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 #'     other settings for the job.
 #' 
 #' -   USER_PAUSED - Pauses the job temporarily. This value is valid only
-#'     if the job's current status is IDLE or RUNNING. If you specify this
-#'     value and the job's current status is RUNNING, Macie immediately
-#'     begins to pause all processing tasks for the job.
+#'     if the job's current status is IDLE, PAUSED, or RUNNING. If you
+#'     specify this value and the job's current status is RUNNING, Macie
+#'     immediately begins to pause all processing tasks for the job.
 #' 
 #'     If you pause a one-time job and you don't resume it within 30 days,
 #'     the job expires and Macie cancels the job. If you pause a recurring
@@ -3523,9 +4031,9 @@ macie2_update_findings_filter <- function(action = NULL, description = NULL, fin
 #' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the
 #' account. This includes publishing updates to AWS Security Hub and Amazon
 #' EventBridge (formerly called Amazon CloudWatch Events).
-#' @param status Specifies whether to change the status of the account. Valid values are:
-#' ENABLED, resume all Amazon Macie activities for the account; and,
-#' PAUSED, suspend all Macie activities for the account.
+#' @param status Specifies a new status for the account. Valid values are: ENABLED,
+#' resume all Amazon Macie activities for the account; and, PAUSED, suspend
+#' all Macie activities for the account.
 #'
 #' @return
 #' An empty list.
@@ -3558,11 +4066,11 @@ macie2_update_macie_session <- function(findingPublishingFrequency = NULL, statu
 }
 .macie2$operations$update_macie_session <- macie2_update_macie_session
 
-#' Enables an Amazon Macie master account to suspend or re-enable a member
+#' Enables an Amazon Macie administrator to suspend or re-enable a member
 #' account
 #'
 #' @description
-#' Enables an Amazon Macie master account to suspend or re-enable a member
+#' Enables an Amazon Macie administrator to suspend or re-enable a member
 #' account.
 #'
 #' @usage
@@ -3613,8 +4121,8 @@ macie2_update_member_session <- function(id, status) {
 #' @usage
 #' macie2_update_organization_configuration(autoEnable)
 #'
-#' @param autoEnable &#91;required&#93; Specifies whether Amazon Macie is enabled automatically for each
-#' account, when the account is added to the AWS organization.
+#' @param autoEnable &#91;required&#93; Specifies whether to enable Amazon Macie automatically for each account,
+#' when the account is added to the AWS organization.
 #'
 #' @return
 #' An empty list.

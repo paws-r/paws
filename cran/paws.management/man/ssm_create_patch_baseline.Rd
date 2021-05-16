@@ -25,8 +25,8 @@ For information about accepted formats for lists of approved patches and
 rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{About package name formats for approved and rejected patch lists}
 in the \emph{AWS Systems Manager User Guide}.}
 
-\item{ApprovedPatchesComplianceLevel}{Defines the compliance level for approved patches. This means that if an
-approved patch is reported as missing, this is the severity of the
+\item{ApprovedPatchesComplianceLevel}{Defines the compliance level for approved patches. When an approved
+patch is reported as missing, this value describes the severity of the
 compliance violation. The default value is UNSPECIFIED.}
 
 \item{ApprovedPatchesEnableNonSecurity}{Indicates whether the list of approved patches includes non-security

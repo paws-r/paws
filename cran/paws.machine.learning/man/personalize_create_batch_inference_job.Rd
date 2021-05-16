@@ -15,7 +15,7 @@ personalize_create_batch_inference_job(jobName, solutionVersionArn,
 to generate the batch inference recommendations.}
 
 \item{filterArn}{The ARN of the filter to apply to the batch inference job. For more
-information on using filters, see Using Filters with Amazon Personalize.}
+information on using filters, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html}{Filtering Batch Recommendations}..}
 
 \item{numResults}{The number of recommendations to retreive.}
 
@@ -25,7 +25,7 @@ recommendations on. The input material must be in JSON format.}
 \item{jobOutput}{[required] The path to the Amazon S3 bucket where the job's output will be stored.}
 
 \item{roleArn}{[required] The ARN of the Amazon Identity and Access Management role that has
-permissions to read and write to your input and out Amazon S3 buckets
+permissions to read and write to your input and output Amazon S3 buckets
 respectively.}
 
 \item{batchInferenceJobConfig}{The configuration details of a batch inference job.}

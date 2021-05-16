@@ -24,7 +24,10 @@ A list with the following syntax:\preformatted{list(
   ConformancePackRuleComplianceList = list(
     list(
       ConfigRuleName = "string",
-      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"
+      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"INSUFFICIENT_DATA",
+      Controls = list(
+        "string"
+      )
     )
   ),
   NextToken = "string"
@@ -43,7 +46,7 @@ You must provide exact rule names.
     ConfigRuleNames = list(
       "string"
     ),
-    ComplianceType = "COMPLIANT"|"NON_COMPLIANT"
+    ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"INSUFFICIENT_DATA"
   ),
   Limit = 123,
   NextToken = "string"

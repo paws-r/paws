@@ -21,24 +21,24 @@ This action is not supported by Amazon S3 on Outposts.}
 
 \item{Body}{Object data.}
 
-\item{Bucket}{[required] The bucket name to which the PUT operation was initiated.
+\item{Bucket}{[required] The bucket name to which the PUT action was initiated.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Can be used to specify caching behavior along the request/reply chain.
 For more information, see
@@ -91,7 +91,7 @@ This action is not supported by Amazon S3 on Outposts.}
 
 This action is not supported by Amazon S3 on Outposts.}
 
-\item{Key}{[required] Object key for which the PUT operation was initiated.}
+\item{Key}{[required] Object key for which the PUT action was initiated.}
 
 \item{Metadata}{A map of metadata to store with the object in S3.}
 
@@ -157,7 +157,7 @@ encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
 this header to \code{true} causes Amazon S3 to use an S3 Bucket Key for
 object encryption with SSE-KMS.
 
-Specifying this header with a PUT operation doesn’t affect bucket-level
+Specifying this header with a PUT action doesn’t affect bucket-level
 settings for S3 Bucket Key.}
 
 \item{RequestPayer}{}
@@ -172,7 +172,7 @@ parameters. (For example, "Key1=Value1")}
 \item{ObjectLockLegalHoldStatus}{Specifies whether a legal hold will be applied to this object. For more
 information about S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Object Lock}.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -214,7 +214,7 @@ value.
 The \code{Content-MD5} header is required for any request to upload an object
 with a retention period configured using Amazon S3 Object Lock. For more
 information about Amazon S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html}{Amazon S3 Object Lock Overview}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 \strong{Server-side Encryption}
 
@@ -227,7 +227,7 @@ keys (SSE-S3 or SSE-KMS). For more information, see \href{https://docs.aws.amazo
 If you request server-side encryption using AWS Key Management Service
 (SSE-KMS), you can enable an S3 Bucket Key at the object-level. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{Amazon S3 Bucket Keys}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 \strong{Access Control List (ACL)-Specific Request Headers}
 
@@ -311,26 +311,6 @@ For information about returning the versioning state of a bucket, see
 
 \examples{
 \dontrun{
-# The following example uploads and object. The request specifies the
-# optional server-side encryption option. The request also specifies
-# optional object tags. If the bucket is versioning enabled, S3 returns
-# version ID in response.
-svc$put_object(
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "exampleobject",
-  ServerSideEncryption = "AES256",
-  Tagging = "key1=value1&key2=value2"
-)
-
-# The following example creates an object. If the bucket is versioning
-# enabled, S3 returns version ID in response.
-svc$put_object(
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "objectkey"
-)
-
 # The following example uploads an object. The request specifies optional
 # object tags. The bucket is versioned, therefore S3 returns version ID of
 # the newly created object.
@@ -341,15 +321,12 @@ svc$put_object(
   Tagging = "key1=value1&key2=value2"
 )
 
-# The following example uploads an object. The request specifies optional
-# request headers to directs S3 to use specific storage class and use
-# server-side encryption.
+# The following example creates an object. If the bucket is versioning
+# enabled, S3 returns version ID in response.
 svc$put_object(
-  Body = "HappyFace.jpg",
+  Body = "filetoupload",
   Bucket = "examplebucket",
-  Key = "HappyFace.jpg",
-  ServerSideEncryption = "AES256",
-  StorageClass = "STANDARD_IA"
+  Key = "objectkey"
 )
 
 # The following example creates an object. The request also specifies
@@ -365,6 +342,27 @@ svc$put_object(
   )
 )
 
+# The following example uploads an object to a versioning-enabled bucket.
+# The source file is specified using Windows file syntax. S3 returns
+# VersionId of the newly created object.
+svc$put_object(
+  Body = "HappyFace.jpg",
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg"
+)
+
+# The following example uploads and object. The request specifies the
+# optional server-side encryption option. The request also specifies
+# optional object tags. If the bucket is versioning enabled, S3 returns
+# version ID in response.
+svc$put_object(
+  Body = "filetoupload",
+  Bucket = "examplebucket",
+  Key = "exampleobject",
+  ServerSideEncryption = "AES256",
+  Tagging = "key1=value1&key2=value2"
+)
+
 # The following example uploads and object. The request specifies optional
 # canned ACL (access control list) to all READ access to authenticated
 # users. If the bucket is versioning enabled, S3 returns version ID in
@@ -376,13 +374,15 @@ svc$put_object(
   Key = "exampleobject"
 )
 
-# The following example uploads an object to a versioning-enabled bucket.
-# The source file is specified using Windows file syntax. S3 returns
-# VersionId of the newly created object.
+# The following example uploads an object. The request specifies optional
+# request headers to directs S3 to use specific storage class and use
+# server-side encryption.
 svc$put_object(
   Body = "HappyFace.jpg",
   Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
+  Key = "HappyFace.jpg",
+  ServerSideEncryption = "AES256",
+  StorageClass = "STANDARD_IA"
 )
 }
 

@@ -133,7 +133,7 @@ scalable target on your behalf.
 
 If the service supports service-linked roles, Application Auto Scaling
 uses a service-linked role, which it creates if it does not yet exist.
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles}{Application Auto Scaling IAM Roles}.}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles}{Application Auto Scaling IAM roles}.}
 
 \item{SuspendedState}{An embedded object that contains attributes and attribute values that
 are used to suspend and resume automatic scaling. Setting the value of
@@ -153,7 +153,7 @@ suspended.
 all scaling activities that involve scheduled actions are suspended.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html}{Suspending and Resuming Scaling}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html}{Suspending and resuming scaling}
 in the \emph{Application Auto Scaling User Guide}.}
 }
 \value{

@@ -224,7 +224,8 @@ A list with the following syntax:\preformatted{list(
       ),
       createdBy = "string",
       enableECSManagedTags = TRUE|FALSE,
-      propagateTags = "TASK_DEFINITION"|"SERVICE"
+      propagateTags = "TASK_DEFINITION"|"SERVICE",
+      enableExecuteCommand = TRUE|FALSE
     )
   ),
   failures = list(

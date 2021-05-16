@@ -24,6 +24,10 @@ test_that("list_field_level_encryption_profiles", {
   expect_error(svc$list_field_level_encryption_profiles(), NA)
 })
 
+test_that("list_functions", {
+  expect_error(svc$list_functions(), NA)
+})
+
 test_that("list_key_groups", {
   expect_error(svc$list_key_groups(), NA)
 })

@@ -24,11 +24,14 @@ example, \verb{arn:aws:iam::123456789012:role/S3Access}.}
 to \code{\link[=backup_start_backup_job]{start_backup_job}}.}
 
 \item{StartWindowMinutes}{A value in minutes after a backup is scheduled before a job will be
-canceled if it doesn't start successfully. This value is optional.}
+canceled if it doesn't start successfully. This value is optional, and
+the default is 8 hours.}
 
-\item{CompleteWindowMinutes}{A value in minutes after a backup job is successfully started before it
-must be completed or it will be canceled by AWS Backup. This value is
-optional.}
+\item{CompleteWindowMinutes}{A value in minutes during which a successfully started backup must
+complete, or else AWS Backup will cancel the job. This value is
+optional. This value begins counting down from when the backup was
+scheduled. It does not add additional time for \code{StartWindowMinutes}, or
+if the backup started later than scheduled.}
 
 \item{Lifecycle}{The lifecycle defines when a protected resource is transitioned to cold
 storage and when it expires. AWS Backup will transition and expire
@@ -38,7 +41,9 @@ Backups transitioned to cold storage must be stored in cold storage for
 a minimum of 90 days. Therefore, the “expire after days” setting must be
 90 days greater than the “transition to cold after days” setting. The
 “transition to cold after days” setting cannot be changed after a backup
-has been transitioned to cold.}
+has been transitioned to cold.
+
+Only Amazon EFS file system backups can be transitioned to cold storage.}
 
 \item{RecoveryPointTags}{To help organize your resources, you can assign your own metadata to the
 resources that you create. Each tag is a key-value pair.}

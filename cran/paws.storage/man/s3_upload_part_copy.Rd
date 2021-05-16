@@ -15,22 +15,22 @@ s3_upload_part_copy(Bucket, CopySource, CopySourceIfMatch,
 \arguments{
 \item{Bucket}{[required] The bucket name.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{CopySource}{[required] Specifies the source object for the copy operation. You specify the
 value in one of two formats, depending on whether you want to access the
@@ -121,11 +121,11 @@ that the encryption key was transmitted without error.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected destination bucket owner. If the
+\item{ExpectedBucketOwner}{The account ID of the expected destination bucket owner. If the
 destination bucket is owned by a different account, the request will
 fail with an HTTP \verb{403 (Access Denied)} error.}
 
-\item{ExpectedSourceBucketOwner}{The account id of the expected source bucket owner. If the source bucket
+\item{ExpectedSourceBucketOwner}{The account ID of the expected source bucket owner. If the source bucket
 is owned by a different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -155,11 +155,10 @@ request header \code{x-amz-copy-source-range} in your request.
 
 The minimum allowable part size for a multipart upload is 5 MB. For more
 information about multipart upload limits, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html}{Quick Facts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 Instead of using an existing object as part data, you might use the
-\code{\link[=s3_upload_part]{upload_part}} operation and provide data in your
-request.
+\code{\link[=s3_upload_part]{upload_part}} action and provide data in your request.
 
 You must initiate a multipart upload before you can upload any part. In
 response to your initiate request. Amazon S3 returns a unique
@@ -170,13 +169,13 @@ For more information about using the
 \code{\link[=s3_upload_part_copy]{upload_part_copy}} operation, see the following:
 \itemize{
 \item For conceptual information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading Objects Using Multipart Upload}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 \item For information about permissions required to use the multipart
-upload API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-\item For information about copying objects using a single atomic
-operation vs. the multipart upload, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html}{Operations on Objects}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+upload API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload and Permissions}
+in the \emph{Amazon S3 User Guide}.
+\item For information about copying objects using a single atomic action
+vs. the multipart upload, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html}{Operations on Objects}
+in the \emph{Amazon S3 User Guide}.
 \item For information about using server-side encryption with
 customer-provided encryption keys with the UploadPartCopy operation,
 see \code{\link[=s3_copy_object]{copy_object}} and
@@ -289,16 +288,6 @@ byte-range copy source.}
 
 \examples{
 \dontrun{
-# The following example uploads a part of a multipart upload by copying
-# data from an existing object as data source.
-svc$upload_part_copy(
-  Bucket = "examplebucket",
-  CopySource = "/bucketname/sourceobjectkey",
-  Key = "examplelargeobject",
-  PartNumber = "1",
-  UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
-)
-
 # The following example uploads a part of a multipart upload by copying a
 # specified byte range from an existing object as data source.
 svc$upload_part_copy(
@@ -307,6 +296,16 @@ svc$upload_part_copy(
   CopySourceRange = "bytes=1-100000",
   Key = "examplelargeobject",
   PartNumber = "2",
+  UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
+)
+
+# The following example uploads a part of a multipart upload by copying
+# data from an existing object as data source.
+svc$upload_part_copy(
+  Bucket = "examplebucket",
+  CopySource = "/bucketname/sourceobjectkey",
+  Key = "examplelargeobject",
+  PartNumber = "1",
   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
 )
 }

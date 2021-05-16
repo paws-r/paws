@@ -23,7 +23,7 @@ value.}
 
 \item{taskDefinition}{[required] The task definition for the tasks in the task set to use.}
 
-\item{networkConfiguration}{}
+\item{networkConfiguration}{An object representing the network configuration for a task set.}
 
 \item{loadBalancers}{A load balancer object representing the load balancer to use with the
 task set. The supported load balancer types are either an Application
@@ -75,7 +75,8 @@ platform version is specified only for tasks using the Fargate launch
 type. If one isn't specified, the \code{LATEST} platform version is used by
 default.}
 
-\item{scale}{}
+\item{scale}{A floating-point percentage of the desired number of tasks to place and
+keep running in the task set.}
 
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. Up to 32 ASCII characters are allowed.}

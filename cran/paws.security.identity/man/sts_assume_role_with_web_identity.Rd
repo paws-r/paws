@@ -46,14 +46,14 @@ want to use as managed session policies. The policies must exist in the
 same account as the role.
 
 This parameter is optional. You can provide up to 10 managed policy
-ARNs. However, the plain text that you use for both inline and managed
+ARNs. However, the plaintext that you use for both inline and managed
 session policies can't exceed 2,048 characters. For more information
 about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the AWS General Reference.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
+can fail for this limit even if your plaintext meets the other
 requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -80,7 +80,7 @@ by the identity-based policy of the role that is being assumed. For more
 information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session Policies}
 in the \emph{IAM User Guide}.
 
-The plain text that you use for both inline and managed session policies
+The plaintext that you use for both inline and managed session policies
 can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
 character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
@@ -88,7 +88,7 @@ character list (\code{U+0020} through \verb{U+00FF}). It can also include the ta
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
+can fail for this limit even if your plaintext meets the other
 requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.}
@@ -129,7 +129,8 @@ A list with the following syntax:\preformatted{list(
   ),
   PackedPolicySize = 123,
   Provider = "string",
-  Audience = "string"
+  Audience = "string",
+  SourceIdentity = "string"
 )
 }
 }
@@ -195,7 +196,7 @@ exception: you cannot call the STS
 (Optional) You can pass inline or managed \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{session policies}
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed policies
-to use as managed session policies. The plain text that you use for both
+to use as managed session policies. The plaintext that you use for both
 inline and managed session policies can't exceed 2,048 characters.
 Passing policies to this operation returns new temporary credentials.
 The resulting session's permissions are the intersection of the role's
@@ -214,14 +215,14 @@ and an associated value. For more information about session tags, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html}{Passing Session Tags in STS}
 in the \emph{IAM User Guide}.
 
-You can pass up to 50 session tags. The plain text session tag keys
-can’t exceed 128 characters and the values can’t exceed 256 characters.
-For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
+You can pass up to 50 session tags. The plaintext session tag keys can’t
+exceed 128 characters and the values can’t exceed 256 characters. For
+these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
+can fail for this limit even if your plaintext meets the other
 requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -254,7 +255,7 @@ Calling
 \code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}} can
 result in an entry in your AWS CloudTrail logs. The entry includes the
 \href{https://openid.net/specs/openid-connect-core-1_0.html#Claims}{Subject}
-of the provided Web Identity Token. We recommend that you avoid using
+of the provided web identity token. We recommend that you avoid using
 any personally identifiable information (PII) in this field. For
 example, you could instead use a GUID or a pairwise identifier, as
 \href{https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes}{suggested in the OIDC specification}.

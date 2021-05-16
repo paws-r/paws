@@ -13,8 +13,8 @@ batch_submit_job(jobName, jobQueue, arrayProperties, dependsOn,
 128 letters (uppercase and lowercase), numbers, hyphens, and underscores
 are allowed.}
 
-\item{jobQueue}{[required] The job queue into which the job is submitted. You can specify either
-the name or the Amazon Resource Name (ARN) of the queue.}
+\item{jobQueue}{[required] The job queue where the job is submitted. You can specify either the
+name or the Amazon Resource Name (ARN) of the queue.}
 
 \item{arrayProperties}{The array properties for the submitted job, such as the size of the
 array. The array size can be between 2 and 10,000. If you specify array
@@ -41,13 +41,13 @@ are specified as a key and value pair mapping. Parameters in a
 \code{\link[=batch_submit_job]{submit_job}} request override any corresponding
 parameter defaults from the job definition.}
 
-\item{containerOverrides}{A list of container overrides in JSON format that specify the name of a
-container in the specified job definition and the overrides it should
-receive. You can override the default command for a container (that's
-specified in the job definition or the Docker image) with a \code{command}
-override. You can also override existing environment variables (that are
-specified in the job definition or Docker image) on a container or add
-new environment variables to it with an \code{environment} override.}
+\item{containerOverrides}{A list of container overrides in the JSON format that specify the name
+of a container in the specified job definition and the overrides it
+should receive. You can override the default command for a container,
+which is specified in the job definition or the Docker image, with a
+\code{command} override. You can also override existing environment variables
+on a container or add new environment variables to it with an
+\code{environment} override.}
 
 \item{nodeOverrides}{A list of node overrides in JSON format that specify the node range to
 target and the container overrides for that node range.
@@ -93,13 +93,18 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Submits an AWS Batch job from a job definition. Parameters specified
-during \code{\link[=batch_submit_job]{submit_job}} override parameters defined in
-the job definition.
+Submits an AWS Batch job from a job definition. Parameters that are
+specified during \code{\link[=batch_submit_job]{submit_job}} override parameters
+defined in the job definition. vCPU and memory requirements that are
+specified in the \code{ResourceRequirements} objects in the job definition
+are the exception. They can't be overridden this way using the \code{memory}
+and \code{vcpus} parameters. Rather, you must specify updates to job
+definition parameters in a \code{ResourceRequirements} object that's included
+in the \code{containerOverrides} parameter.
 
-Jobs run on Fargate resources don't run for more than 14 days. After 14
-days, the Fargate resources might no longer be available and the job is
-terminated.
+Jobs that run on Fargate resources can't be guaranteed to run for more
+than 14 days. This is because, after 14 days, Fargate resources might
+become unavailable and job might be terminated.
 }
 \section{Request syntax}{
 \preformatted{svc$submit_job(

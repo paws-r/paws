@@ -45,8 +45,8 @@ You can optionally retrieve the latest serial console output at any time
 during the instance lifecycle. This option is supported on instance
 types that use the Nitro hypervisor.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output}{Instance Console Output}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output}{Instance console output}
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_console_output(

@@ -7,9 +7,9 @@
 chime_create_sip_media_application(AwsRegion, Name, Endpoints)
 }
 \arguments{
-\item{AwsRegion}{[required] AWS Region assigned to the SIP media application.}
+\item{AwsRegion}{[required] The AWS Region assigned to the SIP media application.}
 
-\item{Name}{The SIP media application name.}
+\item{Name}{[required] The SIP media application name.}
 
 \item{Endpoints}{[required] List of endpoints (Lambda Amazon Resource Names) specified for the SIP
 media application. Currently, only one endpoint is supported.}

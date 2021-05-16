@@ -2,12 +2,12 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_describe_auto_ml_job}
 \alias{sagemaker_describe_auto_ml_job}
-\title{Returns information about an Amazon SageMaker job}
+\title{Returns information about an Amazon SageMaker AutoML job}
 \usage{
 sagemaker_describe_auto_ml_job(AutoMLJobName)
 }
 \arguments{
-\item{AutoMLJobName}{[required] Request information about a job using that job's unique name.}
+\item{AutoMLJobName}{[required] Requests information about an AutoML job using its unique name.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -63,6 +63,11 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   ),
   FailureReason = "string",
+  PartialFailureReasons = list(
+    list(
+      PartialFailureMessage = "string"
+    )
+  ),
   BestCandidate = list(
     CandidateName = "string",
     FinalAutoMLJobObjectiveMetric = list(
@@ -97,10 +102,15 @@ A list with the following syntax:\preformatted{list(
     LastModifiedTime = as.POSIXct(
       "2015-01-01"
     ),
-    FailureReason = "string"
+    FailureReason = "string",
+    CandidateProperties = list(
+      CandidateArtifactLocations = list(
+        Explainability = "string"
+      )
+    )
   ),
   AutoMLJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-  AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated",
+  AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated"|"GeneratingExplainabilityReport"|"Completed"|"ExplainabilityError"|"DeployingModel"|"ModelDeploymentError",
   GenerateCandidateDefinitionsOnly = TRUE|FALSE,
   AutoMLJobArtifacts = list(
     CandidateDefinitionNotebookLocation = "string",
@@ -116,12 +126,19 @@ A list with the following syntax:\preformatted{list(
       MaxRuntimePerTrainingJobInSeconds = 123,
       MaxAutoMLJobRuntimeInSeconds = 123
     )
+  ),
+  ModelDeployConfig = list(
+    AutoGenerateEndpointName = TRUE|FALSE,
+    EndpointName = "string"
+  ),
+  ModelDeployResult = list(
+    EndpointName = "string"
   )
 )
 }
 }
 \description{
-Returns information about an Amazon SageMaker job.
+Returns information about an Amazon SageMaker AutoML job.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_auto_ml_job(

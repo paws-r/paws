@@ -48,6 +48,11 @@ A list with the following syntax:\preformatted{list(
         IsWriter = TRUE|FALSE,
         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
       )
+    ),
+    FailoverState = list(
+      Status = "pending"|"failing-over"|"cancelling",
+      FromDbClusterArn = "string",
+      ToDbClusterArn = "string"
     )
   )
 )

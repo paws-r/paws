@@ -17,13 +17,13 @@ NULL
 
 .customerprofiles$create_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Matching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .customerprofiles$create_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Matching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,7 +119,7 @@ NULL
 
 .customerprofiles$get_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Stats = structure(list(ProfileCount = structure(logical(0), tags = list(type = "long")), MeteringProfileCount = structure(logical(0), tags = list(type = "long")), ObjectCount = structure(logical(0), tags = list(type = "long")), TotalSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Stats = structure(list(ProfileCount = structure(logical(0), tags = list(type = "long")), MeteringProfileCount = structure(logical(0), tags = list(type = "long")), ObjectCount = structure(logical(0), tags = list(type = "long")), TotalSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), Matching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -132,6 +132,18 @@ NULL
 .customerprofiles$get_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), Uri = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.customerprofiles$get_matches_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.customerprofiles$get_matches_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MatchGenerationDate = structure(logical(0), tags = list(type = "timestamp")), PotentialMatches = structure(logical(0), tags = list(type = "integer")), Matches = structure(list(structure(list(MatchId = structure(logical(0), tags = list(type = "string")), ProfileIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -243,9 +255,21 @@ NULL
   return(populate(args, shape))
 }
 
+.customerprofiles$merge_profiles_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MainProfileId = structure(logical(0), tags = list(type = "string")), ProfileIdsToBeMerged = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FieldSourceProfileIds = structure(list(AccountNumber = structure(logical(0), tags = list(type = "string")), AdditionalInformation = structure(logical(0), tags = list(type = "string")), PartyType = structure(logical(0), tags = list(type = "string")), BusinessName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), MiddleName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), BirthDate = structure(logical(0), tags = list(type = "string")), Gender = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), MobilePhoneNumber = structure(logical(0), tags = list(type = "string")), HomePhoneNumber = structure(logical(0), tags = list(type = "string")), BusinessPhoneNumber = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), PersonalEmailAddress = structure(logical(0), tags = list(type = "string")), BusinessEmailAddress = structure(logical(0), tags = list(type = "string")), Address = structure(logical(0), tags = list(type = "string")), ShippingAddress = structure(logical(0), tags = list(type = "string")), MailingAddress = structure(logical(0), tags = list(type = "string")), BillingAddress = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.customerprofiles$merge_profiles_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .customerprofiles$put_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Uri = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Uri = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), FlowDefinition = structure(list(Description = structure(logical(0), tags = list(type = "string")), FlowName = structure(logical(0), tags = list(type = "string")), KmsArn = structure(logical(0), tags = list(type = "string")), SourceFlowConfig = structure(list(ConnectorProfileName = structure(logical(0), tags = list(type = "string")), ConnectorType = structure(logical(0), tags = list(type = "string")), IncrementalPullConfig = structure(list(DatetimeTypeFieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceConnectorProperties = structure(list(Marketo = structure(list(Object = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3 = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Salesforce = structure(list(Object = structure(logical(0), tags = list(type = "string")), EnableDynamicFieldUpdate = structure(logical(0), tags = list(type = "boolean")), IncludeDeletedRecords = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServiceNow = structure(list(Object = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Zendesk = structure(list(Object = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tasks = structure(list(structure(list(ConnectorOperator = structure(list(Marketo = structure(logical(0), tags = list(type = "string")), S3 = structure(logical(0), tags = list(type = "string")), Salesforce = structure(logical(0), tags = list(type = "string")), ServiceNow = structure(logical(0), tags = list(type = "string")), Zendesk = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationField = structure(logical(0), tags = list(type = "string")), SourceFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TaskProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), TaskType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TriggerConfig = structure(list(TriggerType = structure(logical(0), tags = list(type = "string")), TriggerProperties = structure(list(Scheduled = structure(list(ScheduleExpression = structure(logical(0), tags = list(type = "string")), DataPullMode = structure(logical(0), tags = list(type = "string")), ScheduleStartTime = structure(logical(0), tags = list(type = "timestamp")), ScheduleEndTime = structure(logical(0), tags = list(type = "timestamp")), Timezone = structure(logical(0), tags = list(type = "string")), ScheduleOffset = structure(logical(0), tags = list(box = TRUE, type = "long")), FirstExecutionFrom = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -317,13 +341,13 @@ NULL
 
 .customerprofiles$update_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Matching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .customerprofiles$update_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Matching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

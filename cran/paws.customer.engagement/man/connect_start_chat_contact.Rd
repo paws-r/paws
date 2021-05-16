@@ -20,8 +20,8 @@ last part of the ARN, shown here in bold:
 arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/\strong{846ec553-a005-41c0-8341-xxxxxxxxxxxx}}
 
 \item{Attributes}{A custom key-value pair using an attribute map. The attributes are
-standard Amazon Connect attributes, and can be accessed in contact flows
-just like any other contact attributes.
+standard Amazon Connect attributes. They can be accessed in contact
+flows just like any other contact attributes.
 
 There can be up to 32,768 UTF-8 bytes across all key-value pairs per
 contact. Attribute keys can include only alphanumeric, dash, and
@@ -48,22 +48,22 @@ of this API provides a token required to obtain credentials from the
 \href{https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html}{CreateParticipantConnection}
 API in the Amazon Connect Participant Service.
 
-When a new chat contact is successfully created, clients need to
-subscribe to the participant’s connection for the created chat within 5
-minutes. This is achieved by invoking
+When a new chat contact is successfully created, clients must subscribe
+to the participant’s connection for the created chat within 5 minutes.
+This is achieved by invoking
 \href{https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html}{CreateParticipantConnection}
 with WEBSOCKET and CONNECTION_CREDENTIALS.
 
 A 429 error occurs in two situations:
 \itemize{
 \item API rate limit is exceeded. API TPS throttling returns a
-\code{TooManyRequests} exception from the API Gateway.
+\code{TooManyRequests} exception.
 \item The \href{https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html}{quota for concurrent active chats}
 is exceeded. Active chat throttling returns a
 \code{LimitExceededException}.
 }
 
-For more information about how chat works, see
+For more information about chat, see
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/chat.html}{Chat}
 in the \emph{Amazon Connect Administrator Guide}.
 }

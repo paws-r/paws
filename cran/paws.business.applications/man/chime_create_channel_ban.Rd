@@ -4,12 +4,14 @@
 \alias{chime_create_channel_ban}
 \title{Permanently bans a member from a channel}
 \usage{
-chime_create_channel_ban(ChannelArn, MemberArn)
+chime_create_channel_ban(ChannelArn, MemberArn, ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the ban request.}
 
 \item{MemberArn}{[required] The ARN of the member being banned.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -30,11 +32,16 @@ cleaned up when you delete users or channels.
 
 If you ban a user who is already part of a channel, that user is
 automatically kicked from the channel.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$create_channel_ban(
   ChannelArn = "string",
-  MemberArn = "string"
+  MemberArn = "string",
+  ChimeBearer = "string"
 )
 }
 }

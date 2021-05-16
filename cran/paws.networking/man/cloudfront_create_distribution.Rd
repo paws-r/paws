@@ -165,6 +165,15 @@ A list with the following syntax:\preformatted{list(
             )
           )
         ),
+        FunctionAssociations = list(
+          Quantity = 123,
+          Items = list(
+            list(
+              FunctionARN = "string",
+              EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+            )
+          )
+        ),
         FieldLevelEncryptionId = "string",
         RealtimeLogConfigArn = "string",
         CachePolicyId = "string",
@@ -239,6 +248,15 @@ A list with the following syntax:\preformatted{list(
                   LambdaFunctionARN = "string",
                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
                   IncludeBody = TRUE|FALSE
+                )
+              )
+            ),
+            FunctionAssociations = list(
+              Quantity = 123,
+              Items = list(
+                list(
+                  FunctionARN = "string",
+                  EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
                 )
               )
             ),
@@ -462,6 +480,15 @@ in the \emph{Amazon CloudFront Developer Guide}.
           )
         )
       ),
+      FunctionAssociations = list(
+        Quantity = 123,
+        Items = list(
+          list(
+            FunctionARN = "string",
+            EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+          )
+        )
+      ),
       FieldLevelEncryptionId = "string",
       RealtimeLogConfigArn = "string",
       CachePolicyId = "string",
@@ -536,6 +563,15 @@ in the \emph{Amazon CloudFront Developer Guide}.
                 LambdaFunctionARN = "string",
                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
                 IncludeBody = TRUE|FALSE
+              )
+            )
+          ),
+          FunctionAssociations = list(
+            Quantity = 123,
+            Items = list(
+              list(
+                FunctionARN = "string",
+                EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
               )
             )
           ),

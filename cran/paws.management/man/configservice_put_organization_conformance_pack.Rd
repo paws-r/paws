@@ -21,15 +21,14 @@ You must have access to read Amazon S3 bucket.}
 containing the template body with a minimum length of 1 byte and a
 maximum length of 51,200 bytes.}
 
-\item{DeliveryS3Bucket}{Location of an Amazon S3 bucket where AWS Config can deliver evaluation
-results. AWS Config stores intermediate files while processing
-conformance pack template.
+\item{DeliveryS3Bucket}{Amazon S3 bucket where AWS Config stores conformance pack templates.
 
-The delivery bucket name should start with awsconfigconforms. For
-example: "Resource": "arn:aws:s3:::your_bucket_name/*". For more
-information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html}{Permissions for cross account bucket access}.}
+This field is optional. If used, it must be prefixed with
+\code{awsconfigconforms}.}
 
-\item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.}
+\item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.
+
+This field is optional.}
 
 \item{ConformancePackInputParameters}{A list of \code{ConformancePackInputParameter} objects.}
 
@@ -70,8 +69,8 @@ AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS
 and UPDATE_IN_PROGRESS until the conformance pack is created or
 updated. You cannot update a conformance pack while it is in this state.
 
-You can create 6 conformance packs with 25 AWS Config rules in each pack
-and 3 delegated administrator per organization.
+You can create 50 conformance packs with 25 AWS Config rules in each
+pack and 3 delegated administrator per organization.
 }
 \section{Request syntax}{
 \preformatted{svc$put_organization_conformance_pack(

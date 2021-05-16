@@ -8,7 +8,7 @@ on-premises data center}
 snowball_create_job(JobType, Resources, Description, AddressId,
   KmsKeyARN, RoleARN, SnowballCapacityPreference, ShippingOption,
   Notification, ClusterId, SnowballType, ForwardingAddressId,
-  TaxDocuments, DeviceConfiguration)
+  TaxDocuments, DeviceConfiguration, LongTermPricingId)
 }
 \arguments{
 \item{JobType}{Defines the type of job that you're creating.}
@@ -42,7 +42,13 @@ AWS Identity and Access Management (IAM) API action.}
 
 \item{SnowballCapacityPreference}{If your job is being created in one of the US regions, you have the
 option of specifying what size Snow device you'd like for this job. In
-all other regions, Snowballs come with 80 TB in storage capacity.}
+all other regions, Snowballs come with 80 TB in storage capacity.
+
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide} or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide}.}
 
 \item{ShippingOption}{The shipping speed for this job. This speed doesn't dictate how soon
 you'll get the Snow device, rather it represents how quickly the Snow
@@ -75,14 +81,28 @@ The type of AWS Snow device to use for this job. Currently, the only
 supported device type for cluster jobs is \code{EDGE}.
 
 For more information, see \href{https://docs.aws.amazon.com/snowball/latest/developer-guide/device-differences.html}{Snowball Edge Device Options}
-in the Snowball Edge Developer Guide.}
+in the Snowball Edge Developer Guide.
+
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide} or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide}.}
 
 \item{ForwardingAddressId}{The forwarding address ID for a job. This field is not supported in most
 regions.}
 
 \item{TaxDocuments}{The tax documents required in your AWS Region.}
 
-\item{DeviceConfiguration}{Defines the device configuration for an AWS Snowcone job.}
+\item{DeviceConfiguration}{Defines the device configuration for an AWS Snowcone job.
+
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide} or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the \emph{Snowcone User Guide}.}
+
+\item{LongTermPricingId}{The ID of the long term pricing type for the device.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -97,6 +117,65 @@ policies and permissions in place to create a job for a Snow device. If
 you're creating a job for a node in a cluster, you only need to provide
 the \code{clusterId} value; the other job attributes are inherited from the
 cluster.
+
+Only the Snowball; Edge device type is supported when ordering clustered
+jobs.
+
+The device capacity is optional.
+
+Availability of device types differ by AWS Region. For more information
+about region availability, see \href{https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/?p=ngi&loc=4}{AWS Regional Services}.
+
+\strong{AWS Snow Family device types and their capacities.}
+\itemize{
+\item Snow Family device type: \strong{SNC1_SSD}
+\itemize{
+\item Capacity: T14
+\item Description: Snowcone
+}
+\item Snow Family device type: \strong{SNC1_HDD}
+\itemize{
+\item Capacity: T8
+\item Description: Snowcone
+}
+\item Device type: \strong{EDGE_S}
+\itemize{
+\item Capacity: T98
+\item Description: Snowball Edge Storage Optimized for data transfer
+only
+}
+\item Device type: \strong{EDGE_CG}
+\itemize{
+\item Capacity: T42
+\item Description: Snowball Edge Compute Optimized with GPU
+}
+\item Device type: \strong{EDGE_C}
+\itemize{
+\item Capacity: T42
+\item Description: Snowball Edge Compute Optimized without GPU
+}
+\item Device type: \strong{EDGE}
+\itemize{
+\item Capacity: T100
+\item Description: Snowball Edge Storage Optimized with EC2 Compute
+}
+\item Device type: \strong{STANDARD}
+\itemize{
+\item Capacity: T50
+\item Description: Original Snowball device
+
+This device is only available in the Ningxia, Beijing, and
+Singapore AWS Regions.
+}
+\item Device type: \strong{STANDARD}
+\itemize{
+\item Capacity: T80
+\item Description: Original Snowball device
+
+This device is only available in the Ningxia, Beijing, and
+Singapore AWS Regions.
+}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_job(
@@ -132,7 +211,7 @@ cluster.
   AddressId = "string",
   KmsKeyARN = "string",
   RoleARN = "string",
-  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"T14"|"NoPreference",
   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
   Notification = list(
     SnsTopicARN = "string",
@@ -142,7 +221,7 @@ cluster.
     NotifyAll = TRUE|FALSE
   ),
   ClusterId = "string",
-  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
   ForwardingAddressId = "string",
   TaxDocuments = list(
     IND = list(
@@ -155,7 +234,8 @@ cluster.
         IsWifiEnabled = TRUE|FALSE
       )
     )
-  )
+  ),
+  LongTermPricingId = "string"
 )
 }
 }

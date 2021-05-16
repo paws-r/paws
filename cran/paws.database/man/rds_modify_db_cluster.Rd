@@ -93,8 +93,8 @@ automated backups are enabled, using the \code{BackupRetentionPeriod}
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available, see
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
+block of time for each AWS Region. To view the time blocks available,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow}{Backup window}
 in the \emph{Amazon Aurora User Guide.}
 
 Constraints:
@@ -216,12 +216,19 @@ in the \emph{Amazon Aurora User Guide}.}
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB cluster to
 snapshots of the DB cluster. The default is not to copy them.}
 
-\item{EnableGlobalWriteForwarding}{A value that indicates whether to enable write operations to be
-forwarded from this cluster to the primary cluster in an Aurora global
-database. The resulting changes are replicated back to this cluster.
-This parameter only applies to DB clusters that are secondary clusters
-in an Aurora global database. By default, Aurora disallows write
-operations for secondary clusters.}
+\item{EnableGlobalWriteForwarding}{A value that indicates whether to enable this DB cluster to forward
+write operations to the primary cluster of an Aurora global database
+(GlobalCluster). By default, write operations are not allowed on Aurora
+DB clusters that are secondary clusters in an Aurora global database.
+
+You can set this value only on Aurora DB clusters that are members of an
+Aurora global database. With this parameter enabled, a secondary cluster
+can forward writes to the current primary cluster and the resulting
+changes are replicated back to this cluster. For the primary DB cluster
+of an Aurora global database, this value is used immediately if the
+primary is demoted by the
+\code{\link[=rds_failover_global_cluster]{failover_global_cluster}} API operation,
+but it does nothing until then.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

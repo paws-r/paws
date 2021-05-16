@@ -5,7 +5,7 @@
 \title{Sends a message to a particular channel that the member is a part of}
 \usage{
 chime_send_channel_message(ChannelArn, Content, Type, Persistence,
-  Metadata, ClientRequestToken)
+  Metadata, ClientRequestToken, ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
@@ -20,6 +20,8 @@ Required.}
 \item{Metadata}{The optional metadata for each message.}
 
 \item{ClientRequestToken}{[required] The \code{Idempotency} token for each client request.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -31,8 +33,13 @@ A list with the following syntax:\preformatted{list(
 \description{
 Sends a message to a particular channel that the member is a part of.
 
-\code{STANDARD} messages can contain 4KB of data and the 1KB of metadata.
-\code{CONTROL} messages can contain 30 bytes of data and no metadata.
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
+
+Also, \code{STANDARD} messages can contain 4KB of data and the 1KB of
+metadata. \code{CONTROL} messages can contain 30 bytes of data and no
+metadata.
 }
 \section{Request syntax}{
 \preformatted{svc$send_channel_message(
@@ -41,7 +48,8 @@ Sends a message to a particular channel that the member is a part of.
   Type = "STANDARD"|"CONTROL",
   Persistence = "PERSISTENT"|"NON_PERSISTENT",
   Metadata = "string",
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  ChimeBearer = "string"
 )
 }
 }

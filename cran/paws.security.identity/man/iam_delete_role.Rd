@@ -18,7 +18,7 @@ An empty list.
 }
 \description{
 Deletes the specified role. The role must not have any policies
-attached. For more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
+attached. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with roles}.
 
 Make sure that you do not have any Amazon EC2 instances running with the
 role you are about to delete. Deleting a role or instance profile that

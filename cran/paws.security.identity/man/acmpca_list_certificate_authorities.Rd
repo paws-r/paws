@@ -126,7 +126,8 @@ A list with the following syntax:\preformatted{list(
       ),
       RestorableUntil = as.POSIXct(
         "2015-01-01"
-      )
+      ),
+      KeyStorageSecurityStandard = "FIPS_140_2_LEVEL_2_OR_HIGHER"|"FIPS_140_2_LEVEL_3_OR_HIGHER"
     )
   ),
   NextToken = "string"

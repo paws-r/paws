@@ -35,6 +35,12 @@ Creates an \emph{action}. An action is a lineage tracking entity that
 represents an action or activity. For example, a model deployment or an
 HPO job. Generally, an action involves at least one input or output
 artifact. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
+
+\code{\link[=sagemaker_create_action]{create_action}} can only be invoked from
+within an SageMaker managed environment. This includes SageMaker
+training jobs, processing jobs, transform jobs, and SageMaker notebooks.
+A call to \code{\link[=sagemaker_create_action]{create_action}} from outside one of
+these environments results in an error.
 }
 \section{Request syntax}{
 \preformatted{svc$create_action(

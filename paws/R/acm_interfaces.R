@@ -47,6 +47,16 @@ NULL
   return(populate(args, shape))
 }
 
+.acm$get_account_configuration_input <- function(...) {
+  list()
+}
+
+.acm$get_account_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ExpiryEvents = structure(list(DaysBeforeExpiry = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .acm$get_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -93,6 +103,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.acm$put_account_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ExpiryEvents = structure(list(DaysBeforeExpiry = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), IdempotencyToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.acm$put_account_configuration_output <- function(...) {
+  list()
 }
 
 .acm$remove_tags_from_certificate_input <- function(...) {

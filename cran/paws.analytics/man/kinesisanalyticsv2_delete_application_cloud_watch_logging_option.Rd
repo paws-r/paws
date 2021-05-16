@@ -6,19 +6,26 @@
 application}
 \usage{
 kinesisanalyticsv2_delete_application_cloud_watch_logging_option(
-  ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId)
+  ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId,
+  ConditionalToken)
 }
 \arguments{
 \item{ApplicationName}{[required] The application name.}
 
-\item{CurrentApplicationVersionId}{[required] The version ID of the application. You can retrieve the application
-version ID using
+\item{CurrentApplicationVersionId}{The version ID of the application. You must provide the
+\code{ApplicationVersionID} or the \code{ConditionalToken}. You can retrieve the
+application version ID using
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 
 \item{CloudWatchLoggingOptionId}{[required] The \code{CloudWatchLoggingOptionId} of the Amazon CloudWatch logging option
 to delete. You can get the \code{CloudWatchLoggingOptionId} by using the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation.}
+
+\item{ConditionalToken}{A value you use to implement strong concurrency for application updates.
+You must provide the \code{ApplicationVersionID} or the \code{ConditionalToken}.
+You get the application's current \code{ConditionalToken} using
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -42,7 +49,8 @@ application.
 \preformatted{svc$delete_application_cloud_watch_logging_option(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
-  CloudWatchLoggingOptionId = "string"
+  CloudWatchLoggingOptionId = "string",
+  ConditionalToken = "string"
 )
 }
 }

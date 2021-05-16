@@ -21,10 +21,9 @@ sagemaker_list_auto_ml_jobs(CreationTimeAfter, CreationTimeBefore,
 
 \item{StatusEquals}{Request a list of jobs, using a filter for status.}
 
-\item{SortOrder}{The sort order for the results. The default is Descending.}
+\item{SortOrder}{The sort order for the results. The default is \code{Descending}.}
 
-\item{SortBy}{The parameter by which to sort the results. The default is
-AutoMLJobName.}
+\item{SortBy}{The parameter by which to sort the results. The default is \code{Name}.}
 
 \item{MaxResults}{Request a list of jobs up to a specified limit.}
 
@@ -38,7 +37,7 @@ A list with the following syntax:\preformatted{list(
       AutoMLJobName = "string",
       AutoMLJobArn = "string",
       AutoMLJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-      AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated",
+      AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated"|"GeneratingExplainabilityReport"|"Completed"|"ExplainabilityError"|"DeployingModel"|"ModelDeploymentError",
       CreationTime = as.POSIXct(
         "2015-01-01"
       ),
@@ -48,7 +47,12 @@ A list with the following syntax:\preformatted{list(
       LastModifiedTime = as.POSIXct(
         "2015-01-01"
       ),
-      FailureReason = "string"
+      FailureReason = "string",
+      PartialFailureReasons = list(
+        list(
+          PartialFailureMessage = "string"
+        )
+      )
     )
   ),
   NextToken = "string"

@@ -72,7 +72,7 @@ For more information about the different types of AWS Health events, see
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
 \code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
-operation from your organization's master AWS account.
+operation from your organization's management account.
 
 This API operation uses pagination. Specify the \code{nextToken} parameter in
 the next request to return more results.

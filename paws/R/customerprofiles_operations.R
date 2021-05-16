@@ -80,7 +80,7 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #'
 #' @usage
 #' customerprofiles_create_domain(DomainName, DefaultExpirationDays,
-#'   DefaultEncryptionKey, DeadLetterQueueUrl, Tags)
+#'   DefaultEncryptionKey, DeadLetterQueueUrl, Matching, Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param DefaultExpirationDays &#91;required&#93; The default number of days until the data within the domain expires.
@@ -92,6 +92,8 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' set up a policy on the DeadLetterQueue for the SendMessage operation to
 #' enable Amazon Connect Customer Profiles to send messages to the
 #' DeadLetterQueue.
+#' @param Matching The process of matching duplicate profiles. This process runs every
+#' Saturday at 12AM.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -102,6 +104,9 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #'   DefaultExpirationDays = 123,
 #'   DefaultEncryptionKey = "string",
 #'   DeadLetterQueueUrl = "string",
+#'   Matching = list(
+#'     Enabled = TRUE|FALSE
+#'   ),
 #'   CreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -121,6 +126,9 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #'   DefaultExpirationDays = 123,
 #'   DefaultEncryptionKey = "string",
 #'   DeadLetterQueueUrl = "string",
+#'   Matching = list(
+#'     Enabled = TRUE|FALSE
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -130,14 +138,14 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' @keywords internal
 #'
 #' @rdname customerprofiles_create_domain
-customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Tags = NULL) {
+customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/domains/{DomainName}",
     paginator = list()
   )
-  input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Tags = Tags)
+  input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, Tags = Tags)
   output <- .customerprofiles$create_domain_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -165,7 +173,7 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param AccountNumber A unique account number that you have given to the customer.
-#' @param AdditionalInformation Any additional information relevant to the customer's profile.
+#' @param AdditionalInformation Any additional information relevant to the customer’s profile.
 #' @param PartyType The type of profile used to describe the customer.
 #' @param BusinessName The name of the customer’s business.
 #' @param FirstName The customer’s first name.
@@ -173,12 +181,12 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
 #' @param LastName The customer’s last name.
 #' @param BirthDate The customer’s birth date.
 #' @param Gender The gender with which the customer identifies.
-#' @param PhoneNumber The customer's phone number, which has not been specified as a mobile,
+#' @param PhoneNumber The customer’s phone number, which has not been specified as a mobile,
 #' home, or business number.
 #' @param MobilePhoneNumber The customer’s mobile phone number.
 #' @param HomePhoneNumber The customer’s home phone number.
 #' @param BusinessPhoneNumber The customer’s business phone number.
-#' @param EmailAddress The customer's email address, which has not been specified as a personal
+#' @param EmailAddress The customer’s email address, which has not been specified as a personal
 #' or business address.
 #' @param PersonalEmailAddress The customer’s personal email address.
 #' @param BusinessEmailAddress The customer’s business email address.
@@ -347,7 +355,7 @@ customerprofiles_delete_domain <- function(DomainName) {
 #' customerprofiles_delete_integration(DomainName, Uri)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
-#' @param Uri The URI of the S3 bucket or any other type of data source.
+#' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -368,7 +376,7 @@ customerprofiles_delete_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_delete_integration
-customerprofiles_delete_integration <- function(DomainName, Uri = NULL) {
+customerprofiles_delete_integration <- function(DomainName, Uri) {
   op <- new_operation(
     name = "DeleteIntegration",
     http_method = "POST",
@@ -601,7 +609,7 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 #' @usage
 #' customerprofiles_get_domain(DomainName)
 #'
-#' @param DomainName &#91;required&#93; A unique name for the domain.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
 #'
 #' @return
 #' A list with the following syntax:
@@ -616,6 +624,9 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 #'     MeteringProfileCount = 123,
 #'     ObjectCount = 123,
 #'     TotalSize = 123
+#'   ),
+#'   Matching = list(
+#'     Enabled = TRUE|FALSE
 #'   ),
 #'   CreatedAt = as.POSIXct(
 #'     "2015-01-01"
@@ -665,7 +676,7 @@ customerprofiles_get_domain <- function(DomainName) {
 #' customerprofiles_get_integration(DomainName, Uri)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
-#' @param Uri The URI of the S3 bucket or any other type of data source.
+#' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -697,7 +708,7 @@ customerprofiles_get_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_integration
-customerprofiles_get_integration <- function(DomainName, Uri = NULL) {
+customerprofiles_get_integration <- function(DomainName, Uri) {
   op <- new_operation(
     name = "GetIntegration",
     http_method = "POST",
@@ -713,6 +724,102 @@ customerprofiles_get_integration <- function(DomainName, Uri = NULL) {
   return(response)
 }
 .customerprofiles$operations$get_integration <- customerprofiles_get_integration
+
+#' This API is in preview release for Amazon Connect and subject to change
+#'
+#' @description
+#' This API is in preview release for Amazon Connect and subject to change.
+#' 
+#' Before calling this API, use
+#' [`create_domain`][customerprofiles_create_domain] or
+#' [`update_domain`][customerprofiles_update_domain] to enable identity
+#' resolution: set `Matching` to true.
+#' 
+#' GetMatches returns potentially matching profiles, based on the results
+#' of the latest run of a machine learning process.
+#' 
+#' Amazon Connect runs a batch process every Saturday at 12AM UTC to
+#' identify matching profiles. The results are returned up to seven days
+#' after the Saturday run.
+#' 
+#' Amazon Connect uses the following profile attributes to identify
+#' matches:
+#' 
+#' -   PhoneNumber
+#' 
+#' -   HomePhoneNumber
+#' 
+#' -   BusinessPhoneNumber
+#' 
+#' -   MobilePhoneNumber
+#' 
+#' -   EmailAddress
+#' 
+#' -   PersonalEmailAddress
+#' 
+#' -   BusinessEmailAddress
+#' 
+#' -   FullName
+#' 
+#' -   BusinessName
+#'
+#' @usage
+#' customerprofiles_get_matches(NextToken, MaxResults, DomainName)
+#'
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MatchGenerationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   PotentialMatches = 123,
+#'   Matches = list(
+#'     list(
+#'       MatchId = "string",
+#'       ProfileIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_matches(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_matches
+customerprofiles_get_matches <- function(NextToken = NULL, MaxResults = NULL, DomainName) {
+  op <- new_operation(
+    name = "GetMatches",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/matches",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_matches_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName)
+  output <- .customerprofiles$get_matches_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_matches <- customerprofiles_get_matches
 
 #' Returns the object types for a specific domain
 #'
@@ -1295,6 +1402,119 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 }
 .customerprofiles$operations$list_tags_for_resource <- customerprofiles_list_tags_for_resource
 
+#' This API is in preview release for Amazon Connect and subject to change
+#'
+#' @description
+#' This API is in preview release for Amazon Connect and subject to change.
+#' 
+#' Runs an AWS Lambda job that does the following:
+#' 
+#' 1.  All the profileKeys in the `ProfileToBeMerged` will be moved to the
+#'     main profile.
+#' 
+#' 2.  All the objects in the `ProfileToBeMerged` will be moved to the main
+#'     profile.
+#' 
+#' 3.  All the `ProfileToBeMerged` will be deleted at the end.
+#' 
+#' 4.  All the profileKeys in the `ProfileIdsToBeMerged` will be moved to
+#'     the main profile.
+#' 
+#' 5.  Standard fields are merged as follows:
+#' 
+#'     1.  Fields are always "union"-ed if there are no conflicts in
+#'         standard fields or attributeKeys.
+#' 
+#'     2.  When there are conflicting fields:
+#' 
+#'         1.  If no `SourceProfileIds` entry is specified, the main
+#'             Profile value is always taken.
+#' 
+#'         2.  If a `SourceProfileIds` entry is specified, the specified
+#'             profileId is always taken, even if it is a NULL value.
+#' 
+#' You can use MergeProfiles together with
+#' [`get_matches`][customerprofiles_get_matches], which returns potentially
+#' matching profiles, or use it with the results of another matching
+#' system. After profiles have been merged, they cannot be separated
+#' (unmerged).
+#'
+#' @usage
+#' customerprofiles_merge_profiles(DomainName, MainProfileId,
+#'   ProfileIdsToBeMerged, FieldSourceProfileIds)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param MainProfileId &#91;required&#93; The identifier of the profile to be taken.
+#' @param ProfileIdsToBeMerged &#91;required&#93; The identifier of the profile to be merged into MainProfileId.
+#' @param FieldSourceProfileIds The identifiers of the fields in the profile that has the information
+#' you want to apply to the merge. For example, say you want to merge
+#' EmailAddress from Profile1 into MainProfile. This would be the
+#' identifier of the EmailAddress field in Profile1.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$merge_profiles(
+#'   DomainName = "string",
+#'   MainProfileId = "string",
+#'   ProfileIdsToBeMerged = list(
+#'     "string"
+#'   ),
+#'   FieldSourceProfileIds = list(
+#'     AccountNumber = "string",
+#'     AdditionalInformation = "string",
+#'     PartyType = "string",
+#'     BusinessName = "string",
+#'     FirstName = "string",
+#'     MiddleName = "string",
+#'     LastName = "string",
+#'     BirthDate = "string",
+#'     Gender = "string",
+#'     PhoneNumber = "string",
+#'     MobilePhoneNumber = "string",
+#'     HomePhoneNumber = "string",
+#'     BusinessPhoneNumber = "string",
+#'     EmailAddress = "string",
+#'     PersonalEmailAddress = "string",
+#'     BusinessEmailAddress = "string",
+#'     Address = "string",
+#'     ShippingAddress = "string",
+#'     MailingAddress = "string",
+#'     BillingAddress = "string",
+#'     Attributes = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_merge_profiles
+customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileIdsToBeMerged, FieldSourceProfileIds = NULL) {
+  op <- new_operation(
+    name = "MergeProfiles",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/profiles/objects/merge",
+    paginator = list()
+  )
+  input <- .customerprofiles$merge_profiles_input(DomainName = DomainName, MainProfileId = MainProfileId, ProfileIdsToBeMerged = ProfileIdsToBeMerged, FieldSourceProfileIds = FieldSourceProfileIds)
+  output <- .customerprofiles$merge_profiles_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$merge_profiles <- customerprofiles_merge_profiles
+
 #' Adds an integration between the service and a third-party service, which
 #' includes Amazon AppFlow and Amazon Connect
 #'
@@ -1305,12 +1525,15 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #' An integration can belong to only one domain.
 #'
 #' @usage
-#' customerprofiles_put_integration(DomainName, Uri, ObjectTypeName, Tags)
+#' customerprofiles_put_integration(DomainName, Uri, ObjectTypeName, Tags,
+#'   FlowDefinition)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
-#' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
+#' @param Uri The URI of the S3 bucket or any other type of data source.
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' @param FlowDefinition The configuration that controls how Customer Profiles retrieves data
+#' from the source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1339,6 +1562,77 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #'   ObjectTypeName = "string",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   FlowDefinition = list(
+#'     Description = "string",
+#'     FlowName = "string",
+#'     KmsArn = "string",
+#'     SourceFlowConfig = list(
+#'       ConnectorProfileName = "string",
+#'       ConnectorType = "Salesforce"|"Marketo"|"Zendesk"|"Servicenow"|"S3",
+#'       IncrementalPullConfig = list(
+#'         DatetimeTypeFieldName = "string"
+#'       ),
+#'       SourceConnectorProperties = list(
+#'         Marketo = list(
+#'           Object = "string"
+#'         ),
+#'         S3 = list(
+#'           BucketName = "string",
+#'           BucketPrefix = "string"
+#'         ),
+#'         Salesforce = list(
+#'           Object = "string",
+#'           EnableDynamicFieldUpdate = TRUE|FALSE,
+#'           IncludeDeletedRecords = TRUE|FALSE
+#'         ),
+#'         ServiceNow = list(
+#'           Object = "string"
+#'         ),
+#'         Zendesk = list(
+#'           Object = "string"
+#'         )
+#'       )
+#'     ),
+#'     Tasks = list(
+#'       list(
+#'         ConnectorOperator = list(
+#'           Marketo = "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'           S3 = "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'           Salesforce = "PROJECTION"|"LESS_THAN"|"CONTAINS"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'           ServiceNow = "PROJECTION"|"CONTAINS"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'           Zendesk = "PROJECTION"|"GREATER_THAN"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP"
+#'         ),
+#'         DestinationField = "string",
+#'         SourceFields = list(
+#'           "string"
+#'         ),
+#'         TaskProperties = list(
+#'           "string"
+#'         ),
+#'         TaskType = "Arithmetic"|"Filter"|"Map"|"Mask"|"Merge"|"Truncate"|"Validate"
+#'       )
+#'     ),
+#'     TriggerConfig = list(
+#'       TriggerType = "Scheduled"|"Event"|"OnDemand",
+#'       TriggerProperties = list(
+#'         Scheduled = list(
+#'           ScheduleExpression = "string",
+#'           DataPullMode = "Incremental"|"Complete",
+#'           ScheduleStartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ScheduleEndTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Timezone = "string",
+#'           ScheduleOffset = 123,
+#'           FirstExecutionFrom = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1346,14 +1640,14 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_put_integration
-customerprofiles_put_integration <- function(DomainName, Uri, ObjectTypeName, Tags = NULL) {
+customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeName, Tags = NULL, FlowDefinition = NULL) {
   op <- new_operation(
     name = "PutIntegration",
     http_method = "PUT",
     http_path = "/domains/{DomainName}/integrations",
     paginator = list()
   )
-  input <- .customerprofiles$put_integration_input(DomainName = DomainName, Uri = Uri, ObjectTypeName = ObjectTypeName, Tags = Tags)
+  input <- .customerprofiles$put_integration_input(DomainName = DomainName, Uri = Uri, ObjectTypeName = ObjectTypeName, Tags = Tags, FlowDefinition = FlowDefinition)
   output <- .customerprofiles$put_integration_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -1797,13 +2091,13 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the properties of a domain, including creating or selecting a
 #' dead letter queue or an encryption key.
 #' 
-#' Once a domain is created, the name can’t be changed.
+#' After a domain is created, the name can’t be changed.
 #'
 #' @usage
 #' customerprofiles_update_domain(DomainName, DefaultExpirationDays,
-#'   DefaultEncryptionKey, DeadLetterQueueUrl, Tags)
+#'   DefaultEncryptionKey, DeadLetterQueueUrl, Matching, Tags)
 #'
-#' @param DomainName &#91;required&#93; The unique name for the domain.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param DefaultExpirationDays The default number of days until the data within the domain expires.
 #' @param DefaultEncryptionKey The default encryption key, which is an AWS managed key, is used when no
 #' specific type of encryption key is specified. It is used to encrypt all
@@ -1815,6 +2109,8 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' set up a policy on the DeadLetterQueue for the SendMessage operation to
 #' enable Amazon Connect Customer Profiles to send messages to the
 #' DeadLetterQueue.
+#' @param Matching The process of matching duplicate profiles. This process runs every
+#' Saturday at 12AM.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -1825,6 +2121,9 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #'   DefaultExpirationDays = 123,
 #'   DefaultEncryptionKey = "string",
 #'   DeadLetterQueueUrl = "string",
+#'   Matching = list(
+#'     Enabled = TRUE|FALSE
+#'   ),
 #'   CreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1844,6 +2143,9 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #'   DefaultExpirationDays = 123,
 #'   DefaultEncryptionKey = "string",
 #'   DeadLetterQueueUrl = "string",
+#'   Matching = list(
+#'     Enabled = TRUE|FALSE
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -1853,14 +2155,14 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_update_domain
-customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Tags = NULL) {
+customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "PUT",
     http_path = "/domains/{DomainName}",
     paginator = list()
   )
-  input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Tags = Tags)
+  input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, Tags = Tags)
   output <- .customerprofiles$update_domain_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -1890,7 +2192,7 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
-#' @param AdditionalInformation Any additional information relevant to the customer's profile.
+#' @param AdditionalInformation Any additional information relevant to the customer’s profile.
 #' @param AccountNumber A unique account number that you have given to the customer.
 #' @param PartyType The type of profile used to describe the customer.
 #' @param BusinessName The name of the customer’s business.
@@ -1899,12 +2201,12 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #' @param LastName The customer’s last name.
 #' @param BirthDate The customer’s birth date.
 #' @param Gender The gender with which the customer identifies.
-#' @param PhoneNumber The customer's phone number, which has not been specified as a mobile,
+#' @param PhoneNumber The customer’s phone number, which has not been specified as a mobile,
 #' home, or business number.
 #' @param MobilePhoneNumber The customer’s mobile phone number.
 #' @param HomePhoneNumber The customer’s home phone number.
 #' @param BusinessPhoneNumber The customer’s business phone number.
-#' @param EmailAddress The customer's email address, which has not been specified as a personal
+#' @param EmailAddress The customer’s email address, which has not been specified as a personal
 #' or business address.
 #' @param PersonalEmailAddress The customer’s personal email address.
 #' @param BusinessEmailAddress The customer’s business email address.

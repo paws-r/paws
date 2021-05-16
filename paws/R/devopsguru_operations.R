@@ -314,6 +314,56 @@ devopsguru_describe_anomaly <- function(Id) {
 }
 .devopsguru$operations$describe_anomaly <- devopsguru_describe_anomaly
 
+#' Returns the most recent feedback submitted in the current AWS account
+#' and Region
+#'
+#' @description
+#' Returns the most recent feedback submitted in the current AWS account
+#' and Region.
+#'
+#' @usage
+#' devopsguru_describe_feedback(InsightId)
+#'
+#' @param InsightId The ID of the insight for which the feedback was provided.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InsightFeedback = list(
+#'     Id = "string",
+#'     Feedback = "VALID_COLLECTION"|"RECOMMENDATION_USEFUL"|"ALERT_TOO_SENSITIVE"|"DATA_NOISY_ANOMALY"|"DATA_INCORRECT"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_feedback(
+#'   InsightId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_describe_feedback
+devopsguru_describe_feedback <- function(InsightId = NULL) {
+  op <- new_operation(
+    name = "DescribeFeedback",
+    http_method = "POST",
+    http_path = "/feedback",
+    paginator = list()
+  )
+  input <- .devopsguru$describe_feedback_input(InsightId = InsightId)
+  output <- .devopsguru$describe_feedback_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$describe_feedback <- devopsguru_describe_feedback
+
 #' Returns details about an insight that you specify using its ID
 #'
 #' @description
@@ -420,7 +470,8 @@ devopsguru_describe_insight <- function(Id) {
 #' collections in your account. You specify the type of AWS resources
 #' collection. The one type of AWS resource collection supported is AWS
 #' CloudFormation stacks. DevOps Guru can be configured to analyze only the
-#' AWS resources that are defined in the stacks.
+#' AWS resources that are defined in the stacks. You can specify up to 500
+#' AWS CloudFormation stacks.
 #'
 #' @usage
 #' devopsguru_describe_resource_collection_health(ResourceCollectionType,
@@ -429,7 +480,8 @@ devopsguru_describe_insight <- function(Id) {
 #' @param ResourceCollectionType &#91;required&#93; An AWS resource collection type. This type specifies how analyzed AWS
 #' resources are defined. The one type of AWS resource collection supported
 #' is AWS CloudFormation stacks. DevOps Guru can be configured to analyze
-#' only the AWS resources that are defined in the stacks.
+#' only the AWS resources that are defined in the stacks. You can specify
+#' up to 500 AWS CloudFormation stacks.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
@@ -447,6 +499,15 @@ devopsguru_describe_insight <- function(Id) {
 #'       )
 #'     )
 #'   ),
+#'   Service = list(
+#'     list(
+#'       ServiceName = "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF",
+#'       Insight = list(
+#'         OpenProactiveInsights = 123,
+#'         OpenReactiveInsights = 123
+#'       )
+#'     )
+#'   ),
 #'   NextToken = "string"
 #' )
 #' ```
@@ -454,7 +515,7 @@ devopsguru_describe_insight <- function(Id) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_resource_collection_health(
-#'   ResourceCollectionType = "AWS_CLOUD_FORMATION",
+#'   ResourceCollectionType = "AWS_CLOUD_FORMATION"|"AWS_SERVICE",
 #'   NextToken = "string"
 #' )
 #' ```
@@ -528,6 +589,84 @@ devopsguru_describe_service_integration <- function() {
 }
 .devopsguru$operations$describe_service_integration <- devopsguru_describe_service_integration
 
+#' Returns an estimate of the monthly cost for DevOps Guru to analyze your
+#' AWS resources
+#'
+#' @description
+#' Returns an estimate of the monthly cost for DevOps Guru to analyze your
+#' AWS resources. For more information, see [Estimate your Amazon DevOps
+#' Guru
+#' costs](https://docs.aws.amazon.com/devops-guru/latest/userguide/cost-estimate.html)
+#' and [Amazon DevOps Guru
+#' pricing](https://aws.amazon.com/devops-guru/pricing/).
+#'
+#' @usage
+#' devopsguru_get_cost_estimation(NextToken)
+#'
+#' @param NextToken The pagination token to use to retrieve the next page of results for
+#' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceCollection = list(
+#'     CloudFormation = list(
+#'       StackNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Status = "ONGOING"|"COMPLETED",
+#'   Costs = list(
+#'     list(
+#'       Type = "string",
+#'       State = "ACTIVE"|"INACTIVE",
+#'       Count = 123,
+#'       UnitCost = 123.0,
+#'       Cost = 123.0
+#'     )
+#'   ),
+#'   TimeRange = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   TotalCost = 123.0,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_cost_estimation(
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_get_cost_estimation
+devopsguru_get_cost_estimation <- function(NextToken = NULL) {
+  op <- new_operation(
+    name = "GetCostEstimation",
+    http_method = "GET",
+    http_path = "/cost-estimation",
+    paginator = list()
+  )
+  input <- .devopsguru$get_cost_estimation_input(NextToken = NextToken)
+  output <- .devopsguru$get_cost_estimation_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$get_cost_estimation <- devopsguru_get_cost_estimation
+
 #' Returns lists AWS resources that are of the specified resource
 #' collection type
 #'
@@ -535,7 +674,8 @@ devopsguru_describe_service_integration <- function() {
 #' Returns lists AWS resources that are of the specified resource
 #' collection type. The one type of AWS resource collection supported is
 #' AWS CloudFormation stacks. DevOps Guru can be configured to analyze only
-#' the AWS resources that are defined in the stacks.
+#' the AWS resources that are defined in the stacks. You can specify up to
+#' 500 AWS CloudFormation stacks.
 #'
 #' @usage
 #' devopsguru_get_resource_collection(ResourceCollectionType, NextToken)
@@ -563,7 +703,7 @@ devopsguru_describe_service_integration <- function() {
 #' @section Request syntax:
 #' ```
 #' svc$get_resource_collection(
-#'   ResourceCollectionType = "AWS_CLOUD_FORMATION",
+#'   ResourceCollectionType = "AWS_CLOUD_FORMATION"|"AWS_SERVICE",
 #'   NextToken = "string"
 #' )
 #' ```
@@ -896,6 +1036,11 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL)
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -918,6 +1063,11 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL)
 #'           StackNames = list(
 #'             "string"
 #'           )
+#'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
 #'         )
 #'       )
 #'     )
@@ -1049,11 +1199,12 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
 #' events.
 #'
 #' @usage
-#' devopsguru_list_recommendations(InsightId, NextToken)
+#' devopsguru_list_recommendations(InsightId, NextToken, Locale)
 #'
 #' @param InsightId &#91;required&#93; The ID of the requested insight.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#' @param Locale A locale that specifies the language to use for recommendations.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1106,21 +1257,22 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
 #' ```
 #' svc$list_recommendations(
 #'   InsightId = "string",
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Locale = "DE_DE"|"EN_US"|"EN_GB"|"ES_ES"|"FR_FR"|"IT_IT"|"JA_JP"|"KO_KR"|"PT_BR"|"ZH_CN"|"ZH_TW"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_recommendations
-devopsguru_list_recommendations <- function(InsightId, NextToken = NULL) {
+devopsguru_list_recommendations <- function(InsightId, NextToken = NULL, Locale = NULL) {
   op <- new_operation(
     name = "ListRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
     paginator = list()
   )
-  input <- .devopsguru$list_recommendations_input(InsightId = InsightId, NextToken = NextToken)
+  input <- .devopsguru$list_recommendations_input(InsightId = InsightId, NextToken = NextToken, Locale = Locale)
   output <- .devopsguru$list_recommendations_output()
   config <- get_config()
   svc <- .devopsguru$service(config)
@@ -1275,6 +1427,11 @@ devopsguru_remove_notification_channel <- function(Id) {
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1297,6 +1454,11 @@ devopsguru_remove_notification_channel <- function(Id) {
 #'           StackNames = list(
 #'             "string"
 #'           )
+#'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
 #'         )
 #'       )
 #'     )
@@ -1329,6 +1491,11 @@ devopsguru_remove_notification_channel <- function(Id) {
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     ServiceCollection = list(
+#'       ServiceNames = list(
+#'         "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'       )
 #'     )
 #'   ),
 #'   MaxResults = 123,
@@ -1357,14 +1524,66 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
 }
 .devopsguru$operations$search_insights <- devopsguru_search_insights
 
+#' Starts the creation of an estimate of the monthly cost to analyze your
+#' AWS resources
+#'
+#' @description
+#' Starts the creation of an estimate of the monthly cost to analyze your
+#' AWS resources.
+#'
+#' @usage
+#' devopsguru_start_cost_estimation(ResourceCollection, ClientToken)
+#'
+#' @param ResourceCollection &#91;required&#93; The collection of AWS resources used to create a monthly DevOps Guru
+#' cost estimate.
+#' @param ClientToken The idempotency token used to identify each cost estimate request.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_cost_estimation(
+#'   ResourceCollection = list(
+#'     CloudFormation = list(
+#'       StackNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_start_cost_estimation
+devopsguru_start_cost_estimation <- function(ResourceCollection, ClientToken = NULL) {
+  op <- new_operation(
+    name = "StartCostEstimation",
+    http_method = "PUT",
+    http_path = "/cost-estimation",
+    paginator = list()
+  )
+  input <- .devopsguru$start_cost_estimation_input(ResourceCollection = ResourceCollection, ClientToken = ClientToken)
+  output <- .devopsguru$start_cost_estimation_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$start_cost_estimation <- devopsguru_start_cost_estimation
+
 #' Updates the collection of resources that DevOps Guru analyzes
 #'
 #' @description
 #' Updates the collection of resources that DevOps Guru analyzes. The one
 #' type of AWS resource collection supported is AWS CloudFormation stacks.
 #' DevOps Guru can be configured to analyze only the AWS resources that are
-#' defined in the stacks. This method also creates the IAM role required
-#' for you to use DevOps Guru.
+#' defined in the stacks. You can specify up to 500 AWS CloudFormation
+#' stacks. This method also creates the IAM role required for you to use
+#' DevOps Guru.
 #'
 #' @usage
 #' devopsguru_update_resource_collection(Action, ResourceCollection)

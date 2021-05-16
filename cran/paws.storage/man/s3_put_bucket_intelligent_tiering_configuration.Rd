@@ -19,7 +19,8 @@ or retrieve.}
 An empty list.
 }
 \description{
-Puts a S3 Intelligent-Tiering configuration to the specified bucket.
+Puts a S3 Intelligent-Tiering configuration to the specified bucket. You
+can have up to 1,000 S3 Intelligent-Tiering configurations per bucket.
 
 The S3 Intelligent-Tiering storage class is designed to optimize storage
 costs by automatically moving data to the most cost-effective storage
@@ -44,6 +45,32 @@ include:
 \item \code{\link[=s3_delete_bucket_intelligent_tiering_configuration]{delete_bucket_intelligent_tiering_configuration}}
 \item \code{\link[=s3_get_bucket_intelligent_tiering_configuration]{get_bucket_intelligent_tiering_configuration}}
 \item \code{\link[=s3_list_bucket_intelligent_tiering_configurations]{list_bucket_intelligent_tiering_configurations}}
+}
+
+You only need S3 Intelligent-Tiering enabled on a bucket if you want to
+automatically move objects stored in the S3 Intelligent-Tiering storage
+class to the Archive Access or Deep Archive Access tier.
+
+\strong{Special Errors}
+\itemize{
+\item \strong{HTTP 400 Bad Request Error}
+\itemize{
+\item \emph{Code:} InvalidArgument
+\item \emph{Cause:} Invalid Argument
+}
+\item \strong{HTTP 400 Bad Request Error}
+\itemize{
+\item \emph{Code:} TooManyConfigurations
+\item \emph{Cause:} You are attempting to create a new configuration but
+have already reached the 1,000-configuration limit.
+}
+\item \strong{HTTP 403 Forbidden Error}
+\itemize{
+\item \emph{Code:} AccessDenied
+\item \emph{Cause:} You are not the owner of the specified bucket, or you
+do not have the \code{s3:PutIntelligentTieringConfiguration} bucket
+permission to set the configuration on the bucket.
+}
 }
 }
 \section{Request syntax}{

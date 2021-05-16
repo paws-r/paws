@@ -5,7 +5,8 @@
 \title{Modify a setting for an Amazon Aurora global cluster}
 \usage{
 rds_modify_global_cluster(GlobalClusterIdentifier,
-  NewGlobalClusterIdentifier, DeletionProtection)
+  NewGlobalClusterIdentifier, DeletionProtection, EngineVersion,
+  AllowMajorVersionUpgrade)
 }
 \arguments{
 \item{GlobalClusterIdentifier}{The DB cluster identifier for the global cluster being modified. This
@@ -32,6 +33,36 @@ Example: \code{my-cluster2}}
 \item{DeletionProtection}{Indicates if the global database cluster has deletion protection
 enabled. The global database cluster can't be deleted when deletion
 protection is enabled.}
+
+\item{EngineVersion}{The version number of the database engine to which you want to upgrade.
+Changing this parameter results in an outage. The change is applied
+during the next maintenance window unless \code{ApplyImmediately} is enabled.
+
+To list all of the available engine versions for \code{aurora} (for MySQL
+5.6-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'}
+
+To list all of the available engine versions for \code{aurora-mysql} (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-mysql --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'}
+
+To list all of the available engine versions for \code{aurora-postgresql},
+use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-postgresql --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'}}
+
+\item{AllowMajorVersionUpgrade}{A value that indicates whether major version upgrades are allowed.
+
+Constraints: You must allow major version upgrades when specifying a
+value for the \code{EngineVersion} parameter that is a different major
+version than the DB cluster's current version.
+
+If you upgrade the major version of a global database, the cluster and
+DB instance parameter groups are set to the default parameter groups for
+the new version. Apply any custom parameter groups after completing the
+upgrade.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -54,6 +85,11 @@ A list with the following syntax:\preformatted{list(
         IsWriter = TRUE|FALSE,
         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
       )
+    ),
+    FailoverState = list(
+      Status = "pending"|"failing-over"|"cancelling",
+      FromDbClusterArn = "string",
+      ToDbClusterArn = "string"
     )
   )
 )
@@ -72,7 +108,9 @@ This action only applies to Aurora DB clusters.
 \preformatted{svc$modify_global_cluster(
   GlobalClusterIdentifier = "string",
   NewGlobalClusterIdentifier = "string",
-  DeletionProtection = TRUE|FALSE
+  DeletionProtection = TRUE|FALSE,
+  EngineVersion = "string",
+  AllowMajorVersionUpgrade = TRUE|FALSE
 )
 }
 }

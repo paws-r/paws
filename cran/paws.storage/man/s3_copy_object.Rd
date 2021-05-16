@@ -25,22 +25,22 @@ This action is not supported by Amazon S3 on Outposts.}
 
 \item{Bucket}{[required] The name of the destination bucket.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Specifies caching behavior along the request/reply chain.}
 
@@ -173,7 +173,7 @@ encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
 this header to \code{true} causes Amazon S3 to use an S3 Bucket Key for
 object encryption with SSE-KMS.
 
-Specifying this header with a COPY operation doesn’t affect bucket-level
+Specifying this header with a COPY action doesn’t affect bucket-level
 settings for S3 Bucket Key.}
 
 \item{CopySourceSSECustomerAlgorithm}{Specifies the algorithm to use when decrypting the source object (for
@@ -200,11 +200,11 @@ expire.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a Legal Hold to the copied object.}
 
-\item{ExpectedBucketOwner}{The account id of the expected destination bucket owner. If the
+\item{ExpectedBucketOwner}{The account ID of the expected destination bucket owner. If the
 destination bucket is owned by a different account, the request will
 fail with an HTTP \verb{403 (Access Denied)} error.}
 
-\item{ExpectedSourceBucketOwner}{The account id of the expected source bucket owner. If the source bucket
+\item{ExpectedSourceBucketOwner}{The account ID of the expected source bucket owner. If the source bucket
 is owned by a different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -233,10 +233,9 @@ A list with the following syntax:\preformatted{list(
 Creates a copy of an object that is already stored in Amazon S3.
 
 You can store individual objects of up to 5 TB in Amazon S3. You create
-a copy of your object up to 5 GB in size in a single atomic operation
-using this API. However, to copy an object greater than 5 GB, you must
-use the multipart upload Upload Part - Copy API. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CopyingObjctsMPUapi.html}{Copy Object Using the REST Multipart Upload API}.
+a copy of your object up to 5 GB in size in a single atomic action using
+this API. However, to copy an object greater than 5 GB, you must use the
+multipart upload Upload Part - Copy API. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CopyingObjctsMPUapi.html}{Copy Object Using the REST Multipart Upload API}.
 
 All copy requests must be authenticated. Additionally, you must have
 \emph{read} access to the source object and \emph{write} access to the destination
@@ -246,12 +245,11 @@ that you want to copy the object to must be enabled for your account.
 
 A copy request might return an error when Amazon S3 receives the copy
 request or while Amazon S3 is copying the files. If the error occurs
-before the copy operation starts, you receive a standard Amazon S3
-error. If the error occurs during the copy operation, the error response
-is embedded in the \verb{200 OK} response. This means that a \verb{200 OK}
-response can contain either a success or an error. Design your
-application to parse the contents of the response and handle it
-appropriately.
+before the copy action starts, you receive a standard Amazon S3 error.
+If the error occurs during the copy operation, the error response is
+embedded in the \verb{200 OK} response. This means that a \verb{200 OK} response
+can contain either a success or an error. Design your application to
+parse the contents of the response and handle it appropriately.
 
 If the copy is successful, you receive a response with information about
 the copied object.
@@ -274,7 +272,7 @@ When copying an object, you can preserve all metadata (default) or
 specify new metadata. However, the ACL is not preserved and is set to
 private for the user making the request. To override the default ACL
 setting, specify a new ACL when generating a copy request. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html}{Using ACLs}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Using ACLs}.
 
 To specify whether you want the object metadata copied from the source
 object or replaced with metadata provided in the request, you can
@@ -330,7 +328,7 @@ information about server-side encryption, see \href{https://docs.aws.amazon.com/
 
 If a target object uses SSE-KMS, you can enable an S3 Bucket Key for the
 object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{Amazon S3 Bucket Keys}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 \strong{Access Control List (ACL)-Specific Request Headers}
 
@@ -344,7 +342,7 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/managing-acls.ht
 
 \strong{Storage Class Options}
 
-You can use the \code{\link[=s3_copy_object]{copy_object}} operation to change the
+You can use the \code{\link[=s3_copy_object]{copy_object}} action to change the
 storage class of an object that is already stored in Amazon S3 using the
 \code{StorageClass} parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
 in the \emph{Amazon S3 Service Developer Guide}.

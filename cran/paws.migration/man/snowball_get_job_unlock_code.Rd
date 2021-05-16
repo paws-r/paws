@@ -18,7 +18,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Returns the \code{UnlockCode} code value for the specified job. A particular
-\code{UnlockCode} value can be accessed for up to 90 days after the
+\code{UnlockCode} value can be accessed for up to 360 days after the
 associated job has been created.
 
 The \code{UnlockCode} value is a 29-character code with 25 alphanumeric

@@ -16,14 +16,20 @@ The AWS Health API provides programmatic access to the AWS Health
 information that appears in the \href{https://phd.aws.amazon.com/phd/home#/}{AWS Personal Health Dashboard}. You can use the API
 operations to get information about AWS Health events that affect your
 AWS services and resources.
-
-You must have a Business or Enterprise support plan from \href{https://aws.amazon.com/premiumsupport/}{AWS Support} to use the AWS Health
-API. If you call the AWS Health API from an AWS account that doesn't
-have a Business or Enterprise support plan, you receive a
+\itemize{
+\item You must have a Business or Enterprise Support plan from \href{https://aws.amazon.com/premiumsupport/}{AWS Support} to use the AWS
+Health API. If you call the AWS Health API from an AWS account that
+doesn't have a Business or Enterprise Support plan, you receive a
 \code{SubscriptionRequiredException} error.
-
-AWS Health has a single endpoint: health.us-east-1.amazonaws.com
-(HTTPS). Use this endpoint to call the AWS Health API operations.
+\item You can use the AWS Health endpoint health.us-east-1.amazonaws.com
+(HTTPS) to call the AWS Health API operations. AWS Health supports a
+multi-Region application architecture and has two regional endpoints
+in an active-passive configuration. You can use the high
+availability endpoint example to determine which AWS Region is
+active, so that you can get the latest information from the API. For
+more information, see \href{https://docs.aws.amazon.com/health/latest/ug/health-api.html}{Accessing the AWS Health API}
+in the \emph{AWS Health User Guide}.
+}
 
 For authentication of requests, AWS Health uses the \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
 
@@ -79,13 +85,13 @@ return more results.
 \link[=health_describe_entity_aggregates]{describe_entity_aggregates} \tab Returns the number of entities that are affected by each of the specified events\cr
 \link[=health_describe_event_aggregates]{describe_event_aggregates} \tab Returns the number of events of each event type (issue, scheduled change, and account notification)\cr
 \link[=health_describe_event_details]{describe_event_details} \tab Returns detailed information about one or more specified events\cr
-\link[=health_describe_event_details_for_organization]{describe_event_details_for_organization} \tab Returns detailed information about one or more specified events for one or more accounts in your organization\cr
+\link[=health_describe_event_details_for_organization]{describe_event_details_for_organization} \tab Returns detailed information about one or more specified events for one or more AWS accounts in your organization\cr
 \link[=health_describe_events]{describe_events} \tab Returns information about events that meet the specified filter criteria\cr
 \link[=health_describe_events_for_organization]{describe_events_for_organization} \tab Returns information about events across your organization in AWS Organizations\cr
 \link[=health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria\cr
 \link[=health_describe_health_service_status_for_organization]{describe_health_service_status_for_organization} \tab This operation provides status information on enabling or disabling AWS Health to work with your organization\cr
 \link[=health_disable_health_service_access_for_organization]{disable_health_service_access_for_organization} \tab Disables AWS Health from working with AWS Organizations\cr
-\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization} \tab Calling this operation enables AWS Health to work with AWS Organizations
+\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization} \tab Enables AWS Health to work with AWS Organizations
 }
 }
 

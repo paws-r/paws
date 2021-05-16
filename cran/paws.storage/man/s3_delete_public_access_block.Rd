@@ -10,7 +10,7 @@ s3_delete_public_access_block(Bucket, ExpectedBucketOwner)
 \item{Bucket}{[required] The Amazon S3 bucket whose \code{PublicAccessBlock} configuration you want to
 delete.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }

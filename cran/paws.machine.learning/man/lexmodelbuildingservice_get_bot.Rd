@@ -56,7 +56,7 @@ A list with the following syntax:\preformatted{list(
   voiceId = "string",
   checksum = "string",
   version = "string",
-  locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+  locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP",
   childDirected = TRUE|FALSE,
   detectSentiment = TRUE|FALSE
 )

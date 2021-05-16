@@ -7,7 +7,7 @@
 s3control_update_job_priority(AccountId, JobId, Priority)
 }
 \arguments{
-\item{AccountId}{[required]}
+\item{AccountId}{[required] The AWS account ID associated with the S3 Batch Operations job.}
 
 \item{JobId}{[required] The ID for the job whose priority you want to update.}
 
@@ -23,7 +23,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Updates an existing S3 Batch Operations job's priority. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 Related actions include:
 \itemize{

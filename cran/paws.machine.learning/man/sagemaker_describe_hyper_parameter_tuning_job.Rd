@@ -158,6 +158,9 @@ A list with the following syntax:\preformatted{list(
     CheckpointConfig = list(
       S3Uri = "string",
       LocalPath = "string"
+    ),
+    RetryStrategy = list(
+      MaximumRetryAttempts = 123
     )
   ),
   TrainingJobDefinitions = list(
@@ -264,6 +267,9 @@ A list with the following syntax:\preformatted{list(
       CheckpointConfig = list(
         S3Uri = "string",
         LocalPath = "string"
+      ),
+      RetryStrategy = list(
+        MaximumRetryAttempts = 123
       )
     )
   ),

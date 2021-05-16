@@ -6,7 +6,7 @@
 \usage{
 alexaforbusiness_create_profile(ProfileName, Timezone, Address,
   DistanceUnit, TemperatureUnit, WakeWord, Locale, ClientRequestToken,
-  SetupModeDisabled, MaxVolumeLimit, PSTNEnabled,
+  SetupModeDisabled, MaxVolumeLimit, PSTNEnabled, DataRetentionOptIn,
   MeetingRoomConfiguration, Tags)
 }
 \arguments{
@@ -32,6 +32,8 @@ limited preview audience.)}
 \item{MaxVolumeLimit}{The maximum volume limit for a room profile.}
 
 \item{PSTNEnabled}{Whether PSTN calling is enabled.}
+
+\item{DataRetentionOptIn}{Whether data retention of the profile is enabled.}
 
 \item{MeetingRoomConfiguration}{The meeting room settings of a room profile.}
 
@@ -59,6 +61,7 @@ Creates a new room profile with the specified details.
   SetupModeDisabled = TRUE|FALSE,
   MaxVolumeLimit = 123,
   PSTNEnabled = TRUE|FALSE,
+  DataRetentionOptIn = TRUE|FALSE,
   MeetingRoomConfiguration = list(
     RoomUtilizationMetricsEnabled = TRUE|FALSE,
     EndOfMeetingReminder = list(

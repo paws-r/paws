@@ -5,7 +5,7 @@
 \title{Lists your things}
 \usage{
 iot_list_things(nextToken, maxResults, attributeName, attributeValue,
-  thingTypeName)
+  thingTypeName, usePrefixAttributeValue)
 }
 \arguments{
 \item{nextToken}{To retrieve the next set of results, the \code{nextToken} value from a
@@ -19,6 +19,13 @@ results.}
 \item{attributeValue}{The attribute value used to search for things.}
 
 \item{thingTypeName}{The name of the thing type used to search for things.}
+
+\item{usePrefixAttributeValue}{When \code{true}, the action returns the thing resources with attribute
+values that start with the \code{attributeValue} provided.
+
+When \code{false}, or not present, the action returns only the thing
+resources with attribute values that match the entire \code{attributeValue}
+provided.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -55,7 +62,8 @@ were returned.
   maxResults = 123,
   attributeName = "string",
   attributeValue = "string",
-  thingTypeName = "string"
+  thingTypeName = "string",
+  usePrefixAttributeValue = TRUE|FALSE
 )
 }
 }

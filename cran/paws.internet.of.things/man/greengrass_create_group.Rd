@@ -11,7 +11,7 @@ greengrass_create_group(AmznClientToken, InitialVersion, Name, tags)
 
 \item{InitialVersion}{Information about the initial version of the group.}
 
-\item{Name}{The name of the group.}
+\item{Name}{[required] The name of the group.}
 
 \item{tags}{Tag(s) to add to the new resource.}
 }

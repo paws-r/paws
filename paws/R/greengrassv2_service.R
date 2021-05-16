@@ -63,7 +63,7 @@ NULL
 #'  \link[=greengrassv2_delete_core_device]{delete_core_device} \tab Deletes a AWS IoT Greengrass core device, which is an AWS IoT thing\cr
 #'  \link[=greengrassv2_describe_component]{describe_component} \tab Retrieves metadata for a version of a component\cr
 #'  \link[=greengrassv2_get_component]{get_component} \tab Gets the recipe for a version of a component\cr
-#'  \link[=greengrassv2_get_component_version_artifact]{get_component_version_artifact} \tab Gets the pre-signed URL to a component artifact in an S3 bucket\cr
+#'  \link[=greengrassv2_get_component_version_artifact]{get_component_version_artifact} \tab Gets the pre-signed URL to download a public component artifact\cr
 #'  \link[=greengrassv2_get_core_device]{get_core_device} \tab Retrieves metadata for a AWS IoT Greengrass core device\cr
 #'  \link[=greengrassv2_get_deployment]{get_deployment} \tab Gets a deployment\cr
 #'  \link[=greengrassv2_list_components]{list_components} \tab Retrieves a paginated list of component summaries\cr

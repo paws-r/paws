@@ -3,6 +3,18 @@
 #' @include docdb_service.R
 NULL
 
+.docdb$add_source_identifier_to_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubscriptionName = structure(logical(0), tags = list(type = "string")), SourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdb$add_source_identifier_to_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventSubscription = structure(list(CustomerAwsId = structure(logical(0), tags = list(type = "string")), CustSubscriptionId = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubscriptionCreationTime = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), SourceIdsList = structure(list(structure(logical(0), tags = list(locationName = "SourceId", type = "string"))), tags = list(locationNameList = "SourceId", type = "list")), EventCategoriesList = structure(list(structure(logical(0), tags = list(locationName = "EventCategory", type = "string"))), tags = list(locationNameList = "EventCategory", type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean")), EventSubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure", resultWrapper = "AddSourceIdentifierToSubscriptionResult"))
+  return(populate(args, shape))
+}
+
 .docdb$add_tags_to_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", type = "list"))), tags = list(type = "structure"))
@@ -109,6 +121,18 @@ NULL
   return(populate(args, shape))
 }
 
+.docdb$create_event_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubscriptionName = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), EventCategories = structure(list(structure(logical(0), tags = list(locationName = "EventCategory", type = "string"))), tags = list(locationNameList = "EventCategory", type = "list")), SourceIds = structure(list(structure(logical(0), tags = list(locationName = "SourceId", type = "string"))), tags = list(locationNameList = "SourceId", type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdb$create_event_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventSubscription = structure(list(CustomerAwsId = structure(logical(0), tags = list(type = "string")), CustSubscriptionId = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubscriptionCreationTime = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), SourceIdsList = structure(list(structure(logical(0), tags = list(locationName = "SourceId", type = "string"))), tags = list(locationNameList = "SourceId", type = "list")), EventCategoriesList = structure(list(structure(logical(0), tags = list(locationName = "EventCategory", type = "string"))), tags = list(locationNameList = "EventCategory", type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean")), EventSubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure", resultWrapper = "CreateEventSubscriptionResult"))
+  return(populate(args, shape))
+}
+
 .docdb$delete_db_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), SkipFinalSnapshot = structure(logical(0), tags = list(type = "boolean")), FinalDBSnapshotIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -163,6 +187,18 @@ NULL
 
 .docdb$delete_db_subnet_group_output <- function(...) {
   list()
+}
+
+.docdb$delete_event_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubscriptionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdb$delete_event_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventSubscription = structure(list(CustomerAwsId = structure(logical(0), tags = list(type = "string")), CustSubscriptionId = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubscriptionCreationTime = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), SourceIdsList = structure(list(structure(logical(0), tags = list(locationName = "SourceId", type = "string"))), tags = list(locationNameList = "SourceId", type = "list")), EventCategoriesList = structure(list(structure(logical(0), tags = list(locationName = "EventCategory", type = "string"))), tags = list(locationNameList = "EventCategory", type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean")), EventSubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure", resultWrapper = "DeleteEventSubscriptionResult"))
+  return(populate(args, shape))
 }
 
 .docdb$describe_certificates_input <- function(...) {
@@ -297,6 +333,18 @@ NULL
   return(populate(args, shape))
 }
 
+.docdb$describe_event_subscriptions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubscriptionName = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(locationName = "Value", type = "string"))), tags = list(locationNameList = "Value", type = "list"))), tags = list(locationName = "Filter", type = "structure"))), tags = list(locationNameList = "Filter", type = "list")), MaxRecords = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdb$describe_event_subscriptions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), EventSubscriptionsList = structure(list(structure(list(CustomerAwsId = structure(logical(0), tags = list(type = "string")), CustSubscriptionId = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubscriptionCreationTime = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), SourceIdsList = structure(list(structure(logical(0), tags = list(locationName = "SourceId", type = "string"))), tags = list(locationNameList = "SourceId", type = "list")), EventCategoriesList = structure(list(structure(logical(0), tags = list(locationName = "EventCategory", type = "string"))), tags = list(locationNameList = "EventCategory", type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean")), EventSubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "EventSubscription", type = "structure", wrapper = TRUE))), tags = list(locationNameList = "EventSubscription", type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeEventSubscriptionsResult"))
+  return(populate(args, shape))
+}
+
 .docdb$describe_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(SourceIdentifier = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Duration = structure(logical(0), tags = list(type = "integer")), EventCategories = structure(list(structure(logical(0), tags = list(locationName = "EventCategory", type = "string"))), tags = list(locationNameList = "EventCategory", type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(locationName = "Value", type = "string"))), tags = list(locationNameList = "Value", type = "list"))), tags = list(locationName = "Filter", type = "structure"))), tags = list(locationNameList = "Filter", type = "list")), MaxRecords = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -417,6 +465,18 @@ NULL
   return(populate(args, shape))
 }
 
+.docdb$modify_event_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubscriptionName = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), EventCategories = structure(list(structure(logical(0), tags = list(locationName = "EventCategory", type = "string"))), tags = list(locationNameList = "EventCategory", type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdb$modify_event_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventSubscription = structure(list(CustomerAwsId = structure(logical(0), tags = list(type = "string")), CustSubscriptionId = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubscriptionCreationTime = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), SourceIdsList = structure(list(structure(logical(0), tags = list(locationName = "SourceId", type = "string"))), tags = list(locationNameList = "SourceId", type = "list")), EventCategoriesList = structure(list(structure(logical(0), tags = list(locationName = "EventCategory", type = "string"))), tags = list(locationNameList = "EventCategory", type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean")), EventSubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure", resultWrapper = "ModifyEventSubscriptionResult"))
+  return(populate(args, shape))
+}
+
 .docdb$reboot_db_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DBInstanceIdentifier = structure(logical(0), tags = list(type = "string")), ForceFailover = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
@@ -426,6 +486,18 @@ NULL
 .docdb$reboot_db_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DBInstance = structure(list(DBInstanceIdentifier = structure(logical(0), tags = list(type = "string")), DBInstanceClass = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), DBInstanceStatus = structure(logical(0), tags = list(type = "string")), Endpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), HostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InstanceCreateTime = structure(logical(0), tags = list(type = "timestamp")), PreferredBackupWindow = structure(logical(0), tags = list(type = "string")), BackupRetentionPeriod = structure(logical(0), tags = list(type = "integer")), VpcSecurityGroups = structure(list(structure(list(VpcSecurityGroupId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "VpcSecurityGroupMembership", type = "structure"))), tags = list(locationNameList = "VpcSecurityGroupMembership", type = "list")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), DBSubnetGroup = structure(list(DBSubnetGroupName = structure(logical(0), tags = list(type = "string")), DBSubnetGroupDescription = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetGroupStatus = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(list(SubnetIdentifier = structure(logical(0), tags = list(type = "string")), SubnetAvailabilityZone = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE)), SubnetStatus = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Subnet", type = "structure"))), tags = list(locationNameList = "Subnet", type = "list")), DBSubnetGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE)), PreferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), PendingModifiedValues = structure(list(DBInstanceClass = structure(logical(0), tags = list(type = "string")), AllocatedStorage = structure(logical(0), tags = list(type = "integer")), MasterUserPassword = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), BackupRetentionPeriod = structure(logical(0), tags = list(type = "integer")), MultiAZ = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(logical(0), tags = list(type = "string")), LicenseModel = structure(logical(0), tags = list(type = "string")), Iops = structure(logical(0), tags = list(type = "integer")), DBInstanceIdentifier = structure(logical(0), tags = list(type = "string")), StorageType = structure(logical(0), tags = list(type = "string")), CACertificateIdentifier = structure(logical(0), tags = list(type = "string")), DBSubnetGroupName = structure(logical(0), tags = list(type = "string")), PendingCloudwatchLogsExports = structure(list(LogTypesToEnable = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LogTypesToDisable = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), LatestRestorableTime = structure(logical(0), tags = list(type = "timestamp")), EngineVersion = structure(logical(0), tags = list(type = "string")), AutoMinorVersionUpgrade = structure(logical(0), tags = list(type = "boolean")), PubliclyAccessible = structure(logical(0), tags = list(type = "boolean")), StatusInfos = structure(list(structure(list(StatusType = structure(logical(0), tags = list(type = "string")), Normal = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "DBInstanceStatusInfo", type = "structure"))), tags = list(locationNameList = "DBInstanceStatusInfo", type = "list")), DBClusterIdentifier = structure(logical(0), tags = list(type = "string")), StorageEncrypted = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), DbiResourceId = structure(logical(0), tags = list(type = "string")), CACertificateIdentifier = structure(logical(0), tags = list(type = "string")), PromotionTier = structure(logical(0), tags = list(type = "integer")), DBInstanceArn = structure(logical(0), tags = list(type = "string")), EnabledCloudwatchLogsExports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure", resultWrapper = "RebootDBInstanceResult"))
+  return(populate(args, shape))
+}
+
+.docdb$remove_source_identifier_from_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SubscriptionName = structure(logical(0), tags = list(type = "string")), SourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdb$remove_source_identifier_from_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventSubscription = structure(list(CustomerAwsId = structure(logical(0), tags = list(type = "string")), CustSubscriptionId = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubscriptionCreationTime = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), SourceIdsList = structure(list(structure(logical(0), tags = list(locationName = "SourceId", type = "string"))), tags = list(locationNameList = "SourceId", type = "list")), EventCategoriesList = structure(list(structure(logical(0), tags = list(locationName = "EventCategory", type = "string"))), tags = list(locationNameList = "EventCategory", type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean")), EventSubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "structure", resultWrapper = "RemoveSourceIdentifierFromSubscriptionResult"))
   return(populate(args, shape))
 }
 

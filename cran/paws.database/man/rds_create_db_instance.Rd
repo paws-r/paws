@@ -55,8 +55,8 @@ underscores, or digits (0-9).
 \strong{PostgreSQL}
 
 The name of the database to create when the DB instance is created. If
-this parameter isn't specified, no database is created in the DB
-instance.
+this parameter isn't specified, a database named \code{postgres} is created
+in the DB instance.
 
 Constraints:
 \itemize{
@@ -83,16 +83,32 @@ Constraints:
 
 Not applicable. Must be null.
 
-\strong{Amazon Aurora}
+\strong{Amazon Aurora MySQL}
 
-The name of the database to create when the primary instance of the DB
-cluster is created. If this parameter isn't specified, no database is
-created in the DB instance.
+The name of the database to create when the primary DB instance of the
+Aurora MySQL DB cluster is created. If this parameter isn't specified
+for an Aurora MySQL DB cluster, no database is created in the DB
+cluster.
 
 Constraints:
 \itemize{
-\item Must contain 1 to 64 letters or numbers.
-\item Can't be a word reserved by the specified database engine
+\item It must contain 1 to 64 alphanumeric characters.
+\item It can't be a word reserved by the database engine.
+}
+
+\strong{Amazon Aurora PostgreSQL}
+
+The name of the database to create when the primary DB instance of the
+Aurora PostgreSQL DB cluster is created. If this parameter isn't
+specified for an Aurora PostgreSQL DB cluster, a database named
+\code{postgres} is created in the DB cluster.
+
+Constraints:
+\itemize{
+\item It must contain 1 to 63 alphanumeric characters.
+\item It must begin with a letter or an underscore. Subsequent characters
+can be letters, underscores, or digits (0 to 9).
+\item It can't be a word reserved by the database engine.
 }}
 
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase
@@ -382,18 +398,15 @@ Constraints:
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
 automated backups are enabled, using the \code{BackupRetentionPeriod}
-parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{The Backup Window}
+parameter. The default is a 30-minute window selected at random from an
+8-hour block of time for each AWS Region. For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{Backup window}
 in the \emph{Amazon RDS User Guide}.
 
 \strong{Amazon Aurora}
 
 Not applicable. The daily time range for creating automated backups is
 managed by the DB cluster.
-
-The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available, see
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow}{Adjusting the Preferred DB Instance Maintenance Window}
-in the \emph{Amazon RDS User Guide}.
 
 Constraints:
 \itemize{
@@ -490,7 +503,7 @@ in the \emph{Amazon RDS User Guide.}
 
 \strong{PostgreSQL}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions}{Supported PostgreSQL Database Versions}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts}{Amazon RDS for PostgreSQL versions and extensions}
 in the \emph{Amazon RDS User Guide.}}
 
 \item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
@@ -512,8 +525,8 @@ must be a multiple between .5 and 50 of the storage amount for the DB
 instance. For SQL Server DB instances, must be a multiple between 1 and
 50 of the storage amount for the DB instance.}
 
-\item{OptionGroupName}{Indicates that the DB instance should be associated with the specified
-option group.
+\item{OptionGroupName}{A value that indicates that the DB instance should be associated with
+the specified option group.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, can't be removed from an option group. Also, that option group
@@ -707,7 +720,8 @@ Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowqu
 
 \strong{Oracle}
 
-Possible values are \code{alert}, \code{audit}, \code{listener}, and \code{trace}.
+Possible values are \code{alert}, \code{audit}, \code{listener}, \code{trace}, and
+\code{oemagent}.
 
 \strong{PostgreSQL}
 
@@ -730,7 +744,11 @@ cluster can be deleted even when deletion protection is enabled for the
 DB cluster.}
 
 \item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
-of the DB instance.}
+of the DB instance.
+
+For more information about this setting, including limitations that
+apply to it, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling}{Managing capacity automatically with Amazon RDS storage autoscaling}
+in the \emph{Amazon RDS User Guide}.}
 
 \item{EnableCustomerOwnedIp}{A value that indicates whether to enable a customer-owned IP address
 (CoIP) for an RDS on Outposts DB instance.
@@ -930,7 +948,8 @@ A list with the following syntax:\preformatted{list(
         DBInstanceAutomatedBackupsArn = "string"
       )
     ),
-    CustomerOwnedIpEnabled = TRUE|FALSE
+    CustomerOwnedIpEnabled = TRUE|FALSE,
+    AwsBackupRecoveryPointArn = "string"
   )
 )
 }

@@ -115,7 +115,7 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' wellarchitected_create_workload(WorkloadName, Description, Environment,
 #'   AccountIds, AwsRegions, NonAwsRegions, PillarPriorities,
 #'   ArchitecturalDesign, ReviewOwner, IndustryType, Industry, Lenses, Notes,
-#'   ClientRequestToken)
+#'   ClientRequestToken, Tags)
 #'
 #' @param WorkloadName &#91;required&#93; 
 #' @param Description &#91;required&#93; 
@@ -131,6 +131,7 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' @param Lenses &#91;required&#93; 
 #' @param Notes 
 #' @param ClientRequestToken &#91;required&#93; 
+#' @param Tags The tags to be associated with the workload.
 #'
 #' @return
 #' A list with the following syntax:
@@ -167,21 +168,24 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #'     "string"
 #'   ),
 #'   Notes = "string",
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_create_workload
-wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken) {
+wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateWorkload",
     http_method = "POST",
     http_path = "/workloads",
     paginator = list()
   )
-  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken)
+  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .wellarchitected$create_workload_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -714,7 +718,10 @@ wellarchitected_get_lens_version_difference <- function(LensAlias, BaseLensVersi
 #'         "string"
 #'       ),
 #'       Owner = "string",
-#'       ShareInvitationId = "string"
+#'       ShareInvitationId = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -800,7 +807,10 @@ wellarchitected_get_milestone <- function(WorkloadId, MilestoneNumber) {
 #'       "string"
 #'     ),
 #'     Owner = "string",
-#'     ShareInvitationId = "string"
+#'     ShareInvitationId = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1297,6 +1307,53 @@ wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, Ne
 }
 .wellarchitected$operations$list_share_invitations <- wellarchitected_list_share_invitations
 
+#' List the tags for a resource
+#'
+#' @description
+#' List the tags for a resource.
+#'
+#' @usage
+#' wellarchitected_list_tags_for_resource(WorkloadArn)
+#'
+#' @param WorkloadArn &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   WorkloadArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_tags_for_resource
+wellarchitected_list_tags_for_resource <- function(WorkloadArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{WorkloadArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$list_tags_for_resource_input(WorkloadArn = WorkloadArn)
+  output <- .wellarchitected$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_tags_for_resource <- wellarchitected_list_tags_for_resource
+
 #' List the workload shares associated with the workload
 #'
 #' @description
@@ -1426,10 +1483,98 @@ wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken 
 }
 .wellarchitected$operations$list_workloads <- wellarchitected_list_workloads
 
-#' Update the answer
+#' Adds one or more tags to the specified resource
 #'
 #' @description
-#' Update the answer.
+#' Adds one or more tags to the specified resource.
+#'
+#' @usage
+#' wellarchitected_tag_resource(WorkloadArn, Tags)
+#'
+#' @param WorkloadArn &#91;required&#93; 
+#' @param Tags &#91;required&#93; The tags for the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   WorkloadArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_tag_resource
+wellarchitected_tag_resource <- function(WorkloadArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{WorkloadArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$tag_resource_input(WorkloadArn = WorkloadArn, Tags = Tags)
+  output <- .wellarchitected$tag_resource_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$tag_resource <- wellarchitected_tag_resource
+
+#' Deletes specified tags from a resource
+#'
+#' @description
+#' Deletes specified tags from a resource.
+#'
+#' @usage
+#' wellarchitected_untag_resource(WorkloadArn, TagKeys)
+#'
+#' @param WorkloadArn &#91;required&#93; 
+#' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   WorkloadArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_untag_resource
+wellarchitected_untag_resource <- function(WorkloadArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{WorkloadArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$untag_resource_input(WorkloadArn = WorkloadArn, TagKeys = TagKeys)
+  output <- .wellarchitected$untag_resource_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$untag_resource <- wellarchitected_untag_resource
+
+#' Update the answer to a specific question in a workload review
+#'
+#' @description
+#' Update the answer to a specific question in a workload review.
 #'
 #' @usage
 #' wellarchitected_update_answer(WorkloadId, LensAlias, QuestionId,
@@ -1709,7 +1854,10 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #'       "string"
 #'     ),
 #'     Owner = "string",
-#'     ShareInvitationId = "string"
+#'     ShareInvitationId = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```

@@ -100,7 +100,8 @@ A list with the following syntax:\preformatted{list(
         md5sum = "string",
         overrideArtifactName = TRUE|FALSE,
         encryptionDisabled = TRUE|FALSE,
-        artifactIdentifier = "string"
+        artifactIdentifier = "string",
+        bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
       ),
       secondaryArtifacts = list(
         list(
@@ -109,7 +110,8 @@ A list with the following syntax:\preformatted{list(
           md5sum = "string",
           overrideArtifactName = TRUE|FALSE,
           encryptionDisabled = TRUE|FALSE,
-          artifactIdentifier = "string"
+          artifactIdentifier = "string",
+          bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
         )
       ),
       cache = list(
@@ -154,7 +156,8 @@ A list with the following syntax:\preformatted{list(
         s3Logs = list(
           status = "ENABLED"|"DISABLED",
           location = "string",
-          encryptionDisabled = TRUE|FALSE
+          encryptionDisabled = TRUE|FALSE,
+          bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
         )
       ),
       timeoutInMinutes = 123,

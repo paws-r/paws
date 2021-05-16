@@ -10,17 +10,18 @@ mediatailor(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-Use the AWS Elemental MediaTailor SDK to configure scalable ad insertion
-for your live and VOD content. With AWS Elemental MediaTailor, you can
-serve targeted ads to viewers while maintaining broadcast quality in
-over-the-top (OTT) video applications. For information about using the
-service, including detailed information about the settings covered in
-this guide, see the AWS Elemental MediaTailor User Guide.
+Use the AWS Elemental MediaTailor SDKs and CLI to configure scalable ad
+insertion and linear channels. With MediaTailor, you can assemble
+existing content into a linear stream and serve targeted ads to viewers
+while maintaining broadcast quality in over-the-top (OTT) video
+applications. For information about using the service, including
+detailed information about the settings covered in this guide, see the
+\href{https://docs.aws.amazon.com/mediatailor/latest/ug/}{AWS Elemental MediaTailor User Guide}.
 
-Through the SDK, you manage AWS Elemental MediaTailor configurations the
-same as you do through the console. For example, you specify ad
-insertion behavior and mapping information for the origin server and the
-ad decision server (ADS).
+Through the SDKs and the CLI you manage AWS Elemental MediaTailor
+configurations and channels the same as you do through the console. For
+example, you specify ad insertion behavior and mapping information for
+the origin server and the ad decision server (ADS).
 }
 \section{Service syntax}{
 \preformatted{svc <- mediatailor(
@@ -43,20 +44,44 @@ ad decision server (ADS).
 \section{Operations}{
 
 \tabular{ll}{
+\link[=mediatailor_create_channel]{create_channel} \tab Creates a channel\cr
+\link[=mediatailor_create_program]{create_program} \tab Creates a program\cr
+\link[=mediatailor_create_source_location]{create_source_location} \tab Creates a source location on a specific channel\cr
+\link[=mediatailor_create_vod_source]{create_vod_source} \tab Creates name for a specific VOD source in a source location\cr
+\link[=mediatailor_delete_channel]{delete_channel} \tab Deletes a channel\cr
+\link[=mediatailor_delete_channel_policy]{delete_channel_policy} \tab Deletes a channel's IAM policy\cr
 \link[=mediatailor_delete_playback_configuration]{delete_playback_configuration} \tab Deletes the playback configuration for the specified name\cr
+\link[=mediatailor_delete_program]{delete_program} \tab Deletes a specific program on a specific channel\cr
+\link[=mediatailor_delete_source_location]{delete_source_location} \tab Deletes a source location on a specific channel\cr
+\link[=mediatailor_delete_vod_source]{delete_vod_source} \tab Deletes a specific VOD source in a specific source location\cr
+\link[=mediatailor_describe_channel]{describe_channel} \tab Describes the properties of a specific channel\cr
+\link[=mediatailor_describe_program]{describe_program} \tab Retrieves the properties of the requested program\cr
+\link[=mediatailor_describe_source_location]{describe_source_location} \tab Retrieves the properties of the requested source location\cr
+\link[=mediatailor_describe_vod_source]{describe_vod_source} \tab Provides details about a specific VOD source in a specific source location\cr
+\link[=mediatailor_get_channel_policy]{get_channel_policy} \tab Retrieves information about a channel's IAM policy\cr
+\link[=mediatailor_get_channel_schedule]{get_channel_schedule} \tab Retrieves information about your channel's schedule\cr
 \link[=mediatailor_get_playback_configuration]{get_playback_configuration} \tab Returns the playback configuration for the specified name\cr
+\link[=mediatailor_list_channels]{list_channels} \tab Retrieves a list of channels that are associated with this account\cr
 \link[=mediatailor_list_playback_configurations]{list_playback_configurations} \tab Returns a list of the playback configurations defined in AWS Elemental MediaTailor\cr
+\link[=mediatailor_list_source_locations]{list_source_locations} \tab Retrieves a list of source locations\cr
 \link[=mediatailor_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags assigned to the specified playback configuration resource\cr
+\link[=mediatailor_list_vod_sources]{list_vod_sources} \tab Lists all the VOD sources in a source location\cr
+\link[=mediatailor_put_channel_policy]{put_channel_policy} \tab Creates an IAM policy for the channel\cr
 \link[=mediatailor_put_playback_configuration]{put_playback_configuration} \tab Adds a new playback configuration to AWS Elemental MediaTailor\cr
+\link[=mediatailor_start_channel]{start_channel} \tab Starts a specific channel\cr
+\link[=mediatailor_stop_channel]{stop_channel} \tab Stops a specific channel\cr
 \link[=mediatailor_tag_resource]{tag_resource} \tab Adds tags to the specified playback configuration resource\cr
-\link[=mediatailor_untag_resource]{untag_resource} \tab Removes tags from the specified playback configuration resource
+\link[=mediatailor_untag_resource]{untag_resource} \tab Removes tags from the specified playback configuration resource\cr
+\link[=mediatailor_update_channel]{update_channel} \tab Updates an existing channel\cr
+\link[=mediatailor_update_source_location]{update_source_location} \tab Updates a source location on a specific channel\cr
+\link[=mediatailor_update_vod_source]{update_vod_source} \tab Updates a specific VOD source in a specific source location
 }
 }
 
 \examples{
 \dontrun{
 svc <- mediatailor()
-svc$delete_playback_configuration(
+svc$create_channel(
   Foo = 123
 )
 }

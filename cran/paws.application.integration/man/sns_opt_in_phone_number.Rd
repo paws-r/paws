@@ -8,7 +8,7 @@ enables you to resume sending SMS messages to the number}
 sns_opt_in_phone_number(phoneNumber)
 }
 \arguments{
-\item{phoneNumber}{[required] The phone number to opt in.}
+\item{phoneNumber}{[required] The phone number to opt in. Use E.164 format.}
 }
 \value{
 An empty list.

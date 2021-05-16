@@ -224,6 +224,7 @@ A list with the following syntax:\preformatted{list(
               YPosition = 123
             ),
             EbuTtDDestinationSettings = list(
+              CopyrightHolder = "string",
               FillLineGap = "DISABLED"|"ENABLED",
               FontFamily = "string",
               StyleControl = "EXCLUDE"|"INCLUDE"
@@ -266,6 +267,12 @@ A list with the following syntax:\preformatted{list(
         OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
         SupportLowFramerateInputs = "DISABLED"|"ENABLED"
       ),
+      MotionGraphicsConfiguration = list(
+        MotionGraphicsInsertion = "DISABLED"|"ENABLED",
+        MotionGraphicsSettings = list(
+          HtmlMotionGraphicsSettings = list()
+        )
+      ),
       NielsenConfiguration = list(
         DistributorId = "string",
         NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
@@ -275,6 +282,11 @@ A list with the following syntax:\preformatted{list(
           Name = "string",
           OutputGroupSettings = list(
             ArchiveGroupSettings = list(
+              ArchiveCdnSettings = list(
+                ArchiveS3Settings = list(
+                  CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+                )
+              ),
               Destination = list(
                 DestinationRefId = "string"
               ),
@@ -283,6 +295,11 @@ A list with the following syntax:\preformatted{list(
             FrameCaptureGroupSettings = list(
               Destination = list(
                 DestinationRefId = "string"
+              ),
+              FrameCaptureCdnSettings = list(
+                FrameCaptureS3Settings = list(
+                  CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
+                )
               )
             ),
             HlsGroupSettings = list(
@@ -332,6 +349,9 @@ A list with the following syntax:\preformatted{list(
                   MediaStoreStorageClass = "TEMPORAL",
                   NumRetries = 123,
                   RestartDelay = 123
+                ),
+                HlsS3Settings = list(
+                  CannedAcl = "AUTHENTICATED_READ"|"BUCKET_OWNER_FULL_CONTROL"|"BUCKET_OWNER_READ"|"PUBLIC_READ"
                 ),
                 HlsWebdavSettings = list(
                   ConnectionRetryInterval = 123,
@@ -522,6 +542,7 @@ A list with the following syntax:\preformatted{list(
                       NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
                       TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
                     ),
+                    FrameCaptureHlsSettings = list(),
                     StandardHlsSettings = list(
                       AudioRenditionSets = "string",
                       M3u8Settings = list(
@@ -860,6 +881,12 @@ A list with the following syntax:\preformatted{list(
                   Pid = 123
                 ),
                 TeletextSourceSettings = list(
+                  OutputRectangle = list(
+                    Height = 123.0,
+                    LeftOffset = 123.0,
+                    TopOffset = 123.0,
+                    Width = 123.0
+                  ),
                   PageNumber = "string"
                 )
               )
@@ -881,7 +908,13 @@ A list with the following syntax:\preformatted{list(
           Smpte2038DataPreference = "IGNORE"|"PREFER",
           SourceEndBehavior = "CONTINUE"|"LOOP",
           VideoSelector = list(
-            ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+            ColorSpace = "FOLLOW"|"HDR10"|"HLG_2020"|"REC_601"|"REC_709",
+            ColorSpaceSettings = list(
+              Hdr10Settings = list(
+                MaxCll = 123,
+                MaxFall = 123
+              )
+            ),
             ColorSpaceUsage = "FALLBACK"|"FORCE",
             SelectorSettings = list(
               VideoSelectorPid = list(
@@ -906,6 +939,8 @@ A list with the following syntax:\preformatted{list(
       list(
         ActiveInputAttachmentName = "string",
         ActiveInputSwitchActionName = "string",
+        ActiveMotionGraphicsActionName = "string",
+        ActiveMotionGraphicsUri = "string",
         PipelineId = "string"
       )
     ),
@@ -914,6 +949,20 @@ A list with the following syntax:\preformatted{list(
     State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
     Tags = list(
       "string"
+    ),
+    Vpc = list(
+      AvailabilityZones = list(
+        "string"
+      ),
+      NetworkInterfaceIds = list(
+        "string"
+      ),
+      SecurityGroupIds = list(
+        "string"
+      ),
+      SubnetIds = list(
+        "string"
+      )
     )
   )
 )

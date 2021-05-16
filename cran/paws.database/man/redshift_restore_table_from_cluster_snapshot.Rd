@@ -6,7 +6,8 @@
 \usage{
 redshift_restore_table_from_cluster_snapshot(ClusterIdentifier,
   SnapshotIdentifier, SourceDatabaseName, SourceSchemaName,
-  SourceTableName, TargetDatabaseName, TargetSchemaName, NewTableName)
+  SourceTableName, TargetDatabaseName, TargetSchemaName, NewTableName,
+  EnableCaseSensitiveIdentifier)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the Amazon Redshift cluster to restore the table to.}
@@ -28,6 +29,10 @@ If you do not specify a \code{SourceSchemaName} value, the default is
 \item{TargetSchemaName}{The name of the schema to restore the table to.}
 
 \item{NewTableName}{[required] The name of the table to create as a result of the current request.}
+
+\item{EnableCaseSensitiveIdentifier}{Indicates whether name identifiers for database, schema, and table are
+case sensitive. If \code{true}, the names are case sensitive. If \code{false}
+(default), the names are not case sensitive.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -81,7 +86,8 @@ the snapshot.
   SourceTableName = "string",
   TargetDatabaseName = "string",
   TargetSchemaName = "string",
-  NewTableName = "string"
+  NewTableName = "string",
+  EnableCaseSensitiveIdentifier = TRUE|FALSE
 )
 }
 }

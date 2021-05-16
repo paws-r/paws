@@ -7,9 +7,9 @@
 chime_describe_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
 }
 \arguments{
-\item{AppInstanceAdminArn}{[required] The ARN of the app instance administrator.}
+\item{AppInstanceAdminArn}{[required] The ARN of the \code{AppInstanceAdmin}.}
 
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

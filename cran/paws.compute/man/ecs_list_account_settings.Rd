@@ -15,7 +15,10 @@ also specify an account setting name to use this parameter.}
 
 \item{principalArn}{The ARN of the principal, which can be an IAM user, IAM role, or the
 root user. If this field is omitted, the account settings are listed
-only for the authenticated user.}
+only for the authenticated user.
+
+Federated users assume the account setting of the root user and can't
+have explicit account settings set for them.}
 
 \item{effectiveSettings}{Specifies whether to return the effective settings. If \code{true}, the
 account settings for the root user or the default setting for the

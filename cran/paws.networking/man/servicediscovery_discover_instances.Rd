@@ -8,8 +8,8 @@ servicediscovery_discover_instances(NamespaceName, ServiceName,
   MaxResults, QueryParameters, OptionalParameters, HealthStatus)
 }
 \arguments{
-\item{NamespaceName}{[required] The name of the namespace that you specified when you registered the
-instance.}
+\item{NamespaceName}{[required] The \code{HttpName} name of the namespace, found in the \code{HttpProperties}
+member of the \code{Properties} member of the namespace.}
 
 \item{ServiceName}{[required] The name of the service that you specified when you registered the
 instance.}
@@ -22,7 +22,7 @@ you don't specify a value for \code{MaxResults}, AWS Cloud Map returns up to
 
 \item{QueryParameters}{Filters to scope the results based on custom attributes for the
 instance. For example, \verb{\{version=v1, az=1a\}}. Only instances that match
-all the specified key-value pairs will be returned.}
+all the specified key-value pairs are returned.}
 
 \item{OptionalParameters}{Opportunistic filters to scope the results based on custom attributes.
 If there are instances that match both the filters specified in both the

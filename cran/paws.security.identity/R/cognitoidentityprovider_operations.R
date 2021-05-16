@@ -1590,6 +1590,11 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #'     attributes, `USERNAME`, `SECRET_HASH` (if app client is configured
 #'     with client secret).
 #' 
+#' -   `MFA_SETUP` requires `USERNAME`, plus you need to use the session
+#'     value returned by
+#'     [`verify_software_token`][cognitoidentityprovider_verify_software_token]
+#'     in the `Session` parameter.
+#' 
 #' The value of the `USERNAME` attribute must be the user's actual
 #' username, not an alias (such as email address or phone number). To make
 #' this easier, the
@@ -3295,7 +3300,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' -   Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
-#' Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
+#' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
@@ -3313,7 +3318,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' -   Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
-#' Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
+#' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
@@ -3561,7 +3566,7 @@ cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, 
 #' Deletes a group
 #'
 #' @description
-#' Deletes a group. Currently only groups with no members can be deleted.
+#' Deletes a group.
 #' 
 #' Calling this action requires developer credentials.
 #'
@@ -6373,6 +6378,11 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' 
 #' -   `DEVICE_PASSWORD_VERIFIER` requires everything that
 #'     `PASSWORD_VERIFIER` requires plus `DEVICE_KEY`.
+#' 
+#' -   `MFA_SETUP` requires `USERNAME`, plus you need to use the session
+#'     value returned by
+#'     [`verify_software_token`][cognitoidentityprovider_verify_software_token]
+#'     in the `Session` parameter.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
 #' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
 #' calls.
@@ -6798,7 +6808,11 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param SmsMfaConfiguration The SMS text message MFA configuration.
 #' @param SoftwareTokenMfaConfiguration The software token MFA configuration.
-#' @param MfaConfiguration The MFA configuration. Valid values include:
+#' @param MfaConfiguration The MFA configuration. Users who don't have an MFA factor set up won't
+#' be able to sign-in if you set the MfaConfiguration value to ‘ON’. See
+#' [Adding Multi-Factor Authentication (MFA) to a User
+#' Pool](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-mfa.html)
+#' to learn more. Valid values include:
 #' 
 #' -   `OFF` MFA will not be used for any users.
 #' 
@@ -7736,7 +7750,10 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'     user registration.
 #' 
 #' -   `ON` - MFA tokens are required for all user registrations. You can
-#'     only specify required when you are initially creating a user pool.
+#'     only specify ON when you are initially creating a user pool. You can
+#'     use the
+#'     [`set_user_pool_mfa_config`][cognitoidentityprovider_set_user_pool_mfa_config]
+#'     API operation to turn MFA "ON" for existing user pools.
 #' 
 #' -   `OPTIONAL` - Users have the option when registering to create an MFA
 #'     token.
@@ -7945,7 +7962,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' -   Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
-#' Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
+#' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
@@ -7963,7 +7980,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' -   Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
-#' Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
+#' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.

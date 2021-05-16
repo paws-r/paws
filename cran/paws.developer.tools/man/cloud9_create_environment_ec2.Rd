@@ -7,8 +7,8 @@ Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
 instance to the environment}
 \usage{
 cloud9_create_environment_ec2(name, description, clientRequestToken,
-  instanceType, subnetId, automaticStopTimeMinutes, ownerArn, tags,
-  connectionType)
+  instanceType, subnetId, imageId, automaticStopTimeMinutes, ownerArn,
+  tags, connectionType)
 }
 \arguments{
 \item{name}{[required] The name of the environment to create.
@@ -29,6 +29,30 @@ in the \emph{Amazon EC2 API Reference}.}
 \item{subnetId}{The ID of the subnet in Amazon VPC that AWS Cloud9 will use to
 communicate with the Amazon EC2 instance.}
 
+\item{imageId}{The identifier for the Amazon Machine Image (AMI) that's used to create
+the EC2 instance. To choose an AMI for the instance, you must specify a
+valid AMI alias or a valid AWS Systems Manager (SSM) path.
+
+The default AMI is used if the parameter isn't explicitly assigned a
+value in the request.
+
+\strong{AMI aliases}
+\itemize{
+\item \strong{Amazon Linux (default): \code{amazonlinux-1-x86_64}}
+\item Amazon Linux 2: \code{amazonlinux-2-x86_64}
+\item Ubuntu 18.04: \code{ubuntu-18.04-x86_64}
+}
+
+\strong{SSM paths}
+\itemize{
+\item \strong{Amazon Linux (default):
+\verb{resolve:ssm:/aws/service/cloud9/amis/amazonlinux-1-x86_64}}
+\item Amazon Linux 2:
+\verb{resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2-x86_64}
+\item Ubuntu 18.04:
+\verb{resolve:ssm:/aws/service/cloud9/amis/ubuntu-18.04-x86_64}
+}}
+
 \item{automaticStopTimeMinutes}{The number of minutes until the running instance is shut down after the
 environment has last been used.}
 
@@ -39,7 +63,12 @@ ARN defaults to this environment's creator.}
 \item{tags}{An array of key-value pairs that will be associated with the new AWS
 Cloud9 development environment.}
 
-\item{connectionType}{The connection type used for connecting to an Amazon EC2 environment.}
+\item{connectionType}{The connection type used for connecting to an Amazon EC2 environment.
+Valid values are \code{CONNECT_SSH} (default) and \code{CONNECT_SSM} (connected
+through AWS Systems Manager).
+
+For more information, see \href{https://docs.aws.amazon.com/cloud9/latest/user-guide/ec2-ssm.html}{Accessing no-ingress EC2 instances with AWS Systems Manager}
+in the \emph{AWS Cloud9 User Guide}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -59,6 +88,7 @@ instance to the environment.
   clientRequestToken = "string",
   instanceType = "string",
   subnetId = "string",
+  imageId = "string",
   automaticStopTimeMinutes = 123,
   ownerArn = "string",
   tags = list(
@@ -81,7 +111,7 @@ svc$create_environment_ec2(
   description = "This is my demonstration environment.",
   instanceType = "t2.micro",
   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
-  subnetId = "subnet-1fab8aEX"
+  subnetId = "subnet-6300cd1b"
 )
 }
 

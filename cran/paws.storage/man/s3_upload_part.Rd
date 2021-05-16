@@ -13,22 +13,22 @@ s3_upload_part(Body, Bucket, ContentLength, ContentMD5, Key, PartNumber,
 
 \item{Bucket}{[required] The name of the bucket to which the multipart upload was initiated.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ContentLength}{Size of the body in bytes. This parameter is useful when the size of the
 body cannot be determined automatically.}
@@ -61,7 +61,7 @@ that the encryption key was transmitted without error.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -114,11 +114,11 @@ either complete or abort multipart upload, Amazon S3 frees up the parts
 storage and stops charging you for the parts storage.
 
 For more information on multipart uploads, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload Overview}
-in the \emph{Amazon Simple Storage Service Developer Guide} .
+in the \emph{Amazon S3 User Guide} .
 
 For information on the permissions required to use the multipart upload
-API, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+API, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload and Permissions}
+in the \emph{Amazon S3 User Guide}.
 
 You can optionally request server-side encryption where Amazon S3
 encrypts your data as it writes it to disks in its data centers and
@@ -129,7 +129,7 @@ you provide in the request must match the headers you used in the
 request to initiate the upload by using
 \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}. For more
 information, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html}{Using Server-Side Encryption}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 Server-side encryption is supported by the S3 Multipart Upload actions.
 Unless you are using a customer-provided encryption key, you don't need

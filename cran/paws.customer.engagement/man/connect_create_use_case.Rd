@@ -2,11 +2,10 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_use_case}
 \alias{connect_create_use_case}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Creates a use case for an AppIntegration association}
 \usage{
 connect_create_use_case(InstanceId, IntegrationAssociationId,
-  UseCaseType)
+  UseCaseType, Tags)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
@@ -15,6 +14,8 @@ connect_create_use_case(InstanceId, IntegrationAssociationId,
 
 \item{UseCaseType}{[required] The type of use case to associate to the AppIntegration association.
 Each AppIntegration association can have only one of each use case type.}
+
+\item{Tags}{One or more tags.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -24,16 +25,16 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Creates a use case for an AppIntegration association.
 }
 \section{Request syntax}{
 \preformatted{svc$create_use_case(
   InstanceId = "string",
   IntegrationAssociationId = "string",
-  UseCaseType = "RULES_EVALUATION"
+  UseCaseType = "RULES_EVALUATION",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

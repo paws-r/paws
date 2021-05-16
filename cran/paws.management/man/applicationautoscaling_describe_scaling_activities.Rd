@@ -14,8 +14,7 @@ resource provided by your own application or service, use
 \code{custom-resource} instead.}
 
 \item{ResourceId}{The identifier of the resource associated with the scaling activity.
-This string consists of the resource type and unique identifier. If you
-specify a scalable dimension, you must also specify a resource ID.
+This string consists of the resource type and unique identifier.
 \itemize{
 \item ECS service - The resource type is \code{service} and the unique
 identifier is the cluster name and service name. Example:

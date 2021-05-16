@@ -53,7 +53,7 @@ NULL
 
 .shield$create_protection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,7 +65,7 @@ NULL
 
 .shield$create_protection_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProtectionGroupId = structure(logical(0), tags = list(type = "string")), Aggregation = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Members = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ProtectionGroupId = structure(logical(0), tags = list(type = "string")), Aggregation = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Members = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -179,7 +179,7 @@ NULL
 
 .shield$describe_protection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Protection = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), HealthCheckIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Protection = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), HealthCheckIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProtectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -191,7 +191,7 @@ NULL
 
 .shield$describe_protection_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProtectionGroup = structure(list(ProtectionGroupId = structure(logical(0), tags = list(type = "string")), Aggregation = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Members = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ProtectionGroup = structure(list(ProtectionGroupId = structure(logical(0), tags = list(type = "string")), Aggregation = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Members = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProtectionGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -203,7 +203,7 @@ NULL
 
 .shield$describe_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Subscription = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), TimeCommitmentInSeconds = structure(logical(0), tags = list(type = "long")), AutoRenew = structure(logical(0), tags = list(type = "string")), Limits = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), ProactiveEngagementStatus = structure(logical(0), tags = list(type = "string")), SubscriptionLimits = structure(list(ProtectionLimits = structure(list(ProtectedResourceTypeLimits = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ProtectionGroupLimits = structure(list(MaxProtectionGroups = structure(logical(0), tags = list(type = "long")), PatternTypeLimits = structure(list(ArbitraryPatternLimits = structure(list(MaxMembers = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Subscription = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), TimeCommitmentInSeconds = structure(logical(0), tags = list(type = "long")), AutoRenew = structure(logical(0), tags = list(type = "string")), Limits = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), ProactiveEngagementStatus = structure(logical(0), tags = list(type = "string")), SubscriptionLimits = structure(list(ProtectionLimits = structure(list(ProtectedResourceTypeLimits = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ProtectionGroupLimits = structure(list(MaxProtectionGroups = structure(logical(0), tags = list(type = "long")), PatternTypeLimits = structure(list(ArbitraryPatternLimits = structure(list(MaxMembers = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -299,7 +299,7 @@ NULL
 
 .shield$list_protection_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProtectionGroups = structure(list(structure(list(ProtectionGroupId = structure(logical(0), tags = list(type = "string")), Aggregation = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Members = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ProtectionGroups = structure(list(structure(list(ProtectionGroupId = structure(logical(0), tags = list(type = "string")), Aggregation = structure(logical(0), tags = list(type = "string")), Pattern = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Members = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProtectionGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -311,7 +311,7 @@ NULL
 
 .shield$list_protections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Protections = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), HealthCheckIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Protections = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), HealthCheckIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProtectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -324,6 +324,42 @@ NULL
 .shield$list_resources_in_protection_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

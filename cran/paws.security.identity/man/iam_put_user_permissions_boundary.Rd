@@ -27,7 +27,7 @@ permissions for the user.
 
 Policies that are used as permissions boundaries do not provide
 permissions. You must also attach a permissions policy to the user. To
-learn how the effective permissions for a user are evaluated, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON Policy Evaluation Logic}
+learn how the effective permissions for a user are evaluated, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html}{IAM JSON policy evaluation logic}
 in the IAM User Guide.
 }
 \section{Request syntax}{

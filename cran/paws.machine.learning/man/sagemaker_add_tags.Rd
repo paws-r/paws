@@ -44,6 +44,16 @@ added to all training jobs that the hyperparameter tuning job launches,
 add the tags when you first create the tuning job by specifying them in
 the \code{Tags} parameter of
 \code{\link[=sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job}}
+
+Tags that you add to a SageMaker Studio Domain or User Profile by
+calling this API are also added to any Apps that the Domain or User
+Profile launches after you call this API, but not to Apps that the
+Domain or User Profile launched before you called this API. To make sure
+that the tags associated with a Domain or User Profile are also added to
+all Apps that the Domain or User Profile launches, add the tags when you
+first create the Domain or User Profile by specifying them in the \code{Tags}
+parameter of \code{\link[=sagemaker_create_domain]{create_domain}} or
+\code{\link[=sagemaker_create_user_profile]{create_user_profile}}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_tags(

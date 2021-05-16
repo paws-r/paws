@@ -79,7 +79,7 @@ robomaker_batch_delete_worlds <- function(worlds) {
 #'         "2015-01-01"
 #'       ),
 #'       failureBehavior = "Fail"|"Continue",
-#'       failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+#'       failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"RobotApplicationHealthCheckFailure"|"SimulationApplicationHealthCheckFailure"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"ThrottlingError"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication"|"UploadContentMismatchError",
 #'       failureReason = "string",
 #'       clientRequestToken = "string",
 #'       outputLocation = list(
@@ -112,7 +112,25 @@ robomaker_batch_delete_worlds <- function(worlds) {
 #'               )
 #'             ),
 #'             streamUI = TRUE|FALSE
-#'           )
+#'           ),
+#'           uploadConfigurations = list(
+#'             list(
+#'               name = "string",
+#'               path = "string",
+#'               uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'             )
+#'           ),
+#'           useDefaultUploadConfigurations = TRUE|FALSE,
+#'           tools = list(
+#'             list(
+#'               streamUI = TRUE|FALSE,
+#'               name = "string",
+#'               command = "string",
+#'               streamOutputToCloudWatch = TRUE|FALSE,
+#'               exitBehavior = "FAIL"|"RESTART"
+#'             )
+#'           ),
+#'           useDefaultTools = TRUE|FALSE
 #'         )
 #'       ),
 #'       simulationApplications = list(
@@ -136,11 +154,29 @@ robomaker_batch_delete_worlds <- function(worlds) {
 #'             ),
 #'             streamUI = TRUE|FALSE
 #'           ),
+#'           uploadConfigurations = list(
+#'             list(
+#'               name = "string",
+#'               path = "string",
+#'               uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'             )
+#'           ),
 #'           worldConfigs = list(
 #'             list(
 #'               world = "string"
 #'             )
-#'           )
+#'           ),
+#'           useDefaultUploadConfigurations = TRUE|FALSE,
+#'           tools = list(
+#'             list(
+#'               streamUI = TRUE|FALSE,
+#'               name = "string",
+#'               command = "string",
+#'               streamOutputToCloudWatch = TRUE|FALSE,
+#'               exitBehavior = "FAIL"|"RESTART"
+#'             )
+#'           ),
+#'           useDefaultTools = TRUE|FALSE
 #'         )
 #'       ),
 #'       dataSources = list(
@@ -464,7 +500,7 @@ robomaker_cancel_world_generation_job <- function(job) {
 #'     )
 #'   ),
 #'   failureReason = "string",
-#'   failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError",
+#'   failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"BadLambdaAssociated"|"InternalServerError"|"RobotApplicationDoesNotExist"|"DeploymentFleetDoesNotExist"|"FleetDeploymentTimeout",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -695,7 +731,7 @@ robomaker_create_robot <- function(name, architecture, greengrassGroupId, tags =
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
@@ -720,7 +756,7 @@ robomaker_create_robot <- function(name, architecture, greengrassGroupId, tags =
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   tags = list(
 #'     "string"
@@ -779,7 +815,7 @@ robomaker_create_robot_application <- function(name, sources, robotSoftwareSuite
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
@@ -855,7 +891,7 @@ robomaker_create_robot_application_version <- function(application, currentRevis
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   renderingEngine = list(
 #'     name = "OGRE",
@@ -888,7 +924,7 @@ robomaker_create_robot_application_version <- function(application, currentRevis
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   renderingEngine = list(
 #'     name = "OGRE",
@@ -955,7 +991,7 @@ robomaker_create_simulation_application <- function(name, sources, simulationSof
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   renderingEngine = list(
 #'     name = "OGRE",
@@ -1058,7 +1094,7 @@ robomaker_create_simulation_application_version <- function(application, current
 #'     "2015-01-01"
 #'   ),
 #'   failureBehavior = "Fail"|"Continue",
-#'   failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+#'   failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"RobotApplicationHealthCheckFailure"|"SimulationApplicationHealthCheckFailure"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"ThrottlingError"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication"|"UploadContentMismatchError",
 #'   clientRequestToken = "string",
 #'   outputLocation = list(
 #'     s3Bucket = "string",
@@ -1090,7 +1126,25 @@ robomaker_create_simulation_application_version <- function(application, current
 #'           )
 #'         ),
 #'         streamUI = TRUE|FALSE
-#'       )
+#'       ),
+#'       uploadConfigurations = list(
+#'         list(
+#'           name = "string",
+#'           path = "string",
+#'           uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'         )
+#'       ),
+#'       useDefaultUploadConfigurations = TRUE|FALSE,
+#'       tools = list(
+#'         list(
+#'           streamUI = TRUE|FALSE,
+#'           name = "string",
+#'           command = "string",
+#'           streamOutputToCloudWatch = TRUE|FALSE,
+#'           exitBehavior = "FAIL"|"RESTART"
+#'         )
+#'       ),
+#'       useDefaultTools = TRUE|FALSE
 #'     )
 #'   ),
 #'   simulationApplications = list(
@@ -1114,11 +1168,29 @@ robomaker_create_simulation_application_version <- function(application, current
 #'         ),
 #'         streamUI = TRUE|FALSE
 #'       ),
+#'       uploadConfigurations = list(
+#'         list(
+#'           name = "string",
+#'           path = "string",
+#'           uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'         )
+#'       ),
 #'       worldConfigs = list(
 #'         list(
 #'           world = "string"
 #'         )
-#'       )
+#'       ),
+#'       useDefaultUploadConfigurations = TRUE|FALSE,
+#'       tools = list(
+#'         list(
+#'           streamUI = TRUE|FALSE,
+#'           name = "string",
+#'           command = "string",
+#'           streamOutputToCloudWatch = TRUE|FALSE,
+#'           exitBehavior = "FAIL"|"RESTART"
+#'         )
+#'       ),
+#'       useDefaultTools = TRUE|FALSE
 #'     )
 #'   ),
 #'   dataSources = list(
@@ -1186,7 +1258,25 @@ robomaker_create_simulation_application_version <- function(application, current
 #'           )
 #'         ),
 #'         streamUI = TRUE|FALSE
-#'       )
+#'       ),
+#'       uploadConfigurations = list(
+#'         list(
+#'           name = "string",
+#'           path = "string",
+#'           uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'         )
+#'       ),
+#'       useDefaultUploadConfigurations = TRUE|FALSE,
+#'       tools = list(
+#'         list(
+#'           streamUI = TRUE|FALSE,
+#'           name = "string",
+#'           command = "string",
+#'           streamOutputToCloudWatch = TRUE|FALSE,
+#'           exitBehavior = "FAIL"|"RESTART"
+#'         )
+#'       ),
+#'       useDefaultTools = TRUE|FALSE
 #'     )
 #'   ),
 #'   simulationApplications = list(
@@ -1210,11 +1300,29 @@ robomaker_create_simulation_application_version <- function(application, current
 #'         ),
 #'         streamUI = TRUE|FALSE
 #'       ),
+#'       uploadConfigurations = list(
+#'         list(
+#'           name = "string",
+#'           path = "string",
+#'           uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'         )
+#'       ),
 #'       worldConfigs = list(
 #'         list(
 #'           world = "string"
 #'         )
-#'       )
+#'       ),
+#'       useDefaultUploadConfigurations = TRUE|FALSE,
+#'       tools = list(
+#'         list(
+#'           streamUI = TRUE|FALSE,
+#'           name = "string",
+#'           command = "string",
+#'           streamOutputToCloudWatch = TRUE|FALSE,
+#'           exitBehavior = "FAIL"|"RESTART"
+#'         )
+#'       ),
+#'       useDefaultTools = TRUE|FALSE
 #'     )
 #'   ),
 #'   dataSources = list(
@@ -1789,7 +1897,7 @@ robomaker_deregister_robot <- function(fleet, robot) {
 #'     )
 #'   ),
 #'   failureReason = "string",
-#'   failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError",
+#'   failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"BadLambdaAssociated"|"InternalServerError"|"RobotApplicationDoesNotExist"|"DeploymentFleetDoesNotExist"|"FleetDeploymentTimeout",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1810,7 +1918,7 @@ robomaker_deregister_robot <- function(fleet, robot) {
 #'         targetResource = "string"
 #'       ),
 #'       failureReason = "string",
-#'       failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError"
+#'       failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"BadLambdaAssociated"|"InternalServerError"|"RobotApplicationDoesNotExist"|"DeploymentFleetDoesNotExist"|"FleetDeploymentTimeout"
 #'     )
 #'   ),
 #'   tags = list(
@@ -2008,7 +2116,7 @@ robomaker_describe_robot <- function(robot) {
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   revisionId = "string",
 #'   lastUpdatedAt = as.POSIXct(
@@ -2081,7 +2189,7 @@ robomaker_describe_robot_application <- function(application, applicationVersion
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   renderingEngine = list(
 #'     name = "OGRE",
@@ -2149,7 +2257,7 @@ robomaker_describe_simulation_application <- function(application, applicationVe
 #'     "2015-01-01"
 #'   ),
 #'   failureBehavior = "Fail"|"Continue",
-#'   failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+#'   failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"RobotApplicationHealthCheckFailure"|"SimulationApplicationHealthCheckFailure"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"ThrottlingError"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication"|"UploadContentMismatchError",
 #'   failureReason = "string",
 #'   clientRequestToken = "string",
 #'   outputLocation = list(
@@ -2182,7 +2290,25 @@ robomaker_describe_simulation_application <- function(application, applicationVe
 #'           )
 #'         ),
 #'         streamUI = TRUE|FALSE
-#'       )
+#'       ),
+#'       uploadConfigurations = list(
+#'         list(
+#'           name = "string",
+#'           path = "string",
+#'           uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'         )
+#'       ),
+#'       useDefaultUploadConfigurations = TRUE|FALSE,
+#'       tools = list(
+#'         list(
+#'           streamUI = TRUE|FALSE,
+#'           name = "string",
+#'           command = "string",
+#'           streamOutputToCloudWatch = TRUE|FALSE,
+#'           exitBehavior = "FAIL"|"RESTART"
+#'         )
+#'       ),
+#'       useDefaultTools = TRUE|FALSE
 #'     )
 #'   ),
 #'   simulationApplications = list(
@@ -2206,11 +2332,29 @@ robomaker_describe_simulation_application <- function(application, applicationVe
 #'         ),
 #'         streamUI = TRUE|FALSE
 #'       ),
+#'       uploadConfigurations = list(
+#'         list(
+#'           name = "string",
+#'           path = "string",
+#'           uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'         )
+#'       ),
 #'       worldConfigs = list(
 #'         list(
 #'           world = "string"
 #'         )
-#'       )
+#'       ),
+#'       useDefaultUploadConfigurations = TRUE|FALSE,
+#'       tools = list(
+#'         list(
+#'           streamUI = TRUE|FALSE,
+#'           name = "string",
+#'           command = "string",
+#'           streamOutputToCloudWatch = TRUE|FALSE,
+#'           exitBehavior = "FAIL"|"RESTART"
+#'         )
+#'       ),
+#'       useDefaultTools = TRUE|FALSE
 #'     )
 #'   ),
 #'   dataSources = list(
@@ -2339,7 +2483,25 @@ robomaker_describe_simulation_job <- function(job) {
 #'                 )
 #'               ),
 #'               streamUI = TRUE|FALSE
-#'             )
+#'             ),
+#'             uploadConfigurations = list(
+#'               list(
+#'                 name = "string",
+#'                 path = "string",
+#'                 uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'               )
+#'             ),
+#'             useDefaultUploadConfigurations = TRUE|FALSE,
+#'             tools = list(
+#'               list(
+#'                 streamUI = TRUE|FALSE,
+#'                 name = "string",
+#'                 command = "string",
+#'                 streamOutputToCloudWatch = TRUE|FALSE,
+#'                 exitBehavior = "FAIL"|"RESTART"
+#'               )
+#'             ),
+#'             useDefaultTools = TRUE|FALSE
 #'           )
 #'         ),
 #'         simulationApplications = list(
@@ -2363,11 +2525,29 @@ robomaker_describe_simulation_job <- function(job) {
 #'               ),
 #'               streamUI = TRUE|FALSE
 #'             ),
+#'             uploadConfigurations = list(
+#'               list(
+#'                 name = "string",
+#'                 path = "string",
+#'                 uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'               )
+#'             ),
 #'             worldConfigs = list(
 #'               list(
 #'                 world = "string"
 #'               )
-#'             )
+#'             ),
+#'             useDefaultUploadConfigurations = TRUE|FALSE,
+#'             tools = list(
+#'               list(
+#'                 streamUI = TRUE|FALSE,
+#'                 name = "string",
+#'                 command = "string",
+#'                 streamOutputToCloudWatch = TRUE|FALSE,
+#'                 exitBehavior = "FAIL"|"RESTART"
+#'               )
+#'             ),
+#'             useDefaultTools = TRUE|FALSE
 #'           )
 #'         ),
 #'         dataSources = list(
@@ -2396,7 +2576,7 @@ robomaker_describe_simulation_job <- function(job) {
 #'         )
 #'       ),
 #'       failureReason = "string",
-#'       failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+#'       failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"RobotApplicationHealthCheckFailure"|"SimulationApplicationHealthCheckFailure"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"ThrottlingError"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication"|"UploadContentMismatchError",
 #'       failedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -2435,7 +2615,25 @@ robomaker_describe_simulation_job <- function(job) {
 #'               )
 #'             ),
 #'             streamUI = TRUE|FALSE
-#'           )
+#'           ),
+#'           uploadConfigurations = list(
+#'             list(
+#'               name = "string",
+#'               path = "string",
+#'               uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'             )
+#'           ),
+#'           useDefaultUploadConfigurations = TRUE|FALSE,
+#'           tools = list(
+#'             list(
+#'               streamUI = TRUE|FALSE,
+#'               name = "string",
+#'               command = "string",
+#'               streamOutputToCloudWatch = TRUE|FALSE,
+#'               exitBehavior = "FAIL"|"RESTART"
+#'             )
+#'           ),
+#'           useDefaultTools = TRUE|FALSE
 #'         )
 #'       ),
 #'       simulationApplications = list(
@@ -2459,11 +2657,29 @@ robomaker_describe_simulation_job <- function(job) {
 #'             ),
 #'             streamUI = TRUE|FALSE
 #'           ),
+#'           uploadConfigurations = list(
+#'             list(
+#'               name = "string",
+#'               path = "string",
+#'               uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'             )
+#'           ),
 #'           worldConfigs = list(
 #'             list(
 #'               world = "string"
 #'             )
-#'           )
+#'           ),
+#'           useDefaultUploadConfigurations = TRUE|FALSE,
+#'           tools = list(
+#'             list(
+#'               streamUI = TRUE|FALSE,
+#'               name = "string",
+#'               command = "string",
+#'               streamOutputToCloudWatch = TRUE|FALSE,
+#'               exitBehavior = "FAIL"|"RESTART"
+#'             )
+#'           ),
+#'           useDefaultTools = TRUE|FALSE
 #'         )
 #'       ),
 #'       dataSources = list(
@@ -2911,7 +3127,7 @@ robomaker_get_world_template_body <- function(template = NULL, generationJob = N
 #'         )
 #'       ),
 #'       failureReason = "string",
-#'       failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError",
+#'       failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"BadLambdaAssociated"|"InternalServerError"|"RobotApplicationDoesNotExist"|"DeploymentFleetDoesNotExist"|"FleetDeploymentTimeout",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -3095,7 +3311,7 @@ robomaker_list_fleets <- function(nextToken = NULL, maxResults = NULL, filters =
 #'       ),
 #'       robotSoftwareSuite = list(
 #'         name = "ROS"|"ROS2",
-#'         version = "Kinetic"|"Melodic"|"Dashing"
+#'         version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'       )
 #'     )
 #'   ),
@@ -3280,7 +3496,7 @@ robomaker_list_robots <- function(nextToken = NULL, maxResults = NULL, filters =
 #'       ),
 #'       robotSoftwareSuite = list(
 #'         name = "ROS"|"ROS2",
-#'         version = "Kinetic"|"Melodic"|"Dashing"
+#'         version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'       ),
 #'       simulationSoftwareSuite = list(
 #'         name = "Gazebo"|"RosbagPlay",
@@ -4032,7 +4248,25 @@ robomaker_restart_simulation_job <- function(job) {
 #'                 )
 #'               ),
 #'               streamUI = TRUE|FALSE
-#'             )
+#'             ),
+#'             uploadConfigurations = list(
+#'               list(
+#'                 name = "string",
+#'                 path = "string",
+#'                 uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'               )
+#'             ),
+#'             useDefaultUploadConfigurations = TRUE|FALSE,
+#'             tools = list(
+#'               list(
+#'                 streamUI = TRUE|FALSE,
+#'                 name = "string",
+#'                 command = "string",
+#'                 streamOutputToCloudWatch = TRUE|FALSE,
+#'                 exitBehavior = "FAIL"|"RESTART"
+#'               )
+#'             ),
+#'             useDefaultTools = TRUE|FALSE
 #'           )
 #'         ),
 #'         simulationApplications = list(
@@ -4056,11 +4290,29 @@ robomaker_restart_simulation_job <- function(job) {
 #'               ),
 #'               streamUI = TRUE|FALSE
 #'             ),
+#'             uploadConfigurations = list(
+#'               list(
+#'                 name = "string",
+#'                 path = "string",
+#'                 uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'               )
+#'             ),
 #'             worldConfigs = list(
 #'               list(
 #'                 world = "string"
 #'               )
-#'             )
+#'             ),
+#'             useDefaultUploadConfigurations = TRUE|FALSE,
+#'             tools = list(
+#'               list(
+#'                 streamUI = TRUE|FALSE,
+#'                 name = "string",
+#'                 command = "string",
+#'                 streamOutputToCloudWatch = TRUE|FALSE,
+#'                 exitBehavior = "FAIL"|"RESTART"
+#'               )
+#'             ),
+#'             useDefaultTools = TRUE|FALSE
 #'           )
 #'         ),
 #'         dataSources = list(
@@ -4089,7 +4341,7 @@ robomaker_restart_simulation_job <- function(job) {
 #'         )
 #'       ),
 #'       failureReason = "string",
-#'       failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+#'       failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"RobotApplicationHealthCheckFailure"|"SimulationApplicationHealthCheckFailure"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"ThrottlingError"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication"|"UploadContentMismatchError",
 #'       failedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -4128,7 +4380,25 @@ robomaker_restart_simulation_job <- function(job) {
 #'               )
 #'             ),
 #'             streamUI = TRUE|FALSE
-#'           )
+#'           ),
+#'           uploadConfigurations = list(
+#'             list(
+#'               name = "string",
+#'               path = "string",
+#'               uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'             )
+#'           ),
+#'           useDefaultUploadConfigurations = TRUE|FALSE,
+#'           tools = list(
+#'             list(
+#'               streamUI = TRUE|FALSE,
+#'               name = "string",
+#'               command = "string",
+#'               streamOutputToCloudWatch = TRUE|FALSE,
+#'               exitBehavior = "FAIL"|"RESTART"
+#'             )
+#'           ),
+#'           useDefaultTools = TRUE|FALSE
 #'         )
 #'       ),
 #'       simulationApplications = list(
@@ -4152,11 +4422,29 @@ robomaker_restart_simulation_job <- function(job) {
 #'             ),
 #'             streamUI = TRUE|FALSE
 #'           ),
+#'           uploadConfigurations = list(
+#'             list(
+#'               name = "string",
+#'               path = "string",
+#'               uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'             )
+#'           ),
 #'           worldConfigs = list(
 #'             list(
 #'               world = "string"
 #'             )
-#'           )
+#'           ),
+#'           useDefaultUploadConfigurations = TRUE|FALSE,
+#'           tools = list(
+#'             list(
+#'               streamUI = TRUE|FALSE,
+#'               name = "string",
+#'               command = "string",
+#'               streamOutputToCloudWatch = TRUE|FALSE,
+#'               exitBehavior = "FAIL"|"RESTART"
+#'             )
+#'           ),
+#'           useDefaultTools = TRUE|FALSE
 #'         )
 #'       ),
 #'       dataSources = list(
@@ -4251,7 +4539,25 @@ robomaker_restart_simulation_job <- function(job) {
 #'               )
 #'             ),
 #'             streamUI = TRUE|FALSE
-#'           )
+#'           ),
+#'           uploadConfigurations = list(
+#'             list(
+#'               name = "string",
+#'               path = "string",
+#'               uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'             )
+#'           ),
+#'           useDefaultUploadConfigurations = TRUE|FALSE,
+#'           tools = list(
+#'             list(
+#'               streamUI = TRUE|FALSE,
+#'               name = "string",
+#'               command = "string",
+#'               streamOutputToCloudWatch = TRUE|FALSE,
+#'               exitBehavior = "FAIL"|"RESTART"
+#'             )
+#'           ),
+#'           useDefaultTools = TRUE|FALSE
 #'         )
 #'       ),
 #'       simulationApplications = list(
@@ -4275,11 +4581,29 @@ robomaker_restart_simulation_job <- function(job) {
 #'             ),
 #'             streamUI = TRUE|FALSE
 #'           ),
+#'           uploadConfigurations = list(
+#'             list(
+#'               name = "string",
+#'               path = "string",
+#'               uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+#'             )
+#'           ),
 #'           worldConfigs = list(
 #'             list(
 #'               world = "string"
 #'             )
-#'           )
+#'           ),
+#'           useDefaultUploadConfigurations = TRUE|FALSE,
+#'           tools = list(
+#'             list(
+#'               streamUI = TRUE|FALSE,
+#'               name = "string",
+#'               command = "string",
+#'               streamOutputToCloudWatch = TRUE|FALSE,
+#'               exitBehavior = "FAIL"|"RESTART"
+#'             )
+#'           ),
+#'           useDefaultTools = TRUE|FALSE
 #'         )
 #'       ),
 #'       dataSources = list(
@@ -4380,7 +4704,7 @@ robomaker_start_simulation_job_batch <- function(clientRequestToken = NULL, batc
 #'     )
 #'   ),
 #'   failureReason = "string",
-#'   failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError",
+#'   failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"BadLambdaAssociated"|"InternalServerError"|"RobotApplicationDoesNotExist"|"DeploymentFleetDoesNotExist"|"FleetDeploymentTimeout",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -4552,7 +4876,7 @@ robomaker_untag_resource <- function(resourceArn, tagKeys) {
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
@@ -4574,7 +4898,7 @@ robomaker_untag_resource <- function(resourceArn, tagKeys) {
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   currentRevisionId = "string"
 #' )
@@ -4638,7 +4962,7 @@ robomaker_update_robot_application <- function(application, sources, robotSoftwa
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   renderingEngine = list(
 #'     name = "OGRE",
@@ -4668,7 +4992,7 @@ robomaker_update_robot_application <- function(application, sources, robotSoftwa
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS"|"ROS2",
-#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'     version = "Kinetic"|"Melodic"|"Dashing"|"Foxy"
 #'   ),
 #'   renderingEngine = list(
 #'     name = "OGRE",

@@ -50,11 +50,27 @@ A list with the following syntax:\preformatted{list(
       backendDefaults = list(
         clientPolicy = list(
           tls = list(
+            certificate = list(
+              file = list(
+                certificateChain = "string",
+                privateKey = "string"
+              ),
+              sds = list(
+                secretName = "string"
+              )
+            ),
             enforce = TRUE|FALSE,
             ports = list(
               123
             ),
             validation = list(
+              subjectAlternativeNames = list(
+                match = list(
+                  exact = list(
+                    "string"
+                  )
+                )
+              ),
               trust = list(
                 acm = list(
                   certificateAuthorityArns = list(
@@ -63,6 +79,9 @@ A list with the following syntax:\preformatted{list(
                 ),
                 file = list(
                   certificateChain = "string"
+                ),
+                sds = list(
+                  secretName = "string"
                 )
               )
             )
@@ -104,9 +123,29 @@ A list with the following syntax:\preformatted{list(
               file = list(
                 certificateChain = "string",
                 privateKey = "string"
+              ),
+              sds = list(
+                secretName = "string"
               )
             ),
-            mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+            mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+            validation = list(
+              subjectAlternativeNames = list(
+                match = list(
+                  exact = list(
+                    "string"
+                  )
+                )
+              ),
+              trust = list(
+                file = list(
+                  certificateChain = "string"
+                ),
+                sds = list(
+                  secretName = "string"
+                )
+              )
+            )
           )
         )
       ),
@@ -147,11 +186,27 @@ For more information about virtual gateways, see \href{https://docs.aws.amazon.c
     backendDefaults = list(
       clientPolicy = list(
         tls = list(
+          certificate = list(
+            file = list(
+              certificateChain = "string",
+              privateKey = "string"
+            ),
+            sds = list(
+              secretName = "string"
+            )
+          ),
           enforce = TRUE|FALSE,
           ports = list(
             123
           ),
           validation = list(
+            subjectAlternativeNames = list(
+              match = list(
+                exact = list(
+                  "string"
+                )
+              )
+            ),
             trust = list(
               acm = list(
                 certificateAuthorityArns = list(
@@ -160,6 +215,9 @@ For more information about virtual gateways, see \href{https://docs.aws.amazon.c
               ),
               file = list(
                 certificateChain = "string"
+              ),
+              sds = list(
+                secretName = "string"
               )
             )
           )
@@ -201,9 +259,29 @@ For more information about virtual gateways, see \href{https://docs.aws.amazon.c
             file = list(
               certificateChain = "string",
               privateKey = "string"
+            ),
+            sds = list(
+              secretName = "string"
             )
           ),
-          mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+          mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+          validation = list(
+            subjectAlternativeNames = list(
+              match = list(
+                exact = list(
+                  "string"
+                )
+              )
+            ),
+            trust = list(
+              file = list(
+                certificateChain = "string"
+              ),
+              sds = list(
+                secretName = "string"
+              )
+            )
+          )
         )
       )
     ),

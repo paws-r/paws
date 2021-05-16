@@ -17,7 +17,7 @@ NULL
 #' enterprise resource planning (ERP), with contact history from your
 #' Amazon Connect contact center.
 #' 
-#' If you're new to Amazon Connect, you might find it helpful to also
+#' If you're new to Amazon Connect , you might find it helpful to also
 #' review the [Amazon Connect Administrator
 #' Guide](https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html).
 #'
@@ -64,6 +64,7 @@ NULL
 #'  \link[=customerprofiles_delete_profile_object_type]{delete_profile_object_type} \tab Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type\cr
 #'  \link[=customerprofiles_get_domain]{get_domain} \tab Returns information about a specific domain\cr
 #'  \link[=customerprofiles_get_integration]{get_integration} \tab Returns an integration for a domain\cr
+#'  \link[=customerprofiles_get_matches]{get_matches} \tab This API is in preview release for Amazon Connect and subject to change\cr
 #'  \link[=customerprofiles_get_profile_object_type]{get_profile_object_type} \tab Returns the object types for a specific domain\cr
 #'  \link[=customerprofiles_get_profile_object_type_template]{get_profile_object_type_template} \tab Returns the template information for a specific object type\cr
 #'  \link[=customerprofiles_list_account_integrations]{list_account_integrations} \tab Lists all of the integrations associated to a specific URI in the AWS account\cr
@@ -73,6 +74,7 @@ NULL
 #'  \link[=customerprofiles_list_profile_object_types]{list_profile_object_types} \tab Lists all of the templates available within the service\cr
 #'  \link[=customerprofiles_list_profile_object_type_templates]{list_profile_object_type_templates} \tab Lists all of the template information for object types\cr
 #'  \link[=customerprofiles_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with an Amazon Connect Customer Profiles resource\cr
+#'  \link[=customerprofiles_merge_profiles]{merge_profiles} \tab This API is in preview release for Amazon Connect and subject to change\cr
 #'  \link[=customerprofiles_put_integration]{put_integration} \tab Adds an integration between the service and a third-party service, which includes Amazon AppFlow and Amazon Connect\cr
 #'  \link[=customerprofiles_put_profile_object]{put_profile_object} \tab Adds additional objects to customer profiles of a given ObjectType\cr
 #'  \link[=customerprofiles_put_profile_object_type]{put_profile_object_type} \tab Defines a ProfileObjectType\cr

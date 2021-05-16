@@ -79,6 +79,62 @@ redshift_accept_reserved_node_exchange <- function(ReservedNodeId, TargetReserve
 }
 .redshift$operations$accept_reserved_node_exchange <- redshift_accept_reserved_node_exchange
 
+#' Adds a partner integration to a cluster
+#'
+#' @description
+#' Adds a partner integration to a cluster. This operation authorizes a
+#' partner to push status updates for the specified database. To complete
+#' the integration, you also set up the integration on the partner website.
+#'
+#' @usage
+#' redshift_add_partner(AccountId, ClusterIdentifier, DatabaseName,
+#'   PartnerName)
+#'
+#' @param AccountId &#91;required&#93; The AWS account ID that owns the cluster.
+#' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster that receives data from the
+#' partner.
+#' @param DatabaseName &#91;required&#93; The name of the database that receives data from the partner.
+#' @param PartnerName &#91;required&#93; The name of the partner that is authorized to send data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_partner(
+#'   AccountId = "string",
+#'   ClusterIdentifier = "string",
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_add_partner
+redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, PartnerName) {
+  op <- new_operation(
+    name = "AddPartner",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$add_partner_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName)
+  output <- .redshift$add_partner_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$add_partner <- redshift_add_partner
+
 #' Adds an inbound (ingress) rule to an Amazon Redshift security group
 #'
 #' @description
@@ -191,6 +247,69 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
   return(response)
 }
 .redshift$operations$authorize_cluster_security_group_ingress <- redshift_authorize_cluster_security_group_ingress
+
+#' Grants access to a cluster
+#'
+#' @description
+#' Grants access to a cluster.
+#'
+#' @usage
+#' redshift_authorize_endpoint_access(ClusterIdentifier, Account, VpcIds)
+#'
+#' @param ClusterIdentifier The cluster identifier of the cluster to grant access to.
+#' @param Account &#91;required&#93; The AWS account ID to grant access to.
+#' @param VpcIds The virtual private cloud (VPC) identifiers to grant access to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Grantor = "string",
+#'   Grantee = "string",
+#'   ClusterIdentifier = "string",
+#'   AuthorizeTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ClusterStatus = "string",
+#'   Status = "Authorized"|"Revoking",
+#'   AllowedAllVPCs = TRUE|FALSE,
+#'   AllowedVPCs = list(
+#'     "string"
+#'   ),
+#'   EndpointCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$authorize_endpoint_access(
+#'   ClusterIdentifier = "string",
+#'   Account = "string",
+#'   VpcIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_authorize_endpoint_access
+redshift_authorize_endpoint_access <- function(ClusterIdentifier = NULL, Account, VpcIds = NULL) {
+  op <- new_operation(
+    name = "AuthorizeEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$authorize_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, Account = Account, VpcIds = VpcIds)
+  output <- .redshift$authorize_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$authorize_endpoint_access <- redshift_authorize_endpoint_access
 
 #' Authorizes the specified AWS customer account to restore the specified
 #' snapshot
@@ -678,7 +797,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #'   Encrypted, HsmClientCertificateIdentifier, HsmConfigurationIdentifier,
 #'   ElasticIp, Tags, KmsKeyId, EnhancedVpcRouting, AdditionalInfo, IamRoles,
 #'   MaintenanceTrackName, SnapshotScheduleIdentifier,
-#'   AvailabilityZoneRelocation)
+#'   AvailabilityZoneRelocation, AquaConfigurationStatus)
 #'
 #' @param DBName The name of the first database to be created when the cluster is
 #' created.
@@ -820,6 +939,9 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' disabled, you can still create manual snapshots when you want with
 #' [`create_cluster_snapshot`][redshift_create_cluster_snapshot].
 #' 
+#' You can't disable automated snapshots for RA3 node types. Set the
+#' automated retention period from 1-35 days.
+#' 
 #' Default: `1`
 #' 
 #' Constraints: Must be a value from 0 to 35.
@@ -911,6 +1033,16 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' @param SnapshotScheduleIdentifier A unique identifier for the snapshot schedule.
 #' @param AvailabilityZoneRelocation The option to enable relocation for an Amazon Redshift cluster between
 #' Availability Zones after the cluster is created.
+#' @param AquaConfigurationStatus The value represents how the cluster is configured to use AQUA (Advanced
+#' Query Accelerator) when it is created. Possible values include the
+#' following.
+#' 
+#' -   enabled - Use AQUA if it is available for the current AWS Region and
+#'     Amazon Redshift node type.
+#' 
+#' -   disabled - Don't use AQUA.
+#' 
+#' -   auto - Amazon Redshift determines whether to use AQUA.
 #'
 #' @return
 #' A list with the following syntax:
@@ -929,7 +1061,16 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1069,7 +1210,12 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1118,21 +1264,22 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #'   ),
 #'   MaintenanceTrackName = "string",
 #'   SnapshotScheduleIdentifier = "string",
-#'   AvailabilityZoneRelocation = TRUE|FALSE
+#'   AvailabilityZoneRelocation = TRUE|FALSE,
+#'   AquaConfigurationStatus = "enabled"|"disabled"|"auto"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_create_cluster
-redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL) {
+redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation)
+  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus)
   output <- .redshift$create_cluster_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -1587,6 +1734,96 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 }
 .redshift$operations$create_cluster_subnet_group <- redshift_create_cluster_subnet_group
 
+#' Creates a Redshift-managed VPC endpoint
+#'
+#' @description
+#' Creates a Redshift-managed VPC endpoint.
+#'
+#' @usage
+#' redshift_create_endpoint_access(ClusterIdentifier, ResourceOwner,
+#'   EndpointName, SubnetGroupName, VpcSecurityGroupIds)
+#'
+#' @param ClusterIdentifier The cluster identifier of the cluster to access.
+#' @param ResourceOwner The AWS account ID of the owner of the cluster. This is only required if
+#' the cluster is in another AWS account.
+#' @param EndpointName &#91;required&#93; The Redshift-managed VPC endpoint name.
+#' 
+#' An endpoint name must contain 1-30 characters. Valid characters are A-Z,
+#' a-z, 0-9, and hyphen(-). The first character must be a letter. The name
+#' can't contain two consecutive hyphens or end with a hyphen.
+#' @param SubnetGroupName &#91;required&#93; The subnet group from which Amazon Redshift chooses the subnet to deploy
+#' the endpoint.
+#' @param VpcSecurityGroupIds The security group that defines the ports, protocols, and sources for
+#' inbound traffic that you are authorizing into your endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterIdentifier = "string",
+#'   ResourceOwner = "string",
+#'   SubnetGroupName = "string",
+#'   EndpointStatus = "string",
+#'   EndpointName = "string",
+#'   EndpointCreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Port = 123,
+#'   Address = "string",
+#'   VpcSecurityGroups = list(
+#'     list(
+#'       VpcSecurityGroupId = "string",
+#'       Status = "string"
+#'     )
+#'   ),
+#'   VpcEndpoint = list(
+#'     VpcEndpointId = "string",
+#'     VpcId = "string",
+#'     NetworkInterfaces = list(
+#'       list(
+#'         NetworkInterfaceId = "string",
+#'         SubnetId = "string",
+#'         PrivateIpAddress = "string",
+#'         AvailabilityZone = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_endpoint_access(
+#'   ClusterIdentifier = "string",
+#'   ResourceOwner = "string",
+#'   EndpointName = "string",
+#'   SubnetGroupName = "string",
+#'   VpcSecurityGroupIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_create_endpoint_access
+redshift_create_endpoint_access <- function(ClusterIdentifier = NULL, ResourceOwner = NULL, EndpointName, SubnetGroupName, VpcSecurityGroupIds = NULL) {
+  op <- new_operation(
+    name = "CreateEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$create_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, ResourceOwner = ResourceOwner, EndpointName = EndpointName, SubnetGroupName = SubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds)
+  output <- .redshift$create_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$create_endpoint_access <- redshift_create_endpoint_access
+
 #' Creates an Amazon Redshift event notification subscription
 #'
 #' @description
@@ -1750,8 +1987,8 @@ redshift_create_event_subscription <- function(SubscriptionName, SnsTopicArn, So
 #' Redshift HSM configuration that provides a cluster the information
 #' needed to store and use encryption keys in the HSM. For more
 #' information, go to [Hardware Security
-#' Modules](https://docs.aws.amazon.com/redshift/latest/mgmt/) in the
-#' Amazon Redshift Cluster Management Guide.
+#' Modules](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html#working-with-HSM)
+#' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
 #' redshift_create_hsm_client_certificate(HsmClientCertificateIdentifier,
@@ -2433,7 +2670,16 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2573,7 +2819,12 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2862,6 +3113,78 @@ redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
 }
 .redshift$operations$delete_cluster_subnet_group <- redshift_delete_cluster_subnet_group
 
+#' Deletes a Redshift-managed VPC endpoint
+#'
+#' @description
+#' Deletes a Redshift-managed VPC endpoint.
+#'
+#' @usage
+#' redshift_delete_endpoint_access(EndpointName)
+#'
+#' @param EndpointName &#91;required&#93; The Redshift-managed VPC endpoint to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterIdentifier = "string",
+#'   ResourceOwner = "string",
+#'   SubnetGroupName = "string",
+#'   EndpointStatus = "string",
+#'   EndpointName = "string",
+#'   EndpointCreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Port = 123,
+#'   Address = "string",
+#'   VpcSecurityGroups = list(
+#'     list(
+#'       VpcSecurityGroupId = "string",
+#'       Status = "string"
+#'     )
+#'   ),
+#'   VpcEndpoint = list(
+#'     VpcEndpointId = "string",
+#'     VpcId = "string",
+#'     NetworkInterfaces = list(
+#'       list(
+#'         NetworkInterfaceId = "string",
+#'         SubnetId = "string",
+#'         PrivateIpAddress = "string",
+#'         AvailabilityZone = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_endpoint_access(
+#'   EndpointName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_endpoint_access
+redshift_delete_endpoint_access <- function(EndpointName) {
+  op <- new_operation(
+    name = "DeleteEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$delete_endpoint_access_input(EndpointName = EndpointName)
+  output <- .redshift$delete_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_endpoint_access <- redshift_delete_endpoint_access
+
 #' Deletes an Amazon Redshift event notification subscription
 #'
 #' @description
@@ -2982,6 +3305,61 @@ redshift_delete_hsm_configuration <- function(HsmConfigurationIdentifier) {
   return(response)
 }
 .redshift$operations$delete_hsm_configuration <- redshift_delete_hsm_configuration
+
+#' Deletes a partner integration from a cluster
+#'
+#' @description
+#' Deletes a partner integration from a cluster. Data can still flow to the
+#' cluster until the integration is deleted at the partner's website.
+#'
+#' @usage
+#' redshift_delete_partner(AccountId, ClusterIdentifier, DatabaseName,
+#'   PartnerName)
+#'
+#' @param AccountId &#91;required&#93; The AWS account ID that owns the cluster.
+#' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster that receives data from the
+#' partner.
+#' @param DatabaseName &#91;required&#93; The name of the database that receives data from the partner.
+#' @param PartnerName &#91;required&#93; The name of the partner that is authorized to send data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_partner(
+#'   AccountId = "string",
+#'   ClusterIdentifier = "string",
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_partner
+redshift_delete_partner <- function(AccountId, ClusterIdentifier, DatabaseName, PartnerName) {
+  op <- new_operation(
+    name = "DeletePartner",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$delete_partner_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName)
+  output <- .redshift$delete_partner_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_partner <- redshift_delete_partner
 
 #' Deletes a scheduled action
 #'
@@ -4278,7 +4656,16 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #'         Port = 123,
 #'         VpcEndpoints = list(
 #'           list(
-#'             VpcEndpointId = "string"
+#'             VpcEndpointId = "string",
+#'             VpcId = "string",
+#'             NetworkInterfaces = list(
+#'               list(
+#'                 NetworkInterfaceId = "string",
+#'                 SubnetId = "string",
+#'                 PrivateIpAddress = "string",
+#'                 AvailabilityZone = "string"
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -4418,7 +4805,12 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #'         AllowCancelResize = TRUE|FALSE
 #'       ),
 #'       AvailabilityZoneRelocationStatus = "string",
-#'       ClusterNamespaceArn = "string"
+#'       ClusterNamespaceArn = "string",
+#'       TotalStorageCapacityInMegaBytes = 123,
+#'       AquaConfiguration = list(
+#'         AquaStatus = "enabled"|"disabled"|"applying",
+#'         AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'       )
 #'     )
 #'   )
 #' )
@@ -4545,6 +4937,183 @@ redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, M
   return(response)
 }
 .redshift$operations$describe_default_cluster_parameters <- redshift_describe_default_cluster_parameters
+
+#' Describes a Redshift-managed VPC endpoint
+#'
+#' @description
+#' Describes a Redshift-managed VPC endpoint.
+#'
+#' @usage
+#' redshift_describe_endpoint_access(ClusterIdentifier, ResourceOwner,
+#'   EndpointName, VpcId, MaxRecords, Marker)
+#'
+#' @param ClusterIdentifier The cluster identifier associated with the described endpoint.
+#' @param ResourceOwner The AWS account ID of the owner of the cluster.
+#' @param EndpointName The name of the endpoint to be described.
+#' @param VpcId The virtual private cloud (VPC) identifier with access to the cluster.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a `Marker` is included in the response so that the remaining
+#' results can be retrieved.
+#' @param Marker An optional pagination token provided by a previous
+#' [`describe_endpoint_access`][redshift_describe_endpoint_access] request.
+#' If this parameter is specified, the response includes only records
+#' beyond the marker, up to the value specified by the `MaxRecords`
+#' parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointAccessList = list(
+#'     list(
+#'       ClusterIdentifier = "string",
+#'       ResourceOwner = "string",
+#'       SubnetGroupName = "string",
+#'       EndpointStatus = "string",
+#'       EndpointName = "string",
+#'       EndpointCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Port = 123,
+#'       Address = "string",
+#'       VpcSecurityGroups = list(
+#'         list(
+#'           VpcSecurityGroupId = "string",
+#'           Status = "string"
+#'         )
+#'       ),
+#'       VpcEndpoint = list(
+#'         VpcEndpointId = "string",
+#'         VpcId = "string",
+#'         NetworkInterfaces = list(
+#'           list(
+#'             NetworkInterfaceId = "string",
+#'             SubnetId = "string",
+#'             PrivateIpAddress = "string",
+#'             AvailabilityZone = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_endpoint_access(
+#'   ClusterIdentifier = "string",
+#'   ResourceOwner = "string",
+#'   EndpointName = "string",
+#'   VpcId = "string",
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_endpoint_access
+redshift_describe_endpoint_access <- function(ClusterIdentifier = NULL, ResourceOwner = NULL, EndpointName = NULL, VpcId = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, ResourceOwner = ResourceOwner, EndpointName = EndpointName, VpcId = VpcId, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_endpoint_access <- redshift_describe_endpoint_access
+
+#' Describes an endpoint authorization
+#'
+#' @description
+#' Describes an endpoint authorization.
+#'
+#' @usage
+#' redshift_describe_endpoint_authorization(ClusterIdentifier, Account,
+#'   Grantee, MaxRecords, Marker)
+#'
+#' @param ClusterIdentifier The cluster identifier of the cluster to access.
+#' @param Account The AWS account ID of either the cluster owner (grantor) or grantee. If
+#' `Grantee` parameter is true, then the `Account` value is of the grantor.
+#' @param Grantee Indicates whether to check authorization from a grantor or grantee point
+#' of view. If true, Amazon Redshift returns endpoint authorizations that
+#' you've been granted. If false (default), checks authorization from a
+#' grantor point of view.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a `Marker` is included in the response so that the remaining
+#' results can be retrieved.
+#' @param Marker An optional pagination token provided by a previous
+#' [`describe_endpoint_authorization`][redshift_describe_endpoint_authorization]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by the `MaxRecords`
+#' parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointAuthorizationList = list(
+#'     list(
+#'       Grantor = "string",
+#'       Grantee = "string",
+#'       ClusterIdentifier = "string",
+#'       AuthorizeTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ClusterStatus = "string",
+#'       Status = "Authorized"|"Revoking",
+#'       AllowedAllVPCs = TRUE|FALSE,
+#'       AllowedVPCs = list(
+#'         "string"
+#'       ),
+#'       EndpointCount = 123
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_endpoint_authorization(
+#'   ClusterIdentifier = "string",
+#'   Account = "string",
+#'   Grantee = TRUE|FALSE,
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_endpoint_authorization
+redshift_describe_endpoint_authorization <- function(ClusterIdentifier = NULL, Account = NULL, Grantee = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeEndpointAuthorization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_endpoint_authorization_input(ClusterIdentifier = ClusterIdentifier, Account = Account, Grantee = Grantee, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_endpoint_authorization_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_endpoint_authorization <- redshift_describe_endpoint_authorization
 
 #' Displays a list of event categories for all event source types, or for a
 #' specified source type
@@ -5359,6 +5928,76 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
   return(response)
 }
 .redshift$operations$describe_orderable_cluster_options <- redshift_describe_orderable_cluster_options
+
+#' Returns information about the partner integrations defined for a cluster
+#'
+#' @description
+#' Returns information about the partner integrations defined for a
+#' cluster.
+#'
+#' @usage
+#' redshift_describe_partners(AccountId, ClusterIdentifier, DatabaseName,
+#'   PartnerName)
+#'
+#' @param AccountId &#91;required&#93; The AWS account ID that owns the cluster.
+#' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster whose partner integration is being
+#' described.
+#' @param DatabaseName The name of the database whose partner integration is being described.
+#' If database name is not specified, then all databases in the cluster are
+#' described.
+#' @param PartnerName The name of the partner that is being described. If partner name is not
+#' specified, then all partner integrations are described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PartnerIntegrationInfoList = list(
+#'     list(
+#'       DatabaseName = "string",
+#'       PartnerName = "string",
+#'       Status = "Active"|"Inactive"|"RuntimeFailure"|"ConnectionFailure",
+#'       StatusMessage = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_partners(
+#'   AccountId = "string",
+#'   ClusterIdentifier = "string",
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_partners
+redshift_describe_partners <- function(AccountId, ClusterIdentifier, DatabaseName = NULL, PartnerName = NULL) {
+  op <- new_operation(
+    name = "DescribePartners",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_partners_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName)
+  output <- .redshift$describe_partners_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_partners <- redshift_describe_partners
 
 #' Returns a list of the available reserved node offerings by Amazon
 #' Redshift with their descriptions including the node type, the fixed and
@@ -6438,7 +7077,16 @@ redshift_disable_logging <- function(ClusterIdentifier) {
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -6578,7 +7226,12 @@ redshift_disable_logging <- function(ClusterIdentifier) {
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -6748,7 +7401,16 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName, S3KeyPrefix =
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -6888,7 +7550,12 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName, S3KeyPrefix =
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -7156,6 +7823,65 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 }
 .redshift$operations$get_reserved_node_exchange_offerings <- redshift_get_reserved_node_exchange_offerings
 
+#' Modifies whether a cluster can use AQUA (Advanced Query Accelerator)
+#'
+#' @description
+#' Modifies whether a cluster can use AQUA (Advanced Query Accelerator).
+#'
+#' @usage
+#' redshift_modify_aqua_configuration(ClusterIdentifier,
+#'   AquaConfigurationStatus)
+#'
+#' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to be modified.
+#' @param AquaConfigurationStatus The new value of AQUA configuration status. Possible values include the
+#' following.
+#' 
+#' -   enabled - Use AQUA if it is available for the current AWS Region and
+#'     Amazon Redshift node type.
+#' 
+#' -   disabled - Don't use AQUA.
+#' 
+#' -   auto - Amazon Redshift determines whether to use AQUA.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AquaConfiguration = list(
+#'     AquaStatus = "enabled"|"disabled"|"applying",
+#'     AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_aqua_configuration(
+#'   ClusterIdentifier = "string",
+#'   AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_aqua_configuration
+redshift_modify_aqua_configuration <- function(ClusterIdentifier, AquaConfigurationStatus = NULL) {
+  op <- new_operation(
+    name = "ModifyAquaConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$modify_aqua_configuration_input(ClusterIdentifier = ClusterIdentifier, AquaConfigurationStatus = AquaConfigurationStatus)
+  output <- .redshift$modify_aqua_configuration_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_aqua_configuration <- redshift_modify_aqua_configuration
+
 #' Modifies the settings for a cluster
 #'
 #' @description
@@ -7276,6 +8002,9 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' value, existing automated snapshots that fall outside of the new
 #' retention period will be immediately deleted.
 #' 
+#' You can't disable automated snapshots for RA3 node types. Set the
+#' automated retention period from 1-35 days.
+#' 
 #' Default: Uses existing setting.
 #' 
 #' Constraints: Must be a value from 0 to 35.
@@ -7395,7 +8124,16 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -7535,7 +8273,12 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -7630,7 +8373,16 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -7770,7 +8522,12 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -7842,7 +8599,16 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -7982,7 +8748,12 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -8058,7 +8829,16 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -8198,7 +8978,12 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -8554,6 +9339,83 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 }
 .redshift$operations$modify_cluster_subnet_group <- redshift_modify_cluster_subnet_group
 
+#' Modifies a Redshift-managed VPC endpoint
+#'
+#' @description
+#' Modifies a Redshift-managed VPC endpoint.
+#'
+#' @usage
+#' redshift_modify_endpoint_access(EndpointName, VpcSecurityGroupIds)
+#'
+#' @param EndpointName &#91;required&#93; The endpoint to be modified.
+#' @param VpcSecurityGroupIds The complete list of VPC security groups associated with the endpoint
+#' after the endpoint is modified.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterIdentifier = "string",
+#'   ResourceOwner = "string",
+#'   SubnetGroupName = "string",
+#'   EndpointStatus = "string",
+#'   EndpointName = "string",
+#'   EndpointCreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Port = 123,
+#'   Address = "string",
+#'   VpcSecurityGroups = list(
+#'     list(
+#'       VpcSecurityGroupId = "string",
+#'       Status = "string"
+#'     )
+#'   ),
+#'   VpcEndpoint = list(
+#'     VpcEndpointId = "string",
+#'     VpcId = "string",
+#'     NetworkInterfaces = list(
+#'       list(
+#'         NetworkInterfaceId = "string",
+#'         SubnetId = "string",
+#'         PrivateIpAddress = "string",
+#'         AvailabilityZone = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_endpoint_access(
+#'   EndpointName = "string",
+#'   VpcSecurityGroupIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_endpoint_access
+redshift_modify_endpoint_access <- function(EndpointName, VpcSecurityGroupIds = NULL) {
+  op <- new_operation(
+    name = "ModifyEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$modify_endpoint_access_input(EndpointName = EndpointName, VpcSecurityGroupIds = VpcSecurityGroupIds)
+  output <- .redshift$modify_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_endpoint_access <- redshift_modify_endpoint_access
+
 #' Modifies an existing Amazon Redshift event notification subscription
 #'
 #' @description
@@ -8843,7 +9705,16 @@ redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction =
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -8983,7 +9854,12 @@ redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction =
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -9183,7 +10059,16 @@ redshift_modify_usage_limit <- function(UsageLimitId, Amount = NULL, BreachActio
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -9323,7 +10208,12 @@ redshift_modify_usage_limit <- function(UsageLimitId, Amount = NULL, BreachActio
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -9472,7 +10362,16 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -9612,7 +10511,12 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -9785,7 +10689,16 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -9925,7 +10838,12 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -9992,7 +10910,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'   AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod,
 #'   KmsKeyId, NodeType, EnhancedVpcRouting, AdditionalInfo, IamRoles,
 #'   MaintenanceTrackName, SnapshotScheduleIdentifier, NumberOfNodes,
-#'   AvailabilityZoneRelocation)
+#'   AvailabilityZoneRelocation, AquaConfigurationStatus)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster that will be created from restoring the
 #' snapshot.
@@ -10088,6 +11006,9 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' disabled, you can still create manual snapshots when you want with
 #' [`create_cluster_snapshot`][redshift_create_cluster_snapshot].
 #' 
+#' You can't disable automated snapshots for RA3 node types. Set the
+#' automated retention period from 1-35 days.
+#' 
 #' Default: The value selected for the cluster from which the snapshot was
 #' taken.
 #' 
@@ -10141,6 +11062,16 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' @param NumberOfNodes The number of nodes specified when provisioning the restored cluster.
 #' @param AvailabilityZoneRelocation The option to enable relocation for an Amazon Redshift cluster between
 #' Availability Zones after the cluster is restored.
+#' @param AquaConfigurationStatus The value represents how the cluster is configured to use AQUA (Advanced
+#' Query Accelerator) after the cluster is restored. Possible values
+#' include the following.
+#' 
+#' -   enabled - Use AQUA if it is available for the current AWS Region and
+#'     Amazon Redshift node type.
+#' 
+#' -   disabled - Don't use AQUA.
+#' 
+#' -   auto - Amazon Redshift determines whether to use AQUA.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10159,7 +11090,16 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -10299,7 +11239,12 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -10339,21 +11284,22 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'   MaintenanceTrackName = "string",
 #'   SnapshotScheduleIdentifier = "string",
 #'   NumberOfNodes = 123,
-#'   AvailabilityZoneRelocation = TRUE|FALSE
+#'   AvailabilityZoneRelocation = TRUE|FALSE,
+#'   AquaConfigurationStatus = "enabled"|"disabled"|"auto"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_restore_from_cluster_snapshot
-redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier, SnapshotClusterIdentifier = NULL, Port = NULL, AvailabilityZone = NULL, AllowVersionUpgrade = NULL, ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL, OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL, NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, NumberOfNodes = NULL, AvailabilityZoneRelocation = NULL) {
+redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier, SnapshotClusterIdentifier = NULL, Port = NULL, AvailabilityZone = NULL, AllowVersionUpgrade = NULL, ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL, OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL, NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, NumberOfNodes = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL) {
   op <- new_operation(
     name = "RestoreFromClusterSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$restore_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotClusterIdentifier = SnapshotClusterIdentifier, Port = Port, AvailabilityZone = AvailabilityZone, AllowVersionUpgrade = AllowVersionUpgrade, ClusterSubnetGroupName = ClusterSubnetGroupName, PubliclyAccessible = PubliclyAccessible, OwnerAccount = OwnerAccount, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, ClusterParameterGroupName = ClusterParameterGroupName, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, KmsKeyId = KmsKeyId, NodeType = NodeType, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, NumberOfNodes = NumberOfNodes, AvailabilityZoneRelocation = AvailabilityZoneRelocation)
+  input <- .redshift$restore_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotClusterIdentifier = SnapshotClusterIdentifier, Port = Port, AvailabilityZone = AvailabilityZone, AllowVersionUpgrade = AllowVersionUpgrade, ClusterSubnetGroupName = ClusterSubnetGroupName, PubliclyAccessible = PubliclyAccessible, OwnerAccount = OwnerAccount, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, ClusterParameterGroupName = ClusterParameterGroupName, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, KmsKeyId = KmsKeyId, NodeType = NodeType, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, NumberOfNodes = NumberOfNodes, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus)
   output <- .redshift$restore_from_cluster_snapshot_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -10388,7 +11334,8 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
 #' @usage
 #' redshift_restore_table_from_cluster_snapshot(ClusterIdentifier,
 #'   SnapshotIdentifier, SourceDatabaseName, SourceSchemaName,
-#'   SourceTableName, TargetDatabaseName, TargetSchemaName, NewTableName)
+#'   SourceTableName, TargetDatabaseName, TargetSchemaName, NewTableName,
+#'   EnableCaseSensitiveIdentifier)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the Amazon Redshift cluster to restore the table to.
 #' @param SnapshotIdentifier &#91;required&#93; The identifier of the snapshot to restore the table from. This snapshot
@@ -10402,6 +11349,9 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
 #' @param TargetDatabaseName The name of the database to restore the table to.
 #' @param TargetSchemaName The name of the schema to restore the table to.
 #' @param NewTableName &#91;required&#93; The name of the table to create as a result of the current request.
+#' @param EnableCaseSensitiveIdentifier Indicates whether name identifiers for database, schema, and table are
+#' case sensitive. If `true`, the names are case sensitive. If `false`
+#' (default), the names are not case sensitive.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10438,21 +11388,22 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
 #'   SourceTableName = "string",
 #'   TargetDatabaseName = "string",
 #'   TargetSchemaName = "string",
-#'   NewTableName = "string"
+#'   NewTableName = "string",
+#'   EnableCaseSensitiveIdentifier = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_restore_table_from_cluster_snapshot
-redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier, SourceDatabaseName, SourceSchemaName = NULL, SourceTableName, TargetDatabaseName = NULL, TargetSchemaName = NULL, NewTableName) {
+redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier, SourceDatabaseName, SourceSchemaName = NULL, SourceTableName, TargetDatabaseName = NULL, TargetSchemaName = NULL, NewTableName, EnableCaseSensitiveIdentifier = NULL) {
   op <- new_operation(
     name = "RestoreTableFromClusterSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$restore_table_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SourceDatabaseName = SourceDatabaseName, SourceSchemaName = SourceSchemaName, SourceTableName = SourceTableName, TargetDatabaseName = TargetDatabaseName, TargetSchemaName = TargetSchemaName, NewTableName = NewTableName)
+  input <- .redshift$restore_table_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SourceDatabaseName = SourceDatabaseName, SourceSchemaName = SourceSchemaName, SourceTableName = SourceTableName, TargetDatabaseName = TargetDatabaseName, TargetSchemaName = TargetSchemaName, NewTableName = NewTableName, EnableCaseSensitiveIdentifier = EnableCaseSensitiveIdentifier)
   output <- .redshift$restore_table_from_cluster_snapshot_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -10489,7 +11440,16 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -10629,7 +11589,12 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -10765,6 +11730,75 @@ redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupN
   return(response)
 }
 .redshift$operations$revoke_cluster_security_group_ingress <- redshift_revoke_cluster_security_group_ingress
+
+#' Revokes access to a cluster
+#'
+#' @description
+#' Revokes access to a cluster.
+#'
+#' @usage
+#' redshift_revoke_endpoint_access(ClusterIdentifier, Account, VpcIds,
+#'   Force)
+#'
+#' @param ClusterIdentifier The cluster to revoke access from.
+#' @param Account The AWS account ID whose access is to be revoked.
+#' @param VpcIds The virtual private cloud (VPC) identifiers for which access is to be
+#' revoked.
+#' @param Force Indicates whether to force the revoke action. If true, the
+#' Redshift-managed VPC endpoints associated with the endpoint
+#' authorization are also deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Grantor = "string",
+#'   Grantee = "string",
+#'   ClusterIdentifier = "string",
+#'   AuthorizeTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ClusterStatus = "string",
+#'   Status = "Authorized"|"Revoking",
+#'   AllowedAllVPCs = TRUE|FALSE,
+#'   AllowedVPCs = list(
+#'     "string"
+#'   ),
+#'   EndpointCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$revoke_endpoint_access(
+#'   ClusterIdentifier = "string",
+#'   Account = "string",
+#'   VpcIds = list(
+#'     "string"
+#'   ),
+#'   Force = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_revoke_endpoint_access
+redshift_revoke_endpoint_access <- function(ClusterIdentifier = NULL, Account = NULL, VpcIds = NULL, Force = NULL) {
+  op <- new_operation(
+    name = "RevokeEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$revoke_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, Account = Account, VpcIds = VpcIds, Force = Force)
+  output <- .redshift$revoke_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$revoke_endpoint_access <- redshift_revoke_endpoint_access
 
 #' Removes the ability of the specified AWS customer account to restore the
 #' specified snapshot
@@ -10912,7 +11946,16 @@ redshift_revoke_snapshot_access <- function(SnapshotIdentifier, SnapshotClusterI
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -11052,7 +12095,12 @@ redshift_revoke_snapshot_access <- function(SnapshotIdentifier, SnapshotClusterI
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     )
 #'   )
 #' )
 #' ```
@@ -11083,3 +12131,62 @@ redshift_rotate_encryption_key <- function(ClusterIdentifier) {
   return(response)
 }
 .redshift$operations$rotate_encryption_key <- redshift_rotate_encryption_key
+
+#' Updates the status of a partner integration
+#'
+#' @description
+#' Updates the status of a partner integration.
+#'
+#' @usage
+#' redshift_update_partner_status(AccountId, ClusterIdentifier,
+#'   DatabaseName, PartnerName, Status, StatusMessage)
+#'
+#' @param AccountId &#91;required&#93; The AWS account ID that owns the cluster.
+#' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster whose partner integration status
+#' is being updated.
+#' @param DatabaseName &#91;required&#93; The name of the database whose partner integration status is being
+#' updated.
+#' @param PartnerName &#91;required&#93; The name of the partner whose integration status is being updated.
+#' @param Status &#91;required&#93; The value of the updated status.
+#' @param StatusMessage The status message provided by the partner.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_partner_status(
+#'   AccountId = "string",
+#'   ClusterIdentifier = "string",
+#'   DatabaseName = "string",
+#'   PartnerName = "string",
+#'   Status = "Active"|"Inactive"|"RuntimeFailure"|"ConnectionFailure",
+#'   StatusMessage = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_update_partner_status
+redshift_update_partner_status <- function(AccountId, ClusterIdentifier, DatabaseName, PartnerName, Status, StatusMessage = NULL) {
+  op <- new_operation(
+    name = "UpdatePartnerStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$update_partner_status_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName, Status = Status, StatusMessage = StatusMessage)
+  output <- .redshift$update_partner_status_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$update_partner_status <- redshift_update_partner_status

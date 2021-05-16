@@ -38,15 +38,15 @@ An empty list.
 Updates the name and/or the path of the specified IAM user.
 
 You should understand the implications of changing an IAM user's path or
-name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming}{Renaming an IAM User}
-and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html}{Renaming an IAM Group}
+name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming}{Renaming an IAM user}
+and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html}{Renaming an IAM group}
 in the \emph{IAM User Guide}.
 
 To change a user name, the requester must have appropriate permissions
 on both the source object and the target object. For example, to change
 Bob to Robert, the entity making the request must have permission on Bob
 and Robert, or must have permission on all (*). For more information
-about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Permissions and Policies}.
+about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Permissions and policies}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_user(

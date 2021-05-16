@@ -5,12 +5,10 @@ NULL
 #' AWS Certificate Manager
 #'
 #' @description
-#' Welcome to the AWS Certificate Manager (ACM) API documentation.
-#' 
-#' You can use ACM to manage SSL/TLS certificates for your AWS-based
-#' websites and applications. For general information about using ACM, see
-#' the [*AWS Certificate Manager User
-#' Guide*](https://docs.aws.amazon.com/acm/latest/userguide/) .
+#' You can use AWS Certificate Manager (ACM) to manage SSL/TLS certificates
+#' for your AWS-based websites and applications. For more information about
+#' using ACM, see the [AWS Certificate Manager User
+#' Guide](https://docs.aws.amazon.com/acm/latest/userguide/).
 #'
 #' @param
 #' config
@@ -48,12 +46,14 @@ NULL
 #'  \link[=acm_delete_certificate]{delete_certificate} \tab Deletes a certificate and its associated private key\cr
 #'  \link[=acm_describe_certificate]{describe_certificate} \tab Returns detailed metadata about the specified ACM certificate\cr
 #'  \link[=acm_export_certificate]{export_certificate} \tab Exports a private certificate issued by a private certificate authority (CA) for use anywhere\cr
+#'  \link[=acm_get_account_configuration]{get_account_configuration} \tab Returns the account configuration options associated with an AWS account\cr
 #'  \link[=acm_get_certificate]{get_certificate} \tab Retrieves an Amazon-issued certificate and its certificate chain\cr
 #'  \link[=acm_import_certificate]{import_certificate} \tab Imports a certificate into AWS Certificate Manager (ACM) to use with services that are integrated with ACM\cr
 #'  \link[=acm_list_certificates]{list_certificates} \tab Retrieves a list of certificate ARNs and domain names\cr
 #'  \link[=acm_list_tags_for_certificate]{list_tags_for_certificate} \tab Lists the tags that have been applied to the ACM certificate\cr
+#'  \link[=acm_put_account_configuration]{put_account_configuration} \tab Adds or modifies account-level configurations in ACM\cr
 #'  \link[=acm_remove_tags_from_certificate]{remove_tags_from_certificate} \tab Remove one or more tags from an ACM certificate\cr
-#'  \link[=acm_renew_certificate]{renew_certificate} \tab Renews an eligable ACM certificate\cr
+#'  \link[=acm_renew_certificate]{renew_certificate} \tab Renews an eligible ACM certificate\cr
 #'  \link[=acm_request_certificate]{request_certificate} \tab Requests an ACM certificate for use with other AWS services\cr
 #'  \link[=acm_resend_validation_email]{resend_validation_email} \tab Resends the email that requests domain ownership validation\cr
 #'  \link[=acm_update_certificate_options]{update_certificate_options} \tab Updates a certificate

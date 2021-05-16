@@ -9,8 +9,8 @@ secretsmanager_put_resource_policy(SecretId, ResourcePolicy,
   BlockPublicPolicy)
 }
 \arguments{
-\item{SecretId}{[required] Specifies the secret that you want to attach the resource-based policy
-to. You can specify either the ARN or the friendly name of the secret.
+\item{SecretId}{[required] Specifies the secret that you want to attach the resource-based policy.
+You can specify either the ARN or the friendly name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
 complete ARN. You can specify a partial ARN too—for example, if you
@@ -31,15 +31,15 @@ If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 
-\item{ResourcePolicy}{[required] A JSON-formatted string that's constructed according to the grammar and
-syntax for an AWS resource-based policy. The policy in the string
-identifies who can access or manage this secret and its versions. For
-information on how to format a JSON parameter for the various command
-line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
+\item{ResourcePolicy}{[required] A JSON-formatted string constructed according to the grammar and syntax
+for an AWS resource-based policy. The policy in the string identifies
+who can access or manage this secret and its versions. For information
+on how to format a JSON parameter for the various command line tool
+environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}.}
 
-\item{BlockPublicPolicy}{Makes an optional API call to Zelkova to validate the Resource Policy to
-prevent broad access to your secret.}
+\item{BlockPublicPolicy}{(Optional) If you set the parameter, \code{BlockPublicPolicy} to true, then
+you block resource-based policies that allow broad access to the secret.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -72,7 +72,7 @@ To run this command, you must have the following permissions:
 \itemize{
 \item To retrieve the resource policy attached to a secret, use
 \code{\link[=secretsmanager_get_resource_policy]{get_resource_policy}}.
-\item To delete the resource-based policy that's attached to a secret, use
+\item To delete the resource-based policy attached to a secret, use
 \code{\link[=secretsmanager_delete_resource_policy]{delete_resource_policy}}.
 \item To list all of the currently available secrets, use
 \code{\link[=secretsmanager_list_secrets]{list_secrets}}.

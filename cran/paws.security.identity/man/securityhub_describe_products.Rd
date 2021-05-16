@@ -2,10 +2,9 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_describe_products}
 \alias{securityhub_describe_products}
-\title{Returns information about the available products that you can subscribe
-to and integrate with Security Hub in order to consolidate findings}
+\title{Returns information about product integrations in Security Hub}
 \usage{
-securityhub_describe_products(NextToken, MaxResults)
+securityhub_describe_products(NextToken, MaxResults, ProductArn)
 }
 \arguments{
 \item{NextToken}{The token that is required for pagination. On your first call to the
@@ -17,6 +16,8 @@ value of this parameter to the value returned from the previous
 response.}
 
 \item{MaxResults}{The maximum number of results to return.}
+
+\item{ProductArn}{The ARN of the integration to return.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -30,7 +31,7 @@ A list with the following syntax:\preformatted{list(
         "string"
       ),
       IntegrationTypes = list(
-        "SEND_FINDINGS_TO_SECURITY_HUB"|"RECEIVE_FINDINGS_FROM_SECURITY_HUB"
+        "SEND_FINDINGS_TO_SECURITY_HUB"|"RECEIVE_FINDINGS_FROM_SECURITY_HUB"|"UPDATE_FINDINGS_IN_SECURITY_HUB"
       ),
       MarketplaceUrl = "string",
       ActivationUrl = "string",
@@ -42,13 +43,19 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns information about the available products that you can subscribe
-to and integrate with Security Hub in order to consolidate findings.
+Returns information about product integrations in Security Hub.
+
+You can optionally provide an integration ARN. If you provide an
+integration ARN, then the results only include that integration.
+
+If you do not provide an integration ARN, then the results include all
+of the available product integrations.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_products(
   NextToken = "string",
-  MaxResults = 123
+  MaxResults = 123,
+  ProductArn = "string"
 )
 }
 }

@@ -40,8 +40,8 @@ The command returns a public key, which you must store in the HSM. In
 addition to creating the HSM certificate, you must create an Amazon
 Redshift HSM configuration that provides a cluster the information
 needed to store and use encryption keys in the HSM. For more
-information, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/}{Hardware Security Modules} in the
-Amazon Redshift Cluster Management Guide.
+information, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html#working-with-HSM}{Hardware Security Modules}
+in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_hsm_client_certificate(

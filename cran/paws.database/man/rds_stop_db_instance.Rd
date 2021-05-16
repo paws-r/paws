@@ -196,7 +196,8 @@ A list with the following syntax:\preformatted{list(
         DBInstanceAutomatedBackupsArn = "string"
       )
     ),
-    CustomerOwnedIpEnabled = TRUE|FALSE
+    CustomerOwnedIpEnabled = TRUE|FALSE,
+    AwsBackupRecoveryPointArn = "string"
   )
 )
 }

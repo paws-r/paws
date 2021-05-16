@@ -20,7 +20,8 @@ A list with the following syntax:\preformatted{list(
     ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
     Members = list(
       "string"
-    )
+    ),
+    ProtectionGroupArn = "string"
   )
 )
 }

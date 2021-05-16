@@ -28,7 +28,9 @@ A list with the following syntax:\preformatted{list(
       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
       StatusMessage = "string",
       Progress = 123,
-      Details = "string"
+      Details = "string",
+      AutoScalingGroupState = "string",
+      AutoScalingGroupARN = "string"
     )
   )
 )

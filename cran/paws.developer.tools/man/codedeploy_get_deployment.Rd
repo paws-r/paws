@@ -84,7 +84,7 @@ A list with the following syntax:\preformatted{list(
       Ready = 123
     ),
     description = "string",
-    creator = "user"|"autoscaling"|"codeDeployRollback"|"CodeDeploy"|"CloudFormation"|"CloudFormationRollback",
+    creator = "user"|"autoscaling"|"codeDeployRollback"|"CodeDeploy"|"CodeDeployAutoUpdate"|"CloudFormation"|"CloudFormationRollback",
     ignoreApplicationStopFailures = TRUE|FALSE,
     autoRollbackConfiguration = list(
       enabled = TRUE|FALSE,
@@ -176,7 +176,13 @@ A list with the following syntax:\preformatted{list(
       "string"
     ),
     computePlatform = "Server"|"Lambda"|"ECS",
-    externalId = "string"
+    externalId = "string",
+    relatedDeployments = list(
+      autoUpdateOutdatedInstancesRootDeploymentId = "string",
+      autoUpdateOutdatedInstancesDeploymentIds = list(
+        "string"
+      )
+    )
   )
 )
 }

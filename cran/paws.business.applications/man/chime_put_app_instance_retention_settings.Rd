@@ -2,13 +2,13 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_put_app_instance_retention_settings}
 \alias{chime_put_app_instance_retention_settings}
-\title{Sets the amount of time in days that a given app instance retains data}
+\title{Sets the amount of time in days that a given AppInstance retains data}
 \usage{
 chime_put_app_instance_retention_settings(AppInstanceArn,
   AppInstanceRetentionSettings)
 }
 \arguments{
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 
 \item{AppInstanceRetentionSettings}{[required] The time in days to retain data. Data type: number.}
 }
@@ -26,7 +26,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Sets the amount of time in days that a given app instance retains data.
+Sets the amount of time in days that a given \code{AppInstance} retains data.
 }
 \section{Request syntax}{
 \preformatted{svc$put_app_instance_retention_settings(

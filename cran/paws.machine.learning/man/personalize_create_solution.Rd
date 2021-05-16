@@ -34,11 +34,17 @@ training data.}
 
 \item{eventType}{When your have multiple event types (using an \code{EVENT_TYPE} schema
 field), this parameter specifies which event type (for example, 'click'
-or 'like') is used for training the model.}
+or 'like') is used for training the model.
+
+If you do not provide an \code{eventType}, Amazon Personalize will use all
+interactions for training with equal weight regardless of type.}
 
 \item{solutionConfig}{The configuration to use with the solution. When \code{performAutoML} is set
 to true, Amazon Personalize only evaluates the \code{autoMLConfig} section of
-the solution configuration.}
+the solution configuration.
+
+Amazon Personalize doesn't support configuring the \code{hpoObjective} at
+this time.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -70,6 +76,9 @@ transformation. You can specify one of the predefined recipes provided
 by Amazon Personalize. Alternatively, you can specify \code{performAutoML}
 and Amazon Personalize will analyze your data and select the optimum
 USER_PERSONALIZATION recipe for you.
+
+Amazon Personalize doesn't support configuring the \code{hpoObjective} for
+solution hyperparameter optimization at this time.
 
 \strong{Status}
 

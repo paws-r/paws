@@ -49,10 +49,12 @@ NULL
 #'  \link[=workspaces_create_connection_alias]{create_connection_alias} \tab Creates the specified connection alias for use with cross-Region redirection\cr
 #'  \link[=workspaces_create_ip_group]{create_ip_group} \tab Creates an IP access control group\cr
 #'  \link[=workspaces_create_tags]{create_tags} \tab Creates the specified tags for the specified WorkSpaces resource\cr
+#'  \link[=workspaces_create_workspace_bundle]{create_workspace_bundle} \tab Creates the specified WorkSpace bundle\cr
 #'  \link[=workspaces_create_workspaces]{create_workspaces} \tab Creates one or more WorkSpaces\cr
 #'  \link[=workspaces_delete_connection_alias]{delete_connection_alias} \tab Deletes the specified connection alias\cr
 #'  \link[=workspaces_delete_ip_group]{delete_ip_group} \tab Deletes the specified IP access control group\cr
 #'  \link[=workspaces_delete_tags]{delete_tags} \tab Deletes the specified tags from the specified WorkSpaces resource\cr
+#'  \link[=workspaces_delete_workspace_bundle]{delete_workspace_bundle} \tab Deletes the specified WorkSpace bundle\cr
 #'  \link[=workspaces_delete_workspace_image]{delete_workspace_image} \tab Deletes the specified image from your account\cr
 #'  \link[=workspaces_deregister_workspace_directory]{deregister_workspace_directory} \tab Deregisters the specified directory\cr
 #'  \link[=workspaces_describe_account]{describe_account} \tab Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account\cr
@@ -91,6 +93,7 @@ NULL
 #'  \link[=workspaces_terminate_workspaces]{terminate_workspaces} \tab Terminates the specified WorkSpaces\cr
 #'  \link[=workspaces_update_connection_alias_permission]{update_connection_alias_permission} \tab Shares or unshares a connection alias with one account by specifying whether that account has permission to associate the connection alias with a directory\cr
 #'  \link[=workspaces_update_rules_of_ip_group]{update_rules_of_ip_group} \tab Replaces the current rules of the specified IP access control group with the specified rules\cr
+#'  \link[=workspaces_update_workspace_bundle]{update_workspace_bundle} \tab Updates a WorkSpace bundle with a new image\cr
 #'  \link[=workspaces_update_workspace_image_permission]{update_workspace_image_permission} \tab Shares or unshares an image with one account in the same AWS Region by specifying whether that account has permission to copy the image
 #' }
 #'

@@ -66,6 +66,9 @@ AWS WAF and AWS Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/
 \link[=shield_list_protection_groups]{list_protection_groups} \tab Retrieves the ProtectionGroup objects for the account\cr
 \link[=shield_list_protections]{list_protections} \tab Lists all Protection objects for the account\cr
 \link[=shield_list_resources_in_protection_group]{list_resources_in_protection_group} \tab Retrieves the resources that are included in the protection group\cr
+\link[=shield_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS Shield\cr
+\link[=shield_tag_resource]{tag_resource} \tab Adds or updates tags for a resource in AWS Shield\cr
+\link[=shield_untag_resource]{untag_resource} \tab Removes tags from a resource in AWS Shield\cr
 \link[=shield_update_emergency_contact_settings]{update_emergency_contact_settings} \tab Updates the details of the list of email addresses and phone numbers that the DDoS Response Team (DRT) can use to contact you if you have proactive engagement enabled, for escalations to the DRT and to initiate proactive customer support\cr
 \link[=shield_update_protection_group]{update_protection_group} \tab Updates an existing protection group\cr
 \link[=shield_update_subscription]{update_subscription} \tab Updates the details of an existing subscription

@@ -5,9 +5,9 @@
 \title{Starts a new task from the specified task definition on the specified
 container instance or instances}
 \usage{
-ecs_start_task(cluster, containerInstances, enableECSManagedTags, group,
-  networkConfiguration, overrides, propagateTags, referenceId, startedBy,
-  tags, taskDefinition)
+ecs_start_task(cluster, containerInstances, enableECSManagedTags,
+  enableExecuteCommand, group, networkConfiguration, overrides,
+  propagateTags, referenceId, startedBy, tags, taskDefinition)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster on
@@ -21,6 +21,10 @@ to 10 container instances.}
 \item{enableECSManagedTags}{Specifies whether to enable Amazon ECS managed tags for the task. For
 more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{enableExecuteCommand}{Whether or not the execute command functionality is enabled for the
+task. If \code{true}, this enables execute command functionality on all
+containers in the task.}
 
 \item{group}{The name of the task group to associate with the task. The default value
 is the family name of the task definition (for example,
@@ -146,6 +150,16 @@ A list with the following syntax:\preformatted{list(
             )
           ),
           healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+          managedAgents = list(
+            list(
+              lastStartedAt = as.POSIXct(
+                "2015-01-01"
+              ),
+              name = "ExecuteCommandAgent",
+              reason = "string",
+              lastStatus = "string"
+            )
+          ),
           cpu = "string",
           memory = "string",
           memoryReservation = "string",
@@ -159,6 +173,7 @@ A list with the following syntax:\preformatted{list(
         "2015-01-01"
       ),
       desiredStatus = "string",
+      enableExecuteCommand = TRUE|FALSE,
       executionStoppedAt = as.POSIXct(
         "2015-01-01"
       ),
@@ -212,7 +227,10 @@ A list with the following syntax:\preformatted{list(
         ),
         executionRoleArn = "string",
         memory = "string",
-        taskRoleArn = "string"
+        taskRoleArn = "string",
+        ephemeralStorage = list(
+          sizeInGiB = 123
+        )
       ),
       platformVersion = "string",
       pullStartedAt = as.POSIXct(
@@ -241,7 +259,10 @@ A list with the following syntax:\preformatted{list(
       ),
       taskArn = "string",
       taskDefinitionArn = "string",
-      version = 123
+      version = 123,
+      ephemeralStorage = list(
+        sizeInGiB = 123
+      )
     )
   ),
   failures = list(
@@ -269,6 +290,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     "string"
   ),
   enableECSManagedTags = TRUE|FALSE,
+  enableExecuteCommand = TRUE|FALSE,
   group = "string",
   networkConfiguration = list(
     awsvpcConfiguration = list(
@@ -320,7 +342,10 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     ),
     executionRoleArn = "string",
     memory = "string",
-    taskRoleArn = "string"
+    taskRoleArn = "string",
+    ephemeralStorage = list(
+      sizeInGiB = 123
+    )
   ),
   propagateTags = "TASK_DEFINITION"|"SERVICE",
   referenceId = "string",

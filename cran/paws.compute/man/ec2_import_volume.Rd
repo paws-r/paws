@@ -79,7 +79,16 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Creates an import volume task using metadata from the specified disk
-image.For more information, see \href{http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf}{Importing Disks to Amazon EBS}.
+image.
+
+This API action supports only single-volume VMs. To import multi-volume
+VMs, use \code{\link[=ec2_import_image]{import_image}} instead. To import a disk to
+a snapshot, use \code{\link[=ec2_import_snapshot]{import_snapshot}} instead.
+
+This API action is not supported by the AWS Command Line Interface (AWS
+CLI). For information about using the Amazon EC2 CLI, which is
+deprecated, see \href{https://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf#importing-your-volumes-into-amazon-ebs}{Importing Disks to Amazon EBS}
+in the \emph{Amazon EC2 CLI Reference} PDF file.
 
 For information about the import manifest referenced by this API action,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.

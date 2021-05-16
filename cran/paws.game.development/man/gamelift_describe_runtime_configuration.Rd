@@ -7,7 +7,7 @@
 gamelift_describe_runtime_configuration(FleetId)
 }
 \arguments{
-\item{FleetId}{[required] A unique identifier for a fleet to get the runtime configuration for.
+\item{FleetId}{[required] A unique identifier for the fleet to get the runtime configuration for.
 You can use either the fleet ID or ARN value.}
 }
 \value{
@@ -28,39 +28,36 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Retrieves a fleet's runtime configuration settings. The runtime
-configuration tells Amazon GameLift which server processes to run (and
-how) on each instance in the fleet.
+configuration tells GameLift which server processes to run (and how) on
+each instance in the fleet.
 
-To get a runtime configuration, specify the fleet's unique identifier.
+To get the runtime configuration that is currently in forces for a
+fleet, provide the fleet ID.
+
 If successful, a RuntimeConfiguration object is returned for the
 requested fleet. If the requested fleet has been deleted, the result set
 is empty.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift fleets}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-multiprocess.html}{Running Multiple Processes on a Fleet}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-multiprocess.html}{Running multiple processes on a fleet}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_fleet]{create_fleet}}
-\item \code{\link[=gamelift_list_fleets]{list_fleets}}
-\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
-\item Describe fleets:
-\itemize{
-\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
-\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
-\item \code{\link[=gamelift_describe_fleet_port_settings]{describe_fleet_port_settings}}
-\item \code{\link[=gamelift_describe_fleet_utilization]{describe_fleet_utilization}}
-\item \code{\link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration}}
-\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
-\item \code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}}
-}
-\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
-\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_list_fleets]{list_fleets}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}} |
+\code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}} |
+\code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}} |
+\code{\link[=gamelift_describe_fleet_location_attributes]{describe_fleet_location_attributes}}
+|
+\code{\link[=gamelift_describe_fleet_port_settings]{describe_fleet_port_settings}}
+| \code{\link[=gamelift_describe_fleet_utilization]{describe_fleet_utilization}} |
+\code{\link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration}}
+| \code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}} |
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_runtime_configuration(

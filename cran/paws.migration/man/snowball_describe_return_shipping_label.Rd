@@ -8,7 +8,7 @@ returned to AWS}
 snowball_describe_return_shipping_label(JobId)
 }
 \arguments{
-\item{JobId}{The automatically generated ID for a job, for example
+\item{JobId}{[required] The automatically generated ID for a job, for example
 \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \value{

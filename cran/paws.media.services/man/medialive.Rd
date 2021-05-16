@@ -44,6 +44,7 @@ API for AWS Elemental MediaLive
 \link[=medialive_create_input_security_group]{create_input_security_group} \tab Creates a Input Security Group\cr
 \link[=medialive_create_multiplex]{create_multiplex} \tab Create a new multiplex\cr
 \link[=medialive_create_multiplex_program]{create_multiplex_program} \tab Create a new program in the multiplex\cr
+\link[=medialive_create_partner_input]{create_partner_input} \tab Create a partner input\cr
 \link[=medialive_create_tags]{create_tags} \tab Create tags for a resource\cr
 \link[=medialive_delete_channel]{delete_channel} \tab Starts deletion of channel\cr
 \link[=medialive_delete_input]{delete_input} \tab Deletes the input end point\cr

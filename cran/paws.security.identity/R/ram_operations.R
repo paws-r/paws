@@ -93,7 +93,9 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #'
 #' @param resourceShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource share.
 #' @param resourceArns The Amazon Resource Names (ARN) of the resources.
-#' @param principals The principals.
+#' @param principals The principals to associate with the resource share. The possible values
+#' are IDs of AWS accounts, and the ARNs of organizational units (OU) or
+#' organizations from AWS Organizations.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
@@ -1072,12 +1074,21 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' @param principals The principals.
 #' @param resourceType The resource type.
 #' 
-#' Valid values: `codebuild:Project` | `codebuild:ReportGroup` |
-#' `ec2:CapacityReservation` | `ec2:DedicatedHost` | `ec2:Subnet` |
+#' Valid values: `acm-pca:CertificateAuthority` | `appmesh:Mesh` |
+#' `codebuild:Project` | `codebuild:ReportGroup` |
+#' `ec2:CapacityReservation` | `ec2:DedicatedHost` |
+#' `ec2:LocalGatewayRouteTable` | `ec2:PrefixList` | `ec2:Subnet` |
 #' `ec2:TrafficMirrorTarget` | `ec2:TransitGateway` |
 #' `imagebuilder:Component` | `imagebuilder:Image` |
-#' `imagebuilder:ImageRecipe` | `license-manager:LicenseConfiguration` I
-#' `resource-groups:Group` | `rds:Cluster` | `route53resolver:ResolverRule`
+#' `imagebuilder:ImageRecipe` | `imagebuilder:ContainerRecipe` |
+#' `glue:Catalog` | `glue:Database` | `glue:Table` |
+#' `license-manager:LicenseConfiguration` I
+#' `network-firewall:FirewallPolicy` | `network-firewall:StatefulRuleGroup`
+#' | `network-firewall:StatelessRuleGroup` | `outposts:Outpost` |
+#' `resource-groups:Group` | `rds:Cluster` |
+#' `route53resolver:FirewallRuleGroup`
+#' |`route53resolver:ResolverQueryLogConfig` |
+#' `route53resolver:ResolverRule`
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
@@ -1280,12 +1291,21 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL) {
 #' @param principal The principal.
 #' @param resourceType The resource type.
 #' 
-#' Valid values: `codebuild:Project` | `codebuild:ReportGroup` |
-#' `ec2:CapacityReservation` | `ec2:DedicatedHost` | `ec2:Subnet` |
+#' Valid values: `acm-pca:CertificateAuthority` | `appmesh:Mesh` |
+#' `codebuild:Project` | `codebuild:ReportGroup` |
+#' `ec2:CapacityReservation` | `ec2:DedicatedHost` |
+#' `ec2:LocalGatewayRouteTable` | `ec2:PrefixList` | `ec2:Subnet` |
 #' `ec2:TrafficMirrorTarget` | `ec2:TransitGateway` |
 #' `imagebuilder:Component` | `imagebuilder:Image` |
-#' `imagebuilder:ImageRecipe` | `license-manager:LicenseConfiguration` I
-#' `resource-groups:Group` | `rds:Cluster` | `route53resolver:ResolverRule`
+#' `imagebuilder:ImageRecipe` | `imagebuilder:ContainerRecipe` |
+#' `glue:Catalog` | `glue:Database` | `glue:Table` |
+#' `license-manager:LicenseConfiguration` I
+#' `network-firewall:FirewallPolicy` | `network-firewall:StatefulRuleGroup`
+#' | `network-firewall:StatelessRuleGroup` | `outposts:Outpost` |
+#' `resource-groups:Group` | `rds:Cluster` |
+#' `route53resolver:FirewallRuleGroup`
+#' |`route53resolver:ResolverQueryLogConfig` |
+#' `route53resolver:ResolverRule`
 #' @param resourceArns The Amazon Resource Names (ARN) of the resources.
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
 #' @param nextToken The token for the next page of results.

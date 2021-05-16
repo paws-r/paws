@@ -54,12 +54,12 @@ detective_accept_invitation <- function(GraphArn) {
 .detective$operations$accept_invitation <- detective_accept_invitation
 
 #' Creates a new behavior graph for the calling account, and sets that
-#' account as the master account
+#' account as the administrator account
 #'
 #' @description
 #' Creates a new behavior graph for the calling account, and sets that
-#' account as the master account. This operation is called by the account
-#' that is enabling Detective.
+#' account as the administrator account. This operation is called by the
+#' account that is enabling Detective.
 #' 
 #' Before you try to enable Detective, make sure that your account has been
 #' enrolled in Amazon GuardDuty for at least 48 hours. If you do not meet
@@ -74,16 +74,19 @@ detective_accept_invitation <- function(GraphArn) {
 #' [`create_graph`][detective_create_graph] triggers a process to create
 #' the corresponding data tables for the new behavior graph.
 #' 
-#' An account can only be the master account for one behavior graph within
-#' a Region. If the same account calls
-#' [`create_graph`][detective_create_graph] with the same master account,
-#' it always returns the same behavior graph ARN. It does not create a new
-#' behavior graph.
+#' An account can only be the administrator account for one behavior graph
+#' within a Region. If the same account calls
+#' [`create_graph`][detective_create_graph] with the same administrator
+#' account, it always returns the same behavior graph ARN. It does not
+#' create a new behavior graph.
 #'
 #' @usage
-#' detective_create_graph()
+#' detective_create_graph(Tags)
 #'
-
+#' @param Tags The tags to assign to the new behavior graph. You can add up to 50 tags.
+#' For each tag, you provide the tag key and the tag value. Each tag key
+#' can contain up to 128 characters. Each tag value can contain up to 256
+#' characters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -93,19 +96,26 @@ detective_accept_invitation <- function(GraphArn) {
 #' )
 #' ```
 #'
-
+#' @section Request syntax:
+#' ```
+#' svc$create_graph(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @keywords internal
 #'
 #' @rdname detective_create_graph
-detective_create_graph <- function() {
+detective_create_graph <- function(Tags = NULL) {
   op <- new_operation(
     name = "CreateGraph",
     http_method = "POST",
     http_path = "/graph",
     paginator = list()
   )
-  input <- .detective$create_graph_input()
+  input <- .detective$create_graph_input(Tags = Tags)
   output <- .detective$create_graph_output()
   config <- get_config()
   svc <- .detective$service(config)
@@ -121,10 +131,12 @@ detective_create_graph <- function() {
 #' @description
 #' Sends a request to invite the specified AWS accounts to be member
 #' accounts in the behavior graph. This operation can only be called by the
-#' master account for a behavior graph.
+#' administrator account for a behavior graph.
 #' 
 #' [`create_members`][detective_create_members] verifies the accounts and
-#' then sends invitations to the verified accounts.
+#' then invites the verified accounts. The administrator can optionally
+#' specify to not send invitation emails to the member accounts. This would
+#' be used when the administrator manages their member accounts centrally.
 #' 
 #' The request provides the behavior graph ARN and the list of accounts to
 #' invite.
@@ -134,22 +146,27 @@ detective_create_graph <- function() {
 #' -   The accounts that [`create_members`][detective_create_members] was
 #'     able to start the verification for. This list includes member
 #'     accounts that are being verified, that have passed verification and
-#'     are being sent an invitation, and that have failed verification.
+#'     are to be invited, and that have failed verification.
 #' 
 #' -   The accounts that [`create_members`][detective_create_members] was
 #'     unable to process. This list includes accounts that were already
 #'     invited to be member accounts in the behavior graph.
 #'
 #' @usage
-#' detective_create_members(GraphArn, Message, Accounts)
+#' detective_create_members(GraphArn, Message, DisableEmailNotification,
+#'   Accounts)
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to invite the member accounts to
 #' contribute their data to.
 #' @param Message Customized message text to include in the invitation email message to
 #' the invited member accounts.
+#' @param DisableEmailNotification if set to `true`, then the member accounts do not receive email
+#' notifications. By default, this is set to `false`, and the member
+#' accounts receive email notifications.
 #' @param Accounts &#91;required&#93; The list of AWS accounts to invite to become member accounts in the
-#' behavior graph. For each invited account, the account list contains the
-#' account identifier and the AWS account root user email address.
+#' behavior graph. You can invite up to 50 accounts at a time. For each
+#' invited account, the account list contains the account identifier and
+#' the AWS account root user email address.
 #'
 #' @return
 #' A list with the following syntax:
@@ -161,12 +178,17 @@ detective_create_graph <- function() {
 #'       EmailAddress = "string",
 #'       GraphArn = "string",
 #'       MasterId = "string",
+#'       AdministratorId = "string",
 #'       Status = "INVITED"|"VERIFICATION_IN_PROGRESS"|"VERIFICATION_FAILED"|"ENABLED"|"ACCEPTED_BUT_DISABLED",
 #'       DisabledReason = "VOLUME_TOO_HIGH"|"VOLUME_UNKNOWN",
 #'       InvitedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VolumeUsageInBytes = 123,
+#'       VolumeUsageUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       PercentOfGraphUtilization = 123.0,
@@ -189,6 +211,7 @@ detective_create_graph <- function() {
 #' svc$create_members(
 #'   GraphArn = "string",
 #'   Message = "string",
+#'   DisableEmailNotification = TRUE|FALSE,
 #'   Accounts = list(
 #'     list(
 #'       AccountId = "string",
@@ -201,14 +224,14 @@ detective_create_graph <- function() {
 #' @keywords internal
 #'
 #' @rdname detective_create_members
-detective_create_members <- function(GraphArn, Message = NULL, Accounts) {
+detective_create_members <- function(GraphArn, Message = NULL, DisableEmailNotification = NULL, Accounts) {
   op <- new_operation(
     name = "CreateMembers",
     http_method = "POST",
     http_path = "/graph/members",
     paginator = list()
   )
-  input <- .detective$create_members_input(GraphArn = GraphArn, Message = Message, Accounts = Accounts)
+  input <- .detective$create_members_input(GraphArn = GraphArn, Message = Message, DisableEmailNotification = DisableEmailNotification, Accounts = Accounts)
   output <- .detective$create_members_output()
   config <- get_config()
   svc <- .detective$service(config)
@@ -226,7 +249,7 @@ detective_create_members <- function(GraphArn, Message = NULL, Accounts) {
 #' graphs.
 #' 
 #' [`delete_graph`][detective_delete_graph] can only be called by the
-#' master account for a behavior graph.
+#' administrator account for a behavior graph.
 #'
 #' @usage
 #' detective_delete_graph(GraphArn)
@@ -263,23 +286,24 @@ detective_delete_graph <- function(GraphArn) {
 }
 .detective$operations$delete_graph <- detective_delete_graph
 
-#' Deletes one or more member accounts from the master account behavior
-#' graph
+#' Deletes one or more member accounts from the administrator account's
+#' behavior graph
 #'
 #' @description
-#' Deletes one or more member accounts from the master account behavior
-#' graph. This operation can only be called by a Detective master account.
-#' That account cannot use [`delete_members`][detective_delete_members] to
-#' delete their own account from the behavior graph. To disable a behavior
-#' graph, the master account uses the
-#' [`delete_graph`][detective_delete_graph] API method.
+#' Deletes one or more member accounts from the administrator account's
+#' behavior graph. This operation can only be called by a Detective
+#' administrator account. That account cannot use
+#' [`delete_members`][detective_delete_members] to delete their own account
+#' from the behavior graph. To disable a behavior graph, the administrator
+#' account uses the [`delete_graph`][detective_delete_graph] API method.
 #'
 #' @usage
 #' detective_delete_members(GraphArn, AccountIds)
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to delete members from.
 #' @param AccountIds &#91;required&#93; The list of AWS account identifiers for the member accounts to delete
-#' from the behavior graph.
+#' from the behavior graph. You can delete up to 50 member accounts at a
+#' time.
 #'
 #' @return
 #' A list with the following syntax:
@@ -384,7 +408,8 @@ detective_disassociate_membership <- function(GraphArn) {
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph for which to request the member details.
 #' @param AccountIds &#91;required&#93; The list of AWS account identifiers for the member account for which to
-#' return member details.
+#' return member details. You can request details for up to 50 member
+#' accounts at a time.
 #' 
 #' You cannot use [`get_members`][detective_get_members] to retrieve
 #' information about member accounts that were removed from the behavior
@@ -400,12 +425,17 @@ detective_disassociate_membership <- function(GraphArn) {
 #'       EmailAddress = "string",
 #'       GraphArn = "string",
 #'       MasterId = "string",
+#'       AdministratorId = "string",
 #'       Status = "INVITED"|"VERIFICATION_IN_PROGRESS"|"VERIFICATION_FAILED"|"ENABLED"|"ACCEPTED_BUT_DISABLED",
 #'       DisabledReason = "VOLUME_TOO_HIGH"|"VOLUME_UNKNOWN",
 #'       InvitedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VolumeUsageInBytes = 123,
+#'       VolumeUsageUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       PercentOfGraphUtilization = 123.0,
@@ -453,15 +483,17 @@ detective_get_members <- function(GraphArn, AccountIds) {
 }
 .detective$operations$get_members <- detective_get_members
 
-#' Returns the list of behavior graphs that the calling account is a master
-#' of
+#' Returns the list of behavior graphs that the calling account is an
+#' administrator account of
 #'
 #' @description
-#' Returns the list of behavior graphs that the calling account is a master
-#' of. This operation can only be called by a master account.
+#' Returns the list of behavior graphs that the calling account is an
+#' administrator account of. This operation can only be called by an
+#' administrator account.
 #' 
-#' Because an account can currently only be the master of one behavior
-#' graph within a Region, the results always contain a single graph.
+#' Because an account can currently only be the administrator of one
+#' behavior graph within a Region, the results always contain a single
+#' behavior graph.
 #'
 #' @usage
 #' detective_list_graphs(NextToken, MaxResults)
@@ -552,12 +584,17 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
 #'       EmailAddress = "string",
 #'       GraphArn = "string",
 #'       MasterId = "string",
+#'       AdministratorId = "string",
 #'       Status = "INVITED"|"VERIFICATION_IN_PROGRESS"|"VERIFICATION_FAILED"|"ENABLED"|"ACCEPTED_BUT_DISABLED",
 #'       DisabledReason = "VOLUME_TOO_HIGH"|"VOLUME_UNKNOWN",
 #'       InvitedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VolumeUsageInBytes = 123,
+#'       VolumeUsageUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       PercentOfGraphUtilization = 123.0,
@@ -626,12 +663,17 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
 #'       EmailAddress = "string",
 #'       GraphArn = "string",
 #'       MasterId = "string",
+#'       AdministratorId = "string",
 #'       Status = "INVITED"|"VERIFICATION_IN_PROGRESS"|"VERIFICATION_FAILED"|"ENABLED"|"ACCEPTED_BUT_DISABLED",
 #'       DisabledReason = "VOLUME_TOO_HIGH"|"VOLUME_UNKNOWN",
 #'       InvitedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VolumeUsageInBytes = 123,
+#'       VolumeUsageUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       PercentOfGraphUtilization = 123.0,
@@ -672,6 +714,53 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
   return(response)
 }
 .detective$operations$list_members <- detective_list_members
+
+#' Returns the tag values that are assigned to a behavior graph
+#'
+#' @description
+#' Returns the tag values that are assigned to a behavior graph.
+#'
+#' @usage
+#' detective_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the behavior graph for which to retrieve the tag values.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname detective_list_tags_for_resource
+detective_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .detective$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .detective$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$list_tags_for_resource <- detective_list_tags_for_resource
 
 #' Rejects an invitation to contribute the account data to a behavior graph
 #'
@@ -772,3 +861,95 @@ detective_start_monitoring_member <- function(GraphArn, AccountId) {
   return(response)
 }
 .detective$operations$start_monitoring_member <- detective_start_monitoring_member
+
+#' Applies tag values to a behavior graph
+#'
+#' @description
+#' Applies tag values to a behavior graph.
+#'
+#' @usage
+#' detective_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the behavior graph to assign the tags to.
+#' @param Tags &#91;required&#93; The tags to assign to the behavior graph. You can add up to 50 tags. For
+#' each tag, you provide the tag key and the tag value. Each tag key can
+#' contain up to 128 characters. Each tag value can contain up to 256
+#' characters.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname detective_tag_resource
+detective_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .detective$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .detective$tag_resource_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$tag_resource <- detective_tag_resource
+
+#' Removes tags from a behavior graph
+#'
+#' @description
+#' Removes tags from a behavior graph.
+#'
+#' @usage
+#' detective_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the behavior graph to remove the tags from.
+#' @param TagKeys &#91;required&#93; The tag keys of the tags to remove from the behavior graph. You can
+#' remove up to 50 tags at a time.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname detective_untag_resource
+detective_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .detective$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .detective$untag_resource_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$untag_resource <- detective_untag_resource

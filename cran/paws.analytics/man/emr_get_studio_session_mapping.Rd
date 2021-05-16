@@ -2,8 +2,8 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_get_studio_session_mapping}
 \alias{emr_get_studio_session_mapping}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Fetches mapping details for the specified Amazon EMR Studio and identity
+(user or group)}
 \usage{
 emr_get_studio_session_mapping(StudioId, IdentityId, IdentityName,
   IdentityType)
@@ -20,7 +20,7 @@ in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} o
 \code{IdentityId} must be specified.}
 
 \item{IdentityName}{The name of the user or group to fetch. For more information, see
-\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId}{UserName}
+\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName}{UserName}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName}{DisplayName}
 in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} or
@@ -47,9 +47,6 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
-
 Fetches mapping details for the specified Amazon EMR Studio and identity
 (user or group).
 }

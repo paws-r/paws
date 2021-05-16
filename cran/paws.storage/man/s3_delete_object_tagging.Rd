@@ -9,28 +9,29 @@ s3_delete_object_tagging(Bucket, Key, VersionId, ExpectedBucketOwner)
 \arguments{
 \item{Bucket}{[required] The bucket name containing the objects from which to remove the tags.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
-\item{Key}{[required] Name of the object key.}
+\item{Key}{[required] The key that identifies the object in the bucket from which to remove
+all tags.}
 
 \item{VersionId}{The versionId of the object that the tag-set will be removed from.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -71,20 +72,20 @@ The following operations are related to
 \examples{
 \dontrun{
 # The following example removes tag set associated with the specified
+# object. If the bucket is versioning enabled, the operation removes tag
+# set from the latest object version.
+svc$delete_object_tagging(
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg"
+)
+
+# The following example removes tag set associated with the specified
 # object version. The request specifies both the object key and object
 # version.
 svc$delete_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-)
-
-# The following example removes tag set associated with the specified
-# object. If the bucket is versioning enabled, the operation removes tag
-# set from the latest object version.
-svc$delete_object_tagging(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
 )
 }
 

@@ -4,13 +4,16 @@
 \alias{ssm_get_deployable_patch_snapshot_for_instance}
 \title{Retrieves the current snapshot for the patch baseline the instance uses}
 \usage{
-ssm_get_deployable_patch_snapshot_for_instance(InstanceId, SnapshotId)
+ssm_get_deployable_patch_snapshot_for_instance(InstanceId, SnapshotId,
+  BaselineOverride)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance for which the appropriate patch snapshot should
 be retrieved.}
 
 \item{SnapshotId}{[required] The user-defined snapshot ID.}
+
+\item{BaselineOverride}{Defines the basic information about a patch baseline override.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -29,7 +32,58 @@ document.
 \section{Request syntax}{
 \preformatted{svc$get_deployable_patch_snapshot_for_instance(
   InstanceId = "string",
-  SnapshotId = "string"
+  SnapshotId = "string",
+  BaselineOverride = list(
+    OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+    GlobalFilters = list(
+      PatchFilters = list(
+        list(
+          Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+          Values = list(
+            "string"
+          )
+        )
+      )
+    ),
+    ApprovalRules = list(
+      PatchRules = list(
+        list(
+          PatchFilterGroup = list(
+            PatchFilters = list(
+              list(
+                Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+                Values = list(
+                  "string"
+                )
+              )
+            )
+          ),
+          ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+          ApproveAfterDays = 123,
+          ApproveUntilDate = "string",
+          EnableNonSecurity = TRUE|FALSE
+        )
+      )
+    ),
+    ApprovedPatches = list(
+      "string"
+    ),
+    ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+    RejectedPatches = list(
+      "string"
+    ),
+    RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
+    ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
+    Sources = list(
+      list(
+        Name = "string",
+        Products = list(
+          "string"
+        ),
+        Configuration = "string"
+      )
+    )
+  )
 )
 }
 }

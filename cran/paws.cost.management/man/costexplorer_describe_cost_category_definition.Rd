@@ -59,7 +59,12 @@ A list with the following syntax:\preformatted{list(
               "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
             )
           )
-        )
+        ),
+        InheritedValue = list(
+          DimensionName = "LINKED_ACCOUNT_NAME"|"TAG",
+          DimensionKey = "string"
+        ),
+        Type = "REGULAR"|"INHERITED_VALUE"
       )
     ),
     ProcessingStatus = list(
@@ -67,7 +72,8 @@ A list with the following syntax:\preformatted{list(
         Component = "COST_EXPLORER",
         Status = "PROCESSING"|"APPLIED"
       )
-    )
+    ),
+    DefaultValue = "string"
   )
 )
 }

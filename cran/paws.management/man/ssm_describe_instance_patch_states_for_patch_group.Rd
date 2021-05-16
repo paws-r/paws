@@ -53,7 +53,10 @@ A list with the following syntax:\preformatted{list(
       LastNoRebootInstallOperationTime = as.POSIXct(
         "2015-01-01"
       ),
-      RebootOption = "RebootIfNeeded"|"NoReboot"
+      RebootOption = "RebootIfNeeded"|"NoReboot",
+      CriticalNonCompliantCount = 123,
+      SecurityNonCompliantCount = 123,
+      OtherNonCompliantCount = 123
     )
   ),
   NextToken = "string"

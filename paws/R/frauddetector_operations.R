@@ -136,6 +136,106 @@ frauddetector_batch_get_variable <- function(names) {
 }
 .frauddetector$operations$batch_get_variable <- frauddetector_batch_get_variable
 
+#' Cancels the specified batch prediction job
+#'
+#' @description
+#' Cancels the specified batch prediction job.
+#'
+#' @usage
+#' frauddetector_cancel_batch_prediction_job(jobId)
+#'
+#' @param jobId &#91;required&#93; The ID of the batch prediction job to cancel.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_batch_prediction_job(
+#'   jobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_cancel_batch_prediction_job
+frauddetector_cancel_batch_prediction_job <- function(jobId) {
+  op <- new_operation(
+    name = "CancelBatchPredictionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$cancel_batch_prediction_job_input(jobId = jobId)
+  output <- .frauddetector$cancel_batch_prediction_job_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$cancel_batch_prediction_job <- frauddetector_cancel_batch_prediction_job
+
+#' Creates a batch prediction job
+#'
+#' @description
+#' Creates a batch prediction job.
+#'
+#' @usage
+#' frauddetector_create_batch_prediction_job(jobId, inputPath, outputPath,
+#'   eventTypeName, detectorName, detectorVersion, iamRoleArn, tags)
+#'
+#' @param jobId &#91;required&#93; The ID of the batch prediction job.
+#' @param inputPath &#91;required&#93; The Amazon S3 location of your training file.
+#' @param outputPath &#91;required&#93; The Amazon S3 location of your output file.
+#' @param eventTypeName &#91;required&#93; The name of the event type.
+#' @param detectorName &#91;required&#93; The name of the detector.
+#' @param detectorVersion The detector version.
+#' @param iamRoleArn &#91;required&#93; The ARN of the IAM role to use for this job request.
+#' @param tags A collection of key and value pairs.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_batch_prediction_job(
+#'   jobId = "string",
+#'   inputPath = "string",
+#'   outputPath = "string",
+#'   eventTypeName = "string",
+#'   detectorName = "string",
+#'   detectorVersion = "string",
+#'   iamRoleArn = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_create_batch_prediction_job
+frauddetector_create_batch_prediction_job <- function(jobId, inputPath, outputPath, eventTypeName, detectorName, detectorVersion = NULL, iamRoleArn, tags = NULL) {
+  op <- new_operation(
+    name = "CreateBatchPredictionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$create_batch_prediction_job_input(jobId = jobId, inputPath = inputPath, outputPath = outputPath, eventTypeName = eventTypeName, detectorName = detectorName, detectorVersion = detectorVersion, iamRoleArn = iamRoleArn, tags = tags)
+  output <- .frauddetector$create_batch_prediction_job_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$create_batch_prediction_job <- frauddetector_create_batch_prediction_job
+
 #' Creates a detector version
 #'
 #' @description
@@ -495,6 +595,46 @@ frauddetector_create_variable <- function(name, dataType, dataSource, defaultVal
 }
 .frauddetector$operations$create_variable <- frauddetector_create_variable
 
+#' Deletes a batch prediction job
+#'
+#' @description
+#' Deletes a batch prediction job.
+#'
+#' @usage
+#' frauddetector_delete_batch_prediction_job(jobId)
+#'
+#' @param jobId &#91;required&#93; The ID of the batch prediction job to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_batch_prediction_job(
+#'   jobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_batch_prediction_job
+frauddetector_delete_batch_prediction_job <- function(jobId) {
+  op <- new_operation(
+    name = "DeleteBatchPredictionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_batch_prediction_job_input(jobId = jobId)
+  output <- .frauddetector$delete_batch_prediction_job_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_batch_prediction_job <- frauddetector_delete_batch_prediction_job
+
 #' Deletes the detector
 #'
 #' @description
@@ -594,8 +734,8 @@ frauddetector_delete_detector_version <- function(detectorId, detectorVersionId)
 #' You cannot delete an entity type that is included in an event type.
 #' 
 #' When you delete an entity type, Amazon Fraud Detector permanently
-#' deletes that entity type from the evaluation history, and the data is no
-#' longer stored in Amazon Fraud Detector.
+#' deletes that entity type and the data is no longer stored in Amazon
+#' Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_entity_type(name)
@@ -638,8 +778,7 @@ frauddetector_delete_entity_type <- function(name) {
 #' Deletes the specified event.
 #' 
 #' When you delete an event, Amazon Fraud Detector permanently deletes that
-#' event from the evaluation history, and the event data is no longer
-#' stored in Amazon Fraud Detector.
+#' event and the event data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_event(eventId, eventTypeName)
@@ -686,8 +825,8 @@ frauddetector_delete_event <- function(eventId, eventTypeName) {
 #' You cannot delete an event type that is used in a detector or a model.
 #' 
 #' When you delete an entity type, Amazon Fraud Detector permanently
-#' deletes that entity type from the evaluation history, and the data is no
-#' longer stored in Amazon Fraud Detector.
+#' deletes that entity type and the data is no longer stored in Amazon
+#' Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_event_type(name)
@@ -780,8 +919,7 @@ frauddetector_delete_external_model <- function(modelEndpoint) {
 #' the relevant event ID.
 #' 
 #' When you delete a label, Amazon Fraud Detector permanently deletes that
-#' label from the evaluation history, and the data is no longer stored in
-#' Amazon Fraud Detector.
+#' label and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_label(name)
@@ -827,8 +965,7 @@ frauddetector_delete_label <- function(name) {
 #' provided that they are not associated with a detector version.
 #' 
 #' When you delete a model, Amazon Fraud Detector permanently deletes that
-#' model from the evaluation history, and the data is no longer stored in
-#' Amazon Fraud Detector.
+#' model and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_model(modelId, modelType)
@@ -876,8 +1013,8 @@ frauddetector_delete_model <- function(modelId, modelType) {
 #' provided that they are not associated with a detector version.
 #' 
 #' When you delete a model version, Amazon Fraud Detector permanently
-#' deletes that model version from the evaluation history, and the data is
-#' no longer stored in Amazon Fraud Detector.
+#' deletes that model version and the data is no longer stored in Amazon
+#' Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_model_version(modelId, modelType,
@@ -927,8 +1064,7 @@ frauddetector_delete_model_version <- function(modelId, modelType, modelVersionN
 #' You cannot delete an outcome that is used in a rule version.
 #' 
 #' When you delete an outcome, Amazon Fraud Detector permanently deletes
-#' that outcome from the evaluation history, and the data is no longer
-#' stored in Amazon Fraud Detector.
+#' that outcome and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_outcome(name)
@@ -972,8 +1108,7 @@ frauddetector_delete_outcome <- function(name) {
 #' or `INACTIVE` detector version.
 #' 
 #' When you delete a rule, Amazon Fraud Detector permanently deletes that
-#' rule from the evaluation history, and the data is no longer stored in
-#' Amazon Fraud Detector.
+#' rule and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_rule(rule)
@@ -1027,8 +1162,7 @@ frauddetector_delete_rule <- function(rule) {
 #' delete these variables manually.
 #' 
 #' When you delete a variable, Amazon Fraud Detector permanently deletes
-#' that variable from the evaluation history, and the data is no longer
-#' stored in Amazon Fraud Detector.
+#' that variable and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_variable(name)
@@ -1239,6 +1373,80 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
   return(response)
 }
 .frauddetector$operations$describe_model_versions <- frauddetector_describe_model_versions
+
+#' Gets all batch prediction jobs or a specific job if you specify a job ID
+#'
+#' @description
+#' Gets all batch prediction jobs or a specific job if you specify a job
+#' ID. This is a paginated API. If you provide a null maxResults, this
+#' action retrieves a maximum of 50 records per page. If you provide a
+#' maxResults, the value must be between 1 and 50. To get the next page
+#' results, provide the pagination token from the
+#' GetBatchPredictionJobsResponse as part of your request. A null
+#' pagination token fetches the records from the beginning.
+#'
+#' @usage
+#' frauddetector_get_batch_prediction_jobs(jobId, maxResults, nextToken)
+#'
+#' @param jobId The batch prediction job for which to get the details.
+#' @param maxResults The maximum number of objects to return for the request.
+#' @param nextToken The next token from the previous request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   batchPredictions = list(
+#'     list(
+#'       jobId = "string",
+#'       status = "IN_PROGRESS_INITIALIZING"|"IN_PROGRESS"|"CANCEL_IN_PROGRESS"|"CANCELED"|"COMPLETE"|"FAILED",
+#'       failureReason = "string",
+#'       startTime = "string",
+#'       completionTime = "string",
+#'       lastHeartbeatTime = "string",
+#'       inputPath = "string",
+#'       outputPath = "string",
+#'       eventTypeName = "string",
+#'       detectorName = "string",
+#'       detectorVersion = "string",
+#'       iamRoleArn = "string",
+#'       arn = "string",
+#'       processedRecordsCount = 123,
+#'       totalRecordsCount = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_batch_prediction_jobs(
+#'   jobId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_batch_prediction_jobs
+frauddetector_get_batch_prediction_jobs <- function(jobId = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetBatchPredictionJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_batch_prediction_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
+  output <- .frauddetector$get_batch_prediction_jobs_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_batch_prediction_jobs <- frauddetector_get_batch_prediction_jobs
 
 #' Gets a particular detector version
 #'
@@ -3014,7 +3222,7 @@ frauddetector_update_model_version <- function(modelId, modelType, majorVersionN
 #'   modelId = "string",
 #'   modelType = "ONLINE_FRAUD_INSIGHTS",
 #'   modelVersionNumber = "string",
-#'   status = "ACTIVE"|"INACTIVE"
+#'   status = "ACTIVE"|"INACTIVE"|"TRAINING_CANCELLED"
 #' )
 #' ```
 #'

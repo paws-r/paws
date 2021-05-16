@@ -81,6 +81,7 @@ NULL
 #'  \link[=databasemigrationservice_describe_certificates]{describe_certificates} \tab Provides a description of the certificate\cr
 #'  \link[=databasemigrationservice_describe_connections]{describe_connections} \tab Describes the status of the connections that have been made between the replication instance and an endpoint\cr
 #'  \link[=databasemigrationservice_describe_endpoints]{describe_endpoints} \tab Returns information about the endpoints for your account in the current region\cr
+#'  \link[=databasemigrationservice_describe_endpoint_settings]{describe_endpoint_settings} \tab Returns information about the possible endpoint settings available when you create an endpoint for a specific database engine\cr
 #'  \link[=databasemigrationservice_describe_endpoint_types]{describe_endpoint_types} \tab Returns information about the type of endpoints available\cr
 #'  \link[=databasemigrationservice_describe_event_categories]{describe_event_categories} \tab Lists categories for all event source types, or, if specified, for a specified source type\cr
 #'  \link[=databasemigrationservice_describe_events]{describe_events} \tab Lists events for a given source identifier and source type\cr

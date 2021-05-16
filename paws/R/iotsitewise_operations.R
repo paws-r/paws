@@ -348,6 +348,9 @@ iotsitewise_batch_put_asset_property_value <- function(entries) {
 #'     ),
 #'     iamUser = list(
 #'       arn = "string"
+#'     ),
+#'     iamRole = list(
+#'       arn = "string"
 #'     )
 #'   ),
 #'   accessPolicyResource = list(
@@ -1340,6 +1343,9 @@ iotsitewise_delete_project <- function(projectId, clientToken = NULL) {
 #'       id = "string"
 #'     ),
 #'     iamUser = list(
+#'       arn = "string"
+#'     ),
+#'     iamRole = list(
 #'       arn = "string"
 #'     )
 #'   ),
@@ -2565,6 +2571,116 @@ iotsitewise_get_asset_property_value_history <- function(assetId = NULL, propert
 }
 .iotsitewise$operations$get_asset_property_value_history <- iotsitewise_get_asset_property_value_history
 
+#' Get interpolated values for an asset property for a specified time
+#' interval, during a period of time
+#'
+#' @description
+#' Get interpolated values for an asset property for a specified time
+#' interval, during a period of time. For example, you can use the this
+#' operation to return the interpolated temperature values for a wind
+#' turbine every 24 hours over a duration of 7 days.
+#' 
+#' To identify an asset property, you must specify one of the following:
+#' 
+#' -   The `assetId` and `propertyId` of an asset property.
+#' 
+#' -   A `propertyAlias`, which is a data stream alias (for example,
+#'     `/company/windfarm/3/turbine/7/temperature`). To define an asset
+#'     property's alias, see
+#'     [`update_asset_property`][iotsitewise_update_asset_property].
+#'
+#' @usage
+#' iotsitewise_get_interpolated_asset_property_values(assetId, propertyId,
+#'   propertyAlias, startTimeInSeconds, startTimeOffsetInNanos,
+#'   endTimeInSeconds, endTimeOffsetInNanos, quality, intervalInSeconds,
+#'   nextToken, maxResults, type)
+#'
+#' @param assetId The ID of the asset.
+#' @param propertyId The ID of the asset property.
+#' @param propertyAlias The property alias that identifies the property, such as an OPC-UA
+#' server data stream path (for example,
+#' `/company/windfarm/3/turbine/7/temperature`). For more information, see
+#' [Mapping industrial data streams to asset
+#' properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html)
+#' in the *AWS IoT SiteWise User Guide*.
+#' @param startTimeInSeconds &#91;required&#93; The exclusive start of the range from which to interpolate data,
+#' expressed in seconds in Unix epoch time.
+#' @param startTimeOffsetInNanos The nanosecond offset converted from `startTimeInSeconds`.
+#' @param endTimeInSeconds &#91;required&#93; The inclusive end of the range from which to interpolate data, expressed
+#' in seconds in Unix epoch time.
+#' @param endTimeOffsetInNanos The nanosecond offset converted from `endTimeInSeconds`.
+#' @param quality &#91;required&#93; The quality of the asset property value. You can use this parameter as a
+#' filter to choose only the asset property values that have a specific
+#' quality.
+#' @param intervalInSeconds &#91;required&#93; The time interval in seconds over which to interpolate data. Each
+#' interval starts when the previous one ends.
+#' @param nextToken The token to be used for the next set of paginated results.
+#' @param maxResults The maximum number of results to be returned per paginated request. If
+#' not specified, the default value is 10.
+#' @param type &#91;required&#93; The interpolation type.
+#' 
+#' Valid values: `LINEAR_INTERPOLATION`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   interpolatedAssetPropertyValues = list(
+#'     list(
+#'       timestamp = list(
+#'         timeInSeconds = 123,
+#'         offsetInNanos = 123
+#'       ),
+#'       value = list(
+#'         stringValue = "string",
+#'         integerValue = 123,
+#'         doubleValue = 123.0,
+#'         booleanValue = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_interpolated_asset_property_values(
+#'   assetId = "string",
+#'   propertyId = "string",
+#'   propertyAlias = "string",
+#'   startTimeInSeconds = 123,
+#'   startTimeOffsetInNanos = 123,
+#'   endTimeInSeconds = 123,
+#'   endTimeOffsetInNanos = 123,
+#'   quality = "GOOD"|"BAD"|"UNCERTAIN",
+#'   intervalInSeconds = 123,
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   type = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iotsitewise_get_interpolated_asset_property_values
+iotsitewise_get_interpolated_asset_property_values <- function(assetId = NULL, propertyId = NULL, propertyAlias = NULL, startTimeInSeconds, startTimeOffsetInNanos = NULL, endTimeInSeconds, endTimeOffsetInNanos = NULL, quality, intervalInSeconds, nextToken = NULL, maxResults = NULL, type) {
+  op <- new_operation(
+    name = "GetInterpolatedAssetPropertyValues",
+    http_method = "GET",
+    http_path = "/properties/interpolated",
+    paginator = list()
+  )
+  input <- .iotsitewise$get_interpolated_asset_property_values_input(assetId = assetId, propertyId = propertyId, propertyAlias = propertyAlias, startTimeInSeconds = startTimeInSeconds, startTimeOffsetInNanos = startTimeOffsetInNanos, endTimeInSeconds = endTimeInSeconds, endTimeOffsetInNanos = endTimeOffsetInNanos, quality = quality, intervalInSeconds = intervalInSeconds, nextToken = nextToken, maxResults = maxResults, type = type)
+  output <- .iotsitewise$get_interpolated_asset_property_values_output()
+  config <- get_config()
+  svc <- .iotsitewise$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iotsitewise$operations$get_interpolated_asset_property_values <- iotsitewise_get_interpolated_asset_property_values
+
 #' Retrieves a paginated list of access policies for an identity (an AWS
 #' SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise
 #' Monitor resource (a portal or project)
@@ -2610,6 +2726,9 @@ iotsitewise_get_asset_property_value_history <- function(assetId = NULL, propert
 #'           id = "string"
 #'         ),
 #'         iamUser = list(
+#'           arn = "string"
+#'         ),
+#'         iamRole = list(
 #'           arn = "string"
 #'         )
 #'       ),
@@ -3626,6 +3745,9 @@ iotsitewise_untag_resource <- function(resourceArn, tagKeys) {
 #'       id = "string"
 #'     ),
 #'     iamUser = list(
+#'       arn = "string"
+#'     ),
+#'     iamRole = list(
 #'       arn = "string"
 #'     )
 #'   ),

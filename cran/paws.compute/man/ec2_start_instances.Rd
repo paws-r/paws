@@ -58,7 +58,7 @@ Performing this operation on an instance that uses an instance store as
 its root device returns an error.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html}{Stopping instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_instances(

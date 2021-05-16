@@ -63,8 +63,8 @@ records will be retried until the record expires.}
 \item{SourceAccessConfigurations}{An array of the authentication protocol, or the VPC components to secure
 your event source.}
 
-\item{TumblingWindowInSeconds}{(Streams) The duration of a processing window in seconds. The range is
-between 1 second up to 15 minutes.}
+\item{TumblingWindowInSeconds}{(Streams) The duration in seconds of a processing window. The range is
+between 1 second up to 900 seconds.}
 
 \item{FunctionResponseTypes}{(Streams) A list of current response type enums applied to the event
 source mapping.}

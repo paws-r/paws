@@ -279,7 +279,8 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #'         ),
 #'         Config = list(
 #'           list(
-#'             SyncStatus = "PENDING"|"IN_SYNC"
+#'             SyncStatus = "PENDING"|"IN_SYNC",
+#'             UpdateToken = "string"
 #'           )
 #'         )
 #'       )
@@ -475,22 +476,17 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' 
 #' You must provide either this rule group setting or a `Rules` setting,
 #' but not both.
-#' @param Rules The name of a file containing stateful rule group rules specifications
-#' in Suricata flat format, with one rule per line. Use this to import your
-#' existing Suricata compatible rule groups.
+#' @param Rules A string containing stateful rule group rules specifications in Suricata
+#' flat format, with one rule per line. Use this to import your existing
+#' Suricata compatible rule groups.
 #' 
 #' You must provide either this rules setting or a populated `RuleGroup`
 #' setting, but not both.
 #' 
-#' You can provide your rule group specification in a file through this
-#' setting when you create or update your rule group. The call response
-#' returns a RuleGroup object that Network Firewall has populated from your
-#' file. Network Firewall uses the file contents to populate the rule group
-#' rules, but does not maintain a reference to the file or use the file in
-#' any way after performing the create or update. If you call
-#' [`describe_rule_group`][networkfirewall_describe_rule_group] to retrieve
-#' the rule group, Network Firewall returns rules settings inside a
-#' RuleGroup object.
+#' You can provide your rule group specification in Suricata flat format
+#' through this setting when you create or update your rule group. The call
+#' response returns a RuleGroup object that Network Firewall has populated
+#' from your string.
 #' @param Type &#91;required&#93; Indicates whether the rule group is stateless or stateful. If the rule
 #' group is stateless, it contains stateless rules. If it is stateful, it
 #' contains stateful rules.
@@ -799,7 +795,8 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #'         ),
 #'         Config = list(
 #'           list(
-#'             SyncStatus = "PENDING"|"IN_SYNC"
+#'             SyncStatus = "PENDING"|"IN_SYNC",
+#'             UpdateToken = "string"
 #'           )
 #'         )
 #'       )
@@ -1072,7 +1069,8 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
 #'         ),
 #'         Config = list(
 #'           list(
-#'             SyncStatus = "PENDING"|"IN_SYNC"
+#'             SyncStatus = "PENDING"|"IN_SYNC",
+#'             UpdateToken = "string"
 #'           )
 #'         )
 #'       )
@@ -2568,22 +2566,17 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' 
 #' You must provide either this rule group setting or a `Rules` setting,
 #' but not both.
-#' @param Rules The name of a file containing stateful rule group rules specifications
-#' in Suricata flat format, with one rule per line. Use this to import your
-#' existing Suricata compatible rule groups.
+#' @param Rules A string containing stateful rule group rules specifications in Suricata
+#' flat format, with one rule per line. Use this to import your existing
+#' Suricata compatible rule groups.
 #' 
 #' You must provide either this rules setting or a populated `RuleGroup`
 #' setting, but not both.
 #' 
-#' You can provide your rule group specification in a file through this
-#' setting when you create or update your rule group. The call response
-#' returns a RuleGroup object that Network Firewall has populated from your
-#' file. Network Firewall uses the file contents to populate the rule group
-#' rules, but does not maintain a reference to the file or use the file in
-#' any way after performing the create or update. If you call
-#' [`describe_rule_group`][networkfirewall_describe_rule_group] to retrieve
-#' the rule group, Network Firewall returns rules settings inside a
-#' RuleGroup object.
+#' You can provide your rule group specification in Suricata flat format
+#' through this setting when you create or update your rule group. The call
+#' response returns a RuleGroup object that Network Firewall has populated
+#' from your string.
 #' @param Type Indicates whether the rule group is stateless or stateful. If the rule
 #' group is stateless, it contains stateless rules. If it is stateful, it
 #' contains stateful rules.

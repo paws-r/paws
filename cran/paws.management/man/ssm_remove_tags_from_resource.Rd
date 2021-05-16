@@ -21,6 +21,14 @@ MaintenanceWindow: mw-012345abcde
 
 PatchBaseline: pb-012345abcde
 
+OpsMetadata object: \code{ResourceID} for tagging is created from the Amazon
+Resource Name (ARN) for the object. Specifically, \code{ResourceID} is
+created from the strings that come after the word \code{opsmetadata} in the
+ARN. For example, an OpsMetadata object with an ARN of
+\code{arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager}
+has a \code{ResourceID} of either \code{aws/ssm/MyGroup/appmanager} or
+\verb{/aws/ssm/MyGroup/appmanager}.
+
 For the Document and Parameter values, use the name of the resource.
 
 The ManagedInstance type for this API action is only for on-premises
@@ -37,7 +45,7 @@ Removes tag keys from the specified resource.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_tags_from_resource(
-  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
+  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem"|"OpsMetadata",
   ResourceId = "string",
   TagKeys = list(
     "string"

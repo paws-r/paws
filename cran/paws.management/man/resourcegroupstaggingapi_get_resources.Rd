@@ -7,60 +7,60 @@ in the specified Region for the AWS account}
 \usage{
 resourcegroupstaggingapi_get_resources(PaginationToken, TagFilters,
   ResourcesPerPage, TagsPerPage, ResourceTypeFilters,
-  IncludeComplianceDetails, ExcludeCompliantResources)
+  IncludeComplianceDetails, ExcludeCompliantResources, ResourceARNList)
 }
 \arguments{
-\item{PaginationToken}{A string that indicates that additional data is available. Leave this
-value empty for your initial request. If the response includes a
-\code{PaginationToken}, use that string for this value to request an
-additional page of data.}
+\item{PaginationToken}{Specifies a \code{PaginationToken} response value from a previous request to
+indicate that you want the next page of results. Leave this parameter
+empty in your initial request.}
 
-\item{TagFilters}{A list of TagFilters (keys and values). Each TagFilter specified must
-contain a key with values as optional. A request can include up to 50
-keys, and each key can include up to 20 values.
+\item{TagFilters}{Specifies a list of TagFilters (keys and values) to restrict the output
+to only those resources that have the specified tag and, if included,
+the specified value. Each \code{TagFilter} must contain a key with values
+optional. A request can include up to 50 keys, and each key can include
+up to 20 values.
 
 Note the following when deciding how to use TagFilters:
 \itemize{
-\item If you \emph{do} specify a TagFilter, the response returns only those
-resources that are currently associated with the specified tag.
-\item If you \emph{don't} specify a TagFilter, the response includes all
-resources that were ever associated with tags. Resources that
-currently don't have associated tags are shown with an empty tag
-set, like this: \verb{"Tags": []}.
+\item If you \emph{don't} specify a \code{TagFilter}, the response includes all
+resources that are currently tagged or ever had a tag. Resources
+that currently don't have tags are shown with an empty tag set, like
+this: \verb{"Tags": []}.
 \item If you specify more than one filter in a single request, the
-response returns only those resources that satisfy all specified
-filters.
+response returns only those resources that satisfy all filters.
 \item If you specify a filter that contains more than one value for a key,
 the response returns resources that match any of the specified
 values for that key.
 \item If you don't specify any values for a key, the response returns
-resources that are tagged with that key irrespective of the value.
+resources that are tagged with that key and any or no value.
 
-For example, for filters: filter1 = \{key1, \{value1\}\},
-filter2 = \{key2, \{value2,value3,value4\}\} , filter3 =
-\{key3\}:
+For example, for the following filters: \verb{filter1= \{keyA,\{value1\}\}},
+\verb{filter2=\{keyB,\{value2,value3,value4\}\}}, \code{filter3= {keyC}}:
 \itemize{
-\item GetResources( \{filter1\} ) returns resources tagged with
-key1=value1
-\item GetResources( \{filter2\} ) returns resources tagged with
-key2=value2 or key2=value3 or key2=value4
-\item GetResources( \{filter3\} ) returns resources tagged with any
-tag containing key3 as its tag key, irrespective of its value
-\item GetResources( \{filter1,filter2,filter3\} ) returns resources
-tagged with ( key1=value1) and ( key2=value2 or key2=value3 or
-key2=value4) and (key3, irrespective of the value)
+\item \code{GetResources({filter1})} returns resources tagged with
+\code{key1=value1}
+\item \code{GetResources({filter2})} returns resources tagged with
+\code{key2=value2} or \code{key2=value3} or \code{key2=value4}
+\item \code{GetResources({filter3})} returns resources tagged with any tag
+with the key \code{key3}, and with any or no value
+\item \verb{GetResources(\{filter1,filter2,filter3\})} returns resources
+tagged with
+\verb{(key1=value1) and (key2=value2 or key2=value3 or key2=value4) and (key3, any or no value)}
 }
 }}
 
-\item{ResourcesPerPage}{A limit that restricts the number of resources returned by GetResources
-in paginated output. You can set ResourcesPerPage to a minimum of 1 item
-and the maximum of 100 items.}
+\item{ResourcesPerPage}{Specifies the maximum number of results to be returned in each page. A
+query can return fewer than this maximum, even if there are more results
+still to return. You should always check the \code{PaginationToken} response
+value to see if there are more results. You can specify a minimum of 1
+and a maximum value of 100.}
 
 \item{TagsPerPage}{AWS recommends using \code{ResourcesPerPage} instead of this parameter.
 
 A limit that restricts the number of tags (key and value pairs) returned
-by GetResources in paginated output. A resource with no tags is counted
-as having one tag (one key and value pair).
+by \code{\link[=resourcegroupstaggingapi_get_resources]{get_resources}} in
+paginated output. A resource with no tags is counted as having one tag
+(one key and value pair).
 
 \code{\link[=resourcegroupstaggingapi_get_resources]{get_resources}} does not split
 a resource and its associated tags across pages. If the specified
@@ -74,23 +74,20 @@ resources, each with its 10 tags. The second page displays the next 10
 resources, each with its 10 tags. The third page displays the remaining
 2 resources, each with its 10 tags.
 
-You can set \code{TagsPerPage} to a minimum of 100 items and the maximum of
+You can set \code{TagsPerPage} to a minimum of 100 items up to a maximum of
 500 items.}
 
-\item{ResourceTypeFilters}{The constraints on the resources that you want returned. The format of
-each resource type is \verb{service[:resourceType]}. For example, specifying
-a resource type of \code{ec2} returns all Amazon EC2 resources (which
-includes EC2 instances). Specifying a resource type of \code{ec2:instance}
-returns only EC2 instances.
+\item{ResourceTypeFilters}{Specifies the resource types that you want included in the response. The
+format of each resource type is \verb{service[:resourceType]}. For example,
+specifying a resource type of \code{ec2} returns all Amazon EC2 resources
+(which includes EC2 instances). Specifying a resource type of
+\code{ec2:instance} returns only EC2 instances.
 
 The string for each service name and resource type is the same as that
 embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{AWS
 General Reference} for the following:
-\itemize{
-\item For a list of service name strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}.
-\item For resource type strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax}{Example ARNs}.
-\item For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.
-}
+
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.
 
 You can specify multiple resource types by using an array. The array can
 include up to 100 items. Note that the length constraint requirement
@@ -106,6 +103,19 @@ information on noncompliant resources only.
 
 You can use this parameter only if the \code{IncludeComplianceDetails}
 parameter is also set to \code{true}.}
+
+\item{ResourceARNList}{Specifies a list of ARNs of resources for which you want to retrieve tag
+data. You can't specify both this parameter and any of the pagination
+parameters (\code{ResourcesPerPage}, \code{TagsPerPage}, \code{PaginationToken}) in the
+same request. If you specify both, you get an \verb{Invalid Parameter}
+exception.
+
+If a resource specified by this parameter doesn't exist, it doesn't
+generate an error; it simply isn't included in the response.
+
+An ARN (Amazon Resource Name) uniquely identifies a resource. For more
+information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+in the \emph{AWS General Reference}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -148,10 +158,13 @@ policy. For more information on tag policies, see \href{https://docs.aws.amazon.
 in the \emph{AWS Organizations User Guide.}
 }
 
-You can check the \code{PaginationToken} response parameter to determine if a
-query is complete. Queries occasionally return fewer results on a page
-than allowed. The \code{PaginationToken} response parameter value is \code{null}
-\emph{only} when there are no more results to display.
+This operation supports pagination, where the response can be sent in
+multiple pages. You should check the \code{PaginationToken} response
+parameter to determine if there are additional results available to
+return. Repeat the query, passing the \code{PaginationToken} response
+parameter value as an input to the next request until you recieve a
+\code{null} value. A null value for \code{PaginationToken} indicates that there
+are no more results waiting to be returned.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resources(
@@ -170,7 +183,10 @@ than allowed. The \code{PaginationToken} response parameter value is \code{null}
     "string"
   ),
   IncludeComplianceDetails = TRUE|FALSE,
-  ExcludeCompliantResources = TRUE|FALSE
+  ExcludeCompliantResources = TRUE|FALSE,
+  ResourceARNList = list(
+    "string"
+  )
 )
 }
 }

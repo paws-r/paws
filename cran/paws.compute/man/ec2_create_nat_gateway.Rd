@@ -4,14 +4,10 @@
 \alias{ec2_create_nat_gateway}
 \title{Creates a NAT gateway in the specified public subnet}
 \usage{
-ec2_create_nat_gateway(AllocationId, ClientToken, DryRun, SubnetId,
-  TagSpecifications)
+ec2_create_nat_gateway(ClientToken, DryRun, SubnetId, TagSpecifications,
+  AllocationId)
 }
 \arguments{
-\item{AllocationId}{[required] The allocation ID of an Elastic IP address to associate with the NAT
-gateway. If the Elastic IP address is associated with another resource,
-you must first disassociate it.}
-
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.
 
@@ -25,6 +21,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{SubnetId}{[required] The subnet in which to create the NAT gateway.}
 
 \item{TagSpecifications}{The tags to assign to the NAT gateway.}
+
+\item{AllocationId}{[required] The allocation ID of an Elastic IP address to associate with the NAT
+gateway. If the Elastic IP address is associated with another resource,
+you must first disassociate it.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -82,7 +82,6 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_nat_gateway(
-  AllocationId = "string",
   ClientToken = "string",
   DryRun = TRUE|FALSE,
   SubnetId = "string",
@@ -96,7 +95,8 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
         )
       )
     )
-  )
+  ),
+  AllocationId = "string"
 )
 }
 }

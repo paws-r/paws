@@ -3,6 +3,198 @@
 #' @include eks_service.R
 NULL
 
+#' Associate encryption configuration to an existing cluster
+#'
+#' @description
+#' Associate encryption configuration to an existing cluster.
+#' 
+#' You can use this API to enable encryption on existing clusters which do
+#' not have encryption already enabled. This allows you to implement a
+#' defense-in-depth security strategy without migrating applications to new
+#' EKS clusters.
+#'
+#' @usage
+#' eks_associate_encryption_config(clusterName, encryptionConfig,
+#'   clientRequestToken)
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster that you are associating with encryption
+#' configuration.
+#' @param encryptionConfig &#91;required&#93; The configuration you are using for encryption.
+#' @param clientRequestToken The client request token you are using with the encryption
+#' configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_encryption_config(
+#'   clusterName = "string",
+#'   encryptionConfig = list(
+#'     list(
+#'       resources = list(
+#'         "string"
+#'       ),
+#'       provider = list(
+#'         keyArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_associate_encryption_config
+eks_associate_encryption_config <- function(clusterName, encryptionConfig, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "AssociateEncryptionConfig",
+    http_method = "POST",
+    http_path = "/clusters/{name}/encryption-config/associate",
+    paginator = list()
+  )
+  input <- .eks$associate_encryption_config_input(clusterName = clusterName, encryptionConfig = encryptionConfig, clientRequestToken = clientRequestToken)
+  output <- .eks$associate_encryption_config_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$associate_encryption_config <- eks_associate_encryption_config
+
+#' Associate an identity provider configuration to a cluster
+#'
+#' @description
+#' Associate an identity provider configuration to a cluster.
+#' 
+#' If you want to authenticate identities using an identity provider, you
+#' can create an identity provider configuration and associate it to your
+#' cluster. After configuring authentication to your cluster you can create
+#' Kubernetes `roles` and `clusterroles` to assign permissions to the
+#' roles, and then bind the roles to the identities using Kubernetes
+#' `rolebindings` and `clusterrolebindings`. For more information see
+#' [Using RBAC
+#' Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+#' in the Kubernetes documentation.
+#'
+#' @usage
+#' eks_associate_identity_provider_config(clusterName, oidc, tags,
+#'   clientRequestToken)
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster to associate the configuration to.
+#' @param oidc &#91;required&#93; An object that represents an OpenID Connect (OIDC) identity provider
+#' configuration.
+#' @param tags The metadata to apply to the configuration to assist with categorization
+#' and organization. Each tag consists of a key and an optional value, both
+#' of which you define.
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_identity_provider_config(
+#'   clusterName = "string",
+#'   oidc = list(
+#'     identityProviderConfigName = "string",
+#'     issuerUrl = "string",
+#'     clientId = "string",
+#'     usernameClaim = "string",
+#'     usernamePrefix = "string",
+#'     groupsClaim = "string",
+#'     groupsPrefix = "string",
+#'     requiredClaims = list(
+#'       "string"
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_associate_identity_provider_config
+eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "AssociateIdentityProviderConfig",
+    http_method = "POST",
+    http_path = "/clusters/{name}/identity-provider-configs/associate",
+    paginator = list()
+  )
+  input <- .eks$associate_identity_provider_config_input(clusterName = clusterName, oidc = oidc, tags = tags, clientRequestToken = clientRequestToken)
+  output <- .eks$associate_identity_provider_config_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$associate_identity_provider_config <- eks_associate_identity_provider_config
+
 #' Creates an Amazon EKS add-on
 #'
 #' @description
@@ -60,7 +252,7 @@ NULL
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -134,39 +326,20 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' Zones and fronted by an Elastic Load Balancing Network Load Balancer.
 #' Amazon EKS also provisions elastic network interfaces in your VPC
 #' subnets to provide connectivity from the control plane instances to the
-#' worker nodes (for example, to support `kubectl exec`, `logs`, and
-#' `proxy` data flows).
+#' nodes (for example, to support `kubectl exec`, `logs`, and `proxy` data
+#' flows).
 #' 
-#' Amazon EKS worker nodes run in your AWS account and connect to your
-#' cluster's control plane via the Kubernetes API server endpoint and a
-#' certificate file that is created for your cluster.
+#' Amazon EKS nodes run in your AWS account and connect to your cluster's
+#' control plane via the Kubernetes API server endpoint and a certificate
+#' file that is created for your cluster.
 #' 
-#' You can use the `endpointPublicAccess` and `endpointPrivateAccess`
-#' parameters to enable or disable public and private access to your
-#' cluster's Kubernetes API server endpoint. By default, public access is
-#' enabled, and private access is disabled. For more information, see
-#' [Amazon EKS Cluster Endpoint Access
-#' Control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
-#' in the **Amazon EKS User Guide** .
-#' 
-#' You can use the `logging` parameter to enable or disable exporting the
-#' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-#' default, cluster control plane logs aren't exported to CloudWatch Logs.
-#' For more information, see [Amazon EKS Cluster Control Plane
-#' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-#' in the **Amazon EKS User Guide** .
-#' 
-#' CloudWatch Logs ingestion, archive storage, and data scanning rates
-#' apply to exported control plane logs. For more information, see [Amazon
-#' CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
-#' 
-#' Cluster creation typically takes between 10 and 15 minutes. After you
-#' create an Amazon EKS cluster, you must configure your Kubernetes tooling
-#' to communicate with the API server and launch worker nodes into your
-#' cluster. For more information, see [Managing Cluster
+#' Cluster creation typically takes several minutes. After you create an
+#' Amazon EKS cluster, you must configure your Kubernetes tooling to
+#' communicate with the API server and launch nodes into your cluster. For
+#' more information, see [Managing Cluster
 #' Authentication](https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html)
-#' and [Launching Amazon EKS Worker
-#' Nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
+#' and [Launching Amazon EKS
+#' nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
 #' in the *Amazon EKS User Guide*.
 #'
 #' @usage
@@ -512,11 +685,11 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 }
 .eks$operations$create_fargate_profile <- eks_create_fargate_profile
 
-#' Creates a managed worker node group for an Amazon EKS cluster
+#' Creates a managed node group for an Amazon EKS cluster
 #'
 #' @description
-#' Creates a managed worker node group for an Amazon EKS cluster. You can
-#' only create a node group for your cluster that is equal to the current
+#' Creates a managed node group for an Amazon EKS cluster. You can only
+#' create a node group for your cluster that is equal to the current
 #' Kubernetes version for the cluster. All node groups are created with the
 #' latest AMI release version for the respective minor Kubernetes version
 #' of the cluster, unless you deploy a custom AMI using a launch template.
@@ -533,8 +706,8 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' @usage
 #' eks_create_nodegroup(clusterName, nodegroupName, scalingConfig,
 #'   diskSize, subnets, instanceTypes, amiType, remoteAccess, nodeRole,
-#'   labels, tags, clientRequestToken, launchTemplate, capacityType, version,
-#'   releaseVersion)
+#'   labels, taints, tags, clientRequestToken, launchTemplate, capacityType,
+#'   version, releaseVersion)
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to create the node group in.
 #' @param nodegroupName &#91;required&#93; The unique name to give your node group.
@@ -548,10 +721,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the Amazon EKS User Guide.
 #' @param subnets &#91;required&#93; The subnets to use for the Auto Scaling group that is created for your
-#' node group. These subnets must have the tag key
-#' `kubernetes.io/cluster/CLUSTER_NAME` with a value of `shared`, where
-#' `CLUSTER_NAME` is replaced with the name of your cluster. If you specify
-#' `launchTemplate`, then don't specify
+#' node group. If you specify `launchTemplate`, then don't specify
 #' [`SubnetId`](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html)
 #' in your launch template, or the node group deployment will fail. For
 #' more information about using launch templates with Amazon EKS, see
@@ -568,7 +738,9 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' launch template or for `instanceTypes`, then `t3.medium` is used, by
 #' default. If you specify `Spot` for `capacityType`, then we recommend
 #' specifying multiple values for `instanceTypes`. For more information,
-#' see Managed node group capacity types and [Launch template
+#' see [Managed node group capacity
+#' types](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html#managed-node-group-capacity-types)
+#' and [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param amiType The AMI type for your node group. GPU instance types should use the
@@ -589,12 +761,12 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' in the Amazon EKS User Guide.
 #' @param nodeRole &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with your
 #' node group. The Amazon EKS worker node `kubelet` daemon makes calls to
-#' AWS APIs on your behalf. Worker nodes receive permissions for these API
-#' calls through an IAM instance profile and associated policies. Before
-#' you can launch worker nodes and register them into a cluster, you must
-#' create an IAM role for those worker nodes to use when they are launched.
-#' For more information, see [Amazon EKS Worker Node IAM
-#' Role](https://docs.aws.amazon.com/eks/latest/userguide/) in the **Amazon
+#' AWS APIs on your behalf. Nodes receive permissions for these API calls
+#' through an IAM instance profile and associated policies. Before you can
+#' launch nodes and register them into a cluster, you must create an IAM
+#' role for those nodes to use when they are launched. For more
+#' information, see [Amazon EKS node IAM
+#' role](https://docs.aws.amazon.com/eks/latest/userguide/) in the **Amazon
 #' EKS User Guide** . If you specify `launchTemplate`, then don't specify
 #' [`IamInstanceProfile`](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfile.html)
 #' in your launch template, or the node group deployment will fail. For
@@ -604,6 +776,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' in the Amazon EKS User Guide.
 #' @param labels The Kubernetes labels to be applied to the nodes in the node group when
 #' they are created.
+#' @param taints The Kubernetes taints to be applied to the nodes in the node group.
 #' @param tags The metadata to apply to the node group to assist with categorization
 #' and organization. Each tag consists of a key and an optional value, both
 #' of which you define. Node group tags do not propagate to any other
@@ -672,10 +845,17 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
+#'     ),
+#'     taints = list(
+#'       list(
+#'         key = "string",
+#'         value = "string",
+#'         effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+#'       )
 #'     ),
 #'     resources = list(
 #'       autoScalingGroups = list(
@@ -726,7 +906,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'   instanceTypes = list(
 #'     "string"
 #'   ),
-#'   amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+#'   amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM",
 #'   remoteAccess = list(
 #'     ec2SshKey = "string",
 #'     sourceSecurityGroups = list(
@@ -736,6 +916,13 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'   nodeRole = "string",
 #'   labels = list(
 #'     "string"
+#'   ),
+#'   taints = list(
+#'     list(
+#'       key = "string",
+#'       value = "string",
+#'       effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+#'     )
 #'   ),
 #'   tags = list(
 #'     "string"
@@ -755,14 +942,14 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' @keywords internal
 #'
 #' @rdname eks_create_nodegroup
-eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL) {
+eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, taints = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL) {
   op <- new_operation(
     name = "CreateNodegroup",
     http_method = "POST",
     http_path = "/clusters/{name}/node-groups",
     paginator = list()
   )
-  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, capacityType = capacityType, version = version, releaseVersion = releaseVersion)
+  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, taints = taints, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, capacityType = capacityType, version = version, releaseVersion = releaseVersion)
   output <- .eks$create_nodegroup_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -801,7 +988,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -1108,10 +1295,17 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
+#'     ),
+#'     taints = list(
+#'       list(
+#'         key = "string",
+#'         value = "string",
+#'         effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+#'       )
 #'     ),
 #'     resources = list(
 #'       autoScalingGroups = list(
@@ -1198,7 +1392,7 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -1527,6 +1721,78 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
 }
 .eks$operations$describe_fargate_profile <- eks_describe_fargate_profile
 
+#' Returns descriptive information about an identity provider configuration
+#'
+#' @description
+#' Returns descriptive information about an identity provider
+#' configuration.
+#'
+#' @usage
+#' eks_describe_identity_provider_config(clusterName,
+#'   identityProviderConfig)
+#'
+#' @param clusterName &#91;required&#93; The cluster name that the identity provider configuration is associated
+#' to.
+#' @param identityProviderConfig &#91;required&#93; An object that represents an identity provider configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   identityProviderConfig = list(
+#'     oidc = list(
+#'       identityProviderConfigName = "string",
+#'       identityProviderConfigArn = "string",
+#'       clusterName = "string",
+#'       issuerUrl = "string",
+#'       clientId = "string",
+#'       usernameClaim = "string",
+#'       usernamePrefix = "string",
+#'       groupsClaim = "string",
+#'       groupsPrefix = "string",
+#'       requiredClaims = list(
+#'         "string"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       status = "CREATING"|"DELETING"|"ACTIVE"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_identity_provider_config(
+#'   clusterName = "string",
+#'   identityProviderConfig = list(
+#'     type = "string",
+#'     name = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_identity_provider_config
+eks_describe_identity_provider_config <- function(clusterName, identityProviderConfig) {
+  op <- new_operation(
+    name = "DescribeIdentityProviderConfig",
+    http_method = "POST",
+    http_path = "/clusters/{name}/identity-provider-configs/describe",
+    paginator = list()
+  )
+  input <- .eks$describe_identity_provider_config_input(clusterName = clusterName, identityProviderConfig = identityProviderConfig)
+  output <- .eks$describe_identity_provider_config_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_identity_provider_config <- eks_describe_identity_provider_config
+
 #' Returns descriptive information about an Amazon EKS node group
 #'
 #' @description
@@ -1573,10 +1839,17 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
+#'     ),
+#'     taints = list(
+#'       list(
+#'         key = "string",
+#'         value = "string",
+#'         effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+#'       )
 #'     ),
 #'     resources = list(
 #'       autoScalingGroups = list(
@@ -1666,10 +1939,10 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
 #'         value = "string"
 #'       )
 #'     ),
@@ -1678,7 +1951,7 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 #'     ),
 #'     errors = list(
 #'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
 #'         errorMessage = "string",
 #'         resourceIds = list(
 #'           "string"
@@ -1718,6 +1991,85 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
   return(response)
 }
 .eks$operations$describe_update <- eks_describe_update
+
+#' Disassociates an identity provider configuration from a cluster
+#'
+#' @description
+#' Disassociates an identity provider configuration from a cluster. If you
+#' disassociate an identity provider from your cluster, users included in
+#' the provider can no longer access the cluster. However, you can still
+#' access the cluster with AWS IAM users.
+#'
+#' @usage
+#' eks_disassociate_identity_provider_config(clusterName,
+#'   identityProviderConfig, clientRequestToken)
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster to disassociate an identity provider from.
+#' @param identityProviderConfig &#91;required&#93; An object that represents an identity provider configuration.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_identity_provider_config(
+#'   clusterName = "string",
+#'   identityProviderConfig = list(
+#'     type = "string",
+#'     name = "string"
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_disassociate_identity_provider_config
+eks_disassociate_identity_provider_config <- function(clusterName, identityProviderConfig, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "DisassociateIdentityProviderConfig",
+    http_method = "POST",
+    http_path = "/clusters/{name}/identity-provider-configs/disassociate",
+    paginator = list()
+  )
+  input <- .eks$disassociate_identity_provider_config_input(clusterName = clusterName, identityProviderConfig = identityProviderConfig, clientRequestToken = clientRequestToken)
+  output <- .eks$disassociate_identity_provider_config_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$disassociate_identity_provider_config <- eks_disassociate_identity_provider_config
 
 #' Lists the available add-ons
 #'
@@ -1929,6 +2281,76 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 }
 .eks$operations$list_fargate_profiles <- eks_list_fargate_profiles
 
+#' A list of identity provider configurations
+#'
+#' @description
+#' A list of identity provider configurations.
+#'
+#' @usage
+#' eks_list_identity_provider_configs(clusterName, maxResults, nextToken)
+#'
+#' @param clusterName &#91;required&#93; The cluster name that you want to list identity provider configurations
+#' for.
+#' @param maxResults The maximum number of identity provider configurations returned by
+#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
+#' in paginated output. When you use this parameter,
+#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
+#' returns only `maxResults` results in a single page along with a
+#' `nextToken` response element. You can see the remaining results of the
+#' initial request by sending another
+#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If you don't use this parameter,
+#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
+#' returns up to 100 results and a `nextToken` value, if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `IdentityProviderConfigsRequest` where `maxResults` was used and the
+#' results exceeded the value of that parameter. Pagination continues from
+#' the end of the previous results that returned the `nextToken` value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   identityProviderConfigs = list(
+#'     list(
+#'       type = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_identity_provider_configs(
+#'   clusterName = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_identity_provider_configs
+eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListIdentityProviderConfigs",
+    http_method = "GET",
+    http_path = "/clusters/{name}/identity-provider-configs",
+    paginator = list()
+  )
+  input <- .eks$list_identity_provider_configs_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_identity_provider_configs_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_identity_provider_configs <- eks_list_identity_provider_configs
+
 #' Lists the Amazon EKS managed node groups associated with the specified
 #' cluster in your AWS account in the specified Region
 #'
@@ -2136,7 +2558,7 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
 #' you create for Amazon EKS resources do not propagate to any other
 #' resources associated with the cluster. For example, if you tag a cluster
 #' with this operation, that tag does not automatically propagate to the
-#' subnets and worker nodes associated with the cluster.
+#' subnets and nodes associated with the cluster.
 #'
 #' @usage
 #' eks_tag_resource(resourceArn, tags)
@@ -2267,10 +2689,10 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
 #'         value = "string"
 #'       )
 #'     ),
@@ -2279,7 +2701,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #'     ),
 #'     errors = list(
 #'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
 #'         errorMessage = "string",
 #'         resourceIds = list(
 #'           "string"
@@ -2348,8 +2770,8 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' Control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 #' in the **Amazon EKS User Guide** .
 #' 
-#' At this time, you can not update the subnets or security group IDs for
-#' an existing cluster.
+#' You can't update the subnets or security group IDs for an existing
+#' cluster.
 #' 
 #' Cluster updates are asynchronous, and they should finish within a few
 #' minutes. During an update, the cluster status moves to `UPDATING` (this
@@ -2382,10 +2804,10 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
 #'         value = "string"
 #'       )
 #'     ),
@@ -2394,7 +2816,7 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'     ),
 #'     errors = list(
 #'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
 #'         errorMessage = "string",
 #'         resourceIds = list(
 #'           "string"
@@ -2489,10 +2911,10 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
 #'         value = "string"
 #'       )
 #'     ),
@@ -2501,7 +2923,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #'     ),
 #'     errors = list(
 #'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
 #'         errorMessage = "string",
 #'         resourceIds = list(
 #'           "string"
@@ -2552,13 +2974,15 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #' scaling configuration.
 #'
 #' @usage
-#' eks_update_nodegroup_config(clusterName, nodegroupName, labels,
+#' eks_update_nodegroup_config(clusterName, nodegroupName, labels, taints,
 #'   scalingConfig, clientRequestToken)
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that the managed node group resides
 #' in.
 #' @param nodegroupName &#91;required&#93; The name of the managed node group to update.
 #' @param labels The Kubernetes labels to be applied to the nodes in the node group after
+#' the update.
+#' @param taints The Kubernetes taints to be applied to the nodes in the node group after
 #' the update.
 #' @param scalingConfig The scaling configuration details for the Auto Scaling group after the
 #' update.
@@ -2572,10 +2996,10 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
 #'         value = "string"
 #'       )
 #'     ),
@@ -2584,7 +3008,7 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #'     ),
 #'     errors = list(
 #'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
 #'         errorMessage = "string",
 #'         resourceIds = list(
 #'           "string"
@@ -2608,6 +3032,22 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #'       "string"
 #'     )
 #'   ),
+#'   taints = list(
+#'     addOrUpdateTaints = list(
+#'       list(
+#'         key = "string",
+#'         value = "string",
+#'         effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+#'       )
+#'     ),
+#'     removeTaints = list(
+#'       list(
+#'         key = "string",
+#'         value = "string",
+#'         effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+#'       )
+#'     )
+#'   ),
 #'   scalingConfig = list(
 #'     minSize = 123,
 #'     maxSize = 123,
@@ -2620,14 +3060,14 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #' @keywords internal
 #'
 #' @rdname eks_update_nodegroup_config
-eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, scalingConfig = NULL, clientRequestToken = NULL) {
+eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, taints = NULL, scalingConfig = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateNodegroupConfig",
     http_method = "POST",
     http_path = "/clusters/{name}/node-groups/{nodegroupName}/update-config",
     paginator = list()
   )
-  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, scalingConfig = scalingConfig, clientRequestToken = clientRequestToken)
+  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, taints = taints, scalingConfig = scalingConfig, clientRequestToken = clientRequestToken)
   output <- .eks$update_nodegroup_config_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -2715,10 +3155,10 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
 #'         value = "string"
 #'       )
 #'     ),
@@ -2727,7 +3167,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #'     ),
 #'     errors = list(
 #'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
 #'         errorMessage = "string",
 #'         resourceIds = list(
 #'           "string"

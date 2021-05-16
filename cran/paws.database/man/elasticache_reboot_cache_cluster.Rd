@@ -40,7 +40,22 @@ A list with the following syntax:\preformatted{list(
       ),
       EngineVersion = "string",
       CacheNodeType = "string",
-      AuthTokenStatus = "SETTING"|"ROTATING"
+      AuthTokenStatus = "SETTING"|"ROTATING",
+      LogDeliveryConfigurations = list(
+        list(
+          LogType = "slow-log",
+          DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+          DestinationDetails = list(
+            CloudWatchLogsDetails = list(
+              LogGroup = "string"
+            ),
+            KinesisFirehoseDetails = list(
+              DeliveryStream = "string"
+            )
+          ),
+          LogFormat = "text"|"json"
+        )
+      )
     ),
     NotificationConfiguration = list(
       TopicArn = "string",
@@ -93,7 +108,25 @@ A list with the following syntax:\preformatted{list(
     ),
     TransitEncryptionEnabled = TRUE|FALSE,
     AtRestEncryptionEnabled = TRUE|FALSE,
-    ARN = "string"
+    ARN = "string",
+    ReplicationGroupLogDeliveryEnabled = TRUE|FALSE,
+    LogDeliveryConfigurations = list(
+      list(
+        LogType = "slow-log",
+        DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+        DestinationDetails = list(
+          CloudWatchLogsDetails = list(
+            LogGroup = "string"
+          ),
+          KinesisFirehoseDetails = list(
+            DeliveryStream = "string"
+          )
+        ),
+        LogFormat = "text"|"json",
+        Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+        Message = "string"
+      )
+    )
   )
 )
 }

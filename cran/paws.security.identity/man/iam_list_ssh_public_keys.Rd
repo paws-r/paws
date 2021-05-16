@@ -55,7 +55,7 @@ specified IAM user. If none exists, the operation returns an empty list.
 The SSH public keys returned by this operation are used only for
 authenticating the IAM user to an AWS CodeCommit repository. For more
 information about using SSH keys to authenticate to an AWS CodeCommit
-repository, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html}{Set up AWS CodeCommit for SSH Connections}
+repository, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html}{Set up AWS CodeCommit for SSH connections}
 in the \emph{AWS CodeCommit User Guide}.
 
 Although each user is limited to a small number of keys, you can still

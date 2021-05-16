@@ -7084,7 +7084,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #'
 #' @usage
 #' glue_get_partitions(CatalogId, DatabaseName, TableName, Expression,
-#'   NextToken, Segment, MaxResults)
+#'   NextToken, Segment, MaxResults, ExcludeColumnSchema)
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is provided, the AWS account ID is used by default.
@@ -7180,6 +7180,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' partitions.
 #' @param Segment The segment of the table's partitions to scan in this request.
 #' @param MaxResults The maximum number of partitions to return in a single response.
+#' @param ExcludeColumnSchema 
 #'
 #' @return
 #' A list with the following syntax:
@@ -7280,21 +7281,22 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #'     SegmentNumber = 123,
 #'     TotalSegments = 123
 #'   ),
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   ExcludeColumnSchema = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_partitions
-glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expression = NULL, NextToken = NULL, Segment = NULL, MaxResults = NULL) {
+glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expression = NULL, NextToken = NULL, Segment = NULL, MaxResults = NULL, ExcludeColumnSchema = NULL) {
   op <- new_operation(
     name = "GetPartitions",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults)
+  input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, ExcludeColumnSchema = ExcludeColumnSchema)
   output <- .glue$get_partitions_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -7465,15 +7467,15 @@ glue_get_registry <- function(RegistryId) {
 }
 .glue$operations$get_registry <- glue_get_registry
 
-#' Retrieves the security configurations for the resource policies set on
-#' individual resources, and also the account-level policy
+#' Retrieves the resource policies set on individual resources by AWS
+#' Resource Access Manager during cross-account permission grants
 #'
 #' @description
-#' Retrieves the security configurations for the resource policies set on
-#' individual resources, and also the account-level policy.
+#' Retrieves the resource policies set on individual resources by AWS
+#' Resource Access Manager during cross-account permission grants. Also
+#' retrieves the Data Catalog resource policy.
 #' 
-#' This operation also returns the Data Catalog resource policy. However,
-#' if you enabled metadata encryption in Data Catalog settings, and you do
+#' If you enabled metadata encryption in Data Catalog settings, and you do
 #' not have permission on the AWS KMS key, the operation can't return the
 #' Data Catalog resource policy.
 #'
@@ -7539,10 +7541,12 @@ glue_get_resource_policies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @usage
 #' glue_get_resource_policy(ResourceArn)
 #'
-#' @param ResourceArn The ARN of the AWS Glue resource for the resource policy to be
-#' retrieved. For more information about AWS Glue resource ARNs, see the
-#' [AWS Glue ARN string
-#' pattern](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id)
+#' @param ResourceArn The ARN of the AWS Glue resource for which to retrieve the resource
+#' policy. If not supplied, the Data Catalog resource policy is returned.
+#' Use [`get_resource_policies`][glue_get_resource_policies] to view all
+#' existing resource policies. For more information see [Specifying AWS
+#' Glue Resource
+#' ARNs](https://docs.aws.amazon.com/glue/latest/dg/glue-specifying-resource-arns.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -10434,26 +10438,26 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 #'   PolicyExistsCondition, EnableHybrid)
 #'
 #' @param PolicyInJson &#91;required&#93; Contains the policy document to set, in JSON format.
-#' @param ResourceArn The ARN of the AWS Glue resource for the resource policy to be set. For
-#' more information about AWS Glue resource ARNs, see the [AWS Glue ARN
-#' string
-#' pattern](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id)
+#' @param ResourceArn Do not use. For internal use only.
 #' @param PolicyHashCondition The hash value returned when the previous policy was set using
 #' [`put_resource_policy`][glue_put_resource_policy]. Its purpose is to
 #' prevent concurrent modifications of a policy. Do not use this parameter
 #' if no previous policy has been set.
 #' @param PolicyExistsCondition A value of `MUST_EXIST` is used to update a policy. A value of
 #' `NOT_EXIST` is used to create a new policy. If a value of `NONE` or a
-#' null value is used, the call will not depend on the existence of a
+#' null value is used, the call does not depend on the existence of a
 #' policy.
-#' @param EnableHybrid Allows you to specify if you want to use both resource-level and
-#' account/catalog-level resource policies. A resource-level policy is a
-#' policy attached to an individual resource such as a database or a table.
+#' @param EnableHybrid If `'TRUE'`, indicates that you are using both methods to grant
+#' cross-account access to Data Catalog resources:
 #' 
-#' The default value of `NO` indicates that resource-level policies cannot
-#' co-exist with an account-level policy. A value of `YES` means the use of
-#' both resource-level and account/catalog-level resource policies is
-#' allowed.
+#' -   By directly updating the resource policy with `PutResourePolicy`
+#' 
+#' -   By using the **Grant permissions** command on the AWS Management
+#'     Console.
+#' 
+#' Must be set to `'TRUE'` if you have already used the Management Console
+#' to grant cross-account access, otherwise the call fails. Default is
+#' 'FALSE'.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10640,7 +10644,13 @@ glue_put_workflow_run_properties <- function(Name, RunId, RunProperties) {
 #'   MetadataInfoMap = list(
 #'     list(
 #'       MetadataValue = "string",
-#'       CreatedTime = "string"
+#'       CreatedTime = "string",
+#'       OtherMetadataValueList = list(
+#'         list(
+#'           MetadataValue = "string",
+#'           CreatedTime = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   SchemaVersionId = "string",

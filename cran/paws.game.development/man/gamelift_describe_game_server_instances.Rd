@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_game_server_instances}
 \alias{gamelift_describe_game_server_instances}
-\title{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups}
+\title{This operation is used with the GameLift FleetIQ solution and game
+server groups}
 \usage{
 gamelift_describe_game_server_instances(GameServerGroupName,
   InstanceIds, Limit, NextToken)
@@ -18,12 +18,11 @@ retrieve all instances in the game server group, leave this parameter
 empty.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
-\code{NextToken} to get results as a set of sequential segments.}
+\code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{A token that indicates the start of the next sequential segment of
-results. Use the token returned with the previous call to this
-operation. To start at the beginning of the result set, do not specify a
-value.}
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -40,8 +39,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-\strong{This operation is used with the Amazon GameLift FleetIQ solution and
-game server groups.}
+\strong{This operation is used with the GameLift FleetIQ solution and game
+server groups.}
 
 Retrieves status information about the Amazon EC2 instances associated
 with a GameLift FleetIQ game server group. Use this operation to detect
@@ -65,17 +64,17 @@ refresh your cache no more than once every 10 seconds.
 
 \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_game_server_group]{create_game_server_group}}
-\item \code{\link[=gamelift_list_game_server_groups]{list_game_server_groups}}
-\item \code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}}
-\item \code{\link[=gamelift_update_game_server_group]{update_game_server_group}}
-\item \code{\link[=gamelift_delete_game_server_group]{delete_game_server_group}}
-\item \code{\link[=gamelift_resume_game_server_group]{resume_game_server_group}}
-\item \code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}}
-\item \code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_server_group]{create_game_server_group}} |
+\code{\link[=gamelift_list_game_server_groups]{list_game_server_groups}} |
+\code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}} |
+\code{\link[=gamelift_update_game_server_group]{update_game_server_group}} |
+\code{\link[=gamelift_delete_game_server_group]{delete_game_server_group}} |
+\code{\link[=gamelift_resume_game_server_group]{resume_game_server_group}} |
+\code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}} |
+\code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/reference-awssdk-fleetiq.html}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_game_server_instances(

@@ -9,7 +9,7 @@ sagemaker_describe_user_profile(DomainId, UserProfileName)
 \arguments{
 \item{DomainId}{[required] The domain ID.}
 
-\item{UserProfileName}{[required] The user profile name.}
+\item{UserProfileName}{[required] The user profile name. This value is not case sensitive.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

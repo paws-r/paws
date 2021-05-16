@@ -11,7 +11,7 @@ NULL
 #' operation.
 #' 
 #' The documents are deleted asynchronously. You can see the progress of
-#' the deletion by using AWS CloudWatch. Any error messages releated to the
+#' the deletion by using AWS CloudWatch. Any error messages related to the
 #' processing of the batch are sent to you CloudWatch log.
 #'
 #' @usage
@@ -471,7 +471,8 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #'             DateFieldFormat = "string",
 #'             IndexFieldName = "string"
 #'           )
-#'         )
+#'         ),
+#'         FilterQuery = "string"
 #'       ),
 #'       ServiceCatalogConfiguration = list(
 #'         CrawlAttachments = TRUE|FALSE,
@@ -490,7 +491,8 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #'             IndexFieldName = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       AuthenticationType = "HTTP_BASIC"|"OAUTH2"
 #'     ),
 #'     ConfluenceConfiguration = list(
 #'       ServerUrl = "string",
@@ -704,11 +706,13 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' @description
 #' Creates a new Amazon Kendra index. Index creation is an asynchronous
 #' operation. To determine if index creation has completed, check the
-#' `Status` field returned from a call to . The `Status` field is set to
+#' `Status` field returned from a call to
+#' [`describe_index`][kendra_describe_index]. The `Status` field is set to
 #' `ACTIVE` when the index is ready to use.
 #' 
 #' Once the index is active you can index your documents using the
-#' operation or using one of the supported data sources.
+#' [`batch_put_document`][kendra_batch_put_document] operation or using one
+#' of the supported data sources.
 #'
 #' @usage
 #' kendra_create_index(Name, Edition, RoleArn,
@@ -896,7 +900,8 @@ kendra_create_thesaurus <- function(IndexId, Name, Description = NULL, RoleArn, 
 #' @description
 #' Deletes an Amazon Kendra data source. An exception is not thrown if the
 #' data source is already being deleted. While the data source is being
-#' deleted, the `Status` field returned by a call to the operation is set
+#' deleted, the `Status` field returned by a call to the
+#' [`describe_data_source`][kendra_describe_data_source] operation is set
 #' to `DELETING`. For more information, see [Deleting Data
 #' Sources](https://docs.aws.amazon.com/kendra/latest/dg/delete-data-source.html).
 #'
@@ -1300,7 +1305,8 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #'             DateFieldFormat = "string",
 #'             IndexFieldName = "string"
 #'           )
-#'         )
+#'         ),
+#'         FilterQuery = "string"
 #'       ),
 #'       ServiceCatalogConfiguration = list(
 #'         CrawlAttachments = TRUE|FALSE,
@@ -1319,7 +1325,8 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #'             IndexFieldName = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       AuthenticationType = "HTTP_BASIC"|"OAUTH2"
 #'     ),
 #'     ConfluenceConfiguration = list(
 #'       ServerUrl = "string",
@@ -2124,11 +2131,13 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #'
 #' @usage
 #' kendra_query(IndexId, QueryText, AttributeFilter, Facets,
-#'   RequestedDocumentAttributes, QueryResultTypeFilter, PageNumber,
-#'   PageSize, SortingConfiguration, UserContext, VisitorId)
+#'   RequestedDocumentAttributes, QueryResultTypeFilter,
+#'   DocumentRelevanceOverrideConfigurations, PageNumber, PageSize,
+#'   SortingConfiguration, UserContext, VisitorId)
 #'
 #' @param IndexId &#91;required&#93; The unique identifier of the index to search. The identifier is returned
-#' in the response from the operation.
+#' in the response from the [`create_index`][kendra_create_index]
+#' operation.
 #' @param QueryText &#91;required&#93; The text to search for.
 #' @param AttributeFilter Enables filtered searches based on document attributes. You can only
 #' provide one attribute filter; however, the `AndAllFilters`, `NotFilter`,
@@ -2144,6 +2153,21 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' document attributes are included in the response.
 #' @param QueryResultTypeFilter Sets the type of query. Only results for the specified query type are
 #' returned.
+#' @param DocumentRelevanceOverrideConfigurations Overrides relevance tuning configurations of fields or attributes set at
+#' the index level.
+#' 
+#' If you use this API to override the relevance tuning configured at the
+#' index level, but there is no relevance tuning configured at the index
+#' level, then Amazon Kendra does not apply any relevance tuning.
+#' 
+#' If there is relevance tuning configured at the index level, but you do
+#' not use this API to override any relevance tuning in the index, then
+#' Amazon Kendra uses the relevance tuning that is configured at the index
+#' level.
+#' 
+#' If there is relevance tuning configured for fields at the index level,
+#' but you use this API to override only some of these fields, then for the
+#' fields you did not override, the importance is set to 1.
 #' @param PageNumber Query results are returned in pages the size of the `PageSize`
 #' parameter. By default, Amazon Kendra returns the first page of results.
 #' Use this parameter to get result pages after the first one.
@@ -2375,6 +2399,20 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #'     "string"
 #'   ),
 #'   QueryResultTypeFilter = "DOCUMENT"|"QUESTION_ANSWER"|"ANSWER",
+#'   DocumentRelevanceOverrideConfigurations = list(
+#'     list(
+#'       Name = "string",
+#'       Relevance = list(
+#'         Freshness = TRUE|FALSE,
+#'         Importance = 123,
+#'         Duration = "string",
+#'         RankOrder = "ASCENDING"|"DESCENDING",
+#'         ValueImportanceMap = list(
+#'           123
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   PageNumber = 123,
 #'   PageSize = 123,
 #'   SortingConfiguration = list(
@@ -2391,14 +2429,14 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname kendra_query
-kendra_query <- function(IndexId, QueryText, AttributeFilter = NULL, Facets = NULL, RequestedDocumentAttributes = NULL, QueryResultTypeFilter = NULL, PageNumber = NULL, PageSize = NULL, SortingConfiguration = NULL, UserContext = NULL, VisitorId = NULL) {
+kendra_query <- function(IndexId, QueryText, AttributeFilter = NULL, Facets = NULL, RequestedDocumentAttributes = NULL, QueryResultTypeFilter = NULL, DocumentRelevanceOverrideConfigurations = NULL, PageNumber = NULL, PageSize = NULL, SortingConfiguration = NULL, UserContext = NULL, VisitorId = NULL) {
   op <- new_operation(
     name = "Query",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$query_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, Facets = Facets, RequestedDocumentAttributes = RequestedDocumentAttributes, QueryResultTypeFilter = QueryResultTypeFilter, PageNumber = PageNumber, PageSize = PageSize, SortingConfiguration = SortingConfiguration, UserContext = UserContext, VisitorId = VisitorId)
+  input <- .kendra$query_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, Facets = Facets, RequestedDocumentAttributes = RequestedDocumentAttributes, QueryResultTypeFilter = QueryResultTypeFilter, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, SortingConfiguration = SortingConfiguration, UserContext = UserContext, VisitorId = VisitorId)
   output <- .kendra$query_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -2514,7 +2552,8 @@ kendra_stop_data_source_sync_job <- function(Id, IndexId) {
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index that was queried.
 #' @param QueryId &#91;required&#93; The identifier of the specific query for which you are submitting
-#' feedback. The query ID is returned in the response to the operation.
+#' feedback. The query ID is returned in the response to the
+#' [`query`][kendra_query] operation.
 #' @param ClickFeedbackItems Tells Amazon Kendra that a particular search result link was chosen by
 #' the user.
 #' @param RelevanceFeedbackItems Provides Amazon Kendra with relevant or not relevant feedback for
@@ -2907,7 +2946,8 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #'             DateFieldFormat = "string",
 #'             IndexFieldName = "string"
 #'           )
-#'         )
+#'         ),
+#'         FilterQuery = "string"
 #'       ),
 #'       ServiceCatalogConfiguration = list(
 #'         CrawlAttachments = TRUE|FALSE,
@@ -2926,7 +2966,8 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #'             IndexFieldName = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       AuthenticationType = "HTTP_BASIC"|"OAUTH2"
 #'     ),
 #'     ConfluenceConfiguration = list(
 #'       ServerUrl = "string",
@@ -3060,7 +3101,7 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 #' CloudWatch logs.
 #' @param Description A new description for the index.
 #' @param DocumentMetadataConfigurationUpdates The document metadata to update.
-#' @param CapacityUnits Sets the number of addtional storage and query capacity units that
+#' @param CapacityUnits Sets the number of additional storage and query capacity units that
 #' should be used by the index. You can change the capacity of the index up
 #' to 5 times per day.
 #' 

@@ -6,16 +6,23 @@
 configuration errors}
 \usage{
 kinesisanalyticsv2_add_application_cloud_watch_logging_option(
-  ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOption)
+  ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOption,
+  ConditionalToken)
 }
 \arguments{
 \item{ApplicationName}{[required] The Kinesis Data Analytics application name.}
 
-\item{CurrentApplicationVersionId}{[required] The version ID of the Kinesis Data Analytics application. You can
+\item{CurrentApplicationVersionId}{The version ID of the Kinesis Data Analytics application. You must
+provide the \code{ApplicationVersionID} or the \code{ConditionalToken}.You can
 retrieve the application version ID using
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 
 \item{CloudWatchLoggingOption}{[required] Provides the Amazon CloudWatch log stream Amazon Resource Name (ARN).}
+
+\item{ConditionalToken}{A value you use to implement strong concurrency for application updates.
+You must provide the \code{ApplicationVersionID} or the \code{ConditionalToken}.
+You get the application's current \code{ConditionalToken} using
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -41,7 +48,8 @@ configuration errors.
   CurrentApplicationVersionId = 123,
   CloudWatchLoggingOption = list(
     LogStreamARN = "string"
-  )
+  ),
+  ConditionalToken = "string"
 )
 }
 }

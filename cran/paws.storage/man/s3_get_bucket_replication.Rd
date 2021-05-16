@@ -9,7 +9,7 @@ s3_get_bucket_replication(Bucket, ExpectedBucketOwner)
 \arguments{
 \item{Bucket}{[required] The bucket name for which to get the replication information.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -91,9 +91,9 @@ after put or delete can return a wrong result.
 
 For information about replication configuration, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html}{Replication}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-This operation requires permissions for the
+This action requires permissions for the
 \code{s3:GetReplicationConfiguration} action. For more information about
 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
 

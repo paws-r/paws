@@ -7,13 +7,14 @@
 kinesisanalyticsv2_update_application(ApplicationName,
   CurrentApplicationVersionId, ApplicationConfigurationUpdate,
   ServiceExecutionRoleUpdate, RunConfigurationUpdate,
-  CloudWatchLoggingOptionUpdates)
+  CloudWatchLoggingOptionUpdates, ConditionalToken)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to update.}
 
-\item{CurrentApplicationVersionId}{[required] The current application version ID. You can retrieve the application
-version ID using
+\item{CurrentApplicationVersionId}{The current application version ID. You must provide the
+\code{ApplicationVersionID} or the \code{ConditionalToken}.You can retrieve the
+application version ID using
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 
 \item{ApplicationConfigurationUpdate}{Describes application configuration updates.}
@@ -26,6 +27,11 @@ version ID using
 only update existing CloudWatch logging options with this action. To add
 a new CloudWatch logging option, use
 \code{\link[=kinesisanalyticsv2_add_application_cloud_watch_logging_option]{add_application_cloud_watch_logging_option}}.}
+
+\item{ConditionalToken}{A value you use to implement strong concurrency for application updates.
+You must provide the \code{ApplicationVersionID} or the \code{ConditionalToken}.
+You get the application's current \code{ConditionalToken} using
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -35,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     ApplicationName = "string",
     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11",
     ServiceExecutionRole = "string",
-    ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING",
+    ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"MAINTENANCE"|"ROLLING_BACK"|"ROLLED_BACK",
     ApplicationVersionId = 123,
     CreateTimestamp = as.POSIXct(
       "2015-01-01"
@@ -226,7 +232,15 @@ A list with the following syntax:\preformatted{list(
         LogStreamARN = "string",
         RoleARN = "string"
       )
-    )
+    ),
+    ApplicationMaintenanceConfigurationDescription = list(
+      ApplicationMaintenanceWindowStartTime = "string",
+      ApplicationMaintenanceWindowEndTime = "string"
+    ),
+    ApplicationVersionUpdatedFrom = 123,
+    ApplicationVersionRolledBackFrom = 123,
+    ConditionalToken = "string",
+    ApplicationVersionRolledBackTo = 123
   )
 )
 }
@@ -413,7 +427,8 @@ delete the application and create it again.
       CloudWatchLoggingOptionId = "string",
       LogStreamARNUpdate = "string"
     )
-  )
+  ),
+  ConditionalToken = "string"
 )
 }
 }

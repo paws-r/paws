@@ -95,6 +95,16 @@ sagemaker_add_association <- function(SourceArn, DestinationArn, AssociationType
 #' add the tags when you first create the tuning job by specifying them in
 #' the `Tags` parameter of
 #' [`create_hyper_parameter_tuning_job`][sagemaker_create_hyper_parameter_tuning_job]
+#' 
+#' Tags that you add to a SageMaker Studio Domain or User Profile by
+#' calling this API are also added to any Apps that the Domain or User
+#' Profile launches after you call this API, but not to Apps that the
+#' Domain or User Profile launched before you called this API. To make sure
+#' that the tags associated with a Domain or User Profile are also added to
+#' all Apps that the Domain or User Profile launches, add the tags when you
+#' first create the Domain or User Profile by specifying them in the `Tags`
+#' parameter of [`create_domain`][sagemaker_create_domain] or
+#' [`create_user_profile`][sagemaker_create_user_profile].
 #'
 #' @usage
 #' sagemaker_add_tags(ResourceArn, Tags)
@@ -211,6 +221,12 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #' HPO job. Generally, an action involves at least one input or output
 #' artifact. For more information, see [Amazon SageMaker ML Lineage
 #' Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
+#' 
+#' [`create_action`][sagemaker_create_action] can only be invoked from
+#' within an SageMaker managed environment. This includes SageMaker
+#' training jobs, processing jobs, transform jobs, and SageMaker notebooks.
+#' A call to [`create_action`][sagemaker_create_action] from outside one of
+#' these environments results in an error.
 #'
 #' @usage
 #' sagemaker_create_action(ActionName, Source, ActionType, Description,
@@ -552,14 +568,14 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 }
 .sagemaker$operations$create_algorithm <- sagemaker_create_algorithm
 
-#' Creates a running App for the specified UserProfile
+#' Creates a running app for the specified UserProfile
 #'
 #' @description
-#' Creates a running App for the specified UserProfile. Supported Apps are
-#' JupyterServer and KernelGateway. This operation is automatically invoked
-#' by Amazon SageMaker Studio upon access to the associated Domain, and
-#' when new kernel configurations are selected by the user. A user may have
-#' multiple Apps active simultaneously.
+#' Creates a running app for the specified UserProfile. Supported apps are
+#' `JupyterServer` and `KernelGateway`. This operation is automatically
+#' invoked by Amazon SageMaker Studio upon access to the associated Domain,
+#' and when new kernel configurations are selected by the user. A user may
+#' have multiple Apps active simultaneously.
 #'
 #' @usage
 #' sagemaker_create_app(DomainId, UserProfileName, AppType, AppName, Tags,
@@ -567,7 +583,8 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param UserProfileName &#91;required&#93; The user profile name.
-#' @param AppType &#91;required&#93; The type of app.
+#' @param AppType &#91;required&#93; The type of app. Supported apps are `JupyterServer` and `KernelGateway`.
+#' `TensorBoard` is not supported.
 #' @param AppName &#91;required&#93; The name of the app.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
@@ -701,6 +718,12 @@ sagemaker_create_app_image_config <- function(AppImageConfigName, Tags = NULL, K
 #' URI of a dataset and the ECR registry path of an image. For more
 #' information, see [Amazon SageMaker ML Lineage
 #' Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
+#' 
+#' [`create_artifact`][sagemaker_create_artifact] can only be invoked from
+#' within an SageMaker managed environment. This includes SageMaker
+#' training jobs, processing jobs, transform jobs, and SageMaker notebooks.
+#' A call to [`create_artifact`][sagemaker_create_artifact] from outside
+#' one of these environments results in an error.
 #'
 #' @usage
 #' sagemaker_create_artifact(ArtifactName, Source, ArtifactType,
@@ -780,9 +803,7 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #' Creates an Autopilot job.
 #' 
 #' Find the best performing model after you run an Autopilot job by calling
-#' . Deploy that model by following the steps described in [Step 6.1:
-#' Deploy the Model to Amazon SageMaker Hosting
-#' Services](https://docs.aws.amazon.com/sagemaker/latest/dg/).
+#' .
 #' 
 #' For information about how to use Autopilot, see [Automate Model
 #' Development with Amazon SageMaker
@@ -791,28 +812,42 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #' @usage
 #' sagemaker_create_auto_ml_job(AutoMLJobName, InputDataConfig,
 #'   OutputDataConfig, ProblemType, AutoMLJobObjective, AutoMLJobConfig,
-#'   RoleArn, GenerateCandidateDefinitionsOnly, Tags)
+#'   RoleArn, GenerateCandidateDefinitionsOnly, Tags, ModelDeployConfig)
 #'
-#' @param AutoMLJobName &#91;required&#93; Identifies an Autopilot job. Must be unique to your account and is
-#' case-insensitive.
-#' @param InputDataConfig &#91;required&#93; Similar to InputDataConfig supported by Tuning. Format(s) supported:
-#' CSV. Minimum of 500 rows.
-#' @param OutputDataConfig &#91;required&#93; Similar to OutputDataConfig supported by Tuning. Format(s) supported:
-#' CSV.
-#' @param ProblemType Defines the kind of preprocessing and algorithms intended for the
-#' candidates. Options include: BinaryClassification,
-#' MulticlassClassification, and Regression.
-#' @param AutoMLJobObjective Defines the objective of a an AutoML job. You provide a
-#' AutoMLJobObjective$MetricName and Autopilot infers whether to minimize
-#' or maximize it. If a metric is not specified, the most commonly used
-#' ObjectiveMetric for problem type is automaically selected.
-#' @param AutoMLJobConfig Contains CompletionCriteria and SecurityConfig.
+#' @param AutoMLJobName &#91;required&#93; Identifies an Autopilot job. The name must be unique to your account and
+#' is case-insensitive.
+#' @param InputDataConfig &#91;required&#93; An array of channel objects that describes the input data and its
+#' location. Each channel is a named input source. Similar to
+#' `InputDataConfig` supported by . Format(s) supported: CSV. Minimum of
+#' 500 rows.
+#' @param OutputDataConfig &#91;required&#93; Provides information about encryption and the Amazon S3 output path
+#' needed to store artifacts from an AutoML job. Format(s) supported: CSV.
+#' 
+#' &lt;para&gt;Specifies whether to automatically deploy the best &ATP;
+#' model to an endpoint and the name of that endpoint if deployed
+#' automatically.&lt;/para&gt;
+#' @param ProblemType Defines the type of supervised learning available for the candidates.
+#' Options include: `BinaryClassification`, `MulticlassClassification`, and
+#' `Regression`. For more information, see [Amazon SageMaker Autopilot
+#' problem types and algorithm
+#' support](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-problem-types.html).
+#' @param AutoMLJobObjective Defines the objective metric used to measure the predictive quality of
+#' an AutoML job. You provide an AutoMLJobObjective$MetricName and
+#' Autopilot infers whether to minimize or maximize it.
+#' @param AutoMLJobConfig Contains `CompletionCriteria` and `SecurityConfig` settings for the
+#' AutoML job.
 #' @param RoleArn &#91;required&#93; The ARN of the role that is used to access the data.
-#' @param GenerateCandidateDefinitionsOnly Generates possible candidates without training a model. A candidate is a
-#' combination of data preprocessors, algorithms, and algorithm parameter
-#' settings.
+#' 
+#' &lt;para&gt;Specifies whether to automatically deploy the best &ATP;
+#' model to an endpoint and the name of that endpoint if deployed
+#' automatically.&lt;/para&gt;
+#' @param GenerateCandidateDefinitionsOnly Generates possible candidates without training the models. A candidate
+#' is a combination of data preprocessors, algorithms, and algorithm
+#' parameter settings.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
+#' @param ModelDeployConfig Specifies how to generate the endpoint name for an automatic one-click
+#' Autopilot model deployment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -872,6 +907,10 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   ModelDeployConfig = list(
+#'     AutoGenerateEndpointName = TRUE|FALSE,
+#'     EndpointName = "string"
 #'   )
 #' )
 #' ```
@@ -879,14 +918,14 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_auto_ml_job
-sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputDataConfig, ProblemType = NULL, AutoMLJobObjective = NULL, AutoMLJobConfig = NULL, RoleArn, GenerateCandidateDefinitionsOnly = NULL, Tags = NULL) {
+sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputDataConfig, ProblemType = NULL, AutoMLJobObjective = NULL, AutoMLJobConfig = NULL, RoleArn, GenerateCandidateDefinitionsOnly = NULL, Tags = NULL, ModelDeployConfig = NULL) {
   op <- new_operation(
     name = "CreateAutoMLJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_auto_ml_job_input(AutoMLJobName = AutoMLJobName, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ProblemType = ProblemType, AutoMLJobObjective = AutoMLJobObjective, AutoMLJobConfig = AutoMLJobConfig, RoleArn = RoleArn, GenerateCandidateDefinitionsOnly = GenerateCandidateDefinitionsOnly, Tags = Tags)
+  input <- .sagemaker$create_auto_ml_job_input(AutoMLJobName = AutoMLJobName, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ProblemType = ProblemType, AutoMLJobObjective = AutoMLJobObjective, AutoMLJobConfig = AutoMLJobConfig, RoleArn = RoleArn, GenerateCandidateDefinitionsOnly = GenerateCandidateDefinitionsOnly, Tags = Tags, ModelDeployConfig = ModelDeployConfig)
   output <- .sagemaker$create_auto_ml_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -1056,11 +1095,12 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #'   InputConfig = list(
 #'     S3Uri = "string",
 #'     DataInputConfig = "string",
-#'     Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"|"DARKNET"|"SKLEARN"
+#'     Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"|"DARKNET"|"SKLEARN",
+#'     FrameworkVersion = "string"
 #'   ),
 #'   OutputConfig = list(
 #'     S3OutputLocation = "string",
-#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
+#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"ml_eia2"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
 #'     TargetPlatform = list(
 #'       Os = "ANDROID"|"LINUX",
 #'       Arch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
@@ -1110,6 +1150,12 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 #' Some examples are an endpoint and a model package. For more information,
 #' see [Amazon SageMaker ML Lineage
 #' Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
+#' 
+#' [`create_context`][sagemaker_create_context] can only be invoked from
+#' within an SageMaker managed environment. This includes SageMaker
+#' training jobs, processing jobs, transform jobs, and SageMaker notebooks.
+#' A call to [`create_context`][sagemaker_create_context] from outside one
+#' of these environments results in an error.
 #'
 #' @usage
 #' sagemaker_create_context(ContextName, Source, ContextType, Description,
@@ -1429,13 +1475,23 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #'
 #' @param DomainName &#91;required&#93; A name for the domain.
 #' @param AuthMode &#91;required&#93; The mode of authentication that members use to access the domain.
-#' @param DefaultUserSettings &#91;required&#93; The default user settings.
+#' @param DefaultUserSettings &#91;required&#93; The default settings to use to create a user profile when `UserSettings`
+#' isn't specified in the call to the
+#' [`create_user_profile`][sagemaker_create_user_profile] API.
+#' 
+#' `SecurityGroups` is aggregated when specified in both calls. For all
+#' other settings in `UserSettings`, the values specified in
+#' [`create_user_profile`][sagemaker_create_user_profile] take precedence
+#' over those specified in [`create_domain`][sagemaker_create_domain].
 #' @param SubnetIds &#91;required&#93; The VPC subnets that Studio uses for communication.
 #' @param VpcId &#91;required&#93; The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for
 #' communication.
 #' @param Tags Tags to associated with the Domain. Each tag consists of a key and an
 #' optional value. Tag keys must be unique per resource. Tags are
 #' searchable using the [`search`][sagemaker_search] API.
+#' 
+#' Tags that you specify for the Domain are also added to all Apps that the
+#' Domain launches.
 #' @param AppNetworkAccessType Specifies the VPC used for non-EFS traffic. The default value is
 #' `PublicInternetOnly`.
 #' 
@@ -1869,7 +1925,11 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #'       InitialInstanceCount = 123,
 #'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge",
 #'       InitialVariantWeight = 123.0,
-#'       AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge"
+#'       AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge",
+#'       CoreDumpConfig = list(
+#'         DestinationS3Uri = "string",
+#'         KmsKeyId = "string"
+#'       )
 #'     )
 #'   ),
 #'   DataCaptureConfig = list(
@@ -1934,8 +1994,8 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 #' measuring the impact of a change to one or more inputs, while keeping
 #' the remaining inputs constant.
 #' 
-#' When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-#' all experiments, trials, and trial components are automatically tracked,
+#' When you use SageMaker Studio or the SageMaker Python SDK, all
+#' experiments, trials, and trial components are automatically tracked,
 #' logged, and indexed. When you use the AWS SDK for Python (Boto), you
 #' must use the logging APIs provided by the SDK.
 #' 
@@ -2135,7 +2195,8 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'   OfflineStoreConfig = list(
 #'     S3StorageConfig = list(
 #'       S3Uri = "string",
-#'       KmsKeyId = "string"
+#'       KmsKeyId = "string",
+#'       ResolvedOutputS3Uri = "string"
 #'     ),
 #'     DisableGlueTableCreation = TRUE|FALSE,
 #'     DataCatalogConfig = list(
@@ -2547,6 +2608,9 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'     CheckpointConfig = list(
 #'       S3Uri = "string",
 #'       LocalPath = "string"
+#'     ),
+#'     RetryStrategy = list(
+#'       MaximumRetryAttempts = 123
 #'     )
 #'   ),
 #'   TrainingJobDefinitions = list(
@@ -2653,6 +2717,9 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'       CheckpointConfig = list(
 #'         S3Uri = "string",
 #'         LocalPath = "string"
+#'       ),
+#'       RetryStrategy = list(
+#'         MaximumRetryAttempts = 123
 #'       )
 #'     )
 #'   ),
@@ -2849,6 +2916,18 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
 #' 
 #' The output can be used as the manifest file for another labeling job or
 #' as training data for your machine learning models.
+#' 
+#' You can use this operation to create a static labeling job or a
+#' streaming labeling job. A static labeling job stops if all data objects
+#' in the input manifest file identified in `ManifestS3Uri` have been
+#' labeled. A streaming labeling job runs perpetually until it is manually
+#' stopped, or remains idle for 10 days. You can send new data objects to
+#' an active (`InProgress`) streaming labeling job in real time. To learn
+#' how to create a static labeling job, see [Create a Labeling Job
+#' (API)](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-create-labeling-job-api.html)
+#' in the Amazon SageMaker Developer Guide. To learn how to create a
+#' streaming labeling job, see [Create a Streaming Labeling
+#' Job](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-streaming-create-job.html).
 #'
 #' @usage
 #' sagemaker_create_labeling_job(LabelingJobName, LabelAttributeName,
@@ -2856,26 +2935,86 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
 #'   StoppingConditions, LabelingJobAlgorithmsConfig, HumanTaskConfig, Tags)
 #'
 #' @param LabelingJobName &#91;required&#93; The name of the labeling job. This name is used to identify the job in a
-#' list of labeling jobs.
+#' list of labeling jobs. Labeling job names must be unique within an AWS
+#' account and region. `LabelingJobName` is not case sensitive. For
+#' example, Example-job and example-job are considered the same labeling
+#' job name by Ground Truth.
 #' @param LabelAttributeName &#91;required&#93; The attribute name to use for the label in the output manifest file.
 #' This is the key for the key/value pair formed with the label that a
-#' worker assigns to the object. The name can't end with "-metadata". If
-#' you are running a semantic segmentation labeling job, the attribute name
-#' must end with "-ref". If you are running any other kind of labeling job,
-#' the attribute name must not end with "-ref".
+#' worker assigns to the object. The `LabelAttributeName` must meet the
+#' following requirements.
+#' 
+#' -   The name can't end with "-metadata".
+#' 
+#' -   If you are using one of the following [built-in task
+#'     types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html),
+#'     the attribute name *must* end with "-ref". If the task type you are
+#'     using is not listed below, the attribute name *must not* end with
+#'     "-ref".
+#' 
+#'     -   Image semantic segmentation (`SemanticSegmentation)`, and
+#'         adjustment (`AdjustmentSemanticSegmentation`) and verification
+#'         (`VerificationSemanticSegmentation`) labeling jobs for this task
+#'         type.
+#' 
+#'     -   Video frame object detection (`VideoObjectDetection`), and
+#'         adjustment and verification (`AdjustmentVideoObjectDetection`)
+#'         labeling jobs for this task type.
+#' 
+#'     -   Video frame object tracking (`VideoObjectTracking`), and
+#'         adjustment and verification (`AdjustmentVideoObjectTracking`)
+#'         labeling jobs for this task type.
+#' 
+#'     -   3D point cloud semantic segmentation
+#'         (`3DPointCloudSemanticSegmentation`), and adjustment and
+#'         verification (`Adjustment3DPointCloudSemanticSegmentation`)
+#'         labeling jobs for this task type.
+#' 
+#'     -   3D point cloud object tracking (`3DPointCloudObjectTracking`),
+#'         and adjustment and verification
+#'         (`Adjustment3DPointCloudObjectTracking`) labeling jobs for this
+#'         task type.
+#' 
+#' If you are creating an adjustment or verification labeling job, you must
+#' use a *different* `LabelAttributeName` than the one used in the original
+#' labeling job. The original labeling job is the Ground Truth labeling job
+#' that produced the labels that you want verified or adjusted. To learn
+#' more about adjustment and verification labeling jobs, see [Verify and
+#' Adjust
+#' Labels](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-verification-data.html).
 #' @param InputConfig &#91;required&#93; Input data for the labeling job, such as the Amazon S3 location of the
 #' data objects and the location of the manifest file that describes the
 #' data objects.
+#' 
+#' You must specify at least one of the following: `S3DataSource` or
+#' `SnsDataSource`.
+#' 
+#' -   Use `SnsDataSource` to specify an SNS input topic for a streaming
+#'     labeling job. If you do not specify and SNS input topic ARN, Ground
+#'     Truth will create a one-time labeling job that stops after all data
+#'     objects in the input manifest file have been labeled.
+#' 
+#' -   Use `S3DataSource` to specify an input manifest file for both
+#'     streaming and one-time labeling jobs. Adding an `S3DataSource` is
+#'     optional if you use `SnsDataSource` to create a streaming labeling
+#'     job.
+#' 
+#' If you use the Amazon Mechanical Turk workforce, your input data should
+#' not include confidential information, personal information or protected
+#' health information. Use `ContentClassifiers` to specify that your data
+#' is free of personally identifiable information and adult content.
 #' @param OutputConfig &#91;required&#93; The location of the output data and the AWS Key Management Service key
 #' ID for the key used to encrypt the output data, if any.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Number (ARN) that Amazon SageMaker assumes to
 #' perform tasks on your behalf during data labeling. You must grant this
 #' role the necessary permissions so that Amazon SageMaker can successfully
 #' complete data labeling.
-#' @param LabelCategoryConfigS3Uri The S3 URI of the file that defines the categories used to label the
-#' data objects.
+#' @param LabelCategoryConfigS3Uri The S3 URI of the file, referred to as a *label category configuration
+#' file*, that defines the categories used to label the data objects.
 #' 
-#' For 3D point cloud task types, see [Create a Labeling Category
+#' For 3D point cloud and video frame task types, you can add label
+#' category attributes and frame attributes to your label category
+#' configuration file. To learn how, see [Create a Labeling Category
 #' Configuration File for 3D Point Cloud Labeling
 #' Jobs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-label-cat-config-attributes.html).
 #' 
@@ -2887,35 +3026,30 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
 #' following format. Identify the labels you want to use by replacing
 #' `label_1`, `label_2`,`...`,`label_n` with your label categories.
 #' 
-#' `\{`
+#' `\{ `
 #' 
-#' ` "document-version": "2018-11-28"`
+#' `"document-version": "2018-11-28",`
 #' 
-#' ` "labels": [`
-#' 
-#' ` \{`
-#' 
-#' ` "label": "label_1"`
-#' 
-#' ` \},`
-#' 
-#' ` \{`
-#' 
-#' ` "label": "label_2"`
-#' 
-#' ` \},`
-#' 
-#' ` ...`
-#' 
-#' ` \{`
-#' 
-#' ` "label": "label_n"`
-#' 
-#' ` \}`
-#' 
-#' ` ]`
+#' `"labels": [{"label": "label_1"},{"label": "label_2"},...{"label": "label_n"}]`
 #' 
 #' `\}`
+#' 
+#' Note the following about the label category configuration file:
+#' 
+#' -   For image classification and text classification (single and
+#'     multi-label) you must specify at least two label categories. For all
+#'     other task types, the minimum number of label categories required is
+#'     one.
+#' 
+#' -   Each label category must be unique, you cannot specify duplicate
+#'     label categories.
+#' 
+#' -   If you create a 3D point cloud or video frame adjustment or
+#'     verification labeling job, you must include
+#'     `auditLabelAttributeName` in the label category configuration. Use
+#'     this parameter to enter the
+#'     [`LabelAttributeName`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName)
+#'     of the labeling job you want to adjust or verify annotations of.
 #' @param StoppingConditions A set of conditions for stopping the labeling job. If any of the
 #' conditions are met, the job is automatically stopped. You can use these
 #' conditions to control the cost of data labeling.
@@ -3071,13 +3205,16 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #'
 #' @usage
 #' sagemaker_create_model(ModelName, PrimaryContainer, Containers,
-#'   ExecutionRoleArn, Tags, VpcConfig, EnableNetworkIsolation)
+#'   InferenceExecutionConfig, ExecutionRoleArn, Tags, VpcConfig,
+#'   EnableNetworkIsolation)
 #'
 #' @param ModelName &#91;required&#93; The name of the new model.
 #' @param PrimaryContainer The location of the primary docker image containing inference code,
 #' associated artifacts, and custom environment map that the inference code
 #' uses when the model is deployed for predictions.
 #' @param Containers Specifies the containers in the inference pipeline.
+#' @param InferenceExecutionConfig Specifies details of how containers in a multi-container endpoint are
+#' called.
 #' @param ExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can
 #' assume to access model artifacts and docker image for deployment on ML
 #' compute instances or for batch transform jobs. Deploying on ML compute
@@ -3119,29 +3256,44 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #'     ContainerHostname = "string",
 #'     Image = "string",
 #'     ImageConfig = list(
-#'       RepositoryAccessMode = "Platform"|"Vpc"
+#'       RepositoryAccessMode = "Platform"|"Vpc",
+#'       RepositoryAuthConfig = list(
+#'         RepositoryCredentialsProviderArn = "string"
+#'       )
 #'     ),
 #'     Mode = "SingleModel"|"MultiModel",
 #'     ModelDataUrl = "string",
 #'     Environment = list(
 #'       "string"
 #'     ),
-#'     ModelPackageName = "string"
+#'     ModelPackageName = "string",
+#'     MultiModelConfig = list(
+#'       ModelCacheSetting = "Enabled"|"Disabled"
+#'     )
 #'   ),
 #'   Containers = list(
 #'     list(
 #'       ContainerHostname = "string",
 #'       Image = "string",
 #'       ImageConfig = list(
-#'         RepositoryAccessMode = "Platform"|"Vpc"
+#'         RepositoryAccessMode = "Platform"|"Vpc",
+#'         RepositoryAuthConfig = list(
+#'           RepositoryCredentialsProviderArn = "string"
+#'         )
 #'       ),
 #'       Mode = "SingleModel"|"MultiModel",
 #'       ModelDataUrl = "string",
 #'       Environment = list(
 #'         "string"
 #'       ),
-#'       ModelPackageName = "string"
+#'       ModelPackageName = "string",
+#'       MultiModelConfig = list(
+#'         ModelCacheSetting = "Enabled"|"Disabled"
+#'       )
 #'     )
+#'   ),
+#'   InferenceExecutionConfig = list(
+#'     Mode = "Serial"|"Direct"
 #'   ),
 #'   ExecutionRoleArn = "string",
 #'   Tags = list(
@@ -3165,14 +3317,14 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model
-sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Containers = NULL, ExecutionRoleArn, Tags = NULL, VpcConfig = NULL, EnableNetworkIsolation = NULL) {
+sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Containers = NULL, InferenceExecutionConfig = NULL, ExecutionRoleArn, Tags = NULL, VpcConfig = NULL, EnableNetworkIsolation = NULL) {
   op <- new_operation(
     name = "CreateModel",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_model_input(ModelName = ModelName, PrimaryContainer = PrimaryContainer, Containers = Containers, ExecutionRoleArn = ExecutionRoleArn, Tags = Tags, VpcConfig = VpcConfig, EnableNetworkIsolation = EnableNetworkIsolation)
+  input <- .sagemaker$create_model_input(ModelName = ModelName, PrimaryContainer = PrimaryContainer, Containers = Containers, InferenceExecutionConfig = InferenceExecutionConfig, ExecutionRoleArn = ExecutionRoleArn, Tags = Tags, VpcConfig = VpcConfig, EnableNetworkIsolation = EnableNetworkIsolation)
   output <- .sagemaker$create_model_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -4112,10 +4264,10 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' (Optional) Customize a Notebook
 #' Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 #' @param DirectInternetAccess Sets whether Amazon SageMaker provides internet access to the notebook
-#' instance. If you set this to `Disabled` this notebook instance will be
-#' able to access resources only in your VPC, and will not be able to
-#' connect to Amazon SageMaker training and endpoint services unless your
-#' configure a NAT Gateway in your VPC.
+#' instance. If you set this to `Disabled` this notebook instance is able
+#' to access resources only in your VPC, and is not be able to connect to
+#' Amazon SageMaker training and endpoint services unless you configure a
+#' NAT Gateway in your VPC.
 #' 
 #' For more information, see [Notebook Instances Are Internet-Enabled by
 #' Default](https://docs.aws.amazon.com/sagemaker/latest/dg/#appendix-notebook-and-internet-access).
@@ -4373,17 +4525,20 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' 
 #' The URL that you get from a call to
 #' [`create_presigned_domain_url`][sagemaker_create_presigned_domain_url]
-#' is valid only for 5 minutes. If you try to use the URL after the
-#' 5-minute limit expires, you are directed to the AWS console sign-in
-#' page.
+#' has a default timeout of 5 minutes. You can configure this value using
+#' `ExpiresInSeconds`. If you try to use the URL after the timeout limit
+#' expires, you are directed to the AWS console sign-in page.
 #'
 #' @usage
 #' sagemaker_create_presigned_domain_url(DomainId, UserProfileName,
-#'   SessionExpirationDurationInSeconds)
+#'   SessionExpirationDurationInSeconds, ExpiresInSeconds)
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param UserProfileName &#91;required&#93; The name of the UserProfile to sign-in as.
-#' @param SessionExpirationDurationInSeconds The session expiration duration in seconds.
+#' @param SessionExpirationDurationInSeconds The session expiration duration in seconds. This value defaults to
+#' 43200.
+#' @param ExpiresInSeconds The number of seconds until the pre-signed URL expires. This value
+#' defaults to 300.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4398,21 +4553,22 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' svc$create_presigned_domain_url(
 #'   DomainId = "string",
 #'   UserProfileName = "string",
-#'   SessionExpirationDurationInSeconds = 123
+#'   SessionExpirationDurationInSeconds = 123,
+#'   ExpiresInSeconds = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_presigned_domain_url
-sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, SessionExpirationDurationInSeconds = NULL) {
+sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, SessionExpirationDurationInSeconds = NULL, ExpiresInSeconds = NULL) {
   op <- new_operation(
     name = "CreatePresignedDomainUrl",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_presigned_domain_url_input(DomainId = DomainId, UserProfileName = UserProfileName, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds)
+  input <- .sagemaker$create_presigned_domain_url_input(DomainId = DomainId, UserProfileName = UserProfileName, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds, ExpiresInSeconds = ExpiresInSeconds)
   output <- .sagemaker$create_presigned_domain_url_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -4506,7 +4662,8 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'   StoppingCondition, AppSpecification, Environment, NetworkConfig,
 #'   RoleArn, Tags, ExperimentConfig)
 #'
-#' @param ProcessingInputs List of input configurations for the processing job.
+#' @param ProcessingInputs An array of inputs configuring the data to download into the processing
+#' container.
 #' @param ProcessingOutputConfig Output configuration for the processing job.
 #' @param ProcessingJobName &#91;required&#93; The name of the processing job. The name must be unique within an AWS
 #' Region in the AWS account.
@@ -4515,8 +4672,12 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' more than one instance.
 #' @param StoppingCondition The time limit for how long the processing job is allowed to run.
 #' @param AppSpecification &#91;required&#93; Configures the processing job to run a specified Docker container image.
-#' @param Environment Sets the environment variables in the Docker container.
-#' @param NetworkConfig Networking options for a processing job.
+#' @param Environment The environment variables to set in the Docker container. Up to 100 key
+#' and values entries in the map are supported.
+#' @param NetworkConfig Networking options for a processing job, such as whether to allow
+#' inbound and outbound network calls to and from processing containers,
+#' and the VPC subnets and security groups to use for VPC-enabled
+#' processing jobs.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 #' assume to perform tasks on your behalf.
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
@@ -4780,15 +4941,21 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #'     more information, see [Managed Spot
 #'     Training](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html).
 #' 
-#' -   `RoleArn` - The Amazon Resource Number (ARN) that Amazon SageMaker
+#' -   `RoleArn` - The Amazon Resource Name (ARN) that Amazon SageMaker
 #'     assumes to perform tasks on your behalf during model training. You
 #'     must grant this role the necessary permissions so that Amazon
 #'     SageMaker can successfully complete model training.
 #' 
 #' -   `StoppingCondition` - To help cap training costs, use
 #'     `MaxRuntimeInSeconds` to set a time limit for training. Use
-#'     `MaxWaitTimeInSeconds` to specify how long you are willing to wait
-#'     for a managed spot training job to complete.
+#'     `MaxWaitTimeInSeconds` to specify how long a managed spot training
+#'     job has to complete.
+#' 
+#' -   `Environment` - The environment variables to set in the Docker
+#'     container.
+#' 
+#' -   `RetryStrategy` - The number of times to retry the job when the job
+#'     fails due to an `InternalServerError`.
 #' 
 #' For more information about Amazon SageMaker, see [How It
 #' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/).
@@ -4800,7 +4967,7 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #'   EnableNetworkIsolation, EnableInterContainerTrafficEncryption,
 #'   EnableManagedSpotTraining, CheckpointConfig, DebugHookConfig,
 #'   DebugRuleConfigurations, TensorBoardOutputConfig, ExperimentConfig,
-#'   ProfilerConfig, ProfilerRuleConfigurations)
+#'   ProfilerConfig, ProfilerRuleConfigurations, Environment, RetryStrategy)
 #'
 #' @param TrainingJobName &#91;required&#93; The name of the training job. The name must be unique within an AWS
 #' Region in an AWS account.
@@ -4865,9 +5032,10 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #' configuring the VPC. For more information, see [Protect Training Jobs by
 #' Using an Amazon Virtual Private
 #' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
-#' @param StoppingCondition &#91;required&#93; Specifies a limit to how long a model training job can run. When the job
-#' reaches the time limit, Amazon SageMaker ends the training job. Use this
-#' API to cap model training costs.
+#' @param StoppingCondition &#91;required&#93; Specifies a limit to how long a model training job can run. It also
+#' specifies how long a managed Spot training job has to complete. When the
+#' job reaches the time limit, Amazon SageMaker ends the training job. Use
+#' this API to cap model training costs.
 #' 
 #' To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM`
 #' signal, which delays job termination for 120 seconds. Algorithms can use
@@ -4912,6 +5080,9 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #' @param ProfilerConfig 
 #' @param ProfilerRuleConfigurations Configuration information for Debugger rules for profiling system and
 #' framework metrics.
+#' @param Environment The environment variables to set in the Docker container.
+#' @param RetryStrategy The number of times to retry the job when the job fails due to an
+#' `InternalServerError`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5060,6 +5231,12 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #'         "string"
 #'       )
 #'     )
+#'   ),
+#'   Environment = list(
+#'     "string"
+#'   ),
+#'   RetryStrategy = list(
+#'     MaximumRetryAttempts = 123
 #'   )
 #' )
 #' ```
@@ -5067,14 +5244,14 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_training_job
-sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NULL, AlgorithmSpecification, RoleArn, InputDataConfig = NULL, OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition, Tags = NULL, EnableNetworkIsolation = NULL, EnableInterContainerTrafficEncryption = NULL, EnableManagedSpotTraining = NULL, CheckpointConfig = NULL, DebugHookConfig = NULL, DebugRuleConfigurations = NULL, TensorBoardOutputConfig = NULL, ExperimentConfig = NULL, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL) {
+sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NULL, AlgorithmSpecification, RoleArn, InputDataConfig = NULL, OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition, Tags = NULL, EnableNetworkIsolation = NULL, EnableInterContainerTrafficEncryption = NULL, EnableManagedSpotTraining = NULL, CheckpointConfig = NULL, DebugHookConfig = NULL, DebugRuleConfigurations = NULL, TensorBoardOutputConfig = NULL, ExperimentConfig = NULL, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL, Environment = NULL, RetryStrategy = NULL) {
   op <- new_operation(
     name = "CreateTrainingJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_training_job_input(TrainingJobName = TrainingJobName, HyperParameters = HyperParameters, AlgorithmSpecification = AlgorithmSpecification, RoleArn = RoleArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ResourceConfig = ResourceConfig, VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, Tags = Tags, EnableNetworkIsolation = EnableNetworkIsolation, EnableInterContainerTrafficEncryption = EnableInterContainerTrafficEncryption, EnableManagedSpotTraining = EnableManagedSpotTraining, CheckpointConfig = CheckpointConfig, DebugHookConfig = DebugHookConfig, DebugRuleConfigurations = DebugRuleConfigurations, TensorBoardOutputConfig = TensorBoardOutputConfig, ExperimentConfig = ExperimentConfig, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations)
+  input <- .sagemaker$create_training_job_input(TrainingJobName = TrainingJobName, HyperParameters = HyperParameters, AlgorithmSpecification = AlgorithmSpecification, RoleArn = RoleArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ResourceConfig = ResourceConfig, VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, Tags = Tags, EnableNetworkIsolation = EnableNetworkIsolation, EnableInterContainerTrafficEncryption = EnableInterContainerTrafficEncryption, EnableManagedSpotTraining = EnableManagedSpotTraining, CheckpointConfig = CheckpointConfig, DebugHookConfig = DebugHookConfig, DebugRuleConfigurations = DebugRuleConfigurations, TensorBoardOutputConfig = TensorBoardOutputConfig, ExperimentConfig = ExperimentConfig, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations, Environment = Environment, RetryStrategy = RetryStrategy)
   output <- .sagemaker$create_training_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -5270,15 +5447,15 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 }
 .sagemaker$operations$create_transform_job <- sagemaker_create_transform_job
 
-#' Creates an Amazon SageMaker trial
+#' Creates an SageMaker trial
 #'
 #' @description
-#' Creates an Amazon SageMaker *trial*. A trial is a set of steps called
-#' *trial components* that produce a machine learning model. A trial is
-#' part of a single Amazon SageMaker *experiment*.
+#' Creates an SageMaker *trial*. A trial is a set of steps called *trial
+#' components* that produce a machine learning model. A trial is part of a
+#' single SageMaker *experiment*.
 #' 
-#' When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-#' all experiments, trials, and trial components are automatically tracked,
+#' When you use SageMaker Studio or the SageMaker Python SDK, all
+#' experiments, trials, and trial components are automatically tracked,
 #' logged, and indexed. When you use the AWS SDK for Python (Boto), you
 #' must use the logging APIs provided by the SDK.
 #' 
@@ -5363,8 +5540,8 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #' Trial components include pre-processing jobs, training jobs, and batch
 #' transform jobs.
 #' 
-#' When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-#' all experiments, trials, and trial components are automatically tracked,
+#' When you use SageMaker Studio or the SageMaker Python SDK, all
+#' experiments, trials, and trial components are automatically tracked,
 #' logged, and indexed. When you use the AWS SDK for Python (Boto), you
 #' must use the logging APIs provided by the SDK.
 #' 
@@ -5372,9 +5549,9 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #' [`search`][sagemaker_search] API to search for the tags.
 #' 
 #' [`create_trial_component`][sagemaker_create_trial_component] can only be
-#' invoked from within an Amazon SageMaker managed environment. This
-#' includes Amazon SageMaker training jobs, processing jobs, transform
-#' jobs, and Amazon SageMaker notebooks. A call to
+#' invoked from within an SageMaker managed environment. This includes
+#' SageMaker training jobs, processing jobs, transform jobs, and SageMaker
+#' notebooks. A call to
 #' [`create_trial_component`][sagemaker_create_trial_component] from
 #' outside one of these environments results in an error.
 #'
@@ -5499,7 +5676,7 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #'   SingleSignOnUserIdentifier, SingleSignOnUserValue, Tags, UserSettings)
 #'
 #' @param DomainId &#91;required&#93; The ID of the associated Domain.
-#' @param UserProfileName &#91;required&#93; A name for the UserProfile.
+#' @param UserProfileName &#91;required&#93; A name for the UserProfile. This value is not case sensitive.
 #' @param SingleSignOnUserIdentifier A specifier for the type of value specified in SingleSignOnUserValue.
 #' Currently, the only supported value is "UserName". If the Domain's
 #' AuthMode is SSO, this field is required. If the Domain's AuthMode is not
@@ -5510,6 +5687,9 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #' Domain's AuthMode is not SSO, this field cannot be specified.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
+#' 
+#' Tags that you specify for the User Profile are also added to all Apps
+#' that the User Profile launches.
 #' @param UserSettings A collection of settings.
 #'
 #' @return
@@ -6392,10 +6572,10 @@ sagemaker_delete_endpoint_config <- function(EndpointConfigName) {
 }
 .sagemaker$operations$delete_endpoint_config <- sagemaker_delete_endpoint_config
 
-#' Deletes an Amazon SageMaker experiment
+#' Deletes an SageMaker experiment
 #'
 #' @description
-#' Deletes an Amazon SageMaker experiment. All trials associated with the
+#' Deletes an SageMaker experiment. All trials associated with the
 #' experiment must be deleted first. Use the
 #' [`list_trials`][sagemaker_list_trials] API to get a list of the trials
 #' associated with the experiment.
@@ -7079,10 +7259,14 @@ sagemaker_delete_notebook_instance_lifecycle_config <- function(NotebookInstance
 }
 .sagemaker$operations$delete_notebook_instance_lifecycle_config <- sagemaker_delete_notebook_instance_lifecycle_config
 
-#' Deletes a pipeline if there are no in-progress executions
+#' Deletes a pipeline if there are no running instances of the pipeline
 #'
 #' @description
-#' Deletes a pipeline if there are no in-progress executions.
+#' Deletes a pipeline if there are no running instances of the pipeline. To
+#' delete a pipeline, you must stop all running instances of the pipeline
+#' using the [`stop_pipeline_execution`][sagemaker_stop_pipeline_execution]
+#' API. When you delete a pipeline, all instances of the pipeline are
+#' deleted.
 #'
 #' @usage
 #' sagemaker_delete_pipeline(PipelineName, ClientRequestToken)
@@ -7179,6 +7363,11 @@ sagemaker_delete_project <- function(ProjectName) {
 #' When you call this API to delete tags from a hyperparameter tuning job,
 #' the deleted tags are not removed from training jobs that the
 #' hyperparameter tuning job launched before you called this API.
+#' 
+#' When you call this API to delete tags from a SageMaker Studio Domain or
+#' User Profile, the deleted tags are not removed from Apps that the
+#' SageMaker Studio Domain or User Profile launched before you called this
+#' API.
 #'
 #' @usage
 #' sagemaker_delete_tags(ResourceArn, TagKeys)
@@ -8036,15 +8225,15 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 }
 .sagemaker$operations$describe_artifact <- sagemaker_describe_artifact
 
-#' Returns information about an Amazon SageMaker job
+#' Returns information about an Amazon SageMaker AutoML job
 #'
 #' @description
-#' Returns information about an Amazon SageMaker job.
+#' Returns information about an Amazon SageMaker AutoML job.
 #'
 #' @usage
 #' sagemaker_describe_auto_ml_job(AutoMLJobName)
 #'
-#' @param AutoMLJobName &#91;required&#93; Request information about a job using that job's unique name.
+#' @param AutoMLJobName &#91;required&#93; Requests information about an AutoML job using its unique name.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8102,6 +8291,11 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 #'     "2015-01-01"
 #'   ),
 #'   FailureReason = "string",
+#'   PartialFailureReasons = list(
+#'     list(
+#'       PartialFailureMessage = "string"
+#'     )
+#'   ),
 #'   BestCandidate = list(
 #'     CandidateName = "string",
 #'     FinalAutoMLJobObjectiveMetric = list(
@@ -8136,10 +8330,15 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     FailureReason = "string"
+#'     FailureReason = "string",
+#'     CandidateProperties = list(
+#'       CandidateArtifactLocations = list(
+#'         Explainability = "string"
+#'       )
+#'     )
 #'   ),
 #'   AutoMLJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-#'   AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated",
+#'   AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated"|"GeneratingExplainabilityReport"|"Completed"|"ExplainabilityError"|"DeployingModel"|"ModelDeploymentError",
 #'   GenerateCandidateDefinitionsOnly = TRUE|FALSE,
 #'   AutoMLJobArtifacts = list(
 #'     CandidateDefinitionNotebookLocation = "string",
@@ -8155,6 +8354,13 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 #'       MaxRuntimePerTrainingJobInSeconds = 123,
 #'       MaxAutoMLJobRuntimeInSeconds = 123
 #'     )
+#'   ),
+#'   ModelDeployConfig = list(
+#'     AutoGenerateEndpointName = TRUE|FALSE,
+#'     EndpointName = "string"
+#'   ),
+#'   ModelDeployResult = list(
+#'     EndpointName = "string"
 #'   )
 #' )
 #' ```
@@ -8292,11 +8498,12 @@ sagemaker_describe_code_repository <- function(CodeRepositoryName) {
 #'   InputConfig = list(
 #'     S3Uri = "string",
 #'     DataInputConfig = "string",
-#'     Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"|"DARKNET"|"SKLEARN"
+#'     Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"|"DARKNET"|"SKLEARN",
+#'     FrameworkVersion = "string"
 #'   ),
 #'   OutputConfig = list(
 #'     S3OutputLocation = "string",
-#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
+#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"ml_eia2"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
 #'     TargetPlatform = list(
 #'       Os = "ANDROID"|"LINUX",
 #'       Arch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
@@ -8957,7 +9164,11 @@ sagemaker_describe_endpoint <- function(EndpointName) {
 #'       InitialInstanceCount = 123,
 #'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge",
 #'       InitialVariantWeight = 123.0,
-#'       AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge"
+#'       AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge",
+#'       CoreDumpConfig = list(
+#'         DestinationS3Uri = "string",
+#'         KmsKeyId = "string"
+#'       )
 #'     )
 #'   ),
 #'   DataCaptureConfig = list(
@@ -9121,7 +9332,8 @@ sagemaker_describe_experiment <- function(ExperimentName) {
 #'   OfflineStoreConfig = list(
 #'     S3StorageConfig = list(
 #'       S3Uri = "string",
-#'       KmsKeyId = "string"
+#'       KmsKeyId = "string",
+#'       ResolvedOutputS3Uri = "string"
 #'     ),
 #'     DisableGlueTableCreation = TRUE|FALSE,
 #'     DataCatalogConfig = list(
@@ -9471,6 +9683,9 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'     CheckpointConfig = list(
 #'       S3Uri = "string",
 #'       LocalPath = "string"
+#'     ),
+#'     RetryStrategy = list(
+#'       MaximumRetryAttempts = 123
 #'     )
 #'   ),
 #'   TrainingJobDefinitions = list(
@@ -9577,6 +9792,9 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'       CheckpointConfig = list(
 #'         S3Uri = "string",
 #'         LocalPath = "string"
+#'       ),
+#'       RetryStrategy = list(
+#'         MaximumRetryAttempts = 123
 #'       )
 #'     )
 #'   ),
@@ -9963,29 +10181,44 @@ sagemaker_describe_labeling_job <- function(LabelingJobName) {
 #'     ContainerHostname = "string",
 #'     Image = "string",
 #'     ImageConfig = list(
-#'       RepositoryAccessMode = "Platform"|"Vpc"
+#'       RepositoryAccessMode = "Platform"|"Vpc",
+#'       RepositoryAuthConfig = list(
+#'         RepositoryCredentialsProviderArn = "string"
+#'       )
 #'     ),
 #'     Mode = "SingleModel"|"MultiModel",
 #'     ModelDataUrl = "string",
 #'     Environment = list(
 #'       "string"
 #'     ),
-#'     ModelPackageName = "string"
+#'     ModelPackageName = "string",
+#'     MultiModelConfig = list(
+#'       ModelCacheSetting = "Enabled"|"Disabled"
+#'     )
 #'   ),
 #'   Containers = list(
 #'     list(
 #'       ContainerHostname = "string",
 #'       Image = "string",
 #'       ImageConfig = list(
-#'         RepositoryAccessMode = "Platform"|"Vpc"
+#'         RepositoryAccessMode = "Platform"|"Vpc",
+#'         RepositoryAuthConfig = list(
+#'           RepositoryCredentialsProviderArn = "string"
+#'         )
 #'       ),
 #'       Mode = "SingleModel"|"MultiModel",
 #'       ModelDataUrl = "string",
 #'       Environment = list(
 #'         "string"
 #'       ),
-#'       ModelPackageName = "string"
+#'       ModelPackageName = "string",
+#'       MultiModelConfig = list(
+#'         ModelCacheSetting = "Enabled"|"Disabled"
+#'       )
 #'     )
+#'   ),
+#'   InferenceExecutionConfig = list(
+#'     Mode = "Serial"|"Direct"
 #'   ),
 #'   ExecutionRoleArn = "string",
 #'   VpcConfig = list(
@@ -11420,6 +11653,12 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #'
 #' @description
 #' Returns information about a training job.
+#' 
+#' Some of the attributes below only appear if the training job
+#' successfully starts. If the training job fails, `TrainingJobStatus` is
+#' `Failed` and, depending on the `FailureReason`, attributes like
+#' `TrainingStartTime`, `TrainingTimeInSeconds`, `TrainingEndTime`, and
+#' `BillableTimeInSeconds` may not be present in the response.
 #'
 #' @usage
 #' sagemaker_describe_training_job(TrainingJobName)
@@ -11439,7 +11678,7 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #'     S3ModelArtifacts = "string"
 #'   ),
 #'   TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-#'   SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+#'   SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
 #'   FailureReason = "string",
 #'   HyperParameters = list(
 #'     "string"
@@ -11521,7 +11760,7 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #'   ),
 #'   SecondaryStatusTransitions = list(
 #'     list(
-#'       Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+#'       Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
 #'       StartTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -11628,7 +11867,13 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #'       )
 #'     )
 #'   ),
-#'   ProfilingStatus = "Enabled"|"Disabled"
+#'   ProfilingStatus = "Enabled"|"Disabled",
+#'   RetryStrategy = list(
+#'     MaximumRetryAttempts = 123
+#'   ),
+#'   Environment = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -11961,7 +12206,7 @@ sagemaker_describe_trial_component <- function(TrialComponentName) {
 #' sagemaker_describe_user_profile(DomainId, UserProfileName)
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
-#' @param UserProfileName &#91;required&#93; The user profile name.
+#' @param UserProfileName &#91;required&#93; The user profile name. This value is not case sensitive.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13116,9 +13361,8 @@ sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL,
 #' @param LastModifiedTimeBefore Request a list of jobs, using a filter for time.
 #' @param NameContains Request a list of jobs, using a search filter for name.
 #' @param StatusEquals Request a list of jobs, using a filter for status.
-#' @param SortOrder The sort order for the results. The default is Descending.
-#' @param SortBy The parameter by which to sort the results. The default is
-#' AutoMLJobName.
+#' @param SortOrder The sort order for the results. The default is `Descending`.
+#' @param SortBy The parameter by which to sort the results. The default is `Name`.
 #' @param MaxResults Request a list of jobs up to a specified limit.
 #' @param NextToken If the previous response was truncated, you receive this token. Use it
 #' in your next request to receive the next set of results.
@@ -13132,7 +13376,7 @@ sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL,
 #'       AutoMLJobName = "string",
 #'       AutoMLJobArn = "string",
 #'       AutoMLJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-#'       AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated",
+#'       AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated"|"GeneratingExplainabilityReport"|"Completed"|"ExplainabilityError"|"DeployingModel"|"ModelDeploymentError",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -13142,7 +13386,12 @@ sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL,
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       FailureReason = "string"
+#'       FailureReason = "string",
+#'       PartialFailureReasons = list(
+#'         list(
+#'           PartialFailureMessage = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -13193,21 +13442,21 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
 }
 .sagemaker$operations$list_auto_ml_jobs <- sagemaker_list_auto_ml_jobs
 
-#' List the Candidates created for the job
+#' List the candidates created for the job
 #'
 #' @description
-#' List the Candidates created for the job.
+#' List the candidates created for the job.
 #'
 #' @usage
 #' sagemaker_list_candidates_for_auto_ml_job(AutoMLJobName, StatusEquals,
 #'   CandidateNameEquals, SortOrder, SortBy, MaxResults, NextToken)
 #'
-#' @param AutoMLJobName &#91;required&#93; List the Candidates created for the job by providing the job's name.
-#' @param StatusEquals List the Candidates for the job and filter by status.
-#' @param CandidateNameEquals List the Candidates for the job and filter by candidate name.
-#' @param SortOrder The sort order for the results. The default is Ascending.
-#' @param SortBy The parameter by which to sort the results. The default is Descending.
-#' @param MaxResults List the job's Candidates up to a specified limit.
+#' @param AutoMLJobName &#91;required&#93; List the candidates created for the job by providing the job's name.
+#' @param StatusEquals List the candidates for the job and filter by status.
+#' @param CandidateNameEquals List the candidates for the job and filter by candidate name.
+#' @param SortOrder The sort order for the results. The default is `Ascending`.
+#' @param SortBy The parameter by which to sort the results. The default is `Descending`.
+#' @param MaxResults List the job's candidates up to a specified limit.
 #' @param NextToken If the previous response was truncated, you receive this token. Use it
 #' in your next request to receive the next set of results.
 #'
@@ -13250,7 +13499,12 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       FailureReason = "string"
+#'       FailureReason = "string",
+#'       CandidateProperties = list(
+#'         CandidateArtifactLocations = list(
+#'           Explainability = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -13437,7 +13691,7 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
 #'       CompilationEndTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       CompilationTargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
+#'       CompilationTargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"ml_eia2"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
 #'       CompilationTargetPlatformOs = "ANDROID"|"LINUX",
 #'       CompilationTargetPlatformArch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
 #'       CompilationTargetPlatformAccelerator = "INTEL_GRAPHICS"|"MALI"|"NVIDIA",
@@ -14077,7 +14331,8 @@ sagemaker_list_endpoint_configs <- function(SortBy = NULL, SortOrder = NULL, Nex
 #' @param NextToken If the result of a [`list_endpoints`][sagemaker_list_endpoints] request
 #' was truncated, the response includes a `NextToken`. To retrieve the next
 #' set of endpoints, use the token in the next request.
-#' @param MaxResults The maximum number of endpoints to return in the response.
+#' @param MaxResults The maximum number of endpoints to return in the response. This value
+#' defaults to 10.
 #' @param NameContains A string in endpoint names. This filter returns only endpoints whose
 #' name contains the specified string.
 #' @param CreationTimeBefore A filter that returns only endpoints that were created before the
@@ -16560,6 +16815,25 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 #'
 #' @description
 #' Lists training jobs.
+#' 
+#' When `StatusEquals` and `MaxResults` are set at the same time, the
+#' `MaxResults` number of training jobs are first retrieved ignoring the
+#' `StatusEquals` parameter and then they are filtered by the
+#' `StatusEquals` parameter, which is returned as a response.
+#' 
+#' For example, if [`list_training_jobs`][sagemaker_list_training_jobs] is
+#' invoked with the following parameters:
+#' 
+#' `{ ... MaxResults: 100, StatusEquals: InProgress ... }`
+#' 
+#' First, 100 trainings jobs with any status, including those other than
+#' `InProgress`, are selected (sorted according to the creation time, from
+#' the most current to the oldest). Next, those with a status of
+#' `InProgress` are returned.
+#' 
+#' You can quickly test the API using the following AWS CLI code.
+#' 
+#' `aws sagemaker list-training-jobs --max-results 100 --status-equals InProgress`
 #'
 #' @usage
 #' sagemaker_list_training_jobs(NextToken, MaxResults, CreationTimeAfter,
@@ -17532,7 +17806,7 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 #'           S3ModelArtifacts = "string"
 #'         ),
 #'         TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-#'         SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+#'         SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
 #'         FailureReason = "string",
 #'         HyperParameters = list(
 #'           "string"
@@ -17614,7 +17888,7 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 #'         ),
 #'         SecondaryStatusTransitions = list(
 #'           list(
-#'             Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+#'             Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
 #'             StartTime = as.POSIXct(
 #'               "2015-01-01"
 #'             ),
@@ -17689,6 +17963,12 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 #'               "2015-01-01"
 #'             )
 #'           )
+#'         ),
+#'         Environment = list(
+#'           "string"
+#'         ),
+#'         RetryStrategy = list(
+#'           MaximumRetryAttempts = 123
 #'         ),
 #'         Tags = list(
 #'           list(
@@ -17870,7 +18150,7 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 #'               S3ModelArtifacts = "string"
 #'             ),
 #'             TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-#'             SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+#'             SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
 #'             FailureReason = "string",
 #'             HyperParameters = list(
 #'               "string"
@@ -17952,7 +18232,7 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 #'             ),
 #'             SecondaryStatusTransitions = list(
 #'               list(
-#'                 Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+#'                 Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating"|"Restarting",
 #'                 StartTime = as.POSIXct(
 #'                   "2015-01-01"
 #'                 ),
@@ -18027,6 +18307,12 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 #'                   "2015-01-01"
 #'                 )
 #'               )
+#'             ),
+#'             Environment = list(
+#'               "string"
+#'             ),
+#'             RetryStrategy = list(
+#'               MaximumRetryAttempts = 123
 #'             ),
 #'             Tags = list(
 #'               list(
@@ -18678,7 +18964,8 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 #'         OfflineStoreConfig = list(
 #'           S3StorageConfig = list(
 #'             S3Uri = "string",
-#'             KmsKeyId = "string"
+#'             KmsKeyId = "string",
+#'             ResolvedOutputS3Uri = "string"
 #'           ),
 #'           DisableGlueTableCreation = TRUE|FALSE,
 #'           DataCatalogConfig = list(

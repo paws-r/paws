@@ -30,6 +30,11 @@ A list with the following syntax:\preformatted{list(
         AdSegmentUrlPrefix = "string",
         ContentSegmentUrlPrefix = "string"
       ),
+      ConfigurationAliases = list(
+        list(
+          "string"
+        )
+      ),
       DashConfiguration = list(
         ManifestEndpointPrefix = "string",
         MpdLocation = "string",
@@ -38,12 +43,17 @@ A list with the following syntax:\preformatted{list(
       HlsConfiguration = list(
         ManifestEndpointPrefix = "string"
       ),
+      LivePreRollConfiguration = list(
+        AdDecisionServerUrl = "string",
+        MaxDurationSeconds = 123
+      ),
       ManifestProcessingRules = list(
         AdMarkerPassthrough = list(
           Enabled = TRUE|FALSE
         )
       ),
       Name = "string",
+      PersonalizationThresholdSeconds = 123,
       PlaybackConfigurationArn = "string",
       PlaybackEndpointPrefix = "string",
       SessionInitializationEndpointPrefix = "string",
@@ -52,7 +62,6 @@ A list with the following syntax:\preformatted{list(
         "string"
       ),
       TranscodeProfileName = "string",
-      PersonalizationThresholdSeconds = 123,
       VideoContentSourceUrl = "string"
     )
   ),

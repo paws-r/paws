@@ -8,13 +8,13 @@ containerDefinitions}
 ecs_register_task_definition(family, taskRoleArn, executionRoleArn,
   networkMode, containerDefinitions, volumes, placementConstraints,
   requiresCompatibilities, cpu, memory, tags, pidMode, ipcMode,
-  proxyConfiguration, inferenceAccelerators)
+  proxyConfiguration, inferenceAccelerators, ephemeralStorage)
 }
 \arguments{
 \item{family}{[required] You must specify a \code{family} for a task definition, which allows you to
 track multiple versions of the same task definition. The \code{family} is
 used as a name for your task definition. Up to 255 letters (uppercase
-and lowercase), numbers, and hyphens are allowed.}
+and lowercase), numbers, underscores, and hyphens are allowed.}
 
 \item{taskRoleArn}{The short name or full Amazon Resource Name (ARN) of the IAM role that
 containers in this task can assume. All containers in this task are
@@ -85,9 +85,9 @@ specify a maximum of 10 constraints per task (this limit includes
 constraints in the task definition and those specified at runtime).}
 
 \item{requiresCompatibilities}{The task launch type that Amazon ECS should validate the task definition
-against. This ensures that the task definition parameters are compatible
-with the specified launch type. If no value is specified, it defaults to
-\code{EC2}.}
+against. A client exception is returned if the task definition doesn't
+validate against the compatibilities specified. If no value is
+specified, the parameter is omitted from the response.}
 
 \item{cpu}{The number of CPU units used by the task. It can be expressed as an
 integer using CPU units, for example \code{1024}, or as a string using vCPUs,
@@ -184,8 +184,8 @@ in the \emph{Docker run reference}.
 If the \code{host} PID mode is used, be aware that there is a heightened risk
 of undesired process namespace expose. For more information, see \href{https://docs.docker.com/engine/security/security/}{Docker security}.
 
-This parameter is not supported for Windows containers or tasks using
-the Fargate launch type.}
+This parameter is not supported for Windows containers or tasks run on
+AWS Fargate.}
 
 \item{ipcMode}{The IPC resource namespace to use for the containers in the task. The
 valid values are \code{host}, \code{task}, or \code{none}. If \code{host} is specified, then
@@ -214,13 +214,31 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 \code{systemControls} will apply to all containers within a task.
 }
 
-This parameter is not supported for Windows containers or tasks using
-the Fargate launch type.}
+This parameter is not supported for Windows containers or tasks run on
+AWS Fargate.}
 
-\item{proxyConfiguration}{}
+\item{proxyConfiguration}{The configuration details for the App Mesh proxy.
+
+For tasks hosted on Amazon EC2 instances, the container instances
+require at least version \verb{1.26.0} of the container agent and at least
+version \verb{1.26.0-1} of the \code{ecs-init} package to enable a proxy
+configuration. If your container instances are launched from the Amazon
+ECS-optimized AMI version \code{20190301} or later, then they contain the
+required versions of the container agent and \code{ecs-init}. For more
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ami-versions.html}{Amazon ECS-optimized AMI versions}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{inferenceAccelerators}{The Elastic Inference accelerators to use for the containers in the
 task.}
+
+\item{ephemeralStorage}{The amount of ephemeral storage to allocate for the task. This parameter
+is used to expand the total amount of ephemeral storage available,
+beyond the default amount, for tasks hosted on AWS Fargate. For more
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_data_volumes.html}{Fargate task storage}
+in the \emph{Amazon ECS User Guide for AWS Fargate}.
+
+This parameter is only supported for tasks hosted on AWS Fargate using
+platform version \verb{1.4.0} or later.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -480,6 +498,16 @@ A list with the following syntax:\preformatted{list(
           value = "string"
         )
       )
+    ),
+    registeredAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    deregisteredAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    registeredBy = "string",
+    ephemeralStorage = list(
+      sizeInGiB = 123
     )
   ),
   tags = list(
@@ -763,6 +791,9 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
       deviceName = "string",
       deviceType = "string"
     )
+  ),
+  ephemeralStorage = list(
+    sizeInGiB = 123
   )
 )
 }

@@ -10,7 +10,7 @@ s3_get_bucket_encryption(Bucket, ExpectedBucketOwner)
 \item{Bucket}{[required] The name of the bucket from which the server-side encryption
 configuration is retrieved.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -31,7 +31,11 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns the default encryption configuration for an Amazon S3 bucket.
+Returns the default encryption configuration for an Amazon S3 bucket. If
+the bucket does not have a default encryption configuration,
+GetBucketEncryption returns
+\code{ServerSideEncryptionConfigurationNotFoundError}.
+
 For information about the Amazon S3 default encryption feature, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}.
 

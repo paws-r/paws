@@ -4,23 +4,30 @@
 \alias{chime_delete_channel_ban}
 \title{Removes a user from a channel's ban list}
 \usage{
-chime_delete_channel_ban(ChannelArn, MemberArn)
+chime_delete_channel_ban(ChannelArn, MemberArn, ChimeBearer)
 }
 \arguments{
-\item{ChannelArn}{[required] The ARN of the channel from which the app instance user was banned.}
+\item{ChannelArn}{[required] The ARN of the channel from which the \code{AppInstanceUser} was banned.}
 
-\item{MemberArn}{[required] The ARN of the app instance user that you want to reinstate.}
+\item{MemberArn}{[required] The ARN of the \code{AppInstanceUser} that you want to reinstate.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 An empty list.
 }
 \description{
 Removes a user from a channel's ban list.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_channel_ban(
   ChannelArn = "string",
-  MemberArn = "string"
+  MemberArn = "string",
+  ChimeBearer = "string"
 )
 }
 }

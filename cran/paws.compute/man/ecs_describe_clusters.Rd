@@ -42,6 +42,19 @@ A list with the following syntax:\preformatted{list(
     list(
       clusterArn = "string",
       clusterName = "string",
+      configuration = list(
+        executeCommandConfiguration = list(
+          kmsKeyId = "string",
+          logging = "NONE"|"DEFAULT"|"OVERRIDE",
+          logConfiguration = list(
+            cloudWatchLogGroupName = "string",
+            cloudWatchEncryptionEnabled = TRUE|FALSE,
+            s3BucketName = "string",
+            s3EncryptionEnabled = TRUE|FALSE,
+            s3KeyPrefix = "string"
+          )
+        )
+      ),
       status = "string",
       registeredContainerInstancesCount = 123,
       runningTasksCount = 123,
@@ -110,7 +123,7 @@ Describes one or more of your clusters.
     "string"
   ),
   include = list(
-    "ATTACHMENTS"|"SETTINGS"|"STATISTICS"|"TAGS"
+    "ATTACHMENTS"|"CONFIGURATIONS"|"SETTINGS"|"STATISTICS"|"TAGS"
   )
 )
 }

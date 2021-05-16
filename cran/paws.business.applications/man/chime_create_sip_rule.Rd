@@ -11,20 +11,16 @@ chime_create_sip_rule(Name, TriggerType, TriggerValue, Disabled,
 \arguments{
 \item{Name}{[required] The name of the SIP rule.}
 
-\item{TriggerType}{[required] The type of trigger whose value is assigned to the SIP rule in
-\code{TriggerValue}. Allowed trigger values are \code{RequestUriHostname} and
-\code{ToPhoneNumber}.}
+\item{TriggerType}{[required] The type of trigger assigned to the SIP rule in \code{TriggerValue},
+currently \code{RequestUriHostname} or \code{ToPhoneNumber}.}
 
-\item{TriggerValue}{[required] If \code{TriggerType} is \code{RequestUriHostname} then the value can be the
-outbound host name of an Amazon Chime Voice Connector. If \code{TriggerType}
-is \code{ToPhoneNumber} then the value can be a customer-owned phone number
-in E164 format. \code{SipRule} is triggered if the SIP application requests a
-host name, or a If \code{TriggerType} is \code{RequestUriHostname}, then the value
-can be the outbound hostname of an Amazon Chime Voice Connector. If
-\code{TriggerType} is \code{ToPhoneNumber}, then the value can be a customer-owned
-phone number in E164 format. \code{SipRule} is triggered if the SIP
-application requests a host name, or a \code{ToPhoneNumber} value matches the
-incoming SIP request.}
+\item{TriggerValue}{[required] If \code{TriggerType} is \code{RequestUriHostname}, the value can be the outbound
+host name of an Amazon Chime Voice Connector. If \code{TriggerType} is
+\code{ToPhoneNumber}, the value can be a customer-owned phone number in the
+E164 format. The \code{SipMediaApplication} specified in the \code{SipRule} is
+triggered if the request URI in an incoming SIP request matches the
+\code{RequestUriHostname}, or if the \code{To} header in the incoming SIP request
+matches the \code{ToPhoneNumber} value.}
 
 \item{Disabled}{Enables or disables a rule. You must disable rules before you can delete
 them.}

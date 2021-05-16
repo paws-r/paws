@@ -40,6 +40,9 @@ NULL
 #'     ResourceTypes = list(
 #'       "VOLUME"|"INSTANCE"
 #'     ),
+#'     ResourceLocations = list(
+#'       "CLOUD"|"OUTPOST"
+#'     ),
 #'     TargetTags = list(
 #'       list(
 #'         Key = "string",
@@ -63,6 +66,7 @@ NULL
 #'           )
 #'         ),
 #'         CreateRule = list(
+#'           Location = "CLOUD"|"OUTPOST_LOCAL",
 #'           Interval = 123,
 #'           IntervalUnit = "HOURS",
 #'           Times = list(
@@ -86,6 +90,7 @@ NULL
 #'         CrossRegionCopyRules = list(
 #'           list(
 #'             TargetRegion = "string",
+#'             Target = "string",
 #'             Encrypted = TRUE|FALSE,
 #'             CmkArn = "string",
 #'             CopyTags = TRUE|FALSE,
@@ -322,6 +327,9 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'       ResourceTypes = list(
 #'         "VOLUME"|"INSTANCE"
 #'       ),
+#'       ResourceLocations = list(
+#'         "CLOUD"|"OUTPOST"
+#'       ),
 #'       TargetTags = list(
 #'         list(
 #'           Key = "string",
@@ -345,6 +353,7 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'             )
 #'           ),
 #'           CreateRule = list(
+#'             Location = "CLOUD"|"OUTPOST_LOCAL",
 #'             Interval = 123,
 #'             IntervalUnit = "HOURS",
 #'             Times = list(
@@ -368,6 +377,7 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'           CrossRegionCopyRules = list(
 #'             list(
 #'               TargetRegion = "string",
+#'               Target = "string",
 #'               Encrypted = TRUE|FALSE,
 #'               CmkArn = "string",
 #'               CopyTags = TRUE|FALSE,
@@ -623,6 +633,9 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'     ResourceTypes = list(
 #'       "VOLUME"|"INSTANCE"
 #'     ),
+#'     ResourceLocations = list(
+#'       "CLOUD"|"OUTPOST"
+#'     ),
 #'     TargetTags = list(
 #'       list(
 #'         Key = "string",
@@ -646,6 +659,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'           )
 #'         ),
 #'         CreateRule = list(
+#'           Location = "CLOUD"|"OUTPOST_LOCAL",
 #'           Interval = 123,
 #'           IntervalUnit = "HOURS",
 #'           Times = list(
@@ -669,6 +683,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'         CrossRegionCopyRules = list(
 #'           list(
 #'             TargetRegion = "string",
+#'             Target = "string",
 #'             Encrypted = TRUE|FALSE,
 #'             CmkArn = "string",
 #'             CopyTags = TRUE|FALSE,

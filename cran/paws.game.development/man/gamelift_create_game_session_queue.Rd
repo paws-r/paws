@@ -2,11 +2,11 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_create_game_session_queue}
 \alias{gamelift_create_game_session_queue}
-\title{Establishes a new queue for processing requests to place new game
-sessions}
+\title{Creates a placement queue that processes requests for new game sessions}
 \usage{
 gamelift_create_game_session_queue(Name, TimeoutInSeconds,
-  PlayerLatencyPolicies, Destinations, Tags)
+  PlayerLatencyPolicies, Destinations, FilterConfiguration,
+  PriorityConfiguration, CustomEventData, NotificationTarget, Tags)
 }
 \arguments{
 \item{Name}{[required] A descriptive label that is associated with game session queue. Queue
@@ -16,21 +16,33 @@ names must be unique within each Region.}
 remains in the queue. When a request exceeds this time, the game session
 placement changes to a \code{TIMED_OUT} status.}
 
-\item{PlayerLatencyPolicies}{A collection of latency policies to apply when processing game sessions
-placement requests with player latency information. Multiple policies
-are evaluated in order of the maximum latency value, starting with the
-lowest latency values. With just one policy, the policy is enforced at
-the start of the game session placement for the duration period. With
-multiple policies, each policy is enforced consecutively for its
-duration period. For example, a queue might enforce a 60-second policy
-followed by a 120-second policy, and then no policy for the remainder of
-the placement. A player latency policy must set a value for
-\code{MaximumIndividualPlayerLatencyMilliseconds}. If none is set, this API
-request fails.}
+\item{PlayerLatencyPolicies}{A set of policies that act as a sliding cap on player latency. FleetIQ
+works to deliver low latency for most players in a game session. These
+policies ensure that no individual player can be placed into a game with
+unreasonably high latency. Use multiple policies to gradually relax
+latency requirements a step at a time. Multiple policies are applied
+based on their maximum allowed latency, starting with the lowest value.}
 
-\item{Destinations}{A list of fleets that can be used to fulfill game session placement
-requests in the queue. Fleets are identified by either a fleet ARN or a
-fleet alias ARN. Destinations are listed in default preference order.}
+\item{Destinations}{A list of fleets and/or fleet aliases that can be used to fulfill game
+session placement requests in the queue. Destinations are identified by
+either a fleet ARN or a fleet alias ARN, and are listed in order of
+placement preference.}
+
+\item{FilterConfiguration}{A list of locations where a queue is allowed to place new game sessions.
+Locations are specified in the form of AWS Region codes, such as
+\code{us-west-2}. If this parameter is not set, game sessions can be placed
+in any queue location.}
+
+\item{PriorityConfiguration}{Custom settings to use when prioritizing destinations and locations for
+game session placements. This configuration replaces the FleetIQ default
+prioritization process. Priority types that are not explicitly named
+will be automatically applied at the end of the prioritization process.}
+
+\item{CustomEventData}{Information to be added to all events that are related to this game
+session queue.}
+
+\item{NotificationTarget}{An SNS topic ARN that is set up to receive game session placement
+notifications. See \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queue-notification.html}{Setting up notifications for game session placement}.}
 
 \item{Tags}{A list of labels to assign to the new game session queue resource. Tags
 are developer-defined key-value pairs. Tagging AWS resources are useful
@@ -59,59 +71,74 @@ A list with the following syntax:\preformatted{list(
       list(
         DestinationArn = "string"
       )
-    )
+    ),
+    FilterConfiguration = list(
+      AllowedLocations = list(
+        "string"
+      )
+    ),
+    PriorityConfiguration = list(
+      PriorityOrder = list(
+        "LATENCY"|"COST"|"DESTINATION"|"LOCATION"
+      ),
+      LocationOrder = list(
+        "string"
+      )
+    ),
+    CustomEventData = "string",
+    NotificationTarget = "string"
   )
 )
 }
 }
 \description{
-Establishes a new queue for processing requests to place new game
-sessions. A queue identifies where new game sessions can be hosted -- by
-specifying a list of destinations (fleets or aliases) -- and how long
-requests can wait in the queue before timing out. You can set up a queue
-to try to place game sessions on fleets in multiple Regions. To add
-placement requests to a queue, call
+Creates a placement queue that processes requests for new game sessions.
+A queue uses FleetIQ algorithms to determine the best placement
+locations and find an available game server there, then prompts the game
+server process to start a new game session.
+
+A game session queue is configured with a set of destinations (GameLift
+fleets or aliases), which determine the locations where the queue can
+place new game sessions. These destinations can span multiple fleet
+types (Spot and On-Demand), instance types, and AWS Regions. If the
+queue includes multi-location fleets, the queue is able to place game
+sessions in all of a fleet's remote locations. You can opt to filter out
+individual locations if needed.
+
+The queue configuration also determines how FleetIQ selects the best
+available placement for a new game session. Before searching for an
+available game server, FleetIQ first prioritizes the queue's
+destinations and locations, with the best placement locations on top.
+You can set up the queue to use the FleetIQ default prioritization or
+provide an alternate set of priorities.
+
+To create a new queue, provide a name, timeout value, and a list of
+destinations. Optionally, specify a sort configuration and/or a filter,
+and define a set of latency cap policies. You can also include the ARN
+for an Amazon Simple Notification Service (SNS) topic to receive
+notifications of game session placement activity. Notifications using
+SNS or CloudWatch events is the preferred way to track placement
+activity.
+
+If successful, a new \code{GameSessionQueue} object is returned with an
+assigned queue ARN. New game session requests, which are submitted to
+the queue with
 \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
-and reference the queue name.
-
-\strong{Destination order.} When processing a request for a game session,
-Amazon GameLift tries each destination in order until it finds one with
-available resources to host the new game session. A queue's default
-order is determined by how destinations are listed. The default order is
-overridden when a game session placement request provides player latency
-information. Player latency information enables Amazon GameLift to
-prioritize destinations where players report the lowest average latency,
-as a result placing the new game session where the majority of players
-will have the best possible gameplay experience.
-
-\strong{Player latency policies.} For placement requests containing player
-latency information, use player latency policies to protect individual
-players from very high latencies. With a latency cap, even when a
-destination can deliver a low latency for most players, the game is not
-placed where any individual player is reporting latency higher than a
-policy's maximum. A queue can have multiple latency policies, which are
-enforced consecutively starting with the policy with the lowest latency
-cap. Use multiple policies to gradually relax latency controls; for
-example, you might set a policy with a low latency cap for the first 60
-seconds, a second policy with a higher cap for the next 60 seconds, etc.
-
-To create a new queue, provide a name, timeout value, a list of
-destinations and, if desired, a set of latency policies. If successful,
-a new queue object is returned.
+or \code{\link[=gamelift_start_matchmaking]{start_matchmaking}}, reference a
+queue's name or ARN.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-design.html}{Design a Game Session Queue}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-design.html}{Design a game session queue}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-creating.html}{Create a Game Session Queue}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-creating.html}{Create a game session queue}
 
-\strong{Related operations}
-\itemize{
-\item \code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}}
-\item \code{\link[=gamelift_describe_game_session_queues]{describe_game_session_queues}}
-\item \code{\link[=gamelift_update_game_session_queue]{update_game_session_queue}}
-\item \code{\link[=gamelift_delete_game_session_queue]{delete_game_session_queue}}
-}
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}} |
+\code{\link[=gamelift_describe_game_session_queues]{describe_game_session_queues}}
+| \code{\link[=gamelift_update_game_session_queue]{update_game_session_queue}} |
+\code{\link[=gamelift_delete_game_session_queue]{delete_game_session_queue}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$create_game_session_queue(
@@ -128,6 +155,21 @@ a new queue object is returned.
       DestinationArn = "string"
     )
   ),
+  FilterConfiguration = list(
+    AllowedLocations = list(
+      "string"
+    )
+  ),
+  PriorityConfiguration = list(
+    PriorityOrder = list(
+      "LATENCY"|"COST"|"DESTINATION"|"LOCATION"
+    ),
+    LocationOrder = list(
+      "string"
+    )
+  ),
+  CustomEventData = "string",
+  NotificationTarget = "string",
   Tags = list(
     list(
       Key = "string",

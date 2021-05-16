@@ -5,8 +5,8 @@
 \title{Updates an existing flow output}
 \usage{
 mediaconnect_update_flow_output(CidrAllowList, Description, Destination,
-  Encryption, FlowArn, MaxLatency, OutputArn, Port, Protocol, RemoteId,
-  SmoothingLatency, StreamId, VpcInterfaceAttachment)
+  Encryption, FlowArn, MaxLatency, MinLatency, OutputArn, Port, Protocol,
+  RemoteId, SmoothingLatency, StreamId, VpcInterfaceAttachment)
 }
 \arguments{
 \item{CidrAllowList}{The range of IP addresses that should be allowed to initiate output
@@ -24,6 +24,12 @@ service will use the default setting (static-key).}
 \item{FlowArn}{[required] The flow that is associated with the output that you want to update.}
 
 \item{MaxLatency}{The maximum latency in milliseconds for Zixi-based streams.}
+
+\item{MinLatency}{The minimum latency in milliseconds for SRT-based streams. In streams
+that use the SRT protocol, this value that you set on your MediaConnect
+source or output represents the minimal potential latency of that
+connection. The latency of the stream is set to the highest number
+between the sender’s minimum latency and the receiver’s minimum latency.}
 
 \item{OutputArn}{[required] The ARN of the output that you want to update.}
 
@@ -52,7 +58,7 @@ A list with the following syntax:\preformatted{list(
       Algorithm = "aes128"|"aes192"|"aes256",
       ConstantInitializationVector = "string",
       DeviceId = "string",
-      KeyType = "speke"|"static-key",
+      KeyType = "speke"|"static-key"|"srt-password",
       Region = "string",
       ResourceId = "string",
       RoleArn = "string",
@@ -60,6 +66,7 @@ A list with the following syntax:\preformatted{list(
       Url = "string"
     ),
     EntitlementArn = "string",
+    ListenerAddress = "string",
     MediaLiveInputArn = "string",
     Name = "string",
     OutputArn = "string",
@@ -70,7 +77,8 @@ A list with the following syntax:\preformatted{list(
       ),
       MaxBitrate = 123,
       MaxLatency = 123,
-      Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+      MinLatency = 123,
+      Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
       RemoteId = "string",
       SmoothingLatency = 123,
       StreamId = "string"
@@ -96,7 +104,7 @@ Updates an existing flow output.
     Algorithm = "aes128"|"aes192"|"aes256",
     ConstantInitializationVector = "string",
     DeviceId = "string",
-    KeyType = "speke"|"static-key",
+    KeyType = "speke"|"static-key"|"srt-password",
     Region = "string",
     ResourceId = "string",
     RoleArn = "string",
@@ -105,9 +113,10 @@ Updates an existing flow output.
   ),
   FlowArn = "string",
   MaxLatency = 123,
+  MinLatency = 123,
   OutputArn = "string",
   Port = 123,
-  Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+  Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist"|"srt-listener",
   RemoteId = "string",
   SmoothingLatency = 123,
   StreamId = "string",

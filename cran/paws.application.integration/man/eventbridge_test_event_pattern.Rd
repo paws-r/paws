@@ -7,10 +7,21 @@
 eventbridge_test_event_pattern(EventPattern, Event)
 }
 \arguments{
-\item{EventPattern}{[required] The event pattern. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html}{Events and Event Patterns}
+\item{EventPattern}{[required] The event pattern. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html}{Events and Event Patterns}
 in the \emph{Amazon EventBridge User Guide}.}
 
-\item{Event}{[required] The event, in JSON format, to test against the event pattern.}
+\item{Event}{[required] The event, in JSON format, to test against the event pattern. The JSON
+must follow the format specified in \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html}{AWS Events},
+and the following fields are mandatory:
+\itemize{
+\item \code{id}
+\item \code{account}
+\item \code{source}
+\item \code{time}
+\item \code{region}
+\item \code{resources}
+\item \code{detail-type}
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(

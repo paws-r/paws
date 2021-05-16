@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_increase_replica_count}
 \alias{elasticache_increase_replica_count}
-\title{Dynamically increases the number of replics in a Redis (cluster mode
+\title{Dynamically increases the number of replicas in a Redis (cluster mode
 disabled) replication group or the number of replica nodes in one or
 more node groups (shards) of a Redis (cluster mode enabled) replication
 group}
@@ -52,6 +52,21 @@ A list with the following syntax:\preformatted{list(
         ),
         UserGroupIdsToRemove = list(
           "string"
+        )
+      ),
+      LogDeliveryConfigurations = list(
+        list(
+          LogType = "slow-log",
+          DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+          DestinationDetails = list(
+            CloudWatchLogsDetails = list(
+              LogGroup = "string"
+            ),
+            KinesisFirehoseDetails = list(
+              DeliveryStream = "string"
+            )
+          ),
+          LogFormat = "text"|"json"
         )
       )
     ),
@@ -110,13 +125,30 @@ A list with the following syntax:\preformatted{list(
     ARN = "string",
     UserGroupIds = list(
       "string"
+    ),
+    LogDeliveryConfigurations = list(
+      list(
+        LogType = "slow-log",
+        DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+        DestinationDetails = list(
+          CloudWatchLogsDetails = list(
+            LogGroup = "string"
+          ),
+          KinesisFirehoseDetails = list(
+            DeliveryStream = "string"
+          )
+        ),
+        LogFormat = "text"|"json",
+        Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+        Message = "string"
+      )
     )
   )
 )
 }
 }
 \description{
-Dynamically increases the number of replics in a Redis (cluster mode
+Dynamically increases the number of replicas in a Redis (cluster mode
 disabled) replication group or the number of replica nodes in one or
 more node groups (shards) of a Redis (cluster mode enabled) replication
 group. This operation is performed with no cluster down time.

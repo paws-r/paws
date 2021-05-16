@@ -45,10 +45,10 @@ environment. For more information, see \href{https://docs.aws.amazon.com/general
 instance. For information about lifestyle configurations, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.}
 
 \item{DirectInternetAccess}{Sets whether Amazon SageMaker provides internet access to the notebook
-instance. If you set this to \code{Disabled} this notebook instance will be
-able to access resources only in your VPC, and will not be able to
-connect to Amazon SageMaker training and endpoint services unless your
-configure a NAT Gateway in your VPC.
+instance. If you set this to \code{Disabled} this notebook instance is able
+to access resources only in your VPC, and is not be able to connect to
+Amazon SageMaker training and endpoint services unless you configure a
+NAT Gateway in your VPC.
 
 For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/#appendix-notebook-and-internet-access}{Notebook Instances Are Internet-Enabled by Default}.
 You can set the value of this parameter to \code{Disabled} only if you set a

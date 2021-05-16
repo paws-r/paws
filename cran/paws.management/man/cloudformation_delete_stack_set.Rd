@@ -4,12 +4,28 @@
 \alias{cloudformation_delete_stack_set}
 \title{Deletes a stack set}
 \usage{
-cloudformation_delete_stack_set(StackSetName)
+cloudformation_delete_stack_set(StackSetName, CallAs)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you're deleting. You can
 obtain this value by running
 \code{\link[=cloudformation_list_stack_sets]{list_stack_sets}}.}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your AWS account must be registered as a delegated administrator in
+the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{AWS CloudFormation User Guide}.
+}}
 }
 \value{
 An empty list.
@@ -22,7 +38,8 @@ to do this, see
 }
 \section{Request syntax}{
 \preformatted{svc$delete_stack_set(
-  StackSetName = "string"
+  StackSetName = "string",
+  CallAs = "SELF"|"DELEGATED_ADMIN"
 )
 }
 }

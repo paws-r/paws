@@ -15,7 +15,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Generates a credential report for the AWS account. For more information
-about the credential report, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html}{Getting Credential Reports}
+about the credential report, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html}{Getting credential reports}
 in the \emph{IAM User Guide}.
 }
 \keyword{internal}

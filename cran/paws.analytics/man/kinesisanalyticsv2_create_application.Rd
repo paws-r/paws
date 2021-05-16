@@ -13,8 +13,8 @@ kinesisanalyticsv2_create_application(ApplicationName,
 
 \item{ApplicationDescription}{A summary description of the application.}
 
-\item{RuntimeEnvironment}{[required] The runtime environment for the application (\code{SQL-1.0}, \verb{FLINK-1_6}, or
-\verb{FLINK-1_8}).}
+\item{RuntimeEnvironment}{[required] The runtime environment for the application (\verb{SQL-1_0}, \verb{FLINK-1_6},
+\verb{FLINK-1_8}, or \verb{FLINK-1_11}).}
 
 \item{ServiceExecutionRole}{[required] The IAM role used by the application to access Kinesis data streams,
 Kinesis Data Firehose delivery streams, Amazon S3 objects, and other
@@ -38,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     ApplicationName = "string",
     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11",
     ServiceExecutionRole = "string",
-    ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING",
+    ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"MAINTENANCE"|"ROLLING_BACK"|"ROLLED_BACK",
     ApplicationVersionId = 123,
     CreateTimestamp = as.POSIXct(
       "2015-01-01"
@@ -229,7 +229,15 @@ A list with the following syntax:\preformatted{list(
         LogStreamARN = "string",
         RoleARN = "string"
       )
-    )
+    ),
+    ApplicationMaintenanceConfigurationDescription = list(
+      ApplicationMaintenanceWindowStartTime = "string",
+      ApplicationMaintenanceWindowEndTime = "string"
+    ),
+    ApplicationVersionUpdatedFrom = 123,
+    ApplicationVersionRolledBackFrom = 123,
+    ConditionalToken = "string",
+    ApplicationVersionRolledBackTo = 123
   )
 )
 }

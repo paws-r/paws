@@ -18,10 +18,10 @@ characters.}
 \item{DefaultOutboundQueueId}{[required] The default outbound queue for the routing profile.}
 
 \item{QueueConfigs}{The inbound queues associated with the routing profile. If no queue is
-added, the agent can only make outbound calls.}
+added, the agent can make only outbound calls.}
 
-\item{MediaConcurrencies}{[required] The channels agents can handle in the Contact Control Panel (CCP) for
-this routing profile.}
+\item{MediaConcurrencies}{[required] The channels that agents can handle in the Contact Control Panel (CCP)
+for this routing profile.}
 
 \item{Tags}{One or more tags.}
 }

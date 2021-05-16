@@ -4,8 +4,8 @@
 \alias{ssm_create_document}
 \title{Creates a Systems Manager (SSM) document}
 \usage{
-ssm_create_document(Content, Requires, Attachments, Name, VersionName,
-  DocumentType, DocumentFormat, TargetType, Tags)
+ssm_create_document(Content, Requires, Attachments, Name, DisplayName,
+  VersionName, DocumentType, DocumentFormat, TargetType, Tags)
 }
 \arguments{
 \item{Content}{[required] The content for the new SSM document in JSON or YAML format. We
@@ -26,7 +26,7 @@ configuration in an SSM document, the user must also specify a required
 document for validation purposes. In this case, an
 \code{ApplicationConfiguration} document requires an
 \code{ApplicationConfigurationSchema} document for validation purposes. For
-more information, see \href{https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html}{AWS AppConfig}
+more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html}{AWS AppConfig}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Attachments}{A list of key and value pairs that describe attachments to a version of
@@ -41,6 +41,11 @@ reserved by AWS for use as document name prefixes:
 \item \code{amazon}
 \item \code{amzn}
 }}
+
+\item{DisplayName}{An optional field where you can specify a friendly name for the Systems
+Manager document. This value can differ for each version of the
+document. You can update this value at a later time using the
+\code{\link[=ssm_update_document]{update_document}} action.}
 
 \item{VersionName}{An optional field specifying the version of the artifact you are
 creating with the document. For example, "Release 12, Update 6". This
@@ -80,6 +85,7 @@ A list with the following syntax:\preformatted{list(
     Hash = "string",
     HashType = "Sha256"|"Sha1",
     Name = "string",
+    DisplayName = "string",
     VersionName = "string",
     Owner = "string",
     CreatedDate = as.POSIXct(
@@ -100,7 +106,7 @@ A list with the following syntax:\preformatted{list(
     PlatformTypes = list(
       "Windows"|"Linux"
     ),
-    DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+    DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
     SchemaVersion = "string",
     LatestVersion = "string",
     DefaultVersion = "string",
@@ -166,8 +172,9 @@ in the \emph{AWS Systems Manager User Guide}.
     )
   ),
   Name = "string",
+  DisplayName = "string",
   VersionName = "string",
-  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate"|"ProblemAnalysis"|"ProblemAnalysisTemplate",
   DocumentFormat = "YAML"|"JSON"|"TEXT",
   TargetType = "string",
   Tags = list(

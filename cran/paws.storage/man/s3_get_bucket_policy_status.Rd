@@ -11,7 +11,7 @@ s3_get_bucket_policy_status(Bucket, ExpectedBucketOwner)
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose policy status you want to
 retrieve.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }

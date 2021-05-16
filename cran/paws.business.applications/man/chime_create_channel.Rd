@@ -5,7 +5,7 @@
 \title{Creates a channel to which you can add users and send messages}
 \usage{
 chime_create_channel(AppInstanceArn, Name, Mode, Privacy, Metadata,
-  ClientRequestToken, Tags)
+  ClientRequestToken, Tags, ChimeBearer)
 }
 \arguments{
 \item{AppInstanceArn}{[required] The ARN of the channel request.}
@@ -19,13 +19,15 @@ members to restricted channels.}
 
 \item{Privacy}{The channel's privacy level: \code{PUBLIC} or \code{PRIVATE}. Private channels
 aren't discoverable by users outside the channel. Public channels are
-discoverable by anyone in the app instance.}
+discoverable by anyone in the \code{AppInstance}.}
 
 \item{Metadata}{The metadata of the creation request. Limited to 1KB and UTF-8.}
 
 \item{ClientRequestToken}{[required] The client token for the request. An \code{Idempotency} token.}
 
-\item{Tags}{}
+\item{Tags}{The tags for the creation request.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -37,6 +39,10 @@ A list with the following syntax:\preformatted{list(
 Creates a channel to which you can add users and send messages.
 
 \strong{Restriction}: You can't change a channel's privacy.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$create_channel(
@@ -51,7 +57,8 @@ Creates a channel to which you can add users and send messages.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  ChimeBearer = "string"
 )
 }
 }

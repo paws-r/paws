@@ -6,7 +6,7 @@
 which it is to be released}
 \usage{
 ec2_modify_capacity_reservation(CapacityReservationId, InstanceCount,
-  EndDate, EndDateType, DryRun)
+  EndDate, EndDateType, Accept, DryRun)
 }
 \arguments{
 \item{CapacityReservationId}{[required] The ID of the Capacity Reservation.}
@@ -37,6 +37,9 @@ specified date and time. You must provide an \code{EndDate} value if
 \code{EndDateType} is \code{limited}.
 }}
 
+\item{Accept}{Reserved. Capacity Reservations you have created are accepted by
+default.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
@@ -64,6 +67,7 @@ and then create a new one with the required attributes.
     "2015-01-01"
   ),
   EndDateType = "unlimited"|"limited",
+  Accept = TRUE|FALSE,
   DryRun = TRUE|FALSE
 )
 }

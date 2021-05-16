@@ -9,7 +9,7 @@ iam_delete_policy(PolicyArn)
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to delete.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 }
 \value{
@@ -24,12 +24,12 @@ you must delete all the policy's versions. The following steps describe
 the process for deleting a managed policy:
 \itemize{
 \item Detach the policy from all users, groups, and roles that the policy
-is attached to, using the
+is attached to, using
 \code{\link[=iam_detach_user_policy]{detach_user_policy}},
 \code{\link[=iam_detach_group_policy]{detach_group_policy}}, or
-\code{\link[=iam_detach_role_policy]{detach_role_policy}} API operations. To
-list all the users, groups, and roles that a policy is attached to,
-use \code{\link[=iam_list_entities_for_policy]{list_entities_for_policy}}.
+\code{\link[=iam_detach_role_policy]{detach_role_policy}}. To list all the
+users, groups, and roles that a policy is attached to, use
+\code{\link[=iam_list_entities_for_policy]{list_entities_for_policy}}.
 \item Delete all versions of the policy using
 \code{\link[=iam_delete_policy_version]{delete_policy_version}}. To list the
 policy's versions, use
@@ -38,10 +38,10 @@ policy's versions, use
 version that is marked as the default version. You delete the
 policy's default version in the next step of the process.
 \item Delete the policy (this automatically deletes the policy's default
-version) using this API.
+version) using this operation.
 }
 
-For information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+For information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed policies and inline policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

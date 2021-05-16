@@ -3,8 +3,8 @@
 \name{autoscaling_start_instance_refresh}
 \alias{autoscaling_start_instance_refresh}
 \title{Starts a new instance refresh operation, which triggers a rolling
-replacement of all previously launched instances in the Auto Scaling
-group with a new group of instances}
+replacement of previously launched instances in the Auto Scaling group
+with a new group of instances}
 \usage{
 autoscaling_start_instance_refresh(AutoScalingGroupName, Strategy,
   Preferences)
@@ -41,8 +41,8 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Starts a new instance refresh operation, which triggers a rolling
-replacement of all previously launched instances in the Auto Scaling
-group with a new group of instances.
+replacement of previously launched instances in the Auto Scaling group
+with a new group of instances.
 
 If successful, this call creates a new instance refresh request with a
 unique ID that you can use to track its progress. To query its status,
@@ -53,7 +53,8 @@ API. To describe the instance refreshes that have already run, call the
 API. To cancel an instance refresh operation in progress, use the
 \code{\link[=autoscaling_cancel_instance_refresh]{cancel_instance_refresh}} API.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling Instances Based on an Instance Refresh}.
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling instances based on an instance refresh}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_instance_refresh(
@@ -61,7 +62,11 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
   Strategy = "Rolling",
   Preferences = list(
     MinHealthyPercentage = 123,
-    InstanceWarmup = 123
+    InstanceWarmup = 123,
+    CheckpointPercentages = list(
+      123
+    ),
+    CheckpointDelay = 123
   )
 )
 }

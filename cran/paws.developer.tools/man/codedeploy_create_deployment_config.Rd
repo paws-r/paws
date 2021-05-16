@@ -48,8 +48,8 @@ Creates a deployment configuration.
 \preformatted{svc$create_deployment_config(
   deploymentConfigName = "string",
   minimumHealthyHosts = list(
-    value = 123,
-    type = "HOST_COUNT"|"FLEET_PERCENT"
+    type = "HOST_COUNT"|"FLEET_PERCENT",
+    value = 123
   ),
   trafficRoutingConfig = list(
     type = "TimeBasedCanary"|"TimeBasedLinear"|"AllAtOnce",

@@ -10,8 +10,7 @@ mediatailor_tag_resource(ResourceArn, Tags)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the playback configuration. You can
 get this from the response to any playback configuration request.}
 
-\item{Tags}{[required] A comma-separated list of tag key:value pairs. For example: \{ "Key1":
-"Value1", "Key2": "Value2" \}}
+\item{Tags}{[required] A comma-separated list of tag key:value pairs.}
 }
 \value{
 An empty list.

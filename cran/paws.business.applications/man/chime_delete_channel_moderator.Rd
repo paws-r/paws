@@ -4,23 +4,31 @@
 \alias{chime_delete_channel_moderator}
 \title{Deletes a channel moderator}
 \usage{
-chime_delete_channel_moderator(ChannelArn, ChannelModeratorArn)
+chime_delete_channel_moderator(ChannelArn, ChannelModeratorArn,
+  ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
 
 \item{ChannelModeratorArn}{[required] The ARN of the moderator being deleted.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 An empty list.
 }
 \description{
 Deletes a channel moderator.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_channel_moderator(
   ChannelArn = "string",
-  ChannelModeratorArn = "string"
+  ChannelModeratorArn = "string",
+  ChimeBearer = "string"
 )
 }
 }

@@ -79,7 +79,7 @@ NULL
 #'   voiceId = "string",
 #'   checksum = "string",
 #'   version = "string",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP",
 #'   childDirected = TRUE|FALSE,
 #'   enableModelImprovements = TRUE|FALSE,
 #'   detectSentiment = TRUE|FALSE
@@ -958,7 +958,7 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 #'   voiceId = "string",
 #'   checksum = "string",
 #'   version = "string",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP",
 #'   childDirected = TRUE|FALSE,
 #'   detectSentiment = TRUE|FALSE
 #' )
@@ -1501,7 +1501,7 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #' list(
 #'   signature = "string",
 #'   supportedLocales = list(
-#'     "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+#'     "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"
 #'   ),
 #'   slots = list(
 #'     list(
@@ -1572,7 +1572,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #'     list(
 #'       signature = "string",
 #'       supportedLocales = list(
-#'         "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+#'         "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"
 #'       )
 #'     )
 #'   ),
@@ -1583,7 +1583,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' @section Request syntax:
 #' ```
 #' svc$get_builtin_intents(
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP",
 #'   signatureContains = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -1645,7 +1645,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #'     list(
 #'       signature = "string",
 #'       supportedLocales = list(
-#'         "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+#'         "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"
 #'       )
 #'     )
 #'   ),
@@ -1656,7 +1656,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' @section Request syntax:
 #' ```
 #' svc$get_builtin_slot_types(
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP",
 #'   signatureContains = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -2836,7 +2836,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #'   voiceId = "string",
 #'   checksum = "string",
 #'   version = "string",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP",
 #'   childDirected = TRUE|FALSE,
 #'   createVersion = TRUE|FALSE,
 #'   detectSentiment = TRUE|FALSE,
@@ -2887,7 +2887,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #'   voiceId = "string",
 #'   checksum = "string",
 #'   processBehavior = "SAVE"|"BUILD",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP",
 #'   childDirected = TRUE|FALSE,
 #'   detectSentiment = TRUE|FALSE,
 #'   createVersion = TRUE|FALSE,

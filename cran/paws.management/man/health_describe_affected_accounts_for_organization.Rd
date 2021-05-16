@@ -9,10 +9,13 @@ health_describe_affected_accounts_for_organization(eventArn, nextToken,
   maxResults)
 }
 \arguments{
-\item{eventArn}{[required] The unique identifier for the event. Format:
-\code{arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID }.
-Example:
-\verb{Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456}}
+\item{eventArn}{[required] The unique identifier for the event. The event ARN has the
+\code{arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID }
+format.
+
+For example, an event ARN might look like the following:
+
+\verb{arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456}}
 
 \item{nextToken}{If the results of a search are large, only a portion of the results are
 returned, and a \code{nextToken} pagination token is returned in the
@@ -42,7 +45,7 @@ different types of AWS Health events, see
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
 \code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
-operation from your organization's master account.
+operation from your organization's management account.
 
 This API operation uses pagination. Specify the \code{nextToken} parameter in
 the next request to return more results.

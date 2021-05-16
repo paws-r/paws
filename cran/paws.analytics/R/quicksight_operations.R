@@ -480,8 +480,8 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #' @usage
 #' quicksight_create_data_set(AwsAccountId, DataSetId, Name,
 #'   PhysicalTableMap, LogicalTableMap, ImportMode, ColumnGroups,
-#'   Permissions, RowLevelPermissionDataSet, ColumnLevelPermissionRules,
-#'   Tags)
+#'   FieldFolders, Permissions, RowLevelPermissionDataSet,
+#'   ColumnLevelPermissionRules, Tags)
 #'
 #' @param AwsAccountId &#91;required&#93; The AWS account ID.
 #' @param DataSetId &#91;required&#93; An ID for the dataset that you want to create. This ID is unique per AWS
@@ -494,6 +494,7 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #' @param ImportMode &#91;required&#93; Indicates whether you want to import the data into SPICE.
 #' @param ColumnGroups Groupings of columns that work together in certain QuickSight features.
 #' Currently, only geospatial hierarchy is supported.
+#' @param FieldFolders The folder that contains fields and nested subfolders for your dataset.
 #' @param Permissions A list of resource permissions on the dataset.
 #' @param RowLevelPermissionDataSet The row-level security configuration for the data that you want to
 #' create.
@@ -636,6 +637,14 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #'       )
 #'     )
 #'   ),
+#'   FieldFolders = list(
+#'     list(
+#'       description = "string",
+#'       columns = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   Permissions = list(
 #'     list(
 #'       Principal = "string",
@@ -671,14 +680,14 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #' @keywords internal
 #'
 #' @rdname quicksight_create_data_set
-quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, Permissions = NULL, RowLevelPermissionDataSet = NULL, ColumnLevelPermissionRules = NULL, Tags = NULL) {
+quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, Permissions = NULL, RowLevelPermissionDataSet = NULL, ColumnLevelPermissionRules = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataSet",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/data-sets",
     paginator = list()
   )
-  input <- .quicksight$create_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, Permissions = Permissions, RowLevelPermissionDataSet = RowLevelPermissionDataSet, ColumnLevelPermissionRules = ColumnLevelPermissionRules, Tags = Tags)
+  input <- .quicksight$create_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, FieldFolders = FieldFolders, Permissions = Permissions, RowLevelPermissionDataSet = RowLevelPermissionDataSet, ColumnLevelPermissionRules = ColumnLevelPermissionRules, Tags = Tags)
   output <- .quicksight$create_data_set_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -704,9 +713,11 @@ quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 #' @param Name &#91;required&#93; A display name for the data source.
 #' @param Type &#91;required&#93; The type of the data source. Currently, the supported types for this
 #' operation are:
-#' `ATHENA, AURORA, AURORA_POSTGRESQL, MARIADB, MYSQL, POSTGRESQL, PRESTO, REDSHIFT, S3, SNOWFLAKE, SPARK, SQLSERVER, TERADATA`.
+#' `ATHENA, AURORA, AURORA_POSTGRESQL, AMAZON_ELASTICSEARCH, MARIADB, MYSQL, POSTGRESQL, PRESTO, REDSHIFT, S3, SNOWFLAKE, SPARK, SQLSERVER, TERADATA`.
 #' Use [`list_data_sources`][quicksight_list_data_sources] to return a list
 #' of all data sources.
+#' 
+#' `AMAZON_ELASTICSEARCH` is for Amazon managed Elasticsearch Service.
 #' @param DataSourceParameters The parameters that QuickSight uses to connect to your underlying
 #' source.
 #' @param Credentials The credentials QuickSight that uses to connect to your underlying
@@ -3134,6 +3145,14 @@ quicksight_describe_dashboard_permissions <- function(AwsAccountId, DashboardId)
 #'           Columns = list(
 #'             "string"
 #'           )
+#'         )
+#'       )
+#'     ),
+#'     FieldFolders = list(
+#'       list(
+#'         description = "string",
+#'         columns = list(
+#'           "string"
 #'         )
 #'       )
 #'     ),
@@ -7213,7 +7232,7 @@ quicksight_update_dashboard_published_version <- function(AwsAccountId, Dashboar
 #' @usage
 #' quicksight_update_data_set(AwsAccountId, DataSetId, Name,
 #'   PhysicalTableMap, LogicalTableMap, ImportMode, ColumnGroups,
-#'   RowLevelPermissionDataSet, ColumnLevelPermissionRules)
+#'   FieldFolders, RowLevelPermissionDataSet, ColumnLevelPermissionRules)
 #'
 #' @param AwsAccountId &#91;required&#93; The AWS account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset that you want to update. This ID is unique per
@@ -7226,6 +7245,7 @@ quicksight_update_dashboard_published_version <- function(AwsAccountId, Dashboar
 #' @param ImportMode &#91;required&#93; Indicates whether you want to import the data into SPICE.
 #' @param ColumnGroups Groupings of columns that work together in certain QuickSight features.
 #' Currently, only geospatial hierarchy is supported.
+#' @param FieldFolders The folder that contains fields and nested subfolders for your dataset.
 #' @param RowLevelPermissionDataSet The row-level security configuration for the data you want to create.
 #' @param ColumnLevelPermissionRules A set of one or more definitions of a ` ColumnLevelPermissionRule `.
 #'
@@ -7364,6 +7384,14 @@ quicksight_update_dashboard_published_version <- function(AwsAccountId, Dashboar
 #'       )
 #'     )
 #'   ),
+#'   FieldFolders = list(
+#'     list(
+#'       description = "string",
+#'       columns = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   RowLevelPermissionDataSet = list(
 #'     Namespace = "string",
 #'     Arn = "string",
@@ -7385,14 +7413,14 @@ quicksight_update_dashboard_published_version <- function(AwsAccountId, Dashboar
 #' @keywords internal
 #'
 #' @rdname quicksight_update_data_set
-quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, RowLevelPermissionDataSet = NULL, ColumnLevelPermissionRules = NULL) {
+quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, RowLevelPermissionDataSet = NULL, ColumnLevelPermissionRules = NULL) {
   op <- new_operation(
     name = "UpdateDataSet",
     http_method = "PUT",
     http_path = "/accounts/{AwsAccountId}/data-sets/{DataSetId}",
     paginator = list()
   )
-  input <- .quicksight$update_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, RowLevelPermissionDataSet = RowLevelPermissionDataSet, ColumnLevelPermissionRules = ColumnLevelPermissionRules)
+  input <- .quicksight$update_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, FieldFolders = FieldFolders, RowLevelPermissionDataSet = RowLevelPermissionDataSet, ColumnLevelPermissionRules = ColumnLevelPermissionRules)
   output <- .quicksight$update_data_set_output()
   config <- get_config()
   svc <- .quicksight$service(config)

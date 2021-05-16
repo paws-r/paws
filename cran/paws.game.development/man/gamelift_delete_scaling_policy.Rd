@@ -7,10 +7,10 @@
 gamelift_delete_scaling_policy(Name, FleetId)
 }
 \arguments{
-\item{Name}{[required] A descriptive label that is associated with a scaling policy. Policy
-names do not need to be unique.}
+\item{Name}{[required] A descriptive label that is associated with a fleet's scaling policy.
+Policy names do not need to be unique.}
 
-\item{FleetId}{[required] A unique identifier for a fleet to be deleted. You can use either the
+\item{FleetId}{[required] A unique identifier for the fleet to be deleted. You can use either the
 fleet ID or ARN value.}
 }
 \value{
@@ -25,25 +25,17 @@ with.
 To temporarily suspend scaling policies, call
 \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}. This operation
 suspends all policies for the fleet.
-\itemize{
-\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
-\item \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}
-\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
-\item Manage scaling policies:
-\itemize{
-\item \code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}}
-(auto-scaling)
-\item \code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}}
-(auto-scaling)
-\item \code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}}
-(auto-scaling)
-}
-\item Manage fleet actions:
-\itemize{
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}}
-\item \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}} |
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}} |
+\code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}} |
+\code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}} |
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} |
+\code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_scaling_policy(

@@ -24,7 +24,7 @@ A list with the following syntax:\preformatted{list(
       JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
       IsMaster = TRUE|FALSE,
       JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
-      SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+      SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD"|"SNC1_SSD",
       CreationDate = as.POSIXct(
         "2015-01-01"
       ),

@@ -4,11 +4,16 @@
 \alias{codepipeline_list_pipelines}
 \title{Gets a summary of all of the pipelines associated with your account}
 \usage{
-codepipeline_list_pipelines(nextToken)
+codepipeline_list_pipelines(nextToken, maxResults)
 }
 \arguments{
 \item{nextToken}{An identifier that was returned from the previous list pipelines call.
 It can be used to return the next set of pipelines in the list.}
+
+\item{maxResults}{The maximum number of pipelines to return in a single call. To retrieve
+the remaining pipelines, make another call with the returned nextToken
+value. The minimum value you can specify is 1. The maximum accepted
+value is 1000.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -33,7 +38,8 @@ Gets a summary of all of the pipelines associated with your account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_pipelines(
-  nextToken = "string"
+  nextToken = "string",
+  maxResults = 123
 )
 }
 }

@@ -2,27 +2,25 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_list_type_registrations}
 \alias{cloudformation_list_type_registrations}
-\title{Returns a list of registration tokens for the specified type(s)}
+\title{Returns a list of registration tokens for the specified extension(s)}
 \usage{
 cloudformation_list_type_registrations(Type, TypeName, TypeArn,
   RegistrationStatusFilter, MaxResults, NextToken)
 }
 \arguments{
-\item{Type}{The kind of type.
-
-Currently the only valid value is \code{RESOURCE}.
+\item{Type}{The kind of extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{TypeName}{The name of the type.
+\item{TypeName}{The name of the extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{TypeArn}{The Amazon Resource Name (ARN) of the type.
+\item{TypeArn}{The Amazon Resource Name (ARN) of the extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{RegistrationStatusFilter}{The current status of the type registration request.
+\item{RegistrationStatusFilter}{The current status of the extension registration request.
 
 The default is \code{IN_PROGRESS}.}
 
@@ -48,7 +46,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns a list of registration tokens for the specified type(s).
+Returns a list of registration tokens for the specified extension(s).
 }
 \section{Request syntax}{
 \preformatted{svc$list_type_registrations(

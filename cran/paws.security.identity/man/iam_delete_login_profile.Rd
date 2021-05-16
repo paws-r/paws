@@ -22,6 +22,12 @@ Deletes the password for the specified IAM user, which terminates the
 user's ability to access AWS services through the AWS Management
 Console.
 
+You can use the AWS CLI, the AWS API, or the \strong{Users} page in the IAM
+console to delete a password for any IAM user. You can use
+\code{\link[=iam_change_password]{change_password}} to update, but not delete, your
+own password in the \strong{My Security Credentials} page in the AWS
+Management Console.
+
 Deleting a user's password does not prevent a user from accessing AWS
 through the command line interface or the API. To prevent all user
 access, you must also either make any access keys inactive or delete

@@ -5,10 +5,10 @@
 \title{Retrieves all scaling policies applied to a fleet}
 \usage{
 gamelift_describe_scaling_policies(FleetId, StatusFilter, Limit,
-  NextToken)
+  NextToken, Location)
 }
 \arguments{
-\item{FleetId}{[required] A unique identifier for a fleet to retrieve scaling policies for. You
+\item{FleetId}{[required] A unique identifier for the fleet to retrieve scaling policies for. You
 can use either the fleet ID or ARN value.}
 
 \item{StatusFilter}{Scaling policy status to filter results on. A scaling policy is only in
@@ -29,15 +29,18 @@ removed and recreated.
 \item{Limit}{The maximum number of results to return. Use this parameter with
 \code{NextToken} to get results as a set of sequential pages.}
 
-\item{NextToken}{Token that indicates the start of the next sequential page of results.
+\item{NextToken}{A token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
+
+\item{Location}{CONTENT TODO}
 }
 \value{
 A list with the following syntax:\preformatted{list(
   ScalingPolicies = list(
     list(
       FleetId = "string",
+      FleetArn = "string",
       Name = "string",
       Status = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
       ScalingAdjustment = 123,
@@ -49,7 +52,9 @@ A list with the following syntax:\preformatted{list(
       PolicyType = "RuleBased"|"TargetBased",
       TargetConfiguration = list(
         TargetValue = 123.0
-      )
+      ),
+      UpdateStatus = "PENDING_UPDATE",
+      Location = "string"
     )
   ),
   NextToken = "string"
@@ -72,32 +77,25 @@ ACTIVE. To see whether a fleet's scaling policies are in force or
 suspended, call
 \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}} and
 check the stopped actions.
-\itemize{
-\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
-\item \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}
-\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
-\item Manage scaling policies:
-\itemize{
-\item \code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}}
-(auto-scaling)
-\item \code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}}
-(auto-scaling)
-\item \code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}}
-(auto-scaling)
-}
-\item Manage fleet actions:
-\itemize{
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}}
-\item \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}} |
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}} |
+\code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}} |
+\code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}} |
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} |
+\code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_scaling_policies(
   FleetId = "string",
   StatusFilter = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
   Limit = 123,
-  NextToken = "string"
+  NextToken = "string",
+  Location = "string"
 )
 }
 }

@@ -37,9 +37,10 @@ A list with the following syntax:\preformatted{list(
       RdsResourceId = "string",
       Port = 123,
       Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
+      Role = "READ_WRITE"|"READ_ONLY"|"UNKNOWN",
       TargetHealth = list(
         State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
-        Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
+        Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY"|"INVALID_REPLICATION_STATE",
         Description = "string"
       )
     )

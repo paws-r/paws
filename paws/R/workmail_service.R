@@ -75,6 +75,7 @@ NULL
 #'  \link[=workmail_cancel_mailbox_export_job]{cancel_mailbox_export_job} \tab Cancels a mailbox export job\cr
 #'  \link[=workmail_create_alias]{create_alias} \tab Adds an alias to the set of a given member (user or group) of Amazon WorkMail\cr
 #'  \link[=workmail_create_group]{create_group} \tab Creates a group that can be used in Amazon WorkMail by calling the RegisterToWorkMail operation\cr
+#'  \link[=workmail_create_mobile_device_access_rule]{create_mobile_device_access_rule} \tab Creates a new mobile device access rule for the specified Amazon WorkMail organization\cr
 #'  \link[=workmail_create_organization]{create_organization} \tab Creates a new Amazon WorkMail organization\cr
 #'  \link[=workmail_create_resource]{create_resource} \tab Creates a new Amazon WorkMail resource\cr
 #'  \link[=workmail_create_user]{create_user} \tab Creates a user who can be used in Amazon WorkMail by calling the RegisterToWorkMail operation\cr
@@ -82,6 +83,7 @@ NULL
 #'  \link[=workmail_delete_alias]{delete_alias} \tab Remove one or more specified aliases from a set of aliases for a given user\cr
 #'  \link[=workmail_delete_group]{delete_group} \tab Deletes a group from Amazon WorkMail\cr
 #'  \link[=workmail_delete_mailbox_permissions]{delete_mailbox_permissions} \tab Deletes permissions granted to a member (user or group)\cr
+#'  \link[=workmail_delete_mobile_device_access_rule]{delete_mobile_device_access_rule} \tab Deletes a mobile device access rule for the specified Amazon WorkMail organization\cr
 #'  \link[=workmail_delete_organization]{delete_organization} \tab Deletes an Amazon WorkMail organization and all underlying AWS resources managed by Amazon WorkMail as part of the organization\cr
 #'  \link[=workmail_delete_resource]{delete_resource} \tab Deletes the specified resource\cr
 #'  \link[=workmail_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy from the specified organization\cr
@@ -97,12 +99,14 @@ NULL
 #'  \link[=workmail_get_access_control_effect]{get_access_control_effect} \tab Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, or user ID\cr
 #'  \link[=workmail_get_default_retention_policy]{get_default_retention_policy} \tab Gets the default retention policy details for the specified organization\cr
 #'  \link[=workmail_get_mailbox_details]{get_mailbox_details} \tab Requests a user's mailbox details for a specified organization and user\cr
+#'  \link[=workmail_get_mobile_device_access_effect]{get_mobile_device_access_effect} \tab Simulates the effect of the mobile device access rules for the given attributes of a sample access event\cr
 #'  \link[=workmail_list_access_control_rules]{list_access_control_rules} \tab Lists the access control rules for the specified organization\cr
 #'  \link[=workmail_list_aliases]{list_aliases} \tab Creates a paginated call to list the aliases associated with a given entity\cr
 #'  \link[=workmail_list_group_members]{list_group_members} \tab Returns an overview of the members of a group\cr
 #'  \link[=workmail_list_groups]{list_groups} \tab Returns summaries of the organization's groups\cr
 #'  \link[=workmail_list_mailbox_export_jobs]{list_mailbox_export_jobs} \tab Lists the mailbox export jobs started for the specified organization within the last seven days\cr
 #'  \link[=workmail_list_mailbox_permissions]{list_mailbox_permissions} \tab Lists the mailbox permissions associated with a user, group, or resource mailbox\cr
+#'  \link[=workmail_list_mobile_device_access_rules]{list_mobile_device_access_rules} \tab Lists the mobile device access rules for the specified Amazon WorkMail organization\cr
 #'  \link[=workmail_list_organizations]{list_organizations} \tab Returns summaries of the customer's organizations\cr
 #'  \link[=workmail_list_resource_delegates]{list_resource_delegates} \tab Lists the delegates associated with a resource\cr
 #'  \link[=workmail_list_resources]{list_resources} \tab Returns summaries of the organization's resources\cr
@@ -117,6 +121,7 @@ NULL
 #'  \link[=workmail_tag_resource]{tag_resource} \tab Applies the specified tags to the specified Amazon WorkMail organization resource\cr
 #'  \link[=workmail_untag_resource]{untag_resource} \tab Untags the specified tags from the specified Amazon WorkMail organization resource\cr
 #'  \link[=workmail_update_mailbox_quota]{update_mailbox_quota} \tab Updates a user's current mailbox quota for a specified organization and user\cr
+#'  \link[=workmail_update_mobile_device_access_rule]{update_mobile_device_access_rule} \tab Updates a mobile device access rule for the specified Amazon WorkMail organization\cr
 #'  \link[=workmail_update_primary_email_address]{update_primary_email_address} \tab Updates the primary email for a user, group, or resource\cr
 #'  \link[=workmail_update_resource]{update_resource} \tab Updates data for the resource
 #' }

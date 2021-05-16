@@ -37,8 +37,8 @@ the best model. Multiple trials are performed, each one isolating and
 measuring the impact of a change to one or more inputs, while keeping
 the remaining inputs constant.
 
-When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-all experiments, trials, and trial components are automatically tracked,
+When you use SageMaker Studio or the SageMaker Python SDK, all
+experiments, trials, and trial components are automatically tracked,
 logged, and indexed. When you use the AWS SDK for Python (Boto), you
 must use the logging APIs provided by the SDK.
 

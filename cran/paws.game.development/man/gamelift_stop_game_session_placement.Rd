@@ -58,20 +58,20 @@ A list with the following syntax:\preformatted{list(
 Cancels a game session placement that is in \code{PENDING} status. To stop a
 placement, provide the placement ID values. If successful, the placement
 is moved to \code{CANCELLED} status.
-\itemize{
-\item \code{\link[=gamelift_create_game_session]{create_game_session}}
-\item \code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}}
-\item \code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
-\item \code{\link[=gamelift_search_game_sessions]{search_game_sessions}}
-\item \code{\link[=gamelift_update_game_session]{update_game_session}}
-\item \code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}}
-\item Game session placements
-\itemize{
-\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
-\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
-\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
-}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_session]{create_game_session}} |
+\code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}} |
+\code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
+| \code{\link[=gamelift_search_game_sessions]{search_game_sessions}} |
+\code{\link[=gamelift_update_game_session]{update_game_session}} |
+\code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}} |
+\code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+|
+\code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+| \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$stop_game_session_placement(

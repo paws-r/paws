@@ -4,13 +4,13 @@
 \alias{ec2_associate_subnet_cidr_block}
 \title{Associates a CIDR block with your subnet}
 \usage{
-ec2_associate_subnet_cidr_block(Ipv6CidrBlock, SubnetId)
+ec2_associate_subnet_cidr_block(SubnetId, Ipv6CidrBlock)
 }
 \arguments{
+\item{SubnetId}{[required] The ID of your subnet.}
+
 \item{Ipv6CidrBlock}{[required] The IPv6 CIDR block for your subnet. The subnet must have a /64 prefix
 length.}
-
-\item{SubnetId}{[required] The ID of your subnet.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -33,8 +33,8 @@ prefix length of /64.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_subnet_cidr_block(
-  Ipv6CidrBlock = "string",
-  SubnetId = "string"
+  SubnetId = "string",
+  Ipv6CidrBlock = "string"
 )
 }
 }

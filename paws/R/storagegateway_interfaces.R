@@ -75,6 +75,18 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$associate_file_system_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ClientToken = structure(logical(0), tags = list(type = "string")), GatewayARN = structure(logical(0), tags = list(type = "string")), LocationARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AuditDestinationARN = structure(logical(0), tags = list(type = "string")), CacheAttributes = structure(list(CacheStaleTimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$associate_file_system_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileSystemAssociationARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$attach_volume_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), TargetName = structure(logical(0), tags = list(type = "string")), VolumeARN = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string")), DiskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -411,6 +423,18 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$describe_file_system_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileSystemAssociationARNList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$describe_file_system_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileSystemAssociationInfoList = structure(list(structure(list(FileSystemAssociationARN = structure(logical(0), tags = list(type = "string")), LocationARN = structure(logical(0), tags = list(type = "string")), FileSystemAssociationStatus = structure(logical(0), tags = list(type = "string")), AuditDestinationARN = structure(logical(0), tags = list(type = "string")), GatewayARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CacheAttributes = structure(list(CacheStaleTimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$describe_gateway_information_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -591,6 +615,18 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$disassociate_file_system_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileSystemAssociationARN = structure(logical(0), tags = list(type = "string")), ForceDelete = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$disassociate_file_system_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileSystemAssociationARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$join_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DomainControllers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), UserName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
@@ -624,6 +660,18 @@ NULL
 .storagegateway$list_file_shares_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), NextMarker = structure(logical(0), tags = list(type = "string")), FileShareInfoList = structure(list(structure(list(FileShareType = structure(logical(0), tags = list(type = "string")), FileShareARN = structure(logical(0), tags = list(type = "string")), FileShareId = structure(logical(0), tags = list(type = "string")), FileShareStatus = structure(logical(0), tags = list(type = "string")), GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$list_file_system_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$list_file_system_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), NextMarker = structure(logical(0), tags = list(type = "string")), FileSystemAssociationSummaryList = structure(list(structure(list(FileSystemAssociationId = structure(logical(0), tags = list(type = "string")), FileSystemAssociationARN = structure(logical(0), tags = list(type = "string")), FileSystemAssociationStatus = structure(logical(0), tags = list(type = "string")), GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -900,6 +948,18 @@ NULL
 .storagegateway$update_chap_credentials_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TargetARN = structure(logical(0), tags = list(type = "string")), InitiatorName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$update_file_system_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileSystemAssociationARN = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuditDestinationARN = structure(logical(0), tags = list(type = "string")), CacheAttributes = structure(list(CacheStaleTimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$update_file_system_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileSystemAssociationARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

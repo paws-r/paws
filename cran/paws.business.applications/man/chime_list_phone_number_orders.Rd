@@ -17,7 +17,7 @@ A list with the following syntax:\preformatted{list(
   PhoneNumberOrders = list(
     list(
       PhoneNumberOrderId = "string",
-      ProductType = "BusinessCalling"|"VoiceConnector",
+      ProductType = "BusinessCalling"|"VoiceConnector"|"SipMediaApplicationDialIn",
       Status = "Processing"|"Successful"|"Failed"|"Partial",
       OrderedPhoneNumbers = list(
         list(

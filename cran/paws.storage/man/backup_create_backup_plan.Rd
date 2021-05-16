@@ -72,7 +72,8 @@ plan that already exists, an \code{AlreadyExistsException} is returned.
             ),
             DestinationBackupVaultArn = "string"
           )
-        )
+        ),
+        EnableContinuousBackup = TRUE|FALSE
       )
     ),
     AdvancedBackupSettings = list(

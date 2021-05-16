@@ -7,7 +7,7 @@
 gamelift_delete_vpc_peering_connection(FleetId, VpcPeeringConnectionId)
 }
 \arguments{
-\item{FleetId}{[required] A unique identifier for a fleet. This fleet specified must match the
+\item{FleetId}{[required] A unique identifier for the fleet. This fleet specified must match the
 fleet referenced in the VPC peering connection record. You can use
 either the fleet ID or ARN value.}
 
@@ -30,14 +30,21 @@ Once a valid authorization exists, call this operation from the AWS
 account that is used to manage the Amazon GameLift fleets. Identify the
 connection to delete by the connection ID and fleet ID. If successful,
 the connection is removed.
-\itemize{
-\item \code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
-\item \code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
-\item \code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
-\item \code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
-\item \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
-\item \code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
+|
+\code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
+|
+\code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
+|
+\code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
+|
+\code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
+|
+\code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_vpc_peering_connection(

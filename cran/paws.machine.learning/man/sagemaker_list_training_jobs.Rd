@@ -61,6 +61,25 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Lists training jobs.
+
+When \code{StatusEquals} and \code{MaxResults} are set at the same time, the
+\code{MaxResults} number of training jobs are first retrieved ignoring the
+\code{StatusEquals} parameter and then they are filtered by the
+\code{StatusEquals} parameter, which is returned as a response.
+
+For example, if \code{\link[=sagemaker_list_training_jobs]{list_training_jobs}} is
+invoked with the following parameters:
+
+\verb{\{ ... MaxResults: 100, StatusEquals: InProgress ... \}}
+
+First, 100 trainings jobs with any status, including those other than
+\code{InProgress}, are selected (sorted according to the creation time, from
+the most current to the oldest). Next, those with a status of
+\code{InProgress} are returned.
+
+You can quickly test the API using the following AWS CLI code.
+
+\verb{aws sagemaker list-training-jobs --max-results 100 --status-equals InProgress}
 }
 \section{Request syntax}{
 \preformatted{svc$list_training_jobs(

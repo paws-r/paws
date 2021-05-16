@@ -21,7 +21,7 @@ SDKs, this field is calculated automatically.}
 
 \item{Token}{A token to allow Object Lock to be enabled for an existing bucket.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -34,8 +34,8 @@ more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html}{Replication}
 in the \emph{Amazon S3 Developer Guide}.
 
-To perform this operation, the user or role performing the operation
-must have the
+To perform this operation, the user or role performing the action must
+have the
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html}{iam:PassRole}
 permission.
 

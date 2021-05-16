@@ -6,7 +6,7 @@
 \usage{
 quicksight_update_data_set(AwsAccountId, DataSetId, Name,
   PhysicalTableMap, LogicalTableMap, ImportMode, ColumnGroups,
-  RowLevelPermissionDataSet, ColumnLevelPermissionRules)
+  FieldFolders, RowLevelPermissionDataSet, ColumnLevelPermissionRules)
 }
 \arguments{
 \item{AwsAccountId}{[required] The AWS account ID.}
@@ -26,6 +26,8 @@ physical tables.}
 
 \item{ColumnGroups}{Groupings of columns that work together in certain QuickSight features.
 Currently, only geospatial hierarchy is supported.}
+
+\item{FieldFolders}{The folder that contains fields and nested subfolders for your dataset.}
 
 \item{RowLevelPermissionDataSet}{The row-level security configuration for the data you want to create.}
 
@@ -163,6 +165,14 @@ Updates a dataset.
         Columns = list(
           "string"
         )
+      )
+    )
+  ),
+  FieldFolders = list(
+    list(
+      description = "string",
+      columns = list(
+        "string"
       )
     )
   ),

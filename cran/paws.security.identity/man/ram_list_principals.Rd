@@ -17,12 +17,21 @@ ram_list_principals(resourceOwner, resourceArn, principals,
 
 \item{resourceType}{The resource type.
 
-Valid values: \code{codebuild:Project} | \code{codebuild:ReportGroup} |
-\code{ec2:CapacityReservation} | \code{ec2:DedicatedHost} | \code{ec2:Subnet} |
+Valid values: \code{acm-pca:CertificateAuthority} | \code{appmesh:Mesh} |
+\code{codebuild:Project} | \code{codebuild:ReportGroup} |
+\code{ec2:CapacityReservation} | \code{ec2:DedicatedHost} |
+\code{ec2:LocalGatewayRouteTable} | \code{ec2:PrefixList} | \code{ec2:Subnet} |
 \code{ec2:TrafficMirrorTarget} | \code{ec2:TransitGateway} |
 \code{imagebuilder:Component} | \code{imagebuilder:Image} |
-\code{imagebuilder:ImageRecipe} | \code{license-manager:LicenseConfiguration} I
-\code{resource-groups:Group} | \code{rds:Cluster} | \code{route53resolver:ResolverRule}}
+\code{imagebuilder:ImageRecipe} | \code{imagebuilder:ContainerRecipe} |
+\code{glue:Catalog} | \code{glue:Database} | \code{glue:Table} |
+\code{license-manager:LicenseConfiguration} I
+\code{network-firewall:FirewallPolicy} | \code{network-firewall:StatefulRuleGroup}
+| \code{network-firewall:StatelessRuleGroup} | \code{outposts:Outpost} |
+\code{resource-groups:Group} | \code{rds:Cluster} |
+\code{route53resolver:FirewallRuleGroup}
+|\code{route53resolver:ResolverQueryLogConfig} |
+\code{route53resolver:ResolverRule}}
 
 \item{resourceShareArns}{The Amazon Resource Names (ARN) of the resource shares.}
 

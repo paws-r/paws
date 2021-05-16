@@ -14,7 +14,7 @@ entries.}
 \code{\link[=batch_describe_job_queues]{describe_job_queues}} in paginated output.
 When this parameter is used,
 \code{\link[=batch_describe_job_queues]{describe_job_queues}} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
+\code{maxResults} results in a single page and a \code{nextToken} response
 element. The remaining results of the initial request can be seen by
 sending another \code{\link[=batch_describe_job_queues]{describe_job_queues}}
 request with the returned \code{nextToken} value. This value can be between 1

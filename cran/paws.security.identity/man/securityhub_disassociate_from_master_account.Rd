@@ -2,8 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disassociate_from_master_account}
 \alias{securityhub_disassociate_from_master_account}
-\title{Disassociates the current Security Hub member account from the
-associated master account}
+\title{This method is deprecated}
 \usage{
 securityhub_disassociate_from_master_account()
 }
@@ -11,13 +10,28 @@ securityhub_disassociate_from_master_account()
 An empty list.
 }
 \description{
+This method is deprecated. Instead, use
+\code{\link[=securityhub_disassociate_from_administrator_account]{disassociate_from_administrator_account}}.
+
+The Security Hub console continues to use
+\code{\link[=securityhub_disassociate_from_master_account]{disassociate_from_master_account}}.
+It will eventually change to use
+\code{\link[=securityhub_disassociate_from_administrator_account]{disassociate_from_administrator_account}}.
+Any IAM policies that specifically control access to this function must
+continue to use
+\code{\link[=securityhub_disassociate_from_master_account]{disassociate_from_master_account}}.
+You should also add
+\code{\link[=securityhub_disassociate_from_administrator_account]{disassociate_from_administrator_account}}
+to your policies to ensure that the correct permissions are in place
+after the console begins to use
+\code{\link[=securityhub_disassociate_from_administrator_account]{disassociate_from_administrator_account}}.
+
 Disassociates the current Security Hub member account from the
-associated master account.
+associated administrator account.
 
 This operation is only used by accounts that are not part of an
-organization. For organization accounts, only the master account (the
-designated Security Hub administrator) can disassociate a member
-account.
+organization. For organization accounts, only the administrator account
+can disassociate a member account.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_from_master_account()

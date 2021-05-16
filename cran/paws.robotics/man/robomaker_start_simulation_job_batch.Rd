@@ -66,7 +66,25 @@ A list with the following syntax:\preformatted{list(
                 )
               ),
               streamUI = TRUE|FALSE
-            )
+            ),
+            uploadConfigurations = list(
+              list(
+                name = "string",
+                path = "string",
+                uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+              )
+            ),
+            useDefaultUploadConfigurations = TRUE|FALSE,
+            tools = list(
+              list(
+                streamUI = TRUE|FALSE,
+                name = "string",
+                command = "string",
+                streamOutputToCloudWatch = TRUE|FALSE,
+                exitBehavior = "FAIL"|"RESTART"
+              )
+            ),
+            useDefaultTools = TRUE|FALSE
           )
         ),
         simulationApplications = list(
@@ -90,11 +108,29 @@ A list with the following syntax:\preformatted{list(
               ),
               streamUI = TRUE|FALSE
             ),
+            uploadConfigurations = list(
+              list(
+                name = "string",
+                path = "string",
+                uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+              )
+            ),
             worldConfigs = list(
               list(
                 world = "string"
               )
-            )
+            ),
+            useDefaultUploadConfigurations = TRUE|FALSE,
+            tools = list(
+              list(
+                streamUI = TRUE|FALSE,
+                name = "string",
+                command = "string",
+                streamOutputToCloudWatch = TRUE|FALSE,
+                exitBehavior = "FAIL"|"RESTART"
+              )
+            ),
+            useDefaultTools = TRUE|FALSE
           )
         ),
         dataSources = list(
@@ -123,7 +159,7 @@ A list with the following syntax:\preformatted{list(
         )
       ),
       failureReason = "string",
-      failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+      failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"RobotApplicationHealthCheckFailure"|"SimulationApplicationHealthCheckFailure"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"ThrottlingError"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication"|"UploadContentMismatchError",
       failedAt = as.POSIXct(
         "2015-01-01"
       )
@@ -162,7 +198,25 @@ A list with the following syntax:\preformatted{list(
               )
             ),
             streamUI = TRUE|FALSE
-          )
+          ),
+          uploadConfigurations = list(
+            list(
+              name = "string",
+              path = "string",
+              uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+            )
+          ),
+          useDefaultUploadConfigurations = TRUE|FALSE,
+          tools = list(
+            list(
+              streamUI = TRUE|FALSE,
+              name = "string",
+              command = "string",
+              streamOutputToCloudWatch = TRUE|FALSE,
+              exitBehavior = "FAIL"|"RESTART"
+            )
+          ),
+          useDefaultTools = TRUE|FALSE
         )
       ),
       simulationApplications = list(
@@ -186,11 +240,29 @@ A list with the following syntax:\preformatted{list(
             ),
             streamUI = TRUE|FALSE
           ),
+          uploadConfigurations = list(
+            list(
+              name = "string",
+              path = "string",
+              uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+            )
+          ),
           worldConfigs = list(
             list(
               world = "string"
             )
-          )
+          ),
+          useDefaultUploadConfigurations = TRUE|FALSE,
+          tools = list(
+            list(
+              streamUI = TRUE|FALSE,
+              name = "string",
+              command = "string",
+              streamOutputToCloudWatch = TRUE|FALSE,
+              exitBehavior = "FAIL"|"RESTART"
+            )
+          ),
+          useDefaultTools = TRUE|FALSE
         )
       ),
       dataSources = list(
@@ -288,7 +360,25 @@ more \code{SimulationJobRequest} objects.
               )
             ),
             streamUI = TRUE|FALSE
-          )
+          ),
+          uploadConfigurations = list(
+            list(
+              name = "string",
+              path = "string",
+              uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+            )
+          ),
+          useDefaultUploadConfigurations = TRUE|FALSE,
+          tools = list(
+            list(
+              streamUI = TRUE|FALSE,
+              name = "string",
+              command = "string",
+              streamOutputToCloudWatch = TRUE|FALSE,
+              exitBehavior = "FAIL"|"RESTART"
+            )
+          ),
+          useDefaultTools = TRUE|FALSE
         )
       ),
       simulationApplications = list(
@@ -312,11 +402,29 @@ more \code{SimulationJobRequest} objects.
             ),
             streamUI = TRUE|FALSE
           ),
+          uploadConfigurations = list(
+            list(
+              name = "string",
+              path = "string",
+              uploadBehavior = "UPLOAD_ON_TERMINATE"|"UPLOAD_ROLLING_AUTO_REMOVE"
+            )
+          ),
           worldConfigs = list(
             list(
               world = "string"
             )
-          )
+          ),
+          useDefaultUploadConfigurations = TRUE|FALSE,
+          tools = list(
+            list(
+              streamUI = TRUE|FALSE,
+              name = "string",
+              command = "string",
+              streamOutputToCloudWatch = TRUE|FALSE,
+              exitBehavior = "FAIL"|"RESTART"
+            )
+          ),
+          useDefaultTools = TRUE|FALSE
         )
       ),
       dataSources = list(

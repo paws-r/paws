@@ -2,8 +2,8 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_get_checker_ip_ranges}
 \alias{route53_get_checker_ip_ranges}
-\title{GetCheckerIpRanges still works, but we recommend that you download
-ip-ranges}
+\title{Route 53 does not perform authorization for this API because it
+retrieves information that is already available to the public}
 \usage{
 route53_get_checker_ip_ranges()
 }
@@ -16,6 +16,9 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
+Route 53 does not perform authorization for this API because it
+retrieves information that is already available to the public.
+
 \code{\link[=route53_get_checker_ip_ranges]{get_checker_ip_ranges}} still works,
 but we recommend that you download ip-ranges.json, which includes IP
 address ranges for all AWS services. For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html}{IP Address Ranges of Amazon Route 53 Servers}

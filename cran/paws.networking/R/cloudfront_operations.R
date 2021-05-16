@@ -399,6 +399,15 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'             )
 #'           )
 #'         ),
+#'         FunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               FunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'             )
+#'           )
+#'         ),
 #'         FieldLevelEncryptionId = "string",
 #'         RealtimeLogConfigArn = "string",
 #'         CachePolicyId = "string",
@@ -473,6 +482,15 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'                   LambdaFunctionARN = "string",
 #'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   FunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'                 )
 #'               )
 #'             ),
@@ -682,6 +700,15 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'           )
 #'         )
 #'       ),
+#'       FunctionAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             FunctionARN = "string",
+#'             EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'           )
+#'         )
+#'       ),
 #'       FieldLevelEncryptionId = "string",
 #'       RealtimeLogConfigArn = "string",
 #'       CachePolicyId = "string",
@@ -756,6 +783,15 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'                 LambdaFunctionARN = "string",
 #'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 FunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'               )
 #'             )
 #'           ),
@@ -1026,6 +1062,15 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'             )
 #'           )
 #'         ),
+#'         FunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               FunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'             )
+#'           )
+#'         ),
 #'         FieldLevelEncryptionId = "string",
 #'         RealtimeLogConfigArn = "string",
 #'         CachePolicyId = "string",
@@ -1100,6 +1145,15 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'                   LambdaFunctionARN = "string",
 #'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   FunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'                 )
 #'               )
 #'             ),
@@ -1310,6 +1364,15 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'             )
 #'           )
 #'         ),
+#'         FunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               FunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'             )
+#'           )
+#'         ),
 #'         FieldLevelEncryptionId = "string",
 #'         RealtimeLogConfigArn = "string",
 #'         CachePolicyId = "string",
@@ -1384,6 +1447,15 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'                   LambdaFunctionARN = "string",
 #'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   FunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'                 )
 #'               )
 #'             ),
@@ -1696,6 +1768,96 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
   return(response)
 }
 .cloudfront$operations$create_field_level_encryption_profile <- cloudfront_create_field_level_encryption_profile
+
+#' Creates a CloudFront function
+#'
+#' @description
+#' Creates a CloudFront function.
+#' 
+#' To create a function, you provide the function code and some
+#' configuration information about the function. The response contains an
+#' Amazon Resource Name (ARN) that uniquely identifies the function.
+#' 
+#' When you create a function, it’s in the `DEVELOPMENT` stage. In this
+#' stage, you can test the function with
+#' [`test_function`][cloudfront_test_function], and update it with
+#' [`update_function`][cloudfront_update_function].
+#' 
+#' When you’re ready to use your function with a CloudFront distribution,
+#' use [`publish_function`][cloudfront_publish_function] to copy the
+#' function from the `DEVELOPMENT` stage to `LIVE`. When it’s live, you can
+#' attach the function to a distribution’s cache behavior, using the
+#' function’s ARN.
+#'
+#' @usage
+#' cloudfront_create_function(Name, FunctionConfig, FunctionCode)
+#'
+#' @param Name &#91;required&#93; A name to identify the function.
+#' @param FunctionConfig &#91;required&#93; Configuration information about the function, including an optional
+#' comment and the function’s runtime.
+#' @param FunctionCode &#91;required&#93; The function code. For more information about writing a CloudFront
+#' function, see [Writing function code for CloudFront
+#' Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html)
+#' in the *Amazon CloudFront Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FunctionSummary = list(
+#'     Name = "string",
+#'     Status = "string",
+#'     FunctionConfig = list(
+#'       Comment = "string",
+#'       Runtime = "cloudfront-js-1.0"
+#'     ),
+#'     FunctionMetadata = list(
+#'       FunctionARN = "string",
+#'       Stage = "DEVELOPMENT"|"LIVE",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_function(
+#'   Name = "string",
+#'   FunctionConfig = list(
+#'     Comment = "string",
+#'     Runtime = "cloudfront-js-1.0"
+#'   ),
+#'   FunctionCode = raw
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_function
+cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode) {
+  op <- new_operation(
+    name = "CreateFunction",
+    http_method = "POST",
+    http_path = "/2020-05-31/function",
+    paginator = list()
+  )
+  input <- .cloudfront$create_function_input(Name = Name, FunctionConfig = FunctionConfig, FunctionCode = FunctionCode)
+  output <- .cloudfront$create_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_function <- cloudfront_create_function
 
 #' Create a new invalidation
 #'
@@ -2711,6 +2873,59 @@ cloudfront_delete_field_level_encryption_profile <- function(Id, IfMatch = NULL)
 }
 .cloudfront$operations$delete_field_level_encryption_profile <- cloudfront_delete_field_level_encryption_profile
 
+#' Deletes a CloudFront function
+#'
+#' @description
+#' Deletes a CloudFront function.
+#' 
+#' You cannot delete a function if it’s associated with a cache behavior.
+#' First, update your distributions to remove the function association from
+#' all cache behaviors, then delete the function.
+#' 
+#' To delete a function, you must provide the function’s name and version
+#' (`ETag` value). To get these values, you can use
+#' [`list_functions`][cloudfront_list_functions] and
+#' [`describe_function`][cloudfront_describe_function].
+#'
+#' @usage
+#' cloudfront_delete_function(Name, IfMatch)
+#'
+#' @param Name &#91;required&#93; The name of the function that you are deleting.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the function that you are
+#' deleting, which you can get using
+#' [`describe_function`][cloudfront_describe_function].
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_function(
+#'   Name = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_function
+cloudfront_delete_function <- function(Name, IfMatch) {
+  op <- new_operation(
+    name = "DeleteFunction",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/function/{Name}",
+    paginator = list()
+  )
+  input <- .cloudfront$delete_function_input(Name = Name, IfMatch = IfMatch)
+  output <- .cloudfront$delete_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_function <- cloudfront_delete_function
+
 #' Deletes a key group
 #'
 #' @description
@@ -3044,6 +3259,78 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
   return(response)
 }
 .cloudfront$operations$delete_streaming_distribution <- cloudfront_delete_streaming_distribution
+
+#' Gets configuration information and metadata about a CloudFront function,
+#' but not the function’s code
+#'
+#' @description
+#' Gets configuration information and metadata about a CloudFront function,
+#' but not the function’s code. To get a function’s code, use
+#' [`get_function`][cloudfront_get_function].
+#' 
+#' To get configuration information and metadata about a function, you must
+#' provide the function’s name and stage. To get these values, you can use
+#' [`list_functions`][cloudfront_list_functions].
+#'
+#' @usage
+#' cloudfront_describe_function(Name, Stage)
+#'
+#' @param Name &#91;required&#93; The name of the function that you are getting information about.
+#' @param Stage The function’s stage, either `DEVELOPMENT` or `LIVE`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FunctionSummary = list(
+#'     Name = "string",
+#'     Status = "string",
+#'     FunctionConfig = list(
+#'       Comment = "string",
+#'       Runtime = "cloudfront-js-1.0"
+#'     ),
+#'     FunctionMetadata = list(
+#'       FunctionARN = "string",
+#'       Stage = "DEVELOPMENT"|"LIVE",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_function(
+#'   Name = "string",
+#'   Stage = "DEVELOPMENT"|"LIVE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_describe_function
+cloudfront_describe_function <- function(Name, Stage = NULL) {
+  op <- new_operation(
+    name = "DescribeFunction",
+    http_method = "GET",
+    http_path = "/2020-05-31/function/{Name}/describe",
+    paginator = list()
+  )
+  input <- .cloudfront$describe_function_input(Name = Name, Stage = Stage)
+  output <- .cloudfront$describe_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$describe_function <- cloudfront_describe_function
 
 #' Gets a cache policy, including the following metadata:
 #'
@@ -3518,6 +3805,15 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 #'             )
 #'           )
 #'         ),
+#'         FunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               FunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'             )
+#'           )
+#'         ),
 #'         FieldLevelEncryptionId = "string",
 #'         RealtimeLogConfigArn = "string",
 #'         CachePolicyId = "string",
@@ -3592,6 +3888,15 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 #'                   LambdaFunctionARN = "string",
 #'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   FunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'                 )
 #'               )
 #'             ),
@@ -3839,6 +4144,15 @@ cloudfront_get_distribution <- function(Id) {
 #'           )
 #'         )
 #'       ),
+#'       FunctionAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             FunctionARN = "string",
+#'             EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'           )
+#'         )
+#'       ),
 #'       FieldLevelEncryptionId = "string",
 #'       RealtimeLogConfigArn = "string",
 #'       CachePolicyId = "string",
@@ -3913,6 +4227,15 @@ cloudfront_get_distribution <- function(Id) {
 #'                 LambdaFunctionARN = "string",
 #'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 FunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'               )
 #'             )
 #'           ),
@@ -4313,6 +4636,61 @@ cloudfront_get_field_level_encryption_profile_config <- function(Id) {
   return(response)
 }
 .cloudfront$operations$get_field_level_encryption_profile_config <- cloudfront_get_field_level_encryption_profile_config
+
+#' Gets the code of a CloudFront function
+#'
+#' @description
+#' Gets the code of a CloudFront function. To get configuration information
+#' and metadata about a function, use
+#' [`describe_function`][cloudfront_describe_function].
+#' 
+#' To get a function’s code, you must provide the function’s name and
+#' stage. To get these values, you can use
+#' [`list_functions`][cloudfront_list_functions].
+#'
+#' @usage
+#' cloudfront_get_function(Name, Stage)
+#'
+#' @param Name &#91;required&#93; The name of the function whose code you are getting.
+#' @param Stage The function’s stage, either `DEVELOPMENT` or `LIVE`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FunctionCode = raw,
+#'   ETag = "string",
+#'   ContentType = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_function(
+#'   Name = "string",
+#'   Stage = "DEVELOPMENT"|"LIVE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_function
+cloudfront_get_function <- function(Name, Stage = NULL) {
+  op <- new_operation(
+    name = "GetFunction",
+    http_method = "GET",
+    http_path = "/2020-05-31/function/{Name}",
+    paginator = list()
+  )
+  input <- .cloudfront$get_function_input(Name = Name, Stage = Stage)
+  output <- .cloudfront$get_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_function <- cloudfront_get_function
 
 #' Get the information about an invalidation
 #'
@@ -5434,6 +5812,15 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 #'               )
 #'             )
 #'           ),
+#'           FunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 FunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'               )
+#'             )
+#'           ),
 #'           FieldLevelEncryptionId = "string",
 #'           RealtimeLogConfigArn = "string",
 #'           CachePolicyId = "string",
@@ -5508,6 +5895,15 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 #'                     LambdaFunctionARN = "string",
 #'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                     IncludeBody = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               FunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     FunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'                   )
 #'                 )
 #'               ),
@@ -6003,6 +6399,15 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'               )
 #'             )
 #'           ),
+#'           FunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 FunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'               )
+#'             )
+#'           ),
 #'           FieldLevelEncryptionId = "string",
 #'           RealtimeLogConfigArn = "string",
 #'           CachePolicyId = "string",
@@ -6077,6 +6482,15 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'                     LambdaFunctionARN = "string",
 #'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                     IncludeBody = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               FunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     FunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'                   )
 #'                 )
 #'               ),
@@ -6344,6 +6758,15 @@ cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, 
 #'               )
 #'             )
 #'           ),
+#'           FunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 FunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'               )
+#'             )
+#'           ),
 #'           FieldLevelEncryptionId = "string",
 #'           RealtimeLogConfigArn = "string",
 #'           CachePolicyId = "string",
@@ -6418,6 +6841,15 @@ cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, 
 #'                     LambdaFunctionARN = "string",
 #'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                     IncludeBody = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               FunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     FunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'                   )
 #'                 )
 #'               ),
@@ -6705,6 +7137,94 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
   return(response)
 }
 .cloudfront$operations$list_field_level_encryption_profiles <- cloudfront_list_field_level_encryption_profiles
+
+#' Gets a list of all CloudFront functions in your AWS account
+#'
+#' @description
+#' Gets a list of all CloudFront functions in your AWS account.
+#' 
+#' You can optionally apply a filter to return only the functions that are
+#' in the specified stage, either `DEVELOPMENT` or `LIVE`.
+#' 
+#' You can optionally specify the maximum number of items to receive in the
+#' response. If the total number of items in the list exceeds the maximum
+#' that you specify, or the default maximum, the response is paginated. To
+#' get the next page of items, send a subsequent request that specifies the
+#' `NextMarker` value from the current response as the `Marker` value in
+#' the subsequent request.
+#'
+#' @usage
+#' cloudfront_list_functions(Marker, MaxItems, Stage)
+#'
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list of functions. The response includes functions in the list that
+#' occur after the marker. To get the next page of the list, set this
+#' field’s value to the value of `NextMarker` from the current page’s
+#' response.
+#' @param MaxItems The maximum number of functions that you want in the response.
+#' @param Stage An optional filter to return only the functions that are in the
+#' specified stage, either `DEVELOPMENT` or `LIVE`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FunctionList = list(
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Name = "string",
+#'         Status = "string",
+#'         FunctionConfig = list(
+#'           Comment = "string",
+#'           Runtime = "cloudfront-js-1.0"
+#'         ),
+#'         FunctionMetadata = list(
+#'           FunctionARN = "string",
+#'           Stage = "DEVELOPMENT"|"LIVE",
+#'           CreatedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_functions(
+#'   Marker = "string",
+#'   MaxItems = "string",
+#'   Stage = "DEVELOPMENT"|"LIVE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_functions
+cloudfront_list_functions <- function(Marker = NULL, MaxItems = NULL, Stage = NULL) {
+  op <- new_operation(
+    name = "ListFunctions",
+    http_method = "GET",
+    http_path = "/2020-05-31/function",
+    paginator = list()
+  )
+  input <- .cloudfront$list_functions_input(Marker = Marker, MaxItems = MaxItems, Stage = Stage)
+  output <- .cloudfront$list_functions_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_functions <- cloudfront_list_functions
 
 #' Lists invalidation batches
 #'
@@ -7258,6 +7778,85 @@ cloudfront_list_tags_for_resource <- function(Resource) {
 }
 .cloudfront$operations$list_tags_for_resource <- cloudfront_list_tags_for_resource
 
+#' Publishes a CloudFront function by copying the function code from the
+#' DEVELOPMENT stage to LIVE
+#'
+#' @description
+#' Publishes a CloudFront function by copying the function code from the
+#' `DEVELOPMENT` stage to `LIVE`. This automatically updates all cache
+#' behaviors that are using this function to use the newly published copy
+#' in the `LIVE` stage.
+#' 
+#' When a function is published to the `LIVE` stage, you can attach the
+#' function to a distribution’s cache behavior, using the function’s Amazon
+#' Resource Name (ARN).
+#' 
+#' To publish a function, you must provide the function’s name and version
+#' (`ETag` value). To get these values, you can use
+#' [`list_functions`][cloudfront_list_functions] and
+#' [`describe_function`][cloudfront_describe_function].
+#'
+#' @usage
+#' cloudfront_publish_function(Name, IfMatch)
+#'
+#' @param Name &#91;required&#93; The name of the function that you are publishing.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the function that you are
+#' publishing, which you can get using
+#' [`describe_function`][cloudfront_describe_function].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FunctionSummary = list(
+#'     Name = "string",
+#'     Status = "string",
+#'     FunctionConfig = list(
+#'       Comment = "string",
+#'       Runtime = "cloudfront-js-1.0"
+#'     ),
+#'     FunctionMetadata = list(
+#'       FunctionARN = "string",
+#'       Stage = "DEVELOPMENT"|"LIVE",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$publish_function(
+#'   Name = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_publish_function
+cloudfront_publish_function <- function(Name, IfMatch) {
+  op <- new_operation(
+    name = "PublishFunction",
+    http_method = "POST",
+    http_path = "/2020-05-31/function/{Name}/publish",
+    paginator = list()
+  )
+  input <- .cloudfront$publish_function_input(Name = Name, IfMatch = IfMatch)
+  output <- .cloudfront$publish_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$publish_function <- cloudfront_publish_function
+
 #' Add tags to a CloudFront resource
 #'
 #' @description
@@ -7306,6 +7905,103 @@ cloudfront_tag_resource <- function(Resource, Tags) {
   return(response)
 }
 .cloudfront$operations$tag_resource <- cloudfront_tag_resource
+
+#' Tests a CloudFront function
+#'
+#' @description
+#' Tests a CloudFront function.
+#' 
+#' To test a function, you provide an *event object* that represents an
+#' HTTP request or response that your CloudFront distribution could receive
+#' in production. CloudFront runs the function, passing it the event object
+#' that you provided, and returns the function’s result (the modified event
+#' object) in the response. The response also contains function logs and
+#' error messages, if any exist. For more information about testing
+#' functions, see [Testing
+#' functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/managing-functions.html#test-function)
+#' in the *Amazon CloudFront Developer Guide*.
+#' 
+#' To test a function, you provide the function’s name and version (`ETag`
+#' value) along with the event object. To get the function’s name and
+#' version, you can use [`list_functions`][cloudfront_list_functions] and
+#' [`describe_function`][cloudfront_describe_function].
+#'
+#' @usage
+#' cloudfront_test_function(Name, IfMatch, Stage, EventObject)
+#'
+#' @param Name &#91;required&#93; The name of the function that you are testing.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the function that you are testing,
+#' which you can get using
+#' [`describe_function`][cloudfront_describe_function].
+#' @param Stage The stage of the function that you are testing, either `DEVELOPMENT` or
+#' `LIVE`.
+#' @param EventObject &#91;required&#93; The event object to test the function with. For more information about
+#' the structure of the event object, see [Testing
+#' functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/managing-functions.html#test-function)
+#' in the *Amazon CloudFront Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TestResult = list(
+#'     FunctionSummary = list(
+#'       Name = "string",
+#'       Status = "string",
+#'       FunctionConfig = list(
+#'         Comment = "string",
+#'         Runtime = "cloudfront-js-1.0"
+#'       ),
+#'       FunctionMetadata = list(
+#'         FunctionARN = "string",
+#'         Stage = "DEVELOPMENT"|"LIVE",
+#'         CreatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ComputeUtilization = "string",
+#'     FunctionExecutionLogs = list(
+#'       "string"
+#'     ),
+#'     FunctionErrorMessage = "string",
+#'     FunctionOutput = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$test_function(
+#'   Name = "string",
+#'   IfMatch = "string",
+#'   Stage = "DEVELOPMENT"|"LIVE",
+#'   EventObject = raw
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_test_function
+cloudfront_test_function <- function(Name, IfMatch, Stage = NULL, EventObject) {
+  op <- new_operation(
+    name = "TestFunction",
+    http_method = "POST",
+    http_path = "/2020-05-31/function/{Name}/test",
+    paginator = list()
+  )
+  input <- .cloudfront$test_function_input(Name = Name, IfMatch = IfMatch, Stage = Stage, EventObject = EventObject)
+  output <- .cloudfront$test_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$test_function <- cloudfront_test_function
 
 #' Remove tags from a CloudFront resource
 #'
@@ -7810,6 +8506,15 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'             )
 #'           )
 #'         ),
+#'         FunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               FunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'             )
+#'           )
+#'         ),
 #'         FieldLevelEncryptionId = "string",
 #'         RealtimeLogConfigArn = "string",
 #'         CachePolicyId = "string",
@@ -7884,6 +8589,15 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'                   LambdaFunctionARN = "string",
 #'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   FunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'                 )
 #'               )
 #'             ),
@@ -8092,6 +8806,15 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'           )
 #'         )
 #'       ),
+#'       FunctionAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             FunctionARN = "string",
+#'             EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'           )
+#'         )
+#'       ),
 #'       FieldLevelEncryptionId = "string",
 #'       RealtimeLogConfigArn = "string",
 #'       CachePolicyId = "string",
@@ -8166,6 +8889,15 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'                 LambdaFunctionARN = "string",
 #'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
 #'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 FunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
 #'               )
 #'             )
 #'           ),
@@ -8479,6 +9211,91 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
   return(response)
 }
 .cloudfront$operations$update_field_level_encryption_profile <- cloudfront_update_field_level_encryption_profile
+
+#' Updates a CloudFront function
+#'
+#' @description
+#' Updates a CloudFront function.
+#' 
+#' You can update a function’s code or the comment that describes the
+#' function. You cannot update a function’s name.
+#' 
+#' To update a function, you provide the function’s name and version
+#' (`ETag` value) along with the updated function code. To get the name and
+#' version, you can use [`list_functions`][cloudfront_list_functions] and
+#' [`describe_function`][cloudfront_describe_function].
+#'
+#' @usage
+#' cloudfront_update_function(Name, IfMatch, FunctionConfig, FunctionCode)
+#'
+#' @param Name &#91;required&#93; The name of the function that you are updating.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the function that you are
+#' updating, which you can get using
+#' [`describe_function`][cloudfront_describe_function].
+#' @param FunctionConfig &#91;required&#93; Configuration information about the function.
+#' @param FunctionCode &#91;required&#93; The function code. For more information about writing a CloudFront
+#' function, see [Writing function code for CloudFront
+#' Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html)
+#' in the *Amazon CloudFront Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FunctionSummary = list(
+#'     Name = "string",
+#'     Status = "string",
+#'     FunctionConfig = list(
+#'       Comment = "string",
+#'       Runtime = "cloudfront-js-1.0"
+#'     ),
+#'     FunctionMetadata = list(
+#'       FunctionARN = "string",
+#'       Stage = "DEVELOPMENT"|"LIVE",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_function(
+#'   Name = "string",
+#'   IfMatch = "string",
+#'   FunctionConfig = list(
+#'     Comment = "string",
+#'     Runtime = "cloudfront-js-1.0"
+#'   ),
+#'   FunctionCode = raw
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_function
+cloudfront_update_function <- function(Name, IfMatch, FunctionConfig, FunctionCode) {
+  op <- new_operation(
+    name = "UpdateFunction",
+    http_method = "PUT",
+    http_path = "/2020-05-31/function/{Name}",
+    paginator = list()
+  )
+  input <- .cloudfront$update_function_input(Name = Name, IfMatch = IfMatch, FunctionConfig = FunctionConfig, FunctionCode = FunctionCode)
+  output <- .cloudfront$update_function_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_function <- cloudfront_update_function
 
 #' Updates a key group
 #'

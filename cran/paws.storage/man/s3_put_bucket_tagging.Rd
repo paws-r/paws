@@ -18,7 +18,7 @@ SDKs, this field is calculated automatically.}
 
 \item{Tagging}{[required] Container for the \code{TagSet} and \code{Tag} elements.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -63,7 +63,7 @@ and \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/aws-tag-r
 }
 \item Error code: \code{OperationAbortedError }
 \itemize{
-\item Description: A conflicting conditional operation is currently in
+\item Description: A conflicting conditional action is currently in
 progress against this resource. Please try again.
 }
 \item Error code: \code{InternalError}

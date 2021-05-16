@@ -8,7 +8,7 @@ codebuild_create_project(name, description, source, secondarySources,
   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
   cache, environment, serviceRole, timeoutInMinutes,
   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-  logsConfig, fileSystemLocations, buildBatchConfig)
+  logsConfig, fileSystemLocations, buildBatchConfig, concurrentBuildLimit)
 }
 \arguments{
 \item{name}{[required] The name of the build project.}
@@ -33,8 +33,8 @@ the default branch's HEAD commit ID is used.
 corresponds to the version of the source code you want to build. If
 a branch name is specified, the branch's HEAD commit ID is used. If
 not specified, the default branch's HEAD commit ID is used.
-\item For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object that represents the build input ZIP file to use.
+\item For Amazon S3: the version ID of the object that represents the
+build input ZIP file to use.
 }
 
 If \code{sourceVersion} is specified at the build level, then that version
@@ -96,6 +96,13 @@ file system created using Amazon Elastic File System.}
 
 \item{buildBatchConfig}{A ProjectBuildBatchConfig object that defines the batch build options
 for the project.}
+
+\item{concurrentBuildLimit}{The maximum number of concurrent builds that are allowed for this
+project.
+
+New builds are only started if the current number of builds is less than
+or equal to this limit. If the current build count meets this limit, new
+builds are throttled and are not run.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -161,7 +168,8 @@ A list with the following syntax:\preformatted{list(
       packaging = "NONE"|"ZIP",
       overrideArtifactName = TRUE|FALSE,
       encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
+      artifactIdentifier = "string",
+      bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
     ),
     secondaryArtifacts = list(
       list(
@@ -173,7 +181,8 @@ A list with the following syntax:\preformatted{list(
         packaging = "NONE"|"ZIP",
         overrideArtifactName = TRUE|FALSE,
         encryptionDisabled = TRUE|FALSE,
-        artifactIdentifier = "string"
+        artifactIdentifier = "string",
+        bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
       )
     ),
     cache = list(
@@ -259,7 +268,8 @@ A list with the following syntax:\preformatted{list(
       s3Logs = list(
         status = "ENABLED"|"DISABLED",
         location = "string",
-        encryptionDisabled = TRUE|FALSE
+        encryptionDisabled = TRUE|FALSE,
+        bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
       )
     ),
     fileSystemLocations = list(
@@ -281,7 +291,8 @@ A list with the following syntax:\preformatted{list(
         )
       ),
       timeoutInMins = 123
-    )
+    ),
+    concurrentBuildLimit = 123
   )
 )
 }
@@ -351,7 +362,8 @@ Creates a build project.
     packaging = "NONE"|"ZIP",
     overrideArtifactName = TRUE|FALSE,
     encryptionDisabled = TRUE|FALSE,
-    artifactIdentifier = "string"
+    artifactIdentifier = "string",
+    bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
   ),
   secondaryArtifacts = list(
     list(
@@ -363,7 +375,8 @@ Creates a build project.
       packaging = "NONE"|"ZIP",
       overrideArtifactName = TRUE|FALSE,
       encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
+      artifactIdentifier = "string",
+      bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
     )
   ),
   cache = list(
@@ -421,7 +434,8 @@ Creates a build project.
     s3Logs = list(
       status = "ENABLED"|"DISABLED",
       location = "string",
-      encryptionDisabled = TRUE|FALSE
+      encryptionDisabled = TRUE|FALSE,
+      bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
     )
   ),
   fileSystemLocations = list(
@@ -443,7 +457,8 @@ Creates a build project.
       )
     ),
     timeoutInMins = 123
-  )
+  ),
+  concurrentBuildLimit = 123
 )
 }
 }

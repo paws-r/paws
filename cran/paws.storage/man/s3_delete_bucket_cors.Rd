@@ -9,7 +9,7 @@ s3_delete_bucket_cors(Bucket, ExpectedBucketOwner)
 \arguments{
 \item{Bucket}{[required] Specifies the bucket whose \code{cors} configuration is being deleted.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -24,7 +24,7 @@ To use this operation, you must have permission to perform the
 default and can grant this permission to others.
 
 For information about \code{cors}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html}{Enabling Cross-Origin Resource Sharing}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
 \strong{Related Resources:}
 \itemize{

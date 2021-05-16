@@ -7,7 +7,7 @@
 chime_describe_app_instance(AppInstanceArn)
 }
 \arguments{
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

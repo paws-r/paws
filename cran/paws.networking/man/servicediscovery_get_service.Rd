@@ -28,6 +28,7 @@ A list with the following syntax:\preformatted{list(
         )
       )
     ),
+    Type = "HTTP"|"DNS_HTTP"|"DNS",
     HealthCheckConfig = list(
       Type = "HTTP"|"HTTPS"|"TCP",
       ResourcePath = "string",

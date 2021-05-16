@@ -15,7 +15,7 @@ elasticache_create_replication_group(ReplicationGroupId,
   PreferredMaintenanceWindow, Port, NotificationTopicArn,
   AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
   AuthToken, TransitEncryptionEnabled, AtRestEncryptionEnabled, KmsKeyId,
-  UserGroupIds)
+  UserGroupIds, LogDeliveryConfigurations)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The replication group identifier. This parameter is stored as a
@@ -30,7 +30,7 @@ Constraints:
 
 \item{ReplicationGroupDescription}{[required] A user-created description for the replication group.}
 
-\item{GlobalReplicationGroupId}{The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{The name of the Global datastore}
 
 \item{PrimaryClusterId}{The identifier of the cluster that serves as the primary for this
 replication group. This cluster must already exist and have a status of
@@ -120,9 +120,7 @@ previous generation counterparts.
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
 \code{cache.m6g.16xlarge}
 
-At this time, M6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{M5 node types:} \code{cache.m5.large}, \code{cache.m5.xlarge},
 \code{cache.m5.2xlarge}, \code{cache.m5.4xlarge}, \code{cache.m5.12xlarge},
@@ -163,9 +161,7 @@ eu-west-1 and ap-northeast-1.
 \code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
 \code{cache.r6g.16xlarge}
 
-At this time, R6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{R5 node types:} \code{cache.r5.large}, \code{cache.r5.xlarge},
 \code{cache.r5.2xlarge}, \code{cache.r5.4xlarge}, \code{cache.r5.12xlarge},
@@ -197,7 +193,7 @@ supported on Redis version 2.8.22 and later.
 }}
 
 \item{Engine}{The name of the cache engine to be used for the clusters in this
-replication group.}
+replication group. Must be Redis.}
 
 \item{EngineVersion}{The version number of the cache engine to be used for the clusters in
 this replication group. To view the supported cache engine versions, use
@@ -214,10 +210,6 @@ the earlier engine version.}
 \item{CacheParameterGroupName}{The name of the parameter group to associate with this replication
 group. If this argument is omitted, the default cache parameter group
 for the specified engine is used.
-
-If you are restoring to an engine version that is different than the
-original, you must specify the default version of that version. For
-example, \code{CacheParameterGroupName=default.redis4.0}.
 
 If you are running Redis version 3.2.4 or later, only one node group
 (shard), and want to use a default parameter group, we recommend that
@@ -244,10 +236,11 @@ group.
 Use this parameter only when you are creating a replication group in an
 Amazon Virtual Private Cloud (Amazon VPC).}
 
-\item{Tags}{A list of cost allocation tags to be added to this resource. Tags are
-comma-separated key,value pairs (e.g. Key=\code{myKey}, Value=\code{myKeyValue}.
-You can include multiple tags as shown following: Key=\code{myKey},
-Value=\code{myKeyValue} Key=\code{mySecondKey}, Value=\code{mySecondKeyValue}.}
+\item{Tags}{A list of tags to be added to this resource. Tags are comma-separated
+key,value pairs (e.g. Key=\code{myKey}, Value=\code{myKeyValue}. You can include
+multiple tags as shown following: Key=\code{myKey}, Value=\code{myKeyValue}
+Key=\code{mySecondKey}, Value=\code{mySecondKeyValue}. Tags on replication groups
+will be replicated to all nodes.}
 
 \item{SnapshotArns}{A list of Amazon Resource Names (ARN) that uniquely identify the Redis
 RDB snapshot files stored in Amazon S3. The snapshot files are used to
@@ -370,6 +363,8 @@ Default: \code{false}}
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the disk in the cluster.}
 
 \item{UserGroupIds}{The list of user groups to associate with the replication group.}
+
+\item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -396,6 +391,21 @@ A list with the following syntax:\preformatted{list(
         ),
         UserGroupIdsToRemove = list(
           "string"
+        )
+      ),
+      LogDeliveryConfigurations = list(
+        list(
+          LogType = "slow-log",
+          DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+          DestinationDetails = list(
+            CloudWatchLogsDetails = list(
+              LogGroup = "string"
+            ),
+            KinesisFirehoseDetails = list(
+              DeliveryStream = "string"
+            )
+          ),
+          LogFormat = "text"|"json"
         )
       )
     ),
@@ -454,6 +464,23 @@ A list with the following syntax:\preformatted{list(
     ARN = "string",
     UserGroupIds = list(
       "string"
+    ),
+    LogDeliveryConfigurations = list(
+      list(
+        LogType = "slow-log",
+        DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+        DestinationDetails = list(
+          CloudWatchLogsDetails = list(
+            LogGroup = "string"
+          ),
+          KinesisFirehoseDetails = list(
+            DeliveryStream = "string"
+          )
+        ),
+        LogFormat = "text"|"json",
+        Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+        Message = "string"
+      )
     )
   )
 )
@@ -464,19 +491,31 @@ Creates a Redis (cluster mode disabled) or a Redis (cluster mode
 enabled) replication group.
 
 This API can be used to create a standalone regional replication group
-or a secondary replication group associated with a Global Datastore.
+or a secondary replication group associated with a Global datastore.
 
 A Redis (cluster mode disabled) replication group is a collection of
 clusters, where one of the clusters is a read/write primary and the
 others are read-only replicas. Writes to the primary are asynchronously
 propagated to the replicas.
 
-A Redis (cluster mode enabled) replication group is a collection of 1 to
-90 node groups (shards). Each node group (shard) has one read/write
-primary node and up to 5 read-only replica nodes. Writes to the primary
-are asynchronously propagated to the replicas. Redis (cluster mode
-enabled) replication groups partition the data across node groups
-(shards).
+A Redis cluster-mode enabled cluster is comprised of from 1 to 90 shards
+(API/CLI: node groups). Each shard has a primary node and up to 5
+read-only replica nodes. The configuration can range from 90 shards and
+0 replicas to 15 shards and 5 replicas, which is the maximum number or
+replicas allowed.
+
+The node or shard limit can be increased to a maximum of 500 per cluster
+if the Redis engine version is 5.0.6 or higher. For example, you can
+choose to configure a 500 node cluster that ranges between 83 shards
+(one primary and 5 replicas per shard) and 500 shards (single primary
+and no replicas). Make sure there are enough available IP addresses to
+accommodate the increase. Common pitfalls include the subnets in the
+subnet group have too small a CIDR range or the subnets are shared and
+heavily used by other clusters. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.Creating.html}{Creating a Subnet Group}.
+For versions below 5.0.6, the limit is 250 per cluster.
+
+To request a limit increase, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{AWS Service Limits}
+and choose the limit type \strong{Nodes per cluster per instance type}.
 
 When a Redis (cluster mode disabled) replication group has been
 successfully created, you can add one or more read replicas to it, up to
@@ -549,6 +588,22 @@ This operation is valid for Redis only.
   KmsKeyId = "string",
   UserGroupIds = list(
     "string"
+  ),
+  LogDeliveryConfigurations = list(
+    list(
+      LogType = "slow-log",
+      DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+      DestinationDetails = list(
+        CloudWatchLogsDetails = list(
+          LogGroup = "string"
+        ),
+        KinesisFirehoseDetails = list(
+          DeliveryStream = "string"
+        )
+      ),
+      LogFormat = "text"|"json",
+      Enabled = TRUE|FALSE
+    )
   )
 )
 }

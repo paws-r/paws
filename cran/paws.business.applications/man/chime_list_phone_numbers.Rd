@@ -28,8 +28,9 @@ A list with the following syntax:\preformatted{list(
     list(
       PhoneNumberId = "string",
       E164PhoneNumber = "string",
+      Country = "string",
       Type = "Local"|"TollFree",
-      ProductType = "BusinessCalling"|"VoiceConnector",
+      ProductType = "BusinessCalling"|"VoiceConnector"|"SipMediaApplicationDialIn",
       Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
       Capabilities = list(
         InboundCall = TRUE|FALSE,
@@ -73,7 +74,7 @@ Connector group.
 \section{Request syntax}{
 \preformatted{svc$list_phone_numbers(
   Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
-  ProductType = "BusinessCalling"|"VoiceConnector",
+  ProductType = "BusinessCalling"|"VoiceConnector"|"SipMediaApplicationDialIn",
   FilterName = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId"|"SipRuleId",
   FilterValue = "string",
   MaxResults = 123,

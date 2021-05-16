@@ -29,6 +29,7 @@ A list with the following syntax:\preformatted{list(
       exportConfigType = "S3"|"NO_EXPORT",
       s3Destination = list(
         bucket = "string",
+        bucketOwner = "string",
         path = "string",
         packaging = "ZIP"|"NONE",
         encryptionKey = "string",
@@ -63,6 +64,7 @@ Creates a report group. A report group contains a collection of reports.
     exportConfigType = "S3"|"NO_EXPORT",
     s3Destination = list(
       bucket = "string",
+      bucketOwner = "string",
       path = "string",
       packaging = "ZIP"|"NONE",
       encryptionKey = "string",

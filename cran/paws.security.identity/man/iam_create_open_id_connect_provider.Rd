@@ -5,7 +5,8 @@
 \title{Creates an IAM entity to describe an identity provider (IdP) that
 supports OpenID Connect (OIDC)}
 \usage{
-iam_create_open_id_connect_provider(Url, ClientIDList, ThumbprintList)
+iam_create_open_id_connect_provider(Url, ClientIDList, ThumbprintList,
+  Tags)
 }
 \arguments{
 \item{Url}{[required] The URL of the identity provider. The URL must begin with \verb{https://} and
@@ -50,12 +51,27 @@ thumbprint string would be the hex-encoded SHA-1 hash value of the
 certificate used by https://keys.server.example.com.
 
 For more information about obtaining the OIDC provider's thumbprint, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html}{Obtaining the Thumbprint for an OpenID Connect Provider}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html}{Obtaining the thumbprint for an OpenID Connect provider}
 in the \emph{IAM User Guide}.}
+
+\item{Tags}{A list of tags that you want to attach to the new IAM OpenID Connect
+(OIDC) provider. Each tag consists of a key name and an associated
+value. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
+in the \emph{IAM User Guide}.
+
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
+created.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
-  OpenIDConnectProviderArn = "string"
+  OpenIDConnectProviderArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }
@@ -93,6 +109,12 @@ operation to highly privileged users.
   ),
   ThumbprintList = list(
     "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

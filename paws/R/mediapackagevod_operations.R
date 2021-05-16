@@ -3,6 +3,67 @@
 #' @include mediapackagevod_service.R
 NULL
 
+#' Changes the packaging group's properities to configure log subscription
+#'
+#' @description
+#' Changes the packaging group's properities to configure log subscription
+#'
+#' @usage
+#' mediapackagevod_configure_logs(EgressAccessLogs, Id)
+#'
+#' @param EgressAccessLogs 
+#' @param Id &#91;required&#93; The ID of a MediaPackage VOD PackagingGroup resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
+#'   DomainName = "string",
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   Id = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$configure_logs(
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackagevod_configure_logs
+mediapackagevod_configure_logs <- function(EgressAccessLogs = NULL, Id) {
+  op <- new_operation(
+    name = "ConfigureLogs",
+    http_method = "PUT",
+    http_path = "/packaging_groups/{id}/configure_logs",
+    paginator = list()
+  )
+  input <- .mediapackagevod$configure_logs_input(EgressAccessLogs = EgressAccessLogs, Id = Id)
+  output <- .mediapackagevod$configure_logs_output()
+  config <- get_config()
+  svc <- .mediapackagevod$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackagevod$operations$configure_logs <- mediapackagevod_configure_logs
+
 #' Creates a new MediaPackage VOD Asset resource
 #'
 #' @description
@@ -122,6 +183,7 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #'         )
 #'       )
 #'     ),
+#'     IncludeEncoderConfigurationInSegments = TRUE|FALSE,
 #'     SegmentDurationSeconds = 123
 #'   ),
 #'   DashPackage = list(
@@ -147,6 +209,7 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #'         Url = "string"
 #'       )
 #'     ),
+#'     IncludeEncoderConfigurationInSegments = TRUE|FALSE,
 #'     PeriodTriggers = list(
 #'       "ADS"
 #'     ),
@@ -239,6 +302,7 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #'         )
 #'       )
 #'     ),
+#'     IncludeEncoderConfigurationInSegments = TRUE|FALSE,
 #'     SegmentDurationSeconds = 123
 #'   ),
 #'   DashPackage = list(
@@ -264,6 +328,7 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #'         Url = "string"
 #'       )
 #'     ),
+#'     IncludeEncoderConfigurationInSegments = TRUE|FALSE,
 #'     PeriodTriggers = list(
 #'       "ADS"
 #'     ),
@@ -355,9 +420,11 @@ mediapackagevod_create_packaging_configuration <- function(CmafPackage = NULL, D
 #' Creates a new MediaPackage VOD PackagingGroup resource.
 #'
 #' @usage
-#' mediapackagevod_create_packaging_group(Authorization, Id, Tags)
+#' mediapackagevod_create_packaging_group(Authorization, EgressAccessLogs,
+#'   Id, Tags)
 #'
 #' @param Authorization 
+#' @param EgressAccessLogs 
 #' @param Id &#91;required&#93; The ID of the PackagingGroup.
 #' @param Tags 
 #'
@@ -371,6 +438,9 @@ mediapackagevod_create_packaging_configuration <- function(CmafPackage = NULL, D
 #'     SecretsRoleArn = "string"
 #'   ),
 #'   DomainName = "string",
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
 #'   Id = "string",
 #'   Tags = list(
 #'     "string"
@@ -385,6 +455,9 @@ mediapackagevod_create_packaging_configuration <- function(CmafPackage = NULL, D
 #'     CdnIdentifierSecret = "string",
 #'     SecretsRoleArn = "string"
 #'   ),
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
 #'   Id = "string",
 #'   Tags = list(
 #'     "string"
@@ -395,14 +468,14 @@ mediapackagevod_create_packaging_configuration <- function(CmafPackage = NULL, D
 #' @keywords internal
 #'
 #' @rdname mediapackagevod_create_packaging_group
-mediapackagevod_create_packaging_group <- function(Authorization = NULL, Id, Tags = NULL) {
+mediapackagevod_create_packaging_group <- function(Authorization = NULL, EgressAccessLogs = NULL, Id, Tags = NULL) {
   op <- new_operation(
     name = "CreatePackagingGroup",
     http_method = "POST",
     http_path = "/packaging_groups",
     paginator = list()
   )
-  input <- .mediapackagevod$create_packaging_group_input(Authorization = Authorization, Id = Id, Tags = Tags)
+  input <- .mediapackagevod$create_packaging_group_input(Authorization = Authorization, EgressAccessLogs = EgressAccessLogs, Id = Id, Tags = Tags)
   output <- .mediapackagevod$create_packaging_group_output()
   config <- get_config()
   svc <- .mediapackagevod$service(config)
@@ -634,6 +707,7 @@ mediapackagevod_describe_asset <- function(Id) {
 #'         )
 #'       )
 #'     ),
+#'     IncludeEncoderConfigurationInSegments = TRUE|FALSE,
 #'     SegmentDurationSeconds = 123
 #'   ),
 #'   DashPackage = list(
@@ -659,6 +733,7 @@ mediapackagevod_describe_asset <- function(Id) {
 #'         Url = "string"
 #'       )
 #'     ),
+#'     IncludeEncoderConfigurationInSegments = TRUE|FALSE,
 #'     PeriodTriggers = list(
 #'       "ADS"
 #'     ),
@@ -771,6 +846,9 @@ mediapackagevod_describe_packaging_configuration <- function(Id) {
 #'     SecretsRoleArn = "string"
 #'   ),
 #'   DomainName = "string",
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
 #'   Id = "string",
 #'   Tags = list(
 #'     "string"
@@ -916,6 +994,7 @@ mediapackagevod_list_assets <- function(MaxResults = NULL, NextToken = NULL, Pac
 #'             )
 #'           )
 #'         ),
+#'         IncludeEncoderConfigurationInSegments = TRUE|FALSE,
 #'         SegmentDurationSeconds = 123
 #'       ),
 #'       DashPackage = list(
@@ -941,6 +1020,7 @@ mediapackagevod_list_assets <- function(MaxResults = NULL, NextToken = NULL, Pac
 #'             Url = "string"
 #'           )
 #'         ),
+#'         IncludeEncoderConfigurationInSegments = TRUE|FALSE,
 #'         PeriodTriggers = list(
 #'           "ADS"
 #'         ),
@@ -1061,6 +1141,9 @@ mediapackagevod_list_packaging_configurations <- function(MaxResults = NULL, Nex
 #'         SecretsRoleArn = "string"
 #'       ),
 #'       DomainName = "string",
+#'       EgressAccessLogs = list(
+#'         LogGroupName = "string"
+#'       ),
 #'       Id = "string",
 #'       Tags = list(
 #'         "string"
@@ -1260,6 +1343,9 @@ mediapackagevod_untag_resource <- function(ResourceArn, TagKeys) {
 #'     SecretsRoleArn = "string"
 #'   ),
 #'   DomainName = "string",
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
 #'   Id = "string",
 #'   Tags = list(
 #'     "string"

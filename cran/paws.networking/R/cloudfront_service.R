@@ -48,6 +48,7 @@ NULL
 #'  \link[=cloudfront_create_distribution_with_tags]{create_distribution_with_tags} \tab Create a new distribution with tags\cr
 #'  \link[=cloudfront_create_field_level_encryption_config]{create_field_level_encryption_config} \tab Create a new field-level encryption configuration\cr
 #'  \link[=cloudfront_create_field_level_encryption_profile]{create_field_level_encryption_profile} \tab Create a field-level encryption profile\cr
+#'  \link[=cloudfront_create_function]{create_function} \tab Creates a CloudFront function\cr
 #'  \link[=cloudfront_create_invalidation]{create_invalidation} \tab Create a new invalidation\cr
 #'  \link[=cloudfront_create_key_group]{create_key_group} \tab Creates a key group that you can use with CloudFront signed URLs and signed cookies\cr
 #'  \link[=cloudfront_create_monitoring_subscription]{create_monitoring_subscription} \tab Enables additional CloudWatch metrics for the specified CloudFront distribution\cr
@@ -61,12 +62,14 @@ NULL
 #'  \link[=cloudfront_delete_distribution]{delete_distribution} \tab Delete a distribution\cr
 #'  \link[=cloudfront_delete_field_level_encryption_config]{delete_field_level_encryption_config} \tab Remove a field-level encryption configuration\cr
 #'  \link[=cloudfront_delete_field_level_encryption_profile]{delete_field_level_encryption_profile} \tab Remove a field-level encryption profile\cr
+#'  \link[=cloudfront_delete_function]{delete_function} \tab Deletes a CloudFront function\cr
 #'  \link[=cloudfront_delete_key_group]{delete_key_group} \tab Deletes a key group\cr
 #'  \link[=cloudfront_delete_monitoring_subscription]{delete_monitoring_subscription} \tab Disables additional CloudWatch metrics for the specified CloudFront distribution\cr
 #'  \link[=cloudfront_delete_origin_request_policy]{delete_origin_request_policy} \tab Deletes an origin request policy\cr
 #'  \link[=cloudfront_delete_public_key]{delete_public_key} \tab Remove a public key you previously added to CloudFront\cr
 #'  \link[=cloudfront_delete_realtime_log_config]{delete_realtime_log_config} \tab Deletes a real-time log configuration\cr
 #'  \link[=cloudfront_delete_streaming_distribution]{delete_streaming_distribution} \tab Delete a streaming distribution\cr
+#'  \link[=cloudfront_describe_function]{describe_function} \tab Gets configuration information and metadata about a CloudFront function, but not the function’s code\cr
 #'  \link[=cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata:\cr
 #'  \link[=cloudfront_get_cache_policy_config]{get_cache_policy_config} \tab Gets a cache policy configuration\cr
 #'  \link[=cloudfront_get_cloud_front_origin_access_identity]{get_cloud_front_origin_access_identity} \tab Get the information about an origin access identity\cr
@@ -77,6 +80,7 @@ NULL
 #'  \link[=cloudfront_get_field_level_encryption_config]{get_field_level_encryption_config} \tab Get the field-level encryption configuration information\cr
 #'  \link[=cloudfront_get_field_level_encryption_profile]{get_field_level_encryption_profile} \tab Get the field-level encryption profile information\cr
 #'  \link[=cloudfront_get_field_level_encryption_profile_config]{get_field_level_encryption_profile_config} \tab Get the field-level encryption profile configuration information\cr
+#'  \link[=cloudfront_get_function]{get_function} \tab Gets the code of a CloudFront function\cr
 #'  \link[=cloudfront_get_invalidation]{get_invalidation} \tab Get the information about an invalidation\cr
 #'  \link[=cloudfront_get_key_group]{get_key_group} \tab Gets a key group, including the date and time when the key group was last modified\cr
 #'  \link[=cloudfront_get_key_group_config]{get_key_group_config} \tab Gets a key group configuration\cr
@@ -98,6 +102,7 @@ NULL
 #'  \link[=cloudfront_list_distributions_by_web_acl_id]{list_distributions_by_web_acl_id} \tab List the distributions that are associated with a specified AWS WAF web ACL\cr
 #'  \link[=cloudfront_list_field_level_encryption_configs]{list_field_level_encryption_configs} \tab List all field-level encryption configurations that have been created in CloudFront for this account\cr
 #'  \link[=cloudfront_list_field_level_encryption_profiles]{list_field_level_encryption_profiles} \tab Request a list of field-level encryption profiles that have been created in CloudFront for this account\cr
+#'  \link[=cloudfront_list_functions]{list_functions} \tab Gets a list of all CloudFront functions in your AWS account\cr
 #'  \link[=cloudfront_list_invalidations]{list_invalidations} \tab Lists invalidation batches\cr
 #'  \link[=cloudfront_list_key_groups]{list_key_groups} \tab Gets a list of key groups\cr
 #'  \link[=cloudfront_list_origin_request_policies]{list_origin_request_policies} \tab Gets a list of origin request policies\cr
@@ -105,13 +110,16 @@ NULL
 #'  \link[=cloudfront_list_realtime_log_configs]{list_realtime_log_configs} \tab Gets a list of real-time log configurations\cr
 #'  \link[=cloudfront_list_streaming_distributions]{list_streaming_distributions} \tab List streaming distributions\cr
 #'  \link[=cloudfront_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a CloudFront resource\cr
+#'  \link[=cloudfront_publish_function]{publish_function} \tab Publishes a CloudFront function by copying the function code from the DEVELOPMENT stage to LIVE\cr
 #'  \link[=cloudfront_tag_resource]{tag_resource} \tab Add tags to a CloudFront resource\cr
+#'  \link[=cloudfront_test_function]{test_function} \tab Tests a CloudFront function\cr
 #'  \link[=cloudfront_untag_resource]{untag_resource} \tab Remove tags from a CloudFront resource\cr
 #'  \link[=cloudfront_update_cache_policy]{update_cache_policy} \tab Updates a cache policy configuration\cr
 #'  \link[=cloudfront_update_cloud_front_origin_access_identity]{update_cloud_front_origin_access_identity} \tab Update an origin access identity\cr
 #'  \link[=cloudfront_update_distribution]{update_distribution} \tab Updates the configuration for a web distribution\cr
 #'  \link[=cloudfront_update_field_level_encryption_config]{update_field_level_encryption_config} \tab Update a field-level encryption configuration\cr
 #'  \link[=cloudfront_update_field_level_encryption_profile]{update_field_level_encryption_profile} \tab Update a field-level encryption profile\cr
+#'  \link[=cloudfront_update_function]{update_function} \tab Updates a CloudFront function\cr
 #'  \link[=cloudfront_update_key_group]{update_key_group} \tab Updates a key group\cr
 #'  \link[=cloudfront_update_origin_request_policy]{update_origin_request_policy} \tab Updates an origin request policy configuration\cr
 #'  \link[=cloudfront_update_public_key]{update_public_key} \tab Update public key information\cr

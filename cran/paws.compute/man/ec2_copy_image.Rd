@@ -2,16 +2,15 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_copy_image}
 \alias{ec2_copy_image}
-\title{Initiates the copy of an AMI from the specified source Region to the
-current Region}
+\title{Initiates the copy of an AMI}
 \usage{
 ec2_copy_image(ClientToken, Description, Encrypted, KmsKeyId, Name,
-  SourceImageId, SourceRegion, DryRun)
+  SourceImageId, SourceRegion, DestinationOutpostArn, DryRun)
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+in the \emph{Amazon EC2 API Reference}.}
 
 \item{Description}{A description for the new AMI in the destination Region.}
 
@@ -52,6 +51,15 @@ Amazon EBS does not support asymmetric CMKs.}
 
 \item{SourceRegion}{[required] The name of the Region that contains the AMI to copy.}
 
+\item{DestinationOutpostArn}{The Amazon Resource Name (ARN) of the Outpost to which to copy the AMI.
+Only specify this parameter when copying an AMI from an AWS Region to an
+Outpost. The AMI must be in the Region of the destination Outpost. You
+cannot copy an AMI from an Outpost to a Region, from one Outpost to
+another, or within the same Outpost.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#copy-amis}{Copying AMIs from an AWS Region to an Outpost}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
@@ -64,14 +72,27 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Initiates the copy of an AMI from the specified source Region to the
-current Region. You specify the destination Region by using its endpoint
-when making the request.
+Initiates the copy of an AMI. You can copy an AMI from one Region to
+another, or from a Region to an AWS Outpost. You can't copy an AMI from
+an Outpost to a Region, from one Outpost to another, or within the same
+Outpost. To copy an AMI to another partition, see
+\code{\link[=ec2_create_store_image_task]{create_store_image_task}}.
 
-Copies of encrypted backing snapshots for the AMI are encrypted. Copies
-of unencrypted backing snapshots remain unencrypted, unless you set
-\code{Encrypted} during the copy operation. You cannot create an unencrypted
-copy of an encrypted backing snapshot.
+To copy an AMI from one Region to another, specify the source Region
+using the \strong{SourceRegion} parameter, and specify the destination Region
+using its endpoint. Copies of encrypted backing snapshots for the AMI
+are encrypted. Copies of unencrypted backing snapshots remain
+unencrypted, unless you set \code{Encrypted} during the copy operation. You
+cannot create an unencrypted copy of an encrypted backing snapshot.
+
+To copy an AMI from a Region to an Outpost, specify the source Region
+using the \strong{SourceRegion} parameter, and specify the ARN of the
+destination Outpost using \strong{DestinationOutpostArn}. Backing snapshots
+copied to an Outpost are encrypted by default using the default
+encryption key for the Region, or a different key that you specify in
+the request using \strong{KmsKeyId}. Outposts do not support unencrypted
+snapshots. For more information, \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami}{Amazon EBS local snapshots on Outposts}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 For more information about the prerequisites and limits when copying an
 AMI, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html}{Copying an AMI}
@@ -86,6 +107,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   Name = "string",
   SourceImageId = "string",
   SourceRegion = "string",
+  DestinationOutpostArn = "string",
   DryRun = TRUE|FALSE
 )
 }

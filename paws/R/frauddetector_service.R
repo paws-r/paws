@@ -45,11 +45,14 @@ NULL
 #' \tabular{ll}{
 #'  \link[=frauddetector_batch_create_variable]{batch_create_variable} \tab Creates a batch of variables\cr
 #'  \link[=frauddetector_batch_get_variable]{batch_get_variable} \tab Gets a batch of variables\cr
+#'  \link[=frauddetector_cancel_batch_prediction_job]{cancel_batch_prediction_job} \tab Cancels the specified batch prediction job\cr
+#'  \link[=frauddetector_create_batch_prediction_job]{create_batch_prediction_job} \tab Creates a batch prediction job\cr
 #'  \link[=frauddetector_create_detector_version]{create_detector_version} \tab Creates a detector version\cr
 #'  \link[=frauddetector_create_model]{create_model} \tab Creates a model using the specified model type\cr
 #'  \link[=frauddetector_create_model_version]{create_model_version} \tab Creates a version of the model using the specified model type and model id\cr
 #'  \link[=frauddetector_create_rule]{create_rule} \tab Creates a rule for use with the specified detector\cr
 #'  \link[=frauddetector_create_variable]{create_variable} \tab Creates a variable\cr
+#'  \link[=frauddetector_delete_batch_prediction_job]{delete_batch_prediction_job} \tab Deletes a batch prediction job\cr
 #'  \link[=frauddetector_delete_detector]{delete_detector} \tab Deletes the detector\cr
 #'  \link[=frauddetector_delete_detector_version]{delete_detector_version} \tab Deletes the detector version\cr
 #'  \link[=frauddetector_delete_entity_type]{delete_entity_type} \tab Deletes an entity type\cr
@@ -64,6 +67,7 @@ NULL
 #'  \link[=frauddetector_delete_variable]{delete_variable} \tab Deletes a variable\cr
 #'  \link[=frauddetector_describe_detector]{describe_detector} \tab Gets all versions for a specified detector\cr
 #'  \link[=frauddetector_describe_model_versions]{describe_model_versions} \tab Gets all of the model versions for the specified model type or for the specified model type and model ID\cr
+#'  \link[=frauddetector_get_batch_prediction_jobs]{get_batch_prediction_jobs} \tab Gets all batch prediction jobs or a specific job if you specify a job ID\cr
 #'  \link[=frauddetector_get_detectors]{get_detectors} \tab Gets all detectors or a single detector if a detectorId is specified\cr
 #'  \link[=frauddetector_get_detector_version]{get_detector_version} \tab Gets a particular detector version\cr
 #'  \link[=frauddetector_get_entity_types]{get_entity_types} \tab Gets all entity types or a specific entity type if a name is specified\cr

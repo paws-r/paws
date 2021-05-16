@@ -32,7 +32,7 @@ NULL
 #' 
 #' -   Amazon Keyspaces (for Apache Cassandra) tables
 #' 
-#' -   Amazon Managed Streaming for Apache Kafka cluster storage
+#' -   Amazon Managed Streaming for Apache Kafka broker storage
 #' 
 #' **API Summary**
 #' 

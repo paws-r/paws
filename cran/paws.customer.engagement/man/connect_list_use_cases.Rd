@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_use_cases}
 \alias{connect_list_use_cases}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Lists the use cases}
 \usage{
 connect_list_use_cases(InstanceId, IntegrationAssociationId, NextToken,
   MaxResults)
@@ -17,7 +16,7 @@ connect_list_use_cases(InstanceId, IntegrationAssociationId, NextToken,
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -33,10 +32,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
-
-List the use cases.
+Lists the use cases.
 }
 \section{Request syntax}{
 \preformatted{svc$list_use_cases(

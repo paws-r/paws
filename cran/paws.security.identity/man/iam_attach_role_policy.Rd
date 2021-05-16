@@ -15,7 +15,7 @@ spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference}.}
 }
 \value{
@@ -31,9 +31,13 @@ trust policy is created at the same time as the role, using
 \code{\link[=iam_create_role]{create_role}}. You can update a role's trust policy
 using \code{\link[=iam_update_assume_role_policy]{update_assume_role_policy}}.
 
-Use this API to attach a \emph{managed} policy to a role. To embed an inline
-policy in a role, use \code{\link[=iam_put_role_policy]{put_role_policy}}. For more
-information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+Use this operation to attach a \emph{managed} policy to a role. To embed an
+inline policy in a role, use \code{\link[=iam_put_role_policy]{put_role_policy}}.
+For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed policies and inline policies}
+in the \emph{IAM User Guide}.
+
+As a best practice, you can validate your IAM policies. To learn more,
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_policy-validator.html}{Validating IAM policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

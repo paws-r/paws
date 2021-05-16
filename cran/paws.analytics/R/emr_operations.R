@@ -74,7 +74,12 @@ NULL
 #'         AllocationStrategy = "capacity-optimized"
 #'       ),
 #'       OnDemandSpecification = list(
-#'         AllocationStrategy = "lowest-price"
+#'         AllocationStrategy = "lowest-price",
+#'         CapacityReservationOptions = list(
+#'           UsageStrategy = "use-capacity-reservations-first",
+#'           CapacityReservationPreference = "open"|"none",
+#'           CapacityReservationResourceGroupArn = "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -489,13 +494,9 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 }
 .emr$operations$create_security_configuration <- emr_create_security_configuration
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Creates a new Amazon EMR Studio
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Creates a new Amazon EMR Studio.
 #'
 #' @usage
@@ -504,21 +505,22 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #'   DefaultS3Location, Tags)
 #'
 #' @param Name &#91;required&#93; A descriptive name for the Amazon EMR Studio.
-#' @param Description A detailed description of the Studio.
+#' @param Description A detailed description of the Amazon EMR Studio.
 #' @param AuthMode &#91;required&#93; Specifies whether the Studio authenticates users using single sign-on
 #' (SSO) or IAM. Amazon EMR Studio currently only supports SSO
 #' authentication.
 #' @param VpcId &#91;required&#93; The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate
 #' with the Studio.
-#' @param SubnetIds &#91;required&#93; A list of subnet IDs to associate with the Studio. The subnets must
-#' belong to the VPC specified by `VpcId`. Studio users can create a
-#' Workspace in any of the specified subnets.
+#' @param SubnetIds &#91;required&#93; A list of subnet IDs to associate with the Amazon EMR Studio. A Studio
+#' can have a maximum of 5 subnets. The subnets must belong to the VPC
+#' specified by `VpcId`. Studio users can create a Workspace in any of the
+#' specified subnets.
 #' @param ServiceRole &#91;required&#93; The IAM role that will be assumed by the Amazon EMR Studio. The service
 #' role provides a way for Amazon EMR Studio to interoperate with other AWS
 #' services.
 #' @param UserRole &#91;required&#93; The IAM user role that will be assumed by users and groups logged in to
-#' a Studio. The permissions attached to this IAM role can be scoped down
-#' for each user or group using session policies.
+#' an Amazon EMR Studio. The permissions attached to this IAM role can be
+#' scoped down for each user or group using session policies.
 #' @param WorkspaceSecurityGroupId &#91;required&#93; The ID of the Amazon EMR Studio Workspace security group. The Workspace
 #' security group allows outbound network traffic to resources in the
 #' Engine security group, and it must be in the same VPC specified by
@@ -526,13 +528,12 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' @param EngineSecurityGroupId &#91;required&#93; The ID of the Amazon EMR Studio Engine security group. The Engine
 #' security group allows inbound network traffic from the Workspace
 #' security group, and it must be in the same VPC specified by `VpcId`.
-#' @param DefaultS3Location The default Amazon S3 location to back up EMR Studio Workspaces and
-#' notebook files. A Studio user can select an alternative Amazon S3
-#' location when creating a Workspace.
-#' @param Tags A list of tags to associate with the Studio. Tags are user-defined
-#' key-value pairs that consist of a required key string with a maximum of
-#' 128 characters, and an optional value string with a maximum of 256
-#' characters.
+#' @param DefaultS3Location &#91;required&#93; The Amazon S3 location to back up Amazon EMR Studio Workspaces and
+#' notebook files.
+#' @param Tags A list of tags to associate with the Amazon EMR Studio. Tags are
+#' user-defined key-value pairs that consist of a required key string with
+#' a maximum of 128 characters, and an optional value string with a maximum
+#' of 256 characters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -570,7 +571,7 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' @keywords internal
 #'
 #' @rdname emr_create_studio
-emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetIds, ServiceRole, UserRole, WorkspaceSecurityGroupId, EngineSecurityGroupId, DefaultS3Location = NULL, Tags = NULL) {
+emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetIds, ServiceRole, UserRole, WorkspaceSecurityGroupId, EngineSecurityGroupId, DefaultS3Location, Tags = NULL) {
   op <- new_operation(
     name = "CreateStudio",
     http_method = "POST",
@@ -587,13 +588,11 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
 }
 .emr$operations$create_studio <- emr_create_studio
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Maps a user or group to the Amazon EMR Studio specified by StudioId, and
+#' applies a session policy to refine Studio permissions for that user or
+#' group
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Maps a user or group to the Amazon EMR Studio specified by `StudioId`,
 #' and applies a session policy to refine Studio permissions for that user
 #' or group.
@@ -612,13 +611,13 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
 #' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
 #' `IdentityId` must be specified.
 #' @param IdentityName The name of the user or group. For more information, see
-#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
+#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName)
 #' and
 #' [DisplayName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName)
 #' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
 #' `IdentityId` must be specified.
-#' @param IdentityType &#91;required&#93; Specifies whether the identity to map to the Studio is a user or a
-#' group.
+#' @param IdentityType &#91;required&#93; Specifies whether the identity to map to the Amazon EMR Studio is a user
+#' or a group.
 #' @param SessionPolicyArn &#91;required&#93; The Amazon Resource Name (ARN) for the session policy that will be
 #' applied to the user or group. Session policies refine Studio user
 #' permissions without the need to use multiple IAM user roles.
@@ -697,13 +696,9 @@ emr_delete_security_configuration <- function(Name) {
 }
 .emr$operations$delete_security_configuration <- emr_delete_security_configuration
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Removes an Amazon EMR Studio from the Studio metadata store
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Removes an Amazon EMR Studio from the Studio metadata store.
 #'
 #' @usage
@@ -741,13 +736,9 @@ emr_delete_studio <- function(StudioId) {
 }
 .emr$operations$delete_studio <- emr_delete_studio
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Removes a user or group from an Amazon EMR Studio
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Removes a user or group from an Amazon EMR Studio.
 #'
 #' @usage
@@ -762,15 +753,15 @@ emr_delete_studio <- function(StudioId) {
 #' [GroupId](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-GroupId)
 #' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
 #' `IdentityId` must be specified.
-#' @param IdentityName The name of the user name or group to remove from the Studio. For more
-#' information, see
-#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
+#' @param IdentityName The name of the user name or group to remove from the Amazon EMR Studio.
+#' For more information, see
+#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName)
 #' and
 #' [DisplayName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName)
 #' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
 #' `IdentityId` must be specified.
-#' @param IdentityType &#91;required&#93; Specifies whether the identity to delete from the Studio is a user or a
-#' group.
+#' @param IdentityType &#91;required&#93; Specifies whether the identity to delete from the Amazon EMR Studio is a
+#' user or a group.
 #'
 #' @return
 #' An empty list.
@@ -1368,13 +1359,10 @@ emr_describe_step <- function(ClusterId, StepId) {
 }
 .emr$operations$describe_step <- emr_describe_step
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Returns details for the specified Amazon EMR Studio including ID, Name,
+#' VPC, Studio access URL, and so on
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Returns details for the specified Amazon EMR Studio including ID, Name,
 #' VPC, Studio access URL, and so on.
 #'
@@ -1557,13 +1545,10 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
 }
 .emr$operations$get_managed_scaling_policy <- emr_get_managed_scaling_policy
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Fetches mapping details for the specified Amazon EMR Studio and identity
+#' (user or group)
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Fetches mapping details for the specified Amazon EMR Studio and identity
 #' (user or group).
 #'
@@ -1580,7 +1565,7 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
 #' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
 #' `IdentityId` must be specified.
 #' @param IdentityName The name of the user or group to fetch. For more information, see
-#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
+#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName)
 #' and
 #' [DisplayName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName)
 #' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
@@ -1864,7 +1849,12 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #'           AllocationStrategy = "capacity-optimized"
 #'         ),
 #'         OnDemandSpecification = list(
-#'           AllocationStrategy = "lowest-price"
+#'           AllocationStrategy = "lowest-price",
+#'           CapacityReservationOptions = list(
+#'             UsageStrategy = "use-capacity-reservations-first",
+#'             CapacityReservationPreference = "open"|"none",
+#'             CapacityReservationResourceGroupArn = "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2344,7 +2334,7 @@ emr_list_security_configurations <- function(Marker = NULL) {
 #' @description
 #' Provides a list of steps for the cluster in reverse order unless you
 #' specify `stepIds` with the request of filter by `StepStates`. You can
-#' specify a maximum of ten `stepIDs`.
+#' specify a maximum of 10 `stepIDs`.
 #'
 #' @usage
 #' emr_list_steps(ClusterId, StepStates, StepIds, Marker)
@@ -2438,15 +2428,12 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
 }
 .emr$operations$list_steps <- emr_list_steps
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Returns a list of all user or group session mappings for the Amazon EMR
+#' Studio specified by StudioId
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
-#' Returns a list of all user or group session mappings for the EMR Studio
-#' specified by `StudioId`.
+#' Returns a list of all user or group session mappings for the Amazon EMR
+#' Studio specified by `StudioId`.
 #'
 #' @usage
 #' emr_list_studio_session_mappings(StudioId, IdentityType, Marker)
@@ -2506,13 +2493,9 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
 }
 .emr$operations$list_studio_session_mappings <- emr_list_studio_session_mappings
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Returns a list of all Amazon EMR Studios associated with the AWS account
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Returns a list of all Amazon EMR Studios associated with the AWS
 #' account. The list includes details such as ID, Studio Access URL, and
 #' creation time for each Studio.
@@ -2581,7 +2564,7 @@ emr_list_studios <- function(Marker = NULL) {
 #'
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param StepConcurrencyLevel The number of steps that can be executed concurrently. You can specify a
-#' maximum of 256 steps.
+#' minimum of 1 step and a maximum of 256 steps.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3250,7 +3233,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' 
 #' -   "mapr-m7" - launch the cluster using MapR M7 Edition.
 #' 
-#' -   "hunk" - launch the cluster with the Hunk Big Data Analtics
+#' -   "hunk" - launch the cluster with the Hunk Big Data Analytics
 #'     Platform.
 #' 
 #' -   "hue"- launch the cluster with Hue installed.
@@ -3467,7 +3450,12 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'             AllocationStrategy = "capacity-optimized"
 #'           ),
 #'           OnDemandSpecification = list(
-#'             AllocationStrategy = "lowest-price"
+#'             AllocationStrategy = "lowest-price",
+#'             CapacityReservationOptions = list(
+#'               UsageStrategy = "use-capacity-reservations-first",
+#'               CapacityReservationPreference = "open"|"none",
+#'               CapacityReservationResourceGroupArn = "string"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -3924,13 +3912,68 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 }
 .emr$operations$terminate_job_flows <- emr_terminate_job_flows
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Updates an Amazon EMR Studio configuration, including attributes such as
+#' name, description, and subnets
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
+#' Updates an Amazon EMR Studio configuration, including attributes such as
+#' name, description, and subnets.
+#'
+#' @usage
+#' emr_update_studio(StudioId, Name, Description, SubnetIds,
+#'   DefaultS3Location)
+#'
+#' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio to update.
+#' @param Name A descriptive name for the Amazon EMR Studio.
+#' @param Description A detailed description to assign to the Amazon EMR Studio.
+#' @param SubnetIds A list of subnet IDs to associate with the Amazon EMR Studio. The list
+#' can include new subnet IDs, but must also include all of the subnet IDs
+#' previously associated with the Studio. The list order does not matter. A
+#' Studio can have a maximum of 5 subnets. The subnets must belong to the
+#' same VPC as the Studio.
+#' @param DefaultS3Location The Amazon S3 location to back up Workspaces and notebook files for the
+#' Amazon EMR Studio.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_studio(
+#'   StudioId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
+#'   DefaultS3Location = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_update_studio
+emr_update_studio <- function(StudioId, Name = NULL, Description = NULL, SubnetIds = NULL, DefaultS3Location = NULL) {
+  op <- new_operation(
+    name = "UpdateStudio",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$update_studio_input(StudioId = StudioId, Name = Name, Description = Description, SubnetIds = SubnetIds, DefaultS3Location = DefaultS3Location)
+  output <- .emr$update_studio_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$update_studio <- emr_update_studio
+
+#' Updates the session policy attached to the user or group for the
+#' specified Amazon EMR Studio
+#'
+#' @description
 #' Updates the session policy attached to the user or group for the
 #' specified Amazon EMR Studio.
 #'
@@ -3938,7 +3981,7 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #' emr_update_studio_session_mapping(StudioId, IdentityId, IdentityName,
 #'   IdentityType, SessionPolicyArn)
 #'
-#' @param StudioId &#91;required&#93; The ID of the EMR Studio.
+#' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio.
 #' @param IdentityId The globally unique identifier (GUID) of the user or group. For more
 #' information, see
 #' [UserId](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
@@ -3947,7 +3990,7 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
 #' `IdentityId` must be specified.
 #' @param IdentityName The name of the user or group to update. For more information, see
-#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
+#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName)
 #' and
 #' [DisplayName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName)
 #' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or

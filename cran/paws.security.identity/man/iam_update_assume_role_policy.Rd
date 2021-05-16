@@ -38,7 +38,7 @@ An empty list.
 \description{
 Updates the policy that grants an IAM entity permission to assume a
 role. This is typically referred to as the "role trust policy". For more
-information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Using Roles to Delegate Permissions and Federate Identities}.
+information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Using roles to delegate permissions and federate identities}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_assume_role_policy(

@@ -41,7 +41,7 @@ NULL
 
 .kinesisvideoarchivedmedia$get_media_for_fragment_list_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), Fragments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), Fragments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .kinesisvideoarchivedmedia$list_fragments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "long")), NextToken = structure(logical(0), tags = list(type = "string")), FragmentSelector = structure(list(FragmentSelectorType = structure(logical(0), tags = list(type = "string")), TimestampRange = structure(list(StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), EndTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "long")), NextToken = structure(logical(0), tags = list(type = "string")), FragmentSelector = structure(list(FragmentSelectorType = structure(logical(0), tags = list(type = "string")), TimestampRange = structure(list(StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), EndTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

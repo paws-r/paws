@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_routing_profile_queues}
 \alias{connect_list_routing_profile_queues}
-\title{List the queues associated with a routing profile}
+\title{Lists the queues associated with a routing profile}
 \usage{
 connect_list_routing_profile_queues(InstanceId, RoutingProfileId,
   NextToken, MaxResults)
@@ -16,7 +16,7 @@ connect_list_routing_profile_queues(InstanceId, RoutingProfileId,
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -35,7 +35,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-List the queues associated with a routing profile.
+Lists the queues associated with a routing profile.
 }
 \section{Request syntax}{
 \preformatted{svc$list_routing_profile_queues(

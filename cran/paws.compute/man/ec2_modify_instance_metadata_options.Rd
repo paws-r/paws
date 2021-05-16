@@ -63,7 +63,8 @@ a running instance, the API responds with a state of “pending”. After
 the parameter modifications are successfully applied to the instance,
 the state of the modifications changes from “pending” to “applied” in
 subsequent describe-instances API calls. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}.
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_instance_metadata_options(

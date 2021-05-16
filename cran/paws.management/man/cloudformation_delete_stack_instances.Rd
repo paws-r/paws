@@ -7,18 +7,18 @@ Regions}
 \usage{
 cloudformation_delete_stack_instances(StackSetName, Accounts,
   DeploymentTargets, Regions, OperationPreferences, RetainStacks,
-  OperationId)
+  OperationId, CallAs)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to delete stack
 instances for.}
 
-\item{Accounts}{[\code{Self-managed} permissions] The names of the AWS accounts that you
-want to delete stack instances for.
+\item{Accounts}{[Self-managed permissions] The names of the AWS accounts that you want
+to delete stack instances for.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{DeploymentTargets}{[\code{Service-managed} permissions] The AWS Organizations accounts from
+\item{DeploymentTargets}{[Service-managed permissions] The AWS Organizations accounts from
 which to delete stack instances.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
@@ -46,6 +46,22 @@ requests to ensure that AWS CloudFormation successfully received them.
 
 Repeating this stack set operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your AWS account must be registered as a delegated administrator in
+the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{AWS CloudFormation User Guide}.
+}}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -67,6 +83,7 @@ Regions.
     Accounts = list(
       "string"
     ),
+    AccountsUrl = "string",
     OrganizationalUnitIds = list(
       "string"
     )
@@ -75,6 +92,7 @@ Regions.
     "string"
   ),
   OperationPreferences = list(
+    RegionConcurrencyType = "SEQUENTIAL"|"PARALLEL",
     RegionOrder = list(
       "string"
     ),
@@ -84,7 +102,8 @@ Regions.
     MaxConcurrentPercentage = 123
   ),
   RetainStacks = TRUE|FALSE,
-  OperationId = "string"
+  OperationId = "string",
+  CallAs = "SELF"|"DELEGATED_ADMIN"
 )
 }
 }

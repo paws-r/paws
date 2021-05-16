@@ -11,15 +11,10 @@ personalize_create_filter(name, datasetGroupArn, filterExpression)
 
 \item{datasetGroupArn}{[required] The ARN of the dataset group that the filter will belong to.}
 
-\item{filterExpression}{[required] The filter expression that designates the interaction types that the
-filter will filter out. A filter expression must follow the following
-format:
-
-\verb{EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")}
-
-Where "EVENT_TYPE" is the type of event to filter out. To filter out
-all items with any interactions history, set \code{"*"} as the EVENT_TYPE.
-For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Using Filters with Amazon Personalize}.}
+\item{filterExpression}{[required] The filter expression defines which items are included or excluded from
+recommendations. Filter expression must follow specific format rules.
+For information about filter expression structure and syntax, see
+filter-expressions.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -28,7 +23,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates a recommendation filter. For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Using Filters with Amazon Personalize}.
+Creates a recommendation filter. For more information, see filter.
 }
 \section{Request syntax}{
 \preformatted{svc$create_filter(

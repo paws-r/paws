@@ -26,7 +26,7 @@ capacity
 endpoints
 \item AWS Lambda function provisioned concurrency
 \item Amazon Keyspaces (for Apache Cassandra) tables
-\item Amazon Managed Streaming for Apache Kafka cluster storage
+\item Amazon Managed Streaming for Apache Kafka broker storage
 }
 
 \strong{API Summary}

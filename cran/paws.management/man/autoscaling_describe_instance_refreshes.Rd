@@ -33,7 +33,17 @@ A list with the following syntax:\preformatted{list(
         "2015-01-01"
       ),
       PercentageComplete = 123,
-      InstancesToUpdate = 123
+      InstancesToUpdate = 123,
+      ProgressDetails = list(
+        LivePoolProgress = list(
+          PercentageComplete = 123,
+          InstancesToUpdate = 123
+        ),
+        WarmPoolProgress = list(
+          PercentageComplete = 123,
+          InstancesToUpdate = 123
+        )
+      )
     )
   ),
   NextToken = "string"
@@ -58,7 +68,8 @@ completed, but it prevents new replacements from being started.
 \item \code{Cancelled} - The operation is cancelled.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling Instances Based on an Instance Refresh}.
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling instances based on an instance refresh}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_instance_refreshes(

@@ -55,15 +55,19 @@ real-time dashboards, and create real-time metrics.
 \link[=kinesisanalyticsv2_delete_application_vpc_configuration]{delete_application_vpc_configuration} \tab Removes a VPC configuration from a Kinesis Data Analytics application\cr
 \link[=kinesisanalyticsv2_describe_application]{describe_application} \tab Returns information about a specific Kinesis Data Analytics application\cr
 \link[=kinesisanalyticsv2_describe_application_snapshot]{describe_application_snapshot} \tab Returns information about a snapshot of application state data\cr
+\link[=kinesisanalyticsv2_describe_application_version]{describe_application_version} \tab Provides a detailed description of a specified version of the application\cr
 \link[=kinesisanalyticsv2_discover_input_schema]{discover_input_schema} \tab Infers a schema for a SQL-based Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object\cr
 \link[=kinesisanalyticsv2_list_applications]{list_applications} \tab Returns a list of Kinesis Data Analytics applications in your account\cr
 \link[=kinesisanalyticsv2_list_application_snapshots]{list_application_snapshots} \tab Lists information about the current application snapshots\cr
+\link[=kinesisanalyticsv2_list_application_versions]{list_application_versions} \tab Lists all the versions for the specified application, including versions that were rolled back\cr
 \link[=kinesisanalyticsv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the application\cr
+\link[=kinesisanalyticsv2_rollback_application]{rollback_application} \tab Reverts the application to the previous running version\cr
 \link[=kinesisanalyticsv2_start_application]{start_application} \tab Starts the specified Kinesis Data Analytics application\cr
 \link[=kinesisanalyticsv2_stop_application]{stop_application} \tab Stops the application from processing data\cr
 \link[=kinesisanalyticsv2_tag_resource]{tag_resource} \tab Adds one or more key-value tags to a Kinesis Data Analytics application\cr
 \link[=kinesisanalyticsv2_untag_resource]{untag_resource} \tab Removes one or more tags from a Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_update_application]{update_application} \tab Updates an existing Kinesis Data Analytics application
+\link[=kinesisanalyticsv2_update_application]{update_application} \tab Updates an existing Kinesis Data Analytics application\cr
+\link[=kinesisanalyticsv2_update_application_maintenance_configuration]{update_application_maintenance_configuration} \tab Updates the maintenance configuration of the Kinesis Data Analytics application
 }
 }
 

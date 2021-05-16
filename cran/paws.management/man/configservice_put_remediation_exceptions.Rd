@@ -44,7 +44,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 A remediation exception is when a specific resource is no longer
 considered for auto-remediation. This API adds a new exception or
-updates an exisiting exception for a specific resource with a specific
+updates an existing exception for a specific resource with a specific
 AWS Config rule.
 
 AWS Config generates a remediation exception when a problem occurs

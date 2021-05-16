@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_create_multipart_upload}
 \alias{s3_create_multipart_upload}
-\title{This operation initiates a multipart upload and returns an upload ID}
+\title{This action initiates a multipart upload and returns an upload ID}
 \usage{
 s3_create_multipart_upload(ACL, Bucket, CacheControl,
   ContentDisposition, ContentEncoding, ContentLanguage, ContentType,
@@ -20,22 +20,22 @@ This action is not supported by Amazon S3 on Outposts.}
 
 \item{Bucket}{[required] The name of the bucket to which to initiate the upload
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
+When using this action with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
+When using this action using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
 information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Specifies caching behavior along the request/reply chain.}
 
@@ -103,8 +103,8 @@ that the encryption key was transmitted without error.}
 for object encryption. All GET and PUT requests for an object protected
 by AWS KMS will fail if not made via SSL or using SigV4. For information
 about configuring using any of the officially supported AWS SDKs and AWS
-CLI, see Specifying the Signature Version in Request Authentication in
-the \emph{Amazon S3 Developer Guide}.}
+CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
+in the \emph{Amazon S3 Developer Guide}.}
 
 \item{SSEKMSEncryptionContext}{Specifies the AWS KMS Encryption Context to use for object encryption.
 The value of this header is a base64-encoded UTF-8 string holding JSON
@@ -115,8 +115,8 @@ encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
 this header to \code{true} causes Amazon S3 to use an S3 Bucket Key for
 object encryption with SSE-KMS.
 
-Specifying this header with an object operation doesn’t affect
-bucket-level settings for S3 Bucket Key.}
+Specifying this header with an object action doesn’t affect bucket-level
+settings for S3 Bucket Key.}
 
 \item{RequestPayer}{}
 
@@ -130,7 +130,7 @@ object.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a Legal Hold to the uploaded object.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -154,8 +154,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-This operation initiates a multipart upload and returns an upload ID.
-This upload ID is used to associate all of the parts in the specific
+This action initiates a multipart upload and returns an upload ID. This
+upload ID is used to associate all of the parts in the specific
 multipart upload. You specify this upload ID in each of your subsequent
 upload part requests (see \code{\link[=s3_upload_part]{upload_part}}). You also
 include this upload ID in the final request to either complete or abort
@@ -166,11 +166,11 @@ For more information about multipart uploads, see \href{https://docs.aws.amazon.
 If you have configured a lifecycle rule to abort incomplete multipart
 uploads, the upload must complete within the number of days specified in
 the bucket lifecycle configuration. Otherwise, the incomplete multipart
-upload becomes eligible for an abort operation and Amazon S3 aborts the
+upload becomes eligible for an abort action and Amazon S3 aborts the
 multipart upload. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config}{Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy}.
 
 For information about the permissions required to use the multipart
-upload API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}.
+upload API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload and Permissions}.
 
 For request signing, multipart upload is just a series of regular
 requests. You initiate a multipart upload, send one or more requests to
@@ -278,7 +278,7 @@ operation. By default, all objects are private. Only the owner has full
 access control. When adding a new object, you can grant permissions to
 individual AWS accounts or to predefined groups defined by Amazon S3.
 These permissions are then added to the access control list (ACL) on the
-object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html}{Using ACLs}.
+object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Using ACLs}.
 With this operation, you can grant access permissions using one of the
 following two methods:
 \itemize{

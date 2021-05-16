@@ -40,7 +40,7 @@ NULL
 #' svc$create_connector_profile(
 #'   connectorProfileName = "string",
 #'   kmsArn = "string",
-#'   connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'   connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'   connectionMode = "Public"|"Private",
 #'   connectorProfileConfig = list(
 #'     connectorProfileProperties = list(
@@ -52,6 +52,7 @@ NULL
 #'         instanceUrl = "string"
 #'       ),
 #'       GoogleAnalytics = list(),
+#'       Honeycode = list(),
 #'       InforNexus = list(
 #'         instanceUrl = "string"
 #'       ),
@@ -107,6 +108,14 @@ NULL
 #'       GoogleAnalytics = list(
 #'         clientId = "string",
 #'         clientSecret = "string",
+#'         accessToken = "string",
+#'         refreshToken = "string",
+#'         oAuthRequest = list(
+#'           authCode = "string",
+#'           redirectUri = "string"
+#'         )
+#'       ),
+#'       Honeycode = list(
 #'         accessToken = "string",
 #'         refreshToken = "string",
 #'         oAuthRequest = list(
@@ -260,12 +269,16 @@ appflow_create_connector_profile <- function(connectorProfileName, kmsArn = NULL
 #'         scheduleEndTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         timezone = "string"
+#'         timezone = "string",
+#'         scheduleOffset = 123,
+#'         firstExecutionFrom = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   sourceFlowConfig = list(
-#'     connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'     connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'     connectorProfileName = "string",
 #'     sourceConnectorProperties = list(
 #'       Amplitude = list(
@@ -320,7 +333,7 @@ appflow_create_connector_profile <- function(connectorProfileName, kmsArn = NULL
 #'   ),
 #'   destinationFlowConfigList = list(
 #'     list(
-#'       connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'       connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'       connectorProfileName = "string",
 #'       destinationConnectorProperties = list(
 #'         Redshift = list(
@@ -377,6 +390,7 @@ appflow_create_connector_profile <- function(connectorProfileName, kmsArn = NULL
 #'             bucketName = "string"
 #'           )
 #'         ),
+#'         LookoutMetrics = list(),
 #'         Upsolver = list(
 #'           bucketName = "string",
 #'           bucketPrefix = "string",
@@ -390,6 +404,30 @@ appflow_create_connector_profile <- function(connectorProfileName, kmsArn = NULL
 #'               aggregationType = "None"|"SingleFile"
 #'             )
 #'           )
+#'         ),
+#'         Honeycode = list(
+#'           object = "string",
+#'           errorHandlingConfig = list(
+#'             failOnFirstDestinationError = TRUE|FALSE,
+#'             bucketPrefix = "string",
+#'             bucketName = "string"
+#'           )
+#'         ),
+#'         CustomerProfiles = list(
+#'           domainName = "string",
+#'           objectTypeName = "string"
+#'         ),
+#'         Zendesk = list(
+#'           object = "string",
+#'           idFieldNames = list(
+#'             "string"
+#'           ),
+#'           errorHandlingConfig = list(
+#'             failOnFirstDestinationError = TRUE|FALSE,
+#'             bucketPrefix = "string",
+#'             bucketName = "string"
+#'           ),
+#'           writeOperationType = "INSERT"|"UPSERT"|"UPDATE"
 #'         )
 #'       )
 #'     )
@@ -597,7 +635,7 @@ appflow_delete_flow <- function(flowName, forceDelete = NULL) {
 #' ```
 #' svc$describe_connector_entity(
 #'   connectorEntityName = "string",
-#'   connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'   connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'   connectorProfileName = "string"
 #' )
 #' ```
@@ -654,7 +692,7 @@ appflow_describe_connector_entity <- function(connectorEntityName, connectorType
 #'     list(
 #'       connectorProfileArn = "string",
 #'       connectorProfileName = "string",
-#'       connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'       connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'       connectionMode = "Public"|"Private",
 #'       credentialsArn = "string",
 #'       connectorProfileProperties = list(
@@ -666,6 +704,7 @@ appflow_describe_connector_entity <- function(connectorEntityName, connectorType
 #'           instanceUrl = "string"
 #'         ),
 #'         GoogleAnalytics = list(),
+#'         Honeycode = list(),
 #'         InforNexus = list(
 #'           instanceUrl = "string"
 #'         ),
@@ -724,7 +763,7 @@ appflow_describe_connector_entity <- function(connectorEntityName, connectorType
 #'   connectorProfileNames = list(
 #'     "string"
 #'   ),
-#'   connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'   connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -777,7 +816,7 @@ appflow_describe_connector_profiles <- function(connectorProfileNames = NULL, co
 #'       canUseAsSource = TRUE|FALSE,
 #'       canUseAsDestination = TRUE|FALSE,
 #'       supportedDestinationConnectors = list(
-#'         "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver"
+#'         "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles"
 #'       ),
 #'       supportedSchedulingFrequencies = list(
 #'         "BYMINUTE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"ONCE"
@@ -825,7 +864,13 @@ appflow_describe_connector_profiles <- function(connectorProfileNames = NULL, co
 #'           )
 #'         ),
 #'         EventBridge = list(),
-#'         Upsolver = list()
+#'         Upsolver = list(),
+#'         CustomerProfiles = list(),
+#'         Honeycode = list(
+#'           oAuthScopes = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -837,7 +882,7 @@ appflow_describe_connector_profiles <- function(connectorProfileNames = NULL, co
 #' ```
 #' svc$describe_connectors(
 #'   connectorTypes = list(
-#'     "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver"
+#'     "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles"
 #'   ),
 #'   nextToken = "string"
 #' )
@@ -885,7 +930,7 @@ appflow_describe_connectors <- function(connectorTypes = NULL, nextToken = NULL)
 #'   flowStatus = "Active"|"Deprecated"|"Deleted"|"Draft"|"Errored"|"Suspended",
 #'   flowStatusMessage = "string",
 #'   sourceFlowConfig = list(
-#'     connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'     connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'     connectorProfileName = "string",
 #'     sourceConnectorProperties = list(
 #'       Amplitude = list(
@@ -940,7 +985,7 @@ appflow_describe_connectors <- function(connectorTypes = NULL, nextToken = NULL)
 #'   ),
 #'   destinationFlowConfigList = list(
 #'     list(
-#'       connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'       connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'       connectorProfileName = "string",
 #'       destinationConnectorProperties = list(
 #'         Redshift = list(
@@ -997,6 +1042,7 @@ appflow_describe_connectors <- function(connectorTypes = NULL, nextToken = NULL)
 #'             bucketName = "string"
 #'           )
 #'         ),
+#'         LookoutMetrics = list(),
 #'         Upsolver = list(
 #'           bucketName = "string",
 #'           bucketPrefix = "string",
@@ -1010,6 +1056,30 @@ appflow_describe_connectors <- function(connectorTypes = NULL, nextToken = NULL)
 #'               aggregationType = "None"|"SingleFile"
 #'             )
 #'           )
+#'         ),
+#'         Honeycode = list(
+#'           object = "string",
+#'           errorHandlingConfig = list(
+#'             failOnFirstDestinationError = TRUE|FALSE,
+#'             bucketPrefix = "string",
+#'             bucketName = "string"
+#'           )
+#'         ),
+#'         CustomerProfiles = list(
+#'           domainName = "string",
+#'           objectTypeName = "string"
+#'         ),
+#'         Zendesk = list(
+#'           object = "string",
+#'           idFieldNames = list(
+#'             "string"
+#'           ),
+#'           errorHandlingConfig = list(
+#'             failOnFirstDestinationError = TRUE|FALSE,
+#'             bucketPrefix = "string",
+#'             bucketName = "string"
+#'           ),
+#'           writeOperationType = "INSERT"|"UPSERT"|"UPDATE"
 #'         )
 #'       )
 #'     )
@@ -1033,7 +1103,11 @@ appflow_describe_connectors <- function(connectorTypes = NULL, nextToken = NULL)
 #'         scheduleEndTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         timezone = "string"
+#'         timezone = "string",
+#'         scheduleOffset = 123,
+#'         firstExecutionFrom = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1143,6 +1217,12 @@ appflow_describe_flow <- function(flowName) {
 #'       ),
 #'       lastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       dataPullStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       dataPullEndTime = as.POSIXct(
+#'         "2015-01-01"
 #'       )
 #'     )
 #'   ),
@@ -1222,7 +1302,7 @@ appflow_describe_flow_execution_records <- function(flowName, maxResults = NULL,
 #' ```
 #' svc$list_connector_entities(
 #'   connectorProfileName = "string",
-#'   connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'   connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'   entitiesPath = "string"
 #' )
 #' ```
@@ -1269,8 +1349,8 @@ appflow_list_connector_entities <- function(connectorProfileName = NULL, connect
 #'       description = "string",
 #'       flowName = "string",
 #'       flowStatus = "Active"|"Deprecated"|"Deleted"|"Draft"|"Errored"|"Suspended",
-#'       sourceConnectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
-#'       destinationConnectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'       sourceConnectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
+#'       destinationConnectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'       triggerType = "Scheduled"|"Event"|"OnDemand",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
@@ -1596,6 +1676,7 @@ appflow_untag_resource <- function(resourceArn, tagKeys) {
 #'         instanceUrl = "string"
 #'       ),
 #'       GoogleAnalytics = list(),
+#'       Honeycode = list(),
 #'       InforNexus = list(
 #'         instanceUrl = "string"
 #'       ),
@@ -1651,6 +1732,14 @@ appflow_untag_resource <- function(resourceArn, tagKeys) {
 #'       GoogleAnalytics = list(
 #'         clientId = "string",
 #'         clientSecret = "string",
+#'         accessToken = "string",
+#'         refreshToken = "string",
+#'         oAuthRequest = list(
+#'           authCode = "string",
+#'           redirectUri = "string"
+#'         )
+#'       ),
+#'       Honeycode = list(
 #'         accessToken = "string",
 #'         refreshToken = "string",
 #'         oAuthRequest = list(
@@ -1791,12 +1880,16 @@ appflow_update_connector_profile <- function(connectorProfileName, connectionMod
 #'         scheduleEndTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         timezone = "string"
+#'         timezone = "string",
+#'         scheduleOffset = 123,
+#'         firstExecutionFrom = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   sourceFlowConfig = list(
-#'     connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'     connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'     connectorProfileName = "string",
 #'     sourceConnectorProperties = list(
 #'       Amplitude = list(
@@ -1851,7 +1944,7 @@ appflow_update_connector_profile <- function(connectorProfileName, connectionMod
 #'   ),
 #'   destinationFlowConfigList = list(
 #'     list(
-#'       connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'       connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"LookoutMetrics"|"Upsolver"|"Honeycode"|"CustomerProfiles",
 #'       connectorProfileName = "string",
 #'       destinationConnectorProperties = list(
 #'         Redshift = list(
@@ -1908,6 +2001,7 @@ appflow_update_connector_profile <- function(connectorProfileName, connectionMod
 #'             bucketName = "string"
 #'           )
 #'         ),
+#'         LookoutMetrics = list(),
 #'         Upsolver = list(
 #'           bucketName = "string",
 #'           bucketPrefix = "string",
@@ -1921,6 +2015,30 @@ appflow_update_connector_profile <- function(connectorProfileName, connectionMod
 #'               aggregationType = "None"|"SingleFile"
 #'             )
 #'           )
+#'         ),
+#'         Honeycode = list(
+#'           object = "string",
+#'           errorHandlingConfig = list(
+#'             failOnFirstDestinationError = TRUE|FALSE,
+#'             bucketPrefix = "string",
+#'             bucketName = "string"
+#'           )
+#'         ),
+#'         CustomerProfiles = list(
+#'           domainName = "string",
+#'           objectTypeName = "string"
+#'         ),
+#'         Zendesk = list(
+#'           object = "string",
+#'           idFieldNames = list(
+#'             "string"
+#'           ),
+#'           errorHandlingConfig = list(
+#'             failOnFirstDestinationError = TRUE|FALSE,
+#'             bucketPrefix = "string",
+#'             bucketName = "string"
+#'           ),
+#'           writeOperationType = "INSERT"|"UPSERT"|"UPDATE"
 #'         )
 #'       )
 #'     )

@@ -6,7 +6,7 @@
 \usage{
 appsync_update_function(apiId, name, description, functionId,
   dataSourceName, requestMappingTemplate, responseMappingTemplate,
-  functionVersion)
+  functionVersion, syncConfig)
 }
 \arguments{
 \item{apiId}{[required] The GraphQL API ID.}
@@ -26,6 +26,8 @@ appsync_update_function(apiId, name, description, functionId,
 
 \item{functionVersion}{[required] The \code{version} of the request mapping template. Currently the supported
 value is 2018-05-29.}
+
+\item{syncConfig}{}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -37,7 +39,14 @@ A list with the following syntax:\preformatted{list(
     dataSourceName = "string",
     requestMappingTemplate = "string",
     responseMappingTemplate = "string",
-    functionVersion = "string"
+    functionVersion = "string",
+    syncConfig = list(
+      conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+      conflictDetection = "VERSION"|"NONE",
+      lambdaConflictHandlerConfig = list(
+        lambdaConflictHandlerArn = "string"
+      )
+    )
   )
 )
 }
@@ -54,7 +63,14 @@ Updates a \code{Function} object.
   dataSourceName = "string",
   requestMappingTemplate = "string",
   responseMappingTemplate = "string",
-  functionVersion = "string"
+  functionVersion = "string",
+  syncConfig = list(
+    conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+    conflictDetection = "VERSION"|"NONE",
+    lambdaConflictHandlerConfig = list(
+      lambdaConflictHandlerArn = "string"
+    )
+  )
 )
 }
 }

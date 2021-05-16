@@ -52,7 +52,7 @@ NULL
 #'  \link[=sagemaker_associate_trial_component]{associate_trial_component} \tab Associates a trial component with a trial\cr
 #'  \link[=sagemaker_create_action]{create_action} \tab Creates an action\cr
 #'  \link[=sagemaker_create_algorithm]{create_algorithm} \tab Create a machine learning algorithm that you can use in Amazon SageMaker and list in the AWS Marketplace\cr
-#'  \link[=sagemaker_create_app]{create_app} \tab Creates a running App for the specified UserProfile\cr
+#'  \link[=sagemaker_create_app]{create_app} \tab Creates a running app for the specified UserProfile\cr
 #'  \link[=sagemaker_create_app_image_config]{create_app_image_config} \tab Creates a configuration for running a SageMaker image as a KernelGateway app\cr
 #'  \link[=sagemaker_create_artifact]{create_artifact} \tab Creates an artifact\cr
 #'  \link[=sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job\cr
@@ -89,7 +89,7 @@ NULL
 #'  \link[=sagemaker_create_project]{create_project} \tab Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model\cr
 #'  \link[=sagemaker_create_training_job]{create_training_job} \tab Starts a model training job\cr
 #'  \link[=sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job\cr
-#'  \link[=sagemaker_create_trial]{create_trial} \tab Creates an Amazon SageMaker trial\cr
+#'  \link[=sagemaker_create_trial]{create_trial} \tab Creates an SageMaker trial\cr
 #'  \link[=sagemaker_create_trial_component]{create_trial_component} \tab Creates a trial component, which is a stage of a machine learning trial\cr
 #'  \link[=sagemaker_create_user_profile]{create_user_profile} \tab Creates a user profile\cr
 #'  \link[=sagemaker_create_workforce]{create_workforce} \tab Use this operation to create a workforce\cr
@@ -107,7 +107,7 @@ NULL
 #'  \link[=sagemaker_delete_domain]{delete_domain} \tab Used to delete a domain\cr
 #'  \link[=sagemaker_delete_endpoint]{delete_endpoint} \tab Deletes an endpoint\cr
 #'  \link[=sagemaker_delete_endpoint_config]{delete_endpoint_config} \tab Deletes an endpoint configuration\cr
-#'  \link[=sagemaker_delete_experiment]{delete_experiment} \tab Deletes an Amazon SageMaker experiment\cr
+#'  \link[=sagemaker_delete_experiment]{delete_experiment} \tab Deletes an SageMaker experiment\cr
 #'  \link[=sagemaker_delete_feature_group]{delete_feature_group} \tab Delete the FeatureGroup and any data that was written to the OnlineStore of the FeatureGroup\cr
 #'  \link[=sagemaker_delete_flow_definition]{delete_flow_definition} \tab Deletes the specified flow definition\cr
 #'  \link[=sagemaker_delete_human_task_ui]{delete_human_task_ui} \tab Use this operation to delete a human task user interface (worker task template)\cr
@@ -123,7 +123,7 @@ NULL
 #'  \link[=sagemaker_delete_monitoring_schedule]{delete_monitoring_schedule} \tab Deletes a monitoring schedule\cr
 #'  \link[=sagemaker_delete_notebook_instance]{delete_notebook_instance} \tab Deletes an Amazon SageMaker notebook instance\cr
 #'  \link[=sagemaker_delete_notebook_instance_lifecycle_config]{delete_notebook_instance_lifecycle_config} \tab Deletes a notebook instance lifecycle configuration\cr
-#'  \link[=sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no in-progress executions\cr
+#'  \link[=sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no running instances of the pipeline\cr
 #'  \link[=sagemaker_delete_project]{delete_project} \tab Delete the specified project\cr
 #'  \link[=sagemaker_delete_tags]{delete_tags} \tab Deletes the specified tags from an Amazon SageMaker resource\cr
 #'  \link[=sagemaker_delete_trial]{delete_trial} \tab Deletes the specified trial\cr
@@ -137,7 +137,7 @@ NULL
 #'  \link[=sagemaker_describe_app]{describe_app} \tab Describes the app\cr
 #'  \link[=sagemaker_describe_app_image_config]{describe_app_image_config} \tab Describes an AppImageConfig\cr
 #'  \link[=sagemaker_describe_artifact]{describe_artifact} \tab Describes an artifact\cr
-#'  \link[=sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an Amazon SageMaker job\cr
+#'  \link[=sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an Amazon SageMaker AutoML job\cr
 #'  \link[=sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
 #'  \link[=sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job\cr
 #'  \link[=sagemaker_describe_context]{describe_context} \tab Describes a context\cr
@@ -192,7 +192,7 @@ NULL
 #'  \link[=sagemaker_list_artifacts]{list_artifacts} \tab Lists the artifacts in your account and their properties\cr
 #'  \link[=sagemaker_list_associations]{list_associations} \tab Lists the associations in your account and their properties\cr
 #'  \link[=sagemaker_list_auto_ml_jobs]{list_auto_ml_jobs} \tab Request a list of jobs\cr
-#'  \link[=sagemaker_list_candidates_for_auto_ml_job]{list_candidates_for_auto_ml_job} \tab List the Candidates created for the job\cr
+#'  \link[=sagemaker_list_candidates_for_auto_ml_job]{list_candidates_for_auto_ml_job} \tab List the candidates created for the job\cr
 #'  \link[=sagemaker_list_code_repositories]{list_code_repositories} \tab Gets a list of the Git repositories in your account\cr
 #'  \link[=sagemaker_list_compilation_jobs]{list_compilation_jobs} \tab Lists model compilation jobs that satisfy various filters\cr
 #'  \link[=sagemaker_list_contexts]{list_contexts} \tab Lists the contexts in your account and their properties\cr

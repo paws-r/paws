@@ -13,6 +13,30 @@ NULL
   list()
 }
 
+.accessanalyzer$cancel_policy_generation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobId = structure(logical(0), tags = list(location = "uri", locationName = "jobId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$cancel_policy_generation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$create_access_preview_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(analyzerArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), configurations = structure(list(structure(list(iamRole = structure(list(trustPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kmsKey = structure(list(grants = structure(list(structure(list(constraints = structure(list(encryptionContextEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionContextSubset = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), granteePrincipal = structure(logical(0), tags = list(type = "string")), issuingAccount = structure(logical(0), tags = list(type = "string")), operations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), retiringPrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), keyPolicies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), s3Bucket = structure(list(accessPoints = structure(list(structure(list(accessPointPolicy = structure(logical(0), tags = list(type = "string")), networkOrigin = structure(list(internetConfiguration = structure(list(), tags = list(type = "structure")), vpcConfiguration = structure(list(vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), publicAccessBlock = structure(list(ignorePublicAcls = structure(logical(0), tags = list(type = "boolean", box = TRUE)), restrictPublicBuckets = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), bucketAclGrants = structure(list(structure(list(grantee = structure(list(id = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), permission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bucketPolicy = structure(logical(0), tags = list(type = "string")), bucketPublicAccessBlock = structure(list(ignorePublicAcls = structure(logical(0), tags = list(type = "boolean", box = TRUE)), restrictPublicBuckets = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), secretsManagerSecret = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), secretPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sqsQueue = structure(list(queuePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$create_access_preview_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .accessanalyzer$create_analyzer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(analyzerName = structure(logical(0), tags = list(type = "string")), archiveRules = structure(list(structure(list(filter = structure(list(structure(list(contains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), eq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exists = structure(logical(0), tags = list(type = "boolean", box = TRUE)), neq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), ruleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -53,6 +77,18 @@ NULL
 
 .accessanalyzer$delete_archive_rule_output <- function(...) {
   list()
+}
+
+.accessanalyzer$get_access_preview_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accessPreviewId = structure(logical(0), tags = list(location = "uri", locationName = "accessPreviewId", type = "string")), analyzerArn = structure(logical(0), tags = list(location = "querystring", locationName = "analyzerArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$get_access_preview_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accessPreview = structure(list(analyzerArn = structure(logical(0), tags = list(type = "string")), configurations = structure(list(structure(list(iamRole = structure(list(trustPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kmsKey = structure(list(grants = structure(list(structure(list(constraints = structure(list(encryptionContextEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionContextSubset = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), granteePrincipal = structure(logical(0), tags = list(type = "string")), issuingAccount = structure(logical(0), tags = list(type = "string")), operations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), retiringPrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), keyPolicies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), s3Bucket = structure(list(accessPoints = structure(list(structure(list(accessPointPolicy = structure(logical(0), tags = list(type = "string")), networkOrigin = structure(list(internetConfiguration = structure(list(), tags = list(type = "structure")), vpcConfiguration = structure(list(vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), publicAccessBlock = structure(list(ignorePublicAcls = structure(logical(0), tags = list(type = "boolean", box = TRUE)), restrictPublicBuckets = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), bucketAclGrants = structure(list(structure(list(grantee = structure(list(id = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), permission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bucketPolicy = structure(logical(0), tags = list(type = "string")), bucketPublicAccessBlock = structure(list(ignorePublicAcls = structure(logical(0), tags = list(type = "boolean", box = TRUE)), restrictPublicBuckets = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), secretsManagerSecret = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), secretPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sqsQueue = structure(list(queuePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(list(code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .accessanalyzer$get_analyzed_resource_input <- function(...) {
@@ -100,6 +136,42 @@ NULL
 .accessanalyzer$get_finding_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(finding = structure(list(action = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), analyzedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), condition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), error = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), isPublic = structure(logical(0), tags = list(type = "boolean", box = TRUE)), principal = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), resource = structure(logical(0), tags = list(type = "string")), resourceOwnerAccount = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(detail = structure(list(accessPointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$get_generated_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(includeResourcePlaceholders = structure(logical(0), tags = list(location = "querystring", locationName = "includeResourcePlaceholders", type = "boolean", box = TRUE)), includeServiceLevelTemplate = structure(logical(0), tags = list(location = "querystring", locationName = "includeServiceLevelTemplate", type = "boolean", box = TRUE)), jobId = structure(logical(0), tags = list(location = "uri", locationName = "jobId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$get_generated_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(generatedPolicyResult = structure(list(generatedPolicies = structure(list(structure(list(policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), properties = structure(list(cloudTrailProperties = structure(list(endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trailProperties = structure(list(structure(list(allRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), cloudTrailArn = structure(logical(0), tags = list(type = "string")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), isComplete = structure(logical(0), tags = list(type = "boolean", box = TRUE)), principalArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobDetails = structure(list(completedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), jobError = structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), jobId = structure(logical(0), tags = list(type = "string")), startedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$list_access_preview_findings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accessPreviewId = structure(logical(0), tags = list(location = "uri", locationName = "accessPreviewId", type = "string")), analyzerArn = structure(logical(0), tags = list(type = "string")), filter = structure(list(structure(list(contains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), eq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exists = structure(logical(0), tags = list(type = "boolean", box = TRUE)), neq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$list_access_preview_findings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(findings = structure(list(structure(list(action = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), changeType = structure(logical(0), tags = list(type = "string")), condition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), error = structure(logical(0), tags = list(type = "string")), existingFindingId = structure(logical(0), tags = list(type = "string")), existingFindingStatus = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), isPublic = structure(logical(0), tags = list(type = "boolean", box = TRUE)), principal = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), resource = structure(logical(0), tags = list(type = "string")), resourceOwnerAccount = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(detail = structure(list(accessPointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$list_access_previews_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(analyzerArn = structure(logical(0), tags = list(location = "querystring", locationName = "analyzerArn", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$list_access_previews_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accessPreviews = structure(list(structure(list(analyzerArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(list(code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -151,6 +223,18 @@ NULL
   return(populate(args, shape))
 }
 
+.accessanalyzer$list_policy_generations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), principalArn = structure(logical(0), tags = list(location = "querystring", locationName = "principalArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$list_policy_generations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), policyGenerations = structure(list(structure(list(completedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), jobId = structure(logical(0), tags = list(type = "string")), principalArn = structure(logical(0), tags = list(type = "string")), startedOn = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .accessanalyzer$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
@@ -160,6 +244,18 @@ NULL
 .accessanalyzer$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$start_policy_generation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), cloudTrailDetails = structure(list(accessRole = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trails = structure(list(structure(list(allRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), cloudTrailArn = structure(logical(0), tags = list(type = "string")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), policyGenerationDetails = structure(list(principalArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$start_policy_generation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -215,4 +311,16 @@ NULL
 
 .accessanalyzer$update_findings_output <- function(...) {
   list()
+}
+
+.accessanalyzer$validate_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(locale = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), policyDocument = structure(logical(0), tags = list(type = "string")), policyType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$validate_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(findings = structure(list(structure(list(findingDetails = structure(logical(0), tags = list(type = "string")), findingType = structure(logical(0), tags = list(type = "string")), issueCode = structure(logical(0), tags = list(type = "string")), learnMoreLink = structure(logical(0), tags = list(type = "string")), locations = structure(list(structure(list(path = structure(list(structure(list(index = structure(logical(0), tags = list(type = "integer", box = TRUE)), key = structure(logical(0), tags = list(type = "string")), substring = structure(list(length = structure(logical(0), tags = list(type = "integer", box = TRUE)), start = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), span = structure(list(end = structure(list(column = structure(logical(0), tags = list(type = "integer", box = TRUE)), line = structure(logical(0), tags = list(type = "integer", box = TRUE)), offset = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), start = structure(list(column = structure(logical(0), tags = list(type = "integer", box = TRUE)), line = structure(logical(0), tags = list(type = "integer", box = TRUE)), offset = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }

@@ -1299,7 +1299,7 @@ sns_list_topics <- function(NextToken = NULL) {
 #' @usage
 #' sns_opt_in_phone_number(phoneNumber)
 #'
-#' @param phoneNumber &#91;required&#93; The phone number to opt in.
+#' @param phoneNumber &#91;required&#93; The phone number to opt in. Use E.164 format.
 #'
 #' @return
 #' An empty list.
@@ -1732,6 +1732,9 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' [Publishing to a mobile
 #' phone](https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html)
 #' in the *Amazon SNS Developer Guide*.
+#' 
+#' To use this operation, you must grant the Amazon SNS service principal
+#' (`sns.amazonaws.com`) permission to perform the `s3:ListBucket` action.
 #'
 #' @usage
 #' sns_set_sms_attributes(attributes)
@@ -1881,6 +1884,22 @@ sns_set_sms_attributes <- function(attributes) {
 #'     endpoint is unreachable) or server errors (for example, when the
 #'     service that powers the subscribed endpoint becomes unavailable) are
 #'     held in the dead-letter queue for further analysis or reprocessing.
+#' 
+#' The following attribute applies only to Amazon Kinesis Data Firehose
+#' delivery stream subscriptions:
+#' 
+#' -   `SubscriptionRoleArn` – The ARN of the IAM role that has the
+#'     following:
+#' 
+#'     -   Permission to write to the Kinesis Data Firehose delivery stream
+#' 
+#'     -   Amazon SNS listed as a trusted entity
+#' 
+#'     Specifying a valid ARN for this attribute is required for Kinesis
+#'     Data Firehose delivery stream subscriptions. For more information,
+#'     see [Fanout to Kinesis Data Firehose delivery
+#'     streams](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
+#'     in the *Amazon SNS Developer Guide*.
 #' @param AttributeValue The new value for the attribute in JSON format.
 #'
 #' @return
@@ -2022,7 +2041,7 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #'   ReturnSubscriptionArn)
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic you want to subscribe to.
-#' @param Protocol &#91;required&#93; The protocol you want to use. Supported protocols include:
+#' @param Protocol &#91;required&#93; The protocol that you want to use. Supported protocols include:
 #' 
 #' -   `http` – delivery of JSON-encoded message via HTTP POST
 #' 
@@ -2037,34 +2056,40 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #' -   `sqs` – delivery of JSON-encoded message to an Amazon SQS queue
 #' 
 #' -   `application` – delivery of JSON-encoded message to an EndpointArn
-#'     for a mobile app and device.
+#'     for a mobile app and device
 #' 
-#' -   `lambda` – delivery of JSON-encoded message to an Amazon Lambda
-#'     function.
+#' -   `lambda` – delivery of JSON-encoded message to an AWS Lambda
+#'     function
+#' 
+#' -   `firehose` – delivery of JSON-encoded message to an Amazon Kinesis
+#'     Data Firehose delivery stream.
 #' @param Endpoint The endpoint that you want to receive notifications. Endpoints vary by
 #' protocol:
 #' 
 #' -   For the `http` protocol, the (public) endpoint is a URL beginning
-#'     with `http://`
+#'     with `http://`.
 #' 
 #' -   For the `https` protocol, the (public) endpoint is a URL beginning
-#'     with `https://`
+#'     with `https://`.
 #' 
-#' -   For the `email` protocol, the endpoint is an email address
+#' -   For the `email` protocol, the endpoint is an email address.
 #' 
-#' -   For the `email-json` protocol, the endpoint is an email address
+#' -   For the `email-json` protocol, the endpoint is an email address.
 #' 
 #' -   For the `sms` protocol, the endpoint is a phone number of an
-#'     SMS-enabled device
+#'     SMS-enabled device.
 #' 
 #' -   For the `sqs` protocol, the endpoint is the ARN of an Amazon SQS
-#'     queue
+#'     queue.
 #' 
 #' -   For the `application` protocol, the endpoint is the EndpointArn of a
 #'     mobile app and device.
 #' 
-#' -   For the `lambda` protocol, the endpoint is the ARN of an Amazon
-#'     Lambda function.
+#' -   For the `lambda` protocol, the endpoint is the ARN of an AWS Lambda
+#'     function.
+#' 
+#' -   For the `firehose` protocol, the endpoint is the ARN of an Amazon
+#'     Kinesis Data Firehose delivery stream.
 #' @param Attributes A map of attributes with their corresponding values.
 #' 
 #' The following lists the names, descriptions, and values of the special
@@ -2089,6 +2114,22 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #'     endpoint is unreachable) or server errors (for example, when the
 #'     service that powers the subscribed endpoint becomes unavailable) are
 #'     held in the dead-letter queue for further analysis or reprocessing.
+#' 
+#' The following attribute applies only to Amazon Kinesis Data Firehose
+#' delivery stream subscriptions:
+#' 
+#' -   `SubscriptionRoleArn` – The ARN of the IAM role that has the
+#'     following:
+#' 
+#'     -   Permission to write to the Kinesis Data Firehose delivery stream
+#' 
+#'     -   Amazon SNS listed as a trusted entity
+#' 
+#'     Specifying a valid ARN for this attribute is required for Kinesis
+#'     Data Firehose delivery stream subscriptions. For more information,
+#'     see [Fanout to Kinesis Data Firehose delivery
+#'     streams](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
+#'     in the *Amazon SNS Developer Guide*.
 #' @param ReturnSubscriptionArn Sets whether the response from the [`subscribe`][sns_subscribe] request
 #' includes the subscription ARN, even if the subscription is not yet
 #' confirmed.

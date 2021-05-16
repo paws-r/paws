@@ -18,7 +18,7 @@ placement request.}
 \item{GameSessionQueueName}{[required] Name of the queue to use to place the new game session. You can use
 either the queue name or ARN value.}
 
-\item{GameProperties}{Set of custom properties for a game session, formatted as key:value
+\item{GameProperties}{A set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
@@ -29,14 +29,14 @@ the game session.}
 \item{GameSessionName}{A descriptive label that is associated with a game session. Session
 names do not need to be unique.}
 
-\item{PlayerLatencies}{Set of values, expressed in milliseconds, indicating the amount of
+\item{PlayerLatencies}{A set of values, expressed in milliseconds, that indicates the amount of
 latency that a player experiences when connected to AWS Regions. This
 information is used to try to place the new game session where it can
 offer the best possible gameplay experience for the players.}
 
 \item{DesiredPlayerSessions}{Set of information on each player to create a player session for.}
 
-\item{GameSessionData}{Set of custom game session properties, formatted as a single string
+\item{GameSessionData}{A set of custom game session properties, formatted as a single string
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 }
@@ -130,20 +130,20 @@ and check the request's status. If the status is \code{FULFILLED}, a new game
 session has been created and a game session ARN and Region are
 referenced. If the placement request times out, you can resubmit the
 request or retry it with a different queue.
-\itemize{
-\item \code{\link[=gamelift_create_game_session]{create_game_session}}
-\item \code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}}
-\item \code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
-\item \code{\link[=gamelift_search_game_sessions]{search_game_sessions}}
-\item \code{\link[=gamelift_update_game_session]{update_game_session}}
-\item \code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}}
-\item Game session placements
-\itemize{
-\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
-\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
-\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
-}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_game_session]{create_game_session}} |
+\code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}} |
+\code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
+| \code{\link[=gamelift_search_game_sessions]{search_game_sessions}} |
+\code{\link[=gamelift_update_game_session]{update_game_session}} |
+\code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}} |
+\code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+|
+\code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+| \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$start_game_session_placement(

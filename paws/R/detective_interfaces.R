@@ -14,7 +14,9 @@ NULL
 }
 
 .detective$create_graph_input <- function(...) {
-  list()
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .detective$create_graph_output <- function(...) {
@@ -25,13 +27,13 @@ NULL
 
 .detective$create_members_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Accounts = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), DisableEmailNotification = structure(logical(0), tags = list(type = "boolean")), Accounts = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .detective$create_members_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Members = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), GraphArn = structure(logical(0), tags = list(type = "string")), MasterId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DisabledReason = structure(logical(0), tags = list(type = "string")), InvitedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), PercentOfGraphUtilization = structure(logical(0), tags = list(type = "double")), PercentOfGraphUtilizationUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedAccounts = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Members = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), GraphArn = structure(logical(0), tags = list(type = "string")), MasterId = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use AdministratorId instead.", type = "string")), AdministratorId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DisabledReason = structure(logical(0), tags = list(type = "string")), InvitedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), VolumeUsageInBytes = structure(logical(0), tags = list(type = "long")), VolumeUsageUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), PercentOfGraphUtilization = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use VolumeUsageInBytes instead.", type = "double")), PercentOfGraphUtilizationUpdatedTime = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use VolumeUsageUpdatedTime instead.", type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedAccounts = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -75,7 +77,7 @@ NULL
 
 .detective$get_members_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MemberDetails = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), GraphArn = structure(logical(0), tags = list(type = "string")), MasterId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DisabledReason = structure(logical(0), tags = list(type = "string")), InvitedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), PercentOfGraphUtilization = structure(logical(0), tags = list(type = "double")), PercentOfGraphUtilizationUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedAccounts = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(MemberDetails = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), GraphArn = structure(logical(0), tags = list(type = "string")), MasterId = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use AdministratorId instead.", type = "string")), AdministratorId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DisabledReason = structure(logical(0), tags = list(type = "string")), InvitedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), VolumeUsageInBytes = structure(logical(0), tags = list(type = "long")), VolumeUsageUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), PercentOfGraphUtilization = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use VolumeUsageInBytes instead.", type = "double")), PercentOfGraphUtilizationUpdatedTime = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use VolumeUsageUpdatedTime instead.", type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedAccounts = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -87,7 +89,7 @@ NULL
 
 .detective$list_graphs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GraphList = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GraphList = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -99,7 +101,7 @@ NULL
 
 .detective$list_invitations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Invitations = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), GraphArn = structure(logical(0), tags = list(type = "string")), MasterId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DisabledReason = structure(logical(0), tags = list(type = "string")), InvitedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), PercentOfGraphUtilization = structure(logical(0), tags = list(type = "double")), PercentOfGraphUtilizationUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Invitations = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), GraphArn = structure(logical(0), tags = list(type = "string")), MasterId = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use AdministratorId instead.", type = "string")), AdministratorId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DisabledReason = structure(logical(0), tags = list(type = "string")), InvitedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), VolumeUsageInBytes = structure(logical(0), tags = list(type = "long")), VolumeUsageUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), PercentOfGraphUtilization = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use VolumeUsageInBytes instead.", type = "double")), PercentOfGraphUtilizationUpdatedTime = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use VolumeUsageUpdatedTime instead.", type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -111,7 +113,19 @@ NULL
 
 .detective$list_members_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MemberDetails = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), GraphArn = structure(logical(0), tags = list(type = "string")), MasterId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DisabledReason = structure(logical(0), tags = list(type = "string")), InvitedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), PercentOfGraphUtilization = structure(logical(0), tags = list(type = "double")), PercentOfGraphUtilizationUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(MemberDetails = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), GraphArn = structure(logical(0), tags = list(type = "string")), MasterId = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use AdministratorId instead.", type = "string")), AdministratorId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DisabledReason = structure(logical(0), tags = list(type = "string")), InvitedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), VolumeUsageInBytes = structure(logical(0), tags = list(type = "long")), VolumeUsageUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), PercentOfGraphUtilization = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use VolumeUsageInBytes instead.", type = "double")), PercentOfGraphUtilizationUpdatedTime = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated. Use VolumeUsageUpdatedTime instead.", type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -133,4 +147,28 @@ NULL
 
 .detective$start_monitoring_member_output <- function(...) {
   list()
+}
+
+.detective$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
 }

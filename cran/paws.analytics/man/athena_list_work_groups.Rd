@@ -23,6 +23,10 @@ A list with the following syntax:\preformatted{list(
       Description = "string",
       CreationTime = as.POSIXct(
         "2015-01-01"
+      ),
+      EngineVersion = list(
+        SelectedEngineVersion = "string",
+        EffectiveEngineVersion = "string"
       )
     )
   ),

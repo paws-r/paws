@@ -4,13 +4,21 @@
 \alias{ssm_describe_document_permission}
 \title{Describes the permissions for a Systems Manager document}
 \usage{
-ssm_describe_document_permission(Name, PermissionType)
+ssm_describe_document_permission(Name, PermissionType, MaxResults,
+  NextToken)
 }
 \arguments{
 \item{Name}{[required] The name of the document for which you are the owner.}
 
 \item{PermissionType}{[required] The permission type for the document. The permission type can be
 \emph{Share}.}
+
+\item{MaxResults}{The maximum number of items to return for this call. The call also
+returns a token that you can specify in a subsequent call to get the
+next set of results.}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -22,7 +30,8 @@ A list with the following syntax:\preformatted{list(
       AccountId = "string",
       SharedDocumentVersion = "string"
     )
-  )
+  ),
+  NextToken = "string"
 )
 }
 }
@@ -35,7 +44,9 @@ be shared privately (by specifying a user's AWS account ID) or publicly
 \section{Request syntax}{
 \preformatted{svc$describe_document_permission(
   Name = "string",
-  PermissionType = "Share"
+  PermissionType = "Share",
+  MaxResults = 123,
+  NextToken = "string"
 )
 }
 }

@@ -12,7 +12,7 @@ ec2_stop_instances(InstanceIds, Hibernate, DryRun, Force)
 \item{Hibernate}{Hibernates the instance if the instance was enabled for hibernation at
 launch. If the instance cannot hibernate successfully, a normal shutdown
 occurs. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html}{Hibernate your instance}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{false}}
 
@@ -53,7 +53,7 @@ You can use the Stop action to hibernate an instance if the instance is
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#enabling-hibernation}{enabled for hibernation}
 and it meets the \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites}{hibernation prerequisites}.
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html}{Hibernate your instance}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 
 We don't charge usage for a stopped instance, or data transfer fees;
 however, your root partition Amazon EBS volume remains and continues to
@@ -70,7 +70,7 @@ You can't stop or hibernate instance store-backed instances. You can't
 use the Stop action to hibernate Spot Instances, but you can specify
 that Amazon EC2 should hibernate Spot Instances when they are
 interrupted. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances}{Hibernating interrupted Spot Instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 
 When you stop or hibernate an instance, we shut it down. You can restart
 your instance at any time. Before stopping or hibernating an instance,
@@ -86,13 +86,13 @@ you terminate an instance, the root device and any other devices
 attached during the instance launch are automatically deleted. For more
 information about the differences between rebooting, stopping,
 hibernating, and terminating instances, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance lifecycle}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 
 When you stop an instance, we attempt to shut it down forcibly after a
 short while. If your instance appears stuck in the stopping state after
 a period of time, there may be an issue with the underlying host
 computer. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html}{Troubleshooting stopping your instance}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_instances(

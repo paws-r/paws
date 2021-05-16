@@ -7,7 +7,7 @@
 iam_create_group(Path, GroupName)
 }
 \arguments{
-\item{Path}{The path to the group. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
+\item{Path}{The path to the group. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -43,8 +43,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Creates a new group.
 
-The number and size of IAM resources in an AWS account are limited. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
+For information about the number of groups you can create, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS quotas}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

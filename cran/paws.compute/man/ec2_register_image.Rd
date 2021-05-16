@@ -6,7 +6,8 @@
 \usage{
 ec2_register_image(ImageLocation, Architecture, BlockDeviceMappings,
   Description, DryRun, EnaSupport, KernelId, Name, BillingProducts,
-  RamdiskId, RootDeviceName, SriovNetSupport, VirtualizationType)
+  RamdiskId, RootDeviceName, SriovNetSupport, VirtualizationType,
+  BootMode)
 }
 \arguments{
 \item{ImageLocation}{The full path to your AMI manifest in Amazon S3 storage. The specified
@@ -20,7 +21,16 @@ in the \emph{Amazon S3 Service Developer Guide}.}
 Default: For Amazon EBS-backed AMIs, \code{i386}. For instance store-backed
 AMIs, the architecture specified in the manifest file.}
 
-\item{BlockDeviceMappings}{The block device mapping entries.}
+\item{BlockDeviceMappings}{The block device mapping entries.
+
+If you specify an EBS volume using the ID of an EBS snapshot, you can't
+specify the encryption state of the volume.
+
+If you create an AMI on an Outpost, then all backing snapshots must be
+on the same Outpost or in the Region of that Outpost. AMIs on an Outpost
+that include local snapshots can be used to launch instances on the same
+Outpost only. For more information, \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami}{Amazon EBS local snapshots on Outposts}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{Description}{A description for your AMI.}
 
@@ -63,6 +73,9 @@ a PV AMI can make instances launched from the AMI unreachable.}
 \item{VirtualizationType}{The type of virtualization (\code{hvm} | \code{paravirtual}).
 
 Default: \code{paravirtual}}
+
+\item{BootMode}{The boot mode of the AMI. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html}{Boot modes}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -80,11 +93,25 @@ For Amazon EBS-backed instances, \code{\link[=ec2_create_image]{create_image}}
 creates and registers the AMI in a single request, so you don't have to
 register the AMI yourself.
 
-You can also use \code{\link[=ec2_register_image]{register_image}} to create an
-Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You
-specify the snapshot using the block device mapping. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot}{Launching a Linux instance from a backup}
+If needed, you can deregister an AMI at any time. Any modifications you
+make to an AMI backed by an instance store volume invalidates its
+registration. If you make changes to an image, deregister the previous
+image and register the new image.
+
+\strong{Register a snapshot of a root device volume}
+
+You can use \code{\link[=ec2_register_image]{register_image}} to create an Amazon
+EBS-backed Linux AMI from a snapshot of a root device volume. You
+specify the snapshot using a block device mapping. You can't set the
+encryption state of the volume using the block device mapping. If the
+snapshot is encrypted, or encryption by default is enabled, the root
+volume of an instance launched from the AMI is encrypted.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot}{Create a Linux AMI from a snapshot}
+and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html}{Use encryption with EBS-backed AMIs}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
+
+\strong{AWS Marketplace product codes}
 
 If any snapshots have AWS Marketplace product codes, they are copied to
 the new AMI.
@@ -111,11 +138,6 @@ the Reserved Instance will not be applied to the On-Demand Instance. For
 information about how to obtain the platform details and billing
 information of an AMI, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html}{Obtaining billing information}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
-
-If needed, you can deregister an AMI at any time. Any modifications you
-make to an AMI backed by an instance store volume invalidates its
-registration. If you make changes to an image, deregister the previous
-image and register the new image.
 }
 \section{Request syntax}{
 \preformatted{svc$register_image(
@@ -133,6 +155,7 @@ image and register the new image.
         VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
         KmsKeyId = "string",
         Throughput = 123,
+        OutpostArn = "string",
         Encrypted = TRUE|FALSE
       ),
       NoDevice = "string"
@@ -149,7 +172,8 @@ image and register the new image.
   RamdiskId = "string",
   RootDeviceName = "string",
   SriovNetSupport = "string",
-  VirtualizationType = "string"
+  VirtualizationType = "string",
+  BootMode = "legacy-bios"|"uefi"
 )
 }
 }

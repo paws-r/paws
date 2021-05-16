@@ -38,7 +38,7 @@ An empty list.
 Updates the name and/or the path of the specified IAM group.
 
 You should understand the implications of changing a group's path or
-name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html}{Renaming Users and Groups} in the
+name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html}{Renaming users and groups} in the
 \emph{IAM User Guide}.
 
 The person making the request (the principal), must have permission to
@@ -47,7 +47,7 @@ to change the group named \code{Managers} to \code{MGRs}, the principal must hav
 a policy that allows them to update both groups. If the principal has
 permission to update the \code{Managers} group, but not the \code{MGRs} group,
 then the update fails. For more information about permissions, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}.
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access management}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_group(

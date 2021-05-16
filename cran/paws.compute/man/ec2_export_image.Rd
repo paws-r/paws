@@ -30,7 +30,7 @@ vm-import-export@amazon.com.}
 images to your Amazon S3 bucket. If this parameter is not specified, the
 default role is named 'vmimport'.}
 
-\item{TagSpecifications}{The tags to apply to the image being exported.}
+\item{TagSpecifications}{The tags to apply to the export image task during creation.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -57,7 +57,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Exports an Amazon Machine Image (AMI) to a VM file. For more
-information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html}{Exporting a VM Directory from an Amazon Machine Image (AMI)}
+information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html}{Exporting a VM directly from an Amazon Machine Image (AMI)}
 in the \emph{VM Import/Export User Guide}.
 }
 \section{Request syntax}{

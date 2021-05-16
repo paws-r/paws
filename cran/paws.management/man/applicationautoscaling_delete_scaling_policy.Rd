@@ -116,8 +116,8 @@ Deleting a step scaling policy deletes the underlying alarm action, but
 does not delete the CloudWatch alarm associated with the scaling policy,
 even if it no longer has an associated action.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html#delete-step-scaling-policy}{Delete a Step Scaling Policy}
-and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html#delete-target-tracking-policy}{Delete a Target Tracking Scaling Policy}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html#delete-step-scaling-policy}{Delete a step scaling policy}
+and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html#delete-target-tracking-policy}{Delete a target tracking scaling policy}
 in the \emph{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{

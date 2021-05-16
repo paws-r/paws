@@ -10,6 +10,10 @@ NULL
 #' Creates an association between a geofence collection and a tracker
 #' resource. This allows the tracker resource to communicate location data
 #' to the linked geofence collection.
+#' 
+#' Currently not supported — Cross-account configurations, such as creating
+#' associations between a tracker resource in one account and a geofence
+#' collection in another account.
 #'
 #' @usage
 #' locationservice_associate_tracker_consumer(ConsumerArn, TrackerName)
@@ -114,11 +118,17 @@ locationservice_batch_delete_geofence <- function(CollectionName, GeofenceIds) {
 }
 .locationservice$operations$batch_delete_geofence <- locationservice_batch_delete_geofence
 
-#' Used in geofence monitoring
+#' Evaluates device positions against the geofence geometries from a given
+#' geofence collection
 #'
 #' @description
-#' Used in geofence monitoring. Evaluates device positions against the
-#' position of geofences in a given geofence collection.
+#' Evaluates device positions against the geofence geometries from a given
+#' geofence collection. The evaluation determines if the device has entered
+#' or exited a geofenced area, which publishes ENTER or EXIT geofence
+#' events to Amazon EventBridge.
+#' 
+#' The last geofence that a device was observed within, if any, is tracked
+#' for 30 days after the most recent device position update
 #'
 #' @usage
 #' locationservice_batch_evaluate_geofences(CollectionName,
@@ -186,12 +196,10 @@ locationservice_batch_evaluate_geofences <- function(CollectionName, DevicePosit
 }
 .locationservice$operations$batch_evaluate_geofences <- locationservice_batch_evaluate_geofences
 
-#' A batch request to retrieve device positions
+#' A batch request to retrieve all device positions
 #'
 #' @description
-#' A batch request to retrieve device positions.
-#' 
-#' The response will return the device positions from the last 24 hours.
+#' A batch request to retrieve all device positions.
 #'
 #' @usage
 #' locationservice_batch_get_device_position(DeviceIds, TrackerName)
@@ -262,10 +270,12 @@ locationservice_batch_get_device_position <- function(DeviceIds, TrackerName) {
 }
 .locationservice$operations$batch_get_device_position <- locationservice_batch_get_device_position
 
-#' A batch request for storing geofences into a given geofence collection
+#' A batch request for storing geofence geometries into a given geofence
+#' collection
 #'
 #' @description
-#' A batch request for storing geofences into a given geofence collection.
+#' A batch request for storing geofence geometries into a given geofence
+#' collection.
 #'
 #' @usage
 #' locationservice_batch_put_geofence(CollectionName, Entries)
@@ -341,15 +351,17 @@ locationservice_batch_put_geofence <- function(CollectionName, Entries) {
 }
 .locationservice$operations$batch_put_geofence <- locationservice_batch_put_geofence
 
-#' Uploads a position update for one or more devices to a tracker resource
+#' Uploads position update data for one or more devices to a tracker
+#' resource
 #'
 #' @description
-#' Uploads a position update for one or more devices to a tracker resource.
-#' The data is used for API queries requesting the device position and
-#' position history.
+#' Uploads position update data for one or more devices to a tracker
+#' resource. Amazon Location uses the data when reporting the last known
+#' device position and position history.
 #' 
-#' Limitation — Location data is sampled at a fixed rate of 1 position per
-#' 30 second interval, and retained for 1 year before it is deleted.
+#' Only one position update is stored per sample time. Location data is
+#' sampled at a fixed rate of one position per 30-second interval, and
+#' retained for one year before it is deleted.
 #'
 #' @usage
 #' locationservice_batch_update_device_position(TrackerName, Updates)
@@ -421,34 +433,33 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #'
 #' @usage
 #' locationservice_create_geofence_collection(CollectionName, Description,
-#'   PricingPlan)
+#'   PricingPlan, PricingPlanDataSource)
 #'
 #' @param CollectionName &#91;required&#93; A custom name for the geofence collection.
 #' 
 #' Requirements:
 #' 
 #' -   Contain only alphanumeric characters (A–Z, a–z, 0-9), hyphens (-),
-#'     and underscores (_).
+#'     periods (.), and underscores (_).
 #' 
 #' -   Must be a unique geofence collection name.
 #' 
 #' -   No spaces allowed. For example, `ExampleGeofenceCollection`.
 #' @param Description An optional description for the geofence collection.
-#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your geofence collection. There's three
-#' pricing plan options:
-#' 
-#' -   `RequestBasedUsage` — Selects the "Request-Based Usage" pricing
-#'     plan.
-#' 
-#' -   `MobileAssetTracking` — Selects the "Mobile Asset Tracking" pricing
-#'     plan.
-#' 
-#' -   `MobileAssetManagement` — Selects the "Mobile Asset Management"
-#'     pricing plan.
+#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your geofence collection.
 #' 
 #' For additional details and restrictions on each pricing plan option, see
 #' the [Amazon Location Service pricing
 #' page](https://aws.amazon.com/location/pricing/).
+#' @param PricingPlanDataSource Specifies the plan data source. Required if the Mobile Asset Tracking
+#' (MAT) or the Mobile Asset Management (MAM) pricing plan is selected.
+#' 
+#' Billing is determined by the resource usage, the associated pricing
+#' plan, and the data source that was specified. For more information about
+#' each pricing plan option and restrictions, see the [Amazon Location
+#' Service pricing page](https://aws.amazon.com/location/pricing/).
+#' 
+#' Valid Values: `Esri `| `Here`
 #'
 #' @return
 #' A list with the following syntax:
@@ -467,21 +478,22 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' svc$create_geofence_collection(
 #'   CollectionName = "string",
 #'   Description = "string",
-#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement"
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   PricingPlanDataSource = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname locationservice_create_geofence_collection
-locationservice_create_geofence_collection <- function(CollectionName, Description = NULL, PricingPlan) {
+locationservice_create_geofence_collection <- function(CollectionName, Description = NULL, PricingPlan, PricingPlanDataSource = NULL) {
   op <- new_operation(
     name = "CreateGeofenceCollection",
     http_method = "POST",
     http_path = "/geofencing/v0/collections",
     paginator = list()
   )
-  input <- .locationservice$create_geofence_collection_input(CollectionName = CollectionName, Description = Description, PricingPlan = PricingPlan)
+  input <- .locationservice$create_geofence_collection_input(CollectionName = CollectionName, Description = Description, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource)
   output <- .locationservice$create_geofence_collection_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -515,22 +527,12 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 #' Requirements:
 #' 
 #' -   Must contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens
-#'     (-), and underscores (_).
+#'     (-), periods (.), and underscores (_).
 #' 
 #' -   Must be a unique map resource name.
 #' 
 #' -   No spaces allowed. For example, `ExampleMap`.
-#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your map resource. There's three pricing
-#' plan options:
-#' 
-#' -   `RequestBasedUsage` — Selects the "Request-Based Usage" pricing
-#'     plan.
-#' 
-#' -   `MobileAssetTracking` — Selects the "Mobile Asset Tracking" pricing
-#'     plan.
-#' 
-#' -   `MobileAssetManagement` — Selects the "Mobile Asset Management"
-#'     pricing plan.
+#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your map resource.
 #' 
 #' For additional details and restrictions on each pricing plan option, see
 #' the [Amazon Location Service pricing
@@ -603,29 +605,32 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 #'   Description, IndexName, PricingPlan)
 #'
 #' @param DataSource &#91;required&#93; Specifies the data provider of geospatial data.
+#' 
+#' This field is case-sensitive. Enter the valid values as shown. For
+#' example, entering `HERE` will return an error.
+#' 
+#' Valid values include:
+#' 
+#' -   `Esri`
+#' 
+#' -   `Here`
+#' 
+#' For additional details on data providers, see the [Amazon Location
+#' Service data providers
+#' page](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html).
 #' @param DataSourceConfiguration Specifies the data storage option for requesting Places.
 #' @param Description The optional description for the Place index resource.
 #' @param IndexName &#91;required&#93; The name of the Place index resource.
 #' 
 #' Requirements:
 #' 
-#' -   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-)
-#'     and underscores (_) ).
+#' -   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-),
+#'     periods (.), and underscores (_).
 #' 
 #' -   Must be a unique Place index resource name.
 #' 
 #' -   No spaces allowed. For example, `ExamplePlaceIndex`.
-#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your Place index resource. There's three
-#' pricing plan options:
-#' 
-#' -   `RequestBasedUsage` — Selects the "Request-Based Usage" pricing
-#'     plan.
-#' 
-#' -   `MobileAssetTracking` — Selects the "Mobile Asset Tracking" pricing
-#'     plan.
-#' 
-#' -   `MobileAssetManagement` — Selects the "Mobile Asset Management"
-#'     pricing plan.
+#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your Place index resource.
 #' 
 #' For additional details and restrictions on each pricing plan option, see
 #' the [Amazon Location Service pricing
@@ -684,30 +689,30 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' current and historical location of devices.
 #'
 #' @usage
-#' locationservice_create_tracker(Description, PricingPlan, TrackerName)
+#' locationservice_create_tracker(Description, PricingPlan,
+#'   PricingPlanDataSource, TrackerName)
 #'
 #' @param Description An optional description for the tracker resource.
-#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your tracker resource. There's three
-#' pricing plan options:
-#' 
-#' -   `RequestBasedUsage` — Selects the "Request-Based Usage" pricing
-#'     plan.
-#' 
-#' -   `MobileAssetTracking` — Selects the "Mobile Asset Tracking" pricing
-#'     plan.
-#' 
-#' -   `MobileAssetManagement` — Selects the "Mobile Asset Management"
-#'     pricing plan.
+#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your tracker resource.
 #' 
 #' For additional details and restrictions on each pricing plan option, see
 #' the [Amazon Location Service pricing
 #' page](https://aws.amazon.com/location/pricing/).
+#' @param PricingPlanDataSource Specifies the plan data source. Required if the Mobile Asset Tracking
+#' (MAT) or the Mobile Asset Management (MAM) pricing plan is selected.
+#' 
+#' Billing is determined by the resource usage, the associated pricing
+#' plan, and data source that was specified. For more information about
+#' each pricing plan option and restrictions, see the [Amazon Location
+#' Service pricing page](https://aws.amazon.com/location/pricing/).
+#' 
+#' Valid Values: `Esri` | `Here`
 #' @param TrackerName &#91;required&#93; The name for the tracker resource.
 #' 
 #' Requirements:
 #' 
-#' -   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-)
-#'     and underscores (_).
+#' -   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-),
+#'     periods (.), and underscores (_).
 #' 
 #' -   Must be a unique tracker resource name.
 #' 
@@ -730,6 +735,7 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' svc$create_tracker(
 #'   Description = "string",
 #'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   PricingPlanDataSource = "string",
 #'   TrackerName = "string"
 #' )
 #' ```
@@ -737,14 +743,14 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' @keywords internal
 #'
 #' @rdname locationservice_create_tracker
-locationservice_create_tracker <- function(Description = NULL, PricingPlan, TrackerName) {
+locationservice_create_tracker <- function(Description = NULL, PricingPlan, PricingPlanDataSource = NULL, TrackerName) {
   op <- new_operation(
     name = "CreateTracker",
     http_method = "POST",
     http_path = "/tracking/v0/trackers",
     paginator = list()
   )
-  input <- .locationservice$create_tracker_input(Description = Description, PricingPlan = PricingPlan, TrackerName = TrackerName)
+  input <- .locationservice$create_tracker_input(Description = Description, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, TrackerName = TrackerName)
   output <- .locationservice$create_tracker_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -950,6 +956,8 @@ locationservice_delete_tracker <- function(TrackerName) {
 #'     "2015-01-01"
 #'   ),
 #'   Description = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   PricingPlanDataSource = "string",
 #'   UpdateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -1007,6 +1015,7 @@ locationservice_describe_geofence_collection <- function(CollectionName) {
 #'   Description = "string",
 #'   MapArn = "string",
 #'   MapName = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
 #'   UpdateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -1064,6 +1073,7 @@ locationservice_describe_map <- function(MapName) {
 #'   Description = "string",
 #'   IndexArn = "string",
 #'   IndexName = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
 #'   UpdateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -1115,6 +1125,8 @@ locationservice_describe_place_index <- function(IndexName) {
 #'     "2015-01-01"
 #'   ),
 #'   Description = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   PricingPlanDataSource = "string",
 #'   TrackerArn = "string",
 #'   TrackerName = "string",
 #'   UpdateTime = as.POSIXct(
@@ -1150,11 +1162,11 @@ locationservice_describe_tracker <- function(TrackerName) {
 }
 .locationservice$operations$describe_tracker <- locationservice_describe_tracker
 
-#' Removes the association bewteen a tracker resource and a geofence
+#' Removes the association between a tracker resource and a geofence
 #' collection
 #'
 #' @description
-#' Removes the association bewteen a tracker resource and a geofence
+#' Removes the association between a tracker resource and a geofence
 #' collection.
 #' 
 #' Once you unlink a tracker resource from a geofence collection, the
@@ -1203,17 +1215,17 @@ locationservice_disassociate_tracker_consumer <- function(ConsumerArn, TrackerNa
 }
 .locationservice$operations$disassociate_tracker_consumer <- locationservice_disassociate_tracker_consumer
 
-#' Retrieves the latest device position
+#' Retrieves a device's most recent position according to its sample time
 #'
 #' @description
-#' Retrieves the latest device position.
+#' Retrieves a device's most recent position according to its sample time.
 #' 
-#' Limitation — Device positions are deleted after one year.
+#' Device positions are deleted after one year.
 #'
 #' @usage
 #' locationservice_get_device_position(DeviceId, TrackerName)
 #'
-#' @param DeviceId &#91;required&#93; The device whose position you want to retreieve.
+#' @param DeviceId &#91;required&#93; The device whose position you want to retrieve.
 #' @param TrackerName &#91;required&#93; The tracker resource receiving the position update.
 #'
 #' @return
@@ -1268,7 +1280,7 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' Retrieves the device position history from a tracker resource within a
 #' specified range of time.
 #' 
-#' Limitation — Device positions are deleted after one year.
+#' Device positions are deleted after 1 year.
 #'
 #' @usage
 #' locationservice_get_device_position_history(DeviceId, EndTimeExclusive,
@@ -1277,9 +1289,12 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' @param DeviceId &#91;required&#93; The device whose position history you want to retrieve.
 #' @param EndTimeExclusive Specify the end time for the position history in [ISO
 #' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
-#' `YYYY-MM-DDThh:mm:ss.sssZ`.
+#' `YYYY-MM-DDThh:mm:ss.sssZ`. By default, the value will be the time that
+#' the request is made.
 #' 
-#' -   The given time for `EndTimeExclusive` must be after the time for
+#' Requirement:
+#' 
+#' -   The time specified for `EndTimeExclusive` must be after the time for
 #'     `StartTimeInclusive`.
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
@@ -1287,10 +1302,13 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' Default value: `null`
 #' @param StartTimeInclusive Specify the start time for the position history in [ISO
 #' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
-#' `YYYY-MM-DDThh:mm:ss.sssZ`.
+#' `YYYY-MM-DDThh:mm:ss.sssZ`. By default, the value will be 24 hours prior
+#' to the time that the request is made.
 #' 
-#' -   The given time for `EndTimeExclusive` must be after the time for
-#'     `StartTimeInclusive`.
+#' Requirement:
+#' 
+#' -   The time specified for `StartTimeInclusive` must be before
+#'     `EndTimeExclusive`.
 #' @param TrackerName &#91;required&#93; The tracker resource receiving the request for the device position
 #' history.
 #'
@@ -1666,6 +1684,8 @@ locationservice_get_map_tile <- function(MapName, X, Y, Z) {
 #'         "2015-01-01"
 #'       ),
 #'       Description = "string",
+#'       PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'       PricingPlanDataSource = "string",
 #'       UpdateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -1802,6 +1822,7 @@ locationservice_list_geofences <- function(CollectionName, NextToken = NULL) {
 #'       DataSource = "string",
 #'       Description = "string",
 #'       MapName = "string",
+#'       PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
 #'       UpdateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -1868,6 +1889,7 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
 #'       DataSource = "string",
 #'       Description = "string",
 #'       IndexName = "string",
+#'       PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
 #'       UpdateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -1992,6 +2014,8 @@ locationservice_list_tracker_consumers <- function(MaxResults = NULL, NextToken 
 #'         "2015-01-01"
 #'       ),
 #'       Description = "string",
+#'       PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'       PricingPlanDataSource = "string",
 #'       TrackerName = "string",
 #'       UpdateTime = as.POSIXct(
 #'         "2015-01-01"
@@ -2030,13 +2054,13 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .locationservice$operations$list_trackers <- locationservice_list_trackers
 
-#' Stores a geofence to a given geofence collection, or updates the
-#' geometry of an existing geofence if a geofence ID is included in the
+#' Stores a geofence geometry in a given geofence collection, or updates
+#' the geometry of an existing geofence if a geofence ID is included in the
 #' request
 #'
 #' @description
-#' Stores a geofence to a given geofence collection, or updates the
-#' geometry of an existing geofence if a geofence ID is included in the
+#' Stores a geofence geometry in a given geofence collection, or updates
+#' the geometry of an existing geofence if a geofence ID is included in the
 #' request.
 #'
 #' @usage
@@ -2045,6 +2069,10 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param CollectionName &#91;required&#93; The geofence collection to store the geofence in.
 #' @param GeofenceId &#91;required&#93; An identifier for the geofence. For example, `ExampleGeofence-1`.
 #' @param Geometry &#91;required&#93; Contains the polygon details to specify the position of the geofence.
+#' 
+#' Each [geofence
+#' polygon](https://docs.aws.amazon.com/location-geofences/latest/APIReference/API_GeofenceGeometry.html)
+#' can have a maximum of 1,000 vertices.
 #'
 #' @return
 #' A list with the following syntax:

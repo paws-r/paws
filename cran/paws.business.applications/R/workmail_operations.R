@@ -234,6 +234,101 @@ workmail_create_group <- function(OrganizationId, Name) {
 }
 .workmail$operations$create_group <- workmail_create_group
 
+#' Creates a new mobile device access rule for the specified Amazon
+#' WorkMail organization
+#'
+#' @description
+#' Creates a new mobile device access rule for the specified Amazon
+#' WorkMail organization.
+#'
+#' @usage
+#' workmail_create_mobile_device_access_rule(OrganizationId, ClientToken,
+#'   Name, Description, Effect, DeviceTypes, NotDeviceTypes, DeviceModels,
+#'   NotDeviceModels, DeviceOperatingSystems, NotDeviceOperatingSystems,
+#'   DeviceUserAgents, NotDeviceUserAgents)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which the rule will be created.
+#' @param ClientToken The idempotency token for the client request.
+#' @param Name &#91;required&#93; The rule name.
+#' @param Description The rule description.
+#' @param Effect &#91;required&#93; The effect of the rule when it matches. Allowed values are `ALLOW` or
+#' `DENY`.
+#' @param DeviceTypes Device types that the rule will match.
+#' @param NotDeviceTypes Device types that the rule **will not** match. All other device types
+#' will match.
+#' @param DeviceModels Device models that the rule will match.
+#' @param NotDeviceModels Device models that the rule **will not** match. All other device models
+#' will match.
+#' @param DeviceOperatingSystems Device operating systems that the rule will match.
+#' @param NotDeviceOperatingSystems Device operating systems that the rule **will not** match. All other
+#' device operating systems will match.
+#' @param DeviceUserAgents Device user agents that the rule will match.
+#' @param NotDeviceUserAgents Device user agents that the rule **will not** match. All other device
+#' user agents will match.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MobileDeviceAccessRuleId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_mobile_device_access_rule(
+#'   OrganizationId = "string",
+#'   ClientToken = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   Effect = "ALLOW"|"DENY",
+#'   DeviceTypes = list(
+#'     "string"
+#'   ),
+#'   NotDeviceTypes = list(
+#'     "string"
+#'   ),
+#'   DeviceModels = list(
+#'     "string"
+#'   ),
+#'   NotDeviceModels = list(
+#'     "string"
+#'   ),
+#'   DeviceOperatingSystems = list(
+#'     "string"
+#'   ),
+#'   NotDeviceOperatingSystems = list(
+#'     "string"
+#'   ),
+#'   DeviceUserAgents = list(
+#'     "string"
+#'   ),
+#'   NotDeviceUserAgents = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_create_mobile_device_access_rule
+workmail_create_mobile_device_access_rule <- function(OrganizationId, ClientToken = NULL, Name, Description = NULL, Effect, DeviceTypes = NULL, NotDeviceTypes = NULL, DeviceModels = NULL, NotDeviceModels = NULL, DeviceOperatingSystems = NULL, NotDeviceOperatingSystems = NULL, DeviceUserAgents = NULL, NotDeviceUserAgents = NULL) {
+  op <- new_operation(
+    name = "CreateMobileDeviceAccessRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$create_mobile_device_access_rule_input(OrganizationId = OrganizationId, ClientToken = ClientToken, Name = Name, Description = Description, Effect = Effect, DeviceTypes = DeviceTypes, NotDeviceTypes = NotDeviceTypes, DeviceModels = DeviceModels, NotDeviceModels = NotDeviceModels, DeviceOperatingSystems = DeviceOperatingSystems, NotDeviceOperatingSystems = NotDeviceOperatingSystems, DeviceUserAgents = DeviceUserAgents, NotDeviceUserAgents = NotDeviceUserAgents)
+  output <- .workmail$create_mobile_device_access_rule_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$create_mobile_device_access_rule <- workmail_create_mobile_device_access_rule
+
 #' Creates a new Amazon WorkMail organization
 #'
 #' @description
@@ -603,6 +698,51 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
   return(response)
 }
 .workmail$operations$delete_mailbox_permissions <- workmail_delete_mailbox_permissions
+
+#' Deletes a mobile device access rule for the specified Amazon WorkMail
+#' organization
+#'
+#' @description
+#' Deletes a mobile device access rule for the specified Amazon WorkMail
+#' organization.
+#'
+#' @usage
+#' workmail_delete_mobile_device_access_rule(OrganizationId,
+#'   MobileDeviceAccessRuleId)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which the rule will be deleted.
+#' @param MobileDeviceAccessRuleId &#91;required&#93; The identifier of the rule to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_mobile_device_access_rule(
+#'   OrganizationId = "string",
+#'   MobileDeviceAccessRuleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_mobile_device_access_rule
+workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDeviceAccessRuleId) {
+  op <- new_operation(
+    name = "DeleteMobileDeviceAccessRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$delete_mobile_device_access_rule_input(OrganizationId = OrganizationId, MobileDeviceAccessRuleId = MobileDeviceAccessRuleId)
+  output <- .workmail$delete_mobile_device_access_rule_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_mobile_device_access_rule <- workmail_delete_mobile_device_access_rule
 
 #' Deletes an Amazon WorkMail organization and all underlying AWS resources
 #' managed by Amazon WorkMail as part of the organization
@@ -1391,6 +1531,70 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
 }
 .workmail$operations$get_mailbox_details <- workmail_get_mailbox_details
 
+#' Simulates the effect of the mobile device access rules for the given
+#' attributes of a sample access event
+#'
+#' @description
+#' Simulates the effect of the mobile device access rules for the given
+#' attributes of a sample access event. Use this method to test the effects
+#' of the current set of mobile device access rules for the Amazon WorkMail
+#' organization for a particular user's attributes.
+#'
+#' @usage
+#' workmail_get_mobile_device_access_effect(OrganizationId, DeviceType,
+#'   DeviceModel, DeviceOperatingSystem, DeviceUserAgent)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization to simulate the access effect for.
+#' @param DeviceType Device type the simulated user will report.
+#' @param DeviceModel Device model the simulated user will report.
+#' @param DeviceOperatingSystem Device operating system the simulated user will report.
+#' @param DeviceUserAgent Device user agent the simulated user will report.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Effect = "ALLOW"|"DENY",
+#'   MatchedRules = list(
+#'     list(
+#'       MobileDeviceAccessRuleId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_mobile_device_access_effect(
+#'   OrganizationId = "string",
+#'   DeviceType = "string",
+#'   DeviceModel = "string",
+#'   DeviceOperatingSystem = "string",
+#'   DeviceUserAgent = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_get_mobile_device_access_effect
+workmail_get_mobile_device_access_effect <- function(OrganizationId, DeviceType = NULL, DeviceModel = NULL, DeviceOperatingSystem = NULL, DeviceUserAgent = NULL) {
+  op <- new_operation(
+    name = "GetMobileDeviceAccessEffect",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$get_mobile_device_access_effect_input(OrganizationId = OrganizationId, DeviceType = DeviceType, DeviceModel = DeviceModel, DeviceOperatingSystem = DeviceOperatingSystem, DeviceUserAgent = DeviceUserAgent)
+  output <- .workmail$get_mobile_device_access_effect_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$get_mobile_device_access_effect <- workmail_get_mobile_device_access_effect
+
 #' Lists the access control rules for the specified organization
 #'
 #' @description
@@ -1789,6 +1993,90 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
   return(response)
 }
 .workmail$operations$list_mailbox_permissions <- workmail_list_mailbox_permissions
+
+#' Lists the mobile device access rules for the specified Amazon WorkMail
+#' organization
+#'
+#' @description
+#' Lists the mobile device access rules for the specified Amazon WorkMail
+#' organization.
+#'
+#' @usage
+#' workmail_list_mobile_device_access_rules(OrganizationId)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which to list the rules.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rules = list(
+#'     list(
+#'       MobileDeviceAccessRuleId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Effect = "ALLOW"|"DENY",
+#'       DeviceTypes = list(
+#'         "string"
+#'       ),
+#'       NotDeviceTypes = list(
+#'         "string"
+#'       ),
+#'       DeviceModels = list(
+#'         "string"
+#'       ),
+#'       NotDeviceModels = list(
+#'         "string"
+#'       ),
+#'       DeviceOperatingSystems = list(
+#'         "string"
+#'       ),
+#'       NotDeviceOperatingSystems = list(
+#'         "string"
+#'       ),
+#'       DeviceUserAgents = list(
+#'         "string"
+#'       ),
+#'       NotDeviceUserAgents = list(
+#'         "string"
+#'       ),
+#'       DateCreated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DateModified = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_mobile_device_access_rules(
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_mobile_device_access_rules
+workmail_list_mobile_device_access_rules <- function(OrganizationId) {
+  op <- new_operation(
+    name = "ListMobileDeviceAccessRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$list_mobile_device_access_rules_input(OrganizationId = OrganizationId)
+  output <- .workmail$list_mobile_device_access_rules_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_mobile_device_access_rules <- workmail_list_mobile_device_access_rules
 
 #' Returns summaries of the customer's organizations
 #'
@@ -2593,6 +2881,96 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
   return(response)
 }
 .workmail$operations$update_mailbox_quota <- workmail_update_mailbox_quota
+
+#' Updates a mobile device access rule for the specified Amazon WorkMail
+#' organization
+#'
+#' @description
+#' Updates a mobile device access rule for the specified Amazon WorkMail
+#' organization.
+#'
+#' @usage
+#' workmail_update_mobile_device_access_rule(OrganizationId,
+#'   MobileDeviceAccessRuleId, Name, Description, Effect, DeviceTypes,
+#'   NotDeviceTypes, DeviceModels, NotDeviceModels, DeviceOperatingSystems,
+#'   NotDeviceOperatingSystems, DeviceUserAgents, NotDeviceUserAgents)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which the rule will be updated.
+#' @param MobileDeviceAccessRuleId &#91;required&#93; The identifier of the rule to be updated.
+#' @param Name &#91;required&#93; The updated rule name.
+#' @param Description The updated rule description.
+#' @param Effect &#91;required&#93; The effect of the rule when it matches. Allowed values are `ALLOW` or
+#' `DENY`.
+#' @param DeviceTypes Device types that the updated rule will match.
+#' @param NotDeviceTypes Device types that the updated rule **will not** match. All other device
+#' types will match.
+#' @param DeviceModels Device models that the updated rule will match.
+#' @param NotDeviceModels Device models that the updated rule **will not** match. All other device
+#' models will match.
+#' @param DeviceOperatingSystems Device operating systems that the updated rule will match.
+#' @param NotDeviceOperatingSystems Device operating systems that the updated rule **will not** match. All
+#' other device operating systems will match.
+#' @param DeviceUserAgents User agents that the updated rule will match.
+#' @param NotDeviceUserAgents User agents that the updated rule **will not** match. All other user
+#' agents will match.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_mobile_device_access_rule(
+#'   OrganizationId = "string",
+#'   MobileDeviceAccessRuleId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   Effect = "ALLOW"|"DENY",
+#'   DeviceTypes = list(
+#'     "string"
+#'   ),
+#'   NotDeviceTypes = list(
+#'     "string"
+#'   ),
+#'   DeviceModels = list(
+#'     "string"
+#'   ),
+#'   NotDeviceModels = list(
+#'     "string"
+#'   ),
+#'   DeviceOperatingSystems = list(
+#'     "string"
+#'   ),
+#'   NotDeviceOperatingSystems = list(
+#'     "string"
+#'   ),
+#'   DeviceUserAgents = list(
+#'     "string"
+#'   ),
+#'   NotDeviceUserAgents = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_update_mobile_device_access_rule
+workmail_update_mobile_device_access_rule <- function(OrganizationId, MobileDeviceAccessRuleId, Name, Description = NULL, Effect, DeviceTypes = NULL, NotDeviceTypes = NULL, DeviceModels = NULL, NotDeviceModels = NULL, DeviceOperatingSystems = NULL, NotDeviceOperatingSystems = NULL, DeviceUserAgents = NULL, NotDeviceUserAgents = NULL) {
+  op <- new_operation(
+    name = "UpdateMobileDeviceAccessRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$update_mobile_device_access_rule_input(OrganizationId = OrganizationId, MobileDeviceAccessRuleId = MobileDeviceAccessRuleId, Name = Name, Description = Description, Effect = Effect, DeviceTypes = DeviceTypes, NotDeviceTypes = NotDeviceTypes, DeviceModels = DeviceModels, NotDeviceModels = NotDeviceModels, DeviceOperatingSystems = DeviceOperatingSystems, NotDeviceOperatingSystems = NotDeviceOperatingSystems, DeviceUserAgents = DeviceUserAgents, NotDeviceUserAgents = NotDeviceUserAgents)
+  output <- .workmail$update_mobile_device_access_rule_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$update_mobile_device_access_rule <- workmail_update_mobile_device_access_rule
 
 #' Updates the primary email for a user, group, or resource
 #'

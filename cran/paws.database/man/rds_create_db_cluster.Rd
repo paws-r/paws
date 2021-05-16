@@ -132,8 +132,8 @@ automated backups are enabled using the \code{BackupRetentionPeriod}
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available, see
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
+block of time for each AWS Region. To view the time blocks available,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow}{Backup window}
 in the \emph{Amazon Aurora User Guide.}
 
 Constraints:
@@ -263,10 +263,10 @@ Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowqu
 
 \strong{Aurora PostgreSQL}
 
-Possible values are \code{postgresql} and \code{upgrade}.}
+Possible value is \code{postgresql}.}
 
-\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned} \code{serverless},
-\code{parallelquery}, \code{global}, or \code{multimaster}.
+\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
+\code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.
 
 The \code{parallelquery} engine mode isn't required for Aurora MySQL version
 1.23 and higher 1.x versions, and version 2.09 and higher 2.x versions.
@@ -326,12 +326,19 @@ in the \emph{Amazon Aurora User Guide}.}
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
 Directory Service.}
 
-\item{EnableGlobalWriteForwarding}{A value that indicates whether to enable write operations to be
-forwarded from this cluster to the primary cluster in an Aurora global
-database. The resulting changes are replicated back to this cluster.
-This parameter only applies to DB clusters that are secondary clusters
-in an Aurora global database. By default, Aurora disallows write
-operations for secondary clusters.}
+\item{EnableGlobalWriteForwarding}{A value that indicates whether to enable this DB cluster to forward
+write operations to the primary cluster of an Aurora global database
+(GlobalCluster). By default, write operations are not allowed on Aurora
+DB clusters that are secondary clusters in an Aurora global database.
+
+You can set this value only on Aurora DB clusters that are members of an
+Aurora global database. With this parameter enabled, a secondary cluster
+can forward writes to the current primary cluster and the resulting
+changes are replicated back to this cluster. For the primary DB cluster
+of an Aurora global database, this value is used immediately if the
+primary is demoted by the
+\code{\link[=rds_failover_global_cluster]{failover_global_cluster}} API operation,
+but it does nothing until then.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }

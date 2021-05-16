@@ -269,6 +269,16 @@ A list with the following syntax:\preformatted{list(
           value = "string"
         )
       )
+    ),
+    registeredAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    deregisteredAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    registeredBy = "string",
+    ephemeralStorage = list(
+      sizeInGiB = 123
     )
   )
 )

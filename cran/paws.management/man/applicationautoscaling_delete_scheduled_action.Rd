@@ -112,7 +112,7 @@ An empty list.
 Deletes the specified scheduled action for an Application Auto Scaling
 scalable target.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html#delete-scheduled-action}{Delete a Scheduled Action}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html#delete-scheduled-action}{Delete a scheduled action}
 in the \emph{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{

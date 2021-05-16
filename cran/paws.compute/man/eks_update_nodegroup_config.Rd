@@ -4,7 +4,7 @@
 \alias{eks_update_nodegroup_config}
 \title{Updates an Amazon EKS managed node group configuration}
 \usage{
-eks_update_nodegroup_config(clusterName, nodegroupName, labels,
+eks_update_nodegroup_config(clusterName, nodegroupName, labels, taints,
   scalingConfig, clientRequestToken)
 }
 \arguments{
@@ -14,6 +14,9 @@ in.}
 \item{nodegroupName}{[required] The name of the managed node group to update.}
 
 \item{labels}{The Kubernetes labels to be applied to the nodes in the node group after
+the update.}
+
+\item{taints}{The Kubernetes taints to be applied to the nodes in the node group after
 the update.}
 
 \item{scalingConfig}{The scaling configuration details for the Auto Scaling group after the
@@ -27,10 +30,10 @@ A list with the following syntax:\preformatted{list(
   update = list(
     id = "string",
     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-    type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+    type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate",
     params = list(
       list(
-        type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+        type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
         value = "string"
       )
     ),
@@ -39,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     ),
     errors = list(
       list(
-        errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+        errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied",
         errorMessage = "string",
         resourceIds = list(
           "string"
@@ -68,6 +71,22 @@ scaling configuration.
     ),
     removeLabels = list(
       "string"
+    )
+  ),
+  taints = list(
+    addOrUpdateTaints = list(
+      list(
+        key = "string",
+        value = "string",
+        effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+      )
+    ),
+    removeTaints = list(
+      list(
+        key = "string",
+        value = "string",
+        effect = "NO_SCHEDULE"|"NO_EXECUTE"|"PREFER_NO_SCHEDULE"
+      )
     )
   ),
   scalingConfig = list(

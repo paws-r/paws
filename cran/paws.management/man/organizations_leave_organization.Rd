@@ -43,12 +43,20 @@ AWS uses the payment method to charge for any billable (not free
 tier) AWS activity that occurs while the account isn't attached to
 an organization. Follow the steps at \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization when all required account information has not yet been provided}
 in the \emph{AWS Organizations User Guide.}
+\item The account that you want to leave must not be a delegated
+administrator account for any AWS service enabled for your
+organization. If the account is a delegated administrator, you must
+first change the delegated administrator account to another account
+that is remaining in the organization.
 \item You can leave an organization only after you enable IAM user access
 to billing in your account. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
 in the \emph{AWS Billing and Cost Management User Guide.}
 \item After the account leaves the organization, all tags that were
 attached to the account object in the organization are deleted. AWS
 accounts outside of an organization do not support tags.
+\item A newly created account has a waiting period before it can be
+removed from its organization. If you get an error that indicates
+that a wait period is required, then try again in a few days.
 }
 }
 \examples{

@@ -11,7 +11,7 @@ lightsail_create_relational_database(relationalDatabaseName,
   publiclyAccessible, tags)
 }
 \arguments{
-\item{relationalDatabaseName}{[required] The name to use for your new database.
+\item{relationalDatabaseName}{[required] The name to use for your new Lightsail database resource.
 
 Constraints:
 \itemize{
@@ -39,34 +39,89 @@ specifications for your database.
 You can get a list of database bundle IDs by using the
 \verb{get relational database bundles} operation.}
 
-\item{masterDatabaseName}{[required] The name of the master database created when the Lightsail database
-resource is created.
+\item{masterDatabaseName}{[required] The meaning of this parameter differs according to the database engine
+you use.
+
+\strong{MySQL}
+
+The name of the database to create when the Lightsail database resource
+is created. If this parameter isn't specified, no database is created in
+the database resource.
 
 Constraints:
 \itemize{
-\item Must contain from 1 to 64 alphanumeric characters.
-\item Cannot be a word reserved by the specified database engine
+\item Must contain 1 to 64 letters or numbers.
+\item Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0- 9).
+\item Can't be a word reserved by the specified database engine.
+
+For more information about reserved words in MySQL, see the Keywords
+and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/5.6/en/keywords.html}{MySQL 5.6}, \href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}, and
+\href{https://dev.mysql.com/doc/refman/8.0/en/keywords.html}{MySQL 8.0}.
+}
+
+\strong{PostgreSQL}
+
+The name of the database to create when the Lightsail database resource
+is created. If this parameter isn't specified, a database named
+\code{postgres} is created in the database resource.
+
+Constraints:
+\itemize{
+\item Must contain 1 to 63 letters or numbers.
+\item Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0- 9).
+\item Can't be a word reserved by the specified database engine.
+
+For more information about reserved words in PostgreSQL, see the SQL
+Key Words articles for \href{https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html}{PostgreSQL 9.6},
+\href{https://www.postgresql.org/docs/10/sql-keywords-appendix.html}{PostgreSQL 10},
+\href{https://www.postgresql.org/docs/11/sql-keywords-appendix.html}{PostgreSQL 11},
+and \href{https://www.postgresql.org/docs/12/sql-keywords-appendix.html}{PostgreSQL 12}.
 }}
 
-\item{masterUsername}{[required] The master user name for your new database.
+\item{masterUsername}{[required] The name for the master user.
+
+\strong{MySQL}
 
 Constraints:
 \itemize{
-\item Master user name is required.
-\item Must contain from 1 to 16 alphanumeric characters.
-\item The first character must be a letter.
-\item Cannot be a reserved word for the database engine you choose.
+\item Required for MySQL.
+\item Must be 1 to 16 letters or numbers. Can contain underscores.
+\item First character must be a letter.
+\item Can't be a reserved word for the chosen database engine.
 
 For more information about reserved words in MySQL 5.6 or 5.7, see
-the Keywords and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/5.6/en/keywords.html}{MySQL 5.6} or
-\href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}
-respectively.
+the Keywords and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/5.6/en/keywords.html}{MySQL 5.6}, \href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}, or
+\href{https://dev.mysql.com/doc/refman/8.0/en/keywords.html}{MySQL 8.0}.
+}
+
+\strong{PostgreSQL}
+
+Constraints:
+\itemize{
+\item Required for PostgreSQL.
+\item Must be 1 to 63 letters or numbers. Can contain underscores.
+\item First character must be a letter.
+\item Can't be a reserved word for the chosen database engine.
+
+For more information about reserved words in MySQL 5.6 or 5.7, see
+the Keywords and Reserved Words articles for \href{https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html}{PostgreSQL 9.6},
+\href{https://www.postgresql.org/docs/10/sql-keywords-appendix.html}{PostgreSQL 10},
+\href{https://www.postgresql.org/docs/11/sql-keywords-appendix.html}{PostgreSQL 11},
+and \href{https://www.postgresql.org/docs/12/sql-keywords-appendix.html}{PostgreSQL 12}.
 }}
 
-\item{masterUserPassword}{The password for the master user of your new database. The password can
-include any printable ASCII character except "/", """, or "@".
+\item{masterUserPassword}{The password for the master user. The password can include any printable
+ASCII character except "/", """, or "@". It cannot contain spaces.
 
-Constraints: Must contain 8 to 41 characters.}
+\strong{MySQL}
+
+Constraints: Must contain from 8 to 41 characters.
+
+\strong{PostgreSQL}
+
+Constraints: Must contain from 8 to 128 characters.}
 
 \item{preferredBackupWindow}{The daily time range during which automated backups are created for your
 new database if automated backups are enabled.
@@ -130,7 +185,7 @@ A list with the following syntax:\preformatted{list(
       ),
       isTerminal = TRUE|FALSE,
       operationDetails = "string",
-      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
+      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"SetIpAddressType"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
       statusChangedAt = as.POSIXct(
         "2015-01-01"

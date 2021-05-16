@@ -30,14 +30,21 @@ Retrieves valid VPC peering authorizations that are pending for the AWS
 account. This operation returns all VPC peering authorizations and
 requests for peering. This includes those initiated and received by this
 account.
-\itemize{
-\item \code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
-\item \code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
-\item \code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
-\item \code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
-\item \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
-\item \code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
+|
+\code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
+|
+\code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
+|
+\code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
+|
+\code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
+|
+\code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
+| \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_vpc_peering_authorizations()

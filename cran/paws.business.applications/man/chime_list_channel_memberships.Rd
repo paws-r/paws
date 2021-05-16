@@ -4,7 +4,8 @@
 \alias{chime_list_channel_memberships}
 \title{Lists all channel memberships in a channel}
 \usage{
-chime_list_channel_memberships(ChannelArn, Type, MaxResults, NextToken)
+chime_list_channel_memberships(ChannelArn, Type, MaxResults, NextToken,
+  ChimeBearer)
 }
 \arguments{
 \item{ChannelArn}{[required] The maximum number of channel memberships that you want returned.}
@@ -19,7 +20,9 @@ members are only returned if the type filter in
 \item{MaxResults}{The maximum number of channel memberships that you want returned.}
 
 \item{NextToken}{The token passed by previous API calls until all requested channel
-memberships are returned..}
+memberships are returned.}
+
+\item{ChimeBearer}{The \code{AppInstanceUserArn} of the user that makes the API call.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -38,13 +41,18 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Lists all channel memberships in a channel.
+
+The \code{x-amz-chime-bearer} request header is mandatory. Use the
+\code{AppInstanceUserArn} of the user that makes the API call as the value in
+the header.
 }
 \section{Request syntax}{
 \preformatted{svc$list_channel_memberships(
   ChannelArn = "string",
   Type = "DEFAULT"|"HIDDEN",
   MaxResults = 123,
-  NextToken = "string"
+  NextToken = "string",
+  ChimeBearer = "string"
 )
 }
 }

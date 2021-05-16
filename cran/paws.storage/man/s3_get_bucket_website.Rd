@@ -9,7 +9,7 @@ s3_get_bucket_website(Bucket, ExpectedBucketOwner)
 \arguments{
 \item{Bucket}{[required] The bucket name for which to get the website configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
@@ -48,7 +48,7 @@ Returns the website configuration for a bucket. To host website on
 Amazon S3, you can configure a bucket as website by adding a website
 configuration. For more information about hosting websites, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
 
-This GET operation requires the \code{S3:GetBucketWebsite} permission. By
+This GET action requires the \code{S3:GetBucketWebsite} permission. By
 default, only the bucket owner can read the bucket website
 configuration. However, bucket owners can allow other users to read the
 website configuration by writing a bucket policy granting them the

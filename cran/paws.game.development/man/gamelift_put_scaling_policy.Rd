@@ -9,11 +9,11 @@ gamelift_put_scaling_policy(Name, FleetId, ScalingAdjustment,
   MetricName, PolicyType, TargetConfiguration)
 }
 \arguments{
-\item{Name}{[required] A descriptive label that is associated with a scaling policy. Policy
-names do not need to be unique. A fleet can have only one scaling policy
-with the same name.}
+\item{Name}{[required] A descriptive label that is associated with a fleet's scaling policy.
+Policy names do not need to be unique. A fleet can have only one scaling
+policy with the same name.}
 
-\item{FleetId}{[required] A unique identifier for a fleet to apply this policy to. You can use
+\item{FleetId}{[required] A unique identifier for the fleet to apply this policy to. You can use
 either the fleet ID or ARN value. The fleet cannot be in any of the
 following statuses: ERROR or DELETING.}
 
@@ -78,7 +78,7 @@ parameter \emph{MetricName} to 'PercentAvailableGameSessions' and specify a
 parameters: \emph{MetricName}, \emph{ComparisonOperator}, \emph{Threshold},
 \emph{EvaluationPeriods}, \emph{ScalingAdjustmentType}, and \emph{ScalingAdjustment}.}
 
-\item{TargetConfiguration}{The settings for a target-based scaling policy.}
+\item{TargetConfiguration}{An object that contains settings for a target-based scaling policy.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -169,25 +169,17 @@ the policy name is returned. Scaling policies are automatically in force
 as soon as they're successfully created. If the fleet's auto-scaling
 actions are temporarily suspended, the new policy will be in force once
 the fleet actions are restarted.
-\itemize{
-\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
-\item \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}
-\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
-\item Manage scaling policies:
-\itemize{
-\item \code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}}
-(auto-scaling)
-\item \code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}}
-(auto-scaling)
-\item \code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}}
-(auto-scaling)
-}
-\item Manage fleet actions:
-\itemize{
-\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}}
-\item \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
-}
-}
+
+\strong{Related actions}
+
+\code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}} |
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}} |
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+| \code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}} |
+\code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}} |
+\code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}} |
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} |
+\code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} | \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets}{All APIs by task}
 }
 \section{Request syntax}{
 \preformatted{svc$put_scaling_policy(

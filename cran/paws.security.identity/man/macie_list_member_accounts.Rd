@@ -2,8 +2,8 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_list_member_accounts}
 \alias{macie_list_member_accounts}
-\title{Lists all Amazon Macie Classic member accounts for the current Amazon
-Macie Classic master account}
+\title{Lists all Amazon Macie Classic member accounts for the current Macie
+Classic administrator account}
 \usage{
 macie_list_member_accounts(nextToken, maxResults)
 }
@@ -28,8 +28,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Lists all Amazon Macie Classic member accounts for the current Amazon
-Macie Classic master account.
+Lists all Amazon Macie Classic member accounts for the current Macie
+Classic administrator account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_member_accounts(

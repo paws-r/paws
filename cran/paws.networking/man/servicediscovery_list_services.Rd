@@ -40,6 +40,7 @@ A list with the following syntax:\preformatted{list(
       Id = "string",
       Arn = "string",
       Name = "string",
+      Type = "HTTP"|"DNS_HTTP"|"DNS",
       Description = "string",
       InstanceCount = 123,
       DnsConfig = list(

@@ -45,7 +45,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Lists the tags that are attached to the specified role. The returned
 list of tags is sorted by tag key. For more information about tagging,
-see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

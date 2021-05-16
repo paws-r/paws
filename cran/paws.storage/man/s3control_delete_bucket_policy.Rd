@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_delete_bucket_policy}
 \alias{s3control_delete_bucket_policy}
-\title{This API operation deletes an Amazon S3 on Outposts bucket policy}
+\title{This action deletes an Amazon S3 on Outposts bucket policy}
 \usage{
 s3control_delete_bucket_policy(AccountId, Bucket)
 }
@@ -27,19 +27,19 @@ The value must be URL encoded.}
 An empty list.
 }
 \description{
-This API operation deletes an Amazon S3 on Outposts bucket policy. To
-delete an S3 bucket policy, see
+This action deletes an Amazon S3 on Outposts bucket policy. To delete an
+S3 bucket policy, see
 \code{\link[=s3control_delete_bucket_policy]{delete_bucket_policy}} in the \emph{Amazon
-Simple Storage Service API}.
+S3 API Reference}.
 
-This implementation of the DELETE operation uses the policy subresource
-to delete the policy of a specified Amazon S3 on Outposts bucket. If you
+This implementation of the DELETE action uses the policy subresource to
+delete the policy of a specified Amazon S3 on Outposts bucket. If you
 are using an identity other than the root user of the AWS account that
 owns the bucket, the calling identity must have the
 \code{s3-outposts:DeleteBucketPolicy} permissions on the specified Outposts
-bucket and belong to the bucket owner's account to use this operation.
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in \emph{Amazon Simple Storage Service Developer Guide}.
+bucket and belong to the bucket owner's account to use this action. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in \emph{Amazon S3 User Guide}.
 
 If you don't have
 \code{\link[=s3control_delete_bucket_policy]{delete_bucket_policy}} permissions,
@@ -48,11 +48,10 @@ permissions, but you're not using an identity that belongs to the bucket
 owner's account, Amazon S3 returns a \verb{405 Method Not Allowed} error.
 
 As a security precaution, the root user of the AWS account that owns a
-bucket can always use this operation, even if the policy explicitly
-denies the root user the ability to perform this action.
+bucket can always use this action, even if the policy explicitly denies
+the root user the ability to perform this action.
 
-For more information about bucket policies, see Using Bucket Policies
-and User Policies.
+For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
 
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request

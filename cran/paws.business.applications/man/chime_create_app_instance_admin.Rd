@@ -7,9 +7,9 @@
 chime_create_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
 }
 \arguments{
-\item{AppInstanceAdminArn}{[required] The ARN of the administrator of the current app instance.}
+\item{AppInstanceAdminArn}{[required] The ARN of the administrator of the current \code{AppInstance}.}
 
-\item{AppInstanceArn}{[required] The ARN of the app instance.}
+\item{AppInstanceArn}{[required] The ARN of the \code{AppInstance}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -25,7 +25,7 @@ A list with the following syntax:\preformatted{list(
 Promotes an \code{AppInstanceUser} to an \code{AppInstanceAdmin}. The promoted
 user can perform the following actions.
 \itemize{
-\item \code{ChannelModerator} actions across all channels in the app instance.
+\item \code{ChannelModerator} actions across all channels in the \code{AppInstance}.
 \item \code{\link[=chime_delete_channel_message]{delete_channel_message}} actions.
 }
 

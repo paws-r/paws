@@ -76,7 +76,7 @@ A list with the following syntax:\preformatted{list(
     ),
     AccountId = "string",
     GovCloudAccountId = "string",
-    FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
+    FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"FAILED_BUSINESS_VALIDATION"|"PENDING_BUSINESS_VALIDATION"|"INVALID_IDENTITY_FOR_BUSINESS_VALIDATION"|"UNKNOWN_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
   )
 )
 }
@@ -97,7 +97,7 @@ from this operation to provide as a parameter to the
 operation.
 \item Check the AWS CloudTrail log for the \code{CreateAccountResult} event.
 For information on using AWS CloudTrail with AWS Organizations, see
-\href{https://docs.aws.amazon.com/organizations/latest/userguide/}{Monitoring the Activity in Your Organization}
+\href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html#orgs_cloudtrail-integration}{Logging and monitoring in AWS Organizations}
 in the \emph{AWS Organizations User Guide.}
 }
 

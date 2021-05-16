@@ -5,7 +5,8 @@
 \title{Creates a new, empty file system}
 \usage{
 efs_create_file_system(CreationToken, PerformanceMode, Encrypted,
-  KmsKeyId, ThroughputMode, ProvisionedThroughputInMibps, Tags)
+  KmsKeyId, ThroughputMode, ProvisionedThroughputInMibps,
+  AvailabilityZoneName, Backup, Tags)
 }
 \arguments{
 \item{CreationToken}{[required] A string of up to 64 ASCII characters. Amazon EFS uses this to ensure
@@ -16,7 +17,10 @@ performance mode for most file systems. File systems using the \code{maxIO}
 performance mode can scale to higher levels of aggregate throughput and
 operations per second with a tradeoff of slightly higher latencies for
 most file operations. The performance mode can't be changed after the
-file system has been created.}
+file system has been created.
+
+The \code{maxIO} mode is not supported on file systems using One Zone storage
+classes.}
 
 \item{Encrypted}{A Boolean value that, if true, creates an encrypted file system. When
 creating an encrypted file system, you have the option of specifying
@@ -26,7 +30,7 @@ then the default CMK for Amazon EFS, \verb{/aws/elasticfilesystem}, is used
 to protect the encrypted file system.}
 
 \item{KmsKeyId}{The ID of the AWS KMS CMK to be used to protect the encrypted file
-system. This parameter is only required if you want to use a nondefault
+system. This parameter is only required if you want to use a non-default
 CMK. If this parameter is not specified, the default CMK for Amazon EFS
 is used. This ID can be in one of the following formats:
 \itemize{
@@ -46,22 +50,45 @@ parameter must be set to true.
 EFS accepts only symmetric CMKs. You cannot use asymmetric CMKs with EFS
 file systems.}
 
-\item{ThroughputMode}{The throughput mode for the file system to be created. There are two
-throughput modes to choose from for your file system: \code{bursting} and
+\item{ThroughputMode}{Specifies the throughput mode for the file system, either \code{bursting} or
 \code{provisioned}. If you set \code{ThroughputMode} to \code{provisioned}, you must
-also set a value for \code{ProvisionedThroughPutInMibps}. You can decrease
-your file system's throughput in Provisioned Throughput mode or change
-between the throughput modes as long as it’s been more than 24 hours
-since the last decrease or throughput mode change. For more, see
-\href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput}{Specifying Throughput with Provisioned Mode}
-in the \emph{Amazon EFS User Guide.}}
+also set a value for \code{ProvisionedThroughputInMibps}. After you create
+the file system, you can decrease your file system's throughput in
+Provisioned Throughput mode or change between the throughput modes, as
+long as it’s been more than 24 hours since the last decrease or
+throughput mode change. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput}{Specifying throughput with provisioned mode}
+in the \emph{Amazon EFS User Guide}.
+
+Default is \code{bursting}.}
 
 \item{ProvisionedThroughputInMibps}{The throughput, measured in MiB/s, that you want to provision for a file
 system that you're creating. Valid values are 1-1024. Required if
 \code{ThroughputMode} is set to \code{provisioned}. The upper limit for throughput
-is 1024 MiB/s. You can get this limit increased by contacting AWS
-Support. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS Limits That You Can Increase}
-in the \emph{Amazon EFS User Guide.}}
+is 1024 MiB/s. To increase this limit, contact AWS Support. For more
+information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS quotas that you can increase}
+in the \emph{Amazon EFS User Guide}.}
+
+\item{AvailabilityZoneName}{Used to create a file system that uses One Zone storage classes. It
+specifies the AWS Availability Zone in which to create the file system.
+Use the format \verb{us-east-1a} to specify the Availability Zone. For more
+information about One Zone storage classes, see \href{https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html}{Using EFS storage classes}
+in the \emph{Amazon EFS User Guide}.
+
+One Zone storage classes are not available in all Availability Zones in
+AWS Regions where Amazon EFS is available.}
+
+\item{Backup}{Specifies whether automatic backups are enabled on the file system that
+you are creating. Set the value to \code{true} to enable automatic backups.
+If you are creating a file system that uses One Zone storage classes,
+automatic backups are enabled by default. For more information, see
+\href{https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html#automatic-backups}{Automatic backups}
+in the \emph{Amazon EFS User Guide}.
+
+Default is \code{false}. However, if you specify an \code{AvailabilityZoneName},
+the default is \code{true}.
+
+AWS Backup is not available in all AWS Regions where Amazon EFS is
+available.}
 
 \item{Tags}{A value that specifies to create one or more tags associated with the
 file system. Each tag is a user-defined key-value pair. Name your file
@@ -77,7 +104,7 @@ A list with the following syntax:\preformatted{list(
   CreationTime = as.POSIXct(
     "2015-01-01"
   ),
-  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"|"error",
   Name = "string",
   NumberOfMountTargets = 123,
   SizeInBytes = list(
@@ -93,6 +120,8 @@ A list with the following syntax:\preformatted{list(
   KmsKeyId = "string",
   ThroughputMode = "bursting"|"provisioned",
   ProvisionedThroughputInMibps = 123.0,
+  AvailabilityZoneName = "string",
+  AvailabilityZoneId = "string",
   Tags = list(
     list(
       Key = "string",
@@ -131,19 +160,25 @@ creation token, if the initial call had succeeded in creating a file
 system, the client can learn of its existence from the
 \code{FileSystemAlreadyExists} error.
 
+For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/creating-using-create-fs.html#creating-using-create-fs-part1}{Creating a file system}
+in the \emph{Amazon EFS User Guide}.
+
 The \code{\link[=efs_create_file_system]{create_file_system}} call returns while
 the file system's lifecycle state is still \code{creating}. You can check the
 file system creation status by calling the
 \code{\link[=efs_describe_file_systems]{describe_file_systems}} operation, which
 among other things returns the file system state.
 
-This operation also takes an optional \code{PerformanceMode} parameter that
-you choose for your file system. We recommend \code{generalPurpose}
-performance mode for most file systems. File systems using the \code{maxIO}
-performance mode can scale to higher levels of aggregate throughput and
-operations per second with a tradeoff of slightly higher latencies for
-most file operations. The performance mode can't be changed after the
-file system has been created. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html}{Amazon EFS: Performance Modes}.
+This operation accepts an optional \code{PerformanceMode} parameter that you
+choose for your file system. We recommend \code{generalPurpose} performance
+mode for most file systems. File systems using the \code{maxIO} performance
+mode can scale to higher levels of aggregate throughput and operations
+per second with a tradeoff of slightly higher latencies for most file
+operations. The performance mode can't be changed after the file system
+has been created. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html}{Amazon EFS performance modes}.
+
+You can set the throughput mode for the file system using the
+\code{ThroughputMode} parameter.
 
 After the file system is fully created, Amazon EFS sets its lifecycle
 state to \code{available}, at which point you can create one or more mount
@@ -163,6 +198,8 @@ This operation requires permissions for the
   KmsKeyId = "string",
   ThroughputMode = "bursting"|"provisioned",
   ProvisionedThroughputInMibps = 123.0,
+  AvailabilityZoneName = "string",
+  Backup = TRUE|FALSE,
   Tags = list(
     list(
       Key = "string",
@@ -175,10 +212,12 @@ This operation requires permissions for the
 
 \examples{
 \dontrun{
-# This operation creates a new file system with the default generalpurpose
-# performance mode.
+# This operation creates a new, encrypted file system with automatic
+# backups enabled, and the default generalpurpose performance mode.
 svc$create_file_system(
+  Backup = TRUE,
   CreationToken = "tokenstring",
+  Encrypted = TRUE,
   PerformanceMode = "generalPurpose",
   Tags = list(
     list(

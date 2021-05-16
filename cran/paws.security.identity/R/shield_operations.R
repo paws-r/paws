@@ -275,15 +275,14 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' 
 #' You can add protection to only a single resource with each
 #' CreateProtection request. If you want to add protection to multiple
-#' resources at once, use the [AWS WAF
-#' console](https://console.aws.amazon.com/waf/home). For more information
-#' see [Getting Started with AWS Shield
+#' resources at once, use the AWS WAF console. For more information see
+#' [Getting Started with AWS Shield
 #' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html)
 #' and [Add AWS Shield Advanced Protection to more AWS
 #' Resources](https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html).
 #'
 #' @usage
-#' shield_create_protection(Name, ResourceArn)
+#' shield_create_protection(Name, ResourceArn, Tags)
 #'
 #' @param Name &#91;required&#93; Friendly name for the `Protection` you are creating.
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource to be protected.
@@ -306,6 +305,8 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' 
 #' -   For an Elastic IP address:
 #'     `arn:aws:ec2:region:account-id:eip-allocation/allocation-id `
+#' @param Tags One or more tag key-value pairs for the Protection object that is
+#' created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -319,21 +320,27 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' ```
 #' svc$create_protection(
 #'   Name = "string",
-#'   ResourceArn = "string"
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname shield_create_protection
-shield_create_protection <- function(Name, ResourceArn) {
+shield_create_protection <- function(Name, ResourceArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateProtection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .shield$create_protection_input(Name = Name, ResourceArn = ResourceArn)
+  input <- .shield$create_protection_input(Name = Name, ResourceArn = ResourceArn, Tags = Tags)
   output <- .shield$create_protection_output()
   config <- get_config()
   svc <- .shield$service(config)
@@ -353,7 +360,7 @@ shield_create_protection <- function(Name, ResourceArn) {
 #'
 #' @usage
 #' shield_create_protection_group(ProtectionGroupId, Aggregation, Pattern,
-#'   ResourceType, Members)
+#'   ResourceType, Members, Tags)
 #'
 #' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
 #' protection group in lists and to manage the protection group, for
@@ -385,6 +392,7 @@ shield_create_protection <- function(Name, ResourceArn) {
 #' @param Members The Amazon Resource Names (ARNs) of the resources to include in the
 #' protection group. You must set this when you set `Pattern` to
 #' `ARBITRARY` and you must not set it for any other `Pattern` setting.
+#' @param Tags One or more tag key-value pairs for the protection group.
 #'
 #' @return
 #' An empty list.
@@ -398,6 +406,12 @@ shield_create_protection <- function(Name, ResourceArn) {
 #'   ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
 #'   Members = list(
 #'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -405,14 +419,14 @@ shield_create_protection <- function(Name, ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname shield_create_protection_group
-shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Pattern, ResourceType = NULL, Members = NULL) {
+shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Pattern, ResourceType = NULL, Members = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateProtectionGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .shield$create_protection_group_input(ProtectionGroupId = ProtectionGroupId, Aggregation = Aggregation, Pattern = Pattern, ResourceType = ResourceType, Members = Members)
+  input <- .shield$create_protection_group_input(ProtectionGroupId = ProtectionGroupId, Aggregation = Aggregation, Pattern = Pattern, ResourceType = ResourceType, Members = Members, Tags = Tags)
   output <- .shield$create_protection_group_output()
   config <- get_config()
   svc <- .shield$service(config)
@@ -902,7 +916,8 @@ shield_describe_emergency_contact_settings <- function() {
 #'     ResourceArn = "string",
 #'     HealthCheckIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     ProtectionArn = "string"
 #'   )
 #' )
 #' ```
@@ -958,7 +973,8 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
 #'     ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
 #'     Members = list(
 #'       "string"
-#'     )
+#'     ),
+#'     ProtectionGroupArn = "string"
 #'   )
 #' )
 #' ```
@@ -1037,7 +1053,8 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     SubscriptionArn = "string"
 #'   )
 #' )
 #' ```
@@ -1485,7 +1502,8 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 #'       ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
 #'       Members = list(
 #'         "string"
-#'       )
+#'       ),
+#'       ProtectionGroupArn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1552,7 +1570,8 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #'       ResourceArn = "string",
 #'       HealthCheckIds = list(
 #'         "string"
-#'       )
+#'       ),
+#'       ProtectionArn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1651,6 +1670,151 @@ shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextTok
   return(response)
 }
 .shield$operations$list_resources_in_protection_group <- shield_list_resources_in_protection_group
+
+#' Gets information about AWS tags for a specified Amazon Resource Name
+#' (ARN) in AWS Shield
+#'
+#' @description
+#' Gets information about AWS tags for a specified Amazon Resource Name
+#' (ARN) in AWS Shield.
+#'
+#' @usage
+#' shield_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get tags for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_list_tags_for_resource
+shield_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .shield$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$list_tags_for_resource <- shield_list_tags_for_resource
+
+#' Adds or updates tags for a resource in AWS Shield
+#'
+#' @description
+#' Adds or updates tags for a resource in AWS Shield.
+#'
+#' @usage
+#' shield_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add or
+#' update tags for.
+#' @param Tags &#91;required&#93; The tags that you want to modify or add to the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_tag_resource
+shield_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .shield$tag_resource_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$tag_resource <- shield_tag_resource
+
+#' Removes tags from a resource in AWS Shield
+#'
+#' @description
+#' Removes tags from a resource in AWS Shield.
+#'
+#' @usage
+#' shield_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
+#' tags from.
+#' @param TagKeys &#91;required&#93; The tag key for each tag that you want to remove from the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_untag_resource
+shield_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .shield$untag_resource_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$untag_resource <- shield_untag_resource
 
 #' Updates the details of the list of email addresses and phone numbers
 #' that the DDoS Response Team (DRT) can use to contact you if you have
