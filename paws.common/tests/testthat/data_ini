@@ -21,3 +21,7 @@ arg2=bar_value2
 [equalsign]
 arg1=value1==
 arg2=value2
+
+[spaces]
+arg1 = value1
+arg2 = value2
