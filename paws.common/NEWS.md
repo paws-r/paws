@@ -1,3 +1,7 @@
+# paws.common 0.3.11
+
+* Fix parsing of shared configuration and credential files.
+
 # paws.common 0.3.10
 
 * Use path style URLs for S3 when using custom endpoints, (e.g. 
