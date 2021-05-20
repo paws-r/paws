@@ -8,9 +8,9 @@ extract_ini_profile <- function(item) {
 extract_ini_parameter <- function(item) {
   split_index <- regexpr("=", item)
   parameter <- list()
-  key <- substring(item, 1, split_index)
-  value <- substring(item, split_index + 1)
-  parameter[[trimws(key)]] <- trimws(value)
+  key <- trimws(substring(item, 1, split_index - 1))
+  value <- trimws(substring(item, split_index + 1))
+  parameter[[key]] <- value
   return(parameter)
 }
 
