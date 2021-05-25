@@ -132,6 +132,9 @@ learning service, designed to work like the Python SageMaker SDK.
 a collection of tools for working with the
 [Redshift](https://aws.amazon.com/redshift/) data warehouse service,
 such as performing bulk uploads.
+* [`stepfunctions`](https://github.com/DyfanJones/aws-step-functions-data-science-sdk-r)
+is an SDK for building machine learning workflows and pipelines on AWS
+using the Step Functions service.
 
 ## Examples, tutorials, and workshops
 
