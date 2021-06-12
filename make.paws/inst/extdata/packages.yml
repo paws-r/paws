@@ -11,9 +11,9 @@
     - lambda
     - lightsail
     - serverlessapplicationrepository
-  title: Amazon Web Services Compute Services
+  title: 'Amazon Web Services' Compute Services
   description: >-
-    Interface to Amazon Web Services compute services, including
+    Interface to 'Amazon Web Services' compute services, including
     'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
     containers, batch processing, and more <https://aws.amazon.com/>.
 
@@ -27,10 +27,10 @@
     - s3
     - s3control
     - storagegateway
-  title: Amazon Web Services Storage Services
+  title: 'Amazon Web Services' Storage Services
   description: >-
-    Interface to Amazon Web Services storage services, including 'Simple Storage
-    Service' ('S3') and more <https://aws.amazon.com/>.
+    Interface to 'Amazon Web Services' storage services, including 'Simple
+    Storage Service' ('S3') and more <https://aws.amazon.com/>.
 
 - name: database
   services:
@@ -44,9 +44,9 @@
     - rdsdataservice
     - redshift
     - simpledb
-  title: Amazon Web Services Database Services
+  title: 'Amazon Web Services' Database Services
   description: >-
-    Interface to Amazon Web Services database services, including 'Relational
+    Interface to 'Amazon Web Services' database services, including 'Relational
     Database Service' ('RDS'), 'DynamoDB' 'NoSQL' database, and more
     <https://aws.amazon.com/>.
 
@@ -60,10 +60,10 @@
     - sms
     - snowball
     - transfer
-  title: Amazon Web Services Migration & Transfer Services
+  title: 'Amazon Web Services' Migration & Transfer Services
   description: >-
-    Interface to Amazon Web Services migration & transfer services, including
-    file and database migration to Amazon Web Services
+    Interface to 'Amazon Web Services' migration & transfer services, including
+    file and database migration to 'Amazon Web Services'
     <https://aws.amazon.com/>.
 
 - name: networking
@@ -81,9 +81,9 @@
     - route53domains
     - route53resolver
     - servicediscovery
-  title: Amazon Web Services Networking & Content Delivery Services
+  title: 'Amazon Web Services' Networking & Content Delivery Services
   description: >-
-    Interface to Amazon Web Services networking and content delivery services,
+    Interface to 'Amazon Web Services' networking and content delivery services,
     including 'Route 53' Domain Name System service, 'CloudFront' content
     delivery, load balancing, and more <https://aws.amazon.com/>.
 
@@ -96,29 +96,29 @@
     - codepipeline
     - codestar
     - xray
-  title: Amazon Web Services Developer Tools Services
+  title: 'Amazon Web Services' Developer Tools Services
   description: >-
-    Interface to Amazon Web Services developer tools services, including version
-    control, continuous integration and deployment, and more
+    Interface to 'Amazon Web Services' developer tools services, including
+    version control, continuous integration and deployment, and more
     <https://aws.amazon.com/products/developer-tools/>.
 
 - name: robotics
   services:
     - robomaker
-  title: Amazon Web Services Robotics Services
+  title: 'Amazon Web Services' Robotics Services
   description: >-
-    Interface to Amazon Web Services robotics services, including the 'RobotMaker'
-    API for developing, testing, and deploying intelligent robotics
+    Interface to 'Amazon Web Services' robotics services, including the
+    'RobotMaker' API for developing, testing, and deploying intelligent robotics
     applications <https://aws.amazon.com/>.
 
 - name: blockchain
   services:
-  title: Amazon Web Services Blockchain Services
+  title: 'Amazon Web Services' Blockchain Services
   description: ""
 
 - name: satellite
   services:
-  title: Amazon Web Services Satellite Services
+  title: 'Amazon Web Services' Satellite Services
   description: ""
 
 - name: management
@@ -145,11 +145,12 @@
     - servicequotas
     - ssm
     - support
-  title: Amazon Web Services Management & Governance Services
+  title: 'Amazon Web Services' Management & Governance Services
   description: >-
-    Interface to Amazon Web Services management and governance services, including
-    'CloudWatch' application and infrastructure monitoring, 'Auto Scaling'
-    for automatically scaling resources, and more <https://aws.amazon.com/>.
+    Interface to 'Amazon Web Services' management and governance services,
+    including 'CloudWatch' application and infrastructure monitoring, 'Auto
+    Scaling' for automatically scaling resources, and more
+    <https://aws.amazon.com/>.
 
 - name: media.services
   services:
@@ -164,9 +165,9 @@
     - mediastore
     - mediastoredata
     - mediatailor
-  title: Amazon Web Services Media Services Services
+  title: 'Amazon Web Services' Media Services Services
   description: >-
-    Interface to Amazon Web Services media services services, including
+    Interface to 'Amazon Web Services' media services services, including
     'Kinesis' video stream capture and processing, format conversion,
     and more <https://aws.amazon.com/media-services/>.
 
@@ -187,9 +188,9 @@
     - textract
     - transcribeservice
     - translate
-  title: Amazon Web Services Machine Learning Services
+  title: 'Amazon Web Services' Machine Learning Services
   description: >-
-    Interface to Amazon Web Services machine learning services, including
+    Interface to 'Amazon Web Services' machine learning services, including
     'SageMaker' managed machine learning service, natural language processing,
     speech recognition, translation, and more
     <https://aws.amazon.com/machine-learning/>.
@@ -210,9 +211,9 @@
     - kinesisanalyticsv2
     - mturk
     - quicksight
-  title: Amazon Web Services Analytics Services
+  title: 'Amazon Web Services' Analytics Services
   description: >-
-    Interface to Amazon Web Services 'analytics' services, including 'Elastic
+    Interface to 'Amazon Web Services' 'analytics' services, including 'Elastic
     MapReduce' 'Hadoop' and 'Spark' big data service, 'Elasticsearch'
     search engine, and more <https://aws.amazon.com/>.
 
@@ -240,11 +241,12 @@
     - sts
     - waf
     - wafregional
-  title: Amazon Web Services Security, Identity, & Compliance Services
+  title: 'Amazon Web Services' Security, Identity, & Compliance Services
   description: >-
-    Interface to Amazon Web Services security, identity, and compliance services,
-    including the 'Identity & Access Management' ('IAM') service for managing
-    access to services and resources, and more <https://aws.amazon.com/>.
+    Interface to 'Amazon Web Services' security, identity, and compliance
+    services, including the 'Identity & Access Management' ('IAM') service for
+    managing access to services and resources, and more
+    <https://aws.amazon.com/>.
 
 - name: mobile
   services:
@@ -253,15 +255,15 @@
     - devicefarm
     - mobile
     - mobileanalytics
-  title: Amazon Web Services Mobile Services
+  title: 'Amazon Web Services' Mobile Services
   description: >-
-    Interface to Amazon Web Services mobile services, including the 'Amplify'
+    Interface to 'Amazon Web Services' mobile services, including the 'Amplify'
     library for mobile applications, 'AppSync' back-end for mobile
     applications, and more <https://aws.amazon.com/>.
 
 - name: ar.vr
   services:
-  title: Amazon Web Services AR & VR Services
+  title: 'Amazon Web Services' AR & VR Services
   description: ""
 
 - name: application.integration
@@ -272,10 +274,10 @@
     - sns
     - sqs
     - swf
-  title: Amazon Web Services Application Integration Services
+  title: 'Amazon Web Services' Application Integration Services
   description: >-
-    Interface to Amazon Web Services application integration services, including
-    'Simple Queue Service' ('SQS') message queue, 'Simple Notification 
+    Interface to 'Amazon Web Services' application integration services,
+    including 'Simple Queue Service' ('SQS') message queue, 'Simple Notification 
     Service' ('SNS') publish/subscribe messaging, and more
     <https://aws.amazon.com/>.
 
@@ -288,9 +290,9 @@
     - marketplaceentitlementservice
     - marketplacemetering
     - pricing
-  title: Amazon Web Services Cost Management Services
+  title: 'Amazon Web Services' Cost Management Services
   description: >-
-    Interface to Amazon Web Services cost management services, including
+    Interface to 'Amazon Web Services' cost management services, including
     cost and usage reports, budgets, pricing, and more
     <https://aws.amazon.com/>.
 
@@ -301,9 +303,9 @@
     - pinpointemail
     - pinpointsmsvoice
     - ses
-  title: Amazon Web Services Customer Engagement Services
+  title: 'Amazon Web Services' Customer Engagement Services
   description: >-
-    Interface to Amazon Web Services customer engagement services, including
+    Interface to 'Amazon Web Services' customer engagement services, including
     'Simple Email Service', 'Connect' contact center service, and more
     <https://aws.amazon.com/>.
 
@@ -312,9 +314,9 @@
     - alexaforbusiness
     - chime
     - workmail
-  title: Amazon Web Services Business Applications Services
+  title: 'Amazon Web Services' Business Applications Services
   description: >-
-    Interface to Amazon Web Services business applications services, including
+    Interface to 'Amazon Web Services' business applications services, including
     online meetings and video conferencing, email and calendar service,
     and more <https://aws.amazon.com/>.
 
@@ -324,9 +326,9 @@
     - workdocs
     - worklink
     - workspaces
-  title: Amazon Web Services End User Computing Services
+  title: 'Amazon Web Services' End User Computing Services
   description: >-
-    Interface to Amazon Web Services end user computing services, including
+    Interface to 'Amazon Web Services' end user computing services, including
     collaborative document editing, mobile intranet, and more
     <https://aws.amazon.com/>.
 
@@ -340,9 +342,9 @@
     - iotdataplane
     - iotjobsdataplane
     - signer
-  title: Amazon Web Services Internet of Things Services
+  title: 'Amazon Web Services' Internet of Things Services
   description: >-
-    Interface to Amazon Web Services internet of things ('IoT') services,
+    Interface to 'Amazon Web Services' internet of things ('IoT') services,
     including data collection, management, and analysis for IoT devices.
     <https://aws.amazon.com/iot/>.
 
@@ -350,8 +352,8 @@
 - name: game.development
   services:
     - gamelift
-  title: Amazon Web Services Game Development Services
+  title: 'Amazon Web Services' Game Development Services
   description: >-
-    Interface to Amazon Web Services game development services, including
+    Interface to 'Amazon Web Services' game development services, including
     'GameLift' game server hosting <https://aws.amazon.com/gametech/>.
 ...
