@@ -213,10 +213,12 @@ protocol_package <- function(api) {
   quoted(protocol)
 }
 
-# Returns the signing name for an API, either the signing name specified in the
-# API definition or the signing name assigned by `client_config`.
+# Returns the signing name for an API as specified in the API definition. If
+# none exists, return NULL; in this case, the signing name will be inferred at
+# run time.
 signing_name <- function(api) {
   name <- api$metadata$signingName
+  if (is.null(name)) name <- api$metadata$endpointPrefix
   if (is.null(name)) return("NULL")
   quoted(name)
 }
