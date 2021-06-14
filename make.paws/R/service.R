@@ -19,6 +19,8 @@ service_file_template <- template(
   #'
   #' ${operations}
   #'
+  #' ${return}
+  #'
   #' @rdname ${service}
   #' @export
   ${service} <- function(config = list()) {
@@ -60,6 +62,7 @@ make_service <- function(api) {
     service_syntax = service_syntax(api),
     example = service_example(api),
     operations = service_operations(api),
+    return = service_return(api),
     service = package_name(api),
     protocol = protocol_package(api),
     signer = quoted(api$metadata$signatureVersion),
@@ -189,6 +192,17 @@ get_custom_operations <- function(api) {
   return(operations)
 }
 
+service_return <- function(api) {
+  text <- c(
+    "A client for the service. You can call the service's operations using",
+    "syntax like `svc$operation(...)`, where `svc` is the name you've assigned",
+    "to the client. The available operations are listed in the",
+    "Operations section."
+  )
+  text <- comment(paste(text, collapse = "\n"), "#'")
+  paste("@return", text, sep = "\n")
+}
+
 # Returns the standardized protocol name used by an API.
 # e.g. rest-json -> restjson.
 protocol_package <- function(api) {
@@ -199,10 +213,12 @@ protocol_package <- function(api) {
   quoted(protocol)
 }
 
-# Returns the signing name for an API, either the signing name specified in the
-# API definition or the signing name assigned by `client_config`.
+# Returns the signing name for an API as specified in the API definition. If
+# none exists, return NULL; in this case, the signing name will be inferred at
+# run time.
 signing_name <- function(api) {
   name <- api$metadata$signingName
+  if (is.null(name)) name <- api$metadata$endpointPrefix
   if (is.null(name)) return("NULL")
   quoted(name)
 }
