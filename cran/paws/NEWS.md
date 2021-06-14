@@ -1,3 +1,8 @@
+# paws 0.1.12
+
+* Fix the signing name for EventBridge.
+* Add return value documentation for each service function, e.g. `s3()`.
+
 # paws 0.1.11
 
 * Fix the default endpoints for a number of services which previously used
