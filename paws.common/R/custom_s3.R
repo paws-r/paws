@@ -63,8 +63,13 @@ is_access_point <- function(bucket_name) {
 }
 
 # Parse the S3 access point ARN and return the corresponding endpoint.
-# Access point endpoint format: {accesspointName}-{accountId}.s3-accesspoint.{region}.{dnsSuffix}
-# Example: myaccesspoint-012345678901.s3-accesspoint.us-west-2.amazonaws.com
+# See https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html
+#
+# ARN format: arn:aws:s3:{region}:{account-id}:accesspoint/{accesspoint-name}
+# Access point endpoint format: {accesspoint-name}-{account-id}.s3-accesspoint.{region}.{dnsSuffix}
+# Example:
+#   In: arn:aws:s3:us-west-2:123456789012:accesspoint/test
+#   Out: test-123456789012.s3-accesspoint.us-west-2.amazonaws.com
 get_access_point_endpoint <- function(access_point) {
   part <- strsplit(access_point, ":|/")[[1]]
   region <- part[4]
