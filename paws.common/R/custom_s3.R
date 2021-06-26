@@ -66,7 +66,7 @@ is_access_point <- function(bucket_name) {
 # See https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html
 #
 # ARN format: arn:aws:s3:{region}:{account-id}:accesspoint/{accesspoint-name}
-# Access point endpoint format: {accesspoint-name}-{account-id}.s3-accesspoint.{region}.{dnsSuffix}
+# Access point endpoint format: {accesspoint-name}-{account-id}.s3-accesspoint.{region}.{dns-suffix}
 # Example:
 #   In: arn:aws:s3:us-west-2:123456789012:accesspoint/test
 #   Out: test-123456789012.s3-accesspoint.us-west-2.amazonaws.com
