@@ -68,11 +68,7 @@ unit: test-common test-codegen
 
 integration:
 	@echo "run integration tests"
-	@for package in ${CRAN_DIR}/*/; do \
-		if [ "$$package" = "${CRAN_DIR}/paws/" ]; then continue; fi; \
-		echo "- $$(basename $$package)"; \
-		Rscript -e "options('testthat.summary.max_reports' = 1e6); devtools::test('$$package', reporter = 'summary')"; \
-	done;
+	@cd cran && Rscript -e "options(testthat.progress.max_fails = 1e6); devtools::test('paws')"
 
 common:
 	@echo "build and install common functions"

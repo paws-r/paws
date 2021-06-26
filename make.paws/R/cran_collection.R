@@ -33,6 +33,7 @@ make_collection <- function(sdk_dir, out_dir, categories, only_cran = TRUE) {
     categories <- categories[sapply(categories, get_category_package_name) %in% cran]
   }
   write_source_collection(sdk_dir, package_dir, categories)
+  write_tests_collection(sdk_dir, package_dir, categories)
   write_documentation(package_dir)
   write_imports_collection(package_dir, version, get_category_packages(categories))
 }
@@ -50,6 +51,17 @@ write_source_collection <- function(sdk_dir, out_dir, categories) {
     }
   }
   write_list(clients, file.path(out_dir, "R", "paws.R"))
+}
+
+write_tests_collection <- function(sdk_dir, out_dir, categories) {
+  test_dir <- "tests/testthat"
+  files <- list.files(file.path(sdk_dir, test_dir))
+  for (category in categories) {
+    for (service in category$service) {
+      file <- grep(sprintf("^test_%s.R$", service), files, value = TRUE)
+      file.copy(file.path(sdk_dir, test_dir, file), file.path(out_dir, test_dir, file))
+    }
+  }
 }
 
 # Add the category packages to the DESCRIPTION file's Imports.
