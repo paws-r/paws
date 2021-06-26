@@ -47,6 +47,12 @@ HttpResponse <- struct(
 )
 
 # Returns an HTTP request given a method, URL, and an optional body.
+#
+# @param method The HTTP method to use for the request.
+# @param url The URL to send the request to.
+# @param body The body to send in the request, in bytes.
+# @param close Whether to immediately close the connection, or else reuse connections.
+# @param timeout How long to wait for an initial response.
 new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL) {
   if (method == "") {
     method <- "GET"
