@@ -9,7 +9,12 @@ NULL
 #' write the downloaded object to the file location specified.
 #'
 #' @usage
-#' s3_download_file(Bucket, Key, Filename)
+#' s3_download_file(Bucket, Key, Filename, IfMatch, IfModifiedSince,
+#' IfNoneMatch, IfUnmodifiedSince, Range, ResponseCacheControl,
+#' ResponseContentDisposition, ResponseContentEncoding, ResponseContentLanguage,
+#' ResponseContentType, ResponseExpires, VersionId, SSECustomerAlgorithm,
+#' SSECustomerKey, SSECustomerKeyMD5, RequestPayer, PartNumber,
+#' ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object.
 #'
@@ -31,6 +36,7 @@ NULL
 #' information about S3 on Outposts ARNs, see [Using S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon Simple Storage Service Developer Guide*.
+#' @param Key &#91;required&#93; Key of the object to get.
 #' @param Filename &#91;required&#93; A local file location where the downloaded
 #' object will be saved.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
@@ -41,7 +47,6 @@ NULL
 #' one specified, otherwise return a 304 (not modified).
 #' @param IfUnmodifiedSince Return the object only if it has not been modified since the specified
 #' time, otherwise return a 412 (precondition failed).
-#' @param Key &#91;required&#93; Key of the object to get.
 #' @param Range Downloads the specified range bytes of an object. For more information
 #' about the HTTP Range header, see
 #' <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35>.
@@ -106,7 +111,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname s3_download_file
-s3_download_file <- function(Bucket, Filename, IfMatch = NULL, IfModifiedSince = NULL, IfNoneMatch = NULL, IfUnmodifiedSince = NULL, Key, Range = NULL, ResponseCacheControl = NULL, ResponseContentDisposition = NULL, ResponseContentEncoding = NULL, ResponseContentLanguage = NULL, ResponseContentType = NULL, ResponseExpires = NULL, VersionId = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, PartNumber = NULL, ExpectedBucketOwner = NULL) {
+s3_download_file <- function(Bucket, Key, Filename, IfMatch = NULL, IfModifiedSince = NULL, IfNoneMatch = NULL, IfUnmodifiedSince = NULL, Range = NULL, ResponseCacheControl = NULL, ResponseContentDisposition = NULL, ResponseContentEncoding = NULL, ResponseContentLanguage = NULL, ResponseContentType = NULL, ResponseExpires = NULL, VersionId = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, PartNumber = NULL, ExpectedBucketOwner = NULL) {
   download_object <- s3_get_object(Bucket = Bucket, IfMatch = IfMatch, IfModifiedSince = IfModifiedSince, IfNoneMatch = IfNoneMatch, IfUnmodifiedSince = IfUnmodifiedSince, Key = Key, Range = Range, ResponseCacheControl = ResponseCacheControl, ResponseContentDisposition = ResponseContentDisposition, ResponseContentEncoding = ResponseContentEncoding, ResponseContentLanguage = ResponseContentLanguage, ResponseContentType = ResponseContentType, ResponseExpires = ResponseExpires, VersionId = VersionId, SSECustomerAlgorithm =SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, RequestPayer = RequestPayer, PartNumber = PartNumber, ExpectedBucketOwner = ExpectedBucketOwner)
   download_body <- download_object$Body
   writeBin(download_body, con = Filename)
