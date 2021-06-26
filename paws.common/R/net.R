@@ -47,7 +47,13 @@ HttpResponse <- struct(
 )
 
 # Returns an HTTP request given a method, URL, and an optional body.
-new_http_request <- function(method, url, body = NULL, timeout = NULL) {
+#
+# @param method The HTTP method to use for the request.
+# @param url The URL to send the request to.
+# @param body The body to send in the request, in bytes.
+# @param close Whether to immediately close the connection, or else reuse connections.
+# @param timeout How long to wait for an initial response.
+new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL) {
   if (method == "") {
     method <- "GET"
   }
@@ -64,6 +70,7 @@ new_http_request <- function(method, url, body = NULL, timeout = NULL) {
     header = list(), # TODO
     body = body,
     host = u$host,
+    close = close,
     timeout = timeout
   )
   return(req)
@@ -89,6 +96,9 @@ issue <- function(http_request) {
   method <- http_request$method
   url <- build_url(http_request$url)
   headers <- unlist(http_request$header)
+  if (http_request$close) {
+    headers["Connection"] <- "close"
+  }
   body <- http_request$body
   timeout <- httr::config(connecttimeout = http_request$timeout)
   if (is.null(http_request$timeout)) timeout <- NULL
