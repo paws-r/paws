@@ -207,3 +207,19 @@ test_that("s3_unmarshal_select_object_content", {
   out <- req$data
   expect_equivalent(out$Payload$Records$Payload, "1\n2\n3\n")
 })
+
+test_that("S3 access points", {
+  access_point_arn <- "arn:aws:s3:us-west-2:123456789012:accesspoint/test"
+  host <- "test-123456789012.s3-accesspoint.us-west-2.amazonaws.com"
+
+  req <- build_request(bucket = access_point_arn, operation = "ListObjects")
+  actual <- update_endpoint_for_s3_config(req)
+  expect_equal(actual$http_request$url$host, host)
+
+  access_point_arn <- "arn:aws:s3:us-west-2:123456789012:accesspoint/test/object/unit-01"
+  host <- "test-123456789012.s3-accesspoint.us-west-2.amazonaws.com"
+
+  req <- build_request(bucket = access_point_arn, operation = "ListObjects")
+  actual <- update_endpoint_for_s3_config(req)
+  expect_equal(actual$http_request$url$host, host)
+})
