@@ -502,6 +502,38 @@ test_that("newline in XML", {
   expect_equal(r, '<OperationRequest xmlns="https://foo/"><Description xmlns="https://foo/">foo&#xA;bar</Description></OperationRequest>')
 })
 
+
+test_that("parameters with no provided arguments are dropped", {
+  op_test <- Operation(name = "OperationRequest")
+  op_input_test <- function(Nested) {
+    args <- list(Nested = Nested)
+    interface <- Structure(
+      Nested = Structure(
+        Foo = Structure(
+          Bar = Scalar(type = "string")
+        ),
+        Baz = List(
+          Structure(Qux = Scalar(type = "string"))
+        )
+      ),
+      .tags = list(locationName = "OperationRequest")
+    )
+    return(populate(args, interface))
+  }
+
+  input <- op_input_test(
+    Nested = list(
+      Foo = list(
+        Bar = "abc123"
+      )
+    )
+  )
+  req <- new_request(svc, op_test, input, NULL)
+  req <- build(req)
+  r <- req$body
+  expect_equal(r, '<OperationRequest><Nested><Foo><Bar>abc123</Bar></Foo></Nested></OperationRequest>')
+})
+
 #-------------------------------------------------------------------------------
 
 # Unmarshal tests
