@@ -18,10 +18,13 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { os: 'macOS-latest', R: '3.6' }
-          - { os: 'macOS-latest', R: '4.0' }
-          - { os: 'ubuntu-18.04', R: '3.6' }
-          - { os: 'ubuntu-18.04', R: '4.0' }
+          - { os: 'ubuntu-latest', R: 'latest' }
+          - { os: 'ubuntu-latest', R: '3.6' }
+          - { os: 'macOS-latest', R: 'latest' }
+          - { os: 'windows-latest', R: 'latest' }
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -66,6 +69,7 @@ jobs:
           install.packages('remotes')
           remotes::install_deps('paws.common', dependencies = TRUE)
           remotes::install_deps('make.paws', dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
       - name: Install paws packages
@@ -75,11 +79,19 @@ jobs:
           remotes::install_local('cran/paws', force = TRUE)
         shell: Rscript {0}
 
-      - name: Run checks
+      - name: Check
+        env:
+          _R_CHECK_CRAN_INCOMING_: false
         run: |
-          R CMD build paws.common && R CMD check --as-cran --run-donttest --no-manual paws.common_*.tar.gz
-          R CMD build make.paws && R CMD check --as-cran --run-donttest --no-manual make.paws_*.tar.gz
-          R CMD build cran/paws && R CMD check --as-cran --run-donttest --no-manual paws_*.tar.gz
+          rcmdcheck::rcmdcheck('paws.common', args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
+          rcmdcheck::rcmdcheck('make.paws', args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
+          rcmdcheck::rcmdcheck('cran/paws', args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
+        shell: Rscript {0}
+
+      - name: Show testthat output
+        if: always()
+        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
+        shell: bash
 
       - name: Install covr
         run: |
