@@ -74,6 +74,8 @@ jobs:
       - name: Install paws packages
         run: |
           remotes::install_local('paws.common', force = TRUE)
+          remotes::install_local('make.paws', force = TRUE)
+          remotes::install_local('cran/paws', force = TRUE)
         shell: Rscript {0}
 
       - name: Run checks
