@@ -22,6 +22,8 @@ jobs:
           - { os: 'macOS-latest', R: '4.0' }
           - { os: 'ubuntu-18.04', R: '3.6' }
           - { os: 'ubuntu-18.04', R: '4.0' }
+          - { os: 'windows-latest', R: '3.6' }
+          - { os: 'windows-latest', R: '4.0' }
 
     steps:
       - uses: actions/checkout@v2
@@ -41,25 +43,25 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
 
-      - name: List dependencies
-        run: |
-          install.packages('remotes')
-          saveRDS(
-            c(
-              remotes::dev_package_deps('paws.common', dependencies = TRUE),
-              remotes::dev_package_deps('make.paws', dependencies = TRUE),
-              'remotes', 'covr'
-            ),
-            '.github/depends.Rds', version = 2
-          )
-        shell: Rscript {0}
+      # - name: List dependencies
+      #   run: |
+      #     install.packages('remotes')
+      #     saveRDS(
+      #       c(
+      #         remotes::dev_package_deps('paws.common', dependencies = TRUE),
+      #         remotes::dev_package_deps('make.paws', dependencies = TRUE),
+      #         'remotes', 'covr'
+      #       ),
+      #       '.github/depends.Rds', version = 2
+      #     )
+      #   shell: Rscript {0}
 
-      - name: Cache R packages
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ matrix.config.R }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ matrix.config.R }}-1-
+      # - name: Cache R packages
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ${{ env.R_LIBS_USER }}
+      #     key: ${{ runner.os }}-${{ matrix.config.R }}-1-${{ hashFiles('.github/depends.Rds') }}
+      #     restore-keys: ${{ runner.os }}-${{ matrix.config.R }}-1-
 
       - name: Install dependencies
         run: |
