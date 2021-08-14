@@ -18,12 +18,10 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { os: 'macOS-latest', R: '3.6' }
-          - { os: 'macOS-latest', R: '4.0' }
-          - { os: 'ubuntu-18.04', R: '3.6' }
-          - { os: 'ubuntu-18.04', R: '4.0' }
-          - { os: 'windows-latest', R: '3.6' }
-          - { os: 'windows-latest', R: '4.0' }
+          - { os: 'ubuntu-latest', R: 'latest' }
+          - { os: 'ubuntu-latest', R: '3.6' }
+          - { os: 'macOS-latest', R: 'latest' }
+          - { os: 'windows-latest', R: 'latest' }
 
     steps:
       - uses: actions/checkout@v2
@@ -63,11 +61,16 @@ jobs:
       #     key: ${{ runner.os }}-${{ matrix.config.R }}-1-${{ hashFiles('.github/depends.Rds') }}
       #     restore-keys: ${{ runner.os }}-${{ matrix.config.R }}-1-
 
+      # - name: Install dependencies
+      #   run: |
+      #     install.packages('remotes')
+      #     remotes::install_deps('paws.common', dependencies = TRUE)
+      #     remotes::install_deps('make.paws', dependencies = TRUE)
+      #   shell: Rscript {0}
+
       - name: Install dependencies
         run: |
           install.packages('remotes')
-          remotes::install_deps('paws.common', dependencies = TRUE)
-          remotes::install_deps('make.paws', dependencies = TRUE)
         shell: Rscript {0}
 
       - name: Install paws packages
