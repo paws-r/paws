@@ -1,3 +1,13 @@
+# paws.common 0.3.12
+
+* Fix certain API requests for S3 that were malformed due to mistakenly 
+  including empty list elements, e.g. `s3_put_bucket_lifecycle_configuration`.
+  Fixes #438.
+* Add an option to immediately close all HTTP connections, instead of the 
+  default behavior which will reuse connections for requests within 5 seconds.
+  Example usage: `s3 <- paws::s3(config = list(close_connection = TRUE))`.
+  Fixes #431.
+
 # paws.common 0.3.11
 
 * Fix parsing of shared configuration and credential files.
