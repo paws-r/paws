@@ -21,7 +21,7 @@ jobs:
           - { os: 'ubuntu-latest', R: 'latest' }
           - { os: 'ubuntu-latest', R: '3.6' }
           - { os: 'macOS-latest', R: 'latest' }
-          - { os: 'windows-latest', R: 'latest' }
+          # - { os: 'windows-latest', R: 'latest' }
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
