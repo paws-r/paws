@@ -22,6 +22,11 @@ NULL
 get_config <- function() {
   calling_env <- parent.frame(2)
   call <- sys.call(-1)[[1]]
+  # ensure config is collected correctly when
+  # higherlevel function is called in do.call
+  if (is.function(call)){
+    call <- sys.call(-2)[[2]]
+  }
   if (is.name(call)) {
     return(Config())
   }
