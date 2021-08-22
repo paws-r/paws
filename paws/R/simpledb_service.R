@@ -69,6 +69,12 @@ NULL
 #'  \link[=simpledb_select]{select} \tab The Select operation returns a set of attributes for ItemNames that match the select expression
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname simpledb
 #' @export
 simpledb <- function(config = list()) {
@@ -87,7 +93,7 @@ simpledb <- function(config = list()) {
   endpoints = list("us-east-1" = list(endpoint = "sdb.amazonaws.com", global = FALSE), "*" = list(endpoint = "sdb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sdb.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sdb.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sdb.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SimpleDB",
   api_version = "2009-04-15",
-  signing_name = NULL,
+  signing_name = "sdb",
   json_version = "",
   target_prefix = ""
 )

@@ -141,6 +141,12 @@ NULL
 #'  \link[=dynamodb_update_time_to_live]{update_time_to_live} \tab The UpdateTimeToLive method enables or disables Time to Live (TTL) for the specified table
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname dynamodb
 #' @export
 dynamodb <- function(config = list()) {
@@ -159,7 +165,7 @@ dynamodb <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "dynamodb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dynamodb.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "dynamodb.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "dynamodb.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "DynamoDB",
   api_version = "2012-08-10",
-  signing_name = NULL,
+  signing_name = "dynamodb",
   json_version = "1.0",
   target_prefix = "DynamoDB_20120810"
 )

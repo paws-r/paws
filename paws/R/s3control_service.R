@@ -80,6 +80,12 @@ NULL
 #'  \link[=s3control_update_job_status]{update_job_status} \tab Updates the status for the specified job
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname s3control
 #' @export
 s3control <- function(config = list()) {

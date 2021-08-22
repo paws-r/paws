@@ -74,6 +74,12 @@ NULL
 #'  \link[=snowball_update_job_shipment_state]{update_job_shipment_state} \tab Updates the state when a the shipment states changes to a different state
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname snowball
 #' @export
 snowball <- function(config = list()) {
@@ -92,7 +98,7 @@ snowball <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "snowball.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "snowball.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "snowball.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "snowball.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Snowball",
   api_version = "2016-06-30",
-  signing_name = NULL,
+  signing_name = "snowball",
   json_version = "1.1",
   target_prefix = "AWSIESnowballJobManagementService"
 )

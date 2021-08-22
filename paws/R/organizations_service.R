@@ -96,6 +96,12 @@ NULL
 #'  \link[=organizations_update_policy]{update_policy} \tab Updates an existing policy with a new name, description, or content
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname organizations
 #' @export
 organizations <- function(config = list()) {
@@ -114,7 +120,7 @@ organizations <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "organizations.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "organizations.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "organizations.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "organizations.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Organizations",
   api_version = "2016-11-28",
-  signing_name = NULL,
+  signing_name = "organizations",
   json_version = "1.1",
   target_prefix = "AWSOrganizationsV20161128"
 )

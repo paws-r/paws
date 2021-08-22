@@ -500,6 +500,12 @@ NULL
 #'  \link[=ec2_withdraw_byoip_cidr]{withdraw_byoip_cidr} \tab Stops advertising an address range that is provisioned as an address pool
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ec2
 #' @export
 ec2 <- function(config = list()) {
@@ -518,7 +524,7 @@ ec2 <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "ec2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ec2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ec2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ec2.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "EC2",
   api_version = "2016-11-15",
-  signing_name = NULL,
+  signing_name = "ec2",
   json_version = "",
   target_prefix = ""
 )

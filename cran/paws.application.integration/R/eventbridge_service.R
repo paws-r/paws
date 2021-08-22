@@ -101,6 +101,12 @@ NULL
 #'  \link[=eventbridge_update_archive]{update_archive} \tab Updates the specified archive
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname eventbridge
 #' @export
 eventbridge <- function(config = list()) {
@@ -119,7 +125,7 @@ eventbridge <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "events.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "events.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "events.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "events.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "EventBridge",
   api_version = "2015-10-07",
-  signing_name = NULL,
+  signing_name = "events",
   json_version = "1.1",
   target_prefix = "AWSEvents"
 )

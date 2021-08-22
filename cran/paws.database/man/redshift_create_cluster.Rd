@@ -21,7 +21,7 @@ created.
 
 To create additional databases after the cluster is created, connect to
 the cluster with a SQL client and use SQL commands to create a database.
-For more information, go to \href{https://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html}{Create a Database}
+For more information, go to \href{https://docs.aws.amazon.com/redshift/latest/gsg/t_creating_database.html}{Create a Database}
 in the Amazon Redshift Database Developer Guide.
 
 Default: \code{dev}

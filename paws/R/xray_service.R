@@ -69,6 +69,12 @@ NULL
 #'  \link[=xray_update_sampling_rule]{update_sampling_rule} \tab Modifies a sampling rule's configuration
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname xray
 #' @export
 xray <- function(config = list()) {
@@ -87,7 +93,7 @@ xray <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "xray.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "xray.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "xray.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "xray.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "XRay",
   api_version = "2016-04-12",
-  signing_name = NULL,
+  signing_name = "xray",
   json_version = "",
   target_prefix = ""
 )

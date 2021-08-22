@@ -62,6 +62,12 @@ NULL
 #'  \link[=iotdataplane_update_thing_shadow]{update_thing_shadow} \tab Updates the shadow for the specified thing
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname iotdataplane
 #' @export
 iotdataplane <- function(config = list()) {

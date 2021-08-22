@@ -84,6 +84,12 @@ NULL
 #'  \link[=sms_update_replication_job]{update_replication_job} \tab Updates the specified settings for the specified replication job
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname sms
 #' @export
 sms <- function(config = list()) {
@@ -102,7 +108,7 @@ sms <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "sms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sms.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sms.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sms.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SMS",
   api_version = "2016-10-24",
-  signing_name = NULL,
+  signing_name = "sms",
   json_version = "1.1",
   target_prefix = "AWSServerMigrationService_V2016_10_24"
 )

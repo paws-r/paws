@@ -246,7 +246,7 @@ transfer_create_server <- function(Certificate = NULL, Domain = NULL, EndpointDe
 #' the policy as a JSON blob and pass it in the `Policy` argument.
 #' 
 #' For an example of a scope-down policy, see [Creating a scope-down
-#' policy](https://docs.aws.amazon.com/transfer/latest/userguide/users.html#users-policies-scope-down).
+#' policy](https://docs.aws.amazon.com/transfer/latest/userguide/#users-policies-scope-down).
 #' 
 #' For more information, see
 #' [AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html)
@@ -1536,7 +1536,7 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' the policy as a JSON blob and pass it in the `Policy` argument.
 #' 
 #' For an example of a scope-down policy, see [Creating a scope-down
-#' policy](https://docs.aws.amazon.com/transfer/latest/userguide/users.html#users-policies-scope-down).
+#' policy](https://docs.aws.amazon.com/transfer/latest/userguide/#users-policies-scope-down).
 #' 
 #' For more information, see
 #' [AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html)

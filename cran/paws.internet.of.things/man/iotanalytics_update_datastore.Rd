@@ -20,7 +20,8 @@ default is\code{serviceManagedS3}. You cannot change this storage option
 after the data store is created.}
 
 \item{fileFormatConfiguration}{Contains the configuration information of file formats. AWS IoT
-Analytics data stores support JSON and Parquet.
+Analytics data stores support JSON and
+\href{https://parquet.apache.org/}{Parquet}.
 
 The default file format is JSON. You can specify only one format.
 

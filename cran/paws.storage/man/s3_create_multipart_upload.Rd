@@ -278,7 +278,7 @@ operation. By default, all objects are private. Only the owner has full
 access control. When adding a new object, you can grant permissions to
 individual AWS accounts or to predefined groups defined by Amazon S3.
 These permissions are then added to the access control list (ACL) on the
-object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html}{Using ACLs}.
+object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Using ACLs}.
 With this operation, you can grant access permissions using one of the
 following two methods:
 \itemize{

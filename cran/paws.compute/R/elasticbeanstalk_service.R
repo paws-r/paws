@@ -108,6 +108,12 @@ NULL
 #'  \link[=elasticbeanstalk_validate_configuration_settings]{validate_configuration_settings} \tab Takes a set of configuration settings and either a configuration template or environment, and determines whether those values are valid
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname elasticbeanstalk
 #' @export
 elasticbeanstalk <- function(config = list()) {
@@ -126,7 +132,7 @@ elasticbeanstalk <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "elasticbeanstalk.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticbeanstalk.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticbeanstalk.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticbeanstalk.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Elastic Beanstalk",
   api_version = "2010-12-01",
-  signing_name = NULL,
+  signing_name = "elasticbeanstalk",
   json_version = "",
   target_prefix = ""
 )

@@ -113,6 +113,12 @@ NULL
 #'  \link[=route53_update_traffic_policy_instance]{update_traffic_policy_instance} \tab Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname route53
 #' @export
 route53 <- function(config = list()) {
@@ -131,7 +137,7 @@ route53 <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "https://route53.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "route53.amazonaws.com.cn", global = TRUE), "us-gov-*" = list(endpoint = "route53.us-gov.amazonaws.com", global = TRUE), "us-iso-*" = list(endpoint = "route53.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Route 53",
   api_version = "2013-04-01",
-  signing_name = NULL,
+  signing_name = "route53",
   json_version = "",
   target_prefix = ""
 )

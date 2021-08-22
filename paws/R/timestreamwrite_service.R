@@ -69,6 +69,12 @@ NULL
 #'  \link[=timestreamwrite_write_records]{write_records} \tab The WriteRecords operation enables you to write your time series data into Timestream
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname timestreamwrite
 #' @export
 timestreamwrite <- function(config = list()) {

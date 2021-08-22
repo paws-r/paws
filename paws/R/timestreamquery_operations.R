@@ -72,7 +72,7 @@ timestreamquery_cancel_query <- function(QueryId) {
 #' 
 #' For detailed information on how to use DescribeEndpoints, see [The
 #' Endpoint Discovery Pattern and REST
-#' APIs](https://docs.aws.amazon.com/timestream/latest/developerguide/Using-API.endpoint-discovery.html).
+#' APIs](https://docs.aws.amazon.com/timestream/latest/developerguide/).
 #'
 #' @usage
 #' timestreamquery_describe_endpoints()

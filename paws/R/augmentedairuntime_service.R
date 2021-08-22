@@ -85,6 +85,12 @@ NULL
 #'  \link[=augmentedairuntime_stop_human_loop]{stop_human_loop} \tab Stops the specified human loop
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname augmentedairuntime
 #' @export
 augmentedairuntime <- function(config = list()) {

@@ -24,8 +24,7 @@ NULL
 #' Tags are key-value pairs.
 #' 
 #' For more information about Resource Groups, see the [AWS Resource Groups
-#' User
-#' Guide](https://docs.aws.amazon.com/ARG/latest/userguide/welcome.html).
+#' User Guide](https://docs.aws.amazon.com/ARG/latest/userguide/).
 #' 
 #' AWS Resource Groups uses a REST-compliant API that you can use to
 #' perform the following types of operations.
@@ -91,6 +90,12 @@ NULL
 #'  \link[=resourcegroups_update_group]{update_group} \tab Updates the description for an existing group\cr
 #'  \link[=resourcegroups_update_group_query]{update_group_query} \tab Updates the resource query of a group
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname resourcegroups
 #' @export

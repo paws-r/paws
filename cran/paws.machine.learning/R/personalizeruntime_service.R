@@ -42,6 +42,12 @@ NULL
 #'  \link[=personalizeruntime_get_recommendations]{get_recommendations} \tab Returns a list of recommended items
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname personalizeruntime
 #' @export
 personalizeruntime <- function(config = list()) {

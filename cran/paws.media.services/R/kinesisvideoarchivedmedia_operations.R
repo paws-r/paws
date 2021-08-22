@@ -484,7 +484,7 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #' MPEG-4 form (also called fMP4 or CMAF) or the MPEG-2 form (also called
 #' TS chunks, which the HLS specification also supports). For more
 #' information about HLS fragment types, see the [HLS
-#' specification](https://tools.ietf.org/html/draft-pantos-http-live-streaming-23).
+#' specification](https://datatracker.ietf.org/doc/html/draft-pantos-http-live-streaming-23).
 #' 
 #' The following procedure shows how to use HLS with Kinesis Video Streams:
 #' 

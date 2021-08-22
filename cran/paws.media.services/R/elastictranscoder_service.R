@@ -60,6 +60,12 @@ NULL
 #'  \link[=elastictranscoder_update_pipeline_status]{update_pipeline_status} \tab The UpdatePipelineStatus operation pauses or reactivates a pipeline, so that the pipeline stops or restarts the processing of jobs
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname elastictranscoder
 #' @export
 elastictranscoder <- function(config = list()) {
@@ -78,7 +84,7 @@ elastictranscoder <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "elastictranscoder.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elastictranscoder.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elastictranscoder.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elastictranscoder.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Elastic Transcoder",
   api_version = "2012-09-25",
-  signing_name = NULL,
+  signing_name = "elastictranscoder",
   json_version = "",
   target_prefix = ""
 )

@@ -9,6 +9,12 @@ resourcegroups(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 AWS Resource Groups lets you organize AWS resources such as Amazon EC2
 instances, Amazon Relational Database Service databases, and Amazon S3
@@ -28,7 +34,7 @@ To create a resource group, build a resource query, and specify tags
 that identify the criteria that members of the group have in common.
 Tags are key-value pairs.
 
-For more information about Resource Groups, see the \href{https://docs.aws.amazon.com/ARG/latest/userguide/welcome.html}{AWS Resource Groups User Guide}.
+For more information about Resource Groups, see the \href{https://docs.aws.amazon.com/ARG/latest/userguide/}{AWS Resource Groups User Guide}.
 
 AWS Resource Groups uses a REST-compliant API that you can use to
 perform the following types of operations.

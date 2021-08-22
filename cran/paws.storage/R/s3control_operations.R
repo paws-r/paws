@@ -260,8 +260,8 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 #' objects. Batch Operations can run a single operation or action on lists
 #' of Amazon S3 objects that you specify. For more information, see [S3
 #' Batch
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html)
-#' in the *Amazon Simple Storage Service Developer Guide*.
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in
+#' the *Amazon Simple Storage Service Developer Guide*.
 #' 
 #' This operation creates an S3 Batch Operations job.
 #' 
@@ -1176,8 +1176,8 @@ s3control_delete_storage_lens_configuration_tagging <- function(ConfigId, Accoun
 #' @description
 #' Retrieves the configuration parameters and status for a Batch Operations
 #' job. For more information, see [S3 Batch
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html)
-#' in the *Amazon Simple Storage Service Developer Guide*.
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in
+#' the *Amazon Simple Storage Service Developer Guide*.
 #' 
 #' Related actions include:
 #' 
@@ -2464,8 +2464,8 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
 #' Lists current S3 Batch Operations jobs and jobs that have ended within
 #' the last 30 days for the AWS account making the request. For more
 #' information, see [S3 Batch
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html)
-#' in the *Amazon Simple Storage Service Developer Guide*.
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in
+#' the *Amazon Simple Storage Service Developer Guide*.
 #' 
 #' Related actions include:
 #' 
@@ -3478,8 +3478,8 @@ s3control_put_storage_lens_configuration_tagging <- function(ConfigId, AccountId
 #' @description
 #' Updates an existing S3 Batch Operations job's priority. For more
 #' information, see [S3 Batch
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html)
-#' in the *Amazon Simple Storage Service Developer Guide*.
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in
+#' the *Amazon Simple Storage Service Developer Guide*.
 #' 
 #' Related actions include:
 #' 
@@ -3542,8 +3542,8 @@ s3control_update_job_priority <- function(AccountId, JobId, Priority) {
 #' Updates the status for the specified job. Use this operation to confirm
 #' that you want to run a job or to cancel an existing job. For more
 #' information, see [S3 Batch
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html)
-#' in the *Amazon Simple Storage Service Developer Guide*.
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in
+#' the *Amazon Simple Storage Service Developer Guide*.
 #' 
 #' Related actions include:
 #' 

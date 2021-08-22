@@ -79,6 +79,12 @@ NULL
 #'  \link[=shield_update_subscription]{update_subscription} \tab Updates the details of an existing subscription
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname shield
 #' @export
 shield <- function(config = list()) {
@@ -97,7 +103,7 @@ shield <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "shield.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "shield.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "shield.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "shield.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Shield",
   api_version = "2016-06-02",
-  signing_name = NULL,
+  signing_name = "shield",
   json_version = "1.1",
   target_prefix = "AWSShield_20160616"
 )

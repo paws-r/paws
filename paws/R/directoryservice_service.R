@@ -118,6 +118,12 @@ NULL
 #'  \link[=directoryservice_verify_trust]{verify_trust} \tab AWS Directory Service for Microsoft Active Directory allows you to configure and verify trust relationships
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname directoryservice
 #' @export
 directoryservice <- function(config = list()) {
@@ -136,7 +142,7 @@ directoryservice <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "ds.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ds.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ds.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ds.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Directory Service",
   api_version = "2015-04-16",
-  signing_name = NULL,
+  signing_name = "ds",
   json_version = "1.1",
   target_prefix = "DirectoryService_20150416"
 )

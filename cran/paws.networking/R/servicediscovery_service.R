@@ -74,6 +74,12 @@ NULL
 #'  \link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations:
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname servicediscovery
 #' @export
 servicediscovery <- function(config = list()) {
@@ -92,7 +98,7 @@ servicediscovery <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "servicediscovery.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicediscovery.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "servicediscovery.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicediscovery.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ServiceDiscovery",
   api_version = "2017-03-14",
-  signing_name = NULL,
+  signing_name = "servicediscovery",
   json_version = "1.1",
   target_prefix = "Route53AutoNaming_v20170314"
 )

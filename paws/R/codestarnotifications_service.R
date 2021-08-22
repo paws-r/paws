@@ -111,6 +111,12 @@ NULL
 #'  \link[=codestarnotifications_update_notification_rule]{update_notification_rule} \tab Updates a notification rule for a resource
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname codestarnotifications
 #' @export
 codestarnotifications <- function(config = list()) {

@@ -201,6 +201,12 @@ NULL
 #'  \link[=lightsail_update_relational_database_parameters]{update_relational_database_parameters} \tab Allows the update of one or more parameters of a database in Amazon Lightsail
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname lightsail
 #' @export
 lightsail <- function(config = list()) {
@@ -219,7 +225,7 @@ lightsail <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "lightsail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lightsail.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "lightsail.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lightsail.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Lightsail",
   api_version = "2016-11-28",
-  signing_name = NULL,
+  signing_name = "lightsail",
   json_version = "1.1",
   target_prefix = "Lightsail_20161128"
 )

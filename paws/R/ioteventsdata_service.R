@@ -48,6 +48,12 @@ NULL
 #'  \link[=ioteventsdata_list_detectors]{list_detectors} \tab Lists detectors (the instances of a detector model)
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ioteventsdata
 #' @export
 ioteventsdata <- function(config = list()) {

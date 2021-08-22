@@ -74,6 +74,12 @@
 #'  \link[=batch_update_job_queue]{update_job_queue} \tab Updates a job queue
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname batch
 #' @export
 batch <- function(config = list()) {
@@ -578,6 +584,12 @@ batch <- function(config = list()) {
 #'  \link[=ec2_withdraw_byoip_cidr]{withdraw_byoip_cidr} \tab Stops advertising an address range that is provisioned as an address pool
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ec2
 #' @export
 ec2 <- function(config = list()) {
@@ -631,6 +643,12 @@ ec2 <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[=ec2instanceconnect_send_ssh_public_key]{send_ssh_public_key} \tab Pushes an SSH public key to a particular OS user on a given EC2 instance for 60 seconds
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname ec2instanceconnect
 #' @export
@@ -725,6 +743,12 @@ ec2instanceconnect <- function(config = list()) {
 #'  \link[=ecr_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
 #'  \link[=ecr_upload_layer_part]{upload_layer_part} \tab Uploads an image layer part to Amazon ECR
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname ecr
 #' @export
@@ -843,6 +867,12 @@ ecr <- function(config = list()) {
 #'  \link[=ecs_update_task_set]{update_task_set} \tab Modifies a task set
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ecs
 #' @export
 ecs <- function(config = list()) {
@@ -939,6 +969,12 @@ ecs <- function(config = list()) {
 #'  \link[=eks_update_nodegroup_config]{update_nodegroup_config} \tab Updates an Amazon EKS managed node group configuration\cr
 #'  \link[=eks_update_nodegroup_version]{update_nodegroup_version} \tab Updates the Kubernetes version or AMI version of an Amazon EKS managed node group
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname eks
 #' @export
@@ -1051,6 +1087,12 @@ eks <- function(config = list()) {
 #'  \link[=elasticbeanstalk_update_tags_for_resource]{update_tags_for_resource} \tab Update the list of tags applied to an AWS Elastic Beanstalk resource\cr
 #'  \link[=elasticbeanstalk_validate_configuration_settings]{validate_configuration_settings} \tab Takes a set of configuration settings and either a configuration template or environment, and determines whether those values are valid
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname elasticbeanstalk
 #' @export
@@ -1167,6 +1209,12 @@ elasticbeanstalk <- function(config = list()) {
 #'  \link[=lambda_update_function_configuration]{update_function_configuration} \tab Modify the version-specific settings of a Lambda function\cr
 #'  \link[=lambda_update_function_event_invoke_config]{update_function_event_invoke_config} \tab Updates the configuration for asynchronous invocation for a function, version, or alias
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname lambda
 #' @export
@@ -1373,6 +1421,12 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_update_relational_database_parameters]{update_relational_database_parameters} \tab Allows the update of one or more parameters of a database in Amazon Lightsail
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname lightsail
 #' @export
 lightsail <- function(config = list()) {
@@ -1463,6 +1517,12 @@ lightsail <- function(config = list()) {
 #'  \link[=serverlessapplicationrepository_unshare_application]{unshare_application} \tab Unshares an application from an AWS Organization\cr
 #'  \link[=serverlessapplicationrepository_update_application]{update_application} \tab Updates the specified application
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname serverlessapplicationrepository
 #' @export
@@ -1562,6 +1622,12 @@ serverlessapplicationrepository <- function(config = list()) {
 #'  \link[=backup_update_region_settings]{update_region_settings} \tab Updates the current service opt-in settings for the Region
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname backup
 #' @export
 backup <- function(config = list()) {
@@ -1622,6 +1688,12 @@ backup <- function(config = list()) {
 #'  \link[=dlm_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 #'  \link[=dlm_update_lifecycle_policy]{update_lifecycle_policy} \tab Updates the specified lifecycle policy
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname dlm
 #' @export
@@ -1707,6 +1779,12 @@ dlm <- function(config = list()) {
 #'  \link[=efs_update_file_system]{update_file_system} \tab Updates the throughput mode or the amount of provisioned throughput of an existing file system
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname efs
 #' @export
 efs <- function(config = list()) {
@@ -1776,6 +1854,12 @@ efs <- function(config = list()) {
 #'  \link[=fsx_untag_resource]{untag_resource} \tab This action removes a tag from an Amazon FSx resource\cr
 #'  \link[=fsx_update_file_system]{update_file_system} \tab Use this operation to update the configuration of an existing Amazon FSx file system
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname fsx
 #' @export
@@ -1893,6 +1977,12 @@ fsx <- function(config = list()) {
 #'  \link[=glacier_upload_multipart_part]{upload_multipart_part} \tab This operation uploads a part of an archive
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname glacier
 #' @export
 glacier <- function(config = list()) {
@@ -1960,6 +2050,7 @@ glacier <- function(config = list()) {
 #'  \link[=s3_delete_objects]{delete_objects} \tab This operation enables you to delete multiple objects from a bucket using a single HTTP request\cr
 #'  \link[=s3_delete_object_tagging]{delete_object_tagging} \tab Removes the entire tag set from the specified object\cr
 #'  \link[=s3_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon S3 bucket\cr
+#'  \link[=s3_download_file]{download_file} \tab Download a file from S3 and store it at a specified file location\cr
 #'  \link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This implementation of the GET operation uses the accelerate subresource to return the Transfer Acceleration state of a bucket, which is either Enabled or Suspended\cr
 #'  \link[=s3_get_bucket_acl]{get_bucket_acl} \tab This implementation of the GET operation uses the acl subresource to return the access control list (ACL) of a bucket\cr
 #'  \link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This implementation of the GET operation returns an analytics configuration (identified by the analytics configuration ID) from the bucket\cr
@@ -2034,6 +2125,12 @@ glacier <- function(config = list()) {
 #'  \link[=s3_upload_part]{upload_part} \tab Uploads a part in a multipart upload\cr
 #'  \link[=s3_upload_part_copy]{upload_part_copy} \tab Uploads a part by copying data from an existing object as data source
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname s3
 #' @export
@@ -2118,6 +2215,12 @@ s3 <- function(config = list()) {
 #'  \link[=s3control_update_job_priority]{update_job_priority} \tab Updates an existing S3 Batch Operations job's priority\cr
 #'  \link[=s3control_update_job_status]{update_job_status} \tab Updates the status for the specified job
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname s3control
 #' @export
@@ -2318,6 +2421,12 @@ s3control <- function(config = list()) {
 #'  \link[=storagegateway_update_vtl_device_type]{update_vtl_device_type} \tab Updates the type of medium changer in a tape gateway
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname storagegateway
 #' @export
 storagegateway <- function(config = list()) {
@@ -2389,6 +2498,12 @@ storagegateway <- function(config = list()) {
 #'  \link[=dax_update_parameter_group]{update_parameter_group} \tab Modifies the parameters of a parameter group\cr
 #'  \link[=dax_update_subnet_group]{update_subnet_group} \tab Modifies an existing subnet group
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname dax
 #' @export
@@ -2476,6 +2591,12 @@ dax <- function(config = list()) {
 #'  \link[=docdb_start_db_cluster]{start_db_cluster} \tab Restarts the stopped cluster that is specified by DBClusterIdentifier\cr
 #'  \link[=docdb_stop_db_cluster]{stop_db_cluster} \tab Stops the running cluster that is specified by DBClusterIdentifier
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname docdb
 #' @export
@@ -2622,6 +2743,12 @@ docdb <- function(config = list()) {
 #'  \link[=dynamodb_update_time_to_live]{update_time_to_live} \tab The UpdateTimeToLive method enables or disables Time to Live (TTL) for the specified table
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname dynamodb
 #' @export
 dynamodb <- function(config = list()) {
@@ -2677,6 +2804,12 @@ dynamodb <- function(config = list()) {
 #'  \link[=dynamodbstreams_get_shard_iterator]{get_shard_iterator} \tab Returns a shard iterator\cr
 #'  \link[=dynamodbstreams_list_streams]{list_streams} \tab Returns an array of stream ARNs associated with the current account and endpoint
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname dynamodbstreams
 #' @export
@@ -2798,6 +2931,12 @@ dynamodbstreams <- function(config = list()) {
 #'  \link[=elasticache_start_migration]{start_migration} \tab Start the migration of data\cr
 #'  \link[=elasticache_test_failover]{test_failover} \tab Represents the input of a TestFailover operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console)
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname elasticache
 #' @export
@@ -2926,6 +3065,12 @@ elasticache <- function(config = list()) {
 #'  \link[=neptune_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Neptune DB cluster that was stopped using the AWS console, the AWS CLI stop-db-cluster command, or the StopDBCluster API\cr
 #'  \link[=neptune_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Neptune DB cluster
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname neptune
 #' @export
@@ -3154,6 +3299,12 @@ neptune <- function(config = list()) {
 #'  \link[=rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname rds
 #' @export
 rds <- function(config = list()) {
@@ -3216,6 +3367,12 @@ rds <- function(config = list()) {
 #'  \link[=rdsdataservice_execute_statement]{execute_statement} \tab Runs a SQL statement against a database\cr
 #'  \link[=rdsdataservice_rollback_transaction]{rollback_transaction} \tab Performs a rollback of a transaction
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname rdsdataservice
 #' @export
@@ -3381,6 +3538,12 @@ rdsdataservice <- function(config = list()) {
 #'  \link[=redshift_rotate_encryption_key]{rotate_encryption_key} \tab Rotates the encryption keys for a cluster
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname redshift
 #' @export
 redshift <- function(config = list()) {
@@ -3453,6 +3616,12 @@ redshift <- function(config = list()) {
 #'  \link[=simpledb_put_attributes]{put_attributes} \tab The PutAttributes operation creates or replaces attributes in an item\cr
 #'  \link[=simpledb_select]{select} \tab The Select operation returns a set of attributes for ItemNames that match the select expression
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname simpledb
 #' @export
@@ -3623,6 +3792,12 @@ simpledb <- function(config = list()) {
 #'  \link[=apigateway_update_vpc_link]{update_vpc_link} \tab Updates an existing VpcLink of a specified identifier
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname apigateway
 #' @export
 apigateway <- function(config = list()) {
@@ -3676,6 +3851,12 @@ apigateway <- function(config = list()) {
 #'  \link[=apigatewaymanagementapi_get_connection]{get_connection} \tab Get information about the connection with the provided id\cr
 #'  \link[=apigatewaymanagementapi_post_to_connection]{post_to_connection} \tab Sends the provided data to the specified connection
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname apigatewaymanagementapi
 #' @export
@@ -3794,6 +3975,12 @@ apigatewaymanagementapi <- function(config = list()) {
 #'  \link[=apigatewayv2_update_vpc_link]{update_vpc_link} \tab Updates a VPC link
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname apigatewayv2
 #' @export
 apigatewayv2 <- function(config = list()) {
@@ -3893,6 +4080,12 @@ apigatewayv2 <- function(config = list()) {
 #'  \link[=appmesh_update_virtual_router]{update_virtual_router} \tab Updates an existing virtual router in a specified service mesh\cr
 #'  \link[=appmesh_update_virtual_service]{update_virtual_service} \tab Updates an existing virtual service in a specified service mesh
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname appmesh
 #' @export
@@ -4017,6 +4210,12 @@ appmesh <- function(config = list()) {
 #'  \link[=cloudfront_update_streaming_distribution]{update_streaming_distribution} \tab Update a streaming distribution
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudfront
 #' @export
 cloudfront <- function(config = list()) {
@@ -4126,6 +4325,12 @@ cloudfront <- function(config = list()) {
 #'  \link[=directconnect_update_lag]{update_lag} \tab Updates the attributes of the specified link aggregation group (LAG)\cr
 #'  \link[=directconnect_update_virtual_interface_attributes]{update_virtual_interface_attributes} \tab Updates the specified attributes of the specified virtual private interface
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname directconnect
 #' @export
@@ -4240,6 +4445,12 @@ directconnect <- function(config = list()) {
 #'  \link[=elb_set_load_balancer_policies_for_backend_server]{set_load_balancer_policies_for_backend_server} \tab Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies\cr
 #'  \link[=elb_set_load_balancer_policies_of_listener]{set_load_balancer_policies_of_listener} \tab Replaces the current set of policies for the specified load balancer port with the specified set of policies
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname elb
 #' @export
@@ -4360,6 +4571,12 @@ elb <- function(config = list()) {
 #'  \link[=elbv2_set_security_groups]{set_security_groups} \tab Associates the specified security groups with the specified Application Load Balancer\cr
 #'  \link[=elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname elbv2
 #' @export
@@ -4626,6 +4843,12 @@ elbv2 <- function(config = list()) {
 #'  \link[=globalaccelerator_withdraw_byoip_cidr]{withdraw_byoip_cidr} \tab Stops advertising an address range that is provisioned as an address pool
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname globalaccelerator
 #' @export
 globalaccelerator <- function(config = list()) {
@@ -4743,6 +4966,12 @@ globalaccelerator <- function(config = list()) {
 #'  \link[=route53_update_traffic_policy_instance]{update_traffic_policy_instance} \tab Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname route53
 #' @export
 route53 <- function(config = list()) {
@@ -4816,6 +5045,12 @@ route53 <- function(config = list()) {
 #'  \link[=route53domains_update_tags_for_domain]{update_tags_for_domain} \tab This operation adds or updates tags for a specified domain\cr
 #'  \link[=route53domains_view_billing]{view_billing} \tab Returns all the domain-related billing records for the current AWS account for a specified period
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname route53domains
 #' @export
@@ -4936,6 +5171,12 @@ route53domains <- function(config = list()) {
 #'  \link[=route53resolver_update_resolver_rule]{update_resolver_rule} \tab Updates settings for a specified Resolver rule
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname route53resolver
 #' @export
 route53resolver <- function(config = list()) {
@@ -5013,6 +5254,12 @@ route53resolver <- function(config = list()) {
 #'  \link[=servicediscovery_update_instance_custom_health_status]{update_instance_custom_health_status} \tab Submits a request to change the health status of a custom health check to healthy or unhealthy\cr
 #'  \link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations:
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname servicediscovery
 #' @export
@@ -5130,6 +5377,12 @@ servicediscovery <- function(config = list()) {
 #'  \link[=applicationautoscaling_register_scalable_target]{register_scalable_target} \tab Registers or updates a scalable target
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname applicationautoscaling
 #' @export
 applicationautoscaling <- function(config = list()) {
@@ -5214,6 +5467,12 @@ applicationautoscaling <- function(config = list()) {
 #'  \link[=applicationinsights_update_component_configuration]{update_component_configuration} \tab Updates the monitoring configurations for the component\cr
 #'  \link[=applicationinsights_update_log_pattern]{update_log_pattern} \tab Adds a log pattern to a LogPatternSet
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname applicationinsights
 #' @export
@@ -5332,6 +5591,12 @@ applicationinsights <- function(config = list()) {
 #'  \link[=autoscaling_update_auto_scaling_group]{update_auto_scaling_group} \tab We strongly recommend that all Auto Scaling groups use launch templates to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname autoscaling
 #' @export
 autoscaling <- function(config = list()) {
@@ -5410,6 +5675,12 @@ autoscaling <- function(config = list()) {
 #'  \link[=autoscalingplans_get_scaling_plan_resource_forecast_data]{get_scaling_plan_resource_forecast_data} \tab Retrieves the forecast data for a scalable resource\cr
 #'  \link[=autoscalingplans_update_scaling_plan]{update_scaling_plan} \tab Updates the specified scaling plan
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname autoscalingplans
 #' @export
@@ -5531,6 +5802,12 @@ autoscalingplans <- function(config = list()) {
 #'  \link[=cloudformation_validate_template]{validate_template} \tab Validates a specified template
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudformation
 #' @export
 cloudformation <- function(config = list()) {
@@ -5615,6 +5892,12 @@ cloudformation <- function(config = list()) {
 #'  \link[=cloudtrail_stop_logging]{stop_logging} \tab Suspends the recording of AWS API calls and log file delivery for the specified trail\cr
 #'  \link[=cloudtrail_update_trail]{update_trail} \tab Updates the settings that specify delivery of log files
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname cloudtrail
 #' @export
@@ -5705,6 +5988,12 @@ cloudtrail <- function(config = list()) {
 #'  \link[=cloudwatch_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch resource\cr
 #'  \link[=cloudwatch_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname cloudwatch
 #' @export
@@ -5810,6 +6099,12 @@ cloudwatch <- function(config = list()) {
 #'  \link[=cloudwatchevents_untag_resource]{untag_resource} \tab Removes one or more tags from the specified EventBridge resource\cr
 #'  \link[=cloudwatchevents_update_archive]{update_archive} \tab Updates the specified archive
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname cloudwatchevents
 #' @export
@@ -5929,6 +6224,12 @@ cloudwatchevents <- function(config = list()) {
 #'  \link[=cloudwatchlogs_test_metric_filter]{test_metric_filter} \tab Tests the filter pattern of a metric filter against a sample of log event messages\cr
 #'  \link[=cloudwatchlogs_untag_log_group]{untag_log_group} \tab Removes the specified tags from the specified log group
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname cloudwatchlogs
 #' @export
@@ -6081,6 +6382,12 @@ cloudwatchlogs <- function(config = list()) {
 #'  \link[=configservice_untag_resource]{untag_resource} \tab Deletes specified tags from a resource
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname configservice
 #' @export
 configservice <- function(config = list()) {
@@ -6184,6 +6491,12 @@ configservice <- function(config = list()) {
 #'  \link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization} \tab Calling this operation enables AWS Health to work with AWS Organizations
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname health
 #' @export
 health <- function(config = list()) {
@@ -6269,6 +6582,12 @@ health <- function(config = list()) {
 #'  \link[=licensemanager_update_license_specifications_for_resource]{update_license_specifications_for_resource} \tab Adds or removes the specified license configurations for the specified AWS resource\cr
 #'  \link[=licensemanager_update_service_settings]{update_service_settings} \tab Updates License Manager settings for the current Region
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname licensemanager
 #' @export
@@ -6474,6 +6793,12 @@ licensemanager <- function(config = list()) {
 #'  \link[=opsworks_update_volume]{update_volume} \tab Updates an Amazon EBS volume's name or mount point
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname opsworks
 #' @export
 opsworks <- function(config = list()) {
@@ -6606,6 +6931,12 @@ opsworks <- function(config = list()) {
 #'  \link[=opsworkscm_update_server_engine_attributes]{update_server_engine_attributes} \tab Updates engine-specific attributes on a specified server
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname opsworkscm
 #' @export
 opsworkscm <- function(config = list()) {
@@ -6706,6 +7037,12 @@ opsworkscm <- function(config = list()) {
 #'  \link[=organizations_update_policy]{update_policy} \tab Updates an existing policy with a new name, description, or content
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname organizations
 #' @export
 organizations <- function(config = list()) {
@@ -6779,6 +7116,12 @@ organizations <- function(config = list()) {
 #'  \link[=pi_get_resource_metrics]{get_resource_metrics} \tab Retrieve Performance Insights metrics for a set of data sources, over a time period
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname pi
 #' @export
 pi <- function(config = list()) {
@@ -6807,8 +7150,7 @@ pi <- function(config = list()) {
 #' Tags are key-value pairs.
 #' 
 #' For more information about Resource Groups, see the [AWS Resource Groups
-#' User
-#' Guide](https://docs.aws.amazon.com/ARG/latest/userguide/welcome.html).
+#' User Guide](https://docs.aws.amazon.com/ARG/latest/userguide/).
 #' 
 #' AWS Resource Groups uses a REST-compliant API that you can use to
 #' perform the following types of operations.
@@ -6874,6 +7216,12 @@ pi <- function(config = list()) {
 #'  \link[=resourcegroups_update_group]{update_group} \tab Updates the description for an existing group\cr
 #'  \link[=resourcegroups_update_group_query]{update_group_query} \tab Updates the resource query of a group
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname resourcegroups
 #' @export
@@ -7264,6 +7612,12 @@ resourcegroups <- function(config = list()) {
 #'  \link[=resourcegroupstaggingapi_untag_resources]{untag_resources} \tab Removes the specified tags from the specified resources
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname resourcegroupstaggingapi
 #' @export
 resourcegroupstaggingapi <- function(config = list()) {
@@ -7400,6 +7754,12 @@ resourcegroupstaggingapi <- function(config = list()) {
 #'  \link[=servicecatalog_update_tag_option]{update_tag_option} \tab Updates the specified TagOption
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname servicecatalog
 #' @export
 servicecatalog <- function(config = list()) {
@@ -7467,6 +7827,12 @@ servicecatalog <- function(config = list()) {
 #'  \link[=servicequotas_tag_resource]{tag_resource} \tab Adds tags to the specified applied quota\cr
 #'  \link[=servicequotas_untag_resource]{untag_resource} \tab Removes tags from the specified applied quota
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname servicequotas
 #' @export
@@ -7668,6 +8034,12 @@ servicequotas <- function(config = list()) {
 #'  \link[=ssm_update_service_setting]{update_service_setting} \tab ServiceSetting is an account-level setting for an AWS service
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ssm
 #' @export
 ssm <- function(config = list()) {
@@ -7800,6 +8172,12 @@ ssm <- function(config = list()) {
 #'  \link[=support_resolve_case]{resolve_case} \tab Resolves a support case
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname support
 #' @export
 support <- function(config = list()) {
@@ -7908,6 +8286,12 @@ support <- function(config = list()) {
 #'  \link[=comprehend_update_endpoint]{update_endpoint} \tab Updates information about the specified endpoint
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname comprehend
 #' @export
 comprehend <- function(config = list()) {
@@ -7975,6 +8359,12 @@ comprehend <- function(config = list()) {
 #'  \link[=comprehendmedical_stop_phi_detection_job]{stop_phi_detection_job} \tab Stops a protected health information (PHI) detection job in progress\cr
 #'  \link[=comprehendmedical_stop_rx_norm_inference_job]{stop_rx_norm_inference_job} \tab Stops an InferRxNorm inference job in progress
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname comprehendmedical
 #' @export
@@ -8066,6 +8456,12 @@ comprehendmedical <- function(config = list()) {
 #'  \link[=lexmodelbuildingservice_untag_resource]{untag_resource} \tab Removes tags from a bot, bot alias or bot channel
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname lexmodelbuildingservice
 #' @export
 lexmodelbuildingservice <- function(config = list()) {
@@ -8126,6 +8522,12 @@ lexmodelbuildingservice <- function(config = list()) {
 #'  \link[=lexruntimeservice_post_text]{post_text} \tab Sends user input to Amazon Lex\cr
 #'  \link[=lexruntimeservice_put_session]{put_session} \tab Creates a new session or modifies an existing session with an Amazon Lex bot
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname lexruntimeservice
 #' @export
@@ -8199,6 +8601,12 @@ lexruntimeservice <- function(config = list()) {
 #'  \link[=machinelearning_update_evaluation]{update_evaluation} \tab Updates the EvaluationName of an Evaluation\cr
 #'  \link[=machinelearning_update_ml_model]{update_ml_model} \tab Updates the MLModelName and the ScoreThreshold of an MLModel
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname machinelearning
 #' @export
@@ -8289,6 +8697,12 @@ machinelearning <- function(config = list()) {
 #'  \link[=personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname personalize
 #' @export
 personalize <- function(config = list()) {
@@ -8340,6 +8754,12 @@ personalize <- function(config = list()) {
 #'  \link[=personalizeevents_put_users]{put_users} \tab Adds one or more users to a Users dataset
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname personalizeevents
 #' @export
 personalizeevents <- function(config = list()) {
@@ -8385,6 +8805,12 @@ personalizeevents <- function(config = list()) {
 #'  \link[=personalizeruntime_get_personalized_ranking]{get_personalized_ranking} \tab Re-ranks a list of recommended items for the given user\cr
 #'  \link[=personalizeruntime_get_recommendations]{get_recommendations} \tab Returns a list of recommended items
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname personalizeruntime
 #' @export
@@ -8446,6 +8872,12 @@ personalizeruntime <- function(config = list()) {
 #'  \link[=polly_start_speech_synthesis_task]{start_speech_synthesis_task} \tab Allows the creation of an asynchronous synthesis task, by starting a new SpeechSynthesisTask\cr
 #'  \link[=polly_synthesize_speech]{synthesize_speech} \tab Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname polly
 #' @export
@@ -8553,6 +8985,12 @@ polly <- function(config = list()) {
 #'  \link[=rekognition_stop_project_version]{stop_project_version} \tab Stops a running model\cr
 #'  \link[=rekognition_stop_stream_processor]{stop_stream_processor} \tab Stops a running stream processor that was created by CreateStreamProcessor
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname rekognition
 #' @export
@@ -8840,6 +9278,12 @@ rekognition <- function(config = list()) {
 #'  \link[=sagemaker_update_workteam]{update_workteam} \tab Updates an existing work team with new member definitions or description
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname sagemaker
 #' @export
 sagemaker <- function(config = list()) {
@@ -8885,6 +9329,12 @@ sagemaker <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[=sagemakerruntime_invoke_endpoint]{invoke_endpoint} \tab After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname sagemakerruntime
 #' @export
@@ -8938,6 +9388,12 @@ sagemakerruntime <- function(config = list()) {
 #'  \link[=textract_start_document_analysis]{start_document_analysis} \tab Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements\cr
 #'  \link[=textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname textract
 #' @export
@@ -9011,6 +9467,12 @@ textract <- function(config = list()) {
 #'  \link[=transcribeservice_update_vocabulary_filter]{update_vocabulary_filter} \tab Updates a vocabulary filter with a new list of filtered words
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname transcribeservice
 #' @export
 transcribeservice <- function(config = list()) {
@@ -9070,6 +9532,12 @@ transcribeservice <- function(config = list()) {
 #'  \link[=translate_translate_text]{translate_text} \tab Translates input text from the source language to the target language\cr
 #'  \link[=translate_update_parallel_data]{update_parallel_data} \tab Updates a previously created parallel data resource by importing a new input file from Amazon S3
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname translate
 #' @export
@@ -9163,6 +9631,12 @@ translate <- function(config = list()) {
 #'  \link[=athena_update_work_group]{update_work_group} \tab Updates the workgroup with the specified name
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname athena
 #' @export
 athena <- function(config = list()) {
@@ -9246,6 +9720,12 @@ athena <- function(config = list()) {
 #'  \link[=cloudsearch_update_service_access_policies]{update_service_access_policies} \tab Configures the access rules that control access to the domain's document and search endpoints
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudsearch
 #' @export
 cloudsearch <- function(config = list()) {
@@ -9306,6 +9786,12 @@ cloudsearch <- function(config = list()) {
 #'  \link[=cloudsearchdomain_suggest]{suggest} \tab Retrieves autocomplete suggestions for a partial query string\cr
 #'  \link[=cloudsearchdomain_upload_documents]{upload_documents} \tab Posts a batch of documents to a search domain for indexing
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname cloudsearchdomain
 #' @export
@@ -9392,6 +9878,12 @@ cloudsearchdomain <- function(config = list()) {
 #'  \link[=datapipeline_set_task_status]{set_task_status} \tab Task runners call SetTaskStatus to notify AWS Data Pipeline that a task is completed and provide information about the final status\cr
 #'  \link[=datapipeline_validate_pipeline_definition]{validate_pipeline_definition} \tab Validates the specified pipeline definition to ensure that it is well formed and can be run without error
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname datapipeline
 #' @export
@@ -9492,6 +9984,12 @@ datapipeline <- function(config = list()) {
 #'  \link[=elasticsearchservice_upgrade_elasticsearch_domain]{upgrade_elasticsearch_domain} \tab Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname elasticsearchservice
 #' @export
 elasticsearchservice <- function(config = list()) {
@@ -9587,6 +10085,12 @@ elasticsearchservice <- function(config = list()) {
 #'  \link[=emr_update_studio_session_mapping]{update_studio_session_mapping} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname emr
 #' @export
 emr <- function(config = list()) {
@@ -9648,6 +10152,12 @@ emr <- function(config = list()) {
 #'  \link[=firehose_untag_delivery_stream]{untag_delivery_stream} \tab Removes tags from the specified delivery stream\cr
 #'  \link[=firehose_update_destination]{update_destination} \tab Updates the specified destination of the specified delivery stream
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname firehose
 #' @export
@@ -9851,6 +10361,12 @@ firehose <- function(config = list()) {
 #'  \link[=glue_update_workflow]{update_workflow} \tab Updates an existing workflow
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname glue
 #' @export
 glue <- function(config = list()) {
@@ -9924,6 +10440,12 @@ glue <- function(config = list()) {
 #'  \link[=kafka_update_configuration]{update_configuration} \tab Updates an MSK configuration\cr
 #'  \link[=kafka_update_monitoring]{update_monitoring} \tab Updates the monitoring settings for the cluster
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname kafka
 #' @export
@@ -10000,6 +10522,12 @@ kafka <- function(config = list()) {
 #'  \link[=kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname kinesis
 #' @export
 kinesis <- function(config = list()) {
@@ -10072,6 +10600,12 @@ kinesis <- function(config = list()) {
 #'  \link[=kinesisanalytics_untag_resource]{untag_resource} \tab Removes one or more tags from a Kinesis Analytics application\cr
 #'  \link[=kinesisanalytics_update_application]{update_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname kinesisanalytics
 #' @export
@@ -10148,6 +10682,12 @@ kinesisanalytics <- function(config = list()) {
 #'  \link[=kinesisanalyticsv2_untag_resource]{untag_resource} \tab Removes one or more tags from a Kinesis Data Analytics application\cr
 #'  \link[=kinesisanalyticsv2_update_application]{update_application} \tab Updates an existing Kinesis Data Analytics application
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname kinesisanalyticsv2
 #' @export
@@ -10232,6 +10772,12 @@ kinesisanalyticsv2 <- function(config = list()) {
 #'  \link[=mturk_update_notification_settings]{update_notification_settings} \tab The UpdateNotificationSettings operation creates, updates, disables or re-enables notifications for a HIT type\cr
 #'  \link[=mturk_update_qualification_type]{update_qualification_type} \tab The UpdateQualificationType operation modifies the attributes of an existing Qualification type, which is represented by a QualificationType data structure
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname mturk
 #' @export
@@ -10383,6 +10929,12 @@ mturk <- function(config = list()) {
 #'  \link[=quicksight_update_user]{update_user} \tab Updates an Amazon QuickSight user
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname quicksight
 #' @export
 quicksight <- function(config = list()) {
@@ -10445,6 +10997,12 @@ quicksight <- function(config = list()) {
 #'  \link[=acm_resend_validation_email]{resend_validation_email} \tab Resends the email that requests domain ownership validation\cr
 #'  \link[=acm_update_certificate_options]{update_certificate_options} \tab Updates a certificate
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname acm
 #' @export
@@ -10528,6 +11086,12 @@ acm <- function(config = list()) {
 #'  \link[=acmpca_untag_certificate_authority]{untag_certificate_authority} \tab Remove one or more tags from your private CA\cr
 #'  \link[=acmpca_update_certificate_authority]{update_certificate_authority} \tab Updates the status or configuration of a private certificate authority (CA)
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname acmpca
 #' @export
@@ -10650,6 +11214,12 @@ acmpca <- function(config = list()) {
 #'  \link[=clouddirectory_upgrade_published_schema]{upgrade_published_schema} \tab Upgrades a published schema under a new minor version revision using the current contents of DevelopmentSchemaArn
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname clouddirectory
 #' @export
 clouddirectory <- function(config = list()) {
@@ -10728,6 +11298,12 @@ clouddirectory <- function(config = list()) {
 #'  \link[=cloudhsm_remove_tags_from_resource]{remove_tags_from_resource} \tab This is documentation for AWS CloudHSM Classic
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudhsm
 #' @export
 cloudhsm <- function(config = list()) {
@@ -10789,6 +11365,12 @@ cloudhsm <- function(config = list()) {
 #'  \link[=cloudhsmv2_tag_resource]{tag_resource} \tab Adds or overwrites one or more tags for the specified AWS CloudHSM cluster\cr
 #'  \link[=cloudhsmv2_untag_resource]{untag_resource} \tab Removes the specified tag or tags from the specified AWS CloudHSM cluster
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname cloudhsmv2
 #' @export
@@ -10875,6 +11457,12 @@ cloudhsmv2 <- function(config = list()) {
 #'  \link[=cognitoidentity_untag_resource]{untag_resource} \tab Removes the specified tags from an Amazon Cognito identity pool\cr
 #'  \link[=cognitoidentity_update_identity_pool]{update_identity_pool} \tab Updates an identity pool
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname cognitoidentity
 #' @export
@@ -11028,6 +11616,12 @@ cognitoidentity <- function(config = list()) {
 #'  \link[=cognitoidentityprovider_verify_user_attribute]{verify_user_attribute} \tab Verifies the specified user attributes in the user pool
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cognitoidentityprovider
 #' @export
 cognitoidentityprovider <- function(config = list()) {
@@ -11110,6 +11704,12 @@ cognitoidentityprovider <- function(config = list()) {
 #'  \link[=cognitosync_unsubscribe_from_dataset]{unsubscribe_from_dataset} \tab Unsubscribes from receiving notifications when a dataset is modified by another device\cr
 #'  \link[=cognitosync_update_records]{update_records} \tab Posts updates to records and adds and deletes records for a dataset and user
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname cognitosync
 #' @export
@@ -11233,6 +11833,12 @@ cognitosync <- function(config = list()) {
 #'  \link[=directoryservice_verify_trust]{verify_trust} \tab AWS Directory Service for Microsoft Active Directory allows you to configure and verify trust relationships
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname directoryservice
 #' @export
 directoryservice <- function(config = list()) {
@@ -11314,6 +11920,12 @@ directoryservice <- function(config = list()) {
 #'  \link[=fms_tag_resource]{tag_resource} \tab Adds one or more tags to an AWS resource\cr
 #'  \link[=fms_untag_resource]{untag_resource} \tab Removes one or more tags from an AWS resource
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname fms
 #' @export
@@ -11438,6 +12050,12 @@ fms <- function(config = list()) {
 #'  \link[=guardduty_update_publishing_destination]{update_publishing_destination} \tab Updates information about the publishing destination specified by the destinationId\cr
 #'  \link[=guardduty_update_threat_intel_set]{update_threat_intel_set} \tab Updates the ThreatIntelSet specified by the ThreatIntelSet ID
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname guardduty
 #' @export
@@ -11635,6 +12253,12 @@ guardduty <- function(config = list()) {
 #'  \link[=iam_upload_ssh_public_key]{upload_ssh_public_key} \tab Uploads an SSH public key and associates it with the specified IAM user
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname iam
 #' @export
 iam <- function(config = list()) {
@@ -11729,6 +12353,12 @@ iam <- function(config = list()) {
 #'  \link[=inspector_unsubscribe_from_event]{unsubscribe_from_event} \tab Disables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic\cr
 #'  \link[=inspector_update_assessment_target]{update_assessment_target} \tab Updates the assessment target that is specified by the ARN of the assessment target
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname inspector
 #' @export
@@ -11902,6 +12532,12 @@ inspector <- function(config = list()) {
 #'  \link[=kms_verify]{verify} \tab Verifies a digital signature that was generated by the Sign operation
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname kms
 #' @export
 kms <- function(config = list()) {
@@ -11968,6 +12604,12 @@ kms <- function(config = list()) {
 #'  \link[=macie_list_s3_resources]{list_s3_resources} \tab Lists all the S3 resources associated with Amazon Macie Classic\cr
 #'  \link[=macie_update_s3_resources]{update_s3_resources} \tab Updates the classification types for the specified S3 resources
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname macie
 #' @export
@@ -12046,6 +12688,12 @@ macie <- function(config = list()) {
 #'  \link[=ram_update_resource_share]{update_resource_share} \tab Updates the specified resource share that you own
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ram
 #' @export
 ram <- function(config = list()) {
@@ -12096,8 +12744,8 @@ ram <- function(config = list()) {
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the [AWS Secrets Manager Discussion
-#' Forum](https://forums.aws.amazon.com:443/forum.jspa?forumID=296). For
-#' more information about the AWS Discussion Forums, see [Forums
+#' Forum](https://forums.aws.amazon.com/forum.jspa?forumID=296). For more
+#' information about the AWS Discussion Forums, see [Forums
 #' Help](https://forums.aws.amazon.com:443/help.jspa).
 #' 
 #' **How examples are presented**
@@ -12182,6 +12830,12 @@ ram <- function(config = list()) {
 #'  \link[=secretsmanager_update_secret_version_stage]{update_secret_version_stage} \tab Modifies the staging labels attached to a version of a secret\cr
 #'  \link[=secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates the JSON text of the resource-based policy document attached to the specified secret
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname secretsmanager
 #' @export
@@ -12319,6 +12973,12 @@ secretsmanager <- function(config = list()) {
 #'  \link[=securityhub_update_standards_control]{update_standards_control} \tab Used to control whether an individual security standard control is enabled or disabled
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname securityhub
 #' @export
 securityhub <- function(config = list()) {
@@ -12402,6 +13062,12 @@ securityhub <- function(config = list()) {
 #'  \link[=shield_update_subscription]{update_subscription} \tab Updates the details of an existing subscription
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname shield
 #' @export
 shield <- function(config = list()) {
@@ -12481,6 +13147,12 @@ shield <- function(config = list()) {
 #'  \link[=sts_get_federation_token]{get_federation_token} \tab Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user\cr
 #'  \link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an AWS account or IAM user
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname sts
 #' @export
@@ -12625,6 +13297,12 @@ sts <- function(config = list()) {
 #'  \link[=waf_update_web_acl]{update_web_acl} \tab This is AWS WAF Classic documentation\cr
 #'  \link[=waf_update_xss_match_set]{update_xss_match_set} \tab This is AWS WAF Classic documentation
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname waf
 #' @export
@@ -12778,6 +13456,12 @@ waf <- function(config = list()) {
 #'  \link[=wafregional_update_xss_match_set]{update_xss_match_set} \tab This is AWS WAF Classic documentation
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname wafregional
 #' @export
 wafregional <- function(config = list()) {
@@ -12883,6 +13567,12 @@ wafregional <- function(config = list()) {
 #'  \link[=eventbridge_update_archive]{update_archive} \tab Updates the specified archive
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname eventbridge
 #' @export
 eventbridge <- function(config = list()) {
@@ -12953,6 +13643,12 @@ eventbridge <- function(config = list()) {
 #'  \link[=mq_update_configuration]{update_configuration} \tab Updates the specified configuration\cr
 #'  \link[=mq_update_user]{update_user} \tab Updates the information for an ActiveMQ user
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname mq
 #' @export
@@ -13041,6 +13737,12 @@ mq <- function(config = list()) {
 #'  \link[=sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
 #'  \link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname sfn
 #' @export
@@ -13139,6 +13841,12 @@ sfn <- function(config = list()) {
 #'  \link[=sns_unsubscribe]{unsubscribe} \tab Deletes a subscription\cr
 #'  \link[=sns_untag_resource]{untag_resource} \tab Remove tags from the specified Amazon SNS topic
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname sns
 #' @export
@@ -13248,6 +13956,12 @@ sns <- function(config = list()) {
 #'  \link[=sqs_untag_queue]{untag_queue} \tab Remove cost allocation tags from the specified Amazon SQS queue
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname sqs
 #' @export
 sqs <- function(config = list()) {
@@ -13344,6 +14058,12 @@ sqs <- function(config = list()) {
 #'  \link[=swf_undeprecate_workflow_type]{undeprecate_workflow_type} \tab Undeprecates a previously deprecated workflow type\cr
 #'  \link[=swf_untag_resource]{untag_resource} \tab Remove a tag from a Amazon SWF domain
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname swf
 #' @export
@@ -13456,6 +14176,12 @@ swf <- function(config = list()) {
 #'  \link[=budgets_update_subscriber]{update_subscriber} \tab Updates a subscriber
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname budgets
 #' @export
 budgets <- function(config = list()) {
@@ -13519,6 +14245,12 @@ budgets <- function(config = list()) {
 #'  \link[=costandusagereportservice_modify_report_definition]{modify_report_definition} \tab Allows you to programatically update your report preferences\cr
 #'  \link[=costandusagereportservice_put_report_definition]{put_report_definition} \tab Creates a new report using the description that you provide
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname costandusagereportservice
 #' @export
@@ -13609,6 +14341,12 @@ costandusagereportservice <- function(config = list()) {
 #'  \link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab Updates an existing Cost Category
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname costexplorer
 #' @export
 costexplorer <- function(config = list()) {
@@ -13655,6 +14393,12 @@ costexplorer <- function(config = list()) {
 #'  \link[=marketplacecommerceanalytics_generate_data_set]{generate_data_set} \tab Given a data set type and data set publication date, asynchronously publishes the requested data set to the specified S3 bucket and notifies the specified SNS topic once the data is available\cr
 #'  \link[=marketplacecommerceanalytics_start_support_data_export]{start_support_data_export} \tab Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname marketplacecommerceanalytics
 #' @export
@@ -13712,6 +14456,12 @@ marketplacecommerceanalytics <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[=marketplaceentitlementservice_get_entitlements]{get_entitlements} \tab GetEntitlements retrieves entitlement values for a given product
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname marketplaceentitlementservice
 #' @export
@@ -13810,6 +14560,12 @@ marketplaceentitlementservice <- function(config = list()) {
 #'  \link[=marketplacemetering_resolve_customer]{resolve_customer} \tab ResolveCustomer is called by a SaaS application during the registration process
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname marketplacemetering
 #' @export
 marketplacemetering <- function(config = list()) {
@@ -13886,6 +14642,12 @@ marketplacemetering <- function(config = list()) {
 #'  \link[=pricing_get_attribute_values]{get_attribute_values} \tab Returns a list of attribute values\cr
 #'  \link[=pricing_get_products]{get_products} \tab Returns a list of all products that match the filter criteria
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname pricing
 #' @export
@@ -14038,6 +14800,12 @@ pricing <- function(config = list()) {
 #'  \link[=connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to the specified user\cr
 #'  \link[=connect_update_user_security_profiles]{update_user_security_profiles} \tab Assigns the specified security profiles to the specified user
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname connect
 #' @export
@@ -14196,6 +14964,12 @@ connect <- function(config = list()) {
 #'  \link[=pinpoint_update_voice_template]{update_voice_template} \tab Updates an existing message template for messages that are sent through the voice channel
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname pinpoint
 #' @export
 pinpoint <- function(config = list()) {
@@ -14321,6 +15095,12 @@ pinpoint <- function(config = list()) {
 #'  \link[=pinpointemail_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update the configuration of an event destination for a configuration set
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname pinpointemail
 #' @export
 pinpointemail <- function(config = list()) {
@@ -14373,6 +15153,12 @@ pinpointemail <- function(config = list()) {
 #'  \link[=pinpointsmsvoice_send_voice_message]{send_voice_message} \tab Create a new voice message and send it to a recipient's phone number\cr
 #'  \link[=pinpointsmsvoice_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update an event destination in a configuration set
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname pinpointsmsvoice
 #' @export
@@ -14502,6 +15288,12 @@ pinpointsmsvoice <- function(config = list()) {
 #'  \link[=ses_verify_email_address]{verify_email_address} \tab Deprecated\cr
 #'  \link[=ses_verify_email_identity]{verify_email_identity} \tab Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname ses
 #' @export

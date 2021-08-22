@@ -9,6 +9,12 @@ route53resolver(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 When you create a VPC using Amazon VPC, you automatically get DNS
 resolution within the VPC from Route 53 Resolver. By default, Resolver

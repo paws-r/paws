@@ -661,10 +661,9 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' the AWS Management Console under account settings.
 #' @param PeerVpcId A unique identifier for a VPC with resources to be accessed by your
 #' Amazon GameLift fleet. The VPC must be in the same Region as your fleet.
-#' To look up a VPC ID, use the [VPC
-#' Dashboard](https://console.aws.amazon.com/vpc/home) in the AWS
-#' Management Console. Learn more about VPC peering in [VPC Peering with
-#' Amazon GameLift
+#' To look up a VPC ID, use the VPC Dashboard in the AWS Management
+#' Console. Learn more about VPC peering in [VPC Peering with Amazon
+#' GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #' @param FleetType Indicates whether to use On-Demand instances or Spot instances for this
 #' fleet. If empty, the default is `ON_DEMAND`. Both categories of
@@ -2194,8 +2193,7 @@ gamelift_create_script <- function(Name = NULL, Version = NULL, StorageLocation 
 #' Management Console under account settings.
 #' @param PeerVpcId &#91;required&#93; A unique identifier for a VPC with resources to be accessed by your
 #' Amazon GameLift fleet. The VPC must be in the same Region where your
-#' fleet is deployed. Look up a VPC ID using the [VPC
-#' Dashboard](https://console.aws.amazon.com/vpc/home) in the AWS
+#' fleet is deployed. Look up a VPC ID using the VPC Dashboard in the AWS
 #' Management Console. Learn more about VPC peering in [VPC Peering with
 #' Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
@@ -2302,8 +2300,7 @@ gamelift_create_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 #' the AWS Management Console under account settings.
 #' @param PeerVpcId &#91;required&#93; A unique identifier for a VPC with resources to be accessed by your
 #' Amazon GameLift fleet. The VPC must be in the same Region where your
-#' fleet is deployed. Look up a VPC ID using the [VPC
-#' Dashboard](https://console.aws.amazon.com/vpc/home) in the AWS
+#' fleet is deployed. Look up a VPC ID using the VPC Dashboard in the AWS
 #' Management Console. Learn more about VPC peering in [VPC Peering with
 #' Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
@@ -3021,8 +3018,7 @@ gamelift_delete_script <- function(ScriptId) {
 #' Management Console under account settings.
 #' @param PeerVpcId &#91;required&#93; A unique identifier for a VPC with resources to be accessed by your
 #' Amazon GameLift fleet. The VPC must be in the same Region where your
-#' fleet is deployed. Look up a VPC ID using the [VPC
-#' Dashboard](https://console.aws.amazon.com/vpc/home) in the AWS
+#' fleet is deployed. Look up a VPC ID using the VPC Dashboard in the AWS
 #' Management Console. Learn more about VPC peering in [VPC Peering with
 #' Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).

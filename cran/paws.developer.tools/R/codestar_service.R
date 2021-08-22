@@ -121,6 +121,12 @@ NULL
 #'  \link[=codestar_update_user_profile]{update_user_profile} \tab Updates a user's profile in AWS CodeStar
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname codestar
 #' @export
 codestar <- function(config = list()) {
@@ -139,7 +145,7 @@ codestar <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "codestar.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codestar.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codestar.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codestar.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodeStar",
   api_version = "2017-04-19",
-  signing_name = NULL,
+  signing_name = "codestar",
   json_version = "1.1",
   target_prefix = "CodeStar_20170419"
 )

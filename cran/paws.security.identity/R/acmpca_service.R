@@ -79,6 +79,12 @@ NULL
 #'  \link[=acmpca_update_certificate_authority]{update_certificate_authority} \tab Updates the status or configuration of a private certificate authority (CA)
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname acmpca
 #' @export
 acmpca <- function(config = list()) {
@@ -97,7 +103,7 @@ acmpca <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "acm-pca.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "acm-pca.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "acm-pca.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "acm-pca.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ACM PCA",
   api_version = "2017-08-22",
-  signing_name = NULL,
+  signing_name = "acm-pca",
   json_version = "1.1",
   target_prefix = "ACMPrivateCA"
 )

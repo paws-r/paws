@@ -656,7 +656,9 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 #' @param name &#91;required&#93; \[Required\] The name of the model. Must be alphanumeric.
 #' @param description The description of the model.
 #' @param schema The schema for the model. For `application/json` models, this should be
-#' JSON schema draft 4 model.
+#' [JSON schema draft
+#' 4](https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04)
+#' model.
 #' @param contentType &#91;required&#93; \[Required\] The content-type for the model.
 #'
 #' @return

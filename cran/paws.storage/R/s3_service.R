@@ -63,6 +63,7 @@ NULL
 #'  \link[=s3_delete_objects]{delete_objects} \tab This operation enables you to delete multiple objects from a bucket using a single HTTP request\cr
 #'  \link[=s3_delete_object_tagging]{delete_object_tagging} \tab Removes the entire tag set from the specified object\cr
 #'  \link[=s3_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon S3 bucket\cr
+#'  \link[=s3_download_file]{download_file} \tab Download a file from S3 and store it at a specified file location\cr
 #'  \link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This implementation of the GET operation uses the accelerate subresource to return the Transfer Acceleration state of a bucket, which is either Enabled or Suspended\cr
 #'  \link[=s3_get_bucket_acl]{get_bucket_acl} \tab This implementation of the GET operation uses the acl subresource to return the access control list (ACL) of a bucket\cr
 #'  \link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This implementation of the GET operation returns an analytics configuration (identified by the analytics configuration ID) from the bucket\cr
@@ -138,6 +139,12 @@ NULL
 #'  \link[=s3_upload_part_copy]{upload_part_copy} \tab Uploads a part by copying data from an existing object as data source
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname s3
 #' @export
 s3 <- function(config = list()) {
@@ -156,7 +163,7 @@ s3 <- function(config = list()) {
   endpoints = list("us-gov-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-west-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "eu-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-southeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-southeast-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-northeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "sa-east-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE), "*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "s3.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "s3.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "S3",
   api_version = "2006-03-01",
-  signing_name = NULL,
+  signing_name = "s3",
   json_version = "",
   target_prefix = ""
 )

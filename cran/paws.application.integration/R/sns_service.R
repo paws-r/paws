@@ -94,6 +94,12 @@ NULL
 #'  \link[=sns_untag_resource]{untag_resource} \tab Remove tags from the specified Amazon SNS topic
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname sns
 #' @export
 sns <- function(config = list()) {
@@ -112,7 +118,7 @@ sns <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "sns.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sns.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sns.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sns.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SNS",
   api_version = "2010-03-31",
-  signing_name = NULL,
+  signing_name = "sns",
   json_version = "",
   target_prefix = ""
 )

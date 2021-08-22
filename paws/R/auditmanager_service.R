@@ -128,6 +128,12 @@ NULL
 #'  \link[=auditmanager_validate_assessment_report_integrity]{validate_assessment_report_integrity} \tab Validates the integrity of an assessment report in AWS Audit Manager
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname auditmanager
 #' @export
 auditmanager <- function(config = list()) {

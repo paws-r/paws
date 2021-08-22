@@ -65,6 +65,12 @@ NULL
 #'  \link[=amplifybackend_update_backend_job]{update_backend_job} \tab Updates a specific job
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname amplifybackend
 #' @export
 amplifybackend <- function(config = list()) {

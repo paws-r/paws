@@ -11,7 +11,7 @@ NULL
 #' access token upon successful authentication and authorization with AWS
 #' SSO. This service conforms with the OAuth 2.0 based implementation of
 #' the device authorization grant standard
-#' (<https://tools.ietf.org/html/rfc8628>).
+#' ([https://tools.ietf.org/html/rfc8628](https://datatracker.ietf.org/doc/html/rfc8628)).
 #' 
 #' For general information about AWS SSO, see [What is AWS Single
 #' Sign-On?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
@@ -64,6 +64,12 @@ NULL
 #'  \link[=ssooidc_register_client]{register_client} \tab Registers a client with AWS SSO\cr
 #'  \link[=ssooidc_start_device_authorization]{start_device_authorization} \tab Initiates device authorization by requesting a pair of verification codes from the authorization service
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname ssooidc
 #' @export

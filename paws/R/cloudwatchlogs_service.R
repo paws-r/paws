@@ -115,6 +115,12 @@ NULL
 #'  \link[=cloudwatchlogs_untag_log_group]{untag_log_group} \tab Removes the specified tags from the specified log group
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudwatchlogs
 #' @export
 cloudwatchlogs <- function(config = list()) {
@@ -133,7 +139,7 @@ cloudwatchlogs <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "logs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "logs.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "logs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "logs.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudWatch Logs",
   api_version = "2014-03-28",
-  signing_name = NULL,
+  signing_name = "logs",
   json_version = "1.1",
   target_prefix = "Logs_20140328"
 )

@@ -56,6 +56,12 @@ NULL
 #'  \link[=honeycode_start_table_data_import_job]{start_table_data_import_job} \tab The StartTableDataImportJob API allows you to start an import job on a table
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname honeycode
 #' @export
 honeycode <- function(config = list()) {

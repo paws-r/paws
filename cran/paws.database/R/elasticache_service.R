@@ -117,6 +117,12 @@ NULL
 #'  \link[=elasticache_test_failover]{test_failover} \tab Represents the input of a TestFailover operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console)
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname elasticache
 #' @export
 elasticache <- function(config = list()) {
@@ -135,7 +141,7 @@ elasticache <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "elasticache.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticache.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticache.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticache.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ElastiCache",
   api_version = "2015-02-02",
-  signing_name = NULL,
+  signing_name = "elasticache",
   json_version = "",
   target_prefix = ""
 )

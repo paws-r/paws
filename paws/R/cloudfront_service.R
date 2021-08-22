@@ -119,6 +119,12 @@ NULL
 #'  \link[=cloudfront_update_streaming_distribution]{update_streaming_distribution} \tab Update a streaming distribution
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudfront
 #' @export
 cloudfront <- function(config = list()) {
@@ -137,7 +143,7 @@ cloudfront <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "https://cloudfront.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "cloudfront.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudfront.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudfront.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudFront",
   api_version = "2020-05-31",
-  signing_name = NULL,
+  signing_name = "cloudfront",
   json_version = "",
   target_prefix = ""
 )

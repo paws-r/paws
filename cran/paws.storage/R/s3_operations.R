@@ -301,7 +301,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' using this API. However, to copy an object greater than 5 GB, you must
 #' use the multipart upload Upload Part - Copy API. For more information,
 #' see [Copy Object Using the REST Multipart Upload
-#' API](https://docs.aws.amazon.com/AmazonS3/latest/userguide/CopyingObjctsMPUapi.html).
+#' API](https://docs.aws.amazon.com/AmazonS3/latest/userguide/CopyingObjectsMPUapi.html).
 #' 
 #' All copy requests must be authenticated. Additionally, you must have
 #' *read* access to the source object and *write* access to the destination
@@ -342,7 +342,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' private for the user making the request. To override the default ACL
 #' setting, specify a new ACL when generating a copy request. For more
 #' information, see [Using
-#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html).
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html).
 #' 
 #' To specify whether you want the object metadata copied from the source
 #' object or replaced with metadata provided in the request, you can
@@ -1059,7 +1059,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' individual AWS accounts or to predefined groups defined by Amazon S3.
 #' These permissions are then added to the access control list (ACL) on the
 #' object. For more information, see [Using
-#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html).
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html).
 #' With this operation, you can grant access permissions using one of the
 #' following two methods:
 #' 
@@ -4815,7 +4815,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' To distribute large files to many people, you can save bandwidth costs
 #' by using BitTorrent. For more information, see [Amazon S3
-#' Torrent](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3Torrent.html).
+#' Torrent](https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html).
 #' For more information about returning the ACL of an object, see
 #' [`get_object_acl`][s3_get_object_acl].
 #' 
@@ -4927,7 +4927,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' then, S3 returns 304 Not Modified response code.
 #' 
 #' For more information about conditional requests, see [RFC
-#' 7232](https://tools.ietf.org/html/rfc7232).
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' 
 #' The following operations are related to [`get_object`][s3_get_object]:
 #' 
@@ -5571,7 +5571,7 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 #' Returns torrent files from a bucket. BitTorrent can save you bandwidth
 #' when you're distributing large files. For more information about
 #' BitTorrent, see [Using BitTorrent with Amazon
-#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3Torrent.html).
+#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html).
 #' 
 #' You can get torrent only for objects that are less than 5 GB in size,
 #' and that are not encrypted using server-side encryption with a
@@ -5869,7 +5869,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     Then Amazon S3 returns the `304 Not Modified` response code.
 #' 
 #' For more information about conditional requests, see [RFC
-#' 7232](https://tools.ietf.org/html/rfc7232).
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' 
 #' **Permissions**
 #' 
@@ -7481,7 +7481,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' @description
 #' Sets the permissions on an existing bucket using access control lists
 #' (ACL). For more information, see [Using
-#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html).
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html).
 #' To set the ACL of a bucket, you must have `WRITE_ACP` permission.
 #' 
 #' You can use one of the following two ways to set a bucket's permissions:
@@ -11325,7 +11325,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #'     -   [`put_object`][s3_put_object]
 #' 
 #'     -   [Managing Access with
-#'         ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html)
+#'         ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html)
 #'         in the *Amazon Simple Storage Service Developer Guide*
 #' 
 #'     -   [Protecting Data Using Server-Side

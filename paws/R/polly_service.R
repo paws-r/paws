@@ -57,6 +57,12 @@ NULL
 #'  \link[=polly_synthesize_speech]{synthesize_speech} \tab Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname polly
 #' @export
 polly <- function(config = list()) {
@@ -75,7 +81,7 @@ polly <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "polly.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "polly.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "polly.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "polly.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Polly",
   api_version = "2016-06-10",
-  signing_name = NULL,
+  signing_name = "polly",
   json_version = "",
   target_prefix = ""
 )

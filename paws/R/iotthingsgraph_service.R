@@ -84,6 +84,12 @@ NULL
 #'  \link[=iotthingsgraph_upload_entity_definitions]{upload_entity_definitions} \tab Asynchronously uploads one or more entity definitions to the user's namespace
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname iotthingsgraph
 #' @export
 iotthingsgraph <- function(config = list()) {

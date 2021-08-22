@@ -91,6 +91,12 @@ NULL
 #'  \link[=emr_update_studio_session_mapping]{update_studio_session_mapping} \tab The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to change
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname emr
 #' @export
 emr <- function(config = list()) {
@@ -109,7 +115,7 @@ emr <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "elasticmapreduce.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticmapreduce.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticmapreduce.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticmapreduce.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "EMR",
   api_version = "2009-03-31",
-  signing_name = NULL,
+  signing_name = "elasticmapreduce",
   json_version = "1.1",
   target_prefix = "ElasticMapReduce"
 )

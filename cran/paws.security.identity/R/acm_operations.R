@@ -740,8 +740,8 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' principal permission to do
 #' so](https://docs.aws.amazon.com/acm-pca/latest/userguide/). For more
 #' information, see [Testing Managed
-#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM
-#' User Guide.
+#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html)
+#' in the ACM User Guide.
 #'
 #' @usage
 #' acm_renew_certificate(CertificateArn)
@@ -797,9 +797,10 @@ acm_renew_certificate <- function(CertificateArn) {
 #' required. If you are requesting a public certificate, each domain name
 #' that you specify must be validated to verify that you own or control the
 #' domain. You can use [DNS
-#' validation](https://docs.aws.amazon.com/acm/latest/userguide/) or [email
-#' validation](https://docs.aws.amazon.com/acm/latest/userguide/). We
-#' recommend that you use DNS validation. ACM issues public certificates
+#' validation](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html)
+#' or [email
+#' validation](https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html).
+#' We recommend that you use DNS validation. ACM issues public certificates
 #' after receiving approval from the domain owner.
 #'
 #' @usage
@@ -818,9 +819,10 @@ acm_renew_certificate <- function(CertificateArn) {
 #' up to 253 octets in length.
 #' @param ValidationMethod The method you want to use if you are requesting a public certificate to
 #' validate that you own or control domain. You can [validate with
-#' DNS](https://docs.aws.amazon.com/acm/latest/userguide/) or [validate
-#' with email](https://docs.aws.amazon.com/acm/latest/userguide/). We
-#' recommend that you use DNS validation.
+#' DNS](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html)
+#' or [validate with
+#' email](https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html).
+#' We recommend that you use DNS validation.
 #' @param SubjectAlternativeNames Additional FQDNs to be included in the Subject Alternative Name
 #' extension of the ACM certificate. For example, add the name
 #' www.example.net to a certificate for which the `DomainName` field is

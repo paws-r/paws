@@ -269,6 +269,12 @@ NULL
 #'  \link[=chime_update_voice_connector_group]{update_voice_connector_group} \tab Updates details for the specified Amazon Chime Voice Connector group, such as the name and Amazon Chime Voice Connector priority ranking
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname chime
 #' @export
 chime <- function(config = list()) {
@@ -287,7 +293,7 @@ chime <- function(config = list()) {
   endpoints = list("*" = "service.chime.aws.amazon.com"),
   service_id = "Chime",
   api_version = "2018-05-01",
-  signing_name = NULL,
+  signing_name = "chime",
   json_version = "",
   target_prefix = ""
 )

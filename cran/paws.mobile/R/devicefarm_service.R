@@ -139,6 +139,12 @@ NULL
 #'  \link[=devicefarm_update_vpce_configuration]{update_vpce_configuration} \tab Updates information about an Amazon Virtual Private Cloud (VPC) endpoint configuration
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname devicefarm
 #' @export
 devicefarm <- function(config = list()) {
@@ -157,7 +163,7 @@ devicefarm <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "devicefarm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "devicefarm.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "devicefarm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "devicefarm.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Device Farm",
   api_version = "2015-06-23",
-  signing_name = NULL,
+  signing_name = "devicefarm",
   json_version = "1.1",
   target_prefix = "DeviceFarm_20150623"
 )

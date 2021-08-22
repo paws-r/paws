@@ -57,6 +57,12 @@ NULL
 #'  \link[=iot1clickprojects_update_project]{update_project} \tab Updates a project associated with your AWS account and region
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname iot1clickprojects
 #' @export
 iot1clickprojects <- function(config = list()) {

@@ -417,7 +417,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'     MSK](https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html)
 #' 
 #' -   [Using AWS Lambda with Self-Managed Apache
-#'     Kafka](https://docs.aws.amazon.com/lambda/latest/dg/kafka-smaa.html)
+#'     Kafka](https://docs.aws.amazon.com/lambda/latest/dg/with-kafka.html)
 #' 
 #' The following error handling options are only available for stream
 #' sources (DynamoDB and Kinesis):
@@ -3087,8 +3087,8 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 #'
 #' @description
 #' Returns a list of [code signing
-#' configurations](https://docs.aws.amazon.com/lambda/latest/dg/). A
-#' request returns up to 10,000 configurations per call. You can use the
+#' configurations](https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html).
+#' A request returns up to 10,000 configurations per call. You can use the
 #' `MaxItems` parameter to return fewer configurations per call.
 #'
 #' @usage

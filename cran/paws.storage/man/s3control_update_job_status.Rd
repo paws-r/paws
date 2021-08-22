@@ -28,8 +28,8 @@ A list with the following syntax:\preformatted{list(
 \description{
 Updates the status for the specified job. Use this operation to confirm
 that you want to run a job or to cancel an existing job. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{S3 Batch Operations} in
+the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Related actions include:
 \itemize{

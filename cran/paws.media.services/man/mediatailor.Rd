@@ -9,6 +9,12 @@ mediatailor(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 Use the AWS Elemental MediaTailor SDK to configure scalable ad insertion
 for your live and VOD content. With AWS Elemental MediaTailor, you can

@@ -82,6 +82,12 @@ NULL
 #'  \link[=cognitoidentity_update_identity_pool]{update_identity_pool} \tab Updates an identity pool
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cognitoidentity
 #' @export
 cognitoidentity <- function(config = list()) {
@@ -100,7 +106,7 @@ cognitoidentity <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "cognito-identity.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cognito-identity.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cognito-identity.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cognito-identity.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Cognito Identity",
   api_version = "2014-06-30",
-  signing_name = NULL,
+  signing_name = "cognito-identity",
   json_version = "1.1",
   target_prefix = "AWSCognitoIdentityService"
 )

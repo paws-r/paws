@@ -195,6 +195,12 @@ NULL
 #'  \link[=storagegateway_update_vtl_device_type]{update_vtl_device_type} \tab Updates the type of medium changer in a tape gateway
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname storagegateway
 #' @export
 storagegateway <- function(config = list()) {
@@ -213,7 +219,7 @@ storagegateway <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "storagegateway.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "storagegateway.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "storagegateway.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Storage Gateway",
   api_version = "2013-06-30",
-  signing_name = NULL,
+  signing_name = "storagegateway",
   json_version = "1.1",
   target_prefix = "StorageGateway_20130630"
 )

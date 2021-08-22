@@ -60,6 +60,12 @@ NULL
 #'  \link[=qldb_update_ledger]{update_ledger} \tab Updates properties on a ledger
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname qldb
 #' @export
 qldb <- function(config = list()) {

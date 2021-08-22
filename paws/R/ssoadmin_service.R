@@ -71,6 +71,12 @@ NULL
 #'  \link[=ssoadmin_update_permission_set]{update_permission_set} \tab Updates an existing permission set
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ssoadmin
 #' @export
 ssoadmin <- function(config = list()) {

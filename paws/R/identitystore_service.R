@@ -44,6 +44,12 @@ NULL
 #'  \link[=identitystore_list_users]{list_users} \tab Lists the attribute name and value of the user that you specified in the search
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname identitystore
 #' @export
 identitystore <- function(config = list()) {

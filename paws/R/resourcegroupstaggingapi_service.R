@@ -385,6 +385,12 @@ NULL
 #'  \link[=resourcegroupstaggingapi_untag_resources]{untag_resources} \tab Removes the specified tags from the specified resources
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname resourcegroupstaggingapi
 #' @export
 resourcegroupstaggingapi <- function(config = list()) {
@@ -403,7 +409,7 @@ resourcegroupstaggingapi <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "tagging.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "tagging.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "tagging.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "tagging.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Resource Groups Tagging API",
   api_version = "2017-01-26",
-  signing_name = NULL,
+  signing_name = "tagging",
   json_version = "1.1",
   target_prefix = "ResourceGroupsTaggingAPI_20170126"
 )

@@ -94,6 +94,12 @@ NULL
 #'  \link[=workspaces_update_workspace_image_permission]{update_workspace_image_permission} \tab Shares or unshares an image with one account in the same AWS Region by specifying whether that account has permission to copy the image
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname workspaces
 #' @export
 workspaces <- function(config = list()) {
@@ -112,7 +118,7 @@ workspaces <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "workspaces.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workspaces.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "workspaces.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workspaces.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "WorkSpaces",
   api_version = "2015-04-08",
-  signing_name = NULL,
+  signing_name = "workspaces",
   json_version = "1.1",
   target_prefix = "WorkspacesService"
 )

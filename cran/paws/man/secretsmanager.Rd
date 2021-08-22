@@ -9,6 +9,12 @@ secretsmanager(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 AWS Secrets Manager API Reference
 
@@ -47,8 +53,8 @@ Therefore, for operations that require larger sizes, use a POST request.
 
 We welcome your feedback. Send your comments to
 \href{mailto:awssecretsmanager-feedback@amazon.com}{awssecretsmanager-feedback@amazon.com}, or post your feedback and
-questions in the \href{https://forums.aws.amazon.com:443/forum.jspa?forumID=296}{AWS Secrets Manager Discussion Forum}. For
-more information about the AWS Discussion Forums, see \href{https://forums.aws.amazon.com:443/help.jspa}{Forums Help}.
+questions in the \href{https://forums.aws.amazon.com/forum.jspa?forumID=296}{AWS Secrets Manager Discussion Forum}. For more
+information about the AWS Discussion Forums, see \href{https://forums.aws.amazon.com:443/help.jspa}{Forums Help}.
 
 \strong{How examples are presented}
 

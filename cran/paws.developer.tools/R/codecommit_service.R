@@ -425,6 +425,12 @@ NULL
 #'  \link[=codecommit_update_repository_name]{update_repository_name} \tab Renames a repository
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname codecommit
 #' @export
 codecommit <- function(config = list()) {
@@ -443,7 +449,7 @@ codecommit <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "codecommit.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codecommit.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codecommit.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codecommit.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodeCommit",
   api_version = "2015-04-13",
-  signing_name = NULL,
+  signing_name = "codecommit",
   json_version = "1.1",
   target_prefix = "CodeCommit_20150413"
 )

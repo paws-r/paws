@@ -686,7 +686,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' To create additional databases after the cluster is created, connect to
 #' the cluster with a SQL client and use SQL commands to create a database.
 #' For more information, go to [Create a
-#' Database](https://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html)
+#' Database](https://docs.aws.amazon.com/redshift/latest/gsg/t_creating_database.html)
 #' in the Amazon Redshift Database Developer Guide.
 #' 
 #' Default: `dev`

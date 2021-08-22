@@ -79,6 +79,12 @@ NULL
 #'  \link[=datasync_update_task_execution]{update_task_execution} \tab Updates execution of a task
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname datasync
 #' @export
 datasync <- function(config = list()) {

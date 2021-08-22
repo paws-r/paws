@@ -45,6 +45,12 @@ NULL
 #'  \link[=kinesisvideoarchivedmedia_list_fragments]{list_fragments} \tab Returns a list of Fragment objects from the specified stream and timestamp range within the archived data
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname kinesisvideoarchivedmedia
 #' @export
 kinesisvideoarchivedmedia <- function(config = list()) {
@@ -63,7 +69,7 @@ kinesisvideoarchivedmedia <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesisvideo.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisvideo.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Kinesis Video Archived Media",
   api_version = "2017-09-30",
-  signing_name = NULL,
+  signing_name = "kinesisvideo",
   json_version = "",
   target_prefix = ""
 )

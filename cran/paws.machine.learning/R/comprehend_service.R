@@ -104,6 +104,12 @@ NULL
 #'  \link[=comprehend_update_endpoint]{update_endpoint} \tab Updates information about the specified endpoint
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname comprehend
 #' @export
 comprehend <- function(config = list()) {

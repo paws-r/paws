@@ -225,6 +225,12 @@ NULL
 #'  \link[=codebuild_update_webhook]{update_webhook} \tab Updates the webhook associated with an AWS CodeBuild build project
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname codebuild
 #' @export
 codebuild <- function(config = list()) {
@@ -243,7 +249,7 @@ codebuild <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "codebuild.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codebuild.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codebuild.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codebuild.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodeBuild",
   api_version = "2016-10-06",
-  signing_name = NULL,
+  signing_name = "codebuild",
   json_version = "1.1",
   target_prefix = "CodeBuild_20161006"
 )

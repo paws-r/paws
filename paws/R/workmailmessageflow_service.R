@@ -43,6 +43,12 @@ NULL
 #'  \link[=workmailmessageflow_get_raw_message_content]{get_raw_message_content} \tab Retrieves the raw content of an in-transit email message, in MIME format
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname workmailmessageflow
 #' @export
 workmailmessageflow <- function(config = list()) {
@@ -61,7 +67,7 @@ workmailmessageflow <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "workmailmessageflow.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workmailmessageflow.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "workmailmessageflow.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workmailmessageflow.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "WorkMailMessageFlow",
   api_version = "2019-05-01",
-  signing_name = NULL,
+  signing_name = "workmailmessageflow",
   json_version = "1.1",
   target_prefix = ""
 )

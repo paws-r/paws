@@ -49,6 +49,12 @@ NULL
 #'  \link[=textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname textract
 #' @export
 textract <- function(config = list()) {
@@ -67,7 +73,7 @@ textract <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "textract.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "textract.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "textract.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "textract.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Textract",
   api_version = "2018-06-27",
-  signing_name = NULL,
+  signing_name = "textract",
   json_version = "1.1",
   target_prefix = "Textract"
 )

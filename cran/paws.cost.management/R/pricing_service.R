@@ -73,6 +73,12 @@ NULL
 #'  \link[=pricing_get_products]{get_products} \tab Returns a list of all products that match the filter criteria
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname pricing
 #' @export
 pricing <- function(config = list()) {

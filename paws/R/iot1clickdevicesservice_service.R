@@ -56,6 +56,12 @@ NULL
 #'  \link[=iot1clickdevicesservice_update_device_state]{update_device_state} \tab Using a Boolean value (true or false), this operation enables or disables the device given a device ID
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname iot1clickdevicesservice
 #' @export
 iot1clickdevicesservice <- function(config = list()) {

@@ -39,8 +39,10 @@ NULL
 #' and include applicable OAuth attributes (such as `auth-code` and
 #' `redirecturi`) with the connector-specific `ConnectorProfileProperties`
 #' when creating a new connector profile using Amazon AppFlow API
-#' operations. For example, Salesforce users can refer to the *Authorize
-#' Apps with OAuth* documentation.
+#' operations. For example, Salesforce users can refer to the [*Authorize
+#' Apps with
+#' OAuth*](https://help.salesforce.com/s/articleView?language=en_US&id=remoteaccess_authenticate.htm)
+#' documentation.
 #'
 #' @param
 #' config
@@ -93,6 +95,12 @@ NULL
 #'  \link[=appflow_update_connector_profile]{update_connector_profile} \tab Updates a given connector profile associated with your account\cr
 #'  \link[=appflow_update_flow]{update_flow} \tab Updates an existing flow
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname appflow
 #' @export

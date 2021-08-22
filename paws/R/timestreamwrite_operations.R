@@ -342,7 +342,7 @@ timestreamwrite_describe_database <- function(DatabaseName) {
 #' 
 #' For detailed information on how to use DescribeEndpoints, see [The
 #' Endpoint Discovery Pattern and REST
-#' APIs](https://docs.aws.amazon.com/timestream/latest/developerguide/Using-API.endpoint-discovery.html).
+#' APIs](https://docs.aws.amazon.com/timestream/latest/developerguide/).
 #'
 #' @usage
 #' timestreamwrite_describe_endpoints()
