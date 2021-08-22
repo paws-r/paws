@@ -79,6 +79,12 @@ NULL
 #'  \link[=cognitosync_update_records]{update_records} \tab Posts updates to records and adds and deletes records for a dataset and user
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cognitosync
 #' @export
 cognitosync <- function(config = list()) {
@@ -97,7 +103,7 @@ cognitosync <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "cognito-sync.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cognito-sync.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cognito-sync.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cognito-sync.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Cognito Sync",
   api_version = "2014-06-30",
-  signing_name = NULL,
+  signing_name = "cognito-sync",
   json_version = "1.1",
   target_prefix = ""
 )

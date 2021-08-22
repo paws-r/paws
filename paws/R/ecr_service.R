@@ -90,6 +90,12 @@ NULL
 #'  \link[=ecr_upload_layer_part]{upload_layer_part} \tab Uploads an image layer part to Amazon ECR
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ecr
 #' @export
 ecr <- function(config = list()) {

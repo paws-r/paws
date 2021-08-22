@@ -64,6 +64,12 @@ NULL
 #'  \link[=migrationhub_put_resource_attributes]{put_resource_attributes} \tab Provides identifying details of the resource being migrated so that it can be associated in the Application Discovery Service repository
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname migrationhub
 #' @export
 migrationhub <- function(config = list()) {
@@ -82,7 +88,7 @@ migrationhub <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "mgh.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mgh.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "mgh.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "mgh.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Migration Hub",
   api_version = "2017-05-31",
-  signing_name = NULL,
+  signing_name = "mgh",
   json_version = "1.1",
   target_prefix = "AWSMigrationHub"
 )

@@ -54,7 +54,7 @@ For scope-down policies, AWS Transfer Family stores the policy as a JSON
 blob, instead of the Amazon Resource Name (ARN) of the policy. You save
 the policy as a JSON blob and pass it in the \code{Policy} argument.
 
-For an example of a scope-down policy, see \href{https://docs.aws.amazon.com/transfer/latest/userguide/users.html#users-policies-scope-down}{Creating a scope-down policy}.
+For an example of a scope-down policy, see \href{https://docs.aws.amazon.com/transfer/latest/userguide/#users-policies-scope-down}{Creating a scope-down policy}.
 
 For more information, see
 \href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html}{AssumeRole}

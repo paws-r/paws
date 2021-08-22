@@ -171,7 +171,7 @@ Then Amazon S3 returns \verb{200 OK} and the data requested.
 Then Amazon S3 returns the \verb{304 Not Modified} response code.
 }
 
-For more information about conditional requests, see \href{https://tools.ietf.org/html/rfc7232}{RFC 7232}.
+For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.
 
 \strong{Permissions}
 

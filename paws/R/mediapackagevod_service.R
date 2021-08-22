@@ -57,6 +57,12 @@ NULL
 #'  \link[=mediapackagevod_update_packaging_group]{update_packaging_group} \tab Updates a specific packaging group
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname mediapackagevod
 #' @export
 mediapackagevod <- function(config = list()) {

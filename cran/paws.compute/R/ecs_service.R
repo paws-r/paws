@@ -113,6 +113,12 @@ NULL
 #'  \link[=ecs_update_task_set]{update_task_set} \tab Modifies a task set
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ecs
 #' @export
 ecs <- function(config = list()) {
@@ -131,7 +137,7 @@ ecs <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ecs.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ecs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ecs.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ECS",
   api_version = "2014-11-13",
-  signing_name = NULL,
+  signing_name = "ecs",
   json_version = "1.1",
   target_prefix = "AmazonEC2ContainerServiceV20141113"
 )

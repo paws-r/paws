@@ -57,6 +57,12 @@ NULL
 #'  \link[=mwaa_update_environment]{update_environment} \tab Update an MWAA environment
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname mwaa
 #' @export
 mwaa <- function(config = list()) {

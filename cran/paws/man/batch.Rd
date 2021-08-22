@@ -9,6 +9,12 @@ batch(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 Using AWS Batch, you can run batch computing workloads on the AWS Cloud.
 Batch computing is a common means for developers, scientists, and

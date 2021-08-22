@@ -1,5 +1,5 @@
 Package: paws.developer.tools
-Title: Amazon Web Services Developer Tools Services
+Title: 'Amazon Web Services' Developer Tools Services
 Version: 0.1.11
 Authors@R: 
     c(person(given = "David",
@@ -12,7 +12,7 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Interface to Amazon Web Services developer tools services,
+Description: Interface to 'Amazon Web Services' developer tools services,
     including version control, continuous integration and deployment, and
     more <https://aws.amazon.com/products/developer-tools/>.
 License: Apache License (>= 2.0)
@@ -23,6 +23,7 @@ Imports:
 Suggests: 
     testthat
 Encoding: UTF-8
+LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.1.1
 Collate: 

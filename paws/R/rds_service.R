@@ -223,6 +223,12 @@ NULL
 #'  \link[=rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname rds
 #' @export
 rds <- function(config = list()) {
@@ -241,7 +247,7 @@ rds <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "rds.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rds.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "rds.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rds.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "RDS",
   api_version = "2014-10-31",
-  signing_name = NULL,
+  signing_name = "rds",
   json_version = "",
   target_prefix = ""
 )

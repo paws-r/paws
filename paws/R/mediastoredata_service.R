@@ -48,6 +48,12 @@ NULL
 #'  \link[=mediastoredata_put_object]{put_object} \tab Uploads an object to the specified path
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname mediastoredata
 #' @export
 mediastoredata <- function(config = list()) {

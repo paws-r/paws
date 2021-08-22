@@ -84,6 +84,12 @@ NULL
 #'  \link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname sfn
 #' @export
 sfn <- function(config = list()) {
@@ -102,7 +108,7 @@ sfn <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "states.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "states.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "states.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "states.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SFN",
   api_version = "2016-11-23",
-  signing_name = NULL,
+  signing_name = "states",
   json_version = "1.0",
   target_prefix = "AWSStepFunctions"
 )

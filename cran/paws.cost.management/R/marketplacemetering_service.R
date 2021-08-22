@@ -93,6 +93,12 @@ NULL
 #'  \link[=marketplacemetering_resolve_customer]{resolve_customer} \tab ResolveCustomer is called by a SaaS application during the registration process
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname marketplacemetering
 #' @export
 marketplacemetering <- function(config = list()) {

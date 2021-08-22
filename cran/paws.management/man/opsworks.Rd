@@ -9,6 +9,12 @@ opsworks(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 Welcome to the \emph{AWS OpsWorks Stacks API Reference}. This guide provides
 descriptions, syntax, and usage examples for AWS OpsWorks Stacks actions

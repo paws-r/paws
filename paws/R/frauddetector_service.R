@@ -98,6 +98,12 @@ NULL
 #'  \link[=frauddetector_update_variable]{update_variable} \tab Updates a variable
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname frauddetector
 #' @export
 frauddetector <- function(config = list()) {
@@ -116,7 +122,7 @@ frauddetector <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "frauddetector.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "frauddetector.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "frauddetector.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "frauddetector.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "FraudDetector",
   api_version = "2019-11-15",
-  signing_name = NULL,
+  signing_name = "frauddetector",
   json_version = "1.1",
   target_prefix = "AWSHawksNestServiceFacade"
 )

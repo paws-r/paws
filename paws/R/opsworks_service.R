@@ -200,6 +200,12 @@ NULL
 #'  \link[=opsworks_update_volume]{update_volume} \tab Updates an Amazon EBS volume's name or mount point
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname opsworks
 #' @export
 opsworks <- function(config = list()) {
@@ -218,7 +224,7 @@ opsworks <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "opsworks.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "opsworks.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "opsworks.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "opsworks.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "OpsWorks",
   api_version = "2013-02-18",
-  signing_name = NULL,
+  signing_name = "opsworks",
   json_version = "1.1",
   target_prefix = "OpsWorks_20130218"
 )

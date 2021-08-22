@@ -79,9 +79,9 @@ IP address is in local, private, non-routable, or multicast ranges. For
 more information about IP addresses for which you can't create health
 checks, see the following documents:
 \itemize{
-\item \href{https://tools.ietf.org/html/rfc5735}{RFC 5735, Special Use IPv4 Addresses}
-\item \href{https://tools.ietf.org/html/rfc6598}{RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space}
-\item \href{https://tools.ietf.org/html/rfc5156}{RFC 5156, Special-Use IPv6 Addresses}
+\item \href{https://datatracker.ietf.org/doc/html/rfc5735}{RFC 5735, Special Use IPv4 Addresses}
+\item \href{https://datatracker.ietf.org/doc/html/rfc6598}{RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space}
+\item \href{https://datatracker.ietf.org/doc/html/rfc5156}{RFC 5156, Special-Use IPv6 Addresses}
 }}
 
 \item{Port}{The port on the endpoint that you want Amazon Route 53 to perform health

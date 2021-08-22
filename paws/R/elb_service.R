@@ -110,6 +110,12 @@ NULL
 #'  \link[=elb_set_load_balancer_policies_of_listener]{set_load_balancer_policies_of_listener} \tab Replaces the current set of policies for the specified load balancer port with the specified set of policies
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname elb
 #' @export
 elb <- function(config = list()) {
@@ -128,7 +134,7 @@ elb <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticloadbalancing.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticloadbalancing.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Elastic Load Balancing",
   api_version = "2012-06-01",
-  signing_name = NULL,
+  signing_name = "elasticloadbalancing",
   json_version = "",
   target_prefix = ""
 )

@@ -69,6 +69,12 @@ NULL
 #'  \link[=machinelearning_update_ml_model]{update_ml_model} \tab Updates the MLModelName and the ScoreThreshold of an MLModel
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname machinelearning
 #' @export
 machinelearning <- function(config = list()) {
@@ -87,7 +93,7 @@ machinelearning <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "machinelearning.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "machinelearning.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "machinelearning.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "machinelearning.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Machine Learning",
   api_version = "2014-12-12",
-  signing_name = NULL,
+  signing_name = "machinelearning",
   json_version = "1.1",
   target_prefix = "AmazonML_20141212"
 )

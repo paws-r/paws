@@ -3463,8 +3463,8 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' 
 #' -   For the limitations of SQL Server read replicas, see [Read Replica
 #'     Limitations with Microsoft SQL
-#'     Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) in
-#'     the *Amazon RDS User Guide*.
+#'     Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.html)
+#'     in the *Amazon RDS User Guide*.
 #' 
 #' -   Can specify a PostgreSQL DB instance only if the source is running
 #'     PostgreSQL 9.3.5 or later (9.4.7 and higher for cross-region

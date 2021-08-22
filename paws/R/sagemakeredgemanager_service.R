@@ -44,6 +44,12 @@ NULL
 #'  \link[=sagemakeredgemanager_send_heartbeat]{send_heartbeat} \tab Use to get the current status of devices registered on SageMaker Edge Manager
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname sagemakeredgemanager
 #' @export
 sagemakeredgemanager <- function(config = list()) {

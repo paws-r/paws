@@ -116,6 +116,12 @@ NULL
 #'  \link[=elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname elbv2
 #' @export
 elbv2 <- function(config = list()) {
@@ -134,7 +140,7 @@ elbv2 <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticloadbalancing.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticloadbalancing.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Elastic Load Balancing v2",
   api_version = "2015-12-01",
-  signing_name = NULL,
+  signing_name = "elasticloadbalancing",
   json_version = "",
   target_prefix = ""
 )

@@ -148,6 +148,12 @@ NULL
 #'  \link[=cognitoidentityprovider_verify_user_attribute]{verify_user_attribute} \tab Verifies the specified user attributes in the user pool
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cognitoidentityprovider
 #' @export
 cognitoidentityprovider <- function(config = list()) {
@@ -166,7 +172,7 @@ cognitoidentityprovider <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "cognito-idp.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cognito-idp.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cognito-idp.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cognito-idp.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Cognito Identity Provider",
   api_version = "2016-04-18",
-  signing_name = NULL,
+  signing_name = "cognito-idp",
   json_version = "1.1",
   target_prefix = "AWSCognitoIdentityProviderService"
 )

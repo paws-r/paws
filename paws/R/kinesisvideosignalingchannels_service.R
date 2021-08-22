@@ -46,6 +46,12 @@ NULL
 #'  \link[=kinesisvideosignalingchannels_send_alexa_offer_to_master]{send_alexa_offer_to_master} \tab This API allows you to connect WebRTC-enabled devices with Alexa display devices
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname kinesisvideosignalingchannels
 #' @export
 kinesisvideosignalingchannels <- function(config = list()) {
@@ -64,7 +70,7 @@ kinesisvideosignalingchannels <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesisvideo.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisvideo.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Kinesis Video Signaling",
   api_version = "2019-12-04",
-  signing_name = NULL,
+  signing_name = "kinesisvideo",
   json_version = "",
   target_prefix = ""
 )

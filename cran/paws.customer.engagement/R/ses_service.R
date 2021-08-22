@@ -125,6 +125,12 @@ NULL
 #'  \link[=ses_verify_email_identity]{verify_email_identity} \tab Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ses
 #' @export
 ses <- function(config = list()) {

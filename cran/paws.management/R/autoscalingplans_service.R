@@ -75,6 +75,12 @@ NULL
 #'  \link[=autoscalingplans_update_scaling_plan]{update_scaling_plan} \tab Updates the specified scaling plan
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname autoscalingplans
 #' @export
 autoscalingplans <- function(config = list()) {

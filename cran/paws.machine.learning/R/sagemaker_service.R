@@ -282,6 +282,12 @@ NULL
 #'  \link[=sagemaker_update_workteam]{update_workteam} \tab Updates an existing work team with new member definitions or description
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname sagemaker
 #' @export
 sagemaker <- function(config = list()) {

@@ -236,7 +236,7 @@ You can store individual objects of up to 5 TB in Amazon S3. You create
 a copy of your object up to 5 GB in size in a single atomic operation
 using this API. However, to copy an object greater than 5 GB, you must
 use the multipart upload Upload Part - Copy API. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CopyingObjctsMPUapi.html}{Copy Object Using the REST Multipart Upload API}.
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CopyingObjectsMPUapi.html}{Copy Object Using the REST Multipart Upload API}.
 
 All copy requests must be authenticated. Additionally, you must have
 \emph{read} access to the source object and \emph{write} access to the destination
@@ -274,7 +274,7 @@ When copying an object, you can preserve all metadata (default) or
 specify new metadata. However, the ACL is not preserved and is set to
 private for the user making the request. To override the default ACL
 setting, specify a new ACL when generating a copy request. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html}{Using ACLs}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Using ACLs}.
 
 To specify whether you want the object metadata copied from the source
 object or replaced with metadata provided in the request, you can

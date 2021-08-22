@@ -77,6 +77,12 @@ NULL
 #'  \link[=devopsguru_update_service_integration]{update_service_integration} \tab Enables or disables integration with a service that can be integrated with DevOps Guru
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname devopsguru
 #' @export
 devopsguru <- function(config = list()) {

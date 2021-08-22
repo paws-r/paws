@@ -69,6 +69,12 @@ NULL
 #'  \link[=pi_get_resource_metrics]{get_resource_metrics} \tab Retrieve Performance Insights metrics for a set of data sources, over a time period
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname pi
 #' @export
 pi <- function(config = list()) {

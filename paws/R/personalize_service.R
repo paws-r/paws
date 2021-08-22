@@ -85,6 +85,12 @@ NULL
 #'  \link[=personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname personalize
 #' @export
 personalize <- function(config = list()) {

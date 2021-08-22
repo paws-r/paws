@@ -95,6 +95,12 @@ NULL
 #'  \link[=elasticsearchservice_upgrade_elasticsearch_domain]{upgrade_elasticsearch_domain} \tab Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname elasticsearchservice
 #' @export
 elasticsearchservice <- function(config = list()) {
@@ -113,7 +119,7 @@ elasticsearchservice <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "es.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "es.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "es.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "es.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Elasticsearch Service",
   api_version = "2015-01-01",
-  signing_name = NULL,
+  signing_name = "es",
   json_version = "",
   target_prefix = ""
 )

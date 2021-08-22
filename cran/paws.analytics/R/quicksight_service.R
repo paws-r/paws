@@ -146,6 +146,12 @@ NULL
 #'  \link[=quicksight_update_user]{update_user} \tab Updates an Amazon QuickSight user
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname quicksight
 #' @export
 quicksight <- function(config = list()) {
@@ -164,7 +170,7 @@ quicksight <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "quicksight.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "quicksight.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "quicksight.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "quicksight.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "QuickSight",
   api_version = "2018-04-01",
-  signing_name = NULL,
+  signing_name = "quicksight",
   json_version = "1.0",
   target_prefix = ""
 )

@@ -1,5 +1,5 @@
 Package: paws.business.applications
-Title: Amazon Web Services Business Applications Services
+Title: 'Amazon Web Services' Business Applications Services
 Version: 0.1.11
 Authors@R: 
     c(person(given = "David",
@@ -12,7 +12,7 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Interface to Amazon Web Services business applications
+Description: Interface to 'Amazon Web Services' business applications
     services, including online meetings and video conferencing, email and
     calendar service, and more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)

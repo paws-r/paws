@@ -71,7 +71,7 @@ organization.
 If you grant permissions using an organization, then accounts in that
 organization must specify a \code{RoleArn} with proper permissions when they
 use \code{PutTarget} to add your account's event bus as a target. For more
-information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html}{Sending and Receiving Events Between AWS Accounts}
+information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html}{Sending and Receiving Events Between AWS Accounts}
 in the \emph{Amazon EventBridge User Guide}.
 
 The permission policy on the default event bus cannot exceed 10 KB in

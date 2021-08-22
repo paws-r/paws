@@ -76,6 +76,12 @@ NULL
 #'  \link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an AWS account or IAM user
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname sts
 #' @export
 sts <- function(config = list()) {
@@ -94,7 +100,7 @@ sts <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "https://sts.amazonaws.com", global = TRUE), "us-gov-*" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "STS",
   api_version = "2011-06-15",
-  signing_name = NULL,
+  signing_name = "sts",
   json_version = "",
   target_prefix = ""
 )

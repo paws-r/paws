@@ -60,6 +60,12 @@ NULL
 #'  \link[=costandusagereportservice_put_report_definition]{put_report_definition} \tab Creates a new report using the description that you provide
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname costandusagereportservice
 #' @export
 costandusagereportservice <- function(config = list()) {

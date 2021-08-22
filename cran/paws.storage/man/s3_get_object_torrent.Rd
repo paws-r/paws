@@ -28,7 +28,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Returns torrent files from a bucket. BitTorrent can save you bandwidth
 when you're distributing large files. For more information about
-BitTorrent, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3Torrent.html}{Using BitTorrent with Amazon S3}.
+BitTorrent, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html}{Using BitTorrent with Amazon S3}.
 
 You can get torrent only for objects that are less than 5 GB in size,
 and that are not encrypted using server-side encryption with a

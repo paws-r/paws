@@ -43,6 +43,12 @@ NULL
 #'  \link[=timestreamquery_query]{query} \tab Query is a synchronous operation that enables you to execute a query
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname timestreamquery
 #' @export
 timestreamquery <- function(config = list()) {

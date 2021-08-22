@@ -3214,7 +3214,9 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' specify the custom key store ID.
 #' 
 #' For more information about entropy and random number generation, see the
-#' AWS Key Management Service Cryptographic Details whitepaper.
+#' [AWS Key Management Service Cryptographic
+#' Details](https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf)
+#' whitepaper.
 #' 
 #' **Required permissions**:
 #' [kms:GenerateRandom](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)

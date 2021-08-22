@@ -117,6 +117,12 @@ NULL
 #'  \link[=clouddirectory_upgrade_published_schema]{upgrade_published_schema} \tab Upgrades a published schema under a new minor version revision using the current contents of DevelopmentSchemaArn
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname clouddirectory
 #' @export
 clouddirectory <- function(config = list()) {

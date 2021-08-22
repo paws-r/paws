@@ -9,6 +9,12 @@ kinesisanalyticsv2(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 Amazon Kinesis Data Analytics is a fully managed service that you can
 use to process and analyze streaming data using Java, SQL, or Scala. The

@@ -96,6 +96,12 @@ NULL
 #'  \link[=appmesh_update_virtual_service]{update_virtual_service} \tab Updates an existing virtual service in a specified service mesh
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname appmesh
 #' @export
 appmesh <- function(config = list()) {

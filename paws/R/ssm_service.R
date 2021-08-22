@@ -196,6 +196,12 @@ NULL
 #'  \link[=ssm_update_service_setting]{update_service_setting} \tab ServiceSetting is an account-level setting for an AWS service
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ssm
 #' @export
 ssm <- function(config = list()) {
@@ -214,7 +220,7 @@ ssm <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "ssm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ssm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SSM",
   api_version = "2014-11-06",
-  signing_name = NULL,
+  signing_name = "ssm",
   json_version = "1.1",
   target_prefix = "AmazonSSM"
 )

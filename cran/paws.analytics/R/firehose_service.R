@@ -58,6 +58,12 @@ NULL
 #'  \link[=firehose_update_destination]{update_destination} \tab Updates the specified destination of the specified delivery stream
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname firehose
 #' @export
 firehose <- function(config = list()) {
@@ -76,7 +82,7 @@ firehose <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "firehose.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "firehose.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "firehose.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "firehose.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Firehose",
   api_version = "2015-08-04",
-  signing_name = NULL,
+  signing_name = "firehose",
   json_version = "1.1",
   target_prefix = "Firehose_20150804"
 )

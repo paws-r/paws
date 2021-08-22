@@ -261,6 +261,12 @@ NULL
 #'  \link[=globalaccelerator_withdraw_byoip_cidr]{withdraw_byoip_cidr} \tab Stops advertising an address range that is provisioned as an address pool
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname globalaccelerator
 #' @export
 globalaccelerator <- function(config = list()) {

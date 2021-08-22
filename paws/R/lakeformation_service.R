@@ -54,6 +54,12 @@ NULL
 #'  \link[=lakeformation_update_resource]{update_resource} \tab Updates the data access role used for vending access to the given (registered) resource in AWS Lake Formation
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname lakeformation
 #' @export
 lakeformation <- function(config = list()) {

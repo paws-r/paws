@@ -92,6 +92,12 @@ NULL
 #'  \link[=detective_start_monitoring_member]{start_monitoring_member} \tab Sends a request to enable data ingest for a member account that has a status of ACCEPTED_BUT_DISABLED
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname detective
 #' @export
 detective <- function(config = list()) {

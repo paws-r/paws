@@ -64,6 +64,12 @@ NULL
 #'  \link[=comprehendmedical_stop_rx_norm_inference_job]{stop_rx_norm_inference_job} \tab Stops an InferRxNorm inference job in progress
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname comprehendmedical
 #' @export
 comprehendmedical <- function(config = list()) {

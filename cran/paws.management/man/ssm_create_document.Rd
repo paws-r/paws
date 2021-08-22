@@ -26,7 +26,7 @@ configuration in an SSM document, the user must also specify a required
 document for validation purposes. In this case, an
 \code{ApplicationConfiguration} document requires an
 \code{ApplicationConfigurationSchema} document for validation purposes. For
-more information, see \href{https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html}{AWS AppConfig}
+more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html}{AWS AppConfig}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Attachments}{A list of key and value pairs that describe attachments to a version of

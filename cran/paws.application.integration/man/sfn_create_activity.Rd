@@ -8,7 +8,7 @@ sfn_create_activity(name, tags)
 }
 \arguments{
 \item{name}{[required] The name of the activity to create. This name must be unique for your
-AWS account and region for 90 days. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
+AWS account and region for 90 days. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
 in the \emph{AWS Step Functions Developer Guide}.
 
 A name must \emph{not} contain:

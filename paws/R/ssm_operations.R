@@ -844,7 +844,7 @@ ssm_create_association_batch <- function(Entries) {
 #' `ApplicationConfiguration` document requires an
 #' `ApplicationConfigurationSchema` document for validation purposes. For
 #' more information, see [AWS
-#' AppConfig](https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html)
+#' AppConfig](https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html)
 #' in the *AWS Systems Manager User Guide*.
 #' @param Attachments A list of key and value pairs that describe attachments to a version of
 #' a document.

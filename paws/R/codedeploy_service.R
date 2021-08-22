@@ -166,6 +166,12 @@ NULL
 #'  \link[=codedeploy_update_deployment_group]{update_deployment_group} \tab Changes information about a deployment group
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname codedeploy
 #' @export
 codedeploy <- function(config = list()) {
@@ -184,7 +190,7 @@ codedeploy <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "codedeploy.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codedeploy.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codedeploy.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codedeploy.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodeDeploy",
   api_version = "2014-10-06",
-  signing_name = NULL,
+  signing_name = "codedeploy",
   json_version = "1.1",
   target_prefix = "CodeDeploy_20141006"
 )

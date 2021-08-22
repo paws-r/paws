@@ -124,6 +124,12 @@ NULL
 #'  \link[=neptune_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Neptune DB cluster
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname neptune
 #' @export
 neptune <- function(config = list()) {

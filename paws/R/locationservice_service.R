@@ -77,6 +77,12 @@ NULL
 #'  \link[=locationservice_search_place_index_for_text]{search_place_index_for_text} \tab Geocodes free-form text, such as an address, name, city, or region to allow you to search for Places or points of interest
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname locationservice
 #' @export
 locationservice <- function(config = list()) {

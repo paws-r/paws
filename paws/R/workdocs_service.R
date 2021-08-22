@@ -114,6 +114,12 @@ NULL
 #'  \link[=workdocs_update_user]{update_user} \tab Updates the specified attributes of the specified user, and grants or revokes administrative privileges to the Amazon WorkDocs site
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname workdocs
 #' @export
 workdocs <- function(config = list()) {
@@ -132,7 +138,7 @@ workdocs <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "workdocs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workdocs.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "workdocs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workdocs.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "WorkDocs",
   api_version = "2016-05-01",
-  signing_name = NULL,
+  signing_name = "workdocs",
   json_version = "1.1",
   target_prefix = ""
 )

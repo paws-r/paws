@@ -147,6 +147,12 @@ NULL
 #'  \link[=wafv2_update_web_acl]{update_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname wafv2
 #' @export
 wafv2 <- function(config = list()) {
@@ -165,7 +171,7 @@ wafv2 <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "wafv2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "wafv2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "wafv2.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "WAFV2",
   api_version = "2019-07-29",
-  signing_name = NULL,
+  signing_name = "wafv2",
   json_version = "1.1",
   target_prefix = "AWSWAF_20190729"
 )

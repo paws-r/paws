@@ -44,6 +44,12 @@ NULL
 #'  \link[=s3outposts_list_endpoints]{list_endpoints} \tab S3 on Outposts access points simplify managing data access at scale for shared datasets in Amazon S3 on Outposts
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname s3outposts
 #' @export
 s3outposts <- function(config = list()) {

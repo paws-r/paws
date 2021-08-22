@@ -43,6 +43,12 @@ NULL
 #'  \link[=marketplacecommerceanalytics_start_support_data_export]{start_support_data_export} \tab Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname marketplacecommerceanalytics
 #' @export
 marketplacecommerceanalytics <- function(config = list()) {

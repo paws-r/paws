@@ -115,6 +115,12 @@ NULL
 #'  \link[=route53resolver_update_resolver_rule]{update_resolver_rule} \tab Updates settings for a specified Resolver rule
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname route53resolver
 #' @export
 route53resolver <- function(config = list()) {
@@ -133,7 +139,7 @@ route53resolver <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "route53resolver.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53resolver.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "route53resolver.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53resolver.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Route53Resolver",
   api_version = "2018-04-01",
-  signing_name = NULL,
+  signing_name = "route53resolver",
   json_version = "1.1",
   target_prefix = "Route53Resolver"
 )

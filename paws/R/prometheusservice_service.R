@@ -46,6 +46,12 @@ NULL
 #'  \link[=prometheusservice_update_workspace_alias]{update_workspace_alias} \tab Updates an AMP workspace alias
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname prometheusservice
 #' @export
 prometheusservice <- function(config = list()) {

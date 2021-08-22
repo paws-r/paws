@@ -2553,7 +2553,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' to another version, then it is moved--removed from the other version
 #' first and then attached to this one. For more information about staging
 #' labels, see [Staging
-#' Labels](https://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label)
+#' Labels](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_staging-label)
 #' in the *AWS Secrets Manager User Guide*.
 #' 
 #' The staging labels that you specify in the `VersionStage` parameter are

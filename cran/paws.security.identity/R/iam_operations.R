@@ -4129,9 +4129,9 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
 #' (users, groups, roles, and policies) in your account.
 #' 
 #' Policies returned by this API are URL-encoded compliant with [RFC
-#' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
-#' method to convert the policy back to plain JSON text. For example, if
-#' you use Java, you can use the `decode` method of the
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
+#' decoding method to convert the policy back to plain JSON text. For
+#' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
 #' SDKs provide similar functionality.
 #' 
@@ -4822,9 +4822,9 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' specified IAM group.
 #' 
 #' Policies returned by this API are URL-encoded compliant with [RFC
-#' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
-#' method to convert the policy back to plain JSON text. For example, if
-#' you use Java, you can use the `decode` method of the
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
+#' decoding method to convert the policy back to plain JSON text. For
+#' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
 #' SDKs provide similar functionality.
 #' 
@@ -5349,9 +5349,9 @@ iam_get_policy <- function(PolicyArn) {
 #' managed policy, including the policy document.
 #' 
 #' Policies returned by this API are URL-encoded compliant with [RFC
-#' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
-#' method to convert the policy back to plain JSON text. For example, if
-#' you use Java, you can use the `decode` method of the
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
+#' decoding method to convert the policy back to plain JSON text. For
+#' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
 #' SDKs provide similar functionality.
 #' 
@@ -5446,9 +5446,9 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #' 
 #' Policies returned by this API are URL-encoded compliant with [RFC
-#' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
-#' method to convert the policy back to plain JSON text. For example, if
-#' you use Java, you can use the `decode` method of the
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
+#' decoding method to convert the policy back to plain JSON text. For
+#' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
 #' SDKs provide similar functionality.
 #'
@@ -5540,9 +5540,9 @@ iam_get_role <- function(RoleName) {
 #' specified IAM role.
 #' 
 #' Policies returned by this API are URL-encoded compliant with [RFC
-#' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
-#' method to convert the policy back to plain JSON text. For example, if
-#' you use Java, you can use the `decode` method of the
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
+#' decoding method to convert the policy back to plain JSON text. For
+#' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
 #' SDKs provide similar functionality.
 #' 
@@ -6288,9 +6288,9 @@ iam_get_user <- function(UserName = NULL) {
 #' specified IAM user.
 #' 
 #' Policies returned by this API are URL-encoded compliant with [RFC
-#' 3986](https://tools.ietf.org/html/rfc3986). You can use a URL decoding
-#' method to convert the policy back to plain JSON text. For example, if
-#' you use Java, you can use the `decode` method of the
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
+#' decoding method to convert the policy back to plain JSON text. For
+#' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
 #' SDKs provide similar functionality.
 #' 

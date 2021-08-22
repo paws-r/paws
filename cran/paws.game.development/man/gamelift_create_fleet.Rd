@@ -100,8 +100,8 @@ the AWS Management Console under account settings.}
 
 \item{PeerVpcId}{A unique identifier for a VPC with resources to be accessed by your
 Amazon GameLift fleet. The VPC must be in the same Region as your fleet.
-To look up a VPC ID, use the \href{https://console.aws.amazon.com/vpc/home}{VPC Dashboard} in the AWS
-Management Console. Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.}
+To look up a VPC ID, use the VPC Dashboard in the AWS Management
+Console. Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.}
 
 \item{FleetType}{Indicates whether to use On-Demand instances or Spot instances for this
 fleet. If empty, the default is \code{ON_DEMAND}. Both categories of

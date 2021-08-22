@@ -60,6 +60,12 @@ NULL
 #'  \link[=iotevents_update_input]{update_input} \tab Updates an input
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname iotevents
 #' @export
 iotevents <- function(config = list()) {

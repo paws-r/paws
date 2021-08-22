@@ -43,6 +43,12 @@ NULL
 #'  \link[=mobileanalytics_put_events]{put_events} \tab The PutEvents operation records one or more events
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname mobileanalytics
 #' @export
 mobileanalytics <- function(config = list()) {
@@ -61,7 +67,7 @@ mobileanalytics <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "mobileanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mobileanalytics.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "mobileanalytics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "mobileanalytics.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Mobile Analytics",
   api_version = "2014-06-05",
-  signing_name = NULL,
+  signing_name = "mobileanalytics",
   json_version = "",
   target_prefix = ""
 )

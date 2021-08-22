@@ -100,6 +100,12 @@ NULL
 #'  \link[=iotanalytics_update_pipeline]{update_pipeline} \tab Updates the settings of a pipeline
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname iotanalytics
 #' @export
 iotanalytics <- function(config = list()) {

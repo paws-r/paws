@@ -41,6 +41,12 @@ NULL
 #'  \link[=kinesisvideomedia_get_media]{get_media} \tab Use this API to retrieve media content from a Kinesis video stream
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname kinesisvideomedia
 #' @export
 kinesisvideomedia <- function(config = list()) {
@@ -59,7 +65,7 @@ kinesisvideomedia <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesisvideo.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisvideo.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Kinesis Video Media",
   api_version = "2017-09-30",
-  signing_name = NULL,
+  signing_name = "kinesisvideo",
   json_version = "",
   target_prefix = ""
 )

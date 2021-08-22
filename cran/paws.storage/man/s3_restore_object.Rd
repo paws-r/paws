@@ -89,7 +89,7 @@ For more information about the \code{S3} structure in the request body,
 see the following:
 \itemize{
 \item \code{\link[=s3_put_object]{put_object}}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html}{Managing Access with ACLs}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Managing Access with ACLs}
 in the \emph{Amazon Simple Storage Service Developer Guide}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}

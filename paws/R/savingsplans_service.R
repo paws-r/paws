@@ -55,6 +55,12 @@ NULL
 #'  \link[=savingsplans_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname savingsplans
 #' @export
 savingsplans <- function(config = list()) {
@@ -73,7 +79,7 @@ savingsplans <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "savingsplans.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "savingsplans.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "savingsplans.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "savingsplans.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "savingsplans",
   api_version = "2019-06-28",
-  signing_name = NULL,
+  signing_name = "savingsplans",
   json_version = "1.0",
   target_prefix = ""
 )

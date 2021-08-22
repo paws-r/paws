@@ -20,17 +20,17 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.compute (>= 0.1.11),
-    paws.storage (>= 0.1.11),
-    paws.database (>= 0.1.11),
-    paws.networking (>= 0.1.11),
-    paws.management (>= 0.1.11),
-    paws.machine.learning (>= 0.1.11),
     paws.analytics (>= 0.1.11),
-    paws.security.identity (>= 0.1.11),
     paws.application.integration (>= 0.1.11),
+    paws.compute (>= 0.1.11),
     paws.cost.management (>= 0.1.11),
-    paws.customer.engagement (>= 0.1.11)
+    paws.customer.engagement (>= 0.1.11),
+    paws.database (>= 0.1.11),
+    paws.machine.learning (>= 0.1.11),
+    paws.management (>= 0.1.11),
+    paws.networking (>= 0.1.11),
+    paws.security.identity (>= 0.1.11),
+    paws.storage (>= 0.1.11)
 Suggests: 
     testthat
 Encoding: UTF-8

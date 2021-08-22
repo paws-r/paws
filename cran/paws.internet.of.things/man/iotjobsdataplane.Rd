@@ -9,6 +9,12 @@ iotjobsdataplane(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 AWS IoT Jobs is a service that allows you to define a set of jobs —
 remote operations that are sent to and executed on one or more devices
