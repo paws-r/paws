@@ -5267,6 +5267,1418 @@ servicediscovery <- function(config = list()) {
   paws.networking::servicediscovery(config)
 }
 
+#' AWS Cloud9
+#'
+#' @description
+#' AWS Cloud9 is a collection of tools that you can use to code, build,
+#' run, test, debug, and release software in the cloud.
+#' 
+#' For more information about AWS Cloud9, see the [AWS Cloud9 User
+#' Guide](https://docs.aws.amazon.com/cloud9/latest/user-guide/).
+#' 
+#' AWS Cloud9 supports these operations:
+#' 
+#' -   [`create_environment_ec2`][cloud9_create_environment_ec2]: Creates
+#'     an AWS Cloud9 development environment, launches an Amazon EC2
+#'     instance, and then connects from the instance to the environment.
+#' 
+#' -   [`create_environment_membership`][cloud9_create_environment_membership]:
+#'     Adds an environment member to an environment.
+#' 
+#' -   [`delete_environment`][cloud9_delete_environment]: Deletes an
+#'     environment. If an Amazon EC2 instance is connected to the
+#'     environment, also terminates the instance.
+#' 
+#' -   [`delete_environment_membership`][cloud9_delete_environment_membership]:
+#'     Deletes an environment member from an environment.
+#' 
+#' -   [`describe_environment_memberships`][cloud9_describe_environment_memberships]:
+#'     Gets information about environment members for an environment.
+#' 
+#' -   [`describe_environments`][cloud9_describe_environments]: Gets
+#'     information about environments.
+#' 
+#' -   [`describe_environment_status`][cloud9_describe_environment_status]:
+#'     Gets status information for an environment.
+#' 
+#' -   [`list_environments`][cloud9_list_environments]: Gets a list of
+#'     environment identifiers.
+#' 
+#' -   [`list_tags_for_resource`][cloud9_list_tags_for_resource]: Gets the
+#'     tags for an environment.
+#' 
+#' -   [`tag_resource`][cloud9_tag_resource]: Adds tags to an environment.
+#' 
+#' -   [`untag_resource`][cloud9_untag_resource]: Removes tags from an
+#'     environment.
+#' 
+#' -   [`update_environment`][cloud9_update_environment]: Changes the
+#'     settings of an existing environment.
+#' 
+#' -   [`update_environment_membership`][cloud9_update_environment_membership]:
+#'     Changes the settings of an existing environment member for an
+#'     environment.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloud9(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- cloud9()
+#' # 
+#' svc$create_environment_ec2(
+#'   name = "my-demo-environment",
+#'   automaticStopTimeMinutes = 60L,
+#'   description = "This is my demonstration environment.",
+#'   instanceType = "t2.micro",
+#'   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
+#'   subnetId = "subnet-1fab8aEX"
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=cloud9_create_environment_ec2]{create_environment_ec2} \tab Creates an AWS Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and then connects from the instance to the environment\cr
+#'  \link[=cloud9_create_environment_membership]{create_environment_membership} \tab Adds an environment member to an AWS Cloud9 development environment\cr
+#'  \link[=cloud9_delete_environment]{delete_environment} \tab Deletes an AWS Cloud9 development environment\cr
+#'  \link[=cloud9_delete_environment_membership]{delete_environment_membership} \tab Deletes an environment member from an AWS Cloud9 development environment\cr
+#'  \link[=cloud9_describe_environment_memberships]{describe_environment_memberships} \tab Gets information about environment members for an AWS Cloud9 development environment\cr
+#'  \link[=cloud9_describe_environments]{describe_environments} \tab Gets information about AWS Cloud9 development environments\cr
+#'  \link[=cloud9_describe_environment_status]{describe_environment_status} \tab Gets status information for an AWS Cloud9 development environment\cr
+#'  \link[=cloud9_list_environments]{list_environments} \tab Gets a list of AWS Cloud9 development environment identifiers\cr
+#'  \link[=cloud9_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of the tags associated with an AWS Cloud9 development environment\cr
+#'  \link[=cloud9_tag_resource]{tag_resource} \tab Adds tags to an AWS Cloud9 development environment\cr
+#'  \link[=cloud9_untag_resource]{untag_resource} \tab Removes tags from an AWS Cloud9 development environment\cr
+#'  \link[=cloud9_update_environment]{update_environment} \tab Changes the settings of an existing AWS Cloud9 development environment\cr
+#'  \link[=cloud9_update_environment_membership]{update_environment_membership} \tab Changes the settings of an existing environment member for an AWS Cloud9 development environment
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname cloud9
+#' @export
+cloud9 <- function(config = list()) {
+  paws.developer.tools::cloud9(config)
+}
+
+#' AWS CodeBuild
+#'
+#' @description
+#' AWS CodeBuild is a fully managed build service in the cloud. AWS
+#' CodeBuild compiles your source code, runs unit tests, and produces
+#' artifacts that are ready to deploy. AWS CodeBuild eliminates the need to
+#' provision, manage, and scale your own build servers. It provides
+#' prepackaged build environments for the most popular programming
+#' languages and build tools, such as Apache Maven, Gradle, and more. You
+#' can also fully customize build environments in AWS CodeBuild to use your
+#' own build tools. AWS CodeBuild scales automatically to meet peak build
+#' requests. You pay only for the build time you consume. For more
+#' information about AWS CodeBuild, see the *[AWS CodeBuild User
+#' Guide](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html).*
+#' 
+#' AWS CodeBuild supports these operations:
+#' 
+#' -   [`batch_delete_builds`][codebuild_batch_delete_builds]: Deletes one
+#'     or more builds.
+#' 
+#' -   [`batch_get_builds`][codebuild_batch_get_builds]: Gets information
+#'     about one or more builds.
+#' 
+#' -   [`batch_get_projects`][codebuild_batch_get_projects]: Gets
+#'     information about one or more build projects. A *build project*
+#'     defines how AWS CodeBuild runs a build. This includes information
+#'     such as where to get the source code to build, the build environment
+#'     to use, the build commands to run, and where to store the build
+#'     output. A *build environment* is a representation of operating
+#'     system, programming language runtime, and tools that AWS CodeBuild
+#'     uses to run a build. You can add tags to build projects to help
+#'     manage your resources and costs.
+#' 
+#' -   [`batch_get_report_groups`][codebuild_batch_get_report_groups]:
+#'     Returns an array of report groups.
+#' 
+#' -   [`batch_get_reports`][codebuild_batch_get_reports]: Returns an array
+#'     of reports.
+#' 
+#' -   [`create_project`][codebuild_create_project]: Creates a build
+#'     project.
+#' 
+#' -   [`create_report_group`][codebuild_create_report_group]: Creates a
+#'     report group. A report group contains a collection of reports.
+#' 
+#' -   [`create_webhook`][codebuild_create_webhook]: For an existing AWS
+#'     CodeBuild build project that has its source code stored in a GitHub
+#'     or Bitbucket repository, enables AWS CodeBuild to start rebuilding
+#'     the source code every time a code change is pushed to the
+#'     repository.
+#' 
+#' -   [`delete_project`][codebuild_delete_project]: Deletes a build
+#'     project.
+#' 
+#' -   [`delete_report`][codebuild_delete_report]: Deletes a report.
+#' 
+#' -   [`delete_report_group`][codebuild_delete_report_group]: Deletes a
+#'     report group.
+#' 
+#' -   [`delete_resource_policy`][codebuild_delete_resource_policy]:
+#'     Deletes a resource policy that is identified by its resource ARN.
+#' 
+#' -   [`delete_source_credentials`][codebuild_delete_source_credentials]:
+#'     Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
+#'     credentials.
+#' 
+#' -   [`delete_webhook`][codebuild_delete_webhook]: For an existing AWS
+#'     CodeBuild build project that has its source code stored in a GitHub
+#'     or Bitbucket repository, stops AWS CodeBuild from rebuilding the
+#'     source code every time a code change is pushed to the repository.
+#' 
+#' -   [`describe_test_cases`][codebuild_describe_test_cases]: Returns a
+#'     list of details about test cases for a report.
+#' 
+#' -   [`get_resource_policy`][codebuild_get_resource_policy]: Gets a
+#'     resource policy that is identified by its resource ARN.
+#' 
+#' -   [`import_source_credentials`][codebuild_import_source_credentials]:
+#'     Imports the source repository credentials for an AWS CodeBuild
+#'     project that has its source code stored in a GitHub, GitHub
+#'     Enterprise, or Bitbucket repository.
+#' 
+#' -   [`invalidate_project_cache`][codebuild_invalidate_project_cache]:
+#'     Resets the cache for a project.
+#' 
+#' -   [`list_builds`][codebuild_list_builds]: Gets a list of build IDs,
+#'     with each build ID representing a single build.
+#' 
+#' -   [`list_builds_for_project`][codebuild_list_builds_for_project]: Gets
+#'     a list of build IDs for the specified build project, with each build
+#'     ID representing a single build.
+#' 
+#' -   [`list_curated_environment_images`][codebuild_list_curated_environment_images]:
+#'     Gets information about Docker images that are managed by AWS
+#'     CodeBuild.
+#' 
+#' -   [`list_projects`][codebuild_list_projects]: Gets a list of build
+#'     project names, with each build project name representing a single
+#'     build project.
+#' 
+#' -   [`list_report_groups`][codebuild_list_report_groups]: Gets a list
+#'     ARNs for the report groups in the current AWS account.
+#' 
+#' -   [`list_reports`][codebuild_list_reports]: Gets a list ARNs for the
+#'     reports in the current AWS account.
+#' 
+#' -   [`list_reports_for_report_group`][codebuild_list_reports_for_report_group]:
+#'     Returns a list of ARNs for the reports that belong to a
+#'     `ReportGroup`.
+#' 
+#' -   [`list_shared_projects`][codebuild_list_shared_projects]: Gets a
+#'     list of ARNs associated with projects shared with the current AWS
+#'     account or user.
+#' 
+#' -   [`list_shared_report_groups`][codebuild_list_shared_report_groups]:
+#'     Gets a list of ARNs associated with report groups shared with the
+#'     current AWS account or user
+#' 
+#' -   [`list_source_credentials`][codebuild_list_source_credentials]:
+#'     Returns a list of `SourceCredentialsInfo` objects. Each
+#'     `SourceCredentialsInfo` object includes the authentication type,
+#'     token ARN, and type of source provider for one set of credentials.
+#' 
+#' -   [`put_resource_policy`][codebuild_put_resource_policy]: Stores a
+#'     resource policy for the ARN of a `Project` or `ReportGroup` object.
+#' 
+#' -   [`start_build`][codebuild_start_build]: Starts running a build.
+#' 
+#' -   [`stop_build`][codebuild_stop_build]: Attempts to stop running a
+#'     build.
+#' 
+#' -   [`update_project`][codebuild_update_project]: Changes the settings
+#'     of an existing build project.
+#' 
+#' -   [`update_report_group`][codebuild_update_report_group]: Changes a
+#'     report group.
+#' 
+#' -   [`update_webhook`][codebuild_update_webhook]: Changes the settings
+#'     of an existing webhook.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- codebuild(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- codebuild()
+#' # The following example gets information about builds with the specified
+#' # build IDs.
+#' svc$batch_get_builds(
+#'   ids = list(
+#'     "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
+#'     "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX"
+#'   )
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=codebuild_batch_delete_builds]{batch_delete_builds} \tab Deletes one or more builds\cr
+#'  \link[=codebuild_batch_get_build_batches]{batch_get_build_batches} \tab Retrieves information about one or more batch builds\cr
+#'  \link[=codebuild_batch_get_builds]{batch_get_builds} \tab Gets information about one or more builds\cr
+#'  \link[=codebuild_batch_get_projects]{batch_get_projects} \tab Gets information about one or more build projects\cr
+#'  \link[=codebuild_batch_get_report_groups]{batch_get_report_groups} \tab Returns an array of report groups\cr
+#'  \link[=codebuild_batch_get_reports]{batch_get_reports} \tab Returns an array of reports\cr
+#'  \link[=codebuild_create_project]{create_project} \tab Creates a build project\cr
+#'  \link[=codebuild_create_report_group]{create_report_group} \tab Creates a report group\cr
+#'  \link[=codebuild_create_webhook]{create_webhook} \tab For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to start rebuilding the source code every time a code change is pushed to the repository\cr
+#'  \link[=codebuild_delete_build_batch]{delete_build_batch} \tab Deletes a batch build\cr
+#'  \link[=codebuild_delete_project]{delete_project} \tab Deletes a build project\cr
+#'  \link[=codebuild_delete_report]{delete_report} \tab Deletes a report\cr
+#'  \link[=codebuild_delete_report_group]{delete_report_group} \tab Deletes a report group\cr
+#'  \link[=codebuild_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource policy that is identified by its resource ARN\cr
+#'  \link[=codebuild_delete_source_credentials]{delete_source_credentials} \tab Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials\cr
+#'  \link[=codebuild_delete_webhook]{delete_webhook} \tab For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from rebuilding the source code every time a code change is pushed to the repository\cr
+#'  \link[=codebuild_describe_code_coverages]{describe_code_coverages} \tab Retrieves one or more code coverage reports\cr
+#'  \link[=codebuild_describe_test_cases]{describe_test_cases} \tab Returns a list of details about test cases for a report\cr
+#'  \link[=codebuild_get_report_group_trend]{get_report_group_trend} \tab Get report group trend\cr
+#'  \link[=codebuild_get_resource_policy]{get_resource_policy} \tab Gets a resource policy that is identified by its resource ARN\cr
+#'  \link[=codebuild_import_source_credentials]{import_source_credentials} \tab Imports the source repository credentials for an AWS CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository\cr
+#'  \link[=codebuild_invalidate_project_cache]{invalidate_project_cache} \tab Resets the cache for a project\cr
+#'  \link[=codebuild_list_build_batches]{list_build_batches} \tab Retrieves the identifiers of your build batches in the current region\cr
+#'  \link[=codebuild_list_build_batches_for_project]{list_build_batches_for_project} \tab Retrieves the identifiers of the build batches for a specific project\cr
+#'  \link[=codebuild_list_builds]{list_builds} \tab Gets a list of build IDs, with each build ID representing a single build\cr
+#'  \link[=codebuild_list_builds_for_project]{list_builds_for_project} \tab Gets a list of build IDs for the specified build project, with each build ID representing a single build\cr
+#'  \link[=codebuild_list_curated_environment_images]{list_curated_environment_images} \tab Gets information about Docker images that are managed by AWS CodeBuild\cr
+#'  \link[=codebuild_list_projects]{list_projects} \tab Gets a list of build project names, with each build project name representing a single build project\cr
+#'  \link[=codebuild_list_report_groups]{list_report_groups} \tab Gets a list ARNs for the report groups in the current AWS account\cr
+#'  \link[=codebuild_list_reports]{list_reports} \tab Returns a list of ARNs for the reports in the current AWS account\cr
+#'  \link[=codebuild_list_reports_for_report_group]{list_reports_for_report_group} \tab Returns a list of ARNs for the reports that belong to a ReportGroup\cr
+#'  \link[=codebuild_list_shared_projects]{list_shared_projects} \tab Gets a list of projects that are shared with other AWS accounts or users\cr
+#'  \link[=codebuild_list_shared_report_groups]{list_shared_report_groups} \tab Gets a list of report groups that are shared with other AWS accounts or users\cr
+#'  \link[=codebuild_list_source_credentials]{list_source_credentials} \tab Returns a list of SourceCredentialsInfo objects\cr
+#'  \link[=codebuild_put_resource_policy]{put_resource_policy} \tab Stores a resource policy for the ARN of a Project or ReportGroup object\cr
+#'  \link[=codebuild_retry_build]{retry_build} \tab Restarts a build\cr
+#'  \link[=codebuild_retry_build_batch]{retry_build_batch} \tab Restarts a failed batch build\cr
+#'  \link[=codebuild_start_build]{start_build} \tab Starts running a build\cr
+#'  \link[=codebuild_start_build_batch]{start_build_batch} \tab Starts a batch build for a project\cr
+#'  \link[=codebuild_stop_build]{stop_build} \tab Attempts to stop running a build\cr
+#'  \link[=codebuild_stop_build_batch]{stop_build_batch} \tab Stops a running batch build\cr
+#'  \link[=codebuild_update_project]{update_project} \tab Changes the settings of a build project\cr
+#'  \link[=codebuild_update_report_group]{update_report_group} \tab Updates a report group\cr
+#'  \link[=codebuild_update_webhook]{update_webhook} \tab Updates the webhook associated with an AWS CodeBuild build project
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname codebuild
+#' @export
+codebuild <- function(config = list()) {
+  paws.developer.tools::codebuild(config)
+}
+
+#' AWS CodeCommit
+#'
+#' @description
+#' This is the *AWS CodeCommit API Reference*. This reference provides
+#' descriptions of the operations and data types for AWS CodeCommit API
+#' along with usage examples.
+#' 
+#' You can use the AWS CodeCommit API to work with the following objects:
+#' 
+#' Repositories, by calling the following:
+#' 
+#' -   [`batch_get_repositories`][codecommit_batch_get_repositories], which
+#'     returns information about one or more repositories associated with
+#'     your AWS account.
+#' 
+#' -   [`create_repository`][codecommit_create_repository], which creates
+#'     an AWS CodeCommit repository.
+#' 
+#' -   [`delete_repository`][codecommit_delete_repository], which deletes
+#'     an AWS CodeCommit repository.
+#' 
+#' -   [`get_repository`][codecommit_get_repository], which returns
+#'     information about a specified repository.
+#' 
+#' -   [`list_repositories`][codecommit_list_repositories], which lists all
+#'     AWS CodeCommit repositories associated with your AWS account.
+#' 
+#' -   [`update_repository_description`][codecommit_update_repository_description],
+#'     which sets or updates the description of the repository.
+#' 
+#' -   [`update_repository_name`][codecommit_update_repository_name], which
+#'     changes the name of the repository. If you change the name of a
+#'     repository, no other users of that repository can access it until
+#'     you send them the new HTTPS or SSH URL to use.
+#' 
+#' Branches, by calling the following:
+#' 
+#' -   [`create_branch`][codecommit_create_branch], which creates a branch
+#'     in a specified repository.
+#' 
+#' -   [`delete_branch`][codecommit_delete_branch], which deletes the
+#'     specified branch in a repository unless it is the default branch.
+#' 
+#' -   [`get_branch`][codecommit_get_branch], which returns information
+#'     about a specified branch.
+#' 
+#' -   [`list_branches`][codecommit_list_branches], which lists all
+#'     branches for a specified repository.
+#' 
+#' -   [`update_default_branch`][codecommit_update_default_branch], which
+#'     changes the default branch for a repository.
+#' 
+#' Files, by calling the following:
+#' 
+#' -   [`delete_file`][codecommit_delete_file], which deletes the content
+#'     of a specified file from a specified branch.
+#' 
+#' -   [`get_blob`][codecommit_get_blob], which returns the base-64 encoded
+#'     content of an individual Git blob object in a repository.
+#' 
+#' -   [`get_file`][codecommit_get_file], which returns the base-64 encoded
+#'     content of a specified file.
+#' 
+#' -   [`get_folder`][codecommit_get_folder], which returns the contents of
+#'     a specified folder or directory.
+#' 
+#' -   [`put_file`][codecommit_put_file], which adds or modifies a single
+#'     file in a specified repository and branch.
+#' 
+#' Commits, by calling the following:
+#' 
+#' -   [`batch_get_commits`][codecommit_batch_get_commits], which returns
+#'     information about one or more commits in a repository.
+#' 
+#' -   [`create_commit`][codecommit_create_commit], which creates a commit
+#'     for changes to a repository.
+#' 
+#' -   [`get_commit`][codecommit_get_commit], which returns information
+#'     about a commit, including commit messages and author and committer
+#'     information.
+#' 
+#' -   [`get_differences`][codecommit_get_differences], which returns
+#'     information about the differences in a valid commit specifier (such
+#'     as a branch, tag, HEAD, commit ID, or other fully qualified
+#'     reference).
+#' 
+#' Merges, by calling the following:
+#' 
+#' -   [`batch_describe_merge_conflicts`][codecommit_batch_describe_merge_conflicts],
+#'     which returns information about conflicts in a merge between commits
+#'     in a repository.
+#' 
+#' -   [`create_unreferenced_merge_commit`][codecommit_create_unreferenced_merge_commit],
+#'     which creates an unreferenced commit between two branches or commits
+#'     for the purpose of comparing them and identifying any potential
+#'     conflicts.
+#' 
+#' -   [`describe_merge_conflicts`][codecommit_describe_merge_conflicts],
+#'     which returns information about merge conflicts between the base,
+#'     source, and destination versions of a file in a potential merge.
+#' 
+#' -   [`get_merge_commit`][codecommit_get_merge_commit], which returns
+#'     information about the merge between a source and destination commit.
+#' 
+#' -   [`get_merge_conflicts`][codecommit_get_merge_conflicts], which
+#'     returns information about merge conflicts between the source and
+#'     destination branch in a pull request.
+#' 
+#' -   [`get_merge_options`][codecommit_get_merge_options], which returns
+#'     information about the available merge options between two branches
+#'     or commit specifiers.
+#' 
+#' -   [`merge_branches_by_fast_forward`][codecommit_merge_branches_by_fast_forward],
+#'     which merges two branches using the fast-forward merge option.
+#' 
+#' -   [`merge_branches_by_squash`][codecommit_merge_branches_by_squash],
+#'     which merges two branches using the squash merge option.
+#' 
+#' -   [`merge_branches_by_three_way`][codecommit_merge_branches_by_three_way],
+#'     which merges two branches using the three-way merge option.
+#' 
+#' Pull requests, by calling the following:
+#' 
+#' -   [`create_pull_request`][codecommit_create_pull_request], which
+#'     creates a pull request in a specified repository.
+#' 
+#' -   [`create_pull_request_approval_rule`][codecommit_create_pull_request_approval_rule],
+#'     which creates an approval rule for a specified pull request.
+#' 
+#' -   [`delete_pull_request_approval_rule`][codecommit_delete_pull_request_approval_rule],
+#'     which deletes an approval rule for a specified pull request.
+#' 
+#' -   [`describe_pull_request_events`][codecommit_describe_pull_request_events],
+#'     which returns information about one or more pull request events.
+#' 
+#' -   [`evaluate_pull_request_approval_rules`][codecommit_evaluate_pull_request_approval_rules],
+#'     which evaluates whether a pull request has met all the conditions
+#'     specified in its associated approval rules.
+#' 
+#' -   [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request],
+#'     which returns information about comments on a specified pull
+#'     request.
+#' 
+#' -   [`get_pull_request`][codecommit_get_pull_request], which returns
+#'     information about a specified pull request.
+#' 
+#' -   [`get_pull_request_approval_states`][codecommit_get_pull_request_approval_states],
+#'     which returns information about the approval states for a specified
+#'     pull request.
+#' 
+#' -   [`get_pull_request_override_state`][codecommit_get_pull_request_override_state],
+#'     which returns information about whether approval rules have been set
+#'     aside (overriden) for a pull request, and if so, the Amazon Resource
+#'     Name (ARN) of the user or identity that overrode the rules and their
+#'     requirements for the pull request.
+#' 
+#' -   [`list_pull_requests`][codecommit_list_pull_requests], which lists
+#'     all pull requests for a repository.
+#' 
+#' -   [`merge_pull_request_by_fast_forward`][codecommit_merge_pull_request_by_fast_forward],
+#'     which merges the source destination branch of a pull request into
+#'     the specified destination branch for that pull request using the
+#'     fast-forward merge option.
+#' 
+#' -   [`merge_pull_request_by_squash`][codecommit_merge_pull_request_by_squash],
+#'     which merges the source destination branch of a pull request into
+#'     the specified destination branch for that pull request using the
+#'     squash merge option.
+#' 
+#' -   [`merge_pull_request_by_three_way`][codecommit_merge_pull_request_by_three_way].
+#'     which merges the source destination branch of a pull request into
+#'     the specified destination branch for that pull request using the
+#'     three-way merge option.
+#' 
+#' -   [`override_pull_request_approval_rules`][codecommit_override_pull_request_approval_rules],
+#'     which sets aside all approval rule requirements for a pull request.
+#' 
+#' -   [`post_comment_for_pull_request`][codecommit_post_comment_for_pull_request],
+#'     which posts a comment to a pull request at the specified line, file,
+#'     or request.
+#' 
+#' -   [`update_pull_request_approval_rule_content`][codecommit_update_pull_request_approval_rule_content],
+#'     which updates the structure of an approval rule for a pull request.
+#' 
+#' -   [`update_pull_request_approval_state`][codecommit_update_pull_request_approval_state],
+#'     which updates the state of an approval on a pull request.
+#' 
+#' -   [`update_pull_request_description`][codecommit_update_pull_request_description],
+#'     which updates the description of a pull request.
+#' 
+#' -   [`update_pull_request_status`][codecommit_update_pull_request_status],
+#'     which updates the status of a pull request.
+#' 
+#' -   [`update_pull_request_title`][codecommit_update_pull_request_title],
+#'     which updates the title of a pull request.
+#' 
+#' Approval rule templates, by calling the following:
+#' 
+#' -   [`associate_approval_rule_template_with_repository`][codecommit_associate_approval_rule_template_with_repository],
+#'     which associates a template with a specified repository. After the
+#'     template is associated with a repository, AWS CodeCommit creates
+#'     approval rules that match the template conditions on every pull
+#'     request created in the specified repository.
+#' 
+#' -   [`batch_associate_approval_rule_template_with_repositories`][codecommit_batch_associate_approval_rule_template_with_repositories],
+#'     which associates a template with one or more specified repositories.
+#'     After the template is associated with a repository, AWS CodeCommit
+#'     creates approval rules that match the template conditions on every
+#'     pull request created in the specified repositories.
+#' 
+#' -   [`batch_disassociate_approval_rule_template_from_repositories`][codecommit_batch_disassociate_approval_rule_template_from_repositories],
+#'     which removes the association between a template and specified
+#'     repositories so that approval rules based on the template are not
+#'     automatically created when pull requests are created in those
+#'     repositories.
+#' 
+#' -   [`create_approval_rule_template`][codecommit_create_approval_rule_template],
+#'     which creates a template for approval rules that can then be
+#'     associated with one or more repositories in your AWS account.
+#' 
+#' -   [`delete_approval_rule_template`][codecommit_delete_approval_rule_template],
+#'     which deletes the specified template. It does not remove approval
+#'     rules on pull requests already created with the template.
+#' 
+#' -   [`disassociate_approval_rule_template_from_repository`][codecommit_disassociate_approval_rule_template_from_repository],
+#'     which removes the association between a template and a repository so
+#'     that approval rules based on the template are not automatically
+#'     created when pull requests are created in the specified repository.
+#' 
+#' -   [`get_approval_rule_template`][codecommit_get_approval_rule_template],
+#'     which returns information about an approval rule template.
+#' 
+#' -   [`list_approval_rule_templates`][codecommit_list_approval_rule_templates],
+#'     which lists all approval rule templates in the AWS Region in your
+#'     AWS account.
+#' 
+#' -   [`list_associated_approval_rule_templates_for_repository`][codecommit_list_associated_approval_rule_templates_for_repository],
+#'     which lists all approval rule templates that are associated with a
+#'     specified repository.
+#' 
+#' -   [`list_repositories_for_approval_rule_template`][codecommit_list_repositories_for_approval_rule_template],
+#'     which lists all repositories associated with the specified approval
+#'     rule template.
+#' 
+#' -   [`update_approval_rule_template_description`][codecommit_update_approval_rule_template_description],
+#'     which updates the description of an approval rule template.
+#' 
+#' -   [`update_approval_rule_template_name`][codecommit_update_approval_rule_template_name],
+#'     which updates the name of an approval rule template.
+#' 
+#' -   [`update_approval_rule_template_content`][codecommit_update_approval_rule_template_content],
+#'     which updates the content of an approval rule template.
+#' 
+#' Comments in a repository, by calling the following:
+#' 
+#' -   [`delete_comment_content`][codecommit_delete_comment_content], which
+#'     deletes the content of a comment on a commit in a repository.
+#' 
+#' -   [`get_comment`][codecommit_get_comment], which returns information
+#'     about a comment on a commit.
+#' 
+#' -   [`get_comment_reactions`][codecommit_get_comment_reactions], which
+#'     returns information about emoji reactions to comments.
+#' 
+#' -   [`get_comments_for_compared_commit`][codecommit_get_comments_for_compared_commit],
+#'     which returns information about comments on the comparison between
+#'     two commit specifiers in a repository.
+#' 
+#' -   [`post_comment_for_compared_commit`][codecommit_post_comment_for_compared_commit],
+#'     which creates a comment on the comparison between two commit
+#'     specifiers in a repository.
+#' 
+#' -   [`post_comment_reply`][codecommit_post_comment_reply], which creates
+#'     a reply to a comment.
+#' 
+#' -   [`put_comment_reaction`][codecommit_put_comment_reaction], which
+#'     creates or updates an emoji reaction to a comment.
+#' 
+#' -   [`update_comment`][codecommit_update_comment], which updates the
+#'     content of a comment on a commit in a repository.
+#' 
+#' Tags used to tag resources in AWS CodeCommit (not Git tags), by calling
+#' the following:
+#' 
+#' -   [`list_tags_for_resource`][codecommit_list_tags_for_resource], which
+#'     gets information about AWS tags for a specified Amazon Resource Name
+#'     (ARN) in AWS CodeCommit.
+#' 
+#' -   [`tag_resource`][codecommit_tag_resource], which adds or updates
+#'     tags for a resource in AWS CodeCommit.
+#' 
+#' -   [`untag_resource`][codecommit_untag_resource], which removes tags
+#'     for a resource in AWS CodeCommit.
+#' 
+#' Triggers, by calling the following:
+#' 
+#' -   [`get_repository_triggers`][codecommit_get_repository_triggers],
+#'     which returns information about triggers configured for a
+#'     repository.
+#' 
+#' -   [`put_repository_triggers`][codecommit_put_repository_triggers],
+#'     which replaces all triggers for a repository and can be used to
+#'     create or delete triggers.
+#' 
+#' -   [`test_repository_triggers`][codecommit_test_repository_triggers],
+#'     which tests the functionality of a repository trigger by sending
+#'     data to the trigger target.
+#' 
+#' For information about how to use AWS CodeCommit, see the [AWS CodeCommit
+#' User
+#' Guide](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- codecommit(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- codecommit()
+#' svc$associate_approval_rule_template_with_repository(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=codecommit_associate_approval_rule_template_with_repository]{associate_approval_rule_template_with_repository} \tab Creates an association between an approval rule template and a specified repository\cr
+#'  \link[=codecommit_batch_associate_approval_rule_template_with_repositories]{batch_associate_approval_rule_template_with_repositories} \tab Creates an association between an approval rule template and one or more specified repositories\cr
+#'  \link[=codecommit_batch_describe_merge_conflicts]{batch_describe_merge_conflicts} \tab Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy\cr
+#'  \link[=codecommit_batch_disassociate_approval_rule_template_from_repositories]{batch_disassociate_approval_rule_template_from_repositories} \tab Removes the association between an approval rule template and one or more specified repositories\cr
+#'  \link[=codecommit_batch_get_commits]{batch_get_commits} \tab Returns information about the contents of one or more commits in a repository\cr
+#'  \link[=codecommit_batch_get_repositories]{batch_get_repositories} \tab Returns information about one or more repositories\cr
+#'  \link[=codecommit_create_approval_rule_template]{create_approval_rule_template} \tab Creates a template for approval rules that can then be associated with one or more repositories in your AWS account\cr
+#'  \link[=codecommit_create_branch]{create_branch} \tab Creates a branch in a repository and points the branch to a commit\cr
+#'  \link[=codecommit_create_commit]{create_commit} \tab Creates a commit for a repository on the tip of a specified branch\cr
+#'  \link[=codecommit_create_pull_request]{create_pull_request} \tab Creates a pull request in the specified repository\cr
+#'  \link[=codecommit_create_pull_request_approval_rule]{create_pull_request_approval_rule} \tab Creates an approval rule for a pull request\cr
+#'  \link[=codecommit_create_repository]{create_repository} \tab Creates a new, empty repository\cr
+#'  \link[=codecommit_create_unreferenced_merge_commit]{create_unreferenced_merge_commit} \tab Creates an unreferenced commit that represents the result of merging two branches using a specified merge strategy\cr
+#'  \link[=codecommit_delete_approval_rule_template]{delete_approval_rule_template} \tab Deletes a specified approval rule template\cr
+#'  \link[=codecommit_delete_branch]{delete_branch} \tab Deletes a branch from a repository, unless that branch is the default branch for the repository\cr
+#'  \link[=codecommit_delete_comment_content]{delete_comment_content} \tab Deletes the content of a comment made on a change, file, or commit in a repository\cr
+#'  \link[=codecommit_delete_file]{delete_file} \tab Deletes a specified file from a specified branch\cr
+#'  \link[=codecommit_delete_pull_request_approval_rule]{delete_pull_request_approval_rule} \tab Deletes an approval rule from a specified pull request\cr
+#'  \link[=codecommit_delete_repository]{delete_repository} \tab Deletes a repository\cr
+#'  \link[=codecommit_describe_merge_conflicts]{describe_merge_conflicts} \tab Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy\cr
+#'  \link[=codecommit_describe_pull_request_events]{describe_pull_request_events} \tab Returns information about one or more pull request events\cr
+#'  \link[=codecommit_disassociate_approval_rule_template_from_repository]{disassociate_approval_rule_template_from_repository} \tab Removes the association between a template and a repository so that approval rules based on the template are not automatically created when pull requests are created in the specified repository\cr
+#'  \link[=codecommit_evaluate_pull_request_approval_rules]{evaluate_pull_request_approval_rules} \tab Evaluates whether a pull request has met all the conditions specified in its associated approval rules\cr
+#'  \link[=codecommit_get_approval_rule_template]{get_approval_rule_template} \tab Returns information about a specified approval rule template\cr
+#'  \link[=codecommit_get_blob]{get_blob} \tab Returns the base-64 encoded content of an individual blob in a repository\cr
+#'  \link[=codecommit_get_branch]{get_branch} \tab Returns information about a repository branch, including its name and the last commit ID\cr
+#'  \link[=codecommit_get_comment]{get_comment} \tab Returns the content of a comment made on a change, file, or commit in a repository\cr
+#'  \link[=codecommit_get_comment_reactions]{get_comment_reactions} \tab Returns information about reactions to a specified comment ID\cr
+#'  \link[=codecommit_get_comments_for_compared_commit]{get_comments_for_compared_commit} \tab Returns information about comments made on the comparison between two commits\cr
+#'  \link[=codecommit_get_comments_for_pull_request]{get_comments_for_pull_request} \tab Returns comments made on a pull request\cr
+#'  \link[=codecommit_get_commit]{get_commit} \tab Returns information about a commit, including commit message and committer information\cr
+#'  \link[=codecommit_get_differences]{get_differences} \tab Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference)\cr
+#'  \link[=codecommit_get_file]{get_file} \tab Returns the base-64 encoded contents of a specified file and its metadata\cr
+#'  \link[=codecommit_get_folder]{get_folder} \tab Returns the contents of a specified folder in a repository\cr
+#'  \link[=codecommit_get_merge_commit]{get_merge_commit} \tab Returns information about a specified merge commit\cr
+#'  \link[=codecommit_get_merge_conflicts]{get_merge_conflicts} \tab Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository\cr
+#'  \link[=codecommit_get_merge_options]{get_merge_options} \tab Returns information about the merge options available for merging two specified branches\cr
+#'  \link[=codecommit_get_pull_request]{get_pull_request} \tab Gets information about a pull request in a specified repository\cr
+#'  \link[=codecommit_get_pull_request_approval_states]{get_pull_request_approval_states} \tab Gets information about the approval states for a specified pull request\cr
+#'  \link[=codecommit_get_pull_request_override_state]{get_pull_request_override_state} \tab Returns information about whether approval rules have been set aside (overridden) for a pull request, and if so, the Amazon Resource Name (ARN) of the user or identity that overrode the rules and their requirements for the pull request\cr
+#'  \link[=codecommit_get_repository]{get_repository} \tab Returns information about a repository\cr
+#'  \link[=codecommit_get_repository_triggers]{get_repository_triggers} \tab Gets information about triggers configured for a repository\cr
+#'  \link[=codecommit_list_approval_rule_templates]{list_approval_rule_templates} \tab Lists all approval rule templates in the specified AWS Region in your AWS account\cr
+#'  \link[=codecommit_list_associated_approval_rule_templates_for_repository]{list_associated_approval_rule_templates_for_repository} \tab Lists all approval rule templates that are associated with a specified repository\cr
+#'  \link[=codecommit_list_branches]{list_branches} \tab Gets information about one or more branches in a repository\cr
+#'  \link[=codecommit_list_pull_requests]{list_pull_requests} \tab Returns a list of pull requests for a specified repository\cr
+#'  \link[=codecommit_list_repositories]{list_repositories} \tab Gets information about one or more repositories\cr
+#'  \link[=codecommit_list_repositories_for_approval_rule_template]{list_repositories_for_approval_rule_template} \tab Lists all repositories associated with the specified approval rule template\cr
+#'  \link[=codecommit_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit\cr
+#'  \link[=codecommit_merge_branches_by_fast_forward]{merge_branches_by_fast_forward} \tab Merges two branches using the fast-forward merge strategy\cr
+#'  \link[=codecommit_merge_branches_by_squash]{merge_branches_by_squash} \tab Merges two branches using the squash merge strategy\cr
+#'  \link[=codecommit_merge_branches_by_three_way]{merge_branches_by_three_way} \tab Merges two specified branches using the three-way merge strategy\cr
+#'  \link[=codecommit_merge_pull_request_by_fast_forward]{merge_pull_request_by_fast_forward} \tab Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge strategy\cr
+#'  \link[=codecommit_merge_pull_request_by_squash]{merge_pull_request_by_squash} \tab Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the squash merge strategy\cr
+#'  \link[=codecommit_merge_pull_request_by_three_way]{merge_pull_request_by_three_way} \tab Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the three-way merge strategy\cr
+#'  \link[=codecommit_override_pull_request_approval_rules]{override_pull_request_approval_rules} \tab Sets aside (overrides) all approval rule requirements for a specified pull request\cr
+#'  \link[=codecommit_post_comment_for_compared_commit]{post_comment_for_compared_commit} \tab Posts a comment on the comparison between two commits\cr
+#'  \link[=codecommit_post_comment_for_pull_request]{post_comment_for_pull_request} \tab Posts a comment on a pull request\cr
+#'  \link[=codecommit_post_comment_reply]{post_comment_reply} \tab Posts a comment in reply to an existing comment on a comparison between commits or a pull request\cr
+#'  \link[=codecommit_put_comment_reaction]{put_comment_reaction} \tab Adds or updates a reaction to a specified comment for the user whose identity is used to make the request\cr
+#'  \link[=codecommit_put_file]{put_file} \tab Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch\cr
+#'  \link[=codecommit_put_repository_triggers]{put_repository_triggers} \tab Replaces all triggers for a repository\cr
+#'  \link[=codecommit_tag_resource]{tag_resource} \tab Adds or updates tags for a resource in AWS CodeCommit\cr
+#'  \link[=codecommit_test_repository_triggers]{test_repository_triggers} \tab Tests the functionality of repository triggers by sending information to the trigger target\cr
+#'  \link[=codecommit_untag_resource]{untag_resource} \tab Removes tags for a resource in AWS CodeCommit\cr
+#'  \link[=codecommit_update_approval_rule_template_content]{update_approval_rule_template_content} \tab Updates the content of an approval rule template\cr
+#'  \link[=codecommit_update_approval_rule_template_description]{update_approval_rule_template_description} \tab Updates the description for a specified approval rule template\cr
+#'  \link[=codecommit_update_approval_rule_template_name]{update_approval_rule_template_name} \tab Updates the name of a specified approval rule template\cr
+#'  \link[=codecommit_update_comment]{update_comment} \tab Replaces the contents of a comment\cr
+#'  \link[=codecommit_update_default_branch]{update_default_branch} \tab Sets or changes the default branch name for the specified repository\cr
+#'  \link[=codecommit_update_pull_request_approval_rule_content]{update_pull_request_approval_rule_content} \tab Updates the structure of an approval rule created specifically for a pull request\cr
+#'  \link[=codecommit_update_pull_request_approval_state]{update_pull_request_approval_state} \tab Updates the state of a user's approval on a pull request\cr
+#'  \link[=codecommit_update_pull_request_description]{update_pull_request_description} \tab Replaces the contents of the description of a pull request\cr
+#'  \link[=codecommit_update_pull_request_status]{update_pull_request_status} \tab Updates the status of a pull request\cr
+#'  \link[=codecommit_update_pull_request_title]{update_pull_request_title} \tab Replaces the title of a pull request\cr
+#'  \link[=codecommit_update_repository_description]{update_repository_description} \tab Sets or changes the comment or description for a repository\cr
+#'  \link[=codecommit_update_repository_name]{update_repository_name} \tab Renames a repository
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname codecommit
+#' @export
+codecommit <- function(config = list()) {
+  paws.developer.tools::codecommit(config)
+}
+
+#' AWS CodeDeploy
+#'
+#' @description
+#' AWS CodeDeploy is a deployment service that automates application
+#' deployments to Amazon EC2 instances, on-premises instances running in
+#' your own facility, serverless AWS Lambda functions, or applications in
+#' an Amazon ECS service.
+#' 
+#' You can deploy a nearly unlimited variety of application content, such
+#' as an updated Lambda function, updated applications in an Amazon ECS
+#' service, code, web and configuration files, executables, packages,
+#' scripts, multimedia files, and so on. AWS CodeDeploy can deploy
+#' application content stored in Amazon S3 buckets, GitHub repositories, or
+#' Bitbucket repositories. You do not need to make changes to your existing
+#' code before you can use AWS CodeDeploy.
+#' 
+#' AWS CodeDeploy makes it easier for you to rapidly release new features,
+#' helps you avoid downtime during application deployment, and handles the
+#' complexity of updating your applications, without many of the risks
+#' associated with error-prone manual deployments.
+#' 
+#' **AWS CodeDeploy Components**
+#' 
+#' Use the information in this guide to help you work with the following
+#' AWS CodeDeploy components:
+#' 
+#' -   **Application**: A name that uniquely identifies the application you
+#'     want to deploy. AWS CodeDeploy uses this name, which functions as a
+#'     container, to ensure the correct combination of revision, deployment
+#'     configuration, and deployment group are referenced during a
+#'     deployment.
+#' 
+#' -   **Deployment group**: A set of individual instances, CodeDeploy
+#'     Lambda deployment configuration settings, or an Amazon ECS service
+#'     and network details. A Lambda deployment group specifies how to
+#'     route traffic to a new version of a Lambda function. An Amazon ECS
+#'     deployment group specifies the service created in Amazon ECS to
+#'     deploy, a load balancer, and a listener to reroute production
+#'     traffic to an updated containerized application. An EC2/On-premises
+#'     deployment group contains individually tagged instances, Amazon EC2
+#'     instances in Amazon EC2 Auto Scaling groups, or both. All deployment
+#'     groups can specify optional trigger, alarm, and rollback settings.
+#' 
+#' -   **Deployment configuration**: A set of deployment rules and
+#'     deployment success and failure conditions used by AWS CodeDeploy
+#'     during a deployment.
+#' 
+#' -   **Deployment**: The process and the components used when updating a
+#'     Lambda function, a containerized application in an Amazon ECS
+#'     service, or of installing content on one or more instances.
+#' 
+#' -   **Application revisions**: For an AWS Lambda deployment, this is an
+#'     AppSpec file that specifies the Lambda function to be updated and
+#'     one or more functions to validate deployment lifecycle events. For
+#'     an Amazon ECS deployment, this is an AppSpec file that specifies the
+#'     Amazon ECS task definition, container, and port where production
+#'     traffic is rerouted. For an EC2/On-premises deployment, this is an
+#'     archive file that contains source content—source code, webpages,
+#'     executable files, and deployment scripts—along with an AppSpec file.
+#'     Revisions are stored in Amazon S3 buckets or GitHub repositories.
+#'     For Amazon S3, a revision is uniquely identified by its Amazon S3
+#'     object key and its ETag, version, or both. For GitHub, a revision is
+#'     uniquely identified by its commit ID.
+#' 
+#' This guide also contains information to help you get details about the
+#' instances in your deployments, to make on-premises instances available
+#' for AWS CodeDeploy deployments, to get details about a Lambda function
+#' deployment, and to get details about Amazon ECS service deployments.
+#' 
+#' **AWS CodeDeploy Information Resources**
+#' 
+#' -   [AWS CodeDeploy User
+#'     Guide](https://docs.aws.amazon.com/codedeploy/latest/userguide/)
+#' 
+#' -   [AWS CodeDeploy API Reference
+#'     Guide](https://docs.aws.amazon.com/codedeploy/latest/APIReference/)
+#' 
+#' -   [AWS CLI Reference for AWS
+#'     CodeDeploy](https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
+#' 
+#' -   [AWS CodeDeploy Developer
+#'     Forum](https://forums.aws.amazon.com/forum.jspa?forumID=179)
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- codedeploy(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- codedeploy()
+#' svc$add_tags_to_on_premises_instances(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=codedeploy_add_tags_to_on_premises_instances]{add_tags_to_on_premises_instances} \tab Adds tags to on-premises instances\cr
+#'  \link[=codedeploy_batch_get_application_revisions]{batch_get_application_revisions} \tab Gets information about one or more application revisions\cr
+#'  \link[=codedeploy_batch_get_applications]{batch_get_applications} \tab Gets information about one or more applications\cr
+#'  \link[=codedeploy_batch_get_deployment_groups]{batch_get_deployment_groups} \tab Gets information about one or more deployment groups\cr
+#'  \link[=codedeploy_batch_get_deployment_instances]{batch_get_deployment_instances} \tab This method works, but is deprecated\cr
+#'  \link[=codedeploy_batch_get_deployments]{batch_get_deployments} \tab Gets information about one or more deployments\cr
+#'  \link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets} \tab Returns an array of one or more targets associated with a deployment\cr
+#'  \link[=codedeploy_batch_get_on_premises_instances]{batch_get_on_premises_instances} \tab Gets information about one or more on-premises instances\cr
+#'  \link[=codedeploy_continue_deployment]{continue_deployment} \tab For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse\cr
+#'  \link[=codedeploy_create_application]{create_application} \tab Creates an application\cr
+#'  \link[=codedeploy_create_deployment]{create_deployment} \tab Deploys an application revision through the specified deployment group\cr
+#'  \link[=codedeploy_create_deployment_config]{create_deployment_config} \tab Creates a deployment configuration\cr
+#'  \link[=codedeploy_create_deployment_group]{create_deployment_group} \tab Creates a deployment group to which application revisions are deployed\cr
+#'  \link[=codedeploy_delete_application]{delete_application} \tab Deletes an application\cr
+#'  \link[=codedeploy_delete_deployment_config]{delete_deployment_config} \tab Deletes a deployment configuration\cr
+#'  \link[=codedeploy_delete_deployment_group]{delete_deployment_group} \tab Deletes a deployment group\cr
+#'  \link[=codedeploy_delete_git_hub_account_token]{delete_git_hub_account_token} \tab Deletes a GitHub account connection\cr
+#'  \link[=codedeploy_delete_resources_by_external_id]{delete_resources_by_external_id} \tab Deletes resources linked to an external ID\cr
+#'  \link[=codedeploy_deregister_on_premises_instance]{deregister_on_premises_instance} \tab Deregisters an on-premises instance\cr
+#'  \link[=codedeploy_get_application]{get_application} \tab Gets information about an application\cr
+#'  \link[=codedeploy_get_application_revision]{get_application_revision} \tab Gets information about an application revision\cr
+#'  \link[=codedeploy_get_deployment]{get_deployment} \tab Gets information about a deployment\cr
+#'  \link[=codedeploy_get_deployment_config]{get_deployment_config} \tab Gets information about a deployment configuration\cr
+#'  \link[=codedeploy_get_deployment_group]{get_deployment_group} \tab Gets information about a deployment group\cr
+#'  \link[=codedeploy_get_deployment_instance]{get_deployment_instance} \tab Gets information about an instance as part of a deployment\cr
+#'  \link[=codedeploy_get_deployment_target]{get_deployment_target} \tab Returns information about a deployment target\cr
+#'  \link[=codedeploy_get_on_premises_instance]{get_on_premises_instance} \tab Gets information about an on-premises instance\cr
+#'  \link[=codedeploy_list_application_revisions]{list_application_revisions} \tab Lists information about revisions for an application\cr
+#'  \link[=codedeploy_list_applications]{list_applications} \tab Lists the applications registered with the IAM user or AWS account\cr
+#'  \link[=codedeploy_list_deployment_configs]{list_deployment_configs} \tab Lists the deployment configurations with the IAM user or AWS account\cr
+#'  \link[=codedeploy_list_deployment_groups]{list_deployment_groups} \tab Lists the deployment groups for an application registered with the IAM user or AWS account\cr
+#'  \link[=codedeploy_list_deployment_instances]{list_deployment_instances} \tab The newer BatchGetDeploymentTargets should be used instead because it works with all compute types\cr
+#'  \link[=codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the IAM user or AWS account\cr
+#'  \link[=codedeploy_list_deployment_targets]{list_deployment_targets} \tab Returns an array of target IDs that are associated a deployment\cr
+#'  \link[=codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names} \tab Lists the names of stored connections to GitHub accounts\cr
+#'  \link[=codedeploy_list_on_premises_instances]{list_on_premises_instances} \tab Gets a list of names for one or more on-premises instances\cr
+#'  \link[=codedeploy_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the resource identified by a specified Amazon Resource Name (ARN)\cr
+#'  \link[=codedeploy_put_lifecycle_event_hook_execution_status]{put_lifecycle_event_hook_execution_status} \tab Sets the result of a Lambda validation function\cr
+#'  \link[=codedeploy_register_application_revision]{register_application_revision} \tab Registers with AWS CodeDeploy a revision for the specified application\cr
+#'  \link[=codedeploy_register_on_premises_instance]{register_on_premises_instance} \tab Registers an on-premises instance\cr
+#'  \link[=codedeploy_remove_tags_from_on_premises_instances]{remove_tags_from_on_premises_instances} \tab Removes one or more tags from one or more on-premises instances\cr
+#'  \link[=codedeploy_skip_wait_time_for_instance_termination]{skip_wait_time_for_instance_termination} \tab In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete\cr
+#'  \link[=codedeploy_stop_deployment]{stop_deployment} \tab Attempts to stop an ongoing deployment\cr
+#'  \link[=codedeploy_tag_resource]{tag_resource} \tab Associates the list of tags in the input Tags parameter with the resource identified by the ResourceArn input parameter\cr
+#'  \link[=codedeploy_untag_resource]{untag_resource} \tab Disassociates a resource from a list of tags\cr
+#'  \link[=codedeploy_update_application]{update_application} \tab Changes the name of an application\cr
+#'  \link[=codedeploy_update_deployment_group]{update_deployment_group} \tab Changes information about a deployment group
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname codedeploy
+#' @export
+codedeploy <- function(config = list()) {
+  paws.developer.tools::codedeploy(config)
+}
+
+#' AWS CodePipeline
+#'
+#' @description
+#' **Overview**
+#' 
+#' This is the AWS CodePipeline API Reference. This guide provides
+#' descriptions of the actions and data types for AWS CodePipeline. Some
+#' functionality for your pipeline can only be configured through the API.
+#' For more information, see the [AWS CodePipeline User
+#' Guide](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
+#' 
+#' You can use the AWS CodePipeline API to work with pipelines, stages,
+#' actions, and transitions.
+#' 
+#' *Pipelines* are models of automated release processes. Each pipeline is
+#' uniquely named, and consists of stages, actions, and transitions.
+#' 
+#' You can work with pipelines by calling:
+#' 
+#' -   [`create_pipeline`][codepipeline_create_pipeline], which creates a
+#'     uniquely named pipeline.
+#' 
+#' -   [`delete_pipeline`][codepipeline_delete_pipeline], which deletes the
+#'     specified pipeline.
+#' 
+#' -   [`get_pipeline`][codepipeline_get_pipeline], which returns
+#'     information about the pipeline structure and pipeline metadata,
+#'     including the pipeline Amazon Resource Name (ARN).
+#' 
+#' -   [`get_pipeline_execution`][codepipeline_get_pipeline_execution],
+#'     which returns information about a specific execution of a pipeline.
+#' 
+#' -   [`get_pipeline_state`][codepipeline_get_pipeline_state], which
+#'     returns information about the current state of the stages and
+#'     actions of a pipeline.
+#' 
+#' -   [`list_action_executions`][codepipeline_list_action_executions],
+#'     which returns action-level details for past executions. The details
+#'     include full stage and action-level details, including individual
+#'     action duration, status, any errors that occurred during the
+#'     execution, and input and output artifact location details.
+#' 
+#' -   [`list_pipelines`][codepipeline_list_pipelines], which gets a
+#'     summary of all of the pipelines associated with your account.
+#' 
+#' -   [`list_pipeline_executions`][codepipeline_list_pipeline_executions],
+#'     which gets a summary of the most recent executions for a pipeline.
+#' 
+#' -   [`start_pipeline_execution`][codepipeline_start_pipeline_execution],
+#'     which runs the most recent revision of an artifact through the
+#'     pipeline.
+#' 
+#' -   [`stop_pipeline_execution`][codepipeline_stop_pipeline_execution],
+#'     which stops the specified pipeline execution from continuing through
+#'     the pipeline.
+#' 
+#' -   [`update_pipeline`][codepipeline_update_pipeline], which updates a
+#'     pipeline with edits or changes to the structure of the pipeline.
+#' 
+#' Pipelines include *stages*. Each stage contains one or more actions that
+#' must complete before the next stage begins. A stage results in success
+#' or failure. If a stage fails, the pipeline stops at that stage and
+#' remains stopped until either a new version of an artifact appears in the
+#' source location, or a user takes action to rerun the most recent
+#' artifact through the pipeline. You can call
+#' [`get_pipeline_state`][codepipeline_get_pipeline_state], which displays
+#' the status of a pipeline, including the status of stages in the
+#' pipeline, or [`get_pipeline`][codepipeline_get_pipeline], which returns
+#' the entire structure of the pipeline, including the stages of that
+#' pipeline. For more information about the structure of stages and
+#' actions, see [AWS CodePipeline Pipeline Structure
+#' Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html).
+#' 
+#' Pipeline stages include *actions* that are categorized into categories
+#' such as source or build actions performed in a stage of a pipeline. For
+#' example, you can use a source action to import artifacts into a pipeline
+#' from a source such as Amazon S3. Like stages, you do not work with
+#' actions directly in most cases, but you do define and interact with
+#' actions when working with pipeline operations such as
+#' [`create_pipeline`][codepipeline_create_pipeline] and
+#' [`get_pipeline_state`][codepipeline_get_pipeline_state]. Valid action
+#' categories are:
+#' 
+#' -   Source
+#' 
+#' -   Build
+#' 
+#' -   Test
+#' 
+#' -   Deploy
+#' 
+#' -   Approval
+#' 
+#' -   Invoke
+#' 
+#' Pipelines also include *transitions*, which allow the transition of
+#' artifacts from one stage to the next in a pipeline after the actions in
+#' one stage complete.
+#' 
+#' You can work with transitions by calling:
+#' 
+#' -   [`disable_stage_transition`][codepipeline_disable_stage_transition],
+#'     which prevents artifacts from transitioning to the next stage in a
+#'     pipeline.
+#' 
+#' -   [`enable_stage_transition`][codepipeline_enable_stage_transition],
+#'     which enables transition of artifacts between stages in a pipeline.
+#' 
+#' **Using the API to integrate with AWS CodePipeline**
+#' 
+#' For third-party integrators or developers who want to create their own
+#' integrations with AWS CodePipeline, the expected sequence varies from
+#' the standard API user. To integrate with AWS CodePipeline, developers
+#' need to work with the following items:
+#' 
+#' **Jobs**, which are instances of an action. For example, a job for a
+#' source action might import a revision of an artifact from a source.
+#' 
+#' You can work with jobs by calling:
+#' 
+#' -   [`acknowledge_job`][codepipeline_acknowledge_job], which confirms
+#'     whether a job worker has received the specified job.
+#' 
+#' -   [`get_job_details`][codepipeline_get_job_details], which returns the
+#'     details of a job.
+#' 
+#' -   [`poll_for_jobs`][codepipeline_poll_for_jobs], which determines
+#'     whether there are any jobs to act on.
+#' 
+#' -   [`put_job_failure_result`][codepipeline_put_job_failure_result],
+#'     which provides details of a job failure.
+#' 
+#' -   [`put_job_success_result`][codepipeline_put_job_success_result],
+#'     which provides details of a job success.
+#' 
+#' **Third party jobs**, which are instances of an action created by a
+#' partner action and integrated into AWS CodePipeline. Partner actions are
+#' created by members of the AWS Partner Network.
+#' 
+#' You can work with third party jobs by calling:
+#' 
+#' -   [`acknowledge_third_party_job`][codepipeline_acknowledge_third_party_job],
+#'     which confirms whether a job worker has received the specified job.
+#' 
+#' -   [`get_third_party_job_details`][codepipeline_get_third_party_job_details],
+#'     which requests the details of a job for a partner action.
+#' 
+#' -   [`poll_for_third_party_jobs`][codepipeline_poll_for_third_party_jobs],
+#'     which determines whether there are any jobs to act on.
+#' 
+#' -   [`put_third_party_job_failure_result`][codepipeline_put_third_party_job_failure_result],
+#'     which provides details of a job failure.
+#' 
+#' -   [`put_third_party_job_success_result`][codepipeline_put_third_party_job_success_result],
+#'     which provides details of a job success.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- codepipeline(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- codepipeline()
+#' svc$acknowledge_job(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=codepipeline_acknowledge_job]{acknowledge_job} \tab Returns information about a specified job and whether that job has been received by the job worker\cr
+#'  \link[=codepipeline_acknowledge_third_party_job]{acknowledge_third_party_job} \tab Confirms a job worker has received the specified job\cr
+#'  \link[=codepipeline_create_custom_action_type]{create_custom_action_type} \tab Creates a new custom action that can be used in all pipelines associated with the AWS account\cr
+#'  \link[=codepipeline_create_pipeline]{create_pipeline} \tab Creates a pipeline\cr
+#'  \link[=codepipeline_delete_custom_action_type]{delete_custom_action_type} \tab Marks a custom action as deleted\cr
+#'  \link[=codepipeline_delete_pipeline]{delete_pipeline} \tab Deletes the specified pipeline\cr
+#'  \link[=codepipeline_delete_webhook]{delete_webhook} \tab Deletes a previously created webhook by name\cr
+#'  \link[=codepipeline_deregister_webhook_with_third_party]{deregister_webhook_with_third_party} \tab Removes the connection between the webhook that was created by CodePipeline and the external tool with events to be detected\cr
+#'  \link[=codepipeline_disable_stage_transition]{disable_stage_transition} \tab Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline\cr
+#'  \link[=codepipeline_enable_stage_transition]{enable_stage_transition} \tab Enables artifacts in a pipeline to transition to a stage in a pipeline\cr
+#'  \link[=codepipeline_get_job_details]{get_job_details} \tab Returns information about a job\cr
+#'  \link[=codepipeline_get_pipeline]{get_pipeline} \tab Returns the metadata, structure, stages, and actions of a pipeline\cr
+#'  \link[=codepipeline_get_pipeline_execution]{get_pipeline_execution} \tab Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline\cr
+#'  \link[=codepipeline_get_pipeline_state]{get_pipeline_state} \tab Returns information about the state of a pipeline, including the stages and actions\cr
+#'  \link[=codepipeline_get_third_party_job_details]{get_third_party_job_details} \tab Requests the details of a job for a third party action\cr
+#'  \link[=codepipeline_list_action_executions]{list_action_executions} \tab Lists the action executions that have occurred in a pipeline\cr
+#'  \link[=codepipeline_list_action_types]{list_action_types} \tab Gets a summary of all AWS CodePipeline action types associated with your account\cr
+#'  \link[=codepipeline_list_pipeline_executions]{list_pipeline_executions} \tab Gets a summary of the most recent executions for a pipeline\cr
+#'  \link[=codepipeline_list_pipelines]{list_pipelines} \tab Gets a summary of all of the pipelines associated with your account\cr
+#'  \link[=codepipeline_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource\cr
+#'  \link[=codepipeline_list_webhooks]{list_webhooks} \tab Gets a listing of all the webhooks in this AWS Region for this account\cr
+#'  \link[=codepipeline_poll_for_jobs]{poll_for_jobs} \tab Returns information about any jobs for AWS CodePipeline to act on\cr
+#'  \link[=codepipeline_poll_for_third_party_jobs]{poll_for_third_party_jobs} \tab Determines whether there are any third party jobs for a job worker to act on\cr
+#'  \link[=codepipeline_put_action_revision]{put_action_revision} \tab Provides information to AWS CodePipeline about new revisions to a source\cr
+#'  \link[=codepipeline_put_approval_result]{put_approval_result} \tab Provides the response to a manual approval request to AWS CodePipeline\cr
+#'  \link[=codepipeline_put_job_failure_result]{put_job_failure_result} \tab Represents the failure of a job as returned to the pipeline by a job worker\cr
+#'  \link[=codepipeline_put_job_success_result]{put_job_success_result} \tab Represents the success of a job as returned to the pipeline by a job worker\cr
+#'  \link[=codepipeline_put_third_party_job_failure_result]{put_third_party_job_failure_result} \tab Represents the failure of a third party job as returned to the pipeline by a job worker\cr
+#'  \link[=codepipeline_put_third_party_job_success_result]{put_third_party_job_success_result} \tab Represents the success of a third party job as returned to the pipeline by a job worker\cr
+#'  \link[=codepipeline_put_webhook]{put_webhook} \tab Defines a webhook and returns a unique webhook URL generated by CodePipeline\cr
+#'  \link[=codepipeline_register_webhook_with_third_party]{register_webhook_with_third_party} \tab Configures a connection between the webhook that was created and the external tool with events to be detected\cr
+#'  \link[=codepipeline_retry_stage_execution]{retry_stage_execution} \tab Resumes the pipeline execution by retrying the last failed actions in a stage\cr
+#'  \link[=codepipeline_start_pipeline_execution]{start_pipeline_execution} \tab Starts the specified pipeline\cr
+#'  \link[=codepipeline_stop_pipeline_execution]{stop_pipeline_execution} \tab Stops the specified pipeline execution\cr
+#'  \link[=codepipeline_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
+#'  \link[=codepipeline_untag_resource]{untag_resource} \tab Removes tags from an AWS resource\cr
+#'  \link[=codepipeline_update_pipeline]{update_pipeline} \tab Updates a specified pipeline with edits or changes to its structure
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname codepipeline
+#' @export
+codepipeline <- function(config = list()) {
+  paws.developer.tools::codepipeline(config)
+}
+
+#' AWS CodeStar
+#'
+#' @description
+#' This is the API reference for AWS CodeStar. This reference provides
+#' descriptions of the operations and data types for the AWS CodeStar API
+#' along with usage examples.
+#' 
+#' You can use the AWS CodeStar API to work with:
+#' 
+#' Projects and their resources, by calling the following:
+#' 
+#' -   [`delete_project`][codestar_delete_project], which deletes a
+#'     project.
+#' 
+#' -   [`describe_project`][codestar_describe_project], which lists the
+#'     attributes of a project.
+#' 
+#' -   [`list_projects`][codestar_list_projects], which lists all projects
+#'     associated with your AWS account.
+#' 
+#' -   [`list_resources`][codestar_list_resources], which lists the
+#'     resources associated with a project.
+#' 
+#' -   [`list_tags_for_project`][codestar_list_tags_for_project], which
+#'     lists the tags associated with a project.
+#' 
+#' -   [`tag_project`][codestar_tag_project], which adds tags to a project.
+#' 
+#' -   [`untag_project`][codestar_untag_project], which removes tags from a
+#'     project.
+#' 
+#' -   [`update_project`][codestar_update_project], which updates the
+#'     attributes of a project.
+#' 
+#' Teams and team members, by calling the following:
+#' 
+#' -   [`associate_team_member`][codestar_associate_team_member], which
+#'     adds an IAM user to the team for a project.
+#' 
+#' -   [`disassociate_team_member`][codestar_disassociate_team_member],
+#'     which removes an IAM user from the team for a project.
+#' 
+#' -   [`list_team_members`][codestar_list_team_members], which lists all
+#'     the IAM users in the team for a project, including their roles and
+#'     attributes.
+#' 
+#' -   [`update_team_member`][codestar_update_team_member], which updates a
+#'     team member's attributes in a project.
+#' 
+#' Users, by calling the following:
+#' 
+#' -   [`create_user_profile`][codestar_create_user_profile], which creates
+#'     a user profile that contains data associated with the user across
+#'     all projects.
+#' 
+#' -   [`delete_user_profile`][codestar_delete_user_profile], which deletes
+#'     all user profile information across all projects.
+#' 
+#' -   [`describe_user_profile`][codestar_describe_user_profile], which
+#'     describes the profile of a user.
+#' 
+#' -   [`list_user_profiles`][codestar_list_user_profiles], which lists all
+#'     user profiles.
+#' 
+#' -   [`update_user_profile`][codestar_update_user_profile], which updates
+#'     the profile for a user.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- codestar(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- codestar()
+#' svc$associate_team_member(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=codestar_associate_team_member]{associate_team_member} \tab Adds an IAM user to the team for an AWS CodeStar project\cr
+#'  \link[=codestar_create_project]{create_project} \tab Creates a project, including project resources\cr
+#'  \link[=codestar_create_user_profile]{create_user_profile} \tab Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar\cr
+#'  \link[=codestar_delete_project]{delete_project} \tab Deletes a project, including project resources\cr
+#'  \link[=codestar_delete_user_profile]{delete_user_profile} \tab Deletes a user profile in AWS CodeStar, including all personal preference data associated with that profile, such as display name and email address\cr
+#'  \link[=codestar_describe_project]{describe_project} \tab Describes a project and its resources\cr
+#'  \link[=codestar_describe_user_profile]{describe_user_profile} \tab Describes a user in AWS CodeStar and the user attributes across all projects\cr
+#'  \link[=codestar_disassociate_team_member]{disassociate_team_member} \tab Removes a user from a project\cr
+#'  \link[=codestar_list_projects]{list_projects} \tab Lists all projects in AWS CodeStar associated with your AWS account\cr
+#'  \link[=codestar_list_resources]{list_resources} \tab Lists resources associated with a project in AWS CodeStar\cr
+#'  \link[=codestar_list_tags_for_project]{list_tags_for_project} \tab Gets the tags for a project\cr
+#'  \link[=codestar_list_team_members]{list_team_members} \tab Lists all team members associated with a project\cr
+#'  \link[=codestar_list_user_profiles]{list_user_profiles} \tab Lists all the user profiles configured for your AWS account in AWS CodeStar\cr
+#'  \link[=codestar_tag_project]{tag_project} \tab Adds tags to a project\cr
+#'  \link[=codestar_untag_project]{untag_project} \tab Removes tags from a project\cr
+#'  \link[=codestar_update_project]{update_project} \tab Updates a project in AWS CodeStar\cr
+#'  \link[=codestar_update_team_member]{update_team_member} \tab Updates a team member's attributes in an AWS CodeStar project\cr
+#'  \link[=codestar_update_user_profile]{update_user_profile} \tab Updates a user's profile in AWS CodeStar
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname codestar
+#' @export
+codestar <- function(config = list()) {
+  paws.developer.tools::codestar(config)
+}
+
+#' AWS X-Ray
+#'
+#' @description
+#' AWS X-Ray provides APIs for managing debug traces and retrieving service
+#' maps and other data created by processing those traces.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- xray(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- xray()
+#' svc$batch_get_traces(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=xray_batch_get_traces]{batch_get_traces} \tab Retrieves a list of traces specified by ID\cr
+#'  \link[=xray_create_group]{create_group} \tab Creates a group resource with a name and a filter expression\cr
+#'  \link[=xray_create_sampling_rule]{create_sampling_rule} \tab Creates a rule to control sampling behavior for instrumented applications\cr
+#'  \link[=xray_delete_group]{delete_group} \tab Deletes a group resource\cr
+#'  \link[=xray_delete_sampling_rule]{delete_sampling_rule} \tab Deletes a sampling rule\cr
+#'  \link[=xray_get_encryption_config]{get_encryption_config} \tab Retrieves the current encryption configuration for X-Ray data\cr
+#'  \link[=xray_get_group]{get_group} \tab Retrieves group resource details\cr
+#'  \link[=xray_get_groups]{get_groups} \tab Retrieves all active group details\cr
+#'  \link[=xray_get_insight]{get_insight} \tab Retrieves the summary information of an insight\cr
+#'  \link[=xray_get_insight_events]{get_insight_events} \tab X-Ray reevaluates insights periodically until they're resolved, and records each intermediate state as an event\cr
+#'  \link[=xray_get_insight_impact_graph]{get_insight_impact_graph} \tab Retrieves a service graph structure filtered by the specified insight\cr
+#'  \link[=xray_get_insight_summaries]{get_insight_summaries} \tab Retrieves the summaries of all insights in the specified group matching the provided filter values\cr
+#'  \link[=xray_get_sampling_rules]{get_sampling_rules} \tab Retrieves all sampling rules\cr
+#'  \link[=xray_get_sampling_statistic_summaries]{get_sampling_statistic_summaries} \tab Retrieves information about recent sampling results for all sampling rules\cr
+#'  \link[=xray_get_sampling_targets]{get_sampling_targets} \tab Requests a sampling quota for rules that the service is using to sample requests\cr
+#'  \link[=xray_get_service_graph]{get_service_graph} \tab Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result\cr
+#'  \link[=xray_get_time_series_service_statistics]{get_time_series_service_statistics} \tab Get an aggregation of service statistics defined by a specific time range\cr
+#'  \link[=xray_get_trace_graph]{get_trace_graph} \tab Retrieves a service graph for one or more specific trace IDs\cr
+#'  \link[=xray_get_trace_summaries]{get_trace_summaries} \tab Retrieves IDs and annotations for traces available for a specified time frame using an optional filter\cr
+#'  \link[=xray_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags that are applied to the specified AWS X-Ray group or sampling rule\cr
+#'  \link[=xray_put_encryption_config]{put_encryption_config} \tab Updates the encryption configuration for X-Ray data\cr
+#'  \link[=xray_put_telemetry_records]{put_telemetry_records} \tab Used by the AWS X-Ray daemon to upload telemetry\cr
+#'  \link[=xray_put_trace_segments]{put_trace_segments} \tab Uploads segment documents to AWS X-Ray\cr
+#'  \link[=xray_tag_resource]{tag_resource} \tab Applies tags to an existing AWS X-Ray group or sampling rule\cr
+#'  \link[=xray_untag_resource]{untag_resource} \tab Removes tags from an AWS X-Ray group or sampling rule\cr
+#'  \link[=xray_update_group]{update_group} \tab Updates a group resource\cr
+#'  \link[=xray_update_sampling_rule]{update_sampling_rule} \tab Modifies a sampling rule's configuration
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname xray
+#' @export
+xray <- function(config = list()) {
+  paws.developer.tools::xray(config)
+}
+
 #' Application Auto Scaling
 #'
 #' @description
@@ -15299,4 +16711,444 @@ pinpointsmsvoice <- function(config = list()) {
 #' @export
 ses <- function(config = list()) {
   paws.customer.engagement::ses(config)
+}
+
+#' Amazon AppStream
+#'
+#' @description
+#' Amazon AppStream 2.0
+#' 
+#' This is the *Amazon AppStream 2.0 API Reference*. This documentation
+#' provides descriptions and syntax for each of the actions and data types
+#' in AppStream 2.0. AppStream 2.0 is a fully managed, secure application
+#' streaming service that lets you stream desktop applications to users
+#' without rewriting applications. AppStream 2.0 manages the AWS resources
+#' that are required to host and run your applications, scales
+#' automatically, and provides access to your users on demand.
+#' 
+#' You can call the AppStream 2.0 API operations by using an interface VPC
+#' endpoint (interface endpoint). For more information, see [Access
+#' AppStream 2.0 API Operations and CLI Commands Through an Interface VPC
+#' Endpoint](https://docs.aws.amazon.com/appstream2/latest/developerguide/access-api-cli-through-interface-vpc-endpoint.html)
+#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' 
+#' To learn more about AppStream 2.0, see the following resources:
+#' 
+#' -   [Amazon AppStream 2.0 product
+#'     page](https://aws.amazon.com/appstream2/)
+#' 
+#' -   [Amazon AppStream 2.0
+#'     documentation](https://docs.aws.amazon.com/appstream2/index.html)
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- appstream(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- appstream()
+#' svc$associate_fleet(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=appstream_associate_fleet]{associate_fleet} \tab Associates the specified fleet with the specified stack\cr
+#'  \link[=appstream_batch_associate_user_stack]{batch_associate_user_stack} \tab Associates the specified users with the specified stacks\cr
+#'  \link[=appstream_batch_disassociate_user_stack]{batch_disassociate_user_stack} \tab Disassociates the specified users from the specified stacks\cr
+#'  \link[=appstream_copy_image]{copy_image} \tab Copies the image within the same region or to a new region within the same AWS account\cr
+#'  \link[=appstream_create_directory_config]{create_directory_config} \tab Creates a Directory Config object in AppStream 2\cr
+#'  \link[=appstream_create_fleet]{create_fleet} \tab Creates a fleet\cr
+#'  \link[=appstream_create_image_builder]{create_image_builder} \tab Creates an image builder\cr
+#'  \link[=appstream_create_image_builder_streaming_url]{create_image_builder_streaming_url} \tab Creates a URL to start an image builder streaming session\cr
+#'  \link[=appstream_create_stack]{create_stack} \tab Creates a stack to start streaming applications to users\cr
+#'  \link[=appstream_create_streaming_url]{create_streaming_url} \tab Creates a temporary URL to start an AppStream 2\cr
+#'  \link[=appstream_create_usage_report_subscription]{create_usage_report_subscription} \tab Creates a usage report subscription\cr
+#'  \link[=appstream_create_user]{create_user} \tab Creates a new user in the user pool\cr
+#'  \link[=appstream_delete_directory_config]{delete_directory_config} \tab Deletes the specified Directory Config object from AppStream 2\cr
+#'  \link[=appstream_delete_fleet]{delete_fleet} \tab Deletes the specified fleet\cr
+#'  \link[=appstream_delete_image]{delete_image} \tab Deletes the specified image\cr
+#'  \link[=appstream_delete_image_builder]{delete_image_builder} \tab Deletes the specified image builder and releases the capacity\cr
+#'  \link[=appstream_delete_image_permissions]{delete_image_permissions} \tab Deletes permissions for the specified private image\cr
+#'  \link[=appstream_delete_stack]{delete_stack} \tab Deletes the specified stack\cr
+#'  \link[=appstream_delete_usage_report_subscription]{delete_usage_report_subscription} \tab Disables usage report generation\cr
+#'  \link[=appstream_delete_user]{delete_user} \tab Deletes a user from the user pool\cr
+#'  \link[=appstream_describe_directory_configs]{describe_directory_configs} \tab Retrieves a list that describes one or more specified Directory Config objects for AppStream 2\cr
+#'  \link[=appstream_describe_fleets]{describe_fleets} \tab Retrieves a list that describes one or more specified fleets, if the fleet names are provided\cr
+#'  \link[=appstream_describe_image_builders]{describe_image_builders} \tab Retrieves a list that describes one or more specified image builders, if the image builder names are provided\cr
+#'  \link[=appstream_describe_image_permissions]{describe_image_permissions} \tab Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own\cr
+#'  \link[=appstream_describe_images]{describe_images} \tab Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided\cr
+#'  \link[=appstream_describe_sessions]{describe_sessions} \tab Retrieves a list that describes the streaming sessions for a specified stack and fleet\cr
+#'  \link[=appstream_describe_stacks]{describe_stacks} \tab Retrieves a list that describes one or more specified stacks, if the stack names are provided\cr
+#'  \link[=appstream_describe_usage_report_subscriptions]{describe_usage_report_subscriptions} \tab Retrieves a list that describes one or more usage report subscriptions\cr
+#'  \link[=appstream_describe_users]{describe_users} \tab Retrieves a list that describes one or more specified users in the user pool\cr
+#'  \link[=appstream_describe_user_stack_associations]{describe_user_stack_associations} \tab Retrieves a list that describes the UserStackAssociation objects\cr
+#'  \link[=appstream_disable_user]{disable_user} \tab Disables the specified user in the user pool\cr
+#'  \link[=appstream_disassociate_fleet]{disassociate_fleet} \tab Disassociates the specified fleet from the specified stack\cr
+#'  \link[=appstream_enable_user]{enable_user} \tab Enables a user in the user pool\cr
+#'  \link[=appstream_expire_session]{expire_session} \tab Immediately stops the specified streaming session\cr
+#'  \link[=appstream_list_associated_fleets]{list_associated_fleets} \tab Retrieves the name of the fleet that is associated with the specified stack\cr
+#'  \link[=appstream_list_associated_stacks]{list_associated_stacks} \tab Retrieves the name of the stack with which the specified fleet is associated\cr
+#'  \link[=appstream_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of all tags for the specified AppStream 2\cr
+#'  \link[=appstream_start_fleet]{start_fleet} \tab Starts the specified fleet\cr
+#'  \link[=appstream_start_image_builder]{start_image_builder} \tab Starts the specified image builder\cr
+#'  \link[=appstream_stop_fleet]{stop_fleet} \tab Stops the specified fleet\cr
+#'  \link[=appstream_stop_image_builder]{stop_image_builder} \tab Stops the specified image builder\cr
+#'  \link[=appstream_tag_resource]{tag_resource} \tab Adds or overwrites one or more tags for the specified AppStream 2\cr
+#'  \link[=appstream_untag_resource]{untag_resource} \tab Disassociates one or more specified tags from the specified AppStream 2\cr
+#'  \link[=appstream_update_directory_config]{update_directory_config} \tab Updates the specified Directory Config object in AppStream 2\cr
+#'  \link[=appstream_update_fleet]{update_fleet} \tab Updates the specified fleet\cr
+#'  \link[=appstream_update_image_permissions]{update_image_permissions} \tab Adds or updates permissions for the specified private image\cr
+#'  \link[=appstream_update_stack]{update_stack} \tab Updates the specified fields for the specified stack
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname appstream
+#' @export
+appstream <- function(config = list()) {
+  paws.end.user.computing::appstream(config)
+}
+
+#' Amazon WorkDocs
+#'
+#' @description
+#' The WorkDocs API is designed for the following use cases:
+#' 
+#' -   File Migration: File migration applications are supported for users
+#'     who want to migrate their files from an on-premises or off-premises
+#'     file system or service. Users can insert files into a user directory
+#'     structure, as well as allow for basic metadata changes, such as
+#'     modifications to the permissions of files.
+#' 
+#' -   Security: Support security applications are supported for users who
+#'     have additional security needs, such as antivirus or data loss
+#'     prevention. The API actions, along with AWS CloudTrail, allow these
+#'     applications to detect when changes occur in Amazon WorkDocs. Then,
+#'     the application can take the necessary actions and replace the
+#'     target file. If the target file violates the policy, the application
+#'     can also choose to email the user.
+#' 
+#' -   eDiscovery/Analytics: General administrative applications are
+#'     supported, such as eDiscovery and analytics. These applications can
+#'     choose to mimic or record the actions in an Amazon WorkDocs site,
+#'     along with AWS CloudTrail, to replicate data for eDiscovery, backup,
+#'     or analytical applications.
+#' 
+#' All Amazon WorkDocs API actions are Amazon authenticated and
+#' certificate-signed. They not only require the use of the AWS SDK, but
+#' also allow for the exclusive use of IAM users and roles to help
+#' facilitate access, trust, and permission policies. By creating a role
+#' and allowing an IAM user to access the Amazon WorkDocs site, the IAM
+#' user gains full administrative visibility into the entire Amazon
+#' WorkDocs site (or as set in the IAM policy). This includes, but is not
+#' limited to, the ability to modify file permissions and upload any file
+#' to any user. This allows developers to perform the three use cases
+#' above, as well as give users the ability to grant access on a selective
+#' basis using the IAM model.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- workdocs(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- workdocs()
+#' svc$abort_document_version_upload(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=workdocs_abort_document_version_upload]{abort_document_version_upload} \tab Aborts the upload of the specified document version that was previously initiated by InitiateDocumentVersionUpload\cr
+#'  \link[=workdocs_activate_user]{activate_user} \tab Activates the specified user\cr
+#'  \link[=workdocs_add_resource_permissions]{add_resource_permissions} \tab Creates a set of permissions for the specified folder or document\cr
+#'  \link[=workdocs_create_comment]{create_comment} \tab Adds a new comment to the specified document version\cr
+#'  \link[=workdocs_create_custom_metadata]{create_custom_metadata} \tab Adds one or more custom properties to the specified resource (a folder, document, or version)\cr
+#'  \link[=workdocs_create_folder]{create_folder} \tab Creates a folder with the specified name and parent folder\cr
+#'  \link[=workdocs_create_labels]{create_labels} \tab Adds the specified list of labels to the given resource (a document or folder)\cr
+#'  \link[=workdocs_create_notification_subscription]{create_notification_subscription} \tab Configure Amazon WorkDocs to use Amazon SNS notifications\cr
+#'  \link[=workdocs_create_user]{create_user} \tab Creates a user in a Simple AD or Microsoft AD directory\cr
+#'  \link[=workdocs_deactivate_user]{deactivate_user} \tab Deactivates the specified user, which revokes the user's access to Amazon WorkDocs\cr
+#'  \link[=workdocs_delete_comment]{delete_comment} \tab Deletes the specified comment from the document version\cr
+#'  \link[=workdocs_delete_custom_metadata]{delete_custom_metadata} \tab Deletes custom metadata from the specified resource\cr
+#'  \link[=workdocs_delete_document]{delete_document} \tab Permanently deletes the specified document and its associated metadata\cr
+#'  \link[=workdocs_delete_folder]{delete_folder} \tab Permanently deletes the specified folder and its contents\cr
+#'  \link[=workdocs_delete_folder_contents]{delete_folder_contents} \tab Deletes the contents of the specified folder\cr
+#'  \link[=workdocs_delete_labels]{delete_labels} \tab Deletes the specified list of labels from a resource\cr
+#'  \link[=workdocs_delete_notification_subscription]{delete_notification_subscription} \tab Deletes the specified subscription from the specified organization\cr
+#'  \link[=workdocs_delete_user]{delete_user} \tab Deletes the specified user from a Simple AD or Microsoft AD directory\cr
+#'  \link[=workdocs_describe_activities]{describe_activities} \tab Describes the user activities in a specified time period\cr
+#'  \link[=workdocs_describe_comments]{describe_comments} \tab List all the comments for the specified document version\cr
+#'  \link[=workdocs_describe_document_versions]{describe_document_versions} \tab Retrieves the document versions for the specified document\cr
+#'  \link[=workdocs_describe_folder_contents]{describe_folder_contents} \tab Describes the contents of the specified folder, including its documents and subfolders\cr
+#'  \link[=workdocs_describe_groups]{describe_groups} \tab Describes the groups specified by the query\cr
+#'  \link[=workdocs_describe_notification_subscriptions]{describe_notification_subscriptions} \tab Lists the specified notification subscriptions\cr
+#'  \link[=workdocs_describe_resource_permissions]{describe_resource_permissions} \tab Describes the permissions of a specified resource\cr
+#'  \link[=workdocs_describe_root_folders]{describe_root_folders} \tab Describes the current user's special folders; the RootFolder and the RecycleBin\cr
+#'  \link[=workdocs_describe_users]{describe_users} \tab Describes the specified users\cr
+#'  \link[=workdocs_get_current_user]{get_current_user} \tab Retrieves details of the current user for whom the authentication token was generated\cr
+#'  \link[=workdocs_get_document]{get_document} \tab Retrieves details of a document\cr
+#'  \link[=workdocs_get_document_path]{get_document_path} \tab Retrieves the path information (the hierarchy from the root folder) for the requested document\cr
+#'  \link[=workdocs_get_document_version]{get_document_version} \tab Retrieves version metadata for the specified document\cr
+#'  \link[=workdocs_get_folder]{get_folder} \tab Retrieves the metadata of the specified folder\cr
+#'  \link[=workdocs_get_folder_path]{get_folder_path} \tab Retrieves the path information (the hierarchy from the root folder) for the specified folder\cr
+#'  \link[=workdocs_get_resources]{get_resources} \tab Retrieves a collection of resources, including folders and documents\cr
+#'  \link[=workdocs_initiate_document_version_upload]{initiate_document_version_upload} \tab Creates a new document object and version object\cr
+#'  \link[=workdocs_remove_all_resource_permissions]{remove_all_resource_permissions} \tab Removes all the permissions from the specified resource\cr
+#'  \link[=workdocs_remove_resource_permission]{remove_resource_permission} \tab Removes the permission for the specified principal from the specified resource\cr
+#'  \link[=workdocs_update_document]{update_document} \tab Updates the specified attributes of a document\cr
+#'  \link[=workdocs_update_document_version]{update_document_version} \tab Changes the status of the document version to ACTIVE\cr
+#'  \link[=workdocs_update_folder]{update_folder} \tab Updates the specified attributes of the specified folder\cr
+#'  \link[=workdocs_update_user]{update_user} \tab Updates the specified attributes of the specified user, and grants or revokes administrative privileges to the Amazon WorkDocs site
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname workdocs
+#' @export
+workdocs <- function(config = list()) {
+  paws.end.user.computing::workdocs(config)
+}
+
+#' Amazon WorkLink
+#'
+#' @description
+#' Amazon WorkLink is a cloud-based service that provides secure access to
+#' internal websites and web apps from iOS and Android phones. In a single
+#' step, your users, such as employees, can access internal websites as
+#' efficiently as they access any other public website. They enter a URL in
+#' their web browser, or choose a link to an internal website in an email.
+#' Amazon WorkLink authenticates the user's access and securely renders
+#' authorized internal web content in a secure rendering service in the AWS
+#' cloud. Amazon WorkLink doesn't download or store any internal web
+#' content on mobile devices.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- worklink(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- worklink()
+#' svc$associate_domain(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=worklink_associate_domain]{associate_domain} \tab Specifies a domain to be associated to Amazon WorkLink\cr
+#'  \link[=worklink_associate_website_authorization_provider]{associate_website_authorization_provider} \tab Associates a website authorization provider with a specified fleet\cr
+#'  \link[=worklink_associate_website_certificate_authority]{associate_website_certificate_authority} \tab Imports the root certificate of a certificate authority (CA) used to obtain TLS certificates used by associated websites within the company network\cr
+#'  \link[=worklink_create_fleet]{create_fleet} \tab Creates a fleet\cr
+#'  \link[=worklink_delete_fleet]{delete_fleet} \tab Deletes a fleet\cr
+#'  \link[=worklink_describe_audit_stream_configuration]{describe_audit_stream_configuration} \tab Describes the configuration for delivering audit streams to the customer account\cr
+#'  \link[=worklink_describe_company_network_configuration]{describe_company_network_configuration} \tab Describes the networking configuration to access the internal websites associated with the specified fleet\cr
+#'  \link[=worklink_describe_device]{describe_device} \tab Provides information about a user's device\cr
+#'  \link[=worklink_describe_device_policy_configuration]{describe_device_policy_configuration} \tab Describes the device policy configuration for the specified fleet\cr
+#'  \link[=worklink_describe_domain]{describe_domain} \tab Provides information about the domain\cr
+#'  \link[=worklink_describe_fleet_metadata]{describe_fleet_metadata} \tab Provides basic information for the specified fleet, excluding identity provider, networking, and device configuration details\cr
+#'  \link[=worklink_describe_identity_provider_configuration]{describe_identity_provider_configuration} \tab Describes the identity provider configuration of the specified fleet\cr
+#'  \link[=worklink_describe_website_certificate_authority]{describe_website_certificate_authority} \tab Provides information about the certificate authority\cr
+#'  \link[=worklink_disassociate_domain]{disassociate_domain} \tab Disassociates a domain from Amazon WorkLink\cr
+#'  \link[=worklink_disassociate_website_authorization_provider]{disassociate_website_authorization_provider} \tab Disassociates a website authorization provider from a specified fleet\cr
+#'  \link[=worklink_disassociate_website_certificate_authority]{disassociate_website_certificate_authority} \tab Removes a certificate authority (CA)\cr
+#'  \link[=worklink_list_devices]{list_devices} \tab Retrieves a list of devices registered with the specified fleet\cr
+#'  \link[=worklink_list_domains]{list_domains} \tab Retrieves a list of domains associated to a specified fleet\cr
+#'  \link[=worklink_list_fleets]{list_fleets} \tab Retrieves a list of fleets for the current account and Region\cr
+#'  \link[=worklink_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of tags for the specified resource\cr
+#'  \link[=worklink_list_website_authorization_providers]{list_website_authorization_providers} \tab Retrieves a list of website authorization providers associated with a specified fleet\cr
+#'  \link[=worklink_list_website_certificate_authorities]{list_website_certificate_authorities} \tab Retrieves a list of certificate authorities added for the current account and Region\cr
+#'  \link[=worklink_restore_domain_access]{restore_domain_access} \tab Moves a domain to ACTIVE status if it was in the INACTIVE status\cr
+#'  \link[=worklink_revoke_domain_access]{revoke_domain_access} \tab Moves a domain to INACTIVE status if it was in the ACTIVE status\cr
+#'  \link[=worklink_sign_out_user]{sign_out_user} \tab Signs the user out from all of their devices\cr
+#'  \link[=worklink_tag_resource]{tag_resource} \tab Adds or overwrites one or more tags for the specified resource, such as a fleet\cr
+#'  \link[=worklink_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
+#'  \link[=worklink_update_audit_stream_configuration]{update_audit_stream_configuration} \tab Updates the audit stream configuration for the fleet\cr
+#'  \link[=worklink_update_company_network_configuration]{update_company_network_configuration} \tab Updates the company network configuration for the fleet\cr
+#'  \link[=worklink_update_device_policy_configuration]{update_device_policy_configuration} \tab Updates the device policy configuration for the fleet\cr
+#'  \link[=worklink_update_domain_metadata]{update_domain_metadata} \tab Updates domain metadata, such as DisplayName\cr
+#'  \link[=worklink_update_fleet_metadata]{update_fleet_metadata} \tab Updates fleet metadata, such as DisplayName\cr
+#'  \link[=worklink_update_identity_provider_configuration]{update_identity_provider_configuration} \tab Updates the identity provider configuration for the fleet
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname worklink
+#' @export
+worklink <- function(config = list()) {
+  paws.end.user.computing::worklink(config)
+}
+
+#' Amazon WorkSpaces
+#'
+#' @description
+#' Amazon WorkSpaces Service
+#' 
+#' Amazon WorkSpaces enables you to provision virtual, cloud-based
+#' Microsoft Windows and Amazon Linux desktops for your users.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- workspaces(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- workspaces()
+#' svc$associate_connection_alias(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=workspaces_associate_connection_alias]{associate_connection_alias} \tab Associates the specified connection alias with the specified directory to enable cross-Region redirection\cr
+#'  \link[=workspaces_associate_ip_groups]{associate_ip_groups} \tab Associates the specified IP access control group with the specified directory\cr
+#'  \link[=workspaces_authorize_ip_rules]{authorize_ip_rules} \tab Adds one or more rules to the specified IP access control group\cr
+#'  \link[=workspaces_copy_workspace_image]{copy_workspace_image} \tab Copies the specified image from the specified Region to the current Region\cr
+#'  \link[=workspaces_create_connection_alias]{create_connection_alias} \tab Creates the specified connection alias for use with cross-Region redirection\cr
+#'  \link[=workspaces_create_ip_group]{create_ip_group} \tab Creates an IP access control group\cr
+#'  \link[=workspaces_create_tags]{create_tags} \tab Creates the specified tags for the specified WorkSpaces resource\cr
+#'  \link[=workspaces_create_workspaces]{create_workspaces} \tab Creates one or more WorkSpaces\cr
+#'  \link[=workspaces_delete_connection_alias]{delete_connection_alias} \tab Deletes the specified connection alias\cr
+#'  \link[=workspaces_delete_ip_group]{delete_ip_group} \tab Deletes the specified IP access control group\cr
+#'  \link[=workspaces_delete_tags]{delete_tags} \tab Deletes the specified tags from the specified WorkSpaces resource\cr
+#'  \link[=workspaces_delete_workspace_image]{delete_workspace_image} \tab Deletes the specified image from your account\cr
+#'  \link[=workspaces_deregister_workspace_directory]{deregister_workspace_directory} \tab Deregisters the specified directory\cr
+#'  \link[=workspaces_describe_account]{describe_account} \tab Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account\cr
+#'  \link[=workspaces_describe_account_modifications]{describe_account_modifications} \tab Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the specified account\cr
+#'  \link[=workspaces_describe_client_properties]{describe_client_properties} \tab Retrieves a list that describes one or more specified Amazon WorkSpaces clients\cr
+#'  \link[=workspaces_describe_connection_aliases]{describe_connection_aliases} \tab Retrieves a list that describes the connection aliases used for cross-Region redirection\cr
+#'  \link[=workspaces_describe_connection_alias_permissions]{describe_connection_alias_permissions} \tab Describes the permissions that the owner of a connection alias has granted to another AWS account for the specified connection alias\cr
+#'  \link[=workspaces_describe_ip_groups]{describe_ip_groups} \tab Describes one or more of your IP access control groups\cr
+#'  \link[=workspaces_describe_tags]{describe_tags} \tab Describes the specified tags for the specified WorkSpaces resource\cr
+#'  \link[=workspaces_describe_workspace_bundles]{describe_workspace_bundles} \tab Retrieves a list that describes the available WorkSpace bundles\cr
+#'  \link[=workspaces_describe_workspace_directories]{describe_workspace_directories} \tab Describes the available directories that are registered with Amazon WorkSpaces\cr
+#'  \link[=workspaces_describe_workspace_image_permissions]{describe_workspace_image_permissions} \tab Describes the permissions that the owner of an image has granted to other AWS accounts for an image\cr
+#'  \link[=workspaces_describe_workspace_images]{describe_workspace_images} \tab Retrieves a list that describes one or more specified images, if the image identifiers are provided\cr
+#'  \link[=workspaces_describe_workspaces]{describe_workspaces} \tab Describes the specified WorkSpaces\cr
+#'  \link[=workspaces_describe_workspaces_connection_status]{describe_workspaces_connection_status} \tab Describes the connection status of the specified WorkSpaces\cr
+#'  \link[=workspaces_describe_workspace_snapshots]{describe_workspace_snapshots} \tab Describes the snapshots for the specified WorkSpace\cr
+#'  \link[=workspaces_disassociate_connection_alias]{disassociate_connection_alias} \tab Disassociates a connection alias from a directory\cr
+#'  \link[=workspaces_disassociate_ip_groups]{disassociate_ip_groups} \tab Disassociates the specified IP access control group from the specified directory\cr
+#'  \link[=workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces\cr
+#'  \link[=workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges} \tab Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL)\cr
+#'  \link[=workspaces_migrate_workspace]{migrate_workspace} \tab Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user volume\cr
+#'  \link[=workspaces_modify_account]{modify_account} \tab Modifies the configuration of Bring Your Own License (BYOL) for the specified account\cr
+#'  \link[=workspaces_modify_client_properties]{modify_client_properties} \tab Modifies the properties of the specified Amazon WorkSpaces clients\cr
+#'  \link[=workspaces_modify_selfservice_permissions]{modify_selfservice_permissions} \tab Modifies the self-service WorkSpace management capabilities for your users\cr
+#'  \link[=workspaces_modify_workspace_access_properties]{modify_workspace_access_properties} \tab Specifies which devices and operating systems users can use to access their WorkSpaces\cr
+#'  \link[=workspaces_modify_workspace_creation_properties]{modify_workspace_creation_properties} \tab Modify the default properties used to create WorkSpaces\cr
+#'  \link[=workspaces_modify_workspace_properties]{modify_workspace_properties} \tab Modifies the specified WorkSpace properties\cr
+#'  \link[=workspaces_modify_workspace_state]{modify_workspace_state} \tab Sets the state of the specified WorkSpace\cr
+#'  \link[=workspaces_reboot_workspaces]{reboot_workspaces} \tab Reboots the specified WorkSpaces\cr
+#'  \link[=workspaces_rebuild_workspaces]{rebuild_workspaces} \tab Rebuilds the specified WorkSpace\cr
+#'  \link[=workspaces_register_workspace_directory]{register_workspace_directory} \tab Registers the specified directory\cr
+#'  \link[=workspaces_restore_workspace]{restore_workspace} \tab Restores the specified WorkSpace to its last known healthy state\cr
+#'  \link[=workspaces_revoke_ip_rules]{revoke_ip_rules} \tab Removes one or more rules from the specified IP access control group\cr
+#'  \link[=workspaces_start_workspaces]{start_workspaces} \tab Starts the specified WorkSpaces\cr
+#'  \link[=workspaces_stop_workspaces]{stop_workspaces} \tab Stops the specified WorkSpaces\cr
+#'  \link[=workspaces_terminate_workspaces]{terminate_workspaces} \tab Terminates the specified WorkSpaces\cr
+#'  \link[=workspaces_update_connection_alias_permission]{update_connection_alias_permission} \tab Shares or unshares a connection alias with one account by specifying whether that account has permission to associate the connection alias with a directory\cr
+#'  \link[=workspaces_update_rules_of_ip_group]{update_rules_of_ip_group} \tab Replaces the current rules of the specified IP access control group with the specified rules\cr
+#'  \link[=workspaces_update_workspace_image_permission]{update_workspace_image_permission} \tab Shares or unshares an image with one account in the same AWS Region by specifying whether that account has permission to copy the image
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname workspaces
+#' @export
+workspaces <- function(config = list()) {
+  paws.end.user.computing::workspaces(config)
 }
