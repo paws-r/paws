@@ -26,6 +26,8 @@ Imports:
     paws.cost.management (>= 0.1.12),
     paws.customer.engagement (>= 0.1.12),
     paws.database (>= 0.1.12),
+    paws.developer.tools (>= 0.1.12),
+    paws.end.user.computing (>= 0.1.12),
     paws.machine.learning (>= 0.1.12),
     paws.management (>= 0.1.12),
     paws.networking (>= 0.1.12),
