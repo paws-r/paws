@@ -1,3 +1,19 @@
+# paws 0.1.12
+
+* Make the following services available on CRAN:
+  + AppStream (appstream)
+  + Cloud 9 (cloud9)
+  + CodeBuild (codebuild)
+  + CodeCommit (codecommit)
+  + CodeDeploy (codedeploy)
+  + CodePipeline (codepipeline)
+  + CodeStar (codestar)
+  + WorkDocs (workdocs)
+  + WorkLink (worklink)
+  + WorkSpaces (workspaces)
+  + X-Ray (xray)
+* Fix the endpoint for EventBridge (eventbridge).
+
 # paws 0.1.11
 
 * Fix the default endpoints for a number of services which previously used
