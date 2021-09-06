@@ -8,6 +8,8 @@ test_that("get_config", {
 
   actual <- svc$operation()
   expect_equivalent(actual$region, 123)
+  # check if config is returned when executed in a do.call
+  expect_equivalent(do.call(svc$operation, list()), svc$operation())
 
   f <- function() {
     svc$operation()
