@@ -127,7 +127,7 @@ issue <- function(http_request) {
     status_code = httr::status_code(r),
     header = httr::headers(r),
     content_length = as.integer(httr::headers(r)$`content-length`),
-    body = httr::content(r, as = "raw")
+    body = (if(is.null(http_request$output)) httr::content(r, as = "raw") else raw()) # prevent reading in data when output is not null
   )
 
   # Decode gzipped response bodies that are not automatically decompressed
