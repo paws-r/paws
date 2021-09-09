@@ -25,7 +25,8 @@ HttpRequest <- struct(
   cancel = NULL,
   timeout = NULL,
   response = NULL,
-  ctx = list()
+  ctx = list(),
+  output = NULL
 )
 
 # Construct an HTTP response object.
@@ -53,7 +54,8 @@ HttpResponse <- struct(
 # @param body The body to send in the request, in bytes.
 # @param close Whether to immediately close the connection, or else reuse connections.
 # @param timeout How long to wait for an initial response.
-new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL) {
+# @param output Control where the response body is written
+new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL, output=NULL) {
   if (method == "") {
     method <- "GET"
   }
@@ -71,7 +73,8 @@ new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = 
     body = body,
     host = u$host,
     close = close,
-    timeout = timeout
+    timeout = timeout,
+    output = output
   )
   return(req)
 }
@@ -107,10 +110,15 @@ issue <- function(http_request) {
     stop("no url provided")
   }
 
+  # utilize httr to write to disk
+  output <- NULL
+  if(!is.null(http_request$output))
+    output <- httr::write_disk(http_request$output)
+
   r <- httr::VERB(
     method,
     url = url,
-    config = httr::add_headers(.headers = headers),
+    config = c(httr::add_headers(.headers=headers), output),
     body = body,
     timeout
   )
@@ -165,4 +173,3 @@ decompress <- function(http_response) {
   http_response$body <- body
   return(http_response)
 }
-
