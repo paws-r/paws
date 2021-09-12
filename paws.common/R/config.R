@@ -22,6 +22,11 @@ NULL
 get_config <- function() {
   calling_env <- parent.frame(2)
   call <- sys.call(-1)[[1]]
+  # Ensure we correctly identify the service object (e.g. `svc`) when the
+  # operation is called through `do.call`, e.g. `do.call(svc$operation, args)`.
+  if (is.function(call)){
+    call <- sys.call(-2)[[2]]
+  }
   if (is.name(call)) {
     return(Config())
   }
