@@ -82,3 +82,15 @@ s3$delete_object(Bucket = bucket_name, Key = file_name)
 s3$delete_bucket(Bucket = bucket_name)
 file.remove(file_name)
 file.remove(file_name2)
+
+################################################################################
+# Read csv example
+################################################################################
+
+s3_download <- s3$get_object(
+  Bucket = bucket_name,
+  Key = file_name
+)
+s3_download_body <- s3_download$Body
+writeBin(s3_download_body, con = "file.csv")
+read.csv("file.csv")
