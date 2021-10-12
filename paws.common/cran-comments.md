@@ -2,7 +2,6 @@
 
 * Ubuntu 20.04, R-latest
 * macOS 10.15, R-latest
-* Windows 10, R 4.1.0
 * R-hub
 
 ## R CMD check results
