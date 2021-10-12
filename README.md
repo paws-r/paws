@@ -30,7 +30,7 @@ If you are using Linux, you will need to install the following OS packages:
 
 ## Credentials
 
-You'll need to set up your AWS credentials and region. Paws supports setting 
+You'll need to set up your AWS credentials and region. Paws supports setting
 these per-service, or using R and OS environment variables, AWS credential
 files, and IAM roles. See [docs/credentials.md](docs/credentials.md) for more
 info.
@@ -118,7 +118,7 @@ There are also examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
 
 ## Related packages
 
-* [`cognitoR`](https://github.com/chi2labs/cognitoR) provides 
+* [`cognitoR`](https://github.com/chi2labs/cognitoR) provides
   authentication for Shiny applications using Amazon Cognito.
 * [`noctua`](https://dyfanjones.github.io/noctua/) is an interface to the
 [Athena](https://aws.amazon.com/athena/) serverless interactive query
