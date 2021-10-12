@@ -1,3 +1,9 @@
+# paws.common 0.3.13
+
+* Support `AWS_DEFAULT_REGION` in addition to `AWS_REGION`.
+* Support calling SDK operations within `do.call`, including any user-supplied
+  configuration to the service, e.g. a custom endpoint.
+
 # paws.common 0.3.12
 
 * Support S3 access points in all S3 operations that accept a bucket argument.
