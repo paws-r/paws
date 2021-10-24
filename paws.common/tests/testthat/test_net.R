@@ -1,4 +1,7 @@
 test_that("issue", {
+  # Avoid CRAN check errors due to unavailable network resources.
+  skip_on_cran()
+
   req <- HttpRequest(
     method = "GET",
     url = parse_url("https://httpbin.org/json")
@@ -23,6 +26,9 @@ test_that("timeout", {
 })
 
 test_that("timeout does not affect established connections", {
+  # Avoid CRAN check errors due to unavailable network resources.
+  skip_on_cran()
+
   req <- HttpRequest(
     method = "GET",
     url = parse_url("https://httpbin.org/delay/3"),
@@ -33,6 +39,9 @@ test_that("timeout does not affect established connections", {
 })
 
 test_that("don't decompress the body when already decompressed", {
+  # Avoid CRAN check errors due to unavailable network resources.
+  skip_on_cran()
+
   req <- HttpRequest(
     method = "GET",
     url = parse_url("https://httpbin.org/gzip")
