@@ -1,5 +1,5 @@
 test_that("issue", {
-  # Avoid CRAN check errors due to inaccessible network resources.
+  # Avoid CRAN check errors due to unavailable network resources.
   skip_on_cran()
 
   req <- HttpRequest(
@@ -26,7 +26,7 @@ test_that("timeout", {
 })
 
 test_that("timeout does not affect established connections", {
-  # Avoid CRAN check errors due to inaccessible network resources.
+  # Avoid CRAN check errors due to unavailable network resources.
   skip_on_cran()
 
   req <- HttpRequest(
@@ -39,7 +39,7 @@ test_that("timeout does not affect established connections", {
 })
 
 test_that("don't decompress the body when already decompressed", {
-  # Avoid CRAN check errors due to inaccessible network resources.
+  # Avoid CRAN check errors due to unavailable network resources.
   skip_on_cran()
 
   req <- HttpRequest(
