@@ -1,3 +1,7 @@
+# paws.common 0.3.14
+
+* Skip tests for `issue` network request function to avoid CRAN check errors.
+
 # paws.common 0.3.13
 
 * Support `AWS_DEFAULT_REGION` in addition to `AWS_REGION`.
