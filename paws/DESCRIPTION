@@ -646,6 +646,7 @@ Collate:
     's3_service.R'
     's3_interfaces.R'
     's3_operations.R'
+    's3_custom.R'
     's3control_service.R'
     's3control_interfaces.R'
     's3control_operations.R'

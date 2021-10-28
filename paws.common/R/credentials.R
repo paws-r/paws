@@ -35,6 +35,9 @@ get_credentials <- function(credentials) {
 # authenticate.
 is_credentials_provided <- function(creds, window = 5 * 60){
   if (is.null(creds)) return(FALSE)
+  if (!is.null(creds$access_token) && creds$access_token != "") {
+      return(TRUE)
+  }
   if (is.null(creds$access_key_id) || creds$access_key_id == "") {
     return(FALSE)
   }
