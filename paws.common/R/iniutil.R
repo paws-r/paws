@@ -22,7 +22,11 @@ read_ini <- function(file_name) {
   content <- scan(file_name, what = "", sep = "\n", quiet = T)
   profiles <- list()
   current_profile <- ""
-  for (i in 1:length(content)) {
+  # An empty credentials file is valid when using SSO
+  # In that case, length(content) is 0.  Don't loop
+  # in such a case, since 'grepl(..., content[i])'
+  # will return logical(0), causing the 'if' to error out
+  for (i in seq_len(length(content))) {
     if (grepl("(^;)|(^#)", content[i])) {
       next
     } else if (grepl("^\\[.*\\]", content[i])) {

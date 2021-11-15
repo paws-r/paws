@@ -180,7 +180,7 @@ sso_credential_process <- function(sso_start_url, sso_account_id, sso_region, ss
           access_token = cache_creds$accessToken
         )
       ),
-      region = 'us-east-1',
+      region = sso_region,
       endpoint = '',
       close_connection = FALSE,
       disable_rest_protocol_uri_cleaning=TRUE
