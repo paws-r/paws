@@ -1,17 +1,11 @@
 Package: paws.customer.engagement
 Title: 'Amazon Web Services' Customer Engagement Services
 Version: 0.1.12
-Authors@R: 
-    c(person(given = "David",
-             family = "Kretch",
-             role = c("aut", "cre"),
-             email = "david.kretch@gmail.com"),
-      person(given = "Adam",
-             family = "Banker",
-             role = "aut",
-             email = "adam.banker39@gmail.com"),
-      person(given = "Amazon.com, Inc.",
-             role = "cph"))
+Authors@R: c(
+    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut", "cre")),
+    person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
+    person("Amazon.com, Inc.", role = "cph")
+  )
 Description: Interface to 'Amazon Web Services' customer engagement
     services, including 'Simple Email Service', 'Connect' contact center
     service, and more <https://aws.amazon.com/>.

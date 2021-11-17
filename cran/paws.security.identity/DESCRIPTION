@@ -1,17 +1,11 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
 Version: 0.1.12
-Authors@R: 
-    c(person(given = "David",
-             family = "Kretch",
-             role = c("aut", "cre"),
-             email = "david.kretch@gmail.com"),
-      person(given = "Adam",
-             family = "Banker",
-             role = "aut",
-             email = "adam.banker39@gmail.com"),
-      person(given = "Amazon.com, Inc.",
-             role = "cph"))
+Authors@R: c(
+    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut", "cre")),
+    person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
+    person("Amazon.com, Inc.", role = "cph")
+  )
 Description: Interface to 'Amazon Web Services' security, identity, and
     compliance services, including the 'Identity & Access Management'
     ('IAM') service for managing access to services and resources, and
@@ -84,6 +78,9 @@ Collate:
     'shield_service.R'
     'shield_interfaces.R'
     'shield_operations.R'
+    'sso_service.R'
+    'sso_interfaces.R'
+    'sso_operations.R'
     'sts_service.R'
     'sts_interfaces.R'
     'sts_operations.R'
