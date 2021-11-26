@@ -1,10 +1,11 @@
-# Get STS temporary credentials for a role using the STS AssumeRole operation.
+# Get SSO temporary credentials for a role using the sso get_role_credentials
+# operation.
 #
-# We need to re-implement the STS AssumeRole operation to avoid circular
-# dependency: paws depends on paws.common, therefore we can't make paws.common
-# also depend on paws.
+# We need to re-implement the SSO GetRoleCredentials operation to avoid
+# circular dependency: paws depends on paws.common, therefore we can't
+# make paws.common also depend on paws.
 
-# STS service client.
+# SSO service client.
 sso <- function(config = list()) {
   svc <- .sso$operations
   svc <- set_config(svc, config)
