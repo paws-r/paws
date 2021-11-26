@@ -196,7 +196,7 @@ rest_unmarshal_header <- function(value, type) {
     jsonvalue = json_to_list,
     long = as.numeric,
     string = as.character,
-    timestamp = function(x) as_timestamp(x, format = "rfc1123"),
+    timestamp = function(x) as_timestamp(x, format = "rfc822"),
     as.character
   )
   result <- convert(value)
