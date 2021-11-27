@@ -732,6 +732,23 @@ test_that("unmarshal timestamp", {
   expect_equal(out$Timestamp, unix_time(0))
 })
 
+test_that("unmarshal timestamp in header", {
+  op_output <- Structure(
+    Timestamp = Scalar(type = "timestamp", .tags = list(location = "header"))
+  )
+  req <- new_request(svc, op, NULL, op_output)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw("<OperationNameResponse></OperationNameResponse>")
+  )
+  req$http_response$header[["Timestamp"]] <- "Wed, 02 Oct 2002 13:00:00 GMT"
+  req <- unmarshal_meta(req)
+  req <- unmarshal(req)
+  out <- req$data
+  expected <- as.POSIXct("2002-10-02 13:00:00 GMT", tz = "GMT")
+  expect_equal(as.integer(out$Timestamp), as.integer(expected))
+})
+
 op_output11 <- Structure(
   Body = Scalar(type = "string"),
   Header = Scalar(type = "string", .tags = list(location = "header"))
@@ -754,6 +771,7 @@ test_that("unmarshal elements in header and body", {
 op_output12 <- Structure(
   Timestamp = Scalar(type = "timestamp")
 )
+
 test_that("unmarshal error", {
   req <- new_request(svc, op, NULL, op_output12)
   req$http_response <- HttpResponse(
