@@ -14572,6 +14572,79 @@ sts <- function(config = list()) {
   paws.security.identity::sts(config)
 }
 
+#' AWS Single Sign-On
+#'
+#' @description
+#' AWS Single Sign-On Portal is a web service that makes it easy for you to
+#' assign user access to AWS SSO resources such as the user portal. Users
+#' can get AWS account applications and roles assigned to them and get
+#' federated into the application.
+#' 
+#' For general information about AWS SSO, see [What is AWS Single
+#' Sign-On?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
+#' in the *AWS SSO User Guide*.
+#' 
+#' This API reference guide describes the AWS SSO Portal operations that
+#' you can call programatically and includes detailed information on data
+#' types and errors.
+#' 
+#' AWS provides SDKs that consist of libraries and sample code for various
+#' programming languages and platforms, such as Java, Ruby, .Net, iOS, or
+#' Android. The SDKs provide a convenient way to create programmatic access
+#' to AWS SSO and other AWS services. For more information about the AWS
+#' SDKs, including how to download and install them, see [Tools for Amazon
+#' Web Services](https://aws.amazon.com/tools/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sso(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- sso()
+#' svc$get_role_credentials(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[=sso_get_role_credentials]{get_role_credentials} \tab Returns the STS short-term credentials for a given role name that is assigned to the user\cr
+#'  \link[=sso_list_account_roles]{list_account_roles} \tab Lists all roles that are assigned to the user for a given AWS account\cr
+#'  \link[=sso_list_accounts]{list_accounts} \tab Lists all AWS accounts assigned to the user\cr
+#'  \link[=sso_logout]{logout} \tab Removes the client- and server-side session that is associated with the user
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname sso
+#' @export
+sso <- function(config = list()) {
+  paws.security.identity::sso(config)
+}
+
 #' AWS WAF
 #'
 #' @description

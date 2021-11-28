@@ -1,5 +1,6 @@
 #' @include net.R
 #' @include credential_sts.R
+#' @include credential_sso.R
 #' @include dateutil.R
 #' @include iniutil.R
 NULL
@@ -8,6 +9,7 @@ Creds <- struct(
   access_key_id = "",
   secret_access_key = "",
   session_token = "",
+  access_token = "",
   expiration = Inf,
   provider_name = ""
 )
@@ -86,6 +88,14 @@ config_file_provider <- function(profile = "") {
     if (!is.null(creds)) return(creds)
   }
 
+  if ("sso_role_name" %in% names(profile)) {
+    sso_start_url <- profile$sso_start_url
+    sso_account_id <- profile$sso_account_id
+    sso_region <- profile$sso_region
+    sso_role_name <- profile$sso_role_name
+    creds <- sso_credential_process(sso_start_url, sso_account_id, sso_region, sso_role_name)
+    if (!is.null(creds)) return(creds)
+  }
   if ("role_arn" %in% names(profile)) {
     role_arn <- profile$role_arn
     role_session_name <- profile$role_session_name
@@ -153,6 +163,39 @@ config_file_credential_source <- function(role_arn, role_session_name, mfa_seria
   if (is.null(creds)) return(NULL)
   role_creds <- get_assumed_role_creds(role_arn, role_session_name, mfa_serial, creds)
   return(role_creds)
+}
+
+# Get credentials from profile associated with an SSO login.  Assumes
+# the user has already logged in via e.g. the aws cli so that a cached
+# access token is available.
+sso_credential_process <- function(sso_start_url, sso_account_id, sso_region, sso_role_name) {
+  cache_key <- digest::digest(sso_start_url, algo='sha1', serialize = FALSE)
+  json_file <- paste0(cache_key, '.json')
+  sso_cache <- file.path('~', '.aws', 'sso', 'cache', json_file)
+  cache_creds <- jsonlite::fromJSON(sso_cache)
+  svc <- sso(
+    config = list(
+      credentials = list(
+        creds = list(
+          access_token = cache_creds$accessToken
+        )
+      ),
+      region = sso_region,
+      endpoint = '',
+      close_connection = FALSE,
+      disable_rest_protocol_uri_cleaning=TRUE
+    )
+  )
+  resp <- svc$get_role_credentials(sso_role_name, sso_account_id, cache_creds$accessToken)
+  if (is.null(resp)) return(NULL)
+  roleCredentials <- resp$roleCredentials
+  creds <- Creds(
+    access_key_id = roleCredentials$accessKeyId,
+    secret_access_key = roleCredentials$secretAccessKey,
+    session_token = roleCredentials$sessionToken,
+    expiration = roleCredentials$expiration
+  )
+  return(creds)
 }
 
 # Get STS temporary credentials for the role with ARN `role_arn` using

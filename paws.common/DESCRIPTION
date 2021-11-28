@@ -34,6 +34,7 @@ Collate:
     'handlers.R'
     'iniutil.R'
     'dateutil.R'
+    'credential_sso.R'
     'credential_sts.R'
     'url.R'
     'net.R'
