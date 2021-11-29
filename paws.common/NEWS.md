@@ -1,3 +1,9 @@
+# paws.common 0.3.15
+
+* Provide the ability to use credentials obtained from AWS SSO login, i.e. 
+  `aws sso login --profile my-profile`.
+* Fix timestamps in the S3 API, e.g. `LastModified` from `get_object`.
+
 # paws.common 0.3.14
 
 * Skip tests for `issue` network request function to avoid CRAN check errors.
