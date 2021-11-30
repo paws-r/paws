@@ -76,7 +76,9 @@ jobs:
         run: |
           remotes::install_local('paws.common', force = TRUE)
           remotes::install_local('make.paws', force = TRUE)
-          remotes::install_local('cran/paws', force = TRUE)
+          for (package in rev(list.dirs("cran", recursive = FALSE))) {
+            remotes::install_local(package, force = TRUE)
+          }
         shell: Rscript {0}
 
       - name: Check
