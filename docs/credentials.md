@@ -9,6 +9,7 @@
   - [Assume a role with credentials from the environment or an instance/container role](#assume-a-role-with-credentials-from-the-environment-or-an-instancecontainer-role)
   - [Assume a role with credentials from another profile](#assume-a-role-with-credentials-from-another-profile)
   - [Use multifactor authentication when assuming a role](#use-multifactor-authentication-when-assuming-a-role)
+  - [Use AWS Single Sign-On (SSO)](#use-aws-single-sign-on-sso)
 - [Set region](#set-region)
   - [Set region for all services with an environment variable](#set-region-for-all-services-with-an-environment-variable)
   - [Get region from the AWS config file](#get-region-from-the-aws-config-file)
@@ -244,6 +245,45 @@ need to specify which profile to use; see [set profile](#set-profile).
 
 The default location for the AWS config file is `~/.aws/config`. You can
 specify another location using environment variable `AWS_CONFIG_FILE`.
+
+---
+
+
+## Use AWS Single Sign-On (SSO)
+
+NOTE: Currently, you must have the AWS CLI installed to use AWS SSO with Paws.
+
+To use AWS SSO to provide credentials for accessing AWS, you will need to 
+specify the SSO settings to use in the AWS config file, log in to SSO 
+using the AWS CLI, then tell Paws to use the profile.
+
+1. Specify the SSO settings to use in the AWS config file in `~/.aws/config`, 
+   e.g.
+
+    ```ini
+    [profile my-dev-profile]
+    sso_start_url = https://my-sso-portal.awsapps.com/start
+    sso_region = us-east-1
+    sso_account_id = 123456789011
+    sso_role_name = readOnly
+    region = us-west-2
+    output = json
+    ```
+
+2. Log in to SSO using the AWS CLI.
+
+    ```
+    aws sso login --profile my-dev-profile
+    ```
+
+3. Tell Paws to use the SSO profile. For alternate ways of specifying your
+   profile, see the [set profile section](#set-profile). 
+
+    ```r
+    Sys.setenv(AWS_PROFILE = "my-dev-profile")
+    ```
+
+See also [AWS's documentation about using the AWS CLI with SSO](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html#sso-using-profile).
 
 ---
 
