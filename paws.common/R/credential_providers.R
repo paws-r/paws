@@ -171,7 +171,8 @@ config_file_credential_source <- function(role_arn, role_session_name, mfa_seria
 sso_credential_process <- function(sso_start_url, sso_account_id, sso_region, sso_role_name) {
   cache_key <- digest::digest(sso_start_url, algo='sha1', serialize = FALSE)
   json_file <- paste0(cache_key, '.json')
-  sso_cache <- file.path('~', '.aws', 'sso', 'cache', json_file)
+  root <- ifelse(Sys.info()[[1]]=='Windows',Sys.getenv('HOMEPATH'),'~')
+  sso_cache <- file.path(root, ".aws", "sso", "cache", json_file)
   cache_creds <- jsonlite::fromJSON(sso_cache)
   svc <- sso(
     config = list(
