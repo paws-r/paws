@@ -1,3 +1,7 @@
+# paws.common 0.3.16
+
+* Fix single sign on (SSO) authentication on Windows.
+
 # paws.common 0.3.15
 
 * Provide the ability to use credentials obtained from AWS SSO login, i.e. 

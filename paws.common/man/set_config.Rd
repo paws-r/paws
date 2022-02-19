@@ -51,5 +51,4 @@ config <- set_config(
     endpoint = "https://foo.com"
   )
 )
-
 }
