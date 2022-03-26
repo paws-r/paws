@@ -1,3 +1,7 @@
+# paws.common 0.3.17
+
+* Fix operations that take empty arguments, e.g. `s3$get_bucket_website`.
+
 # paws.common 0.3.16
 
 * Fix single sign on (SSO) authentication on Windows.
