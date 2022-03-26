@@ -79,7 +79,7 @@ parse_query_string <- function(query) {
   for (el in strsplit(query, "&")[[1]]) {
     pair <- strsplit(el, "=")[[1]]
     key <- pair[1]
-    value <- pair[2]
+    value <- if(length(pair)>1){pair[2]}else{""}
     result[[key]] <- c(result[[key]], query_unescape(value))
   }
   return(result)
