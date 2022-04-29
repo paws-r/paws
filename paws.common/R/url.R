@@ -103,56 +103,56 @@ query_escape <- function(string) {
 }
 
 # Escape strings so they can be safely included in a URL.
-escape <- function(string, mode) {
-  t <- ""
-  for (i in 1:nchar(string)) {
-    c <- substr(string, i, i)
-    if (c == " " && mode == "encodeQueryComponent") {
-      t <- paste0(t, "+")
-    } else if (should_escape(c, mode)) {
-      t <- paste0(t, utils::URLencode(c, reserved = TRUE))
-    } else {
-      t <- paste0(t, c)
-    }
-  }
-  return(t)
-}
-
-# Return whether to escape a given character.
-should_escape <- function(char, mode) {
-  if (grepl("[A-Za-z0-9]", char)) {
-    return(FALSE)
+escape <- function(string, mode){
+  if (grepl("[A-Za-z0-9]", string)) {
+    return(string)
   }
 
   if (mode == "encodeHost" || mode == "encodeZone") {
-    if (char %in% c("!", "$", "&", "'", "(", ")", "*", "+", ",", ";", "=", ":", "[", "]", "<", ">", '"')) {
-      return(FALSE)
+    if (grepl("[!\\$&'\\(\\)*\\+,;\\=:\\[\\]<>\"]", string, perl = T)) {
+      return(string)
     }
   }
 
-  if (char %in% c("-", "_", ".", "~")) {
-    return(FALSE)
+  if (grepl("[-_.~]", string)) {
+    return(string)
   }
 
-  if (char %in% c("$", "&", "+", ",", "/", ":", ";", "=", "?", "@")) {
+  if (grepl("[\\$&\\+,/;:\\=\\?@]", string)) {
     if (mode == "encodePath") {
-      return(char == "?")
+      return(paws_url_encode(string, "?"))
     }
 
     if (mode == "encodePathSegment") {
-      return(char %in% c("/", ";", ",", "?"))
+      return(paws_url_encode(string, "[/;,\\?]"))
     }
 
     if (mode == "encodeQueryComponent") {
-      return(TRUE)
+      return(utils::URLencode(gsub(" ", "+", string), reserved = TRUE))
     }
 
     if (mode == "encodeFragment") {
-      return(FALSE)
+      return(string)
     }
   }
-  return(TRUE)
+  return(utils::URLencode(string, reserved = TRUE))
 }
+
+# Escape characters given a pattern
+paws_url_encode = function(string, pattern){
+  vapply(URL, function(string){
+    x <- strsplit(string, "")[[1L]]
+    z <- grep(pattern, x)
+    if (length(z)) {
+      y <- vapply(x[z], function(x) {
+        paste0("%", toupper(as.character(charToRaw(x))),collapse = "")
+      }, "")
+      x[z] <- y
+    }
+    paste(x, collapse = "")
+  }, character(1), USE.NAMES = FALSE)
+}
+
 
 # Un-escape a string.
 # TODO: Complete.
