@@ -104,18 +104,10 @@ query_escape <- function(string) {
 
 # Escape strings so they can be safely included in a URL.
 escape <- function(string, mode){
-  if (grepl("[A-Za-z0-9]", string)) {
-    return(string)
-  }
-
   if (mode == "encodeHost" || mode == "encodeZone") {
     if (grepl("[!\\$&'\\(\\)*\\+,;\\=:\\[\\]<>\"]", string, perl = T)) {
       return(string)
     }
-  }
-
-  if (grepl("[-_.~]", string)) {
-    return(string)
   }
 
   if (grepl("[\\$&\\+,/;:\\=\\?@]", string)) {
@@ -138,9 +130,10 @@ escape <- function(string, mode){
   return(utils::URLencode(string, reserved = TRUE))
 }
 
+
 # Escape characters given a pattern
 paws_url_encode = function(string, pattern){
-  vapply(URL, function(string){
+  vapply(string, function(string){
     x <- strsplit(string, "")[[1L]]
     z <- grep(pattern, x)
     if (length(z)) {
