@@ -1,7 +1,7 @@
 # Returns a string representing a template for given R code.
 template <- function(x) {
   expr <- substitute(x)
-  if (class(expr) == "{") {
+  if (inherits(expr, "{")) {
     expr <- expr[-1]
   }
   template <- as.character(expr)
