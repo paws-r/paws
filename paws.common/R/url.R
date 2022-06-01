@@ -104,32 +104,37 @@ query_escape <- function(string) {
 
 # Escape strings so they can be safely included in a URL.
 escape <- function(string, mode){
+  base_url_encode = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-"
   if (mode == "encodeHost" || mode == "encodeZone") {
-    if (grepl("[!\\$&'\\(\\)*\\+,;\\=:\\[\\]<>\"]", string, perl = T)) {
-      return(string)
-    }
+    ignore_pattern = "][!$&'()*+,;=:<>\""
+    pattern = paste0(ignore_pattern, base_url_encode)
+    return(
+      paws_url_encode(
+        string, paste0("[^", pattern, "]")
+      ))
   }
 
-  if (grepl("[\\$&\\+,/;:\\=\\?@]", string)) {
-    if (mode == "encodePath") {
-      return(paws_url_encode(string, "?"))
-    }
+  ignore_pattern = "$&+,/;:=?@"
+  pattern = paste0(ignore_pattern, base_url_encode)
 
-    if (mode == "encodePathSegment") {
-      return(paws_url_encode(string, "[/;,\\?]"))
-    }
-
-    if (mode == "encodeQueryComponent") {
-      return(utils::URLencode(gsub(" ", "+", string), reserved = TRUE))
-    }
-
-    if (mode == "encodeFragment") {
-      return(string)
-    }
+  if (mode == "encodePath") {
+    rm_pattern = "[?]"
+    pattern = gsub(rm_pattern, "", pattern)
+    return(paws_url_encode(string, paste0("[^", pattern, "]")))
+  }
+  if (mode == "encodePathSegment") {
+    rm_pattern = "[/;,?]"
+    pattern = gsub(rm_pattern, "", pattern)
+    return(paws_url_encode(string, paste0("[^", pattern, "]")))
+  }
+  if (mode == "encodeQueryComponent") {
+    return(paws_url_encode(gsub(" ", "+", string), paste0("[^", base_url_encode, "]")))
+  }
+  if (mode == "encodeFragment") {
+    return(paws_url_encode(string, paste0("[^", pattern, "]")))
   }
   return(utils::URLencode(string, reserved = TRUE))
 }
-
 
 # Escape characters given a pattern
 paws_url_encode = function(string, pattern){
@@ -145,7 +150,6 @@ paws_url_encode = function(string, pattern){
     paste(x, collapse = "")
   }, character(1), USE.NAMES = FALSE)
 }
-
 
 # Un-escape a string.
 # TODO: Complete.
