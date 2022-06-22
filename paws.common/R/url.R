@@ -122,7 +122,7 @@ escape <- function(string, mode){
     return(paws_url_encode(string, paste0("[^", pattern, "]")))
   }
   if (mode == "encodeQueryComponent") {
-    return(paws_url_encode(gsub(" ", "+", string), paste0("[^", base_url_encode, "]")))
+    return(gsub("%20", "+", paws_url_encode(string, paste0("[^", base_url_encode, "]")), fixed =T))
   }
   if (mode == "encodeFragment") {
     return(paws_url_encode(string, paste0("[^", pattern, "]")))
