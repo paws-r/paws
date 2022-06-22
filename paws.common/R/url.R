@@ -52,24 +52,18 @@ build_url <- function(url) {
   return(l)
 }
 
+query_empty = function(params) {(is.null(params) || length(params) == 0)}
+
 # Encode a list into a query string.
 # e.g. `list(bar = "baz", foo = "qux")` -> "bar=baz&foo=qux".
-build_query_string <- function(params) {
-  string = ""
-  if (is.null(params) || length(params) == 0) return(string)
-  for (key in sort(names(params))) {
-    k <- query_escape(key)
-    values <- params[[key]]
-    for (value in values) {
-      v <- query_escape(query_convert(value))
-      el <- paste0(k, "=", v)
-      if (string != "") {
-        string <- paste0(string, "&")
-      }
-      string <- paste0(string, el)
-    }
-  }
-  return(string)
+build_query_string <- function(params){
+  param_filter = Filter(Negate(query_empty), params)
+
+  # convert query elements and escape them
+  param_filter = lapply(param_filter, function(x) query_escape(query_convert(x)))
+
+  # build query string
+  return(paste(lapply(sort(names(param_filter)), function(n) paste(n, param_filter[[n]], sep = "=", collapse = "&")), collapse = "&"))
 }
 
 # Decode a query string into a list.
@@ -185,11 +179,9 @@ valid_encoded_path <- function(path) {
 }
 
 # Convert a value to be used in a query string.
-query_convert <- function(value) {
-  convert_fn <- as.character
-  if (is.logical(value)) {
-    convert_fn <- convert_boolean
-  }
-  string <- convert_fn(value)
-  return(string)
+query_convert <- function(x) {
+  ind <- as.logical(unlist(lapply(x, is.logical)))
+  x[which(ind)] <- tolower(x[which(ind)])
+  x[which(!ind)] <- as.character(x[which(!ind)])
+  return(x)
 }
