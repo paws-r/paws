@@ -22,7 +22,9 @@ Amazon Kinesis Data Streams is a managed service that scales elastically
 for real-time processing of streaming big data.
 }
 \section{Service syntax}{
-\preformatted{svc <- kinesis(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- kinesis(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +38,7 @@ for real-time processing of streaming big data.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

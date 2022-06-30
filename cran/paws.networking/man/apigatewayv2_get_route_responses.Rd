@@ -17,7 +17,9 @@ element of the collection.}
 \item{RouteId}{[required] The route ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Items = list(
     list(
       ModelSelectionExpression = "string",
@@ -35,19 +37,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the RouteResponses for a Route.
 }
 \section{Request syntax}{
-\preformatted{svc$get_route_responses(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_route_responses(
   ApiId = "string",
   MaxResults = "string",
   NextToken = "string",
   RouteId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

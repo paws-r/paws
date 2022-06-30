@@ -16,7 +16,9 @@ the comment for.}
 \item{Comment}{[required] The new comment for the specified traffic policy and version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficPolicy = list(
     Id = "string",
     Version = 123,
@@ -26,18 +28,20 @@ A list with the following syntax:\preformatted{list(
     Comment = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the comment for a specified traffic policy version.
 }
 \section{Request syntax}{
-\preformatted{svc$update_traffic_policy_comment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_traffic_policy_comment(
   Id = "string",
   Version = 123,
   Comment = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,12 +14,14 @@ elb_disable_availability_zones_for_load_balancer(LoadBalancerName,
 \item{AvailabilityZones}{[required] The Availability Zones.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AvailabilityZones = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes the specified Availability Zones from the set of Availability
@@ -39,13 +41,15 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_availability_zones_for_load_balancer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_availability_zones_for_load_balancer(
   LoadBalancerName = "string",
   AvailabilityZones = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

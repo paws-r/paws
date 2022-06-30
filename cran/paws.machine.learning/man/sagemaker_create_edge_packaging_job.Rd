@@ -39,7 +39,9 @@ that you specify. After the model has been packaged, Amazon SageMaker
 saves the resulting artifacts to an S3 bucket that you specify.
 }
 \section{Request syntax}{
-\preformatted{svc$create_edge_packaging_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_edge_packaging_job(
   EdgePackagingJobName = "string",
   CompilationJobName = "string",
   ModelName = "string",
@@ -57,7 +59,7 @@ saves the resulting artifacts to an S3 bucket that you specify.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

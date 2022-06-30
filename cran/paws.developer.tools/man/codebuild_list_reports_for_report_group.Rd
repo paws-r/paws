@@ -28,19 +28,23 @@ per response. Use \code{nextToken} to iterate pages in the list of returned
 \item{filter}{A \code{ReportFilter} object used to filter the returned reports.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   nextToken = "string",
   reports = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of ARNs for the reports that belong to a \code{ReportGroup}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_reports_for_report_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_reports_for_report_group(
   reportGroupArn = "string",
   nextToken = "string",
   sortOrder = "ASCENDING"|"DESCENDING",
@@ -49,7 +53,7 @@ Returns a list of ARNs for the reports that belong to a \code{ReportGroup}.
     status = "GENERATING"|"SUCCEEDED"|"FAILED"|"INCOMPLETE"|"DELETING"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

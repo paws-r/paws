@@ -18,7 +18,9 @@ is the first call.}
 number of items is specified by the limitations of the operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IpRoutesInfo = list(
     list(
       DirectoryId = "string",
@@ -33,18 +35,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the address blocks that you have added to a directory.
 }
 \section{Request syntax}{
-\preformatted{svc$list_ip_routes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_ip_routes(
   DirectoryId = "string",
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

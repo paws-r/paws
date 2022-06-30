@@ -19,7 +19,9 @@ associate with a private hosted zone.}
 \item{Comment}{\emph{Optional:} A comment about the association request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChangeInfo = list(
     Id = "string",
     Status = "PENDING"|"INSYNC",
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
     Comment = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates an Amazon VPC with a private hosted zone.
@@ -48,7 +50,9 @@ request. Then the account that created the VPC must submit an
 request.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_vpc_with_hosted_zone(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_vpc_with_hosted_zone(
   HostedZoneId = "string",
   VPC = list(
     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
@@ -56,7 +60,7 @@ request.
   ),
   Comment = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

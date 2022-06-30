@@ -16,10 +16,12 @@ An empty list.
 Deletes the specified channel.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_channel(
   channelName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

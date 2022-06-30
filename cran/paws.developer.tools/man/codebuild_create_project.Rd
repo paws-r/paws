@@ -98,7 +98,9 @@ file system created using Amazon Elastic File System.}
 for the project.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   project = list(
     name = "string",
     arn = "string",
@@ -284,13 +286,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a build project.
 }
 \section{Request syntax}{
-\preformatted{svc$create_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_project(
   name = "string",
   description = "string",
   source = list(
@@ -445,7 +449,7 @@ Creates a build project.
     timeoutInMins = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

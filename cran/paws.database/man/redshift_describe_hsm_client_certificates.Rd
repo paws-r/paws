@@ -47,7 +47,9 @@ the HSM client certificates that have either or both of these tag values
 associated with them.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   HsmClientCertificates = list(
     list(
@@ -62,7 +64,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the specified HSM client certificate. If no
@@ -81,7 +83,9 @@ certificates are returned regardless of whether they have tag keys or
 values associated with them.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_hsm_client_certificates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_hsm_client_certificates(
   HsmClientCertificateIdentifier = "string",
   MaxRecords = 123,
   Marker = "string",
@@ -92,7 +96,7 @@ values associated with them.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

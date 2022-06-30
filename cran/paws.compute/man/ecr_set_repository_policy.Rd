@@ -24,12 +24,14 @@ the \code{\link[=ecr_set_repository_policy]{set_repository_policy}} operation. T
 is intended to prevent accidental repository lock outs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   policyText = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Applies a repository policy to the specified repository to control
@@ -37,13 +39,15 @@ access permissions. For more information, see \href{https://docs.aws.amazon.com/
 in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$set_repository_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_repository_policy(
   registryId = "string",
   repositoryName = "string",
   policyText = "string",
   force = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

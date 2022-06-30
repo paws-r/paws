@@ -81,7 +81,9 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_tagging(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_tagging(
   Bucket = "string",
   ContentMD5 = "string",
   Tagging = list(
@@ -94,7 +96,7 @@ The following operations are related to
   ),
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

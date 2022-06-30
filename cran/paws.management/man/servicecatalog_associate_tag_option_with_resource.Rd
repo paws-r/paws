@@ -21,11 +21,13 @@ Associate the specified TagOption with the specified portfolio or
 product.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_tag_option_with_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_tag_option_with_resource(
   ResourceId = "string",
   TagOptionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

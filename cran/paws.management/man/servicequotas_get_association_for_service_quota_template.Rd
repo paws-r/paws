@@ -7,17 +7,21 @@
 servicequotas_get_association_for_service_quota_template()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceQuotaTemplateAssociationStatus = "ASSOCIATED"|"DISASSOCIATED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the status of the association for the quota request template.
 }
 \section{Request syntax}{
-\preformatted{svc$get_association_for_service_quota_template()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_association_for_service_quota_template()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

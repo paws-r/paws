@@ -17,10 +17,15 @@ An empty list.
 \description{
 Attaches tags to an existing Elasticsearch domain. Tags are a set of
 case-sensitive key value pairs. An Elasticsearch domain may have up to
-10 tags. See \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-managedomains-awsresorcetagging}{Tagging Amazon Elasticsearch Service Domains for more information.}
+10 tags. See <a
+href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#es-managedomains-awsresorcetagging"
+target="_blank">Tagging Amazon Elasticsearch Service Domains for more
+information.</a>
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags(
   ARN = "string",
   TagList = list(
     list(
@@ -29,7 +34,7 @@ case-sensitive key value pairs. An Elasticsearch domain may have up to
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

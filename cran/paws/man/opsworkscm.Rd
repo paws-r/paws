@@ -76,7 +76,9 @@ All API operations allow for five requests per second with a burst of 10
 requests per second.
 }
 \section{Service syntax}{
-\preformatted{svc <- opsworkscm(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- opsworkscm(
   config = list(
     credentials = list(
       creds = list(
@@ -90,7 +92,7 @@ requests per second.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

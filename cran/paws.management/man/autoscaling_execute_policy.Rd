@@ -16,7 +16,7 @@ autoscaling_execute_policy(AutoScalingGroupName, PolicyName,
 to complete before executing the policy.
 
 Valid only if the policy type is \code{SimpleScaling}. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MetricValue}{The metric value to compare to \code{BreachThreshold}. This enables you to
@@ -44,14 +44,16 @@ Executes the specified policy. This can be useful for testing the design
 of your scaling policy.
 }
 \section{Request syntax}{
-\preformatted{svc$execute_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$execute_policy(
   AutoScalingGroupName = "string",
   PolicyName = "string",
   HonorCooldown = TRUE|FALSE,
   MetricValue = 123.0,
   BreachThreshold = 123.0
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

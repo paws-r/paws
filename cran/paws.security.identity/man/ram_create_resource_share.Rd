@@ -30,7 +30,9 @@ do not specify an ARN for the permission, AWS RAM automatically attaches
 the default version of the permission for each resource type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceShare = list(
     resourceShareArn = "string",
     name = "string",
@@ -54,13 +56,15 @@ A list with the following syntax:\preformatted{list(
   ),
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a resource share.
 }
 \section{Request syntax}{
-\preformatted{svc$create_resource_share(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_resource_share(
   name = "string",
   resourceArns = list(
     "string"
@@ -80,7 +84,7 @@ Creates a resource share.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

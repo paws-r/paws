@@ -21,20 +21,24 @@ The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CodeSigningConfigArn = "string",
   FunctionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the code signing configuration for the specified function.
 }
 \section{Request syntax}{
-\preformatted{svc$get_function_code_signing_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_function_code_signing_config(
   FunctionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

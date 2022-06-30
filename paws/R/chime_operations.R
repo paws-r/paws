@@ -228,8 +228,8 @@ chime_associate_signin_delegate_groups_with_account <- function(AccountId, Signi
 #' Creates up to 100 new attendees for an active Amazon Chime SDK meeting.
 #' For more information about the Amazon Chime SDK, see [Using the Amazon
 #' Chime
-#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-#' the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
+#' in the *Amazon Chime Developer Guide*.
 #'
 #' @usage
 #' chime_batch_create_attendee(MeetingId, Attendees)
@@ -930,8 +930,8 @@ chime_create_app_instance_user <- function(AppInstanceArn, AppInstanceUserId, Na
 #' @description
 #' Creates a new attendee for an active Amazon Chime SDK meeting. For more
 #' information about the Amazon Chime SDK, see [Using the Amazon Chime
-#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-#' the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
+#' in the *Amazon Chime Developer Guide*.
 #'
 #' @usage
 #' chime_create_attendee(MeetingId, ExternalUserId, Tags)
@@ -1325,11 +1325,11 @@ chime_create_channel_moderator <- function(ChannelArn, ChannelModeratorArn) {
 #' Creates a new Amazon Chime SDK meeting in the specified media Region
 #' with no initial attendees. For more information about specifying media
 #' Regions, see [Amazon Chime SDK Media
-#' Regions](https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html)
+#' Regions](https://docs.aws.amazon.com/chime-sdk/latest/dg/chime-sdk-meetings-regions.html)
 #' in the *Amazon Chime Developer Guide*. For more information about the
 #' Amazon Chime SDK, see [Using the Amazon Chime
-#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-#' the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
+#' in the *Amazon Chime Developer Guide*.
 #'
 #' @usage
 #' chime_create_meeting(ClientRequestToken, ExternalMeetingId,
@@ -1489,11 +1489,11 @@ chime_create_meeting_dial_out <- function(MeetingId, FromPhoneNumber, ToPhoneNum
 #' Creates a new Amazon Chime SDK meeting in the specified media Region,
 #' with attendees. For more information about specifying media Regions, see
 #' [Amazon Chime SDK Media
-#' Regions](https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html)
+#' Regions](https://docs.aws.amazon.com/chime-sdk/latest/dg/chime-sdk-meetings-regions.html)
 #' in the *Amazon Chime Developer Guide*. For more information about the
 #' Amazon Chime SDK, see [Using the Amazon Chime
-#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-#' the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
+#' in the *Amazon Chime Developer Guide*.
 #'
 #' @usage
 #' chime_create_meeting_with_attendees(ClientRequestToken,
@@ -2558,8 +2558,8 @@ chime_delete_app_instance_user <- function(AppInstanceUserArn) {
 #' deletes their `JoinToken`. Attendees are automatically deleted when a
 #' Amazon Chime SDK meeting is deleted. For more information about the
 #' Amazon Chime SDK, see [Using the Amazon Chime
-#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-#' the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
+#' in the *Amazon Chime Developer Guide*.
 #'
 #' @usage
 #' chime_delete_attendee(MeetingId, AttendeeId)
@@ -2862,8 +2862,8 @@ chime_delete_events_configuration <- function(AccountId, BotId) {
 #' deleted, its attendees are also deleted and clients can no longer join
 #' it. For more information about the Amazon Chime SDK, see [Using the
 #' Amazon Chime
-#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-#' the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
+#' in the *Amazon Chime Developer Guide*.
 #'
 #' @usage
 #' chime_delete_meeting(MeetingId)
@@ -4480,8 +4480,8 @@ chime_get_app_instance_streaming_configurations <- function(AppInstanceArn) {
 #' Gets the Amazon Chime SDK attendee details for a specified meeting ID
 #' and attendee ID. For more information about the Amazon Chime SDK, see
 #' [Using the Amazon Chime
-#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-#' the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
+#' in the *Amazon Chime Developer Guide*.
 #'
 #' @usage
 #' chime_get_attendee(MeetingId, AttendeeId)
@@ -4766,8 +4766,8 @@ chime_get_global_settings <- function() {
 #' Gets the Amazon Chime SDK meeting details for the specified meeting ID.
 #' For more information about the Amazon Chime SDK, see [Using the Amazon
 #' Chime
-#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-#' the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
+#' in the *Amazon Chime Developer Guide*.
 #'
 #' @usage
 #' chime_get_meeting(MeetingId)
@@ -5140,7 +5140,8 @@ chime_get_proxy_session <- function(VoiceConnectorId, ProxySessionId) {
 #' @description
 #' Gets the retention settings for the specified Amazon Chime Enterprise
 #' account. For more information about retention settings, see [Managing
-#' Chat Retention Policies](https://docs.aws.amazon.com/chime/latest/ag/)
+#' Chat Retention
+#' Policies](https://docs.aws.amazon.com/chime/latest/ag/archive-retention.html)
 #' in the *Amazon Chime Administration Guide*.
 #'
 #' @usage
@@ -6432,8 +6433,8 @@ chime_list_attendee_tags <- function(MeetingId, AttendeeId) {
 #' @description
 #' Lists the attendees for the specified Amazon Chime SDK meeting. For more
 #' information about the Amazon Chime SDK, see [Using the Amazon Chime
-#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-#' the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
+#' in the *Amazon Chime Developer Guide*.
 #'
 #' @usage
 #' chime_list_attendees(MeetingId, NextToken, MaxResults)
@@ -7098,8 +7099,8 @@ chime_list_meeting_tags <- function(MeetingId) {
 #' @description
 #' Lists up to 100 active Amazon Chime SDK meetings. For more information
 #' about the Amazon Chime SDK, see [Using the Amazon Chime
-#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-#' the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
+#' in the *Amazon Chime Developer Guide*.
 #'
 #' @usage
 #' chime_list_meetings(NextToken, MaxResults)
@@ -8228,7 +8229,8 @@ chime_put_events_configuration <- function(AccountId, BotId, OutboundEventsHTTPS
 #' To turn off existing retention settings, remove the number of days from
 #' the corresponding **RetentionDays** field in the **RetentionSettings**
 #' object. For more information about retention settings, see [Managing
-#' Chat Retention Policies](https://docs.aws.amazon.com/chime/latest/ag/)
+#' Chat Retention
+#' Policies](https://docs.aws.amazon.com/chime/latest/ag/archive-retention.html)
 #' in the *Amazon Chime Administration Guide*.
 #'
 #' @usage

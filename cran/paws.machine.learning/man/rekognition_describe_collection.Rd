@@ -10,7 +10,9 @@ rekognition_describe_collection(CollectionId)
 \item{CollectionId}{[required] The ID of the collection to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FaceCount = 123,
   FaceModelVersion = "string",
   CollectionARN = "string",
@@ -18,7 +20,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified collection. You can use
@@ -30,10 +32,12 @@ For more information, see Describing a Collection in the Amazon
 Rekognition Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_collection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_collection(
   CollectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

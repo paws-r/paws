@@ -24,7 +24,9 @@ results exist than the specified \code{MaxResults} value, a token is included
 in the response so that the remaining results can be retrieved.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SkillSummaries = list(
     list(
       SkillId = "string",
@@ -36,20 +38,22 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all enabled skills in a specific skill group.
 }
 \section{Request syntax}{
-\preformatted{svc$list_skills(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_skills(
   SkillGroupArn = "string",
   EnablementType = "ENABLED"|"PENDING",
   SkillType = "PUBLIC"|"PRIVATE"|"ALL",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

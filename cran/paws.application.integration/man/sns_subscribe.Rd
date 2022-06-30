@@ -81,10 +81,12 @@ confirmation token.
 The default value is \code{false}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SubscriptionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
@@ -100,7 +102,9 @@ valid for three days.
 This action is throttled at 100 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{svc$subscribe(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$subscribe(
   TopicArn = "string",
   Protocol = "string",
   Endpoint = "string",
@@ -109,7 +113,7 @@ This action is throttled at 100 transactions per second (TPS).
   ),
   ReturnSubscriptionArn = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

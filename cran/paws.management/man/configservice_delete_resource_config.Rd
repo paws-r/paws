@@ -22,11 +22,13 @@ status. You can retrieve the ConfigurationItems recorded for this
 resource in your AWS Config History.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_resource_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource_config(
   ResourceType = "string",
   ResourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

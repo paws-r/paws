@@ -32,8 +32,8 @@ TEMPORARY_NOT_AVAILABLE.
 \item FORM_FACTOR: The device form factor. Valid values are PHONE or
 TABLET.
 \item MANUFACTURER: The device manufacturer (for example, Apple).
-\item REMOTE_ACCESS_ENABLED: Whether the device is enabled for
-remote access. Valid values are TRUE or FALSE.
+\item REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote
+access. Valid values are TRUE or FALSE.
 \item REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
 debugging. Valid values are TRUE or FALSE. Because remote
 debugging is \href{https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html}{no longer supported},
@@ -67,7 +67,9 @@ TEMPORARY_NOT_AVAILABLE.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   devices = list(
     list(
       arn = "string",
@@ -122,13 +124,15 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about unique device types.
 }
 \section{Request syntax}{
-\preformatted{svc$list_devices(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_devices(
   arn = "string",
   nextToken = "string",
   filters = list(
@@ -141,7 +145,7 @@ Gets information about unique device types.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

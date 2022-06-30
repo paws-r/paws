@@ -24,10 +24,12 @@ WorkMail and Microsoft Exchange. Can only be set to \code{true} if an AD
 Connector directory ID is included in the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OrganizationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new Amazon WorkMail organization. Optionally, you can choose
@@ -51,7 +53,9 @@ you don't associate an AWS KMS key, Amazon WorkMail creates a default
 AWS managed master key for you.
 }
 \section{Request syntax}{
-\preformatted{svc$create_organization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_organization(
   DirectoryId = "string",
   Alias = "string",
   ClientToken = "string",
@@ -64,7 +68,7 @@ AWS managed master key for you.
   KmsKeyArn = "string",
   EnableInteroperability = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

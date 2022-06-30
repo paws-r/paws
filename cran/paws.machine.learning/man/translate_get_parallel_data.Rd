@@ -10,7 +10,9 @@ translate_get_parallel_data(Name)
 \item{Name}{[required] The name of the parallel data resource that is being retrieved.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ParallelDataProperties = list(
     Name = "string",
     Arn = "string",
@@ -57,16 +59,18 @@ A list with the following syntax:\preformatted{list(
     Location = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information about a parallel data resource.
 }
 \section{Request syntax}{
-\preformatted{svc$get_parallel_data(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_parallel_data(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,11 +16,13 @@ retrieve these values with
 \code{\link[=kinesisvideoarchivedmedia_list_fragments]{list_fragments}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContentType = "string",
   Payload = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets media for a list of fragments (specified by fragment number) from
@@ -65,13 +67,15 @@ For more information, see the \strong{Errors} section at the bottom of this
 topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html}{Common Errors}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_media_for_fragment_list(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_media_for_fragment_list(
   StreamName = "string",
   Fragments = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

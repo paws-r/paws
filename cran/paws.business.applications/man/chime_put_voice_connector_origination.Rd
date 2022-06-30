@@ -12,7 +12,9 @@ chime_put_voice_connector_origination(VoiceConnectorId, Origination)
 \item{Origination}{[required] The origination setting details to add.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Origination = list(
     Routes = list(
       list(
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     Disabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds origination settings for the specified Amazon Chime Voice
@@ -36,7 +38,9 @@ If emergency calling is configured for the Amazon Chime Voice Connector,
 it must be deleted prior to turning off origination settings.
 }
 \section{Request syntax}{
-\preformatted{svc$put_voice_connector_origination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_voice_connector_origination(
   VoiceConnectorId = "string",
   Origination = list(
     Routes = list(
@@ -51,7 +55,7 @@ it must be deleted prior to turning off origination settings.
     Disabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

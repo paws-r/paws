@@ -51,7 +51,9 @@ Write-only schema properites are not recorded as part of the published
 configuration item.
 }
 \section{Request syntax}{
-\preformatted{svc$put_resource_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_resource_config(
   ResourceType = "string",
   SchemaVersionId = "string",
   ResourceId = "string",
@@ -61,7 +63,7 @@ configuration item.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

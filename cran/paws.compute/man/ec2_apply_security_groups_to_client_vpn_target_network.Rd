@@ -23,12 +23,14 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SecurityGroupIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Applies a security group to the association between the target network
@@ -36,7 +38,9 @@ and the Client VPN endpoint. This action replaces the existing security
 groups with the specified security groups.
 }
 \section{Request syntax}{
-\preformatted{svc$apply_security_groups_to_client_vpn_target_network(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$apply_security_groups_to_client_vpn_target_network(
   ClientVpnEndpointId = "string",
   VpcId = "string",
   SecurityGroupIds = list(
@@ -44,7 +48,7 @@ groups with the specified security groups.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ call.}
 \item{MaxResults}{The maximum number of schedules listed in the call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BusinessReportSchedules = list(
     list(
       ScheduleArn = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the details of the schedules that a user configured. A download
@@ -52,11 +54,13 @@ this action is called. A new download URL is returned each time, and is
 valid for 24 hours.
 }
 \section{Request syntax}{
-\preformatted{svc$list_business_report_schedules(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_business_report_schedules(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

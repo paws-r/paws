@@ -16,10 +16,12 @@ An empty list.
 Deletes a data catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_data_catalog(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_data_catalog(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

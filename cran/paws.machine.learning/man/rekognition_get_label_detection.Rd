@@ -28,7 +28,9 @@ group, the array element are sorted by detection confidence. The default
 sort is by \code{TIMESTAMP}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
   StatusMessage = "string",
   VideoMetadata = list(
@@ -67,7 +69,7 @@ A list with the following syntax:\preformatted{list(
   ),
   LabelModelVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the label detection results of a Amazon Rekognition Video analysis
@@ -107,13 +109,15 @@ the token value returned from the previous call to
 \code{\link[=rekognition_get_label_detection]{get_label_detection}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_label_detection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_label_detection(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string",
   SortBy = "NAME"|"TIMESTAMP"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

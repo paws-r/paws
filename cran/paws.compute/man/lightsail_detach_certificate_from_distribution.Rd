@@ -14,7 +14,9 @@ Use the \code{\link[=lightsail_get_distributions]{get_distributions}} action to 
 a list of distribution names that you can specify.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -37,7 +39,7 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Detaches an SSL/TLS certificate from your Amazon Lightsail content
@@ -47,10 +49,12 @@ After the certificate is detached, your distribution stops accepting
 traffic for all of the domains that are associated with the certificate.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_certificate_from_distribution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_certificate_from_distribution(
   distributionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -28,7 +28,9 @@ Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     list(
@@ -37,7 +39,7 @@ symbols: \verb{_ . : / = + - @}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

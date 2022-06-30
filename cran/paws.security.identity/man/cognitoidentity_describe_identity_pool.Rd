@@ -11,7 +11,9 @@ cognitoidentity_describe_identity_pool(IdentityPoolId)
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityPoolId = "string",
   IdentityPoolName = "string",
   AllowUnauthenticatedIdentities = TRUE|FALSE,
@@ -37,7 +39,7 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets details about a particular identity pool, including the pool name,
@@ -46,10 +48,12 @@ ID description, creation date, and current number of users.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_identity_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_identity_pool(
   IdentityPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

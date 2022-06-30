@@ -20,7 +20,9 @@ specified, defaults to 100.}
 containing NextToken. It is used for pagination.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   ReservedElasticsearchInstances = list(
     list(
@@ -47,19 +49,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about reserved Elasticsearch instances for this
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_reserved_elasticsearch_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reserved_elasticsearch_instances(
   ReservedElasticsearchInstanceId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

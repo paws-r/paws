@@ -181,7 +181,9 @@ in the \emph{Amazon RDS User Guide}.}
 Directory Service.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -311,7 +313,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot. This
@@ -336,7 +338,9 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$restore_db_cluster_from_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_db_cluster_from_snapshot(
   AvailabilityZones = list(
     "string"
   ),
@@ -377,7 +381,7 @@ This action only applies to Aurora DB clusters.
   Domain = "string",
   DomainIAMRoleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

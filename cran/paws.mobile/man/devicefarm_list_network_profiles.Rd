@@ -18,7 +18,9 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   networkProfiles = list(
     list(
       arn = "string",
@@ -37,18 +39,20 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the list of available network profiles.
 }
 \section{Request syntax}{
-\preformatted{svc$list_network_profiles(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_network_profiles(
   arn = "string",
   type = "CURATED"|"PRIVATE",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

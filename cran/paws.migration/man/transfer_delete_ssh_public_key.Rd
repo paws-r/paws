@@ -24,12 +24,14 @@ Deletes a user's Secure Shell (SSH) public key.
 No response is returned from this operation.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_ssh_public_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_ssh_public_key(
   ServerId = "string",
   SshPublicKeyId = "string",
   UserName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

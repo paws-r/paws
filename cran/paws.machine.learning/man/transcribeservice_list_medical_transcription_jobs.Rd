@@ -26,7 +26,9 @@ response. IF there are fewer results in the list, this response contains
 only the actual results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
   NextToken = "string",
   MedicalTranscriptionJobSummaries = list(
@@ -50,20 +52,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists medical transcription jobs with a specified status or substring
 that matches their names.
 }
 \section{Request syntax}{
-\preformatted{svc$list_medical_transcription_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_medical_transcription_jobs(
   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
   JobNameContains = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

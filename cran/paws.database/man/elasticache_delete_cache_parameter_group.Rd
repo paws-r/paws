@@ -20,10 +20,12 @@ Deletes the specified cache parameter group. You cannot delete a cache
 parameter group if it is associated with any cache clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cache_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cache_parameter_group(
   CacheParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

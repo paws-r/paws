@@ -13,22 +13,26 @@ kafka_delete_cluster(ClusterArn, CurrentVersion)
 \item{CurrentVersion}{The current version of the MSK cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClusterArn = "string",
   State = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|"HEALING"|"MAINTENANCE"|"REBOOTING_BROKER"|"UPDATING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in
 the request.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cluster(
   ClusterArn = "string",
   CurrentVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

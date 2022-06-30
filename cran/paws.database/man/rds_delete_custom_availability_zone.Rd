@@ -10,7 +10,9 @@ rds_delete_custom_availability_zone(CustomAvailabilityZoneId)
 \item{CustomAvailabilityZoneId}{[required] The custom AZ identifier.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CustomAvailabilityZone = list(
     CustomAvailabilityZoneId = "string",
     CustomAvailabilityZoneName = "string",
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a custom Availability Zone (AZ).
@@ -33,13 +35,15 @@ Deletes a custom Availability Zone (AZ).
 A custom AZ is an on-premises AZ that is integrated with a VMware
 vSphere cluster.
 
-For more information about RDS on VMware, see the \href{https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html}{RDS on VMware User Guide.}
+For more information about RDS on VMware, see the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html}{RDS on VMware User Guide.}
 }
 \section{Request syntax}{
-\preformatted{svc$delete_custom_availability_zone(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_custom_availability_zone(
   CustomAvailabilityZoneId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

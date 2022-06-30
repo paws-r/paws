@@ -40,7 +40,9 @@ tags for a policy, then the entire request fails and the policy is not
 created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Policy = list(
     PolicySummary = list(
       Id = "string",
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     Content = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a policy of a specified type that you can attach to a root, an
@@ -68,7 +70,9 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$create_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_policy(
   Content = "string",
   Description = "string",
   Name = "string",
@@ -80,7 +84,7 @@ account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

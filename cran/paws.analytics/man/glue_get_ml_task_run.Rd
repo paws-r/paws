@@ -12,7 +12,9 @@ glue_get_ml_task_run(TransformId, TaskRunId)
 \item{TaskRunId}{[required] The unique identifier of the task run.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransformId = "string",
   TaskRunId = "string",
   Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ExecutionTime = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets details for a specific task run on a machine learning transform.
@@ -58,11 +60,13 @@ the stats of any task run by calling
 parent transform's \code{TransformID}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_ml_task_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ml_task_run(
   TransformId = "string",
   TaskRunId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

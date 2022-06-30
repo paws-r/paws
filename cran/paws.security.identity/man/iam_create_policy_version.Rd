@@ -43,7 +43,9 @@ For more information about managed policy versions, see \href{https://docs.aws.a
 in the \emph{IAM User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyVersion = list(
     Document = "string",
     VersionId = "string",
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new version of the specified managed policy. To update a
@@ -71,12 +73,14 @@ For more information about managed policy versions, see \href{https://docs.aws.a
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_policy_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_policy_version(
   PolicyArn = "string",
   PolicyDocument = "string",
   SetAsDefault = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -95,16 +95,20 @@ MaintenanceWindowTaskInvocationParameters.}
 \item{ClientToken}{User-provided idempotency token.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowTaskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a new task to a maintenance window.
 }
 \section{Request syntax}{
-\preformatted{svc$register_task_with_maintenance_window(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_task_with_maintenance_window(
   WindowId = "string",
   Targets = list(
     list(
@@ -181,7 +185,7 @@ Adds a new task to a maintenance window.
   Description = "string",
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

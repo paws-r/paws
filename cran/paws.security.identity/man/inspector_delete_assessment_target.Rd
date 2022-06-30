@@ -18,10 +18,12 @@ Deletes the assessment target that is specified by the ARN of the
 assessment target.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_assessment_target(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_assessment_target(
   assessmentTargetArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

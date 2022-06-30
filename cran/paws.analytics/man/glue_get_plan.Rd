@@ -31,17 +31,21 @@ pair:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PythonScript = "string",
   ScalaCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets code to perform a specified mapping.
 }
 \section{Request syntax}{
-\preformatted{svc$get_plan(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_plan(
   Mapping = list(
     list(
       SourceTable = "string",
@@ -90,7 +94,7 @@ Gets code to perform a specified mapping.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

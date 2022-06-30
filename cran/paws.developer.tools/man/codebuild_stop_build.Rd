@@ -10,7 +10,9 @@ codebuild_stop_build(id)
 \item{id}{[required] The ID of the build.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   build = list(
     id = "string",
     arn = "string",
@@ -199,16 +201,18 @@ A list with the following syntax:\preformatted{list(
     buildBatchArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Attempts to stop running a build.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_build(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_build(
   id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

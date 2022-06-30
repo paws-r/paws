@@ -28,11 +28,13 @@ retention period is 48 hours and is decreased to 24 hours, any data
 already in the stream that is older than 24 hours is inaccessible.
 }
 \section{Request syntax}{
-\preformatted{svc$decrease_stream_retention_period(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$decrease_stream_retention_period(
   StreamName = "string",
   RetentionPeriodHours = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

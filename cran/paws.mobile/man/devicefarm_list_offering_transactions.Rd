@@ -13,7 +13,9 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   offeringTransactions = list(
     list(
       offeringStatus = list(
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of all historical purchases, renewals, and system renewal
@@ -62,10 +64,12 @@ operation. If you must be able to invoke this operation, contact
 \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_offering_transactions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_offering_transactions(
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

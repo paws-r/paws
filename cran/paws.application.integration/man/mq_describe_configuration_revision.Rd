@@ -14,7 +14,9 @@ mq_describe_configuration_revision(ConfigurationId,
 \item{ConfigurationRevision}{[required] The revision of the configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConfigurationId = "string",
   Created = as.POSIXct(
     "2015-01-01"
@@ -22,18 +24,20 @@ A list with the following syntax:\preformatted{list(
   Data = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the specified configuration revision for the specified
 configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_configuration_revision(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration_revision(
   ConfigurationId = "string",
   ConfigurationRevision = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

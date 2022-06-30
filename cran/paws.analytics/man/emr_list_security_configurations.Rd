@@ -11,7 +11,9 @@ emr_list_security_configurations(Marker)
 \item{Marker}{The pagination token that indicates the set of results to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SecurityConfigurations = list(
     list(
       Name = "string",
@@ -22,7 +24,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all the security configurations visible to this account, providing
@@ -32,10 +34,12 @@ paging of the cluster list across multiple ListSecurityConfigurations
 calls.
 }
 \section{Request syntax}{
-\preformatted{svc$list_security_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_security_configurations(
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -47,11 +47,13 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_access_point(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_access_point(
   AccountId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

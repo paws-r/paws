@@ -12,12 +12,14 @@ glue_delete_schema(SchemaId)
 Resource Name (ARN).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SchemaArn = "string",
   SchemaName = "string",
   Status = "AVAILABLE"|"PENDING"|"DELETING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the entire schema set, including the schema set and all of its
@@ -28,14 +30,16 @@ such as the \code{\link[=glue_get_schema_by_definition]{get_schema_by_definition
 and \code{\link[=glue_register_schema_version]{register_schema_version}} APIs.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_schema(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_schema(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
     RegistryName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

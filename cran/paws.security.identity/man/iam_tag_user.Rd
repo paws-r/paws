@@ -52,7 +52,9 @@ For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/la
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_user(
   UserName = "string",
   Tags = list(
     list(
@@ -61,7 +63,7 @@ in the \emph{IAM User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

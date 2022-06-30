@@ -13,8 +13,10 @@ An empty list.
 Clears the default authorizer.
 }
 \section{Request syntax}{
-\preformatted{svc$clear_default_authorizer()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$clear_default_authorizer()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

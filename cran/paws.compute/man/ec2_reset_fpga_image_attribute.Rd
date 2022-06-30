@@ -18,22 +18,26 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Attribute}{The attribute.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Resets the specified attribute of the specified Amazon FPGA Image (AFI)
 to its default value. You can only reset the load permission attribute.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_fpga_image_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_fpga_image_attribute(
   DryRun = TRUE|FALSE,
   FpgaImageId = "string",
   Attribute = "loadPermission"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

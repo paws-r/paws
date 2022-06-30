@@ -55,12 +55,14 @@ For more information, see
 You cannot revoke a root CA self-signed certificate.
 }
 \section{Request syntax}{
-\preformatted{svc$revoke_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_certificate(
   CertificateAuthorityArn = "string",
   CertificateSerial = "string",
   RevocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CERTIFICATE_AUTHORITY_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERSEDED"|"CESSATION_OF_OPERATION"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,11 +19,13 @@ Associates a skill group with a given room. This enables all skills in
 the associated skill group on all devices in the room.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_skill_group_with_room(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_skill_group_with_room(
   SkillGroupArn = "string",
   RoomArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

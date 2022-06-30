@@ -20,7 +20,9 @@ characters. For example, to specify 11:30pm on March 5, 2020, enter
 2020-03-05T23:30:00Z.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Reservation = list(
     CurrencyCode = "string",
     Duration = 123,
@@ -40,19 +42,21 @@ A list with the following syntax:\preformatted{list(
     Start = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Submits a request to purchase an offering. If you already have an active
 reservation, you can't purchase another offering.
 }
 \section{Request syntax}{
-\preformatted{svc$purchase_offering(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purchase_offering(
   OfferingArn = "string",
   ReservationName = "string",
   Start = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

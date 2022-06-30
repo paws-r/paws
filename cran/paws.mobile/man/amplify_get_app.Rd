@@ -10,7 +10,9 @@ amplify_get_app(appId)
 \item{appId}{[required] The unique ID for an Amplify app.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   app = list(
     appId = "string",
     appArn = "string",
@@ -74,16 +76,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an existing Amplify app by appID.
 }
 \section{Request syntax}{
-\preformatted{svc$get_app(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_app(
   appId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

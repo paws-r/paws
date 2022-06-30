@@ -24,7 +24,9 @@ values: \code{active}, \code{completed}, \code{deleting}, or \code{deleted}.}
 \item{NextToken}{A token that indicates the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ExportImageTasks = list(
     list(
       Description = "string",
@@ -47,14 +49,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified export image tasks or all of your export image
 tasks.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_export_image_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_export_image_tasks(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -70,7 +74,7 @@ tasks.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,7 +11,9 @@ sms_get_app_validation_configuration(appId)
 \item{appId}{[required] The ID of the application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   appValidationConfigurations = list(
     list(
       validationId = "string",
@@ -70,17 +72,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a configuration for validating an
 application.
 }
 \section{Request syntax}{
-\preformatted{svc$get_app_validation_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_app_validation_configuration(
   appId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

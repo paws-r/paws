@@ -7,7 +7,9 @@
 codebuild_list_source_credentials()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   sourceCredentialsInfos = list(
     list(
       arn = "string",
@@ -16,14 +18,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of \code{SourceCredentialsInfo} objects.
 }
 \section{Request syntax}{
-\preformatted{svc$list_source_credentials()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_source_credentials()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

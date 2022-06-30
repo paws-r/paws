@@ -20,11 +20,13 @@ Deletes from the system the certificate that was registered for secure
 LDAP or client certificate authentication.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_certificate(
   DirectoryId = "string",
   CertificateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

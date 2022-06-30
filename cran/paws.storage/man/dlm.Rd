@@ -25,7 +25,9 @@ about using Amazon DLM with Amazon EBS, see \href{https://docs.aws.amazon.com/AW
 in the \emph{Amazon EC2 User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- dlm(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- dlm(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +41,7 @@ in the \emph{Amazon EC2 User Guide}.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

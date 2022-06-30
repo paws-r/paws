@@ -19,7 +19,9 @@ An empty list.
 Creates a connection definition in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$create_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_connection(
   CatalogId = "string",
   ConnectionInput = list(
     Name = "string",
@@ -40,7 +42,7 @@ Creates a connection definition in the Data Catalog.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

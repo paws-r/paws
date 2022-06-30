@@ -19,7 +19,9 @@ The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PartnerEventSources = list(
     list(
       Arn = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 An SaaS partner can use this operation to list all the partner event
@@ -36,12 +38,14 @@ source names that they have created. This operation is not used by AWS
 customers.
 }
 \section{Request syntax}{
-\preformatted{svc$list_partner_event_sources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_partner_event_sources(
   NamePrefix = "string",
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

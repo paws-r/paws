@@ -17,7 +17,9 @@ previous page call.}
 \item{MaxResults}{Specifies the maximum number of results to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DatabaseList = list(
     list(
       Name = "string",
@@ -29,18 +31,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the databases in the specified data catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$list_databases(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_databases(
   CatalogName = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

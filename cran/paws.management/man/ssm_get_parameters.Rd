@@ -14,7 +14,9 @@ string parameters. This flag is ignored for String and StringList
 parameter types.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Parameters = list(
     list(
       Name = "string",
@@ -34,20 +36,22 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get details of a parameter. Don't confuse this API action with the
 \code{\link[=ssm_get_parameter]{get_parameter}} API action.
 }
 \section{Request syntax}{
-\preformatted{svc$get_parameters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_parameters(
   Names = list(
     "string"
   ),
   WithDecryption = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

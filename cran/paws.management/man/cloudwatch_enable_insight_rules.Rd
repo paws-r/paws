@@ -12,7 +12,9 @@ of your rules, use
 \code{\link[=cloudwatch_describe_insight_rules]{describe_insight_rules}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Failures = list(
     list(
       FailureResource = "string",
@@ -22,19 +24,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables the specified Contributor Insights rules. When rules are
 enabled, they immediately begin analyzing log data.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_insight_rules(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_insight_rules(
   RuleNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

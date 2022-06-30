@@ -25,10 +25,12 @@ example, \verb{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates (or retrieves) a Cognito ID. Supplying multiple logins will
@@ -37,14 +39,16 @@ create an implicit linked account.
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{svc$get_id(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_id(
   AccountId = "string",
   IdentityPoolId = "string",
   Logins = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

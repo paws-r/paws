@@ -10,10 +10,12 @@ sagemaker_delete_trial_component(TrialComponentName)
 \item{TrialComponentName}{[required] The name of the component to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrialComponentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified trial component. A trial component must be
@@ -23,10 +25,12 @@ To disassociate a trial component from a trial, call the
 API.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_trial_component(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_trial_component(
   TrialComponentName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

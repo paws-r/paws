@@ -26,7 +26,9 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DocumentIdentifiers = list(
     list(
       Name = "string",
@@ -58,14 +60,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns all Systems Manager (SSM) documents in the current AWS account
 and Region. You can limit the results of this request by using a filter.
 }
 \section{Request syntax}{
-\preformatted{svc$list_documents(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_documents(
   DocumentFilterList = list(
     list(
       key = "Name"|"Owner"|"PlatformTypes"|"DocumentType",
@@ -83,7 +87,7 @@ and Region. You can limit the results of this request by using a filter.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

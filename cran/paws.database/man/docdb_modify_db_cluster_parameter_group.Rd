@@ -13,10 +13,12 @@ docdb_modify_db_cluster_parameter_group(DBClusterParameterGroupName,
 \item{Parameters}{[required] A list of parameters in the cluster parameter group to modify.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the parameters of a cluster parameter group. To modify more
@@ -38,7 +40,9 @@ database for a cluster, such as the character set for the default
 database defined by the \code{character_set_database} parameter.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_db_cluster_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   Parameters = list(
     list(
@@ -55,7 +59,7 @@ database defined by the \code{character_set_database} parameter.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

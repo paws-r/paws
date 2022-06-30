@@ -17,20 +17,24 @@ version.}
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   version = "string",
   createdDate = as.POSIXct(
     "2015-01-01"
   ),
   description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Update documentation version
 }
 \section{Request syntax}{
-\preformatted{svc$update_documentation_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_documentation_version(
   restApiId = "string",
   documentationVersion = "string",
   patchOperations = list(
@@ -42,7 +46,7 @@ Update documentation version
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

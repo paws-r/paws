@@ -13,7 +13,9 @@ cloudsearch_define_analysis_scheme(DomainName, AnalysisScheme)
 \item{AnalysisScheme}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AnalysisScheme = list(
     Options = list(
       AnalysisSchemeName = "string",
@@ -39,16 +41,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Configures an analysis scheme that can be applied to a \code{text} or
 \code{text-array} field to define language-specific text processing options.
-For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes}
-in the \emph{Amazon CloudSearch Developer Guide}.
+For more information, see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html"
+target="_blank">Configuring Analysis Schemes</a> in the \emph{Amazon
+CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$define_analysis_scheme(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$define_analysis_scheme(
   DomainName = "string",
   AnalysisScheme = list(
     AnalysisSchemeName = "string",
@@ -62,7 +68,7 @@ in the \emph{Amazon CloudSearch Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

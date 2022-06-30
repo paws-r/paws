@@ -37,7 +37,9 @@ Example: \code{my-db-parameter-group}}
 \item{Tags}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBParameterGroup = list(
     DBParameterGroupName = "string",
     DBParameterGroupFamily = "string",
@@ -45,13 +47,15 @@ A list with the following syntax:\preformatted{list(
     DBParameterGroupArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Copies the specified DB parameter group.
 }
 \section{Request syntax}{
-\preformatted{svc$copy_db_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_db_parameter_group(
   SourceDBParameterGroupIdentifier = "string",
   TargetDBParameterGroupIdentifier = "string",
   TargetDBParameterGroupDescription = "string",
@@ -62,7 +66,7 @@ Copies the specified DB parameter group.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

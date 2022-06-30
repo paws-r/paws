@@ -18,13 +18,15 @@ An empty list.
 Untags the specified tags from the specified Amazon Chime SDK meeting.
 }
 \section{Request syntax}{
-\preformatted{svc$untag_meeting(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_meeting(
   MeetingId = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

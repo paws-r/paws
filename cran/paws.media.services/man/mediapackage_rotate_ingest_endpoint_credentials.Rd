@@ -13,7 +13,9 @@ mediapackage_rotate_ingest_endpoint_credentials(Id, IngestEndpointId)
 \item{IngestEndpointId}{[required] The id of the IngestEndpoint whose credentials should be rotated}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   Description = "string",
   EgressAccessLogs = list(
@@ -37,18 +39,20 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Rotate the IngestEndpoint's username and password, as specified by the
 IngestEndpoint's id.
 }
 \section{Request syntax}{
-\preformatted{svc$rotate_ingest_endpoint_credentials(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$rotate_ingest_endpoint_credentials(
   Id = "string",
   IngestEndpointId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

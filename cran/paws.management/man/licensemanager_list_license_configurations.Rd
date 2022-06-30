@@ -29,7 +29,9 @@ available licenses have been exceeded. Logical operators are
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LicenseConfigurations = list(
     list(
       LicenseConfigurationId = "string",
@@ -81,13 +83,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the license configurations for your account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_license_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_license_configurations(
   LicenseConfigurationArns = list(
     "string"
   ),
@@ -102,7 +106,7 @@ Lists the license configurations for your account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

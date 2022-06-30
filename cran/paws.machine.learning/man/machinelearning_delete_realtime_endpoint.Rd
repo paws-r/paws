@@ -10,7 +10,9 @@ machinelearning_delete_realtime_endpoint(MLModelId)
 \item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MLModelId = "string",
   RealtimeEndpointInfo = list(
     PeakRequestsPerSecond = 123,
@@ -21,16 +23,18 @@ A list with the following syntax:\preformatted{list(
     EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a real time endpoint of an \code{MLModel}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_realtime_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_realtime_endpoint(
   MLModelId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

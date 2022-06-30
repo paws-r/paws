@@ -29,7 +29,9 @@ number with that of the first participant.}
 \item{GeoMatchParams}{The country and area code for the proxy phone number.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProxySession = list(
     VoiceConnectorId = "string",
     ProxySessionId = "string",
@@ -62,14 +64,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a proxy session on the specified Amazon Chime Voice Connector
 for the specified participant phone numbers.
 }
 \section{Request syntax}{
-\preformatted{svc$create_proxy_session(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_proxy_session(
   VoiceConnectorId = "string",
   ParticipantPhoneNumbers = list(
     "string"
@@ -86,7 +90,7 @@ for the specified participant phone numbers.
     AreaCode = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

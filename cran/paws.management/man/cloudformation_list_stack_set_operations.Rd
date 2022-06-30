@@ -25,7 +25,9 @@ a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Summaries = list(
     list(
       OperationId = "string",
@@ -41,18 +43,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns summary information about operations performed on a stack set.
 }
 \section{Request syntax}{
-\preformatted{svc$list_stack_set_operations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_stack_set_operations(
   StackSetName = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

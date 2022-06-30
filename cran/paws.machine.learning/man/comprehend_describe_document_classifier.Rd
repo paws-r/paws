@@ -11,7 +11,9 @@ comprehend_describe_document_classifier(DocumentClassifierArn)
 The operation returns this identifier in its response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DocumentClassifierProperties = list(
     DocumentClassifierArn = "string",
     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
@@ -74,16 +76,18 @@ A list with the following syntax:\preformatted{list(
     Mode = "MULTI_CLASS"|"MULTI_LABEL"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the properties associated with a document classifier.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_document_classifier(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_document_classifier(
   DocumentClassifierArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -24,7 +24,9 @@ members (including members who haven't been invited yet or have been
 disassociated).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Members = list(
     list(
       AccountId = "string",
@@ -38,20 +40,22 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists details about all member accounts for the current GuardDuty
 administrator account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_members(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_members(
   DetectorId = "string",
   MaxResults = 123,
   NextToken = "string",
   OnlyAssociated = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,10 +17,12 @@ the labels.}
 \item{ReplaceAllLabels}{Indicates whether to overwrite your existing labels.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TaskRunId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables you to provide additional labels (examples of truth) to be used
@@ -60,12 +62,14 @@ You can check on the status of your task run by calling the
 \code{\link[=glue_get_ml_task_run]{get_ml_task_run}} operation.
 }
 \section{Request syntax}{
-\preformatted{svc$start_import_labels_task_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_import_labels_task_run(
   TransformId = "string",
   InputS3Path = "string",
   ReplaceAllLabels = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,7 +23,9 @@ specified}
 \item{MaxResults}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NumResults = 123,
   NextToken = "string",
   BonusPayments = list(
@@ -38,7 +40,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{\link[=mturk_list_bonus_payments]{list_bonus_payments}} operation
@@ -46,13 +48,15 @@ retrieves the amounts of bonuses you have paid to Workers for a given
 HIT or assignment.
 }
 \section{Request syntax}{
-\preformatted{svc$list_bonus_payments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_bonus_payments(
   HITId = "string",
   AssignmentId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

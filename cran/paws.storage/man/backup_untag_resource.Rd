@@ -22,13 +22,15 @@ Removes a set of key-value pairs from a recovery point, backup plan, or
 backup vault identified by an Amazon Resource Name (ARN)
 }
 \section{Request syntax}{
-\preformatted{svc$untag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeyList = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

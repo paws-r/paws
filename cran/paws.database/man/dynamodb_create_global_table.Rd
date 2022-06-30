@@ -12,7 +12,9 @@ dynamodb_create_global_table(GlobalTableName, ReplicationGroup)
 \item{ReplicationGroup}{[required] The Regions where the global table needs to be created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GlobalTableDescription = list(
     ReplicationGroup = list(
       list(
@@ -45,7 +47,7 @@ A list with the following syntax:\preformatted{list(
     GlobalTableName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a global table from an existing table. A global table creates a
@@ -93,7 +95,9 @@ You should also provision equal replicated write capacity units to
 matching secondary indexes across your global table.
 }
 \section{Request syntax}{
-\preformatted{svc$create_global_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_global_table(
   GlobalTableName = "string",
   ReplicationGroup = list(
     list(
@@ -101,7 +105,7 @@ matching secondary indexes across your global table.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

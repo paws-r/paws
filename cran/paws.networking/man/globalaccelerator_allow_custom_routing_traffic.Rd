@@ -60,7 +60,9 @@ checking the status of your accelerator: the status changes from
 IN_PROGRESS to DEPLOYED.
 }
 \section{Request syntax}{
-\preformatted{svc$allow_custom_routing_traffic(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$allow_custom_routing_traffic(
   EndpointGroupArn = "string",
   EndpointId = "string",
   DestinationAddresses = list(
@@ -71,7 +73,7 @@ IN_PROGRESS to DEPLOYED.
   ),
   AllowAllTrafficToEndpoint = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

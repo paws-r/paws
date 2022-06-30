@@ -10,7 +10,9 @@ codebuild_batch_get_report_groups(reportGroupArns)
 \item{reportGroupArns}{[required] An array of report group ARNs that identify the report groups to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   reportGroups = list(
     list(
       arn = "string",
@@ -45,18 +47,20 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an array of report groups.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_get_report_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_report_groups(
   reportGroupArns = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,7 +20,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGatewayMulticastDomain = list(
     TransitGatewayMulticastDomainId = "string",
     TransitGatewayId = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a multicast domain using the specified transit gateway.
@@ -53,7 +55,9 @@ domain. Use \code{\link[=ec2_describe_transit_gateways]{describe_transit_gateway
 to see the state of transit gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$create_transit_gateway_multicast_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_transit_gateway_multicast_domain(
   TransitGatewayId = "string",
   Options = list(
     Igmpv2Support = "enable"|"disable",
@@ -73,7 +77,7 @@ to see the state of transit gateway.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

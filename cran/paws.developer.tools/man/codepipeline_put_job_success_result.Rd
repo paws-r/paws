@@ -37,7 +37,9 @@ Represents the success of a job as returned to the pipeline by a job
 worker. Used for custom actions only.
 }
 \section{Request syntax}{
-\preformatted{svc$put_job_success_result(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_job_success_result(
   jobId = "string",
   currentRevision = list(
     revision = "string",
@@ -57,7 +59,7 @@ worker. Used for custom actions only.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

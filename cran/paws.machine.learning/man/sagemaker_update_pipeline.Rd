@@ -19,23 +19,27 @@ sagemaker_update_pipeline(PipelineName, PipelineDisplayName,
 \item{RoleArn}{The Amazon Resource Name (ARN) that the pipeline uses to execute.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PipelineArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a pipeline.
 }
 \section{Request syntax}{
-\preformatted{svc$update_pipeline(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pipeline(
   PipelineName = "string",
   PipelineDisplayName = "string",
   PipelineDefinition = "string",
   PipelineDescription = "string",
   RoleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

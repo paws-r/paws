@@ -10,7 +10,9 @@ globalaccelerator_describe_endpoint_group(EndpointGroupArn)
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointGroup = list(
     EndpointGroupArn = "string",
     EndpointGroupRegion = "string",
@@ -37,16 +39,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describe an endpoint group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_endpoint_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_endpoint_group(
   EndpointGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

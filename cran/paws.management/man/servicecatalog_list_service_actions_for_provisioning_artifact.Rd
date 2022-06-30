@@ -27,7 +27,9 @@ results, use null.}
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceActionSummaries = list(
     list(
       Id = "string",
@@ -38,21 +40,23 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a paginated list of self-service actions associated with the
 specified Product ID and Provisioning Artifact ID.
 }
 \section{Request syntax}{
-\preformatted{svc$list_service_actions_for_provisioning_artifact(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_service_actions_for_provisioning_artifact(
   ProductId = "string",
   ProvisioningArtifactId = "string",
   PageSize = 123,
   PageToken = "string",
   AcceptLanguage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,7 +21,9 @@ AWS Management Console, the SDK, or the AWS CLI, the contents of
 server.properties can be in plaintext.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTime = as.POSIXct(
     "2015-01-01"
@@ -36,13 +38,15 @@ A list with the following syntax:\preformatted{list(
   Name = "string",
   State = "ACTIVE"|"DELETING"|"DELETE_FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new MSK configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$create_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_configuration(
   Description = "string",
   KafkaVersions = list(
     "string"
@@ -50,7 +54,7 @@ Creates a new MSK configuration.
   Name = "string",
   ServerProperties = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

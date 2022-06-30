@@ -16,10 +16,12 @@ An empty list.
 Deletes an AppImageConfig.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_app_image_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app_image_config(
   AppImageConfigName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

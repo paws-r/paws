@@ -82,10 +82,12 @@ Shutdown event to specify an execution timeout and enable or disable
 Elastic Load Balancer connection draining.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LayerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a layer. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html}{How to Create a Layer}.
@@ -103,7 +105,9 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_layer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_layer(
   StackId = "string",
   Type = "aws-flow-ruby"|"ecs-cluster"|"java-app"|"lb"|"web"|"php-app"|"rails-app"|"nodejs-app"|"memcached"|"db-master"|"monitoring-master"|"custom",
   Name = "string",
@@ -177,7 +181,7 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-securit
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

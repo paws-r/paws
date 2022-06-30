@@ -13,7 +13,9 @@ cloudsearch_describe_availability_options(DomainName, Deployed)
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AvailabilityOptions = list(
     Options = TRUE|FALSE,
     Status = list(
@@ -29,21 +31,25 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the availability options configured for a domain. By default, shows
 the configuration with any pending changes. Set the \code{Deployed} option to
 \code{true} to show the active configuration and exclude pending changes. For
-more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html}{Configuring Availability Options}
-in the \emph{Amazon CloudSearch Developer Guide}.
+more information, see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html"
+target="_blank">Configuring Availability Options</a> in the \emph{Amazon
+CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_availability_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_availability_options(
   DomainName = "string",
   Deployed = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

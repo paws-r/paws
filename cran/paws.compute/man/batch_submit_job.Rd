@@ -85,12 +85,14 @@ value. For more information, see \href{https://docs.aws.amazon.com/general/lates
 in \emph{AWS General Reference}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobArn = "string",
   jobName = "string",
   jobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Submits an AWS Batch job from a job definition. Parameters specified
@@ -102,7 +104,9 @@ days, the Fargate resources might no longer be available and the job is
 terminated.
 }
 \section{Request syntax}{
-\preformatted{svc$submit_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$submit_job(
   jobName = "string",
   jobQueue = "string",
   arrayProperties = list(
@@ -185,7 +189,7 @@ terminated.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -17,7 +17,9 @@ Currently, only the \code{csv} format is supported.}
 (\code{true}) or not (\code{false}) when error is encountered.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ids = list(
     "string"
   ),
@@ -25,18 +27,20 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Import API keys from an external source, such as a CSV-formatted file.
 }
 \section{Request syntax}{
-\preformatted{svc$import_api_keys(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_api_keys(
   body = raw,
   format = "csv",
   failOnWarnings = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

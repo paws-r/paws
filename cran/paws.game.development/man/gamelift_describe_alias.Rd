@@ -11,7 +11,9 @@ gamelift_describe_alias(AliasId)
 can use either the alias ID or ARN value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Alias = list(
     AliasId = "string",
     Name = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves properties for an alias. This operation returns all alias
@@ -49,10 +51,12 @@ requested alias record is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_alias(
   AliasId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

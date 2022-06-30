@@ -832,8 +832,8 @@ ssm_create_association_batch <- function(Entries) {
 #' -   [Create an SSM document (AWS
 #'     API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html)
 #' 
-#' -   [Create an SSM document
-#'     (AWS CLI)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-cli.html)
+#' -   [Create an SSM document (AWS
+#'     CLI)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-cli.html)
 #' 
 #' -   [Create an SSM document
 #'     (API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html)
@@ -1039,9 +1039,9 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' expression.
 #' @param ScheduleTimezone The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
-#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
-#' see the [Time Zone Database](https://www.iana.org/time-zones) on the
-#' IANA website.
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+#' the [Time Zone Database](https://www.iana.org/time-zones) on the IANA
+#' website.
 #' @param ScheduleOffset The number of days to wait after the date and time specified by a CRON
 #' expression before running the maintenance window.
 #' 
@@ -4070,8 +4070,8 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution whose task executions should
 #' be retrieved.
 #' @param Filters Optional filters used to scope down the returned tasks. The supported
-#' filter key is STATUS with the corresponding values PENDING,
-#' IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.
+#' filter key is STATUS with the corresponding values PENDING, IN_PROGRESS,
+#' SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
@@ -5171,8 +5171,7 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' 
 #' ### WINDOWS
 #' 
-#' Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION,
-#' MSRC_SEVERITY
+#' Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY
 #'
 #' @usage
 #' ssm_describe_patch_properties(OperatingSystem, Property, PatchSet,
@@ -9129,7 +9128,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' "false".
 #' @param AllowedPattern A regular expression used to validate the parameter value. For example,
 #' for String types with values restricted to numbers, you can specify the
-#' following: AllowedPattern=^\\d+$
+#' following: AllowedPattern=^\d+$
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
 #' environment. For example, you might want to tag a Systems Manager
@@ -11318,9 +11317,9 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' @param Description An optional description for the update request.
 #' @param StartDate The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
-#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
-#' see the [Time Zone Database](https://www.iana.org/time-zones) on the
-#' IANA website.
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+#' the [Time Zone Database](https://www.iana.org/time-zones) on the IANA
+#' website.
 #' @param EndDate The date and time, in ISO-8601 Extended format, for when you want the
 #' maintenance window to become inactive. EndDate allows you to set a date
 #' and time in the future when the maintenance window will no longer run.
@@ -11328,9 +11327,9 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' expression.
 #' @param ScheduleTimezone The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
-#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
-#' see the [Time Zone Database](https://www.iana.org/time-zones) on the
-#' IANA website.
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+#' the [Time Zone Database](https://www.iana.org/time-zones) on the IANA
+#' website.
 #' @param ScheduleOffset The number of days to wait after the date and time specified by a CRON
 #' expression before running the maintenance window.
 #' 

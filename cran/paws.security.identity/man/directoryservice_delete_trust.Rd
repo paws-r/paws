@@ -14,21 +14,25 @@ directoryservice_delete_trust(TrustId,
 \item{DeleteAssociatedConditionalForwarder}{Delete a conditional forwarder as part of a DeleteTrustRequest.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrustId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an existing trust relationship between your AWS Managed
 Microsoft AD directory and an external domain.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_trust(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_trust(
   TrustId = "string",
   DeleteAssociatedConditionalForwarder = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

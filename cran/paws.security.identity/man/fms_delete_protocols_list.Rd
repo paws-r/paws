@@ -19,10 +19,12 @@ An empty list.
 Permanently deletes an AWS Firewall Manager protocols list.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_protocols_list(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_protocols_list(
   ListId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

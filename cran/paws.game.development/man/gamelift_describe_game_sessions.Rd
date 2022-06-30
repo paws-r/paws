@@ -28,7 +28,9 @@ Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GameSessions = list(
     list(
       GameSessionId = "string",
@@ -62,7 +64,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a set of one or more game sessions. Request a specific game
@@ -95,7 +97,9 @@ each game session matching the request.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_game_sessions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_game_sessions(
   FleetId = "string",
   GameSessionId = "string",
   AliasId = "string",
@@ -103,7 +107,7 @@ each game session matching the request.
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,11 +21,13 @@ any revisions created by
 \code{\link[=chime_update_channel_message]{update_channel_message}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_channel_message(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_channel_message(
   ChannelArn = "string",
   MessageId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,7 +23,9 @@ retrieve the public key in ssh-rsa format, use \code{SSH}. To retrieve the
 public key in PEM format, use \code{PEM}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SSHPublicKey = list(
     UserName = "string",
     SSHPublicKeyId = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the specified SSH public key, including metadata about the
@@ -48,12 +50,14 @@ CodeCommit repository, see \href{https://docs.aws.amazon.com/codecommit/latest/u
 in the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_ssh_public_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ssh_public_key(
   UserName = "string",
   SSHPublicKeyId = "string",
   Encoding = "SSH"|"PEM"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

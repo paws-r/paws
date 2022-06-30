@@ -17,7 +17,9 @@ provisioned.}
 \item{newTransitVirtualInterfaceAllocation}{[required] Information about the transit virtual interface.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualInterface = list(
     ownerAccount = "string",
     virtualInterfaceId = "string",
@@ -66,7 +68,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provisions a transit virtual interface to be owned by the specified AWS
@@ -83,7 +85,9 @@ Until this step has been completed, the transit virtual interface is in
 the \code{requested} state and is not available to handle traffic.
 }
 \section{Request syntax}{
-\preformatted{svc$allocate_transit_virtual_interface(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$allocate_transit_virtual_interface(
   connectionId = "string",
   ownerAccount = "string",
   newTransitVirtualInterfaceAllocation = list(
@@ -103,7 +107,7 @@ the \code{requested} state and is not available to handle traffic.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

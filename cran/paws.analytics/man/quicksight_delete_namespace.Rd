@@ -14,11 +14,13 @@ namespace from.}
 \item{Namespace}{[required] The namespace that you want to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a namespace and the users and groups that are associated with
@@ -27,11 +29,13 @@ dashboards, analyses, datasets and data sources are not deleted. To
 delete these assets, you use the API operations for the relevant asset.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_namespace(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_namespace(
   AwsAccountId = "string",
   Namespace = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

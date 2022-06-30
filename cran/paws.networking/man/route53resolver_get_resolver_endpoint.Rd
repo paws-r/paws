@@ -12,7 +12,9 @@ route53resolver_get_resolver_endpoint(ResolverEndpointId)
 \item{ResolverEndpointId}{[required] The ID of the Resolver endpoint that you want to get information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResolverEndpoint = list(
     Id = "string",
     CreatorRequestId = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
     ModificationTime = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a specified Resolver endpoint, such as whether
@@ -38,10 +40,12 @@ it's an inbound or an outbound Resolver endpoint, and the current status
 of the endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resolver_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resolver_endpoint(
   ResolverEndpointId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

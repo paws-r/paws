@@ -14,7 +14,9 @@ backup_get_backup_selection(BackupPlanId, SelectionId)
 to a backup plan.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupSelection = list(
     SelectionName = "string",
     IamRoleArn = "string",
@@ -36,18 +38,20 @@ A list with the following syntax:\preformatted{list(
   ),
   CreatorRequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns selection metadata and a document in JSON format that specifies
 a list of resources that are associated with a backup plan.
 }
 \section{Request syntax}{
-\preformatted{svc$get_backup_selection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_backup_selection(
   BackupPlanId = "string",
   SelectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

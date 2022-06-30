@@ -69,7 +69,9 @@ system on creation by including a \verb{"Key":"Name","Value":"\{value\}"}
 key-value pair.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OwnerId = "string",
   CreationToken = "string",
   FileSystemId = "string",
@@ -100,7 +102,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new, empty file system. The operation requires a creation
@@ -156,7 +158,9 @@ This operation requires permissions for the
 \code{elasticfilesystem:CreateFileSystem} action.
 }
 \section{Request syntax}{
-\preformatted{svc$create_file_system(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_file_system(
   CreationToken = "string",
   PerformanceMode = "generalPurpose"|"maxIO",
   Encrypted = TRUE|FALSE,
@@ -170,7 +174,7 @@ This operation requires permissions for the
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

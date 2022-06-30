@@ -13,7 +13,9 @@ The length constraint limit is for each string in the array. The array
 itself can be empty.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   repositories = list(
     list(
       accountId = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about one or more repositories.
@@ -49,12 +51,14 @@ any application that uses this API to display the repository description
 on a webpage.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_get_repositories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_repositories(
   repositoryNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

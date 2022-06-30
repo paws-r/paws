@@ -13,7 +13,9 @@ rds_start_db_cluster(DBClusterIdentifier)
 This parameter is stored as a lowercase string.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -143,7 +145,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts an Amazon Aurora DB cluster that was stopped using the AWS
@@ -156,10 +158,12 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$start_db_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_db_cluster(
   DBClusterIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

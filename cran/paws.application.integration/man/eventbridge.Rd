@@ -37,7 +37,9 @@ For more information about the features of Amazon EventBridge, see the
 \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/}{Amazon EventBridge User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- eventbridge(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- eventbridge(
   config = list(
     credentials = list(
       creds = list(
@@ -51,7 +53,7 @@ For more information about the features of Amazon EventBridge, see the
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

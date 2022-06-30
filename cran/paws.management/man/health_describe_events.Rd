@@ -22,7 +22,9 @@ inclusive.}
 default and the only supported value at this time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   events = list(
     list(
       arn = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about events that meet the specified filter
@@ -75,7 +77,9 @@ parameter in the next request to return more results.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_events(
   filter = list(
     eventArns = list(
       "string"
@@ -144,7 +148,7 @@ parameter in the next request to return more results.
   maxResults = 123,
   locale = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

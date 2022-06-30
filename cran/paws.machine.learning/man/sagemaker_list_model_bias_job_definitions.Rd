@@ -32,7 +32,9 @@ time.}
 time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobDefinitionSummaries = list(
     list(
       MonitoringJobDefinitionName = "string",
@@ -45,13 +47,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists model bias jobs definitions that satisfy various filters.
 }
 \section{Request syntax}{
-\preformatted{svc$list_model_bias_job_definitions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_model_bias_job_definitions(
   EndpointName = "string",
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending",
@@ -65,7 +69,7 @@ Lists model bias jobs definitions that satisfy various filters.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

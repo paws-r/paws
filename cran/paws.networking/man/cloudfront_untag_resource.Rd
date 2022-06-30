@@ -18,7 +18,9 @@ An empty list.
 Remove tags from a CloudFront resource.
 }
 \section{Request syntax}{
-\preformatted{svc$untag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
   Resource = "string",
   TagKeys = list(
     Items = list(
@@ -26,7 +28,7 @@ Remove tags from a CloudFront resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -33,7 +33,9 @@ applicable rule listed.
 To learn more about CORS, see \href{https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html}{Cross-Origin Resource Sharing (CORS) in AWS Elemental MediaStore}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_cors_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_cors_policy(
   ContainerName = "string",
   CorsPolicy = list(
     list(
@@ -53,7 +55,7 @@ To learn more about CORS, see \href{https://docs.aws.amazon.com/mediastore/lates
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

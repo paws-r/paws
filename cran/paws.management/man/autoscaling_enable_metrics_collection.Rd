@@ -43,18 +43,20 @@ An empty list.
 }
 \description{
 Enables group metrics for the specified Auto Scaling group. For more
-information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html}{Monitoring CloudWatch metrics for your Auto Scaling groups and instances}
+information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-cloudwatch-monitoring.html}{Monitoring CloudWatch metrics for your Auto Scaling groups and instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_metrics_collection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_metrics_collection(
   AutoScalingGroupName = "string",
   Metrics = list(
     "string"
   ),
   Granularity = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

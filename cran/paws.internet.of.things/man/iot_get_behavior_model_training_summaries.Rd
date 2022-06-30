@@ -16,7 +16,9 @@ iot_get_behavior_model_training_summaries(securityProfileName,
 \item{nextToken}{The token for the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   summaries = list(
     list(
       securityProfileName = "string",
@@ -33,19 +35,21 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a Device Defender's ML Detect Security Profile training model's
 status.
 }
 \section{Request syntax}{
-\preformatted{svc$get_behavior_model_training_summaries(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_behavior_model_training_summaries(
   securityProfileName = "string",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

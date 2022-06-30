@@ -55,14 +55,16 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_policy(
   Bucket = "string",
   ContentMD5 = "string",
   ConfirmRemoveSelfBucketAccess = TRUE|FALSE,
   Policy = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

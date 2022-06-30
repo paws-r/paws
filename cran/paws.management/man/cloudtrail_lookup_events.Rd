@@ -35,7 +35,9 @@ specified an AttributeKey of 'Username' with a value of 'root', the call
 with NextToken should include those same parameters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Events = list(
     list(
       EventId = "string",
@@ -58,7 +60,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Looks up \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events}{management events}
@@ -92,7 +94,9 @@ The rate of lookup requests is limited to two per second, per account,
 per region. If this limit is exceeded, a throttling error occurs.
 }
 \section{Request syntax}{
-\preformatted{svc$lookup_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$lookup_events(
   LookupAttributes = list(
     list(
       AttributeKey = "EventId"|"EventName"|"ReadOnly"|"Username"|"ResourceType"|"ResourceName"|"EventSource"|"AccessKeyId",
@@ -109,7 +113,7 @@ per region. If this limit is exceeded, a throttling error occurs.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

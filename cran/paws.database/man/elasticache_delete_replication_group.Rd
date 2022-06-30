@@ -21,7 +21,9 @@ the final snapshot is taken, the replication group is immediately
 deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationGroup = list(
     ReplicationGroupId = "string",
     Description = "string",
@@ -106,7 +108,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an existing replication group. By default, this operation
@@ -122,12 +124,14 @@ cannot cancel or revert this operation.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_replication_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_replication_group(
   ReplicationGroupId = "string",
   RetainPrimaryCluster = TRUE|FALSE,
   FinalSnapshotIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

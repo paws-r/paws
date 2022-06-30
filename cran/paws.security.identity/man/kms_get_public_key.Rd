@@ -34,7 +34,9 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyId = "string",
   PublicKey = raw,
   CustomerMasterKeySpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SYMMETRIC_DEFAULT",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
     "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the public key of an asymmetric CMK. Unlike the private key of a
@@ -105,13 +107,15 @@ the \code{KeyId} parameter.
 \strong{Related operations}: \code{\link[=kms_create_key]{create_key}}
 }
 \section{Request syntax}{
-\preformatted{svc$get_public_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_public_key(
   KeyId = "string",
   GrantTokens = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

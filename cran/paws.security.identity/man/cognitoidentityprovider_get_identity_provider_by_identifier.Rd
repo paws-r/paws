@@ -13,7 +13,9 @@ cognitoidentityprovider_get_identity_provider_by_identifier(UserPoolId,
 \item{IdpIdentifier}{[required] The identity provider ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityProvider = list(
     UserPoolId = "string",
     ProviderName = "string",
@@ -35,17 +37,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the specified identity provider.
 }
 \section{Request syntax}{
-\preformatted{svc$get_identity_provider_by_identifier(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_identity_provider_by_identifier(
   UserPoolId = "string",
   IdpIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -31,7 +31,9 @@ progress before the policy was enacted. For more information about data
 retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html}{Amazon Glacier Data Retrieval Policies}.
 }
 \section{Request syntax}{
-\preformatted{svc$set_data_retrieval_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_data_retrieval_policy(
   accountId = "string",
   Policy = list(
     Rules = list(
@@ -42,7 +44,7 @@ retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/d
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

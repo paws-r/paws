@@ -33,7 +33,9 @@ in the \emph{Amazon Elastic Container Service Developer Guide}. Kubernetes
 in the Kubernetes documentation.
 }
 \section{Service syntax}{
-\preformatted{svc <- appmesh(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- appmesh(
   config = list(
     credentials = list(
       creds = list(
@@ -47,7 +49,7 @@ in the Kubernetes documentation.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

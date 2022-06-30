@@ -27,10 +27,12 @@ The ARN should be in one of the following formats:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProtectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables AWS Shield Advanced for a specific AWS resource. The resource
@@ -42,14 +44,16 @@ You can add protection to only a single resource with each
 CreateProtection request. If you want to add protection to multiple
 resources at once, use the AWS WAF console. For more information see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html}{Getting Started with AWS Shield Advanced}
-and \href{https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html}{Add AWS Shield Advanced Protection to more AWS Resources}.
+and \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{Add AWS Shield Advanced Protection to more AWS Resources}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_protection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_protection(
   Name = "string",
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

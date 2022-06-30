@@ -34,7 +34,9 @@ system-wide visibility into resource utilization, application
 performance, and operational health.
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudwatch(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudwatch(
   config = list(
     credentials = list(
       creds = list(
@@ -48,7 +50,7 @@ performance, and operational health.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

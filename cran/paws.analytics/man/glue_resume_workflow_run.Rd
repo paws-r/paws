@@ -16,13 +16,15 @@ glue_resume_workflow_run(Name, RunId, NodeIds)
 are to be restarted must have a run attempt in the original run.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RunId = "string",
   NodeIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Restarts selected nodes of a previous partially completed workflow run
@@ -30,14 +32,16 @@ and resumes the workflow run. The selected nodes and all nodes that are
 downstream from the selected nodes are run.
 }
 \section{Request syntax}{
-\preformatted{svc$resume_workflow_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resume_workflow_run(
   Name = "string",
   RunId = "string",
   NodeIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

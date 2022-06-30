@@ -13,7 +13,9 @@ ses_list_receipt_rule_sets(NextToken)
 position in the receipt rule set list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RuleSets = list(
     list(
       Name = "string",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the receipt rule sets that exist under your AWS account in the
@@ -33,15 +35,17 @@ retrieved, you will receive a \code{NextToken} that you can provide to the
 next call to \code{\link[=ses_list_receipt_rule_sets]{list_receipt_rule_sets}} to
 retrieve the additional entries.
 
-For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
+For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$list_receipt_rule_sets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_receipt_rule_sets(
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

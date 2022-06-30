@@ -12,20 +12,24 @@ emr_add_instance_groups(InstanceGroups, JobFlowId)
 \item{JobFlowId}{[required] Job flow in which to add the instance groups.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobFlowId = "string",
   InstanceGroupIds = list(
     "string"
   ),
   ClusterArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds one or more instance groups to a running cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$add_instance_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_instance_groups(
   InstanceGroups = list(
     list(
       Name = "string",
@@ -98,7 +102,7 @@ Adds one or more instance groups to a running cluster.
   ),
   JobFlowId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

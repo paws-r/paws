@@ -40,11 +40,13 @@ the connection is removed.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vpc_peering_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpc_peering_connection(
   FleetId = "string",
   VpcPeeringConnectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

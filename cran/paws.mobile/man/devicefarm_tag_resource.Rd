@@ -28,7 +28,9 @@ request parameters, they are not changed. When a resource is deleted,
 the tags associated with that resource are also deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -37,7 +39,7 @@ the tags associated with that resource are also deleted.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

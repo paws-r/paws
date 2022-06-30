@@ -23,7 +23,9 @@ control which AWS resources users and applications can access. For more
 information about IAM, see \href{https://aws.amazon.com/iam/}{AWS Identity and Access Management (IAM)} and the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/}{AWS Identity and Access Management User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- iam(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- iam(
   config = list(
     credentials = list(
       creds = list(
@@ -37,7 +39,7 @@ information about IAM, see \href{https://aws.amazon.com/iam/}{AWS Identity and A
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

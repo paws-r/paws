@@ -87,10 +87,12 @@ If you don't specify an operation ID, the SDK generates one
 automatically.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the parameter values for stack instances for the specified
@@ -116,7 +118,9 @@ parameter, you can then override the parameter value using
 \code{\link[=cloudformation_update_stack_instances]{update_stack_instances}}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_stack_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_stack_instances(
   StackSetName = "string",
   Accounts = list(
     "string"
@@ -151,7 +155,7 @@ parameter, you can then override the parameter value using
   ),
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

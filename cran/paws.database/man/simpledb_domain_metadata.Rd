@@ -12,7 +12,9 @@ simpledb_domain_metadata(DomainName)
 \item{DomainName}{[required] The name of the domain for which to display the metadata of.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ItemCount = 123,
   ItemNamesSizeBytes = 123,
   AttributeNameCount = 123,
@@ -21,7 +23,7 @@ A list with the following syntax:\preformatted{list(
   AttributeValuesSizeBytes = 123,
   Timestamp = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the domain, including when the domain was
@@ -29,10 +31,12 @@ created, the number of items and attributes in the domain, and the size
 of the attribute names and values.
 }
 \section{Request syntax}{
-\preformatted{svc$domain_metadata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$domain_metadata(
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

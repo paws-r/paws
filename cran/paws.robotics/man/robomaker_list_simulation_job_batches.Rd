@@ -26,7 +26,9 @@ request with the returned \code{nextToken} value.}
 \item{filters}{Optional filters to limit results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   simulationJobBatchSummaries = list(
     list(
       arn = "string",
@@ -44,14 +46,16 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list simulation job batches. You can optionally provide
 filters to retrieve specific simulation batch jobs.
 }
 \section{Request syntax}{
-\preformatted{svc$list_simulation_job_batches(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_simulation_job_batches(
   nextToken = "string",
   maxResults = 123,
   filters = list(
@@ -63,7 +67,7 @@ filters to retrieve specific simulation batch jobs.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ are WorkSpaces, registered directories, images, custom bundles, IP
 access control groups, and connection aliases.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TagList = list(
     list(
       Key = "string",
@@ -20,16 +22,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified tags for the specified WorkSpaces resource.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tags(
   ResourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

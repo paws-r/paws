@@ -26,10 +26,12 @@ group related jobs and identify them in the completion notification.}
 included in your response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts asynchronous detection of text in a stored video.
@@ -49,7 +51,9 @@ job identifier (\code{JobId}) from the initial call to
 \code{\link[=rekognition_start_text_detection]{start_text_detection}}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_text_detection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_text_detection(
   Video = list(
     S3Object = list(
       Bucket = "string",
@@ -81,7 +85,7 @@ job identifier (\code{JobId}) from the initial call to
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

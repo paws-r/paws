@@ -21,10 +21,12 @@ For \code{EXPRESS}state machines, the deletion will happen eventually
 \code{\link[=sfn_delete_state_machine]{delete_state_machine}} API is called.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_state_machine(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_state_machine(
   stateMachineArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

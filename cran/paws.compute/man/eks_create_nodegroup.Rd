@@ -113,7 +113,9 @@ information about using launch templates with Amazon EKS, see \href{https://docs
 in the Amazon EKS User Guide.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   nodegroup = list(
     nodegroupName = "string",
     nodegroupArn = "string",
@@ -180,7 +182,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a managed worker node group for an Amazon EKS cluster. You can
@@ -197,7 +199,9 @@ Amazon Linux 2 AMI. For more information, see \href{https://docs.aws.amazon.com/
 in the \emph{Amazon EKS User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_nodegroup(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_nodegroup(
   clusterName = "string",
   nodegroupName = "string",
   scalingConfig = list(
@@ -236,7 +240,7 @@ in the \emph{Amazon EKS User Guide}.
   version = "string",
   releaseVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

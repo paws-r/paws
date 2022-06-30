@@ -17,7 +17,9 @@ resource type and storage config for the given instance ID.}
 \item{ResourceType}{[required] A valid resource type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StorageConfig = list(
     AssociationId = "string",
     StorageType = "S3"|"KINESIS_VIDEO_STREAM"|"KINESIS_STREAM"|"KINESIS_FIREHOSE",
@@ -45,7 +47,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -55,12 +57,14 @@ Retrieves the current storage configurations for the specified resource
 type, association ID, and instance ID.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_instance_storage_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_storage_config(
   InstanceId = "string",
   AssociationId = "string",
   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

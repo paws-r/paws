@@ -28,12 +28,14 @@ You can provide a text message explaining why the Qualification was
 revoked. The user who had the Qualification can see this message.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_qualification_from_worker(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_qualification_from_worker(
   WorkerId = "string",
   QualificationTypeId = "string",
   Reason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

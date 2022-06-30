@@ -21,10 +21,12 @@ permissions by allowing the user to perform all the actions granted in
 its permissions policies.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user_permissions_boundary(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_permissions_boundary(
   UserName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

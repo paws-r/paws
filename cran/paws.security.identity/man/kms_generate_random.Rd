@@ -16,10 +16,12 @@ To find the ID of a custom key store, use the
 operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Plaintext = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a random byte string that is cryptographically secure.
@@ -38,11 +40,13 @@ whitepaper.
 (IAM policy)
 }
 \section{Request syntax}{
-\preformatted{svc$generate_random(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$generate_random(
   NumberOfBytes = 123,
   CustomKeyStoreId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

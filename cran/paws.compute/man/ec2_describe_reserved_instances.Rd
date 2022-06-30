@@ -40,11 +40,11 @@ holders and are for use with Amazon VPC (\code{Linux/UNIX} |
 was placed (for example, 2014-08-07T11:54:42.000Z).
 \item \code{state} - The state of the Reserved Instance (\code{payment-pending} |
 \code{active} | \code{payment-failed} | \code{retired}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -69,7 +69,9 @@ the 2011-11-01 API version, you only have access to the
 \verb{Medium Utilization} Reserved Instance offering type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReservedInstances = list(
     list(
       AvailabilityZone = "string",
@@ -107,7 +109,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more of the Reserved Instances that you purchased.
@@ -116,7 +118,9 @@ For more information about Reserved Instances, see \href{https://docs.aws.amazon
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_reserved_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reserved_instances(
   Filters = list(
     list(
       Name = "string",
@@ -132,7 +136,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   DryRun = TRUE|FALSE,
   OfferingType = "Heavy Utilization"|"Medium Utilization"|"Light Utilization"|"No Upfront"|"Partial Upfront"|"All Upfront"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,21 +12,25 @@ licensemanager_delete_license(LicenseArn, SourceVersion)
 \item{SourceVersion}{[required] Current version of the license.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = "PENDING_DELETE"|"DELETED",
   DeletionDate = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified license.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_license(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_license(
   LicenseArn = "string",
   SourceVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

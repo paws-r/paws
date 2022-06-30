@@ -41,7 +41,9 @@ An empty list.
 Updates supported fields of the specified job.
 }
 \section{Request syntax}{
-\preformatted{svc$update_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_job(
   jobId = "string",
   description = "string",
   presignedUrlConfig = list(
@@ -74,7 +76,7 @@ Updates supported fields of the specified job.
   ),
   namespaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

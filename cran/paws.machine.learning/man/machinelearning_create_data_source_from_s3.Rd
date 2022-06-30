@@ -32,10 +32,12 @@ be set to \code{true} if the \code{DataSource} needs to be used for \code{MLMode
 training.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DataSourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a \code{DataSource} object. A \code{DataSource} references data that can
@@ -80,7 +82,9 @@ variable or will it be split apart into word combinations? The recipe
 provides answers to these questions.
 }
 \section{Request syntax}{
-\preformatted{svc$create_data_source_from_s3(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_data_source_from_s3(
   DataSourceId = "string",
   DataSourceName = "string",
   DataSpec = list(
@@ -91,7 +95,7 @@ provides answers to these questions.
   ),
   ComputeStatistics = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

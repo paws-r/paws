@@ -21,7 +21,9 @@ lowercase.}
 representation of an integer. Each version is incremented by 1.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Errors = list(
     list(
       TableName = "string",
@@ -33,13 +35,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a specified batch of versions of a table.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_delete_table_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_delete_table_version(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -47,7 +51,7 @@ Deletes a specified batch of versions of a table.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

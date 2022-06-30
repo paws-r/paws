@@ -46,16 +46,20 @@ filter, and search for your resources. We recommend that you create a
 name tag for your location.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LocationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an endpoint for an Amazon EFS file system.
 }
 \section{Request syntax}{
-\preformatted{svc$create_location_efs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_location_efs(
   Subdirectory = "string",
   EfsFilesystemArn = "string",
   Ec2Config = list(
@@ -71,7 +75,7 @@ Creates an endpoint for an Amazon EFS file system.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

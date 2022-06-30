@@ -25,14 +25,16 @@ Configures the email template for the user enrollment invitation with
 the specified attributes.
 }
 \section{Request syntax}{
-\preformatted{svc$put_invitation_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_invitation_configuration(
   OrganizationName = "string",
   ContactEmail = "string",
   PrivateSkillIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

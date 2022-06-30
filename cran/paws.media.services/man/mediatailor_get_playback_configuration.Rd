@@ -10,7 +10,9 @@ mediatailor_get_playback_configuration(Name)
 \item{Name}{[required] The identifier for the playback configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AdDecisionServerUrl = "string",
   AvailSuppression = list(
     Mode = "OFF"|"BEHIND_LIVE_EDGE",
@@ -53,16 +55,18 @@ A list with the following syntax:\preformatted{list(
   TranscodeProfileName = "string",
   VideoContentSourceUrl = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the playback configuration for the specified name.
 }
 \section{Request syntax}{
-\preformatted{svc$get_playback_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_playback_configuration(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

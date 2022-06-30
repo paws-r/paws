@@ -47,7 +47,9 @@ data sources.
 \item{cachingConfig}{The caching configuration for the resolver.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resolver = list(
     typeName = "string",
     fieldName = "string",
@@ -76,13 +78,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a \code{Resolver} object.
 }
 \section{Request syntax}{
-\preformatted{svc$update_resolver(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_resolver(
   apiId = "string",
   typeName = "string",
   fieldName = "string",
@@ -109,7 +113,7 @@ Updates a \code{Resolver} object.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -424,7 +424,7 @@ robomaker_cancel_world_generation_job <- function(job) {
 #' consistency reasons. To create a new version, use
 #' [`create_robot_application_version`][robomaker_create_robot_application_version]
 #' or see [Creating a Robot Application
-#' Version](https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html).
+#' Version](https://docs.aws.amazon.com/robomaker/latest/dg/).
 #' 
 #' After 90 days, deployment jobs expire and will be deleted. They will no
 #' longer be accessible.

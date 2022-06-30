@@ -52,7 +52,9 @@ results are returned in ascending order of the \code{eventTimestamp} of the
 events.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskToken = "string",
   startedEventId = 123,
   workflowExecution = list(
@@ -484,7 +486,7 @@ A list with the following syntax:\preformatted{list(
   nextPageToken = "string",
   previousStartedEventId = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Used by deciders to get a DecisionTask from the specified decision
@@ -536,7 +538,9 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$poll_for_decision_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$poll_for_decision_task(
   domain = "string",
   taskList = list(
     name = "string"
@@ -546,7 +550,7 @@ in the \emph{Amazon SWF Developer Guide}.
   maximumPageSize = 123,
   reverseOrder = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

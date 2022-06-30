@@ -25,7 +25,9 @@ Environments that you create using the platform version don't inherit
 the tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PlatformSummary = list(
     PlatformArn = "string",
     PlatformOwner = "string",
@@ -48,13 +50,15 @@ A list with the following syntax:\preformatted{list(
     ARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create a new version of your custom platform.
 }
 \section{Request syntax}{
-\preformatted{svc$create_platform_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_platform_version(
   PlatformName = "string",
   PlatformVersion = "string",
   PlatformDefinitionBundle = list(
@@ -77,7 +81,7 @@ Create a new version of your custom platform.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

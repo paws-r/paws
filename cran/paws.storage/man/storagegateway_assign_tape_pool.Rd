@@ -29,10 +29,12 @@ calls from the console.
 Valid values: \code{TRUE} | \code{FALSE}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TapeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Assigns a tape to a tape pool for archiving. The tape assigned to a pool
@@ -44,12 +46,14 @@ Deep Archive) that corresponds to the pool.
 Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}
 }
 \section{Request syntax}{
-\preformatted{svc$assign_tape_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$assign_tape_pool(
   TapeARN = "string",
   PoolId = "string",
   BypassGovernanceRetention = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

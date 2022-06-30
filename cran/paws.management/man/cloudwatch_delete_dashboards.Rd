@@ -18,12 +18,14 @@ dashboards to delete. If there is an error during this call, no
 dashboards are deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_dashboards(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dashboards(
   DashboardNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

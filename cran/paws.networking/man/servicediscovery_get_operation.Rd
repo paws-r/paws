@@ -11,7 +11,9 @@ servicediscovery_get_operation(OperationId)
 \item{OperationId}{[required] The ID of the operation that you want to get more information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Operation = list(
     Id = "string",
     Type = "CREATE_NAMESPACE"|"DELETE_NAMESPACE"|"UPDATE_SERVICE"|"REGISTER_INSTANCE"|"DEREGISTER_INSTANCE",
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about any operation that returns an operation ID in the
@@ -40,10 +42,12 @@ To get a list of operations that match specified criteria, see
 \code{\link[=servicediscovery_list_operations]{list_operations}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_operation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_operation(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

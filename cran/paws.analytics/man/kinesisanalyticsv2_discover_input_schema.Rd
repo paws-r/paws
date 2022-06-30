@@ -26,7 +26,9 @@ object.}
 discovering the schema of the records.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InputSchema = list(
     RecordFormat = list(
       RecordFormatType = "JSON"|"CSV",
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Infers a schema for a SQL-based Kinesis Data Analytics application by
@@ -76,7 +78,9 @@ Analytics console, the console uses this operation to infer a schema and
 show it in the console user interface.
 }
 \section{Request syntax}{
-\preformatted{svc$discover_input_schema(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$discover_input_schema(
   ResourceARN = "string",
   ServiceExecutionRole = "string",
   InputStartingPositionConfiguration = list(
@@ -92,7 +96,7 @@ show it in the console user interface.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

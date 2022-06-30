@@ -11,7 +11,9 @@ personalize_describe_feature_transformation(featureTransformationArn)
 describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   featureTransformation = list(
     name = "string",
     featureTransformationArn = "string",
@@ -27,16 +29,18 @@ A list with the following syntax:\preformatted{list(
     status = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the given feature transformation.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_feature_transformation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_feature_transformation(
   featureTransformationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

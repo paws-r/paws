@@ -19,7 +19,9 @@ value.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceGroupName = "string",
   LogPatterns = list(
     list(
@@ -31,19 +33,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the log patterns in the specific log \code{LogPatternSet}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_log_patterns(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_log_patterns(
   ResourceGroupName = "string",
   PatternSetName = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

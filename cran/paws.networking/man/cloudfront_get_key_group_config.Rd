@@ -11,7 +11,9 @@ cloudfront_get_key_group_config(Id)
 get the identifier, use \code{\link[=cloudfront_list_key_groups]{list_key_groups}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyGroupConfig = list(
     Name = "string",
     Items = list(
@@ -21,7 +23,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ETag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a key group configuration.
@@ -35,10 +37,12 @@ not referenced in a cache behavior, you can get the identifier using
 \code{\link[=cloudfront_list_key_groups]{list_key_groups}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_key_group_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_key_group_config(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

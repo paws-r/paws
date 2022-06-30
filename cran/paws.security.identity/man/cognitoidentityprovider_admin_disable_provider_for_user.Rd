@@ -54,7 +54,9 @@ already signed in, the \code{ProviderAttributeName} must be \code{Cognito_Subjec
 and \code{ProviderAttributeValue} must be the subject of the SAML assertion.
 }
 \section{Request syntax}{
-\preformatted{svc$admin_disable_provider_for_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_disable_provider_for_user(
   UserPoolId = "string",
   User = list(
     ProviderName = "string",
@@ -62,7 +64,7 @@ and \code{ProviderAttributeValue} must be the subject of the SAML assertion.
     ProviderAttributeValue = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -43,18 +43,22 @@ either of the following formats:
 detection job. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string",
   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts an asynchronous sentiment detection job for a collection of
 documents. use the operation to track the status of a job.
 }
 \section{Request syntax}{
-\preformatted{svc$start_sentiment_detection_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_sentiment_detection_job(
   InputDataConfig = list(
     S3Uri = "string",
     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
@@ -77,7 +81,7 @@ documents. use the operation to track the status of a job.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

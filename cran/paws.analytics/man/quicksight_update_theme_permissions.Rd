@@ -17,7 +17,9 @@ quicksight_update_theme_permissions(AwsAccountId, ThemeId,
 \item{RevokePermissions}{A list of resource permissions to be revoked from the theme.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ThemeId = "string",
   ThemeArn = "string",
   Permissions = list(
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the resource permissions for a theme. Permissions apply to the
@@ -67,7 +69,9 @@ no permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_theme_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_theme_permissions(
   AwsAccountId = "string",
   ThemeId = "string",
   GrantPermissions = list(
@@ -87,7 +91,7 @@ no permissions:
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

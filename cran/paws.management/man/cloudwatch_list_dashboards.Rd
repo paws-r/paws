@@ -15,7 +15,9 @@ valid characters are A-Z, a-z, 0-9, ".", "-", and "_".}
 data available.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DashboardEntries = list(
     list(
       DashboardName = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the dashboards for your account. If you include
@@ -43,11 +45,13 @@ the value you received for \code{NextToken} in the first call, to receive the
 next 1000 results.
 }
 \section{Request syntax}{
-\preformatted{svc$list_dashboards(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_dashboards(
   DashboardNamePrefix = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ sagemaker_describe_monitoring_schedule(MonitoringScheduleName)
 \item{MonitoringScheduleName}{[required] Name of a previously created monitoring schedule.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MonitoringScheduleArn = "string",
   MonitoringScheduleName = "string",
   MonitoringScheduleStatus = "Pending"|"Failed"|"Scheduled"|"Stopped",
@@ -126,16 +128,18 @@ A list with the following syntax:\preformatted{list(
     MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the schedule for a monitoring job.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_monitoring_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_monitoring_schedule(
   MonitoringScheduleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

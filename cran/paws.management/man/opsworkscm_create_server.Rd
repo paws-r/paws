@@ -67,16 +67,16 @@ server, the valid value is \code{2017}.}
 \itemize{
 \item \code{CHEF_AUTOMATE_PIVOTAL_KEY}: A base64-encoded RSA public key. The
 corresponding private key is required to access the Chef API. When
-no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated
-and returned in the response.
+no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+returned in the response.
 \item \code{CHEF_AUTOMATE_ADMIN_PASSWORD}: The password for the administrative
 user in the Chef Automate web-based dashboard. The password length
 is a minimum of eight characters, and a maximum of 32. The password
-can contain letters, numbers, and special characters
-(!/@\#$\%^&+=_). The password must contain at least one lower case
-letter, one upper case letter, one number, and one special
-character. When no CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is
-generated and returned in the response.
+can contain letters, numbers, and special characters (!/@#$\%^&+=_).
+The password must contain at least one lower case letter, one upper
+case letter, one number, and one special character. When no
+CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned
+in the response.
 }
 
 \strong{Attributes accepted in a Puppet createServer request:}
@@ -191,7 +191,9 @@ server.
 the backup represented by BackupId.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Server = list(
     AssociatePublicIpAddress = TRUE|FALSE,
     BackupRetentionCount = 123,
@@ -230,7 +232,7 @@ A list with the following syntax:\preformatted{list(
     ServerArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates and immedately starts a new server. The server is ready to use
@@ -268,7 +270,9 @@ self-signed or CA-signed certificate and private key, specify values for
 \code{CustomDomain}, \code{CustomCertificate}, and \code{CustomPrivateKey}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_server(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_server(
   AssociatePublicIpAddress = TRUE|FALSE,
   CustomDomain = "string",
   CustomCertificate = "string",
@@ -305,7 +309,7 @@ self-signed or CA-signed certificate and private key, specify values for
   ),
   BackupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

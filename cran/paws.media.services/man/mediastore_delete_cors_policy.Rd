@@ -22,10 +22,12 @@ To use this operation, you must have permission to perform the
 permission by default and can grant this permission to others.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cors_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cors_policy(
   ContainerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

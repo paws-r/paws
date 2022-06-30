@@ -56,7 +56,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 \item{TagSpecifications}{The tags to apply to the new network interface.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NetworkInterface = list(
     Association = list(
       AllocationId = "string",
@@ -129,7 +131,7 @@ A list with the following syntax:\preformatted{list(
     VpcId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a network interface in the specified subnet.
@@ -138,7 +140,9 @@ For more information about network interfaces, see \href{https://docs.aws.amazon
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_network_interface(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_network_interface(
   Description = "string",
   DryRun = TRUE|FALSE,
   Groups = list(
@@ -172,7 +176,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

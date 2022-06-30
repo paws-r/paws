@@ -59,10 +59,12 @@ in the AWS Billing and Cost Management User Guide.
 You can specify up to 50 tags when creating a delivery stream.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeliveryStreamARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Kinesis Data Firehose delivery stream.
@@ -144,7 +146,9 @@ allow the service to deliver the data. For more information, see \href{https://d
 in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_delivery_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_delivery_stream(
   DeliveryStreamName = "string",
   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
   KinesisStreamSourceConfiguration = list(
@@ -557,7 +561,7 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

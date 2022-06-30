@@ -38,11 +38,13 @@ exist or the CMK is disabled, you receive an \code{InvalidParameterException}
 error.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_kms_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_kms_key(
   logGroupName = "string",
   kmsKeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

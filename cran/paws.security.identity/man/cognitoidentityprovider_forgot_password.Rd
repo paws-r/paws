@@ -56,14 +56,16 @@ don't use it to provide sensitive information.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CodeDeliveryDetails = list(
     Destination = "string",
     DeliveryMedium = "SMS"|"EMAIL",
     AttributeName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Calling this API causes a message to be sent to the end user with a
@@ -77,7 +79,9 @@ thrown. To use the confirmation code for resetting the password, call
 \code{\link[=cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password}}.
 }
 \section{Request syntax}{
-\preformatted{svc$forgot_password(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$forgot_password(
   ClientId = "string",
   SecretHash = "string",
   UserContextData = list(
@@ -91,7 +95,7 @@ thrown. To use the confirmation code for resetting the password, call
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

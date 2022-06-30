@@ -10,21 +10,25 @@ eventbridge_cancel_replay(ReplayName)
 \item{ReplayName}{[required] The name of the replay to cancel.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplayArn = "string",
   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
   StateReason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels the specified replay.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_replay(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_replay(
   ReplayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,7 +14,9 @@ schemas (if they exist).}
 \item{maxResults}{The maximum number of schemas to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   schemas = list(
     list(
       name = "string",
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the list of schemas associated with the account. The response
@@ -38,11 +40,13 @@ Name (ARN). For more information on schemas, see
 \code{\link[=personalize_create_schema]{create_schema}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_schemas(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_schemas(
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

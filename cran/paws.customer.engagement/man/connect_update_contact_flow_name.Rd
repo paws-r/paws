@@ -25,13 +25,15 @@ The name of the contact flow.
 You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_contact_flow_name(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_contact_flow_name(
   InstanceId = "string",
   ContactFlowId = "string",
   Name = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

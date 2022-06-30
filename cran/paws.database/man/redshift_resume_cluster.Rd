@@ -10,7 +10,9 @@ redshift_resume_cluster(ClusterIdentifier)
 \item{ClusterIdentifier}{[required] The identifier of the cluster to be resumed.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -167,16 +169,18 @@ A list with the following syntax:\preformatted{list(
     ClusterNamespaceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Resumes a paused cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$resume_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resume_cluster(
   ClusterIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

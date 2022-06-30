@@ -23,12 +23,14 @@ Disables the process of sending Amazon Simple Notification Service (SNS)
 notifications about a specified event to a specified SNS topic.
 }
 \section{Request syntax}{
-\preformatted{svc$unsubscribe_from_event(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unsubscribe_from_event(
   resourceArn = "string",
   event = "ASSESSMENT_RUN_STARTED"|"ASSESSMENT_RUN_COMPLETED"|"ASSESSMENT_RUN_STATE_CHANGED"|"FINDING_REPORTED"|"OTHER",
   topicArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

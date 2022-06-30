@@ -1205,7 +1205,7 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
 #' (IAM) role that grants Amazon Comprehend Medical read access to your
 #' input data. For more information, see [Role-Based Permissions Required
 #' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend Medical generates one.
@@ -1281,7 +1281,7 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
 #' (IAM) role that grants Amazon Comprehend Medical read access to your
 #' input data. For more information, see [Role-Based Permissions Required
 #' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend Medical generates one.
@@ -1356,7 +1356,7 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
 #' (IAM) role that grants Amazon Comprehend Medical read access to your
 #' input data. For more information, see [Role-Based Permissions Required
 #' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend Medical generates one.
@@ -1432,7 +1432,7 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
 #' (IAM) role that grants Amazon Comprehend Medical read access to your
 #' input data. For more information, see [Role-Based Permissions Required
 #' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend Medical generates one.

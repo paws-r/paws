@@ -29,7 +29,9 @@ specified, the query version defaults to this value.}
 \item{tags}{Metadata which can be used to manage the dynamic thing group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   thingGroupName = "string",
   thingGroupArn = "string",
   thingGroupId = "string",
@@ -37,13 +39,15 @@ A list with the following syntax:\preformatted{list(
   queryString = "string",
   queryVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a dynamic thing group.
 }
 \section{Request syntax}{
-\preformatted{svc$create_dynamic_thing_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dynamic_thing_group(
   thingGroupName = "string",
   thingGroupProperties = list(
     thingGroupDescription = "string",
@@ -64,7 +68,7 @@ Creates a dynamic thing group.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

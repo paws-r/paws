@@ -45,12 +45,14 @@ lock is in the \code{InProgress} state, the operation throws an
 \code{InvalidParameter} error.
 }
 \section{Request syntax}{
-\preformatted{svc$complete_vault_lock(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$complete_vault_lock(
   accountId = "string",
   vaultName = "string",
   lockId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

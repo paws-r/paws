@@ -11,7 +11,9 @@ kafka_describe_configuration(Arn)
 configuration and all of its revisions.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTime = as.POSIXct(
     "2015-01-01"
@@ -30,16 +32,18 @@ A list with the following syntax:\preformatted{list(
   Name = "string",
   State = "ACTIVE"|"DELETING"|"DELETE_FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a description of this MSK configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration(
   Arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

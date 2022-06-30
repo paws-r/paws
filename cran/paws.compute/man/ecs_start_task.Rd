@@ -87,7 +87,9 @@ definition to start. If a \code{revision} is not specified, the latest
 \code{ACTIVE} revision is used.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tasks = list(
     list(
       attachments = list(
@@ -252,7 +254,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a new task from the specified task definition on the specified
@@ -263,7 +265,9 @@ you. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/lates
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_task(
   cluster = "string",
   containerInstances = list(
     "string"
@@ -333,7 +337,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
   ),
   taskDefinition = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

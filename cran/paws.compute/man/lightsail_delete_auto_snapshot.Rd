@@ -15,7 +15,9 @@ the \verb{get auto snapshots} operation to get the available automatic
 snapshots for a resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -40,18 +42,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an automatic snapshot of an instance or disk. For more
 information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_auto_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_auto_snapshot(
   resourceName = "string",
   date = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

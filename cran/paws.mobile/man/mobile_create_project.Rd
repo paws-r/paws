@@ -20,7 +20,9 @@ This snapshot identifier is included in the share URL when a project is
 exported.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   details = list(
     name = "string",
     projectId = "string",
@@ -46,19 +48,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS Mobile Hub project.
 }
 \section{Request syntax}{
-\preformatted{svc$create_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_project(
   name = "string",
   region = "string",
   contents = raw,
   snapshotId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

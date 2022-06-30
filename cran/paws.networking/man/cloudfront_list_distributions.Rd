@@ -16,7 +16,9 @@ response (which is also the ID of the last distribution on that page).}
 \item{MaxItems}{The maximum number of distributions you want in the response body.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DistributionList = list(
     Marker = "string",
     NextMarker = "string",
@@ -300,17 +302,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List CloudFront distributions.
 }
 \section{Request syntax}{
-\preformatted{svc$list_distributions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_distributions(
   Marker = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

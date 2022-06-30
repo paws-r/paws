@@ -11,7 +11,9 @@ apigateway_get_domain_name(domainName)
 \item{domainName}{[required] [Required] The name of the DomainName resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   domainName = "string",
   certificateName = "string",
   certificateArn = "string",
@@ -46,17 +48,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Represents a domain name that is contained in a simpler, more intuitive
 URL that can be called.
 }
 \section{Request syntax}{
-\preformatted{svc$get_domain_name(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_domain_name(
   domainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

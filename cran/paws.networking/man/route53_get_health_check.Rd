@@ -13,7 +13,9 @@ this value to specify which health check to use. The value can be up to
 64 characters long.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HealthCheck = list(
     Id = "string",
     CallerReference = "string",
@@ -65,16 +67,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a specified health check.
 }
 \section{Request syntax}{
-\preformatted{svc$get_health_check(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_health_check(
   HealthCheckId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

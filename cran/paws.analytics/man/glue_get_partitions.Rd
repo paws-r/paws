@@ -34,44 +34,44 @@ Example: Assume 'variable a' holds 10 and 'variable b' holds 20.
 (a = b) is not true.
 }
 
-\subsection{< >}{
+\subsection{\< \>}{
 
 Checks whether the values of two operands are equal; if the values are
 not equal, then the condition becomes true.
 
-Example: (a < > b) is true.
+Example: (a \< \> b) is true.
 }
 
-\subsection{>}{
+\subsection{\>}{
 
 Checks whether the value of the left operand is greater than the value
 of the right operand; if yes, then the condition becomes true.
 
-Example: (a > b) is not true.
+Example: (a \> b) is not true.
 }
 
-\subsection{<}{
+\subsection{\<}{
 
 Checks whether the value of the left operand is less than the value of
 the right operand; if yes, then the condition becomes true.
 
-Example: (a < b) is true.
+Example: (a \< b) is true.
 }
 
-\subsection{>=}{
+\subsection{\>=}{
 
 Checks whether the value of the left operand is greater than or equal to
 the value of the right operand; if yes, then the condition becomes true.
 
-Example: (a >= b) is not true.
+Example: (a \>= b) is not true.
 }
 
-\subsection{<=}{
+\subsection{\<=}{
 
 Checks whether the value of the left operand is less than or equal to
 the value of the right operand; if yes, then the condition becomes true.
 
-Example: (a <= b) is true.
+Example: (a \<= b) is true.
 }
 
 \subsection{AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL}{
@@ -109,7 +109,9 @@ partitions.}
 \item{MaxResults}{The maximum number of partitions to return in a single response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Partitions = list(
     list(
       Values = list(
@@ -191,13 +193,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the partitions in a table.
 }
 \section{Request syntax}{
-\preformatted{svc$get_partitions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_partitions(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -209,7 +213,7 @@ Retrieves information about the partitions in a table.
   ),
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,7 +22,9 @@ retrieve the next page of results.}
 \item{MaxItems}{The maximum number of functions to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextMarker = "string",
   Functions = list(
     list(
@@ -106,7 +108,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of Lambda functions, with the version-specific
@@ -117,13 +119,15 @@ function in addition to the unpublished version. To get more information
 about a function or version, use \code{\link[=lambda_get_function]{get_function}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_functions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_functions(
   MasterRegion = "string",
   FunctionVersion = "ALL",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

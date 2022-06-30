@@ -87,10 +87,12 @@ change the idempotency token for each call, PCA recognizes that you are
 requesting multiple certificates.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CertificateArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Uses your private certificate authority (CA), or one that has been
@@ -103,7 +105,9 @@ You cannot use the ACM \strong{ListCertificateAuthorities} action to retrieve
 the ARNs of the certificates that you issue by using ACM Private CA.
 }
 \section{Request syntax}{
-\preformatted{svc$issue_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$issue_certificate(
   CertificateAuthorityArn = "string",
   Csr = raw,
   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
@@ -114,7 +118,7 @@ the ARNs of the certificates that you issue by using ACM Private CA.
   ),
   IdempotencyToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

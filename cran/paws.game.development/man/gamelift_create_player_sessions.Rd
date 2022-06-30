@@ -18,7 +18,9 @@ game. Player data strings for player IDs not included in the \code{PlayerIds}
 parameter are ignored.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PlayerSessions = list(
     list(
       PlayerSessionId = "string",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Reserves open slots in a game session for a group of players. Before
@@ -71,7 +73,9 @@ PlayerSession objects is returned. Player sessions cannot be updated.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_player_sessions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_player_sessions(
   GameSessionId = "string",
   PlayerIds = list(
     "string"
@@ -80,7 +84,7 @@ PlayerSession objects is returned. Player sessions cannot be updated.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

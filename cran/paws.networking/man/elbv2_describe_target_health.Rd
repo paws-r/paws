@@ -12,7 +12,9 @@ elbv2_describe_target_health(TargetGroupArn, Targets)
 \item{Targets}{The targets.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TargetHealthDescriptions = list(
     list(
       Target = list(
@@ -29,13 +31,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the health of the specified targets or all of your targets.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_target_health(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_target_health(
   TargetGroupArn = "string",
   Targets = list(
     list(
@@ -45,7 +49,7 @@ Describes the health of the specified targets or all of your targets.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

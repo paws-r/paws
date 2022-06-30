@@ -10,7 +10,9 @@ databasemigrationservice_delete_replication_task(ReplicationTaskArn)
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task to be deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationTask = list(
     ReplicationTaskIdentifier = "string",
     SourceEndpointArn = "string",
@@ -59,16 +61,18 @@ A list with the following syntax:\preformatted{list(
     TargetReplicationInstanceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified replication task.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_replication_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_replication_task(
   ReplicationTaskArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

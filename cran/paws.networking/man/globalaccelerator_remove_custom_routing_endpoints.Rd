@@ -21,13 +21,15 @@ An empty list.
 Remove endpoints from a custom routing accelerator.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_custom_routing_endpoints(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_custom_routing_endpoints(
   EndpointIds = list(
     "string"
   ),
   EndpointGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

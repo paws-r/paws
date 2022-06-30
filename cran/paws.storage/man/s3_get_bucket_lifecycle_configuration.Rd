@@ -16,7 +16,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Rules = list(
     list(
       Expiration = list(
@@ -69,7 +71,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Bucket lifecycle configuration now supports specifying a lifecycle rule
@@ -110,11 +112,13 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_bucket_lifecycle_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_lifecycle_configuration(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

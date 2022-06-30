@@ -40,11 +40,13 @@ with an AWS managed customer master key (CMK) by default. For more
 control, specify a customer managed CMK.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainArn = "string",
   Url = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a \code{Domain} used by Amazon SageMaker Studio. A domain consists of
@@ -89,7 +91,9 @@ security groups allow outbound connections.
 For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-and-internet-access.html}{Connect SageMaker Studio Notebooks to Resources in a VPC}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_domain(
   DomainName = "string",
   AuthMode = "SSO"|"IAM",
   DefaultUserSettings = list(
@@ -145,7 +149,7 @@ For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/
   HomeEfsFileSystemKmsKeyId = "string",
   KmsKeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,14 +13,16 @@ backup_describe_protected_resource(ResourceArn)
 format of the ARN depends on the resource type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceArn = "string",
   ResourceType = "string",
   LastBackupTime = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a saved resource, including the last time it
@@ -28,10 +30,12 @@ was backed up, its Amazon Resource Name (ARN), and the AWS service type
 of the saved resource.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_protected_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_protected_resource(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

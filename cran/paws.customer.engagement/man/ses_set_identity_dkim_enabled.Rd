@@ -32,14 +32,16 @@ process isn't complete.
 
 You can execute this operation no more than once per second.
 
-For more information about Easy DKIM signing, go to the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html}{Amazon SES Developer Guide}.
+For more information about Easy DKIM signing, go to the \href{https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$set_identity_dkim_enabled(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_identity_dkim_enabled(
   Identity = "string",
   DkimEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

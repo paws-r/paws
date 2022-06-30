@@ -14,7 +14,9 @@ medialive_update_channel_class(ChannelClass, ChannelId, Destinations)
 \item{Destinations}{A list of output destinations for this channel.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Channel = list(
     Arn = "string",
     CdiInputSpecification = list(
@@ -917,13 +919,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Changes the class of the channel.
 }
 \section{Request syntax}{
-\preformatted{svc$update_channel_class(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_channel_class(
   ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
   ChannelId = "string",
   Destinations = list(
@@ -949,7 +953,7 @@ Changes the class of the channel.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

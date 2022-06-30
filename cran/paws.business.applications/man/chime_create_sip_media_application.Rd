@@ -15,7 +15,9 @@ chime_create_sip_media_application(AwsRegion, Name, Endpoints)
 media application. Currently, only one endpoint is supported.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SipMediaApplication = list(
     SipMediaApplicationId = "string",
     AwsRegion = "string",
@@ -33,13 +35,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a SIP media application.
 }
 \section{Request syntax}{
-\preformatted{svc$create_sip_media_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_sip_media_application(
   AwsRegion = "string",
   Name = "string",
   Endpoints = list(
@@ -48,7 +52,7 @@ Creates a SIP media application.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

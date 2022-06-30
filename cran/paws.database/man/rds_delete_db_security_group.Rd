@@ -29,10 +29,12 @@ The specified DB security group must not be associated with any DB
 instances.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_db_security_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_security_group(
   DBSecurityGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

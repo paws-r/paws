@@ -30,7 +30,9 @@ and a \code{datastore} activity and, optionally, as many as 23 additional
 activities in the \code{pipelineActivities} array.
 }
 \section{Request syntax}{
-\preformatted{svc$update_pipeline(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pipeline(
   pipelineName = "string",
   pipelineActivities = list(
     list(
@@ -98,7 +100,7 @@ activities in the \code{pipelineActivities} array.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

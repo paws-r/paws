@@ -10,13 +10,15 @@ opsworks_describe_stack_provisioning_parameters(StackId)
 \item{StackId}{[required] The stack ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AgentInstallerUrl = "string",
   Parameters = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Requests a description of a stack's provisioning parameters.
@@ -27,10 +29,12 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_stack_provisioning_parameters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stack_provisioning_parameters(
   StackId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

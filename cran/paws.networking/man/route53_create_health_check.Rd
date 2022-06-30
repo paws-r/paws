@@ -32,7 +32,9 @@ existing health check, Route 53 creates the health check.
 \item{HealthCheckConfig}{[required] A complex type that contains settings for a new health check.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HealthCheck = list(
     Id = "string",
     CallerReference = "string",
@@ -85,7 +87,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Location = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new health check.
@@ -123,7 +125,9 @@ metrics and alarms by using the CloudWatch console, see the \href{https://docs.a
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_health_check(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_health_check(
   CallerReference = "string",
   HealthCheckConfig = list(
     IPAddress = "string",
@@ -152,7 +156,7 @@ metrics and alarms by using the CloudWatch console, see the \href{https://docs.a
     InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

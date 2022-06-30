@@ -15,7 +15,9 @@ xray_list_tags_for_resource(ResourceARN, NextToken)
 of this parameter to get the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -24,18 +26,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of tags that are applied to the specified AWS X-Ray group
 or sampling rule.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   ResourceARN = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

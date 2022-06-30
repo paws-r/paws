@@ -7,12 +7,14 @@
 autoscaling_describe_termination_policy_types()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TerminationPolicyTypes = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the termination policies supported by Amazon EC2 Auto Scaling.

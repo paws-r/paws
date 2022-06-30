@@ -13,24 +13,23 @@ marketplacecommerceanalytics_start_support_data_export(dataSetType,
 \arguments{
 \item{dataSetType}{[required] Specifies the data set type to be written to the output csv file. The
 data set types customer_support_contacts_data and
-test_customer_support_contacts_data both result in a csv file
-containing the following fields: Product Id, Product Code, Customer
-Guid, Subscription Guid, Subscription Start Date, Organization, AWS
-Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
-Code, ZIP Code, Operation Type, and Operation Time.
+test_customer_support_contacts_data both result in a csv file containing
+the following fields: Product Id, Product Code, Customer Guid,
+Subscription Guid, Subscription Start Date, Organization, AWS Account
+Id, Given Name, Surname, Telephone Number, Email, Title, Country Code,
+ZIP Code, Operation Type, and Operation Time.
 \itemize{
-\item \emph{customer_support_contacts_data} Customer support contact data.
-The data set will contain all changes (Creates, Updates, and
-Deletes) to customer support contact data from the date specified in
-the from_date parameter.
-\item \emph{test_customer_support_contacts_data} An example data set
-containing static test data in the same format as
+\item \emph{customer_support_contacts_data} Customer support contact data. The
+data set will contain all changes (Creates, Updates, and Deletes) to
+customer support contact data from the date specified in the
+from_date parameter.
+\item \emph{test_customer_support_contacts_data} An example data set containing
+static test data in the same format as
 customer_support_contacts_data
 }}
 
 \item{fromDate}{[required] The start date from which to retrieve the data set in UTC. This
-parameter only affects the customer_support_contacts_data data set
-type.}
+parameter only affects the customer_support_contacts_data data set type.}
 
 \item{roleNameArn}{[required] The Amazon Resource Name (ARN) of the Role with an attached permissions
 policy to interact with the provided AWS services.}
@@ -52,10 +51,12 @@ the data set has been published or if an error has occurred.}
 Amazon SNS notification message and the data set metadata file.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   dataSetRequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Given a data set type and a from date, asynchronously publishes the
@@ -72,7 +73,9 @@ following actions: s3:PutObject, s3:GetBucketLocation,
 sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 }
 \section{Request syntax}{
-\preformatted{svc$start_support_data_export(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_support_data_export(
   dataSetType = "customer_support_contacts_data"|"test_customer_support_contacts_data",
   fromDate = as.POSIXct(
     "2015-01-01"
@@ -85,7 +88,7 @@ sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

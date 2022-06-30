@@ -13,7 +13,9 @@ cognitoidentityprovider_get_ui_customization(UserPoolId, ClientId)
 \item{ClientId}{The client ID for the client app.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UICustomization = list(
     UserPoolId = "string",
     ClientId = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the UI Customization information for a particular app client's app
@@ -38,11 +40,13 @@ client, but there is an existing pool level customization (app
 then an empty shape is returned.
 }
 \section{Request syntax}{
-\preformatted{svc$get_ui_customization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ui_customization(
   UserPoolId = "string",
   ClientId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ cloudfront_create_cache_policy(CachePolicyConfig)
 \item{CachePolicyConfig}{[required] A cache policy configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CachePolicy = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -58,7 +60,7 @@ A list with the following syntax:\preformatted{list(
   Location = "string",
   ETag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a cache policy.
@@ -86,7 +88,9 @@ For more information about cache policies, see \href{https://docs.aws.amazon.com
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cache_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cache_policy(
   CachePolicyConfig = list(
     Comment = "string",
     Name = "string",
@@ -126,7 +130,7 @@ in the \emph{Amazon CloudFront Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

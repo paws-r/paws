@@ -16,10 +16,12 @@ An empty list.
 Deletes the ApiKey resource.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_api_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_api_key(
   apiKey = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,18 +19,22 @@ revision.}
 \item{actionRevision}{[required] Represents information about the version (or revision) of an action.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   newRevision = TRUE|FALSE,
   pipelineExecutionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information to AWS CodePipeline about new revisions to a
 source.
 }
 \section{Request syntax}{
-\preformatted{svc$put_action_revision(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_action_revision(
   pipelineName = "string",
   stageName = "string",
   actionName = "string",
@@ -42,7 +46,7 @@ source.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

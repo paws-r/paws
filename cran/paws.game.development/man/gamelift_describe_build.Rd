@@ -11,7 +11,9 @@ gamelift_describe_build(BuildId)
 either the build ID or ARN value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Build = list(
     BuildId = "string",
     BuildArn = "string",
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves properties for a custom game build. To request a build
@@ -46,10 +48,12 @@ build properties is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_build(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_build(
   BuildId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

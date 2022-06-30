@@ -16,7 +16,9 @@ apigatewayv2_create_vpc_link(Name, SecurityGroupIds, SubnetIds, Tags)
 \item{Tags}{A list of tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CreatedDate = as.POSIXct(
     "2015-01-01"
   ),
@@ -35,13 +37,15 @@ A list with the following syntax:\preformatted{list(
   VpcLinkStatusMessage = "string",
   VpcLinkVersion = "V2"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a VPC link.
 }
 \section{Request syntax}{
-\preformatted{svc$create_vpc_link(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc_link(
   Name = "string",
   SecurityGroupIds = list(
     "string"
@@ -53,7 +57,7 @@ Creates a VPC link.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

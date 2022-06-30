@@ -15,10 +15,12 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Payer = "Requester"|"BucketOwner"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the request payment configuration of a bucket. To use this
@@ -32,11 +34,13 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_bucket_request_payment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_request_payment(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

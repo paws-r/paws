@@ -7,17 +7,21 @@
 shield_get_subscription_state()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SubscriptionState = "ACTIVE"|"INACTIVE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the \code{SubscriptionState}, either \code{Active} or \code{Inactive}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_subscription_state()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_subscription_state()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

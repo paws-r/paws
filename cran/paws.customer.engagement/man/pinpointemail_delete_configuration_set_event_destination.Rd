@@ -27,11 +27,13 @@ bounces or complaints, or you can use Amazon Kinesis Data Firehose to
 stream data to Amazon S3 for long-term storage.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_configuration_set_event_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestinationName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

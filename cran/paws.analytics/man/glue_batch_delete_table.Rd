@@ -16,7 +16,9 @@ For Hive compatibility, this name is entirely lowercase.}
 \item{TablesToDelete}{[required] A list of the table to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Errors = list(
     list(
       TableName = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes multiple tables at once.
@@ -46,14 +48,16 @@ calling \code{\link[=glue_batch_delete_table]{batch_delete_table}}, use
 resources that belong to the table.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_delete_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_delete_table(
   CatalogId = "string",
   DatabaseName = "string",
   TablesToDelete = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

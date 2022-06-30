@@ -23,13 +23,15 @@ An empty list.
 Deletes an existing MethodResponse resource.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_method_response(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_method_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
   statusCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

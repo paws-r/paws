@@ -21,7 +21,9 @@ the ID of the last invalidation batch on that page.}
 body.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InvalidationList = list(
     Marker = "string",
     NextMarker = "string",
@@ -39,18 +41,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists invalidation batches.
 }
 \section{Request syntax}{
-\preformatted{svc$list_invalidations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_invalidations(
   DistributionId = "string",
   Marker = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

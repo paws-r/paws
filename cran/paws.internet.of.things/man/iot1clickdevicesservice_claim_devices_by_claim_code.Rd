@@ -11,21 +11,25 @@ iot1clickdevicesservice_claim_devices_by_claim_code(ClaimCode)
 manufacturer.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClaimCode = "string",
   Total = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds device(s) to your account (i.e., claim one or more devices) if and
 only if you received a claim code with the device(s).
 }
 \section{Request syntax}{
-\preformatted{svc$claim_devices_by_claim_code(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$claim_devices_by_claim_code(
   ClaimCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

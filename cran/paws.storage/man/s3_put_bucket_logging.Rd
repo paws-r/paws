@@ -81,7 +81,9 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_logging(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_logging(
   Bucket = "string",
   BucketLoggingStatus = list(
     LoggingEnabled = list(
@@ -104,7 +106,7 @@ The following operations are related to
   ContentMD5 = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

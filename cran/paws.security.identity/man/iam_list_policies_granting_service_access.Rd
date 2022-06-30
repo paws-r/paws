@@ -28,7 +28,9 @@ namespaces, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and
 in the \emph{AWS General Reference}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PoliciesGrantingServiceAccess = list(
     list(
       ServiceNamespace = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of policies that the IAM identity (user, group, or
@@ -86,14 +88,16 @@ the permissions boundary for a user or role, use the
 \code{\link[=iam_get_user]{get_user}} or \code{\link[=iam_get_role]{get_role}} operations.
 }
 \section{Request syntax}{
-\preformatted{svc$list_policies_granting_service_access(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_policies_granting_service_access(
   Marker = "string",
   Arn = "string",
   ServiceNamespaces = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

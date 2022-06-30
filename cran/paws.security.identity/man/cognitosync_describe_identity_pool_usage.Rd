@@ -13,7 +13,9 @@ us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityPoolUsage = list(
     IdentityPoolId = "string",
     SyncSessionsCount = 123,
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets usage details (for example, data storage) about a particular
@@ -34,10 +36,12 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_identity_pool_usage(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_identity_pool_usage(
   IdentityPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

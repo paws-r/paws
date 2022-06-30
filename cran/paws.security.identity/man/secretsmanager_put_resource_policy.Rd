@@ -42,11 +42,13 @@ in the \emph{AWS CLI User Guide}.}
 prevent broad access to your secret.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ARN = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Attaches the contents of the specified resource-based permission policy
@@ -56,7 +58,7 @@ Resource Name (ARN) in the policy statement's \code{Resources} element. You
 can also use a combination of both identity-based and resource-based
 policies. The affected users and roles receive the permissions that are
 permitted by all of the relevant policies. For more information, see
-\href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html}{Using Resource-Based Policies for AWS Secrets Manager}.
+\href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-policies.html}{Using Resource-Based Policies for AWS Secrets Manager}.
 For the complete description of the AWS policy syntax and grammar, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
 in the \emph{IAM User Guide}.
@@ -79,12 +81,14 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_resource_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_resource_policy(
   SecretId = "string",
   ResourcePolicy = "string",
   BlockPublicPolicy = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

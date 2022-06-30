@@ -21,11 +21,13 @@ An empty list.
 Deletes the content of the specified dataset.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_dataset_content(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dataset_content(
   datasetName = "string",
   versionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

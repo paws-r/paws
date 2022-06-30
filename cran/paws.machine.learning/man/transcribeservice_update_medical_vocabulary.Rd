@@ -34,7 +34,9 @@ For more information about custom vocabularies in Amazon Transcribe
 Medical, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary}{Medical Custom Vocabularies}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VocabularyName = "string",
   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
   LastModifiedTime = as.POSIXct(
@@ -42,7 +44,7 @@ A list with the following syntax:\preformatted{list(
   ),
   VocabularyState = "PENDING"|"READY"|"FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a vocabulary with new values that you provide in a different
@@ -52,12 +54,14 @@ operation overwrites all of the existing information with the values
 that you provide in the request.
 }
 \section{Request syntax}{
-\preformatted{svc$update_medical_vocabulary(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_medical_vocabulary(
   VocabularyName = "string",
   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
   VocabularyFileUri = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

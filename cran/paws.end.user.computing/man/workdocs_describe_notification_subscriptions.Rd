@@ -16,7 +16,9 @@ previous call.)}
 \item{Limit}{The maximum number of items to return with this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Subscriptions = list(
     list(
       SubscriptionId = "string",
@@ -26,18 +28,20 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the specified notification subscriptions.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_notification_subscriptions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_notification_subscriptions(
   OrganizationId = "string",
   Marker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

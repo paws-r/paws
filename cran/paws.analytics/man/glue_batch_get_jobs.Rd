@@ -11,7 +11,9 @@ glue_batch_get_jobs(JobNames)
 \code{\link[=glue_list_jobs]{list_jobs}} operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Jobs = list(
     list(
       Name = "string",
@@ -60,7 +62,7 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of resource metadata for a given list of job names. After
@@ -70,12 +72,14 @@ This operation supports all IAM permissions, including permission
 conditions that uses tags.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_get_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_jobs(
   JobNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

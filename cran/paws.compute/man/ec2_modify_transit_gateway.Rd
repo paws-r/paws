@@ -20,7 +20,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGateway = list(
     TransitGatewayId = "string",
     TransitGatewayArn = "string",
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the specified transit gateway. When you modify a transit
@@ -61,7 +63,9 @@ attachments only. Your existing transit gateway attachments are not
 modified.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_transit_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_transit_gateway(
   TransitGatewayId = "string",
   Description = "string",
   Options = list(
@@ -81,7 +85,7 @@ modified.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

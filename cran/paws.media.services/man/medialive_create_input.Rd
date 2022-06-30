@@ -39,7 +39,9 @@ type Inputs. Leave Destinations empty.}
 \item{Vpc}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Input = list(
     Arn = "string",
     AttachedChannels = list(
@@ -88,13 +90,15 @@ A list with the following syntax:\preformatted{list(
     Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"|"INPUT_DEVICE"|"AWS_CDI"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create an input
 }
 \section{Request syntax}{
-\preformatted{svc$create_input(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_input(
   Destinations = list(
     list(
       StreamName = "string"
@@ -136,7 +140,7 @@ Create an input
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

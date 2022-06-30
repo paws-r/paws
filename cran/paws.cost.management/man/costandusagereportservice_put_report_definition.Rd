@@ -17,7 +17,9 @@ An empty list.
 Creates a new report using the description that you provide.
 }
 \section{Request syntax}{
-\preformatted{svc$put_report_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_report_definition(
   ReportDefinition = list(
     ReportName = "string",
     TimeUnit = "HOURLY"|"DAILY"|"MONTHLY",
@@ -36,7 +38,7 @@ Creates a new report using the description that you provide.
     ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

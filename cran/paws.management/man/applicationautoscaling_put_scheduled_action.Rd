@@ -166,7 +166,9 @@ available to run scheduled actions. Any scheduled actions that were
 specified for the scalable target are deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$put_scheduled_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_scheduled_action(
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
   Schedule = "string",
   ScheduledActionName = "string",
@@ -183,7 +185,7 @@ specified for the scalable target are deleted.
     MaxCapacity = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

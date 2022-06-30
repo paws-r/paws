@@ -16,10 +16,12 @@ An empty list.
 Delete an endpoint group from a listener.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_endpoint_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_endpoint_group(
   EndpointGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

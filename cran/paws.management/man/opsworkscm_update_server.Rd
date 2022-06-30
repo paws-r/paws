@@ -20,7 +20,9 @@ backups. Automated backups are enabled by default.}
 \item{PreferredBackupWindow}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Server = list(
     AssociatePublicIpAddress = TRUE|FALSE,
     BackupRetentionCount = 123,
@@ -59,7 +61,7 @@ A list with the following syntax:\preformatted{list(
     ServerArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates settings for a server.
@@ -67,14 +69,16 @@ Updates settings for a server.
 This operation is synchronous.
 }
 \section{Request syntax}{
-\preformatted{svc$update_server(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_server(
   DisableAutomatedBackup = TRUE|FALSE,
   BackupRetentionCount = 123,
   ServerName = "string",
   PreferredMaintenanceWindow = "string",
   PreferredBackupWindow = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

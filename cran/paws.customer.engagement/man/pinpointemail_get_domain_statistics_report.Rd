@@ -18,7 +18,9 @@ deliverability metrics for. The \code{EndDate} that you specify has to be
 less than or equal to 30 days after the \code{StartDate}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OverallVolume = list(
     VolumeStatistics = list(
       InboxRawCount = 123,
@@ -60,14 +62,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve inbox placement and engagement rates for the domains that you
 use to send email.
 }
 \section{Request syntax}{
-\preformatted{svc$get_domain_statistics_report(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_domain_statistics_report(
   Domain = "string",
   StartDate = as.POSIXct(
     "2015-01-01"
@@ -76,7 +80,7 @@ use to send email.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

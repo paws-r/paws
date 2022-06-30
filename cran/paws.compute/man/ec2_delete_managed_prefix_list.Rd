@@ -15,7 +15,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{PrefixListId}{[required] The ID of the prefix list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PrefixList = list(
     PrefixListId = "string",
     AddressFamily = "string",
@@ -34,18 +36,20 @@ A list with the following syntax:\preformatted{list(
     OwnerId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified managed prefix list. You must first remove all
 references to the prefix list in your resources.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_managed_prefix_list(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_managed_prefix_list(
   DryRun = TRUE|FALSE,
   PrefixListId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

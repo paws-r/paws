@@ -23,7 +23,9 @@ corresponding ''DefinitionInformation'' object.}
 additional results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Definition = list(
@@ -74,7 +76,7 @@ A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a Lambda function definition version,
@@ -82,12 +84,14 @@ including which Lambda functions are included in the version and their
 configurations.
 }
 \section{Request syntax}{
-\preformatted{svc$get_function_definition_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_function_definition_version(
   FunctionDefinitionId = "string",
   FunctionDefinitionVersionId = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

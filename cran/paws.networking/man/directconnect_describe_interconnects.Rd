@@ -11,7 +11,9 @@ directconnect_describe_interconnects(interconnectId)
 \item{interconnectId}{The ID of the interconnect.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   interconnects = list(
     list(
       interconnectId = "string",
@@ -38,17 +40,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the interconnects owned by the AWS account or only the specified
 interconnect.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_interconnects(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_interconnects(
   interconnectId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

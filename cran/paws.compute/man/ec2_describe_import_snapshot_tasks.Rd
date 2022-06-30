@@ -24,7 +24,9 @@ value.}
 \item{NextToken}{A token that indicates the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ImportSnapshotTasks = list(
     list(
       Description = "string",
@@ -55,13 +57,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes your import snapshot tasks.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_import_snapshot_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_import_snapshot_tasks(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -77,7 +81,7 @@ Describes your import snapshot tasks.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

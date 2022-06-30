@@ -31,7 +31,9 @@ first, and specify \code{TimestampAscending} to have the oldest history
 returned first.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AlarmHistoryItems = list(
     list(
       AlarmName = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the history for the specified alarm. You can filter the
@@ -57,7 +59,9 @@ returned.
 CloudWatch retains the history of an alarm even if you delete the alarm.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_alarm_history(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_alarm_history(
   AlarmName = "string",
   AlarmTypes = list(
     "CompositeAlarm"|"MetricAlarm"
@@ -73,7 +77,7 @@ CloudWatch retains the history of an alarm even if you delete the alarm.
   NextToken = "string",
   ScanBy = "TimestampDescending"|"TimestampAscending"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

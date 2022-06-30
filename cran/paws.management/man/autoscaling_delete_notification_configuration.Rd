@@ -20,11 +20,13 @@ An empty list.
 Deletes the specified notification.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_notification_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_notification_configuration(
   AutoScalingGroupName = "string",
   TopicARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

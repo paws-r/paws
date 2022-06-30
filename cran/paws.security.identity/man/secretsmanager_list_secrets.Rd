@@ -29,7 +29,9 @@ In a subsequent call, set it to the value of the previous call
 \item{SortOrder}{Lists secrets in the requested order.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SecretList = list(
     list(
       ARN = "string",
@@ -72,7 +74,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all of the secrets that are stored by Secrets Manager in the AWS
@@ -103,7 +105,9 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$list_secrets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_secrets(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(
@@ -116,7 +120,7 @@ To run this command, you must have the following permissions:
   ),
   SortOrder = "asc"|"desc"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

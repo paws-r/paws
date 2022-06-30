@@ -16,7 +16,9 @@ mq_describe_broker_engine_types(EngineType, MaxResults, NextToken)
 return. To request the first page, leave nextToken empty.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BrokerEngineTypes = list(
     list(
       EngineType = "ACTIVEMQ"|"RABBITMQ",
@@ -30,18 +32,20 @@ A list with the following syntax:\preformatted{list(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describe available engine types and versions.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_broker_engine_types(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_broker_engine_types(
   EngineType = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

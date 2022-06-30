@@ -18,11 +18,13 @@ An empty list.
 Deletes a fleet provisioning template version.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_provisioning_template_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_provisioning_template_version(
   templateName = "string",
   versionId = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

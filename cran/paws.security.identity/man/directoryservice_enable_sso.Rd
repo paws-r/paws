@@ -32,12 +32,14 @@ your directory to access certain AWS services from a computer joined to
 the directory without having to enter their credentials separately.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_sso(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_sso(
   DirectoryId = "string",
   UserName = "string",
   Password = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

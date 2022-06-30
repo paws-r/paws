@@ -66,7 +66,9 @@ that is used in the source entity. The theme ARN must exist in the same
 AWS account where you create the dashboard.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   VersionArn = "string",
   DashboardId = "string",
@@ -74,7 +76,7 @@ A list with the following syntax:\preformatted{list(
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a dashboard from a template. To first create a template, see the
@@ -87,7 +89,9 @@ them. If you have the correct permissions, you can create a dashboard
 from a template that exists in a different AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$create_dashboard(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dashboard(
   AwsAccountId = "string",
   DashboardId = "string",
   Name = "string",
@@ -166,7 +170,7 @@ from a template that exists in a different AWS account.
   ),
   ThemeArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

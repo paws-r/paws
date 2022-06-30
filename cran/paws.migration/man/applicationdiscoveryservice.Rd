@@ -98,7 +98,9 @@ Discovery Service offline to inspect collected data before it is shared
 with the service.
 }
 \section{Service syntax}{
-\preformatted{svc <- applicationdiscoveryservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- applicationdiscoveryservice(
   config = list(
     credentials = list(
       creds = list(
@@ -112,7 +114,7 @@ with the service.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

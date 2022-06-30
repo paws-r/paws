@@ -31,7 +31,9 @@ requests require the EntitySelectorExpression ID be provided.}
 \item{NextToken}{Pagination token.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TimeSeriesServiceStatistics = list(
     list(
       Timestamp = as.POSIXct(
@@ -80,14 +82,16 @@ A list with the following syntax:\preformatted{list(
   ContainsOldGroupVersions = TRUE|FALSE,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get an aggregation of service statistics defined by a specific time
 range.
 }
 \section{Request syntax}{
-\preformatted{svc$get_time_series_service_statistics(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_time_series_service_statistics(
   StartTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -101,7 +105,7 @@ range.
   ForecastStatistics = TRUE|FALSE,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

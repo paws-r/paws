@@ -33,12 +33,14 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$set_desired_capacity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_desired_capacity(
   AutoScalingGroupName = "string",
   DesiredCapacity = 123,
   HonorCooldown = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

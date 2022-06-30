@@ -30,10 +30,12 @@ uploaded IPSet.}
 \item{Tags}{The tags to be added to a new IP set resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IpSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new IPSet, which is called a trusted IP list in the console
@@ -43,7 +45,9 @@ doesn't generate findings for IP addresses that are included in IPSets.
 Only users from the administrator account can use this operation.
 }
 \section{Request syntax}{
-\preformatted{svc$create_ip_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_ip_set(
   DetectorId = "string",
   Name = "string",
   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
@@ -54,7 +58,7 @@ Only users from the administrator account can use this operation.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

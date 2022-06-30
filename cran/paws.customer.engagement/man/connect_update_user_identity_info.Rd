@@ -29,7 +29,9 @@ ability to invoke \code{UpdateUserIndentityInfo}. For more information, see
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_user_identity_info(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_identity_info(
   IdentityInfo = list(
     FirstName = "string",
     LastName = "string",
@@ -38,7 +40,7 @@ in the \emph{Amazon Connect Administrator Guide}.
   UserId = "string",
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

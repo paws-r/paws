@@ -10,7 +10,9 @@ sagemaker_get_device_fleet_report(DeviceFleetName)
 \item{DeviceFleetName}{[required] The name of the fleet.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeviceFleetArn = "string",
   DeviceFleetName = "string",
   OutputConfig = list(
@@ -42,16 +44,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a fleet.
 }
 \section{Request syntax}{
-\preformatted{svc$get_device_fleet_report(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_device_fleet_report(
   DeviceFleetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

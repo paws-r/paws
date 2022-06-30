@@ -27,10 +27,12 @@ environment. If this isn't done, the compute environment will end up in
 an invalid state.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_compute_environment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_compute_environment(
   computeEnvironment = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

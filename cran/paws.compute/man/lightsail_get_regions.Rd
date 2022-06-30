@@ -17,7 +17,9 @@ for databases in your get regions request. Availability Zones are
 indicated with a letter (e.g., \verb{us-east-2a}).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   regions = list(
     list(
       continentCode = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of all valid regions for Amazon Lightsail. Use the
@@ -47,11 +49,13 @@ Returns a list of all valid regions for Amazon Lightsail. Use the
 Zones in a region.
 }
 \section{Request syntax}{
-\preformatted{svc$get_regions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_regions(
   includeAvailabilityZones = TRUE|FALSE,
   includeRelationalDatabaseAvailabilityZones = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

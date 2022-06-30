@@ -10,10 +10,12 @@ storagegateway_delete_tape_pool(PoolARN)
 \item{PoolARN}{[required] The Amazon Resource Name (ARN) of the custom tape pool to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PoolARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Delete a custom tape pool. A custom tape pool can only be deleted if
@@ -21,10 +23,12 @@ there are no tapes in the pool and if there are no automatic tape
 creation policies that reference the custom tape pool.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_tape_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tape_pool(
   PoolARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

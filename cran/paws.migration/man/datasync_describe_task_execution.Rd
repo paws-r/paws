@@ -10,7 +10,9 @@ datasync_describe_task_execution(TaskExecutionArn)
 \item{TaskExecutionArn}{[required] The Amazon Resource Name (ARN) of the task that is being executed.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TaskExecutionArn = "string",
   Status = "QUEUED"|"LAUNCHING"|"PREPARING"|"TRANSFERRING"|"VERIFYING"|"SUCCESS"|"ERROR",
   Options = list(
@@ -60,16 +62,18 @@ A list with the following syntax:\preformatted{list(
     ErrorDetail = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns detailed metadata about a task that is being executed.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_task_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_task_execution(
   TaskExecutionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

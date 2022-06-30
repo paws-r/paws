@@ -28,10 +28,12 @@ and organize our workforce. Each tag consists of a key and a value, both
 of which you define.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WorkforceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Use this operation to create a workforce. This operation will return an
@@ -54,7 +56,9 @@ must support \emph{groups} because groups are used by Ground Truth and Amazon
 A2I to create work teams. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-create-private-oidc.html}{Create a Private Workforce (OIDC IdP)}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_workforce(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_workforce(
   CognitoConfig = list(
     UserPool = "string",
     ClientId = "string"
@@ -82,7 +86,7 @@ A2I to create work teams. For more information, see \href{https://docs.aws.amazo
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

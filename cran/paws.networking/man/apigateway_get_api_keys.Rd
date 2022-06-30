@@ -22,7 +22,9 @@ such as a developer portal.}
 contains key values.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   warnings = list(
     "string"
   ),
@@ -50,20 +52,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the current ApiKeys resource.
 }
 \section{Request syntax}{
-\preformatted{svc$get_api_keys(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_api_keys(
   position = "string",
   limit = 123,
   nameQuery = "string",
   customerId = "string",
   includeValues = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

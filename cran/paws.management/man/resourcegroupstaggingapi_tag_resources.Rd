@@ -15,7 +15,9 @@ in the \emph{AWS General Reference}.}
 of a key and a value that you define.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedResourcesMap = list(
     list(
       StatusCode = 123,
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Applies one or more tags to the specified resources. Note the following:
@@ -46,7 +48,9 @@ you with billing and administration services. Tags are not intended to
 be used for private or sensitive data.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resources(
   ResourceARNList = list(
     "string"
   ),
@@ -54,7 +58,7 @@ be used for private or sensitive data.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

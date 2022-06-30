@@ -47,17 +47,19 @@ keep the instance in a pending state.}
 action.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html}{Auto Scaling lifecycle}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-lifecycle.html}{Auto Scaling lifecycle}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$record_lifecycle_action_heartbeat(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$record_lifecycle_action_heartbeat(
   LifecycleHookName = "string",
   AutoScalingGroupName = "string",
   LifecycleActionToken = "string",
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

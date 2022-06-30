@@ -14,7 +14,9 @@ is recommended to use this option only to abort the migration and not
 recommended when application wants to continue migration to ElastiCache.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationGroup = list(
     ReplicationGroupId = "string",
     Description = "string",
@@ -99,17 +101,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Complete the migration of data.
 }
 \section{Request syntax}{
-\preformatted{svc$complete_migration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$complete_migration(
   ReplicationGroupId = "string",
   Force = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

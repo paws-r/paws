@@ -25,12 +25,14 @@ format.
 The \code{namespaceId} feature is in public preview.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobArn = "string",
   jobId = "string",
   description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a group with a continuous job. The following criteria must be
@@ -39,12 +41,14 @@ met:
 \item The job must have been created with the \code{targetSelection} field set
 to "CONTINUOUS".
 \item The job status must currently be "IN_PROGRESS".
-\item The total number of targets associated with a job must not
-exceed 100.
+\item The total number of targets associated with a job must not exceed
+100.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$associate_targets_with_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_targets_with_job(
   targets = list(
     "string"
   ),
@@ -52,7 +56,7 @@ exceed 100.
   comment = "string",
   namespaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

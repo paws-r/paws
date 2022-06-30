@@ -15,7 +15,9 @@ execution for.}
 element in the list consists of the resource type and resource ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailureMessage = "string",
   FailedItems = list(
     list(
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Runs an on-demand remediation for the specified AWS Config rules against
@@ -37,7 +39,9 @@ StartRemediationExecution call for the specified resource keys must
 complete before you can call the API again.
 }
 \section{Request syntax}{
-\preformatted{svc$start_remediation_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_remediation_execution(
   ConfigRuleName = "string",
   ResourceKeys = list(
     list(
@@ -46,7 +50,7 @@ complete before you can call the API again.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

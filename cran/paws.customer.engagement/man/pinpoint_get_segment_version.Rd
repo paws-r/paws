@@ -17,7 +17,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{Version}{[required] The unique version number (Version property) for the campaign version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SegmentResponse = list(
     ApplicationId = "string",
     Arn = "string",
@@ -225,7 +227,7 @@ A list with the following syntax:\preformatted{list(
     Version = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the configuration, dimension, and other
@@ -233,12 +235,14 @@ settings for a specific version of a segment that's associated with an
 application.
 }
 \section{Request syntax}{
-\preformatted{svc$get_segment_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_segment_version(
   ApplicationId = "string",
   SegmentId = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

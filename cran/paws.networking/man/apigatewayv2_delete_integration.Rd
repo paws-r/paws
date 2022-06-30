@@ -18,11 +18,13 @@ An empty list.
 Deletes an Integration.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_integration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_integration(
   ApiId = "string",
   IntegrationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

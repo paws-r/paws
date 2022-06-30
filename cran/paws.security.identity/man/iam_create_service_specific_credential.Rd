@@ -22,7 +22,9 @@ credentials. The service you specify here is the only service that can
 be accessed using these credentials.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceSpecificCredential = list(
     CreateDate = as.POSIXct(
       "2015-01-01"
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     Status = "Active"|"Inactive"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates a set of credentials consisting of a user name and password
@@ -55,11 +57,13 @@ For more information about service-specific credentials, see \href{https://docs.
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_service_specific_credential(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_service_specific_credential(
   UserName = "string",
   ServiceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

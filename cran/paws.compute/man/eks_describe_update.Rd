@@ -19,7 +19,9 @@ eks_describe_update(name, updateId, nodegroupName, addonName)
 .}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   update = list(
     id = "string",
     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns descriptive information about an update against your Amazon EKS
@@ -55,13 +57,15 @@ an update fails, the status is \code{Failed}, and an error detail explains
 the reason for the failure.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_update(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_update(
   name = "string",
   updateId = "string",
   nodegroupName = "string",
   addonName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

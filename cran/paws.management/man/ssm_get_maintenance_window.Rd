@@ -11,7 +11,9 @@ ssm_get_maintenance_window(WindowId)
 information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowId = "string",
   Name = "string",
   Description = "string",
@@ -32,16 +34,18 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a maintenance window.
 }
 \section{Request syntax}{
-\preformatted{svc$get_maintenance_window(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_maintenance_window(
   WindowId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

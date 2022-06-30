@@ -53,17 +53,21 @@ location. The value can be an empty string. We recommend using tags to
 name your resources.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LocationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Defines a file system on a Server Message Block (SMB) server that can be
 read from or written to.
 }
 \section{Request syntax}{
-\preformatted{svc$create_location_smb(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_location_smb(
   Subdirectory = "string",
   ServerHostname = "string",
   User = "string",
@@ -82,7 +86,7 @@ read from or written to.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

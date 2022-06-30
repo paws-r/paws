@@ -31,7 +31,9 @@ filters must pass.}
 \item{buildType}{Specifies the type of build this webhook will trigger.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   webhook = list(
     url = "string",
     payloadUrl = "string",
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 For an existing AWS CodeBuild build project that has its source code
@@ -70,7 +72,9 @@ In the AWS CodeBuild console, clear the Webhook box. For more
 information, see step 5 in \href{https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console}{Change a Build Project's Settings}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_webhook(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_webhook(
   projectName = "string",
   branchFilter = "string",
   filterGroups = list(
@@ -84,7 +88,7 @@ information, see step 5 in \href{https://docs.aws.amazon.com/codebuild/latest/us
   ),
   buildType = "BUILD"|"BUILD_BATCH"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

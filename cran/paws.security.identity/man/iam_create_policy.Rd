@@ -57,7 +57,9 @@ The policy description is immutable. After a value is assigned, it
 cannot be changed.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Policy = list(
     PolicyName = "string",
     PolicyId = "string",
@@ -76,7 +78,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new managed policy for your AWS account.
@@ -90,13 +92,15 @@ For more information about managed policies in general, see \href{https://docs.a
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_policy(
   PolicyName = "string",
   Path = "string",
   PolicyDocument = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

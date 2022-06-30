@@ -14,7 +14,9 @@ eks_delete_addon(clusterName, addonName)
 .}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   addon = list(
     addonName = "string",
     clusterName = "string",
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Delete an Amazon EKS add-on.
@@ -54,11 +56,13 @@ You can always manually start an add-on on the cluster using the
 Kubernetes API.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_addon(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_addon(
   clusterName = "string",
   addonName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

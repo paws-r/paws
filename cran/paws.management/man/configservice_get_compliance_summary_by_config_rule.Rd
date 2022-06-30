@@ -8,7 +8,9 @@ noncompliant, up to a maximum of 25 for each}
 configservice_get_compliance_summary_by_config_rule()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ComplianceSummary = list(
     CompliantResourceCount = list(
       CappedCount = 123,
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the number of AWS Config rules that are compliant and

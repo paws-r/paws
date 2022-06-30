@@ -62,12 +62,14 @@ representable in UTF-8 format, and the following special characters: + -
 the maximum length for a tag's value is 256.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TapeARNs = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates one or more virtual tapes. You write data to the virtual tapes
@@ -79,7 +81,9 @@ virtual tapes. Use the \code{\link[=storagegateway_add_cache]{add_cache}} operat
 to add cache storage to a gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$create_tapes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_tapes(
   GatewayARN = "string",
   TapeSizeInBytes = 123,
   ClientToken = "string",
@@ -96,7 +100,7 @@ to add cache storage to a gateway.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

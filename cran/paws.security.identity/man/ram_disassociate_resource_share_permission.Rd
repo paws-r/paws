@@ -16,22 +16,26 @@ ram_disassociate_resource_share_permission(resourceShareArn,
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   returnValue = TRUE|FALSE,
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disassociates an AWS RAM permission from a resource share.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_resource_share_permission(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_resource_share_permission(
   resourceShareArn = "string",
   permissionArn = "string",
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

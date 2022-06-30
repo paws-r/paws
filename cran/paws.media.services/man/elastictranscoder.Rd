@@ -21,7 +21,9 @@ AWS Elastic Transcoder Service
 The AWS Elastic Transcoder Service.
 }
 \section{Service syntax}{
-\preformatted{svc <- elastictranscoder(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- elastictranscoder(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +37,7 @@ The AWS Elastic Transcoder Service.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

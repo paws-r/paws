@@ -29,7 +29,9 @@ request.}
 \item{Filters}{An optional specification to return a subset of objects.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   ResolverDnssecConfigs = list(
     list(
@@ -40,14 +42,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the configurations for DNSSEC validation that are associated with
 the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resolver_dnssec_configs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resolver_dnssec_configs(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(
@@ -59,7 +63,7 @@ the current AWS account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

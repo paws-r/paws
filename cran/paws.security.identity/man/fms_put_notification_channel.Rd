@@ -27,11 +27,13 @@ publish SNS logs. For more information, see \href{https://docs.aws.amazon.com/wa
 in the \emph{AWS Firewall Manager Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_notification_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_notification_channel(
   SnsTopicArn = "string",
   SnsRoleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

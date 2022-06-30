@@ -20,7 +20,9 @@ iot_get_percentiles(indexName, queryString, aggregationField,
 \item{percents}{The percentile groups returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   percentiles = list(
     list(
       percent = 123.0,
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Groups the aggregated values that match the query into percentile
@@ -44,7 +46,9 @@ and so on. The result is an approximation, the more values that match
 the query, the more accurate the percentile values.
 }
 \section{Request syntax}{
-\preformatted{svc$get_percentiles(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_percentiles(
   indexName = "string",
   queryString = "string",
   aggregationField = "string",
@@ -53,7 +57,7 @@ the query, the more accurate the percentile values.
     123.0
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

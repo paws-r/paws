@@ -41,7 +41,9 @@ example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
 should also be fewer than 90 days from the current day.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CampaignDateRangeKpiResponse = list(
     ApplicationId = "string",
     CampaignId = "string",
@@ -75,14 +77,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves (queries) pre-aggregated data for a standard metric that
 applies to a campaign.
 }
 \section{Request syntax}{
-\preformatted{svc$get_campaign_date_range_kpi(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_campaign_date_range_kpi(
   ApplicationId = "string",
   CampaignId = "string",
   EndTime = as.POSIXct(
@@ -95,7 +99,7 @@ applies to a campaign.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

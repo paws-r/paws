@@ -20,14 +20,16 @@ members are only returned if the type filter in
 supported by moderators.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChannelArn = "string",
   Member = list(
     Arn = "string",
     Name = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a user to a channel. The \code{InvitedBy} response field is derived from
@@ -48,12 +50,14 @@ but you must be a member to send messages.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_channel_membership(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_channel_membership(
   ChannelArn = "string",
   MemberArn = "string",
   Type = "DEFAULT"|"HIDDEN"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

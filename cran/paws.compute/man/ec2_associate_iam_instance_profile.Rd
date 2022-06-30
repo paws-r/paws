@@ -12,7 +12,9 @@ ec2_associate_iam_instance_profile(IamInstanceProfile, InstanceId)
 \item{InstanceId}{[required] The ID of the instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IamInstanceProfileAssociation = list(
     AssociationId = "string",
     InstanceId = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates an IAM instance profile with a running or stopped instance.
@@ -34,14 +36,16 @@ You cannot associate more than one IAM instance profile with an
 instance.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_iam_instance_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_iam_instance_profile(
   IamInstanceProfile = list(
     Arn = "string",
     Name = "string"
   ),
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

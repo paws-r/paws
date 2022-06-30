@@ -54,10 +54,12 @@ If you have specified one or more environment variables, you cannot
 modify the stack's Chef version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an app for a specified stack. For more information, see
@@ -69,7 +71,9 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_app(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_app(
   StackId = "string",
   Shortname = "string",
   Name = "string",
@@ -110,7 +114,7 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-securit
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

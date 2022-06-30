@@ -34,10 +34,12 @@ associate up to 50 tags with a private CA. For information using tags
 with IAM to manage permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CertificateAuthorityArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a root or subordinate private certificate authority (CA). You
@@ -53,7 +55,7 @@ certificates issued by the CA. If successful, this action returns the
 Amazon Resource Name (ARN) of the CA.
 
 ACM Private CAA assets that are stored in Amazon S3 can be protected
-with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption}{Encrypting Your CRLs}.
+with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/#crl-encryption}{Encrypting Your CRLs}.
 
 Both PCA and the IAM principal must have permission to write to the S3
 bucket that you specify. If the IAM principal making the call does not
@@ -61,7 +63,9 @@ have permission to write to the bucket, then an exception is thrown. For
 more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_certificate_authority(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_certificate_authority(
   CertificateAuthorityConfiguration = list(
     KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1",
     SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
@@ -151,7 +155,7 @@ more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

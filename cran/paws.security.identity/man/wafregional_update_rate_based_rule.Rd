@@ -26,10 +26,12 @@ specified in the rule are also met, AWS WAF triggers the action that is
 specified for this rule.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChangeToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -83,7 +85,9 @@ By adding this \code{RateBasedRule} to a \code{WebACL}, you could limit requests
 to your login page without affecting the rest of your site.
 }
 \section{Request syntax}{
-\preformatted{svc$update_rate_based_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_rate_based_rule(
   RuleId = "string",
   ChangeToken = "string",
   Updates = list(
@@ -98,7 +102,7 @@ to your login page without affecting the rest of your site.
   ),
   RateLimit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

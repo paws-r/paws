@@ -10,21 +10,25 @@ medialive_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Produces list of tags that have been created for a resource
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

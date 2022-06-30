@@ -10,7 +10,9 @@ lightsail_get_container_service_deployments(serviceName)
 \item{serviceName}{[required] The name of the container service for which to return deployments.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   deployments = list(
     list(
       version = 123,
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the deployments for your Amazon Lightsail container service
@@ -63,10 +65,12 @@ with the newest one. For more information, see \href{https://docs.aws.amazon.com
 the \emph{AWS General Reference}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_container_service_deployments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_container_service_deployments(
   serviceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

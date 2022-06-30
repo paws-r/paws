@@ -28,7 +28,9 @@ For more information about AWS DMS, see \href{https://docs.aws.amazon.com/dms/la
 in the \emph{AWS Database Migration User Guide.}
 }
 \section{Service syntax}{
-\preformatted{svc <- databasemigrationservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- databasemigrationservice(
   config = list(
     credentials = list(
       creds = list(
@@ -42,7 +44,7 @@ in the \emph{AWS Database Migration User Guide.}
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

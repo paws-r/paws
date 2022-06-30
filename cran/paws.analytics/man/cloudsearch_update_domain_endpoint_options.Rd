@@ -17,7 +17,9 @@ compatibility with older clients, the default is
 Policy-Min-TLS-1-0-2019-07.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainEndpointOptions = list(
     Options = list(
       EnforceHTTPS = TRUE|FALSE,
@@ -36,23 +38,26 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the domain's endpoint options, specifically whether all requests
-to the domain must arrive over HTTPS. For more information, see
-\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html}{Configuring Domain Endpoint Options}
-in the \emph{Amazon CloudSearch Developer Guide}.
+to the domain must arrive over HTTPS. For more information, see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html"
+target="_blank">Configuring Domain Endpoint Options</a> in the \emph{Amazon
+CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_domain_endpoint_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain_endpoint_options(
   DomainName = "string",
   DomainEndpointOptions = list(
     EnforceHTTPS = TRUE|FALSE,
     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

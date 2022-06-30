@@ -33,10 +33,12 @@ You can call this operation only from the organization's master account
 and from the us-east-1 Region.
 }
 \section{Request syntax}{
-\preformatted{svc$start_report_creation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_report_creation(
   S3Bucket = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,10 +16,12 @@ An empty list.
 Deletes a specified development endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_dev_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dev_endpoint(
   EndpointName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

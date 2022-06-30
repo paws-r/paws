@@ -29,7 +29,9 @@ used.}
 \item{Tags}{A list of tag instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SnapshotCopyGrant = list(
     SnapshotCopyGrantName = "string",
     KmsKeyId = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a snapshot copy grant that permits Amazon Redshift to use a
@@ -52,7 +54,9 @@ For more information about managing snapshot copy grants, go to \href{https://do
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_snapshot_copy_grant(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_snapshot_copy_grant(
   SnapshotCopyGrantName = "string",
   KmsKeyId = "string",
   Tags = list(
@@ -62,7 +66,7 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

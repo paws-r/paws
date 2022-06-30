@@ -259,7 +259,9 @@ service during service creation. To add tags to a task after service
 creation, use the \code{\link[=ecs_tag_resource]{tag_resource}} API action.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   service = list(
     serviceArn = "string",
     serviceName = "string",
@@ -464,7 +466,7 @@ A list with the following syntax:\preformatted{list(
     propagateTags = "TASK_DEFINITION"|"SERVICE"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Runs and maintains a desired number of tasks from a specified task
@@ -581,7 +583,9 @@ tasks for this service.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_service(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_service(
   cluster = "string",
   serviceName = "string",
   taskDefinition = "string",
@@ -658,7 +662,7 @@ tasks for this service.
   enableECSManagedTags = TRUE|FALSE,
   propagateTags = "TASK_DEFINITION"|"SERVICE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

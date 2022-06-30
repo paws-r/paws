@@ -10,7 +10,9 @@ greengrass_get_subscription_definition(SubscriptionDefinitionId)
 \item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -22,16 +24,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a subscription definition.
 }
 \section{Request syntax}{
-\preformatted{svc$get_subscription_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_subscription_definition(
   SubscriptionDefinitionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

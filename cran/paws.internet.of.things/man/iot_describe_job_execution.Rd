@@ -15,7 +15,9 @@ iot_describe_job_execution(jobId, thingName, executionNumber)
 specify a particular job execution on a particular device.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   execution = list(
     jobId = "string",
     status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
@@ -40,18 +42,20 @@ A list with the following syntax:\preformatted{list(
     approximateSecondsBeforeTimedOut = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a job execution.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_job_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_job_execution(
   jobId = "string",
   thingName = "string",
   executionNumber = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

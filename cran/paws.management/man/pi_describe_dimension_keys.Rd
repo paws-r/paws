@@ -91,7 +91,9 @@ parameter is specified, the response includes only records beyond the
 token, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AlignedStartTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -118,7 +120,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 For a specific time period, retrieve the top \code{N} dimension keys for a
@@ -128,7 +130,9 @@ Each response element returns a maximum of 500 bytes. For larger
 elements, such as SQL statements, only the first 500 bytes are returned.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_dimension_keys(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_dimension_keys(
   ServiceType = "RDS",
   Identifier = "string",
   StartTime = as.POSIXct(
@@ -159,7 +163,7 @@ elements, such as SQL statements, only the first 500 bytes are returned.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

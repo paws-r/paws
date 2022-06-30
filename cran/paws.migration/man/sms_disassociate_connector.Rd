@@ -19,10 +19,12 @@ After you disassociate a connector, it is no longer available to support
 replication jobs.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_connector(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_connector(
   connectorId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,24 +13,28 @@ quicksight_delete_data_source(AwsAccountId, DataSourceId)
 account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   DataSourceId = "string",
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the data source permanently. This operation breaks all the
 datasets that reference the deleted data source.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_data_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_data_source(
   AwsAccountId = "string",
   DataSourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

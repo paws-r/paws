@@ -23,23 +23,27 @@ For more information about the hosted domain and custom domains, see
 \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html}{Configuring a User Pool Domain}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CloudFrontDomain = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new domain for a user pool.
 }
 \section{Request syntax}{
-\preformatted{svc$create_user_pool_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user_pool_domain(
   Domain = "string",
   UserPoolId = "string",
   CustomDomainConfig = list(
     CertificateArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

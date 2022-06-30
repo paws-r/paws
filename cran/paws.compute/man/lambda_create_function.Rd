@@ -87,7 +87,9 @@ of signing profiles, which define the trusted publishers for this
 function.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FunctionName = "string",
   FunctionArn = "string",
   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
@@ -166,7 +168,7 @@ A list with the following syntax:\preformatted{list(
   SigningProfileVersionArn = "string",
   SigningJobArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html}{deployment package}
@@ -223,7 +225,9 @@ or configure a function trigger in the other service. For more
 information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html}{Invoking Functions}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_function(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_function(
   FunctionName = "string",
   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
   Role = "string",
@@ -283,7 +287,7 @@ information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-invoc
   ),
   CodeSigningConfigArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

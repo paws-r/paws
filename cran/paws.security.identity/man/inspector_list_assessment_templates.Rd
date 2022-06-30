@@ -29,20 +29,24 @@ previous response to continue listing data.}
 want in the response. The default value is 10. The maximum value is 500.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   assessmentTemplateArns = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the assessment templates that correspond to the assessment targets
 that are specified by the ARNs of the assessment targets.
 }
 \section{Request syntax}{
-\preformatted{svc$list_assessment_templates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_assessment_templates(
   assessmentTargetArns = list(
     "string"
   ),
@@ -59,7 +63,7 @@ that are specified by the ARNs of the assessment targets.
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

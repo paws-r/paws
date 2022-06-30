@@ -26,7 +26,9 @@ identical to the ones specified in the initial request.
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationVersions = list(
     list(
       ApplicationVersionArn = "string",
@@ -54,13 +56,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve a list of application versions.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_application_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_application_versions(
   ApplicationName = "string",
   VersionLabels = list(
     "string"
@@ -68,7 +72,7 @@ Retrieve a list of application versions.
   MaxRecords = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

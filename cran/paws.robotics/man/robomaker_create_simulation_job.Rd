@@ -58,7 +58,9 @@ security group and one subnet ID.}
 \item{compute}{Compute information for the simulation job.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   status = "Pending"|"Preparing"|"Running"|"Restarting"|"Completed"|"Failed"|"RunningFailed"|"Terminating"|"Terminated"|"Canceled",
   lastStartedAt = as.POSIXct(
@@ -160,7 +162,7 @@ A list with the following syntax:\preformatted{list(
     simulationUnitLimit = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a simulation job.
@@ -169,7 +171,9 @@ After 90 days, simulation jobs expire and will be deleted. They will no
 longer be accessible.
 }
 \section{Request syntax}{
-\preformatted{svc$create_simulation_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_simulation_job(
   clientRequestToken = "string",
   outputLocation = list(
     s3Bucket = "string",
@@ -257,7 +261,7 @@ longer be accessible.
     simulationUnitLimit = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

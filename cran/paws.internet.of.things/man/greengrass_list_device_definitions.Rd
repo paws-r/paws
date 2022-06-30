@@ -13,7 +13,9 @@ greengrass_list_device_definitions(MaxResults, NextToken)
 additional results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Definitions = list(
     list(
       Arn = "string",
@@ -30,17 +32,19 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of device definitions.
 }
 \section{Request syntax}{
-\preformatted{svc$list_device_definitions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_device_definitions(
   MaxResults = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,20 +17,24 @@ iot_update_stream(streamId, description, files, roleArn)
 S3 files.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   streamId = "string",
   streamArn = "string",
   description = "string",
   streamVersion = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing stream. The stream version will be incremented by
 one.
 }
 \section{Request syntax}{
-\preformatted{svc$update_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_stream(
   streamId = "string",
   description = "string",
   files = list(
@@ -45,7 +49,7 @@ one.
   ),
   roleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

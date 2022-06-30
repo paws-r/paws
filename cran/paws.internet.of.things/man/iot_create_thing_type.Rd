@@ -16,18 +16,22 @@ of searchable thing attribute names.}
 \item{tags}{Metadata which can be used to manage the thing type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   thingTypeName = "string",
   thingTypeArn = "string",
   thingTypeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new thing type.
 }
 \section{Request syntax}{
-\preformatted{svc$create_thing_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_thing_type(
   thingTypeName = "string",
   thingTypeProperties = list(
     thingTypeDescription = "string",
@@ -42,7 +46,7 @@ Creates a new thing type.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

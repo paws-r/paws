@@ -24,10 +24,12 @@ Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted
 can't be associated with any DB instances.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_db_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_parameter_group(
   DBParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

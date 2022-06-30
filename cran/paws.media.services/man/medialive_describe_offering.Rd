@@ -10,7 +10,9 @@ medialive_describe_offering(OfferingId)
 \item{OfferingId}{[required] Unique offering ID, e.g. '87654321'}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CurrencyCode = "string",
   Duration = 123,
@@ -32,16 +34,18 @@ A list with the following syntax:\preformatted{list(
   ),
   UsagePrice = 123.0
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get details for an offering.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_offering(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_offering(
   OfferingId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,12 +20,14 @@ An empty list.
 Adds a member (user or group) to the group's set.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_member_to_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_member_to_group(
   OrganizationId = "string",
   GroupId = "string",
   MemberId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

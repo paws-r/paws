@@ -33,7 +33,9 @@ deregistered. They begin connection draining according to the settings
 on the load balancer or target group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   containerInstance = list(
     containerInstanceArn = "string",
     ec2InstanceId = "string",
@@ -106,7 +108,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deregisters an Amazon ECS container instance from the specified cluster.
@@ -128,12 +130,14 @@ or instances with disconnected agents are not automatically deregistered
 when terminated).
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_container_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_container_instance(
   cluster = "string",
   containerInstance = "string",
   force = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

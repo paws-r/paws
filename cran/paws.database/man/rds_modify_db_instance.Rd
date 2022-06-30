@@ -453,7 +453,7 @@ regardless of the value of the \code{ApplyImmediately} parameter.}
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 \code{arn:aws:iam:123456789012:role/emaccess}. For information on creating a
-monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Monitoring.html#USER_Monitoring}{To create an IAM role for Amazon RDS Enhanced Monitoring}
+monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole}{To create an IAM role for Amazon RDS Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide.}
 
 If \code{MonitoringInterval} is set to a value other than 0, then you must
@@ -567,11 +567,13 @@ outside of its virtual private cloud (VPC) on your local network.
 For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on AWS Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing}{Customer-owned IP addresses}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing}{Customer-owned IP addresses}
 in the \emph{AWS Outposts User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -757,7 +759,7 @@ A list with the following syntax:\preformatted{list(
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database
@@ -768,7 +770,9 @@ DB instance, call
 before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_db_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_instance(
   DBInstanceIdentifier = "string",
   AllocatedStorage = 123,
   DBInstanceClass = "string",
@@ -830,7 +834,7 @@ before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.
   ReplicaMode = "open-read-only"|"mounted",
   EnableCustomerOwnedIp = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

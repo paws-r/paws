@@ -37,7 +37,9 @@ values of \code{NextDNSName} and \code{NextHostedZoneId} specify the first hoste
 zone in the next group of \code{maxitems} hosted zones.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HostedZones = list(
     list(
       Id = "string",
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
   NextHostedZoneId = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of your hosted zones in lexicographic order. The
@@ -80,7 +82,7 @@ If the domain name includes escape characters or Punycode,
 \code{\link[=route53_list_hosted_zones_by_name]{list_hosted_zones_by_name}}
 alphabetizes the domain name using the escaped or Punycoded value, which
 is the format that Amazon Route 53 saves in its database. For example,
-to create a hosted zone for exämple.com, you specify ex\\344mple.com for
+to create a hosted zone for exämple.com, you specify ex\344mple.com for
 the domain name.
 \code{\link[=route53_list_hosted_zones_by_name]{list_hosted_zones_by_name}}
 alphabetizes it as:
@@ -120,12 +122,14 @@ and specify the value of \code{NextDNSName} and \code{NextHostedZoneId} in the
 }
 }
 \section{Request syntax}{
-\preformatted{svc$list_hosted_zones_by_name(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_hosted_zones_by_name(
   DNSName = "string",
   HostedZoneId = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ cognitoidentityprovider_describe_risk_configuration(UserPoolId,
 \item{ClientId}{The app client ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RiskConfiguration = list(
     UserPoolId = "string",
     ClientId = "string",
@@ -74,17 +76,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the risk configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_risk_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_risk_configuration(
   UserPoolId = "string",
   ClientId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

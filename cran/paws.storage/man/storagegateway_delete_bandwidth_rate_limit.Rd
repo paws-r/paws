@@ -15,10 +15,12 @@ rate limit to delete.
 Valid Values: \code{UPLOAD} | \code{DOWNLOAD} | \code{ALL}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the bandwidth rate limits of a gateway. You can delete either
@@ -29,11 +31,13 @@ of the gateway in your request. This operation is supported for the
 stored volume, cached volume and tape gateway types.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_bandwidth_rate_limit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bandwidth_rate_limit(
   GatewayARN = "string",
   BandwidthType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

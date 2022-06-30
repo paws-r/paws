@@ -31,7 +31,9 @@ capacity in a multi-tenant database.
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- marketplaceentitlementservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- marketplaceentitlementservice(
   config = list(
     credentials = list(
       creds = list(
@@ -45,7 +47,7 @@ capacity in a multi-tenant database.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

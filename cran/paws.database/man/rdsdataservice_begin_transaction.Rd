@@ -17,23 +17,29 @@ rdsdataservice_begin_transaction(database, resourceArn, schema,
 \item{secretArn}{[required] The name or ARN of the secret that enables access to the DB cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   transactionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
-Starts a SQL transaction.\preformatted{ <important> <p>A transaction can run for a maximum of 24 hours. A transaction is terminated and rolled back automatically after 24 hours.</p> <p>A transaction times out if no calls use its transaction ID in three minutes. If a transaction times out before it's committed, it's rolled back automatically.</p> <p>DDL statements inside a transaction cause an implicit commit. We recommend that you run each DDL statement in a separate <code>ExecuteStatement</code> call with <code>continueAfterTimeout</code> enabled.</p> </important> 
-}
+Starts a SQL transaction.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{ <important> <p>A transaction can run for a maximum of 24 hours. A transaction is terminated and rolled back automatically after 24 hours.</p> <p>A transaction times out if no calls use its transaction ID in three minutes. If a transaction times out before it's committed, it's rolled back automatically.</p> <p>DDL statements inside a transaction cause an implicit commit. We recommend that you run each DDL statement in a separate <code>ExecuteStatement</code> call with <code>continueAfterTimeout</code> enabled.</p> </important> 
+}\if{html}{\out{</div>}}
 }
 \section{Request syntax}{
-\preformatted{svc$begin_transaction(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$begin_transaction(
   database = "string",
   resourceArn = "string",
   schema = "string",
   secretArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ directconnect_create_private_virtual_interface(connectionId,
 \item{newPrivateVirtualInterface}{[required] Information about the private virtual interface.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ownerAccount = "string",
   virtualInterfaceId = "string",
   location = "string",
@@ -60,7 +62,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a private virtual interface. A virtual interface is the VLAN
@@ -83,7 +85,9 @@ whether your virtual interface supports jumbo frames, call
 \code{\link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces}}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_private_virtual_interface(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_private_virtual_interface(
   connectionId = "string",
   newPrivateVirtualInterface = list(
     virtualInterfaceName = "string",
@@ -104,7 +108,7 @@ whether your virtual interface supports jumbo frames, call
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

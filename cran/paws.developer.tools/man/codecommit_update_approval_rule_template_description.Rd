@@ -13,7 +13,9 @@ codecommit_update_approval_rule_template_description(
 \item{approvalRuleTemplateDescription}{[required] The updated description of the approval rule template.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   approvalRuleTemplate = list(
     approvalRuleTemplateId = "string",
     approvalRuleTemplateName = "string",
@@ -29,17 +31,19 @@ A list with the following syntax:\preformatted{list(
     lastModifiedUser = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the description for a specified approval rule template.
 }
 \section{Request syntax}{
-\preformatted{svc$update_approval_rule_template_description(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_approval_rule_template_description(
   approvalRuleTemplateName = "string",
   approvalRuleTemplateDescription = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

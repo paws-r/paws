@@ -7,19 +7,23 @@
 iot_get_v2_logging_options()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   roleArn = "string",
   defaultLogLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED",
   disableAllLogs = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the fine grained logging options.
 }
 \section{Request syntax}{
-\preformatted{svc$get_v2_logging_options()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_v2_logging_options()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

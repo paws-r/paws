@@ -31,11 +31,13 @@ Deletes a container image that is registered to your Amazon Lightsail
 container service.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_container_image(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_container_image(
   serviceName = "string",
   image = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,7 +18,9 @@ truncated, the call returns NextToken in the response. To get the next
 batch, provide this token in your next request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClusterOperationInfoList = list(
     list(
       ClientRequestId = "string",
@@ -132,19 +134,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of all the operations that have been performed on the
 specified MSK cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$list_cluster_operations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_cluster_operations(
   ClusterArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

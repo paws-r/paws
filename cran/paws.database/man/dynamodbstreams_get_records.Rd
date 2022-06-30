@@ -15,7 +15,9 @@ this shard.}
 is 1000.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Records = list(
     list(
       eventID = "string",
@@ -111,7 +113,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextShardIterator = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the stream records from a given shard.
@@ -128,11 +130,13 @@ that contains stream records.
 MB of data or 1000 stream records, whichever comes first.
 }
 \section{Request syntax}{
-\preformatted{svc$get_records(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_records(
   ShardIterator = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

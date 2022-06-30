@@ -21,10 +21,12 @@ For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.c
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_named_query(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_named_query(
   NamedQueryId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

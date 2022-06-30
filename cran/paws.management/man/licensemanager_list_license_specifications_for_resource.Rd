@@ -16,7 +16,9 @@ configuration.}
 \item{NextToken}{Token for the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LicenseSpecifications = list(
     list(
       LicenseConfigurationArn = "string",
@@ -25,18 +27,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the license configurations for the specified resource.
 }
 \section{Request syntax}{
-\preformatted{svc$list_license_specifications_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_license_specifications_for_resource(
   ResourceArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

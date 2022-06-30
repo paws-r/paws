@@ -45,10 +45,12 @@ For information about managed policies, see \href{https://docs.aws.amazon.com/IA
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_policy(
   PolicyArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

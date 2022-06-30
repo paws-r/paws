@@ -11,7 +11,9 @@ sagemaker_describe_endpoint_config(EndpointConfigName)
 \item{EndpointConfigName}{[required] The name of the endpoint configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointConfigName = "string",
   EndpointConfigArn = "string",
   ProductionVariants = list(
@@ -48,17 +50,19 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the description of an endpoint configuration created using the
 \code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}} API.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_endpoint_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_endpoint_config(
   EndpointConfigName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,7 +14,9 @@ elbv2_add_listener_certificates(ListenerArn, Certificates)
 \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Certificates = list(
     list(
       CertificateArn = "string",
@@ -22,7 +24,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds the specified SSL server certificate to the certificate list for
@@ -36,7 +38,9 @@ in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$add_listener_certificates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_listener_certificates(
   ListenerArn = "string",
   Certificates = list(
     list(
@@ -45,7 +49,7 @@ in the \emph{Network Load Balancers Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

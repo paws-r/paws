@@ -15,7 +15,7 @@ comprehendmedical_start_phi_detection_job(InputDataConfig,
 
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 (IAM) role that grants Amazon Comprehend Medical read access to your
-input data. For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med}{Role-Based Permissions Required for Asynchronous Operations}.}
+input data. For more information, see \href{https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med}{Role-Based Permissions Required for Asynchronous Operations}.}
 
 \item{JobName}{The identifier of the job.}
 
@@ -29,10 +29,12 @@ do not specify a key, the files are written in plain text.}
 language.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts an asynchronous job to detect protected health information (PHI).
@@ -41,7 +43,9 @@ Use the
 operation to track the status of a job.
 }
 \section{Request syntax}{
-\preformatted{svc$start_phi_detection_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_phi_detection_job(
   InputDataConfig = list(
     S3Bucket = "string",
     S3Key = "string"
@@ -56,7 +60,7 @@ operation to track the status of a job.
   KMSKey = "string",
   LanguageCode = "en"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

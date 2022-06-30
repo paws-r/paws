@@ -11,7 +11,9 @@ athena_batch_get_named_query(NamedQueryIds)
 \item{NamedQueryIds}{[required] An array of query IDs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NamedQueries = list(
     list(
       Name = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the details of a single named query or a list of up to 50
@@ -45,12 +47,14 @@ unique query execution, and ListQueryExecutionsInput to get a list of
 query execution IDs.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_get_named_query(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_named_query(
   NamedQueryIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,10 +19,12 @@ Configures a connection between the webhook that was created and the
 external tool with events to be detected.
 }
 \section{Request syntax}{
-\preformatted{svc$register_webhook_with_third_party(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_webhook_with_third_party(
   webhookName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,22 +12,26 @@ codedeploy_list_git_hub_account_token_names(nextToken)
 call. It can be used to return the next set of names in the list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tokenNameList = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the names of stored connections to GitHub accounts.
 }
 \section{Request syntax}{
-\preformatted{svc$list_git_hub_account_token_names(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_git_hub_account_token_names(
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

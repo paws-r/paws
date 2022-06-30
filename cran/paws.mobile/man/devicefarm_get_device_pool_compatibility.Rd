@@ -43,7 +43,9 @@ same time.
 \item{configuration}{An object that contains information about the settings for a run.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   compatibleDevices = list(
     list(
       device = list(
@@ -167,13 +169,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about compatibility with a device pool.
 }
 \section{Request syntax}{
-\preformatted{svc$get_device_pool_compatibility(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_device_pool_compatibility(
   devicePoolArn = "string",
   appArn = "string",
   testType = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
@@ -220,7 +224,7 @@ Gets information about compatibility with a device pool.
     billingMethod = "METERED"|"UNMETERED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

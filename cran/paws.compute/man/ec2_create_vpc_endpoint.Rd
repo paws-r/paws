@@ -60,7 +60,9 @@ Default: \code{true}}
 \item{TagSpecifications}{The tags to associate with the endpoint.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VpcEndpoint = list(
     VpcEndpointId = "string",
     VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
@@ -108,13 +110,13 @@ A list with the following syntax:\preformatted{list(
   ),
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a VPC endpoint for a specified service. An endpoint enables you
 to create a private connection between your VPC and the service. The
 service may be provided by AWS, an AWS Marketplace Partner, or another
-AWS account. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html}{VPC Endpoints}
+AWS account. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html}{VPC Endpoints}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 A \code{gateway} endpoint serves as a target for a route in your route table
@@ -137,7 +139,9 @@ Use
 to get a list of supported services.
 }
 \section{Request syntax}{
-\preformatted{svc$create_vpc_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc_endpoint(
   DryRun = TRUE|FALSE,
   VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
   VpcId = "string",
@@ -166,7 +170,7 @@ to get a list of supported services.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,23 +12,27 @@ codecommit_list_branches(repositoryName, nextToken)
 \item{nextToken}{An enumeration token that allows the operation to batch the results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   branches = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about one or more branches in a repository.
 }
 \section{Request syntax}{
-\preformatted{svc$list_branches(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_branches(
   repositoryName = "string",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

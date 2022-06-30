@@ -16,10 +16,12 @@ An empty list.
 Deletes a filter.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_filter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_filter(
   filterArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

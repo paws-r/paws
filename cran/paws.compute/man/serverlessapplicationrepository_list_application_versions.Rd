@@ -15,7 +15,9 @@ serverlessapplicationrepository_list_application_versions(ApplicationId,
 \item{NextToken}{A token to specify where to start paginating.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Versions = list(
     list(
@@ -26,18 +28,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists versions for the specified application.
 }
 \section{Request syntax}{
-\preformatted{svc$list_application_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_application_versions(
   ApplicationId = "string",
   MaxItems = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

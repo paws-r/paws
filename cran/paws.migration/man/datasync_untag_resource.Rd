@@ -18,13 +18,15 @@ An empty list.
 Removes a tag from an AWS resource.
 }
 \section{Request syntax}{
-\preformatted{svc$untag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
   ResourceArn = "string",
   Keys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

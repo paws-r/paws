@@ -57,7 +57,9 @@ authorized. When the method scope is configured, the client must provide
 an access token instead of an identity token for authorization purposes.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   httpMethod = "string",
   authorizationType = "string",
   authorizerId = "string",
@@ -122,13 +124,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Add a method to an existing Resource resource.
 }
 \section{Request syntax}{
-\preformatted{svc$put_method(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_method(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
@@ -147,7 +151,7 @@ Add a method to an existing Resource resource.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

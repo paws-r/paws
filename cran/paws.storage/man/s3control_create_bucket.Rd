@@ -51,11 +51,13 @@ This is not supported by Amazon S3 on Outposts buckets.}
 This is required by Amazon S3 on Outposts buckets.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Location = "string",
   BucketArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API operation creates an Amazon S3 on Outposts bucket. To create an
@@ -96,7 +98,9 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_bucket(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_bucket(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
   Bucket = "string",
   CreateBucketConfiguration = list(
@@ -110,7 +114,7 @@ The following actions are related to
   ObjectLockEnabledForBucket = TRUE|FALSE,
   OutpostId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

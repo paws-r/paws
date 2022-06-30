@@ -10,23 +10,27 @@ alexaforbusiness_get_skill_group(SkillGroupArn)
 \item{SkillGroupArn}{The ARN of the skill group for which to get details. Required.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SkillGroup = list(
     SkillGroupArn = "string",
     SkillGroupName = "string",
     Description = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets skill group details by skill group ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$get_skill_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_skill_group(
   SkillGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

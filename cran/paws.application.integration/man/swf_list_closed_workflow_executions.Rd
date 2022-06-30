@@ -70,7 +70,9 @@ results are returned in descending order of the start or the close time
 of the executions.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   executionInfos = list(
     list(
       execution = list(
@@ -101,7 +103,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of closed workflow executions in the specified domain
@@ -141,7 +143,9 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_closed_workflow_executions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_closed_workflow_executions(
   domain = "string",
   startTimeFilter = list(
     oldestDate = as.POSIXct(
@@ -176,7 +180,7 @@ in the \emph{Amazon SWF Developer Guide}.
   maximumPageSize = 123,
   reverseOrder = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

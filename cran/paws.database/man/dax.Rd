@@ -25,7 +25,9 @@ your application can begin taking advantage of the DAX cluster and
 realize significant improvements in read performance.
 }
 \section{Service syntax}{
-\preformatted{svc <- dax(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- dax(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +41,7 @@ realize significant improvements in read performance.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

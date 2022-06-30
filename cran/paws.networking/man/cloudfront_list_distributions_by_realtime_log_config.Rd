@@ -24,7 +24,9 @@ distributions you want to list.}
 associated distributions you want to list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DistributionList = list(
     Marker = "string",
     NextMarker = "string",
@@ -308,7 +310,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of distributions that have a cache behavior that’s
@@ -327,13 +329,15 @@ get the next page of items, send a subsequent request that specifies the
 the subsequent request.
 }
 \section{Request syntax}{
-\preformatted{svc$list_distributions_by_realtime_log_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_distributions_by_realtime_log_config(
   Marker = "string",
   MaxItems = "string",
   RealtimeLogConfigName = "string",
   RealtimeLogConfigArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

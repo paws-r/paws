@@ -26,12 +26,14 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 \item{Description}{The new description for the schema.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SchemaArn = "string",
   SchemaName = "string",
   RegistryName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the description, compatibility setting, or version checkpoint
@@ -50,7 +52,9 @@ checkpoint for the schema.
 This update will happen only if the schema is in the AVAILABLE state.
 }
 \section{Request syntax}{
-\preformatted{svc$update_schema(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_schema(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -63,7 +67,7 @@ This update will happen only if the schema is in the AVAILABLE state.
   Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

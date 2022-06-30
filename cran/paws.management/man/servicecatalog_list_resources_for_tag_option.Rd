@@ -22,7 +22,9 @@ servicecatalog_list_resources_for_tag_option(TagOptionId, ResourceType,
 results, use null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceDetails = list(
     list(
       Id = "string",
@@ -36,19 +38,21 @@ A list with the following syntax:\preformatted{list(
   ),
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the resources associated with the specified TagOption.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resources_for_tag_option(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resources_for_tag_option(
   TagOptionId = "string",
   ResourceType = "string",
   PageSize = 123,
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,7 +14,9 @@ translate_describe_text_translation_job(JobId)
 operation returns this identifier in its response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TextTranslationJobProperties = list(
     JobId = "string",
     JobName = "string",
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
     DataAccessRoleArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the properties associated with an asycnhronous batch translation
@@ -59,10 +61,12 @@ job including name, ID, status, source and target languages,
 input/output S3 buckets, and so on.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_text_translation_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_text_translation_job(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

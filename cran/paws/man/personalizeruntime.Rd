@@ -19,7 +19,9 @@ Operations section.
 Amazon Personalize Runtime
 }
 \section{Service syntax}{
-\preformatted{svc <- personalizeruntime(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- personalizeruntime(
   config = list(
     credentials = list(
       creds = list(
@@ -33,7 +35,7 @@ Amazon Personalize Runtime
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

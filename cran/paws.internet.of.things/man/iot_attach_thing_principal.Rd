@@ -21,11 +21,13 @@ be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
 identities or federated identities.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_thing_principal(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_thing_principal(
   thingName = "string",
   principal = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

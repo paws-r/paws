@@ -24,11 +24,13 @@ Constraints: A maximum of 20 parameters can be reset in a single
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ParameterGroupName = "string",
   ParameterGroupStatus = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sets one or more parameters of the specified parameter group to their
@@ -38,7 +40,9 @@ default values and sets the source values of the parameters to
 must reboot any associated clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_cluster_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_cluster_parameter_group(
   ParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(
@@ -55,7 +59,7 @@ must reboot any associated clusters.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

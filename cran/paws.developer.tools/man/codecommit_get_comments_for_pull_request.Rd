@@ -27,7 +27,9 @@ results. The default is 100 comments. You can return up to 500 comments
 with a single request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   commentsForPullRequestData = list(
     list(
       pullRequestId = "string",
@@ -67,7 +69,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns comments made on a pull request.
@@ -77,7 +79,9 @@ deleted after the reaction was made. For a count of reactions from
 active identities, use GetCommentReactions.
 }
 \section{Request syntax}{
-\preformatted{svc$get_comments_for_pull_request(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_comments_for_pull_request(
   pullRequestId = "string",
   repositoryName = "string",
   beforeCommitId = "string",
@@ -85,7 +89,7 @@ active identities, use GetCommentReactions.
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

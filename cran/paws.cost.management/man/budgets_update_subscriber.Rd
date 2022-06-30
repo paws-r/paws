@@ -26,7 +26,9 @@ An empty list.
 Updates a subscriber.
 }
 \section{Request syntax}{
-\preformatted{svc$update_subscriber(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_subscriber(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(
@@ -45,7 +47,7 @@ Updates a subscriber.
     Address = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

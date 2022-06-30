@@ -13,7 +13,9 @@ cloudfront_get_realtime_log_config(Name, ARN)
 get.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RealtimeLogConfig = list(
     ARN = "string",
     Name = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a real-time log configuration.
@@ -43,11 +45,13 @@ at least one. If you provide both, CloudFront uses the name to identify
 the real-time log configuration to get.
 }
 \section{Request syntax}{
-\preformatted{svc$get_realtime_log_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_realtime_log_config(
   Name = "string",
   ARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

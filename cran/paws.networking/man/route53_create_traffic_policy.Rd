@@ -17,7 +17,9 @@ information, see \href{https://docs.aws.amazon.com/Route53/latest/APIReference/a
 policy.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficPolicy = list(
     Id = "string",
     Version = 123,
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Location = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a traffic policy, which you use to create multiple DNS resource
@@ -36,12 +38,14 @@ record sets for one domain name (such as example.com) or one subdomain
 name (such as www.example.com).
 }
 \section{Request syntax}{
-\preformatted{svc$create_traffic_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_traffic_policy(
   Name = "string",
   Document = "string",
   Comment = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

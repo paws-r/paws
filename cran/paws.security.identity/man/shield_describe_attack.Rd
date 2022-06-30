@@ -10,7 +10,9 @@ shield_describe_attack(AttackId)
 \item{AttackId}{[required] The unique identifier (ID) for the attack that to be described.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Attack = list(
     AttackId = "string",
     ResourceArn = "string",
@@ -82,16 +84,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the details of a DDoS attack.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_attack(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_attack(
   AttackId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

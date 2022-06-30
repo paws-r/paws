@@ -19,7 +19,9 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   RoutingProfileQueueConfigSummaryList = list(
     list(
@@ -32,19 +34,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List the queues associated with a routing profile.
 }
 \section{Request syntax}{
-\preformatted{svc$list_routing_profile_queues(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_routing_profile_queues(
   InstanceId = "string",
   RoutingProfileId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

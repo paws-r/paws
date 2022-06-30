@@ -20,22 +20,26 @@ associated with the default namespace.}
 regarding your AWS account or QuickSight subscription.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the Amazon QuickSight settings in your AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$update_account_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_account_settings(
   AwsAccountId = "string",
   DefaultNamespace = "string",
   NotificationEmail = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

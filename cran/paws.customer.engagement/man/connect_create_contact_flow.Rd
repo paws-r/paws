@@ -23,11 +23,13 @@ in the \emph{Amazon Connect Administrator Guide}.}
 \item{Tags}{One or more tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContactFlowId = "string",
   ContactFlowArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a contact flow for the specified Amazon Connect instance.
@@ -35,7 +37,9 @@ Creates a contact flow for the specified Amazon Connect instance.
 You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_contact_flow(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_contact_flow(
   InstanceId = "string",
   Name = "string",
   Type = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER",
@@ -45,7 +49,7 @@ You can also create and update contact flows using the \href{https://docs.aws.am
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

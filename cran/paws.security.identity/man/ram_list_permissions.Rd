@@ -18,7 +18,9 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   permissions = list(
     list(
       arn = "string",
@@ -37,18 +39,20 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the AWS RAM permissions.
 }
 \section{Request syntax}{
-\preformatted{svc$list_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_permissions(
   resourceType = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -49,13 +49,15 @@ and 100. If this parameter is not used, then
 returns up to 100 results and a \code{nextToken} value if applicable.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   families = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of task definition families that are registered to your
@@ -68,13 +70,15 @@ You can filter out task definition families that do not contain any
 parameter.
 }
 \section{Request syntax}{
-\preformatted{svc$list_task_definition_families(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_task_definition_families(
   familyPrefix = "string",
   status = "ACTIVE"|"INACTIVE"|"ALL",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

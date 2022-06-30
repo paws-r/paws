@@ -17,7 +17,9 @@ one filter at a time.}
 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TopicsDetectionJobPropertiesList = list(
     list(
       JobId = "string",
@@ -53,13 +55,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of the topic detection jobs that you have submitted.
 }
 \section{Request syntax}{
-\preformatted{svc$list_topics_detection_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_topics_detection_jobs(
   Filter = list(
     JobName = "string",
     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
@@ -73,7 +77,7 @@ Gets a list of the topic detection jobs that you have submitted.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

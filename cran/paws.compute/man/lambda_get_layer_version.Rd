@@ -13,7 +13,9 @@ lambda_get_layer_version(LayerName, VersionNumber)
 \item{VersionNumber}{[required] The version number.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Content = list(
     Location = "string",
     CodeSha256 = "string",
@@ -31,18 +33,20 @@ A list with the following syntax:\preformatted{list(
   ),
   LicenseInfo = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer},
 with a link to download the layer archive that's valid for 10 minutes.
 }
 \section{Request syntax}{
-\preformatted{svc$get_layer_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_layer_version(
   LayerName = "string",
   VersionNumber = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

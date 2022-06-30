@@ -20,7 +20,9 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 \item{InstanceCreditSpecifications}{[required] Information about the credit option for CPU usage.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SuccessfulInstanceCreditSpecifications = list(
     list(
       InstanceId = "string"
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the credit option for CPU usage on a running or stopped
@@ -47,7 +49,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_instance_credit_specification(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_instance_credit_specification(
   DryRun = TRUE|FALSE,
   ClientToken = "string",
   InstanceCreditSpecifications = list(
@@ -57,7 +61,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

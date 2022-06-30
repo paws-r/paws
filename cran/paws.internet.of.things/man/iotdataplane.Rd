@@ -34,7 +34,9 @@ The service name used by \href{https://docs.aws.amazon.com/general/latest/gr/sig
 to sign requests is: \emph{iotdevicegateway}.
 }
 \section{Service syntax}{
-\preformatted{svc <- iotdataplane(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- iotdataplane(
   config = list(
     credentials = list(
       creds = list(
@@ -48,7 +50,7 @@ to sign requests is: \emph{iotdevicegateway}.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

@@ -13,7 +13,9 @@ apigatewayv2_get_stage(ApiId, StageName)
 hyphens, and underscores. Maximum length is 128 characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -54,17 +56,19 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a Stage.
 }
 \section{Request syntax}{
-\preformatted{svc$get_stage(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_stage(
   ApiId = "string",
   StageName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

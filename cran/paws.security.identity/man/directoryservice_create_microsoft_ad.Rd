@@ -35,10 +35,12 @@ console \verb{Directory Details} page after the directory is created.}
 \item{Tags}{The tags to be assigned to the AWS Managed Microsoft AD directory.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DirectoryId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Microsoft AD directory in the AWS Cloud. For more information,
@@ -51,7 +53,9 @@ about what permissions are required to run the \emph{CreateMicrosoftAD}
 operation, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_microsoft_ad(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_microsoft_ad(
   Name = "string",
   ShortName = "string",
   Password = "string",
@@ -70,7 +74,7 @@ operation, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-g
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

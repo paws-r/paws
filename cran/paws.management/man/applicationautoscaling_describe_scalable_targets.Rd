@@ -117,7 +117,9 @@ parameter is not used, the operation returns up to 50 results and a
 \item{NextToken}{The token for the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ScalableTargets = list(
     list(
       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
@@ -138,7 +140,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the scalable targets in the specified namespace.
@@ -146,7 +148,9 @@ Gets information about the scalable targets in the specified namespace.
 You can filter the results using \code{ResourceIds} and \code{ScalableDimension}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_scalable_targets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scalable_targets(
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
   ResourceIds = list(
     "string"
@@ -155,7 +159,7 @@ You can filter the results using \code{ResourceIds} and \code{ScalableDimension}
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -21,7 +21,9 @@ you do not specify either, AWS Elastic Beanstalk returns
 \code{MissingRequiredParameter} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EnvironmentResources = list(
     EnvironmentName = "string",
     AutoScalingGroups = list(
@@ -62,17 +64,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns AWS resources for this environment.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_environment_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_environment_resources(
   EnvironmentId = "string",
   EnvironmentName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

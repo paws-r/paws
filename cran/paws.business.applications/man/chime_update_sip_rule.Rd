@@ -16,7 +16,9 @@ chime_update_sip_rule(SipRuleId, Name, Disabled, TargetApplications)
 \item{TargetApplications}{The new value of the list of target applications.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SipRule = list(
     SipRuleId = "string",
     Name = "string",
@@ -38,13 +40,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the details for the specified SIP rule.
 }
 \section{Request syntax}{
-\preformatted{svc$update_sip_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_sip_rule(
   SipRuleId = "string",
   Name = "string",
   Disabled = TRUE|FALSE,
@@ -56,7 +60,7 @@ Updates the details for the specified SIP rule.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

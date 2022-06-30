@@ -12,21 +12,25 @@ iot_register_certificate_without_ca(certificatePem, status)
 \item{status}{The status of the register certificate request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   certificateArn = "string",
   certificateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Register a certificate that does not have a certificate authority (CA).
 }
 \section{Request syntax}{
-\preformatted{svc$register_certificate_without_ca(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_certificate_without_ca(
   certificatePem = "string",
   status = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

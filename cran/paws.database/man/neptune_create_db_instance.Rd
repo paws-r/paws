@@ -260,7 +260,9 @@ DB instances in a DB cluster can be deleted even when deletion
 protection is enabled in their parent DB cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -402,13 +404,15 @@ A list with the following syntax:\preformatted{list(
     DeletionProtection = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new DB instance.
 }
 \section{Request syntax}{
-\preformatted{svc$create_db_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_instance(
   DBName = "string",
   DBInstanceIdentifier = "string",
   AllocatedStorage = 123,
@@ -464,7 +468,7 @@ Creates a new DB instance.
   ),
   DeletionProtection = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

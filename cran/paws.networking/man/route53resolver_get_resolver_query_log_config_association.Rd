@@ -13,7 +13,9 @@ route53resolver_get_resolver_query_log_config_association(
 want to get information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResolverQueryLogConfigAssociation = list(
     Id = "string",
     ResolverQueryLogConfigId = "string",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     CreationTime = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a specified association between a Resolver query
@@ -33,10 +35,12 @@ query logging configuration, Resolver logs DNS queries that originate in
 that VPC.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resolver_query_log_config_association(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resolver_query_log_config_association(
   ResolverQueryLogConfigAssociationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

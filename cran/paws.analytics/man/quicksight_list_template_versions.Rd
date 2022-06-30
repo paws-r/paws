@@ -20,7 +20,9 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TemplateVersionSummaryList = list(
     list(
       Arn = "string",
@@ -36,20 +38,22 @@ A list with the following syntax:\preformatted{list(
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all the versions of the templates in the current Amazon QuickSight
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_template_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_template_versions(
   AwsAccountId = "string",
   TemplateId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

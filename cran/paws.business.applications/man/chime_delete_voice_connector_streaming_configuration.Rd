@@ -18,10 +18,12 @@ Deletes the streaming configuration for the specified Amazon Chime Voice
 Connector.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_voice_connector_streaming_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_voice_connector_streaming_configuration(
   VoiceConnectorId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

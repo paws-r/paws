@@ -21,10 +21,12 @@ Cloud Messaging).}
 \code{\link[=sns_set_platform_application_attributes]{set_platform_application_attributes}}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PlatformApplicationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a platform application object for one of the supported push
@@ -54,14 +56,16 @@ You can use the returned \code{PlatformApplicationArn} as an attribute for
 the \code{\link[=sns_create_platform_endpoint]{create_platform_endpoint}} action.
 }
 \section{Request syntax}{
-\preformatted{svc$create_platform_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_platform_application(
   Name = "string",
   Platform = "string",
   Attributes = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

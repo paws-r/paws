@@ -10,7 +10,9 @@ workspaces_create_workspaces(Workspaces)
 \item{Workspaces}{[required] The WorkSpaces to create. You can specify up to 25 WorkSpaces.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedRequests = list(
     list(
       WorkspaceRequest = list(
@@ -69,7 +71,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates one or more WorkSpaces.
@@ -78,7 +80,9 @@ This operation is asynchronous and returns before the WorkSpaces are
 created.
 }
 \section{Request syntax}{
-\preformatted{svc$create_workspaces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_workspaces(
   Workspaces = list(
     list(
       DirectoryId = "string",
@@ -103,7 +107,7 @@ created.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

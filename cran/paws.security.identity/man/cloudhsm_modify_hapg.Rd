@@ -15,10 +15,12 @@ cloudhsm_modify_hapg(HapgArn, Label, PartitionSerialList)
 high-availability partition group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HapgArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -31,14 +33,16 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
 Modifies an existing high-availability partition group.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_hapg(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_hapg(
   HapgArn = "string",
   Label = "string",
   PartitionSerialList = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

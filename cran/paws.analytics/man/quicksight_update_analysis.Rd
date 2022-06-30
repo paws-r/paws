@@ -30,20 +30,24 @@ that you're creating. To see the theme in the QuickSight console, make
 sure that you have access to it.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   AnalysisId = "string",
   UpdateStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an analysis in Amazon QuickSight
 }
 \section{Request syntax}{
-\preformatted{svc$update_analysis(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_analysis(
   AwsAccountId = "string",
   AnalysisId = "string",
   Name = "string",
@@ -96,7 +100,7 @@ Updates an analysis in Amazon QuickSight
   ),
   ThemeArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

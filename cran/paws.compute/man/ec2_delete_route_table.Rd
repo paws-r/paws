@@ -23,11 +23,13 @@ from any subnets before you can delete it. You can't delete the main
 route table.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_route_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_route_table(
   DryRun = TRUE|FALSE,
   RouteTableId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

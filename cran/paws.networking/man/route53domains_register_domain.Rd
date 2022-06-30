@@ -86,10 +86,12 @@ technical contact.
 Default: \code{true}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation registers a domain. Domains are registered either by
@@ -121,7 +123,9 @@ For more information, see \href{https://aws.amazon.com/route53/pricing/}{Amazon 
 }
 }
 \section{Request syntax}{
-\preformatted{svc$register_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_domain(
   DomainName = "string",
   IdnLangCode = "string",
   DurationInYears = 123,
@@ -193,7 +197,7 @@ For more information, see \href{https://aws.amazon.com/route53/pricing/}{Amazon 
   PrivacyProtectRegistrantContact = TRUE|FALSE,
   PrivacyProtectTechContact = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

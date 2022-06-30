@@ -12,7 +12,9 @@ storagegateway_describe_gateway_information(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string",
   GatewayId = "string",
   GatewayName = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
   SoftwareUpdatesEndDate = "string",
   DeprecationDate = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns metadata about a gateway such as its name, network interfaces,
@@ -52,10 +54,12 @@ not). To specify which gateway to describe, use the Amazon Resource Name
 (ARN) of the gateway in your request.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_gateway_information(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_gateway_information(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

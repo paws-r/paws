@@ -16,25 +16,29 @@ model references and returns a flattened model schema or not (\code{false})
 The default is \code{false}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
   schema = "string",
   contentType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes an existing model defined for a RestApi resource.
 }
 \section{Request syntax}{
-\preformatted{svc$get_model(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_model(
   restApiId = "string",
   modelName = "string",
   flatten = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

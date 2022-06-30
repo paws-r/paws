@@ -16,10 +16,12 @@ An empty list.
 Deletes the streaming configurations of an app instance.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_app_instance_streaming_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app_instance_streaming_configurations(
   AppInstanceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

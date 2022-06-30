@@ -11,7 +11,9 @@ codestar_describe_user_profile(userArn)
 \item{userArn}{[required] The Amazon Resource Name (ARN) of the user.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   userArn = "string",
   displayName = "string",
   emailAddress = "string",
@@ -23,17 +25,19 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a user in AWS CodeStar and the user attributes across all
 projects.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_user_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user_profile(
   userArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

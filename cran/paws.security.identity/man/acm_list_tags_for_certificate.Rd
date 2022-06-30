@@ -15,7 +15,9 @@ to list the tags. This must have the following form:
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the tags that have been applied to the ACM certificate. Use the
@@ -35,10 +37,12 @@ delete a tag, use the
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_certificate(
   CertificateArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,7 +20,9 @@ Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GameSessionQueues = list(
     list(
       Name = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the properties for one or more game session queues. When
@@ -64,14 +66,16 @@ Region.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_game_session_queues(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_game_session_queues(
   Names = list(
     "string"
   ),
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ resources.}
 \item{ResourceArns}{[required] The ARNs of the resources to be removed from the group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Succeeded = list(
     "string"
   ),
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes the specified resources from the specified group.
@@ -43,13 +45,15 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$ungroup_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$ungroup_resources(
   Group = "string",
   ResourceArns = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

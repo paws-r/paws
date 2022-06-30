@@ -16,10 +16,12 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClientConfiguration = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Downloads the contents of the Client VPN endpoint configuration file for
@@ -28,11 +30,13 @@ file includes the Client VPN endpoint and certificate information
 clients need to establish a connection with the Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$export_client_vpn_client_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_client_vpn_client_configuration(
   ClientVpnEndpointId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,7 +14,9 @@ cloudformation_detect_stack_resource_drift(StackName, LogicalResourceId)
 \item{LogicalResourceId}{[required] The logical name of the resource for which to return drift information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackResourceDrift = list(
     StackId = "string",
     LogicalResourceId = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about whether a resource's actual configuration
@@ -69,11 +71,13 @@ checked. For a list of resources that support drift detection, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html}{Resources that Support Drift Detection}.
 }
 \section{Request syntax}{
-\preformatted{svc$detect_stack_resource_drift(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_stack_resource_drift(
   StackName = "string",
   LogicalResourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -49,8 +49,8 @@ creation and updating operations, and for the specified monitoring
 period afterwards.}
 
 \item{TimeoutInMinutes}{The amount of time that can pass before the stack status becomes
-CREATE_FAILED; if \code{DisableRollback} is not set or is set to \code{false},
-the stack will be rolled back.}
+CREATE_FAILED; if \code{DisableRollback} is not set or is set to \code{false}, the
+stack will be rolled back.}
 
 \item{NotificationARNs}{The Simple Notification Service (SNS) topic ARNs to publish stack
 related events. You can find your SNS topic ARNs using the SNS console
@@ -205,10 +205,12 @@ termination protection is set on the root stack and cannot be changed
 directly on the nested stack.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a stack as specified in the template. After the call completes
@@ -216,7 +218,9 @@ successfully, the stack creation starts. You can check the status of the
 stack via the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} API.
 }
 \section{Request syntax}{
-\preformatted{svc$create_stack(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stack(
   StackName = "string",
   TemplateBody = "string",
   TemplateURL = "string",
@@ -261,7 +265,7 @@ stack via the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} API
   ClientRequestToken = "string",
   EnableTerminationProtection = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

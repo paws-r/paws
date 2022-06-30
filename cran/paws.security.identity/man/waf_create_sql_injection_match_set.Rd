@@ -15,7 +15,9 @@ creating. You can't change \code{Name} after you create the
 \code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SqlInjectionMatchSet = list(
     SqlInjectionMatchSetId = "string",
     Name = "string",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ChangeToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -72,11 +74,13 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_sql_injection_match_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_sql_injection_match_set(
   Name = "string",
   ChangeToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

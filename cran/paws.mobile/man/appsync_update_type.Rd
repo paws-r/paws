@@ -16,7 +16,9 @@ appsync_update_type(apiId, typeName, definition, format)
 \item{format}{[required] The new type format: SDL or JSON.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   type = list(
     name = "string",
     description = "string",
@@ -25,19 +27,21 @@ A list with the following syntax:\preformatted{list(
     format = "SDL"|"JSON"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a \code{Type} object.
 }
 \section{Request syntax}{
-\preformatted{svc$update_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_type(
   apiId = "string",
   typeName = "string",
   definition = "string",
   format = "SDL"|"JSON"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

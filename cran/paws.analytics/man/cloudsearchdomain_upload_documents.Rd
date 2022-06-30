@@ -17,7 +17,9 @@ two document batch formats:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   status = "string",
   adds = 123,
   deletes = 123,
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Posts a batch of documents to a search domain for indexing. A document
@@ -57,11 +59,13 @@ uploading data for indexing, see \href{https://docs.aws.amazon.com/cloudsearch/l
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$upload_documents(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upload_documents(
   documents = raw,
   contentType = "application/json"|"application/xml"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

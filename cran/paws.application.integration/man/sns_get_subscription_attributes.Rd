@@ -10,21 +10,25 @@ sns_get_subscription_attributes(SubscriptionArn)
 \item{SubscriptionArn}{[required] The ARN of the subscription whose properties you want to get.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Attributes = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns all of the properties of a subscription.
 }
 \section{Request syntax}{
-\preformatted{svc$get_subscription_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_subscription_attributes(
   SubscriptionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

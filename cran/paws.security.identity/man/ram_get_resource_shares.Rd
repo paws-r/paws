@@ -26,7 +26,9 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceShares = list(
     list(
       resourceShareArn = "string",
@@ -52,14 +54,16 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the resource shares that you own or the resource shares that are
 shared with you.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resource_shares(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resource_shares(
   resourceShareArns = list(
     "string"
   ),
@@ -77,7 +81,7 @@ shared with you.
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

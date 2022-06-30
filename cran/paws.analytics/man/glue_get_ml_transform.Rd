@@ -12,7 +12,9 @@ glue_get_ml_transform(TransformId)
 transform was created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransformId = "string",
   Name = "string",
   Description = "string",
@@ -83,7 +85,7 @@ A list with the following syntax:\preformatted{list(
     TaskRunSecurityConfigurationName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets an AWS Glue machine learning transform artifact and all its
@@ -95,10 +97,12 @@ retrieve their metadata by calling
 \code{\link[=glue_get_ml_transform]{get_ml_transform}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_ml_transform(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ml_transform(
   TransformId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

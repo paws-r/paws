@@ -18,10 +18,12 @@ Stops replicating the specified application by deleting the replication
 job for each server in the application.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_app_replication(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_app_replication(
   appId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

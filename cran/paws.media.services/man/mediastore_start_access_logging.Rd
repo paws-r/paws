@@ -18,10 +18,12 @@ logging on a container, MediaStore delivers access logs for objects
 stored in that container to Amazon CloudWatch Logs.
 }
 \section{Request syntax}{
-\preformatted{svc$start_access_logging(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_access_logging(
   ContainerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

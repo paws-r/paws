@@ -15,10 +15,12 @@ rdsdataservice_commit_transaction(resourceArn, secretArn, transactionId)
 \item{transactionId}{[required] The identifier of the transaction to end and commit.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   transactionStatus = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Ends a SQL transaction started with the
@@ -26,12 +28,14 @@ Ends a SQL transaction started with the
 commits the changes.
 }
 \section{Request syntax}{
-\preformatted{svc$commit_transaction(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$commit_transaction(
   resourceArn = "string",
   secretArn = "string",
   transactionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

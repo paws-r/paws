@@ -28,7 +28,9 @@ updated by passing one of three values to \code{Status}:
 \code{NOT_STARTED | IN_PROGRESS | COMPLETED}.
 }
 \section{Request syntax}{
-\preformatted{svc$notify_application_state(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$notify_application_state(
   ApplicationId = "string",
   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
   UpdateDateTime = as.POSIXct(
@@ -36,7 +38,7 @@ updated by passing one of three values to \code{Status}:
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

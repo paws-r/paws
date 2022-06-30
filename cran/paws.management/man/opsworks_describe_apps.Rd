@@ -17,7 +17,9 @@ description of the specified apps. Otherwise, it returns a description
 of every app.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Apps = list(
     list(
       AppId = "string",
@@ -64,7 +66,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Requests a description of a specified set of apps.
@@ -77,13 +79,15 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_apps(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_apps(
   StackId = "string",
   AppIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

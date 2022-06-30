@@ -69,7 +69,9 @@ includes the health status for running instances only.
 Default: \code{false}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceStatuses = list(
     list(
       AvailabilityZone = "string",
@@ -123,7 +125,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the status of the specified instances or all of your
@@ -149,7 +151,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_instance_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_status(
   Filters = list(
     list(
       Name = "string",
@@ -166,7 +170,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   DryRun = TRUE|FALSE,
   IncludeAllInstances = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

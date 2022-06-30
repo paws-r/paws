@@ -18,11 +18,13 @@ see
 .}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CostCategoryArn = "string",
   EffectiveStart = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing Cost Category. Changes made to the Cost Category
@@ -30,7 +32,9 @@ rules will be used to categorize the current month’s expenses and future
 expenses. This won’t change categorization for the previous months.
 }
 \section{Request syntax}{
-\preformatted{svc$update_cost_category_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_cost_category_definition(
   CostCategoryArn = "string",
   RuleVersion = "CostCategoryExpression.v1",
   Rules = list(
@@ -75,7 +79,7 @@ expenses. This won’t change categorization for the previous months.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

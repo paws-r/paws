@@ -13,7 +13,9 @@ cloudwatchlogs_test_metric_filter(filterPattern, logEventMessages)
 \item{logEventMessages}{[required] The log event messages to test.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   matches = list(
     list(
       eventNumber = 123,
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Tests the filter pattern of a metric filter against a sample of log
@@ -32,13 +34,15 @@ event messages. You can use this operation to validate the correctness
 of a metric filter pattern.
 }
 \section{Request syntax}{
-\preformatted{svc$test_metric_filter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_metric_filter(
   filterPattern = "string",
   logEventMessages = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

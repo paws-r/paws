@@ -29,7 +29,9 @@ number of parts returned might be fewer than the specified limit, but
 the number of returned parts never exceeds the limit.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MultipartUploadId = "string",
   VaultARN = "string",
   ArchiveDescription = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation lists the parts of an archive that have been uploaded in
@@ -72,14 +74,16 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-lis
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_parts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_parts(
   accountId = "string",
   vaultName = "string",
   uploadId = "string",
   marker = "string",
   limit = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

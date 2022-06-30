@@ -35,10 +35,12 @@ Although this parameter is an array, only one item is allowed at this
 time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ImageId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Imports the specified Windows 10 Bring Your Own License (BYOL) image
@@ -47,7 +49,9 @@ image that is in your AWS account, and you must own the image. For more
 information about creating BYOL images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Licenses}.
 }
 \section{Request syntax}{
-\preformatted{svc$import_workspace_image(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_workspace_image(
   Ec2ImageId = "string",
   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO"|"BYOL_REGULAR_WSP",
   ImageName = "string",
@@ -62,7 +66,7 @@ information about creating BYOL images, see \href{https://docs.aws.amazon.com/wo
     "Microsoft_Office_2016"|"Microsoft_Office_2019"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

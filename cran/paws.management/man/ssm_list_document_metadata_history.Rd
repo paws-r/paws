@@ -23,7 +23,9 @@ returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string",
   DocumentVersion = "string",
   Author = "string",
@@ -49,20 +51,22 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Information about approval reviews for a version of an SSM document.
 }
 \section{Request syntax}{
-\preformatted{svc$list_document_metadata_history(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_document_metadata_history(
   Name = "string",
   DocumentVersion = "string",
   Metadata = "DocumentReviews",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

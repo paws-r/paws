@@ -15,7 +15,9 @@ clouddirectory_get_object_information(DirectoryArn, ObjectReference,
 \item{ConsistencyLevel}{The consistency level at which to retrieve the object information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SchemaFacets = list(
     list(
       SchemaArn = "string",
@@ -24,20 +26,22 @@ A list with the following syntax:\preformatted{list(
   ),
   ObjectIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves metadata about an object.
 }
 \section{Request syntax}{
-\preformatted{svc$get_object_information(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_object_information(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
   ),
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

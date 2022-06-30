@@ -46,7 +46,9 @@ for WebSocket APIs.}
 \item{Target}{The target for the route.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApiGatewayManaged = TRUE|FALSE,
   ApiKeyRequired = TRUE|FALSE,
   AuthorizationScopes = list(
@@ -69,13 +71,15 @@ A list with the following syntax:\preformatted{list(
   RouteResponseSelectionExpression = "string",
   Target = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a Route.
 }
 \section{Request syntax}{
-\preformatted{svc$update_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_route(
   ApiId = "string",
   ApiKeyRequired = TRUE|FALSE,
   AuthorizationScopes = list(
@@ -98,7 +102,7 @@ Updates a Route.
   RouteResponseSelectionExpression = "string",
   Target = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

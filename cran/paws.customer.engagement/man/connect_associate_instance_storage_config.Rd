@@ -16,10 +16,12 @@ connect_associate_instance_storage_config(InstanceId, ResourceType,
 \item{StorageConfig}{[required] A valid storage type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssociationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -36,7 +38,9 @@ in the storage configuration, like an Amazon S3 bucket, exists when
 being used for association.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_instance_storage_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_instance_storage_config(
   InstanceId = "string",
   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS",
   StorageConfig = list(
@@ -66,7 +70,7 @@ being used for association.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

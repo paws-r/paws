@@ -64,13 +64,15 @@ value of \code{PENDING}).}
 \item{launchType}{The launch type for services to list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskArns = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of tasks for a specified cluster. You can filter the
@@ -82,7 +84,9 @@ Recently stopped tasks might appear in the returned results. Currently,
 stopped tasks appear in the returned results for at least one hour.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tasks(
   cluster = "string",
   containerInstance = "string",
   family = "string",
@@ -93,7 +97,7 @@ stopped tasks appear in the returned results for at least one hour.
   desiredStatus = "RUNNING"|"PENDING"|"STOPPED",
   launchType = "EC2"|"FARGATE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

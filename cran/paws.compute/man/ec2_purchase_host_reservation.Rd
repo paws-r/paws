@@ -32,7 +32,9 @@ price of USD 100, specify 100.00.}
 \item{TagSpecifications}{The tags to apply to the Dedicated Host Reservation during purchase.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClientToken = "string",
   CurrencyCode = "USD",
   Purchase = list(
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
   TotalHourlyPrice = "string",
   TotalUpfrontPrice = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Purchase a reservation with configurations that match those of your
@@ -61,7 +63,9 @@ before you purchase a reservation. This action results in the specified
 reservation being purchased and charged to your account.
 }
 \section{Request syntax}{
-\preformatted{svc$purchase_host_reservation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purchase_host_reservation(
   ClientToken = "string",
   CurrencyCode = "USD",
   HostIdSet = list(
@@ -81,7 +85,7 @@ reservation being purchased and charged to your account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

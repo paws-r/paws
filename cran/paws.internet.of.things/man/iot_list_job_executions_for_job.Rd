@@ -16,7 +16,9 @@ iot_list_job_executions_for_job(jobId, status, maxResults, nextToken)
 \item{nextToken}{The token to retrieve the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   executionSummaries = list(
     list(
       thingArn = "string",
@@ -37,19 +39,21 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the job executions for a job.
 }
 \section{Request syntax}{
-\preformatted{svc$list_job_executions_for_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_job_executions_for_job(
   jobId = "string",
   status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

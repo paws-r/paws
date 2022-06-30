@@ -22,16 +22,20 @@ notifications.}
 \item{SubscriptionName}{The subscription's new name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SubscriptionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing cost anomaly monitor subscription.
 }
 \section{Request syntax}{
-\preformatted{svc$update_anomaly_subscription(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_anomaly_subscription(
   SubscriptionArn = "string",
   Threshold = 123.0,
   Frequency = "DAILY"|"IMMEDIATE"|"WEEKLY",
@@ -47,7 +51,7 @@ Updates an existing cost anomaly monitor subscription.
   ),
   SubscriptionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

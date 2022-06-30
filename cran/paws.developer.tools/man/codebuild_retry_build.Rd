@@ -17,7 +17,9 @@ and is valid for five minutes. If you repeat the
 change a parameter, AWS CodeBuild returns a parameter mismatch error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   build = list(
     id = "string",
     arn = "string",
@@ -206,17 +208,19 @@ A list with the following syntax:\preformatted{list(
     buildBatchArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Restarts a build.
 }
 \section{Request syntax}{
-\preformatted{svc$retry_build(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$retry_build(
   id = "string",
   idempotencyToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

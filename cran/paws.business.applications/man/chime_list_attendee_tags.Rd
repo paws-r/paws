@@ -12,7 +12,9 @@ chime_list_attendee_tags(MeetingId, AttendeeId)
 \item{AttendeeId}{[required] The Amazon Chime SDK attendee ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -20,17 +22,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the tags applied to an Amazon Chime SDK attendee resource.
 }
 \section{Request syntax}{
-\preformatted{svc$list_attendee_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_attendee_tags(
   MeetingId = "string",
   AttendeeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

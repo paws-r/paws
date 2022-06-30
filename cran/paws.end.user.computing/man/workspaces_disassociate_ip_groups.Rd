@@ -20,13 +20,15 @@ Disassociates the specified IP access control group from the specified
 directory.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_ip_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_ip_groups(
   DirectoryId = "string",
   GroupIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

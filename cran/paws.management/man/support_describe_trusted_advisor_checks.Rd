@@ -13,7 +13,9 @@ Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   checks = list(
     list(
       id = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about all available AWS Trusted Advisor checks,
@@ -45,10 +47,12 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_trusted_advisor_checks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_trusted_advisor_checks(
   language = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

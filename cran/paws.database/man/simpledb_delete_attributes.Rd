@@ -44,7 +44,9 @@ eventual consistency update model, performing a
 return updated item data.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_attributes(
   DomainName = "string",
   ItemName = "string",
   Attributes = list(
@@ -59,7 +61,7 @@ return updated item data.
     Exists = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

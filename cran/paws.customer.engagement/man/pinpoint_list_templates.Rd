@@ -25,7 +25,9 @@ are: EMAIL, PUSH, SMS, and VOICE. To include all types of templates in
 the results, don't include this parameter in your request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TemplatesResponse = list(
     Item = list(
       list(
@@ -45,20 +47,22 @@ A list with the following syntax:\preformatted{list(
     NextToken = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about all the message templates that are
 associated with your Amazon Pinpoint account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_templates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_templates(
   NextToken = "string",
   PageSize = "string",
   Prefix = "string",
   TemplateType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

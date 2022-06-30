@@ -7,7 +7,9 @@
 lightsail_peer_vpc()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -30,14 +32,16 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Tries to peer the Lightsail VPC with the user's default VPC.
 }
 \section{Request syntax}{
-\preformatted{svc$peer_vpc()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$peer_vpc()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

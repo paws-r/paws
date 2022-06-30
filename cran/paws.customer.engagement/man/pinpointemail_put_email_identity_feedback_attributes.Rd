@@ -47,11 +47,13 @@ or complaint notifications, Amazon Pinpoint sends an email notification
 when these events occur (even if this setting is disabled).
 }
 \section{Request syntax}{
-\preformatted{svc$put_email_identity_feedback_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_email_identity_feedback_attributes(
   EmailIdentity = "string",
   EmailForwardingEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -32,7 +32,9 @@ a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackResourceDrifts = list(
     list(
       StackId = "string",
@@ -67,7 +69,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns drift information for the resources that have been checked for
@@ -88,7 +90,9 @@ to detect drift on individual resources, or
 drift on all supported resources for a given stack.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_stack_resource_drifts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stack_resource_drifts(
   StackName = "string",
   StackResourceDriftStatusFilters = list(
     "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED"
@@ -96,7 +100,7 @@ drift on all supported resources for a given stack.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

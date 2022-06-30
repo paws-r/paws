@@ -16,10 +16,12 @@ An empty list.
 Deletes the input end point
 }
 \section{Request syntax}{
-\preformatted{svc$delete_input(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_input(
   InputId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

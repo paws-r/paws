@@ -54,7 +54,9 @@ retrieving the price history data, in UTC format (for example,
 \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   SpotPriceHistory = list(
     list(
@@ -68,7 +70,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the Spot price history. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html}{Spot Instance pricing history}
@@ -81,7 +83,9 @@ that you specified; the response merely indicates the last time that the
 price changed.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_spot_price_history(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_spot_price_history(
   Filters = list(
     list(
       Name = "string",
@@ -107,7 +111,7 @@ price changed.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

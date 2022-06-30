@@ -33,12 +33,14 @@ for a product, because a product must have at least one provisioning
 artifact.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_provisioning_artifact(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_provisioning_artifact(
   AcceptLanguage = "string",
   ProductId = "string",
   ProvisioningArtifactId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

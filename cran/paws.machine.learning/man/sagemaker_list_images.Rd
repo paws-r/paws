@@ -36,7 +36,9 @@ next set of images.}
 \item{SortOrder}{The sort order. The default value is \code{DESCENDING}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Images = list(
     list(
       CreationTime = as.POSIXct(
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the images in your account and their properties. The list can be
@@ -63,7 +65,9 @@ filtered by creation time or modified time, and whether the image name
 contains a specified string.
 }
 \section{Request syntax}{
-\preformatted{svc$list_images(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_images(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -82,7 +86,7 @@ contains a specified string.
   SortBy = "CREATION_TIME"|"LAST_MODIFIED_TIME"|"IMAGE_NAME",
   SortOrder = "ASCENDING"|"DESCENDING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -52,11 +52,11 @@ for the TCP and UDP protocols, or an ICMP code.
 \item \code{ip-permission.user-id} - The ID of an AWS account that has been
 referenced in an inbound security group rule.
 \item \code{owner-id} - The AWS account ID of the owner of the security group.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -89,7 +89,9 @@ the remaining results, make another request with the returned
 parameter is not specified, then all results are returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SecurityGroups = list(
     list(
       Description = "string",
@@ -179,7 +181,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified security groups or all of your security groups.
@@ -190,7 +192,9 @@ in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{https://docs.aws
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_security_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_security_groups(
   Filters = list(
     list(
       Name = "string",
@@ -209,7 +213,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

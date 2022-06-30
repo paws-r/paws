@@ -12,7 +12,9 @@ elb_describe_load_balancer_policies(LoadBalancerName, PolicyNames)
 \item{PolicyNames}{The names of the policies.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyDescriptions = list(
     list(
       PolicyName = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified policies.
@@ -40,13 +42,15 @@ descriptions of all sample policies. The names of the sample policies
 have the \verb{ELBSample-} prefix.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_load_balancer_policies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_load_balancer_policies(
   LoadBalancerName = "string",
   PolicyNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -13,7 +13,9 @@ elb_describe_instance_health(LoadBalancerName, Instances)
 \item{Instances}{The IDs of the instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceStates = list(
     list(
       InstanceId = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the state of the specified instances with respect to the
@@ -34,7 +36,9 @@ even if they are no longer registered with the load balancer. The state
 of terminated instances is not returned.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_instance_health(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_health(
   LoadBalancerName = "string",
   Instances = list(
     list(
@@ -42,7 +46,7 @@ of terminated instances is not returned.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

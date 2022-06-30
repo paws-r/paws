@@ -27,7 +27,9 @@ with the returned \code{nextToken} value. This value can be between 1 and
 \item{filters}{Optional filters to limit results. You can use \code{status}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   worldSummaries = list(
     list(
       arn = "string",
@@ -40,13 +42,15 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists worlds.
 }
 \section{Request syntax}{
-\preformatted{svc$list_worlds(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_worlds(
   nextToken = "string",
   maxResults = 123,
   filters = list(
@@ -58,7 +62,7 @@ Lists worlds.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

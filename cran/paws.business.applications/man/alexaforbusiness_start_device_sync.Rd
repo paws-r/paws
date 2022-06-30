@@ -34,14 +34,16 @@ profile).
 }
 }
 \section{Request syntax}{
-\preformatted{svc$start_device_sync(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_device_sync(
   RoomArn = "string",
   DeviceArn = "string",
   Features = list(
     "BLUETOOTH"|"VOLUME"|"NOTIFICATIONS"|"LISTS"|"SKILLS"|"NETWORK_PROFILE"|"SETTINGS"|"ALL"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -30,13 +30,15 @@ For more information about troubleshooting, see \href{https://docs.aws.amazon.co
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$reboot_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_instances(
   InstanceIds = list(
     "string"
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

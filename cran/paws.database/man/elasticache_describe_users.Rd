@@ -20,10 +20,12 @@ in the response so that the remaining results can be retrieved.}
 \item{Marker}{An optional marker returned from a prior request. Use this marker for
 pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
-the value specified by MaxRecords. >}
+the value specified by MaxRecords. \>}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Users = list(
     list(
       UserId = "string",
@@ -43,13 +45,15 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of users.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_users(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_users(
   Engine = "string",
   UserId = "string",
   Filters = list(
@@ -63,7 +67,7 @@ Returns a list of users.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

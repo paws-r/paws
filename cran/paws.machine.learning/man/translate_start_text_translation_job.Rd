@@ -40,11 +40,13 @@ job. For a list of available parallel data resources, use the
 using the Amazon Translate SDK.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string",
   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts an asynchronous batch translation job. Batch translation jobs can
@@ -63,7 +65,9 @@ Amazon Translate does not support batch translation of multiple source
 languages at once.
 }
 \section{Request syntax}{
-\preformatted{svc$start_text_translation_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_text_translation_job(
   JobName = "string",
   InputDataConfig = list(
     S3Uri = "string",
@@ -85,7 +89,7 @@ languages at once.
   ),
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

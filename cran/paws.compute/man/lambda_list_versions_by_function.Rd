@@ -27,7 +27,9 @@ retrieve the next page of results.}
 \item{MaxItems}{The maximum number of versions to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextMarker = "string",
   Versions = list(
     list(
@@ -111,7 +113,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of
@@ -120,12 +122,14 @@ with the version-specific configuration of each. Lambda returns up to 50
 versions per call.
 }
 \section{Request syntax}{
-\preformatted{svc$list_versions_by_function(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_versions_by_function(
   FunctionName = "string",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

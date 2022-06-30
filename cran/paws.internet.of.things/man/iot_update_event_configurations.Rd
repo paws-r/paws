@@ -16,14 +16,16 @@ An empty list.
 Updates the event configurations.
 }
 \section{Request syntax}{
-\preformatted{svc$update_event_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_event_configurations(
   eventConfigurations = list(
     list(
       Enabled = TRUE|FALSE
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

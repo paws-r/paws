@@ -27,12 +27,14 @@ This operation requires permission for the
 \code{lex:DeleteBotChannelAssociation} action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_bot_channel_association(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bot_channel_association(
   name = "string",
   botName = "string",
   botAlias = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

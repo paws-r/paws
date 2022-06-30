@@ -20,7 +20,9 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Listeners = list(
     list(
       ListenerArn = "string",
@@ -101,7 +103,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified listeners or the listeners for the specified
@@ -110,7 +112,9 @@ Balancer. You must specify either a load balancer or one or more
 listeners.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_listeners(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_listeners(
   LoadBalancerArn = "string",
   ListenerArns = list(
     "string"
@@ -118,7 +122,7 @@ listeners.
   Marker = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -24,12 +24,14 @@ carriage return (\verb{\\u000D})
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContextKeyNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of all of the context keys referenced in the input policies.
@@ -49,12 +51,14 @@ parameters are shown in unencoded form here for clarity but must be URL
 encoded to be included as a part of a real HTML request.
 }
 \section{Request syntax}{
-\preformatted{svc$get_context_keys_for_custom_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_context_keys_for_custom_policy(
   PolicyInputList = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

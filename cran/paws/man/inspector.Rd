@@ -18,10 +18,12 @@ Operations section.
 \description{
 Amazon Inspector enables you to analyze the behavior of your AWS
 resources and to identify potential security issues. For more
-information, see \href{https://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html}{Amazon Inspector User Guide}.
+information, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_introduction.html}{Amazon Inspector User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- inspector(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- inspector(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +37,7 @@ information, see \href{https://docs.aws.amazon.com/inspector/latest/userguide/in
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

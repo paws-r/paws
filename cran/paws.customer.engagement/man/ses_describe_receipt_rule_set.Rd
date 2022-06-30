@@ -10,7 +10,9 @@ ses_describe_receipt_rule_set(RuleSetName)
 \item{RuleSetName}{[required] The name of the receipt rule set to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Metadata = list(
     Name = "string",
     CreatedTimestamp = as.POSIXct(
@@ -67,20 +69,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the details of the specified receipt rule set.
 
-For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
+For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_receipt_rule_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_receipt_rule_set(
   RuleSetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

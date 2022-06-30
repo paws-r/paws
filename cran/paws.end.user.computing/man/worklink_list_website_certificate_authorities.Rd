@@ -17,7 +17,9 @@ worklink_list_website_certificate_authorities(FleetArn, MaxResults,
 operation. If this value is null, it retrieves the first page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WebsiteCertificateAuthorities = list(
     list(
       WebsiteCaId = "string",
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of certificate authorities added for the current
 account and Region.
 }
 \section{Request syntax}{
-\preformatted{svc$list_website_certificate_authorities(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_website_certificate_authorities(
   FleetArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

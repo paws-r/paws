@@ -18,11 +18,13 @@ An empty list.
 Sends the provided data to the specified connection.
 }
 \section{Request syntax}{
-\preformatted{svc$post_to_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$post_to_connection(
   Data = raw,
   ConnectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

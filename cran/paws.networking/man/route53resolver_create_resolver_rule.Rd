@@ -53,7 +53,9 @@ DNS queries to the IP addresses that you specify in \code{TargetIps}.}
 endpoint.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResolverRule = list(
     Id = "string",
     CreatorRequestId = "string",
@@ -76,7 +78,7 @@ A list with the following syntax:\preformatted{list(
     ModificationTime = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 For DNS queries that originate in your VPCs, specifies which Resolver
@@ -85,7 +87,9 @@ forward to your network, and the IP addresses of the DNS resolvers in
 your network.
 }
 \section{Request syntax}{
-\preformatted{svc$create_resolver_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_resolver_rule(
   CreatorRequestId = "string",
   Name = "string",
   RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
@@ -104,7 +108,7 @@ your network.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

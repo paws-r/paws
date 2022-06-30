@@ -42,7 +42,9 @@ retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobSummaryList = list(
     list(
       jobArn = "string",
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of AWS Batch jobs.
@@ -86,7 +88,9 @@ You can filter the results by job status with the \code{jobStatus} parameter.
 If you don't specify a status, only \code{RUNNING} jobs are returned.
 }
 \section{Request syntax}{
-\preformatted{svc$list_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_jobs(
   jobQueue = "string",
   arrayJobId = "string",
   multiNodeJobId = "string",
@@ -94,7 +98,7 @@ If you don't specify a status, only \code{RUNNING} jobs are returned.
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

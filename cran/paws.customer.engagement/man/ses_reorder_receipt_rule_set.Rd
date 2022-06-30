@@ -22,18 +22,20 @@ All of the rules in the rule set must be represented in this request.
 That is, this API will return an error if the reorder request doesn't
 explicitly position all of the rules.
 
-For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
+For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$reorder_receipt_rule_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reorder_receipt_rule_set(
   RuleSetName = "string",
   RuleNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

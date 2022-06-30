@@ -28,7 +28,9 @@ treated as if they are attached to the principal being authorized.}
 treated as if they are not attached to the principal being authorized.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   authResults = list(
     list(
       authInfo = list(
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Tests if a specified principal is authorized to perform an AWS IoT
@@ -79,7 +81,9 @@ authorization behavior of devices that connect to the AWS IoT device
 gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$test_authorization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_authorization(
   principal = "string",
   cognitoIdentityPoolId = "string",
   authInfos = list(
@@ -98,7 +102,7 @@ gateway.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

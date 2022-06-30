@@ -25,13 +25,15 @@ If you specify a tag that doesn't exist, the operation ignores it.
 This operation has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{svc$untag_delivery_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_delivery_stream(
   DeliveryStreamName = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

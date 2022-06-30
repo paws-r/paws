@@ -22,11 +22,13 @@ Removes the specified directory as a publisher to the specified SNS
 topic.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_event_topic(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_event_topic(
   DirectoryId = "string",
   TopicName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

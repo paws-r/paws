@@ -11,7 +11,9 @@ machinelearning_get_batch_prediction(BatchPredictionId)
 \item{BatchPredictionId}{[required] An ID assigned to the \code{BatchPrediction} at creation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BatchPredictionId = "string",
   MLModelId = "string",
   BatchPredictionDataSourceId = "string",
@@ -38,17 +40,19 @@ A list with the following syntax:\preformatted{list(
   TotalRecordCount = 123,
   InvalidRecordCount = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a \code{BatchPrediction} that includes detailed metadata, status, and
 data file information for a \verb{Batch Prediction} request.
 }
 \section{Request syntax}{
-\preformatted{svc$get_batch_prediction(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_batch_prediction(
   BatchPredictionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,7 +22,9 @@ If a token present, the action continues the list from where the
 returning call left off.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FileSystems = list(
     list(
       OwnerId = "string",
@@ -121,7 +123,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the description of specific Amazon FSx file systems, if a
@@ -154,14 +156,16 @@ iteration is unspecified.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_file_systems(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_file_systems(
   FileSystemIds = list(
     "string"
   ),
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

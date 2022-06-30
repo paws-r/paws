@@ -14,7 +14,9 @@ Specify a protocol in your request to return information about a
 specific contact method protocol.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   contactMethods = list(
     list(
       contactEndpoint = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the configured contact methods. Specify a
@@ -49,12 +51,14 @@ to some countries/regions. For more information, see Notifications in
 Amazon Lightsail.
 }
 \section{Request syntax}{
-\preformatted{svc$get_contact_methods(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_contact_methods(
   protocols = list(
     "Email"|"SMS"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,7 +22,9 @@ Updates the Remote Authentication Dial In User Service (RADIUS) server
 information for an AD Connector or Microsoft AD directory.
 }
 \section{Request syntax}{
-\preformatted{svc$update_radius(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_radius(
   DirectoryId = "string",
   RadiusSettings = list(
     RadiusServers = list(
@@ -37,7 +39,7 @@ information for an AD Connector or Microsoft AD directory.
     UseSameUsername = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

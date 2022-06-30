@@ -11,7 +11,9 @@ securityhub_delete_invitations(AccountIds)
 \item{AccountIds}{[required] The list of the account IDs that sent the invitations to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -19,7 +21,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes invitations received by the AWS account to become a member
@@ -29,12 +31,14 @@ This operation is only used by accounts that are not part of an
 organization. Organization accounts do not receive invitations.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_invitations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_invitations(
   AccountIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

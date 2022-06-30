@@ -11,7 +11,9 @@ datasync_describe_agent(AgentArn)
 \item{AgentArn}{[required] The Amazon Resource Name (ARN) of the agent to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AgentArn = "string",
   Name = "string",
   Status = "ONLINE"|"OFFLINE",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns metadata such as the name, the network interfaces, and the
@@ -42,10 +44,12 @@ specify which agent to describe, use the Amazon Resource Name (ARN) of
 the agent in your request.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_agent(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_agent(
   AgentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

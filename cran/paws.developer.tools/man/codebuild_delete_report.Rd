@@ -16,10 +16,12 @@ An empty list.
 Deletes a report.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_report(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_report(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

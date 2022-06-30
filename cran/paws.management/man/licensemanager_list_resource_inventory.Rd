@@ -32,7 +32,9 @@ resource. Logical operators are \code{EQUALS} (single account) or
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceInventoryList = list(
     list(
       ResourceId = "string",
@@ -45,13 +47,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists resources managed using Systems Manager inventory.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resource_inventory(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resource_inventory(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(
@@ -62,7 +66,7 @@ Lists resources managed using Systems Manager inventory.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

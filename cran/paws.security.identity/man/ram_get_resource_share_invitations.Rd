@@ -19,7 +19,9 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceShareInvitations = list(
     list(
       resourceShareInvitationArn = "string",
@@ -52,13 +54,15 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the invitations for resource sharing that you've received.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resource_share_invitations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resource_share_invitations(
   resourceShareInvitationArns = list(
     "string"
   ),
@@ -68,7 +72,7 @@ Gets the invitations for resource sharing that you've received.
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

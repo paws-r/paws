@@ -7,7 +7,9 @@
 directoryservice_get_directory_limits()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DirectoryLimits = list(
     CloudOnlyDirectoriesLimit = 123,
     CloudOnlyDirectoriesCurrentCount = 123,
@@ -20,14 +22,16 @@ A list with the following syntax:\preformatted{list(
     ConnectedDirectoriesLimitReached = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Obtains directory limit information for the current Region.
 }
 \section{Request syntax}{
-\preformatted{svc$get_directory_limits()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_directory_limits()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

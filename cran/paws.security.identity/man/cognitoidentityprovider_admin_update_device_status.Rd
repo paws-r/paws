@@ -25,13 +25,15 @@ Updates the device status as an administrator.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$admin_update_device_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_update_device_status(
   UserPoolId = "string",
   Username = "string",
   DeviceKey = "string",
   DeviceRememberedStatus = "remembered"|"not_remembered"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,13 +19,15 @@ IPv6 addresses.}
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssignedIpv6Addresses = list(
     "string"
   ),
   NetworkInterfaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Assigns one or more IPv6 addresses to the specified network interface.
@@ -41,14 +43,16 @@ You must specify either the IPv6 addresses or the IPv6 address count in
 the request.
 }
 \section{Request syntax}{
-\preformatted{svc$assign_ipv_6_addresses(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$assign_ipv_6_addresses(
   Ipv6AddressCount = 123,
   Ipv6Addresses = list(
     "string"
   ),
   NetworkInterfaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ applicationinsights_list_tags_for_resource(ResourceARN)
 retrieve tag information for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve a list of the tags (keys and values) that are associated with a
@@ -31,10 +33,12 @@ that acts as a category for more specific tag values. A tag value acts
 as a descriptor within a tag key.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   ResourceARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

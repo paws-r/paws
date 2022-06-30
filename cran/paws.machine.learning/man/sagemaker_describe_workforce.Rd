@@ -14,7 +14,9 @@ sagemaker_describe_workforce(WorkforceName)
 created and cannot be modified.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Workforce = list(
     WorkforceName = "string",
     WorkforceArn = "string",
@@ -45,22 +47,24 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists private workforce information, including workforce name, Amazon
 Resource Name (ARN), and, if applicable, allowed IP address ranges
-(\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs}).
+(\href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{CIDRs}).
 Allowable IP address ranges are the IP addresses that workers can use to
 access tasks.
 
 This operation applies only to private workforces.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_workforce(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workforce(
   WorkforceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

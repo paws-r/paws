@@ -41,7 +41,7 @@ them, see \href{https://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 We recommend you use the AWS SDKs to make programmatic API calls to
 Secrets Manager. However, you also can use the Secrets Manager HTTP
 Query API to make direct calls to the Secrets Manager web service. To
-learn more about the Secrets Manager HTTP Query API, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html}{Making Query Requests}
+learn more about the Secrets Manager HTTP Query API, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/}{Making Query Requests}
 in the \emph{AWS Secrets Manager User Guide}.
 
 Secrets Manager API supports GET and POST requests for all actions, and
@@ -53,8 +53,8 @@ Therefore, for operations that require larger sizes, use a POST request.
 
 We welcome your feedback. Send your comments to
 \href{mailto:awssecretsmanager-feedback@amazon.com}{awssecretsmanager-feedback@amazon.com}, or post your feedback and
-questions in the \href{https://forums.aws.amazon.com/forum.jspa?forumID=296}{AWS Secrets Manager Discussion Forum}. For more
-information about the AWS Discussion Forums, see \href{https://forums.aws.amazon.com:443/help.jspa}{Forums Help}.
+questions in the \href{https://repost.aws/tags/TAJAqKRtZ5RY6XCoNAUTcVzQ?forumID=296}{AWS Secrets Manager Discussion Forum}.
+For more information about the AWS Discussion Forums, see \href{https://repost.aws/forums?origin=help.jspa}{Forums Help}.
 
 \strong{How examples are presented}
 
@@ -79,7 +79,9 @@ in the \emph{AWS Secrets Manager User Guide}. To learn more about CloudTrail,
 including enabling it and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html}{AWS CloudTrail User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- secretsmanager(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- secretsmanager(
   config = list(
     credentials = list(
       creds = list(
@@ -93,7 +95,7 @@ including enabling it and find your log files, see the \href{https://docs.aws.am
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

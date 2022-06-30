@@ -25,7 +25,9 @@ appsync_create_function(apiId, name, description, dataSourceName,
 value is 2018-05-29.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   functionConfiguration = list(
     functionId = "string",
     functionArn = "string",
@@ -37,7 +39,7 @@ A list with the following syntax:\preformatted{list(
     functionVersion = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a \code{Function} object.
@@ -46,7 +48,9 @@ A function is a reusable entity. Multiple functions can be used to
 compose the resolver logic.
 }
 \section{Request syntax}{
-\preformatted{svc$create_function(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_function(
   apiId = "string",
   name = "string",
   description = "string",
@@ -55,7 +59,7 @@ compose the resolver logic.
   responseMappingTemplate = "string",
   functionVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

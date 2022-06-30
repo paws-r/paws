@@ -13,7 +13,9 @@ s3control_describe_job(AccountId, JobId)
 \item{JobId}{[required] The ID for the job whose information you want to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Job = list(
     JobId = "string",
     ConfirmationRequired = TRUE|FALSE,
@@ -172,7 +174,7 @@ A list with the following syntax:\preformatted{list(
     SuspendedCause = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the configuration parameters and status for a Batch Operations
@@ -188,11 +190,13 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_job(
   AccountId = "string",
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -28,7 +28,9 @@ The AWS SDKs prepopulate client request tokens. If you are using an AWS
 SDK, an idempotency token is created for you.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   pullRequest = list(
     pullRequestId = "string",
     title = "string",
@@ -80,13 +82,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a pull request in the specified repository.
 }
 \section{Request syntax}{
-\preformatted{svc$create_pull_request(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_pull_request(
   title = "string",
   description = "string",
   targets = list(
@@ -98,7 +102,7 @@ Creates a pull request in the specified repository.
   ),
   clientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

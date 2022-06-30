@@ -14,7 +14,9 @@ iot1clickprojects_list_projects(nextToken, maxResults)
 default value of 100 is used.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   projects = list(
     list(
       arn = "string",
@@ -32,18 +34,20 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the AWS IoT 1-Click project(s) associated with your AWS account
 and region.
 }
 \section{Request syntax}{
-\preformatted{svc$list_projects(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_projects(
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

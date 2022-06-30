@@ -22,12 +22,14 @@ Redacts the specified message from the specified Amazon Chime
 conversation.
 }
 \section{Request syntax}{
-\preformatted{svc$redact_conversation_message(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$redact_conversation_message(
   AccountId = "string",
   ConversationId = "string",
   MessageId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

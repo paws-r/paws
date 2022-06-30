@@ -43,7 +43,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficMirrorSession = list(
     TrafficMirrorSessionId = "string",
     TrafficMirrorTargetId = "string",
@@ -62,13 +64,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies a Traffic Mirror session.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_traffic_mirror_session(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_traffic_mirror_session(
   TrafficMirrorSessionId = "string",
   TrafficMirrorTargetId = "string",
   TrafficMirrorFilterId = "string",
@@ -81,7 +85,7 @@ Modifies a Traffic Mirror session.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

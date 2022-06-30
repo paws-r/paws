@@ -27,7 +27,9 @@ succeed.}
 \item{Unit}{The unit for the metric.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MetricAlarms = list(
     list(
       AlarmName = "string",
@@ -98,7 +100,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the alarms for the specified metric. To filter the results,
@@ -110,7 +112,9 @@ that use the specified metric, or composite alarms that use the
 specified metric.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_alarms_for_metric(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_alarms_for_metric(
   MetricName = "string",
   Namespace = "string",
   Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
@@ -124,7 +128,7 @@ specified metric.
   Period = 123,
   Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,7 +11,9 @@ elasticbeanstalk_describe_applications(ApplicationNames)
 to only include those with the specified names.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Applications = list(
     list(
       ApplicationArn = "string",
@@ -47,18 +49,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the descriptions of existing applications.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_applications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_applications(
   ApplicationNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -10,7 +10,9 @@ servicecatalog_describe_tag_option(Id)
 \item{Id}{[required] The TagOption identifier.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TagOptionDetail = list(
     Key = "string",
     Value = "string",
@@ -19,16 +21,18 @@ A list with the following syntax:\preformatted{list(
     Owner = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the specified TagOption.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_tag_option(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tag_option(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

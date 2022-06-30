@@ -10,7 +10,9 @@ athena_get_data_catalog(Name)
 \item{Name}{[required] The name of the data catalog to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DataCatalog = list(
     Name = "string",
     Description = "string",
@@ -20,16 +22,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the specified data catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$get_data_catalog(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_data_catalog(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

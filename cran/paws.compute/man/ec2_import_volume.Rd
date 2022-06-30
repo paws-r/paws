@@ -22,7 +22,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Volume}{[required] The volume size.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConversionTask = list(
     ConversionTaskId = "string",
     ExpirationTime = "string",
@@ -75,7 +77,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an import volume task using metadata from the specified disk
@@ -85,7 +87,9 @@ For information about the import manifest referenced by this API action,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
 }
 \section{Request syntax}{
-\preformatted{svc$import_volume(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_volume(
   AvailabilityZone = "string",
   Description = "string",
   DryRun = TRUE|FALSE,
@@ -98,7 +102,7 @@ see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{
     Size = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

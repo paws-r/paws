@@ -13,7 +13,9 @@ with.}
 \item{ThreatIntelSetId}{[required] The unique ID of the threatIntelSet that you want to get.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string",
   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
   Location = "string",
@@ -22,17 +24,19 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.
 }
 \section{Request syntax}{
-\preformatted{svc$get_threat_intel_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_threat_intel_set(
   DetectorId = "string",
   ThreatIntelSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,7 +22,9 @@ You must specify the instance identifier for an Read Replica in the DB
 cluster. For example, \code{mydbcluster-replica1}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -98,7 +100,7 @@ A list with the following syntax:\preformatted{list(
     DeletionProtection = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Forces a failover for a DB cluster.
@@ -115,11 +117,13 @@ will need to clean up and re-establish any existing connections that use
 those endpoint addresses when the failover is complete.
 }
 \section{Request syntax}{
-\preformatted{svc$failover_db_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$failover_db_cluster(
   DBClusterIdentifier = "string",
   TargetDBInstanceIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

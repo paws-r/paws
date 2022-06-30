@@ -14,7 +14,9 @@ sagemaker_describe_device(NextToken, DeviceName, DeviceFleetName)
 \item{DeviceFleetName}{[required] The name of the fleet the devices belong to.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeviceArn = "string",
   DeviceName = "string",
   Description = "string",
@@ -41,18 +43,20 @@ A list with the following syntax:\preformatted{list(
   MaxModels = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the device.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_device(
   NextToken = "string",
   DeviceName = "string",
   DeviceFleetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

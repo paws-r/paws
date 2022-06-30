@@ -16,10 +16,12 @@ Supplying an IAM role is only valid when also specifying a KMS key.}
 datasets.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   datasetGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an empty dataset group. A dataset group contains related
@@ -38,8 +40,7 @@ group.
 
 A dataset group can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
+\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 \item DELETE PENDING
 }
 
@@ -71,12 +72,14 @@ access the key.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_dataset_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dataset_group(
   name = "string",
   roleArn = "string",
   kmsKeyArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

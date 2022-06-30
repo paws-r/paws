@@ -38,7 +38,9 @@ the function name, it's limited to 64 characters in length.}
 \item{MaxItems}{The maximum number of event source mappings to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextMarker = "string",
   EventSourceMappings = list(
     list(
@@ -95,20 +97,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists event source mappings. Specify an \code{EventSourceArn} to only show
 event source mappings for a single event source.
 }
 \section{Request syntax}{
-\preformatted{svc$list_event_source_mappings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_event_source_mappings(
   EventSourceArn = "string",
   FunctionName = "string",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

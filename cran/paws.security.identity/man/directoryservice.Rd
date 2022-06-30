@@ -31,7 +31,9 @@ about the AWS SDKs, including how to download and install them, see
 \href{https://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 }
 \section{Service syntax}{
-\preformatted{svc <- directoryservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- directoryservice(
   config = list(
     credentials = list(
       creds = list(
@@ -45,7 +47,7 @@ about the AWS SDKs, including how to download and install them, see
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

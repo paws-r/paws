@@ -20,19 +20,23 @@ source.}
 source.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DataSourceArn = "string",
   DataSourceId = "string",
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the permissions to a data source.
 }
 \section{Request syntax}{
-\preformatted{svc$update_data_source_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_data_source_permissions(
   AwsAccountId = "string",
   DataSourceId = "string",
   GrantPermissions = list(
@@ -52,7 +56,7 @@ Updates the permissions to a data source.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

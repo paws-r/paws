@@ -11,10 +11,12 @@ storagegateway_start_availability_monitor_test(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Start a test that verifies that the specified gateway is configured for
@@ -29,10 +31,12 @@ Starting this test will cause your gateway to go offline for a brief
 period.
 }
 \section{Request syntax}{
-\preformatted{svc$start_availability_monitor_test(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_availability_monitor_test(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

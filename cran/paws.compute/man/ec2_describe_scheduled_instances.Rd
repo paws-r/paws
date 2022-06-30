@@ -36,7 +36,9 @@ value.}
 \item{SlotStartTimeRange}{The time period for the first schedule to start.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   ScheduledInstanceSet = list(
     list(
@@ -76,14 +78,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified Scheduled Instances or all your Scheduled
 Instances.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_scheduled_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scheduled_instances(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -107,7 +111,7 @@ Instances.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

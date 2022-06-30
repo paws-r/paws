@@ -17,7 +17,9 @@ list of \code{JobListEntry} objects, you have the option of specifying
 \code{NextToken} as the starting point for your returned list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobListEntries = list(
     list(
       JobId = "string",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an array of \code{JobListEntry} objects of the specified length. Each
@@ -41,12 +43,14 @@ Returns an array of \code{JobListEntry} objects of the specified length. Each
 a job's state, a job's ID, and other information.
 }
 \section{Request syntax}{
-\preformatted{svc$list_cluster_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_cluster_jobs(
   ClusterId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

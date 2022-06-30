@@ -89,7 +89,9 @@ IPv4 and IPv6 addresses). Internal load balancers must use \code{ipv4}.}
 address pool (CoIP pool).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LoadBalancers = list(
     list(
       LoadBalancerArn = "string",
@@ -129,7 +131,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Application Load Balancer, Network Load Balancer, or Gateway
@@ -147,7 +149,9 @@ time. If you attempt to create multiple load balancers with the same
 settings, each call succeeds.
 }
 \section{Request syntax}{
-\preformatted{svc$create_load_balancer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_load_balancer(
   Name = "string",
   Subnets = list(
     "string"
@@ -174,7 +178,7 @@ settings, each call succeeds.
   IpAddressType = "ipv4"|"dualstack",
   CustomerOwnedIpv4Pool = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

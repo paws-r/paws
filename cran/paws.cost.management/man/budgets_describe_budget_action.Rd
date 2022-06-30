@@ -14,7 +14,9 @@ budgets_describe_budget_action(AccountId, BudgetName, ActionId)
 \item{ActionId}{[required] A system-generated universally unique identifier (UUID) for the action.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccountId = "string",
   BudgetName = "string",
   Action = list(
@@ -64,18 +66,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a budget action detail.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_budget_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_budget_action(
   AccountId = "string",
   BudgetName = "string",
   ActionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

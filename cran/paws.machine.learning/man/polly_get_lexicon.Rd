@@ -11,7 +11,9 @@ polly_get_lexicon(Name)
 \item{Name}{[required] Name of the lexicon.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Lexicon = list(
     Content = "string",
     Name = "string"
@@ -27,17 +29,19 @@ A list with the following syntax:\preformatted{list(
     Size = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the content of the specified pronunciation lexicon stored in an
 AWS Region. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_lexicon(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_lexicon(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

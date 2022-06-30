@@ -14,12 +14,14 @@ route53domains_resend_contact_reachability_email(domainName)
 confirmation email to the registrant contact.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   domainName = "string",
   emailAddress = "string",
   isAlreadyVerified = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 For operations that require confirmation that the email address for the
@@ -28,10 +30,12 @@ operation resends the confirmation email to the current email address
 for the registrant contact.
 }
 \section{Request syntax}{
-\preformatted{svc$resend_contact_reachability_email(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resend_contact_reachability_email(
   domainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -30,7 +30,9 @@ maximum even when there are more results available. You should check
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DelegatedServices = list(
     list(
       ServicePrincipal = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List the AWS services for which the specified account is a delegated
@@ -52,12 +54,14 @@ account or by a member account that is a delegated administrator for an
 AWS service.
 }
 \section{Request syntax}{
-\preformatted{svc$list_delegated_services_for_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_delegated_services_for_account(
   AccountId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

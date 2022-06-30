@@ -58,7 +58,9 @@ but have already reached the 1,000-configuration limit.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_metrics_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_metrics_configuration(
   Bucket = "string",
   Id = "string",
   MetricsConfiguration = list(
@@ -82,7 +84,7 @@ but have already reached the 1,000-configuration limit.
   ),
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

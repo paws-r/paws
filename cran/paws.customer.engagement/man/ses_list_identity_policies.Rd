@@ -17,12 +17,14 @@ using its Amazon Resource Name (ARN). Examples: \code{user@example.com},
 To successfully call this API, you must own the identity.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of sending authorization policies that are attached to
@@ -35,15 +37,17 @@ identity, this API will return an error.
 
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
-using sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
+using sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$list_identity_policies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_identity_policies(
   Identity = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

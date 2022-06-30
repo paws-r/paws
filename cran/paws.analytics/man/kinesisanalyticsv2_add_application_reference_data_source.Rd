@@ -24,7 +24,9 @@ in-application table that is created. You provide an S3 bucket, object
 key name, and the resulting in-application table that is created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123,
   ReferenceDataSourceDescriptions = list(
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a reference data source to an existing SQL-based Kinesis Data
@@ -75,7 +77,9 @@ mapping information that describes how data in an Amazon S3 object maps
 to columns in the resulting in-application table.
 }
 \section{Request syntax}{
-\preformatted{svc$add_application_reference_data_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_application_reference_data_source(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ReferenceDataSource = list(
@@ -108,7 +112,7 @@ to columns in the resulting in-application table.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

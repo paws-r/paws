@@ -41,7 +41,9 @@ If you use this parameter in your request, you cannot use the
 \code{maxDevices} parameter in the same request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   devicePool = list(
     arn = "string",
     name = "string",
@@ -57,7 +59,7 @@ A list with the following syntax:\preformatted{list(
     maxDevices = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the name, description, and rules in a device pool given the
@@ -65,7 +67,9 @@ attributes and the pool ARN. Rule updates are all-or-nothing, meaning
 they can only be updated as a whole (or not at all).
 }
 \section{Request syntax}{
-\preformatted{svc$update_device_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_device_pool(
   arn = "string",
   name = "string",
   description = "string",
@@ -79,7 +83,7 @@ they can only be updated as a whole (or not at all).
   maxDevices = 123,
   clearMaxDevices = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

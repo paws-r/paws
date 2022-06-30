@@ -10,7 +10,9 @@ lambda_get_code_signing_config(CodeSigningConfigArn)
 \item{CodeSigningConfigArn}{[required] The The Amazon Resource Name (ARN) of the code signing configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CodeSigningConfig = list(
     CodeSigningConfigId = "string",
     CodeSigningConfigArn = "string",
@@ -26,16 +28,18 @@ A list with the following syntax:\preformatted{list(
     LastModified = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the specified code signing configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$get_code_signing_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_code_signing_config(
   CodeSigningConfigArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

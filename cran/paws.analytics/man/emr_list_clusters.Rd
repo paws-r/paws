@@ -16,7 +16,9 @@ emr_list_clusters(CreatedAfter, CreatedBefore, ClusterStates, Marker)
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Clusters = list(
     list(
       Id = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides the status of all clusters visible to this AWS account. Allows
@@ -56,7 +58,9 @@ call returns a maximum of 50 clusters per call, but returns a marker to
 track the paging of the cluster list across multiple ListClusters calls.
 }
 \section{Request syntax}{
-\preformatted{svc$list_clusters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_clusters(
   CreatedAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -68,7 +72,7 @@ track the paging of the cluster list across multiple ListClusters calls.
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

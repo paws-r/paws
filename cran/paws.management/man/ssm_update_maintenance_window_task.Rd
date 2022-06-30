@@ -107,7 +107,9 @@ RegisterTaskWithMaintenanceWindow action are also required for this API
 request. Optional fields that are not specified are set to null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowId = "string",
   WindowTaskId = "string",
   Targets = list(
@@ -183,7 +185,7 @@ A list with the following syntax:\preformatted{list(
   Name = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies a task assigned to a maintenance window. You can't change the
@@ -224,7 +226,9 @@ you update the maintenance window task and specify only a different
 \code{NotificationConfig} are removed.
 }
 \section{Request syntax}{
-\preformatted{svc$update_maintenance_window_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_maintenance_window_task(
   WindowId = "string",
   WindowTaskId = "string",
   Targets = list(
@@ -301,7 +305,7 @@ you update the maintenance window task and specify only a different
   Description = "string",
   Replace = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,7 +20,9 @@ do no specify a number, AWS Config uses the default. The default is 100.}
 request the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConformancePackName = "string",
   ConformancePackRuleEvaluationResults = list(
     list(
@@ -46,14 +48,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns compliance details of a conformance pack for all AWS resources
 that are monitered by conformance pack.
 }
 \section{Request syntax}{
-\preformatted{svc$get_conformance_pack_compliance_details(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_conformance_pack_compliance_details(
   ConformancePackName = "string",
   Filters = list(
     ConfigRuleNames = list(
@@ -68,7 +72,7 @@ that are monitered by conformance pack.
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

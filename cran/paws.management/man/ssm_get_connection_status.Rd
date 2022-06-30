@@ -12,11 +12,13 @@ ssm_get_connection_status(Target)
 \item{Target}{[required] The ID of the instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Target = "string",
   Status = "Connected"|"NotConnected"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the Session Manager connection status for an instance to
@@ -24,10 +26,12 @@ determine whether it is running and ready to receive Session Manager
 connections.
 }
 \section{Request syntax}{
-\preformatted{svc$get_connection_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_connection_status(
   Target = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

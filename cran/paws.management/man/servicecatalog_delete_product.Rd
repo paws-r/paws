@@ -28,11 +28,13 @@ with a portfolio.
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_product(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_product(
   AcceptLanguage = "string",
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

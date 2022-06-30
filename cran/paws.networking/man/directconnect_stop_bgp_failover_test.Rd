@@ -10,7 +10,9 @@ directconnect_stop_bgp_failover_test(virtualInterfaceId)
 \item{virtualInterfaceId}{[required] The ID of the virtual interface you no longer want to test.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualInterfaceTest = list(
     testId = "string",
     virtualInterfaceId = "string",
@@ -28,16 +30,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops the virtual interface failover test.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_bgp_failover_test(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_bgp_failover_test(
   virtualInterfaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

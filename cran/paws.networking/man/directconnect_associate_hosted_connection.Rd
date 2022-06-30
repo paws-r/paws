@@ -14,7 +14,9 @@ directconnect_associate_hosted_connection(connectionId,
 \item{parentConnectionId}{[required] The ID of the interconnect or the LAG.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ownerAccount = "string",
   connectionId = "string",
   connectionName = "string",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
   ),
   providerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a hosted connection and its virtual interfaces with a link
@@ -52,11 +54,13 @@ hosted connection's connectivity to AWS as it is being migrated.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_hosted_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_hosted_connection(
   connectionId = "string",
   parentConnectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

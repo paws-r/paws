@@ -16,7 +16,9 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 \item{virtualNodeName}{[required] The name of the virtual node to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualNode = list(
     meshName = "string",
     metadata = list(
@@ -205,7 +207,7 @@ A list with the following syntax:\preformatted{list(
     virtualNodeName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an existing virtual node.
@@ -214,12 +216,14 @@ You must delete any virtual services that list a virtual node as a
 service provider before you can delete the virtual node itself.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_virtual_node(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_virtual_node(
   meshName = "string",
   meshOwner = "string",
   virtualNodeName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

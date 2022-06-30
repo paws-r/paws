@@ -18,10 +18,12 @@ After the integration is disabled, findings from that product are no
 longer sent to Security Hub.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_import_findings_for_product(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_import_findings_for_product(
   ProductSubscriptionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -39,10 +39,8 @@ NULL
 #' and include applicable OAuth attributes (such as `auth-code` and
 #' `redirecturi`) with the connector-specific `ConnectorProfileProperties`
 #' when creating a new connector profile using Amazon AppFlow API
-#' operations. For example, Salesforce users can refer to the [*Authorize
-#' Apps with
-#' OAuth*](https://help.salesforce.com/s/articleView?language=en_US&id=remoteaccess_authenticate.htm)
-#' documentation.
+#' operations. For example, Salesforce users can refer to the *Authorize
+#' Apps with OAuth* documentation.
 #'
 #' @param
 #' config

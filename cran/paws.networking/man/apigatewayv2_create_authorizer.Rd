@@ -80,7 +80,9 @@ authorizer type. Supported only for HTTP APIs.}
 \item{Name}{[required] The name of the authorizer.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AuthorizerCredentialsArn = "string",
   AuthorizerId = "string",
   AuthorizerPayloadFormatVersion = "string",
@@ -100,13 +102,15 @@ A list with the following syntax:\preformatted{list(
   ),
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Authorizer for an API.
 }
 \section{Request syntax}{
-\preformatted{svc$create_authorizer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_authorizer(
   ApiId = "string",
   AuthorizerCredentialsArn = "string",
   AuthorizerPayloadFormatVersion = "string",
@@ -126,7 +130,7 @@ Creates an Authorizer for an API.
   ),
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

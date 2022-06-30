@@ -25,7 +25,9 @@ describing the VTL devices.}
 specified number.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string",
   VTLDevices = list(
     list(
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a description of virtual tape library (VTL) devices for the
@@ -53,7 +55,9 @@ device information.
 This operation is only supported in the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_vtl_devices(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vtl_devices(
   GatewayARN = "string",
   VTLDeviceARNs = list(
     "string"
@@ -61,7 +65,7 @@ This operation is only supported in the tape gateway type.
   Marker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

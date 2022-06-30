@@ -12,7 +12,9 @@ glue_get_jobs(NextToken, MaxResults)
 \item{MaxResults}{The maximum size of the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Jobs = list(
     list(
       Name = "string",
@@ -59,17 +61,19 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves all current job definitions.
 }
 \section{Request syntax}{
-\preformatted{svc$get_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_jobs(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

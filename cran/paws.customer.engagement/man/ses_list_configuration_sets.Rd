@@ -15,7 +15,9 @@ position of the configuration set in the configuration set list.}
 \item{MaxItems}{The number of configuration sets to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConfigurationSets = list(
     list(
       Name = "string"
@@ -23,12 +25,12 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides a list of the configuration sets associated with your Amazon
 SES account in the current AWS Region. For information about using
-configuration sets, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity}
+configuration sets, see \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity}
 in the \emph{Amazon SES Developer Guide.}
 
 You can execute this operation no more than once per second. This
@@ -40,11 +42,13 @@ operation again, passing the \code{NextToken} parameter and the value of the
 NextToken element to retrieve additional results.
 }
 \section{Request syntax}{
-\preformatted{svc$list_configuration_sets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_configuration_sets(
   NextToken = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

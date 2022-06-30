@@ -11,22 +11,26 @@ personalize_get_solution_metrics(solutionVersionArn)
 metrics.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   solutionVersionArn = "string",
   metrics = list(
     123.0
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the metrics for the specified solution version.
 }
 \section{Request syntax}{
-\preformatted{svc$get_solution_metrics(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_solution_metrics(
   solutionVersionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

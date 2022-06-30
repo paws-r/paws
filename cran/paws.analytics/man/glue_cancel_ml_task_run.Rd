@@ -12,12 +12,14 @@ glue_cancel_ml_task_run(TransformId, TaskRunId)
 \item{TaskRunId}{[required] A unique identifier for the task run.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransformId = "string",
   TaskRunId = "string",
   Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels (stops) a task run. Machine learning task runs are asynchronous
@@ -28,11 +30,13 @@ task run's parent transform's \code{TransformID} and the task run's
 \code{TaskRunId}.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_ml_task_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_ml_task_run(
   TransformId = "string",
   TaskRunId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

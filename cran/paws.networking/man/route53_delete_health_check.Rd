@@ -32,10 +32,12 @@ you deregister the instance; there can be a delay of several hours
 before the health check is deleted from Route 53.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_health_check(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_health_check(
   HealthCheckId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

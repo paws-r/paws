@@ -14,7 +14,9 @@ chime_describe_channel_membership_for_app_instance_user(ChannelArn,
 \item{AppInstanceUserArn}{[required] The ARN of the user in a channel.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChannelMembership = list(
     ChannelSummary = list(
       Name = "string",
@@ -34,18 +36,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the details of a channel based on the membership of the
 \code{AppInstanceUser} specified.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_channel_membership_for_app_instance_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_channel_membership_for_app_instance_user(
   ChannelArn = "string",
   AppInstanceUserArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

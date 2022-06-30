@@ -25,10 +25,12 @@ the URL encoding of
 The value must be URL encoded.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Policy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the access point policy associated with the specified access
@@ -42,11 +44,13 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_access_point_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_access_point_policy(
   AccountId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

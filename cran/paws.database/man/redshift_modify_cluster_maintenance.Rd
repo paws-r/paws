@@ -26,7 +26,9 @@ you specify a duration, you can't specify an end time. The duration must
 be 45 days or less.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -183,13 +185,15 @@ A list with the following syntax:\preformatted{list(
     ClusterNamespaceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the maintenance settings of a cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_cluster_maintenance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cluster_maintenance(
   ClusterIdentifier = "string",
   DeferMaintenance = TRUE|FALSE,
   DeferMaintenanceIdentifier = "string",
@@ -201,7 +205,7 @@ Modifies the maintenance settings of a cluster.
   ),
   DeferMaintenanceDuration = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

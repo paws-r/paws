@@ -526,8 +526,8 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #'     elements provided in the setting. For example, a protocol setting
 #'     \["UDP"\] and a source setting \["10.0.0.0/24"\] each have a value
 #'     of 1. A protocol setting \["UDP","TCP"\] has a value of 2. A source
-#'     setting \["10.0.0.0/24","10.0.0.1/24","10.0.0.2/24"\] has a value
-#'     of 3.
+#'     setting \["10.0.0.0/24","10.0.0.1/24","10.0.0.2/24"\] has a value of
+#'     3.
 #' 
 #' A rule with no criteria specified in any of its match settings has a
 #' capacity requirement of 1. A rule with protocol setting \["UDP","TCP"\],

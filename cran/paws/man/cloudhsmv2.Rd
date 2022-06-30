@@ -19,7 +19,9 @@ Operations section.
 For more information about AWS CloudHSM, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM} and the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudhsmv2(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudhsmv2(
   config = list(
     credentials = list(
       creds = list(
@@ -33,7 +35,7 @@ For more information about AWS CloudHSM, see \href{https://aws.amazon.com/cloudh
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

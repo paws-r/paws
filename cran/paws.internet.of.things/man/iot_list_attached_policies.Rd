@@ -20,7 +20,9 @@ principals are CertificateArn
 \item{pageSize}{The maximum number of results to be returned per request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   policies = list(
     list(
       policyName = "string",
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
   ),
   nextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the policies attached to the specified thing group.
 }
 \section{Request syntax}{
-\preformatted{svc$list_attached_policies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_attached_policies(
   target = "string",
   recursive = TRUE|FALSE,
   marker = "string",
   pageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

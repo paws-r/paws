@@ -15,10 +15,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{NatGatewayId}{[required] The ID of the NAT gateway.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NatGatewayId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified NAT gateway. Deleting a NAT gateway disassociates
@@ -27,11 +29,13 @@ account. Deleting a NAT gateway does not delete any NAT gateway routes
 in your route tables.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_nat_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_nat_gateway(
   DryRun = TRUE|FALSE,
   NatGatewayId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -12,7 +12,9 @@ cloudsearch_delete_suggester(DomainName, SuggesterName)
 \item{SuggesterName}{[required] Specifies the name of the suggester you want to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Suggester = list(
     Options = list(
       SuggesterName = "string",
@@ -35,18 +37,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
-Deletes a suggester. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
-in the \emph{Amazon CloudSearch Developer Guide}.
+Deletes a suggester. For more information, see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html"
+target="_blank">Getting Search Suggestions</a> in the \emph{Amazon
+CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_suggester(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_suggester(
   DomainName = "string",
   SuggesterName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

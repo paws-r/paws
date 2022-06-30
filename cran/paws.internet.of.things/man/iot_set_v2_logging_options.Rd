@@ -20,12 +20,14 @@ An empty list.
 Sets the logging options for the V2 logging service.
 }
 \section{Request syntax}{
-\preformatted{svc$set_v2_logging_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_v2_logging_options(
   roleArn = "string",
   defaultLogLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED",
   disableAllLogs = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

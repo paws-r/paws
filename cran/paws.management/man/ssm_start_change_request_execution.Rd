@@ -48,10 +48,12 @@ following key-value pairs:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AutomationExecutionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a change request for Change Manager. The runbooks (Automation
@@ -59,7 +61,9 @@ documents) specified in the change request run only after all required
 approvals for the change request have been received.
 }
 \section{Request syntax}{
-\preformatted{svc$start_change_request_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_change_request_execution(
   ScheduledTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -114,7 +118,7 @@ approvals for the change request have been received.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

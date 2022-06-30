@@ -16,10 +16,12 @@ contains the certificate ID.)}
 \item{transferMessage}{The transfer message.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   transferredCertificateArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Transfers the specified certificate to the specified AWS account.
@@ -36,12 +38,14 @@ The certificate must not have any policies attached to it. You can use
 the DetachPrincipalPolicy API to detach them.
 }
 \section{Request syntax}{
-\preformatted{svc$transfer_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$transfer_certificate(
   certificateId = "string",
   targetAwsAccount = "string",
   transferMessage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -33,17 +33,21 @@ representable in UTF-8 format, and the following special characters: + -
 the maximum length for a tag's value is 256.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PoolARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new custom tape pool. You can use custom tape pool to enable
 tape retention lock on tapes that are archived in the custom pool.
 }
 \section{Request syntax}{
-\preformatted{svc$create_tape_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_tape_pool(
   PoolName = "string",
   StorageClass = "DEEP_ARCHIVE"|"GLACIER",
   RetentionLockType = "COMPLIANCE"|"GOVERNANCE"|"NONE",
@@ -55,7 +59,7 @@ tape retention lock on tapes that are archived in the custom pool.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

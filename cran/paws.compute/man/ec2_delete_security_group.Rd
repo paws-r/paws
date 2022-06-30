@@ -29,12 +29,14 @@ fails with \code{InvalidGroup.InUse} in EC2-Classic or \code{DependencyViolation
 in EC2-VPC.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_security_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_security_group(
   GroupId = "string",
   GroupName = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -21,11 +21,11 @@ that owns the transit gateway.
 \code{available} | \code{deleted} | \code{deleting} | \code{failed} | \code{failing} |
 \code{initiatingRequest} | \code{modifying} | \code{pendingAcceptance} | \code{pending}
 | \code{rollingBack} | \code{rejected} | \code{rejecting}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources that have a tag with a specific key,
 regardless of the tag value.
@@ -44,7 +44,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGatewayPeeringAttachments = list(
     list(
       TransitGatewayAttachmentId = "string",
@@ -76,13 +78,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes your transit gateway peering attachments.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_transit_gateway_peering_attachments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_transit_gateway_peering_attachments(
   TransitGatewayAttachmentIds = list(
     "string"
   ),
@@ -98,7 +102,7 @@ Describes your transit gateway peering attachments.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

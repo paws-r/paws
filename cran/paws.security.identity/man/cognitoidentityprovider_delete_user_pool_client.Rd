@@ -18,11 +18,13 @@ An empty list.
 Allows the developer to delete the user pool client.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user_pool_client(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_pool_client(
   UserPoolId = "string",
   ClientId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

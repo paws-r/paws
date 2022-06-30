@@ -12,7 +12,9 @@ apigateway_get_authorizer(restApiId, authorizerId)
 \item{authorizerId}{[required] [Required] The identifier of the Authorizer resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   name = "string",
   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
   identityValidationExpression = "string",
   authorizerResultTtlInSeconds = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describe an existing Authorizer resource.<div class="seeAlso">
@@ -35,11 +37,13 @@ Describe an existing Authorizer resource.<div class="seeAlso">
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html}{AWS CLI}</div>
 }
 \section{Request syntax}{
-\preformatted{svc$get_authorizer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_authorizer(
   restApiId = "string",
   authorizerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

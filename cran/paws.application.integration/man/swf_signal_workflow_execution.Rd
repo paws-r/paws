@@ -59,14 +59,16 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$signal_workflow_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$signal_workflow_execution(
   domain = "string",
   workflowId = "string",
   runId = "string",
   signalName = "string",
   input = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,20 +10,24 @@ mediaconnect_stop_flow(FlowArn)
 \item{FlowArn}{[required] The ARN of the flow that you want to stop.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FlowArn = "string",
   Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops a flow.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_flow(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_flow(
   FlowArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

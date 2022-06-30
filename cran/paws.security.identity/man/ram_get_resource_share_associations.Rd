@@ -30,7 +30,9 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceShareAssociations = list(
     list(
       resourceShareArn = "string",
@@ -50,13 +52,15 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the resources or principals for the resource shares that you own.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resource_share_associations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resource_share_associations(
   associationType = "PRINCIPAL"|"RESOURCE",
   resourceShareArns = list(
     "string"
@@ -67,7 +71,7 @@ Gets the resources or principals for the resource shares that you own.
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

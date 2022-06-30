@@ -22,11 +22,13 @@ must assign a name that is unique in the account and region.}
 generated when you use Amazon Translate through an AWS SDK.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string",
   Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a parallel data resource in Amazon Translate by importing an
@@ -36,7 +38,9 @@ adding parallel data, you can influence the style, tone, and word choice
 in your translation output.
 }
 \section{Request syntax}{
-\preformatted{svc$create_parallel_data(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_parallel_data(
   Name = "string",
   Description = "string",
   ParallelDataConfig = list(
@@ -49,7 +53,7 @@ in your translation output.
   ),
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

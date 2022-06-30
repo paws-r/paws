@@ -46,7 +46,9 @@ the subscriptions that have either or both of these tag values
 associated with them.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   EventSubscriptionsList = list(
     list(
@@ -75,7 +77,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists descriptions of all the Amazon Redshift event notification
@@ -94,7 +96,9 @@ are returned regardless of whether they have tag keys or values
 associated with them.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_event_subscriptions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_subscriptions(
   SubscriptionName = "string",
   MaxRecords = 123,
   Marker = "string",
@@ -105,7 +109,7 @@ associated with them.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

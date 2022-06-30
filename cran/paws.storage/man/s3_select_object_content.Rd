@@ -55,7 +55,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Payload = list(
     Records = list(
       Payload = raw
@@ -78,7 +80,7 @@ A list with the following syntax:\preformatted{list(
     End = list()
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation filters the contents of an Amazon S3 object based on a
@@ -173,7 +175,9 @@ For a list of special errors for this operation, see \href{https://docs.aws.amaz
 }
 }
 \section{Request syntax}{
-\preformatted{svc$select_object_content(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$select_object_content(
   Bucket = "string",
   Key = "string",
   SSECustomerAlgorithm = "string",
@@ -218,7 +222,7 @@ For a list of special errors for this operation, see \href{https://docs.aws.amaz
   ),
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -34,7 +34,9 @@ If you specify more than one filter, an operation must match all filters
 to be returned by \code{\link[=servicediscovery_list_operations]{list_operations}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Operations = list(
     list(
       Id = "string",
@@ -43,13 +45,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists operations that match the criteria that you specify.
 }
 \section{Request syntax}{
-\preformatted{svc$list_operations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_operations(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -62,7 +66,7 @@ Lists operations that match the criteria that you specify.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

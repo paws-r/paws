@@ -20,10 +20,12 @@ An empty list.
 Enable or disable the ability of your account to send email.
 }
 \section{Request syntax}{
-\preformatted{svc$put_account_sending_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_account_sending_attributes(
   SendingEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

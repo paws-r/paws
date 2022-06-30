@@ -15,7 +15,9 @@ policy is not attached to a cache behavior, you can get the identifier
 using \code{\link[=cloudfront_list_cache_policies]{list_cache_policies}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CachePolicy = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -62,7 +64,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ETag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a cache policy, including the following metadata:
@@ -80,10 +82,12 @@ is not attached to a cache behavior, you can get the identifier using
 \code{\link[=cloudfront_list_cache_policies]{list_cache_policies}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_cache_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cache_policy(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

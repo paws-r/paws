@@ -37,7 +37,9 @@ specified timestamp.}
 \item{StatusEquals}{A filter that returns only endpoints with the specified status.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Endpoints = list(
     list(
       EndpointName = "string",
@@ -53,13 +55,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists endpoints.
 }
 \section{Request syntax}{
-\preformatted{svc$list_endpoints(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_endpoints(
   SortBy = "Name"|"CreationTime"|"Status",
   SortOrder = "Ascending"|"Descending",
   NextToken = "string",
@@ -79,7 +83,7 @@ Lists endpoints.
   ),
   StatusEquals = "OutOfService"|"Creating"|"Updating"|"SystemUpdating"|"RollingBack"|"InService"|"Deleting"|"Failed"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,7 +16,9 @@ Default value: \code{us-east-1}.}
 \item{RequireEncryption}{[required] When enabled, requires encryption for the Amazon Chime Voice Connector.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VoiceConnector = list(
     VoiceConnectorId = "string",
     AwsRegion = "us-east-1"|"us-west-2",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Amazon Chime Voice Connector under the administrator's AWS
@@ -44,12 +46,14 @@ Secure RTP (SRTP) for media. Inbound calls use TLS transport, and
 unencrypted outbound calls are blocked.
 }
 \section{Request syntax}{
-\preformatted{svc$create_voice_connector(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_voice_connector(
   Name = "string",
   AwsRegion = "us-east-1"|"us-west-2",
   RequireEncryption = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

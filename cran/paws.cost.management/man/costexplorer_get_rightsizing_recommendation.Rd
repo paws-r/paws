@@ -29,7 +29,9 @@ response object.}
 want to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Metadata = list(
     RecommendationId = "string",
     GenerationTimestamp = "string",
@@ -141,7 +143,7 @@ A list with the following syntax:\preformatted{list(
     BenefitsConsidered = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates recommendations that help you save cost by identifying idle and
@@ -149,11 +151,13 @@ underutilized Amazon EC2 instances.
 
 Recommendations are generated to either downsize or terminate instances,
 along with providing savings detail and metrics. For details on
-calculation and function, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-rightsizing.html}{Optimizing Your Cost with Rightsizing Recommendations}
+calculation and function, see \href{https://docs.aws.amazon.com/cost-management/latest/userguide/ce-rightsizing.html}{Optimizing Your Cost with Rightsizing Recommendations}
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_rightsizing_recommendation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_rightsizing_recommendation(
   Filter = list(
     Or = list(
       list()
@@ -198,7 +202,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.
   PageSize = 123,
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

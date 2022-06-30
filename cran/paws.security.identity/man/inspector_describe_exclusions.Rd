@@ -13,7 +13,9 @@ inspector_describe_exclusions(exclusionArns, locale)
 description, and recommendation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   exclusions = list(
     list(
       arn = "string",
@@ -41,19 +43,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the exclusions that are specified by the exclusions' ARNs.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_exclusions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_exclusions(
   exclusionArns = list(
     "string"
   ),
   locale = "EN_US"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

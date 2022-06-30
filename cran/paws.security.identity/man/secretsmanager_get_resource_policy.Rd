@@ -32,12 +32,14 @@ receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ARN = "string",
   Name = "string",
   ResourcePolicy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the JSON text of the resource-based policy document attached
@@ -63,10 +65,12 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_resource_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resource_policy(
   SecretId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

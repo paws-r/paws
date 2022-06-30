@@ -19,7 +19,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IsTruncated = TRUE|FALSE,
   ContinuationToken = "string",
   NextContinuationToken = "string",
@@ -58,7 +60,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the analytics configurations for the bucket. You can have up to
@@ -90,12 +92,14 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$list_bucket_analytics_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_bucket_analytics_configurations(
   Bucket = "string",
   ContinuationToken = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

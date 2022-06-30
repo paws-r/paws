@@ -48,11 +48,13 @@ with the old stream).
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_progress_update_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_progress_update_stream(
   ProgressUpdateStreamName = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

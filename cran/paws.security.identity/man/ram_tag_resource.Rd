@@ -18,7 +18,9 @@ An empty list.
 Adds the specified tags to the specified resource share that you own.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   resourceShareArn = "string",
   tags = list(
     list(
@@ -27,7 +29,7 @@ Adds the specified tags to the specified resource share that you own.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

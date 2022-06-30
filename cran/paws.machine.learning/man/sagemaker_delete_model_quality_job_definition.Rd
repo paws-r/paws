@@ -16,10 +16,12 @@ An empty list.
 Deletes the secified model quality monitoring job definition.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_model_quality_job_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_model_quality_job_definition(
   JobDefinitionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

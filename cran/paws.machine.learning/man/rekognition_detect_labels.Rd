@@ -28,7 +28,9 @@ If \code{MinConfidence} is not specified, the operation returns labels with a
 confidence values greater than or equal to 55 percent.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Labels = list(
     list(
       Name = "string",
@@ -54,7 +56,7 @@ A list with the following syntax:\preformatted{list(
   OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270",
   LabelModelVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Detects instances of real-world entities within an image (JPEG or PNG)
@@ -134,7 +136,9 @@ This operation requires permissions to perform the
 \code{rekognition:DetectLabels} action.
 }
 \section{Request syntax}{
-\preformatted{svc$detect_labels(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_labels(
   Image = list(
     Bytes = raw,
     S3Object = list(
@@ -146,7 +150,7 @@ This operation requires permissions to perform the
   MaxLabels = 123,
   MinConfidence = 123.0
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

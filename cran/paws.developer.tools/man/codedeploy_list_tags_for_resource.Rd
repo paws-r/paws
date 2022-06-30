@@ -18,7 +18,9 @@ all the tags associated with the resource that is identified by the
 can be used to return the next set of applications in the list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of tags for the resource identified by a specified Amazon
@@ -35,11 +37,13 @@ Resource Name (ARN). Tags are used to organize and categorize your
 CodeDeploy resources.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

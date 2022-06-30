@@ -12,7 +12,9 @@ codedeploy_get_deployment_instance(deploymentId, instanceId)
 \item{instanceId}{[required] The unique ID of an instance in the deployment group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   instanceSummary = list(
     deploymentId = "string",
     instanceId = "string",
@@ -41,17 +43,19 @@ A list with the following syntax:\preformatted{list(
     instanceType = "Blue"|"Green"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about an instance as part of a deployment.
 }
 \section{Request syntax}{
-\preformatted{svc$get_deployment_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deployment_instance(
   deploymentId = "string",
   instanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

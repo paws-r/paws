@@ -12,14 +12,16 @@ resourcegroups_delete_group(GroupName, Group)
 \item{Group}{The name or the ARN of the resource group to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Group = list(
     GroupArn = "string",
     Name = "string",
     Description = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified resource group. Deleting a resource group does not
@@ -34,11 +36,13 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_group(
   GroupName = "string",
   Group = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

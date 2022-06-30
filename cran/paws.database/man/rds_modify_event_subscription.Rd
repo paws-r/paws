@@ -32,7 +32,9 @@ in the \emph{Amazon RDS User Guide} or by using the
 \item{Enabled}{A value that indicates whether to activate the subscription.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -50,7 +52,7 @@ A list with the following syntax:\preformatted{list(
     EventSubscriptionArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies an existing RDS event notification subscription. You can't
@@ -68,7 +70,9 @@ in the \emph{Amazon RDS User Guide} or by using the
 \code{\link[=rds_describe_event_categories]{describe_event_categories}} operation.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_event_subscription(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",
@@ -77,7 +81,7 @@ in the \emph{Amazon RDS User Guide} or by using the
   ),
   Enabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

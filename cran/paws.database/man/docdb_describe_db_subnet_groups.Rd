@@ -26,7 +26,9 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   DBSubnetGroups = list(
     list(
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of \code{DBSubnetGroup} descriptions. If a \code{DBSubnetGroupName}
@@ -55,7 +57,9 @@ is specified, the list will contain only the descriptions of the
 specified \code{DBSubnetGroup}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_db_subnet_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_subnet_groups(
   DBSubnetGroupName = "string",
   Filters = list(
     list(
@@ -68,7 +72,7 @@ specified \code{DBSubnetGroup}.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

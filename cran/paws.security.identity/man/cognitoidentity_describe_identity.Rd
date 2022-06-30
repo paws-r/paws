@@ -11,7 +11,9 @@ cognitoidentity_describe_identity(IdentityId)
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityId = "string",
   Logins = list(
     "string"
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns metadata related to the given identity, including when the
@@ -32,10 +34,12 @@ identity was created and any associated linked logins.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_identity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_identity(
   IdentityId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

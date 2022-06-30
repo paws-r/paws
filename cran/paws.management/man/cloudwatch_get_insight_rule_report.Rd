@@ -54,7 +54,9 @@ period represented by that data point.
 are SUM and MAXIMUM.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyLabels = list(
     "string"
   ),
@@ -92,7 +94,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation returns the time series data collected by a Contributor
@@ -125,7 +127,9 @@ period represented by that data point.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_insight_rule_report(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_insight_rule_report(
   RuleName = "string",
   StartTime = as.POSIXct(
     "2015-01-01"
@@ -140,7 +144,7 @@ period represented by that data point.
   ),
   OrderBy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

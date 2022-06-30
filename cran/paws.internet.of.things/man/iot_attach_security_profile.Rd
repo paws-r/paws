@@ -23,11 +23,13 @@ account. Each thing group or account can have up to five security
 profiles associated with it.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_security_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_security_profile(
   securityProfileName = "string",
   securityProfileTargetArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

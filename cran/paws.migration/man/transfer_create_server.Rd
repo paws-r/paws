@@ -111,10 +111,12 @@ server.}
 \item{Tags}{Key-value pairs that can be used to group and search for servers.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Instantiates an autoscaling virtual server based on the selected file
@@ -124,7 +126,9 @@ service-generated \code{ServerId} property that is assigned to the newly
 created server.
 }
 \section{Request syntax}{
-\preformatted{svc$create_server(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_server(
   Certificate = "string",
   Domain = "S3"|"EFS",
   EndpointDetails = list(
@@ -159,7 +163,7 @@ created server.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

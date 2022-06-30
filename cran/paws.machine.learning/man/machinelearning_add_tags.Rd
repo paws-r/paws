@@ -16,11 +16,13 @@ value of null.}
 \item{ResourceType}{[required] The type of the ML object to tag.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceId = "string",
   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds one or more tags to an object, up to a limit of 10. Each tag
@@ -29,7 +31,9 @@ that is already associated with the ML object,
 \code{\link[=machinelearning_add_tags]{add_tags}} updates the tag's value.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags(
   Tags = list(
     list(
       Key = "string",
@@ -39,7 +43,7 @@ that is already associated with the ML object,
   ResourceId = "string",
   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

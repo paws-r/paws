@@ -17,7 +17,9 @@ You can only set one filter at a time.}
 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointPropertiesList = list(
     list(
       EndpointArn = "string",
@@ -36,13 +38,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of all existing endpoints that you've created.
 }
 \section{Request syntax}{
-\preformatted{svc$list_endpoints(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_endpoints(
   Filter = list(
     ModelArn = "string",
     Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
@@ -56,7 +60,7 @@ Gets a list of all existing endpoints that you've created.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -39,7 +39,9 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   Events = list(
     list(
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists events for a given source identifier and source type. You can also
@@ -64,7 +66,9 @@ see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Wor
 in the \emph{AWS Database Migration User Guide.}
 }
 \section{Request syntax}{
-\preformatted{svc$describe_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_events(
   SourceIdentifier = "string",
   SourceType = "replication-instance",
   StartTime = as.POSIXct(
@@ -88,7 +92,7 @@ in the \emph{AWS Database Migration User Guide.}
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

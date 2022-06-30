@@ -19,7 +19,9 @@ Example: \code{mysecuritygroup}}
 \item{Description}{[required] A description for the cache security group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CacheSecurityGroup = list(
     OwnerId = "string",
     CacheSecurityGroupName = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     ARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new cache security group. Use a cache security group to
@@ -47,11 +49,13 @@ For more information, see
 \code{\link[=elasticache_create_cache_subnet_group]{create_cache_subnet_group}}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cache_security_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cache_security_group(
   CacheSecurityGroupName = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

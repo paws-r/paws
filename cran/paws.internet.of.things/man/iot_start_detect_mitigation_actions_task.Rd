@@ -28,16 +28,20 @@ exists, an exception occurs. If you omit this value, AWS SDKs will
 automatically generate a unique client request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a Device Defender ML Detect mitigation actions task.
 }
 \section{Request syntax}{
-\preformatted{svc$start_detect_mitigation_actions_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_detect_mitigation_actions_task(
   taskId = "string",
   target = list(
     violationIds = list(
@@ -61,7 +65,7 @@ Starts a Device Defender ML Detect mitigation actions task.
   includeSuppressedAlerts = TRUE|FALSE,
   clientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

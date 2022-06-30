@@ -23,8 +23,10 @@ Note that a delegated administrator is not authorized to invoke
 \code{\link[=servicecatalog_enable_aws_organizations_access]{enable_aws_organizations_access}}.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_aws_organizations_access()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_aws_organizations_access()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

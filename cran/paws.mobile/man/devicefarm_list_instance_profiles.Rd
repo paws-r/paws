@@ -15,7 +15,9 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   instanceProfiles = list(
     list(
       arn = "string",
@@ -30,17 +32,19 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about all the instance profiles in an AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_instance_profiles(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_instance_profiles(
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -7,7 +7,9 @@
 rds_describe_account_attributes()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccountQuotas = list(
     list(
       AccountQuotaName = "string",
@@ -16,7 +18,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all of the attributes for a customer account. The attributes
@@ -27,8 +29,10 @@ current usage toward that quota, and the quota's maximum value.
 This command doesn't take any parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_account_attributes()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_attributes()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -80,7 +80,9 @@ For more information on expression attribute names, see \href{https://docs.aws.a
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Item = list(
     list(
       S = "string",
@@ -131,7 +133,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{\link[=dynamodb_get_item]{get_item}} operation returns a set of
@@ -146,7 +148,9 @@ take more time than an eventually consistent read, it always returns the
 last updated value.
 }
 \section{Request syntax}{
-\preformatted{svc$get_item(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_item(
   TableName = "string",
   Key = list(
     list(
@@ -182,7 +186,7 @@ last updated value.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

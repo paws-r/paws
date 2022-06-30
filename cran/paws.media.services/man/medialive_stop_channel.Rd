@@ -10,7 +10,9 @@ medialive_stop_channel(ChannelId)
 \item{ChannelId}{[required] A request to stop a running channel}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CdiInputSpecification = list(
     Resolution = "SD"|"HD"|"FHD"|"UHD"
@@ -911,16 +913,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops a running channel
 }
 \section{Request syntax}{
-\preformatted{svc$stop_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_channel(
   ChannelId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

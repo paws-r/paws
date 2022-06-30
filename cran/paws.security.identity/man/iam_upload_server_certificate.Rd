@@ -76,7 +76,9 @@ carriage return (\verb{\\u000D})
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServerCertificateMetadata = list(
     Path = "string",
     ServerCertificateName = "string",
@@ -90,7 +92,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Uploads a server certificate entity for the AWS account. The server
@@ -122,14 +124,16 @@ Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$upload_server_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upload_server_certificate(
   Path = "string",
   ServerCertificateName = "string",
   CertificateBody = "string",
   PrivateKey = "string",
   CertificateChain = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -39,10 +39,12 @@ your service configuration.}
 from your service configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the attributes of your VPC endpoint service configuration. You
@@ -51,11 +53,13 @@ service, and you can specify whether acceptance is required for requests
 to connect to your endpoint service through an interface VPC endpoint.
 
 If you set or modify the private DNS name, you must prove that you own
-the private DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html}{VPC Endpoint Service Private DNS Name Verification}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+the private DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/}{VPC Endpoint Service Private DNS Name Verification} in
+the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_vpc_endpoint_service_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpc_endpoint_service_configuration(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   PrivateDnsName = "string",
@@ -74,7 +78,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

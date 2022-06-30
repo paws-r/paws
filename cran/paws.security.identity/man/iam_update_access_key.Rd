@@ -41,12 +41,14 @@ For information about rotating keys, see \href{https://docs.aws.amazon.com/IAM/l
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_access_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_access_key(
   UserName = "string",
   AccessKeyId = "string",
   Status = "Active"|"Inactive"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

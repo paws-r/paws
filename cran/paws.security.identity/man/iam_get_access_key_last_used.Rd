@@ -13,7 +13,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 that can consist of any upper or lowercased letter or digit.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserName = "string",
   AccessKeyLastUsed = list(
     LastUsedDate = as.POSIXct(
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     Region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about when the specified access key was last used.
@@ -32,10 +34,12 @@ AWS service and Region that were specified in the last request made with
 that key.
 }
 \section{Request syntax}{
-\preformatted{svc$get_access_key_last_used(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_access_key_last_used(
   AccessKeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

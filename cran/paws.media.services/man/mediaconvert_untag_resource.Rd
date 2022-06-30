@@ -21,13 +21,15 @@ information about tagging, see the User Guide at
 https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 }
 \section{Request syntax}{
-\preformatted{svc$untag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
   Arn = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

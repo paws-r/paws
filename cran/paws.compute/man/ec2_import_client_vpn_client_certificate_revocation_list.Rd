@@ -22,10 +22,12 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Uploads a client certificate revocation list to the specified Client VPN
@@ -36,12 +38,14 @@ Uploading a client certificate revocation list resets existing client
 connections.
 }
 \section{Request syntax}{
-\preformatted{svc$import_client_vpn_client_certificate_revocation_list(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_client_vpn_client_certificate_revocation_list(
   ClientVpnEndpointId = "string",
   CertificateRevocationList = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

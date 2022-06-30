@@ -18,10 +18,12 @@ Removes a specified crawler from the AWS Glue Data Catalog, unless the
 crawler state is \code{RUNNING}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_crawler(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_crawler(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,7 +20,9 @@ An empty list.
 Tags an Amazon FSx resource.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -29,7 +31,7 @@ Tags an Amazon FSx resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

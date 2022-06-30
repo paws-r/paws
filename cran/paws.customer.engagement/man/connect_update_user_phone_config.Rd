@@ -20,7 +20,9 @@ An empty list.
 Updates the phone configuration settings for the specified user.
 }
 \section{Request syntax}{
-\preformatted{svc$update_user_phone_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_phone_config(
   PhoneConfig = list(
     PhoneType = "SOFT_PHONE"|"DESK_PHONE",
     AutoAccept = TRUE|FALSE,
@@ -30,7 +32,7 @@ Updates the phone configuration settings for the specified user.
   UserId = "string",
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

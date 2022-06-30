@@ -54,10 +54,12 @@ subscribed to the \href{https://aws.amazon.com/premiumsupport/plans/business/}{B
 \href{https://aws.amazon.com/premiumsupport/plans/enterprise/}{Enterprise Support plan}.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_drt_role(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_drt_role(
   RoleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

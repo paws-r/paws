@@ -47,14 +47,16 @@ pass to the function in the context object.}
 function.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StatusCode = 123,
   FunctionError = "string",
   LogResult = "string",
   Payload = raw,
   ExecutedVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Invokes a Lambda function. You can invoke a function synchronously (and
@@ -100,7 +102,9 @@ This operation requires permission for the
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$invoke(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$invoke(
   FunctionName = "string",
   InvocationType = "Event"|"RequestResponse"|"DryRun",
   LogType = "None"|"Tail",
@@ -108,7 +112,7 @@ action.
   Payload = raw,
   Qualifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

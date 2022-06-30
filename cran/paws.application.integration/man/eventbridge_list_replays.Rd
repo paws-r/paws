@@ -21,7 +21,9 @@ results.}
 \item{Limit}{The maximum number of replays to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Replays = list(
     list(
       ReplayName = "string",
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists your replays. You can either list all the replays or you can
@@ -55,14 +57,16 @@ provide a prefix to match to the replay names. Filter parameters are
 exclusive.
 }
 \section{Request syntax}{
-\preformatted{svc$list_replays(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_replays(
   NamePrefix = "string",
   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
   EventSourceArn = "string",
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -15,7 +15,9 @@ trail ARN is:
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IsLogging = TRUE|FALSE,
   LatestDeliveryError = "string",
   LatestNotificationError = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   TimeLoggingStarted = "string",
   TimeLoggingStopped = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a JSON-formatted list of information about the specified trail.
@@ -56,10 +58,12 @@ returns trail status from a single region. To return trail status from
 all regions, you must call the operation on each region.
 }
 \section{Request syntax}{
-\preformatted{svc$get_trail_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_trail_status(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

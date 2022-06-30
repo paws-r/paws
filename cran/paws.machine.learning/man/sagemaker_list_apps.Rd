@@ -22,7 +22,9 @@ it in your next request to receive the next set of results.}
 \item{UserProfileNameEquals}{A parameter to search by user profile name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Apps = list(
     list(
       DomainId = "string",
@@ -37,13 +39,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists apps.
 }
 \section{Request syntax}{
-\preformatted{svc$list_apps(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_apps(
   NextToken = "string",
   MaxResults = 123,
   SortOrder = "Ascending"|"Descending",
@@ -51,7 +55,7 @@ Lists apps.
   DomainIdEquals = "string",
   UserProfileNameEquals = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

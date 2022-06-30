@@ -10,7 +10,9 @@ redshift_pause_cluster(ClusterIdentifier)
 \item{ClusterIdentifier}{[required] The identifier of the cluster to be paused.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -167,16 +169,18 @@ A list with the following syntax:\preformatted{list(
     ClusterNamespaceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Pauses a cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$pause_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$pause_cluster(
   ClusterIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

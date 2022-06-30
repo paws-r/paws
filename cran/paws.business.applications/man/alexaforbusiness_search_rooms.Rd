@@ -25,7 +25,9 @@ filter keys are RoomName and ProfileName.}
 supported sort keys are RoomName and ProfileName.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Rooms = list(
     list(
       RoomArn = "string",
@@ -39,14 +41,16 @@ A list with the following syntax:\preformatted{list(
   NextToken = "string",
   TotalCount = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Searches rooms and lists the ones that meet a set of filter and sort
 criteria.
 }
 \section{Request syntax}{
-\preformatted{svc$search_rooms(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_rooms(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -64,7 +68,7 @@ criteria.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

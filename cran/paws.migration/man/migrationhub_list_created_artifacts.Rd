@@ -21,7 +21,9 @@ using the returned token in \code{NextToken}.}
 \item{MaxResults}{Maximum number of results to be returned per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   CreatedArtifactList = list(
     list(
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the created artifacts attached to a given migration task in an
@@ -46,13 +48,15 @@ API.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$list_created_artifacts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_created_artifacts(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

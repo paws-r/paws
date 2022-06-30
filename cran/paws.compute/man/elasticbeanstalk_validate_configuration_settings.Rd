@@ -24,7 +24,9 @@ name.}
 \item{OptionSettings}{[required] A list of the options and desired values to evaluate.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Messages = list(
     list(
       Message = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Takes a set of configuration settings and either a configuration
@@ -44,7 +46,9 @@ This action returns a list of messages indicating any errors or warnings
 associated with the selection of option values.
 }
 \section{Request syntax}{
-\preformatted{svc$validate_configuration_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$validate_configuration_settings(
   ApplicationName = "string",
   TemplateName = "string",
   EnvironmentName = "string",
@@ -57,7 +61,7 @@ associated with the selection of option values.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

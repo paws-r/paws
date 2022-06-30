@@ -19,13 +19,15 @@ An empty list.
 Updates the runtime configuration of a thing.
 }
 \section{Request syntax}{
-\preformatted{svc$update_thing_runtime_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_thing_runtime_configuration(
   TelemetryConfiguration = list(
     Telemetry = "On"|"Off"
   ),
   ThingName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

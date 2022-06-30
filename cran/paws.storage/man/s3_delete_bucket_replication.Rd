@@ -39,11 +39,13 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_bucket_replication(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bucket_replication(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

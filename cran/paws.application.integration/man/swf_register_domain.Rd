@@ -63,7 +63,9 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$register_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_domain(
   name = "string",
   description = "string",
   workflowExecutionRetentionPeriodInDays = "string",
@@ -74,7 +76,7 @@ in the \emph{Amazon SWF Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

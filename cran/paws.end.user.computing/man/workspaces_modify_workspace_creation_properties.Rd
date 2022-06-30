@@ -19,7 +19,9 @@ An empty list.
 Modify the default properties used to create WorkSpaces.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_workspace_creation_properties(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_workspace_creation_properties(
   ResourceId = "string",
   WorkspaceCreationProperties = list(
     EnableWorkDocs = TRUE|FALSE,
@@ -30,7 +32,7 @@ Modify the default properties used to create WorkSpaces.
     EnableMaintenanceMode = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

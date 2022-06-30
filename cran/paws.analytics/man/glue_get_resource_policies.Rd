@@ -13,7 +13,9 @@ glue_get_resource_policies(NextToken, MaxResults)
 \item{MaxResults}{The maximum size of a list to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GetResourcePoliciesResponseList = list(
     list(
       PolicyInJson = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the security configurations for the resource policies set on
@@ -40,11 +42,13 @@ not have permission on the AWS KMS key, the operation can't return the
 Data Catalog resource policy.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resource_policies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resource_policies(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

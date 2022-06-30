@@ -79,14 +79,16 @@ in the Amazon Redshift Database Developer Guide.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DbUser = "string",
   DbPassword = "string",
   Expiration = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a database user name and temporary password with temporary
@@ -115,7 +117,9 @@ If the \code{DbName} parameter is specified, the IAM policy must allow access
 to the resource \code{dbname} for the specified database name.
 }
 \section{Request syntax}{
-\preformatted{svc$get_cluster_credentials(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cluster_credentials(
   DbUser = "string",
   DbName = "string",
   ClusterIdentifier = "string",
@@ -125,7 +129,7 @@ to the resource \code{dbname} for the specified database name.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

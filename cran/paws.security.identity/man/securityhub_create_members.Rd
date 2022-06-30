@@ -14,7 +14,9 @@ For each account, the list includes the account ID and optionally the
 email address.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -22,7 +24,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a member association in Security Hub between the specified
@@ -68,7 +70,9 @@ the
 or \code{\link[=securityhub_disassociate_members]{disassociate_members}} operation.
 }
 \section{Request syntax}{
-\preformatted{svc$create_members(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_members(
   AccountDetails = list(
     list(
       AccountId = "string",
@@ -76,7 +80,7 @@ or \code{\link[=securityhub_disassociate_members]{disassociate_members}} operati
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

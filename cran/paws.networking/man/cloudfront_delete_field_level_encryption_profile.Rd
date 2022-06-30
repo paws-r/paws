@@ -19,11 +19,13 @@ An empty list.
 Remove a field-level encryption profile.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_field_level_encryption_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_field_level_encryption_profile(
   Id = "string",
   IfMatch = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

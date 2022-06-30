@@ -26,7 +26,9 @@ faces by the time that they are recognized. Use \code{INDEX} to sort by
 recognized faces.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
   StatusMessage = "string",
   NextToken = "string",
@@ -137,7 +139,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the face search results for Amazon Rekognition Video face search
@@ -179,13 +181,15 @@ from the start of the video, persons are matched. You can also sort by
 persons by specifying \code{INDEX} for the \code{SORTBY} input parameter.
 }
 \section{Request syntax}{
-\preformatted{svc$get_face_search(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_face_search(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string",
   SortBy = "INDEX"|"TIMESTAMP"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

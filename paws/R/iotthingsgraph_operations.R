@@ -1872,7 +1872,7 @@ iotthingsgraph_search_things <- function(entityId, nextToken = NULL, maxResults 
 #' iotthingsgraph_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags are returned.
-#' @param tags &#91;required&#93; A list of tags to add to the resource.&gt;
+#' @param tags &#91;required&#93; A list of tags to add to the resource.\>
 #'
 #' @return
 #' An empty list.

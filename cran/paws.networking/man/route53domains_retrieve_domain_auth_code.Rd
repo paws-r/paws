@@ -10,20 +10,24 @@ route53domains_retrieve_domain_auth_code(DomainName)
 \item{DomainName}{[required] The name of the domain that you want to get an authorization code for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AuthCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation returns the AuthCode for the domain. To transfer a domain
 to another registrar, you provide this value to the new registrar.
 }
 \section{Request syntax}{
-\preformatted{svc$retrieve_domain_auth_code(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$retrieve_domain_auth_code(
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

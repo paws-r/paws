@@ -29,7 +29,9 @@ Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Events = list(
     list(
       EventId = "string",
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves entries from the specified fleet's event log. You can specify
@@ -77,7 +79,9 @@ collection of event log entries matching the request are returned.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_fleet_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fleet_events(
   FleetId = "string",
   StartTime = as.POSIXct(
     "2015-01-01"
@@ -88,7 +92,7 @@ collection of event log entries matching the request are returned.
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

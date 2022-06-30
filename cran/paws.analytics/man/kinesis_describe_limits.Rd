@@ -7,11 +7,13 @@
 kinesis_describe_limits()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ShardLimit = 123,
   OpenShardCount = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the shard limits and usage for the account.
@@ -22,8 +24,10 @@ a few minutes.
 This operation has a limit of one transaction per second per account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_limits()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_limits()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -34,17 +34,21 @@ assume to perform tasks on your behalf.}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobDefinitionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a definition for a job that monitors data quality and drift. For
 information about model monitor, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html}{Amazon SageMaker Model Monitor}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_data_quality_job_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_data_quality_job_definition(
   JobDefinitionName = "string",
   DataQualityBaselineConfig = list(
     BaseliningJobName = "string",
@@ -126,7 +130,7 @@ information about model monitor, see \href{https://docs.aws.amazon.com/sagemaker
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

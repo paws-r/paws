@@ -13,7 +13,9 @@ serverlessapplicationrepository_put_application_policy(ApplicationId,
 \item{Statements}{[required] An array of policy statements applied to the application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Statements = list(
     list(
       Actions = list(
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sets the permission policy for an application. For the list of actions
@@ -37,7 +39,9 @@ supported for this operation, see \href{https://docs.aws.amazon.com/serverlessre
 .
 }
 \section{Request syntax}{
-\preformatted{svc$put_application_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_application_policy(
   ApplicationId = "string",
   Statements = list(
     list(
@@ -54,7 +58,7 @@ supported for this operation, see \href{https://docs.aws.amazon.com/serverlessre
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,7 +14,9 @@ lightsail_stop_relational_database(relationalDatabaseName,
 your database.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops a specific database that is currently running in Amazon Lightsail.
@@ -50,11 +52,13 @@ relationalDatabaseName. For more information, see the Lightsail Dev
 Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_relational_database(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_relational_database(
   relationalDatabaseName = "string",
   relationalDatabaseSnapshotName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

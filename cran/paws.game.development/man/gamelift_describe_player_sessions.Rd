@@ -40,7 +40,9 @@ To start at the beginning of the result set, do not specify a value. If
 a player session ID is specified, this parameter is ignored.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PlayerSessions = list(
     list(
       PlayerSessionId = "string",
@@ -63,7 +65,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves properties for one or more player sessions. This operation can
@@ -93,7 +95,9 @@ PlayerSession object is returned for each session matching the request.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_player_sessions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_player_sessions(
   GameSessionId = "string",
   PlayerId = "string",
   PlayerSessionId = "string",
@@ -101,7 +105,7 @@ PlayerSession object is returned for each session matching the request.
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

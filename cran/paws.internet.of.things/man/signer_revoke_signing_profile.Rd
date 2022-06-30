@@ -27,7 +27,9 @@ signatures generated using the signing profile after an effective start
 date are no longer valid.
 }
 \section{Request syntax}{
-\preformatted{svc$revoke_signing_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_signing_profile(
   profileName = "string",
   profileVersion = "string",
   reason = "string",
@@ -35,7 +37,7 @@ date are no longer valid.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

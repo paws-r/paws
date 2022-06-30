@@ -21,7 +21,9 @@ creating the HSM. If you don't specify an IP address, one is chosen for
 you from that subnet.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Hsm = list(
     AvailabilityZone = "string",
     ClusterId = "string",
@@ -33,19 +35,21 @@ A list with the following syntax:\preformatted{list(
     StateMessage = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new hardware security module (HSM) in the specified AWS
 CloudHSM cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$create_hsm(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_hsm(
   ClusterId = "string",
   AvailabilityZone = "string",
   IpAddress = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

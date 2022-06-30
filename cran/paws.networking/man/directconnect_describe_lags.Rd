@@ -10,7 +10,9 @@ directconnect_describe_lags(lagId)
 \item{lagId}{The ID of the LAG.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   lags = list(
     list(
       connectionsBandwidth = "string",
@@ -65,16 +67,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes all your link aggregation groups (LAG) or the specified LAG.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_lags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_lags(
   lagId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

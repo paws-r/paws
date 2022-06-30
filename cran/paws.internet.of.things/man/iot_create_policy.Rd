@@ -24,13 +24,15 @@ For the cli-input-json file use format: "tags":
 "key1=value1&key2=value2..."}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   policyName = "string",
   policyArn = "string",
   policyDocument = "string",
   policyVersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS IoT policy.
@@ -40,7 +42,9 @@ creates a policy version with a version identifier of \strong{1} and sets
 \strong{1} as the policy's default version.
 }
 \section{Request syntax}{
-\preformatted{svc$create_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_policy(
   policyName = "string",
   policyDocument = "string",
   tags = list(
@@ -50,7 +54,7 @@ creates a policy version with a version identifier of \strong{1} and sets
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

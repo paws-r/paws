@@ -13,7 +13,9 @@ translate_get_terminology(Name, TerminologyDataFormat)
 TMX.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TerminologyProperties = list(
     Name = "string",
     Description = "string",
@@ -40,17 +42,19 @@ A list with the following syntax:\preformatted{list(
     Location = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a custom terminology.
 }
 \section{Request syntax}{
-\preformatted{svc$get_terminology(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_terminology(
   Name = "string",
   TerminologyDataFormat = "CSV"|"TMX"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,11 +20,13 @@ Deletes the specified log stream and permanently deletes all the
 archived log events associated with the log stream.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_log_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_log_stream(
   logGroupName = "string",
   logStreamName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

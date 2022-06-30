@@ -25,7 +25,9 @@ Updates the workgroup with the specified name. The workgroup's name
 cannot be changed.
 }
 \section{Request syntax}{
-\preformatted{svc$update_work_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_work_group(
   WorkGroup = "string",
   Description = "string",
   ConfigurationUpdates = list(
@@ -46,7 +48,7 @@ cannot be changed.
   ),
   State = "ENABLED"|"DISABLED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

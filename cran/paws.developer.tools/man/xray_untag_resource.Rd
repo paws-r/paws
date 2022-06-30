@@ -20,13 +20,15 @@ Removes tags from an AWS X-Ray group or sampling rule. You cannot edit
 or delete system tags (those with an \verb{aws:} prefix).
 }
 \section{Request syntax}{
-\preformatted{svc$untag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
   ResourceARN = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

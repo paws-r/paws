@@ -51,7 +51,9 @@ request, Amazon Redshift returns a response with the clusters that have
 either or both of these tag values associated with them.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   Clusters = list(
     list(
@@ -211,7 +213,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns properties of provisioned clusters including general cluster
@@ -231,7 +233,9 @@ returned regardless of whether they have tag keys or values associated
 with them.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_clusters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_clusters(
   ClusterIdentifier = "string",
   MaxRecords = 123,
   Marker = "string",
@@ -242,7 +246,7 @@ with them.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

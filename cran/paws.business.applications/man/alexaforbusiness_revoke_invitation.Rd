@@ -19,11 +19,13 @@ An empty list.
 Revokes an invitation and invalidates the enrollment URL.
 }
 \section{Request syntax}{
-\preformatted{svc$revoke_invitation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_invitation(
   UserArn = "string",
   EnrollmentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

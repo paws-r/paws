@@ -23,13 +23,15 @@ principals, specify an asterisk (*).}
 are revoked for principals in this list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReturnValue = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
-Modifies the permissions for your \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html}{VPC endpoint service}.
+Modifies the permissions for your \href{https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html}{VPC endpoint service}.
 You can add or remove permissions for service consumers (IAM users, IAM
 roles, and AWS accounts) to connect to your endpoint service.
 
@@ -39,7 +41,9 @@ an endpoint. If the service does not require manual approval,
 attachments are automatically approved.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_vpc_endpoint_service_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpc_endpoint_service_permissions(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   AddAllowedPrincipals = list(
@@ -49,7 +53,7 @@ attachments are automatically approved.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

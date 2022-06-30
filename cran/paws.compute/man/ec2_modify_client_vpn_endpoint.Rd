@@ -60,17 +60,21 @@ endpoint.}
 connections.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the specified Client VPN endpoint. Modifying the DNS server
 resets existing client connections.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_client_vpn_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_client_vpn_endpoint(
   ClientVpnEndpointId = "string",
   ServerCertificateArn = "string",
   ConnectionLogOptions = list(
@@ -98,7 +102,7 @@ resets existing client connections.
     LambdaFunctionArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

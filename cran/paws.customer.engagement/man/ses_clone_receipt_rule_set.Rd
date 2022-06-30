@@ -25,16 +25,18 @@ Creates a receipt rule set by cloning an existing one. All receipt rules
 and configurations are copied to the new receipt rule set and are
 completely independent of the source rule set.
 
-For information about setting up rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html}{Amazon SES Developer Guide}.
+For information about setting up rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$clone_receipt_rule_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$clone_receipt_rule_set(
   RuleSetName = "string",
   OriginalRuleSetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

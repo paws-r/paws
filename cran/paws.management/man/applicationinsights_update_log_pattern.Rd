@@ -30,7 +30,9 @@ values less than \code{1} or greater than \verb{1,000,000} are reserved for
 AWS-provided patterns.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceGroupName = "string",
   LogPattern = list(
     PatternSetName = "string",
@@ -39,20 +41,22 @@ A list with the following syntax:\preformatted{list(
     Rank = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a log pattern to a \code{LogPatternSet}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_log_pattern(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_log_pattern(
   ResourceGroupName = "string",
   PatternSetName = "string",
   PatternName = "string",
   Pattern = "string",
   Rank = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ cloudsearch_describe_domains(DomainNames)
 \item{DomainNames}{The names of the domains you want to include in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainStatusList = list(
     list(
       DomainId = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the search domains owned by this account. Can be
@@ -44,16 +46,20 @@ limited to specific domains. Shows all domains by default. To get the
 number of searchable documents in a domain, use the console or submit a
 \code{matchall} request to your domain's search endpoint:
 \verb{q=matchall&amp;q.parser=structured&amp;size=0}. For more information,
-see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html}{Getting Information about a Search Domain}
-in the \emph{Amazon CloudSearch Developer Guide}.
+see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html"
+target="_blank">Getting Information about a Search Domain</a> in the
+\emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_domains(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_domains(
   DomainNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

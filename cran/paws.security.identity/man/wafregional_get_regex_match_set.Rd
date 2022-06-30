@@ -13,7 +13,9 @@ wafregional_get_regex_match_set(RegexMatchSetId)
 \code{\link[=wafregional_list_regex_match_sets]{list_regex_match_sets}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RegexMatchSet = list(
     RegexMatchSetId = "string",
     Name = "string",
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -44,10 +46,12 @@ regional and global use.
 Returns the RegexMatchSet specified by \code{RegexMatchSetId}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_regex_match_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_regex_match_set(
   RegexMatchSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

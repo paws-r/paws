@@ -36,7 +36,9 @@ the valid values. For example, a valid family name is "redshift-1.0".}
 \item{Tags}{A list of tag instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClusterParameterGroup = list(
     ParameterGroupName = "string",
     ParameterGroupFamily = "string",
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Amazon Redshift parameter group.
@@ -66,7 +68,9 @@ parameters and parameter groups, go to \href{https://docs.aws.amazon.com/redshif
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cluster_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster_parameter_group(
   ParameterGroupName = "string",
   ParameterGroupFamily = "string",
   Description = "string",
@@ -77,7 +81,7 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

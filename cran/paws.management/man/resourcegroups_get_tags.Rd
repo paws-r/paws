@@ -11,13 +11,15 @@ resourcegroups_get_tags(Arn)
 \item{Arn}{[required] The ARN of the resource group whose tags you want to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of tags that are associated with a resource group,
@@ -31,10 +33,12 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_tags(
   Arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

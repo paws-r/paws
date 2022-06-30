@@ -10,23 +10,27 @@ directoryservice_get_snapshot_limits(DirectoryId)
 \item{DirectoryId}{[required] Contains the identifier of the directory to obtain the limits for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SnapshotLimits = list(
     ManualSnapshotsLimit = 123,
     ManualSnapshotsCurrentCount = 123,
     ManualSnapshotsLimitReached = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Obtains the manual snapshot limits for a directory.
 }
 \section{Request syntax}{
-\preformatted{svc$get_snapshot_limits(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_snapshot_limits(
   DirectoryId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

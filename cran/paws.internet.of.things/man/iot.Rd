@@ -37,7 +37,9 @@ For information about how to use the credentials provider for AWS IoT,
 see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html}{Authorizing Direct Calls to AWS Services}.
 }
 \section{Service syntax}{
-\preformatted{svc <- iot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- iot(
   config = list(
     credentials = list(
       creds = list(
@@ -51,7 +53,7 @@ see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-dire
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

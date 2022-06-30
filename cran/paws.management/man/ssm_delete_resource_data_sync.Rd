@@ -20,11 +20,13 @@ deleted, changes to data on managed instances are no longer synced to or
 from the target. Deleting a sync configuration does not delete data.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_resource_data_sync(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource_data_sync(
   SyncName = "string",
   SyncType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,13 +11,15 @@ support_describe_attachment(attachmentId)
 \code{\link[=support_describe_communications]{describe_communications}} operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   attachment = list(
     fileName = "string",
     data = raw
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the attachment that has the specified ID. Attachments can
@@ -36,10 +38,12 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_attachment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_attachment(
   attachmentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -38,7 +38,9 @@ of the add-on to the cluster.}
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   update = list(
     id = "string",
     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
@@ -63,13 +65,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an Amazon EKS add-on.
 }
 \section{Request syntax}{
-\preformatted{svc$update_addon(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_addon(
   clusterName = "string",
   addonName = "string",
   addonVersion = "string",
@@ -77,7 +81,7 @@ Updates an Amazon EKS add-on.
   resolveConflicts = "OVERWRITE"|"NONE",
   clientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

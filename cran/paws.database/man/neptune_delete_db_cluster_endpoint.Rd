@@ -12,7 +12,9 @@ neptune_delete_db_cluster_endpoint(DBClusterEndpointIdentifier)
 stored as a lowercase string.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterEndpointIdentifier = "string",
   DBClusterIdentifier = "string",
   DBClusterEndpointResourceIdentifier = "string",
@@ -28,17 +30,19 @@ A list with the following syntax:\preformatted{list(
   ),
   DBClusterEndpointArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a custom endpoint and removes it from an Amazon Neptune DB
 cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_db_cluster_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_cluster_endpoint(
   DBClusterEndpointIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

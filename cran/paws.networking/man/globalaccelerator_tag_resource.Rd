@@ -23,7 +23,9 @@ For more information, see \href{https://docs.aws.amazon.com/global-accelerator/l
 in the \emph{AWS Global Accelerator Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -32,7 +34,7 @@ in the \emph{AWS Global Accelerator Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -36,7 +36,9 @@ of the template.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VoiceTemplateResponse = list(
     Arn = "string",
     Body = "string",
@@ -54,18 +56,20 @@ A list with the following syntax:\preformatted{list(
     VoiceId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the content and settings of a message template for messages
 that are sent through the voice channel.
 }
 \section{Request syntax}{
-\preformatted{svc$get_voice_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_voice_template(
   TemplateName = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

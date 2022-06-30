@@ -33,11 +33,11 @@ snapshot that is enabled for fast snapshot restore (\code{true} |
 \item \code{snapshot-id} - The snapshot from which the volume was created.
 \item \code{status} - The state of the volume (\code{creating} | \code{available} |
 \verb{in-use} | \code{deleting} | \code{deleted} | \code{error}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -74,7 +74,9 @@ the \code{NextToken} value. This value is \code{null} when there are no more
 results to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Volumes = list(
     list(
       Attachments = list(
@@ -115,7 +117,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified EBS volumes or all of your EBS volumes.
@@ -132,7 +134,9 @@ For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AW
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_volumes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_volumes(
   Filters = list(
     list(
       Name = "string",
@@ -148,7 +152,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

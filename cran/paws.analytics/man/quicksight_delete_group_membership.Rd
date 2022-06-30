@@ -19,24 +19,28 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes a user from a group so that the user is no longer a member of
 the group.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_group_membership(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_group_membership(
   MemberName = "string",
   GroupName = "string",
   AwsAccountId = "string",
   Namespace = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

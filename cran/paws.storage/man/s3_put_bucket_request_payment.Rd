@@ -10,7 +10,7 @@ s3_put_bucket_request_payment(Bucket, ContentMD5,
 \arguments{
 \item{Bucket}{[required] The bucket name.}
 
-\item{ContentMD5}{>The base64-encoded 128-bit MD5 digest of the data. You must use this
+\item{ContentMD5}{\>The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
 not corrupted in transit. For more information, see \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.
 
@@ -41,7 +41,9 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_request_payment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_request_payment(
   Bucket = "string",
   ContentMD5 = "string",
   RequestPaymentConfiguration = list(
@@ -49,7 +51,7 @@ The following operations are related to
   ),
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -12,7 +12,9 @@ lightsail_close_instance_public_ports(portInfo, instanceName)
 \item{instanceName}{[required] The name of the instance for which to close ports.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Closes ports for a specific Amazon Lightsail instance.
@@ -47,7 +49,9 @@ the resource identified by \code{instanceName}. For more information, see the
 Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$close_instance_public_ports(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$close_instance_public_ports(
   portInfo = list(
     fromPort = 123,
     toPort = 123,
@@ -61,7 +65,7 @@ Lightsail Dev Guide.
   ),
   instanceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

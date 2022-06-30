@@ -13,7 +13,9 @@ resourcegroups_get_group_query(GroupName, Group)
 \item{Group}{The name or the ARN of the resource group to query.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GroupQuery = list(
     GroupName = "string",
     ResourceQuery = list(
@@ -22,7 +24,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the resource query associated with the specified resource
@@ -36,11 +38,13 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_group_query(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_group_query(
   GroupName = "string",
   Group = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

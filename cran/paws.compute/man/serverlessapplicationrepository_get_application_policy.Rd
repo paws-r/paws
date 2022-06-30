@@ -10,7 +10,9 @@ serverlessapplicationrepository_get_application_policy(ApplicationId)
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Statements = list(
     list(
       Actions = list(
@@ -26,16 +28,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the policy for the application.
 }
 \section{Request syntax}{
-\preformatted{svc$get_application_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_application_policy(
   ApplicationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

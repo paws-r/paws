@@ -24,10 +24,12 @@ encoding of
 The value must be URL encoded.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Policy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This action gets a bucket policy for an Amazon S3 on Outposts bucket. To
@@ -75,11 +77,13 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_bucket_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_policy(
   AccountId = "string",
   Bucket = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

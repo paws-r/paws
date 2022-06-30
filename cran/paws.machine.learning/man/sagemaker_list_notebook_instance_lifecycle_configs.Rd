@@ -38,7 +38,9 @@ before the specified time (timestamp).}
 after the specified time (timestamp).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   NotebookInstanceLifecycleConfigs = list(
     list(
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists notebook instance lifestyle configurations created with the
@@ -61,7 +63,9 @@ Lists notebook instance lifestyle configurations created with the
 API.
 }
 \section{Request syntax}{
-\preformatted{svc$list_notebook_instance_lifecycle_configs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_notebook_instance_lifecycle_configs(
   NextToken = "string",
   MaxResults = 123,
   SortBy = "Name"|"CreationTime"|"LastModifiedTime",
@@ -80,7 +84,7 @@ API.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

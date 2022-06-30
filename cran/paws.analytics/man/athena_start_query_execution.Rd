@@ -35,10 +35,12 @@ WorkGroupConfiguration$EnforceWorkGroupConfiguration.}
 \item{WorkGroup}{The name of the workgroup in which the query is being started.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   QueryExecutionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Runs the SQL query statements contained in the \code{Query}. Requires you to
@@ -49,7 +51,9 @@ For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.c
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_query_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_query_execution(
   QueryString = "string",
   ClientRequestToken = "string",
   QueryExecutionContext = list(
@@ -65,7 +69,7 @@ in the \emph{Amazon Athena User Guide}.
   ),
   WorkGroup = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

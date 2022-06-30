@@ -15,7 +15,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{WriteJourneyRequest}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JourneyResponse = list(
     Activities = list(
       list(
@@ -395,13 +397,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the configuration and other settings for a journey.
 }
 \section{Request syntax}{
-\preformatted{svc$update_journey(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_journey(
   ApplicationId = "string",
   JourneyId = "string",
   WriteJourneyRequest = list(
@@ -778,7 +782,7 @@ Updates the configuration and other settings for a journey.
     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

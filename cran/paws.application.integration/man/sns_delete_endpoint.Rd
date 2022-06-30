@@ -20,10 +20,12 @@ When you delete an endpoint that is also subscribed to a topic, then you
 must also unsubscribe the endpoint from the topic.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_endpoint(
   EndpointArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

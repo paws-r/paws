@@ -27,7 +27,9 @@ function name, it is limited to 64 characters in length.}
 the function.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Configuration = list(
     FunctionName = "string",
     FunctionArn = "string",
@@ -120,7 +122,7 @@ A list with the following syntax:\preformatted{list(
     ReservedConcurrentExecutions = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the function or function version, with a link
@@ -129,11 +131,13 @@ specify a function version, only details that are specific to that
 version are returned.
 }
 \section{Request syntax}{
-\preformatted{svc$get_function(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_function(
   FunctionName = "string",
   Qualifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

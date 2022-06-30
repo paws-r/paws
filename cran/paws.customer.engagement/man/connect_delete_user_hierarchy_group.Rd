@@ -19,11 +19,13 @@ Deletes an existing user hierarchy group. It must not be associated with
 any agents or have any active child groups.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user_hierarchy_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_hierarchy_group(
   HierarchyGroupId = "string",
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

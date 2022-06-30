@@ -39,7 +39,9 @@ from a previous call.)}
 default is up to 50 items.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   logStreams = list(
     list(
       logStreamName = "string",
@@ -54,7 +56,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the log streams for the specified log group. You can list all the
@@ -65,7 +67,9 @@ This operation has a limit of five transactions per second, after which
 transactions are throttled.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_log_streams(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_log_streams(
   logGroupName = "string",
   logStreamNamePrefix = "string",
   orderBy = "LogStreamName"|"LastEventTime",
@@ -73,7 +77,7 @@ transactions are throttled.
   nextToken = "string",
   limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

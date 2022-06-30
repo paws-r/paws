@@ -10,7 +10,9 @@ mediaconvert_get_job_template(Name)
 \item{Name}{[required] The name of the job template.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobTemplate = list(
     AccelerationSettings = list(
       Mode = "DISABLED"|"ENABLED"|"PREFERRED"
@@ -1152,16 +1154,18 @@ A list with the following syntax:\preformatted{list(
     Type = "SYSTEM"|"CUSTOM"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve the JSON for a specific job template.
 }
 \section{Request syntax}{
-\preformatted{svc$get_job_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job_template(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

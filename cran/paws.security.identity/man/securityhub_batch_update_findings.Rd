@@ -69,7 +69,9 @@ finding.}
 \item{RelatedFindings}{A list of findings that are related to the updated findings.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProcessedFindings = list(
     list(
       Id = "string",
@@ -87,7 +89,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Used by Security Hub customers to update information about their
@@ -121,7 +123,9 @@ suppress findings or change the finding severity. See \href{https://docs.aws.ama
 in the \emph{AWS Security Hub User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_update_findings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_update_findings(
   FindingIdentifiers = list(
     list(
       Id = "string",
@@ -156,7 +160,7 @@ in the \emph{AWS Security Hub User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

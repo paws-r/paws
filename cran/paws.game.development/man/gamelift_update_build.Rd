@@ -18,7 +18,9 @@ need to be unique.}
 strings do not need to be unique.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Build = list(
     BuildId = "string",
     BuildArn = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates metadata in a build resource, including the build name and
@@ -54,12 +56,14 @@ updated metadata is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_build(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_build(
   BuildId = "string",
   Name = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

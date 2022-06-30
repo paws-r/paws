@@ -12,7 +12,9 @@ identifiers in a single call. To obtain pipeline IDs, call
 \code{\link[=datapipeline_list_pipelines]{list_pipelines}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   pipelineDescriptionList = list(
     list(
       pipelineId = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves metadata about one or more pipelines. The information
@@ -50,12 +52,14 @@ pipeline, call
 \code{\link[=datapipeline_get_pipeline_definition]{get_pipeline_definition}}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_pipelines(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_pipelines(
   pipelineIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

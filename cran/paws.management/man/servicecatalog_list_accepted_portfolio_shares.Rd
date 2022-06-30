@@ -30,7 +30,9 @@ account of your organization
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PortfolioDetails = list(
     list(
       Id = "string",
@@ -45,19 +47,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all portfolios for which sharing was accepted by this account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_accepted_portfolio_shares(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_accepted_portfolio_shares(
   AcceptLanguage = "string",
   PageToken = "string",
   PageSize = 123,
   PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

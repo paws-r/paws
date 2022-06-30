@@ -30,7 +30,9 @@ Updates the configuration of the report delivery schedule with the
 specified schedule ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$update_business_report_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_business_report_schedule(
   ScheduleArn = "string",
   S3BucketName = "string",
   S3KeyPrefix = "string",
@@ -40,7 +42,7 @@ specified schedule ARN.
     StartDate = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

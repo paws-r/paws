@@ -88,7 +88,9 @@ Default: 1
 Valid values: 0-15}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -177,7 +179,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies settings for an instance. You can change one or more database
@@ -185,7 +187,9 @@ configuration parameters by specifying these parameters and the new
 values in the request.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_db_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_instance(
   DBInstanceIdentifier = "string",
   DBInstanceClass = "string",
   ApplyImmediately = TRUE|FALSE,
@@ -195,7 +199,7 @@ values in the request.
   CACertificateIdentifier = "string",
   PromotionTier = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

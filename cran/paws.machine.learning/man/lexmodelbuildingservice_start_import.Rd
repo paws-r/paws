@@ -38,7 +38,9 @@ existing resource is overwritten with the data from the import file.
 you import a bot, you can't add tags to an intent or slot type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   name = "string",
   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
@@ -54,13 +56,15 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a job to import a resource to Amazon Lex.
 }
 \section{Request syntax}{
-\preformatted{svc$start_import(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_import(
   payload = raw,
   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
@@ -71,7 +75,7 @@ Starts a job to import a resource to Amazon Lex.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

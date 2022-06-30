@@ -41,7 +41,9 @@ To use quality filtering, the collection you are using must be
 associated with version 3 of the face model or higher.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SearchedFaceBoundingBox = list(
     Width = 123.0,
     Height = 123.0,
@@ -68,7 +70,7 @@ A list with the following syntax:\preformatted{list(
   ),
   FaceModelVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 For a given input image, first detects the largest face in the image,
@@ -118,7 +120,9 @@ This operation requires permissions to perform the
 \code{rekognition:SearchFacesByImage} action.
 }
 \section{Request syntax}{
-\preformatted{svc$search_faces_by_image(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_faces_by_image(
   CollectionId = "string",
   Image = list(
     Bytes = raw,
@@ -132,7 +136,7 @@ This operation requires permissions to perform the
   FaceMatchThreshold = 123.0,
   QualityFilter = "NONE"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

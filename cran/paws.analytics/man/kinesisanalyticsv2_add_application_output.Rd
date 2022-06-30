@@ -26,7 +26,9 @@ delivery stream, or an AWS Lambda function), and record the formation to
 use when writing to the destination.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123,
   OutputDescriptions = list(
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds an external destination to your SQL-based Kinesis Data Analytics
@@ -75,7 +77,9 @@ operation, results in a new version of the application. You can use the
 operation to find the current application version.
 }
 \section{Request syntax}{
-\preformatted{svc$add_application_output(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_application_output(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   Output = list(
@@ -94,7 +98,7 @@ operation to find the current application version.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

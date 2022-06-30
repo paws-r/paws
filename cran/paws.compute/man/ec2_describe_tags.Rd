@@ -25,9 +25,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 | \code{spot-instances-request} | \code{subnet} | \code{volume} | \code{vpc} |
 \code{vpc-endpoint} | \code{vpc-endpoint-service} | \code{vpc-peering-connection} |
 \code{vpn-connection} | \code{vpn-gateway}).
-\item \code{tag}:<key> - The key/value combination of the tag. For
-example, specify "tag:Owner" for the filter name and "TeamA" for the
-filter value to find resources with the tag "Owner=TeamA".
+\item \code{tag}:\<key\> - The key/value combination of the tag. For example,
+specify "tag:Owner" for the filter name and "TeamA" for the filter
+value to find resources with the tag "Owner=TeamA".
 \item \code{value} - The tag value.
 }}
 
@@ -38,7 +38,9 @@ call with the returned \code{NextToken} value.}
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Tags = list(
     list(
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified tags for your EC2 resources.
@@ -58,7 +60,9 @@ For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/la
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tags(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -71,7 +75,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

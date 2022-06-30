@@ -22,11 +22,13 @@ change.
 Deletes a quick connect.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_quick_connect(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_quick_connect(
   InstanceId = "string",
   QuickConnectId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

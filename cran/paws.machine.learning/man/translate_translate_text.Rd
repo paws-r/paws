@@ -23,14 +23,16 @@ codes, see what-is-languages.
 
 To have Amazon Translate determine the source language of your text, you
 can specify \code{auto} in the \code{SourceLanguageCode} field. If you specify
-\code{auto}, Amazon Translate will call \href{https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html}{Amazon Comprehend}
+\code{auto}, Amazon Translate will call \href{https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html}{Amazon Comprehend}
 to determine the source language.}
 
 \item{TargetLanguageCode}{[required] The language code requested for the language of the target text. The
 language must be a language supported by Amazon Translate.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TranslatedText = "string",
   SourceLanguageCode = "string",
   TargetLanguageCode = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Translates input text from the source language to the target language.
@@ -54,7 +56,9 @@ For a list of available languages and language codes, see
 what-is-languages.
 }
 \section{Request syntax}{
-\preformatted{svc$translate_text(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$translate_text(
   Text = "string",
   TerminologyNames = list(
     "string"
@@ -62,7 +66,7 @@ what-is-languages.
   SourceLanguageCode = "string",
   TargetLanguageCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

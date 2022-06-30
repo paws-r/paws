@@ -22,7 +22,9 @@ data types, and errors. For detailed information about CloudFront
 features, see the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudfront(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudfront(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +38,7 @@ features, see the \emph{Amazon CloudFront Developer Guide}.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

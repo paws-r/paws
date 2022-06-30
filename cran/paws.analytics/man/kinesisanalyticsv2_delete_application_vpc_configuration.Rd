@@ -17,22 +17,26 @@ version ID using
 \item{VpcConfigurationId}{[required] The ID of the VPC configuration to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes a VPC configuration from a Kinesis Data Analytics application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_application_vpc_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_vpc_configuration(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   VpcConfigurationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

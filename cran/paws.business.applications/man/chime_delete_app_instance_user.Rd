@@ -16,10 +16,12 @@ An empty list.
 Deletes an \code{AppInstanceUser}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_app_instance_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app_instance_user(
   AppInstanceUserArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

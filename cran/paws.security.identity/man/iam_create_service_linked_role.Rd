@@ -31,7 +31,9 @@ provide an optional suffix and the operation fails, try the operation
 again without the suffix.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Role = list(
     Path = "string",
     RoleName = "string",
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an IAM role that is linked to a specific AWS service. The
@@ -77,12 +79,14 @@ To attach a policy to this service-linked role, you must make the
 request using the AWS service that depends on this role.
 }
 \section{Request syntax}{
-\preformatted{svc$create_service_linked_role(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_service_linked_role(
   AWSServiceName = "string",
   Description = "string",
   CustomSuffix = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

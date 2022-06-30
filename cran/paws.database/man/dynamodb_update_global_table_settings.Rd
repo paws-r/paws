@@ -36,7 +36,9 @@ that will be modified.}
 modified.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GlobalTableName = "string",
   ReplicaSettings = list(
     list(
@@ -129,13 +131,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates settings for a global table.
 }
 \section{Request syntax}{
-\preformatted{svc$update_global_table_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_global_table_settings(
   GlobalTableName = "string",
   GlobalTableBillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
   GlobalTableProvisionedWriteCapacityUnits = 123,
@@ -218,7 +222,7 @@ Updates settings for a global table.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

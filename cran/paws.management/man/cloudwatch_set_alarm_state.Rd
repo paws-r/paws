@@ -49,13 +49,15 @@ Scaling policies, you must include information in the \code{StateReasonData}
 parameter to enable the policy to take the correct action.
 }
 \section{Request syntax}{
-\preformatted{svc$set_alarm_state(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_alarm_state(
   AlarmName = "string",
   StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
   StateReason = "string",
   StateReasonData = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

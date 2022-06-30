@@ -17,10 +17,12 @@ Removes an object lifecycle policy from a container. It takes up to 20
 minutes for the change to take effect.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_lifecycle_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_lifecycle_policy(
   ContainerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

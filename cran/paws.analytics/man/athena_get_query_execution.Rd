@@ -11,7 +11,9 @@ athena_get_query_execution(QueryExecutionId)
 \item{QueryExecutionId}{[required] The unique ID of the query execution.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   QueryExecution = list(
     QueryExecutionId = "string",
     Query = "string",
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
     WorkGroup = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a single execution of a query if you have
@@ -58,10 +60,12 @@ executes, information about the query execution is saved with a unique
 ID.
 }
 \section{Request syntax}{
-\preformatted{svc$get_query_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_query_execution(
   QueryExecutionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

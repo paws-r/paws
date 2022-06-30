@@ -22,7 +22,9 @@ the value specified by \code{MaxRecords}.}
 \item{ShowMemberInfo}{Returns the list of members that comprise the Global Datastore.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   GlobalReplicationGroups = list(
     list(
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a particular global replication group. If no
@@ -63,13 +65,15 @@ identifier is specified, returns information about all Global
 Datastores.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_global_replication_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_global_replication_groups(
   GlobalReplicationGroupId = "string",
   MaxRecords = 123,
   Marker = "string",
   ShowMemberInfo = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

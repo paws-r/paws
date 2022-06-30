@@ -15,10 +15,12 @@ in the response for \code{\link[=datapipeline_poll_for_task]{poll_for_task}}.}
 ReportTaskProgressInput object.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   canceled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Task runners call
@@ -39,7 +41,9 @@ reassigns the task in a subsequent response to
 seconds.
 }
 \section{Request syntax}{
-\preformatted{svc$report_task_progress(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$report_task_progress(
   taskId = "string",
   fields = list(
     list(
@@ -49,7 +53,7 @@ seconds.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

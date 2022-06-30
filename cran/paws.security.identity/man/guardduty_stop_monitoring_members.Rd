@@ -13,7 +13,9 @@ administrator account that is monitoring member accounts.}
 \item{AccountIds}{[required] A list of account IDs for the member accounts to stop monitoring.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -21,7 +23,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops GuardDuty monitoring for the specified member accounts. Use the
@@ -29,13 +31,15 @@ Stops GuardDuty monitoring for the specified member accounts. Use the
 operation to restart monitoring for those accounts.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_monitoring_members(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_monitoring_members(
   DetectorId = "string",
   AccountIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

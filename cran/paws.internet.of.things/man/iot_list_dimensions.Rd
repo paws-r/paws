@@ -12,23 +12,27 @@ iot_list_dimensions(nextToken, maxResults)
 \item{maxResults}{The maximum number of results to retrieve at one time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   dimensionNames = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List the set of dimensions that are defined for your AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_dimensions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_dimensions(
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

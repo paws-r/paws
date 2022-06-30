@@ -48,10 +48,12 @@ is \code{True} and the operation requires at least one of every character
 type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RandomPassword = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates a random password of the specified complexity. This operation
@@ -68,7 +70,9 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_random_password(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_random_password(
   PasswordLength = 123,
   ExcludeCharacters = "string",
   ExcludeNumbers = TRUE|FALSE,
@@ -78,7 +82,7 @@ To run this command, you must have the following permissions:
   IncludeSpace = TRUE|FALSE,
   RequireEachIncludedType = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

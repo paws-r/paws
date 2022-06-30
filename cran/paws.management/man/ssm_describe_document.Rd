@@ -17,7 +17,9 @@ the document. For example, "Release 12, Update 6". This value is unique
 across all versions of a document, and cannot be changed.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Document = list(
     Sha1 = "string",
     Hash = "string",
@@ -81,18 +83,20 @@ A list with the following syntax:\preformatted{list(
     ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified Systems Manager document.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_document(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_document(
   Name = "string",
   DocumentVersion = "string",
   VersionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

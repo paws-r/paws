@@ -18,7 +18,9 @@ The allowed values are \code{COMPLIANT} and \code{NON_COMPLIANT}.}
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ComplianceByConfigRules = list(
     list(
       ConfigRuleName = "string",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Indicates whether the specified AWS Config rules are compliant. If a
@@ -63,7 +65,9 @@ removed from the rule's scope.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_compliance_by_config_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_compliance_by_config_rule(
   ConfigRuleNames = list(
     "string"
   ),
@@ -72,7 +76,7 @@ removed from the rule's scope.
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

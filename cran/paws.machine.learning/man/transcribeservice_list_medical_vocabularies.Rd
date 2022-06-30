@@ -25,7 +25,9 @@ search is not case sensitive.
 returns both "\code{vocabularyname}" and "\code{VocabularyName}".}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = "PENDING"|"READY"|"FAILED",
   NextToken = "string",
   Vocabularies = list(
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of vocabularies that match the specified criteria. If you
@@ -47,13 +49,15 @@ don't enter a value in any of the request parameters, returns the entire
 list of vocabularies.
 }
 \section{Request syntax}{
-\preformatted{svc$list_medical_vocabularies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_medical_vocabularies(
   NextToken = "string",
   MaxResults = 123,
   StateEquals = "PENDING"|"READY"|"FAILED",
   NameContains = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

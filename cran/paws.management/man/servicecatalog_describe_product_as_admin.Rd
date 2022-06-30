@@ -29,7 +29,9 @@ both local and shared TagOptions associated with the product. Otherwise
 only local TagOptions will be returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProductViewDetail = list(
     ProductViewSummary = list(
       Id = "string",
@@ -84,20 +86,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the specified product. This operation is run with
 administrator access.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_product_as_admin(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_product_as_admin(
   AcceptLanguage = "string",
   Id = "string",
   Name = "string",
   SourcePortfolioId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

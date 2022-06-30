@@ -29,10 +29,12 @@ attributes to detect.}
 \item{RoleArn}{[required] ARN of the IAM role that allows access to the stream processor.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StreamProcessorArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Amazon Rekognition stream processor that you can use to
@@ -57,7 +59,9 @@ processing. You can delete the stream processor by calling
 \code{\link[=rekognition_delete_stream_processor]{delete_stream_processor}}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_stream_processor(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stream_processor(
   Input = list(
     KinesisVideoStream = list(
       Arn = "string"
@@ -77,7 +81,7 @@ processing. You can delete the stream processor by calling
   ),
   RoleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

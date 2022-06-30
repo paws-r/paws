@@ -50,7 +50,9 @@ system.}
 \item{LustreConfiguration}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FileSystem = list(
     OwnerId = "string",
     CreationTime = as.POSIXct(
@@ -146,7 +148,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Use this operation to update the configuration of an existing Amazon FSx
@@ -174,7 +176,9 @@ properties:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_file_system(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_file_system(
   FileSystemId = "string",
   ClientRequestToken = "string",
   StorageCapacity = 123,
@@ -198,7 +202,7 @@ properties:
     AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

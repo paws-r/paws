@@ -36,14 +36,16 @@ and should match the schema of what is returned by
 \code{\link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation}}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_component_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_component_configuration(
   ResourceGroupName = "string",
   ComponentName = "string",
   Monitor = TRUE|FALSE,
   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
   ComponentConfiguration = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

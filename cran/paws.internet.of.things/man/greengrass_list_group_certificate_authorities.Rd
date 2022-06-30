@@ -10,7 +10,9 @@ greengrass_list_group_certificate_authorities(GroupId)
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GroupCertificateAuthorities = list(
     list(
       GroupCertificateAuthorityArn = "string",
@@ -18,16 +20,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the current CAs for a group.
 }
 \section{Request syntax}{
-\preformatted{svc$list_group_certificate_authorities(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_group_certificate_authorities(
   GroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

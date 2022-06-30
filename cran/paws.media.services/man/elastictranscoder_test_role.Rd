@@ -20,13 +20,15 @@ files to. The action attempts to read from this bucket.}
 topics that you want the action to send a test notification to.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Success = "string",
   Messages = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The TestRole operation tests the IAM role used to create the pipeline.
@@ -39,7 +41,9 @@ read access to the input and output buckets, and tries to send a test
 notification to Amazon SNS topics that you specify.
 }
 \section{Request syntax}{
-\preformatted{svc$test_role(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_role(
   Role = "string",
   InputBucket = "string",
   OutputBucket = "string",
@@ -47,7 +51,7 @@ notification to Amazon SNS topics that you specify.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

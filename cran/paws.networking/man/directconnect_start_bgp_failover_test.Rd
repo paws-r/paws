@@ -21,7 +21,9 @@ Maximum value: 180 minutes (3 hours).
 Default: 180 minutes (3 hours).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualInterfaceTest = list(
     testId = "string",
     virtualInterfaceId = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts the virtual interface failover test that verifies your
@@ -58,14 +60,16 @@ If you need to stop the test before the test interval completes, use
 \code{\link[=directconnect_stop_bgp_failover_test]{stop_bgp_failover_test}}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_bgp_failover_test(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_bgp_failover_test(
   virtualInterfaceId = "string",
   bgpPeers = list(
     "string"
   ),
   testDurationInMinutes = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,7 +16,9 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 \item{virtualNodeName}{[required] The name of the virtual node to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualNode = list(
     meshName = "string",
     metadata = list(
@@ -205,18 +207,20 @@ A list with the following syntax:\preformatted{list(
     virtualNodeName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes an existing virtual node.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_virtual_node(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_virtual_node(
   meshName = "string",
   meshOwner = "string",
   virtualNodeName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

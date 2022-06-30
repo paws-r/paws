@@ -12,22 +12,26 @@ iot1clickprojects_get_devices_in_placement(projectName, placementName)
 \item{placementName}{[required] The name of the placement to get the devices from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   devices = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an object enumerating the devices in a placement.
 }
 \section{Request syntax}{
-\preformatted{svc$get_devices_in_placement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_devices_in_placement(
   projectName = "string",
   placementName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

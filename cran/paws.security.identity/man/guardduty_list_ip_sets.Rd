@@ -18,13 +18,15 @@ subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IpSetIds = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the IPSets of the GuardDuty service specified by the detector ID.
@@ -32,12 +34,14 @@ If you use this operation from a member account, the IPSets returned are
 the IPSets from the associated administrator account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_ip_sets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_ip_sets(
   DetectorId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

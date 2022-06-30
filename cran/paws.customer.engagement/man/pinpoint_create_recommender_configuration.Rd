@@ -11,7 +11,9 @@ pinpoint_create_recommender_configuration(
 \item{CreateRecommenderConfiguration}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RecommenderConfigurationResponse = list(
     Attributes = list(
       "string"
@@ -29,13 +31,15 @@ A list with the following syntax:\preformatted{list(
     RecommendationsPerMessage = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Amazon Pinpoint configuration for a recommender model.
 }
 \section{Request syntax}{
-\preformatted{svc$create_recommender_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_recommender_configuration(
   CreateRecommenderConfiguration = list(
     Attributes = list(
       "string"
@@ -50,7 +54,7 @@ Creates an Amazon Pinpoint configuration for a recommender model.
     RecommendationsPerMessage = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,7 +23,9 @@ root user.}
 | \code{vpn-connection} | \code{vpn-gateway}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Statuses = list(
     list(
       Deadline = as.POSIXct(
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the ID format settings for resources for the specified IAM
@@ -60,11 +62,13 @@ These settings apply to the principal specified in the request. They do
 not apply to the principal that makes the request.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_identity_id_format(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_identity_id_format(
   PrincipalArn = "string",
   Resource = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

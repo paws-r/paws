@@ -10,21 +10,25 @@ kafka_get_bootstrap_brokers(ClusterArn)
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BootstrapBrokerString = "string",
   BootstrapBrokerStringTls = "string",
   BootstrapBrokerStringSaslScram = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 A list of brokers that a client application can use to bootstrap.
 }
 \section{Request syntax}{
-\preformatted{svc$get_bootstrap_brokers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bootstrap_brokers(
   ClusterArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

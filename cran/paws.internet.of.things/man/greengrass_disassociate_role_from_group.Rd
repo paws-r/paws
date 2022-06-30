@@ -10,19 +10,23 @@ greengrass_disassociate_role_from_group(GroupId)
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DisassociatedAt = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disassociates the role from a group.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_role_from_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_role_from_group(
   GroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

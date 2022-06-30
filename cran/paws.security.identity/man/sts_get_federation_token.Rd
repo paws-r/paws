@@ -48,8 +48,8 @@ policies.
 The plain text that you use for both inline and managed session policies
 can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
-character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
-(\code{U+0009}), linefeed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters.
+character list (\u0020 through \u00FF). It can also include the tab
+(\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
@@ -132,7 +132,9 @@ pass the \code{department}=\code{engineering} session tag. \code{Department} and
 in the request takes precedence over the role tag.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Credentials = list(
     AccessKeyId = "string",
     SecretAccessKey = "string",
@@ -147,7 +149,7 @@ A list with the following syntax:\preformatted{list(
   ),
   PackedPolicySize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a set of temporary security credentials (consisting of an access
@@ -245,7 +247,9 @@ tags, and the session tag passed in the request takes precedence over
 the user tag.
 }
 \section{Request syntax}{
-\preformatted{svc$get_federation_token(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_federation_token(
   Name = "string",
   Policy = "string",
   PolicyArns = list(
@@ -261,7 +265,7 @@ the user tag.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

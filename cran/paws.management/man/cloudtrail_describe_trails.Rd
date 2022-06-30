@@ -36,7 +36,9 @@ include shadow trails, organization trails in a member account and
 region replication trails will not be returned. The default is true.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   trailList = list(
     list(
       Name = "string",
@@ -58,20 +60,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves settings for one or more trails associated with the current
 region for your account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_trails(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_trails(
   trailNameList = list(
     "string"
   ),
   includeShadowTrails = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

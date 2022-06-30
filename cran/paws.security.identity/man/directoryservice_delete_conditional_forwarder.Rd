@@ -22,11 +22,13 @@ Deletes a conditional forwarder that has been set up for your AWS
 directory.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_conditional_forwarder(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_conditional_forwarder(
   DirectoryId = "string",
   RemoteDomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

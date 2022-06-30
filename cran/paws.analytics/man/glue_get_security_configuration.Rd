@@ -10,7 +10,9 @@ glue_get_security_configuration(Name)
 \item{Name}{[required] The name of the security configuration to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SecurityConfiguration = list(
     Name = "string",
     CreatedTimeStamp = as.POSIXct(
@@ -34,16 +36,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a specified security configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$get_security_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_security_configuration(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

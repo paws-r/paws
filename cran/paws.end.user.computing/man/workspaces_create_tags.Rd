@@ -20,7 +20,9 @@ An empty list.
 Creates the specified tags for the specified WorkSpaces resource.
 }
 \section{Request syntax}{
-\preformatted{svc$create_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_tags(
   ResourceId = "string",
   Tags = list(
     list(
@@ -29,7 +31,7 @@ Creates the specified tags for the specified WorkSpaces resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

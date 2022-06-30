@@ -21,11 +21,13 @@ An empty list.
 Deletes the BasePathMapping resource.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_base_path_mapping(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_base_path_mapping(
   domainName = "string",
   basePath = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

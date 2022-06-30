@@ -17,25 +17,29 @@ budgets_execute_budget_action(AccountId, BudgetName, ActionId,
 \item{ExecutionType}{[required] The type of execution.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccountId = "string",
   BudgetName = "string",
   ActionId = "string",
   ExecutionType = "APPROVE_BUDGET_ACTION"|"RETRY_BUDGET_ACTION"|"REVERSE_BUDGET_ACTION"|"RESET_BUDGET_ACTION"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Executes a budget action.
 }
 \section{Request syntax}{
-\preformatted{svc$execute_budget_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$execute_budget_action(
   AccountId = "string",
   BudgetName = "string",
   ActionId = "string",
   ExecutionType = "APPROVE_BUDGET_ACTION"|"RETRY_BUDGET_ACTION"|"REVERSE_BUDGET_ACTION"|"RESET_BUDGET_ACTION"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

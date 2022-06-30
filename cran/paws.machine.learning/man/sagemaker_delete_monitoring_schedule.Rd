@@ -18,10 +18,12 @@ been stopped. This does not delete the job execution history of the
 monitoring schedule.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_monitoring_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_monitoring_schedule(
   MonitoringScheduleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

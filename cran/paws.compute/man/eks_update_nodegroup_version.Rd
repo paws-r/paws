@@ -46,7 +46,9 @@ terminate the old node whether or not any pods are running on the node.}
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   update = list(
     id = "string",
     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
@@ -71,7 +73,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the Kubernetes version or AMI version of an Amazon EKS managed
@@ -102,7 +104,9 @@ do so. You can \code{force} the update if Amazon EKS is unable to drain the
 nodes as a result of a pod disruption budget issue.
 }
 \section{Request syntax}{
-\preformatted{svc$update_nodegroup_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_nodegroup_version(
   clusterName = "string",
   nodegroupName = "string",
   version = "string",
@@ -115,7 +119,7 @@ nodes as a result of a pod disruption budget issue.
   force = TRUE|FALSE,
   clientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

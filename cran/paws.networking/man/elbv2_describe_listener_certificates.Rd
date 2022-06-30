@@ -16,7 +16,9 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Certificates = list(
     list(
       CertificateArn = "string",
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the default certificate and the certificate list for the
@@ -40,12 +42,14 @@ in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_listener_certificates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_listener_certificates(
   ListenerArn = "string",
   Marker = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

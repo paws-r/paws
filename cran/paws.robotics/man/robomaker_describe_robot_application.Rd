@@ -12,7 +12,9 @@ robomaker_describe_robot_application(application, applicationVersion)
 \item{applicationVersion}{The version of the robot application to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   name = "string",
   version = "string",
@@ -36,17 +38,19 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a robot application.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_robot_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_robot_application(
   application = "string",
   applicationVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

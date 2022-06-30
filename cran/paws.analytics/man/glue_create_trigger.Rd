@@ -36,16 +36,20 @@ the trigger. For more information about tags in AWS Glue, see \href{https://docs
 the developer guide.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new trigger.
 }
 \section{Request syntax}{
-\preformatted{svc$create_trigger(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_trigger(
   Name = "string",
   WorkflowName = "string",
   Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
@@ -82,7 +86,7 @@ Creates a new trigger.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

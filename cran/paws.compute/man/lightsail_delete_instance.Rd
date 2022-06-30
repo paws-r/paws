@@ -13,7 +13,9 @@ lightsail_delete_instance(instanceName, forceDeleteAddOns)
 the disk.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -38,7 +40,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an Amazon Lightsail instance.
@@ -48,11 +50,13 @@ resource tags applied to the resource identified by \verb{instance name}. For
 more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_instance(
   instanceName = "string",
   forceDeleteAddOns = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

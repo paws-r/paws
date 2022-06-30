@@ -65,7 +65,9 @@ information, see the \emph{\href{https://docs.aws.amazon.com/awscloudtrail/lates
 .
 }
 \section{Service syntax}{
-\preformatted{svc <- marketplacemetering(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- marketplacemetering(
   config = list(
     credentials = list(
       creds = list(
@@ -79,7 +81,7 @@ information, see the \emph{\href{https://docs.aws.amazon.com/awscloudtrail/lates
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

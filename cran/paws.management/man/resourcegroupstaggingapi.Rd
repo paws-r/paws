@@ -118,7 +118,7 @@ following AWS services.
 \item \href{https://docs.aws.amazon.com/elasticloadbalancing/}{Elastic Load Balancing}
 \item \href{https://docs.aws.amazon.com/elastic-inference/}{Amazon Elastic Inference}
 \item \href{https://docs.aws.amazon.com/elasticache/}{Amazon ElastiCache}
-\item \href{https://docs.aws.amazon.com/elasticsearch-service/}{Amazon Elasticsearch Service}
+\item Amazon Elasticsearch Service
 \item \href{https://docs.aws.amazon.com/medialive/}{AWS Elemental MediaLive}
 \item \href{https://docs.aws.amazon.com/mediapackage/}{AWS Elemental MediaPackage}
 \item \href{https://docs.aws.amazon.com/mediapackage/}{AWS Elemental MediaPackage VoD}
@@ -160,7 +160,7 @@ following AWS services.
 \item \href{https://docs.aws.amazon.com/msk/}{Amazon MSK}
 \item \href{https://docs.aws.amazon.com/msk/}{Amazon MSK}
 \item \href{https://docs.aws.amazon.com/neptune/}{Amazon Neptune}
-\item \href{https://docs.aws.amazon.com/vpc/latest/tgw/what-is-network-manager.html}{AWS Network Manager}
+\item \href{https://docs.aws.amazon.com/vpc/latest/tgwnm/what-is-network-manager.html}{AWS Network Manager}
 \item \href{https://docs.aws.amazon.com/opsworks/}{AWS OpsWorks}
 \item \href{https://docs.aws.amazon.com/opsworks/}{AWS OpsWorks CM}
 \item \href{https://docs.aws.amazon.com/organizations/}{AWS Organizations}
@@ -168,7 +168,7 @@ following AWS services.
 \item \href{https://docs.aws.amazon.com/qldb/}{Amazon Quantum Ledger Database (QLDB)}
 \item \href{https://docs.aws.amazon.com/rds/}{Amazon RDS}
 \item \href{https://docs.aws.amazon.com/redshift/}{Amazon Redshift}
-\item \href{https://docs.aws.amazon.com/ram/}{AWS Resource Access Manager}
+\item \href{https://docs.aws.amazon.com/ARG/}{AWS Resource Access Manager}
 \item \href{https://docs.aws.amazon.com/ARG/}{AWS Resource Groups}
 \item \href{https://docs.aws.amazon.com/robomaker/}{AWS RoboMaker}
 \item \href{https://docs.aws.amazon.com/route53/}{Amazon Route 53}
@@ -190,12 +190,14 @@ following AWS services.
 \item \href{https://docs.aws.amazon.com/vpc/}{Amazon VPC}
 \item \href{https://docs.aws.amazon.com/waf/}{AWS WAF}
 \item \href{https://docs.aws.amazon.com/waf/}{AWS WAF Regional}
-\item \href{https://docs.aws.amazon.com/worklink/}{Amazon WorkLink}
+\item Amazon WorkLink
 \item \href{https://docs.aws.amazon.com/workspaces/}{Amazon WorkSpaces}
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- resourcegroupstaggingapi(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- resourcegroupstaggingapi(
   config = list(
     credentials = list(
       creds = list(
@@ -209,7 +211,7 @@ following AWS services.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

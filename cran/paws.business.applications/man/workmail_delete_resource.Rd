@@ -19,11 +19,13 @@ An empty list.
 Deletes the specified resource.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource(
   OrganizationId = "string",
   ResourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

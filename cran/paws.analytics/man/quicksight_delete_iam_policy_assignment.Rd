@@ -15,23 +15,27 @@ quicksight_delete_iam_policy_assignment(AwsAccountId, AssignmentName,
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssignmentName = "string",
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an existing IAM policy assignment.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_iam_policy_assignment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_iam_policy_assignment(
   AwsAccountId = "string",
   AssignmentName = "string",
   Namespace = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

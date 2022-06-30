@@ -12,7 +12,9 @@ dynamodb_describe_continuous_backups(TableName)
 backups and point in time recovery settings.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContinuousBackupsDescription = list(
     ContinuousBackupsStatus = "ENABLED"|"DISABLED",
     PointInTimeRecoveryDescription = list(
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Checks the status of continuous backups and point in time recovery on
@@ -47,10 +49,12 @@ You can call
 a maximum rate of 10 times per second.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_continuous_backups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_continuous_backups(
   TableName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

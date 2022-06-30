@@ -35,10 +35,12 @@ This operation requires permissions for the
 \code{elasticfilesystem:DeleteFileSystem} action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_file_system(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_file_system(
   FileSystemId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

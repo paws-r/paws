@@ -13,7 +13,9 @@ alexaforbusiness_list_conference_providers(NextToken, MaxResults)
 calls.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConferenceProviders = list(
     list(
       Arn = "string",
@@ -36,17 +38,19 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists conference providers under a specific AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_conference_providers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_conference_providers(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

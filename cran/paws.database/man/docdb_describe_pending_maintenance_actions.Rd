@@ -38,7 +38,9 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PendingMaintenanceActions = list(
     list(
       ResourceIdentifier = "string",
@@ -62,14 +64,16 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of resources (for example, instances) that have at least
 one pending maintenance action.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_pending_maintenance_actions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_pending_maintenance_actions(
   ResourceIdentifier = "string",
   Filters = list(
     list(
@@ -82,7 +86,7 @@ one pending maintenance action.
   Marker = "string",
   MaxRecords = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

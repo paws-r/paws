@@ -26,7 +26,9 @@ returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ComplianceItems = list(
     list(
       ComplianceType = "string",
@@ -50,7 +52,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 For a specified resource ID, this API action returns a list of
@@ -59,7 +61,9 @@ only specify one resource ID per call. List results depend on the
 criteria specified in the filter.
 }
 \section{Request syntax}{
-\preformatted{svc$list_compliance_items(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_compliance_items(
   Filters = list(
     list(
       Key = "string",
@@ -78,7 +82,7 @@ criteria specified in the filter.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

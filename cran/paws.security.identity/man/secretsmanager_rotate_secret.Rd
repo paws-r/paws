@@ -58,12 +58,14 @@ secret.}
 \item{RotationRules}{A structure that defines the rotation configuration for this secret.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ARN = "string",
   Name = "string",
   VersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Configures and starts the asynchronous process of rotating this secret.
@@ -130,7 +132,9 @@ of a secret, use
 }
 }
 \section{Request syntax}{
-\preformatted{svc$rotate_secret(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$rotate_secret(
   SecretId = "string",
   ClientRequestToken = "string",
   RotationLambdaARN = "string",
@@ -138,7 +142,7 @@ of a secret, use
     AutomaticallyAfterDays = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

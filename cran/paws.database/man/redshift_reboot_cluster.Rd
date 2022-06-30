@@ -10,7 +10,9 @@ redshift_reboot_cluster(ClusterIdentifier)
 \item{ClusterIdentifier}{[required] The cluster identifier.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -167,7 +169,7 @@ A list with the following syntax:\preformatted{list(
     ClusterNamespaceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Reboots a cluster. This action is taken as soon as possible. It results
@@ -179,10 +181,12 @@ For more information about managing clusters, go to \href{https://docs.aws.amazo
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$reboot_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_cluster(
   ClusterIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

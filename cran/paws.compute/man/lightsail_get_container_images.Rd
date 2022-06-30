@@ -12,7 +12,9 @@ lightsail_get_container_images(serviceName)
 container images.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   containerImages = list(
     list(
       image = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the container images that are registered to your Amazon
@@ -35,10 +37,12 @@ images are not returned as part of this action. Those images are not
 registered to your Lightsail container service.
 }
 \section{Request syntax}{
-\preformatted{svc$get_container_images(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_container_images(
   serviceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

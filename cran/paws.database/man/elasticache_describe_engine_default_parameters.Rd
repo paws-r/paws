@@ -29,7 +29,9 @@ specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EngineDefaults = list(
     CacheParameterGroupFamily = "string",
     Marker = "string",
@@ -66,19 +68,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the default engine and system parameter information for the
 specified cache engine.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_engine_default_parameters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_engine_default_parameters(
   CacheParameterGroupFamily = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

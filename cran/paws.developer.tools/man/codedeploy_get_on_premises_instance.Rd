@@ -10,7 +10,9 @@ codedeploy_get_on_premises_instance(instanceName)
 \item{instanceName}{[required] The name of the on-premises instance about which to get information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   instanceInfo = list(
     instanceName = "string",
     iamSessionArn = "string",
@@ -30,16 +32,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about an on-premises instance.
 }
 \section{Request syntax}{
-\preformatted{svc$get_on_premises_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_on_premises_instance(
   instanceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

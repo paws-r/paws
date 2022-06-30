@@ -20,7 +20,9 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IAMPolicyAssignments = list(
     list(
       AssignmentName = "string",
@@ -31,20 +33,22 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists IAM policy assignments in the current Amazon QuickSight account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_iam_policy_assignments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_iam_policy_assignments(
   AwsAccountId = "string",
   AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
   Namespace = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

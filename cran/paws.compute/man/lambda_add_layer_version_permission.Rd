@@ -29,11 +29,13 @@ this option to avoid modifying a policy that has changed since you last
 read it.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Statement = "string",
   RevisionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds permissions to the resource-based policy of a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
@@ -46,7 +48,9 @@ To revoke permission, call
 with the statement ID that you specified when you added it.
 }
 \section{Request syntax}{
-\preformatted{svc$add_layer_version_permission(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_layer_version_permission(
   LayerName = "string",
   VersionNumber = 123,
   StatementId = "string",
@@ -55,7 +59,7 @@ with the statement ID that you specified when you added it.
   OrganizationId = "string",
   RevisionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

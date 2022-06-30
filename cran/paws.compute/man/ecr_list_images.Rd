@@ -38,7 +38,9 @@ returns up to 100 results and a \code{nextToken} value, if applicable.}
 \code{\link[=ecr_list_images]{list_images}} results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   imageIds = list(
     list(
       imageDigest = "string",
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all the image IDs for the specified repository.
@@ -61,7 +63,9 @@ Or, you can filter your results to return only \code{TAGGED} images to list
 all of the tags in your repository.
 }
 \section{Request syntax}{
-\preformatted{svc$list_images(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_images(
   registryId = "string",
   repositoryName = "string",
   nextToken = "string",
@@ -70,7 +74,7 @@ all of the tags in your repository.
     tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

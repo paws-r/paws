@@ -20,7 +20,9 @@ and \code{Scheduled}.}
 \item{nextToken}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   queries = list(
     list(
       queryId = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of CloudWatch Logs Insights queries that are scheduled,
@@ -41,13 +43,15 @@ request all queries or limit it to queries of a specific log group or
 queries with a certain status.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_queries(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_queries(
   logGroupName = "string",
   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

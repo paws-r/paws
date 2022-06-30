@@ -10,18 +10,19 @@ storagegateway_delete_snapshot_schedule(VolumeARN)
 \item{VolumeARN}{[required] The volume which snapshot schedule to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VolumeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a snapshot of a volume.
 
 You can take snapshots of your gateway volumes on a scheduled or ad hoc
 basis. This API action enables you to delete a snapshot schedule for a
-volume. For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/backing-up-volumes.html}{Backing up your volumes}.
-In the
+volume. For more information, see \href{https://docs.aws.amazon.com/storagegateway/index.html}{Backing up your volumes}. In the
 \code{\link[=storagegateway_delete_snapshot_schedule]{delete_snapshot_schedule}}
 request, you identify the volume by providing its Amazon Resource Name
 (ARN). This operation is only supported in stored and cached volume
@@ -33,10 +34,12 @@ information, go to
 in the \emph{Amazon Elastic Compute Cloud API Reference}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_snapshot_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_snapshot_schedule(
   VolumeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -15,7 +15,9 @@ apigateway_get_request_validators(restApiId, position, limit)
 and the maximum value is 500.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   position = "string",
   items = list(
     list(
@@ -26,18 +28,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the RequestValidators collection of a given RestApi.
 }
 \section{Request syntax}{
-\preformatted{svc$get_request_validators(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_request_validators(
   restApiId = "string",
   position = "string",
   limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

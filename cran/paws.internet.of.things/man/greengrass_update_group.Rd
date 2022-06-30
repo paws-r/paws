@@ -18,11 +18,13 @@ An empty list.
 Updates a group.
 }
 \section{Request syntax}{
-\preformatted{svc$update_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_group(
   GroupId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

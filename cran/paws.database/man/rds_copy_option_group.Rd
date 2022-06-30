@@ -32,7 +32,9 @@ Example: \code{my-option-group}}
 \item{Tags}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OptionGroup = list(
     OptionGroupName = "string",
     OptionGroupDescription = "string",
@@ -78,13 +80,15 @@ A list with the following syntax:\preformatted{list(
     OptionGroupArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Copies the specified option group.
 }
 \section{Request syntax}{
-\preformatted{svc$copy_option_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_option_group(
   SourceOptionGroupIdentifier = "string",
   TargetOptionGroupIdentifier = "string",
   TargetOptionGroupDescription = "string",
@@ -95,7 +99,7 @@ Copies the specified option group.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

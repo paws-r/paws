@@ -21,10 +21,12 @@ the default values. You can't use this parameter if the
 \code{ResetAllParameters} parameter is set to \code{true}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the parameters of a DB cluster parameter group to the default
@@ -42,7 +44,9 @@ instance in your DB cluster that you want the updated static parameter
 to apply to.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_db_cluster_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(
@@ -60,7 +64,7 @@ to apply to.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

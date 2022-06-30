@@ -12,24 +12,28 @@ codestar_tag_project(id, tags)
 \item{tags}{[required] The tags you want to add to the project.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds tags to a project.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_project(
   id = "string",
   tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

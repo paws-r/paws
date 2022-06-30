@@ -24,11 +24,13 @@ environment's copy of the template without affecting the running
 environment.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_configuration_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_configuration_template(
   ApplicationName = "string",
   TemplateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -17,7 +17,9 @@ opsworkscm_describe_servers(ServerName, NextToken, MaxResults)
 \code{\link[=opsworkscm_describe_servers]{describe_servers}} requests.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Servers = list(
     list(
       AssociatePublicIpAddress = TRUE|FALSE,
@@ -59,7 +61,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all configuration management servers that are identified with your
@@ -73,12 +75,14 @@ A \code{ValidationException} is raised when parameters of the request are not
 valid.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_servers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_servers(
   ServerName = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

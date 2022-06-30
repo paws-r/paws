@@ -27,16 +27,20 @@ If you use the \code{channelMessages} object, you must not specify a value
 for \code{startTime} and \code{endTime}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   reprocessingId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts the reprocessing of raw message data through the pipeline.
 }
 \section{Request syntax}{
-\preformatted{svc$start_pipeline_reprocessing(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_pipeline_reprocessing(
   pipelineName = "string",
   startTime = as.POSIXct(
     "2015-01-01"
@@ -50,7 +54,7 @@ Starts the reprocessing of raw message data through the pipeline.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

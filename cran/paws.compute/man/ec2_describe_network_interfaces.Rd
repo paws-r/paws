@@ -74,11 +74,11 @@ interface is not attached to an instance, the status is \code{available};
 if a network interface is attached to an instance the status is
 \verb{in-use}.
 \item \code{subnet-id} - The ID of the subnet for the network interface.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -102,7 +102,9 @@ next set of results. You cannot specify this parameter and the network
 interface IDs parameter in the same request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NetworkInterfaces = list(
     list(
       Association = list(
@@ -178,13 +180,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more of your network interfaces.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_network_interfaces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_network_interfaces(
   Filters = list(
     list(
       Name = "string",
@@ -200,7 +204,7 @@ Describes one or more of your network interfaces.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

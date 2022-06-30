@@ -24,7 +24,9 @@ is \code{100} and the maximum value is \code{100}.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Activities = list(
     list(
       ActivityId = "string",
@@ -45,14 +47,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more scaling activities for the specified Auto Scaling
 group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_scaling_activities(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scaling_activities(
   ActivityIds = list(
     "string"
   ),
@@ -60,7 +64,7 @@ group.
   MaxRecords = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

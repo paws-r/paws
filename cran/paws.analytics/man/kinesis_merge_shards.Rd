@@ -70,12 +70,14 @@ If you try to operate on too many streams in parallel using
 per second per account.
 }
 \section{Request syntax}{
-\preformatted{svc$merge_shards(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$merge_shards(
   StreamName = "string",
   ShardToMerge = "string",
   AdjacentShardToMerge = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

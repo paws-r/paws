@@ -10,7 +10,9 @@ iot_describe_thing(thingName)
 \item{thingName}{[required] The name of the thing.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   defaultClientId = "string",
   thingName = "string",
   thingId = "string",
@@ -22,16 +24,18 @@ A list with the following syntax:\preformatted{list(
   version = 123,
   billingGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the specified thing.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_thing(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_thing(
   thingName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ medialive_batch_start(ChannelIds, MultiplexIds)
 \item{MultiplexIds}{List of multiplex IDs}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Failed = list(
     list(
       Arn = "string",
@@ -29,13 +31,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts existing resources
 }
 \section{Request syntax}{
-\preformatted{svc$batch_start(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_start(
   ChannelIds = list(
     "string"
   ),
@@ -43,7 +47,7 @@ Starts existing resources
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

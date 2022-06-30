@@ -16,7 +16,9 @@ chime_update_voice_connector_group(VoiceConnectorGroupId, Name,
 \item{VoiceConnectorItems}{[required] The \code{VoiceConnectorItems} to associate with the group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VoiceConnectorGroup = list(
     VoiceConnectorGroupId = "string",
     Name = "string",
@@ -34,14 +36,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates details for the specified Amazon Chime Voice Connector group,
 such as the name and Amazon Chime Voice Connector priority ranking.
 }
 \section{Request syntax}{
-\preformatted{svc$update_voice_connector_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_voice_connector_group(
   VoiceConnectorGroupId = "string",
   Name = "string",
   VoiceConnectorItems = list(
@@ -51,7 +55,7 @@ such as the name and Amazon Chime Voice Connector priority ranking.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

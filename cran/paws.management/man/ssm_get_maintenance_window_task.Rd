@@ -12,7 +12,9 @@ ssm_get_maintenance_window_task(WindowId, WindowTaskId)
 \item{WindowTaskId}{[required] The maintenance window task ID to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowId = "string",
   WindowTaskId = "string",
   Targets = list(
@@ -89,7 +91,7 @@ A list with the following syntax:\preformatted{list(
   Name = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the tasks in a maintenance window.
@@ -101,11 +103,13 @@ response to this command. These values do not affect the running of your
 task and can be ignored.
 }
 \section{Request syntax}{
-\preformatted{svc$get_maintenance_window_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_maintenance_window_task(
   WindowId = "string",
   WindowTaskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

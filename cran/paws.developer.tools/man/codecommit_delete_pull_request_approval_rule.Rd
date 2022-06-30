@@ -14,10 +14,12 @@ rule you want to delete.}
 \item{approvalRuleName}{[required] The name of the approval rule you want to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   approvalRuleId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an approval rule from a specified pull request. Approval rules
@@ -28,11 +30,13 @@ where the pull request was created. You cannot delete an approval rule
 from a merged or closed pull request.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_pull_request_approval_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_pull_request_approval_rule(
   pullRequestId = "string",
   approvalRuleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -30,10 +30,12 @@ representable in UTF-8 format, and the following special characters: + -
 the maximum length for a tag's value is 256.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VolumeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a snapshot schedule configured for a gateway volume. This
@@ -50,7 +52,9 @@ when you want the snapshot to begin on a day and the frequency (in
 hours) of snapshots.
 }
 \section{Request syntax}{
-\preformatted{svc$update_snapshot_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_snapshot_schedule(
   VolumeARN = "string",
   StartAt = 123,
   RecurrenceInHours = 123,
@@ -62,7 +66,7 @@ hours) of snapshots.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

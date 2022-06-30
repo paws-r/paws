@@ -24,10 +24,12 @@ state and the service sends back an HTTP 200 response with an empty HTTP
 body.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_training_entity_recognizer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_training_entity_recognizer(
   EntityRecognizerArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

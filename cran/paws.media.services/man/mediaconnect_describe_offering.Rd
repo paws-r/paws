@@ -10,7 +10,9 @@ mediaconnect_describe_offering(OfferingArn)
 \item{OfferingArn}{[required] The Amazon Resource Name (ARN) of the offering.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Offering = list(
     CurrencyCode = "string",
     Duration = 123,
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Displays the details of an offering. The response includes the offering
@@ -33,10 +35,12 @@ description, duration, outbound bandwidth, price, and Amazon Resource
 Name (ARN).
 }
 \section{Request syntax}{
-\preformatted{svc$describe_offering(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_offering(
   OfferingArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -28,10 +28,12 @@ Discovery Agent selected in the filters. If no value is specified,
 exported data includes the most recent data collected by the agent.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   exportId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Begins the export of discovered data to an S3 bucket.
@@ -49,7 +51,9 @@ data from AWS Discovery Agents. Export of summary data is limited to two
 exports per day.
 }
 \section{Request syntax}{
-\preformatted{svc$start_export_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_export_task(
   exportDataFormat = list(
     "CSV"|"GRAPHML"
   ),
@@ -69,7 +73,7 @@ exports per day.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

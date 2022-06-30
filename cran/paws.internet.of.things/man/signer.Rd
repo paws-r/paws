@@ -37,7 +37,9 @@ Management.
 For more information about AWS Signer, see the \href{https://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html}{AWS Signer Developer Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- signer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- signer(
   config = list(
     credentials = list(
       creds = list(
@@ -51,7 +53,7 @@ For more information about AWS Signer, see the \href{https://docs.aws.amazon.com
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

@@ -30,25 +30,29 @@ parameter. Pagination continues from the end of the previous results
 that returned the \code{nextToken} value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   fargateProfileNames = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the AWS Fargate profiles associated with the specified cluster in
 your AWS account in the specified Region.
 }
 \section{Request syntax}{
-\preformatted{svc$list_fargate_profiles(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_fargate_profiles(
   clusterName = "string",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

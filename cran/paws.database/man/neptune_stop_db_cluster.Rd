@@ -11,7 +11,9 @@ neptune_stop_db_cluster(DBClusterIdentifier)
 parameter is stored as a lowercase string.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -87,7 +89,7 @@ A list with the following syntax:\preformatted{list(
     DeletionProtection = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops an Amazon Neptune DB cluster. When you stop a DB cluster, Neptune
@@ -98,10 +100,12 @@ Neptune also retains the transaction logs so you can do a point-in-time
 restore if necessary.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_db_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_db_cluster(
   DBClusterIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

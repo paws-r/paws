@@ -47,17 +47,21 @@ file is created for empty folders. The default is false.}
 use when resolving conflicts during a merge.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   commitId = "string",
   treeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Merges two specified branches using the three-way merge strategy.
 }
 \section{Request syntax}{
-\preformatted{svc$merge_branches_by_three_way(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$merge_branches_by_three_way(
   repositoryName = "string",
   sourceCommitSpecifier = "string",
   destinationCommitSpecifier = "string",
@@ -90,7 +94,7 @@ Merges two specified branches using the three-way merge strategy.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

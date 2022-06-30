@@ -21,10 +21,12 @@ seconds after calling
 \code{\link[=rekognition_delete_stream_processor]{delete_stream_processor}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_stream_processor(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_stream_processor(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

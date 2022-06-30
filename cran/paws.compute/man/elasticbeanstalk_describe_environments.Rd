@@ -44,7 +44,9 @@ identical to the ones specified in the initial request.
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Environments = list(
     list(
       EnvironmentName = "string",
@@ -96,13 +98,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns descriptions for existing environments.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_environments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_environments(
   ApplicationName = "string",
   VersionLabel = "string",
   EnvironmentIds = list(
@@ -118,7 +122,7 @@ Returns descriptions for existing environments.
   MaxRecords = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

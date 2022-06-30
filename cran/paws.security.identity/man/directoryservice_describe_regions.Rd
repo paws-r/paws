@@ -17,7 +17,9 @@ directoryservice_describe_regions(DirectoryId, RegionName, NextToken)
 this is the first call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RegionsDescription = list(
     list(
       DirectoryId = "string",
@@ -44,19 +46,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information about the Regions that are configured for
 multi-Region replication.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_regions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_regions(
   DirectoryId = "string",
   RegionName = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

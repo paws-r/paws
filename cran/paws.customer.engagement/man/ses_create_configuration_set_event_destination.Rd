@@ -26,12 +26,14 @@ Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
 
 An event destination is the AWS service to which Amazon SES publishes
 the email sending events associated with a configuration set. For
-information about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
+information about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$create_configuration_set_event_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestination = list(
     Name = "string",
@@ -57,7 +59,7 @@ You can execute this operation no more than once per second.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

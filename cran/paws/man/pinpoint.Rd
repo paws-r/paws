@@ -19,7 +19,9 @@ Operations section.
 Doc Engage API - Amazon Pinpoint API
 }
 \section{Service syntax}{
-\preformatted{svc <- pinpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- pinpoint(
   config = list(
     credentials = list(
       creds = list(
@@ -33,7 +35,7 @@ Doc Engage API - Amazon Pinpoint API
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

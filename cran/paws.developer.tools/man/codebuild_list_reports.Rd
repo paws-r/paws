@@ -31,19 +31,23 @@ The default value is 100.}
 \item{filter}{A \code{ReportFilter} object used to filter the returned reports.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   nextToken = "string",
   reports = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of ARNs for the reports in the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_reports(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_reports(
   sortOrder = "ASCENDING"|"DESCENDING",
   nextToken = "string",
   maxResults = 123,
@@ -51,7 +55,7 @@ Returns a list of ARNs for the reports in the current AWS account.
     status = "GENERATING"|"SUCCEEDED"|"FAILED"|"INCOMPLETE"|"DELETING"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

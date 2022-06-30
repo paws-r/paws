@@ -71,8 +71,8 @@ Valid Values: \code{true} | \code{false}}
 file share. Set it to \code{false} to map file and directory permissions to
 the POSIX permissions.
 
-For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html}{Using Microsoft Windows ACLs to control access to an SMB file share}
-in the \emph{AWS Storage Gateway User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/storagegateway/index.html}{Using Microsoft Windows ACLs to control access to an SMB file share} in the
+\emph{AWS Storage Gateway User Guide}.
 
 Valid Values: \code{true} | \code{false}}
 
@@ -129,10 +129,12 @@ the maximum length for a tag's value is 256.}
 \item{NotificationPolicy}{The notification policy of the file share.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FileShareARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Server Message Block (SMB) file share on an existing file
@@ -152,7 +154,9 @@ File gateways don't support creating hard or symbolic links on a file
 share.
 }
 \section{Request syntax}{
-\preformatted{svc$create_smb_file_share(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_smb_file_share(
   ClientToken = "string",
   GatewayARN = "string",
   KMSEncrypted = TRUE|FALSE,
@@ -190,7 +194,7 @@ share.
   ),
   NotificationPolicy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

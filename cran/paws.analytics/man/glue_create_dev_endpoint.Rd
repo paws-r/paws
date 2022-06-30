@@ -100,7 +100,9 @@ the developer guide.}
 \item{Arguments}{A map of arguments used to configure the \code{DevEndpoint}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointName = "string",
   Status = "string",
   SecurityGroupIds = list(
@@ -127,13 +129,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new development endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$create_dev_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dev_endpoint(
   EndpointName = "string",
   RoleArn = "string",
   SecurityGroupIds = list(
@@ -158,7 +162,7 @@ Creates a new development endpoint.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

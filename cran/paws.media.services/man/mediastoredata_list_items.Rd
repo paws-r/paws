@@ -8,8 +8,8 @@ specified folder}
 mediastoredata_list_items(Path, MaxResults, NextToken)
 }
 \arguments{
-\item{Path}{The path in the container from which to retrieve items. Format:
-<folder name>/<folder name>/<file name>}
+\item{Path}{The path in the container from which to retrieve items. Format: \<folder
+name\>/\<folder name\>/\<file name\>}
 
 \item{MaxResults}{The maximum number of results to return per API request. For example,
 you submit a \code{\link[=mediastoredata_list_items]{list_items}} request with
@@ -33,7 +33,9 @@ specify the \code{NextToken} value.
 Tokens expire after 15 minutes.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Items = list(
     list(
       Name = "string",
@@ -48,19 +50,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides a list of metadata entries about folders and objects in the
 specified folder.
 }
 \section{Request syntax}{
-\preformatted{svc$list_items(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_items(
   Path = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,19 +10,23 @@ ssm_delete_maintenance_window(WindowId)
 \item{WindowId}{[required] The ID of the maintenance window to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a maintenance window.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_maintenance_window(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_maintenance_window(
   WindowId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

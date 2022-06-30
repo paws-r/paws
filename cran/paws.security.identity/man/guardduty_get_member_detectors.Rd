@@ -13,7 +13,9 @@ guardduty_get_member_detectors(DetectorId, AccountIds)
 \item{AccountIds}{[required] The account ID of the member account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MemberDataSourceConfigurations = list(
     list(
       AccountId = "string",
@@ -40,20 +42,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes which data sources are enabled for the member account's
 detector.
 }
 \section{Request syntax}{
-\preformatted{svc$get_member_detectors(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_member_detectors(
   DetectorId = "string",
   AccountIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

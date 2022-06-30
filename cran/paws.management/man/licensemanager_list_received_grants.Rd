@@ -21,7 +21,9 @@ licensemanager_list_received_grants(GrantArns, Filters, NextToken,
 \item{MaxResults}{Maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Grants = list(
     list(
       GrantArn = "string",
@@ -40,13 +42,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists grants that are received but not accepted.
 }
 \section{Request syntax}{
-\preformatted{svc$list_received_grants(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_received_grants(
   GrantArns = list(
     "string"
   ),
@@ -61,7 +65,7 @@ Lists grants that are received but not accepted.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -8,8 +8,8 @@ mediaconvert_list_queues(ListBy, MaxResults, NextToken, Order)
 }
 \arguments{
 \item{ListBy}{Optional. When you request a list of queues, you can choose to list them
-alphabetically by NAME or chronologically by CREATION_DATE. If you
-don't specify, the service will list them by creation date.}
+alphabetically by NAME or chronologically by CREATION_DATE. If you don't
+specify, the service will list them by creation date.}
 
 \item{MaxResults}{Optional. Number of queues, up to twenty, that will be returned at one
 time.}
@@ -22,7 +22,9 @@ they are sorted in ASCENDING or DESCENDING order. Default varies by
 resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Queues = list(
     list(
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve a JSON array of up to twenty of your queues. This will return
@@ -63,13 +65,15 @@ the queues themselves, not just a list of them. To retrieve the next
 twenty queues, use the nextToken string returned with the array.
 }
 \section{Request syntax}{
-\preformatted{svc$list_queues(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_queues(
   ListBy = "NAME"|"CREATION_DATE",
   MaxResults = 123,
   NextToken = "string",
   Order = "ASCENDING"|"DESCENDING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

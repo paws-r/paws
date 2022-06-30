@@ -47,7 +47,9 @@ Constraints:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -189,7 +191,7 @@ A list with the following syntax:\preformatted{list(
     DeletionProtection = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The DeleteDBInstance action deletes a previously provisioned DB
@@ -211,12 +213,14 @@ You can't delete a DB instance if it is the only instance in the DB
 cluster, or if it has deletion protection enabled.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_db_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_instance(
   DBInstanceIdentifier = "string",
   SkipFinalSnapshot = TRUE|FALSE,
   FinalDBSnapshotIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

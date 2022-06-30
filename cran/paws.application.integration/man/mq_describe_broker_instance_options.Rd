@@ -21,7 +21,9 @@ return. To request the first page, leave nextToken empty.}
 \item{StorageType}{Filter response by storage type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BrokerInstanceOptions = list(
     list(
       AvailabilityZones = list(
@@ -43,20 +45,22 @@ A list with the following syntax:\preformatted{list(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describe available broker instance options.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_broker_instance_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_broker_instance_options(
   EngineType = "string",
   HostInstanceType = "string",
   MaxResults = 123,
   NextToken = "string",
   StorageType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

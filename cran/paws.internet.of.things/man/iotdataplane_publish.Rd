@@ -23,12 +23,14 @@ For more information, see \href{https://docs.aws.amazon.com/iot/latest/developer
 in the AWS IoT Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$publish(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$publish(
   topic = "string",
   qos = 123,
   payload = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

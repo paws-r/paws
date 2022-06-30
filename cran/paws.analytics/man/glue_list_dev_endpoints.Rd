@@ -15,13 +15,15 @@ glue_list_dev_endpoints(NextToken, MaxResults, Tags)
 \item{Tags}{Specifies to return only these tagged resources.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DevEndpointNames = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the names of all \code{DevEndpoint} resources in this AWS account,
@@ -34,14 +36,16 @@ group. If you choose to use tags filtering, only resources with the tag
 are retrieved.
 }
 \section{Request syntax}{
-\preformatted{svc$list_dev_endpoints(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_dev_endpoints(
   NextToken = "string",
   MaxResults = 123,
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

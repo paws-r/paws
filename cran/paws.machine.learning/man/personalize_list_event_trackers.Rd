@@ -16,7 +16,9 @@ next set of event trackers (if they exist).}
 \item{maxResults}{The maximum number of event trackers to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   eventTrackers = list(
     list(
       name = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the list of event trackers associated with the account. The
@@ -42,12 +44,14 @@ event trackers, see
 \code{\link[=personalize_create_event_tracker]{create_event_tracker}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_event_trackers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_event_trackers(
   datasetGroupArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

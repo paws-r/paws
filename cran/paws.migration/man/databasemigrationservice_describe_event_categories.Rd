@@ -15,7 +15,9 @@ Valid values: replication-instance | replication-task}
 \item{Filters}{Filters applied to the event categories.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventCategoryGroupList = list(
     list(
       SourceType = "string",
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists categories for all event source types, or, if specified, for a
@@ -34,7 +36,9 @@ source types in \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Even
 in the \emph{AWS Database Migration Service User Guide.}
 }
 \section{Request syntax}{
-\preformatted{svc$describe_event_categories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_categories(
   SourceType = "string",
   Filters = list(
     list(
@@ -45,7 +49,7 @@ in the \emph{AWS Database Migration Service User Guide.}
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

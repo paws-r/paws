@@ -19,11 +19,13 @@ An empty list.
 Delete a distribution.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_distribution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_distribution(
   Id = "string",
   IfMatch = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

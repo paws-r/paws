@@ -107,7 +107,9 @@ it has been created, see \code{\link[=ec2_create_tags]{create_tags}}.}
 \code{terminate}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SpotInstanceRequests = list(
     list(
       ActualBlockHourlyPrice = "string",
@@ -227,7 +229,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Spot Instance request.
@@ -236,7 +238,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Request syntax}{
-\preformatted{svc$request_spot_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$request_spot_instances(
   AvailabilityZoneGroup = "string",
   BlockDurationMinutes = 123,
   ClientToken = "string",
@@ -340,7 +344,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
   ),
   InstanceInterruptionBehavior = "hibernate"|"stop"|"terminate"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

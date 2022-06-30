@@ -10,7 +10,9 @@ swf_list_tags_for_resource(resourceArn)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) for the Amazon SWF domain.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tags = list(
     list(
       key = "string",
@@ -18,16 +20,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List tags for a given domain.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   resourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

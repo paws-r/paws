@@ -22,10 +22,12 @@ Enable or disable the automatic warm-up feature for dedicated IP
 addresses.
 }
 \section{Request syntax}{
-\preformatted{svc$put_account_dedicated_ip_warmup_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_account_dedicated_ip_warmup_attributes(
   AutoWarmupEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

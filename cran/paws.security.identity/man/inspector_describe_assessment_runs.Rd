@@ -11,7 +11,9 @@ inspector_describe_assessment_runs(assessmentRunArns)
 \item{assessmentRunArns}{[required] The ARN that specifies the assessment run that you want to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   assessmentRuns = list(
     list(
       arn = "string",
@@ -73,19 +75,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the assessment runs that are specified by the ARNs of the
 assessment runs.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_assessment_runs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_assessment_runs(
   assessmentRunArns = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -17,10 +17,12 @@ Deletes the code signing configuration. You can delete the code signing
 configuration only if no function is using it.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_code_signing_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_code_signing_config(
   CodeSigningConfigArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

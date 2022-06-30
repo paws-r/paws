@@ -28,10 +28,12 @@ follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.}
 \item{body}{The data to upload.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   checksum = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation uploads a part of an archive. You can upload archive
@@ -80,7 +82,9 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-upload-part.h
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$upload_multipart_part(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upload_multipart_part(
   accountId = "string",
   vaultName = "string",
   uploadId = "string",
@@ -88,7 +92,7 @@ in the \emph{Amazon Glacier Developer Guide}.
   range = "string",
   body = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

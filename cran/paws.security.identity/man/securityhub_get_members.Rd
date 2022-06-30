@@ -12,7 +12,9 @@ securityhub_get_members(AccountIds)
 the details for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Members = list(
     list(
       AccountId = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the details for the Security Hub member accounts for the
@@ -48,12 +50,14 @@ The results include both member accounts that are in an organization and
 accounts that were invited manually.
 }
 \section{Request syntax}{
-\preformatted{svc$get_members(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_members(
   AccountIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

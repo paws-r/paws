@@ -14,7 +14,9 @@ directconnect_associate_virtual_interface(virtualInterfaceId,
 \item{connectionId}{[required] The ID of the LAG or connection.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ownerAccount = "string",
   virtualInterfaceId = "string",
   location = "string",
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a virtual interface with a specified link aggregation group
@@ -81,11 +83,13 @@ to which the virtual interface is currently associated. Additionally,
 the requester must own the connection or LAG for the association.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_virtual_interface(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_virtual_interface(
   virtualInterfaceId = "string",
   connectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

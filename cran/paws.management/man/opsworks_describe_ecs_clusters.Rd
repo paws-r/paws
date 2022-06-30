@@ -28,7 +28,9 @@ a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EcsClusters = list(
     list(
       EcsClusterArn = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes Amazon ECS clusters that are registered with a stack. If you
@@ -56,7 +58,9 @@ user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguid
 This call accepts only one resource-identifying parameter.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_ecs_clusters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_ecs_clusters(
   EcsClusterArns = list(
     "string"
   ),
@@ -64,7 +68,7 @@ This call accepts only one resource-identifying parameter.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

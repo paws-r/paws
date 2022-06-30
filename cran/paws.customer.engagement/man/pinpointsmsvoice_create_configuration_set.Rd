@@ -17,10 +17,12 @@ Create a new configuration set. After you create the configuration set,
 you can add one or more event destinations to it.
 }
 \section{Request syntax}{
-\preformatted{svc$create_configuration_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_configuration_set(
   ConfigurationSetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,12 +10,14 @@ ssm_resume_session(SessionId)
 \item{SessionId}{[required] The ID of the disconnected session to resume.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SessionId = "string",
   TokenValue = "string",
   StreamUrl = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Reconnects a session to an instance after it has been disconnected.
@@ -27,10 +29,12 @@ reconnect during intermittent network issues. It is not intended for any
 other use.
 }
 \section{Request syntax}{
-\preformatted{svc$resume_session(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resume_session(
   SessionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -33,7 +33,9 @@ with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CustomKeyStores = list(
     list(
       CustomKeyStoreId = "string",
@@ -50,7 +52,7 @@ A list with the following syntax:\preformatted{list(
   NextMarker = "string",
   Truncated = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores}
@@ -101,13 +103,15 @@ key store in a different AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_custom_key_stores(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_custom_key_stores(
   CustomKeyStoreId = "string",
   CustomKeyStoreName = "string",
   Limit = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

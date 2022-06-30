@@ -90,11 +90,13 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_alias(
   AliasName = "string",
   TargetKeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -49,10 +49,12 @@ accounts outside of an organization do not support tags.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$remove_account_from_organization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_account_from_organization(
   AccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -23,12 +23,14 @@ Removes the specified user from the specified group.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$admin_remove_user_from_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_remove_user_from_group(
   UserPoolId = "string",
   Username = "string",
   GroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

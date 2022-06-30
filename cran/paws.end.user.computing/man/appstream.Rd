@@ -37,7 +37,9 @@ To learn more about AppStream 2.0, see the following resources:
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- appstream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- appstream(
   config = list(
     credentials = list(
       creds = list(
@@ -51,7 +53,7 @@ To learn more about AppStream 2.0, see the following resources:
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

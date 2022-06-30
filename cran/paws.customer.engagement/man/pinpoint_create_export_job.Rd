@@ -13,7 +13,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{ExportJobRequest}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ExportJobResponse = list(
     ApplicationId = "string",
     CompletedPieces = 123,
@@ -37,13 +39,15 @@ A list with the following syntax:\preformatted{list(
     Type = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an export job for an application.
 }
 \section{Request syntax}{
-\preformatted{svc$create_export_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_export_job(
   ApplicationId = "string",
   ExportJobRequest = list(
     RoleArn = "string",
@@ -52,7 +56,7 @@ Creates an export job for an application.
     SegmentVersion = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

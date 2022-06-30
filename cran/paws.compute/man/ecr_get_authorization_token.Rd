@@ -12,7 +12,9 @@ which to get AuthorizationData objects. If you do not specify a
 registry, the default registry is assumed.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   authorizationData = list(
     list(
       authorizationToken = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves an authorization token. An authorization token represents your
@@ -38,12 +40,14 @@ simplifies the login process. For more information, see \href{https://docs.aws.a
 in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_authorization_token(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_authorization_token(
   registryIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

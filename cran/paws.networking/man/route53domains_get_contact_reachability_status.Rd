@@ -14,11 +14,13 @@ route53domains_get_contact_reachability_status(domainName)
 contact has confirmed that the email address is valid.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   domainName = "string",
   status = "PENDING"|"DONE"|"EXPIRED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 For operations that require confirmation that the email address for the
@@ -31,10 +33,12 @@ If you want us to resend the email, use the
 operation.
 }
 \section{Request syntax}{
-\preformatted{svc$get_contact_reachability_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_contact_reachability_status(
   domainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

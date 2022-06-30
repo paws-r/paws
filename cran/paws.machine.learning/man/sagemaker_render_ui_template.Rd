@@ -21,7 +21,9 @@ See a list of available Human Ui Amazon Resource Names (ARNs) in
 UiConfig.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RenderedContent = "string",
   Errors = list(
     list(
@@ -30,13 +32,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Renders the UI template so that you can preview the worker's experience.
 }
 \section{Request syntax}{
-\preformatted{svc$render_ui_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$render_ui_template(
   UiTemplate = list(
     Content = "string"
   ),
@@ -46,7 +50,7 @@ Renders the UI template so that you can preview the worker's experience.
   RoleArn = "string",
   HumanTaskUiArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

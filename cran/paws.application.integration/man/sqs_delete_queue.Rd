@@ -36,10 +36,12 @@ information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_queue(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_queue(
   QueueUrl = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

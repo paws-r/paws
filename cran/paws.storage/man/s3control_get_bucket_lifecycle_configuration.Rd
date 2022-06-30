@@ -25,7 +25,9 @@ encoding of
 The value must be URL encoded.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Rules = list(
     list(
       Expiration = list(
@@ -77,7 +79,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation gets an Amazon S3 on Outposts bucket's lifecycle
@@ -125,11 +127,13 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_bucket_lifecycle_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_lifecycle_configuration(
   AccountId = "string",
   Bucket = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

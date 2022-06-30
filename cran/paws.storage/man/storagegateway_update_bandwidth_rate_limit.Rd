@@ -16,10 +16,12 @@ storagegateway_update_bandwidth_rate_limit(GatewayARN,
 \item{AverageDownloadRateLimitInBitsPerSec}{The average download bandwidth rate limit in bits per second.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the bandwidth rate limits of a gateway. You can update both the
@@ -37,12 +39,14 @@ To specify which gateway to update, use the Amazon Resource Name (ARN)
 of the gateway in your request.
 }
 \section{Request syntax}{
-\preformatted{svc$update_bandwidth_rate_limit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_bandwidth_rate_limit(
   GatewayARN = "string",
   AverageUploadRateLimitInBitsPerSec = 123,
   AverageDownloadRateLimitInBitsPerSec = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

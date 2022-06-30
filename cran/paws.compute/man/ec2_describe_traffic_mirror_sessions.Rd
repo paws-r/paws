@@ -38,7 +38,9 @@ value.}
 \item{NextToken}{The token for the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficMirrorSessions = list(
     list(
       TrafficMirrorSessionId = "string",
@@ -60,7 +62,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more Traffic Mirror sessions. By default, all Traffic
@@ -68,7 +70,9 @@ Mirror sessions are described. Alternatively, you can filter the
 results.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_traffic_mirror_sessions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_traffic_mirror_sessions(
   TrafficMirrorSessionIds = list(
     "string"
   ),
@@ -84,7 +88,7 @@ results.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

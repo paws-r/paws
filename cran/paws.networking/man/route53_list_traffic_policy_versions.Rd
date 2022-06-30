@@ -32,7 +32,9 @@ traffic policy has more than \code{MaxItems} versions, the value of
 Route 53 will return if you submit another request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficPolicies = list(
     list(
       Id = "string",
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
   TrafficPolicyVersionMarker = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about all of the versions for a specified traffic
@@ -57,12 +59,14 @@ Traffic policy versions are listed in numerical order by
 \code{VersionNumber}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_traffic_policy_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_traffic_policy_versions(
   Id = "string",
   TrafficPolicyVersionMarker = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

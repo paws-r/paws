@@ -17,10 +17,12 @@ An empty list.
 Removes the specified member account from Amazon Macie Classic.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_member_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_member_account(
   memberAccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

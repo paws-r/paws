@@ -18,16 +18,20 @@ idempotency.}
 \item{Tags}{The tags for the skill group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SkillGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a skill group with a specified name and description.
 }
 \section{Request syntax}{
-\preformatted{svc$create_skill_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_skill_group(
   SkillGroupName = "string",
   Description = "string",
   ClientRequestToken = "string",
@@ -38,7 +42,7 @@ Creates a skill group with a specified name and description.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

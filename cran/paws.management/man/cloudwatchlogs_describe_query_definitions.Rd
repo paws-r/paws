@@ -17,7 +17,9 @@ that have names that start with the prefix you specify.}
 \item{nextToken}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   queryDefinitions = list(
     list(
       queryDefinitionId = "string",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation returns a paginated list of your saved CloudWatch Logs
@@ -42,12 +44,14 @@ results to only the query definitions that have names that start with a
 certain string.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_query_definitions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_query_definitions(
   queryDefinitionNamePrefix = "string",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

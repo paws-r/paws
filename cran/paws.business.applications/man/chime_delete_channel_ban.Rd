@@ -18,11 +18,13 @@ An empty list.
 Removes a user from a channel's ban list.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_channel_ban(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_channel_ban(
   ChannelArn = "string",
   MemberArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

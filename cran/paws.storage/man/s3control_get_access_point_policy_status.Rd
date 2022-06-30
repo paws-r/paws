@@ -13,12 +13,14 @@ s3control_get_access_point_policy_status(AccountId, Name)
 \item{Name}{[required] The name of the access point whose policy status you want to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyStatus = list(
     IsPublic = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Indicates whether the specified access point currently has a policy that
@@ -27,11 +29,13 @@ access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/a
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_access_point_policy_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_access_point_policy_status(
   AccountId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

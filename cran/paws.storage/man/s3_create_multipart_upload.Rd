@@ -135,7 +135,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AbortDate = as.POSIXct(
     "2015-01-01"
   ),
@@ -151,7 +153,7 @@ A list with the following syntax:\preformatted{list(
   BucketKeyEnabled = TRUE|FALSE,
   RequestCharged = "requester"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation initiates a multipart upload and returns an upload ID.
@@ -346,7 +348,9 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_multipart_upload(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_multipart_upload(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
   Bucket = "string",
   CacheControl = "string",
@@ -383,7 +387,7 @@ The following operations are related to
   ObjectLockLegalHoldStatus = "ON"|"OFF",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

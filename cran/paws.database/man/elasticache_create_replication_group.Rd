@@ -327,11 +327,11 @@ Password constraints:
 \item Must be at least 16 characters and no more than 128 characters in
 length.
 \item The only permitted printable special characters are !, &, \#, $, ^,
-<, >, and -. Other printable special characters cannot be used
-in the AUTH token.
+\<, \>, and -. Other printable special characters cannot be used in
+the AUTH token.
 }
 
-For more information, see AUTH password at
+For more information, see \href{https://redis.io/commands/auth/}{AUTH password} at
 http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.
@@ -372,7 +372,9 @@ Default: \code{false}}
 \item{UserGroupIds}{The list of user groups to associate with the replication group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationGroup = list(
     ReplicationGroupId = "string",
     Description = "string",
@@ -457,7 +459,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Redis (cluster mode disabled) or a Redis (cluster mode
@@ -488,7 +490,9 @@ in the \emph{ElastiCache User Guide}.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-\preformatted{svc$create_replication_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_replication_group(
   ReplicationGroupId = "string",
   ReplicationGroupDescription = "string",
   GlobalReplicationGroupId = "string",
@@ -551,7 +555,7 @@ This operation is valid for Redis only.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

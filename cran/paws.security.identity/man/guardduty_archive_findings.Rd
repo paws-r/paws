@@ -24,13 +24,15 @@ Only the administrator account can archive findings. Member accounts
 don't have permission to archive findings from their accounts.
 }
 \section{Request syntax}{
-\preformatted{svc$archive_findings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$archive_findings(
   DetectorId = "string",
   FindingIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

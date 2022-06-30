@@ -16,10 +16,12 @@ An empty list.
 Deletes the specified Amazon Cognito user pool.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_pool(
   UserPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

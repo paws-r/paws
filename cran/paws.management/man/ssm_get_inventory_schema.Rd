@@ -26,7 +26,9 @@ aggregation based on the \code{PlatformName}, \code{PlatformType}, and
 \item{SubType}{Returns the sub-type schema for a specified inventory type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Schemas = list(
     list(
       TypeName = "string",
@@ -42,21 +44,23 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Return a list of inventory type names for the account, or return a list
 of attribute names for a specific Inventory item type.
 }
 \section{Request syntax}{
-\preformatted{svc$get_inventory_schema(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_inventory_schema(
   TypeName = "string",
   NextToken = "string",
   MaxResults = 123,
   Aggregator = TRUE|FALSE,
   SubType = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

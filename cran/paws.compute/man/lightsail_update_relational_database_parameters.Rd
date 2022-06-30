@@ -14,7 +14,9 @@ lightsail_update_relational_database_parameters(relationalDatabaseName,
 \item{parameters}{[required] The database parameters to update.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Allows the update of one or more parameters of a database in Amazon
@@ -59,7 +61,9 @@ relationalDatabaseName. For more information, see the Lightsail Dev
 Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$update_relational_database_parameters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_relational_database_parameters(
   relationalDatabaseName = "string",
   parameters = list(
     list(
@@ -74,7 +78,7 @@ Guide.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

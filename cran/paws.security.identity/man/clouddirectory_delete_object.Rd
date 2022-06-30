@@ -22,13 +22,15 @@ that can be deleted during an object deletion is 30. For more
 information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html}{Amazon Cloud Directory Limits}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_object(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_object(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,7 +20,9 @@ more information, see Images in the Amazon Rekognition developer guide.}
 meet to be included in your response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TextDetections = list(
     list(
       DetectedText = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   TextModelVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Detects text in the input image and converts it into machine-readable
@@ -87,7 +89,9 @@ For more information, see DetectText in the Amazon Rekognition Developer
 Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$detect_text(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_text(
   Image = list(
     Bytes = raw,
     S3Object = list(
@@ -114,7 +118,7 @@ Guide.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

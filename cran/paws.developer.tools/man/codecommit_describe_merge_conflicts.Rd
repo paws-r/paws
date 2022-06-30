@@ -42,7 +42,9 @@ merge operation is successful.}
 batch of the results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   conflictMetadata = list(
     filePath = "string",
     fileSizes = list(
@@ -99,7 +101,7 @@ A list with the following syntax:\preformatted{list(
   sourceCommitId = "string",
   baseCommitId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about one or more merge conflicts in the attempted
@@ -108,7 +110,9 @@ strategy. If the merge option for the attempted merge is specified as
 FAST_FORWARD_MERGE, an exception is thrown.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_merge_conflicts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_merge_conflicts(
   repositoryName = "string",
   destinationCommitSpecifier = "string",
   sourceCommitSpecifier = "string",
@@ -119,7 +123,7 @@ FAST_FORWARD_MERGE, an exception is thrown.
   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

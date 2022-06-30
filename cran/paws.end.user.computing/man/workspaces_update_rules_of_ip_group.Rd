@@ -20,7 +20,9 @@ Replaces the current rules of the specified IP access control group with
 the specified rules.
 }
 \section{Request syntax}{
-\preformatted{svc$update_rules_of_ip_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_rules_of_ip_group(
   GroupId = "string",
   UserRules = list(
     list(
@@ -29,7 +31,7 @@ the specified rules.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

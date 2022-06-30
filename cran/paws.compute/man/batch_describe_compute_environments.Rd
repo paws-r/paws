@@ -36,7 +36,9 @@ retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   computeEnvironments = list(
     list(
       computeEnvironmentName = "string",
@@ -90,7 +92,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more of your compute environments.
@@ -100,14 +102,16 @@ If you're using an unmanaged compute environment, you can use the
 that you should launch your Amazon ECS container instances into.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_compute_environments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_compute_environments(
   computeEnvironments = list(
     "string"
   ),
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

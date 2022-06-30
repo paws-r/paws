@@ -15,10 +15,12 @@ new tapes.}
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the automatic tape creation policy of a gateway. Use this to
@@ -30,7 +32,9 @@ By default, there is no automatic tape creation policy.
 A gateway can have only one automatic tape creation policy.
 }
 \section{Request syntax}{
-\preformatted{svc$update_automatic_tape_creation_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_automatic_tape_creation_policy(
   AutomaticTapeCreationRules = list(
     list(
       TapeBarcodePrefix = "string",
@@ -42,7 +46,7 @@ A gateway can have only one automatic tape creation policy.
   ),
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

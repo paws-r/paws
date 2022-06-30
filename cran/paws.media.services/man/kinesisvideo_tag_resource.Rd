@@ -25,7 +25,9 @@ information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/abou
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -34,7 +36,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

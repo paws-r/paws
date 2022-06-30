@@ -12,7 +12,9 @@ chime_describe_channel_moderator(ChannelArn, ChannelModeratorArn)
 \item{ChannelModeratorArn}{[required] The ARN of the channel moderator.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChannelModerator = list(
     Moderator = list(
       Arn = "string",
@@ -28,17 +30,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the full details of a single ChannelModerator.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_channel_moderator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_channel_moderator(
   ChannelArn = "string",
   ChannelModeratorArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

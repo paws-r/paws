@@ -26,7 +26,9 @@ from a previous call.)}
 \item{MaxResults}{The maximum number of patches to return (per page).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstancePatchStates = list(
     list(
       InstanceId = "string",
@@ -58,14 +60,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the high-level patch state for the instances in the specified
 patch group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_instance_patch_states_for_patch_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_patch_states_for_patch_group(
   PatchGroup = "string",
   Filters = list(
     list(
@@ -79,7 +83,7 @@ patch group.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

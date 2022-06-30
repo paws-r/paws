@@ -10,7 +10,9 @@ sfn_describe_state_machine(stateMachineArn)
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   stateMachineArn = "string",
   name = "string",
   status = "ACTIVE"|"DELETING",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     enabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a state machine.
@@ -44,10 +46,12 @@ This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_state_machine(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_state_machine(
   stateMachineArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

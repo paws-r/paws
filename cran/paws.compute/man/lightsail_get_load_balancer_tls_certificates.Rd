@@ -12,7 +12,9 @@ lightsail_get_load_balancer_tls_certificates(loadBalancerName)
 certificate.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tlsCertificates = list(
     list(
       name = "string",
@@ -79,7 +81,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the TLS certificates that are associated with
@@ -92,10 +94,12 @@ You can have a maximum of 2 certificates associated with a Lightsail
 load balancer. One is active and the other is inactive.
 }
 \section{Request syntax}{
-\preformatted{svc$get_load_balancer_tls_certificates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_load_balancer_tls_certificates(
   loadBalancerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

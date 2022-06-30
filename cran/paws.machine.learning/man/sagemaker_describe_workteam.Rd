@@ -10,7 +10,9 @@ sagemaker_describe_workteam(WorkteamName)
 \item{WorkteamName}{[required] The name of the work team to return a description of.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Workteam = list(
     WorkteamName = "string",
     MemberDefinitions = list(
@@ -45,7 +47,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a specific work team. You can see information
@@ -53,10 +55,12 @@ such as the create date, the last updated date, membership information,
 and the work team's Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
-\preformatted{svc$describe_workteam(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workteam(
   WorkteamName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,7 +21,9 @@ the service. Also provides sample requests, responses, and errors for
 the supported web services protocols.
 }
 \section{Service syntax}{
-\preformatted{svc <- iot1clickdevicesservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- iot1clickdevicesservice(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +37,7 @@ the supported web services protocols.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

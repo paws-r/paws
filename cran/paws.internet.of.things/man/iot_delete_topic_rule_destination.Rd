@@ -16,10 +16,12 @@ An empty list.
 Deletes a topic rule destination.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_topic_rule_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_topic_rule_destination(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

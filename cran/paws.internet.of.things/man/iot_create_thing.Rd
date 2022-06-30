@@ -24,12 +24,14 @@ a JSON document. For example:
 \item{billingGroupName}{The name of the billing group the thing will be added to.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   thingName = "string",
   thingArn = "string",
   thingId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a thing record in the registry. If this call is made multiple
@@ -42,7 +44,9 @@ This is a control plane operation. See
 for information about authorizing control plane actions.
 }
 \section{Request syntax}{
-\preformatted{svc$create_thing(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_thing(
   thingName = "string",
   thingTypeName = "string",
   attributePayload = list(
@@ -53,7 +57,7 @@ for information about authorizing control plane actions.
   ),
   billingGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

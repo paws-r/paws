@@ -11,7 +11,9 @@ waf_get_rule(RuleId)
 \code{\link[=waf_create_rule]{create_rule}} and by \code{\link[=waf_list_rules]{list_rules}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Rule = list(
     RuleId = "string",
     Name = "string",
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -41,10 +43,12 @@ Returns the Rule that is specified by the \code{RuleId} that you included in
 the \code{\link[=waf_get_rule]{get_rule}} request.
 }
 \section{Request syntax}{
-\preformatted{svc$get_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_rule(
   RuleId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

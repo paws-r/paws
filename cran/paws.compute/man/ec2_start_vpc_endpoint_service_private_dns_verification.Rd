@@ -17,10 +17,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ServiceId}{[required] The ID of the endpoint service.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReturnValue = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Initiates the verification process to prove that the service provider
@@ -30,15 +32,17 @@ The service provider must successfully perform the verification before
 the consumer can use the name to access the service.
 
 Before the service provider runs this command, they must add a record to
-the DNS server. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html#add-dns-txt-record}{Adding a TXT Record to Your Domain's DNS Server}
+the DNS server. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/#add-dns-txt-record}{Adding a TXT Record to Your Domain's DNS Server}
 in the \emph{Amazon VPC User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_vpc_endpoint_service_private_dns_verification(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_vpc_endpoint_service_private_dns_verification(
   DryRun = TRUE|FALSE,
   ServiceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

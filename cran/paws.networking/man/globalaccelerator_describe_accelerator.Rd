@@ -10,7 +10,9 @@ globalaccelerator_describe_accelerator(AcceleratorArn)
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Accelerator = list(
     AcceleratorArn = "string",
     Name = "string",
@@ -34,16 +36,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describe an accelerator.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_accelerator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_accelerator(
   AcceleratorArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

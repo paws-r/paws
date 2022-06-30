@@ -16,7 +16,9 @@ from.}
 findings.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   failedItems = list(
     list(
       failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes entire attributes (key and value pairs) from the findings that
@@ -32,7 +34,9 @@ are specified by the ARNs of the findings where an attribute with the
 specified key exists.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_attributes_from_findings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_attributes_from_findings(
   findingArns = list(
     "string"
   ),
@@ -40,7 +44,7 @@ specified key exists.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

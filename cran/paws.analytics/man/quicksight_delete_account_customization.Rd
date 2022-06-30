@@ -14,22 +14,26 @@ customizations from in this AWS Region.}
 \item{Namespace}{The QuickSight namespace that you're deleting the customizations from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes all Amazon QuickSight customizations in this AWS Region for the
 specified AWS account and QuickSight namespace.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_account_customization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_account_customization(
   AwsAccountId = "string",
   Namespace = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

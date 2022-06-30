@@ -16,22 +16,26 @@ created at level one if the parent group ID is null.}
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HierarchyGroupId = "string",
   HierarchyGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new user hierarchy group.
 }
 \section{Request syntax}{
-\preformatted{svc$create_user_hierarchy_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user_hierarchy_group(
   Name = "string",
   ParentGroupId = "string",
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

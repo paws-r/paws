@@ -11,7 +11,9 @@ pinpoint_delete_app(ApplicationId)
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationResponse = list(
     Arn = "string",
     Id = "string",
@@ -21,16 +23,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_app(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app(
   ApplicationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -27,12 +27,14 @@ The client should make this call only when it no longer intends to
 upload the document version, or fails to do so.
 }
 \section{Request syntax}{
-\preformatted{svc$abort_document_version_upload(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$abort_document_version_upload(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ pinpointsmsvoice_get_configuration_set_event_destinations(
 \item{ConfigurationSetName}{[required] ConfigurationSetName}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventDestinations = list(
     list(
       CloudWatchLogsDestination = list(
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Obtain information about an event destination, including the types of
@@ -43,10 +45,12 @@ events it reports, the Amazon Resource Name (ARN) of the destination,
 and the name of the event destination.
 }
 \section{Request syntax}{
-\preformatted{svc$get_configuration_set_event_destinations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_configuration_set_event_destinations(
   ConfigurationSetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

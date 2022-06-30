@@ -43,11 +43,13 @@ value. For more information, see \href{https://docs.aws.amazon.com/batch/latest/
 in \emph{AWS Batch User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobQueueName = "string",
   jobQueueArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS Batch job queue. When you create a job queue, you
@@ -61,7 +63,9 @@ more than one job queue, the job queue with a higher priority is given
 preference for scheduling jobs to that compute environment.
 }
 \section{Request syntax}{
-\preformatted{svc$create_job_queue(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_job_queue(
   jobQueueName = "string",
   state = "ENABLED"|"DISABLED",
   priority = 123,
@@ -75,7 +79,7 @@ preference for scheduling jobs to that compute environment.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

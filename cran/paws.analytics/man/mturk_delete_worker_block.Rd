@@ -26,11 +26,13 @@ the specified Worker is not blocked, this operation returns
 successfully.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_worker_block(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_worker_block(
   WorkerId = "string",
   Reason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

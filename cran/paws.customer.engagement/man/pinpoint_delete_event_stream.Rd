@@ -11,7 +11,9 @@ pinpoint_delete_event_stream(ApplicationId)
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventStream = list(
     ApplicationId = "string",
     DestinationStreamArn = "string",
@@ -21,16 +23,18 @@ A list with the following syntax:\preformatted{list(
     RoleArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the event stream for an application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_event_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_event_stream(
   ApplicationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

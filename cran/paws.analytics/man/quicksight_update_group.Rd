@@ -17,7 +17,9 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Group = list(
     Arn = "string",
     GroupName = "string",
@@ -27,19 +29,21 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Changes a group description.
 }
 \section{Request syntax}{
-\preformatted{svc$update_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_group(
   GroupName = "string",
   Description = "string",
   AwsAccountId = "string",
   Namespace = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

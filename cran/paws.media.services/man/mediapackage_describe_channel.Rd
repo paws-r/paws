@@ -10,7 +10,9 @@ mediapackage_describe_channel(Id)
 \item{Id}{[required] The ID of a Channel.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   Description = "string",
   EgressAccessLogs = list(
@@ -34,16 +36,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets details about a Channel.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_channel(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

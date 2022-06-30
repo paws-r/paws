@@ -24,7 +24,9 @@ existing data.}
 \item{virtualRouterName}{[required] The name of the virtual router to update.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualRouter = list(
     meshName = "string",
     metadata = list(
@@ -56,13 +58,15 @@ A list with the following syntax:\preformatted{list(
     virtualRouterName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing virtual router in a specified service mesh.
 }
 \section{Request syntax}{
-\preformatted{svc$update_virtual_router(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_virtual_router(
   clientToken = "string",
   meshName = "string",
   meshOwner = "string",
@@ -78,7 +82,7 @@ Updates an existing virtual router in a specified service mesh.
   ),
   virtualRouterName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

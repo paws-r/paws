@@ -13,7 +13,9 @@ operation.}
 \item{OperationId}{[required] The unique ID of the stack set operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackSetOperation = list(
     OperationId = "string",
     StackSetId = "string",
@@ -59,17 +61,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the description of the specified stack set operation.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_stack_set_operation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stack_set_operation(
   StackSetName = "string",
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -57,7 +57,9 @@ Values: ERROR, INFO}
 \item{Tags}{A list of tag instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -83,7 +85,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Amazon Redshift event notification subscription. This action
@@ -112,7 +114,9 @@ sources belonging to your AWS account. You must specify a source type if
 you specify a source ID.
 }
 \section{Request syntax}{
-\preformatted{svc$create_event_subscription(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",
@@ -131,7 +135,7 @@ you specify a source ID.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

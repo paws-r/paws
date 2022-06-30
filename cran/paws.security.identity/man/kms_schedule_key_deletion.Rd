@@ -28,13 +28,15 @@ This value is optional. If you include a value, it must be between 7 and
 30, inclusive. If you do not include a value, it defaults to 30.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyId = "string",
   DeletionDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Schedules the deletion of a customer master key (CMK). You may provide a
@@ -81,11 +83,13 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$schedule_key_deletion(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$schedule_key_deletion(
   KeyId = "string",
   PendingWindowInDays = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

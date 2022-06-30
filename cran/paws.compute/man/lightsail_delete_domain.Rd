@@ -10,7 +10,9 @@ lightsail_delete_domain(domainName)
 \item{domainName}{[required] The specific domain name to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified domain recordset and all of its domain records.
@@ -43,10 +45,12 @@ resource tags applied to the resource identified by \verb{domain name}. For
 more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_domain(
   domainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

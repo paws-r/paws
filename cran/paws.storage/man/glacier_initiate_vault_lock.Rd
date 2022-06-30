@@ -21,10 +21,12 @@ your account ID, do not include any hyphens ('-') in the ID.}
 character.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   lockId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation initiates the vault locking process by doing the
@@ -63,14 +65,16 @@ vault lock is in the \code{InProgress} state you must call
 new vault lock policy.
 }
 \section{Request syntax}{
-\preformatted{svc$initiate_vault_lock(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$initiate_vault_lock(
   accountId = "string",
   vaultName = "string",
   policy = list(
     Policy = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

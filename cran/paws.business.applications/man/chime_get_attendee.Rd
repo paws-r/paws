@@ -13,27 +13,31 @@ chime_get_attendee(MeetingId, AttendeeId)
 \item{AttendeeId}{[required] The Amazon Chime SDK attendee ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Attendee = list(
     ExternalUserId = "string",
     AttendeeId = "string",
     JoinToken = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the Amazon Chime SDK attendee details for a specified meeting ID
 and attendee ID. For more information about the Amazon Chime SDK, see
-\href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in
-the \emph{Amazon Chime Developer Guide}.
+\href{https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK}
+in the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_attendee(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_attendee(
   MeetingId = "string",
   AttendeeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

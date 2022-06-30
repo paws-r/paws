@@ -7,18 +7,22 @@
 ecr_get_registry_policy()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   registryId = "string",
   policyText = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the permissions policy for a registry.
 }
 \section{Request syntax}{
-\preformatted{svc$get_registry_policy()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_registry_policy()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -28,7 +28,9 @@ and \code{PreferredAvailabilityZones}.}
 \code{ApplyImmediately=False} is not currently supported.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationGroup = list(
     ReplicationGroupId = "string",
     Description = "string",
@@ -113,7 +115,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Dynamically increases the number of replics in a Redis (cluster mode
@@ -122,7 +124,9 @@ more node groups (shards) of a Redis (cluster mode enabled) replication
 group. This operation is performed with no cluster down time.
 }
 \section{Request syntax}{
-\preformatted{svc$increase_replica_count(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$increase_replica_count(
   ReplicationGroupId = "string",
   NewReplicaCount = 123,
   ReplicaConfiguration = list(
@@ -139,7 +143,7 @@ group. This operation is performed with no cluster down time.
   ),
   ApplyImmediately = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

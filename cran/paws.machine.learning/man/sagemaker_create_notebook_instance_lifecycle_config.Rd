@@ -19,10 +19,12 @@ including when you create the notebook instance. The shell script must
 be a base64-encoded string.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NotebookInstanceLifecycleConfigArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a lifecycle configuration that you can associate with a notebook
@@ -46,7 +48,9 @@ For information about notebook instance lifestyle configurations, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_notebook_instance_lifecycle_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_notebook_instance_lifecycle_config(
   NotebookInstanceLifecycleConfigName = "string",
   OnCreate = list(
     list(
@@ -59,7 +63,7 @@ For information about notebook instance lifestyle configurations, see
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

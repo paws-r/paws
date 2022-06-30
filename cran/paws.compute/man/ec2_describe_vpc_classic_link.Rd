@@ -11,11 +11,11 @@ ec2_describe_vpc_classic_link(Filters, DryRun, VpcIds)
 \itemize{
 \item \code{is-classic-link-enabled} - Whether the VPC is enabled for
 ClassicLink (\code{true} | \code{false}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -29,7 +29,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcIds}{One or more VPCs for which you want to describe the ClassicLink status.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Vpcs = list(
     list(
       ClassicLinkEnabled = TRUE|FALSE,
@@ -43,13 +45,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the ClassicLink status of one or more VPCs.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_vpc_classic_link(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_classic_link(
   Filters = list(
     list(
       Name = "string",
@@ -63,7 +67,7 @@ Describes the ClassicLink status of one or more VPCs.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

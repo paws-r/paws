@@ -20,7 +20,9 @@ request. For more information about the JSON format, see
 request, if any.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficPolicy = list(
     Id = "string",
     Version = 123,
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Location = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new version of an existing traffic policy. When you create a
@@ -44,12 +46,14 @@ of 1000 versions of a traffic policy. If you reach the limit and need to
 create another version, you'll need to start a new traffic policy.
 }
 \section{Request syntax}{
-\preformatted{svc$create_traffic_policy_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_traffic_policy_version(
   Id = "string",
   Document = "string",
   Comment = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

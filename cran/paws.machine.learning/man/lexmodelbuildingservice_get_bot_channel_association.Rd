@@ -18,7 +18,9 @@ case sensitive.}
 this association is being made.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   name = "string",
   description = "string",
   botAlias = "string",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
   status = "IN_PROGRESS"|"CREATED"|"FAILED",
   failureReason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the association between an Amazon Lex bot and
@@ -43,12 +45,14 @@ This operation requires permissions for the
 \code{lex:GetBotChannelAssociation} action.
 }
 \section{Request syntax}{
-\preformatted{svc$get_bot_channel_association(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bot_channel_association(
   name = "string",
   botName = "string",
   botAlias = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

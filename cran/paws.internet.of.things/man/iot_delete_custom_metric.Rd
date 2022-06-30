@@ -23,10 +23,12 @@ associated with the custom metric can be found using the
 Deletes a Device Defender detect custom metric.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_custom_metric(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_custom_metric(
   metricName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

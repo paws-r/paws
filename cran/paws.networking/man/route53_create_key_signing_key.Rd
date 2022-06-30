@@ -59,7 +59,9 @@ must be unique for each key signing key in the same hosted zone.}
 can set the value to \code{ACTIVE} or \code{INACTIVE}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChangeInfo = list(
     Id = "string",
     Status = "PENDING"|"INSYNC",
@@ -92,21 +94,23 @@ A list with the following syntax:\preformatted{list(
   ),
   Location = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new key signing key (KSK) associated with a hosted zone. You
 can only have two KSKs per hosted zone.
 }
 \section{Request syntax}{
-\preformatted{svc$create_key_signing_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_key_signing_key(
   CallerReference = "string",
   HostedZoneId = "string",
   KeyManagementServiceArn = "string",
   Name = "string",
   Status = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

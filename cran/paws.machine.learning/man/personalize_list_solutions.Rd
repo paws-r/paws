@@ -16,7 +16,9 @@ of solutions (if they exist).}
 \item{maxResults}{The maximum number of solutions to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   solutions = list(
     list(
       name = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of solutions that use the given dataset group. When a
@@ -42,12 +44,14 @@ solution, including the Amazon Resource Name (ARN). For more information
 on solutions, see \code{\link[=personalize_create_solution]{create_solution}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_solutions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_solutions(
   datasetGroupArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

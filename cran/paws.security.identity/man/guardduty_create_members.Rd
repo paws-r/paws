@@ -15,7 +15,9 @@ associate member accounts with.}
 want to associate with the GuardDuty administrator account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates member accounts of the current AWS account by specifying a list
@@ -42,7 +44,9 @@ has been enabled in potential member accounts and before using
 .
 }
 \section{Request syntax}{
-\preformatted{svc$create_members(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_members(
   DetectorId = "string",
   AccountDetails = list(
     list(
@@ -51,7 +55,7 @@ has been enabled in potential member accounts and before using
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

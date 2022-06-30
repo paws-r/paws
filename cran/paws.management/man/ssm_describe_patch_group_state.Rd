@@ -10,7 +10,9 @@ ssm_describe_patch_group_state(PatchGroup)
 \item{PatchGroup}{[required] The name of the patch group whose patch snapshot should be retrieved.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Instances = 123,
   InstancesWithInstalledPatches = 123,
   InstancesWithInstalledOtherPatches = 123,
@@ -21,16 +23,18 @@ A list with the following syntax:\preformatted{list(
   InstancesWithNotApplicablePatches = 123,
   InstancesWithUnreportedNotApplicablePatches = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns high-level aggregated patch compliance state for a patch group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_patch_group_state(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_patch_group_state(
   PatchGroup = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

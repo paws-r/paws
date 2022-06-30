@@ -15,7 +15,9 @@ applicationinsights_describe_log_pattern(ResourceGroupName,
 \item{PatternName}{[required] The name of the log pattern.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceGroupName = "string",
   LogPattern = list(
     PatternSetName = "string",
@@ -24,18 +26,20 @@ A list with the following syntax:\preformatted{list(
     Rank = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describe a specific log pattern from a \code{LogPatternSet}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_log_pattern(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_log_pattern(
   ResourceGroupName = "string",
   PatternSetName = "string",
   PatternName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

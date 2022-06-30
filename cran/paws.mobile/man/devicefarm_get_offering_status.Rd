@@ -13,7 +13,9 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   current = list(
     list(
       type = "PURCHASE"|"RENEW"|"SYSTEM",
@@ -64,7 +66,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the current status and future status of all offerings purchased by
@@ -75,10 +77,12 @@ invoke the operation. If you must be able to invoke this operation,
 contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_offering_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_offering_status(
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

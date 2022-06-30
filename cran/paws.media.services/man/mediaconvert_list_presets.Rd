@@ -26,7 +26,9 @@ they are sorted in ASCENDING or DESCENDING order. Default varies by
 resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Presets = list(
     list(
@@ -693,7 +695,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve a JSON array of up to twenty of your presets. This will return
@@ -701,14 +703,16 @@ the presets themselves, not just a list of them. To retrieve the next
 twenty presets, use the nextToken string returned with the array.
 }
 \section{Request syntax}{
-\preformatted{svc$list_presets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_presets(
   Category = "string",
   ListBy = "NAME"|"CREATION_DATE"|"SYSTEM",
   MaxResults = 123,
   NextToken = "string",
   Order = "ASCENDING"|"DESCENDING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

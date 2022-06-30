@@ -7,7 +7,9 @@
 lightsail_unpeer_vpc()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -30,14 +32,16 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Attempts to unpeer the Lightsail VPC from the user's default VPC.
 }
 \section{Request syntax}{
-\preformatted{svc$unpeer_vpc()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unpeer_vpc()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

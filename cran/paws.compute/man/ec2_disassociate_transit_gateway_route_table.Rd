@@ -18,7 +18,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Association = list(
     TransitGatewayRouteTableId = "string",
     TransitGatewayAttachmentId = "string",
@@ -27,18 +29,20 @@ A list with the following syntax:\preformatted{list(
     State = "associating"|"associated"|"disassociating"|"disassociated"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disassociates a resource attachment from a transit gateway route table.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_transit_gateway_route_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_transit_gateway_route_table(
   TransitGatewayRouteTableId = "string",
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -30,7 +30,9 @@ To activate a finished pipeline, modify the end date for the pipeline
 and then activate it.
 }
 \section{Request syntax}{
-\preformatted{svc$activate_pipeline(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$activate_pipeline(
   pipelineId = "string",
   parameterValues = list(
     list(
@@ -42,7 +44,7 @@ and then activate it.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

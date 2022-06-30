@@ -16,21 +16,25 @@ set to \code{governance} can be deleted. Archived tapes with tape retention
 lock set to \code{compliance} can't be deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TapeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified virtual tape from the virtual tape shelf (VTS).
 This operation is only supported in the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_tape_archive(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tape_archive(
   TapeARN = "string",
   BypassGovernanceRetention = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

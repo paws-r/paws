@@ -15,7 +15,9 @@ serverlessapplicationrepository_create_cloud_formation_template(
 \url{https://semver.org/}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationId = "string",
   CreationTime = "string",
   ExpirationTime = "string",
@@ -24,17 +26,19 @@ A list with the following syntax:\preformatted{list(
   TemplateId = "string",
   TemplateUrl = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS CloudFormation template.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cloud_formation_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cloud_formation_template(
   ApplicationId = "string",
   SemanticVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

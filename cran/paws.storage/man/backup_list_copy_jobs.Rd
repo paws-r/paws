@@ -43,7 +43,9 @@ vault to copy from; for example,
 with the specified account ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CopyJobs = list(
     list(
       AccountId = "string",
@@ -74,13 +76,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns metadata about your copy jobs.
 }
 \section{Request syntax}{
-\preformatted{svc$list_copy_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_copy_jobs(
   NextToken = "string",
   MaxResults = 123,
   ByResourceArn = "string",
@@ -95,7 +99,7 @@ Returns metadata about your copy jobs.
   ByDestinationVaultArn = "string",
   ByAccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

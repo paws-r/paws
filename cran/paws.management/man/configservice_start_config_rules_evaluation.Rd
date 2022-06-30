@@ -55,12 +55,14 @@ resources.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$start_config_rules_evaluation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_config_rules_evaluation(
   ConfigRuleNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ cognitoidentityprovider_get_group(GroupName, UserPoolId)
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Group = list(
     GroupName = "string",
     UserPoolId = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a group.
@@ -35,11 +37,13 @@ Gets a group.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$get_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_group(
   GroupName = "string",
   UserPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

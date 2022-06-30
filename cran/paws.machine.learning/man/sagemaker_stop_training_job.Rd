@@ -23,10 +23,12 @@ request, Amazon SageMaker changes the status of the job to \code{Stopping}.
 After Amazon SageMaker stops the job, it sets the status to \code{Stopped}.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_training_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_training_job(
   TrainingJobName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

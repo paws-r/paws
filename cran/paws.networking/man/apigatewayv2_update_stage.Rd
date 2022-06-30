@@ -33,10 +33,12 @@ characters.}
 
 \item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-._~:/?\#&=,]+.}
+[A-Za-z0-9-._~:/?#&=,]+.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -77,13 +79,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a Stage.
 }
 \section{Request syntax}{
-\preformatted{svc$update_stage(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_stage(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -114,7 +118,7 @@ Updates a Stage.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -35,13 +35,15 @@ An empty list.
 Disables group metrics for the specified Auto Scaling group.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_metrics_collection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_metrics_collection(
   AutoScalingGroupName = "string",
   Metrics = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

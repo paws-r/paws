@@ -50,7 +50,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficMirrorSession = list(
     TrafficMirrorSessionId = "string",
     TrafficMirrorTargetId = "string",
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Traffic Mirror session.
@@ -89,7 +91,9 @@ By default, no traffic is mirrored. Use
 create filter rules that specify the traffic to mirror.
 }
 \section{Request syntax}{
-\preformatted{svc$create_traffic_mirror_session(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_traffic_mirror_session(
   NetworkInterfaceId = "string",
   TrafficMirrorTargetId = "string",
   TrafficMirrorFilterId = "string",
@@ -111,7 +115,7 @@ create filter rules that specify the traffic to mirror.
   DryRun = TRUE|FALSE,
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

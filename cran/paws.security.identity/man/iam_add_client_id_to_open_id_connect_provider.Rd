@@ -31,11 +31,13 @@ This operation is idempotent; it does not fail or return an error if you
 add an existing client ID to the provider.
 }
 \section{Request syntax}{
-\preformatted{svc$add_client_id_to_open_id_connect_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_client_id_to_open_id_connect_provider(
   OpenIDConnectProviderArn = "string",
   ClientID = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

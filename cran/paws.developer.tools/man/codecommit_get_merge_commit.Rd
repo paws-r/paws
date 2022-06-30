@@ -30,26 +30,30 @@ NONE, which requires any conflicts to be resolved manually before the
 merge operation is successful.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   sourceCommitId = "string",
   destinationCommitId = "string",
   baseCommitId = "string",
   mergedCommitId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a specified merge commit.
 }
 \section{Request syntax}{
-\preformatted{svc$get_merge_commit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_merge_commit(
   repositoryName = "string",
   sourceCommitSpecifier = "string",
   destinationCommitSpecifier = "string",
   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

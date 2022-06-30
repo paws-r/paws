@@ -13,7 +13,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{WriteJourneyRequest}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JourneyResponse = list(
     Activities = list(
       list(
@@ -393,13 +395,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a journey for an application.
 }
 \section{Request syntax}{
-\preformatted{svc$create_journey(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_journey(
   ApplicationId = "string",
   WriteJourneyRequest = list(
     Activities = list(
@@ -775,7 +779,7 @@ Creates a journey for an application.
     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

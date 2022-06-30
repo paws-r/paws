@@ -17,11 +17,13 @@ iot_update_domain_configuration(domainConfigurationName,
 \item{removeAuthorizerConfig}{Removes the authorization configuration from a domain.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   domainConfigurationName = "string",
   domainConfigurationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates values stored in the domain configuration. Domain configurations
@@ -31,7 +33,9 @@ The domain configuration feature is in public preview and is subject to
 change.
 }
 \section{Request syntax}{
-\preformatted{svc$update_domain_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain_configuration(
   domainConfigurationName = "string",
   authorizerConfig = list(
     defaultAuthorizerName = "string",
@@ -40,7 +44,7 @@ change.
   domainConfigurationStatus = "ENABLED"|"DISABLED",
   removeAuthorizerConfig = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

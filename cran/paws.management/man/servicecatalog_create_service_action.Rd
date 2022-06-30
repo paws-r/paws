@@ -60,7 +60,9 @@ requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceActionDetail = list(
     ServiceActionSummary = list(
       Id = "string",
@@ -73,13 +75,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a self-service action.
 }
 \section{Request syntax}{
-\preformatted{svc$create_service_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_service_action(
   Name = "string",
   DefinitionType = "SSM_AUTOMATION",
   Definition = list(
@@ -89,7 +93,7 @@ Creates a self-service action.
   AcceptLanguage = "string",
   IdempotencyToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

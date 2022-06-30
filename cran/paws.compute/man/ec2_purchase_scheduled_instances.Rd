@@ -18,7 +18,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{PurchaseRequests}{[required] The purchase requests.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ScheduledInstanceSet = list(
     list(
       AvailabilityZone = "string",
@@ -57,7 +59,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Purchases the Scheduled Instances with the specified schedule.
@@ -75,7 +77,9 @@ After you purchase a Scheduled Instance, you can't cancel, modify, or
 resell your purchase.
 }
 \section{Request syntax}{
-\preformatted{svc$purchase_scheduled_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purchase_scheduled_instances(
   ClientToken = "string",
   DryRun = TRUE|FALSE,
   PurchaseRequests = list(
@@ -85,7 +89,7 @@ resell your purchase.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

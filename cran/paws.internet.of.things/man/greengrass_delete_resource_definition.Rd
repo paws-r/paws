@@ -16,10 +16,12 @@ An empty list.
 Deletes a resource definition.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_resource_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource_definition(
   ResourceDefinitionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

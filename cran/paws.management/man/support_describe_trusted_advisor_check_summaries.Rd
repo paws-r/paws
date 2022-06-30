@@ -11,7 +11,9 @@ support_describe_trusted_advisor_check_summaries(checkIds)
 \item{checkIds}{[required] The IDs of the Trusted Advisor checks.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   summaries = list(
     list(
       checkId = "string",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the results for the AWS Trusted Advisor check summaries for the
@@ -52,12 +54,14 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_trusted_advisor_check_summaries(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_trusted_advisor_check_summaries(
   checkIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

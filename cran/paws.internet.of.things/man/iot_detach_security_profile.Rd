@@ -21,11 +21,13 @@ Disassociates a Device Defender security profile from a thing group or
 from this account.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_security_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_security_profile(
   securityProfileName = "string",
   securityProfileTargetArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

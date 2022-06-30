@@ -10,7 +10,9 @@ comprehend_describe_events_detection_job(JobId)
 \item{JobId}{[required] The identifier of the events detection job.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventsDetectionJobProperties = list(
     JobId = "string",
     JobName = "string",
@@ -37,16 +39,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the status and details of an events detection job.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_events_detection_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_events_detection_job(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

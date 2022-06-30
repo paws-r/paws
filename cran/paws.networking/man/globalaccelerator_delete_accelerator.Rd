@@ -35,10 +35,12 @@ have permissions to delete an accelerator. For more information, see
 in the \emph{AWS Global Accelerator Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_accelerator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_accelerator(
   AcceleratorArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

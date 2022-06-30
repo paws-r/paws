@@ -23,7 +23,9 @@ response. This parameter is not supported for application, campaign, and
 journey metrics.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JourneyExecutionMetricsResponse = list(
     ApplicationId = "string",
     JourneyId = "string",
@@ -33,20 +35,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves (queries) pre-aggregated data for a standard execution metric
 that applies to a journey.
 }
 \section{Request syntax}{
-\preformatted{svc$get_journey_execution_metrics(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_journey_execution_metrics(
   ApplicationId = "string",
   JourneyId = "string",
   NextToken = "string",
   PageSize = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -32,13 +32,15 @@ Prevents artifacts in a pipeline from transitioning to the next stage in
 the pipeline.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_stage_transition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_stage_transition(
   pipelineName = "string",
   stageName = "string",
   transitionType = "Inbound"|"Outbound",
   reason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

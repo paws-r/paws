@@ -16,24 +16,28 @@ associate with the short-term URL.}
 \item{expiresInSeconds}{[required] Lifetime, in seconds, of the URL.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   url = "string",
   expires = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a signed, short-term URL that can be passed to a Selenium
 \code{RemoteWebDriver} constructor.
 }
 \section{Request syntax}{
-\preformatted{svc$create_test_grid_url(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_test_grid_url(
   projectArn = "string",
   expiresInSeconds = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

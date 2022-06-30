@@ -16,10 +16,12 @@ mobile_export_bundle(bundleId, projectId, platform)
 \item{platform}{Developer desktop or target application platform.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   downloadUrl = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates customized software development kit (SDK) and or tool packages
@@ -27,12 +29,14 @@ used to integrate mobile web or mobile app clients with backend AWS
 resources.
 }
 \section{Request syntax}{
-\preformatted{svc$export_bundle(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_bundle(
   bundleId = "string",
   projectId = "string",
   platform = "OSX"|"WINDOWS"|"LINUX"|"OBJC"|"SWIFT"|"ANDROID"|"JAVASCRIPT"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

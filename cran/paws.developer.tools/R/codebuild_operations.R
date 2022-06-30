@@ -2240,9 +2240,8 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #' codebuild_import_source_credentials(username, token, serverType,
 #'   authType, shouldOverwrite)
 #'
-#' @param username The Bitbucket username when the `authType` is BASIC_AUTH. This
-#' parameter is not valid for other types of source providers or
-#' connections.
+#' @param username The Bitbucket username when the `authType` is BASIC_AUTH. This parameter
+#' is not valid for other types of source providers or connections.
 #' @param token &#91;required&#93; For GitHub or GitHub Enterprise, this is the personal access token. For
 #' Bitbucket, this is the app password.
 #' @param serverType &#91;required&#93; The source provider used for this project.

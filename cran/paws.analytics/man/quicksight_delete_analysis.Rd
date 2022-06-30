@@ -22,7 +22,9 @@ immediately delete the analysis, add the \code{ForceDeleteWithoutRecovery}
 option. You can't restore an analysis after it's deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = 123,
   Arn = "string",
   AnalysisId = "string",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
   ),
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an analysis from Amazon QuickSight. You can optionally include a
@@ -52,13 +54,15 @@ QuickSight console. To access it in the console, restore it. Deleting an
 analysis doesn't delete the dashboards that you publish from it.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_analysis(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_analysis(
   AwsAccountId = "string",
   AnalysisId = "string",
   RecoveryWindowInDays = 123,
   ForceDeleteWithoutRecovery = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

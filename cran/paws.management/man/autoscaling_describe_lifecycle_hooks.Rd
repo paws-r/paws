@@ -14,7 +14,9 @@ autoscaling_describe_lifecycle_hooks(AutoScalingGroupName,
 all lifecycle hooks are described.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LifecycleHooks = list(
     list(
       LifecycleHookName = "string",
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the lifecycle hooks for the specified Auto Scaling group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_lifecycle_hooks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_lifecycle_hooks(
   AutoScalingGroupName = "string",
   LifecycleHookNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

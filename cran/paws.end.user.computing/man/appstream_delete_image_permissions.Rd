@@ -21,11 +21,13 @@ permissions for an image, AWS accounts to which you previously granted
 these permissions can no longer use the image.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_image_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_image_permissions(
   Name = "string",
   SharedAccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

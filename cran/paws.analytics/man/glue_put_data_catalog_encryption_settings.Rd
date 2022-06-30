@@ -22,7 +22,9 @@ configuration has been set, the specified encryption is applied to every
 catalog write thereafter.
 }
 \section{Request syntax}{
-\preformatted{svc$put_data_catalog_encryption_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_data_catalog_encryption_settings(
   CatalogId = "string",
   DataCatalogEncryptionSettings = list(
     EncryptionAtRest = list(
@@ -35,7 +37,7 @@ catalog write thereafter.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

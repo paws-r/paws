@@ -11,7 +11,7 @@ sagemaker_update_workforce(WorkforceName, SourceIpConfig, OidcConfig)
 your workforce name by using the operation.}
 
 \item{SourceIpConfig}{A list of one to ten worker IP address ranges
-(\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs})
+(\href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{CIDRs})
 that can be used to access tasks assigned to this workforce.
 
 Maximum: Ten CIDR values}
@@ -20,7 +20,9 @@ Maximum: Ten CIDR values}
 configuration for a workforce made using your own IdP.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Workforce = list(
     WorkforceName = "string",
     WorkforceArn = "string",
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Use this operation to update your workforce. You can use this operation
@@ -62,7 +64,7 @@ configuration.
 Use \code{SourceIpConfig} to restrict worker access to tasks to a specific
 range of IP addresses. You specify allowed IP addresses by creating a
 list of up to ten
-\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs}.
+\href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{CIDRs}.
 By default, a workforce isn't restricted to specific IP addresses. If
 you specify a range of IP addresses, workers who attempt to access tasks
 using any IP address outside the specified range are denied and get a
@@ -82,7 +84,9 @@ your update workforce using the operation.
 This operation only applies to private workforces.
 }
 \section{Request syntax}{
-\preformatted{svc$update_workforce(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_workforce(
   WorkforceName = "string",
   SourceIpConfig = list(
     Cidrs = list(
@@ -100,7 +104,7 @@ This operation only applies to private workforces.
     JwksUri = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

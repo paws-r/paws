@@ -24,14 +24,16 @@ example,
 to be retried without the risk of running the operation twice.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupVaultName = "string",
   BackupVaultArn = "string",
   CreationDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a logical container where backups are stored. A
@@ -43,7 +45,9 @@ Sensitive data, such as passport numbers, should not be included the
 name of a backup vault.
 }
 \section{Request syntax}{
-\preformatted{svc$create_backup_vault(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_backup_vault(
   BackupVaultName = "string",
   BackupVaultTags = list(
     "string"
@@ -51,7 +55,7 @@ name of a backup vault.
   EncryptionKeyArn = "string",
   CreatorRequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

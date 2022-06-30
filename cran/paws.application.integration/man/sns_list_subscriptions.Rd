@@ -11,7 +11,9 @@ sns_list_subscriptions(NextToken)
 \code{\link[=sns_list_subscriptions]{list_subscriptions}} request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Subscriptions = list(
     list(
       SubscriptionArn = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the requester's subscriptions. Each call returns a
@@ -35,10 +37,12 @@ to get further results.
 This action is throttled at 30 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{svc$list_subscriptions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_subscriptions(
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

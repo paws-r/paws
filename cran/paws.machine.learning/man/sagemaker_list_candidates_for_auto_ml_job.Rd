@@ -24,7 +24,9 @@ sagemaker_list_candidates_for_auto_ml_job(AutoMLJobName, StatusEquals,
 in your next request to receive the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Candidates = list(
     list(
       CandidateName = "string",
@@ -65,13 +67,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List the Candidates created for the job.
 }
 \section{Request syntax}{
-\preformatted{svc$list_candidates_for_auto_ml_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_candidates_for_auto_ml_job(
   AutoMLJobName = "string",
   StatusEquals = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
   CandidateNameEquals = "string",
@@ -80,7 +84,7 @@ List the Candidates created for the job.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

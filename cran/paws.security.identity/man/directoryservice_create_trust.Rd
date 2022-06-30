@@ -29,10 +29,12 @@ RemoteDomainName.}
 \item{SelectiveAuth}{Optional parameter to enable selective authentication for the trust.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrustId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 AWS Directory Service for Microsoft Active Directory allows you to
@@ -48,7 +50,9 @@ external domain. You can create either a forest trust or an external
 trust.
 }
 \section{Request syntax}{
-\preformatted{svc$create_trust(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_trust(
   DirectoryId = "string",
   RemoteDomainName = "string",
   TrustPassword = "string",
@@ -59,7 +63,7 @@ trust.
   ),
   SelectiveAuth = "Enabled"|"Disabled"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

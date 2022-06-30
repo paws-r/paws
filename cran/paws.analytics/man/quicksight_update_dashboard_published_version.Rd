@@ -16,24 +16,28 @@ updating.}
 \item{VersionNumber}{[required] The version number of the dashboard.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DashboardId = "string",
   DashboardArn = "string",
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the published version of a dashboard.
 }
 \section{Request syntax}{
-\preformatted{svc$update_dashboard_published_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_dashboard_published_version(
   AwsAccountId = "string",
   DashboardId = "string",
   VersionNumber = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

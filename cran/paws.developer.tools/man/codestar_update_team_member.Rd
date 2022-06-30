@@ -23,12 +23,14 @@ this is set to True, the user must associate a public key with their
 profile before the user can access resources.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   userArn = "string",
   projectRole = "string",
   remoteAccessAllowed = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a team member's attributes in an AWS CodeStar project. For
@@ -36,13 +38,15 @@ example, you can change a team member's role in the project, or change
 whether they have remote access to project resources.
 }
 \section{Request syntax}{
-\preformatted{svc$update_team_member(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_team_member(
   projectId = "string",
   userArn = "string",
   projectRole = "string",
   remoteAccessAllowed = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

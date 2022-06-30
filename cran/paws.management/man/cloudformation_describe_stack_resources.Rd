@@ -41,7 +41,9 @@ must specify \code{StackName}.
 Default: There is no default value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackResources = list(
     list(
       StackName = "string",
@@ -68,7 +70,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns AWS resource descriptions for running and deleted stacks. If
@@ -95,12 +97,14 @@ A \code{ValidationError} is returned if you specify both \code{StackName} and
 \code{PhysicalResourceId} in the same request.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_stack_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stack_resources(
   StackName = "string",
   LogicalResourceId = "string",
   PhysicalResourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,10 +22,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \code{Connect}, \code{Delete}, and \code{Reject}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReturnValue = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies a connection notification for VPC endpoint or VPC endpoint
@@ -33,7 +35,9 @@ service. You can change the SNS topic for the notification, or the
 events for which to be notified.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_vpc_endpoint_connection_notification(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpc_endpoint_connection_notification(
   DryRun = TRUE|FALSE,
   ConnectionNotificationId = "string",
   ConnectionNotificationArn = "string",
@@ -41,7 +45,7 @@ events for which to be notified.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

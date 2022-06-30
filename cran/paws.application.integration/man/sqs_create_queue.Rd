@@ -197,10 +197,12 @@ information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   QueueUrl = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new standard or FIFO queue. You can pass one or more
@@ -254,7 +256,9 @@ information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_queue(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_queue(
   QueueName = "string",
   Attributes = list(
     "string"
@@ -263,7 +267,7 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

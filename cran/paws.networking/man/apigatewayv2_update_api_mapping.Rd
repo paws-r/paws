@@ -19,26 +19,30 @@ apigatewayv2_update_api_mapping(ApiId, ApiMappingId, ApiMappingKey,
 \item{Stage}{The API stage.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApiId = "string",
   ApiMappingId = "string",
   ApiMappingKey = "string",
   Stage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The API mapping.
 }
 \section{Request syntax}{
-\preformatted{svc$update_api_mapping(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_api_mapping(
   ApiId = "string",
   ApiMappingId = "string",
   ApiMappingKey = "string",
   DomainName = "string",
   Stage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ sms_get_app(appId)
 \item{appId}{The ID of the application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   appSummary = list(
     appId = "string",
     importedAppId = "string",
@@ -75,16 +77,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve information about the specified application.
 }
 \section{Request syntax}{
-\preformatted{svc$get_app(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_app(
   appId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

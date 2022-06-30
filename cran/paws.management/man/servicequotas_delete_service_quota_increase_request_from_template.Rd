@@ -23,12 +23,14 @@ Deletes the quota increase request for the specified quota from your
 quota request template.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_service_quota_increase_request_from_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_service_quota_increase_request_from_template(
   ServiceCode = "string",
   QuotaCode = "string",
   AwsRegion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

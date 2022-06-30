@@ -21,10 +21,12 @@ Cancels the specified job. You can only cancel a job before its
 \code{JobState} as part of the response element data returned.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_job(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -22,14 +22,16 @@ made using the access point.}
 \item{RootDirectory}{Specifies the directory on the Amazon EFS file system that the access
 point exposes as the root directory of your file system to NFS clients
 using the access point. The clients using the access point can only
-access the root directory and below. If the \code{RootDirectory} > \code{Path}
+access the root directory and below. If the \code{RootDirectory} \> \code{Path}
 specified does not exist, EFS creates it and applies the \code{CreationInfo}
 settings when a client connects to an access point. When specifying a
 \code{RootDirectory}, you need to provide the \code{Path}, and the \code{CreationInfo}
 is optional.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClientToken = "string",
   Name = "string",
   Tags = list(
@@ -59,7 +61,7 @@ A list with the following syntax:\preformatted{list(
   OwnerId = "string",
   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an EFS access point. An access point is an application-specific
@@ -75,7 +77,9 @@ This operation requires permissions for the
 \code{elasticfilesystem:CreateAccessPoint} action.
 }
 \section{Request syntax}{
-\preformatted{svc$create_access_point(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_access_point(
   ClientToken = "string",
   Tags = list(
     list(
@@ -100,7 +104,7 @@ This operation requires permissions for the
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

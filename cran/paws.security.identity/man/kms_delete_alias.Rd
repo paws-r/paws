@@ -50,10 +50,12 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_alias(
   AliasName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

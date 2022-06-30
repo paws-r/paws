@@ -10,7 +10,9 @@ eks_delete_cluster(name)
 \item{name}{[required] The name of the cluster to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   cluster = list(
     name = "string",
     arn = "string",
@@ -74,7 +76,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the Amazon EKS cluster control plane.
@@ -92,10 +94,12 @@ cluster, you must delete them first. For more information, see
 \code{\link[=eks_delete_fargate_profile]{delete_fargate_profile}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cluster(
   name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

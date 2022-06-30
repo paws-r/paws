@@ -11,7 +11,9 @@ glue_get_registry(RegistryId)
 Amazon Resource Name (ARN).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RegistryName = "string",
   RegistryArn = "string",
   Description = "string",
@@ -19,19 +21,21 @@ A list with the following syntax:\preformatted{list(
   CreatedTime = "string",
   UpdatedTime = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified registry in detail.
 }
 \section{Request syntax}{
-\preformatted{svc$get_registry(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_registry(
   RegistryId = list(
     RegistryName = "string",
     RegistryArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

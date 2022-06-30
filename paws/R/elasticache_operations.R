@@ -908,10 +908,11 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     length.
 #' 
 #' -   The only permitted printable special characters are !, &, \#, $, ^,
-#'     &lt;, &gt;, and -. Other printable special characters cannot be used
-#'     in the AUTH token.
+#'     \<, \>, and -. Other printable special characters cannot be used in
+#'     the AUTH token.
 #' 
-#' For more information, see AUTH password at
+#' For more information, see [AUTH
+#' password](https://redis.io/commands/auth/) at
 #' http://redis.io/commands/AUTH.
 #' @param OutpostMode Specifies whether the nodes in the cluster are created in a single
 #' outpost or across multiple outposts.
@@ -1743,10 +1744,11 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     length.
 #' 
 #' -   The only permitted printable special characters are !, &, \#, $, ^,
-#'     &lt;, &gt;, and -. Other printable special characters cannot be used
-#'     in the AUTH token.
+#'     \<, \>, and -. Other printable special characters cannot be used in
+#'     the AUTH token.
 #' 
-#' For more information, see AUTH password at
+#' For more information, see [AUTH
+#' password](https://redis.io/commands/auth/) at
 #' http://redis.io/commands/AUTH.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to `true`.
 #' 
@@ -5055,7 +5057,7 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
 #' @param Marker An optional marker returned from a prior request. Use this marker for
 #' pagination of results from this operation. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
-#' the value specified by MaxRecords. &gt;
+#' the value specified by MaxRecords. \>
 #'
 #' @return
 #' A list with the following syntax:
@@ -5133,7 +5135,7 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
 #' @param Marker An optional marker returned from a prior request. Use this marker for
 #' pagination of results from this operation. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
-#' the value specified by MaxRecords. &gt;
+#' the value specified by MaxRecords. \>
 #'
 #' @return
 #' A list with the following syntax:
@@ -6004,7 +6006,8 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' -   Cannot contain any of the following characters: '/', '"', or '@@',
 #'     '%'
 #' 
-#' For more information, see AUTH password at AUTH.
+#' For more information, see AUTH password at
+#' [AUTH](https://redis.io/commands/auth/).
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
@@ -6518,7 +6521,8 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' -   Cannot contain any of the following characters: '/', '"', or '@@',
 #'     '%'
 #' 
-#' For more information, see AUTH password at AUTH.
+#' For more information, see AUTH password at
+#' [AUTH](https://redis.io/commands/auth/).
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
@@ -7176,7 +7180,7 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
 #' 
 #' If you make changes to parameters that require a Redis (cluster mode
 #' enabled) cluster reboot for the changes to be applied, see [Rebooting a
-#' Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html)
+#' Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/)
 #' for an alternate process.
 #'
 #' @usage

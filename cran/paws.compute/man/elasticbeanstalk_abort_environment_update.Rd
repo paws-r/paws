@@ -23,11 +23,13 @@ Cancels in-progress environment configuration update or application
 version deployment.
 }
 \section{Request syntax}{
-\preformatted{svc$abort_environment_update(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$abort_environment_update(
   EnvironmentId = "string",
   EnvironmentName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

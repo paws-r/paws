@@ -18,7 +18,9 @@ hour. The default value for this parameter is 7 days from creation time.
 For more information, see .}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   apiKey = list(
     id = "string",
     description = "string",
@@ -26,19 +28,21 @@ A list with the following syntax:\preformatted{list(
     deletes = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a unique key that you can distribute to clients who are
 executing your API.
 }
 \section{Request syntax}{
-\preformatted{svc$create_api_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_api_key(
   apiId = "string",
   description = "string",
   expires = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

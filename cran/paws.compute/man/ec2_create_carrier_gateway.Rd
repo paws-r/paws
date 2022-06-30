@@ -21,7 +21,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CarrierGateway = list(
     CarrierGatewayId = "string",
     VpcId = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a carrier gateway. For more information about carrier gateways,
@@ -43,7 +45,9 @@ see \href{https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavel
 in the \emph{AWS Wavelength Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_carrier_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_carrier_gateway(
   VpcId = "string",
   TagSpecifications = list(
     list(
@@ -59,7 +63,7 @@ in the \emph{AWS Wavelength Developer Guide}.
   DryRun = TRUE|FALSE,
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

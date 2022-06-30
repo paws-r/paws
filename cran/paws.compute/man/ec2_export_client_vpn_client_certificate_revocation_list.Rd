@@ -17,25 +17,29 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CertificateRevocationList = "string",
   Status = list(
     Code = "pending"|"active",
     Message = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Downloads the client certificate revocation list for the specified
 Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$export_client_vpn_client_certificate_revocation_list(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_client_vpn_client_certificate_revocation_list(
   ClientVpnEndpointId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

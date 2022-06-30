@@ -22,11 +22,13 @@ Deletes the specified internet gateway. You must detach the internet
 gateway from the VPC before you can delete it.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_internet_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_internet_gateway(
   DryRun = TRUE|FALSE,
   InternetGatewayId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

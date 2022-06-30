@@ -21,7 +21,9 @@ definition, the value also maps to the ''LatestVersion'' property of the
 corresponding ''DefinitionInformation'' object.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Definition = list(
@@ -38,18 +40,20 @@ A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a subscription definition version.
 }
 \section{Request syntax}{
-\preformatted{svc$get_subscription_definition_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_subscription_definition_version(
   NextToken = "string",
   SubscriptionDefinitionId = "string",
   SubscriptionDefinitionVersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -8,7 +8,9 @@ member account}
 securityhub_get_master_account()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Master = list(
     AccountId = "string",
     InvitationId = "string",
@@ -18,7 +20,7 @@ A list with the following syntax:\preformatted{list(
     MemberStatus = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides the details for the Security Hub master account for the current
@@ -28,8 +30,10 @@ Can be used by both member accounts that are in an organization and
 accounts that were invited manually.
 }
 \section{Request syntax}{
-\preformatted{svc$get_master_account()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_master_account()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

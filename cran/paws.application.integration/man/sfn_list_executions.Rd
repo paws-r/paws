@@ -29,7 +29,9 @@ an expired pagination token will return an \emph{HTTP 400 InvalidToken}
 error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   executions = list(
     list(
       executionArn = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the executions of a state machine that meet the filtering
@@ -66,13 +68,15 @@ may not reflect very recent updates and changes.
 This API action is not supported by \code{EXPRESS} state machines.
 }
 \section{Request syntax}{
-\preformatted{svc$list_executions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_executions(
   stateMachineArn = "string",
   statusFilter = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

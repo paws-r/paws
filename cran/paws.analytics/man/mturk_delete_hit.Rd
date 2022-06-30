@@ -35,10 +35,12 @@ ListReviewableHITs and ListHITs.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_hit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_hit(
   HITId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

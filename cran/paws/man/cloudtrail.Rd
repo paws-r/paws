@@ -40,7 +40,9 @@ for information about the data that is included with each AWS API call
 listed in the log files.
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudtrail(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudtrail(
   config = list(
     credentials = list(
       creds = list(
@@ -54,7 +56,7 @@ listed in the log files.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

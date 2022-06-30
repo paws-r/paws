@@ -10,12 +10,14 @@ sqs_list_queue_tags(QueueUrl)
 \item{QueueUrl}{[required] The URL of the queue.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List all cost allocation tags added to the specified Amazon SQS queue.
@@ -27,10 +29,12 @@ information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_queue_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_queue_tags(
   QueueUrl = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

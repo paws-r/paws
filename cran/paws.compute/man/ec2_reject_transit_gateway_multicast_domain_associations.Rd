@@ -23,7 +23,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Associations = list(
     TransitGatewayMulticastDomainId = "string",
     TransitGatewayAttachmentId = "string",
@@ -38,14 +40,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Rejects a request to associate cross-account subnets with a transit
 gateway multicast domain.
 }
 \section{Request syntax}{
-\preformatted{svc$reject_transit_gateway_multicast_domain_associations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reject_transit_gateway_multicast_domain_associations(
   TransitGatewayMulticastDomainId = "string",
   TransitGatewayAttachmentId = "string",
   SubnetIds = list(
@@ -53,7 +57,7 @@ gateway multicast domain.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

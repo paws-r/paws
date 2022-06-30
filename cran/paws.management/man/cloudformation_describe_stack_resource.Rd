@@ -22,7 +22,9 @@ Default: There is no default value.}
 Default: There is no default value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackResourceDetail = list(
     StackName = "string",
     StackId = "string",
@@ -48,7 +50,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a description of the specified resource in the specified stack.
@@ -57,11 +59,13 @@ For deleted stacks, DescribeStackResource returns resource information
 for up to 90 days after the stack has been deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_stack_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stack_resource(
   StackName = "string",
   LogicalResourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

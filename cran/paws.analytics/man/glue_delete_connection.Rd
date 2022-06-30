@@ -19,11 +19,13 @@ An empty list.
 Deletes a connection from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_connection(
   CatalogId = "string",
   ConnectionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

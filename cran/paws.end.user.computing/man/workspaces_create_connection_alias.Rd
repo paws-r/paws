@@ -20,17 +20,21 @@ account.}
 \item{Tags}{The tags to associate with the connection alias.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AliasId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates the specified connection alias for use with cross-Region
 redirection. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_connection_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_connection_alias(
   ConnectionString = "string",
   Tags = list(
     list(
@@ -39,7 +43,7 @@ redirection. For more information, see \href{https://docs.aws.amazon.com/workspa
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

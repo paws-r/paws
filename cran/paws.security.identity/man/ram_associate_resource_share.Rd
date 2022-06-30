@@ -19,7 +19,9 @@ ram_associate_resource_share(resourceShareArn, resourceArns, principals,
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceShareAssociations = list(
     list(
       resourceShareArn = "string",
@@ -39,14 +41,16 @@ A list with the following syntax:\preformatted{list(
   ),
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates the specified resource share with the specified principals
 and resources.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_resource_share(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_resource_share(
   resourceShareArn = "string",
   resourceArns = list(
     "string"
@@ -56,7 +60,7 @@ and resources.
   ),
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

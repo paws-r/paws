@@ -122,10 +122,10 @@ space that you use in an Aurora cluster volume.
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100
-to 65536.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+65536.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
@@ -134,10 +134,10 @@ to 65536.
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100
-to 65536.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+65536.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
@@ -146,10 +146,10 @@ to 65536.
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100
-to 65536.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+65536.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
@@ -158,10 +158,10 @@ to 65536.
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100
-to 65536.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+65536.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+65536.
 \item Magnetic storage (standard): Must be an integer from 10 to 3072.
 }
 
@@ -172,20 +172,20 @@ following:
 \itemize{
 \item General Purpose (SSD) storage (gp2):
 \itemize{
-\item Enterprise and Standard editions: Must be an integer from 200
-to 16384.
+\item Enterprise and Standard editions: Must be an integer from 200 to
+16384.
 \item Web and Express editions: Must be an integer from 20 to 16384.
 }
 \item Provisioned IOPS storage (io1):
 \itemize{
-\item Enterprise and Standard editions: Must be an integer from 200
-to 16384.
+\item Enterprise and Standard editions: Must be an integer from 200 to
+16384.
 \item Web and Express editions: Must be an integer from 100 to 16384.
 }
 \item Magnetic storage (standard):
 \itemize{
-\item Enterprise and Standard editions: Must be an integer from 200
-to 1024.
+\item Enterprise and Standard editions: Must be an integer from 200 to
+1024.
 \item Web and Express editions: Must be an integer from 20 to 1024.
 }
 }}
@@ -333,7 +333,7 @@ If you're creating a DB instance in an RDS on VMware environment,
 specify the identifier of the custom Availability Zone to create the DB
 instance in.
 
-For more information about RDS on VMware, see the \href{https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html}{RDS on VMware User Guide.}}
+For more information about RDS on VMware, see the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html}{RDS on VMware User Guide.}}
 
 \item{DBSubnetGroupName}{A DB subnet group to associate with this DB instance.
 
@@ -485,7 +485,7 @@ in the \emph{Amazon RDS User Guide.}
 
 \strong{Oracle}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html}{Oracle Database Engine Release Notes}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/OracleReleaseNotes/Welcome.html}{Oracle Database Engine Release Notes}
 in the \emph{Amazon RDS User Guide.}
 
 \strong{PostgreSQL}
@@ -743,11 +743,13 @@ outside of its virtual private cloud (VPC) on your local network.
 For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on AWS Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing}{Customer-owned IP addresses}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing}{Customer-owned IP addresses}
 in the \emph{AWS Outposts User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -933,13 +935,15 @@ A list with the following syntax:\preformatted{list(
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new DB instance.
 }
 \section{Request syntax}{
-\preformatted{svc$create_db_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_instance(
   DBName = "string",
   DBInstanceIdentifier = "string",
   AllocatedStorage = 123,
@@ -1005,7 +1009,7 @@ Creates a new DB instance.
   MaxAllocatedStorage = 123,
   EnableCustomerOwnedIp = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

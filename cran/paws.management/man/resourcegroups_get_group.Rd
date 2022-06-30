@@ -12,14 +12,16 @@ resourcegroups_get_group(GroupName, Group)
 \item{Group}{The name or the ARN of the resource group to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Group = list(
     GroupArn = "string",
     Name = "string",
     Description = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a specified resource group.
@@ -32,11 +34,13 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_group(
   GroupName = "string",
   Group = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

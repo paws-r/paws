@@ -45,7 +45,9 @@ The following limitations are enforced for this operation:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$batch_delete_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_delete_attributes(
   DomainName = "string",
   Items = list(
     list(
@@ -59,7 +61,7 @@ The following limitations are enforced for this operation:
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

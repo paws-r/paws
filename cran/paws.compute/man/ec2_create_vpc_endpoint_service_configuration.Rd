@@ -33,7 +33,9 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \item{TagSpecifications}{The tags to associate with the service.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceConfiguration = list(
     ServiceType = list(
       list(
@@ -73,7 +75,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a VPC endpoint service configuration to which service consumers
@@ -90,15 +92,17 @@ Service consumers connect to your service using a Gateway Load
 Balancer endpoint.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html}{VPC Endpoint Services}
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html}{VPC Endpoint Services}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 If you set the private DNS name, you must prove that you own the private
-DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html}{VPC Endpoint Service Private DNS Name Verification}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/}{VPC Endpoint Service Private DNS Name Verification} in
+the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_vpc_endpoint_service_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc_endpoint_service_configuration(
   DryRun = TRUE|FALSE,
   AcceptanceRequired = TRUE|FALSE,
   PrivateDnsName = "string",
@@ -121,7 +125,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

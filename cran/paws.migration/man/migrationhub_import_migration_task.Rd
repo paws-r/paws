@@ -8,7 +8,7 @@ migrationhub_import_migration_task(ProgressUpdateStream,
   MigrationTaskName, DryRun)
 }
 \arguments{
-\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream. >}
+\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream. \>}
 
 \item{MigrationTaskName}{[required] Unique identifier that references the migration task. \emph{Do not store
 personal data in this field.}}
@@ -29,12 +29,14 @@ API as the migration tool must first register the migration task with
 Migration Hub.
 }
 \section{Request syntax}{
-\preformatted{svc$import_migration_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_migration_task(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,8 +13,10 @@ An empty list.
 Deletes all servers from your server catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_server_catalog()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_server_catalog()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

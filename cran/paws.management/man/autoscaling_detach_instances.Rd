@@ -16,7 +16,9 @@ autoscaling_detach_instances(InstanceIds, AutoScalingGroupName,
 value by the number of instances detached.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Activities = list(
     list(
       ActivityId = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes one or more instances from the specified Auto Scaling group.
@@ -57,14 +59,16 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_instances(
   InstanceIds = list(
     "string"
   ),
   AutoScalingGroupName = "string",
   ShouldDecrementDesiredCapacity = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

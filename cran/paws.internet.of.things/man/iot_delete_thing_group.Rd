@@ -18,11 +18,13 @@ An empty list.
 Deletes a thing group.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_thing_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_thing_group(
   thingGroupName = "string",
   expectedVersion = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

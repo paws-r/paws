@@ -31,7 +31,9 @@ specify in this parameter, the response includes a \code{NextToken} element,
 which you can use to obtain additional results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainDeliverabilityCampaigns = list(
     list(
       CampaignId = "string",
@@ -60,7 +62,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve deliverability data for all the campaigns that used a specific
@@ -70,7 +72,9 @@ available for a domain only if you enabled the Deliverability dashboard
 operation) for the domain.
 }
 \section{Request syntax}{
-\preformatted{svc$list_domain_deliverability_campaigns(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_domain_deliverability_campaigns(
   StartDate = as.POSIXct(
     "2015-01-01"
   ),
@@ -81,7 +85,7 @@ operation) for the domain.
   NextToken = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,7 +19,9 @@ update.}
 \item{scale}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskSet = list(
     id = "string",
     taskSetArn = "string",
@@ -90,7 +92,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies a task set. This is used when a service uses the \code{EXTERNAL}
@@ -98,7 +100,9 @@ deployment controller type. For more information, see \href{https://docs.aws.ama
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_task_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_task_set(
   cluster = "string",
   service = "string",
   taskSet = "string",
@@ -107,7 +111,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     unit = "PERCENT"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

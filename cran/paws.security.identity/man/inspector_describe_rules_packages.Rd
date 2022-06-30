@@ -13,7 +13,9 @@ inspector_describe_rules_packages(rulesPackageArns, locale)
 \item{locale}{The locale that you want to translate a rules package description into.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   rulesPackages = list(
     list(
       arn = "string",
@@ -30,20 +32,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the rules packages that are specified by the ARNs of the rules
 packages.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_rules_packages(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_rules_packages(
   rulesPackageArns = list(
     "string"
   ),
   locale = "EN_US"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

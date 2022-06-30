@@ -24,7 +24,9 @@ idempotency of the request.}
 \item{NodeId}{Node ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CheckoutType = "PROVISIONAL",
   LicenseConsumptionToken = "string",
   EntitlementsAllowed = list(
@@ -39,13 +41,15 @@ A list with the following syntax:\preformatted{list(
   IssuedAt = "string",
   Expiration = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Checks out the specified license.
 }
 \section{Request syntax}{
-\preformatted{svc$checkout_license(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$checkout_license(
   ProductSKU = "string",
   CheckoutType = "PROVISIONAL",
   KeyFingerprint = "string",
@@ -60,7 +64,7 @@ Checks out the specified license.
   Beneficiary = "string",
   NodeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

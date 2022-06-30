@@ -19,26 +19,30 @@ results.}
 \item{maxResults}{The maximum number of results to return per request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceLinks = list(
     "string"
   ),
   reportType = "ERRORS"|"RESULTS",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Information about the thing registration tasks.
 }
 \section{Request syntax}{
-\preformatted{svc$list_thing_registration_task_reports(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_thing_registration_task_reports(
   taskId = "string",
   reportType = "ERRORS"|"RESULTS",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,19 +10,23 @@ glue_start_workflow_run(Name)
 \item{Name}{[required] The name of the workflow to start.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RunId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a new run of the specified workflow.
 }
 \section{Request syntax}{
-\preformatted{svc$start_workflow_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_workflow_run(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

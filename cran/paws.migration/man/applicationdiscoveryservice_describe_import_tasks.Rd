@@ -20,7 +20,9 @@ to 100.}
 \item{nextToken}{The token to request a specific page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   nextToken = "string",
   tasks = list(
     list(
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an array of import tasks for your account, including status
@@ -54,7 +56,9 @@ information, times, IDs, the Amazon S3 Object URL for the import file,
 and more.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_import_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_import_tasks(
   filters = list(
     list(
       name = "IMPORT_TASK_ID"|"STATUS"|"NAME",
@@ -66,7 +70,7 @@ and more.
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

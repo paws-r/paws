@@ -10,7 +10,9 @@ datasync_describe_task(TaskArn)
 \item{TaskArn}{[required] The Amazon Resource Name (ARN) of the task to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TaskArn = "string",
   Status = "AVAILABLE"|"CREATING"|"QUEUED"|"RUNNING"|"UNAVAILABLE",
   Name = "string",
@@ -54,16 +56,18 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns metadata about a task.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_task(
   TaskArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

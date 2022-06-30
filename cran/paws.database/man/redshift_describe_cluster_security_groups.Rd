@@ -51,7 +51,9 @@ the security groups that have either or both of these tag values
 associated with them.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   ClusterSecurityGroups = list(
     list(
@@ -91,7 +93,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about Amazon Redshift security groups. If the name
@@ -112,7 +114,9 @@ groups are returned regardless of whether they have tag keys or values
 associated with them.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_cluster_security_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cluster_security_groups(
   ClusterSecurityGroupName = "string",
   MaxRecords = 123,
   Marker = "string",
@@ -123,7 +127,7 @@ associated with them.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

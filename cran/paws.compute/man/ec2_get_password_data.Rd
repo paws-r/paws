@@ -16,14 +16,16 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceId = "string",
   PasswordData = "string",
   Timestamp = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the encrypted administrator password for a running Windows
@@ -51,11 +53,13 @@ wait up to 15 minutes after launching an instance before trying to
 retrieve the generated password.
 }
 \section{Request syntax}{
-\preformatted{svc$get_password_data(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_password_data(
   InstanceId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

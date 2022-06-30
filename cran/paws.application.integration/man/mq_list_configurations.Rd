@@ -14,7 +14,9 @@ mq_list_configurations(MaxResults, NextToken)
 return. To request the first page, leave nextToken empty.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Configurations = list(
     list(
       Arn = "string",
@@ -42,17 +44,19 @@ A list with the following syntax:\preformatted{list(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of all configurations.
 }
 \section{Request syntax}{
-\preformatted{svc$list_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_configurations(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

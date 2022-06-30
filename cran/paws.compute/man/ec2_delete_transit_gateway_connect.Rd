@@ -15,7 +15,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGatewayConnect = list(
     TransitGatewayAttachmentId = "string",
     TransportTransitGatewayAttachmentId = "string",
@@ -35,18 +37,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified Connect attachment. You must first delete any
 Connect peers for the attachment.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_transit_gateway_connect(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_transit_gateway_connect(
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

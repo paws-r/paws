@@ -19,10 +19,12 @@ Stops recording configurations of the AWS resources you have selected to
 record in your AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_configuration_recorder(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_configuration_recorder(
   ConfigurationRecorderName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

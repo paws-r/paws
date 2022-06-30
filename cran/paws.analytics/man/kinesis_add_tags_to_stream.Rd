@@ -28,13 +28,15 @@ existing tags that correspond to the specified tag keys.
 transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags_to_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_stream(
   StreamName = "string",
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

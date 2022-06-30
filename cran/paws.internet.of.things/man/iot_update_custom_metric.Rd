@@ -14,7 +14,9 @@ it doesn't have to be unique. Don't use this name as the metric
 identifier in the device metric report. Can be updated.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   metricName = "string",
   metricArn = "string",
   metricType = "string-list"|"ip-address-list"|"number-list"|"number",
@@ -26,17 +28,19 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a Device Defender detect custom metric.
 }
 \section{Request syntax}{
-\preformatted{svc$update_custom_metric(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_custom_metric(
   metricName = "string",
   displayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

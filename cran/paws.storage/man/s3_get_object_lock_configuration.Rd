@@ -22,7 +22,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ObjectLockConfiguration = list(
     ObjectLockEnabled = "Enabled",
     Rule = list(
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the Object Lock configuration for a bucket. The rule specified in
@@ -43,11 +45,13 @@ object placed in the specified bucket. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_object_lock_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_object_lock_configuration(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

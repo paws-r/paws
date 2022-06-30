@@ -35,7 +35,9 @@ e.g. '2345678' (a channel ID)}
 \item{VideoQuality}{Filter by video quality, 'STANDARD', 'ENHANCED', or 'PREMIUM'}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Offerings = list(
     list(
@@ -62,13 +64,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List offerings available for purchase.
 }
 \section{Request syntax}{
-\preformatted{svc$list_offerings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_offerings(
   ChannelClass = "string",
   ChannelConfiguration = "string",
   Codec = "string",
@@ -82,7 +86,7 @@ List offerings available for purchase.
   SpecialFeature = "string",
   VideoQuality = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

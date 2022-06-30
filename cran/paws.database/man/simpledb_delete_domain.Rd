@@ -23,10 +23,12 @@ not exist or running the function multiple times using the same domain
 name will not result in an error response.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_domain(
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

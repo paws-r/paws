@@ -37,7 +37,9 @@ Represents the success of a third party job as returned to the pipeline
 by a job worker. Used for partner actions only.
 }
 \section{Request syntax}{
-\preformatted{svc$put_third_party_job_success_result(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_third_party_job_success_result(
   jobId = "string",
   clientToken = "string",
   currentRevision = list(
@@ -55,7 +57,7 @@ by a job worker. Used for partner actions only.
     percentComplete = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

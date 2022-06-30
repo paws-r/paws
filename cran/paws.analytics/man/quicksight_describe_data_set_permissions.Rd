@@ -13,7 +13,9 @@ quicksight_describe_data_set_permissions(AwsAccountId, DataSetId)
 AWS Region for each AWS account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DataSetArn = "string",
   DataSetId = "string",
   Permissions = list(
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the permissions on a dataset.
@@ -36,11 +38,13 @@ The permissions resource is
 \code{arn:aws:quicksight:region:aws-account-id:dataset/data-set-id}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_data_set_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_data_set_permissions(
   AwsAccountId = "string",
   DataSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

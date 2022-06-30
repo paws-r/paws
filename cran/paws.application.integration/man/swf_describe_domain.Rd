@@ -11,7 +11,9 @@ swf_describe_domain(name)
 \item{name}{[required] The name of the domain to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   domainInfo = list(
     name = "string",
     status = "REGISTERED"|"DEPRECATED",
@@ -22,7 +24,7 @@ A list with the following syntax:\preformatted{list(
     workflowExecutionRetentionPeriodInDays = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the specified domain, including description
@@ -48,10 +50,12 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_domain(
   name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -7,12 +7,14 @@
 autoscaling_describe_lifecycle_hook_types()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LifecycleHookTypes = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the available types of lifecycle hooks.

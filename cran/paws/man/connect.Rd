@@ -35,7 +35,9 @@ a list of Amazon Connect endpoints, see \href{https://docs.aws.amazon.com/genera
 Working with contact flows? Check out the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
 }
 \section{Service syntax}{
-\preformatted{svc <- connect(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- connect(
   config = list(
     credentials = list(
       creds = list(
@@ -49,7 +51,7 @@ Working with contact flows? Check out the \href{https://docs.aws.amazon.com/conn
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

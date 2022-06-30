@@ -28,21 +28,25 @@ value from the previous call to retrieve the next set of results.}
 call. The default value is 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ids = list(
     "string"
   ),
   marker = "string",
   hasMoreResults = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Queries the specified pipeline for the names of objects that match the
 specified set of conditions.
 }
 \section{Request syntax}{
-\preformatted{svc$query_objects(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$query_objects(
   pipelineId = "string",
   query = list(
     selectors = list(
@@ -61,7 +65,7 @@ specified set of conditions.
   marker = "string",
   limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

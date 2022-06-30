@@ -11,7 +11,9 @@ codepipeline_list_pipelines(nextToken)
 It can be used to return the next set of pipelines in the list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   pipelines = list(
     list(
       name = "string",
@@ -26,16 +28,18 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a summary of all of the pipelines associated with your account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_pipelines(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_pipelines(
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

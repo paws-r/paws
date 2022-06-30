@@ -18,10 +18,12 @@ An empty list.
 Deletes an existing option group.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_option_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_option_group(
   OptionGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

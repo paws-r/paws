@@ -51,12 +51,14 @@ mail, you must request a new certificate. For more information about
 setting up your contact email addresses, see \href{https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html}{Configure Email for your Domain}.
 }
 \section{Request syntax}{
-\preformatted{svc$resend_validation_email(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resend_validation_email(
   CertificateArn = "string",
   Domain = "string",
   ValidationDomain = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

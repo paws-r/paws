@@ -53,7 +53,9 @@ allow tag updates.}
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RecordDetail = list(
     RecordId = "string",
     ProvisionedProductName = "string",
@@ -85,7 +87,7 @@ A list with the following syntax:\preformatted{list(
     LaunchRoleArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Requests updates to the configuration of the specified provisioned
@@ -100,7 +102,9 @@ You can check the status of this request using
 \code{\link[=servicecatalog_describe_record]{describe_record}}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_provisioned_product(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_provisioned_product(
   AcceptLanguage = "string",
   ProvisionedProductName = "string",
   ProvisionedProductId = "string",
@@ -138,7 +142,7 @@ You can check the status of this request using
   ),
   UpdateToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

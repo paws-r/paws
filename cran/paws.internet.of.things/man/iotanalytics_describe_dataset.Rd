@@ -10,7 +10,9 @@ iotanalytics_describe_dataset(datasetName)
 \item{datasetName}{[required] The name of the data set whose information is retrieved.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   dataset = list(
     name = "string",
     arn = "string",
@@ -108,16 +110,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a dataset.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_dataset(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_dataset(
   datasetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

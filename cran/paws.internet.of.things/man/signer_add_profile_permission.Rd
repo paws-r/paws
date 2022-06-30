@@ -22,16 +22,20 @@ IAM role or another AWS account ID.}
 \item{statementId}{[required] A unique identifier for the cross-account permission statement.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   revisionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds cross-account permissions to a signing profile.
 }
 \section{Request syntax}{
-\preformatted{svc$add_profile_permission(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_profile_permission(
   profileName = "string",
   profileVersion = "string",
   action = "string",
@@ -39,7 +43,7 @@ Adds cross-account permissions to a signing profile.
   revisionId = "string",
   statementId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,10 +19,12 @@ Deletes a profile that can be applied to one or more private device
 instances.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_instance_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_instance_profile(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

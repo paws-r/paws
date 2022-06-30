@@ -19,25 +19,29 @@ batch of the results.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   repositoryNames = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all repositories associated with the specified approval rule
 template.
 }
 \section{Request syntax}{
-\preformatted{svc$list_repositories_for_approval_rule_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_repositories_for_approval_rule_template(
   approvalRuleTemplateName = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

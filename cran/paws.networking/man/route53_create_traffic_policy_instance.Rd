@@ -27,7 +27,9 @@ record sets in the specified hosted zone.}
 resource record sets in the specified hosted zone.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficPolicyInstance = list(
     Id = "string",
     HostedZoneId = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Location = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates resource record sets in a specified hosted zone based on the
@@ -55,14 +57,16 @@ using the resource record sets that
 created.
 }
 \section{Request syntax}{
-\preformatted{svc$create_traffic_policy_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_traffic_policy_instance(
   HostedZoneId = "string",
   Name = "string",
   TTL = 123,
   TrafficPolicyId = "string",
   TrafficPolicyVersion = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

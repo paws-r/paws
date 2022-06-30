@@ -22,7 +22,9 @@ journey metrics.}
 paginated response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ImportJobsResponse = list(
     Item = list(
       list(
@@ -55,20 +57,22 @@ A list with the following syntax:\preformatted{list(
     NextToken = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the status and settings of the import jobs
 for a segment.
 }
 \section{Request syntax}{
-\preformatted{svc$get_segment_import_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_segment_import_jobs(
   ApplicationId = "string",
   PageSize = "string",
   SegmentId = "string",
   Token = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

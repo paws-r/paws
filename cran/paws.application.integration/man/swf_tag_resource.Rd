@@ -23,7 +23,9 @@ Add a tag to a Amazon SWF domain.
 Amazon SWF supports a maximum of 50 tags per resource.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     list(
@@ -32,7 +34,7 @@ Amazon SWF supports a maximum of 50 tags per resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

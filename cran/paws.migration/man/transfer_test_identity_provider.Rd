@@ -28,13 +28,15 @@ The available protocols are:
 \item{UserPassword}{The password of the user account to be tested.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Response = "string",
   StatusCode = 123,
   Message = "string",
   Url = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 If the \code{IdentityProviderType} of a file transfer protocol-enabled server
@@ -45,14 +47,16 @@ you can troubleshoot issues with the API Gateway integration to ensure
 that your users can successfully use the service.
 }
 \section{Request syntax}{
-\preformatted{svc$test_identity_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_identity_provider(
   ServerId = "string",
   ServerProtocol = "SFTP"|"FTP"|"FTPS",
   SourceIp = "string",
   UserName = "string",
   UserPassword = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

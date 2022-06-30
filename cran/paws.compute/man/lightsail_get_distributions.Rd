@@ -24,7 +24,9 @@ results are paginated, the response will return a next page token that
 you can specify as the page token in a subsequent request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   distributions = list(
     list(
       name = "string",
@@ -98,18 +100,20 @@ A list with the following syntax:\preformatted{list(
   ),
   nextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about one or more of your Amazon Lightsail content
 delivery network (CDN) distributions.
 }
 \section{Request syntax}{
-\preformatted{svc$get_distributions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_distributions(
   distributionName = "string",
   pageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,7 +14,9 @@ health_describe_event_details(eventArns, locale)
 default and the only supported value at this time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   successfulSet = list(
     list(
       event = list(
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns detailed information about one or more specified events.
@@ -68,13 +70,15 @@ If a specified event cannot be retrieved, an error message is returned
 for that event.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_event_details(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_details(
   eventArns = list(
     "string"
   ),
   locale = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

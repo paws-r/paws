@@ -14,7 +14,9 @@ machinelearning_predict(MLModelId, Record, PredictEndpoint)
 \item{PredictEndpoint}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Prediction = list(
     predictedLabel = "string",
     predictedValue = 123.0,
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates a prediction for the observation using the specified
@@ -38,14 +40,16 @@ Not all response parameters will be populated. Whether a response
 parameter is populated depends on the type of model requested.
 }
 \section{Request syntax}{
-\preformatted{svc$predict(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$predict(
   MLModelId = "string",
   Record = list(
     "string"
   ),
   PredictEndpoint = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

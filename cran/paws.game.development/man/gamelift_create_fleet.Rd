@@ -146,7 +146,9 @@ remove, and view tags. The maximum tag limit may be lower than stated.
 See the AWS General Reference for actual tagging limits.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FleetAttributes = list(
     FleetId = "string",
     FleetArn = "string",
@@ -188,7 +190,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new fleet to run your game servers. whether they are custom
@@ -242,7 +244,9 @@ ready to host a game session.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_fleet(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_fleet(
   Name = "string",
   Description = "string",
   BuildId = "string",
@@ -294,7 +298,7 @@ ready to host a game session.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,11 +11,13 @@ opsworks_get_hostname_suggestion(LayerId)
 \item{LayerId}{[required] The layer ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LayerId = "string",
   Hostname = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a generated host name for the specified layer, based on the current
@@ -27,10 +29,12 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_hostname_suggestion(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_hostname_suggestion(
   LayerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

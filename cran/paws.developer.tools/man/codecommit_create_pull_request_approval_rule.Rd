@@ -48,7 +48,9 @@ For more information about IAM ARNs, wildcards, and formats, see \href{https://d
 in the \emph{IAM User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   approvalRule = list(
     approvalRuleId = "string",
     approvalRuleName = "string",
@@ -67,18 +69,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an approval rule for a pull request.
 }
 \section{Request syntax}{
-\preformatted{svc$create_pull_request_approval_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_pull_request_approval_rule(
   pullRequestId = "string",
   approvalRuleName = "string",
   approvalRuleContent = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

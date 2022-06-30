@@ -17,7 +17,9 @@ domain entry.}
 entry request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates one of the following domain name system (DNS) records in a
@@ -53,7 +55,9 @@ via resource tags applied to the resource identified by \verb{domain name}.
 For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$create_domain_entry(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_domain_entry(
   domainName = "string",
   domainEntry = list(
     id = "string",
@@ -66,7 +70,7 @@ For more information, see the Lightsail Dev Guide.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,7 +23,9 @@ jobs, use the token in the next request.}
 \item{MaxResults}{The maximum number of work teams to return in each page of the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Workteams = list(
     list(
       WorkteamName = "string",
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of private work teams that you have defined in a region. The
@@ -69,14 +71,16 @@ list may be empty if no work team satisfies the filter specified in the
 \code{NameContains} parameter.
 }
 \section{Request syntax}{
-\preformatted{svc$list_workteams(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_workteams(
   SortBy = "Name"|"CreateDate",
   SortOrder = "Ascending"|"Descending",
   NameContains = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,11 +21,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \itemize{
 \item \code{create-time} - The time the launch template was created.
 \item \code{launch-template-name} - The name of the launch template.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -38,7 +38,9 @@ the remaining results, make another call with the returned \code{NextToken}
 value. This value can be between 1 and 200.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LaunchTemplates = list(
     list(
       LaunchTemplateId = "string",
@@ -59,13 +61,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more launch templates.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_launch_templates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_launch_templates(
   DryRun = TRUE|FALSE,
   LaunchTemplateIds = list(
     "string"
@@ -84,7 +88,7 @@ Describes one or more launch templates.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

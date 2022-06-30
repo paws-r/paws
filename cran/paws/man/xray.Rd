@@ -20,7 +20,9 @@ AWS X-Ray provides APIs for managing debug traces and retrieving service
 maps and other data created by processing those traces.
 }
 \section{Service syntax}{
-\preformatted{svc <- xray(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- xray(
   config = list(
     credentials = list(
       creds = list(
@@ -34,7 +36,7 @@ maps and other data created by processing those traces.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

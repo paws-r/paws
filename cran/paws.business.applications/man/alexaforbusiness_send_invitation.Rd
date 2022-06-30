@@ -18,10 +18,12 @@ valid for 30 days or until you call this operation again, whichever
 comes first.
 }
 \section{Request syntax}{
-\preformatted{svc$send_invitation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_invitation(
   UserArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

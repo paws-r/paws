@@ -13,7 +13,9 @@ add-on.}
 \item{addOnRequest}{[required] An array of strings representing the add-on to enable or modify.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -38,14 +40,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables or modifies an add-on for an Amazon Lightsail resource. For more
 information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_add_on(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_add_on(
   resourceName = "string",
   addOnRequest = list(
     addOnType = "AutoSnapshot",
@@ -54,7 +58,7 @@ information, see the Lightsail Dev Guide.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -56,12 +56,14 @@ Related Topics
 }
 }
 \section{Request syntax}{
-\preformatted{svc$request_environment_info(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$request_environment_info(
   EnvironmentId = "string",
   EnvironmentName = "string",
   InfoType = "tail"|"bundle"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

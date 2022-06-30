@@ -12,11 +12,13 @@ mediaconnect_revoke_flow_entitlement(EntitlementArn, FlowArn)
 \item{FlowArn}{[required] The flow that you want to revoke an entitlement from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EntitlementArn = "string",
   FlowArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Revokes an entitlement from a flow. Once an entitlement is revoked, the
@@ -24,11 +26,13 @@ content becomes unavailable to the subscriber and the associated output
 is removed.
 }
 \section{Request syntax}{
-\preformatted{svc$revoke_flow_entitlement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_flow_entitlement(
   EntitlementArn = "string",
   FlowArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,10 +16,12 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels the specified Capacity Reservation, releases the reserved
@@ -33,11 +35,13 @@ open Capacity Reservation that has matching attributes and sufficient
 capacity.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_capacity_reservation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_capacity_reservation(
   CapacityReservationId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

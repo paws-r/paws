@@ -11,7 +11,9 @@ chime_get_sip_rule(SipRuleId)
 \item{SipRuleId}{[required] The SIP rule ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SipRule = list(
     SipRuleId = "string",
     Name = "string",
@@ -33,17 +35,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the details of a SIP rule, such as the rule ID, name,
 triggers, and target endpoints.
 }
 \section{Request syntax}{
-\preformatted{svc$get_sip_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sip_rule(
   SipRuleId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

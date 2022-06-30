@@ -17,7 +17,9 @@ greengrass_list_connector_definition_versions(ConnectorDefinitionId,
 additional results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Versions = list(
     list(
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the versions of a connector definition, which are containers for
@@ -37,12 +39,14 @@ integration with local infrastructure, device protocols, AWS, and other
 cloud services.
 }
 \section{Request syntax}{
-\preformatted{svc$list_connector_definition_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_connector_definition_versions(
   ConnectorDefinitionId = "string",
   MaxResults = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

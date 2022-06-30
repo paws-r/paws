@@ -18,11 +18,13 @@ An empty list.
 Stops the execution of the specified workflow run.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_workflow_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_workflow_run(
   Name = "string",
   RunId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

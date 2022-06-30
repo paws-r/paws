@@ -24,7 +24,9 @@ clusters in various ways, such as grouping clusters to track your Amazon
 EMR resource allocation costs. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags(
   ResourceId = "string",
   Tags = list(
     list(
@@ -33,7 +35,7 @@ EMR resource allocation costs. For more information, see \href{https://docs.aws.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

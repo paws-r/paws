@@ -38,7 +38,9 @@ response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OrderableClusterOptions = list(
     list(
       ClusterVersion = "string",
@@ -58,7 +60,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of orderable cluster options. Before you create a new
@@ -72,13 +74,15 @@ information about managing clusters, go to \href{https://docs.aws.amazon.com/red
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_orderable_cluster_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_orderable_cluster_options(
   ClusterVersion = "string",
   NodeType = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

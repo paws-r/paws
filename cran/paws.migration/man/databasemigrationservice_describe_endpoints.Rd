@@ -27,7 +27,9 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   Endpoints = list(
     list(
@@ -289,14 +291,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the endpoints for your account in the current
 region.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_endpoints(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_endpoints(
   Filters = list(
     list(
       Name = "string",
@@ -308,7 +312,7 @@ region.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

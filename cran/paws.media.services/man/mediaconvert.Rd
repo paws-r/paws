@@ -19,7 +19,9 @@ Operations section.
 AWS Elemental MediaConvert
 }
 \section{Service syntax}{
-\preformatted{svc <- mediaconvert(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mediaconvert(
   config = list(
     credentials = list(
       creds = list(
@@ -33,7 +35,7 @@ AWS Elemental MediaConvert
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

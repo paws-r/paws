@@ -33,14 +33,16 @@ recommend that you change this only for boot volumes or for volumes that
 are stateless or disposable.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_volume_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_volume_attribute(
   AutoEnableIO = list(
     Value = TRUE|FALSE
   ),
   VolumeId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

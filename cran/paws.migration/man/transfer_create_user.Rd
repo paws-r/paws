@@ -87,11 +87,13 @@ A-Z, 0-9, underscore '_', hyphen '-', period '.', and at sign '@'. The
 user name can't start with a hyphen, period, or at sign.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServerId = "string",
   UserName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a user and associates them with an existing file transfer
@@ -104,7 +106,9 @@ role. You can also optionally add a scope-down policy, and assign
 metadata with tags that can be used to group and search for users.
 }
 \section{Request syntax}{
-\preformatted{svc$create_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user(
   HomeDirectory = "string",
   HomeDirectoryType = "PATH"|"LOGICAL",
   HomeDirectoryMappings = list(
@@ -132,7 +136,7 @@ metadata with tags that can be used to group and search for users.
   ),
   UserName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

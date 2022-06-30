@@ -25,11 +25,13 @@ reaction for yourself. You cannot add, modify, or delete a reaction for
 another user.
 }
 \section{Request syntax}{
-\preformatted{svc$put_comment_reaction(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_comment_reaction(
   commentId = "string",
   reactionValue = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

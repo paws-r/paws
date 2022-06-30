@@ -20,7 +20,9 @@ Pass null if this is the first call.}
 \item{Limit}{The number of shared directories to return in the response object.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SharedDirectories = list(
     list(
       OwnerAccountId = "string",
@@ -40,13 +42,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the shared directories in your account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_shared_directories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_shared_directories(
   OwnerDirectoryId = "string",
   SharedDirectoryIds = list(
     "string"
@@ -54,7 +58,7 @@ Returns the shared directories in your account.
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

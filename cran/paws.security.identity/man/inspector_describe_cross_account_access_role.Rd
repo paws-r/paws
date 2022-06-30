@@ -8,14 +8,16 @@ account}
 inspector_describe_cross_account_access_role()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   roleArn = "string",
   valid = TRUE|FALSE,
   registeredAt = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the IAM role that enables Amazon Inspector to access your AWS

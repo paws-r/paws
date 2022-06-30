@@ -37,7 +37,9 @@ your AWS account in the current Region. For more information see
 \emph{Amazon EMR Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_block_public_access_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_block_public_access_configuration(
   BlockPublicAccessConfiguration = list(
     BlockPublicSecurityGroupRules = TRUE|FALSE,
     PermittedPublicSecurityGroupRuleRanges = list(
@@ -48,7 +50,7 @@ your AWS account in the current Region. For more information see
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

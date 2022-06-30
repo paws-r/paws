@@ -46,7 +46,9 @@ stream before the application's SQL code executes. Currently, the only
 input processor available is \href{https://docs.aws.amazon.com/lambda/}{AWS Lambda}.
 }
 \section{Request syntax}{
-\preformatted{svc$add_application_input_processing_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_application_input_processing_configuration(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   InputId = "string",
@@ -57,7 +59,7 @@ input processor available is \href{https://docs.aws.amazon.com/lambda/}{AWS Lamb
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

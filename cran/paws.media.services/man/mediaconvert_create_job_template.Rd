@@ -48,7 +48,9 @@ encounters an error.}
 with a key-value pair or with only a key.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobTemplate = list(
     AccelerationSettings = list(
       Mode = "DISABLED"|"ENABLED"|"PREFERRED"
@@ -1190,7 +1192,7 @@ A list with the following syntax:\preformatted{list(
     Type = "SYSTEM"|"CUSTOM"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create a new job template. For information about job templates see the
@@ -1198,7 +1200,9 @@ User Guide at
 http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 }
 \section{Request syntax}{
-\preformatted{svc$create_job_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_job_template(
   AccelerationSettings = list(
     Mode = "DISABLED"|"ENABLED"|"PREFERRED"
   ),
@@ -2333,7 +2337,7 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

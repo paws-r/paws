@@ -47,10 +47,12 @@ for \code{honorVcpuOptimization} are \code{True} and \code{False}.}
 \item{ProductInformationList}{Product information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LicenseConfigurationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a license configuration.
@@ -64,7 +66,9 @@ to host (how long a license must be associated with a host), and the
 number of licenses purchased and used.
 }
 \section{Request syntax}{
-\preformatted{svc$create_license_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_license_configuration(
   Name = "string",
   Description = "string",
   LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
@@ -95,7 +99,7 @@ number of licenses purchased and used.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

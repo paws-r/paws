@@ -14,7 +14,9 @@ importexport_get_status(JobId, APIVersion)
 \item{APIVersion}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string",
   JobType = "Import"|"Export",
   LocationCode = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation returns information about a job, including where the job
@@ -48,11 +50,13 @@ signature value associated with the job. You can only return information
 about jobs you own.
 }
 \section{Request syntax}{
-\preformatted{svc$get_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_status(
   JobId = "string",
   APIVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

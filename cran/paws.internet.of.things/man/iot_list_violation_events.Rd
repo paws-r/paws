@@ -28,7 +28,9 @@ security profile.}
 \item{maxResults}{The maximum number of results to return at one time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   violationEvents = list(
     list(
       violationId = "string",
@@ -98,7 +100,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the Device Defender security profile violations discovered during
@@ -107,7 +109,9 @@ alerts issued for a particular security profile, behavior, or thing
 (device).
 }
 \section{Request syntax}{
-\preformatted{svc$list_violation_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_violation_events(
   startTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -121,7 +125,7 @@ alerts issued for a particular security profile, behavior, or thing
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

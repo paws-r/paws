@@ -16,10 +16,12 @@ An empty list.
 Reboots a broker. Note: This API is asynchronous.
 }
 \section{Request syntax}{
-\preformatted{svc$reboot_broker(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_broker(
   BrokerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

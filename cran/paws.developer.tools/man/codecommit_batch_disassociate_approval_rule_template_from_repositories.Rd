@@ -19,7 +19,9 @@ The length constraint limit is for each string in the array. The array
 itself can be empty.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   disassociatedRepositoryNames = list(
     "string"
   ),
@@ -31,20 +33,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes the association between an approval rule template and one or
 more specified repositories.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_disassociate_approval_rule_template_from_repositories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_disassociate_approval_rule_template_from_repositories(
   approvalRuleTemplateName = "string",
   repositoryNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

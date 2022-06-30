@@ -19,10 +19,12 @@ An empty list.
 Deletes the policy document that manages permissions on a backup vault.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_backup_vault_access_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_backup_vault_access_policy(
   BackupVaultName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

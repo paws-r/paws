@@ -12,7 +12,9 @@ cloudformation_describe_account_limits(NextToken)
 retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccountLimits = list(
     list(
       Name = "string",
@@ -21,7 +23,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves your account's AWS CloudFormation limits, such as the maximum
@@ -30,10 +32,12 @@ information about account limits, see \href{https://docs.aws.amazon.com/AWSCloud
 in the \emph{AWS CloudFormation User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_account_limits(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_limits(
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

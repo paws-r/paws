@@ -13,7 +13,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{UserId}{[required] The unique identifier for the user.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointsResponse = list(
     Item = list(
       list(
@@ -65,17 +67,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes all the endpoints that are associated with a specific user ID.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user_endpoints(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_endpoints(
   ApplicationId = "string",
   UserId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

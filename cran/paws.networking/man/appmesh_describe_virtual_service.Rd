@@ -17,7 +17,9 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 \item{virtualServiceName}{[required] The name of the virtual service to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualService = list(
     meshName = "string",
     metadata = list(
@@ -49,18 +51,20 @@ A list with the following syntax:\preformatted{list(
     virtualServiceName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes an existing virtual service.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_virtual_service(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_virtual_service(
   meshName = "string",
   meshOwner = "string",
   virtualServiceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,7 +21,9 @@ particular device. If not specified, the latest job execution is
 returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   execution = list(
     jobId = "string",
     thingName = "string",
@@ -38,19 +40,21 @@ A list with the following syntax:\preformatted{list(
     jobDocument = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets details of a job execution.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_job_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_job_execution(
   jobId = "string",
   thingName = "string",
   includeJobDocument = TRUE|FALSE,
   executionNumber = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

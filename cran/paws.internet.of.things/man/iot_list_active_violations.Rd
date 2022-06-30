@@ -22,7 +22,9 @@ are listed.}
 \item{maxResults}{The maximum number of results to return at one time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   activeViolations = list(
     list(
       violationId = "string",
@@ -94,14 +96,16 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the active violations for a given Device Defender security
 profile.
 }
 \section{Request syntax}{
-\preformatted{svc$list_active_violations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_active_violations(
   thingName = "string",
   securityProfileName = "string",
   behaviorCriteriaType = "STATIC"|"STATISTICAL"|"MACHINE_LEARNING",
@@ -109,7 +113,7 @@ profile.
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

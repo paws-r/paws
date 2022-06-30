@@ -10,7 +10,9 @@ iot_describe_domain_configuration(domainConfigurationName)
 \item{domainConfigurationName}{[required] The name of the domain configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   domainConfigurationName = "string",
   domainConfigurationArn = "string",
   domainName = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets summary information about a domain configuration.
@@ -41,10 +43,12 @@ The domain configuration feature is in public preview and is subject to
 change.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_domain_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_domain_configuration(
   domainConfigurationName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

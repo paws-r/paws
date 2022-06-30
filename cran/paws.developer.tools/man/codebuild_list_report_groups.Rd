@@ -32,25 +32,29 @@ no more next tokens are returned.}
 objects. The default value is 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   nextToken = "string",
   reportGroups = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list ARNs for the report groups in the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_report_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_report_groups(
   sortOrder = "ASCENDING"|"DESCENDING",
   sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

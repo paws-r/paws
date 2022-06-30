@@ -19,26 +19,30 @@ workmail_get_access_control_effect(OrganizationId, IpAddress, Action,
 \item{UserId}{[required] The user ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Effect = "ALLOW"|"DENY",
   MatchedRules = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the effects of an organization's access control rules as they apply
 to a specified IPv4 address, access protocol action, or user ID.
 }
 \section{Request syntax}{
-\preformatted{svc$get_access_control_effect(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_access_control_effect(
   OrganizationId = "string",
   IpAddress = "string",
   Action = "string",
   UserId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

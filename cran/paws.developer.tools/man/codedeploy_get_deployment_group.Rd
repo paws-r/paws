@@ -13,7 +13,9 @@ or AWS account.}
 \item{deploymentGroupName}{[required] The name of a deployment group for the specified application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   deploymentGroupInfo = list(
     applicationName = "string",
     deploymentGroupId = "string",
@@ -185,17 +187,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a deployment group.
 }
 \section{Request syntax}{
-\preformatted{svc$get_deployment_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deployment_group(
   applicationName = "string",
   deploymentGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

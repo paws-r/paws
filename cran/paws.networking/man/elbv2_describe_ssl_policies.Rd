@@ -16,7 +16,9 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SslPolicies = list(
     list(
       SslProtocols = list(
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified policies or all policies used for SSL
@@ -44,14 +46,16 @@ in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_ssl_policies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_ssl_policies(
   Names = list(
     "string"
   ),
   Marker = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

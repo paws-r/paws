@@ -16,10 +16,12 @@ An empty list.
 Deletes a snapshot schedule.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_snapshot_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_snapshot_schedule(
   ScheduleIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

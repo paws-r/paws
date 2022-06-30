@@ -47,7 +47,9 @@ Constraints:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -233,7 +235,7 @@ A list with the following syntax:\preformatted{list(
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Promotes a read replica DB instance to a standalone DB instance.
@@ -250,12 +252,14 @@ daily backups do not interfere with read replica promotion.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$promote_read_replica(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$promote_read_replica(
   DBInstanceIdentifier = "string",
   BackupRetentionPeriod = 123,
   PreferredBackupWindow = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

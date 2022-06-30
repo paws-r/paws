@@ -28,7 +28,9 @@ retrieve the next page of results.}
 \item{MaxItems}{Specify a number to limit the number of configurations returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProvisionedConcurrencyConfigs = list(
     list(
       FunctionArn = "string",
@@ -42,19 +44,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of provisioned concurrency configurations for a
 function.
 }
 \section{Request syntax}{
-\preformatted{svc$list_provisioned_concurrency_configs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_provisioned_concurrency_configs(
   FunctionName = "string",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

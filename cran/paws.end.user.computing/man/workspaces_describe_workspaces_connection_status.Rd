@@ -14,7 +14,9 @@ workspaces_describe_workspaces_connection_status(WorkspaceIds,
 provide this token to receive the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WorkspacesConnectionStatus = list(
     list(
       WorkspaceId = "string",
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the connection status of the specified WorkSpaces.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_workspaces_connection_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workspaces_connection_status(
   WorkspaceIds = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

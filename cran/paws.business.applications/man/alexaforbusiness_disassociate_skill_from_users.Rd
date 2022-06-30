@@ -18,10 +18,12 @@ Makes a private skill unavailable for enrolled users and prevents them
 from enabling it on their devices.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_skill_from_users(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_skill_from_users(
   SkillId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

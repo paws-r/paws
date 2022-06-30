@@ -16,7 +16,9 @@ returned by \code{\link[=fms_put_policy]{put_policy}} and by
 for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyComplianceDetail = list(
     PolicyOwner = "string",
     PolicyId = "string",
@@ -37,7 +39,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns detailed compliance information about the specified member
@@ -55,11 +57,13 @@ modifications to a firewall policy that violate the Firewall Manager
 policy's rules.
 }
 \section{Request syntax}{
-\preformatted{svc$get_compliance_detail(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_compliance_detail(
   PolicyId = "string",
   MemberAccount = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

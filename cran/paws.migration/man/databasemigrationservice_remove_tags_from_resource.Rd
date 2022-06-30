@@ -24,13 +24,15 @@ information, see
 data type description.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_tags_from_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

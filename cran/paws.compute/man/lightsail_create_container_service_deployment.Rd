@@ -17,7 +17,9 @@ launched on the container service.}
 container service.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   containerService = list(
     containerServiceName = "string",
     arn = "string",
@@ -116,7 +118,7 @@ A list with the following syntax:\preformatted{list(
     url = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a deployment for your Amazon Lightsail container service.
@@ -134,7 +136,9 @@ machine. For more information, see Creating container images for your
 Amazon Lightsail container services in the \emph{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_container_service_deployment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_container_service_deployment(
   serviceName = "string",
   containers = list(
     list(
@@ -163,7 +167,7 @@ Amazon Lightsail container services in the \emph{Lightsail Dev Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

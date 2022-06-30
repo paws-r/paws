@@ -17,10 +17,12 @@ route53domains_update_domain_contact(DomainName, AdminContact,
 \item{TechContact}{Provides detailed contact information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation updates the contact information for a particular domain.
@@ -33,7 +35,9 @@ request is not completed successfully, the domain registrant will be
 notified by email.
 }
 \section{Request syntax}{
-\preformatted{svc$update_domain_contact(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain_contact(
   DomainName = "string",
   AdminContact = list(
     FirstName = "string",
@@ -99,7 +103,7 @@ notified by email.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

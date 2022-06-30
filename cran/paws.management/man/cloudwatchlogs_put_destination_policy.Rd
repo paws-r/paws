@@ -24,11 +24,13 @@ that is used to authorize claims to register a subscription filter
 against a given destination.
 }
 \section{Request syntax}{
-\preformatted{svc$put_destination_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_destination_policy(
   destinationName = "string",
   accessPolicy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

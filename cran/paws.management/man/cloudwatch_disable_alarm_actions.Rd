@@ -18,12 +18,14 @@ are disabled, the alarm actions do not execute when the alarm state
 changes.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_alarm_actions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_alarm_actions(
   AlarmNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

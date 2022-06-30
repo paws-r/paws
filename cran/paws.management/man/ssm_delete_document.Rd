@@ -34,13 +34,15 @@ Before you delete the document, we recommend that you use
 instances that are associated with the document.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_document(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_document(
   Name = "string",
   DocumentVersion = "string",
   VersionName = "string",
   Force = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

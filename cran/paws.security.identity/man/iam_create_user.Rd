@@ -39,7 +39,9 @@ tags per user, then the entire request fails and the user is not
 created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   User = list(
     Path = "string",
     UserName = "string",
@@ -63,7 +65,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new IAM user for your AWS account.
@@ -73,7 +75,9 @@ more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/ref
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user(
   Path = "string",
   UserName = "string",
   PermissionsBoundary = "string",
@@ -84,7 +88,7 @@ in the \emph{IAM User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

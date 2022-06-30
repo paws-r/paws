@@ -13,7 +13,9 @@ chime_get_user_settings(AccountId, UserId)
 \item{UserId}{[required] The user ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserSettings = list(
     Telephony = list(
       InboundCalling = TRUE|FALSE,
@@ -22,18 +24,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves settings for the specified user ID, such as any associated
 phone number settings.
 }
 \section{Request syntax}{
-\preformatted{svc$get_user_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_user_settings(
   AccountId = "string",
   UserId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

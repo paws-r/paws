@@ -10,7 +10,9 @@ lightsail_reboot_instance(instanceName)
 \item{instanceName}{[required] The name of the instance to reboot.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Restarts a specific instance.
@@ -45,10 +47,12 @@ resource tags applied to the resource identified by \verb{instance name}. For
 more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$reboot_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_instance(
   instanceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

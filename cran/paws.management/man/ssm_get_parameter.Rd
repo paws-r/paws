@@ -13,7 +13,9 @@ ssm_get_parameter(Name, WithDecryption)
 ignored for String and StringList parameter types.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Parameter = list(
     Name = "string",
     Type = "String"|"StringList"|"SecureString",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     DataType = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get information about a parameter by using the parameter name. Don't
@@ -36,11 +38,13 @@ confuse this API action with the \code{\link[=ssm_get_parameters]{get_parameters
 API action.
 }
 \section{Request syntax}{
-\preformatted{svc$get_parameter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_parameter(
   Name = "string",
   WithDecryption = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

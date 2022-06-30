@@ -41,7 +41,9 @@ information about advanced event selectors, see \href{https://docs.aws.amazon.co
 in the \emph{AWS CloudTrail User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrailARN = "string",
   EventSelectors = list(
     list(
@@ -89,7 +91,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Configures an event selector or advanced event selectors for your trail.
@@ -135,7 +137,9 @@ information about advanced event selectors, see \href{https://docs.aws.amazon.co
 in the \emph{AWS CloudTrail User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_event_selectors(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_event_selectors(
   TrailName = "string",
   EventSelectors = list(
     list(
@@ -183,7 +187,7 @@ in the \emph{AWS CloudTrail User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

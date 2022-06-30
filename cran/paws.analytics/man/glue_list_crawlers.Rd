@@ -15,13 +15,15 @@ glue_list_crawlers(MaxResults, NextToken, Tags)
 \item{Tags}{Specifies to return only these tagged resources.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CrawlerNames = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the names of all crawler resources in this AWS account, or the
@@ -34,14 +36,16 @@ group. If you choose to use tags filtering, only resources with the tag
 are retrieved.
 }
 \section{Request syntax}{
-\preformatted{svc$list_crawlers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_crawlers(
   MaxResults = 123,
   NextToken = "string",
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

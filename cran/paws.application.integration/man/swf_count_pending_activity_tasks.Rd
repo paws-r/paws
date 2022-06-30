@@ -13,11 +13,13 @@ swf_count_pending_activity_tasks(domain, taskList)
 \item{taskList}{[required] The name of the task list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   count = 123,
   truncated = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the estimated number of activity tasks in the specified task
@@ -47,13 +49,15 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$count_pending_activity_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$count_pending_activity_tasks(
   domain = "string",
   taskList = list(
     name = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

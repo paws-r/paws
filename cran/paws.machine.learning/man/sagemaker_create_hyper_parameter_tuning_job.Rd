@@ -53,10 +53,12 @@ Tags that you specify for the tuning job are also added to all training
 jobs that the tuning job launches.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HyperParameterTuningJobArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a hyperparameter tuning job. A hyperparameter tuning job finds
@@ -67,7 +69,9 @@ values that result in a model that performs the best, as measured by an
 objective metric that you choose.
 }
 \section{Request syntax}{
-\preformatted{svc$create_hyper_parameter_tuning_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_hyper_parameter_tuning_job(
   HyperParameterTuningJobName = "string",
   HyperParameterTuningJobConfig = list(
     Strategy = "Bayesian"|"Random",
@@ -337,7 +341,7 @@ objective metric that you choose.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

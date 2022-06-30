@@ -21,14 +21,16 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssociationId = "string",
   Status = list(
     Code = "associating"|"associated"|"association-failed"|"disassociating"|"disassociated",
     Message = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a target network with a Client VPN endpoint. A target network
@@ -45,13 +47,15 @@ first modify the Client VPN endpoint
 change the VPC that's associated with it.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_client_vpn_target_network(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_client_vpn_target_network(
   ClientVpnEndpointId = "string",
   SubnetId = "string",
   ClientToken = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

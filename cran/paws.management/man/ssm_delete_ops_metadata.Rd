@@ -16,10 +16,12 @@ An empty list.
 Delete OpsMetadata related to an application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_ops_metadata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_ops_metadata(
   OpsMetadataArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

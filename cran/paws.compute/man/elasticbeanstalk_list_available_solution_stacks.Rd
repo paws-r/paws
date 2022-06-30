@@ -8,7 +8,9 @@ version first and then in reverse chronological order}
 elasticbeanstalk_list_available_solution_stacks()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SolutionStacks = list(
     "string"
   ),
@@ -21,7 +23,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the available solution stack names, with the public

@@ -29,7 +29,9 @@ Cognito. GUID generation is unique within a region.}
 \item{SyncSessionToken}{A token containing a session ID, identity ID, and expiration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Records = list(
     list(
       Key = "string",
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
   DatasetDeletedAfterRequestedSyncCount = TRUE|FALSE,
   SyncSessionToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets paginated records, optionally changed after a particular sync count
@@ -68,7 +70,9 @@ Cognito Identity or with developer credentials. You should use Cognito
 Identity credentials to make this API call.
 }
 \section{Request syntax}{
-\preformatted{svc$list_records(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_records(
   IdentityPoolId = "string",
   IdentityId = "string",
   DatasetName = "string",
@@ -77,7 +81,7 @@ Identity credentials to make this API call.
   MaxResults = 123,
   SyncSessionToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

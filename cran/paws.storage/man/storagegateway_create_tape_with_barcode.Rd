@@ -52,10 +52,12 @@ representable in UTF-8 format, and the following special characters: + -
 the maximum length for a tag's value is 256.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TapeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a virtual tape by using your own barcode. You write data to the
@@ -69,7 +71,9 @@ virtual tape. Use the \code{\link[=storagegateway_add_cache]{add_cache}} operati
 to add cache storage to a gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$create_tape_with_barcode(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_tape_with_barcode(
   GatewayARN = "string",
   TapeSizeInBytes = 123,
   TapeBarcode = "string",
@@ -84,7 +88,7 @@ to add cache storage to a gateway.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

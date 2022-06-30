@@ -29,7 +29,9 @@ Records user interaction event data. For more information see
 event-record-api.
 }
 \section{Request syntax}{
-\preformatted{svc$put_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_events(
   trackingId = "string",
   userId = "string",
   sessionId = "string",
@@ -50,7 +52,7 @@ event-record-api.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

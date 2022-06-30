@@ -11,7 +11,9 @@ comprehend_detect_dominant_language(Text)
 and must contain fewer that 5,000 bytes of UTF-8 encoded characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Languages = list(
     list(
       LanguageCode = "string",
@@ -19,17 +21,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Determines the dominant language of the input text. For a list of
 languages that Amazon Comprehend can detect, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html}{Amazon Comprehend Supported Languages}.
 }
 \section{Request syntax}{
-\preformatted{svc$detect_dominant_language(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_dominant_language(
   Text = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

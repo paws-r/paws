@@ -8,12 +8,14 @@ ip-ranges}
 route53_get_checker_ip_ranges()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CheckerIpRanges = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 \code{\link[=route53_get_checker_ip_ranges]{get_checker_ip_ranges}} still works,
@@ -22,8 +24,10 @@ address ranges for all AWS services. For more information, see \href{https://doc
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_checker_ip_ranges()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_checker_ip_ranges()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

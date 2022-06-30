@@ -40,7 +40,9 @@ remain to be listed, then the value of the \code{IsTruncated} element in the
 response is \code{true}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GeoLocationDetailsList = list(
     list(
       ContinentCode = "string",
@@ -57,7 +59,7 @@ A list with the following syntax:\preformatted{list(
   NextSubdivisionCode = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of supported geographic locations.
@@ -72,13 +74,15 @@ For a list of supported geolocation codes, see the
 data type.
 }
 \section{Request syntax}{
-\preformatted{svc$list_geo_locations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_geo_locations(
   StartContinentCode = "string",
   StartCountryCode = "string",
   StartSubdivisionCode = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

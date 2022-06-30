@@ -24,10 +24,12 @@ request.}
 \item{IpPermissions}{[required] The IP permissions for the security group rule.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the description of an ingress (inbound) security group rule. You
@@ -39,7 +41,9 @@ can remove a description for a security group rule by omitting the
 description parameter in the request.
 }
 \section{Request syntax}{
-\preformatted{svc$update_security_group_rule_descriptions_ingress(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_security_group_rule_descriptions_ingress(
   DryRun = TRUE|FALSE,
   GroupId = "string",
   GroupName = "string",
@@ -80,7 +84,7 @@ description parameter in the request.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

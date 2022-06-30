@@ -27,10 +27,12 @@ The specified database subnet group must not be associated with any DB
 instances.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_db_subnet_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_subnet_group(
   DBSubnetGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

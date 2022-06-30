@@ -14,24 +14,28 @@ iot_list_targets_for_policy(policyName, marker, pageSize)
 \item{pageSize}{The maximum number of results to return at one time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   targets = list(
     "string"
   ),
   nextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List targets for the specified policy.
 }
 \section{Request syntax}{
-\preformatted{svc$list_targets_for_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_targets_for_policy(
   policyName = "string",
   marker = "string",
   pageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

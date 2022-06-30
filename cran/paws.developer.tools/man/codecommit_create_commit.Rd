@@ -37,7 +37,9 @@ commits.}
 \item{setFileModes}{The file modes to update for files in this commit.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   commitId = "string",
   treeId = "string",
   filesAdded = list(
@@ -62,13 +64,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a commit for a repository on the tip of a specified branch.
 }
 \section{Request syntax}{
-\preformatted{svc$create_commit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_commit(
   repositoryName = "string",
   branchName = "string",
   parentCommitId = "string",
@@ -99,7 +103,7 @@ Creates a commit for a repository on the tip of a specified branch.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

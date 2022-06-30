@@ -14,7 +14,9 @@ ram_accept_resource_share_invitation(resourceShareInvitationArn,
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceShareInvitation = list(
     resourceShareInvitationArn = "string",
     resourceShareName = "string",
@@ -45,17 +47,19 @@ A list with the following syntax:\preformatted{list(
   ),
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Accepts an invitation to a resource share from another AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$accept_resource_share_invitation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_resource_share_invitation(
   resourceShareInvitationArn = "string",
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

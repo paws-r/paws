@@ -80,7 +80,9 @@ set the configuration on the bucket.}
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_analytics_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_analytics_configuration(
   Bucket = "string",
   Id = "string",
   AnalyticsConfiguration = list(
@@ -117,7 +119,7 @@ set the configuration on the bucket.}
   ),
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

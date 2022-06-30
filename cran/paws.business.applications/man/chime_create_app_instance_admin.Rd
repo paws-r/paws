@@ -12,14 +12,16 @@ chime_create_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppInstanceAdmin = list(
     Arn = "string",
     Name = "string"
   ),
   AppInstanceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Promotes an \code{AppInstanceUser} to an \code{AppInstanceAdmin}. The promoted
@@ -32,11 +34,13 @@ user can perform the following actions.
 Only an \code{AppInstanceUser} can be promoted to an \code{AppInstanceAdmin} role.
 }
 \section{Request syntax}{
-\preformatted{svc$create_app_instance_admin(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_app_instance_admin(
   AppInstanceAdminArn = "string",
   AppInstanceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

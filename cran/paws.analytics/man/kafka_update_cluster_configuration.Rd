@@ -17,18 +17,22 @@ a cluster.}
 \item{CurrentVersion}{[required] The version of the cluster that needs to be updated.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClusterArn = "string",
   ClusterOperationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the cluster with the configuration that is specified in the
 request body.
 }
 \section{Request syntax}{
-\preformatted{svc$update_cluster_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_cluster_configuration(
   ClusterArn = "string",
   ConfigurationInfo = list(
     Arn = "string",
@@ -36,7 +40,7 @@ request body.
   ),
   CurrentVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

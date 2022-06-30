@@ -59,10 +59,12 @@ before it is terminated and enters \code{TIMEOUT} status. The default is
 task run fails.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransformId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing machine learning transform. Call this operation to
@@ -75,7 +77,9 @@ operation to assess how well your new parameters achieved your goals
 making it more cost-effective).
 }
 \section{Request syntax}{
-\preformatted{svc$update_ml_transform(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_ml_transform(
   TransformId = "string",
   Name = "string",
   Description = "string",
@@ -96,7 +100,7 @@ making it more cost-effective).
   Timeout = 123,
   MaxRetries = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

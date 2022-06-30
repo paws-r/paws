@@ -27,7 +27,9 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   DBSecurityGroups = list(
     list(
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of \code{DBSecurityGroup} descriptions. If a
@@ -61,7 +63,9 @@ Returns a list of \code{DBSecurityGroup} descriptions. If a
 descriptions of the specified DB security group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_db_security_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_security_groups(
   DBSecurityGroupName = "string",
   Filters = list(
     list(
@@ -74,7 +78,7 @@ descriptions of the specified DB security group.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

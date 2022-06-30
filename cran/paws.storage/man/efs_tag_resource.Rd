@@ -22,7 +22,9 @@ This operation requires permissions for the
 \code{elasticfilesystem:TagResource} action.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceId = "string",
   Tags = list(
     list(
@@ -31,7 +33,7 @@ This operation requires permissions for the
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

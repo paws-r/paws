@@ -13,7 +13,9 @@ retrieve additional records that are available after the first page
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PlatformApplications = list(
     list(
       PlatformApplicationArn = "string",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the platform application objects for the supported push
@@ -42,10 +44,12 @@ records to return, \code{NextToken} will be null. For more information, see
 This action is throttled at 15 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{svc$list_platform_applications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_platform_applications(
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

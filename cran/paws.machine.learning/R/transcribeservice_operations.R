@@ -252,7 +252,7 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' @param Words The words to use in the vocabulary filter. Only use characters from the
 #' character set defined for custom vocabularies. For a list of character
 #' sets, see [Character Sets for Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets).
+#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html#charsets).
 #' 
 #' If you provide a list of words in the `Words` parameter, you can't use
 #' the `VocabularyFilterFileUri` parameter.
@@ -260,7 +260,7 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' vocabulary filter. Only use characters from the character set defined
 #' for custom vocabularies. For a list of character sets, see [Character
 #' Sets for Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets).
+#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html#charsets).
 #' 
 #' The specified file must be less than 50 KB of UTF-8 characters.
 #' 
@@ -2017,7 +2017,7 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' @param Words The words to use in the vocabulary filter. Only use characters from the
 #' character set defined for custom vocabularies. For a list of character
 #' sets, see [Character Sets for Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets).
+#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html#charsets).
 #' 
 #' If you provide a list of words in the `Words` parameter, you can't use
 #' the `VocabularyFilterFileUri` parameter.
@@ -2025,7 +2025,7 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' vocabulary filter. Only use characters from the character set defined
 #' for custom vocabularies. For a list of character sets, see [Character
 #' Sets for Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets).
+#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html#charsets).
 #' 
 #' The specified file must be less than 50 KB of UTF-8 characters.
 #' 

@@ -22,12 +22,14 @@ An empty list.
 Updates the identity provider configuration for the fleet.
 }
 \section{Request syntax}{
-\preformatted{svc$update_identity_provider_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_identity_provider_configuration(
   FleetArn = "string",
   IdentityProviderType = "SAML",
   IdentityProviderSamlMetadata = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

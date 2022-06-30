@@ -34,7 +34,9 @@ The filter name \code{name} is supported. When filtering, you must use the
 complete value of the filtered item. You can use up to three filters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   fleetDetails = list(
     list(
       name = "string",
@@ -51,14 +53,16 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of fleets. You can optionally provide filters to retrieve
 specific fleets.
 }
 \section{Request syntax}{
-\preformatted{svc$list_fleets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_fleets(
   nextToken = "string",
   maxResults = 123,
   filters = list(
@@ -70,7 +74,7 @@ specific fleets.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

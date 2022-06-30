@@ -19,25 +19,29 @@ the configured model schema for the method (\code{true}) or not (\code{false}).}
 \code{true}, or not \code{false}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   name = "string",
   validateRequestBody = TRUE|FALSE,
   validateRequestParameters = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a ReqeustValidator of a given RestApi.
 }
 \section{Request syntax}{
-\preformatted{svc$create_request_validator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_request_validator(
   restApiId = "string",
   name = "string",
   validateRequestBody = TRUE|FALSE,
   validateRequestParameters = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

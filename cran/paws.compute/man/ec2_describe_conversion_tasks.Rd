@@ -15,7 +15,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConversionTasks = list(
     list(
       ConversionTaskId = "string",
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified conversion tasks or all your conversion tasks.
@@ -80,13 +82,15 @@ For information about the import manifest referenced by this API action,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_conversion_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_conversion_tasks(
   ConversionTaskIds = list(
     "string"
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -90,7 +90,9 @@ is enabled, the cluster cannot be deleted unless it is modified and
 from being accidentally deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBCluster = list(
     AvailabilityZones = list(
       "string"
@@ -150,7 +152,7 @@ A list with the following syntax:\preformatted{list(
     DeletionProtection = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new cluster from a snapshot or cluster snapshot.
@@ -165,7 +167,9 @@ original source DB cluster, except that the new cluster is created with
 the default security group.
 }
 \section{Request syntax}{
-\preformatted{svc$restore_db_cluster_from_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_db_cluster_from_snapshot(
   AvailabilityZones = list(
     "string"
   ),
@@ -190,7 +194,7 @@ the default security group.
   ),
   DeletionProtection = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

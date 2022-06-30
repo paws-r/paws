@@ -19,7 +19,9 @@ Operations section.
 Amazon Simple Storage Service
 }
 \section{Service syntax}{
-\preformatted{svc <- s3(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- s3(
   config = list(
     credentials = list(
       creds = list(
@@ -33,7 +35,7 @@ Amazon Simple Storage Service
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

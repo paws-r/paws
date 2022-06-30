@@ -81,10 +81,12 @@ parameters: \emph{MetricName}, \emph{ComparisonOperator}, \emph{Threshold},
 \item{TargetConfiguration}{The settings for a target-based scaling policy.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates or updates a scaling policy for a fleet. Scaling policies are
@@ -190,7 +192,9 @@ the fleet actions are restarted.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_scaling_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_scaling_policy(
   Name = "string",
   FleetId = "string",
   ScalingAdjustment = 123,
@@ -204,7 +208,7 @@ the fleet actions are restarted.
     TargetValue = 123.0
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

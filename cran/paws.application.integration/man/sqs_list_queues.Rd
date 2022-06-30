@@ -19,13 +19,15 @@ to 1000. You must set \code{MaxResults} to receive a value for \code{NextToken} 
 the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   QueueUrls = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of your queues in the current region. The response
@@ -46,12 +48,14 @@ information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_queues(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_queues(
   QueueNamePrefix = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

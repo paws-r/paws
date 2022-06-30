@@ -32,12 +32,12 @@ If you specify \code{ChildrenOfAlarmName}, you cannot specify any other
 parameters in the request except for \code{MaxRecords} and \code{NextToken}. If
 you do so, you receive a validation error.
 
-Only the \verb{Alarm Name}, \code{ARN}, \code{StateValue}
-(OK/ALARM/INSUFFICIENT_DATA), and \code{StateUpdatedTimestamp} information
-are returned by this operation when you use this parameter. To get
-complete information about these alarms, perform another
-\code{\link[=cloudwatch_describe_alarms]{describe_alarms}} operation and specify
-the parent alarm names in the \code{AlarmNames} parameter.}
+Only the \verb{Alarm Name}, \code{ARN}, \code{StateValue} (OK/ALARM/INSUFFICIENT_DATA),
+and \code{StateUpdatedTimestamp} information are returned by this operation
+when you use this parameter. To get complete information about these
+alarms, perform another \code{\link[=cloudwatch_describe_alarms]{describe_alarms}}
+operation and specify the parent alarm names in the \code{AlarmNames}
+parameter.}
 
 \item{ParentsOfAlarmName}{If you use this parameter and specify the name of a metric or composite
 alarm, the operation returns information about the "parent" alarms of
@@ -69,7 +69,9 @@ that topic.}
 data available.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CompositeAlarms = list(
     list(
       ActionsEnabled = TRUE|FALSE,
@@ -168,7 +170,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the specified alarms. You can filter the results by specifying
@@ -176,7 +178,9 @@ a prefix for the alarm name, the alarm state, or a prefix for any
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_alarms(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_alarms(
   AlarmNames = list(
     "string"
   ),
@@ -191,7 +195,7 @@ action.
   MaxRecords = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

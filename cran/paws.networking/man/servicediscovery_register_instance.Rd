@@ -18,7 +18,7 @@ following:
 \item If the service that is specified by \code{ServiceId} includes settings
 for an \code{SRV} record, the value of \code{InstanceId} is automatically
 included as part of the value for the \code{SRV} record. For more
-information, see \href{https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type}{DnsRecord > Type}.
+information, see \href{https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type}{DnsRecord \> Type}.
 \item You can use this value to update an existing instance.
 \item To register a new instance, you must specify a value that is unique
 among instances that you register by using the same service.
@@ -143,10 +143,12 @@ provided attributes (sum of all keys and values) must not exceed 5,000
 characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates or updates one or more records and, optionally, creates a health
@@ -185,7 +187,9 @@ using the same namespace and using the same service, see \href{https://docs.aws.
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$register_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_instance(
   ServiceId = "string",
   InstanceId = "string",
   CreatorRequestId = "string",
@@ -193,7 +197,7 @@ in the \emph{AWS Cloud Map Developer Guide}.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

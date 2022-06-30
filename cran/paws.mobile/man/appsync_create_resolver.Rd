@@ -47,7 +47,9 @@ data sources.
 \item{cachingConfig}{The caching configuration for the resolver.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resolver = list(
     typeName = "string",
     fieldName = "string",
@@ -76,7 +78,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a \code{Resolver} object.
@@ -85,7 +87,9 @@ A resolver converts incoming requests into a format that a data source
 can understand and converts the data source's responses into GraphQL.
 }
 \section{Request syntax}{
-\preformatted{svc$create_resolver(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_resolver(
   apiId = "string",
   typeName = "string",
   fieldName = "string",
@@ -112,7 +116,7 @@ can understand and converts the data source's responses into GraphQL.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

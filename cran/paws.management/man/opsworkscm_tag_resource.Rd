@@ -36,7 +36,9 @@ Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
 Puppet Enterprise server, or to server backups.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -45,7 +47,7 @@ Puppet Enterprise server, or to server backups.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

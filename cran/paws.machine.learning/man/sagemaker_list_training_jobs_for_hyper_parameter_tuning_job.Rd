@@ -29,7 +29,9 @@ jobs that did not return an objective metric are not listed.}
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrainingJobSummaries = list(
     list(
       TrainingJobDefinitionName = "string",
@@ -60,14 +62,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of TrainingJobSummary objects that describe the training
 jobs that a hyperparameter tuning job launched.
 }
 \section{Request syntax}{
-\preformatted{svc$list_training_jobs_for_hyper_parameter_tuning_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_training_jobs_for_hyper_parameter_tuning_job(
   HyperParameterTuningJobName = "string",
   NextToken = "string",
   MaxResults = 123,
@@ -75,7 +79,7 @@ jobs that a hyperparameter tuning job launched.
   SortBy = "Name"|"CreationTime"|"Status"|"FinalObjectiveMetricValue",
   SortOrder = "Ascending"|"Descending"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -31,17 +31,21 @@ only be delivered one time when the API is called.}
 \item{Tags}{The tags for the business report schedule.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ScheduleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a recurring schedule for usage reports to deliver to the
 specified S3 location with a specified daily or weekly interval.
 }
 \section{Request syntax}{
-\preformatted{svc$create_business_report_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_business_report_schedule(
   ScheduleName = "string",
   S3BucketName = "string",
   S3KeyPrefix = "string",
@@ -60,7 +64,7 @@ specified S3 location with a specified daily or weekly interval.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

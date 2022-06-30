@@ -26,7 +26,9 @@ devicefarm_list_test_grid_sessions(projectArn, status,
 \item{nextToken}{Pagination token.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   testGridSessions = list(
     list(
       arn = "string",
@@ -43,13 +45,15 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of sessions for a TestGridProject.
 }
 \section{Request syntax}{
-\preformatted{svc$list_test_grid_sessions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_test_grid_sessions(
   projectArn = "string",
   status = "ACTIVE"|"CLOSED"|"ERRORED",
   creationTimeAfter = as.POSIXct(
@@ -67,7 +71,7 @@ Retrieves a list of sessions for a TestGridProject.
   maxResult = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

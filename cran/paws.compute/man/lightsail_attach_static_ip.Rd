@@ -12,7 +12,9 @@ lightsail_attach_static_ip(staticIpName, instanceName)
 \item{instanceName}{[required] The instance name to which you want to attach the static IP address.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -37,17 +39,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Attaches a static IP address to a specific Amazon Lightsail instance.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_static_ip(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_static_ip(
   staticIpName = "string",
   instanceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

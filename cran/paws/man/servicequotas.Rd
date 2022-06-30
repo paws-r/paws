@@ -22,7 +22,9 @@ number of resources that you can create in your AWS account. For more
 information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/}{Service Quotas User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- servicequotas(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- servicequotas(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +38,7 @@ information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/user
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

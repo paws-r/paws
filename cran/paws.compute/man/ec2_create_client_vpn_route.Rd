@@ -39,13 +39,15 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = list(
     Code = "creating"|"active"|"failed"|"deleting",
     Message = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a route to a network to a Client VPN endpoint. Each Client VPN
@@ -54,7 +56,9 @@ network routes. Each route in the route table specifies the path for
 traﬃc to speciﬁc resources or networks.
 }
 \section{Request syntax}{
-\preformatted{svc$create_client_vpn_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_client_vpn_route(
   ClientVpnEndpointId = "string",
   DestinationCidrBlock = "string",
   TargetVpcSubnetId = "string",
@@ -62,7 +66,7 @@ traﬃc to speciﬁc resources or networks.
   ClientToken = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

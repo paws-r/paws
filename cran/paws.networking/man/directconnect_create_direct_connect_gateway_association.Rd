@@ -25,7 +25,9 @@ in the \emph{AWS Direct Connect User Guide}.}
 \item{virtualGatewayId}{The ID of the virtual private gateway.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   directConnectGatewayAssociation = list(
     directConnectGatewayId = "string",
     directConnectGatewayOwnerAccount = "string",
@@ -48,7 +50,7 @@ A list with the following syntax:\preformatted{list(
     virtualGatewayOwnerAccount = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an association between a Direct Connect gateway and a virtual
@@ -56,7 +58,9 @@ private gateway. The virtual private gateway must be attached to a VPC
 and must not be associated with another Direct Connect gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$create_direct_connect_gateway_association(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_direct_connect_gateway_association(
   directConnectGatewayId = "string",
   gatewayId = "string",
   addAllowedPrefixesToDirectConnectGateway = list(
@@ -66,7 +70,7 @@ and must not be associated with another Direct Connect gateway.
   ),
   virtualGatewayId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

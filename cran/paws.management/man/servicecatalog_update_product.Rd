@@ -37,7 +37,9 @@ servicecatalog_update_product(AcceptLanguage, Id, Name, Owner,
 \item{RemoveTags}{The tags to remove from the product.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProductViewDetail = list(
     ProductViewSummary = list(
       Id = "string",
@@ -65,13 +67,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the specified product.
 }
 \section{Request syntax}{
-\preformatted{svc$update_product(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_product(
   AcceptLanguage = "string",
   Id = "string",
   Name = "string",
@@ -91,7 +95,7 @@ Updates the specified product.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

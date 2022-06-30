@@ -31,10 +31,12 @@ action will fail.}
 \item{WorkGroup}{The name of the workgroup in which the named query is being created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NamedQueryId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a named query in the specified workgroup. Requires that you have
@@ -44,7 +46,9 @@ For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.c
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_named_query(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_named_query(
   Name = "string",
   Description = "string",
   Database = "string",
@@ -52,7 +56,7 @@ in the \emph{Amazon Athena User Guide}.
   ClientRequestToken = "string",
   WorkGroup = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

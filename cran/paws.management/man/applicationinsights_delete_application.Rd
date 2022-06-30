@@ -17,10 +17,12 @@ Removes the specified application from monitoring. Does not delete the
 application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application(
   ResourceGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

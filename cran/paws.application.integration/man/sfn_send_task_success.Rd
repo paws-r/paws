@@ -26,11 +26,13 @@ pattern to report that the task identified by the \code{taskToken} completed
 successfully.
 }
 \section{Request syntax}{
-\preformatted{svc$send_task_success(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_task_success(
   taskToken = "string",
   output = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

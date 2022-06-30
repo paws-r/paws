@@ -21,12 +21,14 @@ all image tags within the repository will be immutable which will
 prevent them from being overwritten.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   imageTagMutability = "MUTABLE"|"IMMUTABLE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the image tag mutability settings for the specified repository.
@@ -34,12 +36,14 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/use
 in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_image_tag_mutability(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_image_tag_mutability(
   registryId = "string",
   repositoryName = "string",
   imageTagMutability = "MUTABLE"|"IMMUTABLE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -40,7 +40,9 @@ set of associations.}
 default value is 10.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssociationSummaries = list(
     list(
       SourceArn = "string",
@@ -62,13 +64,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the associations in your account and their properties.
 }
 \section{Request syntax}{
-\preformatted{svc$list_associations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_associations(
   SourceArn = "string",
   DestinationArn = "string",
   SourceType = "string",
@@ -85,7 +89,7 @@ Lists the associations in your account and their properties.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

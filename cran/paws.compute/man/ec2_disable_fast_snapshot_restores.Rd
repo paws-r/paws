@@ -19,7 +19,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Successful = list(
     list(
       SnapshotId = "string",
@@ -60,14 +62,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disables fast snapshot restores for the specified snapshots in the
 specified Availability Zones.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_fast_snapshot_restores(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_fast_snapshot_restores(
   AvailabilityZones = list(
     "string"
   ),
@@ -76,7 +80,7 @@ specified Availability Zones.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

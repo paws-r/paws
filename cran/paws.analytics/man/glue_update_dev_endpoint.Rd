@@ -48,7 +48,9 @@ An empty list.
 Updates a specified development endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$update_dev_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_dev_endpoint(
   EndpointName = "string",
   PublicKey = "string",
   AddPublicKeys = list(
@@ -69,7 +71,7 @@ Updates a specified development endpoint.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

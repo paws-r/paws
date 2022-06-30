@@ -7,12 +7,14 @@
 ses_get_send_quota()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Max24HourSend = 123.0,
   MaxSendRate = 123.0,
   SentLast24Hours = 123.0
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides the sending limits for the Amazon SES account.

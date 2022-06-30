@@ -18,11 +18,13 @@ An empty list.
 Deletes a \code{DataSource} object.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_data_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_data_source(
   apiId = "string",
   name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

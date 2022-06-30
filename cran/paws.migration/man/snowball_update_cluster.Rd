@@ -42,7 +42,9 @@ the cluster changes to a different job state, usually 60 minutes after
 the cluster being created, this action is no longer available.
 }
 \section{Request syntax}{
-\preformatted{svc$update_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_cluster(
   ClusterId = "string",
   RoleARN = "string",
   Description = "string",
@@ -84,7 +86,7 @@ the cluster being created, this action is no longer available.
   ),
   ForwardingAddressId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

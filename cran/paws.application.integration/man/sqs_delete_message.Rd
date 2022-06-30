@@ -41,11 +41,13 @@ ensure that your application is idempotent, so that receiving a message
 more than once does not cause issues.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_message(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_message(
   QueueUrl = "string",
   ReceiptHandle = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

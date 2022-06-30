@@ -17,7 +17,9 @@ languages supported by Amazon Comprehend. All documents must be in the
 same language.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResultList = list(
     list(
       Index = 123,
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Inspects the text of a batch of documents for named entities and returns
@@ -48,13 +50,15 @@ information about them. For more information about named entities, see
 how-entities
 }
 \section{Request syntax}{
-\preformatted{svc$batch_detect_entities(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_detect_entities(
   TextList = list(
     "string"
   ),
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -26,12 +26,14 @@ representable in UTF-8 format, and the following special characters: + -
 the maximum length for a tag's value is 256.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SnapshotId = "string",
   VolumeARN = "string",
   VolumeRecoveryPointTime = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Initiates a snapshot of a gateway from a volume recovery point. This
@@ -60,7 +62,9 @@ or
 in the \emph{Amazon Elastic Compute Cloud API Reference}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_snapshot_from_volume_recovery_point(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_snapshot_from_volume_recovery_point(
   VolumeARN = "string",
   SnapshotDescription = "string",
   Tags = list(
@@ -70,7 +74,7 @@ in the \emph{Amazon Elastic Compute Cloud API Reference}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

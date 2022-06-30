@@ -17,23 +17,27 @@ listing data.}
 want in the response. The default value is 10. The maximum value is 500.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   rulesPackageArns = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all available Amazon Inspector rules packages.
 }
 \section{Request syntax}{
-\preformatted{svc$list_rules_packages(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_rules_packages(
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

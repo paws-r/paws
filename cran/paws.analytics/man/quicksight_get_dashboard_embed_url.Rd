@@ -63,12 +63,14 @@ authenticate as QuickSight or IAM users. For example, if you set
 the session can access all three dashboards.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EmbedUrl = "string",
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates a session URL and authorization code that you can use to embed
@@ -90,7 +92,9 @@ For more information, see \href{https://docs.aws.amazon.com/quicksight/latest/us
 in the \emph{Amazon QuickSight User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_dashboard_embed_url(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dashboard_embed_url(
   AwsAccountId = "string",
   DashboardId = "string",
   IdentityType = "IAM"|"QUICKSIGHT"|"ANONYMOUS",
@@ -104,7 +108,7 @@ in the \emph{Amazon QuickSight User Guide}.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

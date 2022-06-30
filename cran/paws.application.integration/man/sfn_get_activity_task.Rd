@@ -17,11 +17,13 @@ the task is assigned to. This name is used when it is logged in the
 execution history.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskToken = "string",
   input = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Used by workers to retrieve a task (with the specified activity ARN)
@@ -41,11 +43,13 @@ latency in some implementations. See \href{https://docs.aws.amazon.com/step-func
 in the Step Functions Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$get_activity_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_activity_task(
   activityArn = "string",
   workerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

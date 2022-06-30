@@ -29,20 +29,24 @@ attribute is a key and value pair (an Attribute object). Within an
 assessment template, each key must be unique.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   assessmentTemplateArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an assessment template for the assessment target that is
-specified by the ARN of the assessment target. If the \href{https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html}{service-linked role}
+specified by the ARN of the assessment target. If the \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_slr.html}{service-linked role}
 isn’t already registered, this action also creates and registers a
 service-linked role to grant Amazon Inspector access to AWS Services
 needed to perform security assessments.
 }
 \section{Request syntax}{
-\preformatted{svc$create_assessment_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_assessment_template(
   assessmentTargetArn = "string",
   assessmentTemplateName = "string",
   durationInSeconds = 123,
@@ -56,7 +60,7 @@ needed to perform security assessments.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

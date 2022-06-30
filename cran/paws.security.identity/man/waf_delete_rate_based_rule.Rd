@@ -15,10 +15,12 @@ by \code{\link[=waf_list_rate_based_rules]{list_rate_based_rules}}.}
 \code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChangeToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -51,11 +53,13 @@ request.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_rate_based_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_rate_based_rule(
   RuleId = "string",
   ChangeToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

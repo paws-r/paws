@@ -11,7 +11,9 @@ rds_start_db_instance(DBInstanceIdentifier)
 \item{DBInstanceIdentifier}{[required] The user-supplied instance identifier.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -197,7 +199,7 @@ A list with the following syntax:\preformatted{list(
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts an Amazon RDS DB instance that was stopped using the AWS console,
@@ -211,10 +213,12 @@ Aurora DB clusters, use \code{\link[=rds_start_db_cluster]{start_db_cluster}}
 instead.
 }
 \section{Request syntax}{
-\preformatted{svc$start_db_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_db_instance(
   DBInstanceIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

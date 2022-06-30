@@ -12,7 +12,9 @@ medialive_list_input_security_groups(MaxResults, NextToken)
 \item{NextToken}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InputSecurityGroups = list(
     list(
       Arn = "string",
@@ -33,17 +35,19 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Produces a list of Input Security Groups for an account
 }
 \section{Request syntax}{
-\preformatted{svc$list_input_security_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_input_security_groups(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

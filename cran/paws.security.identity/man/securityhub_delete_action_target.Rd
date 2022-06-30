@@ -10,10 +10,12 @@ securityhub_delete_action_target(ActionTargetArn)
 \item{ActionTargetArn}{[required] The ARN of the custom action target to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ActionTargetArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a custom action target from Security Hub.
@@ -23,10 +25,12 @@ that were already sent to Amazon CloudWatch Events using the custom
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_action_target(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_action_target(
   ActionTargetArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

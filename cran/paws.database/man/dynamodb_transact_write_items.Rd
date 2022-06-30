@@ -48,7 +48,9 @@ parameters within the 10-minute idempotency window, DynamoDB returns an
 \code{IdempotentParameterMismatch} exception.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConsumedCapacity = list(
     list(
       TableName = "string",
@@ -110,7 +112,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 \code{\link[=dynamodb_transact_write_items]{transact_write_items}} is a synchronous
@@ -167,7 +169,9 @@ error occurs because of changes made by the transaction.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$transact_write_items(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$transact_write_items(
   TransactItems = list(
     list(
       ConditionCheck = list(
@@ -401,7 +405,7 @@ error occurs because of changes made by the transaction.
   ReturnItemCollectionMetrics = "SIZE"|"NONE",
   ClientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

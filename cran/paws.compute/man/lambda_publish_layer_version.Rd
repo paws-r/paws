@@ -28,7 +28,9 @@ example, \code{MIT}.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Content = list(
     Location = "string",
     CodeSha256 = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   LicenseInfo = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}
@@ -59,7 +61,9 @@ Add layers to your function with
 \code{\link[=lambda_update_function_configuration]{update_function_configuration}}.
 }
 \section{Request syntax}{
-\preformatted{svc$publish_layer_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$publish_layer_version(
   LayerName = "string",
   Description = "string",
   Content = list(
@@ -73,7 +77,7 @@ Add layers to your function with
   ),
   LicenseInfo = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

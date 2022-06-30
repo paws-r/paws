@@ -212,7 +212,7 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' 
 #' -   Log group names consist of the following characters: a-z, A-Z, 0-9,
 #'     '_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
-#'     and '\#' (number sign)
+#'     and '#' (number sign)
 #' 
 #' When you create a log group, by default the log events in the log group
 #' never expire. To set a retention policy so that events expire and are

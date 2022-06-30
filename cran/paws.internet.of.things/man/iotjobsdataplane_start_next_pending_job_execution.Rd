@@ -25,7 +25,9 @@ job execution timeout which may have been specified when the job was
 created (\code{CreateJob} using field \code{timeoutConfig}).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   execution = list(
     jobId = "string",
     thingName = "string",
@@ -42,21 +44,23 @@ A list with the following syntax:\preformatted{list(
     jobDocument = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets and starts the next pending (status IN_PROGRESS or QUEUED) job
 execution for a thing.
 }
 \section{Request syntax}{
-\preformatted{svc$start_next_pending_job_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_next_pending_job_execution(
   thingName = "string",
   statusDetails = list(
     "string"
   ),
   stepTimeoutInMinutes = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

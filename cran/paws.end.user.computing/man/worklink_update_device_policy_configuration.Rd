@@ -20,11 +20,13 @@ An empty list.
 Updates the device policy configuration for the fleet.
 }
 \section{Request syntax}{
-\preformatted{svc$update_device_policy_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_device_policy_configuration(
   FleetArn = "string",
   DeviceCaCertificate = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

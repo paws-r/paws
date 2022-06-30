@@ -35,7 +35,9 @@ maximum even when there are more results available. You should check
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Policies = list(
     list(
       Id = "string",
@@ -48,7 +50,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the list of all policies in an organization of a specified
@@ -65,12 +67,14 @@ account or by a member account that is a delegated administrator for an
 AWS service.
 }
 \section{Request syntax}{
-\preformatted{svc$list_policies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_policies(
   Filter = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

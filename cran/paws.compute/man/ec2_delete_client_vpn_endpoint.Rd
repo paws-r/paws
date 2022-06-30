@@ -15,24 +15,28 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = list(
     Code = "pending-associate"|"available"|"deleting"|"deleted",
     Message = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified Client VPN endpoint. You must disassociate all
 target networks before you can delete a Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_client_vpn_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_client_vpn_endpoint(
   ClientVpnEndpointId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

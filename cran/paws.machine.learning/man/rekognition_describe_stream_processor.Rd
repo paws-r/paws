@@ -11,7 +11,9 @@ rekognition_describe_stream_processor(Name)
 \item{Name}{[required] Name of the stream processor for which you want information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string",
   StreamProcessorArn = "string",
   Status = "STOPPED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information about a stream processor created by
@@ -50,10 +52,12 @@ parameters for the face recognition being performed, and the current
 status of the stream processor.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_stream_processor(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stream_processor(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

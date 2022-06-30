@@ -15,12 +15,14 @@ cloudhsm_get_config(ClientArn, ClientVersion, HapgList)
 are associated with the client.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConfigType = "string",
   ConfigFile = "string",
   ConfigCred = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -34,14 +36,16 @@ Gets the configuration files necessary to connect to all high
 availability partition groups the client is associated with.
 }
 \section{Request syntax}{
-\preformatted{svc$get_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_config(
   ClientArn = "string",
   ClientVersion = "5.1"|"5.3",
   HapgList = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

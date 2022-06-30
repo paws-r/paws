@@ -23,7 +23,9 @@ pagination token in the next request.}
 is 10.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   slotTypes = list(
     list(
       signature = "string",
@@ -34,25 +36,27 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of built-in slot types that meet the specified criteria.
 
-For a list of built-in slot types, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html}{Slot Type Reference}
-in the \emph{Alexa Skills Kit}.
+For a list of built-in slot types, see Slot Type Reference in the \emph{Alexa
+Skills Kit}.
 
 This operation requires permission for the \code{lex:GetBuiltInSlotTypes}
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$get_builtin_slot_types(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_builtin_slot_types(
   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
   signatureContains = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

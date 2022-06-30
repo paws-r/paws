@@ -29,7 +29,9 @@ value of this parameter to the value returned from the previous
 response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Members = list(
     list(
       AccountId = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists details about all member accounts for the current Security Hub
@@ -56,12 +58,14 @@ The results include both member accounts that belong to an organization
 and member accounts that were invited manually.
 }
 \section{Request syntax}{
-\preformatted{svc$list_members(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_members(
   OnlyAssociated = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

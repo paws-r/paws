@@ -19,7 +19,9 @@ retrieve this information by using
 \code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   approvalRuleTemplate = list(
     approvalRuleTemplateId = "string",
     approvalRuleTemplateName = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     lastModifiedUser = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the content of an approval rule template. You can change the
@@ -43,12 +45,14 @@ number of required approvals, the membership of the approval rule, and
 whether an approval pool is defined.
 }
 \section{Request syntax}{
-\preformatted{svc$update_approval_rule_template_content(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_approval_rule_template_content(
   approvalRuleTemplateName = "string",
   newRuleContent = "string",
   existingRuleContentSha256 = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

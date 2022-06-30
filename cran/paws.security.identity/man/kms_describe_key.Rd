@@ -38,7 +38,9 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyMetadata = list(
     AWSAccountId = "string",
     KeyId = "string",
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides detailed information about a customer master key (CMK). You can
@@ -131,13 +133,15 @@ the \code{KeyId} parameter.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_key(
   KeyId = "string",
   GrantTokens = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

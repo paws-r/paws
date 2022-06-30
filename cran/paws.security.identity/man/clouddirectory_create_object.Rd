@@ -23,10 +23,12 @@ attached.}
 \item{LinkName}{The name of link that is used to attach this object to a parent.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ObjectIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an object in a Directory. Additionally attaches the object to a
@@ -36,7 +38,9 @@ to create a policy object, if the facet from which you create the object
 is a policy facet.
 }
 \section{Request syntax}{
-\preformatted{svc$create_object(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_object(
   DirectoryArn = "string",
   SchemaFacets = list(
     list(
@@ -67,7 +71,7 @@ is a policy facet.
   ),
   LinkName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

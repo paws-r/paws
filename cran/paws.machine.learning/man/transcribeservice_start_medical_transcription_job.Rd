@@ -107,7 +107,9 @@ between doctors and patients. \code{DICTATION} refers to single-speaker
 dictated speech, e.g., for clinical notes.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MedicalTranscriptionJob = list(
     MedicalTranscriptionJobName = "string",
     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
@@ -142,13 +144,15 @@ A list with the following syntax:\preformatted{list(
     Type = "CONVERSATION"|"DICTATION"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a batch job to transcribe medical speech to text.
 }
 \section{Request syntax}{
-\preformatted{svc$start_medical_transcription_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_medical_transcription_job(
   MedicalTranscriptionJobName = "string",
   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
   MediaSampleRateHertz = 123,
@@ -170,7 +174,7 @@ Starts a batch job to transcribe medical speech to text.
   Specialty = "PRIMARYCARE",
   Type = "CONVERSATION"|"DICTATION"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

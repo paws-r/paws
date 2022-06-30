@@ -16,10 +16,12 @@ An empty list.
 Deletes the rule.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_topic_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_topic_rule(
   ruleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,7 +16,9 @@ list.}
 \item{maxResults}{The maximum number of results you want the request to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   apiKeys = list(
     list(
       id = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the API keys for a given API.
@@ -38,12 +40,14 @@ deleted. You can safely call \code{\link[=appsync_delete_api_key]{delete_api_key
 to manually delete a key before it's automatically deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$list_api_keys(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_api_keys(
   apiId = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

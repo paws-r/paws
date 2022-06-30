@@ -17,10 +17,12 @@ An empty list.
 Deletes a registered CA certificate.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_ca_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_ca_certificate(
   certificateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

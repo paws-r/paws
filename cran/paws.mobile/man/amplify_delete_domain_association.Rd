@@ -12,7 +12,9 @@ amplify_delete_domain_association(appId, domainName)
 \item{domainName}{[required] The name of the domain.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   domainAssociation = list(
     domainAssociationArn = "string",
     domainName = "string",
@@ -36,17 +38,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a domain association for an Amplify app.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_domain_association(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_domain_association(
   appId = "string",
   domainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

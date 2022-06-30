@@ -22,7 +22,9 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Targets = list(
     list(
       WindowId = "string",
@@ -43,13 +45,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the targets registered with the maintenance window.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_maintenance_window_targets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_maintenance_window_targets(
   WindowId = "string",
   Filters = list(
     list(
@@ -62,7 +66,7 @@ Lists the targets registered with the maintenance window.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

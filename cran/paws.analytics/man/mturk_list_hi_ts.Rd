@@ -12,7 +12,9 @@ mturk_list_hi_ts(NextToken, MaxResults)
 \item{MaxResults}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   NumResults = 123,
   HITs = list(
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{\link[=mturk_list_hi_ts]{list_hi_ts}} operation returns all of a
@@ -70,11 +72,13 @@ HITs that have been deleted of with the DeleteHIT operation or that have
 been auto-deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$list_hi_ts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_hi_ts(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

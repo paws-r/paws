@@ -49,7 +49,9 @@ when the response from a previous call has more results than the maximum
 page size.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextPageToken = "string",
   Tags = list(
     "string"
@@ -57,14 +59,16 @@ A list with the following syntax:\preformatted{list(
   ReturnSize = 123,
   TotalSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Queries for available tag keys and tag values for a specified period.
 You can search the tag values for an arbitrary string.
 }
 \section{Request syntax}{
-\preformatted{svc$get_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_tags(
   SearchString = "string",
   TimePeriod = list(
     Start = "string",
@@ -116,7 +120,7 @@ You can search the tag values for an arbitrary string.
   MaxResults = 123,
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

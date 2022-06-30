@@ -19,11 +19,13 @@ When you specify a tag with a key that already exists, the operation
 overwrites the previous tag definition, and you do not get an error
 message.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html}{Tagging Auto Scaling groups and instances}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-tagging.html}{Tagging Auto Scaling groups and instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_or_update_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_or_update_tags(
   Tags = list(
     list(
       ResourceId = "string",
@@ -34,7 +36,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

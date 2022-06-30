@@ -24,7 +24,9 @@ with Streams, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/develo
 in the Amazon DynamoDB Developer Guide.
 }
 \section{Service syntax}{
-\preformatted{svc <- dynamodbstreams(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- dynamodbstreams(
   config = list(
     credentials = list(
       creds = list(
@@ -38,7 +40,7 @@ in the Amazon DynamoDB Developer Guide.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

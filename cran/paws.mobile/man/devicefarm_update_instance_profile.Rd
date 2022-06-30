@@ -27,7 +27,9 @@ The list of packages is only considered if you set \code{packageCleanup} to
 The default value is \code{true}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   instanceProfile = list(
     arn = "string",
     packageCleanup = TRUE|FALSE,
@@ -39,13 +41,15 @@ A list with the following syntax:\preformatted{list(
     description = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates information about an existing private device instance profile.
 }
 \section{Request syntax}{
-\preformatted{svc$update_instance_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_instance_profile(
   arn = "string",
   name = "string",
   description = "string",
@@ -55,7 +59,7 @@ Updates information about an existing private device instance profile.
   ),
   rebootAfterUse = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

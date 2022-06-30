@@ -25,12 +25,14 @@ Resets a network interface attribute. You can specify only one attribute
 at a time.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_network_interface_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_network_interface_attribute(
   DryRun = TRUE|FALSE,
   NetworkInterfaceId = "string",
   SourceDestCheck = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

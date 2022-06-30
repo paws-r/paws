@@ -53,11 +53,13 @@ section.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_bucket(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bucket(
   AccountId = "string",
   Bucket = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

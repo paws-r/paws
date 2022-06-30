@@ -27,12 +27,14 @@ Removes the storage type configurations for the specified resource type
 and association ID.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_instance_storage_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_instance_storage_config(
   InstanceId = "string",
   AssociationId = "string",
   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

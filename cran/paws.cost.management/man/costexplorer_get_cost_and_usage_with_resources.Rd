@@ -61,7 +61,9 @@ when the response from a previous call has more results than the maximum
 page size.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextPageToken = "string",
   GroupDefinitions = list(
     list(
@@ -106,7 +108,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves cost and usage metrics with resources for your account. You
@@ -121,11 +123,13 @@ the Amazon Elastic Compute Cloud – Compute service only.
 
 This is an opt-in only feature. You can enable this feature from the
 Cost Explorer Settings page. For information on how to access the
-Settings page, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html}{Controlling Access for Cost Explorer}
+Settings page, see \href{https://docs.aws.amazon.com/cost-management/latest/userguide/ce-access.html}{Controlling Access for Cost Explorer}
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_cost_and_usage_with_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cost_and_usage_with_resources(
   TimePeriod = list(
     Start = "string",
     End = "string"
@@ -178,7 +182,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

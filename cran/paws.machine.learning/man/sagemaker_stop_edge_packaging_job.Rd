@@ -16,10 +16,12 @@ An empty list.
 Request to stop an edge packaging job.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_edge_packaging_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_edge_packaging_job(
   EdgePackagingJobName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

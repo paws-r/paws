@@ -17,7 +17,9 @@ route53_list_tags_for_resources(ResourceType, ResourceIds)
 for which you want to get a list of tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceTagSets = list(
     list(
       ResourceType = "healthcheck"|"hostedzone",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists tags for up to 10 health checks or hosted zones.
@@ -40,13 +42,15 @@ For information about using tags for cost allocation, see \href{https://docs.aws
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resources(
   ResourceType = "healthcheck"|"hostedzone",
   ResourceIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,7 +11,9 @@ route53_get_traffic_policy_instance(Id)
 about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficPolicyInstance = list(
     Id = "string",
     HostedZoneId = "string",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a specified traffic policy instance.
@@ -41,10 +43,12 @@ In the Route 53 console, traffic policy instances are known as policy
 records.
 }
 \section{Request syntax}{
-\preformatted{svc$get_traffic_policy_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_traffic_policy_instance(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ apigateway_get_usage_plan(usagePlanId)
 \item{usagePlanId}{[required] [Required] The identifier of the UsagePlan resource to be retrieved.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -40,16 +42,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a usage plan of a given plan identifier.
 }
 \section{Request syntax}{
-\preformatted{svc$get_usage_plan(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_usage_plan(
   usagePlanId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

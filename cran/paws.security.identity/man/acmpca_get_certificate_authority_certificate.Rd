@@ -13,11 +13,13 @@ acmpca_get_certificate_authority_certificate(CertificateAuthorityArn)
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Certificate = "string",
   CertificateChain = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the certificate and certificate chain for your private
@@ -27,10 +29,12 @@ include the CA certificate. Each certificate in the chain signs the one
 before it.
 }
 \section{Request syntax}{
-\preformatted{svc$get_certificate_authority_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_certificate_authority_certificate(
   CertificateAuthorityArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

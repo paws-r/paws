@@ -11,7 +11,9 @@ cloudtrail_get_trail(Name)
 want to retrieve settings information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Trail = list(
     Name = "string",
     S3BucketName = "string",
@@ -31,16 +33,18 @@ A list with the following syntax:\preformatted{list(
     IsOrganizationTrail = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns settings information for a specified trail.
 }
 \section{Request syntax}{
-\preformatted{svc$get_trail(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_trail(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

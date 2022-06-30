@@ -13,21 +13,25 @@ ram_delete_resource_share(resourceShareArn, clientToken)
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   returnValue = TRUE|FALSE,
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified resource share.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_resource_share(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource_share(
   resourceShareArn = "string",
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,10 +21,12 @@ configservice_put_organization_config_rule(OrganizationConfigRuleName,
 organization config rule.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OrganizationConfigRuleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds or updates organization config rule for your entire organization
@@ -69,7 +71,9 @@ Specify either \code{OrganizationCustomRuleMetadata} or
 \code{OrganizationManagedRuleMetadata}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_organization_config_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_organization_config_rule(
   OrganizationConfigRuleName = "string",
   OrganizationManagedRuleMetadata = list(
     Description = "string",
@@ -102,7 +106,7 @@ Specify either \code{OrganizationCustomRuleMetadata} or
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

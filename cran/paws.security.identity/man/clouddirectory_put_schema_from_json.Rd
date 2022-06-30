@@ -12,10 +12,12 @@ clouddirectory_put_schema_from_json(SchemaArn, Document)
 \item{Document}{[required] The replacement JSON schema.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Allows a schema to be updated using JSON upload. Only available for
@@ -23,11 +25,13 @@ development schemas. See \href{https://docs.aws.amazon.com/clouddirectory/latest
 for more information.
 }
 \section{Request syntax}{
-\preformatted{svc$put_schema_from_json(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_schema_from_json(
   SchemaArn = "string",
   Document = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

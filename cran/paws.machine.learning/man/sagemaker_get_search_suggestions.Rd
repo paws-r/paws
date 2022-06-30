@@ -13,14 +13,16 @@ sagemaker_get_search_suggestions(Resource, SuggestionQuery)
 \item{SuggestionQuery}{Limits the property names that are included in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PropertyNameSuggestions = list(
     list(
       PropertyName = "string"
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 An auto-complete API for the search functionality in the Amazon
@@ -29,7 +31,9 @@ property name to use in \code{\link[=sagemaker_search]{search}} queries. Provide
 suggestions for \code{HyperParameters}, \code{Tags}, and \code{Metrics}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_search_suggestions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_search_suggestions(
   Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup",
   SuggestionQuery = list(
     PropertyNameQuery = list(
@@ -37,7 +41,7 @@ suggestions for \code{HyperParameters}, \code{Tags}, and \code{Metrics}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

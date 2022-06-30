@@ -16,33 +16,37 @@ created.}
 \item{description}{The description of the model.}
 
 \item{schema}{The schema for the model. For \code{application/json} models, this should be
-\href{https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04}{JSON schema draft 4}
-model.}
+<a href="https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04"
+target="_blank">JSON schema draft 4</a> model.}
 
 \item{contentType}{[required] [Required] The content-type for the model.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
   schema = "string",
   contentType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a new Model resource to an existing RestApi resource.
 }
 \section{Request syntax}{
-\preformatted{svc$create_model(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_model(
   restApiId = "string",
   name = "string",
   description = "string",
   schema = "string",
   contentType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

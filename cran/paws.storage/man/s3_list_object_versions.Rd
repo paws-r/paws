@@ -25,8 +25,8 @@ response.}
 API returns up to 1,000 key names. The response might contain fewer keys
 but will never contain more. If additional keys satisfy the search
 criteria, but were not returned because max-keys was exceeded, the
-response contains <isTruncated>true</isTruncated>. To return
-the additional keys, see key-marker and version-id-marker.}
+response contains \<isTruncated\>true\</isTruncated\>. To return the
+additional keys, see key-marker and version-id-marker.}
 
 \item{Prefix}{Use this parameter to select only those keys that begin with the
 specified prefix. You can use prefixes to separate a bucket into
@@ -42,7 +42,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IsTruncated = TRUE|FALSE,
   KeyMarker = "string",
   VersionIdMarker = "string",
@@ -90,7 +92,7 @@ A list with the following syntax:\preformatted{list(
   ),
   EncodingType = "url"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns metadata about all versions of the objects in a bucket. You can
@@ -115,7 +117,9 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$list_object_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_object_versions(
   Bucket = "string",
   Delimiter = "string",
   EncodingType = "url",
@@ -125,7 +129,7 @@ The following operations are related to
   VersionIdMarker = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -14,7 +14,9 @@ or
 \code{\link[=codecommit_get_comments_for_pull_request]{get_comments_for_pull_request}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   comment = list(
     commentId = "string",
     content = "string",
@@ -36,17 +38,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the content of a comment made on a change, file, or commit in a
 repository.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_comment_content(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_comment_content(
   commentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

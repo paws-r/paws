@@ -21,7 +21,9 @@ example, AWS Config adds 3 exceptions for 3 resource keys.}
 \item{ExpirationTime}{The exception is automatically deleted after the expiration date.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedBatches = list(
     list(
       FailureMessage = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 A remediation exception is when a specific resource is no longer
@@ -52,7 +54,9 @@ executing a remediation action to a specific resource. Remediation
 exceptions blocks auto-remediation until the exception is cleared.
 }
 \section{Request syntax}{
-\preformatted{svc$put_remediation_exceptions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_remediation_exceptions(
   ConfigRuleName = "string",
   ResourceKeys = list(
     list(
@@ -65,7 +69,7 @@ exceptions blocks auto-remediation until the exception is cleared.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

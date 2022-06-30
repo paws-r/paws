@@ -10,7 +10,9 @@ polly_get_speech_synthesis_task(TaskId)
 \item{TaskId}{[required] The Amazon Polly generated identifier for a speech synthesis task.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SynthesisTask = list(
     Engine = "standard"|"neural",
     TaskId = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a specific SpeechSynthesisTask object based on its TaskID.
@@ -44,10 +46,12 @@ including the status of the task, and a link to the S3 bucket containing
 the output of the task.
 }
 \section{Request syntax}{
-\preformatted{svc$get_speech_synthesis_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_speech_synthesis_task(
   TaskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ operation. If this value is null, it retrieves the first page.}
 \item{MaxResults}{The maximum number of results to be included in the next page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FleetSummaryList = list(
     list(
       FleetArn = "string",
@@ -34,17 +36,19 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of fleets for the current account and Region.
 }
 \section{Request syntax}{
-\preformatted{svc$list_fleets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_fleets(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

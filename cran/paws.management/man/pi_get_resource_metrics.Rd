@@ -59,7 +59,9 @@ parameter is specified, the response includes only records beyond the
 token, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AlignedStartTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -87,7 +89,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve Performance Insights metrics for a set of data sources, over a
@@ -98,7 +100,9 @@ Each response element returns a maximum of 500 bytes. For larger
 elements, such as SQL statements, only the first 500 bytes are returned.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resource_metrics(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resource_metrics(
   ServiceType = "RDS",
   Identifier = "string",
   MetricQueries = list(
@@ -126,7 +130,7 @@ elements, such as SQL statements, only the first 500 bytes are returned.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

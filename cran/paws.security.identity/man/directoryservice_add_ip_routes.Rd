@@ -68,7 +68,9 @@ about what permissions are required to run the \emph{AddIpRoutes} operation,
 see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
-\preformatted{svc$add_ip_routes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_ip_routes(
   DirectoryId = "string",
   IpRoutes = list(
     list(
@@ -78,7 +80,7 @@ see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingW
   ),
   UpdateSecurityGroupForDirectoryControllers = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

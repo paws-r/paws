@@ -21,12 +21,14 @@ An empty list.
 Changes the password for a specified user in a user pool.
 }
 \section{Request syntax}{
-\preformatted{svc$change_password(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$change_password(
   PreviousPassword = "string",
   ProposedPassword = "string",
   AccessToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

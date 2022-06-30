@@ -287,7 +287,9 @@ information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/US
 of the DB instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -473,7 +475,7 @@ A list with the following syntax:\preformatted{list(
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL
@@ -484,7 +486,9 @@ running MySQL. For more information, see \href{https://docs.aws.amazon.com/Amazo
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-\preformatted{svc$restore_db_instance_from_s3(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_db_instance_from_s3(
   DBName = "string",
   DBInstanceIdentifier = "string",
   AllocatedStorage = 123,
@@ -546,7 +550,7 @@ in the \emph{Amazon RDS User Guide.}
   DeletionProtection = TRUE|FALSE,
   MaxAllocatedStorage = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

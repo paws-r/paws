@@ -176,7 +176,9 @@ the thumbnails that it stores in your Amazon S3 bucket.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Pipeline = list(
     Id = "string",
     Arn = "string",
@@ -226,7 +228,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Use the \code{\link[=elastictranscoder_update_pipeline]{update_pipeline}} operation
@@ -238,7 +240,9 @@ started to process are affected in addition to jobs that you submit
 after you change settings.
 }
 \section{Request syntax}{
-\preformatted{svc$update_pipeline(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pipeline(
   Id = "string",
   Name = "string",
   InputBucket = "string",
@@ -277,7 +281,7 @@ after you change settings.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

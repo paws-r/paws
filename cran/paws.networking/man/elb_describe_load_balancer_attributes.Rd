@@ -10,7 +10,9 @@ elb_describe_load_balancer_attributes(LoadBalancerName)
 \item{LoadBalancerName}{[required] The name of the load balancer.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LoadBalancerAttributes = list(
     CrossZoneLoadBalancing = list(
       Enabled = TRUE|FALSE
@@ -36,16 +38,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the attributes for the specified load balancer.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_load_balancer_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_load_balancer_attributes(
   LoadBalancerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

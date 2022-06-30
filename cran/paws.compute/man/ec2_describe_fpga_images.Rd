@@ -31,11 +31,11 @@ the sender of the request), or an AWS owner alias (valid values are
 create the bitstream.
 \item \code{state} - The state of the AFI (\code{pending} | \code{failed} | \code{available} |
 \code{unavailable}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -47,7 +47,9 @@ regardless of the tag value.
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FpgaImages = list(
     list(
       FpgaImageId = "string",
@@ -91,7 +93,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the Amazon FPGA Images (AFIs) available to you. These include
@@ -99,7 +101,9 @@ public AFIs, private AFIs that you own, and AFIs owned by other AWS
 accounts for which you have load permissions.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_fpga_images(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fpga_images(
   DryRun = TRUE|FALSE,
   FpgaImageIds = list(
     "string"
@@ -118,7 +122,7 @@ accounts for which you have load permissions.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

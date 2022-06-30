@@ -27,11 +27,13 @@ is 4 GB (4096 MB).}
 smaller than this part size.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   location = "string",
   uploadId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation initiates a multipart upload. Amazon S3 Glacier creates a
@@ -71,13 +73,15 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-ini
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$initiate_multipart_upload(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$initiate_multipart_upload(
   accountId = "string",
   vaultName = "string",
   archiveDescription = "string",
   partSize = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -24,7 +24,9 @@ An empty list.
 Deletes a specified partition.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_partition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -32,7 +34,7 @@ Deletes a specified partition.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

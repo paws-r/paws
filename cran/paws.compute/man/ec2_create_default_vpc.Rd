@@ -14,7 +14,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Vpc = list(
     CidrBlock = "string",
     DhcpOptionsId = "string",
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a default VPC with a size \verb{/16} IPv4 CIDR block and a default
@@ -72,10 +74,12 @@ a default VPC for my existing EC2 account. Is that possible?" in the
 \href{https://aws.amazon.com/vpc/faqs/#Default_VPCs}{Default VPCs FAQ}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_default_vpc(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_default_vpc(
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

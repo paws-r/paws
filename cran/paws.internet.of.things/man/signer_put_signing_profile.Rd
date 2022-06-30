@@ -28,12 +28,14 @@ that you want to use during signing.}
 \item{tags}{Tags to be associated with the signing profile that is being created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   profileVersion = "string",
   profileVersionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a signing profile. A signing profile is a code signing template
@@ -42,7 +44,9 @@ information, see
 \href{https://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html}{http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html}
 }
 \section{Request syntax}{
-\preformatted{svc$put_signing_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_signing_profile(
   profileName = "string",
   signingMaterial = list(
     certificateArn = "string"
@@ -66,7 +70,7 @@ information, see
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

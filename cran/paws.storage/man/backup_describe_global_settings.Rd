@@ -7,7 +7,9 @@
 backup_describe_global_settings()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GlobalSettings = list(
     "string"
   ),
@@ -15,14 +17,16 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The current feature settings for the AWS Account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_global_settings()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_global_settings()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -32,12 +32,14 @@ receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ARN = "string",
   Name = "string",
   VersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disables automatic scheduled rotation and cancels the rotation of a
@@ -86,10 +88,12 @@ rotation, use \code{\link[=secretsmanager_rotate_secret]{rotate_secret}}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_rotate_secret(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_rotate_secret(
   SecretId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

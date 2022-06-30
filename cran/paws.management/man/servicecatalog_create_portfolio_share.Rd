@@ -31,10 +31,12 @@ order for the administrator to monitor the status of the
 share. If this flag is not provided, TagOptions sharing is disabled.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PortfolioShareToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Shares the specified portfolio with the specified account or
@@ -59,7 +61,9 @@ error. To update an existing share, you must use the
 instead.
 }
 \section{Request syntax}{
-\preformatted{svc$create_portfolio_share(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_portfolio_share(
   AcceptLanguage = "string",
   PortfolioId = "string",
   AccountId = "string",
@@ -69,7 +73,7 @@ instead.
   ),
   ShareTagOptions = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

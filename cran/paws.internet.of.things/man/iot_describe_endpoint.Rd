@@ -21,19 +21,23 @@ endpoint type to avoid issues related to the widespread distrust of
 Symantec certificate authorities.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   endpointAddress = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a unique endpoint specific to the AWS account making the call.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_endpoint(
   endpointType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

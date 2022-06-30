@@ -23,17 +23,21 @@ doesn't occur within this time, the announcement is not delivered.}
 idempotency.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AnnouncementArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Triggers an asynchronous flow to send text, SSML, or audio announcements
 to rooms that are identified by a search or filter.
 }
 \section{Request syntax}{
-\preformatted{svc$send_announcement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_announcement(
   RoomFilters = list(
     list(
       Key = "string",
@@ -65,7 +69,7 @@ to rooms that are identified by a search or filter.
   TimeToLiveInSeconds = 123,
   ClientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

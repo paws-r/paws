@@ -20,7 +20,9 @@ batch of the results.}
 results. The default is the same as the allowed maximum, 1,000.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   reactionsForComment = list(
     list(
       reaction = list(
@@ -36,20 +38,22 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about reactions to a specified comment ID. Reactions
 from users who have been deleted will not be included in the count.
 }
 \section{Request syntax}{
-\preformatted{svc$get_comment_reactions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_comment_reactions(
   commentId = "string",
   reactionUserArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

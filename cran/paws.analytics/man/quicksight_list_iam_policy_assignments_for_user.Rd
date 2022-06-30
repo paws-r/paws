@@ -22,7 +22,9 @@ results.}
 \item{Namespace}{[required] The namespace of the assignment.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ActiveAssignments = list(
     list(
       AssignmentName = "string",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all the IAM policy assignments, including the Amazon Resource
@@ -41,14 +43,16 @@ Names (ARNs) for the IAM policies assigned to the specified user and
 group or groups that the user belongs to.
 }
 \section{Request syntax}{
-\preformatted{svc$list_iam_policy_assignments_for_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_iam_policy_assignments_for_user(
   AwsAccountId = "string",
   UserName = "string",
   NextToken = "string",
   MaxResults = 123,
   Namespace = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

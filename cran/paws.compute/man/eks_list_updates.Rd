@@ -31,27 +31,31 @@ don't use this parameter, \code{\link[=eks_list_updates]{list_updates}} returns 
 to 100 results and a \code{nextToken} value if applicable.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   updateIds = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the updates associated with an Amazon EKS cluster or managed node
 group in your AWS account, in the specified Region.
 }
 \section{Request syntax}{
-\preformatted{svc$list_updates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_updates(
   name = "string",
   nodegroupName = "string",
   addonName = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

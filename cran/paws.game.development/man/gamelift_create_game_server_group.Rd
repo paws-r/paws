@@ -47,7 +47,7 @@ types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-ty
 in the \emph{Amazon EC2 User Guide}. You can optionally specify capacity
 weighting for each instance type. If no weight value is specified for an
 instance type, it is set to the default value "1". For more information
-about capacity weighting, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-weighting.html}{Instance Weighting for Amazon EC2 Auto Scaling}
+about capacity weighting, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups-instance-weighting.html}{Instance Weighting for Amazon EC2 Auto Scaling}
 in the Amazon EC2 Auto Scaling User Guide.}
 
 \item{AutoScalingPolicy}{Configuration settings to define a scaling policy for the Auto Scaling
@@ -108,7 +108,9 @@ remove, and view tags, respectively. The maximum tag limit may be lower
 than stated. See the AWS General Reference for actual tagging limits.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GameServerGroup = list(
     GameServerGroupName = "string",
     GameServerGroupArn = "string",
@@ -135,7 +137,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -193,7 +195,9 @@ optimize for availability and cost.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_game_server_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_game_server_group(
   GameServerGroupName = "string",
   RoleArn = "string",
   MinSize = 123,
@@ -227,7 +231,7 @@ optimize for availability and cost.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

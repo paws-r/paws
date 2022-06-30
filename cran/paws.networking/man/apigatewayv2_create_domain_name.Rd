@@ -17,7 +17,9 @@ apigatewayv2_create_domain_name(DomainName, DomainNameConfigurations,
 \item{Tags}{The collection of tags associated with a domain name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApiMappingSelectionExpression = "string",
   DomainName = "string",
   DomainNameConfigurations = list(
@@ -46,13 +48,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a domain name.
 }
 \section{Request syntax}{
-\preformatted{svc$create_domain_name(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_domain_name(
   DomainName = "string",
   DomainNameConfigurations = list(
     list(
@@ -77,7 +81,7 @@ Creates a domain name.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

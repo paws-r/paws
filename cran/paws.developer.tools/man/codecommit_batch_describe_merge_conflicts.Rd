@@ -45,7 +45,9 @@ merge operation is successful.}
 batch of the results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   conflicts = list(
     list(
       conflictMetadata = list(
@@ -113,7 +115,7 @@ A list with the following syntax:\preformatted{list(
   sourceCommitId = "string",
   baseCommitId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about one or more merge conflicts in the attempted
@@ -121,7 +123,9 @@ merge of two commit specifiers using the squash or three-way merge
 strategy.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_describe_merge_conflicts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_describe_merge_conflicts(
   repositoryName = "string",
   destinationCommitSpecifier = "string",
   sourceCommitSpecifier = "string",
@@ -135,7 +139,7 @@ strategy.
   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

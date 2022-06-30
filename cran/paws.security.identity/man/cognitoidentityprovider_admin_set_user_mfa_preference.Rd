@@ -29,7 +29,9 @@ are enabled and no preference is set, a challenge to choose an MFA
 option will be returned during sign in.
 }
 \section{Request syntax}{
-\preformatted{svc$admin_set_user_mfa_preference(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_set_user_mfa_preference(
   SMSMfaSettings = list(
     Enabled = TRUE|FALSE,
     PreferredMfa = TRUE|FALSE
@@ -41,7 +43,7 @@ option will be returned during sign in.
   Username = "string",
   UserPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -60,7 +60,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   VolumeStatuses = list(
     list(
@@ -107,7 +109,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the status of the specified volumes. Volume status provides
@@ -152,7 +154,9 @@ the \code{error} state (for example, when a volume is incapable of accepting
 I/O.)
 }
 \section{Request syntax}{
-\preformatted{svc$describe_volume_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_volume_status(
   Filters = list(
     list(
       Name = "string",
@@ -168,7 +172,7 @@ I/O.)
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

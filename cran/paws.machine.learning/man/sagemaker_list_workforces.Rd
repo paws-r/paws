@@ -21,7 +21,9 @@ workforce name.}
 \item{MaxResults}{The maximum number of workforces returned in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Workforces = list(
     list(
       WorkforceName = "string",
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Use this operation to list all private and vendor workforces in an AWS
@@ -63,14 +65,16 @@ Region. Note that you can only have one private workforce per AWS
 Region.
 }
 \section{Request syntax}{
-\preformatted{svc$list_workforces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_workforces(
   SortBy = "Name"|"CreateDate",
   SortOrder = "Ascending"|"Descending",
   NameContains = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

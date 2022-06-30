@@ -13,7 +13,9 @@ swf_describe_workflow_execution(domain, execution)
 \item{execution}{[required] The workflow execution to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   executionInfo = list(
     execution = list(
       workflowId = "string",
@@ -62,7 +64,7 @@ A list with the following syntax:\preformatted{list(
   ),
   latestExecutionContext = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the specified workflow execution including its
@@ -91,14 +93,16 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_workflow_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workflow_execution(
   domain = "string",
   execution = list(
     workflowId = "string",
     runId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

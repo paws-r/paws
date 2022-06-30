@@ -52,11 +52,13 @@ key-value pairs that consist of a required key string with a maximum of
 characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StudioId = "string",
   Url = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
@@ -65,7 +67,9 @@ subject to change.
 Creates a new Amazon EMR Studio.
 }
 \section{Request syntax}{
-\preformatted{svc$create_studio(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_studio(
   Name = "string",
   Description = "string",
   AuthMode = "SSO"|"IAM",
@@ -85,7 +89,7 @@ Creates a new Amazon EMR Studio.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

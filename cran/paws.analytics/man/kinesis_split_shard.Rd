@@ -86,12 +86,14 @@ If you try to operate on too many streams simultaneously using
 per second per account.
 }
 \section{Request syntax}{
-\preformatted{svc$split_shard(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$split_shard(
   StreamName = "string",
   ShardToSplit = "string",
   NewStartingHashKey = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

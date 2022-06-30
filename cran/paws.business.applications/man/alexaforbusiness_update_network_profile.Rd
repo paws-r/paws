@@ -36,7 +36,9 @@ An empty list.
 Updates a network profile by the network profile ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$update_network_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_network_profile(
   NetworkProfileArn = "string",
   NetworkProfileName = "string",
   Description = "string",
@@ -47,7 +49,7 @@ Updates a network profile by the network profile ARN.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

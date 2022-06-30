@@ -32,7 +32,9 @@ response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   ReservedNodeOfferings = list(
     list(
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the available reserved node offerings by Amazon
@@ -69,12 +71,14 @@ For more information about reserved node offerings, go to \href{https://docs.aws
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_reserved_node_offerings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reserved_node_offerings(
   ReservedNodeOfferingId = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

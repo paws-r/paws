@@ -18,7 +18,9 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceAssociationStatusInfos = list(
     list(
       AssociationId = "string",
@@ -43,18 +45,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The status of the associations for the instance(s).
 }
 \section{Request syntax}{
-\preformatted{svc$describe_instance_associations_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_associations_status(
   InstanceId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

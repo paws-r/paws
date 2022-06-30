@@ -18,7 +18,9 @@ none is supplied, the AWS account ID is used by default.}
 \item{ColumnStatisticsList}{[required] A list of the column statistics.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Errors = list(
     list(
       ColumnStatistics = list(
@@ -88,7 +90,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates or updates table statistics of columns.
@@ -97,7 +99,9 @@ The Identity and Access Management (IAM) permission required for this
 operation is \code{\link[=glue_update_table]{update_table}}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_column_statistics_for_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_column_statistics_for_table(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -164,7 +168,7 @@ operation is \code{\link[=glue_update_table]{update_table}}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

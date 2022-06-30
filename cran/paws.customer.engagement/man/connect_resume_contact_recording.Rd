@@ -26,12 +26,14 @@ using SuspendContactRecording, this API resumes recording the call.
 Only voice recordings are supported at this time.
 }
 \section{Request syntax}{
-\preformatted{svc$resume_contact_recording(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resume_contact_recording(
   InstanceId = "string",
   ContactId = "string",
   InitialContactId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

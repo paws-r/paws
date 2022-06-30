@@ -110,7 +110,9 @@ ECS service scheduler from marking tasks as unhealthy and stopping them
 before they have time to come up.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   service = list(
     serviceArn = "string",
     serviceName = "string",
@@ -315,7 +317,7 @@ A list with the following syntax:\preformatted{list(
     propagateTags = "TASK_DEFINITION"|"SERVICE"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updating the task placement strategies and constraints on an Amazon ECS
@@ -433,7 +435,9 @@ with the largest number of running tasks for this service.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_service(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_service(
   cluster = "string",
   service = "string",
   desiredCount = 123,
@@ -480,7 +484,7 @@ with the largest number of running tasks for this service.
   forceNewDeployment = TRUE|FALSE,
   healthCheckGracePeriodSeconds = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -10,7 +10,9 @@ chime_get_app_instance_streaming_configurations(AppInstanceArn)
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppInstanceStreamingConfigurations = list(
     list(
       AppInstanceDataType = "Channel"|"ChannelMessage",
@@ -18,16 +20,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the streaming settings for an app instance.
 }
 \section{Request syntax}{
-\preformatted{svc$get_app_instance_streaming_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_app_instance_streaming_configurations(
   AppInstanceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

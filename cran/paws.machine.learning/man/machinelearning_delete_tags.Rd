@@ -14,11 +14,13 @@ machinelearning_delete_tags(TagKeys, ResourceId, ResourceType)
 \item{ResourceType}{[required] The type of the tagged ML object.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceId = "string",
   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified tags associated with an ML object. After this
@@ -27,14 +29,16 @@ operation is complete, you can't recover deleted tags.
 If you specify a tag that doesn't exist, Amazon ML ignores it.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tags(
   TagKeys = list(
     "string"
   ),
   ResourceId = "string",
   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

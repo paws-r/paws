@@ -14,7 +14,9 @@ storagegateway_describe_chap_credentials(TargetARN)
 operation to return to retrieve the TargetARN for specified VolumeARN.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChapCredentials = list(
     list(
       TargetARN = "string",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an array of Challenge-Handshake Authentication Protocol (CHAP)
@@ -33,10 +35,12 @@ target-initiator pair. This operation is supported in the volume and
 tape gateway types.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_chap_credentials(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_chap_credentials(
   TargetARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

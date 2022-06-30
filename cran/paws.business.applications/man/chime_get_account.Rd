@@ -11,7 +11,9 @@ chime_get_account(AccountId)
 \item{AccountId}{[required] The Amazon Chime account ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Account = list(
     AwsAccountId = "string",
     AccountId = "string",
@@ -31,17 +33,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves details for the specified Amazon Chime account, such as
 account type and supported licenses.
 }
 \section{Request syntax}{
-\preformatted{svc$get_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_account(
   AccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

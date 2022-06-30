@@ -19,7 +19,9 @@ Modifies the specified WorkSpace properties. For important information
 about how to modify the size of the root and user volumes, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html}{Modify a WorkSpace}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_workspace_properties(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_workspace_properties(
   WorkspaceId = "string",
   WorkspaceProperties = list(
     RunningMode = "AUTO_STOP"|"ALWAYS_ON",
@@ -29,7 +31,7 @@ about how to modify the size of the root and user volumes, see \href{https://doc
     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

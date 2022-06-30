@@ -12,7 +12,9 @@ inspector_get_telemetry_metadata(assessmentRunArn)
 that you want to obtain.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   telemetryMetadata = list(
     list(
       messageType = "string",
@@ -21,17 +23,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Information about the data that is collected for the specified
 assessment run.
 }
 \section{Request syntax}{
-\preformatted{svc$get_telemetry_metadata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_telemetry_metadata(
   assessmentRunArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

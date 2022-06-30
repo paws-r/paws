@@ -12,7 +12,9 @@ emr_describe_step(ClusterId, StepId)
 \item{StepId}{[required] The identifier of the step to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Step = list(
     Id = "string",
     Name = "string",
@@ -52,17 +54,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides more detail about the cluster step.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_step(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_step(
   ClusterId = "string",
   StepId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

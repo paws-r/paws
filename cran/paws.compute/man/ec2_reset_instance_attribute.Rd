@@ -35,12 +35,14 @@ NAT. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/user
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_instance_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_instance_attribute(
   Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport"|"enclaveOptions",
   DryRun = TRUE|FALSE,
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

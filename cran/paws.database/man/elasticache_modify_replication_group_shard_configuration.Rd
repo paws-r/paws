@@ -48,7 +48,9 @@ ElastiCache for Redis will attempt to remove all node groups except
 those listed by \code{NodeGroupsToRetain} from the cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationGroup = list(
     ReplicationGroupId = "string",
     Description = "string",
@@ -133,7 +135,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies a replication group's shards (node groups) by allowing you to
@@ -141,7 +143,9 @@ add shards, remove shards, or rebalance the keyspaces among exisiting
 shards.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_replication_group_shard_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_replication_group_shard_configuration(
   ReplicationGroupId = "string",
   NodeGroupCount = 123,
   ApplyImmediately = TRUE|FALSE,
@@ -160,7 +164,7 @@ shards.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

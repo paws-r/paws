@@ -53,7 +53,9 @@ specify \code{dualstack} for a load balancer with a UDP or TCP_UDP listener.
 Internal load balancers must use \code{ipv4}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AvailabilityZones = list(
     list(
       ZoneName = "string",
@@ -71,7 +73,7 @@ A list with the following syntax:\preformatted{list(
   ),
   IpAddressType = "ipv4"|"dualstack"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables the Availability Zones for the specified public subnets for the
@@ -83,7 +85,9 @@ all subnets that were enabled previously, with their existing
 configurations, plus any additional subnets.
 }
 \section{Request syntax}{
-\preformatted{svc$set_subnets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_subnets(
   LoadBalancerArn = "string",
   Subnets = list(
     "string"
@@ -98,7 +102,7 @@ configurations, plus any additional subnets.
   ),
   IpAddressType = "ipv4"|"dualstack"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

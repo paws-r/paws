@@ -20,7 +20,9 @@ lowercase.}
 string representation of an integer. Each version is incremented by 1.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TableVersion = list(
     Table = list(
       Name = "string",
@@ -125,19 +127,21 @@ A list with the following syntax:\preformatted{list(
     VersionId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a specified version of a table.
 }
 \section{Request syntax}{
-\preformatted{svc$get_table_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_table_version(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
   VersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

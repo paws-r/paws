@@ -14,7 +14,9 @@ elasticache_start_migration(ReplicationGroupId,
 mode disabled), list should have only one element.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationGroup = list(
     ReplicationGroupId = "string",
     Description = "string",
@@ -99,13 +101,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Start the migration of data.
 }
 \section{Request syntax}{
-\preformatted{svc$start_migration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_migration(
   ReplicationGroupId = "string",
   CustomerNodeEndpointList = list(
     list(
@@ -114,7 +118,7 @@ Start the migration of data.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ mediastore_list_tags_for_resource(Resource)
 \item{Resource}{[required] The Amazon Resource Name (ARN) for the container.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -18,16 +20,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the tags assigned to the specified container.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   Resource = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -25,11 +25,13 @@ and used for the update. The default is \code{true}.
 Valid Values: \code{true} | \code{false}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FileShareARN = "string",
   NotificationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Refreshes the cache for the specified file share. This operation finds
@@ -38,7 +40,7 @@ since the gateway last listed the bucket's contents and cached the
 results. This operation is only supported in the file gateway type. You
 can subscribe to be notified through an Amazon CloudWatch event when
 your RefreshCache operation completes. For more information, see
-\href{https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification}{Getting notified about file operations}
+\href{https://docs.aws.amazon.com/storagegateway/index.html#get-notification}{Getting notified about file operations}
 in the \emph{AWS Storage Gateway User Guide}.
 
 When this API is called, it only initiates the refresh operation. When
@@ -52,7 +54,7 @@ can subscribe to be notified through an CloudWatch event when your
 Throttle limit: This API is asynchronous so the gateway will accept no
 more than two refreshes at any time. We recommend using the
 refresh-complete CloudWatch event notification before issuing additional
-requests. For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification}{Getting notified about file operations}
+requests. For more information, see \href{https://docs.aws.amazon.com/storagegateway/index.html#get-notification}{Getting notified about file operations}
 in the \emph{AWS Storage Gateway User Guide}.
 
 If you invoke the RefreshCache API when two requests are already being
@@ -60,18 +62,20 @@ processed, any new request will cause an
 \code{InvalidGatewayRequestException} error because too many requests were
 sent to the server.
 
-For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification}{Getting notified about file operations}
+For more information, see \href{https://docs.aws.amazon.com/storagegateway/index.html#get-notification}{Getting notified about file operations}
 in the \emph{AWS Storage Gateway User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$refresh_cache(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$refresh_cache(
   FileShareARN = "string",
   FolderList = list(
     "string"
   ),
   Recursive = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

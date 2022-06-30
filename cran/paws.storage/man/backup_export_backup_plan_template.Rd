@@ -11,20 +11,24 @@ backup_export_backup_plan_template(BackupPlanId)
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupPlanTemplateJson = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the backup plan that is specified by the plan ID as a backup
 template.
 }
 \section{Request syntax}{
-\preformatted{svc$export_backup_plan_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_backup_plan_template(
   BackupPlanId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

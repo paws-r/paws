@@ -16,7 +16,9 @@ apigateway_update_documentation_part(restApiId, documentationPartId,
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   location = list(
     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
@@ -27,13 +29,15 @@ A list with the following syntax:\preformatted{list(
   ),
   properties = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Update documentation part
 }
 \section{Request syntax}{
-\preformatted{svc$update_documentation_part(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_documentation_part(
   restApiId = "string",
   documentationPartId = "string",
   patchOperations = list(
@@ -45,7 +49,7 @@ Update documentation part
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

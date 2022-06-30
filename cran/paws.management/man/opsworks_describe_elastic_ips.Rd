@@ -23,7 +23,9 @@ returns a description of the specified Elastic IP addresses. Otherwise,
 it returns a description of every Elastic IP address.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ElasticIps = list(
     list(
       Ip = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP addresses}.
@@ -47,14 +49,16 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_elastic_ips(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_elastic_ips(
   InstanceId = "string",
   StackId = "string",
   Ips = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

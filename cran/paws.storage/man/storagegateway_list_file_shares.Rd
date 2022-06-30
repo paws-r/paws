@@ -20,7 +20,9 @@ operation. If present, \code{Marker} specifies where to continue the list
 from after a previous call to ListFileShares. Optional.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   NextMarker = "string",
   FileShareInfoList = list(
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of the file shares for a specific file gateway, or the list
@@ -41,12 +43,14 @@ of file shares that belong to the calling user account. This operation
 is only supported for file gateways.
 }
 \section{Request syntax}{
-\preformatted{svc$list_file_shares(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_file_shares(
   GatewayARN = "string",
   Limit = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

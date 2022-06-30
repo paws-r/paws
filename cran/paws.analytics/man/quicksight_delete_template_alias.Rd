@@ -17,14 +17,16 @@ specify the latest version of the template by providing the keyword
 \verb{$LATEST} in the \code{AliasName} parameter.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = 123,
   TemplateId = "string",
   AliasName = "string",
   Arn = "string",
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the item that the specified template alias points to. If you
@@ -32,12 +34,14 @@ provide a specific alias, you delete the version of the template that
 the alias points to.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_template_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_template_alias(
   AwsAccountId = "string",
   TemplateId = "string",
   AliasName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

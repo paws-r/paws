@@ -17,7 +17,9 @@ appstream_describe_directory_configs(DirectoryNames, MaxResults,
 this operation. If this value is null, it retrieves the first page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DirectoryConfigs = list(
     list(
       DirectoryName = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list that describes one or more specified Directory Config
@@ -48,14 +50,16 @@ Although the response syntax in this topic includes the account
 password, this password is not returned in the actual response.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_directory_configs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_directory_configs(
   DirectoryNames = list(
     "string"
   ),
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ pinpointemail_get_email_identity(EmailIdentity)
 \item{EmailIdentity}{[required] The email identity that you want to retrieve details for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
   FeedbackForwardingStatus = TRUE|FALSE,
   VerifiedForSendingStatus = TRUE|FALSE,
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information about a specific identity associated with your
@@ -43,10 +45,12 @@ Amazon Pinpoint account, including the identity's verification status,
 its DKIM authentication status, and its custom Mail-From settings.
 }
 \section{Request syntax}{
-\preformatted{svc$get_email_identity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_email_identity(
   EmailIdentity = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ applicationdiscoveryservice_batch_delete_import_data(importTaskIds)
 \item{importTaskIds}{[required] The IDs for the import tasks that you want to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   errors = list(
     list(
       importTaskId = "string",
@@ -19,7 +21,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes one or more import tasks, each identified by their import ID.
@@ -35,12 +37,14 @@ matched records that comes from the deleted records will also be
 deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_delete_import_data(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_delete_import_data(
   importTaskIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

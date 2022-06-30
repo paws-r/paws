@@ -22,7 +22,9 @@ accessing the API operation using IAM credentials.}
 previous call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Folders = list(
     list(
       Id = "string",
@@ -90,21 +92,23 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a collection of resources, including folders and documents.
 The only \code{CollectionType} supported is \code{SHARED_WITH_ME}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resources(
   AuthenticationToken = "string",
   UserId = "string",
   CollectionType = "SHARED_WITH_ME",
   Limit = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

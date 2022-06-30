@@ -77,10 +77,12 @@ Repeating this stack set operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates stack instances for the specified accounts, within the specified
@@ -90,7 +92,9 @@ Region. You must specify at least one value for either \code{Accounts} or
 \code{Regions}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_stack_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stack_instances(
   StackSetName = "string",
   Accounts = list(
     "string"
@@ -125,7 +129,7 @@ Region. You must specify at least one value for either \code{Accounts} or
   ),
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

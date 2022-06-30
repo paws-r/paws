@@ -25,16 +25,20 @@ this parameter blank, there is no limit to the number of concurrent
 workflow runs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new workflow.
 }
 \section{Request syntax}{
-\preformatted{svc$create_workflow(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_workflow(
   Name = "string",
   Description = "string",
   DefaultRunProperties = list(
@@ -45,7 +49,7 @@ Creates a new workflow.
   ),
   MaxConcurrentRuns = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,7 +11,9 @@ iot_list_policy_versions(policyName)
 \item{policyName}{[required] The policy name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   policyVersions = list(
     list(
       versionId = "string",
@@ -22,17 +24,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the versions of the specified policy and identifies the default
 version.
 }
 \section{Request syntax}{
-\preformatted{svc$list_policy_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_policy_versions(
   policyName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

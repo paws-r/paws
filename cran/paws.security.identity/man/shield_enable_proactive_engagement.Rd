@@ -17,8 +17,10 @@ contacts about escalations to the DRT and to initiate proactive customer
 support.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_proactive_engagement()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_proactive_engagement()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

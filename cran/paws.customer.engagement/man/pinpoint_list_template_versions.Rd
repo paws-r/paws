@@ -26,7 +26,9 @@ characters can be alphanumeric characters, underscores (_), or hyphens
 values are: EMAIL, PUSH, SMS, and VOICE.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TemplateVersionsResponse = list(
     Item = list(
       list(
@@ -44,20 +46,22 @@ A list with the following syntax:\preformatted{list(
     RequestID = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about all the versions of a specific message
 template.
 }
 \section{Request syntax}{
-\preformatted{svc$list_template_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_template_versions(
   NextToken = "string",
   PageSize = "string",
   TemplateName = "string",
   TemplateType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,7 +17,9 @@ the list of tags.}
 number of items.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceARN = "string",
   Marker = "string",
   Tags = list(
@@ -27,19 +29,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the tags that have been added to the specified resource. This
 operation is supported in storage gateways of all types.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   ResourceARN = "string",
   Marker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

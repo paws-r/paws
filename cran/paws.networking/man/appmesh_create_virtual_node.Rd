@@ -30,7 +30,9 @@ length of 256 characters.}
 \item{virtualNodeName}{[required] The name to use for the virtual node.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualNode = list(
     meshName = "string",
     metadata = list(
@@ -219,7 +221,7 @@ A list with the following syntax:\preformatted{list(
     virtualNodeName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a virtual node within a service mesh.
@@ -256,7 +258,9 @@ see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html}{Envo
 in the AWS App Mesh User Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$create_virtual_node(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_virtual_node(
   clientToken = "string",
   meshName = "string",
   meshOwner = "string",
@@ -435,7 +439,7 @@ in the AWS App Mesh User Guide.
   ),
   virtualNodeName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,7 +14,9 @@ autoscaling_batch_put_scheduled_update_group_action(
 \item{ScheduledUpdateGroupActions}{[required] One or more scheduled actions. The maximum number allowed is 50.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedScheduledUpdateGroupActions = list(
     list(
       ScheduledActionName = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates or updates one or more scheduled scaling actions for an Auto
@@ -31,7 +33,9 @@ Scaling group. If you leave a parameter unspecified when updating a
 scheduled scaling action, the corresponding value remains unchanged.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_put_scheduled_update_group_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_put_scheduled_update_group_action(
   AutoScalingGroupName = "string",
   ScheduledUpdateGroupActions = list(
     list(
@@ -49,7 +53,7 @@ scheduled scaling action, the corresponding value remains unchanged.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

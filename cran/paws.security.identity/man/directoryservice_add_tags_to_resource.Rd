@@ -20,7 +20,9 @@ directory can have a maximum of 50 tags. Each tag consists of a key and
 optional value. Tag keys must be unique to each resource.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_resource(
   ResourceId = "string",
   Tags = list(
     list(
@@ -29,7 +31,7 @@ optional value. Tag keys must be unique to each resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

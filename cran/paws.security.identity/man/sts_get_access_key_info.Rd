@@ -13,10 +13,12 @@ This parameter allows (through its regex pattern) a string of characters
 that can consist of any upper- or lowercase letter or digit.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Account = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the account identifier for the specified access key ID.
@@ -45,10 +47,12 @@ permissions to perform an operation. Providing a deleted access key
 might return an error that the key doesn't exist.
 }
 \section{Request syntax}{
-\preformatted{svc$get_access_key_info(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_access_key_info(
   AccessKeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

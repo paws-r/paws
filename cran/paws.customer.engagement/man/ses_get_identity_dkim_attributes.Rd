@@ -11,7 +11,9 @@ ses_get_identity_dkim_attributes(Identities)
 both.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DkimAttributes = list(
     list(
       DkimEnabled = TRUE|FALSE,
@@ -22,7 +24,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the current status of Easy DKIM signing for an entity. For
@@ -45,15 +47,17 @@ This operation is throttled at one request per second and can only get
 DKIM attributes for up to 100 identities at a time.
 
 For more information about creating DNS records using DKIM tokens, go to
-the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
+the \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_identity_dkim_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_identity_dkim_attributes(
   Identities = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

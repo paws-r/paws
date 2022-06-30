@@ -23,7 +23,9 @@ servicecatalog_list_budgets_for_resource(AcceptLanguage, ResourceId,
 results, use null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Budgets = list(
     list(
       BudgetName = "string"
@@ -31,19 +33,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all the budgets associated to the specified resource.
 }
 \section{Request syntax}{
-\preformatted{svc$list_budgets_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_budgets_for_resource(
   AcceptLanguage = "string",
   ResourceId = "string",
   PageSize = 123,
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

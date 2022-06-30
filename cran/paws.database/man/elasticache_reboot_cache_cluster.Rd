@@ -14,7 +14,9 @@ elasticache_reboot_cache_cluster(CacheClusterId, CacheNodeIdsToReboot)
 cache node IDs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CacheCluster = list(
     CacheClusterId = "string",
     ConfigurationEndpoint = list(
@@ -96,7 +98,7 @@ A list with the following syntax:\preformatted{list(
     ARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Reboots some, or all, of the cache nodes within a provisioned cluster.
@@ -115,17 +117,19 @@ Rebooting a cluster is currently supported on Memcached and Redis
 (cluster mode enabled) clusters.
 
 If you make changes to parameters that require a Redis (cluster mode
-enabled) cluster reboot for the changes to be applied, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html}{Rebooting a Cluster}
+enabled) cluster reboot for the changes to be applied, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/}{Rebooting a Cluster}
 for an alternate process.
 }
 \section{Request syntax}{
-\preformatted{svc$reboot_cache_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_cache_cluster(
   CacheClusterId = "string",
   CacheNodeIdsToReboot = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

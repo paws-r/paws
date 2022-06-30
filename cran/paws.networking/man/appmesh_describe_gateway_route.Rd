@@ -20,7 +20,9 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 with.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   gatewayRoute = list(
     gatewayRouteName = "string",
     meshName = "string",
@@ -81,19 +83,21 @@ A list with the following syntax:\preformatted{list(
     virtualGatewayName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes an existing gateway route.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_gateway_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_gateway_route(
   gatewayRouteName = "string",
   meshName = "string",
   meshOwner = "string",
   virtualGatewayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

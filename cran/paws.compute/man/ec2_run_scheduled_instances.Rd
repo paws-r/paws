@@ -26,12 +26,14 @@ Zone, network, and platform of the schedule that you purchased.}
 \item{ScheduledInstanceId}{[required] The Scheduled Instance ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceIdSet = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Launches the specified Scheduled Instances.
@@ -48,7 +50,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$run_scheduled_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$run_scheduled_instances(
   ClientToken = "string",
   DryRun = TRUE|FALSE,
   InstanceCount = 123,
@@ -120,7 +124,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ),
   ScheduledInstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -14,7 +14,9 @@ or
 \code{\link[=codecommit_get_comments_for_pull_request]{get_comments_for_pull_request}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   comment = list(
     commentId = "string",
     content = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the content of a comment made on a change, file, or commit in a
@@ -47,10 +49,12 @@ deleted after the reaction was made. For a count of reactions from
 active identities, use GetCommentReactions.
 }
 \section{Request syntax}{
-\preformatted{svc$get_comment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_comment(
   commentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ dynamodb_delete_table(TableName)
 \item{TableName}{[required] The name of the table to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TableDescription = list(
     AttributeDefinitions = list(
       list(
@@ -158,7 +160,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{\link[=dynamodb_delete_table]{delete_table}} operation deletes a table
@@ -184,10 +186,12 @@ Use the \code{\link[=dynamodb_describe_table]{describe_table}} action to check t
 status of the table.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_table(
   TableName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -20,7 +20,7 @@ NULL
 #' 
 #' ACM Private CAA assets that are stored in Amazon S3 can be protected
 #' with encryption. For more information, see [Encrypting Your
-#' CRLs](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption).
+#' CRLs](https://docs.aws.amazon.com/acm-pca/latest/userguide/#crl-encryption).
 #' 
 #' Both PCA and the IAM principal must have permission to write to the S3
 #' bucket that you specify. If the IAM principal making the call does not

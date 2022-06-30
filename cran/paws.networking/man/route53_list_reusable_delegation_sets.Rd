@@ -25,7 +25,9 @@ return in the response to this request. If you specify a value greater
 than 100, Route 53 returns only the first 100 reusable delegation sets.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DelegationSets = list(
     list(
       Id = "string",
@@ -40,18 +42,20 @@ A list with the following syntax:\preformatted{list(
   NextMarker = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of the reusable delegation sets that are associated
 with the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_reusable_delegation_sets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_reusable_delegation_sets(
   Marker = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

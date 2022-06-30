@@ -17,7 +17,9 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 \item{virtualGatewayName}{[required] The name of the virtual gateway to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualGateway = list(
     meshName = "string",
     metadata = list(
@@ -111,18 +113,20 @@ A list with the following syntax:\preformatted{list(
     virtualGatewayName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes an existing virtual gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_virtual_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_virtual_gateway(
   meshName = "string",
   meshOwner = "string",
   virtualGatewayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,10 +11,12 @@ cloudwatchlogs_stop_query(queryId)
 \code{\link[=cloudwatchlogs_describe_queries]{describe_queries}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   success = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops a CloudWatch Logs Insights query that is in progress. If the query
@@ -22,10 +24,12 @@ has already ended, the operation returns an error indicating that the
 specified query is not running.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_query(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_query(
   queryId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,11 +19,13 @@ thrown else the call would succeed but no changes will be saved. This
 parameter is optional.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UpgradedSchemaArn = "string",
   DirectoryArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Upgrades a single directory in-place using the \code{PublishedSchemaArn} with
@@ -35,12 +37,14 @@ multiple directories from one schema, you would need to call this API on
 each directory.
 }
 \section{Request syntax}{
-\preformatted{svc$upgrade_applied_schema(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upgrade_applied_schema(
   PublishedSchemaArn = "string",
   DirectoryArn = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

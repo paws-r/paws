@@ -10,7 +10,9 @@ workspaces_start_workspaces(StartWorkspaceRequests)
 \item{StartWorkspaceRequests}{[required] The WorkSpaces to start. You can specify up to 25 WorkSpaces.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedRequests = list(
     list(
       WorkspaceId = "string",
@@ -19,7 +21,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts the specified WorkSpaces.
@@ -28,14 +30,16 @@ You cannot start a WorkSpace unless it has a running mode of \code{AutoStop}
 and a state of \code{STOPPED}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_workspaces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_workspaces(
   StartWorkspaceRequests = list(
     list(
       WorkspaceId = "string"
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

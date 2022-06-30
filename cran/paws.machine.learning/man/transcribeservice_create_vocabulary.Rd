@@ -28,7 +28,9 @@ in the \emph{Amazon S3 Developer Guide}.
 For more information about custom vocabularies, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary}{Custom Vocabularies}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VocabularyName = "string",
   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
   VocabularyState = "PENDING"|"READY"|"FAILED",
@@ -37,14 +39,16 @@ A list with the following syntax:\preformatted{list(
   ),
   FailureReason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new custom vocabulary that you can use to change the way
 Amazon Transcribe handles transcription of an audio file.
 }
 \section{Request syntax}{
-\preformatted{svc$create_vocabulary(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vocabulary(
   VocabularyName = "string",
   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
   Phrases = list(
@@ -52,7 +56,7 @@ Amazon Transcribe handles transcription of an audio file.
   ),
   VocabularyFileUri = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

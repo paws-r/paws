@@ -12,7 +12,9 @@ dax_tag_resource(ResourceName, Tags)
 \item{Tags}{[required] The tags to be assigned to the DAX resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a set of tags with a DAX resource. You can call
@@ -28,7 +30,9 @@ Associates a set of tags with a DAX resource. You can call
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceName = "string",
   Tags = list(
     list(
@@ -37,7 +41,7 @@ account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

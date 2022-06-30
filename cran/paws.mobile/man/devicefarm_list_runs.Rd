@@ -15,7 +15,9 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   runs = list(
     list(
       arn = "string",
@@ -114,17 +116,19 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about runs, given an AWS Device Farm project ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$list_runs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_runs(
   arn = "string",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

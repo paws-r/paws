@@ -7,10 +7,12 @@
 applicationdiscoveryservice_export_configurations()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   exportId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deprecated. Use

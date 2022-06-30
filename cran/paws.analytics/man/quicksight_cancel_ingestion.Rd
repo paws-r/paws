@@ -14,24 +14,28 @@ quicksight_cancel_ingestion(AwsAccountId, DataSetId, IngestionId)
 \item{IngestionId}{[required] An ID for the ingestion.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   IngestionId = "string",
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels an ongoing ingestion of data into SPICE.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_ingestion(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_ingestion(
   AwsAccountId = "string",
   DataSetId = "string",
   IngestionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

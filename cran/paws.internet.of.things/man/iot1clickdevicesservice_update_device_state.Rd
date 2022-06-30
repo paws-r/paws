@@ -20,11 +20,13 @@ Using a Boolean value (true or false), this operation enables or
 disables the device given a device ID.
 }
 \section{Request syntax}{
-\preformatted{svc$update_device_state(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_device_state(
   DeviceId = "string",
   Enabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

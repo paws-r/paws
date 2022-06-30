@@ -20,10 +20,12 @@ For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.c
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_query_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_query_execution(
   QueryExecutionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

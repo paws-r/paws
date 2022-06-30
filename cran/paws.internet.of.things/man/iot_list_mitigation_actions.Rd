@@ -16,7 +16,9 @@ specific action type.}
 \item{nextToken}{The token for the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   actionIdentifiers = list(
     list(
       actionName = "string",
@@ -28,19 +30,21 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of all mitigation actions that match the specified filter
 criteria.
 }
 \section{Request syntax}{
-\preformatted{svc$list_mitigation_actions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_mitigation_actions(
   actionType = "UPDATE_DEVICE_CERTIFICATE"|"UPDATE_CA_CERTIFICATE"|"ADD_THINGS_TO_THING_GROUP"|"REPLACE_DEFAULT_POLICY_VERSION"|"ENABLE_IOT_LOGGING"|"PUBLISH_FINDING_TO_SNS",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

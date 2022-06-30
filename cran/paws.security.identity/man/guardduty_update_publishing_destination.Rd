@@ -25,7 +25,9 @@ Updates information about the publishing destination specified by the
 \code{destinationId}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_publishing_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_publishing_destination(
   DetectorId = "string",
   DestinationId = "string",
   DestinationProperties = list(
@@ -33,7 +35,7 @@ Updates information about the publishing destination specified by the
     KmsKeyArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

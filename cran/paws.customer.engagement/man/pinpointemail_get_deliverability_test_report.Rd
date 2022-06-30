@@ -10,7 +10,9 @@ pinpointemail_get_deliverability_test_report(ReportId)
 \item{ReportId}{[required] A unique string that identifies the predictive inbox placement test.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeliverabilityTestReport = list(
     ReportId = "string",
     ReportName = "string",
@@ -48,16 +50,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve the results of a predictive inbox placement test.
 }
 \section{Request syntax}{
-\preformatted{svc$get_deliverability_test_report(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deliverability_test_report(
   ReportId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ sagemaker_describe_flow_definition(FlowDefinitionName)
 \item{FlowDefinitionName}{[required] The name of the flow definition.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FlowDefinitionArn = "string",
   FlowDefinitionName = "string",
   FlowDefinitionStatus = "Initializing"|"Active"|"Failed"|"Deleting",
@@ -51,16 +53,18 @@ A list with the following syntax:\preformatted{list(
   RoleArn = "string",
   FailureReason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the specified flow definition.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_flow_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_flow_definition(
   FlowDefinitionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

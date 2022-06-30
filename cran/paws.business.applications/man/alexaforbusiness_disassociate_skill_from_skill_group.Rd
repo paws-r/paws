@@ -19,11 +19,13 @@ An empty list.
 Disassociates a skill from a skill group.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_skill_from_skill_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_skill_from_skill_group(
   SkillGroupArn = "string",
   SkillId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,11 +22,13 @@ Removes an automatic scaling policy from a specified instance group
 within an EMR cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_auto_scaling_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_auto_scaling_policy(
   ClusterId = "string",
   InstanceGroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

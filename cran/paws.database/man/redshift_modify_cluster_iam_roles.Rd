@@ -21,7 +21,9 @@ You can disassociate up to 10 IAM roles from a single cluster in a
 single request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -178,7 +180,7 @@ A list with the following syntax:\preformatted{list(
     ClusterNamespaceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the list of AWS Identity and Access Management (IAM) roles that
@@ -187,7 +189,9 @@ can be used by the cluster to access other AWS services.
 A cluster can have up to 10 IAM roles associated at any time.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_cluster_iam_roles(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cluster_iam_roles(
   ClusterIdentifier = "string",
   AddIamRoles = list(
     "string"
@@ -196,7 +200,7 @@ A cluster can have up to 10 IAM roles associated at any time.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

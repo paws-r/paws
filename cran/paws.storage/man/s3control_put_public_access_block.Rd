@@ -29,7 +29,9 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_public_access_block(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_public_access_block(
   PublicAccessBlockConfiguration = list(
     BlockPublicAcls = TRUE|FALSE,
     IgnorePublicAcls = TRUE|FALSE,
@@ -38,7 +40,7 @@ Related actions include:
   ),
   AccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

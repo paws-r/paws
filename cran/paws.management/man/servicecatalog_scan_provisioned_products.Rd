@@ -23,7 +23,9 @@ servicecatalog_scan_provisioned_products(AcceptLanguage,
 results, use null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProvisionedProducts = list(
     list(
       Name = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the provisioned products that are available (not terminated).
@@ -55,7 +57,9 @@ To use additional filtering, see
 \code{\link[=servicecatalog_search_provisioned_products]{search_provisioned_products}}.
 }
 \section{Request syntax}{
-\preformatted{svc$scan_provisioned_products(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$scan_provisioned_products(
   AcceptLanguage = "string",
   AccessLevelFilter = list(
     Key = "Account"|"Role"|"User",
@@ -64,7 +68,7 @@ To use additional filtering, see
   PageSize = 123,
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

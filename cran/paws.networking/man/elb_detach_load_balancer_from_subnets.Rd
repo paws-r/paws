@@ -13,12 +13,14 @@ elb_detach_load_balancer_from_subnets(LoadBalancerName, Subnets)
 \item{Subnets}{[required] The IDs of the subnets.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Subnets = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes the specified subnets from the set of configured subnets for the
@@ -30,13 +32,15 @@ the load balancer balances the traffic among the remaining routable
 subnets.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_load_balancer_from_subnets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_load_balancer_from_subnets(
   LoadBalancerName = "string",
   Subnets = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

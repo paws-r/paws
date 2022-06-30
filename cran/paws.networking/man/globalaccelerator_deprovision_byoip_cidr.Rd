@@ -13,7 +13,9 @@ globalaccelerator_deprovision_byoip_cidr(Cidr)
 that you specified when you provisioned the address range.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ByoipCidr = list(
     Cidr = "string",
     State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Releases the specified address range that you provisioned to use with
@@ -43,10 +45,12 @@ For more information, see \href{https://docs.aws.amazon.com/global-accelerator/l
 in the \emph{AWS Global Accelerator Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$deprovision_byoip_cidr(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deprovision_byoip_cidr(
   Cidr = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

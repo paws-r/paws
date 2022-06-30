@@ -35,11 +35,13 @@ For information about managed policies, see \href{https://docs.aws.amazon.com/IA
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$set_default_policy_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_default_policy_version(
   PolicyArn = "string",
   VersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

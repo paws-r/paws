@@ -25,7 +25,9 @@ operation (String). If a token is included in the request, the action
 continues the list from where the previous returning call left off.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Aliases = list(
     list(
       Name = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the DNS aliases that are associated with the specified Amazon
@@ -44,13 +46,15 @@ available in the list of AdministrativeAction provided in the
 \code{\link[=fsx_describe_file_systems]{describe_file_systems}} operation response.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_file_system_aliases(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_file_system_aliases(
   ClientRequestToken = "string",
   FileSystemId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

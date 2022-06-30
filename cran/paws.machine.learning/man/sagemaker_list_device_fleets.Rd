@@ -30,7 +30,9 @@ time.}
 \item{SortOrder}{What direction to sort in.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeviceFleetSummaries = list(
     list(
       DeviceFleetArn = "string",
@@ -45,13 +47,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of devices in the fleet.
 }
 \section{Request syntax}{
-\preformatted{svc$list_device_fleets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_device_fleets(
   NextToken = "string",
   MaxResults = 123,
   CreationTimeAfter = as.POSIXct(
@@ -70,7 +74,7 @@ Returns a list of devices in the fleet.
   SortBy = "NAME"|"CREATION_TIME"|"LAST_MODIFIED_TIME",
   SortOrder = "Ascending"|"Descending"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ elasticsearchservice_delete_inbound_cross_cluster_search_connection(
 \item{CrossClusterSearchConnectionId}{[required] The id of the inbound connection that you want to permanently delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CrossClusterSearchConnection = list(
     SourceDomainInfo = list(
       OwnerId = "string",
@@ -31,17 +33,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Allows the destination domain owner to delete an existing inbound
 cross-cluster search connection.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_inbound_cross_cluster_search_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_inbound_cross_cluster_search_connection(
   CrossClusterSearchConnectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

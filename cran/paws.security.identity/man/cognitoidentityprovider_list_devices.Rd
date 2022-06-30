@@ -15,7 +15,9 @@ cognitoidentityprovider_list_devices(AccessToken, Limit,
 \item{PaginationToken}{The pagination token for the list request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Devices = list(
     list(
       DeviceKey = "string",
@@ -38,18 +40,20 @@ A list with the following syntax:\preformatted{list(
   ),
   PaginationToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the devices.
 }
 \section{Request syntax}{
-\preformatted{svc$list_devices(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_devices(
   AccessToken = "string",
   Limit = 123,
   PaginationToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

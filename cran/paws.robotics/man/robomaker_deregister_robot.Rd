@@ -12,21 +12,25 @@ robomaker_deregister_robot(fleet, robot)
 \item{robot}{[required] The Amazon Resource Name (ARN) of the robot.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   fleet = "string",
   robot = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deregisters a robot.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_robot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_robot(
   fleet = "string",
   robot = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

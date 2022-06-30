@@ -31,7 +31,9 @@ errors. For more information about using CloudWatch log streams with
 Amazon Kinesis Analytics applications, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html}{Working with Amazon CloudWatch Logs}.
 }
 \section{Request syntax}{
-\preformatted{svc$add_application_cloud_watch_logging_option(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_application_cloud_watch_logging_option(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   CloudWatchLoggingOption = list(
@@ -39,7 +41,7 @@ Amazon Kinesis Analytics applications, see \href{https://docs.aws.amazon.com/kin
     RoleARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

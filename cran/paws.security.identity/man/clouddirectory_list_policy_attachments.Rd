@@ -23,20 +23,24 @@ of an object is reflected in a subsequent read operation of that same
 object.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ObjectIdentifiers = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns all of the \code{ObjectIdentifiers} to which a given policy is
 attached.
 }
 \section{Request syntax}{
-\preformatted{svc$list_policy_attachments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_policy_attachments(
   DirectoryArn = "string",
   PolicyReference = list(
     Selector = "string"
@@ -45,7 +49,7 @@ attached.
   MaxResults = 123,
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

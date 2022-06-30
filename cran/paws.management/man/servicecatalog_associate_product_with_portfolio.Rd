@@ -30,13 +30,15 @@ Associates the specified product with the specified portfolio.
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_product_with_portfolio(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_product_with_portfolio(
   AcceptLanguage = "string",
   ProductId = "string",
   PortfolioId = "string",
   SourcePortfolioId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

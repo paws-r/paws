@@ -25,7 +25,9 @@ information on game servers using
 \code{\link[=gamelift_claim_game_server]{claim_game_server}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GameServer = list(
     GameServerGroupName = "string",
     GameServerGroupArn = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -103,12 +105,14 @@ this, first check the instance status by calling
 }
 }
 \section{Request syntax}{
-\preformatted{svc$claim_game_server(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$claim_game_server(
   GameServerGroupName = "string",
   GameServerId = "string",
   GameServerData = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -259,7 +259,9 @@ called \code{AWSServiceRoleForCloudWatchEvents} and
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{AWS service-linked role}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_metric_alarm(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_metric_alarm(
   AlarmName = "string",
   AlarmDescription = "string",
   ActionsEnabled = TRUE|FALSE,
@@ -322,7 +324,7 @@ called \code{AWSServiceRoleForCloudWatchEvents} and
   ),
   ThresholdMetricId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -38,7 +38,9 @@ parameters must be passed explicitly for operations that take them.}
 communications are incuded.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   cases = list(
     list(
       caseId = "string",
@@ -75,7 +77,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of cases that you specify by passing one or more case
@@ -105,7 +107,9 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_cases(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cases(
   caseIdList = list(
     "string"
   ),
@@ -118,7 +122,7 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
   language = "string",
   includeCommunications = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,19 +10,23 @@ glue_stop_trigger(Name)
 \item{Name}{[required] The name of the trigger to stop.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops a specified trigger.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_trigger(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_trigger(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

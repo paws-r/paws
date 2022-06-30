@@ -13,10 +13,12 @@ us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Initiates a bulk publish of all existing datasets for an Identity Pool
@@ -30,10 +32,12 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 }
 \section{Request syntax}{
-\preformatted{svc$bulk_publish(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$bulk_publish(
   IdentityPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

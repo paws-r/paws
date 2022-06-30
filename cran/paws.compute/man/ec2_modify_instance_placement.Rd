@@ -29,10 +29,12 @@ To remove an instance from a placement group, specify an empty string
 \item{HostResourceGroupArn}{The ARN of the host resource group in which to place the instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the placement attributes for a specified instance. You can do
@@ -58,7 +60,9 @@ To modify the host ID, tenancy, placement group, or partition for an
 instance, the instance must be in the \code{stopped} state.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_instance_placement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_instance_placement(
   Affinity = "default"|"host",
   GroupName = "string",
   HostId = "string",
@@ -67,7 +71,7 @@ instance, the instance must be in the \code{stopped} state.
   PartitionNumber = 123,
   HostResourceGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

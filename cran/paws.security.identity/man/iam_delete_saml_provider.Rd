@@ -23,10 +23,12 @@ provider resource ARN fails.
 This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_saml_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_saml_provider(
   SAMLProviderArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

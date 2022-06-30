@@ -21,7 +21,9 @@ describe in a single operation.}
 field is omitted, tags are not included in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   services = list(
     list(
       serviceArn = "string",
@@ -235,13 +237,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified services running in your cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_services(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_services(
   cluster = "string",
   services = list(
     "string"
@@ -250,7 +254,7 @@ Describes the specified services running in your cluster.
     "TAGS"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

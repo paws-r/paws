@@ -17,7 +17,9 @@ getting the next set of dataset import jobs (if they exist).}
 \item{maxResults}{The maximum number of dataset import jobs to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   datasetImportJobs = list(
     list(
       datasetImportJobArn = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of dataset import jobs that use the given dataset. When a
@@ -47,12 +49,14 @@ For more information on datasets, see
 \code{\link[=personalize_create_dataset]{create_dataset}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_dataset_import_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_dataset_import_jobs(
   datasetArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

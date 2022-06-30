@@ -11,7 +11,9 @@ sagemaker_describe_processing_job(ProcessingJobName)
 Region in the AWS account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProcessingInputs = list(
     list(
       InputName = "string",
@@ -131,16 +133,18 @@ A list with the following syntax:\preformatted{list(
   AutoMLJobArn = "string",
   TrainingJobArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a description of a processing job.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_processing_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_processing_job(
   ProcessingJobName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

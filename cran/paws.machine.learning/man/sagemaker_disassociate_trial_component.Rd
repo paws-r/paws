@@ -12,11 +12,13 @@ sagemaker_disassociate_trial_component(TrialComponentName, TrialName)
 \item{TrialName}{[required] The name of the trial to disassociate from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrialComponentArn = "string",
   TrialArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disassociates a trial component from a trial. This doesn't effect other
@@ -31,11 +33,13 @@ the \code{Resource} parameter. The list appears in the response under
 \code{Results.TrialComponent.Parents}.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_trial_component(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_trial_component(
   TrialComponentName = "string",
   TrialName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

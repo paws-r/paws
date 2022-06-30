@@ -13,7 +13,9 @@ For more information, see arns.}
 \item{Operations}{[required] A list of operations that are part of the batch.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Responses = list(
     list(
       CreateObject = list(
@@ -75,14 +77,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Performs all the write operations in a batch. Either all the operations
 succeed or none.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_write(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_write(
   DirectoryArn = "string",
   Operations = list(
     list(
@@ -353,7 +357,7 @@ succeed or none.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

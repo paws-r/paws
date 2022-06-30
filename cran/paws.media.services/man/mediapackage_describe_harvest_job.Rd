@@ -10,7 +10,9 @@ mediapackage_describe_harvest_job(Id)
 \item{Id}{[required] The ID of the HarvestJob.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   ChannelId = "string",
   CreatedAt = "string",
@@ -25,16 +27,18 @@ A list with the following syntax:\preformatted{list(
   StartTime = "string",
   Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets details about an existing HarvestJob.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_harvest_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_harvest_job(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

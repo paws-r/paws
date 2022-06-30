@@ -11,7 +11,9 @@ codedeploy_batch_get_applications(applicationNames)
 application names you can specify is 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   applicationsInfo = list(
     list(
       applicationId = "string",
@@ -25,19 +27,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about one or more applications. The maximum number of
 applications that can be returned is 100.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_get_applications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_applications(
   applicationNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

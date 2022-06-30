@@ -16,10 +16,12 @@ An empty list.
 Deletes a role alias
 }
 \section{Request syntax}{
-\preformatted{svc$delete_role_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_role_alias(
   roleAlias = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

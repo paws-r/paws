@@ -20,11 +20,13 @@ resources. This option will delete all AWS resources for the project
 itself. Recommended for most use cases.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   stackId = "string",
   projectArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a project, including project resources. Does not delete users
@@ -32,12 +34,14 @@ associated with the project, but does delete the IAM roles that allowed
 access to the project.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_project(
   id = "string",
   clientRequestToken = "string",
   deleteStack = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

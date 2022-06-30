@@ -21,10 +21,12 @@ configuration recorder by using the
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_delivery_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_delivery_channel(
   DeliveryChannelName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

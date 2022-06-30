@@ -44,11 +44,13 @@ Clears any customization of a GatewayResponse of a specified response
 type on the given RestApi and resets it with the default settings.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_gateway_response(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_gateway_response(
   restApiId = "string",
   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,22 +17,26 @@ iot_get_cardinality(indexName, queryString, aggregationField,
 \item{queryVersion}{The query version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   cardinality = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the approximate count of unique values that match the query.
 }
 \section{Request syntax}{
-\preformatted{svc$get_cardinality(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cardinality(
   indexName = "string",
   queryString = "string",
   aggregationField = "string",
   queryVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

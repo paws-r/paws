@@ -21,7 +21,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TagSpecifications}{The tags to assign to the egress-only internet gateway.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClientToken = "string",
   EgressOnlyInternetGateway = list(
     Attachments = list(
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 [IPv6 only] Creates an egress-only internet gateway for your VPC. An
@@ -49,7 +51,9 @@ outside of your VPC from initiating an IPv6 connection with your
 instance.
 }
 \section{Request syntax}{
-\preformatted{svc$create_egress_only_internet_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_egress_only_internet_gateway(
   ClientToken = "string",
   DryRun = TRUE|FALSE,
   VpcId = "string",
@@ -65,7 +69,7 @@ instance.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

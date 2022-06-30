@@ -13,7 +13,9 @@ provided, the AWS account ID is used by default.}
 \item{ConnectionNameList}{[required] A list of names of the connections to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Succeeded = list(
     "string"
   ),
@@ -24,19 +26,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a list of connection definitions from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_delete_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_delete_connection(
   CatalogId = "string",
   ConnectionNameList = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -28,7 +28,9 @@ a new CloudWatch logging option, use
 \code{\link[=kinesisanalyticsv2_add_application_cloud_watch_logging_option]{add_application_cloud_watch_logging_option}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationDetail = list(
     ApplicationARN = "string",
     ApplicationDescription = "string",
@@ -229,7 +231,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing Kinesis Data Analytics application. Using this
@@ -244,7 +246,9 @@ If you need to update an application's \code{RuntimeEnvironment}, you must
 delete the application and create it again.
 }
 \section{Request syntax}{
-\preformatted{svc$update_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_application(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ApplicationConfigurationUpdate = list(
@@ -415,7 +419,7 @@ delete the application and create it again.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

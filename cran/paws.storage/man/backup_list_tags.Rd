@@ -21,13 +21,15 @@ pointed to by the next token.}
 \item{MaxResults}{The maximum number of items to be returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of key-value pairs assigned to a target recovery point,
@@ -37,12 +39,14 @@ backup plan, or backup vault.
 EFS backups.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags(
   ResourceArn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

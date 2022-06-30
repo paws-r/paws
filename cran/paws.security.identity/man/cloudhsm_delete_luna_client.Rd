@@ -10,10 +10,12 @@ cloudhsm_delete_luna_client(ClientArn)
 \item{ClientArn}{[required] The ARN of the client to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -26,10 +28,12 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
 Deletes a client.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_luna_client(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_luna_client(
   ClientArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,14 +23,16 @@ Creates a custom component by grouping similar standalone instances to
 monitor.
 }
 \section{Request syntax}{
-\preformatted{svc$create_component(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_component(
   ResourceGroupName = "string",
   ComponentName = "string",
   ResourceList = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

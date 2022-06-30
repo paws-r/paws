@@ -16,21 +16,25 @@ alexaforbusiness_create_address_book(Name, Description,
 idempotency.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AddressBookArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an address book with the specified details.
 }
 \section{Request syntax}{
-\preformatted{svc$create_address_book(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_address_book(
   Name = "string",
   Description = "string",
   ClientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

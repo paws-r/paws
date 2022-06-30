@@ -19,11 +19,13 @@ Deletes a version of a SageMaker image. The container image the version
 represents isn't deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_image_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_image_version(
   ImageName = "string",
   Version = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -41,7 +41,9 @@ this parameter is specified, the response includes only records beyond
 the marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   GlobalClusters = list(
     list(
@@ -67,7 +69,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about Aurora global database clusters. This API
@@ -79,7 +81,9 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_global_clusters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_global_clusters(
   GlobalClusterIdentifier = "string",
   Filters = list(
     list(
@@ -92,7 +96,7 @@ This action only applies to Aurora DB clusters.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

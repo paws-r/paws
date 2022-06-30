@@ -21,7 +21,9 @@ to \code{true} in the response. To list additional tags, set
 \code{ExclusiveStartTagKey} to the last key in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -30,19 +32,21 @@ A list with the following syntax:\preformatted{list(
   ),
   HasMoreTags = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the tags for the specified delivery stream. This operation has a
 limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_delivery_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_delivery_stream(
   DeliveryStreamName = "string",
   ExclusiveStartTagKey = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

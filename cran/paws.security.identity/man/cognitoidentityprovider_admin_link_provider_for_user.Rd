@@ -78,7 +78,9 @@ This action is enabled only for admin access and requires developer
 credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$admin_link_provider_for_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_link_provider_for_user(
   UserPoolId = "string",
   DestinationUser = list(
     ProviderName = "string",
@@ -91,7 +93,7 @@ credentials.
     ProviderAttributeValue = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

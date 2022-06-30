@@ -11,24 +11,28 @@ cloudfront_get_monitoring_subscription(DistributionId)
 \item{DistributionId}{[required] The ID of the distribution that you are getting metrics information for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MonitoringSubscription = list(
     RealtimeMetricsSubscriptionConfig = list(
       RealtimeMetricsSubscriptionStatus = "Enabled"|"Disabled"
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about whether additional CloudWatch metrics are enabled
 for the specified CloudFront distribution.
 }
 \section{Request syntax}{
-\preformatted{svc$get_monitoring_subscription(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_monitoring_subscription(
   DistributionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

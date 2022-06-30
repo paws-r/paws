@@ -14,7 +14,9 @@ you specify has to be a dedicated IP address that's assocaited with your
 Amazon Pinpoint account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DedicatedIp = list(
     Ip = "string",
     WarmupStatus = "IN_PROGRESS"|"DONE",
@@ -22,7 +24,7 @@ A list with the following syntax:\preformatted{list(
     PoolName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get information about a dedicated IP address, including the name of the
@@ -30,10 +32,12 @@ dedicated IP pool that it's associated with, as well information about
 the automatic warm-up process for the address.
 }
 \section{Request syntax}{
-\preformatted{svc$get_dedicated_ip(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dedicated_ip(
   Ip = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

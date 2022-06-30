@@ -35,7 +35,9 @@ The results are sorted by the percentage of lines that are covered.
 \item{maxLineCoveragePercentage}{The maximum line coverage percentage to report.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   nextToken = "string",
   codeCoverages = list(
     list(
@@ -54,13 +56,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves one or more code coverage reports.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_code_coverages(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_code_coverages(
   reportArn = "string",
   nextToken = "string",
   maxResults = 123,
@@ -69,7 +73,7 @@ Retrieves one or more code coverage reports.
   minLineCoveragePercentage = 123.0,
   maxLineCoveragePercentage = 123.0
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

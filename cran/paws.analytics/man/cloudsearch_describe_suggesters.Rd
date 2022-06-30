@@ -15,7 +15,9 @@ cloudsearch_describe_suggesters(DomainName, SuggesterNames, Deployed)
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Suggesters = list(
     list(
       Options = list(
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the suggesters configured for a domain. A suggester enables you to
@@ -48,18 +50,22 @@ display possible matches before users finish typing their queries. Can
 be limited to specific suggesters by name. By default, shows all
 suggesters and includes any pending changes to the configuration. Set
 the \code{Deployed} option to \code{true} to show the active configuration and
-exclude pending changes. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
-in the \emph{Amazon CloudSearch Developer Guide}.
+exclude pending changes. For more information, see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html"
+target="_blank">Getting Search Suggestions</a> in the \emph{Amazon
+CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_suggesters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_suggesters(
   DomainName = "string",
   SuggesterNames = list(
     "string"
   ),
   Deployed = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

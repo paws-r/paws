@@ -27,10 +27,12 @@ another ML compute instance, configures it, and attaches the preserved
 ML storage volume so you can continue your work.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_notebook_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_notebook_instance(
   NotebookInstanceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

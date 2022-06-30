@@ -17,7 +17,9 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LexBots = list(
     list(
       Name = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -36,12 +38,14 @@ Returns a paginated list of all the Amazon Lex bots currently associated
 with the instance.
 }
 \section{Request syntax}{
-\preformatted{svc$list_lex_bots(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_lex_bots(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

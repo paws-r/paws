@@ -22,10 +22,12 @@ Region.}
 \item{Tags}{A list of tags to apply to the context.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContextArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a \emph{context}. A context is a lineage tracking entity that
@@ -34,7 +36,9 @@ Some examples are an endpoint and a model package. For more information,
 see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_context(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_context(
   ContextName = "string",
   Source = list(
     SourceUri = "string",
@@ -53,7 +57,7 @@ see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

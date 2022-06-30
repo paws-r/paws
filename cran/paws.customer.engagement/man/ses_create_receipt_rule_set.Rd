@@ -21,15 +21,17 @@ An empty list.
 \description{
 Creates an empty receipt rule set.
 
-For information about setting up receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html}{Amazon SES Developer Guide}.
+For information about setting up receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$create_receipt_rule_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_receipt_rule_set(
   RuleSetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

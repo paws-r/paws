@@ -8,11 +8,12 @@ lexmodelbuildingservice_get_builtin_intent(signature)
 }
 \arguments{
 \item{signature}{[required] The unique identifier for a built-in intent. To find the signature for
-an intent, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html}{Standard Built-in Intents}
-in the \emph{Alexa Skills Kit}.}
+an intent, see Standard Built-in Intents in the \emph{Alexa Skills Kit}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   signature = "string",
   supportedLocales = list(
     "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
@@ -23,7 +24,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a built-in intent.
@@ -32,10 +33,12 @@ This operation requires permission for the \code{lex:GetBuiltinIntent}
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$get_builtin_intent(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_builtin_intent(
   signature = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

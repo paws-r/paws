@@ -53,11 +53,13 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_policy(
   PolicyId = "string",
   TargetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

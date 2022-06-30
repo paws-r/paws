@@ -38,11 +38,13 @@ Please provide for a small grace period, usually no more than 5 minutes,
 to account for clock skew.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityId = "string",
   Token = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Registers (or retrieves) a Cognito \code{IdentityId} and an OpenID Connect
@@ -65,7 +67,9 @@ in the specified \code{IdentityPoolId}.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{svc$get_open_id_token_for_developer_identity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_open_id_token_for_developer_identity(
   IdentityPoolId = "string",
   IdentityId = "string",
   Logins = list(
@@ -73,7 +77,7 @@ You must use AWS Developer credentials to call this API.
   ),
   TokenDuration = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -32,7 +32,9 @@ action. Call the \code{\link[=acmpca_list_tags]{list_tags}} action to see what t
 are associated with your CA.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_certificate_authority(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_certificate_authority(
   CertificateAuthorityArn = "string",
   Tags = list(
     list(
@@ -41,7 +43,7 @@ are associated with your CA.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

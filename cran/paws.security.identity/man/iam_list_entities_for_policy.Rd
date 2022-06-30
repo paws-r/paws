@@ -59,7 +59,9 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyGroups = list(
     list(
       GroupName = "string",
@@ -81,7 +83,7 @@ A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all IAM users, groups, and roles that the specified managed policy
@@ -96,7 +98,9 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$list_entities_for_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_entities_for_policy(
   PolicyArn = "string",
   EntityFilter = "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy",
   PathPrefix = "string",
@@ -104,7 +108,7 @@ parameters.
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

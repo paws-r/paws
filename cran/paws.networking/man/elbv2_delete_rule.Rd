@@ -18,10 +18,12 @@ Deletes the specified rule.
 You can't delete the default rule.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_rule(
   RuleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

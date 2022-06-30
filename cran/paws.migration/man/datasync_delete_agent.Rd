@@ -21,10 +21,12 @@ disassociates the agent from your AWS account. However, it doesn't
 delete the agent virtual machine (VM) from your on-premises environment.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_agent(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_agent(
   AgentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

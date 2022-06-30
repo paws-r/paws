@@ -26,7 +26,9 @@ specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
 \item{tags}{The tags associated with the connection.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ownerAccount = "string",
   connectionId = "string",
   connectionName = "string",
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
   ),
   providerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a hosted connection on the specified interconnect or a link
@@ -67,7 +69,9 @@ connection for the specified capacity.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-\preformatted{svc$allocate_hosted_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$allocate_hosted_connection(
   connectionId = "string",
   ownerAccount = "string",
   bandwidth = "string",
@@ -80,7 +84,7 @@ Intended for use by AWS Direct Connect Partners only.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

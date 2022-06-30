@@ -7,7 +7,9 @@
 licensemanager_get_service_settings()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   S3BucketArn = "string",
   SnsTopicArn = "string",
   OrganizationConfiguration = list(
@@ -16,14 +18,16 @@ A list with the following syntax:\preformatted{list(
   EnableCrossAccountsDiscovery = TRUE|FALSE,
   LicenseManagerResourceShareArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the License Manager settings for the current Region.
 }
 \section{Request syntax}{
-\preformatted{svc$get_service_settings()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_service_settings()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ codebuild_batch_get_builds(ids)
 \item{ids}{[required] The IDs of the builds.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   builds = list(
     list(
       id = "string",
@@ -204,18 +206,20 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about one or more builds.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_get_builds(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_builds(
   ids = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

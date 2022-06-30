@@ -13,10 +13,12 @@ sagemaker_put_model_package_group_policy(ModelPackageGroupName,
 \item{ResourcePolicy}{[required] The resource policy for the model group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ModelPackageGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a resouce policy to control access to a model group. For
@@ -24,11 +26,13 @@ information about resoure policies, see \href{https://docs.aws.amazon.com/IAM/la
 in the \emph{AWS Identity and Access Management User Guide.}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_model_package_group_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_model_package_group_policy(
   ModelPackageGroupName = "string",
   ResourcePolicy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

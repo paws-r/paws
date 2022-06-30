@@ -27,7 +27,9 @@ with the \code{WebACL}.}
 \item{Tags}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WebACL = list(
     WebACLId = "string",
     Name = "string",
@@ -57,7 +59,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ChangeToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -108,7 +110,9 @@ distribution.
 For more information about how to use the AWS WAF API, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_web_acl(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_web_acl(
   Name = "string",
   MetricName = "string",
   DefaultAction = list(
@@ -122,7 +126,7 @@ For more information about how to use the AWS WAF API, see the \href{https://doc
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

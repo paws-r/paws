@@ -23,7 +23,9 @@ log file analysis, machine learning, scientific simulation, and data
 warehouse management.
 }
 \section{Service syntax}{
-\preformatted{svc <- emr(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- emr(
   config = list(
     credentials = list(
       creds = list(
@@ -37,7 +39,7 @@ warehouse management.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

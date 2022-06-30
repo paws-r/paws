@@ -21,13 +21,15 @@ types. If 'NULL' is specified for \code{findingTypes}, the API generates
 example findings of all supported finding types.
 }
 \section{Request syntax}{
-\preformatted{svc$create_sample_findings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_sample_findings(
   DetectorId = "string",
   FindingTypes = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

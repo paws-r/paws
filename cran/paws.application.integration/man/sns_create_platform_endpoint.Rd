@@ -27,10 +27,12 @@ use this data. The data must be in UTF-8 format and less than 2KB.}
 \code{\link[=sns_set_endpoint_attributes]{set_endpoint_attributes}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an endpoint for a device and mobile app on one of the supported
@@ -51,7 +53,9 @@ token field must also contain the ChannelId. For more information, see
 \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Creating an Amazon SNS Endpoint for Baidu}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_platform_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_platform_endpoint(
   PlatformApplicationArn = "string",
   Token = "string",
   CustomUserData = "string",
@@ -59,7 +63,7 @@ token field must also contain the ChannelId. For more information, see
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

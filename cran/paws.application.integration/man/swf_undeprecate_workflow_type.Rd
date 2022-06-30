@@ -48,14 +48,16 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$undeprecate_workflow_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$undeprecate_workflow_type(
   domain = "string",
   workflowType = list(
     name = "string",
     version = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

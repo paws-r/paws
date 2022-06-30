@@ -41,13 +41,15 @@ name.}
 address is specified, the email address is left blank.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   commitId = "string",
   blobId = "string",
   treeId = "string",
   filePath = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a specified file from a specified branch. A commit is created on
@@ -55,7 +57,9 @@ the branch that contains the revision. The file still exists in the
 commits earlier to the commit that contains the deletion.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_file(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_file(
   repositoryName = "string",
   branchName = "string",
   filePath = "string",
@@ -65,7 +69,7 @@ commits earlier to the commit that contains the deletion.
   name = "string",
   email = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

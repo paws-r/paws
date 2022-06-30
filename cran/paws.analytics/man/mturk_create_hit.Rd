@@ -106,7 +106,9 @@ with values using the HITLayoutParameter structure. For more
 information, see HITLayout.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HIT = list(
     HITId = "string",
     HITTypeId = "string",
@@ -151,7 +153,7 @@ A list with the following syntax:\preformatted{list(
     NumberOfAssignmentsCompleted = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{\link[=mturk_create_hit]{create_hit}} operation creates a new Human
@@ -181,7 +183,9 @@ If a HIT is created with 10 or more maximum assignments, there is an
 additional fee. For more information, see \href{https://requester.mturk.com/pricing}{Amazon Mechanical Turk Pricing}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_hit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_hit(
   MaxAssignments = 123,
   AutoApprovalDelayInSeconds = 123,
   LifetimeInSeconds = 123,
@@ -256,7 +260,7 @@ additional fee. For more information, see \href{https://requester.mturk.com/pric
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

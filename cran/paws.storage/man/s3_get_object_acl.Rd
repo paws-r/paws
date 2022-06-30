@@ -30,7 +30,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Owner = list(
     DisplayName = "string",
     ID = "string"
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
   ),
   RequestCharged = "requester"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the access control list (ACL) of an object. To use this
@@ -72,14 +74,16 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_object_acl(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_object_acl(
   Bucket = "string",
   Key = "string",
   VersionId = "string",
   RequestPayer = "requester",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

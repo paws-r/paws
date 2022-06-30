@@ -13,7 +13,9 @@ devicefarm_renew_offering(offeringId, quantity)
 \item{quantity}{The quantity requested in an offering renewal.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   offeringTransaction = list(
     offeringStatus = list(
       type = "PURCHASE"|"RENEW"|"SYSTEM",
@@ -48,7 +50,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Explicitly sets the quantity of devices to renew for an offering,
@@ -58,11 +60,13 @@ operation. If you must be able to invoke this operation, contact
 \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
-\preformatted{svc$renew_offering(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$renew_offering(
   offeringId = "string",
   quantity = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

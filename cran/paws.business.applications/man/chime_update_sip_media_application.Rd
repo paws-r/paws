@@ -15,7 +15,9 @@ chime_update_sip_media_application(SipMediaApplicationId, Name,
 \item{Endpoints}{The new set of endpoints for the specified SIP media application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SipMediaApplication = list(
     SipMediaApplicationId = "string",
     AwsRegion = "string",
@@ -33,13 +35,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the details for the specified SIP media application.
 }
 \section{Request syntax}{
-\preformatted{svc$update_sip_media_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_sip_media_application(
   SipMediaApplicationId = "string",
   Name = "string",
   Endpoints = list(
@@ -48,7 +52,7 @@ Updates the details for the specified SIP media application.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

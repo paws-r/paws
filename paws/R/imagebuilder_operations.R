@@ -157,7 +157,7 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @param name &#91;required&#93; The name of the container recipe.
 #' @param description The description of the container recipe.
 #' @param semanticVersion &#91;required&#93; The semantic version of the container recipe
-#' (&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;).
+#' (\<major\>.\<minor\>.\<patch\>).
 #' @param components &#91;required&#93; Components for build and test that are included in the container recipe.
 #' @param dockerfileTemplateData &#91;required&#93; The Dockerfile template used to build your image as an inline data blob.
 #' @param dockerfileTemplateUri The S3 URI for the Dockerfile that will be used to build your container
@@ -1021,7 +1021,7 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 #' imagebuilder_get_component(componentBuildVersionArn)
 #'
 #' @param componentBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the component that you want to
-#' retrieve. Regex requires "/\\d+$" suffix.
+#' retrieve. Regex requires "/\d+$" suffix.
 #'
 #' @return
 #' A list with the following syntax:

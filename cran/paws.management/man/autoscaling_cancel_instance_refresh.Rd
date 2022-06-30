@@ -10,10 +10,12 @@ autoscaling_cancel_instance_refresh(AutoScalingGroupName)
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceRefreshId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels an instance refresh operation in progress. Cancellation does not
@@ -23,10 +25,12 @@ prevents new replacements from being started.
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling Instances Based on an Instance Refresh}.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_instance_refresh(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_instance_refresh(
   AutoScalingGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -16,7 +16,9 @@ Constraints:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -105,16 +107,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a previously provisioned instance.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_db_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_instance(
   DBInstanceIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

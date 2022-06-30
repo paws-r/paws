@@ -21,7 +21,9 @@ The allowed values are \code{COMPLIANT}, \code{NON_COMPLIANT}, and
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EvaluationResults = list(
     list(
       EvaluationResultIdentifier = list(
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the evaluation results for the specified AWS resource. The
@@ -56,7 +58,9 @@ resource, when each rule was last used, and whether the resource
 complies with each rule.
 }
 \section{Request syntax}{
-\preformatted{svc$get_compliance_details_by_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_compliance_details_by_resource(
   ResourceType = "string",
   ResourceId = "string",
   ComplianceTypes = list(
@@ -64,7 +68,7 @@ complies with each rule.
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

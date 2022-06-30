@@ -27,14 +27,16 @@ An empty list.
 Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
 }
 \section{Request syntax}{
-\preformatted{svc$update_threat_intel_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_threat_intel_set(
   DetectorId = "string",
   ThreatIntelSetId = "string",
   Name = "string",
   Location = "string",
   Activate = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

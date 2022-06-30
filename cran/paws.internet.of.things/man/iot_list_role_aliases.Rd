@@ -14,24 +14,28 @@ iot_list_role_aliases(pageSize, marker, ascendingOrder)
 \item{ascendingOrder}{Return the list of role aliases in ascending alphabetical order.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   roleAliases = list(
     "string"
   ),
   nextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the role aliases registered in your account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_role_aliases(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_role_aliases(
   pageSize = 123,
   marker = "string",
   ascendingOrder = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

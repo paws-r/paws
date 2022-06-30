@@ -7,7 +7,9 @@
 ecr_describe_registry()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   registryId = "string",
   replicationConfiguration = list(
     rules = list(
@@ -22,7 +24,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the settings for a registry. The replication configuration for
@@ -31,8 +33,10 @@ a repository can be created or updated with the
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_registry()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_registry()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

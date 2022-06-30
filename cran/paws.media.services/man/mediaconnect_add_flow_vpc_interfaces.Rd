@@ -12,7 +12,9 @@ mediaconnect_add_flow_vpc_interfaces(FlowArn, VpcInterfaces)
 \item{VpcInterfaces}{[required] A list of VPC interfaces that you want to add.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FlowArn = "string",
   VpcInterfaces = list(
     list(
@@ -28,13 +30,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds VPC interfaces to flow
 }
 \section{Request syntax}{
-\preformatted{svc$add_flow_vpc_interfaces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_flow_vpc_interfaces(
   FlowArn = "string",
   VpcInterfaces = list(
     list(
@@ -47,7 +51,7 @@ Adds VPC interfaces to flow
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

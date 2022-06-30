@@ -10,7 +10,9 @@ applicationdiscoveryservice_stop_data_collection_by_agent_ids(agentIds)
 \item{agentIds}{[required] The IDs of the agents or connectors from which to stop collecting data.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   agentsConfigurationStatus = list(
     list(
       agentId = "string",
@@ -19,18 +21,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Instructs the specified agents or connectors to stop collecting data.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_data_collection_by_agent_ids(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_data_collection_by_agent_ids(
   agentIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

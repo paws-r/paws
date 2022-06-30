@@ -27,7 +27,9 @@ results along with a token. Use that token in this query to get the next
 set of 10.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   agentsInfo = list(
     list(
       agentId = "string",
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists agents or connectors as specified by ID or other filters. All
@@ -58,7 +60,9 @@ call \code{\link[=applicationdiscoveryservice_describe_agents]{describe_agents}}
 is without passing any parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_agents(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_agents(
   agentIds = list(
     "string"
   ),
@@ -74,7 +78,7 @@ is without passing any parameters.
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,10 +23,12 @@ This ID is used to generate information about when an account principal
 that is limited by the SCP attempted to access an AWS service.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates a report for service last accessed data for AWS Organizations.
@@ -149,11 +151,13 @@ For more information about service last accessed data, see \href{https://docs.aw
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$generate_organizations_access_report(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$generate_organizations_access_report(
   EntityPath = "string",
   OrganizationsPolicyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

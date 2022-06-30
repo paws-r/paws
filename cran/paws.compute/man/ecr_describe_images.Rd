@@ -40,7 +40,9 @@ specify images with \code{imageIds}.}
 \code{\link[=ecr_describe_images]{describe_images}} results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   imageDetails = list(
     list(
       registryId = "string",
@@ -74,7 +76,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns metadata about the images in a repository.
@@ -86,7 +88,9 @@ return a larger image size than the image sizes returned by
 \code{\link[=ecr_describe_images]{describe_images}}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_images(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_images(
   registryId = "string",
   repositoryName = "string",
   imageIds = list(
@@ -101,7 +105,7 @@ return a larger image size than the image sizes returned by
     tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -25,7 +25,9 @@ This parameter is ignored when the request specifies one or a list of
 fleet IDs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FleetAttributes = list(
     list(
       FleetId = "string",
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves core properties, including configuration, status, and
@@ -112,14 +114,16 @@ error message includes the maximum allowed number.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_fleet_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fleet_attributes(
   FleetIds = list(
     "string"
   ),
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

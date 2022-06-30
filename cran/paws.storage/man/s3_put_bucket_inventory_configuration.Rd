@@ -83,7 +83,9 @@ to set the configuration on the bucket.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_inventory_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_inventory_configuration(
   Bucket = "string",
   Id = "string",
   InventoryConfiguration = list(
@@ -116,7 +118,7 @@ to set the configuration on the bucket.
   ),
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -27,7 +27,9 @@ Some API actions require explicit resource permissions. For information,
 see the developer guide topic \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-api-permissions-ref.html}{Firewall Manager required permissions for API actions}.
 }
 \section{Service syntax}{
-\preformatted{svc <- fms(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- fms(
   config = list(
     credentials = list(
       creds = list(
@@ -41,7 +43,7 @@ see the developer guide topic \href{https://docs.aws.amazon.com/waf/latest/devel
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

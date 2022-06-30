@@ -33,8 +33,8 @@ see:
 \itemize{
 \item \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html}{AWS CLI}
 \item \href{https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html}{AWS SDK for Java}
-\item \href{https://docs.aws.amazon.com/sdkfornet/latest/apidocs/Index.html}{AWS SDK for .NET}
-\item \href{https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html}{AWS SDK for PHP 2}
+\item AWS SDK for .NET
+\item AWS SDK for PHP 2
 \item \href{https://docs.aws.amazon.com/sdk-for-ruby/v2/api/}{AWS SDK for Ruby}
 \item \href{https://docs.aws.amazon.com/sdk-for-javascript/index.html}{AWS SDK for Node.js}
 \item \href{http://docs.pythonboto.org/en/latest/ref/opsworks.html}{AWS SDK for Python(Boto)}
@@ -78,7 +78,9 @@ recommend migrating your existing Linux stacks to Chef 12 as soon as
 possible.
 }
 \section{Service syntax}{
-\preformatted{svc <- opsworks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- opsworks(
   config = list(
     credentials = list(
       creds = list(
@@ -92,7 +94,7 @@ possible.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

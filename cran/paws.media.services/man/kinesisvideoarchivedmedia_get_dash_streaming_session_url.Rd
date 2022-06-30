@@ -139,10 +139,12 @@ of video on streams with 1-second fragments, and more than 2 1/2 hours
 of video on streams with 10-second fragments.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DASHStreamingSessionURL = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves an MPEG Dynamic Adaptive Streaming over HTTP (DASH) URL for
@@ -164,10 +166,12 @@ AAC) or A_MS/ACM (for G.711).
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265
-format. For more information, see \href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}. For information
-about adapting stream data to a given format, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
+format. For more information, see MPEG-4 specification ISO/IEC
+14496-15. For information about adapting stream data to a given
+format, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
-private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}) or the \href{http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html}{MS Wave format}.
+private data in the AAC format (AAC specification ISO/IEC 13818-7)
+or the \href{http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html}{MS Wave format}.
 }
 
 The following procedure shows how to use MPEG-DASH with Kinesis Video
@@ -285,7 +289,9 @@ For more information, see the \strong{Errors} section at the bottom of this
 topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html}{Common Errors}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_dash_streaming_session_url(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dash_streaming_session_url(
   StreamName = "string",
   StreamARN = "string",
   PlaybackMode = "LIVE"|"LIVE_REPLAY"|"ON_DEMAND",
@@ -305,7 +311,7 @@ topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/d
   Expires = 123,
   MaxManifestFragmentResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

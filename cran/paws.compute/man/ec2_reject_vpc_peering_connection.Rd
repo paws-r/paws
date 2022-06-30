@@ -15,10 +15,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Rejects a VPC peering connection request. The VPC peering connection
@@ -30,11 +32,13 @@ connection request that you initiated, use
 \code{\link[=ec2_delete_vpc_peering_connection]{delete_vpc_peering_connection}}.
 }
 \section{Request syntax}{
-\preformatted{svc$reject_vpc_peering_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reject_vpc_peering_connection(
   DryRun = TRUE|FALSE,
   VpcPeeringConnectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

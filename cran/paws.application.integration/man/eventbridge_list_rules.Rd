@@ -18,7 +18,9 @@ results.}
 \item{Limit}{The maximum number of results to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Rules = list(
     list(
       Name = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists your Amazon EventBridge rules. You can either list all the rules
@@ -45,13 +47,15 @@ associated with a rule, use
 \code{\link[=eventbridge_list_targets_by_rule]{list_targets_by_rule}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_rules(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_rules(
   NamePrefix = "string",
   EventBusName = "string",
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,7 +23,9 @@ An empty list.
 Updates an existing database definition in a Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$update_database(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_database(
   CatalogId = "string",
   Name = "string",
   DatabaseInput = list(
@@ -49,7 +51,7 @@ Updates an existing database definition in a Data Catalog.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

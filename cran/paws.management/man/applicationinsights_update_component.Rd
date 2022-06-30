@@ -25,7 +25,9 @@ Updates the custom component name and/or the list of resources that make
 up the component.
 }
 \section{Request syntax}{
-\preformatted{svc$update_component(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_component(
   ResourceGroupName = "string",
   ComponentName = "string",
   NewComponentName = "string",
@@ -33,7 +35,7 @@ up the component.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

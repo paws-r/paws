@@ -20,7 +20,9 @@ Amazon Route 53 is a highly available and scalable Domain Name System
 (DNS) web service.
 }
 \section{Service syntax}{
-\preformatted{svc <- route53(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- route53(
   config = list(
     credentials = list(
       creds = list(
@@ -34,7 +36,7 @@ Amazon Route 53 is a highly available and scalable Domain Name System
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

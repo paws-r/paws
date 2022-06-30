@@ -36,12 +36,14 @@ this parameter is not set, records are coarsely ordered based on arrival
 time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ShardId = "string",
   SequenceNumber = "string",
   EncryptionType = "NONE"|"KMS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Writes a single data record into an Amazon Kinesis data stream. Call
@@ -97,14 +99,16 @@ or
 to modify this retention period.
 }
 \section{Request syntax}{
-\preformatted{svc$put_record(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_record(
   StreamName = "string",
   Data = raw,
   PartitionKey = "string",
   ExplicitHashKey = "string",
   SequenceNumberForOrdering = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

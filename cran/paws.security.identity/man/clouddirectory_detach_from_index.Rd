@@ -16,16 +16,20 @@ exist in.}
 \item{TargetReference}{[required] A reference to the object being detached from the index.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DetachedObjectIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Detaches the specified object from the specified index.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_from_index(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_from_index(
   DirectoryArn = "string",
   IndexReference = list(
     Selector = "string"
@@ -34,7 +38,7 @@ Detaches the specified object from the specified index.
     Selector = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

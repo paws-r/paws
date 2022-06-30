@@ -12,7 +12,9 @@ serverlessapplicationrepository_list_applications(MaxItems, NextToken)
 \item{NextToken}{A token to specify where to start paginating.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Applications = list(
     list(
       ApplicationId = "string",
@@ -29,17 +31,19 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists applications owned by the requester.
 }
 \section{Request syntax}{
-\preformatted{svc$list_applications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_applications(
   MaxItems = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

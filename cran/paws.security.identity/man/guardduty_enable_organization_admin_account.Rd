@@ -19,10 +19,12 @@ Enables an AWS account within the organization as the GuardDuty
 delegated administrator.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_organization_admin_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_organization_admin_account(
   AdminAccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

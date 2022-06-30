@@ -37,7 +37,9 @@ format.
 The \code{namespaceId} feature is in public preview.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobs = list(
     list(
       jobArn = "string",
@@ -58,13 +60,15 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists jobs.
 }
 \section{Request syntax}{
-\preformatted{svc$list_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_jobs(
   status = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS",
   targetSelection = "CONTINUOUS"|"SNAPSHOT",
   maxResults = 123,
@@ -73,7 +77,7 @@ Lists jobs.
   thingGroupId = "string",
   namespaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

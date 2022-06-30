@@ -22,7 +22,9 @@ chime_put_voice_connector_proxy(VoiceConnectorId,
 Amazon Chime Voice Connector.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Proxy = list(
     DefaultSessionExpiryMinutes = 123,
     Disabled = TRUE|FALSE,
@@ -32,14 +34,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Puts the specified proxy configuration to the specified Amazon Chime
 Voice Connector.
 }
 \section{Request syntax}{
-\preformatted{svc$put_voice_connector_proxy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_voice_connector_proxy(
   VoiceConnectorId = "string",
   DefaultSessionExpiryMinutes = 123,
   PhoneNumberPoolCountries = list(
@@ -48,7 +52,7 @@ Voice Connector.
   FallBackPhoneNumber = "string",
   Disabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

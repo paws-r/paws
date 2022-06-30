@@ -14,7 +14,9 @@ elasticache_delete_global_replication_group(GlobalReplicationGroupId,
 group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GlobalReplicationGroup = list(
     GlobalReplicationGroupId = "string",
     GlobalReplicationGroupDescription = "string",
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
     ARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deleting a Global Datastore is a two-step process:
@@ -66,11 +68,13 @@ ElastiCache immediately begins deleting the selected resources; you
 cannot cancel or revert this operation.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_global_replication_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_global_replication_group(
   GlobalReplicationGroupId = "string",
   RetainPrimaryReplicationGroup = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

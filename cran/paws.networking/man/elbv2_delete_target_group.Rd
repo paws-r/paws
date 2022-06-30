@@ -22,10 +22,12 @@ example, any EC2 instances continue to run until you stop or terminate
 them.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_target_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_target_group(
   TargetGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

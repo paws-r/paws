@@ -121,7 +121,9 @@ of an existing webhook.
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- codebuild(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- codebuild(
   config = list(
     credentials = list(
       creds = list(
@@ -135,7 +137,7 @@ of an existing webhook.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

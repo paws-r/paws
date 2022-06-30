@@ -41,20 +41,24 @@ to your underlying source.}
 assigned to the data source.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   DataSourceId = "string",
   CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a data source.
 }
 \section{Request syntax}{
-\preformatted{svc$create_data_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_data_source(
   AwsAccountId = "string",
   DataSourceId = "string",
   Name = "string",
@@ -271,7 +275,7 @@ Creates a data source.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

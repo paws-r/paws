@@ -24,7 +24,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGatewayPrefixListReference = list(
     TransitGatewayRouteTableId = "string",
     PrefixListId = "string",
@@ -38,21 +40,23 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies a reference (route) to a prefix list in a specified transit
 gateway route table.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_transit_gateway_prefix_list_reference(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_transit_gateway_prefix_list_reference(
   TransitGatewayRouteTableId = "string",
   PrefixListId = "string",
   TransitGatewayAttachmentId = "string",
   Blackhole = TRUE|FALSE,
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

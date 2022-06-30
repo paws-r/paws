@@ -11,7 +11,9 @@ ssm_create_association_batch(Entries)
 \item{Entries}{[required] One or more associations.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Successful = list(
     list(
       Name = "string",
@@ -142,7 +144,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates the specified Systems Manager document with the specified
@@ -157,7 +159,9 @@ associated document, the system returns the AssociationAlreadyExists
 exception.
 }
 \section{Request syntax}{
-\preformatted{svc$create_association_batch(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_association_batch(
   Entries = list(
     list(
       Name = "string",
@@ -207,7 +211,7 @@ exception.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

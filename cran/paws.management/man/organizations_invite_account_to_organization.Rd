@@ -49,7 +49,9 @@ tags for an account, then the entire request fails and invitations are
 not sent.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Handshake = list(
     Id = "string",
     Arn = "string",
@@ -76,7 +78,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sends an invitation to another account to join your organization as a
@@ -105,7 +107,9 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$invite_account_to_organization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$invite_account_to_organization(
   Target = list(
     Id = "string",
     Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
@@ -118,7 +122,7 @@ account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

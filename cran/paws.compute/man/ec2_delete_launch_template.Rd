@@ -19,7 +19,9 @@ template ID or launch template name in the request.}
 template ID or launch template name in the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LaunchTemplate = list(
     LaunchTemplateId = "string",
     LaunchTemplateName = "string",
@@ -37,19 +39,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a launch template. Deleting a launch template deletes all of its
 versions.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_launch_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_launch_template(
   DryRun = TRUE|FALSE,
   LaunchTemplateId = "string",
   LaunchTemplateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

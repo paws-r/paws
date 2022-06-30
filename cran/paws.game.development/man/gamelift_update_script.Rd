@@ -38,7 +38,9 @@ indicate that the file data is a binary object. For example:
 \verb{--zip-file fileb://myRealtimeScript.zip}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Script = list(
     ScriptId = "string",
     ScriptArn = "string",
@@ -56,7 +58,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates Realtime script metadata and content.
@@ -88,7 +90,9 @@ version is used for all new game sessions.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_script(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_script(
   ScriptId = "string",
   Name = "string",
   Version = "string",
@@ -100,7 +104,7 @@ version is used for all new game sessions.
   ),
   ZipFile = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

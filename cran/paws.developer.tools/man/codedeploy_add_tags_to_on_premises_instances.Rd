@@ -21,7 +21,9 @@ An empty list.
 Adds tags to on-premises instances.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags_to_on_premises_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_on_premises_instances(
   tags = list(
     list(
       Key = "string",
@@ -32,7 +34,7 @@ Adds tags to on-premises instances.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

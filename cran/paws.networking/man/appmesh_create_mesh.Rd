@@ -22,7 +22,9 @@ character length of 128 characters, and tag values can have a maximum
 length of 256 characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   mesh = list(
     meshName = "string",
     metadata = list(
@@ -48,7 +50,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a service mesh.
@@ -62,7 +64,9 @@ applications in your mesh.
 For more information about service meshes, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/meshes.html}{Service meshes}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_mesh(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_mesh(
   clientToken = "string",
   meshName = "string",
   spec = list(
@@ -77,7 +81,7 @@ For more information about service meshes, see \href{https://docs.aws.amazon.com
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

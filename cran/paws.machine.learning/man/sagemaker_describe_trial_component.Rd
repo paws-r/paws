@@ -10,7 +10,9 @@ sagemaker_describe_trial_component(TrialComponentName)
 \item{TrialComponentName}{[required] The name of the trial component to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrialComponentName = "string",
   TrialComponentArn = "string",
   DisplayName = "string",
@@ -84,16 +86,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides a list of a trials component's properties.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_trial_component(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_trial_component(
   TrialComponentName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

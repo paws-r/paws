@@ -13,7 +13,9 @@ glue_batch_stop_job_run(JobName, JobRunIds)
 definition.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SuccessfulSubmissions = list(
     list(
       JobName = "string",
@@ -31,19 +33,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops one or more job runs for a specified job definition.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_stop_job_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_stop_job_run(
   JobName = "string",
   JobRunIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

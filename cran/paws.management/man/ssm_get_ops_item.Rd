@@ -10,7 +10,9 @@ ssm_get_ops_item(OpsItemId)
 \item{OpsItemId}{[required] The ID of the OpsItem that you want to get.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OpsItem = list(
     CreatedBy = "string",
     OpsItemType = "string",
@@ -60,7 +62,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get information about an OpsItem by using the ID. You must have
@@ -74,10 +76,12 @@ and health of their AWS resources. For more information, see \href{https://docs.
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_ops_item(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ops_item(
   OpsItemId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

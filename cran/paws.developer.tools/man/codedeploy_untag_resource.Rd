@@ -23,13 +23,15 @@ by the \code{ResourceArn} input parameter. The tags are identified by the
 list of keys in the \code{TagKeys} input parameter.
 }
 \section{Request syntax}{
-\preformatted{svc$untag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

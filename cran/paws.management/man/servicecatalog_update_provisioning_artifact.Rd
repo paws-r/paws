@@ -41,7 +41,9 @@ to a provisioned product of a deprecated version but cannot launch new
 provisioned products using a deprecated version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProvisioningArtifactDetail = list(
     Id = "string",
     Name = "string",
@@ -58,7 +60,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Status = "AVAILABLE"|"CREATING"|"FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the specified provisioning artifact (also known as a version)
@@ -68,7 +70,9 @@ You cannot update a provisioning artifact for a product that was shared
 with you.
 }
 \section{Request syntax}{
-\preformatted{svc$update_provisioning_artifact(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_provisioning_artifact(
   AcceptLanguage = "string",
   ProductId = "string",
   ProvisioningArtifactId = "string",
@@ -77,7 +81,7 @@ with you.
   Active = TRUE|FALSE,
   Guidance = "DEFAULT"|"DEPRECATED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

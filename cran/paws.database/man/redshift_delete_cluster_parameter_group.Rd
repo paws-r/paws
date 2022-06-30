@@ -24,10 +24,12 @@ Deletes a specified Amazon Redshift parameter group.
 You cannot delete a parameter group if it is associated with a cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cluster_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cluster_parameter_group(
   ParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

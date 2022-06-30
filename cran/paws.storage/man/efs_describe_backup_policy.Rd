@@ -10,21 +10,25 @@ efs_describe_backup_policy(FileSystemId)
 \item{FileSystemId}{[required] Specifies which EFS file system to retrieve the \code{BackupPolicy} for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupPolicy = list(
     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the backup policy for the specified EFS file system.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_backup_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_backup_policy(
   FileSystemId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,21 +10,25 @@ cloudwatchlogs_list_tags_log_group(logGroupName)
 \item{logGroupName}{[required] The name of the log group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the tags for the specified log group.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_log_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_log_group(
   logGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

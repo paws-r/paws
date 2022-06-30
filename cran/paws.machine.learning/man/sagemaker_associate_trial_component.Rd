@@ -12,11 +12,13 @@ sagemaker_associate_trial_component(TrialComponentName, TrialName)
 \item{TrialName}{[required] The name of the trial to associate with.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrialComponentArn = "string",
   TrialArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a trial component with a trial. A trial component can be
@@ -26,11 +28,13 @@ a trial, call the
 API.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_trial_component(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_trial_component(
   TrialComponentName = "string",
   TrialName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

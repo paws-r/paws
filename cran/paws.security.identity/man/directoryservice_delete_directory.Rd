@@ -10,10 +10,12 @@ directoryservice_delete_directory(DirectoryId)
 \item{DirectoryId}{[required] The identifier of the directory to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DirectoryId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an AWS Directory Service directory.
@@ -25,10 +27,12 @@ the \code{\link[=directoryservice_delete_directory]{delete_directory}} operation
 see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_directory(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_directory(
   DirectoryId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

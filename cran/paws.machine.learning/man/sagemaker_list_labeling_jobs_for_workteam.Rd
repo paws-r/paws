@@ -34,7 +34,9 @@ contains the specified string.}
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LabelingJobSummaryList = list(
     list(
       LabelingJobName = "string",
@@ -53,13 +55,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of labeling jobs assigned to a specified work team.
 }
 \section{Request syntax}{
-\preformatted{svc$list_labeling_jobs_for_workteam(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_labeling_jobs_for_workteam(
   WorkteamArn = "string",
   MaxResults = 123,
   NextToken = "string",
@@ -73,7 +77,7 @@ Gets a list of labeling jobs assigned to a specified work team.
   SortBy = "CreationTime",
   SortOrder = "Ascending"|"Descending"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -170,10 +170,12 @@ of video on streams with 1-second fragments, and more than 2 1/2 hours
 of video on streams with 10-second fragments.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HLSStreamingSessionURL = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves an HTTP Live Streaming (HLS) URL for the stream. You can then
@@ -193,10 +195,10 @@ Optionally, the codec ID of track 2 should be \code{A_AAC}.
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format or HEVC for H.265
-format (\href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}). For information
+format (MPEG-4 specification ISO/IEC 14496-15). For information
 about adapting stream data to a given format, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
-private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}).
+private data in the AAC format (AAC specification ISO/IEC 13818-7).
 }
 
 Kinesis Video Streams HLS sessions contain fragments in the fragmented
@@ -341,7 +343,9 @@ For more information, see the \strong{Errors} section at the bottom of this
 topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html}{Common Errors}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_hls_streaming_session_url(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_hls_streaming_session_url(
   StreamName = "string",
   StreamARN = "string",
   PlaybackMode = "LIVE"|"LIVE_REPLAY"|"ON_DEMAND",
@@ -362,7 +366,7 @@ topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/d
   Expires = 123,
   MaxMediaPlaylistFragmentResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

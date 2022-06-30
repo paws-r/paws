@@ -26,14 +26,16 @@ be a private skill. Also, the skill must be owned by the AWS account
 that assumed the IAM role.
 }
 \section{Request syntax}{
-\preformatted{svc$put_skill_authorization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_skill_authorization(
   AuthorizationResult = list(
     "string"
   ),
   SkillId = "string",
   RoomArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

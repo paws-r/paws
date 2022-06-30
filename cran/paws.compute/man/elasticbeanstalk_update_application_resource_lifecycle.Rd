@@ -13,7 +13,9 @@ elasticbeanstalk_update_application_resource_lifecycle(ApplicationName,
 \item{ResourceLifecycleConfig}{[required] The lifecycle configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationName = "string",
   ResourceLifecycleConfig = list(
     ServiceRole = "string",
@@ -31,13 +33,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies lifecycle settings for an application.
 }
 \section{Request syntax}{
-\preformatted{svc$update_application_resource_lifecycle(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_application_resource_lifecycle(
   ApplicationName = "string",
   ResourceLifecycleConfig = list(
     ServiceRole = "string",
@@ -55,7 +59,7 @@ Modifies lifecycle settings for an application.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

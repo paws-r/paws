@@ -10,7 +10,9 @@ signer_get_signing_platform(platformId)
 \item{platformId}{[required] The ID of the target signing platform.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   platformId = "string",
   displayName = "string",
   partner = "string",
@@ -39,16 +41,18 @@ A list with the following syntax:\preformatted{list(
   maxSizeInMB = 123,
   revocationSupported = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information on a specific signing platform.
 }
 \section{Request syntax}{
-\preformatted{svc$get_signing_platform(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_signing_platform(
   platformId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

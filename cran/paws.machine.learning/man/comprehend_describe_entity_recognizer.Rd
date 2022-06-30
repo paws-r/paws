@@ -11,7 +11,9 @@ comprehend_describe_entity_recognizer(EntityRecognizerArn)
 \item{EntityRecognizerArn}{[required] The Amazon Resource Name (ARN) that identifies the entity recognizer.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EntityRecognizerProperties = list(
     EntityRecognizerArn = "string",
     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
@@ -86,17 +88,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides details about an entity recognizer including status, S3 buckets
 containing training data, recognizer metadata, metrics, and so on.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_entity_recognizer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_entity_recognizer(
   EntityRecognizerArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

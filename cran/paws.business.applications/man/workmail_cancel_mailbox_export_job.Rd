@@ -23,12 +23,14 @@ If the mailbox export job is near completion, it might not be possible
 to cancel it.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_mailbox_export_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_mailbox_export_job(
   ClientToken = "string",
   JobId = "string",
   OrganizationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

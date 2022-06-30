@@ -30,14 +30,16 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyNames = list(
     "string"
   ),
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the names of the inline policies that are embedded in the
@@ -54,12 +56,14 @@ parameters. If there are no inline policies embedded with the specified
 group, the operation returns an empty list.
 }
 \section{Request syntax}{
-\preformatted{svc$list_group_policies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_group_policies(
   GroupName = "string",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

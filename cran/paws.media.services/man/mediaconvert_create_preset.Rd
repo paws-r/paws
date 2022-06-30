@@ -19,7 +19,9 @@ mediaconvert_create_preset(Category, Description, Name, Settings, Tags)
 with a key-value pair or with only a key.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Preset = list(
     Arn = "string",
     Category = "string",
@@ -683,14 +685,16 @@ A list with the following syntax:\preformatted{list(
     Type = "SYSTEM"|"CUSTOM"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create a new preset. For information about job templates see the User
 Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 }
 \section{Request syntax}{
-\preformatted{svc$create_preset(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_preset(
   Category = "string",
   Description = "string",
   Name = "string",
@@ -1347,7 +1351,7 @@ Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

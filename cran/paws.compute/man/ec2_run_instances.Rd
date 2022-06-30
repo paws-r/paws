@@ -243,7 +243,9 @@ You can't enable AWS Nitro Enclaves and hibernation on the same
 instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Groups = list(
     list(
       GroupName = "string",
@@ -447,7 +449,7 @@ A list with the following syntax:\preformatted{list(
   RequesterId = "string",
   ReservationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Launches the specified number of instances using an AMI for which you
@@ -502,7 +504,9 @@ and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingIns
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$run_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$run_instances(
   BlockDeviceMappings = list(
     list(
       DeviceName = "string",
@@ -665,7 +669,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     Enabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

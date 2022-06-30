@@ -13,9 +13,9 @@ iot_cancel_job_execution(jobId, thingName, force, expectedVersion,
 \item{thingName}{[required] The name of the thing whose execution of the job will be canceled.}
 
 \item{force}{(Optional) If \code{true} the job execution will be canceled if it has status
-IN_PROGRESS or QUEUED, otherwise the job execution will be canceled
-only if it has status QUEUED. If you attempt to cancel a job execution
-that is IN_PROGRESS, and you do not set \code{force} to \code{true}, then an
+IN_PROGRESS or QUEUED, otherwise the job execution will be canceled only
+if it has status QUEUED. If you attempt to cancel a job execution that
+is IN_PROGRESS, and you do not set \code{force} to \code{true}, then an
 \code{InvalidStateTransitionException} will be thrown. The default is
 \code{false}.
 
@@ -42,7 +42,9 @@ An empty list.
 Cancels the execution of a job for a given thing.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_job_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_job_execution(
   jobId = "string",
   thingName = "string",
   force = TRUE|FALSE,
@@ -51,7 +53,7 @@ Cancels the execution of a job for a given thing.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -24,11 +24,13 @@ Deleting a user is permanent and cannot be undone. WorkMail archives
 user mailboxes for 30 days before they are permanently removed.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user(
   OrganizationId = "string",
   UserId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

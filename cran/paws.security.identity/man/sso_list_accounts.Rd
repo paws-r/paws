@@ -18,7 +18,9 @@ see
 in the \emph{AWS SSO OIDC API Reference Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   nextToken = "string",
   accountList = list(
     list(
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all AWS accounts assigned to the user. These AWS accounts are
@@ -38,12 +40,14 @@ in the \emph{AWS SSO User Guide}. This operation returns a paginated
 response.
 }
 \section{Request syntax}{
-\preformatted{svc$list_accounts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_accounts(
   nextToken = "string",
   maxResults = 123,
   accessToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

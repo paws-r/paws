@@ -22,16 +22,20 @@ idempotency.}
 \item{Tags}{The tags for the room.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RoomArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a room with the specified details.
 }
 \section{Request syntax}{
-\preformatted{svc$create_room(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_room(
   RoomName = "string",
   Description = "string",
   ProfileArn = "string",
@@ -44,7 +48,7 @@ Creates a room with the specified details.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,7 +17,9 @@ one filter at a time.}
 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DocumentClassifierPropertiesList = list(
     list(
       DocumentClassifierArn = "string",
@@ -83,13 +85,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of the document classifiers that you have created.
 }
 \section{Request syntax}{
-\preformatted{svc$list_document_classifiers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_document_classifiers(
   Filter = list(
     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
     SubmitTimeBefore = as.POSIXct(
@@ -102,7 +106,7 @@ Gets a list of the document classifiers that you have created.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

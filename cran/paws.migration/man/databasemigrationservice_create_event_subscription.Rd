@@ -41,7 +41,9 @@ values must be database instance IDs.}
 \item{Tags}{One or more tags to be assigned to the event subscription.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -58,7 +60,7 @@ A list with the following syntax:\preformatted{list(
     Enabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS DMS event notification subscription.
@@ -81,7 +83,9 @@ For more information about AWS DMS events, see \href{https://docs.aws.amazon.com
 in the \emph{AWS Database Migration Service User Guide.}
 }
 \section{Request syntax}{
-\preformatted{svc$create_event_subscription(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",
@@ -99,7 +103,7 @@ in the \emph{AWS Database Migration Service User Guide.}
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -32,18 +32,22 @@ For the cli-input-json file use format: "tags":
 "key1=value1&key2=value2..."}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   templateArn = "string",
   templateName = "string",
   defaultVersionId = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a fleet provisioning template.
 }
 \section{Request syntax}{
-\preformatted{svc$create_provisioning_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_provisioning_template(
   templateName = "string",
   description = "string",
   templateBody = "string",
@@ -60,7 +64,7 @@ Creates a fleet provisioning template.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

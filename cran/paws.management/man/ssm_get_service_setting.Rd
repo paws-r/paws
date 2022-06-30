@@ -13,7 +13,9 @@ ssm_get_service_setting(SettingId)
 \verb{/ssm/managed-instance/activation-tier}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceSetting = list(
     SettingId = "string",
     SettingValue = "string",
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     Status = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 \code{ServiceSetting} is an account-level setting for an AWS service. This
@@ -48,10 +50,12 @@ back to the original value defined by the AWS service team.
 Query the current service setting for the account.
 }
 \section{Request syntax}{
-\preformatted{svc$get_service_setting(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_service_setting(
   SettingId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

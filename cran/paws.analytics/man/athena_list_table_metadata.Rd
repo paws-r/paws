@@ -24,7 +24,9 @@ page call.}
 \item{MaxResults}{Specifies the maximum number of results to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TableMetadataList = list(
     list(
       Name = "string",
@@ -56,21 +58,23 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the metadata for the tables in the specified data catalog
 database.
 }
 \section{Request syntax}{
-\preformatted{svc$list_table_metadata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_table_metadata(
   CatalogName = "string",
   DatabaseName = "string",
   Expression = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,7 +23,9 @@ traffic on.}
 idempotency—that is, the uniqueness—of the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointGroup = list(
     EndpointGroupArn = "string",
     EndpointGroupRegion = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create an endpoint group for the specified listener for a custom routing
@@ -51,7 +53,9 @@ accelerator. An endpoint group is a collection of endpoints in one AWS
 Region.
 }
 \section{Request syntax}{
-\preformatted{svc$create_custom_routing_endpoint_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_custom_routing_endpoint_group(
   ListenerArn = "string",
   EndpointGroupRegion = "string",
   DestinationConfigurations = list(
@@ -65,7 +69,7 @@ Region.
   ),
   IdempotencyToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

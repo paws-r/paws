@@ -22,7 +22,9 @@ corresponding ''DefinitionInformation'' object.}
 additional results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Definition = list(
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a connector definition version, including
@@ -49,12 +51,14 @@ modules that interact with local infrastructure, device protocols, AWS,
 and other cloud services.
 }
 \section{Request syntax}{
-\preformatted{svc$get_connector_definition_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_connector_definition_version(
   ConnectorDefinitionId = "string",
   ConnectorDefinitionVersionId = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

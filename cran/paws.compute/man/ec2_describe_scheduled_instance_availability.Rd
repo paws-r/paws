@@ -44,7 +44,9 @@ schedule is 100 hours.}
 \item{Recurrence}{[required] The schedule recurrence.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   ScheduledInstanceAvailabilitySet = list(
     list(
@@ -74,7 +76,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Finds available schedules that meet the specified criteria.
@@ -90,7 +92,9 @@ After you find a schedule that meets your needs, call
 purchase Scheduled Instances with that schedule.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_scheduled_instance_availability(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scheduled_instance_availability(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -122,7 +126,7 @@ purchase Scheduled Instances with that schedule.
     OccurrenceUnit = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

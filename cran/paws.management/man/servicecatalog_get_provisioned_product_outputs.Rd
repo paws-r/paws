@@ -33,7 +33,9 @@ product.}
 results, use null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Outputs = list(
     list(
       OutputKey = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API takes either a \code{ProvisonedProductId} or a
@@ -51,7 +53,9 @@ This API takes either a \code{ProvisonedProductId} or a
 and responds with the key/value pairs of those outputs.
 }
 \section{Request syntax}{
-\preformatted{svc$get_provisioned_product_outputs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_provisioned_product_outputs(
   AcceptLanguage = "string",
   ProvisionedProductId = "string",
   ProvisionedProductName = "string",
@@ -61,7 +65,7 @@ and responds with the key/value pairs of those outputs.
   PageSize = 123,
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

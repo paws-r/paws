@@ -15,7 +15,9 @@ apigateway_update_resource(restApiId, resourceId, patchOperations)
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   parentId = "string",
   pathPart = "string",
@@ -88,13 +90,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Changes information about a Resource resource.
 }
 \section{Request syntax}{
-\preformatted{svc$update_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_resource(
   restApiId = "string",
   resourceId = "string",
   patchOperations = list(
@@ -106,7 +110,7 @@ Changes information about a Resource resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

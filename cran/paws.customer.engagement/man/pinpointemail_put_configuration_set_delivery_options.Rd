@@ -29,12 +29,14 @@ dedicated IP pools to create groups of dedicated IP addresses for
 sending specific types of email.
 }
 \section{Request syntax}{
-\preformatted{svc$put_configuration_set_delivery_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_configuration_set_delivery_options(
   ConfigurationSetName = "string",
   TlsPolicy = "REQUIRE"|"OPTIONAL",
   SendingPoolName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -52,7 +52,9 @@ value empty for your initial request. If the response includes a
 additional page of data.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SummaryList = list(
     list(
       LastUpdated = "string",
@@ -65,7 +67,7 @@ A list with the following syntax:\preformatted{list(
   ),
   PaginationToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a table that shows counts of resources that are noncompliant
@@ -78,7 +80,9 @@ You can call this operation only from the organization's master account
 and from the us-east-1 Region.
 }
 \section{Request syntax}{
-\preformatted{svc$get_compliance_summary(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_compliance_summary(
   TargetIdFilters = list(
     "string"
   ),
@@ -97,7 +101,7 @@ and from the us-east-1 Region.
   MaxResults = 123,
   PaginationToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

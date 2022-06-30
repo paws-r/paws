@@ -49,14 +49,16 @@ This applies also to queued callbacks that were initiated prior to the
 release of the API but are still active in your instance.
 }
 \section{Request syntax}{
-\preformatted{svc$update_contact_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_contact_attributes(
   InitialContactId = "string",
   InstanceId = "string",
   Attributes = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

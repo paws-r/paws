@@ -14,7 +14,9 @@ databasemigrationservice_move_replication_task(ReplicationTaskArn,
 \item{TargetReplicationInstanceArn}{[required] The ARN of the replication instance where you want to move the task to.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationTask = list(
     ReplicationTaskIdentifier = "string",
     SourceEndpointArn = "string",
@@ -63,7 +65,7 @@ A list with the following syntax:\preformatted{list(
     TargetReplicationInstanceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Moves a replication task from its current replication instance to a
@@ -72,11 +74,13 @@ The target replication instance must be created with the same or later
 AWS DMS version as the current replication instance.
 }
 \section{Request syntax}{
-\preformatted{svc$move_replication_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$move_replication_task(
   ReplicationTaskArn = "string",
   TargetReplicationInstanceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

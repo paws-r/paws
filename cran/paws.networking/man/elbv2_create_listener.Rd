@@ -14,9 +14,9 @@ elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
 \item{Protocol}{The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
 For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
-and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if
-dual-stack mode is enabled. You cannot specify a protocol for a Gateway
-Load Balancer.}
+and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if dual-stack
+mode is enabled. You cannot specify a protocol for a Gateway Load
+Balancer.}
 
 \item{Port}{The port on which the load balancer is listening. You cannot specify a
 port for a Gateway Load Balancer.}
@@ -51,7 +51,9 @@ in the \emph{Network Load Balancers Guide}.}
 \item{Tags}{The tags to assign to the listener.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Listeners = list(
     list(
       ListenerArn = "string",
@@ -131,7 +133,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a listener for the specified Application Load Balancer, Network
@@ -149,7 +151,9 @@ time. If you attempt to create multiple listeners with the same
 settings, each call succeeds.
 }
 \section{Request syntax}{
-\preformatted{svc$create_listener(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_listener(
   LoadBalancerArn = "string",
   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
   Port = 123,
@@ -230,7 +234,7 @@ settings, each call succeeds.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -16,10 +16,12 @@ length of 300. You can get the disk IDs from the
 \code{\link[=storagegateway_list_local_disks]{list_local_disks}} API.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Configures one or more gateway local disks as upload buffer for a
@@ -31,13 +33,15 @@ which you want to add upload buffer, and one or more disk IDs that you
 want to configure as upload buffer.
 }
 \section{Request syntax}{
-\preformatted{svc$add_upload_buffer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_upload_buffer(
   GatewayARN = "string",
   DiskIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

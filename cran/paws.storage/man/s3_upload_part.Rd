@@ -66,7 +66,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServerSideEncryption = "AES256"|"aws:kms",
   ETag = "string",
   SSECustomerAlgorithm = "string",
@@ -75,7 +77,7 @@ A list with the following syntax:\preformatted{list(
   BucketKeyEnabled = TRUE|FALSE,
   RequestCharged = "requester"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Uploads a part in a multipart upload.
@@ -171,7 +173,9 @@ been aborted or completed.}
 }
 }
 \section{Request syntax}{
-\preformatted{svc$upload_part(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upload_part(
   Body = raw,
   Bucket = "string",
   ContentLength = 123,
@@ -185,7 +189,7 @@ been aborted or completed.}
   RequestPayer = "requester",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

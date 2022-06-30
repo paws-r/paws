@@ -39,12 +39,14 @@ using the \code{Force} option, but you should do so only if you are sure the
 other service is not still using that rule.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_rule(
   Name = "string",
   EventBusName = "string",
   Force = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

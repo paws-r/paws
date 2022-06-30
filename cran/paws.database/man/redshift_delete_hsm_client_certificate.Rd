@@ -16,10 +16,12 @@ An empty list.
 Deletes the specified HSM client certificate.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_hsm_client_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_hsm_client_certificate(
   HsmClientCertificateIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

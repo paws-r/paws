@@ -29,7 +29,9 @@ previous call.}
 documents.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Folders = list(
     list(
       Id = "string",
@@ -97,7 +99,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the contents of the specified folder, including its documents
@@ -109,7 +111,9 @@ a marker that you can use to request the next set of results. You can
 also request initialized documents.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_folder_contents(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_folder_contents(
   AuthenticationToken = "string",
   FolderId = "string",
   Sort = "DATE"|"NAME",
@@ -119,7 +123,7 @@ also request initialized documents.
   Type = "ALL"|"DOCUMENT"|"FOLDER",
   Include = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

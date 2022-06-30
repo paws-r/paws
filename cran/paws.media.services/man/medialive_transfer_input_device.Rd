@@ -22,12 +22,14 @@ Start an input device transfer to another AWS account. After you make
 the request, the other account must accept or reject the transfer.
 }
 \section{Request syntax}{
-\preformatted{svc$transfer_input_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$transfer_input_device(
   InputDeviceId = "string",
   TargetCustomerId = "string",
   TransferMessage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

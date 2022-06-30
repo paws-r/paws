@@ -59,7 +59,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IsTruncated = TRUE|FALSE,
   Contents = list(
     list(
@@ -91,7 +93,7 @@ A list with the following syntax:\preformatted{list(
   NextContinuationToken = "string",
   StartAfter = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns some or all (up to 1,000) of the objects in a bucket. You can
@@ -125,7 +127,9 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$list_objects_v2(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_objects_v2(
   Bucket = "string",
   Delimiter = "string",
   EncodingType = "url",
@@ -137,7 +141,7 @@ The following operations are related to
   RequestPayer = "requester",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

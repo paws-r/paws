@@ -1599,7 +1599,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' -   If the service that is specified by `ServiceId` includes settings
 #'     for an `SRV` record, the value of `InstanceId` is automatically
 #'     included as part of the value for the `SRV` record. For more
-#'     information, see [DnsRecord &gt;
+#'     information, see [DnsRecord \>
 #'     Type](https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type).
 #' 
 #' -   You can use this value to update an existing instance.

@@ -15,7 +15,9 @@ alexaforbusiness_list_smart_home_appliances(RoomArn, MaxResults,
 \item{NextToken}{The tokens used for pagination.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SmartHomeAppliances = list(
     list(
       FriendlyName = "string",
@@ -25,18 +27,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all of the smart home appliances associated with a room.
 }
 \section{Request syntax}{
-\preformatted{svc$list_smart_home_appliances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_smart_home_appliances(
   RoomArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

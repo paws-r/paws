@@ -21,13 +21,15 @@ Deletes the specified application. Kinesis Data Analytics halts
 application execution and deletes the application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application(
   ApplicationName = "string",
   CreateTimestamp = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

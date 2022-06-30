@@ -24,7 +24,9 @@ the next page of results in a paginated response.}
 default is maximum. If you specify 0, AWS Config uses the default.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AggregatedSourceStatusList = list(
     list(
       SourceId = "string",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns status information for sources within an aggregator. The status
@@ -50,7 +52,9 @@ case of a failure, the status contains the related error code or
 message.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_configuration_aggregator_sources_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration_aggregator_sources_status(
   ConfigurationAggregatorName = "string",
   UpdateStatus = list(
     "FAILED"|"SUCCEEDED"|"OUTDATED"
@@ -58,7 +62,7 @@ message.
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

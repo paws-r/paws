@@ -10,7 +10,9 @@ applicationinsights_describe_problem_observations(ProblemId)
 \item{ProblemId}{[required] The ID of the problem.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RelatedObservations = list(
     ObservationList = list(
       list(
@@ -69,16 +71,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the anomalies or errors associated with the problem.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_problem_observations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_problem_observations(
   ProblemId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

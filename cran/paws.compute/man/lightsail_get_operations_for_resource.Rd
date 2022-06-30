@@ -18,7 +18,9 @@ page token that you can specify as the page token in a subsequent
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -45,18 +47,20 @@ A list with the following syntax:\preformatted{list(
   nextPageCount = "string",
   nextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets operations for a specific resource (e.g., an instance or a static
 IP).
 }
 \section{Request syntax}{
-\preformatted{svc$get_operations_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_operations_for_resource(
   resourceName = "string",
   pageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

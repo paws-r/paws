@@ -15,7 +15,9 @@ call, which can be used to return the next set of action types in the
 list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   actionTypes = list(
     list(
       id = list(
@@ -53,18 +55,20 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a summary of all AWS CodePipeline action types associated with your
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_action_types(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_action_types(
   actionOwnerFilter = "AWS"|"ThirdParty"|"Custom",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

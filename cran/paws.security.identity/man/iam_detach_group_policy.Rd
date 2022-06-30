@@ -31,11 +31,13 @@ API. For information about policies, see \href{https://docs.aws.amazon.com/IAM/l
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_group_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_group_policy(
   GroupName = "string",
   PolicyArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

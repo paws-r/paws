@@ -54,7 +54,9 @@ forward token and/or next backward token that you can specify as the
 page token in a subsequent request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceLogEvents = list(
     list(
       createdAt = as.POSIXct(
@@ -66,13 +68,15 @@ A list with the following syntax:\preformatted{list(
   nextBackwardToken = "string",
   nextForwardToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of log events for a database in Amazon Lightsail.
 }
 \section{Request syntax}{
-\preformatted{svc$get_relational_database_log_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_relational_database_log_events(
   relationalDatabaseName = "string",
   logStreamName = "string",
   startTime = as.POSIXct(
@@ -84,7 +88,7 @@ Returns a list of log events for a database in Amazon Lightsail.
   startFromHead = TRUE|FALSE,
   pageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

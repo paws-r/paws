@@ -22,7 +22,9 @@ Amazon WorkSpaces enables you to provision virtual, cloud-based
 Microsoft Windows and Amazon Linux desktops for your users.
 }
 \section{Service syntax}{
-\preformatted{svc <- workspaces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- workspaces(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +38,7 @@ Microsoft Windows and Amazon Linux desktops for your users.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

@@ -12,7 +12,9 @@ lexmodelbuildingservice_get_slot_type(name, version)
 \item{version}{[required] The version of the slot type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   name = "string",
   description = "string",
   enumerationValues = list(
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a specific version of a slot type. In addition
@@ -51,11 +53,13 @@ version.
 This operation requires permissions for the \code{lex:GetSlotType} action.
 }
 \section{Request syntax}{
-\preformatted{svc$get_slot_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_slot_type(
   name = "string",
   version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

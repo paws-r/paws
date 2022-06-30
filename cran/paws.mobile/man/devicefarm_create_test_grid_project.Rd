@@ -12,7 +12,9 @@ devicefarm_create_test_grid_project(name, description)
 \item{description}{Human-readable description of the project.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   testGridProject = list(
     arn = "string",
     name = "string",
@@ -22,18 +24,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Selenium testing project. Projects are used to track
 TestGridSession instances.
 }
 \section{Request syntax}{
-\preformatted{svc$create_test_grid_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_test_grid_project(
   name = "string",
   description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

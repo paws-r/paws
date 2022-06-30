@@ -34,13 +34,15 @@ the \code{\link[=autoscaling_describe_load_balancers]{describe_load_balancers}} 
 call. The instances remain running.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_load_balancers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_load_balancers(
   AutoScalingGroupName = "string",
   LoadBalancerNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

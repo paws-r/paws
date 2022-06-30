@@ -21,10 +21,12 @@ An empty list.
 Updates configuration options for Security Hub.
 }
 \section{Request syntax}{
-\preformatted{svc$update_security_hub_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_security_hub_configuration(
   AutoEnableControls = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ sagemaker_describe_project(ProjectName)
 \item{ProjectName}{[required] The name of the project to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProjectArn = "string",
   ProjectName = "string",
   ProjectId = "string",
@@ -40,16 +42,18 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the details of a project.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_project(
   ProjectName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

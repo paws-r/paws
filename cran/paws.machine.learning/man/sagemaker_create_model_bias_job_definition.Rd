@@ -34,16 +34,20 @@ assume to perform tasks on your behalf.}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobDefinitionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates the definition for a model bias job.
 }
 \section{Request syntax}{
-\preformatted{svc$create_model_bias_job_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_model_bias_job_definition(
   JobDefinitionName = "string",
   ModelBiasBaselineConfig = list(
     BaseliningJobName = "string",
@@ -118,7 +122,7 @@ Creates the definition for a model bias job.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

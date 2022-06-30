@@ -14,7 +14,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{BaiduChannelRequest}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BaiduChannelResponse = list(
     ApplicationId = "string",
     CreationDate = "string",
@@ -29,14 +31,16 @@ A list with the following syntax:\preformatted{list(
     Version = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables the Baidu channel for an application or updates the status and
 settings of the Baidu channel for an application.
 }
 \section{Request syntax}{
-\preformatted{svc$update_baidu_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_baidu_channel(
   ApplicationId = "string",
   BaiduChannelRequest = list(
     ApiKey = "string",
@@ -44,7 +48,7 @@ settings of the Baidu channel for an application.
     SecretKey = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

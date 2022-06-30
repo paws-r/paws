@@ -18,11 +18,13 @@ An empty list.
 Deletes a \code{Type} object.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_type(
   apiId = "string",
   typeName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

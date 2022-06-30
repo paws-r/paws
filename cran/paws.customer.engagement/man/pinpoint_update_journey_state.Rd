@@ -16,7 +16,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{JourneyStateRequest}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JourneyResponse = list(
     Activities = list(
       list(
@@ -396,20 +398,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels (stops) an active journey.
 }
 \section{Request syntax}{
-\preformatted{svc$update_journey_state(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_journey_state(
   ApplicationId = "string",
   JourneyId = "string",
   JourneyStateRequest = list(
     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

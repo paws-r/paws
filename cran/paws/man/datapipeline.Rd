@@ -41,7 +41,9 @@ task runner reports the final success or failure of the task to the web
 service.
 }
 \section{Service syntax}{
-\preformatted{svc <- datapipeline(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- datapipeline(
   config = list(
     credentials = list(
       creds = list(
@@ -55,7 +57,7 @@ service.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

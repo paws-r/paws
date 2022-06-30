@@ -28,7 +28,9 @@ person are sorted by detection confidence. The default sort is by
 \code{TIMESTAMP}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
   StatusMessage = "string",
   VideoMetadata = list(
@@ -122,7 +124,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the path tracking results of a Amazon Rekognition Video analysis
@@ -167,13 +169,15 @@ previous call to
 \code{\link[=rekognition_get_person_tracking]{get_person_tracking}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_person_tracking(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_person_tracking(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string",
   SortBy = "INDEX"|"TIMESTAMP"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

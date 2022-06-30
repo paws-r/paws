@@ -14,7 +14,9 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Limits = list(
     list(
       Name = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the current Elastic Load Balancing resource limits for your
@@ -37,11 +39,13 @@ For more information, see the following:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_account_limits(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_limits(
   Marker = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

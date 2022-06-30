@@ -12,7 +12,9 @@ route53_get_dnssec(HostedZoneId)
 \item{HostedZoneId}{[required] A unique string used to identify a hosted zone.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = list(
     ServeSignature = "string",
     StatusMessage = "string"
@@ -42,7 +44,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about DNSSEC for a specific hosted zone, including
@@ -50,10 +52,12 @@ the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
 zone.
 }
 \section{Request syntax}{
-\preformatted{svc$get_dnssec(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dnssec(
   HostedZoneId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

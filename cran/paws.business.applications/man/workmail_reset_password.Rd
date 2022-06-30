@@ -21,12 +21,14 @@ An empty list.
 Allows the administrator to reset the password for a user.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_password(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_password(
   OrganizationId = "string",
   UserId = "string",
   Password = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

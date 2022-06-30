@@ -20,10 +20,12 @@ runs. AWS deletes the contents of the Amazon S3 bucket used to store AWS
 SMS artifacts. The AMIs created by the replication runs are not deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_replication_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_replication_job(
   replicationJobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

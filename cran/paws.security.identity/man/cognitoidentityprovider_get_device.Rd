@@ -12,7 +12,9 @@ cognitoidentityprovider_get_device(DeviceKey, AccessToken)
 \item{AccessToken}{The access token.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Device = list(
     DeviceKey = "string",
     DeviceAttributes = list(
@@ -32,17 +34,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the device.
 }
 \section{Request syntax}{
-\preformatted{svc$get_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_device(
   DeviceKey = "string",
   AccessToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -83,7 +83,9 @@ Default: \code{false}}
 \item{caCertificateIdentifier}{Indicates the certificate that needs to be associated with the database.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -108,7 +110,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Allows the update of one or more attributes of a database in Amazon
@@ -124,7 +126,9 @@ relationalDatabaseName. For more information, see the Lightsail Dev
 Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$update_relational_database(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_relational_database(
   relationalDatabaseName = "string",
   masterUserPassword = "string",
   rotateMasterUserPassword = TRUE|FALSE,
@@ -136,7 +140,7 @@ Guide.
   applyImmediately = TRUE|FALSE,
   caCertificateIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

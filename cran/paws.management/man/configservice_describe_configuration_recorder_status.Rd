@@ -13,7 +13,9 @@ the action returns the current status of all the configuration recorders
 associated with the account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConfigurationRecordersStatus = list(
     list(
       name = "string",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the current status of the specified configuration recorder. If a
@@ -44,12 +46,14 @@ Currently, you can specify only one configuration recorder per region in
 your account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_configuration_recorder_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration_recorder_status(
   ConfigurationRecorderNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

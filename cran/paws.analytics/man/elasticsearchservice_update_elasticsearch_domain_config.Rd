@@ -21,16 +21,21 @@ elasticsearchservice_update_elasticsearch_domain_config(DomainName,
 Default value is \code{0} hours.}
 
 \item{VPCOptions}{Options to specify the subnets and security groups for VPC endpoint. For
-more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc}{Creating a VPC}
-in \emph{VPC Endpoints for Amazon Elasticsearch Service Domains}}
+more information, see <a
+href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-creating-vpc"
+target="_blank">Creating a VPC</a> in \emph{VPC Endpoints for Amazon
+Elasticsearch Service Domains}}
 
 \item{CognitoOptions}{Options to specify the Cognito user and identity pools for Kibana
-authentication. For more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html}{Amazon Cognito Authentication for Kibana}.}
+authentication. For more information, see <a
+href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
+target="_blank">Amazon Cognito Authentication for Kibana</a>.}
 
 \item{AdvancedOptions}{Modifies the advanced option to allow references to indices in an HTTP
 request body. Must be \code{false} when configuring access to individual
-sub-resources. By default, the value is \code{true}. See \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options}{Configuration Advanced Options}
-for more information.}
+sub-resources. By default, the value is \code{true}. See <a
+href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options"
+target="_blank">Configuration Advanced Options</a> for more information.}
 
 \item{AccessPolicies}{IAM access policy as a JSON-formatted string.}
 
@@ -43,7 +48,9 @@ endpoint.}
 \item{AdvancedSecurityOptions}{Specifies advanced security options.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainConfig = list(
     ElasticsearchVersion = list(
       Options = "string",
@@ -296,7 +303,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the cluster configuration of the specified Elasticsearch
@@ -304,7 +311,9 @@ domain, setting as setting the instance type and the number of
 instances.
 }
 \section{Request syntax}{
-\preformatted{svc$update_elasticsearch_domain_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_elasticsearch_domain_config(
   DomainName = "string",
   ElasticsearchClusterConfig = list(
     InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
@@ -382,7 +391,7 @@ instances.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

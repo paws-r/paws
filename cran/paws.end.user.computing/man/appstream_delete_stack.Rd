@@ -19,10 +19,12 @@ users. Also, any reservations made for application streaming sessions
 for the stack are released.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_stack(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_stack(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

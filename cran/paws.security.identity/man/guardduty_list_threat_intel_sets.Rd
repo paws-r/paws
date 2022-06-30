@@ -22,13 +22,15 @@ the value of NextToken from the previous response to continue listing
 data.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ThreatIntelSetIds = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the ThreatIntelSets of the GuardDuty service specified by the
@@ -36,12 +38,14 @@ detector ID. If you use this operation from a member account, the
 ThreatIntelSets associated with the administrator account are returned.
 }
 \section{Request syntax}{
-\preformatted{svc$list_threat_intel_sets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_threat_intel_sets(
   DetectorId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -161,11 +161,13 @@ default value is \code{1}. The maximum value is \code{256}.}
 \item{PlacementGroupConfigs}{The specified placement group configuration for an Amazon EMR cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobFlowId = "string",
   ClusterArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 RunJobFlow creates and starts running a new cluster (job flow). The
@@ -188,8 +190,8 @@ complex, you may require more than 256 steps to process your data. You
 can bypass the 256-step limitation in various ways, including using the
 SSH shell to connect to the master node and submitting queries directly
 to the software running on the master node, such as Hive and Hadoop. For
-more information on how to do this, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html}{Add More than 256 Steps to a Cluster}
-in the \emph{Amazon EMR Management Guide}.
+more information on how to do this, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Add More than 256 Steps to a Cluster} in the
+\emph{Amazon EMR Management Guide}.
 
 For long running clusters, we recommend that you periodically store your
 results.
@@ -200,7 +202,9 @@ request can contain InstanceFleets parameters or InstanceGroups
 parameters, but not both.
 }
 \section{Request syntax}{
-\preformatted{svc$run_job_flow(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$run_job_flow(
   Name = "string",
   LogUri = "string",
   LogEncryptionKmsKeyId = "string",
@@ -455,7 +459,7 @@ parameters, but not both.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

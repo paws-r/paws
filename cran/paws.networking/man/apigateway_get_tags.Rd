@@ -16,23 +16,27 @@ result set.}
 page. The default value is 25 and the maximum value is 500.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the Tags collection for a given resource.
 }
 \section{Request syntax}{
-\preformatted{svc$get_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_tags(
   resourceArn = "string",
   position = "string",
   limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

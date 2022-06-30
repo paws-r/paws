@@ -17,7 +17,9 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SecurityKeys = list(
     list(
       AssociationId = "string",
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -39,12 +41,14 @@ Returns a paginated list of all security keys associated with the
 instance.
 }
 \section{Request syntax}{
-\preformatted{svc$list_security_keys(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_security_keys(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

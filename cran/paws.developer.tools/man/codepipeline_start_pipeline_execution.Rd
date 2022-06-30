@@ -13,21 +13,25 @@ codepipeline_start_pipeline_execution(name, clientRequestToken)
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   pipelineExecutionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts the specified pipeline. Specifically, it begins processing the
 latest commit to the source location specified as part of the pipeline.
 }
 \section{Request syntax}{
-\preformatted{svc$start_pipeline_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_pipeline_execution(
   name = "string",
   clientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,11 +18,13 @@ An empty list.
 Flushes all authorizer cache entries on a stage.
 }
 \section{Request syntax}{
-\preformatted{svc$flush_stage_authorizers_cache(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$flush_stage_authorizers_cache(
   restApiId = "string",
   stageName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

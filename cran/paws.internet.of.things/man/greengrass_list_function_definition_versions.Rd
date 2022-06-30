@@ -16,7 +16,9 @@ greengrass_list_function_definition_versions(FunctionDefinitionId,
 additional results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Versions = list(
     list(
@@ -27,18 +29,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the versions of a Lambda function definition.
 }
 \section{Request syntax}{
-\preformatted{svc$list_function_definition_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_function_definition_versions(
   FunctionDefinitionId = "string",
   MaxResults = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

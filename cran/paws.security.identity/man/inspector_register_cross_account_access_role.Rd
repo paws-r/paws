@@ -19,10 +19,12 @@ Registers the IAM role that grants Amazon Inspector access to AWS
 Services needed to perform security assessments.
 }
 \section{Request syntax}{
-\preformatted{svc$register_cross_account_access_role(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_cross_account_access_role(
   roleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

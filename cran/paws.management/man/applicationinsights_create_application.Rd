@@ -26,7 +26,9 @@ associated tag value (\code{Value}). The maximum length of a tag key is 128
 characters. The maximum length of a tag value is 256 characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationInfo = list(
     ResourceGroupName = "string",
     LifeCycle = "string",
@@ -36,13 +38,15 @@ A list with the following syntax:\preformatted{list(
     Remarks = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds an application that is created from a resource group.
 }
 \section{Request syntax}{
-\preformatted{svc$create_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application(
   ResourceGroupName = "string",
   OpsCenterEnabled = TRUE|FALSE,
   CWEMonitorEnabled = TRUE|FALSE,
@@ -54,7 +58,7 @@ Adds an application that is created from a resource group.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

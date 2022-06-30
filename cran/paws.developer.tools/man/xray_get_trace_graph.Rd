@@ -12,7 +12,9 @@ xray_get_trace_graph(TraceIds, NextToken)
 \item{NextToken}{Pagination token.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Services = list(
     list(
       ReferenceId = 123,
@@ -100,19 +102,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a service graph for one or more specific trace IDs.
 }
 \section{Request syntax}{
-\preformatted{svc$get_trace_graph(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_trace_graph(
   TraceIds = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

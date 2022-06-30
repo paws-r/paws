@@ -17,10 +17,12 @@ consists of the patterns to include. The patterns are delimited by "|"
 (that is, a pipe). For example: \code{"/folder1|/folder2"}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TaskExecutionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a specific invocation of a task. A \code{TaskExecution} value
@@ -34,7 +36,9 @@ For detailed information, see the Task Execution section in the
 Components and Terminology topic in the \emph{AWS DataSync User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_task_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_task_execution(
   TaskArn = "string",
   OverrideOptions = list(
     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
@@ -58,7 +62,7 @@ Components and Terminology topic in the \emph{AWS DataSync User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

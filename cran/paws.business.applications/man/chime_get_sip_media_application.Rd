@@ -11,7 +11,9 @@ chime_get_sip_media_application(SipMediaApplicationId)
 \item{SipMediaApplicationId}{[required] The SIP media application ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SipMediaApplication = list(
     SipMediaApplicationId = "string",
     AwsRegion = "string",
@@ -29,17 +31,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the information for a SIP media application, including name,
 AWS Region, and endpoints.
 }
 \section{Request syntax}{
-\preformatted{svc$get_sip_media_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sip_media_application(
   SipMediaApplicationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -41,10 +41,12 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   S3Location = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Exports routes from the specified transit gateway route table to the
@@ -56,7 +58,9 @@ information, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tabl
 in \emph{Transit Gateways}.
 }
 \section{Request syntax}{
-\preformatted{svc$export_transit_gateway_routes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_transit_gateway_routes(
   TransitGatewayRouteTableId = "string",
   Filters = list(
     list(
@@ -69,7 +73,7 @@ in \emph{Transit Gateways}.
   S3Bucket = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

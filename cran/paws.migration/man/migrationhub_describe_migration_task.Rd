@@ -15,7 +15,9 @@ migrationhub_describe_migration_task(ProgressUpdateStream,
 in this field.}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MigrationTask = list(
     ProgressUpdateStream = "string",
     MigrationTaskName = "string",
@@ -35,18 +37,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of all attributes associated with a specific migration
 task.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_migration_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_migration_task(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

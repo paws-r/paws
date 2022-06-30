@@ -18,10 +18,12 @@ Cognito. Here, the ID of the pool that the identity belongs to.}
 \item{Token}{[required] The push token.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeviceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Registers a device to receive push sync notifications.
@@ -30,13 +32,15 @@ This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$register_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_device(
   IdentityPoolId = "string",
   IdentityId = "string",
   Platform = "APNS"|"APNS_SANDBOX"|"GCM"|"ADM",
   Token = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

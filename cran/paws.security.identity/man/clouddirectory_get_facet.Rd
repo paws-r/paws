@@ -14,14 +14,16 @@ more information, see arns.}
 \item{Name}{[required] The name of the facet to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Facet = list(
     Name = "string",
     ObjectType = "NODE"|"LEAF_NODE"|"POLICY"|"INDEX",
     FacetStyle = "STATIC"|"DYNAMIC"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets details of the Facet, such as facet name, attributes, Rules, or
@@ -29,11 +31,13 @@ Gets details of the Facet, such as facet name, attributes, Rules, or
 published, development, or applied.
 }
 \section{Request syntax}{
-\preformatted{svc$get_facet(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_facet(
   SchemaArn = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

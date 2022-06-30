@@ -12,7 +12,9 @@ iam_update_role_description(RoleName, Description)
 \item{Description}{[required] The new description that you want to apply to the specified role.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Role = list(
     Path = "string",
     RoleName = "string",
@@ -42,7 +44,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Use \code{\link[=iam_update_role]{update_role}} instead.
@@ -52,11 +54,13 @@ same function as the \code{Description} parameter in the
 \code{\link[=iam_update_role]{update_role}} operation.
 }
 \section{Request syntax}{
-\preformatted{svc$update_role_description(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_role_description(
   RoleName = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

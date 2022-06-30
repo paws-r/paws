@@ -10,10 +10,12 @@ storagegateway_delete_automatic_tape_creation_policy(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the automatic tape creation policy of a gateway. If you delete
@@ -21,10 +23,12 @@ this policy, new virtual tapes must be created manually. Use the Amazon
 Resource Name (ARN) of the gateway in your request to remove the policy.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_automatic_tape_creation_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_automatic_tape_creation_policy(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

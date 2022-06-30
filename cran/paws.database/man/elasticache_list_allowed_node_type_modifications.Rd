@@ -26,7 +26,9 @@ You must provide a value for either the \code{CacheClusterId} or the
 \code{ReplicationGroupId}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ScaleUpModifications = list(
     "string"
   ),
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all available node types that you can scale your Redis cluster's
@@ -48,11 +50,13 @@ operations to scale your cluster or replication group, the value of the
 operation.
 }
 \section{Request syntax}{
-\preformatted{svc$list_allowed_node_type_modifications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_allowed_node_type_modifications(
   CacheClusterId = "string",
   ReplicationGroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

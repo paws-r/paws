@@ -34,7 +34,9 @@ An empty list.
 Modifies the specified attribute of the specified VPC.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_vpc_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpc_attribute(
   EnableDnsHostnames = list(
     Value = TRUE|FALSE
   ),
@@ -43,7 +45,7 @@ Modifies the specified attribute of the specified VPC.
   ),
   VpcId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

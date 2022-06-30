@@ -27,7 +27,9 @@ Constraint: Maximum 128 ASCII characters.}
 \item{TagSpecifications}{The tags to apply to the launch template during creation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LaunchTemplate = list(
     LaunchTemplateId = "string",
     LaunchTemplateName = "string",
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a launch template. A launch template contains the parameters to
@@ -64,7 +66,9 @@ information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-l
 the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_launch_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_launch_template(
   DryRun = TRUE|FALSE,
   ClientToken = "string",
   LaunchTemplateName = "string",
@@ -226,7 +230,7 @@ the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

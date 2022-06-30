@@ -15,7 +15,9 @@ servicequotas_request_service_quota_increase(ServiceCode, QuotaCode,
 \item{DesiredValue}{[required] The new, increased value for the quota.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RequestedQuota = list(
     Id = "string",
     CaseId = "string",
@@ -37,18 +39,20 @@ A list with the following syntax:\preformatted{list(
     Unit = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Submits a quota increase request for the specified quota.
 }
 \section{Request syntax}{
-\preformatted{svc$request_service_quota_increase(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$request_service_quota_increase(
   ServiceCode = "string",
   QuotaCode = "string",
   DesiredValue = 123.0
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

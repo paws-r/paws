@@ -37,17 +37,21 @@ the same architecture. AWS Batch doesn't support mixing compute
 environment architecture types in a single job queue.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobQueueName = "string",
   jobQueueArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a job queue.
 }
 \section{Request syntax}{
-\preformatted{svc$update_job_queue(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_job_queue(
   jobQueue = "string",
   state = "ENABLED"|"DISABLED",
   priority = 123,
@@ -58,7 +62,7 @@ Updates a job queue.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

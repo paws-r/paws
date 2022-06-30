@@ -25,7 +25,9 @@ or will be the endpoint corresponding to your API's custom domain and
 base path, if applicable.
 }
 \section{Service syntax}{
-\preformatted{svc <- apigatewaymanagementapi(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- apigatewaymanagementapi(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +41,7 @@ base path, if applicable.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

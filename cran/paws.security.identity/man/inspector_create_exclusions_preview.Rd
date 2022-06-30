@@ -12,10 +12,12 @@ inspector_create_exclusions_preview(assessmentTemplateArn)
 create an exclusions preview.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   previewToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts the generation of an exclusions preview for the specified
@@ -24,10 +26,12 @@ exclusions (ExclusionPreview) that Inspector can detect before it runs
 the assessment.
 }
 \section{Request syntax}{
-\preformatted{svc$create_exclusions_preview(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_exclusions_preview(
   assessmentTemplateArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

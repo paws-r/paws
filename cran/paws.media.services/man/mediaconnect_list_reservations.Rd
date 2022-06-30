@@ -24,7 +24,9 @@ NextToken value. To see the next batch of results, you can submit the
 ListOfferings request a second time and specify the NextToken value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Reservations = list(
     list(
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Displays a list of all reservations that have been purchased by this
@@ -55,11 +57,13 @@ account in the current AWS Region. This list includes all reservations
 in all states (such as active and expired).
 }
 \section{Request syntax}{
-\preformatted{svc$list_reservations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_reservations(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

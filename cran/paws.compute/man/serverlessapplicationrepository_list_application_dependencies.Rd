@@ -17,7 +17,9 @@ serverlessapplicationrepository_list_application_dependencies(
 \item{SemanticVersion}{The semantic version of the application to get.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Dependencies = list(
     list(
       ApplicationId = "string",
@@ -26,19 +28,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the list of applications nested in the containing application.
 }
 \section{Request syntax}{
-\preformatted{svc$list_application_dependencies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_application_dependencies(
   ApplicationId = "string",
   MaxItems = 123,
   NextToken = "string",
   SemanticVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

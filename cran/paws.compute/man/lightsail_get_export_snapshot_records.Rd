@@ -17,7 +17,9 @@ page token that you can specify as the page token in a subsequent
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   exportSnapshotRecords = list(
     list(
       name = "string",
@@ -64,7 +66,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the export snapshot record created as a result of the
@@ -75,10 +77,12 @@ instance and its related resources with the
 \verb{create cloud formation stack} operation.
 }
 \section{Request syntax}{
-\preformatted{svc$get_export_snapshot_records(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_export_snapshot_records(
   pageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -25,10 +25,12 @@ of \code{START_FAILED} can indicate an error condition.
 No response is returned from this call.
 }
 \section{Request syntax}{
-\preformatted{svc$start_server(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_server(
   ServerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

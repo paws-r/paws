@@ -47,7 +47,9 @@ An empty list.
 Updates the specified settings for the specified replication job.
 }
 \section{Request syntax}{
-\preformatted{svc$update_replication_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_replication_job(
   replicationJobId = "string",
   frequency = 123,
   nextReplicationRunStartTime = as.POSIXct(
@@ -60,7 +62,7 @@ Updates the specified settings for the specified replication job.
   encrypted = TRUE|FALSE,
   kmsKeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,7 +19,9 @@ They can't end with a hyphen or contain two consecutive hyphens.}
 \item{Tags}{The tags associated with the certificate.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Certificate = list(
     CertificateIdentifier = "string",
     CertificateCreationDate = as.POSIXct(
@@ -39,13 +41,15 @@ A list with the following syntax:\preformatted{list(
     KeyLength = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Uploads the specified certificate.
 }
 \section{Request syntax}{
-\preformatted{svc$import_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_certificate(
   CertificateIdentifier = "string",
   CertificatePem = "string",
   CertificateWallet = raw,
@@ -56,7 +60,7 @@ Uploads the specified certificate.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

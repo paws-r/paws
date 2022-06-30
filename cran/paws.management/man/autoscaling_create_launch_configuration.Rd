@@ -103,7 +103,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \item{SpotPrice}{The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
 specify exceeds the current Spot price. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html}{Requesting Spot Instances}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-template-spot-instances.html}{Requesting Spot Instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 When you change your maximum price by creating a new launch
@@ -174,14 +174,16 @@ Creates a launch configuration.
 If you exceed your maximum limit of launch configurations, the call
 fails. To query this limit, call the
 \code{\link[=autoscaling_describe_account_limits]{describe_account_limits}} API.
-For information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
+For information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-quotas.html}{Amazon EC2 Auto Scaling service quotas}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html}{Launch configurations}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html}{Launch configurations}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_launch_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_launch_configuration(
   LaunchConfigurationName = "string",
   ImageId = "string",
   KeyName = "string",
@@ -226,7 +228,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
     HttpEndpoint = "disabled"|"enabled"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

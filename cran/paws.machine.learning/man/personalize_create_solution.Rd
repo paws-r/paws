@@ -41,10 +41,12 @@ to true, Amazon Personalize only evaluates the \code{autoMLConfig} section of
 the solution configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   solutionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates the configuration for training a model. A trained model is known
@@ -75,9 +77,8 @@ USER_PERSONALIZATION recipe for you.
 
 A solution can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
-\item DELETE PENDING > DELETE IN_PROGRESS
+\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+\item DELETE PENDING \> DELETE IN_PROGRESS
 }
 
 To get the status of the solution, call
@@ -96,7 +97,9 @@ status shows as ACTIVE before calling
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_solution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_solution(
   name = "string",
   performHPO = TRUE|FALSE,
   performAutoML = TRUE|FALSE,
@@ -154,7 +157,7 @@ status shows as ACTIVE before calling
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

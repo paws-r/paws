@@ -18,11 +18,13 @@ An empty list.
 Updates the device name by device ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$update_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_device(
   DeviceArn = "string",
   DeviceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

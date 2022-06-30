@@ -21,7 +21,9 @@ Associates the specified sign-in delegate groups with the specified
 Amazon Chime account.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_signin_delegate_groups_with_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_signin_delegate_groups_with_account(
   AccountId = "string",
   SigninDelegateGroups = list(
     list(
@@ -29,7 +31,7 @@ Amazon Chime account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

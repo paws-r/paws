@@ -21,11 +21,13 @@ associated with it.
 When you delete a placement, all associated data becomes irretrievable.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_placement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_placement(
   placementName = "string",
   projectName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

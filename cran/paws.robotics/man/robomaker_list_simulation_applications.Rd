@@ -35,7 +35,9 @@ The filter name \code{name} is supported. When filtering, you must use the
 complete value of the filtered item. You can use up to three filters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   simulationApplicationSummaries = list(
     list(
       name = "string",
@@ -56,14 +58,16 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of simulation applications. You can optionally provide
 filters to retrieve specific simulation applications.
 }
 \section{Request syntax}{
-\preformatted{svc$list_simulation_applications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_simulation_applications(
   versionQualifier = "string",
   nextToken = "string",
   maxResults = 123,
@@ -76,7 +80,7 @@ filters to retrieve specific simulation applications.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

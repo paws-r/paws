@@ -29,10 +29,12 @@ that is created by the node.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NodeAssociationStatusToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a new node with the server. For more information about how to
@@ -59,7 +61,9 @@ configurations, AWS Cloudformation templates, or the user data of a
 server's instance.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_node(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_node(
   ServerName = "string",
   NodeName = "string",
   EngineAttributes = list(
@@ -69,7 +73,7 @@ server's instance.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

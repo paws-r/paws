@@ -41,11 +41,13 @@ This operation requires permissions for the \code{lex:DeleteUtterances}
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_utterances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_utterances(
   botName = "string",
   userId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

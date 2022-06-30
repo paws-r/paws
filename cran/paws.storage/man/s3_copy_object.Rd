@@ -209,7 +209,9 @@ is owned by a different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CopyObjectResult = list(
     ETag = "string",
     LastModified = as.POSIXct(
@@ -227,7 +229,7 @@ A list with the following syntax:\preformatted{list(
   BucketKeyEnabled = TRUE|FALSE,
   RequestCharged = "requester"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a copy of an object that is already stored in Amazon S3.
@@ -379,7 +381,9 @@ The following operations are related to \code{\link[=s3_copy_object]{copy_object
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/copy-object.html}{Copying Objects}.
 }
 \section{Request syntax}{
-\preformatted{svc$copy_object(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_object(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
   Bucket = "string",
   CacheControl = "string",
@@ -431,7 +435,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/user
   ExpectedBucketOwner = "string",
   ExpectedSourceBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

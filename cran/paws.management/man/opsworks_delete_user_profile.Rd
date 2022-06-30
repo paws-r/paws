@@ -20,10 +20,12 @@ attached policy that explicitly grants permissions. For more information
 about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_profile(
   IamUserArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

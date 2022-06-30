@@ -18,7 +18,9 @@ response (which is also the ID of the last configuration on that page).}
 the response body.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FieldLevelEncryptionList = list(
     NextMarker = "string",
     MaxItems = 123,
@@ -59,18 +61,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List all field-level encryption configurations that have been created in
 CloudFront for this account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_field_level_encryption_configs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_field_level_encryption_configs(
   Marker = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

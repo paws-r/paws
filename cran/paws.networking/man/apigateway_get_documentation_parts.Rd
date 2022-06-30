@@ -26,7 +26,9 @@ and the maximum value is 500.}
 \code{UNDOCUMENTED} for DocumentationPart resources without content.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   position = "string",
   items = list(
     list(
@@ -42,13 +44,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get documentation parts
 }
 \section{Request syntax}{
-\preformatted{svc$get_documentation_parts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_documentation_parts(
   restApiId = "string",
   type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
   nameQuery = "string",
@@ -57,7 +61,7 @@ Get documentation parts
   limit = 123,
   locationStatus = "DOCUMENTED"|"UNDOCUMENTED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

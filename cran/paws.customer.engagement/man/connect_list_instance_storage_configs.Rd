@@ -20,7 +20,9 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StorageConfigs = list(
     list(
       AssociationId = "string",
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -61,13 +63,15 @@ Returns a paginated list of storage configs for the identified instance
 and resource type.
 }
 \section{Request syntax}{
-\preformatted{svc$list_instance_storage_configs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_instance_storage_configs(
   InstanceId = "string",
   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -762,7 +762,8 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' 
 #'     To learn how to generate a Signature Version 4 signed request, see
 #'     [Authenticating Requests: Using Query Parameters (AWS Signature
-#'     Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+#'     Version
+#'     4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #'     and [Signature Version 4 Signing
 #'     Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #' 
@@ -787,7 +788,7 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' 
 #' For more information on copying encrypted DB cluster snapshots from one
 #' AWS Region to another, see [Copying a
-#' Snapshot](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html)
+#' Snapshot](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-copy-snapshot.html)
 #' in the *Amazon Aurora User Guide.*
 #' 
 #' For more information on Amazon Aurora, see [What Is Amazon
@@ -817,7 +818,7 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' -   If the source snapshot is in a different AWS Region than the copy,
 #'     specify a valid DB cluster snapshot ARN. For more information, go to
 #'     [Copying Snapshots Across AWS
-#'     Regions](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions)
+#'     Regions](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-copy-snapshot.html#USER_CopySnapshot.AcrossRegions)
 #'     in the *Amazon Aurora User Guide.*
 #' 
 #' Example: `my-cluster-snapshot1`
@@ -1441,7 +1442,7 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #' vSphere cluster.
 #' 
 #' For more information about RDS on VMware, see the [RDS on VMware User
-#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
+#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)
 #'
 #' @usage
 #' rds_create_custom_availability_zone(CustomAvailabilityZoneName,
@@ -2492,11 +2493,11 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Constraints to the amount of storage for each storage type are the
 #' following:
 #' 
-#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 65536.
+#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+#'     65536.
 #' 
-#' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 65536.
+#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to
+#'     65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 5 to 3072.
 #' 
@@ -2505,11 +2506,11 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Constraints to the amount of storage for each storage type are the
 #' following:
 #' 
-#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 65536.
+#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+#'     65536.
 #' 
-#' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 65536.
+#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to
+#'     65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 5 to 3072.
 #' 
@@ -2518,11 +2519,11 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Constraints to the amount of storage for each storage type are the
 #' following:
 #' 
-#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 65536.
+#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+#'     65536.
 #' 
-#' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 65536.
+#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to
+#'     65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 5 to 3072.
 #' 
@@ -2531,11 +2532,11 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Constraints to the amount of storage for each storage type are the
 #' following:
 #' 
-#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 65536.
+#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+#'     65536.
 #' 
-#' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 65536.
+#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to
+#'     65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 10 to 3072.
 #' 
@@ -2546,22 +2547,22 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' -   General Purpose (SSD) storage (gp2):
 #' 
-#'     -   Enterprise and Standard editions: Must be an integer from 200
-#'         to 16384.
+#'     -   Enterprise and Standard editions: Must be an integer from 200 to
+#'         16384.
 #' 
 #'     -   Web and Express editions: Must be an integer from 20 to 16384.
 #' 
 #' -   Provisioned IOPS storage (io1):
 #' 
-#'     -   Enterprise and Standard editions: Must be an integer from 200
-#'         to 16384.
+#'     -   Enterprise and Standard editions: Must be an integer from 200 to
+#'         16384.
 #' 
 #'     -   Web and Express editions: Must be an integer from 100 to 16384.
 #' 
 #' -   Magnetic storage (standard):
 #' 
-#'     -   Enterprise and Standard editions: Must be an integer from 200
-#'         to 1024.
+#'     -   Enterprise and Standard editions: Must be an integer from 200 to
+#'         1024.
 #' 
 #'     -   Web and Express editions: Must be an integer from 20 to 1024.
 #' @param DBInstanceClass &#91;required&#93; The compute and memory capacity of the DB instance, for example,
@@ -2726,7 +2727,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' instance in.
 #' 
 #' For more information about RDS on VMware, see the [RDS on VMware User
-#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
+#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)
 #' @param DBSubnetGroupName A DB subnet group to associate with this DB instance.
 #' 
 #' If there is no DB subnet group, then it is a non-VPC DB instance.
@@ -2881,7 +2882,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Oracle**
 #' 
 #' See [Oracle Database Engine Release
-#' Notes](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html)
+#' Notes](https://docs.aws.amazon.com/AmazonRDS/latest/OracleReleaseNotes/Welcome.html)
 #' in the *Amazon RDS User Guide.*
 #' 
 #' **PostgreSQL**
@@ -3123,7 +3124,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' in the *Amazon RDS User Guide*.
 #' 
 #' For more information about CoIPs, see [Customer-owned IP
-#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
+#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing)
 #' in the *AWS Outposts User Guide*.
 #'
 #' @return
@@ -3567,7 +3568,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #'     which the operation is running.
 #' 
 #' -   All read replicas in one AWS Region that are created from the same
-#'     source DB instance must either:&gt;
+#'     source DB instance must either:\>
 #' 
 #'     -   Specify DB subnet groups from the same VPC. All these read
 #'         replicas are created in the same VPC.
@@ -3602,7 +3603,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' metrics to Amazon CloudWatch Logs. For example,
 #' `arn:aws:iam:123456789012:role/emaccess`. For information on creating a
 #' monitoring role, go to [To create an IAM role for Amazon RDS Enhanced
-#' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Monitoring.html#USER_Monitoring)
+#' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
 #' in the *Amazon RDS User Guide*.
 #' 
 #' If `MonitoringInterval` is set to a value other than 0, then you must
@@ -4915,7 +4916,7 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #' vSphere cluster.
 #' 
 #' For more information about RDS on VMware, see the [RDS on VMware User
-#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
+#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)
 #'
 #' @usage
 #' rds_delete_custom_availability_zone(CustomAvailabilityZoneId)
@@ -6545,7 +6546,7 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
 #' vSphere cluster.
 #' 
 #' For more information about RDS on VMware, see the [RDS on VMware User
-#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
+#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)
 #'
 #' @usage
 #' rds_describe_custom_availability_zones(CustomAvailabilityZoneId,
@@ -11410,7 +11411,7 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 #' with the default `TimeoutAction`, connections that prevent Aurora
 #' Serverless from finding a scaling point might be dropped. For more
 #' information about scaling points, see [Autoscaling for Aurora
-#' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling)
+#' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/#aurora-serverless.how-it-works.auto-scaling)
 #' in the *Amazon Aurora User Guide*.
 #' 
 #' This action only applies to Aurora DB clusters.
@@ -12632,7 +12633,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' metrics to Amazon CloudWatch Logs. For example,
 #' `arn:aws:iam:123456789012:role/emaccess`. For information on creating a
 #' monitoring role, go to [To create an IAM role for Amazon RDS Enhanced
-#' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Monitoring.html#USER_Monitoring)
+#' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
 #' in the *Amazon RDS User Guide.*
 #' 
 #' If `MonitoringInterval` is set to a value other than 0, then you must
@@ -12743,7 +12744,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' in the *Amazon RDS User Guide*.
 #' 
 #' For more information about CoIPs, see [Customer-owned IP
-#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
+#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing)
 #' in the *AWS Outposts User Guide*.
 #'
 #' @return
@@ -16755,7 +16756,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' in the *Amazon RDS User Guide*.
 #' 
 #' For more information about CoIPs, see [Customer-owned IP
-#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
+#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing)
 #' in the *AWS Outposts User Guide*.
 #'
 #' @return
@@ -17820,7 +17821,7 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' in the *Amazon RDS User Guide*.
 #' 
 #' For more information about CoIPs, see [Customer-owned IP
-#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
+#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing)
 #' in the *AWS Outposts User Guide*.
 #'
 #' @return

@@ -121,7 +121,9 @@ list of contexts for the session. If you specify an empty list, all
 contexts for the session are cleared.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   contentType = "string",
   intentName = "string",
   nluIntentConfidence = "string",
@@ -139,7 +141,7 @@ A list with the following syntax:\preformatted{list(
   sessionId = "string",
   activeContexts = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sends user input (text or speech) to Amazon Lex. Clients use this API to
@@ -196,7 +198,9 @@ In addition, Amazon Lex also returns your application-specific
 \code{sessionAttributes}. For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html}{Managing Conversation Context}.
 }
 \section{Request syntax}{
-\preformatted{svc$post_content(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$post_content(
   botName = "string",
   botAlias = "string",
   userId = "string",
@@ -207,7 +211,7 @@ In addition, Amazon Lex also returns your application-specific
   inputStream = raw,
   activeContexts = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -32,7 +32,9 @@ this parameter, see ScheduledAction.}
 action is active. If false, the scheduled action is disabled.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ScheduledActionName = "string",
   TargetAction = list(
     ResizeCluster = list(
@@ -65,13 +67,15 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies a scheduled action.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_scheduled_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_scheduled_action(
   ScheduledActionName = "string",
   TargetAction = list(
     ResizeCluster = list(
@@ -99,7 +103,7 @@ Modifies a scheduled action.
   ),
   Enable = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

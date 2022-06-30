@@ -39,7 +39,9 @@ after a specified timestamp.}
 entity.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobs = list(
     list(
       jobId = "string",
@@ -77,7 +79,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all your signing jobs. You can use the \code{maxResults} parameter to
@@ -91,7 +93,9 @@ parameter and with new values that code signing returns in the
 \code{nextToken} parameter until all of your signing jobs have been returned.
 }
 \section{Request syntax}{
-\preformatted{svc$list_signing_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_signing_jobs(
   status = "InProgress"|"Failed"|"Succeeded",
   platformId = "string",
   requestedBy = "string",
@@ -106,7 +110,7 @@ parameter and with new values that code signing returns in the
   ),
   jobInvoker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,7 +21,9 @@ return. For example, don't return any matches where confidence in
 matches is less than 70\%. The default value is 80\%.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SearchedFaceId = "string",
   FaceMatches = list(
     list(
@@ -42,7 +44,7 @@ A list with the following syntax:\preformatted{list(
   ),
   FaceModelVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 For a given input face ID, searches for matching faces in the collection
@@ -68,13 +70,15 @@ This operation requires permissions to perform the
 \code{rekognition:SearchFaces} action.
 }
 \section{Request syntax}{
-\preformatted{svc$search_faces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_faces(
   CollectionId = "string",
   FaceId = "string",
   MaxFaces = 123,
   FaceMatchThreshold = 123.0
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

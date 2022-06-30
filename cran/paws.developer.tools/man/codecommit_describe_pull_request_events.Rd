@@ -26,7 +26,9 @@ results. The default is 100 events, which is also the maximum number of
 events that can be returned in a result.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   pullRequestEvents = list(
     list(
       pullRequestId = "string",
@@ -77,20 +79,22 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about one or more pull request events.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_pull_request_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_pull_request_events(
   pullRequestId = "string",
   pullRequestEventType = "PULL_REQUEST_CREATED"|"PULL_REQUEST_STATUS_CHANGED"|"PULL_REQUEST_SOURCE_REFERENCE_UPDATED"|"PULL_REQUEST_MERGE_STATE_CHANGED"|"PULL_REQUEST_APPROVAL_RULE_CREATED"|"PULL_REQUEST_APPROVAL_RULE_UPDATED"|"PULL_REQUEST_APPROVAL_RULE_DELETED"|"PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN"|"PULL_REQUEST_APPROVAL_STATE_CHANGED",
   actorArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,11 +19,13 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Body = raw,
   RequestCharged = "requester"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns torrent files from a bucket. BitTorrent can save you bandwidth
@@ -45,13 +47,15 @@ The following operation is related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_object_torrent(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_object_torrent(
   Bucket = "string",
   Key = "string",
   RequestPayer = "requester",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

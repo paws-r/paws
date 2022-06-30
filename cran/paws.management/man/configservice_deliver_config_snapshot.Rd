@@ -12,10 +12,12 @@ configservice_deliver_config_snapshot(deliveryChannelName)
 delivered.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   configSnapshotId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Schedules delivery of a configuration snapshot to the Amazon S3 bucket
@@ -30,10 +32,12 @@ successfully completed.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$deliver_config_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deliver_config_snapshot(
   deliveryChannelName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

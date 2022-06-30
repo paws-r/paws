@@ -21,7 +21,9 @@ the source document.}
 \item{IncludeCustomMetadata}{Set this to TRUE to include custom metadata in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Metadata = list(
     Id = "string",
     Name = "string",
@@ -53,20 +55,22 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves version metadata for the specified document.
 }
 \section{Request syntax}{
-\preformatted{svc$get_document_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_document_version(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string",
   Fields = "string",
   IncludeCustomMetadata = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

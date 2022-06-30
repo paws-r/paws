@@ -51,7 +51,9 @@ The default is to remove automated backups immediately after the DB
 instance is deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -237,7 +239,7 @@ A list with the following syntax:\preformatted{list(
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The DeleteDBInstance action deletes a previously provisioned DB
@@ -273,13 +275,15 @@ After the promotion completes, then call the
 final instance in the DB cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_db_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_instance(
   DBInstanceIdentifier = "string",
   SkipFinalSnapshot = TRUE|FALSE,
   FinalDBSnapshotIdentifier = "string",
   DeleteAutomatedBackups = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

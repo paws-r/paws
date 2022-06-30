@@ -33,7 +33,9 @@ If you specify \code{subdivisioncode}, you must also specify \code{US} for
 \code{CountryCode}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GeoLocationDetails = list(
     ContinentCode = "string",
     ContinentName = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
     SubdivisionName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about whether a specified geographic location is
@@ -65,12 +67,14 @@ is supported for geolocation:
 \verb{GET /2013-04-01/geolocation?countrycode=two-character country code&subdivisioncode=subdivision code }
 }
 \section{Request syntax}{
-\preformatted{svc$get_geo_location(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_geo_location(
   ContinentCode = "string",
   CountryCode = "string",
   SubdivisionCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

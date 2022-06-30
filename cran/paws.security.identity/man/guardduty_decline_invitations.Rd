@@ -12,7 +12,9 @@ guardduty_decline_invitations(AccountIds)
 current member account that you want to decline invitations from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -20,19 +22,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Declines invitations sent to the current member account by AWS accounts
 specified by their account IDs.
 }
 \section{Request syntax}{
-\preformatted{svc$decline_invitations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$decline_invitations(
   AccountIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

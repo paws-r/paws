@@ -15,10 +15,12 @@ datapipeline_evaluate_expression(pipelineId, objectId, expression)
 \item{expression}{[required] The expression to evaluate.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   evaluatedExpression = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Task runners call
@@ -27,12 +29,14 @@ string in the context of the specified object. For example, a task
 runner can evaluate SQL queries stored in Amazon S3.
 }
 \section{Request syntax}{
-\preformatted{svc$evaluate_expression(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$evaluate_expression(
   pipelineId = "string",
   objectId = "string",
   expression = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

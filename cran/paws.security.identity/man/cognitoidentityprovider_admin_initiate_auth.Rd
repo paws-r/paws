@@ -122,7 +122,9 @@ location used for evaluating the risk of an unexpected event by Amazon
 Cognito advanced security.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
   Session = "string",
   ChallengeParameters = list(
@@ -140,7 +142,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Initiates the authentication flow, as an administrator.
@@ -148,7 +150,9 @@ Initiates the authentication flow, as an administrator.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$admin_initiate_auth(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_initiate_auth(
   UserPoolId = "string",
   ClientId = "string",
   AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH"|"ADMIN_USER_PASSWORD_AUTH",
@@ -174,7 +178,7 @@ Calling this action requires developer credentials.
     EncodedData = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

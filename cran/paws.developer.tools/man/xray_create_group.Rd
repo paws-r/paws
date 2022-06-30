@@ -38,7 +38,9 @@ following characters: _ . : / = + - and @
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Group = list(
     GroupName = "string",
     GroupARN = "string",
@@ -49,13 +51,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a group resource with a name and a filter expression.
 }
 \section{Request syntax}{
-\preformatted{svc$create_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_group(
   GroupName = "string",
   FilterExpression = "string",
   InsightsConfiguration = list(
@@ -69,7 +73,7 @@ Creates a group resource with a name and a filter expression.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,7 +21,9 @@ previous call.)}
 \item{Limit}{The maximum number of items to return with this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Groups = list(
     list(
       Id = "string",
@@ -30,21 +32,23 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the groups specified by the query. Groups are defined by the
 underlying Active Directory.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_groups(
   AuthenticationToken = "string",
   SearchQuery = "string",
   OrganizationId = "string",
   Marker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,7 +17,9 @@ they are deleted.}
 access an instance in any status.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceAccess = list(
     FleetId = "string",
     InstanceId = "string",
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Requests remote access to a fleet instance. Remote access is useful for
@@ -66,11 +68,13 @@ address and a set of credentials.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_instance_access(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_instance_access(
   FleetId = "string",
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -30,7 +30,9 @@ enhanced visibility into the key performance statistics associated with
 their cache and can receive alarms if a part of their cache runs hot.
 }
 \section{Service syntax}{
-\preformatted{svc <- elasticache(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- elasticache(
   config = list(
     credentials = list(
       creds = list(
@@ -44,7 +46,7 @@ their cache and can receive alarms if a part of their cache runs hot.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

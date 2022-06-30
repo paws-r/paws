@@ -28,7 +28,9 @@ workdocs_create_user(OrganizationId, Username, EmailAddress, GivenName,
 administrator credentials to access the API.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   User = list(
     Id = "string",
     Username = "string",
@@ -57,14 +59,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a user in a Simple AD or Microsoft AD directory. The status of a
 newly created user is "ACTIVE". New users can access Amazon WorkDocs.
 }
 \section{Request syntax}{
-\preformatted{svc$create_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user(
   OrganizationId = "string",
   Username = "string",
   EmailAddress = "string",
@@ -78,7 +82,7 @@ newly created user is "ACTIVE". New users can access Amazon WorkDocs.
   ),
   AuthenticationToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

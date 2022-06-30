@@ -57,10 +57,12 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_imported_key_material(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_imported_key_material(
   KeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

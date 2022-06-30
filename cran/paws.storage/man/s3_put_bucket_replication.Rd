@@ -89,7 +89,9 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_replication(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_replication(
   Bucket = "string",
   ContentMD5 = "string",
   ReplicationConfiguration = list(
@@ -159,7 +161,7 @@ The following operations are related to
   Token = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

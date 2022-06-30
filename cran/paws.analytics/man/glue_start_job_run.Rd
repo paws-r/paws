@@ -82,16 +82,20 @@ The maximum number of workers you can define are 299 for \code{G.1X}, and 149
 for \code{G.2X}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobRunId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a job run using a job definition.
 }
 \section{Request syntax}{
-\preformatted{svc$start_job_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_job_run(
   JobName = "string",
   JobRunId = "string",
   Arguments = list(
@@ -107,7 +111,7 @@ Starts a job run using a job definition.
   WorkerType = "Standard"|"G.1X"|"G.2X",
   NumberOfWorkers = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

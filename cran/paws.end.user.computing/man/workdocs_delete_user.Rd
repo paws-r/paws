@@ -20,11 +20,13 @@ An empty list.
 Deletes the specified user from a Simple AD or Microsoft AD directory.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user(
   AuthenticationToken = "string",
   UserId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

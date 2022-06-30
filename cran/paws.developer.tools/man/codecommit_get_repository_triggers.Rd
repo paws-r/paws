@@ -10,7 +10,9 @@ codecommit_get_repository_triggers(repositoryName)
 \item{repositoryName}{[required] The name of the repository for which the trigger is configured.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   configurationId = "string",
   triggers = list(
     list(
@@ -26,16 +28,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about triggers configured for a repository.
 }
 \section{Request syntax}{
-\preformatted{svc$get_repository_triggers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_repository_triggers(
   repositoryName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

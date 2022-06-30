@@ -32,7 +32,9 @@ UsageLimit.}
 \item{Tags}{A list of tag instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UsageLimitId = "string",
   ClusterIdentifier = "string",
   FeatureType = "spectrum"|"concurrency-scaling",
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a usage limit for a specified Amazon Redshift feature on a
@@ -55,7 +57,9 @@ cluster. The usage limit is identified by the returned usage limit
 identifier.
 }
 \section{Request syntax}{
-\preformatted{svc$create_usage_limit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_usage_limit(
   ClusterIdentifier = "string",
   FeatureType = "spectrum"|"concurrency-scaling",
   LimitType = "time"|"data-scanned",
@@ -69,7 +73,7 @@ identifier.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

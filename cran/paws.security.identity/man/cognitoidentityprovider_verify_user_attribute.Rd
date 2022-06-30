@@ -21,12 +21,14 @@ An empty list.
 Verifies the specified user attributes in the user pool.
 }
 \section{Request syntax}{
-\preformatted{svc$verify_user_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$verify_user_attribute(
   AccessToken = "string",
   AttributeName = "string",
   Code = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

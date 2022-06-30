@@ -20,11 +20,13 @@ Deletes an environment member from an AWS Cloud9 development
 environment.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_environment_membership(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_environment_membership(
   environmentId = "string",
   userArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -24,7 +24,9 @@ characters are allowed for the identifier.}
 \item{NextInvocations}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ScheduleDefinitions = list(
     "string"
   ),
@@ -49,14 +51,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create a snapshot schedule that can be associated to a cluster and which
 overrides the default system backup schedule.
 }
 \section{Request syntax}{
-\preformatted{svc$create_snapshot_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_snapshot_schedule(
   ScheduleDefinitions = list(
     "string"
   ),
@@ -71,7 +75,7 @@ overrides the default system backup schedule.
   DryRun = TRUE|FALSE,
   NextInvocations = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

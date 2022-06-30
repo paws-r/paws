@@ -16,10 +16,12 @@ An empty list.
 Deletes a conference provider.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_conference_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_conference_provider(
   ConferenceProviderArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

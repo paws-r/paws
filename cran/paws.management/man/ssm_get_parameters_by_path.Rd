@@ -42,7 +42,9 @@ next set of results.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Parameters = list(
     list(
       Name = "string",
@@ -60,7 +62,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve information about one or more parameters in a specific
@@ -75,7 +77,9 @@ the matching values up to that point and a \code{NextToken}. You can specify
 the \code{NextToken} in a subsequent call to get the next set of results.
 }
 \section{Request syntax}{
-\preformatted{svc$get_parameters_by_path(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_parameters_by_path(
   Path = "string",
   Recursive = TRUE|FALSE,
   ParameterFilters = list(
@@ -91,7 +95,7 @@ the \code{NextToken} in a subsequent call to get the next set of results.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

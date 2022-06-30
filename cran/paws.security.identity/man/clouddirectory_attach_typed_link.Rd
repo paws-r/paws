@@ -20,7 +20,9 @@ the typed link.}
 \item{Attributes}{[required] A set of attributes that are associated with the typed link.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TypedLinkSpecifier = list(
     TypedLinkFacet = list(
       SchemaArn = "string",
@@ -48,14 +50,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Attaches a typed link to a specified source and target object. For more
 information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_typed_link(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_typed_link(
   DirectoryArn = "string",
   SourceObjectReference = list(
     Selector = "string"
@@ -82,7 +86,7 @@ information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/develop
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,13 +18,15 @@ An empty list.
 Removes one or more rules from the specified IP access control group.
 }
 \section{Request syntax}{
-\preformatted{svc$revoke_ip_rules(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_ip_rules(
   GroupId = "string",
   UserRules = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,10 +16,12 @@ An empty list.
 Launches the specified application as a stack in AWS CloudFormation.
 }
 \section{Request syntax}{
-\preformatted{svc$launch_app(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$launch_app(
   appId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

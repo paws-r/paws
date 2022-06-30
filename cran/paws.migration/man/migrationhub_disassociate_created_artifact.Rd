@@ -40,13 +40,15 @@ EC2 instance, or RDS instance, etc.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_created_artifact(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_created_artifact(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   CreatedArtifactName = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

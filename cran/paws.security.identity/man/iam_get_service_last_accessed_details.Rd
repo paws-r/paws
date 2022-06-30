@@ -30,7 +30,9 @@ the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
   JobType = "SERVICE_LEVEL"|"ACTION_LEVEL",
   JobCreationDate = as.POSIXct(
@@ -68,7 +70,7 @@ A list with the following syntax:\preformatted{list(
     Code = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a service last accessed report that was created using the
@@ -123,12 +125,14 @@ For more information about service and action last accessed data, see
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_service_last_accessed_details(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_service_last_accessed_details(
   JobId = "string",
   MaxItems = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

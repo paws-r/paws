@@ -23,7 +23,9 @@ servicecatalog_list_launch_paths(AcceptLanguage, ProductId, PageSize,
 results, use null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LaunchPathSummaries = list(
     list(
       Id = "string",
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the paths to the specified product. A path is how the user has
@@ -52,13 +54,15 @@ access to a specified product, and is necessary when provisioning a
 product. A path also determines the constraints put on the product.
 }
 \section{Request syntax}{
-\preformatted{svc$list_launch_paths(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_launch_paths(
   AcceptLanguage = "string",
   ProductId = "string",
   PageSize = 123,
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

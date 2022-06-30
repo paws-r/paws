@@ -13,7 +13,9 @@ comprehendmedical_infer_rx_norm(Text)
 from 1 to 10000 characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Entities = list(
     list(
       Id = 123,
@@ -58,7 +60,7 @@ A list with the following syntax:\preformatted{list(
   PaginationToken = "string",
   ModelVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 InferRxNorm detects medications as entities listed in a patient record
@@ -67,10 +69,12 @@ from the National Library of Medicine. Amazon Comprehend Medical only
 detects medical entities in English language texts.
 }
 \section{Request syntax}{
-\preformatted{svc$infer_rx_norm(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$infer_rx_norm(
   Text = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

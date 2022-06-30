@@ -12,7 +12,9 @@ apigateway_get_stages(restApiId, deploymentId)
 \item{deploymentId}{The stages' deployment identifiers.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   item = list(
     list(
       deploymentId = "string",
@@ -66,17 +68,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about one or more Stage resources.
 }
 \section{Request syntax}{
-\preformatted{svc$get_stages(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_stages(
   restApiId = "string",
   deploymentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

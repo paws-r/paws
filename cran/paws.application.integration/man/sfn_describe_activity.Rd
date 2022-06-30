@@ -10,14 +10,16 @@ sfn_describe_activity(activityArn)
 \item{activityArn}{[required] The Amazon Resource Name (ARN) of the activity to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   activityArn = "string",
   name = "string",
   creationDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes an activity.
@@ -26,10 +28,12 @@ This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_activity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_activity(
   activityArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -25,10 +25,12 @@ underscore (_), and dash (-).}
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Merges two users having different \code{IdentityId}s, existing in the same
@@ -48,13 +50,15 @@ user, \code{DestinationUserIdentifier}, together should not be larger than
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{svc$merge_developer_identities(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$merge_developer_identities(
   SourceUserIdentifier = "string",
   DestinationUserIdentifier = "string",
   DeveloperProviderName = "string",
   IdentityPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

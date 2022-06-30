@@ -23,13 +23,15 @@ of the members of the domain will lose access to their EFS volume,
 including data, notebooks, and other artifacts.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_domain(
   DomainId = "string",
   RetentionPolicy = list(
     HomeEfsFileSystem = "Retain"|"Delete"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

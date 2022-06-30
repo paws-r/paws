@@ -28,7 +28,9 @@ the training job whose name contains the specified string.}
 equal to the specified time (timestamp).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Models = list(
     list(
       ModelName = "string",
@@ -40,14 +42,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists models created with the \code{\link[=sagemaker_create_model]{create_model}}
 API.
 }
 \section{Request syntax}{
-\preformatted{svc$list_models(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_models(
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending",
   NextToken = "string",
@@ -60,7 +64,7 @@ API.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,7 +21,9 @@ An empty list.
 Removes the specified facet from the specified object.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_facet_from_object(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_facet_from_object(
   DirectoryArn = "string",
   SchemaFacet = list(
     SchemaArn = "string",
@@ -31,7 +33,7 @@ Removes the specified facet from the specified object.
     Selector = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

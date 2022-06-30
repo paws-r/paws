@@ -20,7 +20,9 @@ in here to list more artifacts.}
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   artifacts = list(
     list(
       artifactFileName = "string",
@@ -29,20 +31,22 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of artifacts for a specified app, branch, and job.
 }
 \section{Request syntax}{
-\preformatted{svc$list_artifacts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_artifacts(
   appId = "string",
   branchName = "string",
   jobId = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -69,10 +69,12 @@ most regions.}
 \item{TaxDocuments}{The tax documents required in your AWS Region.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClusterId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an empty cluster. Each cluster supports five nodes. You use the
@@ -81,7 +83,9 @@ for each of these nodes. The cluster does not ship until these five node
 jobs have been created.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster(
   JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
   Resources = list(
     S3Resources = list(
@@ -130,7 +134,7 @@ jobs have been created.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{
@@ -153,7 +157,7 @@ svc$create_cluster(
         BucketArn = "arn:aws:s3:::MyBucket",
         KeyRange = structure(
           list(),
-          .Names = character(
+          names = character(
             0
           )
         )

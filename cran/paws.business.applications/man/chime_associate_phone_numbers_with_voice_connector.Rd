@@ -18,7 +18,9 @@ If false, does not associate any phone numbers that have previously
 existing associations.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PhoneNumberErrors = list(
     list(
       PhoneNumberId = "string",
@@ -27,21 +29,23 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates phone numbers with the specified Amazon Chime Voice
 Connector.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_phone_numbers_with_voice_connector(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_phone_numbers_with_voice_connector(
   VoiceConnectorId = "string",
   E164PhoneNumbers = list(
     "string"
   ),
   ForceAssociate = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

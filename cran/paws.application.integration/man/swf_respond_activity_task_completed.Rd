@@ -63,11 +63,13 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$respond_activity_task_completed(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$respond_activity_task_completed(
   taskToken = "string",
   result = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

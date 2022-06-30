@@ -24,7 +24,9 @@ can specify the latest version of the template by providing the keyword
 apply to templates.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Template = list(
     Arn = "string",
     Name = "string",
@@ -85,19 +87,21 @@ A list with the following syntax:\preformatted{list(
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a template's metadata.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_template(
   AwsAccountId = "string",
   TemplateId = "string",
   VersionNumber = 123,
   AliasName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

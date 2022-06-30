@@ -59,21 +59,18 @@ is \code{true}. Optional.}
 is a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers that
-you can represent in UTF-8 format, and the following special characters:
-\itemize{
-\item 
-\itemize{
-\item = . _ : / @. The maximum length of a tag's key is 128 characters,
-and the maximum length for a tag's value is 256 characters.
-}
-}}
+you can represent in UTF-8 format, and the following special
+characters: + - = . _ : / @. The maximum length of a tag's key is 128
+characters, and the maximum length for a tag's value is 256 characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VolumeARN = "string",
   TargetARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a cached volume on a specified cached volume gateway. This
@@ -97,7 +94,9 @@ value must be equal to or larger than the size of the copied volume, in
 bytes.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cachedi_scsi_volume(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cachedi_scsi_volume(
   GatewayARN = "string",
   VolumeSizeInBytes = 123,
   SnapshotId = "string",
@@ -114,7 +113,7 @@ bytes.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

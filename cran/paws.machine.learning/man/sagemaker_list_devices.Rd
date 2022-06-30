@@ -21,7 +21,9 @@ models.}
 \item{DeviceFleetName}{Filter for fleets containing this name in their device fleet name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeviceSummaries = list(
     list(
       DeviceName = "string",
@@ -45,13 +47,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 A list of devices.
 }
 \section{Request syntax}{
-\preformatted{svc$list_devices(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_devices(
   NextToken = "string",
   MaxResults = 123,
   LatestHeartbeatAfter = as.POSIXct(
@@ -60,7 +64,7 @@ A list of devices.
   ModelName = "string",
   DeviceFleetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

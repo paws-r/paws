@@ -17,10 +17,12 @@ An empty list.
 Deletes the ClientCertificate resource.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_client_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_client_certificate(
   clientCertificateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,7 +22,9 @@ Updates information related to approval reviews for a specific version
 of a document.
 }
 \section{Request syntax}{
-\preformatted{svc$update_document_metadata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_document_metadata(
   Name = "string",
   DocumentVersion = "string",
   DocumentReviews = list(
@@ -35,7 +37,7 @@ of a document.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ devicefarm_get_instance_profile(arn)
 \item{arn}{[required] The Amazon Resource Name (ARN) of an instance profile.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   instanceProfile = list(
     arn = "string",
     packageCleanup = TRUE|FALSE,
@@ -22,16 +24,18 @@ A list with the following syntax:\preformatted{list(
     description = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the specified instance profile.
 }
 \section{Request syntax}{
-\preformatted{svc$get_instance_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_instance_profile(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

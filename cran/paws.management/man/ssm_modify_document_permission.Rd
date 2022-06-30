@@ -35,7 +35,9 @@ people who can use the document. If you share a document publicly, you
 must specify \emph{All} as the account ID.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_document_permission(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_document_permission(
   Name = "string",
   PermissionType = "Share",
   AccountIdsToAdd = list(
@@ -46,7 +48,7 @@ must specify \emph{All} as the account ID.
   ),
   SharedDocumentVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

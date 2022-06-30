@@ -23,12 +23,14 @@ does not try to protect that service's resources in this Region. Use the
 determine the resource types that are supported.
 }
 \section{Request syntax}{
-\preformatted{svc$update_region_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_region_settings(
   ResourceTypeOptInPreference = list(
     TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

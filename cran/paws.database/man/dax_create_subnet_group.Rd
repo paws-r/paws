@@ -14,7 +14,9 @@ dax_create_subnet_group(SubnetGroupName, Description, SubnetIds)
 \item{SubnetIds}{[required] A list of VPC subnet IDs for the subnet group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SubnetGroup = list(
     SubnetGroupName = "string",
     Description = "string",
@@ -27,20 +29,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new subnet group.
 }
 \section{Request syntax}{
-\preformatted{svc$create_subnet_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_subnet_group(
   SubnetGroupName = "string",
   Description = "string",
   SubnetIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

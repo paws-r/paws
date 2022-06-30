@@ -11,23 +11,27 @@ robomaker_batch_delete_worlds(worlds)
 delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   unprocessedWorlds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes one or more worlds in a batch operation.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_delete_worlds(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_delete_worlds(
   worlds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

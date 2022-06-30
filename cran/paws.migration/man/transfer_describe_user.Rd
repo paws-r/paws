@@ -16,7 +16,9 @@ part of the sign-in credentials to use the AWS Transfer Family service
 and perform file transfer tasks.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServerId = "string",
   User = list(
     Arn = "string",
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
     UserName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the user assigned to the specific file transfer
@@ -65,11 +67,13 @@ The response from this call returns the properties of the user
 associated with the \code{ServerId} value that was specified.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user(
   ServerId = "string",
   UserName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

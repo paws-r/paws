@@ -10,7 +10,9 @@ athena_get_work_group(WorkGroup)
 \item{WorkGroup}{[required] The name of the workgroup.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WorkGroup = list(
     Name = "string",
     State = "ENABLED"|"DISABLED",
@@ -33,16 +35,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the workgroup with the specified name.
 }
 \section{Request syntax}{
-\preformatted{svc$get_work_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_work_group(
   WorkGroup = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

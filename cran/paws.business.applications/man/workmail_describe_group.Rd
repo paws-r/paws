@@ -12,7 +12,9 @@ workmail_describe_group(OrganizationId, GroupId)
 \item{GroupId}{[required] The identifier for the group to be described.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GroupId = "string",
   Name = "string",
   Email = "string",
@@ -24,17 +26,19 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the data available for the group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_group(
   OrganizationId = "string",
   GroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

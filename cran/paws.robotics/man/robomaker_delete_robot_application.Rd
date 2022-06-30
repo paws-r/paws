@@ -18,11 +18,13 @@ An empty list.
 Deletes a robot application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_robot_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_robot_application(
   application = "string",
   applicationVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

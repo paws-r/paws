@@ -32,7 +32,9 @@ A combination of filters creates an AND condition where each record
 matches all specified filters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationTaskArn = "string",
   TableStatistics = list(
     list(
@@ -65,7 +67,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns table statistics on the database migration task, including table
@@ -76,7 +78,9 @@ time that AWS DMS last updated the table statistics record for a table.
 It does not indicate the time of the last update to the table.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_table_statistics(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_table_statistics(
   ReplicationTaskArn = "string",
   MaxRecords = 123,
   Marker = "string",
@@ -89,7 +93,7 @@ It does not indicate the time of the last update to the table.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

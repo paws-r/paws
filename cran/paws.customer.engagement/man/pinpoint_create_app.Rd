@@ -10,7 +10,9 @@ pinpoint_create_app(CreateApplicationRequest)
 \item{CreateApplicationRequest}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationResponse = list(
     Arn = "string",
     Id = "string",
@@ -20,13 +22,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an application.
 }
 \section{Request syntax}{
-\preformatted{svc$create_app(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_app(
   CreateApplicationRequest = list(
     Name = "string",
     tags = list(
@@ -34,7 +38,7 @@ Creates an application.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

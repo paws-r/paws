@@ -11,14 +11,16 @@ route53_get_query_logging_config(Id)
 information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   QueryLoggingConfig = list(
     Id = "string",
     HostedZoneId = "string",
     CloudWatchLogsLogGroupArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a specified configuration for DNS query logging.
@@ -28,10 +30,12 @@ For more information about DNS query logs, see
 \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_query_logging_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_query_logging_config(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

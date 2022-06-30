@@ -12,7 +12,9 @@ dynamodb_describe_table(TableName)
 \item{TableName}{[required] The name of the table to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Table = list(
     AttributeDefinitions = list(
       list(
@@ -160,7 +162,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the table, including the current status of the
@@ -176,10 +178,12 @@ at that moment. Wait for a few seconds, and then try the
 \code{\link[=dynamodb_describe_table]{describe_table}} request again.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_table(
   TableName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

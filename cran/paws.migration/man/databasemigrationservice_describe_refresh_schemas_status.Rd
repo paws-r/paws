@@ -11,7 +11,9 @@ databasemigrationservice_describe_refresh_schemas_status(EndpointArn)
 endpoint.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RefreshSchemasStatus = list(
     EndpointArn = "string",
     ReplicationInstanceArn = "string",
@@ -22,16 +24,18 @@ A list with the following syntax:\preformatted{list(
     LastFailureMessage = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the status of the RefreshSchemas operation.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_refresh_schemas_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_refresh_schemas_status(
   EndpointArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

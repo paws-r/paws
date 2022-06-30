@@ -69,10 +69,12 @@ key store in a different AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_custom_key_store(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_custom_key_store(
   CustomKeyStoreId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

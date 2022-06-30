@@ -45,12 +45,14 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:DeleteApplicationOutput} action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_application_output(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_output(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   OutputId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

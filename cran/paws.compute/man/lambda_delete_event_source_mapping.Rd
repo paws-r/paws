@@ -10,7 +10,9 @@ lambda_delete_event_source_mapping(UUID)
 \item{UUID}{[required] The identifier of the event source mapping.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UUID = "string",
   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
   StartingPositionTimestamp = as.POSIXct(
@@ -62,7 +64,7 @@ A list with the following syntax:\preformatted{list(
     "ReportBatchItemFailures"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html}{event source mapping}.
@@ -73,10 +75,12 @@ When you delete an event source mapping, it enters a \code{Deleting} state
 and might not be completely deleted for several seconds.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_event_source_mapping(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_event_source_mapping(
   UUID = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

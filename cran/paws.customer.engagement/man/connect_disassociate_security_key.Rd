@@ -23,11 +23,13 @@ change.
 Deletes the specified security key.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_security_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_security_key(
   InstanceId = "string",
   AssociationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

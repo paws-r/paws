@@ -18,7 +18,9 @@ will evaluate. Use the value that was returned for
 \code{LastEvaluatedStreamArn} in the previous operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Streams = list(
     list(
       StreamArn = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
   ),
   LastEvaluatedStreamArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an array of stream ARNs associated with the current account and
@@ -40,12 +42,14 @@ You can call \code{\link[=dynamodbstreams_list_streams]{list_streams}} at a maxi
 rate of 5 times per second.
 }
 \section{Request syntax}{
-\preformatted{svc$list_streams(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_streams(
   TableName = "string",
   Limit = 123,
   ExclusiveStartStreamArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

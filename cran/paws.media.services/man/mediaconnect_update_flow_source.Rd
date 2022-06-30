@@ -41,7 +41,9 @@ to your source. These IP addresses should be in the form of a Classless
 Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FlowArn = "string",
   Source = list(
     DataTransferSubscriberFeePercent = 123,
@@ -77,13 +79,15 @@ A list with the following syntax:\preformatted{list(
     WhitelistCidr = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the source of a flow.
 }
 \section{Request syntax}{
-\preformatted{svc$update_flow_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_flow_source(
   Decryption = list(
     Algorithm = "aes128"|"aes192"|"aes256",
     ConstantInitializationVector = "string",
@@ -107,7 +111,7 @@ Updates the source of a flow.
   VpcInterfaceName = "string",
   WhitelistCidr = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

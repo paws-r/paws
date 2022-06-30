@@ -11,7 +11,9 @@ wafregional_get_logging_configuration(ResourceArn)
 the LoggingConfiguration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LoggingConfiguration = list(
     ResourceArn = "string",
     LogDestinationConfigs = list(
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -40,10 +42,12 @@ regional and global use.
 Returns the LoggingConfiguration for the specified web ACL.
 }
 \section{Request syntax}{
-\preformatted{svc$get_logging_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_logging_configuration(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

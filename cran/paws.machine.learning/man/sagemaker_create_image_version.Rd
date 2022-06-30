@@ -19,10 +19,12 @@ for Python (Boto3), add a unique value to the call.}
 \item{ImageName}{[required] The \code{ImageName} of the \code{Image} to create a version of.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ImageVersionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a version of the SageMaker image specified by \code{ImageName}. The
@@ -30,12 +32,14 @@ version represents the Amazon Container Registry (ECR) container image
 specified by \code{BaseImage}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_image_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_image_version(
   BaseImage = "string",
   ClientToken = "string",
   ImageName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

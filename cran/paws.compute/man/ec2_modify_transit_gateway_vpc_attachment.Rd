@@ -25,7 +25,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGatewayVpcAttachment = list(
     TransitGatewayAttachmentId = "string",
     TransitGatewayId = "string",
@@ -51,13 +53,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the specified VPC attachment.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_transit_gateway_vpc_attachment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_transit_gateway_vpc_attachment(
   TransitGatewayAttachmentId = "string",
   AddSubnetIds = list(
     "string"
@@ -72,7 +76,7 @@ Modifies the specified VPC attachment.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ cloudsearch_delete_analysis_scheme(DomainName, AnalysisSchemeName)
 \item{AnalysisSchemeName}{[required] The name of the analysis scheme you want to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AnalysisScheme = list(
     Options = list(
       AnalysisSchemeName = "string",
@@ -38,18 +40,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
-Deletes an analysis scheme. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes}
-in the \emph{Amazon CloudSearch Developer Guide}.
+Deletes an analysis scheme. For more information, see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html"
+target="_blank">Configuring Analysis Schemes</a> in the \emph{Amazon
+CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_analysis_scheme(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_analysis_scheme(
   DomainName = "string",
   AnalysisSchemeName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

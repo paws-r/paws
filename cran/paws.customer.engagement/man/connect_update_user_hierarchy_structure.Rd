@@ -20,7 +20,9 @@ Updates the user hierarchy structure: add, remove, and rename user
 hierarchy levels.
 }
 \section{Request syntax}{
-\preformatted{svc$update_user_hierarchy_structure(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_hierarchy_structure(
   HierarchyStructure = list(
     LevelOne = list(
       Name = "string"
@@ -40,7 +42,7 @@ hierarchy levels.
   ),
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

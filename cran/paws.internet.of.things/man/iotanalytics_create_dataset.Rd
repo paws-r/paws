@@ -43,7 +43,9 @@ data arrives late. To specify \code{lateDataRules}, the dataset must use a
 filter.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   datasetName = "string",
   datasetArn = "string",
   retentionPeriod = list(
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
     numberOfDays = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a dataset. A dataset stores data retrieved from a data store by
@@ -62,7 +64,9 @@ dataset. The dataset can be populated manually by calling
 automatically according to a trigger you specify.
 }
 \section{Request syntax}{
-\preformatted{svc$create_dataset(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dataset(
   datasetName = "string",
   actions = list(
     list(
@@ -156,7 +160,7 @@ automatically according to a trigger you specify.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

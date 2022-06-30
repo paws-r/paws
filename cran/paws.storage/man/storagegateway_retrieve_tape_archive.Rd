@@ -19,10 +19,12 @@ You retrieve archived virtual tapes to only one gateway and the gateway
 must be a tape gateway.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TapeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves an archived virtual tape from the virtual tape shelf (VTS) to
@@ -37,11 +39,13 @@ before you can retrieve it to another gateway. This operation is only
 supported in the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{svc$retrieve_tape_archive(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$retrieve_tape_archive(
   TapeARN = "string",
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

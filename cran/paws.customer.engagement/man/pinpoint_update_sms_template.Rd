@@ -49,20 +49,24 @@ of the template.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MessageBody = list(
     Message = "string",
     RequestID = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing message template for messages that are sent through
 the SMS channel.
 }
 \section{Request syntax}{
-\preformatted{svc$update_sms_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_sms_template(
   CreateNewVersion = TRUE|FALSE,
   SMSTemplateRequest = list(
     Body = "string",
@@ -76,7 +80,7 @@ the SMS channel.
   TemplateName = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

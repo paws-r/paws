@@ -62,7 +62,9 @@ For more information about using tags with EC2 instances, see \href{https://docs
 in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_resource(
   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
   ResourceId = "string",
   Tags = list(
@@ -72,7 +74,7 @@ in the \emph{Amazon EC2 User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

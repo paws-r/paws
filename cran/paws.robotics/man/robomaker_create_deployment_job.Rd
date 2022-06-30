@@ -21,7 +21,9 @@ idempotency of the request.}
 deployment job.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   fleet = "string",
   status = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
@@ -59,7 +61,7 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deploys a specific version of a robot application to robots in a fleet.
@@ -67,13 +69,15 @@ Deploys a specific version of a robot application to robots in a fleet.
 The robot application must have a numbered \code{applicationVersion} for
 consistency reasons. To create a new version, use
 \code{\link[=robomaker_create_robot_application_version]{create_robot_application_version}}
-or see \href{https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html}{Creating a Robot Application Version}.
+or see \href{https://docs.aws.amazon.com/robomaker/latest/dg/}{Creating a Robot Application Version}.
 
 After 90 days, deployment jobs expire and will be deleted. They will no
 longer be accessible.
 }
 \section{Request syntax}{
-\preformatted{svc$create_deployment_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_deployment_job(
   deploymentConfig = list(
     concurrentDeploymentPercentage = 123,
     failureThresholdPercentage = 123,
@@ -105,7 +109,7 @@ longer be accessible.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

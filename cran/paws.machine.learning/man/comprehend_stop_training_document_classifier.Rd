@@ -23,10 +23,12 @@ otherwise the training job is stopped and put into the \code{STOPPED} state
 and the service sends back an HTTP 200 response with an empty HTTP body.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_training_document_classifier(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_training_document_classifier(
   DocumentClassifierArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

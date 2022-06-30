@@ -18,7 +18,9 @@ subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Invitations = list(
     list(
       AccountId = "string",
@@ -29,18 +31,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all GuardDuty membership invitations that were sent to the current
 AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_invitations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_invitations(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

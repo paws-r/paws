@@ -11,7 +11,9 @@ storagegateway_describe_smb_settings(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string",
   DomainName = "string",
   ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR",
@@ -19,17 +21,19 @@ A list with the following syntax:\preformatted{list(
   SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption",
   FileSharesVisible = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a description of a Server Message Block (SMB) file share settings
 from a file gateway. This operation is only supported for file gateways.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_smb_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_smb_settings(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

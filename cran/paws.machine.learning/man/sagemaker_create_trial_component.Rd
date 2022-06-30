@@ -41,10 +41,12 @@ metrics, snapshots, logs, and images.}
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrialComponentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a \emph{trial component}, which is a stage of a machine learning
@@ -70,7 +72,9 @@ jobs, and Amazon SageMaker notebooks. A call to
 outside one of these environments results in an error.
 }
 \section{Request syntax}{
-\preformatted{svc$create_trial_component(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_trial_component(
   TrialComponentName = "string",
   DisplayName = "string",
   Status = list(
@@ -114,7 +118,7 @@ outside one of these environments results in an error.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

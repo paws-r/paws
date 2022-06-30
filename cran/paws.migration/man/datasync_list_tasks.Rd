@@ -19,7 +19,9 @@ on a specific source location, you can use
 \verb{Operator Equals} with the ARN for the location.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tasks = list(
     list(
       TaskArn = "string",
@@ -29,13 +31,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of all the tasks.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tasks(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(
@@ -48,7 +52,7 @@ Returns a list of all the tasks.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

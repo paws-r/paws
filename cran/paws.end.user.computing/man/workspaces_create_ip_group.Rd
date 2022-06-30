@@ -16,10 +16,12 @@ workspaces_create_ip_group(GroupName, GroupDesc, UserRules, Tags)
 \item{Tags}{The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an IP access control group.
@@ -39,7 +41,9 @@ You cannot modify the default IP access control group for your
 directory.
 }
 \section{Request syntax}{
-\preformatted{svc$create_ip_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_ip_group(
   GroupName = "string",
   GroupDesc = "string",
   UserRules = list(
@@ -55,7 +59,7 @@ directory.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

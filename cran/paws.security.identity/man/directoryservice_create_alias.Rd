@@ -16,11 +16,13 @@ throws an \code{EntityAlreadyExistsException} error if the alias already
 exists.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DirectoryId = "string",
   Alias = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an alias for a directory and assigns the alias to the directory.
@@ -31,11 +33,13 @@ After an alias has been created, it cannot be deleted or reused, so this
 operation should only be used when absolutely necessary.
 }
 \section{Request syntax}{
-\preformatted{svc$create_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_alias(
   DirectoryId = "string",
   Alias = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

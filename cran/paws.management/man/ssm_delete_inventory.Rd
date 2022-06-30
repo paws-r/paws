@@ -34,7 +34,9 @@ without specifying the \code{DryRun} option.}
 \item{ClientToken}{User-provided idempotency token.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeletionId = "string",
   TypeName = "string",
   DeletionSummary = list(
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Delete a custom inventory type or the data associated with a custom
@@ -57,13 +59,15 @@ Inventory type. Deleting a custom inventory type is also referred to as
 deleting a custom inventory schema.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_inventory(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_inventory(
   TypeName = "string",
   SchemaDeleteOption = "DisableSchema"|"DeleteSchema",
   DryRun = TRUE|FALSE,
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

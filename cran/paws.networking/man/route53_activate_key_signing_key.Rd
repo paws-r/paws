@@ -13,7 +13,9 @@ route53_activate_key_signing_key(HostedZoneId, Name)
 \item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChangeInfo = list(
     Id = "string",
     Status = "PENDING"|"INSYNC",
@@ -23,18 +25,20 @@ A list with the following syntax:\preformatted{list(
     Comment = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Activates a key signing key (KSK) so that it can be used for signing by
 DNSSEC. This operation changes the KSK status to \code{ACTIVE}.
 }
 \section{Request syntax}{
-\preformatted{svc$activate_key_signing_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$activate_key_signing_key(
   HostedZoneId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

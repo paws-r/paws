@@ -44,10 +44,12 @@ with the Elastic IP address. If no private IP address is specified, the
 Elastic IP address is associated with the primary private IP address.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssociationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates an Elastic IP address, or carrier IP address (for instances
@@ -85,7 +87,9 @@ each time the Elastic IP address is remapped to the same instance. For
 more information, see the \emph{Elastic IP Addresses} section of \href{https://aws.amazon.com/ec2/pricing/}{Amazon EC2 Pricing}.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_address(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_address(
   AllocationId = "string",
   InstanceId = "string",
   PublicIp = "string",
@@ -94,7 +98,7 @@ more information, see the \emph{Elastic IP Addresses} section of \href{https://a
   NetworkInterfaceId = "string",
   PrivateIpAddress = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

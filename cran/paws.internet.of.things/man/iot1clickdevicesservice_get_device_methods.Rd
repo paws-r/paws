@@ -11,7 +11,9 @@ iot1clickdevicesservice_get_device_methods(DeviceId)
 \item{DeviceId}{[required] The unique identifier of the device.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeviceMethods = list(
     list(
       DeviceType = "string",
@@ -19,17 +21,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Given a device ID, returns the invokable methods associated with the
 device.
 }
 \section{Request syntax}{
-\preformatted{svc$get_device_methods(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_device_methods(
   DeviceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

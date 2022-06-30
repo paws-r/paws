@@ -13,7 +13,9 @@ pinpointemail_create_email_identity(EmailIdentity, Tags)
 to associate with the email identity.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
   VerifiedForSendingStatus = TRUE|FALSE,
   DkimAttributes = list(
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Verifies an email identity for use with Amazon Pinpoint. In Amazon
@@ -46,7 +48,9 @@ domain. It usually takes around 72 hours to complete the domain
 verification process.
 }
 \section{Request syntax}{
-\preformatted{svc$create_email_identity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_email_identity(
   EmailIdentity = "string",
   Tags = list(
     list(
@@ -55,7 +59,7 @@ verification process.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

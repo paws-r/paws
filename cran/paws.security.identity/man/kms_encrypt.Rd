@@ -60,12 +60,14 @@ This parameter is required only for asymmetric CMKs. The default value,
 are using an asymmetric CMK, we recommend RSAES_OAEP_SHA_256.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CiphertextBlob = raw,
   KeyId = "string",
   EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Encrypts plaintext into ciphertext by using a customer master key (CMK).
@@ -160,7 +162,9 @@ the \code{KeyId} parameter.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$encrypt(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$encrypt(
   KeyId = "string",
   Plaintext = raw,
   EncryptionContext = list(
@@ -171,7 +175,7 @@ the \code{KeyId} parameter.
   ),
   EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

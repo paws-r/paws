@@ -45,7 +45,9 @@ remove, and view tags. The maximum tag limit may be lower than stated.
 See the AWS General Reference for actual tagging limits.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Build = list(
     BuildId = "string",
     BuildArn = "string",
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
     ObjectVersion = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new Amazon GameLift build resource for your game server binary
@@ -124,7 +126,9 @@ build ID and places it in \code{INITIALIZED} status. A build must be in
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_build(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_build(
   Name = "string",
   Version = "string",
   StorageLocation = list(
@@ -141,7 +145,7 @@ build ID and places it in \code{INITIALIZED} status. A build must be in
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

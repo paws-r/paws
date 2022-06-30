@@ -10,7 +10,9 @@ iot_get_topic_rule_destination(arn)
 \item{arn}{[required] The ARN of the topic rule destination.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   topicRuleDestination = list(
     arn = "string",
     status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"|"DELETING",
@@ -36,16 +38,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a topic rule destination.
 }
 \section{Request syntax}{
-\preformatted{svc$get_topic_rule_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_topic_rule_destination(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

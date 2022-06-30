@@ -25,7 +25,9 @@ servicecatalog_list_constraints_for_portfolio(AcceptLanguage,
 results, use null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConstraintDetails = list(
     list(
       ConstraintId = "string",
@@ -38,20 +40,22 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the constraints for the specified portfolio and product.
 }
 \section{Request syntax}{
-\preformatted{svc$list_constraints_for_portfolio(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_constraints_for_portfolio(
   AcceptLanguage = "string",
   PortfolioId = "string",
   ProductId = "string",
   PageSize = 123,
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

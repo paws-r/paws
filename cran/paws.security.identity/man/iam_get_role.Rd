@@ -16,7 +16,9 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Role = list(
     Path = "string",
     RoleName = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the specified role, including the role's
@@ -60,10 +62,12 @@ example, if you use Java, you can use the \code{decode} method of the
 SDKs provide similar functionality.
 }
 \section{Request syntax}{
-\preformatted{svc$get_role(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_role(
   RoleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

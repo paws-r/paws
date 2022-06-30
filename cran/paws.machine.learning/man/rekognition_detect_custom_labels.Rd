@@ -23,7 +23,9 @@ specified value. If you specify a value of 0, all labels are return,
 regardless of the default thresholds that the model version applies.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CustomLabels = list(
     list(
       Name = "string",
@@ -45,7 +47,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Detects custom labels in a supplied image by using an Amazon Rekognition
@@ -87,7 +89,9 @@ This operation requires permissions to perform the
 \code{rekognition:DetectCustomLabels} action.
 }
 \section{Request syntax}{
-\preformatted{svc$detect_custom_labels(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_custom_labels(
   ProjectVersionArn = "string",
   Image = list(
     Bytes = raw,
@@ -100,7 +104,7 @@ This operation requires permissions to perform the
   MaxResults = 123,
   MinConfidence = 123.0
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

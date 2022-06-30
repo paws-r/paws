@@ -8,19 +8,21 @@ AWS account}
 autoscaling_describe_account_limits()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MaxNumberOfAutoScalingGroups = 123,
   MaxNumberOfLaunchConfigurations = 123,
   NumberOfAutoScalingGroups = 123,
   NumberOfLaunchConfigurations = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the current Amazon EC2 Auto Scaling resource quotas for your
 AWS account.
 
-For information about requesting an increase, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
+For information about requesting an increase, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-quotas.html}{Amazon EC2 Auto Scaling service quotas}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \examples{

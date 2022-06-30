@@ -40,7 +40,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGatewayPrefixListReferences = list(
     list(
       TransitGatewayRouteTableId = "string",
@@ -57,14 +59,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the prefix list references in a specified transit
 gateway route table.
 }
 \section{Request syntax}{
-\preformatted{svc$get_transit_gateway_prefix_list_references(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_transit_gateway_prefix_list_references(
   TransitGatewayRouteTableId = "string",
   Filters = list(
     list(
@@ -78,7 +82,7 @@ gateway route table.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

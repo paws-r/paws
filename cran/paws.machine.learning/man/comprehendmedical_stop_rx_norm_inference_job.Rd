@@ -10,19 +10,23 @@ comprehendmedical_stop_rx_norm_inference_job(JobId)
 \item{JobId}{[required] The identifier of the job.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops an InferRxNorm inference job in progress.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_rx_norm_inference_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_rx_norm_inference_job(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

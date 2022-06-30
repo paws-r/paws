@@ -90,7 +90,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Body = raw,
   DeleteMarker = TRUE|FALSE,
   AcceptRanges = "string",
@@ -132,7 +134,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ObjectLockLegalHoldStatus = "ON"|"OFF"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves objects from Amazon S3. To use \code{GET}, you must have \code{READ}
@@ -267,7 +269,9 @@ The following operations are related to \code{\link[=s3_get_object]{get_object}}
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_object(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_object(
   Bucket = "string",
   IfMatch = "string",
   IfModifiedSince = as.POSIXct(
@@ -295,7 +299,7 @@ The following operations are related to \code{\link[=s3_get_object]{get_object}}
   PartNumber = 123,
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

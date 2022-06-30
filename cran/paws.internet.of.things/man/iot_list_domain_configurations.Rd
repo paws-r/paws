@@ -14,7 +14,9 @@ iot_list_domain_configurations(marker, pageSize, serviceType)
 \item{serviceType}{The type of service delivered by the endpoint.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   domainConfigurations = list(
     list(
       domainConfigurationName = "string",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of domain configurations for the user. This list is sorted
@@ -34,12 +36,14 @@ The domain configuration feature is in public preview and is subject to
 change.
 }
 \section{Request syntax}{
-\preformatted{svc$list_domain_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_domain_configurations(
   marker = "string",
   pageSize = 123,
   serviceType = "DATA"|"CREDENTIAL_PROVIDER"|"JOBS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

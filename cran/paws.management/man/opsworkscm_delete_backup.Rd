@@ -24,10 +24,12 @@ does not exist. A \code{ValidationException} is thrown when parameters of the
 request are not valid.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_backup(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_backup(
   BackupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,7 +20,9 @@ are reserved by Amazon QuickSight.}
 \item{ThemeVersionNumber}{[required] The version number of the theme.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ThemeAlias = list(
     Arn = "string",
     AliasName = "string",
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a theme alias for a theme.
 }
 \section{Request syntax}{
-\preformatted{svc$create_theme_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_theme_alias(
   AwsAccountId = "string",
   ThemeId = "string",
   AliasName = "string",
   ThemeVersionNumber = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

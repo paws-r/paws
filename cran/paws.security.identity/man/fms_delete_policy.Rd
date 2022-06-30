@@ -46,11 +46,13 @@ An empty list.
 Permanently deletes an AWS Firewall Manager policy.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_policy(
   PolicyId = "string",
   DeleteAllPolicyResources = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

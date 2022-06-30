@@ -85,10 +85,12 @@ regions.}
 \item{DeviceConfiguration}{Defines the device configuration for an AWS Snowcone job.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a job to import or export data between Amazon S3 and your
@@ -99,7 +101,9 @@ the \code{clusterId} value; the other job attributes are inherited from the
 cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$create_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_job(
   JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
   Resources = list(
     S3Resources = list(
@@ -157,7 +161,7 @@ cluster.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{
@@ -183,7 +187,7 @@ svc$create_job(
         BucketArn = "arn:aws:s3:::MyBucket",
         KeyRange = structure(
           list(),
-          .Names = character(
+          names = character(
             0
           )
         )

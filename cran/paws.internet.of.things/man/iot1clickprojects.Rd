@@ -19,7 +19,9 @@ Operations section.
 The AWS IoT 1-Click Projects API Reference
 }
 \section{Service syntax}{
-\preformatted{svc <- iot1clickprojects(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- iot1clickprojects(
   config = list(
     credentials = list(
       creds = list(
@@ -33,7 +35,7 @@ The AWS IoT 1-Click Projects API Reference
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

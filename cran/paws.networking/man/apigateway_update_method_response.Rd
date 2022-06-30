@@ -20,7 +20,9 @@ apigateway_update_method_response(restApiId, resourceId, httpMethod,
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   statusCode = "string",
   responseParameters = list(
     TRUE|FALSE
@@ -29,13 +31,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing MethodResponse resource.
 }
 \section{Request syntax}{
-\preformatted{svc$update_method_response(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_method_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
@@ -49,7 +53,7 @@ Updates an existing MethodResponse resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

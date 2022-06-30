@@ -19,7 +19,9 @@ time is used.}
 \item{NextToken}{Reserved for future use.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PublicKeyList = list(
     list(
       Value = raw,
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns all public keys whose private keys were used to sign the digest
@@ -48,7 +50,9 @@ Therefore, when you validate a digest file from a particular region, you
 must look in the same region for its corresponding public key.
 }
 \section{Request syntax}{
-\preformatted{svc$list_public_keys(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_public_keys(
   StartTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -57,7 +61,7 @@ must look in the same region for its corresponding public key.
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

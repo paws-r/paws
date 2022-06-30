@@ -16,10 +16,12 @@ An empty list.
 Deletes an \code{ApiCache} object.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_api_cache(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_api_cache(
   apiId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

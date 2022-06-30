@@ -13,10 +13,12 @@ in the \emph{Amazon EventBridge User Guide}.}
 \item{Event}{[required] The event, in JSON format, to test against the event pattern.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Result = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Tests whether the specified event pattern matches the provided event.
@@ -28,11 +30,13 @@ creating event patterns so that they match the ARN syntax in the event
 you want to match.
 }
 \section{Request syntax}{
-\preformatted{svc$test_event_pattern(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_event_pattern(
   EventPattern = "string",
   Event = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

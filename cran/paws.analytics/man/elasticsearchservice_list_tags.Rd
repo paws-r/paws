@@ -11,7 +11,9 @@ elasticsearchservice_list_tags(ARN)
 attached that you want to view.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TagList = list(
     list(
       Key = "string",
@@ -19,16 +21,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns all tags for the given Elasticsearch domain.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags(
   ARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

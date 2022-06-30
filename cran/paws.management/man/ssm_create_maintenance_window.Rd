@@ -27,9 +27,9 @@ expression.}
 
 \item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
-see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the
-IANA website.}
+"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA
+website.}
 
 \item{ScheduleOffset}{The number of days to wait after the date and time specified by a CRON
 expression before running the maintenance window.
@@ -74,10 +74,12 @@ To add tags to an existing maintenance window, use the
 \code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new maintenance window.
@@ -91,7 +93,9 @@ value you specify for \code{Cutoff} is one hour, no maintenance window tasks
 can start after 5 PM.
 }
 \section{Request syntax}{
-\preformatted{svc$create_maintenance_window(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_maintenance_window(
   Name = "string",
   Description = "string",
   StartDate = "string",
@@ -110,7 +114,7 @@ can start after 5 PM.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

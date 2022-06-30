@@ -17,10 +17,12 @@ Deletes a resource policy from this account. This revokes the access of
 the identities in that policy to put log events to this account.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_resource_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource_policy(
   policyName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

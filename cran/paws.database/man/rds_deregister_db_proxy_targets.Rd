@@ -26,7 +26,9 @@ Remove the association between one or more \code{DBProxyTarget} data
 structures and a \code{DBProxyTargetGroup}.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_db_proxy_targets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_db_proxy_targets(
   DBProxyName = "string",
   TargetGroupName = "string",
   DBInstanceIdentifiers = list(
@@ -36,7 +38,7 @@ structures and a \code{DBProxyTargetGroup}.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -68,7 +68,9 @@ For more information on how Device Farm modifies your uploads during
 tests, see \href{https://aws.amazon.com/device-farm/faqs/}{Do you modify my app?}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   remoteAccessSession = list(
     arn = "string",
     name = "string",
@@ -152,13 +154,15 @@ A list with the following syntax:\preformatted{list(
     skipAppResign = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Specifies and starts a remote access session.
 }
 \section{Request syntax}{
-\preformatted{svc$create_remote_access_session(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_remote_access_session(
   projectArn = "string",
   deviceArn = "string",
   instanceArn = "string",
@@ -177,7 +181,7 @@ Specifies and starts a remote access session.
   interactionMode = "INTERACTIVE"|"NO_VIDEO"|"VIDEO_ONLY",
   skipAppResign = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

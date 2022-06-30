@@ -11,7 +11,9 @@ datasync_describe_location_smb(LocationArn)
 \item{LocationArn}{[required] The Amazon Resource Name (ARN) of the SMB location to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LocationArn = "string",
   LocationUri = "string",
   AgentArns = list(
@@ -26,17 +28,19 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns metadata, such as the path and user information about an SMB
 location.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_location_smb(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_location_smb(
   LocationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

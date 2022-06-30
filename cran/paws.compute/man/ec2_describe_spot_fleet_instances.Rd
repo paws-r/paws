@@ -23,7 +23,9 @@ value.}
 \item{SpotFleetRequestId}{[required] The ID of the Spot Fleet request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ActiveInstances = list(
     list(
       InstanceId = "string",
@@ -35,19 +37,21 @@ A list with the following syntax:\preformatted{list(
   NextToken = "string",
   SpotFleetRequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the running instances for the specified Spot Fleet.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_spot_fleet_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_spot_fleet_instances(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string",
   SpotFleetRequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

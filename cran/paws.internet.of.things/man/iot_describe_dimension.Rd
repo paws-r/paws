@@ -10,7 +10,9 @@ iot_describe_dimension(name)
 \item{name}{[required] The unique identifier for the dimension.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   name = "string",
   arn = "string",
   type = "TOPIC_FILTER",
@@ -24,16 +26,18 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides details about a dimension that is defined in your AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_dimension(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_dimension(
   name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

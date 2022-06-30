@@ -7,7 +7,9 @@
 new_service(metadata, handlers, cfgs = NULL)
 }
 \arguments{
-\item{metadata}{A named list of API metadata. It should look like:\preformatted{list(
+\item{metadata}{A named list of API metadata. It should look like:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   service_name = "string",
   endpoints = list("region" = list(endpoint = "endpoint", global = FALSE)),
   service_id = "string",
@@ -16,7 +18,7 @@ new_service(metadata, handlers, cfgs = NULL)
   json_version = "string",
   target_prefix = "string"
 )
-}}
+}\if{html}{\out{</div>}}}
 
 \item{handlers}{A set of handlers, e.g. from \code{new_handlers}.}
 

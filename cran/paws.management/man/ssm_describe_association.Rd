@@ -22,7 +22,9 @@ for a specific association, use
 \code{\link[=ssm_list_association_versions]{list_association_versions}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssociationDescription = list(
     Name = "string",
     InstanceId = "string",
@@ -99,7 +101,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the association for the specified target or instance. If you
@@ -110,13 +112,15 @@ then you retrieve the association by specifying the document name and
 the instance ID.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_association(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_association(
   Name = "string",
   InstanceId = "string",
   AssociationId = "string",
   AssociationVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

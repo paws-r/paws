@@ -10,10 +10,12 @@ sagemaker_delete_experiment(ExperimentName)
 \item{ExperimentName}{[required] The name of the experiment to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ExperimentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an Amazon SageMaker experiment. All trials associated with the
@@ -22,10 +24,12 @@ experiment must be deleted first. Use the
 associated with the experiment.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_experiment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_experiment(
   ExperimentName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

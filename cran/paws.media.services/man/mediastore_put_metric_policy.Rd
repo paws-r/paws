@@ -36,7 +36,9 @@ allows AWS Elemental MediaStore to send metrics to Amazon CloudWatch. It
 takes up to 20 minutes for the new policy to take effect.
 }
 \section{Request syntax}{
-\preformatted{svc$put_metric_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_metric_policy(
   ContainerName = "string",
   MetricPolicy = list(
     ContainerLevelMetrics = "ENABLED"|"DISABLED",
@@ -48,7 +50,7 @@ takes up to 20 minutes for the new policy to take effect.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

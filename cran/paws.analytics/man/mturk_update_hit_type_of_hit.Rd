@@ -23,11 +23,13 @@ with the new HITType properties. The HIT takes on the properties of the
 new HITType in place of the old ones.
 }
 \section{Request syntax}{
-\preformatted{svc$update_hit_type_of_hit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_hit_type_of_hit(
   HITId = "string",
   HITTypeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

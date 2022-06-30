@@ -14,7 +14,9 @@ chime_update_voice_connector(VoiceConnectorId, Name, RequireEncryption)
 \item{RequireEncryption}{[required] When enabled, requires encryption for the Amazon Chime Voice Connector.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VoiceConnector = list(
     VoiceConnectorId = "string",
     AwsRegion = "us-east-1"|"us-west-2",
@@ -29,18 +31,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates details for the specified Amazon Chime Voice Connector.
 }
 \section{Request syntax}{
-\preformatted{svc$update_voice_connector(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_voice_connector(
   VoiceConnectorId = "string",
   Name = "string",
   RequireEncryption = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

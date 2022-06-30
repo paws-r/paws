@@ -24,11 +24,13 @@ more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_placement_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_placement_group(
   DryRun = TRUE|FALSE,
   GroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

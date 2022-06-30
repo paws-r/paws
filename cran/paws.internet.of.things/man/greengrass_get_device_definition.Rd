@@ -10,7 +10,9 @@ greengrass_get_device_definition(DeviceDefinitionId)
 \item{DeviceDefinitionId}{[required] The ID of the device definition.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -22,16 +24,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a device definition.
 }
 \section{Request syntax}{
-\preformatted{svc$get_device_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_device_definition(
   DeviceDefinitionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

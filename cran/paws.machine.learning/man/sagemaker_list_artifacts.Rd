@@ -30,7 +30,9 @@ getting the next set of artifacts.}
 value is 10.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ArtifactSummaries = list(
     list(
       ArtifactArn = "string",
@@ -55,13 +57,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the artifacts in your account and their properties.
 }
 \section{Request syntax}{
-\preformatted{svc$list_artifacts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_artifacts(
   SourceUri = "string",
   ArtifactType = "string",
   CreatedAfter = as.POSIXct(
@@ -75,7 +79,7 @@ Lists the artifacts in your account and their properties.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

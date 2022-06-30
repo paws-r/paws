@@ -18,7 +18,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VpnConnection = list(
     CustomerGatewayConfiguration = "string",
     CustomerGatewayId = "string",
@@ -115,18 +117,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the VPN tunnel endpoint certificate.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_vpn_tunnel_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpn_tunnel_certificate(
   VpnConnectionId = "string",
   VpnTunnelOutsideIpAddress = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -29,7 +29,9 @@ If you have questions or comments related to the Data API, send email to
 \href{mailto:Rds-data-api-feedback@amazon.com}{Rds-data-api-feedback@amazon.com}.
 }
 \section{Service syntax}{
-\preformatted{svc <- rdsdataservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- rdsdataservice(
   config = list(
     credentials = list(
       creds = list(
@@ -43,7 +45,7 @@ If you have questions or comments related to the Data API, send email to
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

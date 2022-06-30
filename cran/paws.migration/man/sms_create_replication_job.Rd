@@ -42,10 +42,12 @@ If encrypted is \emph{true} but a KMS key ID is not specified, the customer's
 default KMS key for Amazon EBS is used.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   replicationJobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a replication job. The replication job schedules periodic
@@ -53,7 +55,9 @@ replication runs to replicate your server to AWS. Each replication run
 creates an Amazon Machine Image (AMI).
 }
 \section{Request syntax}{
-\preformatted{svc$create_replication_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_replication_job(
   serverId = "string",
   seedReplicationTime = as.POSIXct(
     "2015-01-01"
@@ -67,7 +71,7 @@ creates an Amazon Machine Image (AMI).
   encrypted = TRUE|FALSE,
   kmsKeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

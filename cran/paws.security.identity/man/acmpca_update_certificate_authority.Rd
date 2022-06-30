@@ -33,7 +33,9 @@ have permission to write to the bucket, then an exception is thrown. For
 more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_certificate_authority(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_certificate_authority(
   CertificateAuthorityArn = "string",
   RevocationConfiguration = list(
     CrlConfiguration = list(
@@ -45,7 +47,7 @@ more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide
   ),
   Status = "CREATING"|"PENDING_CERTIFICATE"|"ACTIVE"|"DELETED"|"DISABLED"|"EXPIRED"|"FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

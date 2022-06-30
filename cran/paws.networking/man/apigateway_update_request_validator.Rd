@@ -16,19 +16,23 @@ apigateway_update_request_validator(restApiId, requestValidatorId,
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   name = "string",
   validateRequestBody = TRUE|FALSE,
   validateRequestParameters = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a RequestValidator of a given RestApi.
 }
 \section{Request syntax}{
-\preformatted{svc$update_request_validator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_request_validator(
   restApiId = "string",
   requestValidatorId = "string",
   patchOperations = list(
@@ -40,7 +44,7 @@ Updates a RequestValidator of a given RestApi.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

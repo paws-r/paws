@@ -31,7 +31,9 @@ number of application tags includes system tags. The maximum number of
 user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationDetail = list(
     ApplicationARN = "string",
     ApplicationDescription = "string",
@@ -232,14 +234,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Kinesis Data Analytics application. For information about
 creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html}{Creating an Application}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application(
   ApplicationName = "string",
   ApplicationDescription = "string",
   RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11",
@@ -403,7 +407,7 @@ creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

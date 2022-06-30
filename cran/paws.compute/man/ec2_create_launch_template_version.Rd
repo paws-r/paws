@@ -36,7 +36,9 @@ ignored when creating a new version unless they are explicitly included.}
 \item{LaunchTemplateData}{[required] The information for the launch template.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LaunchTemplateVersion = list(
     LaunchTemplateId = "string",
     LaunchTemplateName = "string",
@@ -203,7 +205,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new version for a launch template. You can specify an existing
@@ -217,7 +219,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_launch_template_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_launch_template_version(
   DryRun = TRUE|FALSE,
   ClientToken = "string",
   LaunchTemplateId = "string",
@@ -370,7 +374,7 @@ the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

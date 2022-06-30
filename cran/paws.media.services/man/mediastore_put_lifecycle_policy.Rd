@@ -25,11 +25,13 @@ For information about how to construct an object lifecycle policy, see
 \href{https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html}{Components of an Object Lifecycle Policy}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_lifecycle_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_lifecycle_policy(
   ContainerName = "string",
   LifecyclePolicy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

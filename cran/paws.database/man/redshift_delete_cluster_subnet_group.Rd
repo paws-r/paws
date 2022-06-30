@@ -16,10 +16,12 @@ An empty list.
 Deletes the specified cluster subnet group.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cluster_subnet_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cluster_subnet_group(
   ClusterSubnetGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

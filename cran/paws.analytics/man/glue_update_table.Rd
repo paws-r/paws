@@ -28,7 +28,9 @@ An empty list.
 Updates a metadata table in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$update_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_table(
   CatalogId = "string",
   DatabaseName = "string",
   TableInput = list(
@@ -123,7 +125,7 @@ Updates a metadata table in the Data Catalog.
   ),
   SkipArchive = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

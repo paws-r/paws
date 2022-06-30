@@ -26,13 +26,15 @@ An empty list.
 Deletes a specified version of a table.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_table_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_table_version(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
   VersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

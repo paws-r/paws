@@ -36,7 +36,9 @@ timestamp.}
 timestamp.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   RecoveryPoints = list(
     list(
@@ -81,14 +83,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns detailed information about the recovery points stored in a
 backup vault.
 }
 \section{Request syntax}{
-\preformatted{svc$list_recovery_points_by_backup_vault(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_recovery_points_by_backup_vault(
   BackupVaultName = "string",
   NextToken = "string",
   MaxResults = 123,
@@ -102,7 +106,7 @@ backup vault.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -41,11 +41,13 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_delegated_administrator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_delegated_administrator(
   AccountId = "string",
   ServicePrincipal = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

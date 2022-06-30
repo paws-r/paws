@@ -22,11 +22,13 @@ Required.}
 \item{ClientRequestToken}{[required] The \code{Idempotency} token for each client request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChannelArn = "string",
   MessageId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sends a message to a particular channel that the member is a part of.
@@ -35,7 +37,9 @@ Sends a message to a particular channel that the member is a part of.
 \code{CONTROL} messages can contain 30 bytes of data and no metadata.
 }
 \section{Request syntax}{
-\preformatted{svc$send_channel_message(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_channel_message(
   ChannelArn = "string",
   Content = "string",
   Type = "STANDARD"|"CONTROL",
@@ -43,7 +47,7 @@ Sends a message to a particular channel that the member is a part of.
   Metadata = "string",
   ClientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

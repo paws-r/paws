@@ -17,10 +17,12 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReturnValue = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the instance tenancy attribute of the specified VPC. You can
@@ -36,12 +38,14 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_vpc_tenancy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpc_tenancy(
   VpcId = "string",
   InstanceTenancy = "default",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

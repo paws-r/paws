@@ -23,11 +23,13 @@ process. For more information, see
 \code{\link[=ssm_create_activation]{create_activation}}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_managed_instance_role(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_managed_instance_role(
   InstanceId = "string",
   IamRole = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,7 +17,9 @@ export descriptions returned.}
 \code{\link[=applicationdiscoveryservice_describe_export_tasks]{describe_export_tasks}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   descriptions = list(
     list(
       exportId = "string",
@@ -38,7 +40,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists exports as specified by ID. All continuous exports associated with
@@ -47,14 +49,16 @@ your user account can be listed if you call
 as is without passing any parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_continuous_exports(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_continuous_exports(
   exportIds = list(
     "string"
   ),
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,10 +23,12 @@ and the input solution was trained with the native-recipe-hrnn-coldstart
 recipe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   solutionVersionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Trains or retrains an active solution. A solution is created using the
@@ -39,8 +41,7 @@ version of the solution is created every time you call this operation.
 
 A solution version can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
+\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 }
 
 To get the status of the version, call
@@ -62,11 +63,13 @@ If the status shows as CREATE FAILED, the response includes a
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_solution_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_solution_version(
   solutionArn = "string",
   trainingMode = "FULL"|"UPDATE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

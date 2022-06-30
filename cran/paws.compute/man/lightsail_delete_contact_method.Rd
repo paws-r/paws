@@ -16,7 +16,9 @@ must run separate
 delete each protocol.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a contact method.
@@ -54,10 +56,12 @@ to some countries/regions. For more information, see Notifications in
 Amazon Lightsail.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_contact_method(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_contact_method(
   protocol = "Email"|"SMS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

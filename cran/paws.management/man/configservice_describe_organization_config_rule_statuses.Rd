@@ -20,7 +20,9 @@ default is 100.}
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OrganizationConfigRuleStatuses = list(
     list(
       OrganizationConfigRuleName = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides organization config rule deployment status for an organization.
@@ -49,14 +51,16 @@ organization config rule names. It is only applicable, when you request
 all the organization config rules.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_organization_config_rule_statuses(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_organization_config_rule_statuses(
   OrganizationConfigRuleNames = list(
     "string"
   ),
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

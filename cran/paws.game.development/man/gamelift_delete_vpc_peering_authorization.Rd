@@ -34,11 +34,13 @@ you need to delete an existing VPC peering connection, call
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vpc_peering_authorization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpc_peering_authorization(
   GameLiftAwsAccountId = "string",
   PeerVpcId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ machinelearning_create_realtime_endpoint(MLModelId)
 \item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MLModelId = "string",
   RealtimeEndpointInfo = list(
     PeakRequestsPerSecond = 123,
@@ -21,7 +23,7 @@ A list with the following syntax:\preformatted{list(
     EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a real-time endpoint for the \code{MLModel}. The endpoint contains
@@ -29,10 +31,12 @@ the URI of the \code{MLModel}; that is, the location to send real-time
 prediction requests for the specified \code{MLModel}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_realtime_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_realtime_endpoint(
   MLModelId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

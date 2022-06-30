@@ -11,7 +11,9 @@ snowball_describe_cluster(ClusterId)
 \item{ClusterId}{[required] The automatically generated ID for a cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClusterMetadata = list(
     ClusterId = "string",
     Description = "string",
@@ -67,17 +69,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a specific cluster including shipping
 information, cluster status, and other important metadata.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cluster(
   ClusterId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

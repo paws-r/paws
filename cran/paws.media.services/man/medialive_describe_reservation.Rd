@@ -10,7 +10,9 @@ medialive_describe_reservation(ReservationId)
 \item{ReservationId}{[required] Unique reservation ID, e.g. '1234567'}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   Count = 123,
   CurrencyCode = "string",
@@ -41,16 +43,18 @@ A list with the following syntax:\preformatted{list(
   ),
   UsagePrice = 123.0
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get details for a reservation.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_reservation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reservation(
   ReservationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

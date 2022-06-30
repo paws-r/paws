@@ -18,10 +18,12 @@ representable in UTF-8 format, and the following special characters: + -
 the maximum length for a tag's value is 256.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds one or more tags to the specified resource. You use tags to add
@@ -40,7 +42,9 @@ You can create a maximum of 50 tags for each resource. Virtual tapes and
 storage volumes that are recovered to a new gateway maintain their tags.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -49,7 +53,7 @@ storage volumes that are recovered to a new gateway maintain their tags.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

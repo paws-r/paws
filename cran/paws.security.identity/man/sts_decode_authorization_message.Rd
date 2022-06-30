@@ -11,10 +11,12 @@ sts_decode_authorization_message(EncodedMessage)
 \item{EncodedMessage}{[required] The encoded message that was returned with the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DecodedMessage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Decodes additional information about the authorization status of a
@@ -50,10 +52,12 @@ in the \emph{IAM User Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$decode_authorization_message(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$decode_authorization_message(
   EncodedMessage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

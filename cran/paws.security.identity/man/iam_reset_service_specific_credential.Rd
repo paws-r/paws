@@ -22,7 +22,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 that can consist of any upper or lowercased letter or digit.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceSpecificCredential = list(
     CreateDate = as.POSIXct(
       "2015-01-01"
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     Status = "Active"|"Inactive"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Resets the password for a service-specific credential. The new password
@@ -44,11 +46,13 @@ by the user. Resetting the password immediately invalidates the previous
 password associated with this user.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_service_specific_credential(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_service_specific_credential(
   UserName = "string",
   ServiceSpecificCredentialId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

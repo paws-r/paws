@@ -10,10 +10,12 @@ storagegateway_shutdown_gateway(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Shuts down a gateway. To specify which gateway to shut down, use the
@@ -45,10 +47,12 @@ If do not intend to use the gateway again, you must delete the gateway
 pay software charges associated with the gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$shutdown_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$shutdown_gateway(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

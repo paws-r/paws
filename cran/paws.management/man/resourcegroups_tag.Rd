@@ -13,13 +13,15 @@ resourcegroups_tag(Arn, Tags)
 string-to-string map of key-value pairs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds tags to a resource group with the specified ARN. Existing tags on a
@@ -39,13 +41,15 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$tag(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag(
   Arn = "string",
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -15,7 +15,9 @@ with the given Channel ID.}
 \item{NextToken}{A token used to resume pagination from the end of a previous request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   OriginEndpoints = list(
     list(
@@ -163,18 +165,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a collection of OriginEndpoint records.
 }
 \section{Request syntax}{
-\preformatted{svc$list_origin_endpoints(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_origin_endpoints(
   ChannelId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

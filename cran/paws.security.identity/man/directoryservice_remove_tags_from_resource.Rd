@@ -18,13 +18,15 @@ An empty list.
 Removes tags from a directory.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_tags_from_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_resource(
   ResourceId = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,7 +16,9 @@ of speech synthesis tasks.}
 \item{Status}{Status of the speech synthesis tasks returned in a List operation}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   SynthesisTasks = list(
     list(
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of SpeechSynthesisTask objects ordered by their creation
@@ -52,12 +54,14 @@ date. This operation can filter the tasks by their status, for example,
 allowing users to list only tasks that are completed.
 }
 \section{Request syntax}{
-\preformatted{svc$list_speech_synthesis_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_speech_synthesis_tasks(
   MaxResults = 123,
   NextToken = "string",
   Status = "scheduled"|"inProgress"|"completed"|"failed"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

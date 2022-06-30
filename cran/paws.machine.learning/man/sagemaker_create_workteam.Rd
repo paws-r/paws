@@ -45,10 +45,12 @@ and \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-allo
 in the \emph{AWS Billing and Cost Management User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WorkteamArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new work team for labeling your data. A work team is defined
@@ -58,7 +60,9 @@ pools before you can create a work team.
 You cannot create more than 25 work teams in an account and region.
 }
 \section{Request syntax}{
-\preformatted{svc$create_workteam(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_workteam(
   WorkteamName = "string",
   WorkforceName = "string",
   MemberDefinitions = list(
@@ -86,7 +90,7 @@ You cannot create more than 25 work teams in an account and region.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

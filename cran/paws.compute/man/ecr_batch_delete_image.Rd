@@ -18,7 +18,9 @@ format of the \code{imageIds} reference is \code{imageTag=tag} or
 \code{imageDigest=digest}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   imageIds = list(
     list(
       imageDigest = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a list of specified images within a repository. Images are
@@ -50,7 +52,9 @@ You can completely delete an image (and all of its tags) by specifying
 the image's digest in your request.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_delete_image(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_delete_image(
   registryId = "string",
   repositoryName = "string",
   imageIds = list(
@@ -60,7 +64,7 @@ the image's digest in your request.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

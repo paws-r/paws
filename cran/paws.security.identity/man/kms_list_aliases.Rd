@@ -38,7 +38,9 @@ with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Aliases = list(
     list(
       AliasName = "string",
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
   NextMarker = "string",
   Truncated = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of aliases in the caller's AWS account and region. For more
@@ -94,12 +96,14 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$list_aliases(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_aliases(
   KeyId = "string",
   Limit = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

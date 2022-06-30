@@ -50,8 +50,8 @@ detail keys for each identity provider type.
 oidc_issuer key}
 \item token_url \emph{if not available from discovery URL specified by
 oidc_issuer key}
-\item attributes_url \emph{if not available from discovery URL specified
-by oidc_issuer key}
+\item attributes_url \emph{if not available from discovery URL specified by
+oidc_issuer key}
 \item jwks_uri \emph{if not available from discovery URL specified by
 oidc_issuer key}
 }
@@ -68,7 +68,9 @@ pool attributes.}
 \item{IdpIdentifiers}{A list of identity provider identifiers.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityProvider = list(
     UserPoolId = "string",
     ProviderName = "string",
@@ -90,13 +92,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an identity provider for a user pool.
 }
 \section{Request syntax}{
-\preformatted{svc$create_identity_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_identity_provider(
   UserPoolId = "string",
   ProviderName = "string",
   ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
@@ -110,7 +114,7 @@ Creates an identity provider for a user pool.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

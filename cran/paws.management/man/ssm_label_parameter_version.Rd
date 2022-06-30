@@ -17,13 +17,15 @@ to the latest version.}
 \item{Labels}{[required] One or more labels to attach to the specified parameter version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InvalidLabels = list(
     "string"
   ),
   ParameterVersion = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 A parameter label is a user-defined alias to help you manage different
@@ -54,14 +56,16 @@ in the list of InvalidLabels.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$label_parameter_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$label_parameter_version(
   Name = "string",
   ParameterVersion = 123,
   Labels = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

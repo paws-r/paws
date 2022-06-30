@@ -11,23 +11,27 @@ cognitoidentityprovider_get_csv_header(UserPoolId)
 into.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserPoolId = "string",
   CSVHeader = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the header information for the .csv file to be used as input for
 the user import job.
 }
 \section{Request syntax}{
-\preformatted{svc$get_csv_header(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_csv_header(
   UserPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

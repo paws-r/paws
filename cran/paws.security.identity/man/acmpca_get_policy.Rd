@@ -12,10 +12,12 @@ policy retrieved. You can find the CA's ARN by calling the
 ListCertificateAuthorities action.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Policy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the resource-based policy attached to a private CA. If either
@@ -44,10 +46,12 @@ policies. For more information, see \href{https://docs.aws.amazon.com/acm-pca/la
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_policy(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

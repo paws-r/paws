@@ -17,10 +17,12 @@ Deprecated. Use the \code{\link[=ses_verify_email_identity]{verify_email_identit
 operation to verify a new email address.
 }
 \section{Request syntax}{
-\preformatted{svc$verify_email_address(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$verify_email_address(
   EmailAddress = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

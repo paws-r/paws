@@ -14,21 +14,25 @@ chime_update_app_instance(AppInstanceArn, Name, Metadata)
 \item{Metadata}{The metadata that you want to change.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppInstanceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates \code{AppInstance} metadata.
 }
 \section{Request syntax}{
-\preformatted{svc$update_app_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_app_instance(
   AppInstanceArn = "string",
   Name = "string",
   Metadata = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

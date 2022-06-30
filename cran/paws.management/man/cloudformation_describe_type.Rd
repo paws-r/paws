@@ -31,7 +31,9 @@ about that specific type version. Otherwise, it returns information
 about the default type version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   Type = "RESOURCE"|"MODULE",
   TypeName = "string",
@@ -56,7 +58,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns detailed information about a type that has been registered.
@@ -67,13 +69,15 @@ about that specific type version. Otherwise, it returns information
 about the default type version.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_type(
   Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   Arn = "string",
   VersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

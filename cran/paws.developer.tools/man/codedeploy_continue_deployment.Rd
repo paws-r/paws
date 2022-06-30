@@ -30,11 +30,13 @@ in the replacement environment with the load balancer, can start as soon
 as all instances have a status of Ready.)
 }
 \section{Request syntax}{
-\preformatted{svc$continue_deployment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$continue_deployment(
   deploymentId = "string",
   deploymentWaitType = "READY_WAIT"|"TERMINATION_WAIT"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

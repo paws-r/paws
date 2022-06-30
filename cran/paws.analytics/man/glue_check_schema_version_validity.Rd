@@ -13,11 +13,13 @@ supported.}
 \item{SchemaDefinition}{[required] The definition of the schema that has to be validated.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Valid = TRUE|FALSE,
   Error = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Validates the supplied schema. This call has no side effects, it simply
@@ -26,11 +28,13 @@ Since it does not take a schema set name, no compatibility checks are
 performed.
 }
 \section{Request syntax}{
-\preformatted{svc$check_schema_version_validity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$check_schema_version_validity(
   DataFormat = "AVRO",
   SchemaDefinition = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

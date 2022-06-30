@@ -20,7 +20,9 @@ certificate. If the override is removed, the default certificate is the
 system default.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Certificate = list(
     CertificateIdentifier = "string",
     CertificateType = "string",
@@ -38,7 +40,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Override the system-default Secure Sockets Layer/Transport Layer
@@ -73,11 +75,13 @@ DB engines, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGui
 in the \emph{Amazon Aurora User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_certificates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_certificates(
   CertificateIdentifier = "string",
   RemoveCustomerOverride = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

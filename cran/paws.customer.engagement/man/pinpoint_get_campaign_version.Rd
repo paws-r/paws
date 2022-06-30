@@ -16,7 +16,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{Version}{[required] The unique version number (Version property) for the campaign version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CampaignResponse = list(
     AdditionalTreatments = list(
       list(
@@ -357,19 +359,21 @@ A list with the following syntax:\preformatted{list(
     Version = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the status, configuration, and other
 settings for a specific version of a campaign.
 }
 \section{Request syntax}{
-\preformatted{svc$get_campaign_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_campaign_version(
   ApplicationId = "string",
   CampaignId = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

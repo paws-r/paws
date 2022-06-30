@@ -10,10 +10,12 @@ glue_start_ml_evaluation_task_run(TransformId)
 \item{TransformId}{[required] The unique identifier of the machine learning transform.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TaskRunId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a task to estimate the quality of the transform.
@@ -27,10 +29,12 @@ Returns a unique identifier for the run. You can call
 the stats of the \code{EvaluationTaskRun}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_ml_evaluation_task_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_ml_evaluation_task_run(
   TransformId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

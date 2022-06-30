@@ -10,7 +10,9 @@ cloudfront_create_distribution(DistributionConfig)
 \item{DistributionConfig}{[required] The distribution's configuration information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Distribution = list(
     Id = "string",
     ARN = "string",
@@ -328,7 +330,7 @@ A list with the following syntax:\preformatted{list(
   Location = "string",
   ETag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new web distribution. You create a CloudFront distribution to
@@ -346,7 +348,9 @@ the required fields. To view a summary, see \href{https://docs.aws.amazon.com/Am
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_distribution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_distribution(
   DistributionConfig = list(
     CallerReference = "string",
     Aliases = list(
@@ -616,7 +620,7 @@ in the \emph{Amazon CloudFront Developer Guide}.
     IsIPV6Enabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

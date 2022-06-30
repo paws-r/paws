@@ -24,12 +24,14 @@ Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in
 the request. You cannot use both.
 }
 \section{Request syntax}{
-\preformatted{svc$register_on_premises_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_on_premises_instance(
   instanceName = "string",
   iamSessionArn = "string",
   iamUserArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

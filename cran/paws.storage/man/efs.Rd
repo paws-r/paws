@@ -23,7 +23,9 @@ you add and remove files, so your applications have the storage they
 need, when they need it. For more information, see the \href{https://docs.aws.amazon.com/efs/latest/ug/api-reference.html}{User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- efs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- efs(
   config = list(
     credentials = list(
       creds = list(
@@ -37,7 +39,7 @@ need, when they need it. For more information, see the \href{https://docs.aws.am
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

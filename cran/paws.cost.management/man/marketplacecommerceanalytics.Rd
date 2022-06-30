@@ -19,7 +19,9 @@ Operations section.
 Provides AWS Marketplace business intelligence data on-demand.
 }
 \section{Service syntax}{
-\preformatted{svc <- marketplacecommerceanalytics(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- marketplacecommerceanalytics(
   config = list(
     credentials = list(
       creds = list(
@@ -33,7 +35,7 @@ Provides AWS Marketplace business intelligence data on-demand.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

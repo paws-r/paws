@@ -12,7 +12,9 @@ dax_reboot_node(ClusterName, NodeId)
 \item{NodeId}{[required] The system-assigned ID of the node to be rebooted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterName = "string",
     Description = "string",
@@ -68,7 +70,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Reboots a single node of a DAX cluster. The reboot action takes place as
@@ -79,11 +81,13 @@ REBOOTING.
 does not remove the contents of the cache.
 }
 \section{Request syntax}{
-\preformatted{svc$reboot_node(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_node(
   ClusterName = "string",
   NodeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

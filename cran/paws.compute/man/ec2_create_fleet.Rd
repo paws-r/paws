@@ -67,7 +67,9 @@ fails. To tag instances at launch, specify the tags in the \href{https://docs.aw
 For information about tagging after launch, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources}{Tagging your resources}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FleetId = "string",
   Errors = list(
     list(
@@ -123,7 +125,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Launches an EC2 Fleet.
@@ -136,7 +138,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_fleet(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_fleet(
   DryRun = TRUE|FALSE,
   ClientToken = "string",
   SpotOptions = list(
@@ -220,7 +224,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

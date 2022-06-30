@@ -40,7 +40,9 @@ exclude some or all of the indexes at the time of restore.}
 \item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TableDescription = list(
     AttributeDefinitions = list(
       list(
@@ -188,7 +190,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Restores the specified table to the specified point in time within
@@ -225,7 +227,9 @@ You must manually set up the following on the restored table:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$restore_table_to_point_in_time(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_table_to_point_in_time(
   SourceTableArn = "string",
   SourceTableName = "string",
   TargetTableName = "string",
@@ -282,7 +286,7 @@ You must manually set up the following on the restored table:
     KMSMasterKeyId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

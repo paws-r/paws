@@ -187,7 +187,9 @@ you must use \code{CODEBUILD} credentials.
 configuration overrides.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   buildBatch = list(
     id = "string",
     arn = "string",
@@ -412,13 +414,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a batch build for a project.
 }
 \section{Request syntax}{
-\preformatted{svc$start_build_batch(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_build_batch(
   projectName = "string",
   secondarySourcesOverride = list(
     list(
@@ -539,7 +543,7 @@ Starts a batch build for a project.
     timeoutInMins = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

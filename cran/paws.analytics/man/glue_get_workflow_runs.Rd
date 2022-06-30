@@ -16,7 +16,9 @@ glue_get_workflow_runs(Name, IncludeGraph, NextToken, MaxResults)
 \item{MaxResults}{The maximum number of workflow runs to be included in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Runs = list(
     list(
       Name = "string",
@@ -156,19 +158,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves metadata for all runs of a given workflow.
 }
 \section{Request syntax}{
-\preformatted{svc$get_workflow_runs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_workflow_runs(
   Name = "string",
   IncludeGraph = TRUE|FALSE,
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

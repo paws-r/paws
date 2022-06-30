@@ -35,11 +35,13 @@ about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_role_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_role_policy(
   RoleName = "string",
   PolicyName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

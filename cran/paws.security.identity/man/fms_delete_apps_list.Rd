@@ -19,10 +19,12 @@ An empty list.
 Permanently deletes an AWS Firewall Manager applications list.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_apps_list(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_apps_list(
   ListId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,14 +16,16 @@ whether additional CloudWatch metrics are enabled for a given CloudFront
 distribution.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MonitoringSubscription = list(
     RealtimeMetricsSubscriptionConfig = list(
       RealtimeMetricsSubscriptionStatus = "Enabled"|"Disabled"
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables additional CloudWatch metrics for the specified CloudFront
@@ -33,7 +35,9 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonCloudFront/lat
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_monitoring_subscription(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_monitoring_subscription(
   DistributionId = "string",
   MonitoringSubscription = list(
     RealtimeMetricsSubscriptionConfig = list(
@@ -41,7 +45,7 @@ in the \emph{Amazon CloudFront Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

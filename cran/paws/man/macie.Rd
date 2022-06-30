@@ -32,7 +32,9 @@ benefit from the reduced cost. To learn about features and pricing for
 the new Amazon Macie, see \href{https://aws.amazon.com/macie/}{Amazon Macie}.
 }
 \section{Service syntax}{
-\preformatted{svc <- macie(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- macie(
   config = list(
     credentials = list(
       creds = list(
@@ -46,7 +48,7 @@ the new Amazon Macie, see \href{https://aws.amazon.com/macie/}{Amazon Macie}.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

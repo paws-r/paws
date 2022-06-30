@@ -35,18 +35,22 @@ PER_TOPIC_PER_PARTITION.}
 \item{Tags}{Create tags when creating the cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClusterArn = "string",
   ClusterName = "string",
   State = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|"HEALING"|"MAINTENANCE"|"REBOOTING_BROKER"|"UPDATING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new MSK cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster(
   BrokerNodeGroupInfo = list(
     BrokerAZDistribution = "DEFAULT",
     ClientSubnets = list(
@@ -122,7 +126,7 @@ Creates a new MSK cluster.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

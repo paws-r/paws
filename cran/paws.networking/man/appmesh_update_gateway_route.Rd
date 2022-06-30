@@ -28,7 +28,9 @@ existing data.}
 with.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   gatewayRoute = list(
     gatewayRouteName = "string",
     meshName = "string",
@@ -89,14 +91,16 @@ A list with the following syntax:\preformatted{list(
     virtualGatewayName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing gateway route that is associated to a specified
 virtual gateway in a service mesh.
 }
 \section{Request syntax}{
-\preformatted{svc$update_gateway_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_gateway_route(
   clientToken = "string",
   gatewayRouteName = "string",
   meshName = "string",
@@ -141,7 +145,7 @@ virtual gateway in a service mesh.
   ),
   virtualGatewayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

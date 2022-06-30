@@ -31,7 +31,9 @@ specify 0, AWS Config uses the default.}
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   totalDiscoveredResources = 123,
   resourceCounts = list(
     list(
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the resource types, the number of each resource type, and the
@@ -85,14 +87,16 @@ resources. Wait a few minutes and then retry the
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$get_discovered_resource_counts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_discovered_resource_counts(
   resourceTypes = list(
     "string"
   ),
   limit = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

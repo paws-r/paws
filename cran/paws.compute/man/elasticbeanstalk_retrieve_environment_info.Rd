@@ -29,7 +29,9 @@ you do not specify either, AWS Elastic Beanstalk returns
 \item{InfoType}{[required] The type of information to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EnvironmentInfo = list(
     list(
       InfoType = "tail"|"bundle",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the compiled information from a
@@ -54,12 +56,14 @@ Related Topics
 }
 }
 \section{Request syntax}{
-\preformatted{svc$retrieve_environment_info(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$retrieve_environment_info(
   EnvironmentId = "string",
   EnvironmentName = "string",
   InfoType = "tail"|"bundle"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

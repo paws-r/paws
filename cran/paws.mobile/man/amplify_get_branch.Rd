@@ -12,7 +12,9 @@ amplify_get_branch(appId, branchName)
 \item{branchName}{[required] The name for the branch.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   branch = list(
     branchArn = "string",
     branchName = "string",
@@ -55,17 +57,19 @@ A list with the following syntax:\preformatted{list(
     backendEnvironmentArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a branch for an Amplify app.
 }
 \section{Request syntax}{
-\preformatted{svc$get_branch(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_branch(
   appId = "string",
   branchName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

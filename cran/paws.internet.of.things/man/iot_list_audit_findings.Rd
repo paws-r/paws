@@ -34,7 +34,9 @@ provided, the response will list both suppressed and unsuppressed
 findings.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   findings = list(
     list(
       findingId = "string",
@@ -94,7 +96,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the findings (results) of a Device Defender audit or of the audits
@@ -102,7 +104,9 @@ performed during a specified time period. (Findings are retained for 90
 days.)
 }
 \section{Request syntax}{
-\preformatted{svc$list_audit_findings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_audit_findings(
   taskId = "string",
   checkName = "string",
   resourceIdentifier = list(
@@ -128,7 +132,7 @@ days.)
   ),
   listSuppressedFindings = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

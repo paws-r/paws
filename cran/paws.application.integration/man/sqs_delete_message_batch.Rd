@@ -14,7 +14,9 @@ Queue URLs and names are case-sensitive.}
 \item{Entries}{[required] A list of receipt handles for the messages to be deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Successful = list(
     list(
       Id = "string"
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes up to ten messages from the specified queue. This is a batch
@@ -49,7 +51,9 @@ example, a parameter list with two elements looks like this:
 \verb{&AttributeName.2=second}
 }
 \section{Request syntax}{
-\preformatted{svc$delete_message_batch(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_message_batch(
   QueueUrl = "string",
   Entries = list(
     list(
@@ -58,7 +62,7 @@ example, a parameter list with two elements looks like this:
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,7 +18,9 @@ test automatic failover on up to 5 node groups in any rolling 24-hour
 period.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationGroup = list(
     ReplicationGroupId = "string",
     Description = "string",
@@ -103,7 +105,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Represents the input of a \code{\link[=elasticache_test_failover]{test_failover}}
@@ -151,11 +153,13 @@ Also see, \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Auto
 in the \emph{ElastiCache User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$test_failover(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_failover(
   ReplicationGroupId = "string",
   NodeGroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

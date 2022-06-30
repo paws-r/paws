@@ -20,7 +20,9 @@ task run.}
 task run.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TaskRuns = list(
     list(
       TransformId = "string",
@@ -60,7 +62,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of runs for a machine learning transform. Machine learning
@@ -74,7 +76,9 @@ this section.
 This operation returns a list of historic runs and must be paginated.
 }
 \section{Request syntax}{
-\preformatted{svc$get_ml_task_runs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ml_task_runs(
   TransformId = "string",
   NextToken = "string",
   MaxResults = 123,
@@ -93,7 +97,7 @@ This operation returns a list of historic runs and must be paginated.
     SortDirection = "DESCENDING"|"ASCENDING"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

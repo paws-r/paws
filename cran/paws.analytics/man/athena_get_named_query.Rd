@@ -11,7 +11,9 @@ athena_get_named_query(NamedQueryId)
 \code{\link[=athena_list_named_queries]{list_named_queries}} to get query IDs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NamedQuery = list(
     Name = "string",
     Description = "string",
@@ -21,17 +23,19 @@ A list with the following syntax:\preformatted{list(
     WorkGroup = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a single query. Requires that you have access
 to the workgroup in which the query was saved.
 }
 \section{Request syntax}{
-\preformatted{svc$get_named_query(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_named_query(
   NamedQueryId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

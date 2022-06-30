@@ -7,10 +7,12 @@
 servicecatalog_get_aws_organizations_access_status()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccessStatus = "ENABLED"|"UNDER_CHANGE"|"DISABLED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get the Access Status for AWS Organization portfolio share feature. This
@@ -18,8 +20,10 @@ API can only be called by the management account in the organization or
 by a delegated admin.
 }
 \section{Request syntax}{
-\preformatted{svc$get_aws_organizations_access_status()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_aws_organizations_access_status()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

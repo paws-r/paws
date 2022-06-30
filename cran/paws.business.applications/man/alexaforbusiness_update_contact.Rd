@@ -32,7 +32,9 @@ An empty list.
 Updates the contact details by the contact ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$update_contact(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_contact(
   ContactArn = "string",
   DisplayName = "string",
   FirstName = "string",
@@ -51,7 +53,7 @@ Updates the contact details by the contact ARN.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

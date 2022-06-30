@@ -13,7 +13,9 @@ mturk_get_qualification_score(QualificationTypeId, WorkerId)
 \item{WorkerId}{[required] The ID of the Worker whose Qualification is being updated.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Qualification = list(
     QualificationTypeId = "string",
     WorkerId = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     Status = "Granted"|"Revoked"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{\link[=mturk_get_qualification_score]{get_qualification_score}} operation
@@ -43,11 +45,13 @@ Only the owner of a Qualification type can query the value of a Worker's
 Qualification of that type.
 }
 \section{Request syntax}{
-\preformatted{svc$get_qualification_score(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_qualification_score(
   QualificationTypeId = "string",
   WorkerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

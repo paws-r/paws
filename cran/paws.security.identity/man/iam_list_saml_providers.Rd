@@ -7,7 +7,9 @@
 iam_list_saml_providers()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SAMLProviderList = list(
     list(
       Arn = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the SAML provider resource objects defined in IAM in the account.
@@ -28,8 +30,10 @@ Lists the SAML provider resource objects defined in IAM in the account.
 This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_saml_providers()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_saml_providers()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ backup_delete_backup_plan(BackupPlanId)
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupPlanId = "string",
   BackupPlanArn = "string",
   DeletionDate = as.POSIXct(
@@ -18,7 +20,7 @@ A list with the following syntax:\preformatted{list(
   ),
   VersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a backup plan. A backup plan can only be deleted after all
@@ -27,10 +29,12 @@ plan deletes the current version of a backup plan. Previous versions, if
 any, will still exist.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_backup_plan(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_backup_plan(
   BackupPlanId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

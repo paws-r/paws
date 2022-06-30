@@ -10,7 +10,9 @@ dax_delete_cluster(ClusterName)
 \item{ClusterName}{[required] The name of the cluster to be deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterName = "string",
     Description = "string",
@@ -66,7 +68,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a previously provisioned DAX cluster. \emph{DeleteCluster} deletes
@@ -75,10 +77,12 @@ you receive a successful response from this action, DAX immediately
 begins deleting the cluster; you cannot cancel or revert this action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cluster(
   ClusterName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

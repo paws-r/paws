@@ -27,7 +27,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGatewayVpcAttachment = list(
     TransitGatewayAttachmentId = "string",
     TransitGatewayId = "string",
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Attaches the specified VPC to the specified transit gateway.
@@ -66,7 +68,9 @@ To send VPC traffic to an attached transit gateway, add a route to the
 VPC route table using \code{\link[=ec2_create_route]{create_route}}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_transit_gateway_vpc_attachment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_transit_gateway_vpc_attachment(
   TransitGatewayId = "string",
   VpcId = "string",
   SubnetIds = list(
@@ -90,7 +94,7 @@ VPC route table using \code{\link[=ec2_create_route]{create_route}}.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

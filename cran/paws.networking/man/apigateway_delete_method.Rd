@@ -20,12 +20,14 @@ An empty list.
 Deletes an existing Method resource.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_method(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_method(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

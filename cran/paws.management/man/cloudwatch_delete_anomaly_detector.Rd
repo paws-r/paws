@@ -24,7 +24,9 @@ An empty list.
 Deletes the specified anomaly detection model from your account.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_anomaly_detector(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_anomaly_detector(
   Namespace = "string",
   MetricName = "string",
   Dimensions = list(
@@ -35,7 +37,7 @@ Deletes the specified anomaly detection model from your account.
   ),
   Stat = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

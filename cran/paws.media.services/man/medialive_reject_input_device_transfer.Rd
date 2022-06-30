@@ -17,10 +17,12 @@ An empty list.
 Reject the transfer of the specified input device to your AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$reject_input_device_transfer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reject_input_device_transfer(
   InputDeviceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

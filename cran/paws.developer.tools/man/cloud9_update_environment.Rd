@@ -20,12 +20,14 @@ An empty list.
 Changes the settings of an existing AWS Cloud9 development environment.
 }
 \section{Request syntax}{
-\preformatted{svc$update_environment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_environment(
   environmentId = "string",
   name = "string",
   description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

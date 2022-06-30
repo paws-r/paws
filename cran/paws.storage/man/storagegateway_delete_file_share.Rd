@@ -18,21 +18,25 @@ aborts the data upload process, and the file share enters the
 Valid Values: \code{true} | \code{false}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FileShareARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a file share from a file gateway. This operation is only
 supported for file gateways.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_file_share(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_file_share(
   FileShareARN = "string",
   ForceDelete = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

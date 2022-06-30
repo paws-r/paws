@@ -35,13 +35,15 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IndividualAssessmentNames = list(
     "string"
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides a list of individual assessments that you can specify for a new
@@ -68,7 +70,9 @@ the default list of individual assessments that you can specify in an
 assessment run for the task.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_applicable_individual_assessments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_applicable_individual_assessments(
   ReplicationTaskArn = "string",
   ReplicationInstanceArn = "string",
   SourceEngineName = "string",
@@ -77,7 +81,7 @@ assessment run for the task.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,11 +20,13 @@ form:
 \strong{CSV}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AuditReportId = "string",
   S3Key = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an audit report that lists every time that your CA private key
@@ -42,12 +44,14 @@ ACM Private CAA assets that are stored in Amazon S3 can be protected
 with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuditReport.html#audit-report-encryption}{Encrypting Your Audit Reports}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_certificate_authority_audit_report(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_certificate_authority_audit_report(
   CertificateAuthorityArn = "string",
   S3BucketName = "string",
   AuditReportResponseFormat = "JSON"|"CSV"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

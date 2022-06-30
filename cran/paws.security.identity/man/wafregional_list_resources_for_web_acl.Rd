@@ -14,12 +14,14 @@ associated resources.}
 Amazon API Gateway.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceArns = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic Regional} documentation. For more
@@ -34,11 +36,13 @@ regional and global use.
 Returns an array of resources associated with the specified web ACL.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resources_for_web_acl(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resources_for_web_acl(
   WebACLId = "string",
   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ mediaconnect_describe_flow(FlowArn)
 \item{FlowArn}{[required] The ARN of the flow that you want to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Flow = list(
     AvailabilityZone = "string",
     Description = "string",
@@ -170,7 +172,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Displays the details of a flow. The response includes the flow ARN,
@@ -178,10 +180,12 @@ name, and Availability Zone, as well as details about the source,
 outputs, and entitlements.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_flow(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_flow(
   FlowArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

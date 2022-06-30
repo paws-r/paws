@@ -25,12 +25,14 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_rds_db_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_rds_db_instance(
   RdsDbInstanceArn = "string",
   DbUser = "string",
   DbPassword = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

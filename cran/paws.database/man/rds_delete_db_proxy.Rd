@@ -10,7 +10,9 @@ rds_delete_db_proxy(DBProxyName)
 \item{DBProxyName}{[required] The name of the DB proxy to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBProxy = list(
     DBProxyName = "string",
     DBProxyArn = "string",
@@ -44,16 +46,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an existing proxy.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_db_proxy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_proxy(
   DBProxyName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

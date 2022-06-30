@@ -45,7 +45,9 @@ If the SQL statement is not part of a transaction, don't set this
 parameter.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   columnMetadata = list(
     list(
       arrayBaseColumnType = 123,
@@ -122,7 +124,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Runs a SQL statement against a database.
@@ -135,7 +137,9 @@ The response size limit is 1 MB. If the call returns more than 1 MB of
 response data, the call is terminated.
 }
 \section{Request syntax}{
-\preformatted{svc$execute_statement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$execute_statement(
   continueAfterTimeout = TRUE|FALSE,
   database = "string",
   includeResultMetadata = TRUE|FALSE,
@@ -179,7 +183,7 @@ response data, the call is terminated.
   sql = "string",
   transactionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

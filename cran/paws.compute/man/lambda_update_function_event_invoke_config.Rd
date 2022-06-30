@@ -43,7 +43,9 @@ processing.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LastModified = as.POSIXct(
     "2015-01-01"
   ),
@@ -59,7 +61,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the configuration for asynchronous invocation for a function,
@@ -69,7 +71,9 @@ To configure options for asynchronous invocation, use
 \code{\link[=lambda_put_function_event_invoke_config]{put_function_event_invoke_config}}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_function_event_invoke_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_function_event_invoke_config(
   FunctionName = "string",
   Qualifier = "string",
   MaximumRetryAttempts = 123,
@@ -83,7 +87,7 @@ To configure options for asynchronous invocation, use
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

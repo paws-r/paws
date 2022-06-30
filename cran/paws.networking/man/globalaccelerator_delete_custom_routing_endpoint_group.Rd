@@ -18,10 +18,12 @@ Delete an endpoint group from a listener for a custom routing
 accelerator.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_custom_routing_endpoint_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_custom_routing_endpoint_group(
   EndpointGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

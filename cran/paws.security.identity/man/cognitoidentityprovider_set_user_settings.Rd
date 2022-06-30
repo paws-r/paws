@@ -23,7 +23,9 @@ configure either type of MFA, use
 instead.
 }
 \section{Request syntax}{
-\preformatted{svc$set_user_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_user_settings(
   AccessToken = "string",
   MFAOptions = list(
     list(
@@ -32,7 +34,7 @@ instead.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

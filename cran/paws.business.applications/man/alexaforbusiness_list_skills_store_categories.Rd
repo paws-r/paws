@@ -12,7 +12,9 @@ alexaforbusiness_list_skills_store_categories(NextToken, MaxResults)
 \item{MaxResults}{The maximum number of categories returned, per paginated calls.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CategoryList = list(
     list(
       CategoryId = 123,
@@ -21,17 +23,19 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all categories in the Alexa skill store.
 }
 \section{Request syntax}{
-\preformatted{svc$list_skills_store_categories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_skills_store_categories(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

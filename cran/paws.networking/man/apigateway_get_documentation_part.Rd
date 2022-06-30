@@ -12,7 +12,9 @@ apigateway_get_documentation_part(restApiId, documentationPartId)
 \item{documentationPartId}{[required] [Required] The string identifier of the associated RestApi.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   location = list(
     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
@@ -23,17 +25,19 @@ A list with the following syntax:\preformatted{list(
   ),
   properties = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get documentation part
 }
 \section{Request syntax}{
-\preformatted{svc$get_documentation_part(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_documentation_part(
   restApiId = "string",
   documentationPartId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

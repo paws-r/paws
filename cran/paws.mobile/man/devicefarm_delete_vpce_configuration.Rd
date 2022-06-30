@@ -19,10 +19,12 @@ Deletes a configuration for your Amazon Virtual Private Cloud (VPC)
 endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vpce_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpce_configuration(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

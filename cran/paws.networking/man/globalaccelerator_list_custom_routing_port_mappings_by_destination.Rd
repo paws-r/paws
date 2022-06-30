@@ -21,7 +21,9 @@ this call. The default value is 10.}
 previous call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DestinationPortMappings = list(
     list(
       AcceleratorArn = "string",
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List the port mappings for a specific EC2 instance (destination) in a
@@ -55,13 +57,15 @@ where you only want to list the port mappings for a specific destination
 instance.
 }
 \section{Request syntax}{
-\preformatted{svc$list_custom_routing_port_mappings_by_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_custom_routing_port_mappings_by_destination(
   EndpointId = "string",
   DestinationAddress = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

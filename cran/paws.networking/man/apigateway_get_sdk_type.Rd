@@ -10,7 +10,9 @@ apigateway_get_sdk_type(id)
 \item{id}{[required] [Required] The identifier of the queried SdkType instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   friendlyName = "string",
   description = "string",
@@ -24,16 +26,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get sdk type
 }
 \section{Request syntax}{
-\preformatted{svc$get_sdk_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sdk_type(
   id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

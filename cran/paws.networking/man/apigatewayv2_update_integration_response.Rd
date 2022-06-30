@@ -12,8 +12,8 @@ apigatewayv2_update_integration_response(ApiId, ContentHandlingStrategy,
 \item{ApiId}{[required] The API identifier.}
 
 \item{ContentHandlingStrategy}{Supported only for WebSocket APIs. Specifies how to handle response
-payload content type conversions. Supported values are
-CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
+payload content type conversions. Supported values are CONVERT_TO_BINARY
+and CONVERT_TO_TEXT, with the following behaviors:
 
 CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 string to the corresponding binary blob.
@@ -52,7 +52,9 @@ template as the value.}
 Supported only for WebSocket APIs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
   IntegrationResponseId = "string",
   IntegrationResponseKey = "string",
@@ -64,13 +66,15 @@ A list with the following syntax:\preformatted{list(
   ),
   TemplateSelectionExpression = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an IntegrationResponses.
 }
 \section{Request syntax}{
-\preformatted{svc$update_integration_response(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_integration_response(
   ApiId = "string",
   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
   IntegrationId = "string",
@@ -84,7 +88,7 @@ Updates an IntegrationResponses.
   ),
   TemplateSelectionExpression = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

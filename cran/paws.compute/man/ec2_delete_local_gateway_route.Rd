@@ -19,7 +19,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Route = list(
     DestinationCidrBlock = "string",
     LocalGatewayVirtualInterfaceGroupId = "string",
@@ -30,19 +32,21 @@ A list with the following syntax:\preformatted{list(
     OwnerId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified route from the specified local gateway route
 table.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_local_gateway_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_local_gateway_route(
   DestinationCidrBlock = "string",
   LocalGatewayRouteTableId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

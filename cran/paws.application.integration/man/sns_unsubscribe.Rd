@@ -25,10 +25,12 @@ request was unintended.
 This action is throttled at 100 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{svc$unsubscribe(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unsubscribe(
   SubscriptionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

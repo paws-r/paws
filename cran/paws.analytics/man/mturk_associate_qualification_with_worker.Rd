@@ -49,13 +49,15 @@ already has, reject the request with the
 operation.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_qualification_with_worker(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_qualification_with_worker(
   QualificationTypeId = "string",
   WorkerId = "string",
   IntegerValue = 123,
   SendNotification = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

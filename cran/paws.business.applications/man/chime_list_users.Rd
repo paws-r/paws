@@ -19,7 +19,9 @@ chime_list_users(AccountId, UserEmail, UserType, MaxResults, NextToken)
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Users = list(
     list(
       UserId = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the users that belong to the specified Amazon Chime account. You
@@ -54,14 +56,16 @@ can specify an email address to list only the user that the email
 address belongs to.
 }
 \section{Request syntax}{
-\preformatted{svc$list_users(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_users(
   AccountId = "string",
   UserEmail = "string",
   UserType = "PrivateUser"|"SharedDevice",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

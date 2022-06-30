@@ -20,10 +20,12 @@ delete model artifacts, inference code, or the IAM role that you
 specified when creating the model.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_model(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_model(
   ModelName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

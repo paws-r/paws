@@ -189,7 +189,9 @@ you must use \code{CODEBUILD} credentials.
 information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html}{Viewing a running build in Session Manager}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   build = list(
     id = "string",
     arn = "string",
@@ -378,13 +380,15 @@ A list with the following syntax:\preformatted{list(
     buildBatchArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts running a build.
 }
 \section{Request syntax}{
-\preformatted{svc$start_build(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_build(
   projectName = "string",
   secondarySourcesOverride = list(
     list(
@@ -499,7 +503,7 @@ Starts running a build.
   imagePullCredentialsTypeOverride = "CODEBUILD"|"SERVICE_ROLE",
   debugSessionEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

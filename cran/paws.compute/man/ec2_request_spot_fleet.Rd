@@ -15,10 +15,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{SpotFleetRequestConfig}{[required] The configuration for the Spot Fleet request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SpotFleetRequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Spot Fleet request.
@@ -51,7 +53,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Request syntax}{
-\preformatted{svc$request_spot_fleet(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$request_spot_fleet(
   DryRun = TRUE|FALSE,
   SpotFleetRequestConfig = list(
     AllocationStrategy = "lowestPrice"|"diversified"|"capacityOptimized",
@@ -221,7 +225,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

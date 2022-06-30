@@ -17,7 +17,9 @@ appsync_update_api_key(apiId, id, description, expires)
 represented as seconds since the epoch. For more information, see .}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   apiKey = list(
     id = "string",
     description = "string",
@@ -25,19 +27,21 @@ A list with the following syntax:\preformatted{list(
     deletes = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an API key. The key can be updated while it is not deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$update_api_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_api_key(
   apiId = "string",
   id = "string",
   description = "string",
   expires = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

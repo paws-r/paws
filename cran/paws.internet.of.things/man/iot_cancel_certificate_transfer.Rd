@@ -27,10 +27,12 @@ After a certificate transfer is cancelled, the status of the certificate
 changes from PENDING_TRANSFER to INACTIVE.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_certificate_transfer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_certificate_transfer(
   certificateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

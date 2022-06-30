@@ -21,12 +21,14 @@ An empty list.
 Associates a phone number with the specified Amazon Chime user.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_phone_number_with_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_phone_number_with_user(
   AccountId = "string",
   UserId = "string",
   E164PhoneNumber = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

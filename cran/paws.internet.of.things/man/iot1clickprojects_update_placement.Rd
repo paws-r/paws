@@ -23,14 +23,16 @@ Updates a placement with the given attributes. To clear an attribute,
 pass an empty value (i.e., "").
 }
 \section{Request syntax}{
-\preformatted{svc$update_placement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_placement(
   placementName = "string",
   projectName = "string",
   attributes = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

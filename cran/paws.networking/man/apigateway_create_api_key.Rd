@@ -31,7 +31,9 @@ SaaS Marketplace.}
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   value = "string",
   name = "string",
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create an ApiKey resource.<div class="seeAlso">
@@ -60,7 +62,9 @@ Create an ApiKey resource.<div class="seeAlso">
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html}{AWS CLI}</div>
 }
 \section{Request syntax}{
-\preformatted{svc$create_api_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_api_key(
   name = "string",
   description = "string",
   enabled = TRUE|FALSE,
@@ -77,7 +81,7 @@ Create an ApiKey resource.<div class="seeAlso">
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

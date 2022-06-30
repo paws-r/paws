@@ -11,7 +11,9 @@ sagemaker_describe_model_package(ModelPackageName)
 \item{ModelPackageName}{[required] The name of the model package to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ModelPackageName = "string",
   ModelPackageGroupName = "string",
   ModelPackageVersion = 123,
@@ -169,7 +171,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ApprovalDescription = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a description of the specified model package, which is used to
@@ -179,10 +181,12 @@ To create models in Amazon SageMaker, buyers can subscribe to model
 packages listed on AWS Marketplace.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_model_package(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_model_package(
   ModelPackageName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

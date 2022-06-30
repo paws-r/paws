@@ -21,10 +21,12 @@ Deletes the specified IAM group. The group must not contain any users or
 have any attached policies.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_group(
   GroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

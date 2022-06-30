@@ -18,7 +18,9 @@ existing pipeline definition.}
 \item{parameterValues}{The parameter values used with the pipeline.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   validationErrors = list(
     list(
       id = "string",
@@ -37,7 +39,7 @@ A list with the following syntax:\preformatted{list(
   ),
   errored = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds tasks, schedules, and preconditions to the specified pipeline. You
@@ -64,7 +66,9 @@ and returned by the
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$put_pipeline_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_pipeline_definition(
   pipelineId = "string",
   pipelineObjects = list(
     list(
@@ -97,7 +101,7 @@ action.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

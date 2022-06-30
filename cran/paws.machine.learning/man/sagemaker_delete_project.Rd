@@ -16,10 +16,12 @@ An empty list.
 Delete the specified project.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_project(
   ProjectName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

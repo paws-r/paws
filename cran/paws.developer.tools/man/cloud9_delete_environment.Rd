@@ -17,10 +17,12 @@ Deletes an AWS Cloud9 development environment. If an Amazon EC2 instance
 is connected to the environment, also terminates the instance.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_environment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_environment(
   environmentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

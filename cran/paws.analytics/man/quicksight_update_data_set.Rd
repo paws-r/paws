@@ -32,7 +32,9 @@ Currently, only geospatial hierarchy is supported.}
 \item{ColumnLevelPermissionRules}{A set of one or more definitions of a \code{ColumnLevelPermissionRule}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   DataSetId = "string",
   IngestionArn = "string",
@@ -40,13 +42,15 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a dataset.
 }
 \section{Request syntax}{
-\preformatted{svc$update_data_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_data_set(
   AwsAccountId = "string",
   DataSetId = "string",
   Name = "string",
@@ -182,7 +186,7 @@ Updates a dataset.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,7 +18,9 @@ the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
 The default is 64512.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   directConnectGateway = list(
     directConnectGatewayId = "string",
     directConnectGatewayName = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     stateChangeError = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Direct Connect gateway, which is an intermediate object that
@@ -41,11 +43,13 @@ Region, regardless of the Region in which the virtual interfaces are
 located, and pass traffic between them.
 }
 \section{Request syntax}{
-\preformatted{svc$create_direct_connect_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_direct_connect_gateway(
   directConnectGatewayName = "string",
   amazonSideAsn = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

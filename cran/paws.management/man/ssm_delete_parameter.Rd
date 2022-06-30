@@ -16,10 +16,12 @@ An empty list.
 Delete a parameter from the system.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_parameter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_parameter(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

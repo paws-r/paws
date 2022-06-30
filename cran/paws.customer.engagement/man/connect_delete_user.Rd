@@ -22,11 +22,13 @@ is deleted, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/dele
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user(
   InstanceId = "string",
   UserId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

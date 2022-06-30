@@ -11,7 +11,9 @@ lightsail_get_instance(instanceName)
 \item{instanceName}{[required] The name of the instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   instance = list(
     name = "string",
     arn = "string",
@@ -117,17 +119,19 @@ A list with the following syntax:\preformatted{list(
     sshKeyName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a specific Amazon Lightsail instance, which is
 a virtual private server.
 }
 \section{Request syntax}{
-\preformatted{svc$get_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_instance(
   instanceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

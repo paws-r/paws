@@ -17,10 +17,12 @@ your account ID, do not include any hyphens ('-') in the ID.}
 \item{vaultName}{[required] The name of the vault.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   location = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation creates a new vault with the specified name. The name of
@@ -47,11 +49,13 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.htm
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_vault(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vault(
   accountId = "string",
   vaultName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

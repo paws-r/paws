@@ -3300,8 +3300,8 @@ devicefarm_list_device_pools <- function(arn, type = NULL, nextToken = NULL) {
 #' 
 #'     -   MANUFACTURER: The device manufacturer (for example, Apple).
 #' 
-#'     -   REMOTE_ACCESS_ENABLED: Whether the device is enabled for
-#'         remote access. Valid values are TRUE or FALSE.
+#'     -   REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote
+#'         access. Valid values are TRUE or FALSE.
 #' 
 #'     -   REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
 #'         debugging. Valid values are TRUE or FALSE. Because remote

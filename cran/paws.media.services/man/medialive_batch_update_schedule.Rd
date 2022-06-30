@@ -14,7 +14,9 @@ medialive_batch_update_schedule(ChannelId, Creates, Deletes)
 \item{Deletes}{Schedule actions to delete from the schedule.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Creates = list(
     ScheduleActions = list(
       list(
@@ -250,13 +252,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Update a channel schedule
 }
 \section{Request syntax}{
-\preformatted{svc$batch_update_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_update_schedule(
   ChannelId = "string",
   Creates = list(
     ScheduleActions = list(
@@ -381,7 +385,7 @@ Update a channel schedule
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

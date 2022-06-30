@@ -18,17 +18,17 @@ NULL
 #' Service API Reference*:
 #' 
 #' -   [AWS Storage Gateway required request
-#'     headers](https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders):
+#'     headers](https://docs.aws.amazon.com/storagegateway/index.html#AWSStorageGatewayHTTPRequestsHeaders):
 #'     Describes the required headers that you must send with every POST
 #'     request to AWS Storage Gateway.
 #' 
 #' -   [Signing
-#'     requests](https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests):
+#'     requests](https://docs.aws.amazon.com/storagegateway/index.html#AWSStorageGatewaySigningRequests):
 #'     AWS Storage Gateway requires that you authenticate every request you
 #'     send; this topic describes how sign such a request.
 #' 
 #' -   [Error
-#'     responses](https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses):
+#'     responses](https://docs.aws.amazon.com/storagegateway/index.html#APIErrorResponses):
 #'     Provides reference information about AWS Storage Gateway errors.
 #' 
 #' -   [Operations in AWS Storage
@@ -66,9 +66,8 @@ NULL
 #' A snapshot ID with the longer ID format looks like the following:
 #' `snap-78e226633445566ee`.
 #' 
-#' For more information, see [Announcement: Heads-up – Longer AWS Storage
-#' Gateway volume and snapshot IDs coming in
-#' 2016](https://forums.aws.amazon.com:443/ann.jspa?annID=3557).
+#' For more information, see Announcement: Heads-up – Longer AWS Storage
+#' Gateway volume and snapshot IDs coming in 2016.
 #'
 #' @param
 #' config

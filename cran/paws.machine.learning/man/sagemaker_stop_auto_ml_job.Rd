@@ -16,10 +16,12 @@ An empty list.
 A method for forcing the termination of a running job.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_auto_ml_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_auto_ml_job(
   AutoMLJobName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

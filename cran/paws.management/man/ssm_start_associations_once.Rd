@@ -17,12 +17,14 @@ Use this API action to run an association immediately and only one time.
 This action can be helpful when troubleshooting associations.
 }
 \section{Request syntax}{
-\preformatted{svc$start_associations_once(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_associations_once(
   AssociationIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

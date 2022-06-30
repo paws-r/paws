@@ -36,7 +36,9 @@ An empty list.
 Updates the metadata associated with a task.
 }
 \section{Request syntax}{
-\preformatted{svc$update_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_task(
   TaskArn = "string",
   Options = list(
     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
@@ -65,7 +67,7 @@ Updates the metadata associated with a task.
   Name = "string",
   CloudWatchLogGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

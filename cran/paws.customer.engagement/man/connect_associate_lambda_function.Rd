@@ -24,11 +24,13 @@ Allows the specified Amazon Connect instance to access the specified
 Lambda function.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_lambda_function(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_lambda_function(
   InstanceId = "string",
   FunctionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ returned by \code{\link[=waf_create_web_acl]{create_web_acl}} and by
 \code{\link[=waf_list_web_ac_ls]{list_web_ac_ls}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WebACL = list(
     WebACLId = "string",
     Name = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
     WebACLArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -56,10 +58,12 @@ regional and global use.
 Returns the WebACL that is specified by \code{WebACLId}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_web_acl(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_web_acl(
   WebACLId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

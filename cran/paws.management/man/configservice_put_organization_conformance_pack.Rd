@@ -37,10 +37,12 @@ information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/
 pack while deploying a conformance pack.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OrganizationConformancePackArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deploys conformance packs across member accounts in an AWS Organization.
@@ -67,14 +69,16 @@ parameter, but not both. If you provide both AWS Config uses the
 \code{TemplateS3Uri} parameter and ignores the \code{TemplateBody} parameter.
 
 AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS
-and UPDATE_IN_PROGRESS until the conformance pack is created or
-updated. You cannot update a conformance pack while it is in this state.
+and UPDATE_IN_PROGRESS until the conformance pack is created or updated.
+You cannot update a conformance pack while it is in this state.
 
 You can create 6 conformance packs with 25 AWS Config rules in each pack
 and 3 delegated administrator per organization.
 }
 \section{Request syntax}{
-\preformatted{svc$put_organization_conformance_pack(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_organization_conformance_pack(
   OrganizationConformancePackName = "string",
   TemplateS3Uri = "string",
   TemplateBody = "string",
@@ -90,7 +94,7 @@ and 3 delegated administrator per organization.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

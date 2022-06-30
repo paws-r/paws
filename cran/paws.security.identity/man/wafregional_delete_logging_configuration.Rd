@@ -26,10 +26,12 @@ regional and global use.
 Permanently deletes the LoggingConfiguration from the specified web ACL.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_logging_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_logging_configuration(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

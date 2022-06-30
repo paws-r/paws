@@ -19,7 +19,9 @@ the value also maps to the ''LatestVersion'' property of the
 corresponding ''DefinitionInformation'' object.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Definition = list(
@@ -72,18 +74,20 @@ A list with the following syntax:\preformatted{list(
   Id = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a resource definition version, including
 which resources are included in the version.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resource_definition_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resource_definition_version(
   ResourceDefinitionId = "string",
   ResourceDefinitionVersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

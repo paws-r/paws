@@ -32,7 +32,9 @@ assessed risk level of sign in attempts, disable MFA for users and turn
 on Adaptive Authentication for the user pool.
 }
 \section{Request syntax}{
-\preformatted{svc$set_user_mfa_preference(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_user_mfa_preference(
   SMSMfaSettings = list(
     Enabled = TRUE|FALSE,
     PreferredMfa = TRUE|FALSE
@@ -43,7 +45,7 @@ on Adaptive Authentication for the user pool.
   ),
   AccessToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

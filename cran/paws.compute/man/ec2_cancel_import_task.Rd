@@ -17,23 +17,27 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ImportTaskId}{The ID of the import image or import snapshot task to be canceled.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ImportTaskId = "string",
   PreviousState = "string",
   State = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels an in-process import virtual machine or import snapshot task.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_import_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_import_task(
   CancelReason = "string",
   DryRun = TRUE|FALSE,
   ImportTaskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

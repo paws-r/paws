@@ -86,7 +86,9 @@ request and specify the \code{NextToken} parameter, you must use the same
 value for \code{SortOrder}, if any, as in the previous request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   TotalCount = 123,
   TotalFilteredCount = 123,
@@ -105,7 +107,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists information about the specified query logging configurations. Each
@@ -113,7 +115,9 @@ configuration defines where you want Resolver to save DNS query logs and
 specifies the VPCs that you want to log queries for.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resolver_query_log_configs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resolver_query_log_configs(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(
@@ -127,7 +131,7 @@ specifies the VPCs that you want to log queries for.
   SortBy = "string",
   SortOrder = "ASCENDING"|"DESCENDING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

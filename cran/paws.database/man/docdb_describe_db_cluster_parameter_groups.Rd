@@ -32,7 +32,9 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   DBClusterParameterGroups = list(
     list(
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of \code{DBClusterParameterGroup} descriptions. If a
@@ -51,7 +53,9 @@ Returns a list of \code{DBClusterParameterGroup} descriptions. If a
 only the description of the specified cluster parameter group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_db_cluster_parameter_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_cluster_parameter_groups(
   DBClusterParameterGroupName = "string",
   Filters = list(
     list(
@@ -64,7 +68,7 @@ only the description of the specified cluster parameter group.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

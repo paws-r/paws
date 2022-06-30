@@ -16,7 +16,9 @@ the returned \code{NextToken} value.}
 \item{vmServerAddressList}{The server addresses.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   lastModifiedOn = as.POSIXct(
     "2015-01-01"
   ),
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the servers in your server catalog.
@@ -50,7 +52,9 @@ Before you can describe your servers, you must import them using
 \code{\link[=sms_import_server_catalog]{import_server_catalog}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_servers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_servers(
   nextToken = "string",
   maxResults = 123,
   vmServerAddressList = list(
@@ -60,7 +64,7 @@ Before you can describe your servers, you must import them using
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

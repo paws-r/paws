@@ -15,7 +15,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceMonitorings = list(
     list(
       InstanceId = "string",
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables detailed monitoring for a running instance. Otherwise, basic
@@ -35,13 +37,15 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 To disable detailed monitoring, see .
 }
 \section{Request syntax}{
-\preformatted{svc$monitor_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$monitor_instances(
   InstanceIds = list(
     "string"
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

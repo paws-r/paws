@@ -14,7 +14,9 @@ If you specify the check ID of a check that is automatically refreshed,
 you might see an \code{InvalidParameterValue} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   statuses = list(
     list(
       checkId = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the refresh status of the AWS Trusted Advisor checks that have
@@ -46,12 +48,14 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_trusted_advisor_check_refresh_statuses(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_trusted_advisor_check_refresh_statuses(
   checkIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

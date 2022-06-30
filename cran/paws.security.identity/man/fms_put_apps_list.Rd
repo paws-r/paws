@@ -12,7 +12,9 @@ fms_put_apps_list(AppsList, TagList)
 \item{TagList}{The tags associated with the resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppsList = list(
     ListId = "string",
     ListName = "string",
@@ -42,13 +44,15 @@ A list with the following syntax:\preformatted{list(
   ),
   AppsListArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS Firewall Manager applications list.
 }
 \section{Request syntax}{
-\preformatted{svc$put_apps_list(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_apps_list(
   AppsList = list(
     ListId = "string",
     ListName = "string",
@@ -83,7 +87,7 @@ Creates an AWS Firewall Manager applications list.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

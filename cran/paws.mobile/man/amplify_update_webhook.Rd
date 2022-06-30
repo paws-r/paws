@@ -14,7 +14,9 @@ amplify_update_webhook(webhookId, branchName, description)
 \item{description}{The description for a webhook.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   webhook = list(
     webhookArn = "string",
     webhookId = "string",
@@ -29,18 +31,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a webhook.
 }
 \section{Request syntax}{
-\preformatted{svc$update_webhook(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_webhook(
   webhookId = "string",
   branchName = "string",
   description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

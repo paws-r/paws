@@ -35,7 +35,9 @@ A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Group = list(
     GroupArn = "string",
     Name = "string",
@@ -79,7 +81,7 @@ A list with the following syntax:\preformatted{list(
     FailureReason = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a resource group with the specified name and description. You
@@ -95,7 +97,9 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_group(
   Name = "string",
   Description = "string",
   ResourceQuery = list(
@@ -119,7 +123,7 @@ To run this command, you must have the following permissions:
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

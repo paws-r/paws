@@ -15,7 +15,9 @@ ssm_update_association_status(Name, InstanceId, AssociationStatus)
 \item{AssociationStatus}{[required] The association status.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssociationDescription = list(
     Name = "string",
     InstanceId = "string",
@@ -92,14 +94,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the status of the Systems Manager document associated with the
 specified instance.
 }
 \section{Request syntax}{
-\preformatted{svc$update_association_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_association_status(
   Name = "string",
   InstanceId = "string",
   AssociationStatus = list(
@@ -111,7 +115,7 @@ specified instance.
     AdditionalInfo = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

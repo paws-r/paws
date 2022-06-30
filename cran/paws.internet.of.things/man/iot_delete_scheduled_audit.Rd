@@ -16,10 +16,12 @@ An empty list.
 Deletes a scheduled audit.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_scheduled_audit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_scheduled_audit(
   scheduledAuditName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

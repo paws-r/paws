@@ -20,7 +20,9 @@ value.}
 \item{NextToken}{The token for the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ByoipCidrs = list(
     list(
       Cidr = "string",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the IP address ranges that were specified in calls to
@@ -43,12 +45,14 @@ address ranges, use
 \code{\link[=ec2_describe_ipv_6_pools]{describe_ipv_6_pools}}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_byoip_cidrs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_byoip_cidrs(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

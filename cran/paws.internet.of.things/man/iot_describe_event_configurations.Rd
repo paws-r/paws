@@ -7,7 +7,9 @@
 iot_describe_event_configurations()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   eventConfigurations = list(
     list(
       Enabled = TRUE|FALSE
@@ -20,14 +22,16 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes event configurations.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_event_configurations()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_configurations()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

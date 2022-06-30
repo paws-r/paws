@@ -29,10 +29,12 @@ After 90 days, deleted accounts are permanently removed from your
 \code{Disabled} accounts list.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_account(
   AccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

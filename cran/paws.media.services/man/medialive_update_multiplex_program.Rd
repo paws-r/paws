@@ -15,7 +15,9 @@ medialive_update_multiplex_program(MultiplexId,
 \item{ProgramName}{[required] The name of the program to update.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MultiplexProgram = list(
     ChannelId = "string",
     MultiplexProgramSettings = list(
@@ -66,13 +68,15 @@ A list with the following syntax:\preformatted{list(
     ProgramName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Update a program in a multiplex.
 }
 \section{Request syntax}{
-\preformatted{svc$update_multiplex_program(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_multiplex_program(
   MultiplexId = "string",
   MultiplexProgramSettings = list(
     PreferredChannelPipeline = "CURRENTLY_ACTIVE"|"PIPELINE_0"|"PIPELINE_1",
@@ -92,7 +96,7 @@ Update a program in a multiplex.
   ),
   ProgramName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

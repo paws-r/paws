@@ -25,7 +25,9 @@ AWS SMS, see the following resources:
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- sms(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sms(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +41,7 @@ AWS SMS, see the following resources:
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

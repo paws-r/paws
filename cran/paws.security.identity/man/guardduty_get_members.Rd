@@ -15,7 +15,9 @@ want to retrieve.}
 describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Members = list(
     list(
       AccountId = "string",
@@ -34,20 +36,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves GuardDuty member accounts (of the current GuardDuty
 administrator account) specified by the account IDs.
 }
 \section{Request syntax}{
-\preformatted{svc$get_members(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_members(
   DetectorId = "string",
   AccountIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

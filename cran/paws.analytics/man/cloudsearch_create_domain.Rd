@@ -13,7 +13,9 @@ a letter or number and be at least 3 and no more than 28 characters
 long.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainStatus = list(
     DomainId = "string",
     DomainName = "string",
@@ -37,17 +39,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
-Creates a new search domain. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html}{Creating a Search Domain}
-in the \emph{Amazon CloudSearch Developer Guide}.
+Creates a new search domain. For more information, see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html"
+target="_blank">Creating a Search Domain</a> in the \emph{Amazon CloudSearch
+Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_domain(
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

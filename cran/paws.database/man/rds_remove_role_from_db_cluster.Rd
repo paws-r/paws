@@ -30,12 +30,14 @@ in the \emph{Amazon Aurora User Guide}.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_role_from_db_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_role_from_db_cluster(
   DBClusterIdentifier = "string",
   RoleArn = "string",
   FeatureName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -145,7 +145,9 @@ default to \code{ENABLED} for newly created user pool clients if no value is
 provided.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserPoolClient = list(
     UserPoolId = "string",
     ClientName = "string",
@@ -201,7 +203,7 @@ A list with the following syntax:\preformatted{list(
     PreventUserExistenceErrors = "LEGACY"|"ENABLED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the specified user pool app client with the specified
@@ -213,7 +215,9 @@ If you don't provide a value for an attribute, it will be set to the
 default value.
 }
 \section{Request syntax}{
-\preformatted{svc$update_user_pool_client(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_pool_client(
   UserPoolId = "string",
   ClientId = "string",
   ClientName = "string",
@@ -260,7 +264,7 @@ default value.
   ),
   PreventUserExistenceErrors = "LEGACY"|"ENABLED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

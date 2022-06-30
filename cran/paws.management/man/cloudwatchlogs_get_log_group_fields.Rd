@@ -19,7 +19,9 @@ The \code{time} value is specified as epoch time, the number of seconds since
 January 1, 1970, 00:00:00 UTC.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   logGroupFields = list(
     list(
       name = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the fields that are included in log events in the
@@ -44,11 +46,13 @@ The response results are sorted by the frequency percentage, starting
 with the highest percentage.
 }
 \section{Request syntax}{
-\preformatted{svc$get_log_group_fields(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_log_group_fields(
   logGroupName = "string",
   time = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

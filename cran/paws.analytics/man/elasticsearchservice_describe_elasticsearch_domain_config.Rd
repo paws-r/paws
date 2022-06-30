@@ -12,7 +12,9 @@ elasticsearchservice_describe_elasticsearch_domain_config(DomainName)
 \item{DomainName}{[required] The Elasticsearch domain that you want to get information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainConfig = list(
     ElasticsearchVersion = list(
       Options = "string",
@@ -265,7 +267,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides cluster configuration information about the specified
@@ -273,10 +275,12 @@ Elasticsearch domain, such as the state, creation date, update version,
 and update date for cluster options.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_elasticsearch_domain_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_elasticsearch_domain_config(
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -81,7 +81,9 @@ object redirect. For more information, see \href{https://docs.aws.amazon.com/Ama
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_website(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_website(
   Bucket = "string",
   ContentMD5 = "string",
   WebsiteConfiguration = list(
@@ -113,7 +115,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
   ),
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -17,7 +17,9 @@ configservice_select_resource_config(Expression, Limit, NextToken)
 request the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Results = list(
     "string"
   ),
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Accepts a structured query language (SQL) \code{SELECT} command, performs the
@@ -41,12 +43,14 @@ For more information about query components, see the \href{https://docs.aws.amaz
 section in the AWS Config Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$select_resource_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$select_resource_config(
   Expression = "string",
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ requested.
 Must be the ARN of an Elastic Beanstalk resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceArn = "string",
   ResourceTags = list(
     list(
@@ -22,7 +24,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Return the tags applied to an AWS Elastic Beanstalk resource. The
@@ -32,10 +34,12 @@ Elastic Beanstalk supports tagging of all of its resources. For details
 about resource tagging, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html}{Tagging Application Resources}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

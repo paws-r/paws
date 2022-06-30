@@ -29,7 +29,9 @@ specific date and time.}
 canceled on or before a specific date and time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tasks = list(
     list(
       taskId = "string",
@@ -41,14 +43,16 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of audit mitigation action tasks that match the specified
 filters.
 }
 \section{Request syntax}{
-\preformatted{svc$list_audit_mitigation_actions_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_audit_mitigation_actions_tasks(
   auditTaskId = "string",
   findingId = "string",
   taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
@@ -61,7 +65,7 @@ filters.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

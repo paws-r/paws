@@ -21,12 +21,14 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RoleName = "string",
   PolicyName = "string",
   PolicyDocument = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the specified inline policy document that is embedded with the
@@ -50,11 +52,13 @@ in the \emph{IAM User Guide}.
 For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Using Roles to Delegate Permissions and Federate Identities}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_role_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_role_policy(
   RoleName = "string",
   PolicyName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

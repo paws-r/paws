@@ -11,8 +11,7 @@ mediastoredata_put_object(Body, Path, ContentType, CacheControl,
 \item{Body}{[required] The bytes to be stored.}
 
 \item{Path}{[required] The path (including the file name) where the object is stored in the
-container. Format: <folder name>/<folder name>/<file
-name>
+container. Format: \<folder name\>/\<folder name\>/\<file name\>
 
 For example, to upload the file \code{mlaw.avi} to the folder path
 \verb{premium\\canada} in the container \code{movies}, enter the path
@@ -61,12 +60,14 @@ To use this header, you must also set the HTTP \code{Transfer-Encoding}
 header to \code{chunked}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContentSHA256 = "string",
   ETag = "string",
   StorageClass = "TEMPORAL"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Uploads an object to the specified path. Object sizes are limited to 25
@@ -74,7 +75,9 @@ MB for standard upload availability and 10 MB for streaming upload
 availability.
 }
 \section{Request syntax}{
-\preformatted{svc$put_object(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_object(
   Body = raw,
   Path = "string",
   ContentType = "string",
@@ -82,7 +85,7 @@ availability.
   StorageClass = "TEMPORAL",
   UploadAvailability = "STANDARD"|"STREAMING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

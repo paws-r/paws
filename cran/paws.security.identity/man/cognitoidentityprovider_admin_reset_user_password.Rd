@@ -62,14 +62,16 @@ the end user with the code to change their password.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$admin_reset_user_password(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_reset_user_password(
   UserPoolId = "string",
   Username = "string",
   ClientMetadata = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -94,7 +94,9 @@ Valid values: \code{Windows} | \code{Linux}}
 \item{TagSpecifications}{The tags to apply to the image being imported.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Architecture = "string",
   Description = "string",
   Encrypted = TRUE|FALSE,
@@ -136,7 +138,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Import single or multi-volume disk images or EBS snapshots into an
@@ -144,7 +146,9 @@ Amazon Machine Image (AMI). For more information, see \href{https://docs.aws.ama
 in the \emph{VM Import/Export User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$import_image(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_image(
   Architecture = "string",
   ClientData = list(
     Comment = "string",
@@ -195,7 +199,7 @@ in the \emph{VM Import/Export User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

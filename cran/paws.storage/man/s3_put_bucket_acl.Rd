@@ -165,7 +165,9 @@ in the AWS General Reference.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_acl(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_acl(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
   AccessControlPolicy = list(
     Grants = list(
@@ -194,7 +196,7 @@ in the AWS General Reference.
   GrantWriteACP = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -19,7 +19,9 @@ Use the \code{\link[=lightsail_get_distribution_bundles]{get_distribution_bundle
 action to get a list of distribution bundle IDs that you can specify.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -42,7 +44,7 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the bundle of your Amazon Lightsail content delivery network
@@ -62,11 +64,13 @@ distribution's bundle, use the
 can currently update your distribution's bundle.
 }
 \section{Request syntax}{
-\preformatted{svc$update_distribution_bundle(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_distribution_bundle(
   distributionName = "string",
   bundleId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

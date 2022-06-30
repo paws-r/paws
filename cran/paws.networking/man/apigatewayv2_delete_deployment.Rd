@@ -18,11 +18,13 @@ An empty list.
 Deletes a Deployment.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_deployment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_deployment(
   ApiId = "string",
   DeploymentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

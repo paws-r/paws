@@ -13,7 +13,9 @@ quicksight_describe_data_source_permissions(AwsAccountId, DataSourceId)
 account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DataSourceArn = "string",
   DataSourceId = "string",
   Permissions = list(
@@ -27,17 +29,19 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the resource permissions for a data source.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_data_source_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_data_source_permissions(
   AwsAccountId = "string",
   DataSourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

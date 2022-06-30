@@ -10,20 +10,24 @@ dax_delete_parameter_group(ParameterGroupName)
 \item{ParameterGroupName}{[required] The name of the parameter group to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeletionMessage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified parameter group. You cannot delete a parameter
 group if it is associated with any DAX clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_parameter_group(
   ParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -31,7 +31,9 @@ Manager supports JSON and YAML documents. JSON is the default format.}
 \item{TargetType}{Specify a new target type for the document.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DocumentDescription = list(
     Sha1 = "string",
     Hash = "string",
@@ -95,13 +97,15 @@ A list with the following syntax:\preformatted{list(
     ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates one or more values for an SSM document.
 }
 \section{Request syntax}{
-\preformatted{svc$update_document(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_document(
   Content = "string",
   Attachments = list(
     list(
@@ -118,7 +122,7 @@ Updates one or more values for an SSM document.
   DocumentFormat = "YAML"|"JSON"|"TEXT",
   TargetType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

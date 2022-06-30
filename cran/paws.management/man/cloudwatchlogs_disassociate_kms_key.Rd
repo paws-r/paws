@@ -26,10 +26,12 @@ requested.
 Note that it can take up to 5 minutes for this operation to take effect.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_kms_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_kms_key(
   logGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -32,13 +32,15 @@ This action works on running clusters. You can override the default
 \code{VisibleToAllUsers} parameter with \code{\link[=emr_run_job_flow]{run_job_flow}}.
 }
 \section{Request syntax}{
-\preformatted{svc$set_visible_to_all_users(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_visible_to_all_users(
   JobFlowIds = list(
     "string"
   ),
   VisibleToAllUsers = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

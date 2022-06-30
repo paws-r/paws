@@ -18,11 +18,13 @@ An empty list.
 Deletes a domain for a user pool.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user_pool_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_pool_domain(
   Domain = "string",
   UserPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

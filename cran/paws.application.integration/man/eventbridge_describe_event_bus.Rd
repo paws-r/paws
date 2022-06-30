@@ -11,12 +11,14 @@ eventbridge_describe_event_bus(Name)
 the default event bus is displayed.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string",
   Arn = "string",
   Policy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Displays details about an event bus in your account. This can include
@@ -32,10 +34,12 @@ For more information about partner event buses, see
 \code{\link[=eventbridge_create_event_bus]{create_event_bus}}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_event_bus(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_bus(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

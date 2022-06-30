@@ -18,7 +18,7 @@ update.}
 
 \item{TemplateContent}{The content of the custom verification email. The total size of the
 email must be less than 10 MB. The message body may contain HTML, with
-some limitations. For more information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html#custom-verification-emails-faq}{Custom Verification Email Frequently Asked Questions}
+some limitations. For more information, see \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html#custom-verification-emails-faq}{Custom Verification Email Frequently Asked Questions}
 in the \emph{Amazon SES Developer Guide}.}
 
 \item{SuccessRedirectionURL}{The URL that the recipient of the verification email is sent to if his
@@ -34,13 +34,15 @@ An empty list.
 Updates an existing custom verification email template.
 
 For more information about custom verification email templates, see
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}
-in the \emph{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Using Custom Verification Email Templates} in
+the \emph{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$update_custom_verification_email_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_custom_verification_email_template(
   TemplateName = "string",
   FromEmailAddress = "string",
   TemplateSubject = "string",
@@ -48,7 +50,7 @@ You can execute this operation no more than once per second.
   SuccessRedirectionURL = "string",
   FailureRedirectionURL = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

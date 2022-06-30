@@ -18,10 +18,12 @@ associated with this event bus need to be deleted. You can't delete your
 account's default event bus.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_event_bus(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_event_bus(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

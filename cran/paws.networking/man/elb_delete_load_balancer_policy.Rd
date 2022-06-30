@@ -19,11 +19,13 @@ Deletes the specified policy from the specified load balancer. This
 policy must not be enabled for any listeners.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_load_balancer_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_load_balancer_policy(
   LoadBalancerName = "string",
   PolicyName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

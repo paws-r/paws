@@ -15,7 +15,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ServiceIds}{[required] The IDs of one or more services.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Unsuccessful = list(
     list(
       Error = list(
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes one or more VPC endpoint service configurations in your account.
@@ -35,13 +37,15 @@ any \code{Available} or \code{PendingAcceptance} interface endpoint connections
 that are attached to the service.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vpc_endpoint_service_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpc_endpoint_service_configurations(
   DryRun = TRUE|FALSE,
   ServiceIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

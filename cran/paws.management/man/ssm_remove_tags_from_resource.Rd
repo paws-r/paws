@@ -36,14 +36,16 @@ An empty list.
 Removes tag keys from the specified resource.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_tags_from_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_resource(
   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
   ResourceId = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

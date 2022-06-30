@@ -7,7 +7,9 @@
 ses_get_send_statistics()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SendDataPoints = list(
     list(
       Timestamp = as.POSIXct(
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides sending statistics for the current AWS Region. The result is a

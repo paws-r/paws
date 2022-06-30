@@ -21,13 +21,15 @@ Adds or updates the tags associated with the resource ARN. See \href{https://doc
 for the maximum number of tags allowed per resource.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

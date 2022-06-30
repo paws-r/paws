@@ -13,7 +13,9 @@ codedeploy_get_application_revision(applicationName, revision)
 location.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   applicationName = "string",
   revision = list(
     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
@@ -53,13 +55,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about an application revision.
 }
 \section{Request syntax}{
-\preformatted{svc$get_application_revision(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_application_revision(
   applicationName = "string",
   revision = list(
     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
@@ -84,7 +88,7 @@ Gets information about an application revision.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

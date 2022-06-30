@@ -14,21 +14,25 @@ servicediscovery_deregister_instance(ServiceId, InstanceId)
 \code{\link[=servicediscovery_register_instance]{register_instance}} request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the Amazon Route 53 DNS records and health check, if any, that
 AWS Cloud Map created for the specified instance.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_instance(
   ServiceId = "string",
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -16,10 +16,12 @@ directconnect_confirm_private_virtual_interface(virtualInterfaceId,
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Accepts ownership of a private virtual interface created by another AWS
@@ -30,12 +32,14 @@ is created and attached to the specified virtual private gateway or
 Direct Connect gateway, and is made available to handle traffic.
 }
 \section{Request syntax}{
-\preformatted{svc$confirm_private_virtual_interface(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$confirm_private_virtual_interface(
   virtualInterfaceId = "string",
   virtualGatewayId = "string",
   directConnectGatewayId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

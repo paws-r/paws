@@ -12,7 +12,9 @@ devicefarm_get_device_instance(arn)
 information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   deviceInstance = list(
     arn = "string",
     deviceArn = "string",
@@ -33,17 +35,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a device instance that belongs to a private
 device fleet.
 }
 \section{Request syntax}{
-\preformatted{svc$get_device_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_device_instance(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

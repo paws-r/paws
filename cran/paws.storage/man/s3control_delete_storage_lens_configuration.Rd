@@ -25,11 +25,13 @@ To use this action, you must have permission to perform the
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_storage_lens_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_storage_lens_configuration(
   ConfigId = "string",
   AccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

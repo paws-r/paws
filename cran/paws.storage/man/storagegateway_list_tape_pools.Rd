@@ -18,7 +18,9 @@ of tape pools.}
 call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PoolInfos = list(
     list(
       PoolARN = "string",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists custom tape pools. You specify custom tape pools to list by
@@ -46,14 +48,16 @@ truncated, the response includes a \code{Marker} element that you can use in
 your subsequent request to retrieve the next set of tape pools.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tape_pools(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tape_pools(
   PoolARNs = list(
     "string"
   ),
   Marker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

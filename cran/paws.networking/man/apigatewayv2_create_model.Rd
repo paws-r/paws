@@ -19,27 +19,31 @@ apigatewayv2_create_model(ApiId, ContentType, Description, Name, Schema)
 JSON schema draft 4 model.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContentType = "string",
   Description = "string",
   ModelId = "string",
   Name = "string",
   Schema = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Model for an API.
 }
 \section{Request syntax}{
-\preformatted{svc$create_model(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_model(
   ApiId = "string",
   ContentType = "string",
   Description = "string",
   Name = "string",
   Schema = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

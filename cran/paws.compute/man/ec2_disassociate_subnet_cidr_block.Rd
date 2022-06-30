@@ -10,7 +10,9 @@ ec2_disassociate_subnet_cidr_block(AssociationId)
 \item{AssociationId}{[required] The association ID for the CIDR block.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Ipv6CidrBlockAssociation = list(
     AssociationId = "string",
     Ipv6CidrBlock = "string",
@@ -21,7 +23,7 @@ A list with the following syntax:\preformatted{list(
   ),
   SubnetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disassociates a CIDR block from a subnet. Currently, you can
@@ -30,10 +32,12 @@ gateways and resources that are associated with the CIDR block before
 you can disassociate it.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_subnet_cidr_block(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_subnet_cidr_block(
   AssociationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

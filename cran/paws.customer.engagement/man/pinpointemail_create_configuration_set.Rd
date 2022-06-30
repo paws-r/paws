@@ -39,7 +39,9 @@ configuration set to an email, all of the rules in that configuration
 set are applied to the email.
 }
 \section{Request syntax}{
-\preformatted{svc$create_configuration_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_configuration_set(
   ConfigurationSetName = "string",
   TrackingOptions = list(
     CustomRedirectDomain = "string"
@@ -64,7 +66,7 @@ set are applied to the email.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

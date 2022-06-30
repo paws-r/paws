@@ -20,7 +20,9 @@ s3control_list_regional_buckets(AccountId, NextToken, MaxResults,
 This is required by Amazon S3 on Outposts buckets.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RegionalBucketList = list(
     list(
       Bucket = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of all Outposts buckets in an Outpost that are owned by
@@ -49,13 +51,15 @@ your request, see the
 section.
 }
 \section{Request syntax}{
-\preformatted{svc$list_regional_buckets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_regional_buckets(
   AccountId = "string",
   NextToken = "string",
   MaxResults = 123,
   OutpostId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

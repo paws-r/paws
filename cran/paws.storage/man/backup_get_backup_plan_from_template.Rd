@@ -10,7 +10,9 @@ backup_get_backup_plan_from_template(BackupPlanTemplateId)
 \item{BackupPlanTemplateId}{[required] Uniquely identifies a stored backup plan template.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupPlanDocument = list(
     BackupPlanName = "string",
     Rules = list(
@@ -49,16 +51,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the template specified by its \code{templateId} as a backup plan.
 }
 \section{Request syntax}{
-\preformatted{svc$get_backup_plan_from_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_backup_plan_from_template(
   BackupPlanTemplateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

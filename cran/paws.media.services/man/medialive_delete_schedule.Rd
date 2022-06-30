@@ -16,10 +16,12 @@ An empty list.
 Delete all schedule actions on a channel.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_schedule(
   ChannelId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

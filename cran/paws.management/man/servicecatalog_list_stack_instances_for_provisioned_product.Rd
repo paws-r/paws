@@ -24,7 +24,9 @@ results, use null.}
 \item{PageSize}{The maximum number of items to return with this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackInstances = list(
     list(
       Account = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns summary information about stack instances that are associated
@@ -43,13 +45,15 @@ filter for stack instances that are associated with a specific AWS
 account name or region.
 }
 \section{Request syntax}{
-\preformatted{svc$list_stack_instances_for_provisioned_product(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_stack_instances_for_provisioned_product(
   AcceptLanguage = "string",
   ProvisionedProductId = "string",
   PageToken = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

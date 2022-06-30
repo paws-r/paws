@@ -10,10 +10,12 @@ codecommit_delete_approval_rule_template(approvalRuleTemplateName)
 \item{approvalRuleTemplateName}{[required] The name of the approval rule template to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   approvalRuleTemplateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a specified approval rule template. Deleting a template does not
@@ -21,10 +23,12 @@ remove approval rules on pull requests already created with the
 template.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_approval_rule_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_approval_rule_template(
   approvalRuleTemplateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -39,7 +39,9 @@ The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Credentials = list(
     AccessKeyId = "string",
     SecretAccessKey = "string",
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a set of temporary credentials for an AWS account or IAM user.
@@ -115,12 +117,14 @@ credentials, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_cre
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_session_token(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_session_token(
   DurationSeconds = 123,
   SerialNumber = "string",
   TokenCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

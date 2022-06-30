@@ -33,7 +33,9 @@ Example: \code{my-cluster}}
 \item{Tags}{The tags to be assigned to the cluster snapshot.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterSnapshot = list(
     AvailabilityZones = list(
       "string"
@@ -60,13 +62,15 @@ A list with the following syntax:\preformatted{list(
     SourceDBClusterSnapshotArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a snapshot of a cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$create_db_cluster_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_cluster_snapshot(
   DBClusterSnapshotIdentifier = "string",
   DBClusterIdentifier = "string",
   Tags = list(
@@ -76,7 +80,7 @@ Creates a snapshot of a cluster.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ waf_get_size_constraint_set(SizeConstraintSetId)
 \code{\link[=waf_list_size_constraint_sets]{list_size_constraint_sets}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SizeConstraintSet = list(
     SizeConstraintSetId = "string",
     Name = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -45,10 +47,12 @@ regional and global use.
 Returns the SizeConstraintSet specified by \code{SizeConstraintSetId}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_size_constraint_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_size_constraint_set(
   SizeConstraintSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -26,7 +26,9 @@ configuration for the client is used instead.}
 \item{RiskExceptionConfiguration}{The configuration to override the risk decision.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RiskConfiguration = list(
     UserPoolId = "string",
     ClientId = "string",
@@ -87,7 +89,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Configures actions on detected risks. To delete the risk configuration
@@ -98,7 +100,9 @@ To enable Amazon Cognito advanced security features, update the user
 pool to include the \code{UserPoolAddOns} key\code{AdvancedSecurityMode}.
 }
 \section{Request syntax}{
-\preformatted{svc$set_risk_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_risk_configuration(
   UserPoolId = "string",
   ClientId = "string",
   CompromisedCredentialsRiskConfiguration = list(
@@ -154,7 +158,7 @@ pool to include the \code{UserPoolAddOns} key\code{AdvancedSecurityMode}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

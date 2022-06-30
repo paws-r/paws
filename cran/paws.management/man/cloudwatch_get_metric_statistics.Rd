@@ -97,7 +97,9 @@ collected, the results of the operation are null. CloudWatch does not
 perform unit conversions.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Label = "string",
   Datapoints = list(
     list(
@@ -116,7 +118,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets statistics for the specified metric.
@@ -176,7 +178,9 @@ see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws
 in the \emph{Amazon CloudWatch User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_metric_statistics(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_metric_statistics(
   Namespace = "string",
   MetricName = "string",
   Dimensions = list(
@@ -200,7 +204,7 @@ in the \emph{Amazon CloudWatch User Guide}.
   ),
   Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

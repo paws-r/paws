@@ -19,10 +19,12 @@ An empty list.
 Allows application import from AWS Migration Hub.
 }
 \section{Request syntax}{
-\preformatted{svc$import_app_catalog(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_app_catalog(
   roleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

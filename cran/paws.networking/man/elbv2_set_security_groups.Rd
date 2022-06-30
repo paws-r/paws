@@ -13,12 +13,14 @@ elbv2_set_security_groups(LoadBalancerArn, SecurityGroups)
 \item{SecurityGroups}{[required] The IDs of the security groups.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SecurityGroupIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates the specified security groups with the specified Application
@@ -29,13 +31,15 @@ You can't specify a security group for a Network Load Balancer or
 Gateway Load Balancer.
 }
 \section{Request syntax}{
-\preformatted{svc$set_security_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_security_groups(
   LoadBalancerArn = "string",
   SecurityGroups = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

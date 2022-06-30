@@ -19,13 +19,15 @@ The ARN should be in one of the following formats:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WebACLSummary = list(
     WebACLId = "string",
     Name = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic Regional} documentation. For more
@@ -41,10 +43,12 @@ Returns the web ACL for the specified resource, either an application
 load balancer or Amazon API Gateway stage.
 }
 \section{Request syntax}{
-\preformatted{svc$get_web_acl_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_web_acl_for_resource(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

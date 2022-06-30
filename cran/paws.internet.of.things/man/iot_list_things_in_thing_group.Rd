@@ -20,25 +20,29 @@ results.}
 \item{maxResults}{The maximum number of results to return at one time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   things = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the things in the specified group.
 }
 \section{Request syntax}{
-\preformatted{svc$list_things_in_thing_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_things_in_thing_group(
   thingGroupName = "string",
   recursive = TRUE|FALSE,
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

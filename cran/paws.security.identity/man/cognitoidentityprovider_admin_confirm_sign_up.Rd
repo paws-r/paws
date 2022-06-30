@@ -51,14 +51,16 @@ code. Works on any user.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$admin_confirm_sign_up(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_confirm_sign_up(
   UserPoolId = "string",
   Username = "string",
   ClientMetadata = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

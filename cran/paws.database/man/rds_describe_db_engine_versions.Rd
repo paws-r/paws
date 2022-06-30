@@ -60,7 +60,9 @@ available in the list. The default is to list only available engine
 versions.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   DBEngineVersions = list(
     list(
@@ -116,13 +118,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the available DB engines.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_db_engine_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_engine_versions(
   Engine = "string",
   EngineVersion = "string",
   DBParameterGroupFamily = "string",
@@ -141,7 +145,7 @@ Returns a list of the available DB engines.
   ListSupportedTimezones = TRUE|FALSE,
   IncludeAll = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

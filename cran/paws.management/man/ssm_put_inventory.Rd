@@ -12,10 +12,12 @@ ssm_put_inventory(InstanceId, Items)
 \item{Items}{[required] The inventory items that you want to add or update on instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Message = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Bulk update custom inventory items on one more instance. The request
@@ -23,7 +25,9 @@ adds an inventory item, if it doesn't already exist, or updates an
 inventory item, if it does exist.
 }
 \section{Request syntax}{
-\preformatted{svc$put_inventory(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_inventory(
   InstanceId = "string",
   Items = list(
     list(
@@ -42,7 +46,7 @@ inventory item, if it does exist.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

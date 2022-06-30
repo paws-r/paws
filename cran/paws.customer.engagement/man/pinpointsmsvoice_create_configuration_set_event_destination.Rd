@@ -21,7 +21,9 @@ An empty list.
 Create a new event destination in a configuration set.
 }
 \section{Request syntax}{
-\preformatted{svc$create_configuration_set_event_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestination = list(
     CloudWatchLogsDestination = list(
@@ -42,7 +44,7 @@ Create a new event destination in a configuration set.
   ),
   EventDestinationName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

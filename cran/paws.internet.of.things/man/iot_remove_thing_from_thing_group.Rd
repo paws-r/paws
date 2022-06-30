@@ -27,13 +27,15 @@ identify the thing group and either a \code{thingArn} or a \code{thingName} to
 identify the thing to remove from the thing group.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_thing_from_thing_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_thing_from_thing_group(
   thingGroupName = "string",
   thingGroupArn = "string",
   thingName = "string",
   thingArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

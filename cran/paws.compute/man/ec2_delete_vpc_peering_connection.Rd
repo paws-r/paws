@@ -15,10 +15,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a VPC peering connection. Either the owner of the requester VPC
@@ -28,11 +30,13 @@ a VPC peering connection in the \code{pending-acceptance} state. You cannot
 delete a VPC peering connection that's in the \code{failed} state.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vpc_peering_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpc_peering_connection(
   DryRun = TRUE|FALSE,
   VpcPeeringConnectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

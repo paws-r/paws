@@ -17,7 +17,9 @@ servicequotas_put_service_quota_increase_request_into_template(
 \item{DesiredValue}{[required] The new, increased value for the quota.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceQuotaIncreaseRequestInTemplate = list(
     ServiceCode = "string",
     ServiceName = "string",
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
     GlobalQuota = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a quota increase request to your quota request template.
 }
 \section{Request syntax}{
-\preformatted{svc$put_service_quota_increase_request_into_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_service_quota_increase_request_into_template(
   QuotaCode = "string",
   ServiceCode = "string",
   AwsRegion = "string",
   DesiredValue = 123.0
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

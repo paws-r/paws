@@ -17,7 +17,9 @@ AWS Management Console, the SDK, or the AWS CLI, the contents of
 server.properties can be in plaintext.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   LatestRevision = list(
     CreationTime = as.POSIXct(
@@ -27,18 +29,20 @@ A list with the following syntax:\preformatted{list(
     Revision = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an MSK configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$update_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_configuration(
   Arn = "string",
   Description = "string",
   ServerProperties = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

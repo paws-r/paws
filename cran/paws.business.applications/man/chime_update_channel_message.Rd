@@ -16,23 +16,27 @@ chime_update_channel_message(ChannelArn, MessageId, Content, Metadata)
 \item{Metadata}{The metadata of the message being updated.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChannelArn = "string",
   MessageId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the content of a message.
 }
 \section{Request syntax}{
-\preformatted{svc$update_channel_message(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_channel_message(
   ChannelArn = "string",
   MessageId = "string",
   Content = "string",
   Metadata = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

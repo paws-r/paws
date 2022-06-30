@@ -21,7 +21,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficMirrorFilter = list(
     TrafficMirrorFilterId = "string",
     IngressFilterRules = list(
@@ -78,7 +80,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Allows or restricts mirroring network services.
@@ -95,7 +97,9 @@ For information about filter rule properties, see \href{https://docs.aws.amazon.
 in the \emph{Traffic Mirroring User Guide} .
 }
 \section{Request syntax}{
-\preformatted{svc$modify_traffic_mirror_filter_network_services(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_traffic_mirror_filter_network_services(
   TrafficMirrorFilterId = "string",
   AddNetworkServices = list(
     "amazon-dns"
@@ -105,7 +109,7 @@ in the \emph{Traffic Mirroring User Guide} .
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

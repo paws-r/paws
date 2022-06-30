@@ -12,22 +12,26 @@ chime_get_sip_media_application_logging_configuration(
 \item{SipMediaApplicationId}{[required] The ID of the SIP media application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SipMediaApplicationLoggingConfiguration = list(
     EnableSipMediaApplicationMessageLogs = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the logging configuration for the specified SIP media
 application.
 }
 \section{Request syntax}{
-\preformatted{svc$get_sip_media_application_logging_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sip_media_application_logging_configuration(
   SipMediaApplicationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

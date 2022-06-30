@@ -26,7 +26,9 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags(
   LoadBalancerNames = list(
     "string"
   ),
@@ -37,7 +39,7 @@ in the \emph{Classic Load Balancers Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

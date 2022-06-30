@@ -14,21 +14,25 @@ been updated should be rolled back to the previous version of the
 application revision.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   status = "Pending"|"Succeeded",
   statusMessage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Attempts to stop an ongoing deployment.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_deployment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_deployment(
   deploymentId = "string",
   autoRollbackEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

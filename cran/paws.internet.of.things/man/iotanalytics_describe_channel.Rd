@@ -14,7 +14,9 @@ included in the response. This feature cannot be used with a channel
 whose S3 storage is customer-managed.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   channel = list(
     name = "string",
     storage = list(
@@ -50,17 +52,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a channel.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_channel(
   channelName = "string",
   includeStatistics = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

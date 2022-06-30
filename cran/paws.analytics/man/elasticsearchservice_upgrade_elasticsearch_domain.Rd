@@ -17,24 +17,28 @@ elasticsearchservice_upgrade_elasticsearch_domain(DomainName,
 needs to be performed. This will not actually perform the Upgrade.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainName = "string",
   TargetVersion = "string",
   PerformCheckOnly = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Allows you to either upgrade your domain or perform an Upgrade
 eligibility check to a compatible Elasticsearch version.
 }
 \section{Request syntax}{
-\preformatted{svc$upgrade_elasticsearch_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upgrade_elasticsearch_domain(
   DomainName = "string",
   TargetVersion = "string",
   PerformCheckOnly = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

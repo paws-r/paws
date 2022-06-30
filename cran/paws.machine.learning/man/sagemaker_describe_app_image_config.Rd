@@ -10,7 +10,9 @@ sagemaker_describe_app_image_config(AppImageConfigName)
 \item{AppImageConfigName}{[required] The name of the AppImageConfig to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppImageConfigArn = "string",
   AppImageConfigName = "string",
   CreationTime = as.POSIXct(
@@ -33,16 +35,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes an AppImageConfig.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_app_image_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_app_image_config(
   AppImageConfigName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

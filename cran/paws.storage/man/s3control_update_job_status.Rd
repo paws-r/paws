@@ -18,12 +18,14 @@ s3control_update_job_status(AccountId, JobId, RequestedJobStatus,
 status. This field can be any string up to the maximum length.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string",
   Status = "Active"|"Cancelled"|"Cancelling"|"Complete"|"Completing"|"Failed"|"Failing"|"New"|"Paused"|"Pausing"|"Preparing"|"Ready"|"Suspended",
   StatusUpdateReason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the status for the specified job. Use this operation to confirm
@@ -40,13 +42,15 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_job_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_job_status(
   AccountId = "string",
   JobId = "string",
   RequestedJobStatus = "Cancelled"|"Ready",
   StatusUpdateReason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

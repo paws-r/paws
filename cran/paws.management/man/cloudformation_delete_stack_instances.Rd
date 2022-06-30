@@ -48,17 +48,21 @@ Repeating this stack set operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes stack instances for the specified accounts, in the specified
 Regions.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_stack_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_stack_instances(
   StackSetName = "string",
   Accounts = list(
     "string"
@@ -86,7 +90,7 @@ Regions.
   RetainStacks = TRUE|FALSE,
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

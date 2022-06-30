@@ -79,7 +79,9 @@ Results are sorted by \code{FilterVariable}.}
 of acceptable values is \code{1} through \code{100}. The default value is \code{100}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Results = list(
     list(
       BatchPredictionId = "string",
@@ -110,14 +112,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of \code{BatchPrediction} operations that match the search
 criteria in the request.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_batch_predictions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_batch_predictions(
   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
   EQ = "string",
   GT = "string",
@@ -130,7 +134,7 @@ criteria in the request.
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

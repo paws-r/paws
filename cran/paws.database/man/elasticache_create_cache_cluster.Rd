@@ -289,11 +289,11 @@ Password constraints:
 \item Must be at least 16 characters and no more than 128 characters in
 length.
 \item The only permitted printable special characters are !, &, \#, $, ^,
-<, >, and -. Other printable special characters cannot be used
-in the AUTH token.
+\<, \>, and -. Other printable special characters cannot be used in
+the AUTH token.
 }
 
-For more information, see AUTH password at
+For more information, see \href{https://redis.io/commands/auth/}{AUTH password} at
 http://redis.io/commands/AUTH.}
 
 \item{OutpostMode}{Specifies whether the nodes in the cluster are created in a single
@@ -304,7 +304,9 @@ outpost or across multiple outposts.}
 \item{PreferredOutpostArns}{The outpost ARNs in which the cache cluster is created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CacheCluster = list(
     CacheClusterId = "string",
     ConfigurationEndpoint = list(
@@ -386,7 +388,7 @@ A list with the following syntax:\preformatted{list(
     ARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a cluster. All nodes in the cluster run the same
@@ -396,7 +398,9 @@ This operation is not supported for Redis (cluster mode enabled)
 clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cache_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cache_cluster(
   CacheClusterId = "string",
   ReplicationGroupId = "string",
   AZMode = "single-az"|"cross-az",
@@ -439,7 +443,7 @@ clusters.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

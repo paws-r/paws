@@ -20,12 +20,14 @@ An empty list.
 Removes a member from a chat room in an Amazon Chime Enterprise account.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_room_membership(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_room_membership(
   AccountId = "string",
   RoomId = "string",
   MemberId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

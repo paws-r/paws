@@ -25,13 +25,15 @@ If you specify a tag that does not exist, it is ignored.
 of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_tags_from_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_stream(
   StreamName = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

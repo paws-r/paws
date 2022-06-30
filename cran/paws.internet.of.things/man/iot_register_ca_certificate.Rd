@@ -30,11 +30,13 @@ For the cli-input-json file use format: "tags":
 "key1=value1&key2=value2..."}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   certificateArn = "string",
   certificateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Registers a CA certificate with AWS IoT. This CA certificate can then be
@@ -46,7 +48,9 @@ certificate registered, make sure you pass the CA certificate when you
 register your device certificates with the RegisterCertificate API.
 }
 \section{Request syntax}{
-\preformatted{svc$register_ca_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_ca_certificate(
   caCertificate = "string",
   verificationCertificate = "string",
   setAsActive = TRUE|FALSE,
@@ -62,7 +66,7 @@ register your device certificates with the RegisterCertificate API.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

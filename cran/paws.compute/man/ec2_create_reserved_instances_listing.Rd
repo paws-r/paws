@@ -24,7 +24,9 @@ month remaining in the Reserved Instance term.}
 \item{ReservedInstancesId}{[required] The ID of the active Standard Reserved Instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReservedInstancesListings = list(
     list(
       ClientToken = "string",
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
@@ -94,7 +96,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_reserved_instances_listing(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_reserved_instances_listing(
   ClientToken = "string",
   InstanceCount = 123,
   PriceSchedules = list(
@@ -106,7 +110,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ),
   ReservedInstancesId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

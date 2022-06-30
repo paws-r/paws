@@ -33,10 +33,12 @@ of the MeterUsage request, and each UsageAllocation must have a unique
 set of tags (include no tags).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MeteringRecordId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 API to emit metering records. For identical requests, the API is
@@ -50,7 +52,9 @@ customers with usage data split into buckets by tags that you define (or
 allow the customer to define).
 }
 \section{Request syntax}{
-\preformatted{svc$meter_usage(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$meter_usage(
   ProductCode = "string",
   Timestamp = as.POSIXct(
     "2015-01-01"
@@ -70,7 +74,7 @@ allow the customer to define).
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

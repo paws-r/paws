@@ -21,7 +21,9 @@ the remaining results, if any, make another call with the token returned
 from this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   RequestedQuotas = list(
     list(
@@ -46,20 +48,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the quota increase requests for the specified quota.
 }
 \section{Request syntax}{
-\preformatted{svc$list_requested_service_quota_change_history_by_quota(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_requested_service_quota_change_history_by_quota(
   ServiceCode = "string",
   QuotaCode = "string",
   Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

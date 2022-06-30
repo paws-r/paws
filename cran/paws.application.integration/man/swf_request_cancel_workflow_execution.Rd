@@ -54,12 +54,14 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$request_cancel_workflow_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$request_cancel_workflow_execution(
   domain = "string",
   workflowId = "string",
   runId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

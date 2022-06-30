@@ -44,7 +44,9 @@ job state, usually within 60 minutes of the job being created, this
 action is no longer available.
 }
 \section{Request syntax}{
-\preformatted{svc$update_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_job(
   JobId = "string",
   RoleARN = "string",
   Notification = list(
@@ -87,7 +89,7 @@ action is no longer available.
   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
   ForwardingAddressId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

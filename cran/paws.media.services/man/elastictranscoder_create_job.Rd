@@ -47,7 +47,9 @@ guarantee that \code{key/value} pairs are returned in the same order in which
 you specify them.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Job = list(
     Id = "string",
     Arn = "string",
@@ -373,7 +375,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 When you create a job, Elastic Transcoder returns JSON data that
@@ -386,7 +388,9 @@ one output for the Kindle Fire and another output for the Apple iPhone
 (as opposed to the AWS Console).
 }
 \section{Request syntax}{
-\preformatted{svc$create_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_job(
   PipelineId = "string",
   Input = list(
     Key = "string",
@@ -680,7 +684,7 @@ one output for the Kindle Fire and another output for the Apple iPhone
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

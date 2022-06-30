@@ -13,12 +13,14 @@ dynamodb_enable_kinesis_streaming_destination(TableName, StreamArn)
 \item{StreamArn}{[required] The ARN for a Kinesis data stream.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TableName = "string",
   StreamArn = "string",
   DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts table data replication to the specified Kinesis data stream at a
@@ -27,11 +29,13 @@ return results immediately, use DescribeKinesisStreamingDestination to
 check if streaming to the Kinesis data stream is ACTIVE.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_kinesis_streaming_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_kinesis_streaming_destination(
   TableName = "string",
   StreamArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

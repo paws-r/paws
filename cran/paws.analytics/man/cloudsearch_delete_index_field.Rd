@@ -13,7 +13,9 @@ cloudsearch_delete_index_field(DomainName, IndexFieldName)
 indexing options.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IndexField = list(
     Options = list(
       IndexFieldName = "string",
@@ -115,19 +117,23 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes an \code{IndexField} from the search domain. For more information,
-see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html}{Configuring Index Fields}
-in the \emph{Amazon CloudSearch Developer Guide}.
+see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html"
+target="_blank">Configuring Index Fields</a> in the \emph{Amazon CloudSearch
+Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_index_field(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_index_field(
   DomainName = "string",
   IndexFieldName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

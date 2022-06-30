@@ -23,7 +23,9 @@ that used that token.}
 \item{content}{[required] The contents of your reply to a comment.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   comment = list(
     commentId = "string",
     content = "string",
@@ -45,19 +47,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Posts a comment in reply to an existing comment on a comparison between
 commits or a pull request.
 }
 \section{Request syntax}{
-\preformatted{svc$post_comment_reply(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$post_comment_reply(
   inReplyTo = "string",
   clientRequestToken = "string",
   content = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

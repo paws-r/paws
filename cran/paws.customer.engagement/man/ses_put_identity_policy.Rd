@@ -23,7 +23,7 @@ alphanumeric characters, dashes, and underscores.}
 \item{Policy}{[required] The text of the policy in JSON format. The policy cannot exceed 4 KB.
 
 For information about the syntax of sending authorization policies, see
-the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html}{Amazon SES Developer Guide}.}
+the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-policies.html}{Amazon SES Developer Guide}.}
 }
 \value{
 An empty list.
@@ -37,17 +37,19 @@ identity, this API will return an error.
 
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
-using sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
+using sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$put_identity_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_identity_policy(
   Identity = "string",
   PolicyName = "string",
   Policy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

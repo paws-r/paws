@@ -10,7 +10,9 @@ iot_describe_mitigation_action(actionName)
 \item{actionName}{[required] The friendly name that uniquely identifies the mitigation action.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   actionName = "string",
   actionType = "UPDATE_DEVICE_CERTIFICATE"|"UPDATE_CA_CERTIFICATE"|"ADD_THINGS_TO_THING_GROUP"|"REPLACE_DEFAULT_POLICY_VERSION"|"ENABLE_IOT_LOGGING"|"PUBLISH_FINDING_TO_SNS",
   actionArn = "string",
@@ -47,16 +49,18 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a mitigation action.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_mitigation_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_mitigation_action(
   actionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -38,7 +38,9 @@ or 3). For example, specify 31536000 for one year.}
 \item{OfferingId}{The ID of the reservation offering.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   OfferingSet = list(
     list(
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the Dedicated Host reservations that are available to
@@ -67,7 +69,9 @@ supported instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/Us
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_host_reservation_offerings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_host_reservation_offerings(
   Filter = list(
     list(
       Name = "string",
@@ -82,7 +86,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   NextToken = "string",
   OfferingId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

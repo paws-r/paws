@@ -14,24 +14,28 @@ codestar_list_tags_for_project(id, nextToken, maxResults)
 \item{maxResults}{Reserved for future use.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tags = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the tags for a project.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_project(
   id = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

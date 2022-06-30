@@ -7,12 +7,14 @@
 backup_describe_region_settings()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceTypeOptInPreference = list(
     TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the current service opt-in settings for the Region. If
@@ -23,8 +25,10 @@ does not try to protect that service's resources in this Region, AWS
 Backup does not try to protect that service's resources in this Region.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_region_settings()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_region_settings()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

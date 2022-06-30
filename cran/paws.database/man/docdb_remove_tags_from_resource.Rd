@@ -19,13 +19,15 @@ An empty list.
 Removes metadata tags from an Amazon DocumentDB resource.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_tags_from_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_resource(
   ResourceName = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,7 +17,9 @@ are shown.}
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Expressions = list(
     list(
       Options = list(
@@ -38,25 +40,29 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the expressions configured for the search domain. Can be limited to
 specific expressions by name. By default, shows all expressions and
 includes any pending changes to the configuration. Set the \code{Deployed}
 option to \code{true} to show the active configuration and exclude pending
-changes. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions}
-in the \emph{Amazon CloudSearch Developer Guide}.
+changes. For more information, see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html"
+target="_blank">Configuring Expressions</a> in the \emph{Amazon CloudSearch
+Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_expressions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_expressions(
   DomainName = "string",
   ExpressionNames = list(
     "string"
   ),
   Deployed = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

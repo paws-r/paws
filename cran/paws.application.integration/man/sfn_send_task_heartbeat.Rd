@@ -39,10 +39,12 @@ received. Use \code{HeartbeatSeconds} to configure the timeout interval for
 heartbeats.
 }
 \section{Request syntax}{
-\preformatted{svc$send_task_heartbeat(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_task_heartbeat(
   taskToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

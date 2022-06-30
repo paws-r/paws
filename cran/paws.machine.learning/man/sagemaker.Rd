@@ -25,7 +25,9 @@ Other Resources:
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- sagemaker(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sagemaker(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +41,7 @@ Other Resources:
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

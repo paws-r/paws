@@ -25,7 +25,9 @@ maximum even when there are more results available. You should check
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Roots = list(
     list(
       Id = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the roots that are defined in the current organization.
@@ -64,11 +66,13 @@ see the availability of a policy type in an organization, use
 \code{\link[=organizations_describe_organization]{describe_organization}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_roots(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_roots(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

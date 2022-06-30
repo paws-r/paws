@@ -21,7 +21,9 @@ generate a graph.}
 \item{NextToken}{Pagination token.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StartTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -116,7 +118,7 @@ A list with the following syntax:\preformatted{list(
   ContainsOldGroupVersions = TRUE|FALSE,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a document that describes services that process incoming
@@ -127,7 +129,9 @@ can be other applications, AWS resources, HTTP web APIs, or SQL
 databases.
 }
 \section{Request syntax}{
-\preformatted{svc$get_service_graph(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_service_graph(
   StartTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -138,7 +142,7 @@ databases.
   GroupARN = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

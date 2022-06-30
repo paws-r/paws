@@ -10,7 +10,9 @@ devicefarm_get_device(arn)
 \item{arn}{[required] The device type's ARN.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   device = list(
     arn = "string",
     name = "string",
@@ -62,16 +64,18 @@ A list with the following syntax:\preformatted{list(
     availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a unique device type.
 }
 \section{Request syntax}{
-\preformatted{svc$get_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_device(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

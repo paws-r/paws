@@ -26,12 +26,14 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_volume(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_volume(
   VolumeId = "string",
   Name = "string",
   MountPoint = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

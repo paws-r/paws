@@ -10,21 +10,25 @@ costexplorer_delete_cost_category_definition(CostCategoryArn)
 \item{CostCategoryArn}{[required] The unique identifier for your Cost Category.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CostCategoryArn = "string",
   EffectiveEnd = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a Cost Category. Expenses from this month going forward will no
 longer be categorized with this Cost Category.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cost_category_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cost_category_definition(
   CostCategoryArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

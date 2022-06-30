@@ -12,7 +12,9 @@ iot1clickprojects_describe_placement(placementName, projectName)
 \item{projectName}{[required] The project containing the placement to be described.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   placement = list(
     projectName = "string",
     placementName = "string",
@@ -27,17 +29,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a placement in a project.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_placement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_placement(
   placementName = "string",
   projectName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

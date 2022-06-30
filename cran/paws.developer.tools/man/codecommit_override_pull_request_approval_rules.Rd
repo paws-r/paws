@@ -29,12 +29,14 @@ Sets aside (overrides) all approval rule requirements for a specified
 pull request.
 }
 \section{Request syntax}{
-\preformatted{svc$override_pull_request_approval_rules(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$override_pull_request_approval_rules(
   pullRequestId = "string",
   revisionId = "string",
   overrideStatus = "OVERRIDE"|"REVOKE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

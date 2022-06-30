@@ -10,7 +10,9 @@ emr_describe_notebook_execution(NotebookExecutionId)
 \item{NotebookExecutionId}{[required] The unique identifier of the notebook execution.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NotebookExecution = list(
     NotebookExecutionId = "string",
     EditorId = "string",
@@ -40,16 +42,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides details of a notebook execution.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_notebook_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_notebook_execution(
   NotebookExecutionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

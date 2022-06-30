@@ -45,12 +45,14 @@ This operation requires permissions to perform the
 \code{kinesisanalytics.DeleteApplicationReferenceDataSource} action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_application_reference_data_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_reference_data_source(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ReferenceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

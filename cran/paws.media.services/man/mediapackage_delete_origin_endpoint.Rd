@@ -16,10 +16,12 @@ An empty list.
 Deletes an existing OriginEndpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_origin_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_origin_endpoint(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

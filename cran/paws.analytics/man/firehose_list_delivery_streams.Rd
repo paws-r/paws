@@ -27,13 +27,15 @@ with the delivery stream whose name comes alphabetically immediately
 after the name you specify in \code{ExclusiveStartDeliveryStreamName}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeliveryStreamNames = list(
     "string"
   ),
   HasMoreDeliveryStreams = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists your delivery streams in alphabetical order of their names.
@@ -49,12 +51,14 @@ again and setting the \code{ExclusiveStartDeliveryStreamName} parameter to
 the name of the last delivery stream returned in the last call.
 }
 \section{Request syntax}{
-\preformatted{svc$list_delivery_streams(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_delivery_streams(
   Limit = 123,
   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
   ExclusiveStartDeliveryStreamName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

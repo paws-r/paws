@@ -13,7 +13,9 @@ ssm_describe_document_permission(Name, PermissionType)
 \emph{Share}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccountIds = list(
     "string"
   ),
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the permissions for a Systems Manager document. If you created
@@ -33,11 +35,13 @@ be shared privately (by specifying a user's AWS account ID) or publicly
 (\emph{All}).
 }
 \section{Request syntax}{
-\preformatted{svc$describe_document_permission(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_document_permission(
   Name = "string",
   PermissionType = "Share"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

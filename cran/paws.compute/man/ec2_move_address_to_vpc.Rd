@@ -16,11 +16,13 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{PublicIp}{[required] The Elastic IP address.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AllocationId = "string",
   Status = "MoveInProgress"|"InVpc"|"InClassic"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC
@@ -33,11 +35,13 @@ You cannot move an Elastic IP address that was originally allocated for
 use in the EC2-VPC platform to the EC2-Classic platform.
 }
 \section{Request syntax}{
-\preformatted{svc$move_address_to_vpc(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$move_address_to_vpc(
   DryRun = TRUE|FALSE,
   PublicIp = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

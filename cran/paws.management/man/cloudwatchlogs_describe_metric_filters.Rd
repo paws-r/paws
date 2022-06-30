@@ -28,7 +28,9 @@ include this parameter in your request, you must also include the
 \code{metricName} parameter.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   metricFilters = list(
     list(
       filterName = "string",
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the specified metric filters. You can list all of the metric
@@ -55,7 +57,9 @@ filters or filter the results by log name, prefix, metric name, or
 metric namespace. The results are ASCII-sorted by filter name.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_metric_filters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_metric_filters(
   logGroupName = "string",
   filterNamePrefix = "string",
   nextToken = "string",
@@ -63,7 +67,7 @@ metric namespace. The results are ASCII-sorted by filter name.
   metricName = "string",
   metricNamespace = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

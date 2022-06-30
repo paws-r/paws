@@ -16,10 +16,12 @@ An empty list.
 Deletes a security configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_security_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_security_configuration(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

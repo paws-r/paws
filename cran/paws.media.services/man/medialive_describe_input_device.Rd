@@ -10,7 +10,9 @@ medialive_describe_input_device(InputDeviceId)
 \item{InputDeviceId}{[required] The unique ID of this input device. For example, hd-123456789abcdef.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   ConnectionState = "DISCONNECTED"|"CONNECTED",
   DeviceSettingsSyncState = "SYNCED"|"SYNCING",
@@ -50,16 +52,18 @@ A list with the following syntax:\preformatted{list(
     Width = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the details for the input device
 }
 \section{Request syntax}{
-\preformatted{svc$describe_input_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_input_device(
   InputDeviceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

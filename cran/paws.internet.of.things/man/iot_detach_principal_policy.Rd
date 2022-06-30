@@ -26,11 +26,13 @@ Removes the specified policy from the specified certificate.
 \code{\link[=iot_detach_policy]{detach_policy}} instead.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_principal_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_principal_policy(
   policyName = "string",
   principal = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

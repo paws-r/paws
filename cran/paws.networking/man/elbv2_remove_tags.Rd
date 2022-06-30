@@ -22,7 +22,9 @@ Balancers, Network Load Balancers, Gateway Load Balancers, target
 groups, listeners, or rules.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags(
   ResourceArns = list(
     "string"
   ),
@@ -30,7 +32,7 @@ groups, listeners, or rules.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

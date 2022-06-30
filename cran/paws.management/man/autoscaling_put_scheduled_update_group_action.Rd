@@ -31,8 +31,8 @@ Scaling does not perform the action after this time.}
 
 \item{Recurrence}{The recurring schedule for this action, in Unix cron syntax format. This
 format consists of five fields separated by white spaces: [Minute]
-[Hour] [Day_of_Month] [Month_of_Year] [Day_of_Week]. The
-value must be in quotes (for example, \code{"30 0 1 1,6,12 *"}). For more
+[Hour] [Day_of_Month] [Month_of_Year] [Day_of_Week]. The value
+must be in quotes (for example, \code{"30 0 1 1,6,12 *"}). For more
 information about this format, see \href{http://crontab.org/}{Crontab}.
 
 When \code{StartTime} and \code{EndTime} are specified with \code{Recurrence}, they
@@ -55,11 +55,13 @@ Creates or updates a scheduled scaling action for an Auto Scaling group.
 If you leave a parameter unspecified when updating a scheduled scaling
 action, the corresponding value remains unchanged.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html}{Scheduled scaling}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html}{Scheduled scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_scheduled_update_group_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_scheduled_update_group_action(
   AutoScalingGroupName = "string",
   ScheduledActionName = "string",
   Time = as.POSIXct(
@@ -76,7 +78,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
   MaxSize = 123,
   DesiredCapacity = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

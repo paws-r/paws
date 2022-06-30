@@ -23,7 +23,9 @@ default.}
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RemediationExecutionStatuses = list(
     list(
       ResourceKey = list(
@@ -54,7 +56,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides a detailed view of a Remediation Execution for a set of
@@ -64,7 +66,9 @@ you specify the limit and the next token, you receive a paginated
 response.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_remediation_execution_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_remediation_execution_status(
   ConfigRuleName = "string",
   ResourceKeys = list(
     list(
@@ -75,7 +79,7 @@ response.
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,7 +11,9 @@ ses_get_template(TemplateName)
 \item{TemplateName}{[required] The name of the template you want to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Template = list(
     TemplateName = "string",
     SubjectPart = "string",
@@ -19,7 +21,7 @@ A list with the following syntax:\preformatted{list(
     HtmlPart = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Displays the template object (which includes the Subject line, HTML part
@@ -28,10 +30,12 @@ and text part) for the template you specify.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$get_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_template(
   TemplateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

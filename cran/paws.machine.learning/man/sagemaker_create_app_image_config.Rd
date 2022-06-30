@@ -16,10 +16,12 @@ sagemaker_create_app_image_config(AppImageConfigName, Tags,
 \item{KernelGatewayImageConfig}{The KernelGatewayImageConfig.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppImageConfigArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a configuration for running a SageMaker image as a KernelGateway
@@ -27,7 +29,9 @@ app. The configuration specifies the Amazon Elastic File System (EFS)
 storage volume on the image, and a list of the kernels in the image.
 }
 \section{Request syntax}{
-\preformatted{svc$create_app_image_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_app_image_config(
   AppImageConfigName = "string",
   Tags = list(
     list(
@@ -49,7 +53,7 @@ storage volume on the image, and a list of the kernels in the image.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ eks_describe_fargate_profile(clusterName, fargateProfileName)
 \item{fargateProfileName}{[required] The name of the Fargate profile to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   fargateProfile = list(
     fargateProfileName = "string",
     fargateProfileArn = "string",
@@ -38,17 +40,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns descriptive information about an AWS Fargate profile.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_fargate_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fargate_profile(
   clusterName = "string",
   fargateProfileName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -25,7 +25,9 @@ you want Amazon Route 53 to return. If you don't specify a value for
 \code{MaxResults}, Route 53 returns up to 50 VPCs per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HostedZoneId = "string",
   NextToken = "string",
   VPCs = list(
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of the VPCs that were created by other accounts and that can
@@ -48,12 +50,14 @@ The response includes a \code{VPCs} element with a \code{VPC} child element for
 each VPC that can be associated with the hosted zone.
 }
 \section{Request syntax}{
-\preformatted{svc$list_vpc_association_authorizations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_vpc_association_authorizations(
   HostedZoneId = "string",
   NextToken = "string",
   MaxResults = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

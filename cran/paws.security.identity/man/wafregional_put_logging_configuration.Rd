@@ -15,7 +15,9 @@ When specifying \code{Type} in \code{RedactedFields}, you must use one of the
 following values: \code{URI}, \code{QUERY_STRING}, \code{HEADER}, or \code{METHOD}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LoggingConfiguration = list(
     ResourceArn = "string",
     LogDestinationConfigs = list(
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -67,7 +69,9 @@ information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/log
 in the \emph{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_logging_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_logging_configuration(
   LoggingConfiguration = list(
     ResourceArn = "string",
     LogDestinationConfigs = list(
@@ -81,7 +85,7 @@ in the \emph{AWS WAF Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

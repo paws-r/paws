@@ -15,7 +15,9 @@ elasticbeanstalk_describe_environment_managed_actions(EnvironmentName,
 \item{Status}{To show only actions with a particular status, specify a status.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ManagedActions = list(
     list(
       ActionId = "string",
@@ -28,18 +30,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists an environment's upcoming and in-progress managed actions.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_environment_managed_actions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_environment_managed_actions(
   EnvironmentName = "string",
   EnvironmentId = "string",
   Status = "Scheduled"|"Pending"|"Running"|"Unknown"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

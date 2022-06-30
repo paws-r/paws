@@ -21,7 +21,9 @@ number you specified in this parameter, then the response includes a
 \code{NextToken} element, which you can use to obtain additional results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DedicatedIps = list(
     list(
       Ip = "string",
@@ -32,19 +34,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List the dedicated IP addresses that are associated with your Amazon
 Pinpoint account.
 }
 \section{Request syntax}{
-\preformatted{svc$get_dedicated_ips(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dedicated_ips(
   PoolName = "string",
   NextToken = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

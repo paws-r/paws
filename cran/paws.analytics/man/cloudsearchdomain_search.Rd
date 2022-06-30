@@ -274,7 +274,7 @@ and use advanced options such as term boosting, \code{matchall}, and
 \code{near}. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-compound-queries.html}{Constructing Compound Queries}
 in the \emph{Amazon CloudSearch Developer Guide}.
 \item \code{lucene}: search using the Apache Lucene query parser syntax. For
-more information, see \href{http://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description}{Apache Lucene Query Parser Syntax}.
+more information, see \href{https://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description}{Apache Lucene Query Parser Syntax}.
 \item \code{dismax}: search using the simplified subset of the Apache Lucene
 query parser syntax defined by the DisMax query parser. For more
 information, see \href{https://cwiki.apache.org/confluence/display/solr/DisMaxQParserPlugin#Query_Syntax}{DisMax Query Parser Syntax}.
@@ -319,7 +319,9 @@ The fields are specified in JSON using the form:
 There are currently no options supported for statistics.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   status = list(
     timems = 123,
     rid = "string"
@@ -368,7 +370,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of documents that match the specified search criteria.
@@ -399,7 +401,9 @@ domain's endpoints are also displayed on the domain dashboard in the
 Amazon CloudSearch console.
 }
 \section{Request syntax}{
-\preformatted{svc$search(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search(
   cursor = "string",
   expr = "string",
   facet = "string",
@@ -415,7 +419,7 @@ Amazon CloudSearch console.
   start = 123,
   stats = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

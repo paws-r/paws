@@ -10,7 +10,9 @@ cloudwatchevents_describe_archive(ArchiveName)
 \item{ArchiveName}{[required] The name of the archive to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ArchiveArn = "string",
   ArchiveName = "string",
   EventSourceArn = "string",
@@ -25,16 +27,18 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves details about an archive.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_archive(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_archive(
   ArchiveName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

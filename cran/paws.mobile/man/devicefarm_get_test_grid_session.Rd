@@ -17,7 +17,9 @@ devicefarm_get_test_grid_session(projectArn, sessionId, sessionArn)
 \item{sessionArn}{An ARN that uniquely identifies a TestGridSession.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   testGridSession = list(
     arn = "string",
     status = "ACTIVE"|"CLOSED"|"ERRORED",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
     seleniumProperties = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 A session is an instance of a browser created through a
@@ -45,12 +47,14 @@ GetTestGridSessionRequest$sessionId).
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_test_grid_session(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_test_grid_session(
   projectArn = "string",
   sessionId = "string",
   sessionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,25 +12,29 @@ ec2_unassign_ipv_6_addresses(Ipv6Addresses, NetworkInterfaceId)
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NetworkInterfaceId = "string",
   UnassignedIpv6Addresses = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Unassigns one or more IPv6 addresses from a network interface.
 }
 \section{Request syntax}{
-\preformatted{svc$unassign_ipv_6_addresses(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unassign_ipv_6_addresses(
   Ipv6Addresses = list(
     "string"
   ),
   NetworkInterfaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

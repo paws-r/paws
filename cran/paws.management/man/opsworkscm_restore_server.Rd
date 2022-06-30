@@ -46,13 +46,15 @@ exist. A \code{ValidationException} is raised when parameters of the request
 are not valid.
 }
 \section{Request syntax}{
-\preformatted{svc$restore_server(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_server(
   BackupId = "string",
   ServerName = "string",
   InstanceType = "string",
   KeyPair = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

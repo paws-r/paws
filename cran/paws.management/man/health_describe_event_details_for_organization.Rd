@@ -16,7 +16,9 @@ health_describe_event_details_for_organization(
 default and the only supported value at this time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   successfulSet = list(
     list(
       awsAccountId = "string",
@@ -56,7 +58,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns detailed information about one or more specified events for one
@@ -94,7 +96,9 @@ For more information, see
 \href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_event_details_for_organization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_details_for_organization(
   organizationEventDetailFilters = list(
     list(
       eventArn = "string",
@@ -103,7 +107,7 @@ For more information, see
   ),
   locale = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

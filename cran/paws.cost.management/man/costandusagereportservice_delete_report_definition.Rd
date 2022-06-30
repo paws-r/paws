@@ -11,19 +11,23 @@ costandusagereportservice_delete_report_definition(ReportName)
 is case sensitive, and can't include spaces.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResponseMessage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified report.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_report_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_report_definition(
   ReportName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -25,11 +25,13 @@ once the requested number of domain controllers is updated. During this
 time, you cannot make another update request.
 }
 \section{Request syntax}{
-\preformatted{svc$update_number_of_domain_controllers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_number_of_domain_controllers(
   DirectoryId = "string",
   DesiredNumber = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

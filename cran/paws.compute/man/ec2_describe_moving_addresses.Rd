@@ -33,7 +33,9 @@ Default: If no value is provided, the default is 1000.}
 \item{PublicIps}{One or more Elastic IP addresses.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MovingAddressStatuses = list(
     list(
       MoveStatus = "movingToVpc"|"restoringToClassic",
@@ -42,7 +44,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes your Elastic IP addresses that are being moved to the EC2-VPC
@@ -51,7 +53,9 @@ request does not return information about any other Elastic IP addresses
 in your account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_moving_addresses(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_moving_addresses(
   Filters = list(
     list(
       Name = "string",
@@ -67,7 +71,7 @@ in your account.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

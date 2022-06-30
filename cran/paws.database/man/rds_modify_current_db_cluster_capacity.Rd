@@ -46,14 +46,16 @@ specified value as soon as possible.
 isn't found in the timeout period.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterIdentifier = "string",
   PendingCapacity = 123,
   CurrentCapacity = 123,
   SecondsBeforeTimeout = 123,
   TimeoutAction = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Set the capacity of an Aurora Serverless DB cluster to a specific value.
@@ -76,19 +78,21 @@ If you call
 \code{\link[=rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity}}
 with the default \code{TimeoutAction}, connections that prevent Aurora
 Serverless from finding a scaling point might be dropped. For more
-information about scaling points, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling}{Autoscaling for Aurora Serverless}
+information about scaling points, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/#aurora-serverless.how-it-works.auto-scaling}{Autoscaling for Aurora Serverless}
 in the \emph{Amazon Aurora User Guide}.
 
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_current_db_cluster_capacity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_current_db_cluster_capacity(
   DBClusterIdentifier = "string",
   Capacity = 123,
   SecondsBeforeTimeout = 123,
   TimeoutAction = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

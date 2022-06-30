@@ -10,7 +10,9 @@ rds_delete_global_cluster(GlobalClusterIdentifier)
 \item{GlobalClusterIdentifier}{[required] The cluster identifier of the global database cluster being deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GlobalCluster = list(
     GlobalClusterIdentifier = "string",
     GlobalClusterResourceId = "string",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a global database cluster. The primary and secondary clusters
@@ -42,10 +44,12 @@ must already be detached or destroyed first.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_global_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_global_cluster(
   GlobalClusterIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

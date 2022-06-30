@@ -16,10 +16,12 @@ An empty list.
 Deletes the stored query for an AWS account in an AWS Region.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_stored_query(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_stored_query(
   QueryName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

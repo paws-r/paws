@@ -42,14 +42,16 @@ Protocol, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/clas
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$set_load_balancer_policies_for_backend_server(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_load_balancer_policies_for_backend_server(
   LoadBalancerName = "string",
   InstancePort = 123,
   PolicyNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

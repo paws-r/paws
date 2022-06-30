@@ -16,10 +16,12 @@ An empty list.
 Deletes a Lambda function definition.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_function_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_function_definition(
   FunctionDefinitionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

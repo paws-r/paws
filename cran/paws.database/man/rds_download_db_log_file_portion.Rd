@@ -46,25 +46,29 @@ AdditionalDataPending response element returns false.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LogFileData = "string",
   Marker = "string",
   AdditionalDataPending = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Downloads all or a portion of the specified log file, up to 1 MB in
 size.
 }
 \section{Request syntax}{
-\preformatted{svc$download_db_log_file_portion(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$download_db_log_file_portion(
   DBInstanceIdentifier = "string",
   LogFileName = "string",
   Marker = "string",
   NumberOfLines = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

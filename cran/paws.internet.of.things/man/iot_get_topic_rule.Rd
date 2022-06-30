@@ -10,7 +10,9 @@ iot_get_topic_rule(ruleName)
 \item{ruleName}{[required] The name of the rule.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ruleArn = "string",
   rule = list(
     ruleName = "string",
@@ -361,16 +363,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the rule.
 }
 \section{Request syntax}{
-\preformatted{svc$get_topic_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_topic_rule(
   ruleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,7 +19,9 @@ An empty list.
 Adds metadata tags to a specified resource.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   Arn = "string",
   Tags = list(
     list(
@@ -28,7 +30,7 @@ Adds metadata tags to a specified resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

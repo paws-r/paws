@@ -18,13 +18,15 @@ An empty list.
 Create tags for a resource
 }
 \section{Request syntax}{
-\preformatted{svc$create_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_tags(
   ResourceArn = "string",
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

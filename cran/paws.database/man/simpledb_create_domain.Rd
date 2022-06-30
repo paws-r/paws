@@ -30,10 +30,12 @@ If the client requires additional domains, go to
 http://aws.amazon.com/contact-us/simpledb-limit-request/.
 }
 \section{Request syntax}{
-\preformatted{svc$create_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_domain(
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

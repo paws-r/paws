@@ -26,7 +26,9 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
 \href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudhsm(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudhsm(
   config = list(
     credentials = list(
       creds = list(
@@ -40,7 +42,7 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

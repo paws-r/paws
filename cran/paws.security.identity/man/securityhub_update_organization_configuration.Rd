@@ -24,10 +24,12 @@ Used to update the configuration related to Organizations. Can only be
 called from a Security Hub administrator account.
 }
 \section{Request syntax}{
-\preformatted{svc$update_organization_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_organization_configuration(
   AutoEnable = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

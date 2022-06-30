@@ -15,7 +15,9 @@ use the credentials to log in. If the user is logged in at the time, he
 or she automatically will be logged out.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TemporaryCredential = list(
     Username = "string",
     Password = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     InstanceId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This action can be used only with Windows stacks.
@@ -31,11 +33,13 @@ This action can be used only with Windows stacks.
 Grants RDP access to a Windows instance for a specified time period.
 }
 \section{Request syntax}{
-\preformatted{svc$grant_access(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$grant_access(
   InstanceId = "string",
   ValidForInMinutes = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

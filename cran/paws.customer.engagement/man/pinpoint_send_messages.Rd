@@ -13,7 +13,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{MessageRequest}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MessageResponse = list(
     ApplicationId = "string",
     EndpointResult = list(
@@ -38,13 +40,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates and sends a direct message.
 }
 \section{Request syntax}{
-\preformatted{svc$send_messages(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_messages(
   ApplicationId = "string",
   MessageRequest = list(
     Addresses = list(
@@ -278,7 +282,7 @@ Creates and sends a direct message.
     TraceId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -29,11 +29,13 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \item{TagSpecifications}{The tags to apply to the FPGA image during creation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FpgaImageId = "string",
   FpgaImageGlobalId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Amazon FPGA Image (AFI) from the specified design checkpoint
@@ -47,7 +49,9 @@ You can securely deploy an AFI on multiple FPGA-accelerated instances.
 For more information, see the \href{https://github.com/aws/aws-fpga/}{AWS FPGA Hardware Development Kit}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_fpga_image(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_fpga_image(
   DryRun = TRUE|FALSE,
   InputStorageLocation = list(
     Bucket = "string",
@@ -72,7 +76,7 @@ For more information, see the \href{https://github.com/aws/aws-fpga/}{AWS FPGA H
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

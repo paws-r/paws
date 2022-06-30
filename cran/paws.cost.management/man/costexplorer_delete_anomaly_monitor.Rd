@@ -17,10 +17,12 @@ An empty list.
 Deletes a cost anomaly monitor.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_anomaly_monitor(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_anomaly_monitor(
   MonitorArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

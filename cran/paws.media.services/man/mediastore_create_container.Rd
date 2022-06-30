@@ -21,7 +21,9 @@ You can add up to 50 tags to each container. For more information about
 tagging, including naming and usage conventions, see \href{https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html}{Tagging Resources in MediaStore}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Container = list(
     Endpoint = "string",
     CreationTime = as.POSIXct(
@@ -33,14 +35,16 @@ A list with the following syntax:\preformatted{list(
     AccessLoggingEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a storage container to hold objects. A container is similar to a
 bucket in the Amazon S3 service.
 }
 \section{Request syntax}{
-\preformatted{svc$create_container(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_container(
   ContainerName = "string",
   Tags = list(
     list(
@@ -49,7 +53,7 @@ bucket in the Amazon S3 service.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

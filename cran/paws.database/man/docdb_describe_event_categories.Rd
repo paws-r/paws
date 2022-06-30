@@ -16,7 +16,9 @@ Valid values: \code{db-instance}, \code{db-parameter-group}, \code{db-security-g
 \item{Filters}{This parameter is not currently supported.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventCategoriesMapList = list(
     list(
       SourceType = "string",
@@ -26,14 +28,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Displays a list of categories for all event source types, or, if
 specified, for a specified source type.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_event_categories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_categories(
   SourceType = "string",
   Filters = list(
     list(
@@ -44,7 +48,7 @@ specified, for a specified source type.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

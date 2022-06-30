@@ -34,7 +34,9 @@ the virtual gateway is in a shared mesh, then you must be the owner of
 the virtual gateway resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   gatewayRoute = list(
     gatewayRouteName = "string",
     meshName = "string",
@@ -95,7 +97,7 @@ A list with the following syntax:\preformatted{list(
     virtualGatewayName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a gateway route.
@@ -107,7 +109,9 @@ distribute traffic to a target virtual service.
 For more information about gateway routes, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/gateway-routes.html}{Gateway routes}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_gateway_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_gateway_route(
   clientToken = "string",
   gatewayRouteName = "string",
   meshName = "string",
@@ -158,7 +162,7 @@ For more information about gateway routes, see \href{https://docs.aws.amazon.com
   ),
   virtualGatewayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

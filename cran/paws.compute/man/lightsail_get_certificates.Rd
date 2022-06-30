@@ -29,7 +29,9 @@ When omitted, the response includes all of your certificates in the AWS
 Region where the request is made.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   certificates = list(
     list(
       certificateArn = "string",
@@ -109,7 +111,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about one or more Amazon Lightsail SSL/TLS
@@ -120,14 +122,16 @@ from your request. The response will include only the certificate Amazon
 Resource Name (ARN), certificate name, domain name, and tags.
 }
 \section{Request syntax}{
-\preformatted{svc$get_certificates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_certificates(
   certificateStatuses = list(
     "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
   ),
   includeCertificateDetails = TRUE|FALSE,
   certificateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

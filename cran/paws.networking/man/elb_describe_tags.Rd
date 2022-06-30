@@ -10,7 +10,9 @@ elb_describe_tags(LoadBalancerNames)
 \item{LoadBalancerNames}{[required] The names of the load balancers.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TagDescriptions = list(
     list(
       LoadBalancerName = "string",
@@ -23,18 +25,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the tags associated with the specified load balancers.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tags(
   LoadBalancerNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

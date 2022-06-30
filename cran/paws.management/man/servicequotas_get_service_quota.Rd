@@ -12,7 +12,9 @@ servicequotas_get_service_quota(ServiceCode, QuotaCode)
 \item{QuotaCode}{[required] The quota identifier.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Quota = list(
     ServiceCode = "string",
     ServiceName = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the applied quota value for the specified quota. For some
@@ -49,11 +51,13 @@ quotas, only the default values are available. If the applied quota
 value is not available for a quota, the quota is not retrieved.
 }
 \section{Request syntax}{
-\preformatted{svc$get_service_quota(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_service_quota(
   ServiceCode = "string",
   QuotaCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

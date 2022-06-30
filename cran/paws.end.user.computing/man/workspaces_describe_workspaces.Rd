@@ -34,7 +34,9 @@ filter.}
 provide this token to receive the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Workspaces = list(
     list(
       WorkspaceId = "string",
@@ -67,7 +69,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified WorkSpaces.
@@ -76,7 +78,9 @@ You can filter the results by using the bundle identifier, directory
 identifier, or owner, but you can specify only one filter at a time.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_workspaces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workspaces(
   WorkspaceIds = list(
     "string"
   ),
@@ -86,7 +90,7 @@ identifier, or owner, but you can specify only one filter at a time.
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

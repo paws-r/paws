@@ -23,14 +23,16 @@ If a property already exists for the specified run, then it overrides
 the value otherwise adds the property to existing properties.
 }
 \section{Request syntax}{
-\preformatted{svc$put_workflow_run_properties(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_workflow_run_properties(
   Name = "string",
   RunId = "string",
   RunProperties = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,10 +10,12 @@ rekognition_create_project(ProjectName)
 \item{ProjectName}{[required] The name of the project to create.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProjectArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new Amazon Rekognition Custom Labels project. A project is a
@@ -24,10 +26,12 @@ This operation requires permissions to perform the
 \code{rekognition:CreateProject} action.
 }
 \section{Request syntax}{
-\preformatted{svc$create_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_project(
   ProjectName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

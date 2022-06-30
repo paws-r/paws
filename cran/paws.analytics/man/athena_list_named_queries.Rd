@@ -20,13 +20,15 @@ returned. If a workgroup is not specified, the saved queries for the
 primary workgroup are returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NamedQueryIds = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides a list of available query IDs only for queries saved in the
@@ -38,12 +40,14 @@ For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.c
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_named_queries(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_named_queries(
   NextToken = "string",
   MaxResults = 123,
   WorkGroup = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

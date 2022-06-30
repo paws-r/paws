@@ -16,10 +16,12 @@ An empty list.
 Deletes a subscription definition.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_subscription_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_subscription_definition(
   SubscriptionDefinitionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,10 +19,12 @@ guardduty_create_detector(Enable, ClientToken,
 \item{Tags}{The tags to be added to a new detector resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DetectorId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a single Amazon GuardDuty detector. A detector is a resource
@@ -32,7 +34,9 @@ can have only one detector per account per Region. All data sources are
 enabled in a new detector by default.
 }
 \section{Request syntax}{
-\preformatted{svc$create_detector(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_detector(
   Enable = TRUE|FALSE,
   ClientToken = "string",
   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
@@ -45,7 +49,7 @@ enabled in a new detector by default.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

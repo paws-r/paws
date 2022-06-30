@@ -29,13 +29,15 @@ list.}
 \item{BounceSenderArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
 that permits you to use the address in the "From" header of the bounce.
-For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
+For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MessageId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates and sends a bounce message to the sender of an email you
@@ -46,12 +48,14 @@ You cannot use this API to send generic bounces for mail that was not
 received by Amazon SES.
 
 For information about receiving email through Amazon SES, see the
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html}{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$send_bounce(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_bounce(
   OriginalMessageId = "string",
   BounceSender = "string",
   Explanation = "string",
@@ -92,7 +96,7 @@ You can execute this operation no more than once per second.
   ),
   BounceSenderArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

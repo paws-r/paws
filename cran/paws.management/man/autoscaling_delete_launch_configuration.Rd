@@ -20,10 +20,12 @@ When this call completes, the launch configuration is no longer
 available for use.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_launch_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_launch_configuration(
   LaunchConfigurationName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

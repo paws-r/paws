@@ -19,7 +19,7 @@ specified endpoint.}
 \item{NextToken}{If the result of the previous
 \code{\link[=sagemaker_list_data_quality_job_definitions]{list_data_quality_job_definitions}}
 request was truncated, the response includes a \code{NextToken}. To retrieve
-the next set of transform jobs, use the token in the next request.>}
+the next set of transform jobs, use the token in the next request.\>}
 
 \item{MaxResults}{The maximum number of data quality monitoring job definitions to return
 in the response.}
@@ -35,7 +35,9 @@ created before the specified time.}
 created after the specified time.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobDefinitionSummaries = list(
     list(
       MonitoringJobDefinitionName = "string",
@@ -48,13 +50,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the data quality job definitions in your account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_data_quality_job_definitions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_data_quality_job_definitions(
   EndpointName = "string",
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending",
@@ -68,7 +72,7 @@ Lists the data quality job definitions in your account.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,10 +16,12 @@ An empty list.
 Deletes a scheduled action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_scheduled_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_scheduled_action(
   ScheduledActionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

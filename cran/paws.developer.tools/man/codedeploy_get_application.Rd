@@ -11,7 +11,9 @@ codedeploy_get_application(applicationName)
 or AWS account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   application = list(
     applicationId = "string",
     applicationName = "string",
@@ -23,16 +25,18 @@ A list with the following syntax:\preformatted{list(
     computePlatform = "Server"|"Lambda"|"ECS"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about an application.
 }
 \section{Request syntax}{
-\preformatted{svc$get_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_application(
   applicationName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

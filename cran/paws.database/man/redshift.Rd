@@ -42,7 +42,9 @@ explains how to design, build, query, and maintain the databases that
 make up your data warehouse.
 }
 \section{Service syntax}{
-\preformatted{svc <- redshift(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- redshift(
   config = list(
     credentials = list(
       creds = list(
@@ -56,7 +58,7 @@ make up your data warehouse.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

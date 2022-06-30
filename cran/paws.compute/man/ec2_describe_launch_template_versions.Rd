@@ -64,7 +64,9 @@ template version is the default version.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LaunchTemplateVersions = list(
     list(
       LaunchTemplateId = "string",
@@ -226,7 +228,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more versions of a specified launch template. You can
@@ -235,7 +237,9 @@ can also describe all the latest versions or all the default versions of
 all the launch templates in your account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_launch_template_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_launch_template_versions(
   DryRun = TRUE|FALSE,
   LaunchTemplateId = "string",
   LaunchTemplateName = "string",
@@ -255,7 +259,7 @@ all the launch templates in your account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

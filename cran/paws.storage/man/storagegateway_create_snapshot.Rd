@@ -25,11 +25,13 @@ representable in UTF-8 format, and the following special characters: + -
 the maximum length for a tag's value is 256.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VolumeARN = "string",
   SnapshotId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Initiates a snapshot of a volume.
@@ -40,7 +42,7 @@ off-site recovery, as well as import the data to an Amazon Elastic Block
 Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take
 snapshots of your gateway volume on a scheduled or ad hoc basis. This
 API enables you to take an ad hoc snapshot. For more information, see
-\href{https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot}{Editing a snapshot schedule}.
+\href{https://docs.aws.amazon.com/storagegateway/index.html#SchedulingSnapshot}{Editing a snapshot schedule}.
 
 In the \code{\link[=storagegateway_create_snapshot]{create_snapshot}} request, you
 identify the volume by providing its Amazon Resource Name (ARN). You
@@ -65,7 +67,9 @@ more information, see the important note on the
 page.
 }
 \section{Request syntax}{
-\preformatted{svc$create_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_snapshot(
   VolumeARN = "string",
   SnapshotDescription = "string",
   Tags = list(
@@ -75,7 +79,7 @@ page.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

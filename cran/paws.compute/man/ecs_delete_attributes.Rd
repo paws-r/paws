@@ -17,7 +17,9 @@ name and target ID, but do not specify the value. If you specify the
 target ID using the short form, you must also specify the target type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   attributes = list(
     list(
       name = "string",
@@ -27,13 +29,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes one or more custom attributes from an Amazon ECS resource.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_attributes(
   cluster = "string",
   attributes = list(
     list(
@@ -44,7 +48,7 @@ Deletes one or more custom attributes from an Amazon ECS resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

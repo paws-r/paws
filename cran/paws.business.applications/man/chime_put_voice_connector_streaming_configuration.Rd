@@ -14,7 +14,9 @@ chime_put_voice_connector_streaming_configuration(VoiceConnectorId,
 \item{StreamingConfiguration}{[required] The streaming configuration details to add.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StreamingConfiguration = list(
     DataRetentionInHours = 123,
     Disabled = TRUE|FALSE,
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a streaming configuration for the specified Amazon Chime Voice
@@ -34,7 +36,9 @@ is enabled for sending to Amazon Kinesis. It also sets the retention
 period, in hours, for the Amazon Kinesis data.
 }
 \section{Request syntax}{
-\preformatted{svc$put_voice_connector_streaming_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_voice_connector_streaming_configuration(
   VoiceConnectorId = "string",
   StreamingConfiguration = list(
     DataRetentionInHours = 123,
@@ -46,7 +50,7 @@ period, in hours, for the Amazon Kinesis data.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

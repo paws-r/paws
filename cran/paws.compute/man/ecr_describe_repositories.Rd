@@ -41,7 +41,9 @@ results and a \code{nextToken} value, if applicable. This option cannot be
 used when you specify repositories with \code{repositoryNames}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   repositories = list(
     list(
       repositoryArn = "string",
@@ -63,13 +65,15 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes image repositories in a registry.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_repositories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_repositories(
   registryId = "string",
   repositoryNames = list(
     "string"
@@ -77,7 +81,7 @@ Describes image repositories in a registry.
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -12,14 +12,16 @@ mediaconnect_remove_flow_vpc_interface(FlowArn, VpcInterfaceName)
 \item{VpcInterfaceName}{[required] The name of the VPC interface that you want to remove.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FlowArn = "string",
   NonDeletedNetworkInterfaceIds = list(
     "string"
   ),
   VpcInterfaceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes a VPC Interface from an existing flow. This request can be made
@@ -29,11 +31,13 @@ must first delete or update the Source or Output to no longer reference
 the VPC interface.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_flow_vpc_interface(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_flow_vpc_interface(
   FlowArn = "string",
   VpcInterfaceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

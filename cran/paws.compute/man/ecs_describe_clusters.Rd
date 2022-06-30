@@ -37,7 +37,9 @@ If \code{TAGS} is specified, the metadata tags associated with the cluster
 are included.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   clusters = list(
     list(
       clusterArn = "string",
@@ -99,13 +101,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more of your clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_clusters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_clusters(
   clusters = list(
     "string"
   ),
@@ -113,7 +117,7 @@ Describes one or more of your clusters.
     "ATTACHMENTS"|"SETTINGS"|"STATISTICS"|"TAGS"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

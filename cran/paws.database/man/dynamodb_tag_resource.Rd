@@ -25,7 +25,9 @@ For an overview on tagging DynamoDB resources, see \href{https://docs.aws.amazon
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -34,7 +36,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

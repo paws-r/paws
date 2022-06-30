@@ -12,23 +12,27 @@ glue_list_workflows(NextToken, MaxResults)
 \item{MaxResults}{The maximum size of a list to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Workflows = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists names of workflows created in the account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_workflows(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_workflows(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

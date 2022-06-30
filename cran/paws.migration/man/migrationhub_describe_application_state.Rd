@@ -11,22 +11,26 @@ migrationhub_describe_application_state(ApplicationId)
 identifies the grouped application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationStatus = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
   LastUpdatedTime = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the migration status of an application.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_application_state(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_application_state(
   ApplicationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

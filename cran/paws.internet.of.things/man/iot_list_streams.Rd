@@ -14,7 +14,9 @@ iot_list_streams(maxResults, nextToken, ascendingOrder)
 \item{ascendingOrder}{Set to true to return the list of streams in ascending order.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   streams = list(
     list(
       streamId = "string",
@@ -25,18 +27,20 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all of the streams in your AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_streams(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_streams(
   maxResults = 123,
   nextToken = "string",
   ascendingOrder = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

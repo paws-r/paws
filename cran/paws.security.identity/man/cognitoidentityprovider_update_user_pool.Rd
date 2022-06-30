@@ -80,7 +80,9 @@ If you don't provide a value for an attribute, it will be set to the
 default value.
 }
 \section{Request syntax}{
-\preformatted{svc$update_user_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_pool(
   UserPoolId = "string",
   Policies = list(
     PasswordPolicy = list(
@@ -168,7 +170,7 @@ default value.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

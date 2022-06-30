@@ -14,7 +14,9 @@ waf_list_tags_for_resource(NextMarker, Limit, ResourceARN)
 \item{ResourceARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextMarker = "string",
   TagInfoForResource = list(
     ResourceARN = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -51,12 +53,14 @@ AWS resources that you manage through AWS WAF Classic: web ACLs, rule
 groups, and rules.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   NextMarker = "string",
   Limit = 123,
   ResourceARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

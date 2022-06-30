@@ -24,11 +24,13 @@ Deletes an AppIntegration association from an Amazon Connect instance.
 The association must not have any use cases associated with it.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_integration_association(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_integration_association(
   InstanceId = "string",
   IntegrationAssociationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

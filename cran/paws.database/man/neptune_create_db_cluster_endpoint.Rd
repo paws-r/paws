@@ -28,7 +28,9 @@ endpoint. Only relevant if the list of static members is empty.}
 \item{Tags}{The tags to be assigned to the Amazon Neptune resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterEndpointIdentifier = "string",
   DBClusterIdentifier = "string",
   DBClusterEndpointResourceIdentifier = "string",
@@ -44,14 +46,16 @@ A list with the following syntax:\preformatted{list(
   ),
   DBClusterEndpointArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new custom endpoint and associates it with an Amazon Neptune
 DB cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$create_db_cluster_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_cluster_endpoint(
   DBClusterIdentifier = "string",
   DBClusterEndpointIdentifier = "string",
   EndpointType = "string",
@@ -68,7 +72,7 @@ DB cluster.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

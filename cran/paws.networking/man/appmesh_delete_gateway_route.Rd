@@ -19,7 +19,9 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 \item{virtualGatewayName}{[required] The name of the virtual gateway to delete the route from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   gatewayRoute = list(
     gatewayRouteName = "string",
     meshName = "string",
@@ -80,19 +82,21 @@ A list with the following syntax:\preformatted{list(
     virtualGatewayName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an existing gateway route.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_gateway_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_gateway_route(
   gatewayRouteName = "string",
   meshName = "string",
   meshOwner = "string",
   virtualGatewayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -15,7 +15,9 @@ codebuild_get_report_group_trend(reportGroupArn, numOfReports,
 \item{trendField}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   stats = list(
     average = "string",
     max = "string",
@@ -28,18 +30,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get report group trend
 }
 \section{Request syntax}{
-\preformatted{svc$get_report_group_trend(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_report_group_trend(
   reportGroupArn = "string",
   numOfReports = 123,
   trendField = "PASS_RATE"|"DURATION"|"TOTAL"|"LINE_COVERAGE"|"LINES_COVERED"|"LINES_MISSED"|"BRANCH_COVERAGE"|"BRANCHES_COVERED"|"BRANCHES_MISSED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

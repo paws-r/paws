@@ -14,7 +14,9 @@ comprehend_classify_document(Text, EndpointArn)
 \item{EndpointArn}{[required] The Amazon Resource Number (ARN) of the endpoint.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Classes = list(
     list(
       Name = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new document classification request to analyze a single
@@ -36,11 +38,13 @@ document in real-time, using a previously created and trained custom
 model and an endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$classify_document(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$classify_document(
   Text = "string",
   EndpointArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

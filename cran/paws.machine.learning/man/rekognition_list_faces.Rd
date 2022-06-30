@@ -17,7 +17,9 @@ faces.}
 \item{MaxResults}{Maximum number of faces to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Faces = list(
     list(
       FaceId = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
   NextToken = "string",
   FaceModelVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns metadata for faces in the specified collection. This metadata
@@ -48,12 +50,14 @@ This operation requires permissions to perform the
 \code{rekognition:ListFaces} action.
 }
 \section{Request syntax}{
-\preformatted{svc$list_faces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_faces(
   CollectionId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

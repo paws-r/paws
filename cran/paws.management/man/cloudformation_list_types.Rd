@@ -63,7 +63,9 @@ there are no remaining results, the previous response object's
 \code{NextToken} parameter is set to \code{null}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TypeSummaries = list(
     list(
       Type = "RESOURCE"|"MODULE",
@@ -78,14 +80,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns summary information about types that have been registered with
 CloudFormation.
 }
 \section{Request syntax}{
-\preformatted{svc$list_types(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_types(
   Visibility = "PUBLIC"|"PRIVATE",
   ProvisioningType = "NON_PROVISIONABLE"|"IMMUTABLE"|"FULLY_MUTABLE",
   DeprecatedStatus = "LIVE"|"DEPRECATED",
@@ -93,7 +97,7 @@ CloudFormation.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

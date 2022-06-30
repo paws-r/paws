@@ -76,10 +76,12 @@ or its URI. If you don't specify a recipe or its URI, Amazon ML creates
 a default.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MLModelId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new \code{MLModel} using the \code{DataSource} and the recipe as
@@ -109,7 +111,9 @@ or
 operations.
 }
 \section{Request syntax}{
-\preformatted{svc$create_ml_model(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_ml_model(
   MLModelId = "string",
   MLModelName = "string",
   MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
@@ -120,7 +124,7 @@ operations.
   Recipe = "string",
   RecipeUri = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -32,13 +32,15 @@ original environment ("BLUE") or those in the replacement environment
 ("GREEN"), for which you want to view instance information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   instancesList = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The newer
@@ -52,7 +54,9 @@ Lists the instance for a deployment associated with the IAM user or AWS
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_deployment_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_deployment_instances(
   deploymentId = "string",
   nextToken = "string",
   instanceStatusFilter = list(
@@ -62,7 +66,7 @@ account.
     "Blue"|"Green"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

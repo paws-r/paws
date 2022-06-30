@@ -12,7 +12,9 @@ codecommit_get_pull_request_approval_states(pullRequestId, revisionId)
 \item{revisionId}{[required] The system-generated ID for the pull request revision.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   approvals = list(
     list(
       userArn = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the approval states for a specified pull request.
@@ -28,11 +30,13 @@ Approval states only apply to pull requests that have one or more
 approval rules applied to them.
 }
 \section{Request syntax}{
-\preformatted{svc$get_pull_request_approval_states(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_pull_request_approval_states(
   pullRequestId = "string",
   revisionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

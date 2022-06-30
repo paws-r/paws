@@ -17,7 +17,9 @@ must specify USERPOOL.}
 this operation. If this value is null, it retrieves the first page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Users = list(
     list(
       Arn = "string",
@@ -34,19 +36,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list that describes one or more specified users in the user
 pool.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_users(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_users(
   AuthenticationType = "API"|"SAML"|"USERPOOL",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

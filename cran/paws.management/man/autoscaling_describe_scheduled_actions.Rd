@@ -29,7 +29,9 @@ from a previous call.)}
 is \code{50} and the maximum value is \code{100}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ScheduledUpdateGroupActions = list(
     list(
       AutoScalingGroupName = "string",
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the actions scheduled for your Auto Scaling group that haven't
@@ -62,7 +64,9 @@ that have already run, call the
 API.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_scheduled_actions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scheduled_actions(
   AutoScalingGroupName = "string",
   ScheduledActionNames = list(
     "string"
@@ -76,7 +80,7 @@ API.
   NextToken = "string",
   MaxRecords = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

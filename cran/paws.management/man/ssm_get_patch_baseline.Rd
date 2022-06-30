@@ -10,7 +10,9 @@ ssm_get_patch_baseline(BaselineId)
 \item{BaselineId}{[required] The ID of the patch baseline to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BaselineId = "string",
   Name = "string",
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
@@ -73,16 +75,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a patch baseline.
 }
 \section{Request syntax}{
-\preformatted{svc$get_patch_baseline(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_patch_baseline(
   BaselineId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

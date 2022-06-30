@@ -22,10 +22,12 @@ delete the following:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_dataset_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dataset_group(
   datasetGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

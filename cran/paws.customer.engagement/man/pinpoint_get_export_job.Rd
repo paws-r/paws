@@ -14,7 +14,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{JobId}{[required] The unique identifier for the job.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ExportJobResponse = list(
     ApplicationId = "string",
     CompletedPieces = 123,
@@ -38,18 +40,20 @@ A list with the following syntax:\preformatted{list(
     Type = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the status and settings of a specific export
 job for an application.
 }
 \section{Request syntax}{
-\preformatted{svc$get_export_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_export_job(
   ApplicationId = "string",
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

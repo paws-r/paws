@@ -18,13 +18,15 @@ assumed.}
 current policy for the repository is used.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   lifecyclePolicyText = "string",
   status = "IN_PROGRESS"|"COMPLETE"|"EXPIRED"|"FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a preview of a lifecycle policy for the specified repository.
@@ -32,12 +34,14 @@ This allows you to see the results before associating the lifecycle
 policy with the repository.
 }
 \section{Request syntax}{
-\preformatted{svc$start_lifecycle_policy_preview(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_lifecycle_policy_preview(
   registryId = "string",
   repositoryName = "string",
   lifecyclePolicyText = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

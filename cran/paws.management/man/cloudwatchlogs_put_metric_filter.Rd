@@ -30,7 +30,9 @@ The maximum number of metric filters that can be associated with a log
 group is 100.
 }
 \section{Request syntax}{
-\preformatted{svc$put_metric_filter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_metric_filter(
   logGroupName = "string",
   filterName = "string",
   filterPattern = "string",
@@ -43,7 +45,7 @@ group is 100.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

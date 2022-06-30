@@ -46,7 +46,9 @@ request, Amazon Redshift returns a response with all resources that have
 either or both of these tag values associated with them.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   SnapshotCopyGrants = list(
     list(
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of snapshot copy grants owned by the AWS account in the
@@ -71,7 +73,9 @@ For more information about managing snapshot copy grants, go to \href{https://do
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_snapshot_copy_grants(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_snapshot_copy_grants(
   SnapshotCopyGrantName = "string",
   MaxRecords = 123,
   Marker = "string",
@@ -82,7 +86,7 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

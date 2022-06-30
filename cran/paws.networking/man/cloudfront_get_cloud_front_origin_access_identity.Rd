@@ -10,7 +10,9 @@ cloudfront_get_cloud_front_origin_access_identity(Id)
 \item{Id}{[required] The identity's ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CloudFrontOriginAccessIdentity = list(
     Id = "string",
     S3CanonicalUserId = "string",
@@ -21,16 +23,18 @@ A list with the following syntax:\preformatted{list(
   ),
   ETag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get the information about an origin access identity.
 }
 \section{Request syntax}{
-\preformatted{svc$get_cloud_front_origin_access_identity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cloud_front_origin_access_identity(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

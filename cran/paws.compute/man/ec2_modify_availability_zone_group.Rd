@@ -21,10 +21,12 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Changes the opt-in status of the Local Zone and Wavelength Zone group
@@ -35,12 +37,14 @@ Use
 to view the value for \code{GroupName}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_availability_zone_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_availability_zone_group(
   GroupName = "string",
   OptInStatus = "opted-in"|"not-opted-in",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

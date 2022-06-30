@@ -25,7 +25,9 @@ enabled on a group with InsightsEnabled set to true.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Group = list(
     GroupName = "string",
     GroupARN = "string",
@@ -36,13 +38,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a group resource.
 }
 \section{Request syntax}{
-\preformatted{svc$update_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_group(
   GroupName = "string",
   GroupARN = "string",
   FilterExpression = "string",
@@ -51,7 +55,7 @@ Updates a group resource.
     NotificationsEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

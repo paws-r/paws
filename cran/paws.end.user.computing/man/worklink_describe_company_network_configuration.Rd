@@ -11,7 +11,9 @@ worklink_describe_company_network_configuration(FleetArn)
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VpcId = "string",
   SubnetIds = list(
     "string"
@@ -20,17 +22,19 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the networking configuration to access the internal websites
 associated with the specified fleet.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_company_network_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_company_network_configuration(
   FleetArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

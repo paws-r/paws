@@ -11,7 +11,9 @@ comprehend_describe_key_phrases_detection_job(JobId)
 operation returns this identifier in its response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyPhrasesDetectionJobProperties = list(
     JobId = "string",
     JobName = "string",
@@ -44,17 +46,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the properties associated with a key phrases detection job. Use
 this operation to get the status of a detection job.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_key_phrases_detection_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_key_phrases_detection_job(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

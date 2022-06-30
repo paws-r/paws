@@ -22,7 +22,9 @@ Default: There is no default value.}
 retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackEvents = list(
     list(
       StackId = "string",
@@ -42,7 +44,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns all stack related events for a specified stack in reverse
@@ -55,11 +57,13 @@ You can list events for stacks that have failed to create or have been
 deleted by specifying the unique stack identifier (stack ID).
 }
 \section{Request syntax}{
-\preformatted{svc$describe_stack_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stack_events(
   StackName = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -15,7 +15,9 @@ the following form:
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Certificate = list(
     CertificateArn = "string",
     DomainName = "string",
@@ -109,16 +111,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns detailed metadata about the specified ACM certificate.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_certificate(
   CertificateArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

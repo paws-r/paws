@@ -19,7 +19,9 @@ can retrieve private channels.}
 returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Channels = list(
     list(
       Name = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all Channels created under a single Chime App as a paginated list.
@@ -49,13 +51,15 @@ private channels in an account.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$list_channels(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_channels(
   AppInstanceArn = "string",
   Privacy = "PUBLIC"|"PRIVATE",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

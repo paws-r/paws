@@ -11,12 +11,14 @@ cognitosync_get_cognito_events(IdentityPoolId)
 \item{IdentityPoolId}{[required] The Cognito Identity Pool ID for the request}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Events = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the events and the corresponding Lambda functions associated with
@@ -27,10 +29,12 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 }
 \section{Request syntax}{
-\preformatted{svc$get_cognito_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cognito_events(
   IdentityPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

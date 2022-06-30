@@ -56,7 +56,9 @@ For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userg
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_permission(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_permission(
   CertificateAuthorityArn = "string",
   Principal = "string",
   SourceAccount = "string",
@@ -64,7 +66,7 @@ For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userg
     "IssueCertificate"|"GetCertificate"|"ListPermissions"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

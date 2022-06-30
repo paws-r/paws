@@ -25,7 +25,9 @@ Updates the properties associated with a set of queues for a routing
 profile.
 }
 \section{Request syntax}{
-\preformatted{svc$update_routing_profile_queues(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_routing_profile_queues(
   InstanceId = "string",
   RoutingProfileId = "string",
   QueueConfigs = list(
@@ -39,7 +41,7 @@ profile.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

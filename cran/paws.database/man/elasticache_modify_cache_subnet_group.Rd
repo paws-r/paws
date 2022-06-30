@@ -21,7 +21,9 @@ Example: \code{mysubnetgroup}}
 \item{SubnetIds}{The EC2 subnet IDs for the cache subnet group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CacheSubnetGroup = list(
     CacheSubnetGroupName = "string",
     CacheSubnetGroupDescription = "string",
@@ -40,20 +42,22 @@ A list with the following syntax:\preformatted{list(
     ARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies an existing cache subnet group.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_cache_subnet_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cache_subnet_group(
   CacheSubnetGroupName = "string",
   CacheSubnetGroupDescription = "string",
   SubnetIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

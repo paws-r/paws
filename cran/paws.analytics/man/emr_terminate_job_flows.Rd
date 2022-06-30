@@ -26,12 +26,14 @@ minutes for the cluster to completely terminate and release allocated
 resources, such as Amazon EC2 instances.
 }
 \section{Request syntax}{
-\preformatted{svc$terminate_job_flows(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_job_flows(
   JobFlowIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

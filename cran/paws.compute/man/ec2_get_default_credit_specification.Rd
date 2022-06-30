@@ -16,13 +16,15 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{InstanceFamily}{[required] The instance family.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceFamilyCreditSpecification = list(
     InstanceFamily = "t2"|"t3"|"t3a"|"t4g",
     CpuCredits = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the default credit option for CPU usage of a burstable
@@ -32,11 +34,13 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_default_credit_specification(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_default_credit_specification(
   DryRun = TRUE|FALSE,
   InstanceFamily = "t2"|"t3"|"t3a"|"t4g"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

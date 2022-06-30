@@ -31,7 +31,9 @@ this role when accessing the data source.}
 \item{relationalDatabaseConfig}{Relational database settings.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   dataSource = list(
     dataSourceArn = "string",
     name = "string",
@@ -78,13 +80,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a \code{DataSource} object.
 }
 \section{Request syntax}{
-\preformatted{svc$create_data_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_data_source(
   apiId = "string",
   name = "string",
   description = "string",
@@ -129,7 +133,7 @@ Creates a \code{DataSource} object.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

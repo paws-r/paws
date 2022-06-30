@@ -18,11 +18,13 @@ An empty list.
 Moves a domain to ACTIVE status if it was in the INACTIVE status.
 }
 \section{Request syntax}{
-\preformatted{svc$restore_domain_access(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_domain_access(
   FleetArn = "string",
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

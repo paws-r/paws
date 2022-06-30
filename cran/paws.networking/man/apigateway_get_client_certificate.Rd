@@ -11,7 +11,9 @@ apigateway_get_client_certificate(clientCertificateId)
 described.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   clientCertificateId = "string",
   description = "string",
   pemEncodedCertificate = "string",
@@ -25,16 +27,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the current ClientCertificate resource.
 }
 \section{Request syntax}{
-\preformatted{svc$get_client_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_client_certificate(
   clientCertificateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

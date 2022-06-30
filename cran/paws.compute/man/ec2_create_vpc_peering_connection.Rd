@@ -32,7 +32,9 @@ Default: The Region in which you make the request.}
 \item{TagSpecifications}{The tags to assign to the peering connection.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VpcPeeringConnection = list(
     AccepterVpcInfo = list(
       CidrBlock = "string",
@@ -92,7 +94,7 @@ A list with the following syntax:\preformatted{list(
     VpcPeeringConnectionId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Requests a VPC peering connection between two VPCs: a requester VPC that
@@ -115,7 +117,9 @@ overlapping CIDR blocks, the VPC peering connection has a status of
 \code{failed}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_vpc_peering_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc_peering_connection(
   DryRun = TRUE|FALSE,
   PeerOwnerId = "string",
   PeerVpcId = "string",
@@ -133,7 +137,7 @@ overlapping CIDR blocks, the VPC peering connection has a status of
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

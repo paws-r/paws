@@ -41,20 +41,22 @@ Deletes a job and its related job executions.
 
 Deleting a job may take time, depending on the number of job executions
 created for the job and various other factors. While the job is being
-deleted, the status of the job will be shown as
-"DELETION_IN_PROGRESS". Attempting to delete or cancel a job whose
-status is already "DELETION_IN_PROGRESS" will result in an error.
+deleted, the status of the job will be shown as "DELETION_IN_PROGRESS".
+Attempting to delete or cancel a job whose status is already
+"DELETION_IN_PROGRESS" will result in an error.
 
-Only 10 jobs may have status "DELETION_IN_PROGRESS" at the same time,
-or a LimitExceededException will occur.
+Only 10 jobs may have status "DELETION_IN_PROGRESS" at the same time, or
+a LimitExceededException will occur.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_job(
   jobId = "string",
   force = TRUE|FALSE,
   namespaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

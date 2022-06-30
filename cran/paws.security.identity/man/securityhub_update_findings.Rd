@@ -27,7 +27,9 @@ findings that the filter attributes specify. Any member account that can
 view the finding also sees the update to the finding.
 }
 \section{Request syntax}{
-\preformatted{svc$update_findings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_findings(
   Filters = list(
     ProductArn = list(
       list(
@@ -589,7 +591,7 @@ view the finding also sees the update to the finding.
   ),
   RecordState = "ACTIVE"|"ARCHIVED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

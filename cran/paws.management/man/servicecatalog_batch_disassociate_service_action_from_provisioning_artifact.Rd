@@ -20,7 +20,9 @@ ID, and the Provisioning Artifact ID.}
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedServiceActionAssociations = list(
     list(
       ServiceActionId = "string",
@@ -31,14 +33,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disassociates a batch of self-service actions from the specified
 provisioning artifact.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_disassociate_service_action_from_provisioning_artifact(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_disassociate_service_action_from_provisioning_artifact(
   ServiceActionAssociations = list(
     list(
       ServiceActionId = "string",
@@ -48,7 +52,7 @@ provisioning artifact.
   ),
   AcceptLanguage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

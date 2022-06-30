@@ -11,7 +11,9 @@ gamelift_describe_fleet_port_settings(FleetId)
 use either the fleet ID or ARN value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InboundPermissions = list(
     list(
       FromPort = 123,
@@ -21,7 +23,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a fleet's inbound connection permissions. Connection
@@ -60,10 +62,12 @@ deleted, the result set is empty.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_fleet_port_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fleet_port_settings(
   FleetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

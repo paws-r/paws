@@ -23,7 +23,9 @@ servicecatalog_list_principals_for_portfolio(AcceptLanguage,
 results, use null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Principals = list(
     list(
       PrincipalARN = "string",
@@ -32,19 +34,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all principal ARNs associated with the specified portfolio.
 }
 \section{Request syntax}{
-\preformatted{svc$list_principals_for_portfolio(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_principals_for_portfolio(
   AcceptLanguage = "string",
   PortfolioId = "string",
   PageSize = 123,
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

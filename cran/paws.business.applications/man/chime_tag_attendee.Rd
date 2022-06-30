@@ -20,7 +20,9 @@ An empty list.
 Applies the specified tags to the specified Amazon Chime SDK attendee.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_attendee(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_attendee(
   MeetingId = "string",
   AttendeeId = "string",
   Tags = list(
@@ -30,7 +32,7 @@ Applies the specified tags to the specified Amazon Chime SDK attendee.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -27,7 +27,9 @@ next set of results.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssociationExecutions = list(
     list(
       AssociationId = "string",
@@ -46,14 +48,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Use this API action to view all executions for a specific association
 ID.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_association_executions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_association_executions(
   AssociationId = "string",
   Filters = list(
     list(
@@ -65,7 +69,7 @@ ID.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

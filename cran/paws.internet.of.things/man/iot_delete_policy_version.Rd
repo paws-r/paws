@@ -22,11 +22,13 @@ out which version of a policy is marked as the default version, use
 ListPolicyVersions.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_policy_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_policy_version(
   policyName = "string",
   policyVersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

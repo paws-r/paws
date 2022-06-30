@@ -16,7 +16,9 @@ cannot be returned in one response.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resources = list(
     list(
       id = "string"
@@ -24,18 +26,20 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists resources associated with a project in AWS CodeStar.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resources(
   projectId = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

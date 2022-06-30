@@ -21,7 +21,9 @@ eventually, and the client may not see data that was written immediately
 before your read.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Attributes = list(
     list(
       Name = "string",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns all of the attributes associated with the specified item.
@@ -46,7 +48,9 @@ If GetAttributes is called without being passed any attribute names, all
 the attributes for the item are returned.
 }
 \section{Request syntax}{
-\preformatted{svc$get_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_attributes(
   DomainName = "string",
   ItemName = "string",
   AttributeNames = list(
@@ -54,7 +58,7 @@ the attributes for the item are returned.
   ),
   ConsistentRead = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

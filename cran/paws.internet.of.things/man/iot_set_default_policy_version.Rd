@@ -22,11 +22,13 @@ which the policy is attached. To list the principals the policy is
 attached to, use the ListPrincipalPolicy API.
 }
 \section{Request syntax}{
-\preformatted{svc$set_default_policy_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_default_policy_version(
   policyName = "string",
   policyVersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

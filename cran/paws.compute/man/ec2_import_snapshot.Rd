@@ -65,7 +65,9 @@ Amazon EBS does not support asymmetric CMKs.}
 \item{TagSpecifications}{The tags to apply to the snapshot being imported.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Description = "string",
   ImportTaskId = "string",
   SnapshotTaskDetail = list(
@@ -91,13 +93,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Imports a disk into an EBS snapshot.
 }
 \section{Request syntax}{
-\preformatted{svc$import_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_snapshot(
   ClientData = list(
     Comment = "string",
     UploadEnd = as.POSIXct(
@@ -135,7 +139,7 @@ Imports a disk into an EBS snapshot.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

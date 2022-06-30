@@ -16,10 +16,12 @@ Queue URLs and names are case-sensitive.}
 \item{QueueOwnerAWSAccountId}{The AWS account ID of the account that created the queue.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   QueueUrl = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the URL of an existing Amazon SQS queue.
@@ -32,11 +34,13 @@ queue. For more information about shared queue access, see
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_queue_url(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_queue_url(
   QueueName = "string",
   QueueOwnerAWSAccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

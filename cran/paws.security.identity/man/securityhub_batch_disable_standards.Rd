@@ -11,7 +11,9 @@ securityhub_batch_disable_standards(StandardsSubscriptionArns)
 \item{StandardsSubscriptionArns}{[required] The ARNs of the standards subscriptions to disable.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StandardsSubscriptions = list(
     list(
       StandardsSubscriptionArn = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disables the standards specified by the provided
@@ -33,12 +35,14 @@ For more information, see \href{https://docs.aws.amazon.com/securityhub/latest/u
 section of the \emph{AWS Security Hub User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_disable_standards(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_disable_standards(
   StandardsSubscriptionArns = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

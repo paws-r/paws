@@ -29,13 +29,15 @@ an S3-presigned URL returned by
 \code{\link[=workdocs_initiate_document_version_upload]{initiate_document_version_upload}}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_document_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_document_version(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string",
   VersionStatus = "ACTIVE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

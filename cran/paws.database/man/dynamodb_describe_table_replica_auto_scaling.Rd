@@ -11,7 +11,9 @@ dynamodb_describe_table_replica_auto_scaling(TableName)
 \item{TableName}{[required] The name of the table.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TableAutoScalingDescription = list(
     TableName = "string",
     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
@@ -97,7 +99,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes auto scaling settings across replicas of the global table at
@@ -107,10 +109,12 @@ This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/
 of global tables.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_table_replica_auto_scaling(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_table_replica_auto_scaling(
   TableName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

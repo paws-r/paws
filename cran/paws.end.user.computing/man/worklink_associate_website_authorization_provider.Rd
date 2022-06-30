@@ -16,10 +16,12 @@ worklink_associate_website_authorization_provider(FleetArn,
 SAML-based authorization providers.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AuthorizationProviderId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a website authorization provider with a specified fleet. This
@@ -27,12 +29,14 @@ is used to authorize users against associated websites in the company
 network.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_website_authorization_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_website_authorization_provider(
   FleetArn = "string",
   AuthorizationProviderType = "SAML",
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

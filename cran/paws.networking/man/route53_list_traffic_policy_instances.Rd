@@ -56,7 +56,9 @@ values of \code{HostedZoneIdMarker}, \code{TrafficPolicyInstanceNameMarker}, and
 instance in the next group of \code{MaxItems} traffic policy instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficPolicyInstances = list(
     list(
       Id = "string",
@@ -76,7 +78,7 @@ A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the traffic policy instances that you created by
@@ -93,13 +95,15 @@ lot of traffic policy instances, you can use the \code{MaxItems} parameter to
 list them in groups of up to 100.
 }
 \section{Request syntax}{
-\preformatted{svc$list_traffic_policy_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_traffic_policy_instances(
   HostedZoneIdMarker = "string",
   TrafficPolicyInstanceNameMarker = "string",
   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

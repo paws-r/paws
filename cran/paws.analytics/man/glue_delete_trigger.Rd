@@ -10,20 +10,24 @@ glue_delete_trigger(Name)
 \item{Name}{[required] The name of the trigger to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a specified trigger. If the trigger is not found, no exception
 is thrown.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_trigger(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_trigger(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

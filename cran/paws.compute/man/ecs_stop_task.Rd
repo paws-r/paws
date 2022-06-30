@@ -20,7 +20,9 @@ subsequent \code{\link[=ecs_describe_tasks]{describe_tasks}} API operations on t
 task. Up to 255 characters are allowed in this message.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   task = list(
     attachments = list(
       list(
@@ -176,7 +178,7 @@ A list with the following syntax:\preformatted{list(
     version = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops a running task. Any tags associated with the task will be deleted.
@@ -194,12 +196,14 @@ information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developergui
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_task(
   cluster = "string",
   task = "string",
   reason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -15,7 +15,9 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccessKey = list(
     UserName = "string",
     AccessKeyId = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new AWS secret access key and corresponding AWS access key ID
@@ -49,10 +51,12 @@ secret key is lost, you can delete the access keys for the associated
 user and then create new keys.
 }
 \section{Request syntax}{
-\preformatted{svc$create_access_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_access_key(
   UserName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

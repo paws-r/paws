@@ -28,10 +28,12 @@ their target groups. If you no longer need these EC2 instances, you can
 stop or terminate them.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_load_balancer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_load_balancer(
   LoadBalancerArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

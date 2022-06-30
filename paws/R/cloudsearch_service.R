@@ -16,8 +16,9 @@ NULL
 #' The endpoint for configuration service requests is region-specific:
 #' cloudsearch.*region*.amazonaws.com. For example,
 #' cloudsearch.us-east-1.amazonaws.com. For a current list of supported
-#' regions and endpoints, see [Regions and
-#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region).
+#' regions and endpoints, see <a
+#' href="https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region"
+#' target="_blank">Regions and Endpoints</a>.
 #'
 #' @param
 #' config

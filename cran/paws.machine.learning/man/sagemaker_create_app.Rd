@@ -23,10 +23,12 @@ unique per resource.}
 image created on the instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a running App for the specified UserProfile. Supported Apps are
@@ -36,7 +38,9 @@ when new kernel configurations are selected by the user. A user may have
 multiple Apps active simultaneously.
 }
 \section{Request syntax}{
-\preformatted{svc$create_app(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_app(
   DomainId = "string",
   UserProfileName = "string",
   AppType = "JupyterServer"|"KernelGateway"|"TensorBoard",
@@ -53,7 +57,7 @@ multiple Apps active simultaneously.
     InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

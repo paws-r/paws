@@ -16,7 +16,9 @@ registry is assumed.}
 \item{force}{If a repository contains images, forces the deletion.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   repository = list(
     repositoryArn = "string",
     registryId = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a repository. If the repository contains images, you must either
@@ -43,12 +45,14 @@ delete all images in the repository or use the \code{force} option to delete
 the repository.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_repository(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_repository(
   registryId = "string",
   repositoryName = "string",
   force = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

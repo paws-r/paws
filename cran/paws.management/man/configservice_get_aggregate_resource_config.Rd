@@ -14,7 +14,9 @@ configservice_get_aggregate_resource_config(ConfigurationAggregatorName,
 \item{ResourceIdentifier}{[required] An object that identifies aggregate resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConfigurationItem = list(
     version = "string",
     accountId = "string",
@@ -53,14 +55,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns configuration item that is aggregated for your specific resource
 in a specific source account and region.
 }
 \section{Request syntax}{
-\preformatted{svc$get_aggregate_resource_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_aggregate_resource_config(
   ConfigurationAggregatorName = "string",
   ResourceIdentifier = list(
     SourceAccountId = "string",
@@ -70,7 +74,7 @@ in a specific source account and region.
     ResourceName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

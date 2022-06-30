@@ -23,11 +23,13 @@ When you delete an event source, the status of the corresponding partner
 event bus in the AWS customer account becomes DELETED.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_partner_event_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_partner_event_source(
   Name = "string",
   Account = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,7 +18,9 @@ elasticsearchservice_update_package(PackageID, PackageSource,
 \code{GetPackageVersionHistoryResponse}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PackageDetails = list(
     PackageID = "string",
     PackageName = "string",
@@ -38,13 +40,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a package for use with Amazon ES domains.
 }
 \section{Request syntax}{
-\preformatted{svc$update_package(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_package(
   PackageID = "string",
   PackageSource = list(
     S3BucketName = "string",
@@ -53,7 +57,7 @@ Updates a package for use with Amazon ES domains.
   PackageDescription = "string",
   CommitMessage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

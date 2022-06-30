@@ -50,7 +50,9 @@ above, as well as give users the ability to grant access on a selective
 basis using the IAM model.
 }
 \section{Service syntax}{
-\preformatted{svc <- workdocs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- workdocs(
   config = list(
     credentials = list(
       creds = list(
@@ -64,7 +66,7 @@ basis using the IAM model.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

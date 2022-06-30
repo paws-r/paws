@@ -24,23 +24,27 @@ determines what actions a user can take in an AWS CodeStar project.}
 to remotely access project resources, for example Amazon EC2 instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   clientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds an IAM user to the team for an AWS CodeStar project.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_team_member(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_team_member(
   projectId = "string",
   clientRequestToken = "string",
   userArn = "string",
   projectRole = "string",
   remoteAccessAllowed = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

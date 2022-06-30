@@ -18,7 +18,9 @@ is supported.}
 \item{Limit}{Specifies the number of items that should be displayed on one page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LDAPSSettingsInfo = list(
     list(
       LDAPSStatus = "Enabling"|"Enabled"|"EnableFailed"|"Disabled",
@@ -30,19 +32,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the status of LDAP security for the specified directory.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_ldaps_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_ldaps_settings(
   DirectoryId = "string",
   Type = "Client",
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

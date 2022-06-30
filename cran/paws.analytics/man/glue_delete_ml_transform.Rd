@@ -10,10 +10,12 @@ glue_delete_ml_transform(TransformId)
 \item{TransformId}{[required] The unique identifier of the transform to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransformId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an AWS Glue machine learning transform. Machine learning
@@ -25,10 +27,12 @@ Glue. If you no longer need a transform, you can delete it by calling
 the deleted transform will no longer succeed.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_ml_transform(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_ml_transform(
   TransformId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,10 +16,12 @@ An empty list.
 Deletes a room profile by the profile ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_profile(
   ProfileArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

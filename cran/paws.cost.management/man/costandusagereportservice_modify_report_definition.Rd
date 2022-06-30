@@ -19,7 +19,9 @@ An empty list.
 Allows you to programatically update your report preferences.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_report_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_report_definition(
   ReportName = "string",
   ReportDefinition = list(
     ReportName = "string",
@@ -39,7 +41,7 @@ Allows you to programatically update your report preferences.
     ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

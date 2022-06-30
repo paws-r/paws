@@ -18,10 +18,12 @@ Deletes the specified license configuration.
 You cannot delete a license configuration that is in use.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_license_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_license_configuration(
   LicenseConfigurationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

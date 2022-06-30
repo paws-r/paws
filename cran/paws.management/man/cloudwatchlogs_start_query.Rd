@@ -34,10 +34,12 @@ string uses the \code{fields} command, only the specified fields and their
 values are returned. The default is 1000.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   queryId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Schedules a query of a log group using CloudWatch Logs Insights. You
@@ -51,7 +53,9 @@ timing out, reduce the time range being searched or partition your query
 into a number of queries.
 }
 \section{Request syntax}{
-\preformatted{svc$start_query(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_query(
   logGroupName = "string",
   logGroupNames = list(
     "string"
@@ -61,7 +65,7 @@ into a number of queries.
   queryString = "string",
   limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,7 +16,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ConnectionNotificationIds}{[required] One or more notification IDs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Unsuccessful = list(
     list(
       Error = list(
@@ -27,19 +29,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes one or more VPC endpoint connection notifications.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vpc_endpoint_connection_notifications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpc_endpoint_connection_notifications(
   DryRun = TRUE|FALSE,
   ConnectionNotificationIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

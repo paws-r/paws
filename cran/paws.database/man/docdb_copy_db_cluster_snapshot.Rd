@@ -95,7 +95,9 @@ target cluster snapshot, and otherwise \code{false}. The default is \code{false}
 \item{Tags}{The tags to be assigned to the cluster snapshot.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterSnapshot = list(
     AvailabilityZones = list(
       "string"
@@ -122,7 +124,7 @@ A list with the following syntax:\preformatted{list(
     SourceDBClusterSnapshotArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Copies a snapshot of a cluster.
@@ -137,7 +139,9 @@ cluster snapshot identified by \code{TargetDBClusterSnapshotIdentifier} while
 that cluster snapshot is in the \emph{copying} status.
 }
 \section{Request syntax}{
-\preformatted{svc$copy_db_cluster_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_db_cluster_snapshot(
   SourceDBClusterSnapshotIdentifier = "string",
   TargetDBClusterSnapshotIdentifier = "string",
   KmsKeyId = "string",
@@ -150,7 +154,7 @@ that cluster snapshot is in the \emph{copying} status.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

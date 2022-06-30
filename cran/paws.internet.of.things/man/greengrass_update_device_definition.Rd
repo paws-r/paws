@@ -18,11 +18,13 @@ An empty list.
 Updates a device definition.
 }
 \section{Request syntax}{
-\preformatted{svc$update_device_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_device_definition(
   DeviceDefinitionId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

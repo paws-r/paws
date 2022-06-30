@@ -10,7 +10,9 @@ iot_describe_authorizer(authorizerName)
 \item{authorizerName}{[required] The name of the authorizer to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   authorizerDescription = list(
     authorizerName = "string",
     authorizerArn = "string",
@@ -29,16 +31,18 @@ A list with the following syntax:\preformatted{list(
     signingDisabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes an authorizer.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_authorizer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_authorizer(
   authorizerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

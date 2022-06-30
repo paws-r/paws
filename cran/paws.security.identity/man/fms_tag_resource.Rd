@@ -20,7 +20,9 @@ An empty list.
 Adds one or more tags to an AWS resource.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceArn = "string",
   TagList = list(
     list(
@@ -29,7 +31,7 @@ Adds one or more tags to an AWS resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

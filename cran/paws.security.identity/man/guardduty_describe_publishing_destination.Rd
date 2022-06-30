@@ -14,7 +14,9 @@ to retrieve.}
 \item{DestinationId}{[required] The ID of the publishing destination to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DestinationId = "string",
   DestinationType = "S3",
   Status = "PENDING_VERIFICATION"|"PUBLISHING"|"UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY"|"STOPPED",
@@ -24,18 +26,20 @@ A list with the following syntax:\preformatted{list(
     KmsKeyArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the publishing destination specified by the
 provided \code{destinationId}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_publishing_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_publishing_destination(
   DetectorId = "string",
   DestinationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

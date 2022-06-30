@@ -27,11 +27,13 @@ operation can update the status to Reviewing, or it can revert a
 Reviewing HIT back to the Reviewable status.
 }
 \section{Request syntax}{
-\preformatted{svc$update_hit_review_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_hit_review_status(
   HITId = "string",
   Revert = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

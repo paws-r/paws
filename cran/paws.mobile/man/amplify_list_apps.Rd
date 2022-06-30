@@ -13,7 +13,9 @@ result. Pass its value in another request to retrieve more entries.}
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   apps = list(
     list(
       appId = "string",
@@ -80,17 +82,19 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the existing Amplify apps.
 }
 \section{Request syntax}{
-\preformatted{svc$list_apps(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_apps(
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

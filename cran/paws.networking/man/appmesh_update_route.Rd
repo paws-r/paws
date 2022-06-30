@@ -26,7 +26,9 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 \item{virtualRouterName}{[required] The name of the virtual router that the route is associated with.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   route = list(
     meshName = "string",
     metadata = list(
@@ -232,14 +234,16 @@ A list with the following syntax:\preformatted{list(
     virtualRouterName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing route for a specified service mesh and virtual
 router.
 }
 \section{Request syntax}{
-\preformatted{svc$update_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_route(
   clientToken = "string",
   meshName = "string",
   meshOwner = "string",
@@ -429,7 +433,7 @@ router.
   ),
   virtualRouterName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

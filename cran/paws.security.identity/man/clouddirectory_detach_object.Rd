@@ -16,24 +16,28 @@ is detached.}
 \item{LinkName}{[required] The link name associated with the object that needs to be detached.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DetachedObjectIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Detaches a given object from the parent object. The object that is to be
 detached from the parent is specified by the link name.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_object(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_object(
   DirectoryArn = "string",
   ParentReference = list(
     Selector = "string"
   ),
   LinkName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

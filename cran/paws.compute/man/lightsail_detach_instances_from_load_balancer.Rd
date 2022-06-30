@@ -14,7 +14,9 @@ lightsail_detach_instances_from_load_balancer(loadBalancerName,
 detach from the load balancer.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Detaches the specified instances from a Lightsail load balancer.
@@ -52,13 +54,15 @@ access control via resource tags applied to the resource identified by
 \verb{load balancer name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_instances_from_load_balancer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_instances_from_load_balancer(
   loadBalancerName = "string",
   instanceNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

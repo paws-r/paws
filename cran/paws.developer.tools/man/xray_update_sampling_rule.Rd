@@ -10,7 +10,9 @@ xray_update_sampling_rule(SamplingRuleUpdate)
 \item{SamplingRuleUpdate}{[required] The rule and fields to change.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SamplingRuleRecord = list(
     SamplingRule = list(
       RuleName = "string",
@@ -37,13 +39,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies a sampling rule's configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$update_sampling_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_sampling_rule(
   SamplingRuleUpdate = list(
     RuleName = "string",
     RuleARN = "string",
@@ -61,7 +65,7 @@ Modifies a sampling rule's configuration.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

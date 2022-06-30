@@ -42,7 +42,9 @@ account. Settings include how audit notifications are sent and which
 audit checks are enabled or disabled.
 }
 \section{Request syntax}{
-\preformatted{svc$update_account_audit_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_account_audit_configuration(
   roleArn = "string",
   auditNotificationTargetConfigurations = list(
     list(
@@ -57,7 +59,7 @@ audit checks are enabled or disabled.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -30,7 +30,9 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OptionGroupOptions = list(
     list(
       Name = "string",
@@ -78,13 +80,15 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes all available options.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_option_group_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_option_group_options(
   EngineName = "string",
   MajorEngineVersion = "string",
   Filters = list(
@@ -98,7 +102,7 @@ Describes all available options.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

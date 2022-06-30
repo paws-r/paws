@@ -283,7 +283,9 @@ to null.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HealthCheck = list(
     Id = "string",
     CallerReference = "string",
@@ -335,7 +337,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing health check. Note that some values can't be
@@ -345,7 +347,9 @@ For more information about updating health checks, see \href{https://docs.aws.am
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_health_check(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_health_check(
   HealthCheckId = "string",
   HealthCheckVersion = 123,
   IPAddress = "string",
@@ -373,7 +377,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
     "FullyQualifiedDomainName"|"Regions"|"ResourcePath"|"ChildHealthChecks"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

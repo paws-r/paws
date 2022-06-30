@@ -14,7 +14,9 @@ chime_list_attendees(MeetingId, NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Attendees = list(
     list(
       ExternalUserId = "string",
@@ -24,20 +26,22 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the attendees for the specified Amazon Chime SDK meeting. For more
-information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in
-the \emph{Amazon Chime Developer Guide}.
+information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK}
+in the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_attendees(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_attendees(
   MeetingId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

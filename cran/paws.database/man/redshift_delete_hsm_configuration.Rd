@@ -16,10 +16,12 @@ An empty list.
 Deletes the specified Amazon Redshift HSM configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_hsm_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_hsm_configuration(
   HsmConfigurationIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

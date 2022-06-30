@@ -13,7 +13,9 @@ chime_put_app_instance_retention_settings(AppInstanceArn,
 \item{AppInstanceRetentionSettings}{[required] The time in days to retain data. Data type: number.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppInstanceRetentionSettings = list(
     ChannelRetentionSettings = list(
       RetentionDays = 123
@@ -23,13 +25,15 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sets the amount of time in days that a given app instance retains data.
 }
 \section{Request syntax}{
-\preformatted{svc$put_app_instance_retention_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_app_instance_retention_settings(
   AppInstanceArn = "string",
   AppInstanceRetentionSettings = list(
     ChannelRetentionSettings = list(
@@ -37,7 +41,7 @@ Sets the amount of time in days that a given app instance retains data.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

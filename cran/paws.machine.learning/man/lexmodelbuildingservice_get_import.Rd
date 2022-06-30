@@ -11,7 +11,9 @@ lexmodelbuildingservice_get_import(importId)
 \item{importId}{[required] The identifier of the import job information to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   name = "string",
   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
@@ -24,17 +26,19 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about an import job started with the
 \code{\link[=lexmodelbuildingservice_start_import]{start_import}} operation.
 }
 \section{Request syntax}{
-\preformatted{svc$get_import(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_import(
   importId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

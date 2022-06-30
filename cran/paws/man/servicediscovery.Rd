@@ -26,7 +26,9 @@ queries, or HTTP requests, for the service receive an answer that
 contains up to eight healthy records.
 }
 \section{Service syntax}{
-\preformatted{svc <- servicediscovery(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- servicediscovery(
   config = list(
     credentials = list(
       creds = list(
@@ -40,7 +42,7 @@ contains up to eight healthy records.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

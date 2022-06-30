@@ -18,11 +18,13 @@ An empty list.
 Deletes a specified user by user ARN and enrollment ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user(
   UserArn = "string",
   EnrollmentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

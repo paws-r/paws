@@ -16,10 +16,12 @@ An empty list.
 Deletes an AWS Shield Advanced Protection.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_protection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_protection(
   ProtectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

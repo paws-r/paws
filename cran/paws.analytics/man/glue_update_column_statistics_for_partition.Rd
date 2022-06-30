@@ -20,7 +20,9 @@ none is supplied, the AWS account ID is used by default.}
 \item{ColumnStatisticsList}{[required] A list of the column statistics.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Errors = list(
     list(
       ColumnStatistics = list(
@@ -90,7 +92,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates or updates partition statistics of columns.
@@ -99,7 +101,9 @@ The Identity and Access Management (IAM) permission required for this
 operation is \code{\link[=glue_update_partition]{update_partition}}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_column_statistics_for_partition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_column_statistics_for_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -169,7 +173,7 @@ operation is \code{\link[=glue_update_partition]{update_partition}}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

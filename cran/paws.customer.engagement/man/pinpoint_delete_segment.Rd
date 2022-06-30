@@ -13,7 +13,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{SegmentId}{[required] The unique identifier for the segment.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SegmentResponse = list(
     ApplicationId = "string",
     Arn = "string",
@@ -221,17 +223,19 @@ A list with the following syntax:\preformatted{list(
     Version = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a segment from an application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_segment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_segment(
   ApplicationId = "string",
   SegmentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

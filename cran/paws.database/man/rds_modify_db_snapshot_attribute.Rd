@@ -40,7 +40,9 @@ whose account ID is explicitly added to the \code{restore} attribute can
 still copy or restore the manual DB snapshot.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBSnapshotAttributesResult = list(
     DBSnapshotIdentifier = "string",
     DBSnapshotAttributes = list(
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds an attribute and values to, or removes an attribute and values
@@ -80,7 +82,9 @@ API action. The accounts are returned as values for the \code{restore}
 attribute.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_db_snapshot_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_snapshot_attribute(
   DBSnapshotIdentifier = "string",
   AttributeName = "string",
   ValuesToAdd = list(
@@ -90,7 +94,7 @@ attribute.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,11 +19,13 @@ An empty list.
 Creates a snapshot of the application's state data.
 }
 \section{Request syntax}{
-\preformatted{svc$create_application_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application_snapshot(
   ApplicationName = "string",
   SnapshotName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -78,7 +78,9 @@ The following operation is related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_notification_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_notification_configuration(
   Bucket = "string",
   NotificationConfiguration = list(
     TopicConfigurations = list(
@@ -141,7 +143,7 @@ The following operation is related to
   ),
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

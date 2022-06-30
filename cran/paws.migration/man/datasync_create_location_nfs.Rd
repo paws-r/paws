@@ -58,17 +58,21 @@ location. The value can be an empty string. We recommend using tags to
 name your resources.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LocationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Defines a file system on a Network File System (NFS) server that can be
 read from or written to.
 }
 \section{Request syntax}{
-\preformatted{svc$create_location_nfs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_location_nfs(
   Subdirectory = "string",
   ServerHostname = "string",
   OnPremConfig = list(
@@ -86,7 +90,7 @@ read from or written to.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

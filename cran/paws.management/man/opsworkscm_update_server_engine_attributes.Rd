@@ -15,7 +15,9 @@ opsworkscm_update_server_engine_attributes(ServerName, AttributeName,
 \item{AttributeValue}{The value to set for the attribute.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Server = list(
     AssociatePublicIpAddress = TRUE|FALSE,
     BackupRetentionCount = 123,
@@ -54,7 +56,7 @@ A list with the following syntax:\preformatted{list(
     ServerArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates engine-specific attributes on a specified server. The server
@@ -72,12 +74,14 @@ This operation can only be called for servers in \code{HEALTHY} or
 valid.
 }
 \section{Request syntax}{
-\preformatted{svc$update_server_engine_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_server_engine_attributes(
   ServerName = "string",
   AttributeName = "string",
   AttributeValue = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

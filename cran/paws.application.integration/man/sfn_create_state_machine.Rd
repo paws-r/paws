@@ -50,13 +50,15 @@ symbols: \verb{_ . : / = + - @}.}
 \item{tracingConfiguration}{Selects whether AWS X-Ray tracing is enabled.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   stateMachineArn = "string",
   creationDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a state machine. A state machine consists of a collection of
@@ -80,7 +82,9 @@ the previous. In this case, \code{roleArn} and \code{tags} will not be updated,
 even if they are different.
 }
 \section{Request syntax}{
-\preformatted{svc$create_state_machine(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_state_machine(
   name = "string",
   definition = "string",
   roleArn = "string",
@@ -106,7 +110,7 @@ even if they are different.
     enabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

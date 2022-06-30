@@ -7,7 +7,9 @@
 applicationdiscoveryservice_start_continuous_export()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   exportId = "string",
   s3Bucket = "string",
   startTime = as.POSIXct(
@@ -18,14 +20,16 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Start the continuous flow of agent's discovered data into Amazon Athena.
 }
 \section{Request syntax}{
-\preformatted{svc$start_continuous_export()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_continuous_export()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,21 +17,25 @@ moves to its destination while in transit. Regional shipping speeds are
 as follows:}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = "InProgress"|"TimedOut"|"Succeeded"|"Failed"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a shipping label that will be used to return the Snow device to
 AWS.
 }
 \section{Request syntax}{
-\preformatted{svc$create_return_shipping_label(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_return_shipping_label(
   JobId = "string",
   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,22 +12,26 @@ glue_get_workflow_run_properties(Name, RunId)
 \item{RunId}{[required] The ID of the workflow run whose run properties should be returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RunProperties = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the workflow run properties which were set during the run.
 }
 \section{Request syntax}{
-\preformatted{svc$get_workflow_run_properties(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_workflow_run_properties(
   Name = "string",
   RunId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

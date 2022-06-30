@@ -16,7 +16,9 @@ underscores are allowed.}
 \item{spec}{The service mesh specification to apply.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   mesh = list(
     meshName = "string",
     metadata = list(
@@ -42,13 +44,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing service mesh.
 }
 \section{Request syntax}{
-\preformatted{svc$update_mesh(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_mesh(
   clientToken = "string",
   meshName = "string",
   spec = list(
@@ -57,7 +61,7 @@ Updates an existing service mesh.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

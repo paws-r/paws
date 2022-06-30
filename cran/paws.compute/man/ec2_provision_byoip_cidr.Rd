@@ -33,7 +33,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{PoolTagSpecifications}{The tags to apply to the address pool.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ByoipCidr = list(
     Cidr = "string",
     Description = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
     State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provisions an IPv4 or IPv6 address range for use with your AWS resources
@@ -65,7 +67,9 @@ Elastic IP address from your IPv4 address pool, use
 address from the address pool or the ID of the address pool.
 }
 \section{Request syntax}{
-\preformatted{svc$provision_byoip_cidr(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$provision_byoip_cidr(
   Cidr = "string",
   CidrAuthorizationContext = list(
     Message = "string",
@@ -86,7 +90,7 @@ address from the address pool or the ID of the address pool.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,11 +18,13 @@ An empty list.
 Associates the specified fleet with the specified stack.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_fleet(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_fleet(
   FleetName = "string",
   StackName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

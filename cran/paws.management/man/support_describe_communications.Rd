@@ -24,7 +24,9 @@ creation.}
 \item{maxResults}{The maximum number of results to return before paginating.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   communications = list(
     list(
       caseId = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns communications and attachments for one or more support cases.
@@ -67,14 +69,16 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_communications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_communications(
   caseId = "string",
   beforeTime = "string",
   afterTime = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

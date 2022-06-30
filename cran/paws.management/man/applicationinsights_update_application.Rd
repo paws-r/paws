@@ -25,7 +25,9 @@ opsItem.}
 problems.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationInfo = list(
     ResourceGroupName = "string",
     LifeCycle = "string",
@@ -35,20 +37,22 @@ A list with the following syntax:\preformatted{list(
     Remarks = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the application.
 }
 \section{Request syntax}{
-\preformatted{svc$update_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_application(
   ResourceGroupName = "string",
   OpsCenterEnabled = TRUE|FALSE,
   CWEMonitorEnabled = TRUE|FALSE,
   OpsItemSNSTopicArn = "string",
   RemoveSNSTopic = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

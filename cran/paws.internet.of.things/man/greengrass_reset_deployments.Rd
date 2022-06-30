@@ -14,22 +14,26 @@ greengrass_reset_deployments(AmznClientToken, Force, GroupId)
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeploymentArn = "string",
   DeploymentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Resets a group's deployments.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_deployments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_deployments(
   AmznClientToken = "string",
   Force = TRUE|FALSE,
   GroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

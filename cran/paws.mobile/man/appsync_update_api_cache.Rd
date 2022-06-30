@@ -16,8 +16,8 @@ Valid values are between 1 and 3600 seconds.}
 \item{apiCachingBehavior}{[required] Caching behavior.
 \itemize{
 \item \strong{FULL_REQUEST_CACHING}: All requests are fully cached.
-\item \strong{PER_RESOLVER_CACHING}: Individual resolvers that you specify
-are cached.
+\item \strong{PER_RESOLVER_CACHING}: Individual resolvers that you specify are
+cached.
 }}
 
 \item{type}{[required] The cache instance type. Valid values are
@@ -49,7 +49,9 @@ discouraged:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   apiCache = list(
     ttl = 123,
     apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
@@ -59,19 +61,21 @@ A list with the following syntax:\preformatted{list(
     status = "AVAILABLE"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the cache for the GraphQL API.
 }
 \section{Request syntax}{
-\preformatted{svc$update_api_cache(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_api_cache(
   apiId = "string",
   ttl = 123,
   apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
   type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"|"SMALL"|"MEDIUM"|"LARGE"|"XLARGE"|"LARGE_2X"|"LARGE_4X"|"LARGE_8X"|"LARGE_12X"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

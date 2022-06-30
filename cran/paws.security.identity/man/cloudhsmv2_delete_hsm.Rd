@@ -19,10 +19,12 @@ that you are deleting.}
 you are deleting.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HsmId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified HSM. To specify an HSM, you can use its identifier
@@ -32,13 +34,15 @@ To find these values, use
 \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_hsm(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_hsm(
   ClusterId = "string",
   HsmId = "string",
   EniId = "string",
   EniIp = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

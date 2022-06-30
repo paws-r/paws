@@ -11,21 +11,25 @@ glue_get_tags(ResourceArn)
 tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of tags associated with a resource.
 }
 \section{Request syntax}{
-\preformatted{svc$get_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_tags(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

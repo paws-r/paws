@@ -13,7 +13,9 @@ length.}
 \item{SubnetId}{[required] The ID of your subnet.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Ipv6CidrBlockAssociation = list(
     AssociationId = "string",
     Ipv6CidrBlock = "string",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
   ),
   SubnetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a CIDR block with your subnet. You can only associate a
@@ -32,11 +34,13 @@ single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a
 prefix length of /64.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_subnet_cidr_block(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_subnet_cidr_block(
   Ipv6CidrBlock = "string",
   SubnetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

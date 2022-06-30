@@ -106,7 +106,9 @@ limit.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskSet = list(
     id = "string",
     taskSetArn = "string",
@@ -177,7 +179,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create a task set in the specified cluster and service. This is used
@@ -186,7 +188,9 @@ information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developergui
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_task_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_task_set(
   service = "string",
   cluster = "string",
   externalId = "string",
@@ -239,7 +243,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

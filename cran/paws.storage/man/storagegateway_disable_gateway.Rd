@@ -10,10 +10,12 @@ storagegateway_disable_gateway(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disables a tape gateway when the gateway is no longer functioning. For
@@ -26,10 +28,12 @@ functioning. This operation is only supported in the tape gateway type.
 After a gateway is disabled, it cannot be enabled.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_gateway(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

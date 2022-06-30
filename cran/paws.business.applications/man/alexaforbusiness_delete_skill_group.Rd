@@ -16,10 +16,12 @@ An empty list.
 Deletes a skill group by skill group ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_skill_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_skill_group(
   SkillGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

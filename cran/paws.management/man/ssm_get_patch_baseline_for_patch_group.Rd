@@ -14,23 +14,27 @@ ssm_get_patch_baseline_for_patch_group(PatchGroup, OperatingSystem)
 patch baseline.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BaselineId = "string",
   PatchGroup = "string",
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the patch baseline that should be used for the specified patch
 group.
 }
 \section{Request syntax}{
-\preformatted{svc$get_patch_baseline_for_patch_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_patch_baseline_for_patch_group(
   PatchGroup = "string",
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

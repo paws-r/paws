@@ -11,7 +11,9 @@ iot_validate_security_profile_behaviors(behaviors)
 an alert.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   valid = TRUE|FALSE,
   validationErrors = list(
     list(
@@ -19,13 +21,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Validates a Device Defender security profile behaviors specification.
 }
 \section{Request syntax}{
-\preformatted{svc$validate_security_profile_behaviors(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$validate_security_profile_behaviors(
   behaviors = list(
     list(
       name = "string",
@@ -66,7 +70,7 @@ Validates a Device Defender security profile behaviors specification.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

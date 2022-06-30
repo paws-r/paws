@@ -6813,8 +6813,8 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' API returns up to 1,000 key names. The response might contain fewer keys
 #' but will never contain more. If additional keys satisfy the search
 #' criteria, but were not returned because max-keys was exceeded, the
-#' response contains &lt;isTruncated&gt;true&lt;/isTruncated&gt;. To return
-#' the additional keys, see key-marker and version-id-marker.
+#' response contains \<isTruncated\>true\</isTruncated\>. To return the
+#' additional keys, see key-marker and version-id-marker.
 #' @param Prefix Use this parameter to select only those keys that begin with the
 #' specified prefix. You can use prefixes to separate a bucket into
 #' different groupings of keys. (You can think of using prefix to make
@@ -9608,7 +9608,7 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ReplicationConf
 #'   RequestPaymentConfiguration, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 &gt;The base64-encoded 128-bit MD5 digest of the data. You must use this
+#' @param ContentMD5 \>The base64-encoded 128-bit MD5 digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, see [RFC
 #' 1864](https://www.ietf.org/rfc/rfc1864.txt).
@@ -9850,7 +9850,7 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, Tagging, ExpectedBu
 #'   VersioningConfiguration, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 &gt;The base64-encoded 128-bit MD5 digest of the data. You must use this
+#' @param ContentMD5 \>The base64-encoded 128-bit MD5 digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, see [RFC
 #' 1864](https://www.ietf.org/rfc/rfc1864.txt).
@@ -10644,7 +10644,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, go to [RFC
-#' 1864.&gt;](https://www.ietf.org/rfc/rfc1864.txt)
+#' 1864.\>](https://www.ietf.org/rfc/rfc1864.txt)
 #' 
 #' For requests made using the AWS Command Line Interface (CLI) or AWS
 #' SDKs, this field is calculated automatically.
@@ -10741,7 +10741,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' svc$put_object_acl(
 #'   AccessControlPolicy = structure(
 #'     list(),
-#'     .Names = character(
+#'     names = character(
 #'       0
 #'     )
 #'   ),
@@ -12463,7 +12463,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' @rdname s3_upload_part_copy
 s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, CopySourceRange = NULL, Key, PartNumber, UploadId, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, ExpectedSourceBucketOwner = NULL) {
   op <- new_operation(
-    name = "UploadPartCopy",
+    name = "CopyPart",
     http_method = "PUT",
     http_path = "/{Bucket}/{Key+}",
     paginator = list()

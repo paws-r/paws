@@ -22,7 +22,9 @@ Updates the settings for the specified user, such as phone number
 settings.
 }
 \section{Request syntax}{
-\preformatted{svc$update_user_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_settings(
   AccountId = "string",
   UserId = "string",
   UserSettings = list(
@@ -33,7 +35,7 @@ settings.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

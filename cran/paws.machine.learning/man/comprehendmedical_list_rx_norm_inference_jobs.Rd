@@ -17,7 +17,9 @@ only set one filter at a time.}
 \item{MaxResults}{Identifies the next page of results to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ComprehendMedicalAsyncJobPropertiesList = list(
     list(
       JobId = "string",
@@ -50,13 +52,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of InferRxNorm jobs that you have submitted.
 }
 \section{Request syntax}{
-\preformatted{svc$list_rx_norm_inference_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_rx_norm_inference_jobs(
   Filter = list(
     JobName = "string",
     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
@@ -70,7 +74,7 @@ Gets a list of InferRxNorm jobs that you have submitted.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

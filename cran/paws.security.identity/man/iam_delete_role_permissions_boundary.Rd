@@ -21,10 +21,12 @@ permissions. For example, it might allow anyone who assumes the role to
 perform all the actions granted in its permissions policies.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_role_permissions_boundary(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_role_permissions_boundary(
   RoleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

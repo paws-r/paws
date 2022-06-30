@@ -15,7 +15,9 @@ certificate.}
 \item{certificateName}{[required] The name of your SSL/TLS certificate.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Attaches a Transport Layer Security (TLS) certificate to your load
@@ -61,11 +63,13 @@ the resource identified by \verb{load balancer name}. For more information,
 see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_load_balancer_tls_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_load_balancer_tls_certificate(
   loadBalancerName = "string",
   certificateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

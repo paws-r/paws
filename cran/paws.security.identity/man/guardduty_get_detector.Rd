@@ -10,7 +10,9 @@ guardduty_get_detector(DetectorId)
 \item{DetectorId}{[required] The unique ID of the detector that you want to get.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CreatedAt = "string",
   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
   ServiceRole = "string",
@@ -34,16 +36,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves an Amazon GuardDuty detector specified by the detectorId.
 }
 \section{Request syntax}{
-\preformatted{svc$get_detector(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_detector(
   DetectorId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

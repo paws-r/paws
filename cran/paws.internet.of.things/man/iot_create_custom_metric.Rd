@@ -28,18 +28,22 @@ token, an exception occurs. If you omit this value, AWS SDKs will
 automatically generate a unique client request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   metricName = "string",
   metricArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Use this API to define a Custom Metric published by your devices to
 Device Defender.
 }
 \section{Request syntax}{
-\preformatted{svc$create_custom_metric(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_custom_metric(
   metricName = "string",
   displayName = "string",
   metricType = "string-list"|"ip-address-list"|"number-list"|"number",
@@ -51,7 +55,7 @@ Device Defender.
   ),
   clientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

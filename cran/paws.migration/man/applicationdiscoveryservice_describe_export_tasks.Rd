@@ -31,7 +31,9 @@ results that returned the \code{nextToken} value. This value is null when
 there are no more results to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   exportsInfo = list(
     list(
       exportId = "string",
@@ -52,14 +54,16 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve status of one or more export tasks. You can retrieve the status
 of up to 100 export tasks.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_export_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_export_tasks(
   exportIds = list(
     "string"
   ),
@@ -75,7 +79,7 @@ of up to 100 export tasks.
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

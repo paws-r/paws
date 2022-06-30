@@ -16,10 +16,12 @@ An empty list.
 A synchronous action that deletes a custom terminology.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_terminology(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_terminology(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

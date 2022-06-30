@@ -13,8 +13,10 @@ An empty list.
 Deletes a CA certificate registration code.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_registration_code()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_registration_code()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

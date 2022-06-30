@@ -39,7 +39,9 @@ Creates a new Facet in a schema. Facet creation is allowed only in
 development or applied schemas.
 }
 \section{Request syntax}{
-\preformatted{svc$create_facet(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_facet(
   SchemaArn = "string",
   Name = "string",
   Attributes = list(
@@ -76,7 +78,7 @@ development or applied schemas.
   ObjectType = "NODE"|"LEAF_NODE"|"POLICY"|"INDEX",
   FacetStyle = "STATIC"|"DYNAMIC"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,22 +14,26 @@ them and the AWS Region where they are created. They consist of
 lowercase letters, numbers, and hyphens.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupVaultName = "string",
   BackupVaultArn = "string",
   Policy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the access policy document that is associated with the named
 backup vault.
 }
 \section{Request syntax}{
-\preformatted{svc$get_backup_vault_access_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_backup_vault_access_policy(
   BackupVaultName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

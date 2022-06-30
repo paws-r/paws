@@ -26,7 +26,9 @@ specified, defaults to 100.}
 NextToken. It is used for pagination.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CrossClusterSearchConnections = list(
     list(
       SourceDomainInfo = list(
@@ -48,14 +50,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all the inbound cross-cluster search connections for a destination
 domain.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_inbound_cross_cluster_search_connections(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_inbound_cross_cluster_search_connections(
   Filters = list(
     list(
       Name = "string",
@@ -67,7 +71,7 @@ domain.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

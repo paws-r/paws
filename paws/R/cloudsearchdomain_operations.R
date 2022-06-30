@@ -305,7 +305,7 @@ NULL
 #'     in the *Amazon CloudSearch Developer Guide*.
 #' -   `lucene`: search using the Apache Lucene query parser syntax. For
 #'     more information, see [Apache Lucene Query Parser
-#'     Syntax](http://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description).
+#'     Syntax](https://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description).
 #' -   `dismax`: search using the simplified subset of the Apache Lucene
 #'     query parser syntax defined by the DisMax query parser. For more
 #'     information, see [DisMax Query Parser

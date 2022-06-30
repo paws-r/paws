@@ -27,10 +27,12 @@ passed, only \code{TemplateBody} is used.}
 \item{Parameters}{A list of \code{Parameter} structures that specify input parameters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Url = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the estimated monthly cost of a template. The return value is an
@@ -38,7 +40,9 @@ AWS Simple Monthly Calculator URL with a query string that describes the
 resources required to run the template.
 }
 \section{Request syntax}{
-\preformatted{svc$estimate_template_cost(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$estimate_template_cost(
   TemplateBody = "string",
   TemplateURL = "string",
   Parameters = list(
@@ -50,7 +54,7 @@ resources required to run the template.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

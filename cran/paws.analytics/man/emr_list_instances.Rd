@@ -25,7 +25,9 @@ this request.}
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Instances = list(
     list(
       Id = "string",
@@ -66,7 +68,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information for all active EC2 instances and EC2 instances
@@ -75,7 +77,9 @@ in any of the following states are considered active:
 AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 }
 \section{Request syntax}{
-\preformatted{svc$list_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_instances(
   ClusterId = "string",
   InstanceGroupId = "string",
   InstanceGroupTypes = list(
@@ -88,7 +92,7 @@ AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

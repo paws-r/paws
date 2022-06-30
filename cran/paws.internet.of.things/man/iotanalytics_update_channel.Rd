@@ -26,7 +26,9 @@ An empty list.
 Updates the settings of a channel.
 }
 \section{Request syntax}{
-\preformatted{svc$update_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_channel(
   channelName = "string",
   channelStorage = list(
     serviceManagedS3 = list(),
@@ -41,7 +43,7 @@ Updates the settings of a channel.
     numberOfDays = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

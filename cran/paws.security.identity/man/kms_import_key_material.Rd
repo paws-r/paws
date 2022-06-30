@@ -122,7 +122,9 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$import_key_material(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_key_material(
   KeyId = "string",
   ImportToken = raw,
   EncryptedKeyMaterial = raw,
@@ -131,7 +133,7 @@ a different AWS account.
   ),
   ExpirationModel = "KEY_MATERIAL_EXPIRES"|"KEY_MATERIAL_DOES_NOT_EXPIRE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

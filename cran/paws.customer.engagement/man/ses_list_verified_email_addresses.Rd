@@ -7,12 +7,14 @@
 ses_list_verified_email_addresses()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VerifiedEmailAddresses = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deprecated. Use the \code{\link[=ses_list_identities]{list_identities}} operation

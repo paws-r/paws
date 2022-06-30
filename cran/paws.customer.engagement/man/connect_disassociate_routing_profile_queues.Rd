@@ -21,7 +21,9 @@ An empty list.
 Disassociates a set of queues from a routing profile.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_routing_profile_queues(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_routing_profile_queues(
   InstanceId = "string",
   RoutingProfileId = "string",
   QueueReferences = list(
@@ -31,7 +33,7 @@ Disassociates a set of queues from a routing profile.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

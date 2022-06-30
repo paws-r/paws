@@ -10,23 +10,25 @@ route53_get_hosted_zone_limit(Type, HostedZoneId)
 \arguments{
 \item{Type}{[required] The limit that you want to get. Valid values include the following:
 \itemize{
-\item \strong{MAX_RRSETS_BY_ZONE}: The maximum number of records that you
-can create in the specified hosted zone.
-\item \strong{MAX_VPCS_ASSOCIATED_BY_ZONE}: The maximum number of Amazon
-VPCs that you can associate with the specified private hosted zone.
+\item \strong{MAX_RRSETS_BY_ZONE}: The maximum number of records that you can
+create in the specified hosted zone.
+\item \strong{MAX_VPCS_ASSOCIATED_BY_ZONE}: The maximum number of Amazon VPCs
+that you can associate with the specified private hosted zone.
 }}
 
 \item{HostedZoneId}{[required] The ID of the hosted zone that you want to get a limit for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Limit = list(
     Type = "MAX_RRSETS_BY_ZONE"|"MAX_VPCS_ASSOCIATED_BY_ZONE",
     Value = 123
   ),
   Count = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the specified limit for a specified hosted zone, for example, the
@@ -38,11 +40,13 @@ in the \emph{Amazon Route 53 Developer Guide}. To request a higher limit,
 open a case.
 }
 \section{Request syntax}{
-\preformatted{svc$get_hosted_zone_limit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_hosted_zone_limit(
   Type = "MAX_RRSETS_BY_ZONE"|"MAX_VPCS_ASSOCIATED_BY_ZONE",
   HostedZoneId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

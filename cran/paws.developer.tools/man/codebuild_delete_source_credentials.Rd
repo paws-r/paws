@@ -11,20 +11,24 @@ codebuild_delete_source_credentials(arn)
 \item{arn}{[required] The Amazon Resource Name (ARN) of the token.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
 credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_source_credentials(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_source_credentials(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,10 +23,12 @@ is completed, Amazon SageMaker doesn't store the job's output in Amazon
 S3.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_transform_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_transform_job(
   TransformJobName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

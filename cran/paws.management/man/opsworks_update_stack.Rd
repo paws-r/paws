@@ -174,7 +174,9 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_stack(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_stack(
   StackId = "string",
   Name = "string",
   Attributes = list(
@@ -209,7 +211,7 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-securit
   UseOpsworksSecurityGroups = TRUE|FALSE,
   AgentVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

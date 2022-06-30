@@ -182,7 +182,9 @@ source cluster are on different tracks.}
 Availability Zones after the cluster is restored.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -339,7 +341,7 @@ A list with the following syntax:\preformatted{list(
     ClusterNamespaceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new cluster from a snapshot. By default, Amazon Redshift
@@ -359,7 +361,9 @@ For more information about working with snapshots, go to \href{https://docs.aws.
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$restore_from_cluster_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_from_cluster_snapshot(
   ClusterIdentifier = "string",
   SnapshotIdentifier = "string",
   SnapshotClusterIdentifier = "string",
@@ -394,7 +398,7 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
   NumberOfNodes = 123,
   AvailabilityZoneRelocation = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

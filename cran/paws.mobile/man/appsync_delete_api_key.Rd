@@ -18,11 +18,13 @@ An empty list.
 Deletes an API key.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_api_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_api_key(
   apiId = "string",
   id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

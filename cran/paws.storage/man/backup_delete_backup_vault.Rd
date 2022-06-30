@@ -20,10 +20,12 @@ Deletes the backup vault identified by its name. A vault can be deleted
 only if it is empty.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_backup_vault(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_backup_vault(
   BackupVaultName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

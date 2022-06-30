@@ -22,7 +22,9 @@ If there are more objects to return, Shield Advanced returns a value in
 of objects.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProtectionGroups = list(
     list(
       ProtectionGroupId = "string",
@@ -36,17 +38,19 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the ProtectionGroup objects for the account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_protection_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_protection_groups(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

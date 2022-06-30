@@ -10,7 +10,9 @@ chime_create_account(Name)
 \item{Name}{[required] The name of the Amazon Chime account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Account = list(
     AwsAccountId = "string",
     AccountId = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Amazon Chime account under the administrator's AWS account.
@@ -39,10 +41,12 @@ more information about different account types, see \href{https://docs.aws.amazo
 in the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_account(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

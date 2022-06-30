@@ -21,7 +21,9 @@ specify for \code{Limit}, the response includes a \code{NextMarker} value that y
 can use to get another batch of objects.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextMarker = "string",
   RuleGroups = list(
     list(
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -46,11 +48,13 @@ regional and global use.
 Returns an array of RuleGroup objects that you are subscribed to.
 }
 \section{Request syntax}{
-\preformatted{svc$list_subscribed_rule_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_subscribed_rule_groups(
   NextMarker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

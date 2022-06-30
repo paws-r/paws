@@ -10,7 +10,9 @@ directconnect_delete_lag(lagId)
 \item{lagId}{[required] The ID of the LAG.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   connectionsBandwidth = "string",
   numberOfConnections = 123,
   lagId = "string",
@@ -61,17 +63,19 @@ A list with the following syntax:\preformatted{list(
   ),
   providerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified link aggregation group (LAG). You cannot delete a
 LAG if it has active virtual interfaces or hosted connections.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_lag(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_lag(
   lagId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

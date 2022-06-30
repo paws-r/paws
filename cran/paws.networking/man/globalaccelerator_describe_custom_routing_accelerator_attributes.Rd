@@ -12,23 +12,27 @@ globalaccelerator_describe_custom_routing_accelerator_attributes(
 describe the attributes for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AcceleratorAttributes = list(
     FlowLogsEnabled = TRUE|FALSE,
     FlowLogsS3Bucket = "string",
     FlowLogsS3Prefix = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describe the attributes of a custom routing accelerator.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_custom_routing_accelerator_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_custom_routing_accelerator_attributes(
   AcceleratorArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

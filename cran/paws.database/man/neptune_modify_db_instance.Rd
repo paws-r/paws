@@ -266,7 +266,9 @@ enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. See \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-instances-delete.html}{Deleting a DB Instance}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -408,7 +410,7 @@ A list with the following syntax:\preformatted{list(
     DeletionProtection = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database
@@ -419,7 +421,9 @@ DB instance, call
 before you call \code{\link[=neptune_modify_db_instance]{modify_db_instance}}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_db_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_instance(
   DBInstanceIdentifier = "string",
   AllocatedStorage = 123,
   DBInstanceClass = "string",
@@ -469,7 +473,7 @@ before you call \code{\link[=neptune_modify_db_instance]{modify_db_instance}}.
   ),
   DeletionProtection = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

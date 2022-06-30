@@ -18,11 +18,13 @@ An empty list.
 Deletes a group from Amazon WorkMail.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_group(
   OrganizationId = "string",
   GroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

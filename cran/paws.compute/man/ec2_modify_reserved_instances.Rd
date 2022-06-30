@@ -17,10 +17,12 @@ modification request. For more information, see \href{https://docs.aws.amazon.co
 \item{TargetConfigurations}{[required] The configuration settings for the Reserved Instances to modify.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReservedInstancesModificationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the Availability Zone, instance count, instance type, or
@@ -32,7 +34,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the Amazon Elastic Compute Cloud User Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_reserved_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_reserved_instances(
   ReservedInstancesIds = list(
     "string"
   ),
@@ -47,7 +51,7 @@ in the Amazon Elastic Compute Cloud User Guide.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

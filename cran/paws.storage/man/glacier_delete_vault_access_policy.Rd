@@ -31,11 +31,13 @@ if there is no policy associated with the vault. For more information
 about vault access policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html}{Amazon Glacier Access Control with Vault Access Policies}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vault_access_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vault_access_policy(
   accountId = "string",
   vaultName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

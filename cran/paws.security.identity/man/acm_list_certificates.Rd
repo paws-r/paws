@@ -24,7 +24,9 @@ this \code{NextToken} value in a subsequent request to retrieve additional
 items.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   CertificateSummaryList = list(
     list(
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of certificate ARNs and domain names. You can request
@@ -42,7 +44,9 @@ also filter by specific attributes of the certificate. Default filtering
 returns only \code{RSA_2048} certificates. For more information, see Filters.
 }
 \section{Request syntax}{
-\preformatted{svc$list_certificates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_certificates(
   CertificateStatuses = list(
     "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
   ),
@@ -60,7 +64,7 @@ returns only \code{RSA_2048} certificates. For more information, see Filters.
   NextToken = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

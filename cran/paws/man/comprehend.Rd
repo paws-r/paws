@@ -22,7 +22,9 @@ your documents, the topics they discuss, the predominant sentiment
 expressed in them, the predominant language used, and more.
 }
 \section{Service syntax}{
-\preformatted{svc <- comprehend(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- comprehend(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +38,7 @@ expressed in them, the predominant language used, and more.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

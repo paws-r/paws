@@ -17,7 +17,9 @@ list of compatible images, you can specify a value for \code{NextToken} as
 the starting point for your list of returned images.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CompatibleImages = list(
     list(
       AmiId = "string",
@@ -26,22 +28,24 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This action returns a list of the different Amazon EC2 Amazon Machine
 Images (AMIs) that are owned by your AWS account that would be supported
 for use on a Snow device. Currently, supported AMIs are based on the
-CentOS 7 (x86_64) - with Updates HVM, Ubuntu Server 14.04 LTS (HVM),
-and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
+CentOS 7 (x86_64) - with Updates HVM, Ubuntu Server 14.04 LTS (HVM), and
+Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
 Marketplace.
 }
 \section{Request syntax}{
-\preformatted{svc$list_compatible_images(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_compatible_images(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

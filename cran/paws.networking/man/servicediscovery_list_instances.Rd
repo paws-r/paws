@@ -24,7 +24,9 @@ request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map
 returns up to 100 instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Instances = list(
     list(
       Id = "string",
@@ -35,19 +37,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists summary information about the instances that you registered by
 using a specified service.
 }
 \section{Request syntax}{
-\preformatted{svc$list_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_instances(
   ServiceId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

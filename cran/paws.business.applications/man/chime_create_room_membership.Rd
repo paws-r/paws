@@ -16,7 +16,9 @@ chime_create_room_membership(AccountId, RoomId, MemberId, Role)
 \item{Role}{The role of the member.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RoomMembership = list(
     RoomId = "string",
     Member = list(
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a member to a chat room in an Amazon Chime Enterprise account. A
@@ -41,13 +43,15 @@ member can be either a user or a bot. The member role designates whether
 the member is a chat room administrator or a general chat room member.
 }
 \section{Request syntax}{
-\preformatted{svc$create_room_membership(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_room_membership(
   AccountId = "string",
   RoomId = "string",
   MemberId = "string",
   Role = "Administrator"|"Member"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

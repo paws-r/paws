@@ -21,10 +21,12 @@ The schema used in creating the \code{MLModel} must match the schema of the
 \code{DataSource} must match the schema used to create the \code{MLModel}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EvaluationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new \code{Evaluation} of an \code{MLModel}. An \code{MLModel} is evaluated on
@@ -49,13 +51,15 @@ operation to check progress of the evaluation during the creation
 operation.
 }
 \section{Request syntax}{
-\preformatted{svc$create_evaluation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_evaluation(
   EvaluationId = "string",
   EvaluationName = "string",
   MLModelId = "string",
   EvaluationDataSourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

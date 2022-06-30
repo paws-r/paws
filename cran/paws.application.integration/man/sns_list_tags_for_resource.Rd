@@ -10,7 +10,9 @@ sns_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The ARN of the topic for which to list tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -18,7 +20,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List all tags added to the specified Amazon SNS topic. For an overview,
@@ -26,10 +28,12 @@ see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html}{Amazon SNS Ta
 \emph{Amazon Simple Notification Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

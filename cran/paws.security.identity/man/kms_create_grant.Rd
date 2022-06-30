@@ -79,11 +79,13 @@ every \code{\link[=kms_create_grant]{create_grant}} request, even when a duplica
 used interchangeably.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GrantToken = "string",
   GrantId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a grant to a customer master key (CMK). The grant allows the
@@ -148,7 +150,9 @@ parameter.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_grant(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_grant(
   KeyId = "string",
   GranteePrincipal = "string",
   RetiringPrincipal = "string",
@@ -168,7 +172,7 @@ parameter.
   ),
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

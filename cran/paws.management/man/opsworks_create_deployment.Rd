@@ -32,10 +32,12 @@ For more information about custom JSON, see \href{https://docs.aws.amazon.com/op
 and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Overriding Attributes With Custom JSON}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeploymentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Runs deployment or stack commands. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html}{Deploying Apps}
@@ -47,7 +49,9 @@ that explicitly grants permissions. For more information on user
 permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_deployment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_deployment(
   StackId = "string",
   AppId = "string",
   InstanceIds = list(
@@ -67,7 +71,7 @@ permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/ops
   Comment = "string",
   CustomJson = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

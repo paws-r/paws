@@ -10,7 +10,9 @@ applicationinsights_describe_application(ResourceGroupName)
 \item{ResourceGroupName}{[required] The name of the resource group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationInfo = list(
     ResourceGroupName = "string",
     LifeCycle = "string",
@@ -20,16 +22,18 @@ A list with the following syntax:\preformatted{list(
     Remarks = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the application.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_application(
   ResourceGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

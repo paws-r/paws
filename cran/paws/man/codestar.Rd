@@ -70,7 +70,9 @@ the profile for a user.
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- codestar(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- codestar(
   config = list(
     credentials = list(
       creds = list(
@@ -84,7 +86,7 @@ the profile for a user.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

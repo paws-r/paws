@@ -16,7 +16,9 @@ you want to change.}
 element.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChangeInfo = list(
     Id = "string",
     Status = "PENDING"|"INSYNC",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     Comment = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates, changes, or deletes a resource record set, which contains
@@ -123,7 +125,9 @@ request, see
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$change_resource_record_sets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$change_resource_record_sets(
   HostedZoneId = "string",
   ChangeBatch = list(
     Comment = "string",
@@ -161,7 +165,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

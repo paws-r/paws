@@ -19,7 +19,9 @@ Operations section.
 API for AWS Elemental MediaLive
 }
 \section{Service syntax}{
-\preformatted{svc <- medialive(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- medialive(
   config = list(
     credentials = list(
       creds = list(
@@ -33,7 +35,7 @@ API for AWS Elemental MediaLive
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

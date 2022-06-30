@@ -18,10 +18,12 @@ Deletes an email template.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_template(
   TemplateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

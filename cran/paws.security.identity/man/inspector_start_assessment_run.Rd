@@ -16,10 +16,12 @@ for the assessment template whose ARN is used to start the assessment
 run.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   assessmentRunArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts the assessment run specified by the ARN of the assessment
@@ -27,11 +29,13 @@ template. For this API to function properly, you must not exceed the
 limit of running up to 500 concurrent agents per AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$start_assessment_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_assessment_run(
   assessmentTemplateArn = "string",
   assessmentRunName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

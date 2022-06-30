@@ -72,8 +72,10 @@ elasticsearchservice_accept_inbound_cross_cluster_search_connection <- function(
 #' @description
 #' Attaches tags to an existing Elasticsearch domain. Tags are a set of
 #' case-sensitive key value pairs. An Elasticsearch domain may have up to
-#' 10 tags. See [Tagging Amazon Elasticsearch Service Domains for more
-#' information.](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-managedomains-awsresorcetagging)
+#' 10 tags. See <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#es-managedomains-awsresorcetagging"
+#' target="_blank">Tagging Amazon Elasticsearch Service Domains for more
+#' information.</a>
 #'
 #' @usage
 #' elasticsearchservice_add_tags(ARN, TagList)
@@ -244,10 +246,10 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' Creates a new Elasticsearch domain
 #'
 #' @description
-#' Creates a new Elasticsearch domain. For more information, see [Creating
-#' Elasticsearch
-#' Domains](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains)
-#' in the *Amazon Elasticsearch Service Developer Guide*.
+#' Creates a new Elasticsearch domain. For more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains"
+#' target="_blank">Creating Elasticsearch Domains</a> in the *Amazon
+#' Elasticsearch Service Developer Guide*.
 #'
 #' @usage
 #' elasticsearchservice_create_elasticsearch_domain(DomainName,
@@ -261,9 +263,10 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' Domain names must start with a lowercase letter and can contain the
 #' following characters: a-z (lowercase), 0-9, and - (hyphen).
 #' @param ElasticsearchVersion String of format X.Y to specify version for the Elasticsearch domain eg.
-#' "1.5" or "2.3". For more information, see [Creating Elasticsearch
-#' Domains](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains)
-#' in the *Amazon Elasticsearch Service Developer Guide*.
+#' "1.5" or "2.3". For more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains"
+#' target="_blank">Creating Elasticsearch Domains</a> in the *Amazon
+#' Elasticsearch Service Developer Guide*.
 #' @param ElasticsearchClusterConfig Configuration options for an Elasticsearch domain. Specifies the
 #' instance type and number of instances in the domain cluster.
 #' @param EBSOptions Options to enable, disable and specify the type and size of EBS storage
@@ -272,20 +275,21 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' @param SnapshotOptions Option to set time, in UTC format, of the daily automated snapshot.
 #' Default value is 0 hours.
 #' @param VPCOptions Options to specify the subnets and security groups for VPC endpoint. For
-#' more information, see [Creating a
-#' VPC](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc)
-#' in *VPC Endpoints for Amazon Elasticsearch Service Domains*
+#' more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-creating-vpc"
+#' target="_blank">Creating a VPC</a> in *VPC Endpoints for Amazon
+#' Elasticsearch Service Domains*
 #' @param CognitoOptions Options to specify the Cognito user and identity pools for Kibana
-#' authentication. For more information, see [Amazon Cognito Authentication
-#' for
-#' Kibana](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
+#' authentication. For more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
+#' target="_blank">Amazon Cognito Authentication for Kibana</a>.
 #' @param EncryptionAtRestOptions Specifies the Encryption At Rest Options.
 #' @param NodeToNodeEncryptionOptions Specifies the NodeToNodeEncryptionOptions.
 #' @param AdvancedOptions Option to allow references to indices in an HTTP request body. Must be
 #' `false` when configuring access to individual sub-resources. By default,
-#' the value is `true`. See [Configuration Advanced
-#' Options](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
-#' for more information.
+#' the value is `true`. See <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options"
+#' target="_blank">Configuration Advanced Options</a> for more information.
 #' @param LogPublishingOptions Map of `LogType` and `LogPublishingOption`, each containing options to
 #' publish a given type of Elasticsearch log.
 #' @param DomainEndpointOptions Options to specify configuration that will be applied to the domain
@@ -822,9 +826,10 @@ elasticsearchservice_delete_elasticsearch_domain <- function(DomainName) {
 #' Deletes the service-linked role that Elasticsearch Service uses to
 #' manage and maintain VPC domains. Role deletion will fail if any existing
 #' VPC domains use the role. You must delete any such Elasticsearch domains
-#' before deleting the role. See [Deleting Elasticsearch Service
-#' Role](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-enabling-slr)
-#' in *VPC Endpoints for Amazon Elasticsearch Service Domains*.
+#' before deleting the role. See <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-enabling-slr"
+#' target="_blank">Deleting Elasticsearch Service Role</a> in *VPC
+#' Endpoints for Amazon Elasticsearch Service Domains*.
 #'
 #' @usage
 #' elasticsearchservice_delete_elasticsearch_service_role()
@@ -3044,19 +3049,19 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' @param SnapshotOptions Option to set the time, in UTC format, for the daily automated snapshot.
 #' Default value is `0` hours.
 #' @param VPCOptions Options to specify the subnets and security groups for VPC endpoint. For
-#' more information, see [Creating a
-#' VPC](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc)
-#' in *VPC Endpoints for Amazon Elasticsearch Service Domains*
+#' more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-creating-vpc"
+#' target="_blank">Creating a VPC</a> in *VPC Endpoints for Amazon
+#' Elasticsearch Service Domains*
 #' @param CognitoOptions Options to specify the Cognito user and identity pools for Kibana
-#' authentication. For more information, see [Amazon Cognito Authentication
-#' for
-#' Kibana](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
+#' authentication. For more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
+#' target="_blank">Amazon Cognito Authentication for Kibana</a>.
 #' @param AdvancedOptions Modifies the advanced option to allow references to indices in an HTTP
 #' request body. Must be `false` when configuring access to individual
-#' sub-resources. By default, the value is `true`. See [Configuration
-#' Advanced
-#' Options](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
-#' for more information.
+#' sub-resources. By default, the value is `true`. See <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options"
+#' target="_blank">Configuration Advanced Options</a> for more information.
 #' @param AccessPolicies IAM access policy as a JSON-formatted string.
 #' @param LogPublishingOptions Map of `LogType` and `LogPublishingOption`, each containing options to
 #' publish a given type of Elasticsearch log.

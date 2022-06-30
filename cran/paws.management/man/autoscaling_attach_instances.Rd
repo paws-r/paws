@@ -31,13 +31,15 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_instances(
   InstanceIds = list(
     "string"
   ),
   AutoScalingGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

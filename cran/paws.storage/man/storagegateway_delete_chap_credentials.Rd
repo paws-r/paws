@@ -15,11 +15,13 @@ operation to return to retrieve the TargetARN for specified VolumeARN.}
 \item{InitiatorName}{[required] The iSCSI initiator that connects to the target.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TargetARN = "string",
   InitiatorName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
@@ -27,11 +29,13 @@ for a specified iSCSI target and initiator pair. This operation is
 supported in volume and tape gateway types.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_chap_credentials(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_chap_credentials(
   TargetARN = "string",
   InitiatorName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

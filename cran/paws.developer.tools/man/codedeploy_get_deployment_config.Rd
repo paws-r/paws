@@ -11,7 +11,9 @@ codedeploy_get_deployment_config(deploymentConfigName)
 AWS account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   deploymentConfigInfo = list(
     deploymentConfigId = "string",
     deploymentConfigName = "string",
@@ -36,16 +38,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a deployment configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$get_deployment_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deployment_config(
   deploymentConfigName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ medialive_create_input_security_group(Tags, WhitelistRules)
 \item{WhitelistRules}{List of IPv4 CIDR addresses to whitelist}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SecurityGroup = list(
     Arn = "string",
     Id = "string",
@@ -30,13 +32,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Input Security Group
 }
 \section{Request syntax}{
-\preformatted{svc$create_input_security_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_input_security_group(
   Tags = list(
     "string"
   ),
@@ -46,7 +50,7 @@ Creates a Input Security Group
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

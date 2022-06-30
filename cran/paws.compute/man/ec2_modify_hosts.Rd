@@ -35,7 +35,9 @@ cannot specify \strong{InstanceFamily} and \strong{InstanceType} in the same
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Successful = list(
     "string"
   ),
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modify the auto-placement setting of a Dedicated Host. When
@@ -65,7 +67,9 @@ either multiple instance types in an instance family, or to support a
 specific instance type only.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_hosts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_hosts(
   AutoPlacement = "on"|"off",
   HostIds = list(
     "string"
@@ -74,7 +78,7 @@ specific instance type only.
   InstanceType = "string",
   InstanceFamily = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

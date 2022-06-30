@@ -20,13 +20,15 @@ An empty list.
 Deletes the specified tags from the specified WorkSpaces resource.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tags(
   ResourceId = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -43,7 +43,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGatewayAttachments = list(
     list(
       TransitGatewayAttachmentId = "string",
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more attachments between resources and transit
@@ -79,7 +81,9 @@ can filter the results by attachment ID, attachment state, resource ID,
 or resource owner.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_transit_gateway_attachments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_transit_gateway_attachments(
   TransitGatewayAttachmentIds = list(
     "string"
   ),
@@ -95,7 +99,7 @@ or resource owner.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

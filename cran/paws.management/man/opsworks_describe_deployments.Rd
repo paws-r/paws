@@ -18,7 +18,9 @@ parameter, the command returns a description of the specified
 deployments. Otherwise, it returns a description of every deployment.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Deployments = list(
     list(
       DeploymentId = "string",
@@ -45,7 +47,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Requests a description of a specified set of deployments.
@@ -58,14 +60,16 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_deployments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_deployments(
   StackId = "string",
   AppId = "string",
   DeploymentIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

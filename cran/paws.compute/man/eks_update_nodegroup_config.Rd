@@ -23,7 +23,9 @@ update.}
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   update = list(
     id = "string",
     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
@@ -48,7 +50,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an Amazon EKS managed node group configuration. Your node group
@@ -59,7 +61,9 @@ Currently you can update the Kubernetes labels for a node group or the
 scaling configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$update_nodegroup_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_nodegroup_config(
   clusterName = "string",
   nodegroupName = "string",
   labels = list(
@@ -77,7 +81,7 @@ scaling configuration.
   ),
   clientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

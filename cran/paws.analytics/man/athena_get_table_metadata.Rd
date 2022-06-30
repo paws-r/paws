@@ -15,7 +15,9 @@ metadata to return.}
 \item{TableName}{[required] The name of the table for which metadata is returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TableMetadata = list(
     Name = "string",
     CreateTime = as.POSIXct(
@@ -44,18 +46,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns table metadata for the specified catalog, database, and table.
 }
 \section{Request syntax}{
-\preformatted{svc$get_table_metadata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_table_metadata(
   CatalogName = "string",
   DatabaseName = "string",
   TableName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

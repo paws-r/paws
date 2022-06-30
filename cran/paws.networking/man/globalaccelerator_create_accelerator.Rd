@@ -46,7 +46,9 @@ For more information, see \href{https://docs.aws.amazon.com/global-accelerator/l
 in the \emph{AWS Global Accelerator Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Accelerator = list(
     AcceleratorArn = "string",
     Name = "string",
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create an accelerator. An accelerator includes one or more listeners
@@ -83,7 +85,9 @@ multiple AWS Regions but you must specify the US West (Oregon) Region to
 create or update accelerators.
 }
 \section{Request syntax}{
-\preformatted{svc$create_accelerator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_accelerator(
   Name = "string",
   IpAddressType = "IPV4",
   IpAddresses = list(
@@ -98,7 +102,7 @@ create or update accelerators.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

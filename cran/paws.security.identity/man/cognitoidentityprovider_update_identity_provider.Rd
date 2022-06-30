@@ -20,7 +20,9 @@ cognitoidentityprovider_update_identity_provider(UserPoolId,
 \item{IdpIdentifiers}{A list of identity provider identifiers.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityProvider = list(
     UserPoolId = "string",
     ProviderName = "string",
@@ -42,13 +44,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates identity provider information for a user pool.
 }
 \section{Request syntax}{
-\preformatted{svc$update_identity_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_identity_provider(
   UserPoolId = "string",
   ProviderName = "string",
   ProviderDetails = list(
@@ -61,7 +65,7 @@ Updates identity provider information for a user pool.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,10 +12,12 @@ opsworks_register_elastic_ip(ElasticIp, StackId)
 \item{StackId}{[required] The stack ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ElasticIp = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Registers an Elastic IP address with a specified stack. An address can
@@ -30,11 +32,13 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$register_elastic_ip(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_elastic_ip(
   ElasticIp = "string",
   StackId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,12 +21,14 @@ An empty list.
 Adds a member (user or group) to the resource's set of delegates.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_delegate_to_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_delegate_to_resource(
   OrganizationId = "string",
   ResourceId = "string",
   EntityId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

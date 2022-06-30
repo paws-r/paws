@@ -11,7 +11,9 @@ gamelift_describe_vpc_peering_connections(FleetId)
 value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VpcPeeringConnections = list(
     list(
       FleetId = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information on VPC peering connections. Use this operation to
@@ -49,10 +51,12 @@ that the VPC uses to connect.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_vpc_peering_connections(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_peering_connections(
   FleetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,10 +11,12 @@ route53resolver_get_resolver_rule_policy(Arn)
 policy for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResolverRulePolicy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the Resolver rule policy for a specified rule. A
@@ -23,10 +25,12 @@ another account, the account that you want to share the rule with, and
 the Resolver operations that you want to allow the account to use.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resolver_rule_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resolver_rule_policy(
   Arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

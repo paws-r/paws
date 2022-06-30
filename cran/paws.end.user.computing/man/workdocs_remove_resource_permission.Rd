@@ -26,13 +26,15 @@ Removes the permission for the specified principal from the specified
 resource.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_resource_permission(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_resource_permission(
   AuthenticationToken = "string",
   ResourceId = "string",
   PrincipalId = "string",
   PrincipalType = "USER"|"GROUP"|"INVITE"|"ANONYMOUS"|"ORGANIZATION"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

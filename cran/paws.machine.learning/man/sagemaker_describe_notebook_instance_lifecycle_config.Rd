@@ -11,7 +11,9 @@ sagemaker_describe_notebook_instance_lifecycle_config(
 \item{NotebookInstanceLifecycleConfigName}{[required] The name of the lifecycle configuration to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NotebookInstanceLifecycleConfigArn = "string",
   NotebookInstanceLifecycleConfigName = "string",
   OnCreate = list(
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a description of a notebook instance lifecycle configuration.
@@ -40,10 +42,12 @@ For information about notebook instance lifestyle configurations, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_notebook_instance_lifecycle_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_notebook_instance_lifecycle_config(
   NotebookInstanceLifecycleConfigName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

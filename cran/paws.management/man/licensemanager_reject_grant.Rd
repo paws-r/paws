@@ -10,21 +10,25 @@ licensemanager_reject_grant(GrantArn)
 \item{GrantArn}{[required] Amazon Resource Name (ARN) of the grant.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GrantArn = "string",
   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Rejects the specified grant.
 }
 \section{Request syntax}{
-\preformatted{svc$reject_grant(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reject_grant(
   GrantArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

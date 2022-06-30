@@ -227,11 +227,13 @@ outside of its virtual private cloud (VPC) on your local network.
 For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on AWS Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing}{Customer-owned IP addresses}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing}{Customer-owned IP addresses}
 in the \emph{AWS Outposts User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -417,7 +419,7 @@ A list with the following syntax:\preformatted{list(
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new DB instance from a DB snapshot. The target database is
@@ -445,7 +447,9 @@ Aurora, use
 \code{\link[=rds_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot}}.
 }
 \section{Request syntax}{
-\preformatted{svc$restore_db_instance_from_db_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_db_instance_from_db_snapshot(
   DBInstanceIdentifier = "string",
   DBSnapshotIdentifier = "string",
   DBInstanceClass = "string",
@@ -490,7 +494,7 @@ Aurora, use
   DeletionProtection = TRUE|FALSE,
   EnableCustomerOwnedIp = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

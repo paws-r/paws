@@ -54,7 +54,9 @@ You can specify public domain names using a string to array map as shown
 in the example later on this page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   containerService = list(
     containerServiceName = "string",
     arn = "string",
@@ -153,14 +155,16 @@ A list with the following syntax:\preformatted{list(
     url = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the configuration of your Amazon Lightsail container service,
 such as its power, scale, and public domain names.
 }
 \section{Request syntax}{
-\preformatted{svc$update_container_service(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_container_service(
   serviceName = "string",
   power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
   scale = 123,
@@ -171,7 +175,7 @@ such as its power, scale, and public domain names.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

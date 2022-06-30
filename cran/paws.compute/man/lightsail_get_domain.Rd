@@ -10,7 +10,9 @@ lightsail_get_domain(domainName)
 \item{domainName}{[required] The domain name for which your want to return information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   domain = list(
     name = "string",
     arn = "string",
@@ -43,16 +45,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a specific domain recordset.
 }
 \section{Request syntax}{
-\preformatted{svc$get_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_domain(
   domainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

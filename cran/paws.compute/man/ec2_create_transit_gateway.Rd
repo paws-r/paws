@@ -20,7 +20,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGateway = list(
     TransitGatewayId = "string",
     TransitGatewayArn = "string",
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a transit gateway.
@@ -85,7 +87,9 @@ route table. If you disable automatic associations, you can use
 to associate a resource attachment with a transit gateway route table.
 }
 \section{Request syntax}{
-\preformatted{svc$create_transit_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_transit_gateway(
   Description = "string",
   Options = list(
     AmazonSideAsn = 123,
@@ -112,7 +116,7 @@ to associate a resource attachment with a transit gateway route table.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

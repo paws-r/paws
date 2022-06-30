@@ -36,7 +36,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TransitGatewayConnectPeer = list(
     TransitGatewayAttachmentId = "string",
     TransitGatewayConnectPeerId = "string",
@@ -69,7 +71,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Connect peer for a specified transit gateway Connect
@@ -82,7 +84,9 @@ For more information, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/tgw-c
 in the \emph{Transit Gateways Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_transit_gateway_connect_peer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_transit_gateway_connect_peer(
   TransitGatewayAttachmentId = "string",
   TransitGatewayAddress = "string",
   PeerAddress = "string",
@@ -105,7 +109,7 @@ in the \emph{Transit Gateways Guide}.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

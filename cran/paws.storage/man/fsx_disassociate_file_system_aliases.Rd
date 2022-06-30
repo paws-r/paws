@@ -18,7 +18,9 @@ fsx_disassociate_file_system_aliases(ClientRequestToken, FileSystemId,
 the file system.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Aliases = list(
     list(
       Name = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Use this action to disassociate, or remove, one or more Domain Name
@@ -41,14 +43,16 @@ to monitor the status of the aliases Amazon FSx is disassociating with
 the file system.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_file_system_aliases(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_file_system_aliases(
   ClientRequestToken = "string",
   FileSystemId = "string",
   Aliases = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

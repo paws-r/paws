@@ -18,7 +18,9 @@ next set of results.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceId = "string",
   Metadata = list(
     list(
@@ -27,19 +29,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 View operational metadata related to an application in Application
 Manager.
 }
 \section{Request syntax}{
-\preformatted{svc$get_ops_metadata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ops_metadata(
   OpsMetadataArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

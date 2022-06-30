@@ -127,10 +127,12 @@ information about dedicated instances, see \href{https://docs.aws.amazon.com/vpc
 \href{https://aws.amazon.com/ec2/pricing/dedicated-instances/}{Amazon EC2 Dedicated Instances}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an instance in a specified stack. For more information, see
@@ -142,7 +144,9 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_instance(
   StackId = "string",
   LayerIds = list(
     "string"
@@ -177,7 +181,7 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-securit
   AgentVersion = "string",
   Tenancy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

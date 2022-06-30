@@ -12,13 +12,15 @@ kinesis_list_streams(Limit, ExclusiveStartStreamName)
 \item{ExclusiveStartStreamName}{The name of the stream to start the list with.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StreamNames = list(
     "string"
   ),
   HasMoreStreams = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists your Kinesis data streams.
@@ -43,11 +45,13 @@ in the list.
 per second per account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_streams(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_streams(
   Limit = 123,
   ExclusiveStartStreamName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

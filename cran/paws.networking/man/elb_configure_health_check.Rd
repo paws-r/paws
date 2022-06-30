@@ -13,7 +13,9 @@ elb_configure_health_check(LoadBalancerName, HealthCheck)
 \item{HealthCheck}{[required] The configuration information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HealthCheck = list(
     Target = "string",
     Interval = 123,
@@ -22,7 +24,7 @@ A list with the following syntax:\preformatted{list(
     HealthyThreshold = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Specifies the health check settings to use when evaluating the health
@@ -32,7 +34,9 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$configure_health_check(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$configure_health_check(
   LoadBalancerName = "string",
   HealthCheck = list(
     Target = "string",
@@ -42,7 +46,7 @@ in the \emph{Classic Load Balancers Guide}.
     HealthyThreshold = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

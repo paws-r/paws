@@ -16,10 +16,12 @@ An empty list.
 Delete the connection with the provided id.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_connection(
   ConnectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

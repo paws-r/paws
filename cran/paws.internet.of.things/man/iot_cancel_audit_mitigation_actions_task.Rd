@@ -17,10 +17,12 @@ Cancels a mitigation action task that is in progress. If the task is not
 in progress, an InvalidRequestException occurs.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_audit_mitigation_actions_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_audit_mitigation_actions_task(
   taskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

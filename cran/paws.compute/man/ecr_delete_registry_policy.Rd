@@ -7,18 +7,22 @@
 ecr_delete_registry_policy()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   registryId = "string",
   policyText = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the registry permissions policy.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_registry_policy()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_registry_policy()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,7 +16,9 @@ specified, it will override the \code{containerInsights} value set with
 \code{\link[=ecs_put_account_setting_default]{put_account_setting_default}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   cluster = list(
     clusterArn = "string",
     clusterName = "string",
@@ -69,13 +71,15 @@ A list with the following syntax:\preformatted{list(
     attachmentsStatus = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the settings to use for a cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$update_cluster_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_cluster_settings(
   cluster = "string",
   settings = list(
     list(
@@ -84,7 +88,7 @@ Modifies the settings to use for a cluster.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

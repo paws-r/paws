@@ -12,7 +12,9 @@ glue_reset_job_bookmark(JobName, RunId)
 \item{RunId}{The unique run identifier associated with this job run.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobBookmarkEntry = list(
     JobName = "string",
     Version = 123,
@@ -23,17 +25,19 @@ A list with the following syntax:\preformatted{list(
     JobBookmark = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Resets a bookmark entry.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_job_bookmark(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_job_bookmark(
   JobName = "string",
   RunId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

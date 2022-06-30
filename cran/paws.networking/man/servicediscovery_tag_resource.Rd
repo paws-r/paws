@@ -21,7 +21,9 @@ An empty list.
 Adds one or more tags to the specified resource.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -30,7 +32,7 @@ Adds one or more tags to the specified resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -10,7 +10,9 @@ codecommit_get_repository(repositoryName)
 \item{repositoryName}{[required] The name of the repository to get information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   repositoryMetadata = list(
     accountId = "string",
     repositoryId = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     Arn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a repository.
@@ -41,10 +43,12 @@ any application that uses this API to display the repository description
 on a webpage.
 }
 \section{Request syntax}{
-\preformatted{svc$get_repository(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_repository(
   repositoryName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

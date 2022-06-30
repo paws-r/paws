@@ -18,7 +18,9 @@ retrieve the application version ID using
 \item{CloudWatchLoggingOption}{[required] Provides the Amazon CloudWatch log stream Amazon Resource Name (ARN).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123,
   CloudWatchLoggingOptionDescriptions = list(
@@ -29,21 +31,23 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds an Amazon CloudWatch log stream to monitor application
 configuration errors.
 }
 \section{Request syntax}{
-\preformatted{svc$add_application_cloud_watch_logging_option(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_application_cloud_watch_logging_option(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   CloudWatchLoggingOption = list(
     LogStreamARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

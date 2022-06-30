@@ -22,7 +22,9 @@ Creates or updates the replication configuration for the specified
 application.
 }
 \section{Request syntax}{
-\preformatted{svc$put_app_replication_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_app_replication_configuration(
   appId = "string",
   serverGroupReplicationConfigurations = list(
     list(
@@ -61,7 +63,7 @@ application.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

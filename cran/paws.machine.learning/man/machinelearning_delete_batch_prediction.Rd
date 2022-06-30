@@ -10,10 +10,12 @@ machinelearning_delete_batch_prediction(BatchPredictionId)
 \item{BatchPredictionId}{[required] A user-supplied ID that uniquely identifies the \code{BatchPrediction}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BatchPredictionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Assigns the DELETED status to a \code{BatchPrediction}, rendering it
@@ -30,10 +32,12 @@ to verify that the status of the \code{BatchPrediction} changed to DELETED.
 operation is irreversible.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_batch_prediction(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_batch_prediction(
   BatchPredictionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

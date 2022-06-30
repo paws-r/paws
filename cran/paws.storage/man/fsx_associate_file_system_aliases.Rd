@@ -31,7 +31,9 @@ uppercase letters, lowercase letters, or the corresponding letters in
 escape codes.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Aliases = list(
     list(
       Name = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Use this action to associate one or more Domain Name Server (DNS)
@@ -57,14 +59,16 @@ to associate with the file system. Use the API operation to monitor the
 status of the aliases Amazon FSx is associating with the file system.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_file_system_aliases(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_file_system_aliases(
   ClientRequestToken = "string",
   FileSystemId = "string",
   Aliases = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -36,20 +36,24 @@ location. The value can be an empty string. We recommend using tags to
 name your resources.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LocationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an endpoint for an Amazon S3 bucket.
 
 For more information, see
-https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html\#create-location-s3-cli
+https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html#create-location-s3-cli
 in the \emph{AWS DataSync User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_location_s3(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_location_s3(
   Subdirectory = "string",
   S3BucketArn = "string",
   S3StorageClass = "STANDARD"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
@@ -66,7 +70,7 @@ in the \emph{AWS DataSync User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

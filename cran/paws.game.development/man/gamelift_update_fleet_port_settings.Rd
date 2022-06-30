@@ -16,10 +16,12 @@ either the fleet ID or ARN value.}
 \item{InboundPermissionRevocations}{A collection of port settings to be removed from the fleet resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FleetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates port settings for a fleet. To update settings, specify the fleet
@@ -51,7 +53,9 @@ successful, the fleet ID for the updated fleet is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_fleet_port_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_fleet_port_settings(
   FleetId = "string",
   InboundPermissionAuthorizations = list(
     list(
@@ -70,7 +74,7 @@ successful, the fleet ID for the updated fleet is returned.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,7 +23,9 @@ An empty list.
 Registers with AWS CodeDeploy a revision for the specified application.
 }
 \section{Request syntax}{
-\preformatted{svc$register_application_revision(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_application_revision(
   applicationName = "string",
   description = "string",
   revision = list(
@@ -49,7 +51,7 @@ Registers with AWS CodeDeploy a revision for the specified application.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

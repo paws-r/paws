@@ -12,12 +12,14 @@ rekognition_delete_faces(CollectionId, FaceIds)
 \item{FaceIds}{[required] An array of face IDs to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeletedFaces = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes faces from a collection. You specify a collection ID and an
@@ -27,13 +29,15 @@ This operation requires permissions to perform the
 \code{rekognition:DeleteFaces} action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_faces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_faces(
   CollectionId = "string",
   FaceIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

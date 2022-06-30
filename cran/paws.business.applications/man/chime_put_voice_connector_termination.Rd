@@ -12,7 +12,9 @@ chime_put_voice_connector_termination(VoiceConnectorId, Termination)
 \item{Termination}{[required] The termination setting details to add.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Termination = list(
     CpsLimit = 123,
     DefaultPhoneNumber = "string",
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     Disabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds termination settings for the specified Amazon Chime Voice
@@ -35,7 +37,9 @@ If emergency calling is configured for the Amazon Chime Voice Connector,
 it must be deleted prior to turning off termination settings.
 }
 \section{Request syntax}{
-\preformatted{svc$put_voice_connector_termination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_voice_connector_termination(
   VoiceConnectorId = "string",
   Termination = list(
     CpsLimit = 123,
@@ -49,7 +53,7 @@ it must be deleted prior to turning off termination settings.
     Disabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

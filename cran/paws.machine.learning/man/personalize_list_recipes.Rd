@@ -16,7 +16,9 @@ recipes (if they exist).}
 \item{maxResults}{The maximum number of recipes to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   recipes = list(
     list(
       name = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of available recipes. The response provides the
@@ -40,12 +42,14 @@ properties for each recipe, including the recipe's Amazon Resource Name
 (ARN).
 }
 \section{Request syntax}{
-\preformatted{svc$list_recipes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_recipes(
   recipeProvider = "SERVICE",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

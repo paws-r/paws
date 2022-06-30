@@ -15,21 +15,25 @@ in the \emph{AWS CodeBuild User Guide}.}
 with a resource policy.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stores a resource policy for the ARN of a \code{Project} or \code{ReportGroup}
 object.
 }
 \section{Request syntax}{
-\preformatted{svc$put_resource_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_resource_policy(
   policy = "string",
   resourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,11 +20,13 @@ An empty list.
 Attaches a policy to the specified target.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_policy(
   policyName = "string",
   target = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

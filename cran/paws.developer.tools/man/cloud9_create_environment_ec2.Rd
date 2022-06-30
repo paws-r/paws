@@ -42,10 +42,12 @@ Cloud9 development environment.}
 \item{connectionType}{The connection type used for connecting to an Amazon EC2 environment.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   environmentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS Cloud9 development environment, launches an Amazon
@@ -53,7 +55,9 @@ Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
 instance to the environment.
 }
 \section{Request syntax}{
-\preformatted{svc$create_environment_ec2(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_environment_ec2(
   name = "string",
   description = "string",
   clientRequestToken = "string",
@@ -69,7 +73,7 @@ instance to the environment.
   ),
   connectionType = "CONNECT_SSH"|"CONNECT_SSM"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

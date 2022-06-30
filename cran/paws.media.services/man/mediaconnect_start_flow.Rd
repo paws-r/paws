@@ -10,20 +10,24 @@ mediaconnect_start_flow(FlowArn)
 \item{FlowArn}{[required] The ARN of the flow that you want to start.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FlowArn = "string",
   Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a flow.
 }
 \section{Request syntax}{
-\preformatted{svc$start_flow(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_flow(
   FlowArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

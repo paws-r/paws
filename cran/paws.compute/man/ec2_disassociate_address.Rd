@@ -32,12 +32,14 @@ This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_address(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_address(
   AssociationId = "string",
   PublicIp = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -27,7 +27,7 @@ You must use the following guidelines when naming a log group:
 \item Log group names can be between 1 and 512 characters long.
 \item Log group names consist of the following characters: a-z, A-Z, 0-9,
 '_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
-and '\#' (number sign)
+and '#' (number sign)
 }
 
 When you create a log group, by default the log events in the log group
@@ -49,14 +49,16 @@ CloudWatch Logs supports only symmetric CMKs. Do not associate an
 asymmetric CMK with your log group. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_log_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_log_group(
   logGroupName = "string",
   kmsKeyId = "string",
   tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

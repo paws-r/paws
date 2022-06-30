@@ -24,7 +24,9 @@ delete the snapshots, use the force option.}
 retention period has passed.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Resources = list(
     "string"
   ),
@@ -37,20 +39,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the settings for a set of cluster snapshots.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_modify_cluster_snapshots(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_modify_cluster_snapshots(
   SnapshotIdentifierList = list(
     "string"
   ),
   ManualSnapshotRetentionPeriod = 123,
   Force = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,10 +17,12 @@ in the request.}
 \item{APIName}{[required] The name of the API action for which to get an endpoint.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DataEndpoint = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets an endpoint for a specified stream for either reading or writing.
@@ -35,12 +37,14 @@ In the request, specify the stream either by \code{StreamName} or
 \code{StreamARN}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_data_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_data_endpoint(
   StreamName = "string",
   StreamARN = "string",
   APIName = "PUT_MEDIA"|"GET_MEDIA"|"LIST_FRAGMENTS"|"GET_MEDIA_FOR_FRAGMENT_LIST"|"GET_HLS_STREAMING_SESSION_URL"|"GET_DASH_STREAMING_SESSION_URL"|"GET_CLIP"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

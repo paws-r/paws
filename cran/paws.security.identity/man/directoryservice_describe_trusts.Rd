@@ -24,7 +24,9 @@ is the first call.}
 \item{Limit}{The maximum number of objects to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Trusts = list(
     list(
       DirectoryId = "string",
@@ -48,7 +50,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Obtains information about the trust relationships for this account.
@@ -58,7 +60,9 @@ this request describes all the trust relationships belonging to the
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_trusts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_trusts(
   DirectoryId = "string",
   TrustIds = list(
     "string"
@@ -66,7 +70,7 @@ account.
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

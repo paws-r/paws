@@ -14,7 +14,9 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tests = list(
     list(
       arn = "string",
@@ -50,17 +52,19 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about tests in a given test suite.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tests(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tests(
   arn = "string",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -31,7 +31,9 @@ the function name, it is limited to 64 characters in length.}
 of the alias.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AliasArn = "string",
   Name = "string",
   FunctionVersion = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
   ),
   RevisionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an
@@ -56,7 +58,9 @@ versions. Use the \code{RoutingConfig} parameter to specify a second version
 and the percentage of invocation requests that it receives.
 }
 \section{Request syntax}{
-\preformatted{svc$create_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_alias(
   FunctionName = "string",
   Name = "string",
   FunctionVersion = "string",
@@ -67,7 +71,7 @@ and the percentage of invocation requests that it receives.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

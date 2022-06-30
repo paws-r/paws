@@ -11,7 +11,9 @@ emr_list_studios(Marker)
 \item{Marker}{The pagination token that indicates the set of results to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Studios = list(
     list(
       StudioId = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
@@ -37,10 +39,12 @@ account. The list includes details such as ID, Studio Access URL, and
 creation time for each Studio.
 }
 \section{Request syntax}{
-\preformatted{svc$list_studios(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_studios(
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

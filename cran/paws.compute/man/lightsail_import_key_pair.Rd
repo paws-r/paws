@@ -12,7 +12,9 @@ lightsail_import_key_pair(keyPairName, publicKeyBase64)
 \item{publicKeyBase64}{[required] A base64-encoded public key of the \code{ssh-rsa} type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -35,17 +37,19 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Imports a public SSH key from a specific key pair.
 }
 \section{Request syntax}{
-\preformatted{svc$import_key_pair(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_key_pair(
   keyPairName = "string",
   publicKeyBase64 = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

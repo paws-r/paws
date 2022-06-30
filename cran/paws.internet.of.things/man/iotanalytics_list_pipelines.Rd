@@ -14,7 +14,9 @@ iotanalytics_list_pipelines(nextToken, maxResults)
 The default value is 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   pipelineSummaries = list(
     list(
       pipelineName = "string",
@@ -37,17 +39,19 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of pipelines.
 }
 \section{Request syntax}{
-\preformatted{svc$list_pipelines(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_pipelines(
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

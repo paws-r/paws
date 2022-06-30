@@ -25,7 +25,9 @@ An empty list.
 Updates an existing conference provider's settings.
 }
 \section{Request syntax}{
-\preformatted{svc$update_conference_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_conference_provider(
   ConferenceProviderArn = "string",
   ConferenceProviderType = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
   IPDialIn = list(
@@ -42,7 +44,7 @@ Updates an existing conference provider's settings.
     RequirePin = "YES"|"NO"|"OPTIONAL"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

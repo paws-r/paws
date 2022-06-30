@@ -11,22 +11,26 @@ securityhub_describe_hub(HubArn)
 \item{HubArn}{The ARN of the Hub resource to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HubArn = "string",
   SubscribedAt = "string",
   AutoEnableControls = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns details about the Hub resource in your account, including the
 \code{HubArn} and the time when you enabled Security Hub.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_hub(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_hub(
   HubArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

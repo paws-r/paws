@@ -38,7 +38,9 @@ invalid characters are:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LoggingEnabled = TRUE|FALSE,
   BucketName = "string",
   S3KeyPrefix = "string",
@@ -50,19 +52,21 @@ A list with the following syntax:\preformatted{list(
   ),
   LastFailureMessage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts logging information, such as queries and connection attempts, for
 the specified Amazon Redshift cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_logging(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_logging(
   ClusterIdentifier = "string",
   BucketName = "string",
   S3KeyPrefix = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

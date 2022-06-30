@@ -25,7 +25,9 @@ If you specify a trail ARN, it must be in the format:
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrailARN = "string",
   EventSelectors = list(
     list(
@@ -73,7 +75,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the settings for the event selectors that you configured for
@@ -92,10 +94,12 @@ For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest
 the \emph{AWS CloudTrail User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_event_selectors(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_event_selectors(
   TrailName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

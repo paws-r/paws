@@ -18,7 +18,9 @@ pointed to by the next token.}
 \item{MaxResults}{The maximum number of items to be returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   BackupSelectionsList = list(
     list(
@@ -33,19 +35,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an array containing metadata of the resources associated with
 the target backup plan.
 }
 \section{Request syntax}{
-\preformatted{svc$list_backup_selections(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_backup_selections(
   BackupPlanId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

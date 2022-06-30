@@ -21,11 +21,13 @@ You must specify either the StreamName or the StreamARN.}
 \item{ClipFragmentSelector}{[required] The time range of the requested clip and the source of the timestamps.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContentType = "string",
   Payload = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Downloads an MP4 file (clip) containing the archived, on-demand media
@@ -49,10 +51,12 @@ AAC) or A_MS/ACM (for G.711).
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265
-format. For more information, see \href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}. For information
-about adapting stream data to a given format, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
+format. For more information, see MPEG-4 specification ISO/IEC
+14496-15. For information about adapting stream data to a given
+format, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
-private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}) or the \href{http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html}{MS Wave format}.
+private data in the AAC format (AAC specification ISO/IEC 13818-7)
+or the \href{http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html}{MS Wave format}.
 }
 
 You can monitor the amount of outgoing data by monitoring the
@@ -62,7 +66,9 @@ For pricing information, see \href{https://aws.amazon.com/kinesis/video-streams/
 apply.
 }
 \section{Request syntax}{
-\preformatted{svc$get_clip(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_clip(
   StreamName = "string",
   StreamARN = "string",
   ClipFragmentSelector = list(
@@ -77,7 +83,7 @@ apply.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

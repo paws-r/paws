@@ -13,7 +13,9 @@ to delete.}
 \item{fargateProfileName}{[required] The name of the Fargate profile to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   fargateProfile = list(
     fargateProfileName = "string",
     fargateProfileArn = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an AWS Fargate profile.
@@ -55,11 +57,13 @@ a time. You must wait for a Fargate profile to finish deleting before
 you can delete any other profiles in that cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_fargate_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_fargate_profile(
   clusterName = "string",
   fargateProfileName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

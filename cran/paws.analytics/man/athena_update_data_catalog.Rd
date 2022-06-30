@@ -50,7 +50,9 @@ An empty list.
 Updates the data catalog that has the specified name.
 }
 \section{Request syntax}{
-\preformatted{svc$update_data_catalog(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_data_catalog(
   Name = "string",
   Type = "LAMBDA"|"GLUE"|"HIVE",
   Description = "string",
@@ -58,7 +60,7 @@ Updates the data catalog that has the specified name.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

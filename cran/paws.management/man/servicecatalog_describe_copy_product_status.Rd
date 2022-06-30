@@ -19,22 +19,26 @@ servicecatalog_describe_copy_product_status(AcceptLanguage,
 \code{\link[=servicecatalog_copy_product]{copy_product}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CopyProductStatus = "SUCCEEDED"|"IN_PROGRESS"|"FAILED",
   TargetProductId = "string",
   StatusDetail = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the status of the specified copy product operation.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_copy_product_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_copy_product_status(
   AcceptLanguage = "string",
   CopyProductToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

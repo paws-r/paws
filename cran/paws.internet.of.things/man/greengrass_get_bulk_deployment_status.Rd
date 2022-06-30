@@ -10,7 +10,9 @@ greengrass_get_bulk_deployment_status(BulkDeploymentId)
 \item{BulkDeploymentId}{[required] The ID of the bulk deployment.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BulkDeploymentMetrics = list(
     InvalidInputRecords = 123,
     RecordsProcessed = 123,
@@ -29,16 +31,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the status of a bulk deployment.
 }
 \section{Request syntax}{
-\preformatted{svc$get_bulk_deployment_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bulk_deployment_status(
   BulkDeploymentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

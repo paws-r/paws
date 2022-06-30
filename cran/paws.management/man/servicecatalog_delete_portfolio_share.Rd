@@ -23,10 +23,12 @@ servicecatalog_delete_portfolio_share(AcceptLanguage, PortfolioId,
 \item{OrganizationNode}{The organization node to whom you are going to stop sharing.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PortfolioShareToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops sharing the specified portfolio with the specified account or
@@ -38,7 +40,9 @@ Note that if a delegated admin is de-registered, portfolio shares
 created from that account are removed.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_portfolio_share(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_portfolio_share(
   AcceptLanguage = "string",
   PortfolioId = "string",
   AccountId = "string",
@@ -47,7 +51,7 @@ created from that account are removed.
     Value = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

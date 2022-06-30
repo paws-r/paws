@@ -20,11 +20,13 @@ An empty list.
 Deletes the remediation configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_remediation_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_remediation_configuration(
   ConfigRuleName = "string",
   ResourceType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

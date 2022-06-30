@@ -19,11 +19,13 @@ Deletes a Deployment resource. Deleting a deployment will only succeed
 if there are no Stage resources associated with it.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_deployment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_deployment(
   restApiId = "string",
   deploymentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

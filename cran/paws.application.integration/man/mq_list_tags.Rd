@@ -10,21 +10,25 @@ mq_list_tags(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource tag.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists tags for a resource.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

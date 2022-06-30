@@ -11,7 +11,9 @@ dynamodb_batch_execute_statement(Statements)
 \item{Statements}{[required] The list of PartiQL statements representing the batch to run.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Responses = list(
     list(
       Error = list(
@@ -46,14 +48,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation allows you to perform batch reads and writes on data
 stored in DynamoDB, using PartiQL.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_execute_statement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_execute_statement(
   Statements = list(
     list(
       Statement = "string",
@@ -85,7 +89,7 @@ stored in DynamoDB, using PartiQL.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -9,13 +9,15 @@ that you create there}
 dynamodb_describe_limits()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccountMaxReadCapacityUnits = 123,
   AccountMaxWriteCapacityUnits = 123,
   TableMaxReadCapacityUnits = 123,
   TableMaxWriteCapacityUnits = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the current provisioned-capacity quotas for your AWS account in
@@ -26,7 +28,7 @@ When you establish an AWS account, the account has initial quotas on the
 maximum read capacity units and write capacity units that you can
 provision across all of your DynamoDB tables in a given Region. Also,
 there are per-table quotas that apply when you create a table there. For
-more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Service, Account, and Table Quotas}
+more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ServiceQuotas.html}{Service, Account, and Table Quotas}
 page in the \emph{Amazon DynamoDB Developer Guide}.
 
 Although you can increase these quotas by filing a case at AWS Support
@@ -84,8 +86,10 @@ The \code{\link[=dynamodb_describe_limits]{describe_limits}} Request element has
 content.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_limits()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_limits()
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -11,7 +11,9 @@ ecs_delete_cluster(cluster)
 delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   cluster = list(
     clusterArn = "string",
     clusterName = "string",
@@ -64,7 +66,7 @@ A list with the following syntax:\preformatted{list(
     attachmentsStatus = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified cluster. The cluster will transition to the
@@ -80,10 +82,12 @@ deregister them with
 \code{\link[=ecs_deregister_container_instance]{deregister_container_instance}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cluster(
   cluster = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

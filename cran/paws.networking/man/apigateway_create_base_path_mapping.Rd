@@ -22,24 +22,28 @@ Specify '(none)' if you want callers to explicitly specify the stage
 name after any base path name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   basePath = "string",
   restApiId = "string",
   stage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new BasePathMapping resource.
 }
 \section{Request syntax}{
-\preformatted{svc$create_base_path_mapping(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_base_path_mapping(
   domainName = "string",
   basePath = "string",
   restApiId = "string",
   stage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

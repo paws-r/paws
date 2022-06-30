@@ -24,11 +24,13 @@ other credential).
 \code{\link[=iot_attach_policy]{attach_policy}} instead.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_principal_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_principal_policy(
   policyName = "string",
   principal = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

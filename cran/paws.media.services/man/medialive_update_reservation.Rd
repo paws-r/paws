@@ -12,7 +12,9 @@ medialive_update_reservation(Name, ReservationId)
 \item{ReservationId}{[required] Unique reservation ID, e.g. '1234567'}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Reservation = list(
     Arn = "string",
     Count = 123,
@@ -45,17 +47,19 @@ A list with the following syntax:\preformatted{list(
     UsagePrice = 123.0
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Update reservation.
 }
 \section{Request syntax}{
-\preformatted{svc$update_reservation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_reservation(
   Name = "string",
   ReservationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

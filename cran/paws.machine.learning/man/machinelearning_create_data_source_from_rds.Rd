@@ -63,10 +63,12 @@ be set to \code{true} if the \code{DataSource} needs to be used for \code{MLMode
 training.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DataSourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a \code{DataSource} object from an \href{https://aws.amazon.com/rds/}{Amazon Relational Database Service} (Amazon RDS). A \code{DataSource}
@@ -83,7 +85,7 @@ Amazon Machine Learning (Amazon ML) immediately returns and sets the
 \code{DataSource} status to \code{PENDING}. After the \code{DataSource} is created and
 ready for use, Amazon ML sets the \code{Status} parameter to \code{COMPLETED}.
 \code{DataSource} in the \code{COMPLETED} or \code{PENDING} state can be used only to
-perform \verb{>CreateMLModel}>,
+perform \verb{>CreateMLModel}\>,
 \code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or
 \code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}}
 operations.
@@ -94,7 +96,9 @@ attribute of the \code{\link[=machinelearning_get_data_source]{get_data_source}}
 operation response.
 }
 \section{Request syntax}{
-\preformatted{svc$create_data_source_from_rds(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_data_source_from_rds(
   DataSourceId = "string",
   DataSourceName = "string",
   RDSData = list(
@@ -121,7 +125,7 @@ operation response.
   RoleARN = "string",
   ComputeStatistics = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

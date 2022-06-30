@@ -21,12 +21,14 @@ An empty list.
 Deletes the RouteSettings for a stage.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_route_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_route_settings(
   ApiId = "string",
   RouteKey = "string",
   StageName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

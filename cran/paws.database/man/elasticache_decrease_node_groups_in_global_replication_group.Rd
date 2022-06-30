@@ -30,7 +30,9 @@ groups listed by NodeGroupsToRemove from the cluster.}
 present, the only permitted value for this parameter is true.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GlobalReplicationGroup = list(
     GlobalReplicationGroupId = "string",
     GlobalReplicationGroupDescription = "string",
@@ -60,13 +62,15 @@ A list with the following syntax:\preformatted{list(
     ARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Decreases the number of node groups in a Global Datastore
 }
 \section{Request syntax}{
-\preformatted{svc$decrease_node_groups_in_global_replication_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$decrease_node_groups_in_global_replication_group(
   GlobalReplicationGroupId = "string",
   NodeGroupCount = 123,
   GlobalNodeGroupsToRemove = list(
@@ -77,7 +81,7 @@ Decreases the number of node groups in a Global Datastore
   ),
   ApplyImmediately = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,7 +17,9 @@ provide this token to receive the next set of results.}
 \item{MaxResults}{The maximum number of items to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ImageId = "string",
   ImagePermissions = list(
     list(
@@ -26,19 +28,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the permissions that the owner of an image has granted to
 other AWS accounts for an image.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_workspace_image_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workspace_image_permissions(
   ImageId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

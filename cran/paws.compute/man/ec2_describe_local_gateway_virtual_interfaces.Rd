@@ -24,7 +24,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LocalGatewayVirtualInterfaces = list(
     list(
       LocalGatewayVirtualInterfaceId = "string",
@@ -45,13 +47,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified local gateway virtual interfaces.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_local_gateway_virtual_interfaces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_local_gateway_virtual_interfaces(
   LocalGatewayVirtualInterfaceIds = list(
     "string"
   ),
@@ -67,7 +71,7 @@ Describes the specified local gateway virtual interfaces.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

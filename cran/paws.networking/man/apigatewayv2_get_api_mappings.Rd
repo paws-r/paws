@@ -15,7 +15,9 @@ apigatewayv2_get_api_mappings(DomainName, MaxResults, NextToken)
 element of the collection.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Items = list(
     list(
       ApiId = "string",
@@ -26,18 +28,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets API mappings.
 }
 \section{Request syntax}{
-\preformatted{svc$get_api_mappings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_api_mappings(
   DomainName = "string",
   MaxResults = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

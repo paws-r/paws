@@ -44,7 +44,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Subnet = list(
     AvailabilityZone = "string",
     AvailabilityZoneId = "string",
@@ -79,7 +81,7 @@ A list with the following syntax:\preformatted{list(
     OutpostArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a subnet in a specified VPC.
@@ -104,11 +106,13 @@ address. It's therefore possible to have a subnet with no running
 instances (they're all stopped), but no remaining IP addresses
 available.
 
-For more information about subnets, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}
+For more information about subnets, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{Your VPC and Subnets}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_subnet(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_subnet(
   TagSpecifications = list(
     list(
       ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
@@ -128,7 +132,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   VpcId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

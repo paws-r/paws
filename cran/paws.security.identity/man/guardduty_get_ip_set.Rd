@@ -12,7 +12,9 @@ guardduty_get_ip_set(DetectorId, IpSetId)
 \item{IpSetId}{[required] The unique ID of the IPSet to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string",
   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
   Location = "string",
@@ -21,17 +23,19 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the IPSet specified by the \code{ipSetId}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_ip_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ip_set(
   DetectorId = "string",
   IpSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

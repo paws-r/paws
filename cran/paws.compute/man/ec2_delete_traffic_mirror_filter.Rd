@@ -15,10 +15,12 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficMirrorFilterId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified Traffic Mirror filter.
@@ -27,11 +29,13 @@ You cannot delete a Traffic Mirror filter that is in use by a Traffic
 Mirror session.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_traffic_mirror_filter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_traffic_mirror_filter(
   TrafficMirrorFilterId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

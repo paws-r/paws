@@ -22,7 +22,9 @@ members are only returned if the type filter in
 memberships are returned..}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChannelArn = "string",
   ChannelMemberships = list(
     list(
@@ -34,19 +36,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all channel memberships in a channel.
 }
 \section{Request syntax}{
-\preformatted{svc$list_channel_memberships(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_channel_memberships(
   ChannelArn = "string",
   Type = "DEFAULT"|"HIDDEN",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

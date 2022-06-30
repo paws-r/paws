@@ -23,22 +23,26 @@ application by using the
 operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an InputProcessingConfiguration from an input.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_application_input_processing_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_input_processing_configuration(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   InputId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

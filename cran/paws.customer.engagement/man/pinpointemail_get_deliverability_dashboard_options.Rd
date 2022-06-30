@@ -8,7 +8,9 @@ for your Amazon Pinpoint account}
 pinpointemail_get_deliverability_dashboard_options()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DashboardEnabled = TRUE|FALSE,
   SubscriptionExpiryDate = as.POSIXct(
     "2015-01-01"
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve information about the status of the Deliverability dashboard
@@ -59,8 +61,10 @@ using Amazon Pinpoint. For more information about the features and cost
 of a Deliverability dashboard subscription, see \href{https://aws.amazon.com/pinpoint/pricing/}{Amazon Pinpoint Pricing}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_deliverability_dashboard_options()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deliverability_dashboard_options()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

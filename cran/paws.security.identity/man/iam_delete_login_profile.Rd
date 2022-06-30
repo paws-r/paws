@@ -30,10 +30,12 @@ see \code{\link[=iam_update_access_key]{update_access_key}} and
 \code{\link[=iam_delete_access_key]{delete_access_key}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_login_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_login_profile(
   UserName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

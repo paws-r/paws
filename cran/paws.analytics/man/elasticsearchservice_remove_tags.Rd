@@ -22,13 +22,15 @@ Removes the specified set of tags from the specified Elasticsearch
 domain.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags(
   ARN = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

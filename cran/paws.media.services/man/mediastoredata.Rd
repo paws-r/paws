@@ -21,7 +21,9 @@ the Amazon S3 service. Objects are the fundamental entities that are
 stored in AWS Elemental MediaStore.
 }
 \section{Service syntax}{
-\preformatted{svc <- mediastoredata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mediastoredata(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +37,7 @@ stored in AWS Elemental MediaStore.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

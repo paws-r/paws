@@ -29,24 +29,28 @@ to retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   clusters = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the Amazon EKS clusters in your AWS account in the specified
 Region.
 }
 \section{Request syntax}{
-\preformatted{svc$list_clusters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_clusters(
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

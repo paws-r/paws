@@ -15,7 +15,9 @@ returned list of gateways.}
 number of items.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Gateways = list(
     list(
       GatewayId = "string",
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists gateways owned by an AWS account in an AWS Region specified in the
@@ -46,11 +48,13 @@ contains a marker that you can specify in your next request to fetch the
 next page of gateways.
 }
 \section{Request syntax}{
-\preformatted{svc$list_gateways(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_gateways(
   Marker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

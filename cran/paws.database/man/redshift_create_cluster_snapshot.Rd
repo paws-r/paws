@@ -33,7 +33,9 @@ The default value is -1.}
 \item{Tags}{A list of tag instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Snapshot = list(
     SnapshotIdentifier = "string",
     ClusterIdentifier = "string",
@@ -89,7 +91,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a manual snapshot of the specified cluster. The cluster must be
@@ -99,7 +101,9 @@ For more information about working with snapshots, go to \href{https://docs.aws.
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cluster_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster_snapshot(
   SnapshotIdentifier = "string",
   ClusterIdentifier = "string",
   ManualSnapshotRetentionPeriod = 123,
@@ -110,7 +114,7 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

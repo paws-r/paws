@@ -25,7 +25,9 @@ there are fewer results in the list, the response contains only the
 actual results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Models = list(
     list(
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides more information about the custom language models you've
@@ -58,13 +60,15 @@ custom language model. You can then use the operation to get more
 information about it.
 }
 \section{Request syntax}{
-\preformatted{svc$list_language_models(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_language_models(
   StatusEquals = "IN_PROGRESS"|"FAILED"|"COMPLETED",
   NameContains = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,7 +22,9 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowIdentities = list(
     list(
       WindowId = "string",
@@ -31,14 +33,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the maintenance window targets or tasks that
 an instance is associated with.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_maintenance_windows_for_target(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_maintenance_windows_for_target(
   Targets = list(
     list(
       Key = "string",
@@ -51,7 +55,7 @@ an instance is associated with.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

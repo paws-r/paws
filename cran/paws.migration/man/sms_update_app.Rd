@@ -20,7 +20,9 @@ sms_update_app(appId, name, description, roleName, serverGroups, tags)
 \item{tags}{The tags to associate with the application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   appSummary = list(
     appId = "string",
     importedAppId = "string",
@@ -85,13 +87,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the specified application.
 }
 \section{Request syntax}{
-\preformatted{svc$update_app(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_app(
   appId = "string",
   name = "string",
   description = "string",
@@ -127,7 +131,7 @@ Updates the specified application.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

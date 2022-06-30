@@ -13,23 +13,27 @@ supports rebooting one broker at a time.}
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) of the cluster to be updated.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClusterArn = "string",
   ClusterOperationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Reboots brokers.
 }
 \section{Request syntax}{
-\preformatted{svc$reboot_broker(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_broker(
   BrokerIds = list(
     "string"
   ),
   ClusterArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

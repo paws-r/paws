@@ -12,8 +12,8 @@ mediaconvert_list_job_templates(Category, ListBy, MaxResults, NextToken,
 job templates from that category.}
 
 \item{ListBy}{Optional. When you request a list of job templates, you can choose to
-list them alphabetically by NAME or chronologically by CREATION_DATE.
-If you don't specify, the service will list them by name.}
+list them alphabetically by NAME or chronologically by CREATION_DATE. If
+you don't specify, the service will list them by name.}
 
 \item{MaxResults}{Optional. Number of job templates, up to twenty, that will be returned
 at one time.}
@@ -26,7 +26,9 @@ they are sorted in ASCENDING or DESCENDING order. Default varies by
 resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobTemplates = list(
     list(
       AccelerationSettings = list(
@@ -1171,7 +1173,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve a JSON array of up to twenty of your job templates. This will
@@ -1180,14 +1182,16 @@ the next twenty templates, use the nextToken string returned with the
 array
 }
 \section{Request syntax}{
-\preformatted{svc$list_job_templates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_job_templates(
   Category = "string",
   ListBy = "NAME"|"CREATION_DATE"|"SYSTEM",
   MaxResults = 123,
   NextToken = "string",
   Order = "ASCENDING"|"DESCENDING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

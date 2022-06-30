@@ -16,7 +16,9 @@ directconnect_delete_direct_connect_gateway_association(associationId,
 \item{virtualGatewayId}{The ID of the virtual private gateway.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   directConnectGatewayAssociation = list(
     directConnectGatewayId = "string",
     directConnectGatewayOwnerAccount = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     virtualGatewayOwnerAccount = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the association between the specified Direct Connect gateway and
@@ -51,12 +53,14 @@ Connect gateway association, you can specify the \code{virtualGatewayId} and
 \code{directConnectGatewayId} to delete an association.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_direct_connect_gateway_association(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_direct_connect_gateway_association(
   associationId = "string",
   directConnectGatewayId = "string",
   virtualGatewayId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

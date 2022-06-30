@@ -34,7 +34,9 @@ to.}
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssignmentName = "string",
   AssignmentId = "string",
   AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an assignment with one specified IAM policy, identified by its
@@ -57,7 +59,9 @@ unique per AWS account. To avoid overwriting rules in other namespaces,
 use assignment names that are unique.
 }
 \section{Request syntax}{
-\preformatted{svc$create_iam_policy_assignment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_iam_policy_assignment(
   AwsAccountId = "string",
   AssignmentName = "string",
   AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
@@ -69,7 +73,7 @@ use assignment names that are unique.
   ),
   Namespace = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,10 +22,12 @@ specified in the call to
 \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_stream_processor(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_stream_processor(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

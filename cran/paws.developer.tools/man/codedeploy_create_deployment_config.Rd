@@ -20,9 +20,9 @@ The type parameter takes either of the following values:
 healthy instances as an absolute value.
 \item FLEET_PERCENT: The value parameter represents the minimum number of
 healthy instances as a percentage of the total number of instances
-in the deployment. If you specify FLEET_PERCENT, at the start of
-the deployment, AWS CodeDeploy converts the percentage to the
-equivalent number of instances and rounds up fractional instances.
+in the deployment. If you specify FLEET_PERCENT, at the start of the
+deployment, AWS CodeDeploy converts the percentage to the equivalent
+number of instances and rounds up fractional instances.
 }
 
 The value parameter takes an integer.
@@ -36,16 +36,20 @@ FLEET_PERCENT and a value of 95.}
 \code{ECS}).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   deploymentConfigId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a deployment configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$create_deployment_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_deployment_config(
   deploymentConfigName = "string",
   minimumHealthyHosts = list(
     value = 123,
@@ -64,7 +68,7 @@ Creates a deployment configuration.
   ),
   computePlatform = "Server"|"Lambda"|"ECS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

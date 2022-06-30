@@ -17,22 +17,26 @@ generate a new version.}
 operation completes successfully.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClusterArn = "string",
   ClusterOperationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the number of broker nodes in the cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$update_broker_count(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_broker_count(
   ClusterArn = "string",
   CurrentVersion = "string",
   TargetNumberOfBrokerNodes = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

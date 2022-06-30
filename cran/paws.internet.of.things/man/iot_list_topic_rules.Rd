@@ -18,7 +18,9 @@ results.}
 \item{ruleDisabled}{Specifies whether the rule is disabled.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   rules = list(
     list(
       ruleArn = "string",
@@ -32,19 +34,21 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the rules for the specific topic.
 }
 \section{Request syntax}{
-\preformatted{svc$list_topic_rules(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_topic_rules(
   topic = "string",
   maxResults = 123,
   nextToken = "string",
   ruleDisabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

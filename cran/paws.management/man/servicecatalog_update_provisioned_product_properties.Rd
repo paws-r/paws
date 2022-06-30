@@ -57,7 +57,9 @@ Service Catalog console on that provisioned product.}
 update request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProvisionedProductId = "string",
   ProvisionedProductProperties = list(
     "string"
@@ -65,13 +67,15 @@ A list with the following syntax:\preformatted{list(
   RecordId = "string",
   Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Requests updates to the properties of the specified provisioned product.
 }
 \section{Request syntax}{
-\preformatted{svc$update_provisioned_product_properties(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_provisioned_product_properties(
   AcceptLanguage = "string",
   ProvisionedProductId = "string",
   ProvisionedProductProperties = list(
@@ -79,7 +83,7 @@ Requests updates to the properties of the specified provisioned product.
   ),
   IdempotencyToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

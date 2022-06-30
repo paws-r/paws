@@ -16,7 +16,9 @@ request. However, in subsequent requests, you add the last application
 name from the previous response to get the next page of applications.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationSummaries = list(
     list(
       ApplicationName = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
   ),
   HasMoreApplications = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
@@ -49,11 +51,13 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:ListApplications} action.
 }
 \section{Request syntax}{
-\preformatted{svc$list_applications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_applications(
   Limit = 123,
   ExclusiveStartApplicationName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

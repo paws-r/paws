@@ -18,11 +18,13 @@ download.}
 \item{layerDigest}{[required] The digest of the image layer to download.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   downloadUrl = "string",
   layerDigest = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the pre-signed Amazon S3 download URL corresponding to an
@@ -37,12 +39,14 @@ by customers for pulling and pushing images. In most cases, you should
 use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
-\preformatted{svc$get_download_url_for_layer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_download_url_for_layer(
   registryId = "string",
   repositoryName = "string",
   layerDigest = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,7 +19,9 @@ device certificate that were signed by this CA certificate.}
 ascending order, based on the creation date.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   certificates = list(
     list(
       certificateArn = "string",
@@ -33,19 +35,21 @@ A list with the following syntax:\preformatted{list(
   ),
   nextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List the device certificates signed by the specified CA certificate.
 }
 \section{Request syntax}{
-\preformatted{svc$list_certificates_by_ca(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_certificates_by_ca(
   caCertificateId = "string",
   pageSize = 123,
   marker = "string",
   ascendingOrder = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

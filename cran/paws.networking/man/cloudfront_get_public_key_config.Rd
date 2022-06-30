@@ -10,7 +10,9 @@ cloudfront_get_public_key_config(Id)
 \item{Id}{[required] The identifier of the public key whose configuration you are getting.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PublicKeyConfig = list(
     CallerReference = "string",
     Name = "string",
@@ -19,16 +21,18 @@ A list with the following syntax:\preformatted{list(
   ),
   ETag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a public key configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$get_public_key_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_public_key_config(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -24,11 +24,13 @@ Terminates a job in a job queue. Jobs that are in the \code{STARTING} or
 cancelled.
 }
 \section{Request syntax}{
-\preformatted{svc$terminate_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_job(
   jobId = "string",
   reason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

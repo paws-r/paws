@@ -32,7 +32,9 @@ to reduce overhead when setting information is too large. To use this
 option, choose \code{true}; otherwise, choose \code{false} (the default).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   ReplicationTasks = list(
     list(
@@ -84,14 +86,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about replication tasks for your account in the
 current region.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_replication_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_replication_tasks(
   Filters = list(
     list(
       Name = "string",
@@ -104,7 +108,7 @@ current region.
   Marker = "string",
   WithoutSettings = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

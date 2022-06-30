@@ -26,8 +26,10 @@ If you want to save your existing findings, you must export them before
 you disable Security Hub.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_security_hub()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_security_hub()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

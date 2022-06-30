@@ -31,7 +31,9 @@ page. The remaining results can be seen by sending another request with
 the nextToken value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AuthorizationRules = list(
     list(
       ClientVpnEndpointId = "string",
@@ -47,13 +49,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the authorization rules for a specified Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_client_vpn_authorization_rules(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_client_vpn_authorization_rules(
   ClientVpnEndpointId = "string",
   DryRun = TRUE|FALSE,
   NextToken = "string",
@@ -67,7 +71,7 @@ Describes the authorization rules for a specified Client VPN endpoint.
   ),
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -43,7 +43,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MulticastGroups = list(
     list(
       GroupIpAddress = "string",
@@ -61,14 +63,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Searches one or more transit gateway multicast groups and returns the
 group membership information.
 }
 \section{Request syntax}{
-\preformatted{svc$search_transit_gateway_multicast_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_transit_gateway_multicast_groups(
   TransitGatewayMulticastDomainId = "string",
   Filters = list(
     list(
@@ -82,7 +86,7 @@ group membership information.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,10 +19,12 @@ your account.}
 \item{campaignConfig}{The configuration details of a campaign.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   campaignArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a campaign by deploying a solution version. When a client calls
@@ -51,9 +53,8 @@ track your usage using Amazon CloudWatch metrics, and then increase the
 
 A campaign can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
-\item DELETE PENDING > DELETE IN_PROGRESS
+\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+\item DELETE PENDING \> DELETE IN_PROGRESS
 }
 
 To get the campaign status, call
@@ -71,7 +72,9 @@ campaign for recommendations.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_campaign(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_campaign(
   name = "string",
   solutionVersionArn = "string",
   minProvisionedTPS = 123,
@@ -81,7 +84,7 @@ campaign for recommendations.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

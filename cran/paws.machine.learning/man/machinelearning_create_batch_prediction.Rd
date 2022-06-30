@@ -28,10 +28,12 @@ Amazon ML needs permissions to store and retrieve the logs on your
 behalf. For information about how to set permissions, see the \href{https://docs.aws.amazon.com/machine-learning/latest/dg/}{Amazon Machine Learning Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BatchPredictionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates predictions for a group of observations. The observations to
@@ -54,14 +56,16 @@ status appears, the results are available in the location specified by
 the \code{OutputUri} parameter.
 }
 \section{Request syntax}{
-\preformatted{svc$create_batch_prediction(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_batch_prediction(
   BatchPredictionId = "string",
   BatchPredictionName = "string",
   MLModelId = "string",
   BatchPredictionDataSourceId = "string",
   OutputUri = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

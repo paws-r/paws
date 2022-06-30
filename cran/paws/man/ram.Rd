@@ -26,7 +26,9 @@ following principals are supported: AWS accounts, organizational units
 For more information, see the \href{https://docs.aws.amazon.com/ram/latest/userguide/}{AWS Resource Access Manager User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- ram(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- ram(
   config = list(
     credentials = list(
       creds = list(
@@ -40,7 +42,7 @@ For more information, see the \href{https://docs.aws.amazon.com/ram/latest/userg
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

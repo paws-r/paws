@@ -45,12 +45,14 @@ exception.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_additional_assignments_for_hit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_additional_assignments_for_hit(
   HITId = "string",
   NumberOfAdditionalAssignments = 123,
   UniqueRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

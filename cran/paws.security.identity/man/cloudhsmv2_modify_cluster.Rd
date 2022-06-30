@@ -13,7 +13,9 @@ cloudhsmv2_modify_cluster(BackupRetentionPolicy, ClusterId)
 cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     BackupPolicy = "DEFAULT",
     BackupRetentionPolicy = list(
@@ -61,20 +63,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies AWS CloudHSM cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cluster(
   BackupRetentionPolicy = list(
     Type = "DAYS",
     Value = "string"
   ),
   ClusterId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,24 +13,28 @@ apigateway_get_documentation_version(restApiId, documentationVersion)
 snapshot.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   version = "string",
   createdDate = as.POSIXct(
     "2015-01-01"
   ),
   description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get documentation version
 }
 \section{Request syntax}{
-\preformatted{svc$get_documentation_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_documentation_version(
   restApiId = "string",
   documentationVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

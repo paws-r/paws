@@ -17,10 +17,12 @@ Deletes a specified service. If the service still contains one or more
 registered instances, the request fails.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_service(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_service(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

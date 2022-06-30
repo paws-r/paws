@@ -13,7 +13,9 @@ alexaforbusiness_resolve_room(UserId, SkillId)
 \item{SkillId}{[required] The ARN of the skill that was requested. Required.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RoomArn = "string",
   RoomName = "string",
   RoomSkillParameters = list(
@@ -23,18 +25,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Determines the details for the room from which a skill request was
 invoked. This operation is used by skill developers.
 }
 \section{Request syntax}{
-\preformatted{svc$resolve_room(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resolve_room(
   UserId = "string",
   SkillId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

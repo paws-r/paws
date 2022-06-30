@@ -17,7 +17,9 @@ provide this token to receive the next set of results.}
 \item{MaxResults}{The maximum number of results to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AliasId = "string",
   ConnectionAliasPermissions = list(
     list(
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the permissions that the owner of a connection alias has
@@ -35,12 +37,14 @@ granted to another AWS account for the specified connection alias. For
 more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_connection_alias_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_connection_alias_permissions(
   AliasId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

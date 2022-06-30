@@ -14,7 +14,9 @@ pinpoint_update_adm_channel(ADMChannelRequest, ApplicationId)
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ADMChannelResponse = list(
     ApplicationId = "string",
     CreationDate = "string",
@@ -28,14 +30,16 @@ A list with the following syntax:\preformatted{list(
     Version = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables the ADM channel for an application or updates the status and
 settings of the ADM channel for an application.
 }
 \section{Request syntax}{
-\preformatted{svc$update_adm_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_adm_channel(
   ADMChannelRequest = list(
     ClientId = "string",
     ClientSecret = "string",
@@ -43,7 +47,7 @@ settings of the ADM channel for an application.
   ),
   ApplicationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

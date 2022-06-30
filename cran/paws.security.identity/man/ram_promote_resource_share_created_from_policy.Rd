@@ -12,10 +12,12 @@ ram_promote_resource_share_created_from_policy(resourceShareArn)
 \item{resourceShareArn}{[required] The ARN of the resource share to promote.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   returnValue = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Resource shares that were created by attaching a policy to a resource
@@ -30,10 +32,12 @@ resource share, it becomes:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$promote_resource_share_created_from_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$promote_resource_share_created_from_policy(
   resourceShareArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

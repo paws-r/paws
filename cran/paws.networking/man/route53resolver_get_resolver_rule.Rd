@@ -12,7 +12,9 @@ route53resolver_get_resolver_rule(ResolverRuleId)
 \item{ResolverRuleId}{[required] The ID of the Resolver rule that you want to get information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResolverRule = list(
     Id = "string",
     CreatorRequestId = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     ModificationTime = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a specified Resolver rule, such as the domain
@@ -43,10 +45,12 @@ name that the rule forwards DNS queries for and the ID of the outbound
 Resolver endpoint that the rule is associated with.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resolver_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resolver_rule(
   ResolverRuleId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

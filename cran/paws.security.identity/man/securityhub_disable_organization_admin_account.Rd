@@ -17,10 +17,12 @@ Disables a Security Hub administrator account. Can only be called by the
 organization management account.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_organization_admin_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_organization_admin_account(
   AdminAccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -259,7 +259,9 @@ assigned to the \code{current} track.}
 Availability Zones after the cluster is created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -416,7 +418,7 @@ A list with the following syntax:\preformatted{list(
     ClusterNamespaceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new cluster with the specified parameters.
@@ -428,7 +430,9 @@ For more information about managing clusters, go to \href{https://docs.aws.amazo
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster(
   DBName = "string",
   ClusterIdentifier = "string",
   ClusterType = "string",
@@ -472,7 +476,7 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
   SnapshotScheduleIdentifier = "string",
   AvailabilityZoneRelocation = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

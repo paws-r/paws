@@ -20,27 +20,31 @@ determines whether images are scanned for known vulnerabilities after
 being pushed to the repository.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   imageScanningConfiguration = list(
     scanOnPush = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the image scanning configuration for the specified repository.
 }
 \section{Request syntax}{
-\preformatted{svc$put_image_scanning_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_image_scanning_configuration(
   registryId = "string",
   repositoryName = "string",
   imageScanningConfiguration = list(
     scanOnPush = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

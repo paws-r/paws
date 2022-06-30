@@ -46,7 +46,9 @@ recommendations.
 For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter.html}{Filtering Recommendations}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   itemList = list(
     list(
       itemId = "string",
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
   ),
   recommendationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of recommended items. The required input depends on the
@@ -70,7 +72,9 @@ Campaigns that are backed by a solution created using a recipe of type
 PERSONALIZED_RANKING use the API.
 }
 \section{Request syntax}{
-\preformatted{svc$get_recommendations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_recommendations(
   campaignArn = "string",
   itemId = "string",
   userId = "string",
@@ -83,7 +87,7 @@ PERSONALIZED_RANKING use the API.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

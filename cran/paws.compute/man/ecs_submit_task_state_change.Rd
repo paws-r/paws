@@ -29,10 +29,12 @@ hosts the task.}
 \item{executionStoppedAt}{The Unix timestamp for when the task execution stopped.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   acknowledgment = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
@@ -41,7 +43,9 @@ for use outside of the agent.
 Sent to acknowledge that a task changed states.
 }
 \section{Request syntax}{
-\preformatted{svc$submit_task_state_change(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$submit_task_state_change(
   cluster = "string",
   task = "string",
   status = "string",
@@ -80,7 +84,7 @@ Sent to acknowledge that a task changed states.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

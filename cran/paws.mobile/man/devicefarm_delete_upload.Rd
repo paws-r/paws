@@ -17,10 +17,12 @@ An empty list.
 Deletes an upload given the upload ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_upload(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_upload(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -10,7 +10,9 @@ iot_describe_scheduled_audit(scheduledAuditName)
 \item{scheduledAuditName}{[required] The name of the scheduled audit whose information you want to get.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
   dayOfMonth = "string",
   dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
@@ -20,16 +22,18 @@ A list with the following syntax:\preformatted{list(
   scheduledAuditName = "string",
   scheduledAuditArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a scheduled audit.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_scheduled_audit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scheduled_audit(
   scheduledAuditName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

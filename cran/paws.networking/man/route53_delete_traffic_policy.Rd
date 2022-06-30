@@ -30,11 +30,13 @@ the policy, including the traffic policy document, by running
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_traffic_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_traffic_policy(
   Id = "string",
   Version = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

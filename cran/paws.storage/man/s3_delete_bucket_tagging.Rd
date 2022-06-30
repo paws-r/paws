@@ -31,11 +31,13 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_bucket_tagging(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bucket_tagging(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

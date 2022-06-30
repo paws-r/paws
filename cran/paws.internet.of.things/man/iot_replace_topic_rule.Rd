@@ -21,7 +21,9 @@ permission to create rules will be able to access data processed by the
 rule.
 }
 \section{Request syntax}{
-\preformatted{svc$replace_topic_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$replace_topic_rule(
   ruleName = "string",
   topicRulePayload = list(
     sql = "string",
@@ -368,7 +370,7 @@ rule.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

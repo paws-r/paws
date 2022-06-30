@@ -77,7 +77,9 @@ To perform a
 operation, you must also have the \code{iam:PassRole} permission.
 }
 \section{Request syntax}{
-\preformatted{svc$put_subscription_filter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_subscription_filter(
   logGroupName = "string",
   filterName = "string",
   filterPattern = "string",
@@ -85,7 +87,7 @@ operation, you must also have the \code{iam:PassRole} permission.
   roleArn = "string",
   distribution = "Random"|"ByLogStream"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

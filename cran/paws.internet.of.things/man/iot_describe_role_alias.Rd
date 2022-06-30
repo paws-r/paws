@@ -10,7 +10,9 @@ iot_describe_role_alias(roleAlias)
 \item{roleAlias}{[required] The role alias to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   roleAliasDescription = list(
     roleAlias = "string",
     roleAliasArn = "string",
@@ -25,16 +27,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a role alias.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_role_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_role_alias(
   roleAlias = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

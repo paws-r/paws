@@ -19,7 +19,9 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 key-value pair. A tag key must be accompanied by a tag value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TagList = list(
     list(
       Key = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds up to 50 cost allocation tags to the named resource. A cost
@@ -44,7 +46,9 @@ see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.ht
 in the \emph{ElastiCache User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_resource(
   ResourceName = "string",
   Tags = list(
     list(
@@ -53,7 +57,7 @@ in the \emph{ElastiCache User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

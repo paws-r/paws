@@ -36,7 +36,9 @@ the \code{nextToken} value.}
 \item{virtualGatewayName}{[required] The name of the virtual gateway to list gateway routes in.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   gatewayRoutes = list(
     list(
       arn = "string",
@@ -56,21 +58,23 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of existing gateway routes that are associated to a
 virtual gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$list_gateway_routes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_gateway_routes(
   limit = 123,
   meshName = "string",
   meshOwner = "string",
   nextToken = "string",
   virtualGatewayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

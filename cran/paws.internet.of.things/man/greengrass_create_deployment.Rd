@@ -20,25 +20,29 @@ greengrass_create_deployment(AmznClientToken, DeploymentId,
 \item{GroupVersionId}{The ID of the group version to be deployed.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeploymentArn = "string",
   DeploymentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a deployment. ''CreateDeployment'' requests are idempotent with
 respect to the ''X-Amzn-Client-Token'' token and the request parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$create_deployment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_deployment(
   AmznClientToken = "string",
   DeploymentId = "string",
   DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",
   GroupId = "string",
   GroupVersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

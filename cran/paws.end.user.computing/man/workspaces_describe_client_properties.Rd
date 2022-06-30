@@ -11,7 +11,9 @@ workspaces_describe_client_properties(ResourceIds)
 \item{ResourceIds}{[required] The resource identifier, in the form of directory IDs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClientPropertiesList = list(
     list(
       ResourceId = "string",
@@ -21,19 +23,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list that describes one or more specified Amazon WorkSpaces
 clients.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_client_properties(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_client_properties(
   ResourceIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

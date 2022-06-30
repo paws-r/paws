@@ -15,7 +15,7 @@ Constraints: Up to 255 characters in length
 Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-._-:/()\#,@[]+=&;\{\}!$*}
+._-:/()#,@[]+=&;\{\}!$*}
 
 \item{GroupName}{[required] The name of the security group.
 
@@ -24,7 +24,7 @@ Constraints: Up to 255 characters in length. Cannot start with \verb{sg-}.
 Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-._-:/()\#,@[]+=&;\{\}!$*}
+._-:/()#,@[]+=&;\{\}!$*}
 
 \item{VpcId}{[EC2-VPC] The ID of the VPC. Required for EC2-VPC.}
 
@@ -36,7 +36,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GroupId = "string",
   Tags = list(
     list(
@@ -45,7 +47,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a security group.
@@ -77,7 +79,9 @@ and \code{\link[=ec2_revoke_security_group_egress]{revoke_security_group_egress}
 For more information about VPC security group limits, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html}{Amazon VPC Limits}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_security_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_security_group(
   Description = "string",
   GroupName = "string",
   VpcId = "string",
@@ -94,7 +98,7 @@ For more information about VPC security group limits, see \href{https://docs.aws
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

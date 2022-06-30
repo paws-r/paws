@@ -26,7 +26,9 @@ between 1 and 50. The default value is 50.}
 \item{NextToken}{The token for the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ScalingPlans = list(
     list(
       ScalingPlanName = "string",
@@ -110,13 +112,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more of your scaling plans.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_scaling_plans(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scaling_plans(
   ScalingPlanNames = list(
     "string"
   ),
@@ -137,7 +141,7 @@ Describes one or more of your scaling plans.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

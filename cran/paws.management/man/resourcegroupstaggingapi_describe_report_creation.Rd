@@ -7,12 +7,14 @@
 resourcegroupstaggingapi_describe_report_creation()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = "string",
   S3Location = "string",
   ErrorMessage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the status of the
@@ -23,8 +25,10 @@ You can call this operation only from the organization's master account
 and from the us-east-1 Region.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_report_creation()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_report_creation()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -28,12 +28,14 @@ Enables a virtual private gateway (VGW) to propagate routes to the
 specified route table of a VPC.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_vgw_route_propagation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_vgw_route_propagation(
   GatewayId = "string",
   RouteTableId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

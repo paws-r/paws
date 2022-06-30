@@ -44,7 +44,9 @@ indicates the start of the list for this
 \code{\link[=emr_list_notebook_executions]{list_notebook_executions}} call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NotebookExecutions = list(
     list(
       NotebookExecutionId = "string",
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides summaries of all notebook executions. You can filter the list
@@ -71,7 +73,9 @@ paging of a longer notebook execution list across multiple
 \code{ListNotebookExecution} calls.
 }
 \section{Request syntax}{
-\preformatted{svc$list_notebook_executions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_notebook_executions(
   EditorId = "string",
   Status = "START_PENDING"|"STARTING"|"RUNNING"|"FINISHING"|"FINISHED"|"FAILING"|"FAILED"|"STOP_PENDING"|"STOPPING"|"STOPPED",
   From = as.POSIXct(
@@ -82,7 +86,7 @@ paging of a longer notebook execution list across multiple
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

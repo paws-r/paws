@@ -21,7 +21,9 @@ path to a folder named examples that was created off of the root
 directory (/) of a repository.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   commitId = "string",
   folderPath = "string",
   treeId = "string",
@@ -56,18 +58,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the contents of a specified folder in a repository.
 }
 \section{Request syntax}{
-\preformatted{svc$get_folder(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_folder(
   repositoryName = "string",
   commitSpecifier = "string",
   folderPath = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

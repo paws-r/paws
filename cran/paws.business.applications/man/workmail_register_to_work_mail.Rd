@@ -33,12 +33,14 @@ synchronized from your directory. For more information, see
 \code{\link[=workmail_deregister_from_work_mail]{deregister_from_work_mail}}.
 }
 \section{Request syntax}{
-\preformatted{svc$register_to_work_mail(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_to_work_mail(
   OrganizationId = "string",
   EntityId = "string",
   Email = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

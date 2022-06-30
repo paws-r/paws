@@ -13,7 +13,9 @@ into.}
 \item{JobId}{[required] The job ID for the user import job.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserImportJob = list(
     JobName = "string",
     JobId = "string",
@@ -36,17 +38,19 @@ A list with the following syntax:\preformatted{list(
     CompletionMessage = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts the user import.
 }
 \section{Request syntax}{
-\preformatted{svc$start_user_import_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_user_import_job(
   UserPoolId = "string",
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

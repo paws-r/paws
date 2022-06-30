@@ -28,7 +28,9 @@ the next set of projects, use the token in the next request.}
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProjectSummaryList = list(
     list(
       ProjectName = "string",
@@ -43,13 +45,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of the projects in an AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_projects(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_projects(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -62,7 +66,7 @@ Gets a list of the projects in an AWS account.
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

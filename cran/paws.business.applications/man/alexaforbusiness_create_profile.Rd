@@ -38,16 +38,20 @@ limited preview audience.)}
 \item{Tags}{The tags for the profile.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProfileArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new room profile with the specified details.
 }
 \section{Request syntax}{
-\preformatted{svc$create_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_profile(
   ProfileName = "string",
   Timezone = "string",
   Address = "string",
@@ -84,7 +88,7 @@ Creates a new room profile with the specified details.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

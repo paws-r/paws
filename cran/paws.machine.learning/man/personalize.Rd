@@ -20,7 +20,9 @@ Amazon Personalize is a machine learning service that makes it easy to
 add individualized recommendations to customers.
 }
 \section{Service syntax}{
-\preformatted{svc <- personalize(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- personalize(
   config = list(
     credentials = list(
       creds = list(
@@ -34,7 +36,7 @@ add individualized recommendations to customers.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

@@ -71,7 +71,9 @@ tags for an account, then the entire request fails and the account is
 not created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CreateAccountStatus = list(
     Id = "string",
     AccountName = "string",
@@ -87,7 +89,7 @@ A list with the following syntax:\preformatted{list(
     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This action is available if all of the following are true:
@@ -203,7 +205,9 @@ billing information. For information about how to disable this switch
 for an account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html}{Granting Access to Your Billing Information and Tools}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_gov_cloud_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_gov_cloud_account(
   Email = "string",
   AccountName = "string",
   RoleName = "string",
@@ -215,7 +219,7 @@ for an account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/a
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,7 +23,9 @@ returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TypeName = "string",
   InstanceId = "string",
   SchemaVersion = "string",
@@ -35,13 +37,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 A list of inventory items returned by the request.
 }
 \section{Request syntax}{
-\preformatted{svc$list_inventory_entries(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_inventory_entries(
   InstanceId = "string",
   TypeName = "string",
   Filters = list(
@@ -56,7 +60,7 @@ A list of inventory items returned by the request.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

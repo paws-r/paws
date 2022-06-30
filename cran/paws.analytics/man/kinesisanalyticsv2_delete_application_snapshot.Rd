@@ -22,14 +22,16 @@ An empty list.
 Deletes a snapshot of application state.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_application_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_snapshot(
   ApplicationName = "string",
   SnapshotName = "string",
   SnapshotCreationTimestamp = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

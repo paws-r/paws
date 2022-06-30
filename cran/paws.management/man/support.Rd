@@ -83,7 +83,9 @@ service to create and manage your support cases, and how to call Trusted
 Advisor for results of checks on your resources.
 }
 \section{Service syntax}{
-\preformatted{svc <- support(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- support(
   config = list(
     credentials = list(
       creds = list(
@@ -97,7 +99,7 @@ Advisor for results of checks on your resources.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

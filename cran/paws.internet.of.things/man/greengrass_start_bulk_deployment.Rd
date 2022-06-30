@@ -25,11 +25,13 @@ Greengrass supports only ''NewDeployment'' deployment types.}
 \item{tags}{Tag(s) to add to the new resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BulkDeploymentArn = "string",
   BulkDeploymentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deploys multiple groups in one operation. This action starts the bulk
@@ -40,7 +42,9 @@ token in every ''StartBulkDeployment'' request. These requests are
 idempotent with respect to the token and the request parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$start_bulk_deployment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_bulk_deployment(
   AmznClientToken = "string",
   ExecutionRoleArn = "string",
   InputFileUri = "string",
@@ -48,7 +52,7 @@ idempotent with respect to the token and the request parameters.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

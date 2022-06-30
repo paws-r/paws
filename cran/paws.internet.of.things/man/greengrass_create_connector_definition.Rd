@@ -17,7 +17,9 @@ greengrass_create_connector_definition(AmznClientToken, InitialVersion,
 \item{tags}{Tag(s) to add to the new resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
   LatestVersionArn = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a connector definition. You may provide the initial version of
@@ -34,7 +36,9 @@ the connector definition now or use ''CreateConnectorDefinitionVersion''
 at a later time.
 }
 \section{Request syntax}{
-\preformatted{svc$create_connector_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_connector_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Connectors = list(
@@ -52,7 +56,7 @@ at a later time.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

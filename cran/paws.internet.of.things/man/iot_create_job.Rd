@@ -63,18 +63,22 @@ format.
 The \code{namespaceId} feature is in public preview.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobArn = "string",
   jobId = "string",
   description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a job.
 }
 \section{Request syntax}{
-\preformatted{svc$create_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_job(
   jobId = "string",
   targets = list(
     "string"
@@ -119,7 +123,7 @@ Creates a job.
   ),
   namespaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

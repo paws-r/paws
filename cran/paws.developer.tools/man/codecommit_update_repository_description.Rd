@@ -28,11 +28,13 @@ any application that uses this API to display the repository description
 on a webpage.
 }
 \section{Request syntax}{
-\preformatted{svc$update_repository_description(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_repository_description(
   repositoryName = "string",
   repositoryDescription = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

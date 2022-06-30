@@ -14,7 +14,9 @@ Use the \code{\link[=lightsail_get_distributions]{get_distributions}} action to 
 a list of distribution names that you can specify.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   status = "string",
   createTime = as.POSIXct(
     "2015-01-01"
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes currently cached content from your Amazon Lightsail content
@@ -51,10 +53,12 @@ After resetting the cache, the next time a content request is made, your
 distribution pulls, serves, and caches it from the origin.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_distribution_cache(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_distribution_cache(
   distributionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,7 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TagSpecifications}{The tags to assign to the route table.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RouteTable = list(
     Associations = list(
       list(
@@ -67,7 +69,7 @@ A list with the following syntax:\preformatted{list(
     OwnerId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a route table for the specified VPC. After you create a route
@@ -77,7 +79,9 @@ For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_route_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_route_table(
   DryRun = TRUE|FALSE,
   VpcId = "string",
   TagSpecifications = list(
@@ -92,7 +96,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

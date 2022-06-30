@@ -17,16 +17,20 @@ information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging
 in the \emph{AWS General Reference Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ModelPackageGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a model group. A model group contains a group of model versions.
 }
 \section{Request syntax}{
-\preformatted{svc$create_model_package_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_model_package_group(
   ModelPackageGroupName = "string",
   ModelPackageGroupDescription = "string",
   Tags = list(
@@ -36,7 +40,7 @@ Creates a model group. A model group contains a group of model versions.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

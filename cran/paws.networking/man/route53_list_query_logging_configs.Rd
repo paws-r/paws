@@ -40,7 +40,9 @@ If you don't specify a value for \code{MaxResults}, Route 53 returns up to
 100 configurations.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   QueryLoggingConfigs = list(
     list(
       Id = "string",
@@ -50,7 +52,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the configurations for DNS query logging that are associated with
@@ -64,12 +66,14 @@ in \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.ht
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_query_logging_configs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_query_logging_configs(
   HostedZoneId = "string",
   NextToken = "string",
   MaxResults = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

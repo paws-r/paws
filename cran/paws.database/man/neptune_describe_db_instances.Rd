@@ -47,7 +47,9 @@ this parameter is specified, the response includes only records beyond
 the marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   DBInstances = list(
     list(
@@ -192,7 +194,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about provisioned instances, and supports
@@ -202,7 +204,9 @@ This operation can also return information for Amazon RDS instances and
 Amazon DocDB instances.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_db_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_instances(
   DBInstanceIdentifier = "string",
   Filters = list(
     list(
@@ -215,7 +219,7 @@ Amazon DocDB instances.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

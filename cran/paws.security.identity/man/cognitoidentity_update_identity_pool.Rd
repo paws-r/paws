@@ -38,7 +38,9 @@ different ways, such as by purpose, owner, environment, or other
 criteria.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityPoolId = "string",
   IdentityPoolName = "string",
   AllowUnauthenticatedIdentities = TRUE|FALSE,
@@ -64,7 +66,7 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an identity pool.
@@ -72,7 +74,9 @@ Updates an identity pool.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{svc$update_identity_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_identity_pool(
   IdentityPoolId = "string",
   IdentityPoolName = "string",
   AllowUnauthenticatedIdentities = TRUE|FALSE,
@@ -98,7 +102,7 @@ You must use AWS Developer credentials to call this API.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

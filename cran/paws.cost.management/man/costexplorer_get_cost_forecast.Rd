@@ -43,7 +43,9 @@ Cost Explorer is about the actual value falling in the prediction
 interval. Higher confidence levels result in wider prediction intervals.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Total = list(
     Amount = "string",
     Unit = "string"
@@ -60,7 +62,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a forecast for how much Amazon Web Services predicts that you
@@ -68,7 +70,9 @@ will spend over the forecast time period that you select, based on your
 past costs.
 }
 \section{Request syntax}{
-\preformatted{svc$get_cost_forecast(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cost_forecast(
   TimePeriod = list(
     Start = "string",
     End = "string"
@@ -113,7 +117,7 @@ past costs.
   ),
   PredictionIntervalLevel = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

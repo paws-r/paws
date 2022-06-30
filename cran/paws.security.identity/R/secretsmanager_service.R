@@ -33,7 +33,7 @@ NULL
 #' Secrets Manager. However, you also can use the Secrets Manager HTTP
 #' Query API to make direct calls to the Secrets Manager web service. To
 #' learn more about the Secrets Manager HTTP Query API, see [Making Query
-#' Requests](https://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html)
+#' Requests](https://docs.aws.amazon.com/secretsmanager/latest/userguide/)
 #' in the *AWS Secrets Manager User Guide*.
 #' 
 #' Secrets Manager API supports GET and POST requests for all actions, and
@@ -46,9 +46,9 @@ NULL
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the [AWS Secrets Manager Discussion
-#' Forum](https://forums.aws.amazon.com/forum.jspa?forumID=296). For more
-#' information about the AWS Discussion Forums, see [Forums
-#' Help](https://forums.aws.amazon.com:443/help.jspa).
+#' Forum](https://repost.aws/tags/TAJAqKRtZ5RY6XCoNAUTcVzQ?forumID=296).
+#' For more information about the AWS Discussion Forums, see [Forums
+#' Help](https://repost.aws/forums?origin=help.jspa).
 #' 
 #' **How examples are presented**
 #' 

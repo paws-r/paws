@@ -8,7 +8,9 @@ with the calling AWS account}
 elasticbeanstalk_describe_account_attributes()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResourceQuotas = list(
     ApplicationQuota = list(
       Maximum = 123
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns attributes related to AWS Elastic Beanstalk that are associated

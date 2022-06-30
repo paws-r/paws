@@ -25,13 +25,15 @@ This operation requires permissions for the
 \code{elasticfilesystem:DeleteTags} action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tags(
   FileSystemId = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -19,10 +19,12 @@ PROGRESS state. For more information on datasets, see
 \code{\link[=personalize_create_dataset]{create_dataset}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_dataset(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dataset(
   datasetArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -30,7 +30,9 @@ parameter specified, the default is to record all supported resource
 types.
 }
 \section{Request syntax}{
-\preformatted{svc$put_configuration_recorder(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_configuration_recorder(
   ConfigurationRecorder = list(
     name = "string",
     roleARN = "string",
@@ -43,7 +45,7 @@ types.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

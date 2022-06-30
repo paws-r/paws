@@ -40,7 +40,9 @@ retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobDefinitions = list(
     list(
       jobDefinitionName = "string",
@@ -277,14 +279,16 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a list of job definitions. You can specify a \code{status} (such as
 \code{ACTIVE}) to only return job definitions that match that status.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_job_definitions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_job_definitions(
   jobDefinitions = list(
     "string"
   ),
@@ -293,7 +297,7 @@ Describes a list of job definitions. You can specify a \code{status} (such as
   status = "string",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

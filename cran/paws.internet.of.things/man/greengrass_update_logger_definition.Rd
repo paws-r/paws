@@ -18,11 +18,13 @@ An empty list.
 Updates a logger definition.
 }
 \section{Request syntax}{
-\preformatted{svc$update_logger_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_logger_definition(
   LoggerDefinitionId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

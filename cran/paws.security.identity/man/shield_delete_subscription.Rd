@@ -15,8 +15,10 @@ requires a 1-year subscription commitment. You cannot delete a
 subscription prior to the completion of that commitment.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_subscription()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_subscription()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

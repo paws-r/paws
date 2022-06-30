@@ -232,7 +232,9 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   MetricResults = list(
     list(
@@ -260,7 +262,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets historical metric data from the specified Amazon Connect instance.
@@ -269,7 +271,9 @@ For a description of each historical metric, see \href{https://docs.aws.amazon.c
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_metric_data(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_metric_data(
   InstanceId = "string",
   StartTime = as.POSIXct(
     "2015-01-01"
@@ -302,7 +306,7 @@ in the \emph{Amazon Connect Administrator Guide}.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

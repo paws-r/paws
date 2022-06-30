@@ -30,7 +30,9 @@ create and manage your Amazon Lex bot. For a list of build-time
 operations, see the build-time API, .
 }
 \section{Service syntax}{
-\preformatted{svc <- lexruntimeservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- lexruntimeservice(
   config = list(
     credentials = list(
       creds = list(
@@ -44,7 +46,7 @@ operations, see the build-time API, .
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

@@ -11,7 +11,9 @@ sagemaker_describe_model_quality_job_definition(JobDefinitionName)
 Region in the AWS account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobDefinitionArn = "string",
   JobDefinitionName = "string",
   CreationTime = as.POSIXct(
@@ -92,16 +94,18 @@ A list with the following syntax:\preformatted{list(
     MaxRuntimeInSeconds = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a description of a model quality job definition.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_model_quality_job_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_model_quality_job_definition(
   JobDefinitionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ iot_describe_thing_type(thingTypeName)
 \item{thingTypeName}{[required] The name of the thing type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   thingTypeName = "string",
   thingTypeId = "string",
   thingTypeArn = "string",
@@ -30,16 +32,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the specified thing type.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_thing_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_thing_type(
   thingTypeName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

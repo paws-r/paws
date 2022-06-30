@@ -13,7 +13,9 @@ emr_list_bootstrap_actions(ClusterId, Marker)
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BootstrapActions = list(
     list(
       Name = "string",
@@ -25,18 +27,20 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information about the bootstrap actions associated with a
 cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$list_bootstrap_actions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_bootstrap_actions(
   ClusterId = "string",
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

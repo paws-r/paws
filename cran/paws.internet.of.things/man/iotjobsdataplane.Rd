@@ -36,7 +36,9 @@ progress of a job on a specific target and for all the targets of the
 job
 }
 \section{Service syntax}{
-\preformatted{svc <- iotjobsdataplane(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- iotjobsdataplane(
   config = list(
     credentials = list(
       creds = list(
@@ -50,7 +52,7 @@ job
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

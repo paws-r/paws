@@ -24,11 +24,13 @@ Stops the assessment run that is specified by the ARN of the assessment
 run.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_assessment_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_assessment_run(
   assessmentRunArn = "string",
   stopAction = "START_EVALUATION"|"SKIP_EVALUATION"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

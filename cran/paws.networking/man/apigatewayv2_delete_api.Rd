@@ -16,10 +16,12 @@ An empty list.
 Deletes an Api resource.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_api(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_api(
   ApiId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

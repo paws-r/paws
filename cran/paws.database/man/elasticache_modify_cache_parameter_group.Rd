@@ -15,10 +15,12 @@ must supply at least one parameter name and value; subsequent arguments
 are optional. A maximum of 20 parameters may be modified per request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CacheParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the parameters of a cache parameter group. You can modify up to
@@ -26,7 +28,9 @@ Modifies the parameters of a cache parameter group. You can modify up to
 and value pairs.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_cache_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cache_parameter_group(
   CacheParameterGroupName = "string",
   ParameterNameValues = list(
     list(
@@ -35,7 +39,7 @@ and value pairs.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

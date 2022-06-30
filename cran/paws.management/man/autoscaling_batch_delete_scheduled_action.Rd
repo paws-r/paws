@@ -15,7 +15,9 @@ autoscaling_batch_delete_scheduled_action(AutoScalingGroupName,
 is 50.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedScheduledActions = list(
     list(
       ScheduledActionName = "string",
@@ -24,20 +26,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes one or more scheduled actions for the specified Auto Scaling
 group.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_delete_scheduled_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_delete_scheduled_action(
   AutoScalingGroupName = "string",
   ScheduledActionNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

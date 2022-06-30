@@ -27,7 +27,9 @@ These user-defined tags are added in addition to the AWS-added lifecycle
 tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Policies = list(
     list(
       PolicyId = "string",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets summary information about all or the specified data lifecycle
@@ -50,7 +52,9 @@ To get complete information about a policy, use
 \code{\link[=dlm_get_lifecycle_policy]{get_lifecycle_policy}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_lifecycle_policies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_lifecycle_policies(
   PolicyIds = list(
     "string"
   ),
@@ -65,7 +69,7 @@ To get complete information about a policy, use
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

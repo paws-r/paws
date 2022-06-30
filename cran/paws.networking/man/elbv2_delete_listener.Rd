@@ -19,10 +19,12 @@ Alternatively, your listener is deleted when you delete the load
 balancer to which it is attached.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_listener(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_listener(
   ListenerArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

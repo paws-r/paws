@@ -18,7 +18,9 @@ from a previous call.)}
 is \code{50} and the maximum value is \code{100}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LaunchConfigurations = list(
     list(
       LaunchConfigurationName = "string",
@@ -71,20 +73,22 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more launch configurations.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_launch_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_launch_configurations(
   LaunchConfigurationNames = list(
     "string"
   ),
   NextToken = "string",
   MaxRecords = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

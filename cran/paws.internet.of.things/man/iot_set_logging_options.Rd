@@ -19,13 +19,15 @@ NOTE: use of this command is not recommended. Use
 \code{\link[=iot_set_v2_logging_options]{set_v2_logging_options}} instead.
 }
 \section{Request syntax}{
-\preformatted{svc$set_logging_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_logging_options(
   loggingOptionsPayload = list(
     roleArn = "string",
     logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

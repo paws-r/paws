@@ -33,7 +33,9 @@ The AWS Cost and Usage Report API provides the following endpoint:
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- costandusagereportservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- costandusagereportservice(
   config = list(
     credentials = list(
       creds = list(
@@ -47,7 +49,7 @@ The AWS Cost and Usage Report API provides the following endpoint:
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

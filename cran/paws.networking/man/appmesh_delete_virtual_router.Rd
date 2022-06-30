@@ -16,7 +16,9 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 \item{virtualRouterName}{[required] The name of the virtual router to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualRouter = list(
     meshName = "string",
     metadata = list(
@@ -48,7 +50,7 @@ A list with the following syntax:\preformatted{list(
     virtualRouterName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an existing virtual router.
@@ -57,12 +59,14 @@ You must delete any routes associated with the virtual router before you
 can delete the router itself.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_virtual_router(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_virtual_router(
   meshName = "string",
   meshOwner = "string",
   virtualRouterName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

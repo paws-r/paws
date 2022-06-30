@@ -21,7 +21,9 @@ set of response records by providing the returned marker value in the
 \code{Marker} parameter and retrying the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MaintenanceTracks = list(
     list(
       MaintenanceTrackName = "string",
@@ -41,18 +43,20 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of all the available maintenance tracks.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_cluster_tracks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cluster_tracks(
   MaintenanceTrackName = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

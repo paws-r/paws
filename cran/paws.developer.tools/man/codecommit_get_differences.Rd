@@ -38,7 +38,9 @@ results.}
 batch of the results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   differences = list(
     list(
       beforeBlob = list(
@@ -56,7 +58,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the differences in a valid commit specifier
@@ -64,7 +66,9 @@ Returns information about the differences in a valid commit specifier
 reference). Results can be limited to a specified path.
 }
 \section{Request syntax}{
-\preformatted{svc$get_differences(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_differences(
   repositoryName = "string",
   beforeCommitSpecifier = "string",
   afterCommitSpecifier = "string",
@@ -73,7 +77,7 @@ reference). Results can be limited to a specified path.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

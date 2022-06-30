@@ -19,7 +19,9 @@ journey metrics.}
 paginated response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JourneysResponse = list(
     Item = list(
       list(
@@ -404,19 +406,21 @@ A list with the following syntax:\preformatted{list(
     NextToken = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the status, configuration, and other
 settings for all the journeys that are associated with an application.
 }
 \section{Request syntax}{
-\preformatted{svc$list_journeys(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_journeys(
   ApplicationId = "string",
   PageSize = "string",
   Token = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -34,12 +34,14 @@ An empty list.
 Updates the description or maximum session duration setting of a role.
 }
 \section{Request syntax}{
-\preformatted{svc$update_role(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_role(
   RoleName = "string",
   Description = "string",
   MaxSessionDuration = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

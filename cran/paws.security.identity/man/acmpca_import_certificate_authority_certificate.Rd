@@ -104,12 +104,14 @@ critical in an imported CA certificate or chain.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$import_certificate_authority_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_certificate_authority_certificate(
   CertificateAuthorityArn = "string",
   Certificate = raw,
   CertificateChain = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

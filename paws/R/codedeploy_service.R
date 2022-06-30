@@ -83,7 +83,7 @@ NULL
 #'     CodeDeploy](https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
 #' 
 #' -   [AWS CodeDeploy Developer
-#'     Forum](https://forums.aws.amazon.com/forum.jspa?forumID=179)
+#'     Forum](https://repost.aws/tags/TAP_gx1EAgRJuXWqSRorbHIw?forumID=179)
 #'
 #' @param
 #' config

@@ -18,10 +18,12 @@ This operation disables automatic renewal of domain registration for the
 specified domain.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_domain_auto_renew(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_domain_auto_renew(
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

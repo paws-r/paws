@@ -25,7 +25,9 @@ Example: myreservationID}
 Default: \code{1}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReservedCacheNode = list(
     ReservedCacheNodeId = "string",
     ReservedCacheNodesOfferingId = "string",
@@ -49,18 +51,20 @@ A list with the following syntax:\preformatted{list(
     ReservationARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Allows you to purchase a reserved cache node offering.
 }
 \section{Request syntax}{
-\preformatted{svc$purchase_reserved_cache_nodes_offering(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purchase_reserved_cache_nodes_offering(
   ReservedCacheNodesOfferingId = "string",
   ReservedCacheNodeId = "string",
   CacheNodeCount = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

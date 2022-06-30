@@ -58,14 +58,16 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PrivateKeyCiphertextBlob = raw,
   PrivateKeyPlaintext = raw,
   PublicKey = raw,
   KeyId = "string",
   KeyPairSpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates a unique asymmetric data key pair. The
@@ -133,7 +135,9 @@ the \code{KeyId} parameter.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$generate_data_key_pair(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$generate_data_key_pair(
   EncryptionContext = list(
     "string"
   ),
@@ -143,7 +147,7 @@ the \code{KeyId} parameter.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

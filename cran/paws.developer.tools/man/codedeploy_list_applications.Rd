@@ -11,22 +11,26 @@ codedeploy_list_applications(nextToken)
 be used to return the next set of applications in the list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   applications = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the applications registered with the IAM user or AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_applications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_applications(
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

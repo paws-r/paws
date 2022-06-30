@@ -12,7 +12,9 @@ storagegateway_describe_snapshot_schedule(VolumeARN)
 of gateway volumes.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VolumeARN = "string",
   StartAt = 123,
   RecurrenceInHours = 123,
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the snapshot schedule for the specified gateway volume. The
@@ -34,10 +36,12 @@ automatically initiated on the volume. This operation is only supported
 in the cached volume and stored volume types.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_snapshot_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_snapshot_schedule(
   VolumeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

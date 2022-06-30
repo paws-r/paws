@@ -22,7 +22,9 @@ it in your next request to receive the next set of results.}
 \item{UserProfileNameContains}{A parameter by which to filter the results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserProfiles = list(
     list(
       DomainId = "string",
@@ -38,13 +40,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists user profiles.
 }
 \section{Request syntax}{
-\preformatted{svc$list_user_profiles(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_user_profiles(
   NextToken = "string",
   MaxResults = 123,
   SortOrder = "Ascending"|"Descending",
@@ -52,7 +56,7 @@ Lists user profiles.
   DomainIdEquals = "string",
   UserProfileNameContains = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

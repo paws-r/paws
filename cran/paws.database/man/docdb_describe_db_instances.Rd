@@ -44,7 +44,9 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   DBInstances = list(
     list(
@@ -136,14 +138,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about provisioned Amazon DocumentDB instances. This
 API supports pagination.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_db_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_instances(
   DBInstanceIdentifier = "string",
   Filters = list(
     list(
@@ -156,7 +160,7 @@ API supports pagination.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

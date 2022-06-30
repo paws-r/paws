@@ -12,11 +12,13 @@ chime_redact_channel_message(ChannelArn, MessageId)
 \item{MessageId}{[required] The ID of the message being redacted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChannelArn = "string",
   MessageId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Redacts message content, but not metadata. The message exists in the
@@ -24,11 +26,13 @@ back end, but the action returns null content, and the state shows as
 redacted.
 }
 \section{Request syntax}{
-\preformatted{svc$redact_channel_message(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$redact_channel_message(
   ChannelArn = "string",
   MessageId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

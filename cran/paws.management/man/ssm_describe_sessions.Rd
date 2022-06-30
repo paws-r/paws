@@ -22,7 +22,9 @@ from a previous call.)}
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Sessions = list(
     list(
       SessionId = "string",
@@ -45,14 +47,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of all active sessions (both connected and
 disconnected) or terminated sessions from the past 30 days.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_sessions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_sessions(
   State = "Active"|"History",
   MaxResults = 123,
   NextToken = "string",
@@ -63,7 +67,7 @@ disconnected) or terminated sessions from the past 30 days.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

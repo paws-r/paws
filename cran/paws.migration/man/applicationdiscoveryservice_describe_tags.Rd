@@ -21,7 +21,9 @@ maximum value is 100.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tags = list(
     list(
       configurationType = "SERVER"|"PROCESS"|"CONNECTION"|"APPLICATION",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of configuration items that have tags as specified by
@@ -55,7 +57,9 @@ have tags can be listed if you call
 without passing any parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tags(
   filters = list(
     list(
       name = "string",
@@ -67,7 +71,7 @@ without passing any parameters.
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,7 +17,9 @@ ID string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Handshake = list(
     Id = "string",
     Arn = "string",
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels a handshake. Canceling a handshake sets the handshake state to
@@ -60,10 +62,12 @@ After you cancel a handshake, it continues to appear in the results of
 relevant APIs for only 30 days. After that, it's deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_handshake(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_handshake(
   HandshakeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

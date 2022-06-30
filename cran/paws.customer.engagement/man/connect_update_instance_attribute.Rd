@@ -24,12 +24,14 @@ change.
 Updates the value for the specified attribute type.
 }
 \section{Request syntax}{
-\preformatted{svc$update_instance_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_instance_attribute(
   InstanceId = "string",
   AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA",
   Value = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

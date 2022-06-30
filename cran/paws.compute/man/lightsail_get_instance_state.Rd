@@ -10,23 +10,27 @@ lightsail_get_instance_state(instanceName)
 \item{instanceName}{[required] The name of the instance to get state information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   state = list(
     code = 123,
     name = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the state of a specific instance. Works on one instance at a
 time.
 }
 \section{Request syntax}{
-\preformatted{svc$get_instance_state(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_instance_state(
   instanceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

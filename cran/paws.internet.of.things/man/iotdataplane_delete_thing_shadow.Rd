@@ -12,10 +12,12 @@ iotdataplane_delete_thing_shadow(thingName, shadowName)
 \item{shadowName}{The name of the shadow.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   payload = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the shadow for the specified thing.
@@ -25,11 +27,13 @@ For more information, see
 Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_thing_shadow(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_thing_shadow(
   thingName = "string",
   shadowName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

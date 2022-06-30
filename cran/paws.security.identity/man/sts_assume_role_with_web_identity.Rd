@@ -83,8 +83,8 @@ in the \emph{IAM User Guide}.
 The plain text that you use for both inline and managed session policies
 can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
-character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
-(\code{U+0009}), linefeed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters.
+character list (\u0020 through \u00FF). It can also include the tab
+(\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
@@ -113,7 +113,9 @@ console session. For more information, see \href{https://docs.aws.amazon.com/IAM
 in the \emph{IAM User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Credentials = list(
     AccessKeyId = "string",
     SecretAccessKey = "string",
@@ -131,7 +133,7 @@ A list with the following syntax:\preformatted{list(
   Provider = "string",
   Audience = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a set of temporary security credentials for users who have been
@@ -281,7 +283,9 @@ Amazon S3.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$assume_role_with_web_identity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$assume_role_with_web_identity(
   RoleArn = "string",
   RoleSessionName = "string",
   WebIdentityToken = "string",
@@ -294,7 +298,7 @@ Amazon S3.
   Policy = "string",
   DurationSeconds = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

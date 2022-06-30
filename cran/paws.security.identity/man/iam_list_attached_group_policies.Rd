@@ -41,7 +41,9 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AttachedPolicies = list(
     list(
       PolicyName = "string",
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all managed policies that are attached to the specified IAM group.
@@ -69,13 +71,15 @@ no policies attached to the specified group (or none that match the
 specified path prefix), the operation returns an empty list.
 }
 \section{Request syntax}{
-\preformatted{svc$list_attached_group_policies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_attached_group_policies(
   GroupName = "string",
   PathPrefix = "string",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

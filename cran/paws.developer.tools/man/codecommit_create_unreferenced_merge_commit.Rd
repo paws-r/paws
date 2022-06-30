@@ -49,11 +49,13 @@ false.}
 use when resolving conflicts during a merge.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   commitId = "string",
   treeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an unreferenced commit that represents the result of merging two
@@ -67,7 +69,9 @@ API or through git commands such as git fetch. To retrieve this commit,
 you must specify its commit ID or otherwise reference it.
 }
 \section{Request syntax}{
-\preformatted{svc$create_unreferenced_merge_commit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_unreferenced_merge_commit(
   repositoryName = "string",
   sourceCommitSpecifier = "string",
   destinationCommitSpecifier = "string",
@@ -100,7 +104,7 @@ you must specify its commit ID or otherwise reference it.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -60,7 +60,7 @@ or \code{SIGN_VERIFY}.
 \item{CustomerMasterKeySpec}{Specifies the type of CMK to create. The default value,
 \code{SYMMETRIC_DEFAULT}, creates a CMK with a 256-bit symmetric key for
 encryption and decryption. For help choosing a key spec for your CMK,
-see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html}{How to Choose Your CMK Configuration}
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{How to Choose Your CMK Configuration}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 The \code{CustomerMasterKeySpec} determines whether the CMK contains a
@@ -174,7 +174,9 @@ To use this parameter, you must have
 permission in an IAM policy.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyMetadata = list(
     AWSAccountId = "string",
     KeyId = "string",
@@ -206,7 +208,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys}{customer master key}
@@ -302,7 +304,9 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_key(
   Policy = "string",
   Description = "string",
   KeyUsage = "SIGN_VERIFY"|"ENCRYPT_DECRYPT",
@@ -317,7 +321,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

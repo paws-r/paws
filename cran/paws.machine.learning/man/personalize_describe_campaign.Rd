@@ -10,7 +10,9 @@ personalize_describe_campaign(campaignArn)
 \item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   campaign = list(
     name = "string",
     campaignArn = "string",
@@ -48,16 +50,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the given campaign, including its status.
 
 A campaign can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
-\item DELETE PENDING > DELETE IN_PROGRESS
+\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+\item DELETE PENDING \> DELETE IN_PROGRESS
 }
 
 When the \code{status} is \verb{CREATE FAILED}, the response includes the
@@ -67,10 +68,12 @@ For more information on campaigns, see
 \code{\link[=personalize_create_campaign]{create_campaign}}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_campaign(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_campaign(
   campaignArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

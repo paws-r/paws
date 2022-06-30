@@ -11,7 +11,9 @@ ses_get_identity_mail_from_domain_attributes(Identities)
 \item{Identities}{[required] A list of one or more identities.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MailFromDomainAttributes = list(
     list(
       MailFromDomain = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the custom MAIL FROM attributes for a list of identities (email
@@ -30,12 +32,14 @@ This operation is throttled at one request per second and can only get
 custom MAIL FROM attributes for up to 100 identities at a time.
 }
 \section{Request syntax}{
-\preformatted{svc$get_identity_mail_from_domain_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_identity_mail_from_domain_attributes(
   Identities = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

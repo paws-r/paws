@@ -17,11 +17,13 @@ connect_create_use_case(InstanceId, IntegrationAssociationId,
 Each AppIntegration association can have only one of each use case type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UseCaseId = "string",
   UseCaseArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -30,12 +32,14 @@ change.
 Creates a use case for an AppIntegration association.
 }
 \section{Request syntax}{
-\preformatted{svc$create_use_case(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_use_case(
   InstanceId = "string",
   IntegrationAssociationId = "string",
   UseCaseType = "RULES_EVALUATION"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

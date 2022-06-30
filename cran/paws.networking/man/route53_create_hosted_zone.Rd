@@ -53,7 +53,9 @@ sets, see
 \code{\link[=route53_create_reusable_delegation_set]{create_reusable_delegation_set}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HostedZone = list(
     Id = "string",
     Name = "string",
@@ -89,7 +91,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Location = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new public or private hosted zone. You create records in a
@@ -132,7 +134,9 @@ available on all Route 53 DNS servers. When the NS and SOA records are
 available, the status of the zone changes to \code{INSYNC}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_hosted_zone(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_hosted_zone(
   Name = "string",
   VPC = list(
     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
@@ -145,7 +149,7 @@ available, the status of the zone changes to \code{INSYNC}.
   ),
   DelegationSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

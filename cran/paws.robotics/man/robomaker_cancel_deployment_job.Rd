@@ -16,10 +16,12 @@ An empty list.
 Cancels the specified deployment job.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_deployment_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_deployment_job(
   job = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

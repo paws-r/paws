@@ -36,12 +36,14 @@ An empty list.
 Detaches a network interface from an instance.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_network_interface(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_network_interface(
   AttachmentId = "string",
   DryRun = TRUE|FALSE,
   Force = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

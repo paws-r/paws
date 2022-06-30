@@ -48,7 +48,9 @@ with the most recent event.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Events = list(
     list(
       EventDate = as.POSIXct(
@@ -66,7 +68,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns list of event descriptions matching criteria up to the last 6
@@ -76,7 +78,9 @@ This action returns the most recent 1,000 events from the specified
 \code{NextToken}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_events(
   ApplicationName = "string",
   VersionLabel = "string",
   TemplateName = "string",
@@ -94,7 +98,7 @@ This action returns the most recent 1,000 events from the specified
   MaxRecords = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

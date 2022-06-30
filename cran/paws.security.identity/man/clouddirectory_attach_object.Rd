@@ -18,10 +18,12 @@ both objects reside. For more information, see arns.}
 \item{LinkName}{[required] The link name with which the child object is attached to the parent.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AttachedObjectIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Attaches an existing object to another object. An object can be accessed
@@ -32,7 +34,9 @@ in two ways:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$attach_object(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_object(
   DirectoryArn = "string",
   ParentReference = list(
     Selector = "string"
@@ -42,7 +46,7 @@ in two ways:
   ),
   LinkName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

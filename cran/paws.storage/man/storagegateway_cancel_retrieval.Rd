@@ -14,10 +14,12 @@ storagegateway_cancel_retrieval(GatewayARN, TapeARN)
 retrieval for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TapeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to
@@ -26,11 +28,13 @@ returned to the VTS. This operation is only supported in the tape
 gateway type.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_retrieval(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_retrieval(
   GatewayARN = "string",
   TapeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

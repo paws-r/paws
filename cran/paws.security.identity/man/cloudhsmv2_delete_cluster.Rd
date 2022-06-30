@@ -11,7 +11,9 @@ cloudhsmv2_delete_cluster(ClusterId)
 cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     BackupPolicy = "DEFAULT",
     BackupRetentionPolicy = list(
@@ -59,7 +61,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified AWS CloudHSM cluster. Before you can delete a
@@ -69,10 +71,12 @@ contains any HSMs, use
 use \code{\link[=cloudhsmv2_delete_hsm]{delete_hsm}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cluster(
   ClusterId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

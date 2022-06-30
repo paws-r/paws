@@ -12,12 +12,14 @@ iot_create_certificate_from_csr(certificateSigningRequest, setAsActive)
 \item{setAsActive}{Specifies whether the certificate is active.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   certificateArn = "string",
   certificateId = "string",
   certificatePem = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an X.509 certificate using the specified certificate signing
@@ -58,21 +60,23 @@ file://my-csr-directory/\{\}
 On Windows PowerShell, the command to create certificates for all CSRs
 in my-csr-directory is:
 
-> ls -Name my-csr-directory | \%\{aws iot create-certificate-from-csr
+\> ls -Name my-csr-directory | \%\{aws iot create-certificate-from-csr
 --certificate-signing-request file://my-csr-directory/$_\}
 
 On a Windows command prompt, the command to create certificates for all
 CSRs in my-csr-directory is:
 
-> forfiles /p my-csr-directory /c "cmd /c aws iot
+\> forfiles /p my-csr-directory /c "cmd /c aws iot
 create-certificate-from-csr --certificate-signing-request file://@path"
 }
 \section{Request syntax}{
-\preformatted{svc$create_certificate_from_csr(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_certificate_from_csr(
   certificateSigningRequest = "string",
   setAsActive = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

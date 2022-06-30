@@ -19,7 +19,9 @@ associated with a resource share.}
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceShare = list(
     resourceShareArn = "string",
     name = "string",
@@ -43,19 +45,21 @@ A list with the following syntax:\preformatted{list(
   ),
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the specified resource share that you own.
 }
 \section{Request syntax}{
-\preformatted{svc$update_resource_share(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_resource_share(
   resourceShareArn = "string",
   name = "string",
   allowExternalPrincipals = TRUE|FALSE,
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

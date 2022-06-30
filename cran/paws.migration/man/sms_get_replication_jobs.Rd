@@ -16,7 +16,9 @@ value is 50. To retrieve the remaining results, make another call with
 the returned \code{NextToken} value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   replicationJobList = list(
     list(
       replicationJobId = "string",
@@ -75,18 +77,20 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified replication job or all of your replication jobs.
 }
 \section{Request syntax}{
-\preformatted{svc$get_replication_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_replication_jobs(
   replicationJobId = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -71,7 +71,9 @@ Confirms registration of a user and handles the existing alias from a
 previous user.
 }
 \section{Request syntax}{
-\preformatted{svc$confirm_sign_up(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$confirm_sign_up(
   ClientId = "string",
   SecretHash = "string",
   Username = "string",
@@ -87,7 +89,7 @@ previous user.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

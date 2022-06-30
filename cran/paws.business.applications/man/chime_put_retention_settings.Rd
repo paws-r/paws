@@ -13,7 +13,9 @@ chime_put_retention_settings(AccountId, RetentionSettings)
 \item{RetentionSettings}{[required] The retention settings.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RetentionSettings = list(
     RoomRetentionSettings = list(
       RetentionDays = 123
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Puts retention settings for the specified Amazon Chime Enterprise
@@ -36,11 +38,13 @@ in the \emph{Amazon Chime Administration Guide}.
 
 To turn off existing retention settings, remove the number of days from
 the corresponding \strong{RetentionDays} field in the \strong{RetentionSettings}
-object. For more information about retention settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/}{Managing Chat Retention Policies}
+object. For more information about retention settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/archive-retention.html}{Managing Chat Retention Policies}
 in the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_retention_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_retention_settings(
   AccountId = "string",
   RetentionSettings = list(
     RoomRetentionSettings = list(
@@ -51,7 +55,7 @@ in the \emph{Amazon Chime Administration Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

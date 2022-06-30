@@ -10,7 +10,9 @@ cloudhsm_describe_hapg(HapgArn)
 \item{HapgArn}{[required] The ARN of the high-availability partition group to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HapgArn = "string",
   HapgSerial = "string",
   HsmsLastActionFailed = list(
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
   ),
   State = "READY"|"UPDATING"|"DEGRADED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -42,10 +44,12 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
 Retrieves information about a high-availability partition group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_hapg(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_hapg(
   HapgArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

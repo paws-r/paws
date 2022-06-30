@@ -22,7 +22,9 @@ date/time stamp.}
 reusable, the ID for that hosted zone.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DelegationSet = list(
     Id = "string",
     CallerReference = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Location = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a delegation set (a group of four name servers) that can be
@@ -83,11 +85,13 @@ to use the reusable delegation set.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_reusable_delegation_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_reusable_delegation_set(
   CallerReference = "string",
   HostedZoneId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

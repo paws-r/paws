@@ -18,7 +18,9 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 in the \emph{AWS General Reference}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Url = "string",
   ClientIDList = list(
     "string"
@@ -30,17 +32,19 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the specified OpenID Connect (OIDC) provider
 resource object in IAM.
 }
 \section{Request syntax}{
-\preformatted{svc$get_open_id_connect_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_open_id_connect_provider(
   OpenIDConnectProviderArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

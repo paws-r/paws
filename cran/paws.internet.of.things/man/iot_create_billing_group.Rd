@@ -14,18 +14,22 @@ iot_create_billing_group(billingGroupName, billingGroupProperties, tags)
 \item{tags}{Metadata which can be used to manage the billing group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   billingGroupName = "string",
   billingGroupArn = "string",
   billingGroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a billing group.
 }
 \section{Request syntax}{
-\preformatted{svc$create_billing_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_billing_group(
   billingGroupName = "string",
   billingGroupProperties = list(
     billingGroupDescription = "string"
@@ -37,7 +41,7 @@ Creates a billing group.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

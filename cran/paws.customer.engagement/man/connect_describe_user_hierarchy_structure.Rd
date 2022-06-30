@@ -11,7 +11,9 @@ connect_describe_user_hierarchy_structure(InstanceId)
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HierarchyStructure = list(
     LevelOne = list(
       Id = "string",
@@ -40,17 +42,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the hierarchy structure of the specified Amazon Connect
 instance.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_user_hierarchy_structure(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user_hierarchy_structure(
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

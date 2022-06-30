@@ -52,13 +52,15 @@ and 100. If this parameter is not used, then
 results and a \code{nextToken} value if applicable.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskDefinitionArns = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of task definitions that are registered to your account.
@@ -66,14 +68,16 @@ You can filter the results by family name with the \code{familyPrefix}
 parameter or by status with the \code{status} parameter.
 }
 \section{Request syntax}{
-\preformatted{svc$list_task_definitions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_task_definitions(
   familyPrefix = "string",
   status = "ACTIVE"|"INACTIVE",
   sort = "ASC"|"DESC",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -32,7 +32,9 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SSHPublicKeys = list(
     list(
       UserName = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the SSH public keys associated with the
@@ -62,12 +64,14 @@ Although each user is limited to a small number of keys, you can still
 paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$list_ssh_public_keys(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_ssh_public_keys(
   UserName = "string",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

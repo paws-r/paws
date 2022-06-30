@@ -12,7 +12,9 @@ elasticsearchservice_delete_package(PackageID)
 this value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PackageDetails = list(
     PackageID = "string",
     PackageName = "string",
@@ -32,16 +34,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Delete the package.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_package(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_package(
   PackageID = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

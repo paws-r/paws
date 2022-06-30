@@ -15,7 +15,9 @@ clouddirectory_list_directories(NextToken, MaxResults, state)
 Disabled, or Deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Directories = list(
     list(
       Name = "string",
@@ -28,18 +30,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists directories created within an account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_directories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_directories(
   NextToken = "string",
   MaxResults = 123,
   state = "ENABLED"|"DISABLED"|"DELETED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

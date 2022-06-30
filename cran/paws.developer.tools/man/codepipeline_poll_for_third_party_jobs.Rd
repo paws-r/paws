@@ -13,7 +13,9 @@ codepipeline_poll_for_third_party_jobs(actionTypeId, maxBatchSize)
 \item{maxBatchSize}{The maximum number of jobs to return in a poll for jobs call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobs = list(
     list(
       clientId = "string",
@@ -21,7 +23,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Determines whether there are any third party jobs for a job worker to
@@ -32,7 +34,9 @@ for the S3 bucket used to store artifacts for the pipeline, if the
 action requires access to that S3 bucket for input or output artifacts.
 }
 \section{Request syntax}{
-\preformatted{svc$poll_for_third_party_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$poll_for_third_party_jobs(
   actionTypeId = list(
     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
     owner = "AWS"|"ThirdParty"|"Custom",
@@ -41,7 +45,7 @@ action requires access to that S3 bucket for input or output artifacts.
   ),
   maxBatchSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,11 +14,13 @@ personalize_create_event_tracker(name, datasetGroupArn)
 event data.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   eventTrackerArn = "string",
   trackingId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an event tracker that you use when sending event data to the
@@ -42,9 +44,8 @@ identifies the customer and authorizes the customer to send the data.
 
 The event tracker can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
-\item DELETE PENDING > DELETE IN_PROGRESS
+\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+\item DELETE PENDING \> DELETE IN_PROGRESS
 }
 
 To get the status of the event tracker, call
@@ -61,11 +62,13 @@ ID.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_event_tracker(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_event_tracker(
   name = "string",
   datasetGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

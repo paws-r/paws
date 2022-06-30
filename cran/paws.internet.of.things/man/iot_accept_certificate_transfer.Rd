@@ -24,11 +24,13 @@ To check for pending certificate transfers, call
 certificates.
 }
 \section{Request syntax}{
-\preformatted{svc$accept_certificate_transfer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_certificate_transfer(
   certificateId = "string",
   setAsActive = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

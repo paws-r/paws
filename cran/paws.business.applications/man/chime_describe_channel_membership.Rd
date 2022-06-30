@@ -12,7 +12,9 @@ chime_describe_channel_membership(ChannelArn, MemberArn)
 \item{MemberArn}{[required] The ARN of the member.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChannelMembership = list(
     InvitedBy = list(
       Arn = "string",
@@ -32,17 +34,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the full details of a user's channel membership.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_channel_membership(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_channel_membership(
   ChannelArn = "string",
   MemberArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,21 +13,25 @@ ssm_register_patch_baseline_for_patch_group(BaselineId, PatchGroup)
 baseline.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BaselineId = "string",
   PatchGroup = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Registers a patch baseline for a patch group.
 }
 \section{Request syntax}{
-\preformatted{svc$register_patch_baseline_for_patch_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_patch_baseline_for_patch_group(
   BaselineId = "string",
   PatchGroup = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

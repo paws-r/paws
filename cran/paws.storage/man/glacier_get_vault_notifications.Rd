@@ -17,7 +17,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{vaultName}{[required] The name of the vault.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   vaultNotificationConfig = list(
     SNSTopic = "string",
     Events = list(
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation retrieves the \code{notification-configuration} subresource of
@@ -47,11 +49,13 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notific
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_vault_notifications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_vault_notifications(
   accountId = "string",
   vaultName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -16,7 +16,9 @@ store.}
 \item{MaxResults}{The maximum number of skills returned per paginated calls.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SkillsStoreSkills = list(
     list(
       SkillId = "string",
@@ -58,18 +60,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all skills in the Alexa skill store by category.
 }
 \section{Request syntax}{
-\preformatted{svc$list_skills_store_skills_by_category(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_skills_store_skills_by_category(
   CategoryId = 123,
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

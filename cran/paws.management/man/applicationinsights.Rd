@@ -32,7 +32,9 @@ that a memory pressure problem with your SQL Server database is
 occurring. It bases this analysis on impactful metrics and log errors.
 }
 \section{Service syntax}{
-\preformatted{svc <- applicationinsights(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- applicationinsights(
   config = list(
     credentials = list(
       creds = list(
@@ -46,7 +48,7 @@ occurring. It bases this analysis on impactful metrics and log errors.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

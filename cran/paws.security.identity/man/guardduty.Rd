@@ -38,7 +38,9 @@ Amazon CloudWatch events. For more information, see the \emph{\href{https://docs
 .
 }
 \section{Service syntax}{
-\preformatted{svc <- guardduty(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- guardduty(
   config = list(
     credentials = list(
       creds = list(
@@ -52,7 +54,7 @@ Amazon CloudWatch events. For more information, see the \emph{\href{https://docs
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

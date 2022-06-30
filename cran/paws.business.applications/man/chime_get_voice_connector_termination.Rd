@@ -11,7 +11,9 @@ chime_get_voice_connector_termination(VoiceConnectorId)
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Termination = list(
     CpsLimit = 123,
     DefaultPhoneNumber = "string",
@@ -24,17 +26,19 @@ A list with the following syntax:\preformatted{list(
     Disabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves termination setting details for the specified Amazon Chime
 Voice Connector.
 }
 \section{Request syntax}{
-\preformatted{svc$get_voice_connector_termination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_voice_connector_termination(
   VoiceConnectorId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ workdocs_activate_user(UserId, AuthenticationToken)
 administrator credentials to access the API.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   User = list(
     Id = "string",
     Username = "string",
@@ -42,18 +44,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Activates the specified user. Only active users can access Amazon
 WorkDocs.
 }
 \section{Request syntax}{
-\preformatted{svc$activate_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$activate_user(
   UserId = "string",
   AuthenticationToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

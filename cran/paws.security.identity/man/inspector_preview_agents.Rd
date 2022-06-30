@@ -20,7 +20,9 @@ listing data.}
 want in the response. The default value is 10. The maximum value is 500.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   agentPreviews = list(
     list(
       hostname = "string",
@@ -35,19 +37,21 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Previews the agents installed on the EC2 instances that are part of the
 specified assessment target.
 }
 \section{Request syntax}{
-\preformatted{svc$preview_agents(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$preview_agents(
   previewAgentsArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

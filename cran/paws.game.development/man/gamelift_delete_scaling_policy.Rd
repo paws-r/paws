@@ -46,11 +46,13 @@ suspends all policies for the fleet.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_scaling_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_scaling_policy(
   Name = "string",
   FleetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

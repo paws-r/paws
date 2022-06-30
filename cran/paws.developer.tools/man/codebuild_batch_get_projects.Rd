@@ -12,7 +12,9 @@ project shared with your AWS account, its ARN must be specified. You
 cannot specify a shared project using its name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   projects = list(
     list(
       name = "string",
@@ -203,18 +205,20 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about one or more build projects.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_get_projects(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_projects(
   names = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

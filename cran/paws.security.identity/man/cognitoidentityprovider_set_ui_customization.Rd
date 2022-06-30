@@ -17,7 +17,9 @@ cognitoidentityprovider_set_ui_customization(UserPoolId, ClientId, CSS,
 \item{ImageFile}{The uploaded logo image for the UI customization.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UICustomization = list(
     UserPoolId = "string",
     ClientId = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sets the UI customization information for a user pool's built-in app UI.
@@ -49,13 +51,15 @@ Otherwise, there is no place to host the app's pages, and the service
 will throw an error.
 }
 \section{Request syntax}{
-\preformatted{svc$set_ui_customization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_ui_customization(
   UserPoolId = "string",
   ClientId = "string",
   CSS = "string",
   ImageFile = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

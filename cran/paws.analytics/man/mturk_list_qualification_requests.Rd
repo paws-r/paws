@@ -16,7 +16,9 @@ mturk_list_qualification_requests(QualificationTypeId, NextToken,
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NumResults = 123,
   NextToken = "string",
   QualificationRequests = list(
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{\link[=mturk_list_qualification_requests]{list_qualification_requests}}
@@ -42,12 +44,14 @@ operation to poll for pending requests, and accepts them using the
 AcceptQualification operation.
 }
 \section{Request syntax}{
-\preformatted{svc$list_qualification_requests(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_qualification_requests(
   QualificationTypeId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

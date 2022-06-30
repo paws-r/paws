@@ -9,7 +9,9 @@ regardless of whether you've defined Shield protections for them}
 shield_describe_attack_statistics()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TimeRange = list(
     FromInclusive = as.POSIXct(
       "2015-01-01"
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information about the number and type of attacks AWS Shield has
@@ -54,8 +56,10 @@ The time range indicates the period covered by the attack statistics
 data items.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_attack_statistics()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_attack_statistics()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

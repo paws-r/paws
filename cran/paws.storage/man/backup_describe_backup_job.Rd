@@ -10,7 +10,9 @@ backup_describe_backup_job(BackupJobId)
 \item{BackupJobId}{[required] Uniquely identifies a request to AWS Backup to back up a resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccountId = "string",
   BackupJobId = "string",
   BackupVaultName = "string",
@@ -47,16 +49,18 @@ A list with the following syntax:\preformatted{list(
   ),
   BackupType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns backup job details for the specified \code{BackupJobId}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_backup_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_backup_job(
   BackupJobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

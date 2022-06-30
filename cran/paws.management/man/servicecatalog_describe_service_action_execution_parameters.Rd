@@ -22,7 +22,9 @@ servicecatalog_describe_service_action_execution_parameters(
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceActionParameters = list(
     list(
       Name = "string",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Finds the default parameters for a specific self-service action on a
@@ -41,12 +43,14 @@ specific provisioned product and returns a map of the results to the
 user.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_service_action_execution_parameters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_service_action_execution_parameters(
   ProvisionedProductId = "string",
   ServiceActionId = "string",
   AcceptLanguage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

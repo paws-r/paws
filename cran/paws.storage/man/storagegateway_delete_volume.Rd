@@ -13,10 +13,12 @@ storagegateway_delete_volume(VolumeARN)
 of gateway volumes.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VolumeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified storage volume that you previously created using
@@ -41,10 +43,12 @@ In the request, you must provide the Amazon Resource Name (ARN) of the
 storage volume you want to delete.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_volume(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_volume(
   VolumeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

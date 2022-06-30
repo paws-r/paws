@@ -16,7 +16,9 @@ be retrieved.}
 \item{InvocationId}{[required] The invocation ID to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowExecutionId = "string",
   TaskExecutionId = "string",
   InvocationId = "string",
@@ -34,19 +36,21 @@ A list with the following syntax:\preformatted{list(
   OwnerInformation = "string",
   WindowTargetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a specific task running on a specific
 target.
 }
 \section{Request syntax}{
-\preformatted{svc$get_maintenance_window_execution_task_invocation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_maintenance_window_execution_task_invocation(
   WindowExecutionId = "string",
   TaskId = "string",
   InvocationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -33,16 +33,20 @@ to.}
 folders in the FSx for Windows file system.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LocationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an endpoint for an Amazon FSx for Windows file system.
 }
 \section{Request syntax}{
-\preformatted{svc$create_location_fsx_windows(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_location_fsx_windows(
   Subdirectory = "string",
   FsxFilesystemArn = "string",
   SecurityGroupArns = list(
@@ -58,7 +62,7 @@ Creates an endpoint for an Amazon FSx for Windows file system.
   Domain = "string",
   Password = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

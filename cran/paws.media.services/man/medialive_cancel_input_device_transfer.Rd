@@ -17,10 +17,12 @@ An empty list.
 Cancel an input device transfer that you have requested.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_input_device_transfer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_input_device_transfer(
   InputDeviceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

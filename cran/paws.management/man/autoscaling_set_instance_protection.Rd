@@ -29,14 +29,16 @@ If you exceed your maximum limit of instance IDs, which is 50 per Auto
 Scaling group, the call fails.
 }
 \section{Request syntax}{
-\preformatted{svc$set_instance_protection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_instance_protection(
   InstanceIds = list(
     "string"
   ),
   AutoScalingGroupName = "string",
   ProtectedFromScaleIn = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

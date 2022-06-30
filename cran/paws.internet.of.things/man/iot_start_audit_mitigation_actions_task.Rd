@@ -25,17 +25,21 @@ exists, an exception occurs. If you omit this value, a unique client
 request token is generated automatically.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a task that applies a set of mitigation actions to the specified
 target.
 }
 \section{Request syntax}{
-\preformatted{svc$start_audit_mitigation_actions_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_audit_mitigation_actions_task(
   taskId = "string",
   target = list(
     auditTaskId = "string",
@@ -55,7 +59,7 @@ target.
   ),
   clientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

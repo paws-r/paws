@@ -12,23 +12,27 @@ apigateway_get_request_validator(restApiId, requestValidatorId)
 \item{requestValidatorId}{[required] [Required] The identifier of the RequestValidator to be retrieved.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   name = "string",
   validateRequestBody = TRUE|FALSE,
   validateRequestParameters = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a RequestValidator of a given RestApi.
 }
 \section{Request syntax}{
-\preformatted{svc$get_request_validator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_request_validator(
   restApiId = "string",
   requestValidatorId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

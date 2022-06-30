@@ -14,21 +14,25 @@ storagegateway_update_smb_file_share_visibility(GatewayARN,
 \item{FileSharesVisible}{[required] The shares on this gateway appear when listing shares.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Controls whether the shares on a gateway are visible in a net view or
 browse list.
 }
 \section{Request syntax}{
-\preformatted{svc$update_smb_file_share_visibility(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_smb_file_share_visibility(
   GatewayARN = "string",
   FileSharesVisible = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

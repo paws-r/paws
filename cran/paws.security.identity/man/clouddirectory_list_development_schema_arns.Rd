@@ -13,24 +13,28 @@ clouddirectory_list_development_schema_arns(NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SchemaArns = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves each Amazon Resource Name (ARN) of schemas in the development
 state.
 }
 \section{Request syntax}{
-\preformatted{svc$list_development_schema_arns(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_development_schema_arns(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

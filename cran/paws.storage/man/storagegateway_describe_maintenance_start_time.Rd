@@ -11,7 +11,9 @@ storagegateway_describe_maintenance_start_time(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string",
   HourOfDay = 123,
   MinuteOfHour = 123,
@@ -19,7 +21,7 @@ A list with the following syntax:\preformatted{list(
   DayOfMonth = 123,
   Timezone = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns your gateway's weekly maintenance start time including the day
@@ -27,10 +29,12 @@ and time of the week. Note that values are in terms of the gateway's
 time zone.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_maintenance_start_time(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_maintenance_start_time(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

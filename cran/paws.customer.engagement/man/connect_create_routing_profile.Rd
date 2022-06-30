@@ -26,17 +26,21 @@ this routing profile.}
 \item{Tags}{One or more tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RoutingProfileArn = "string",
   RoutingProfileId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new routing profile.
 }
 \section{Request syntax}{
-\preformatted{svc$create_routing_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_routing_profile(
   InstanceId = "string",
   Name = "string",
   Description = "string",
@@ -61,7 +65,7 @@ Creates a new routing profile.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -29,7 +29,9 @@ For more information, see \href{https://docs.aws.amazon.com/global-accelerator/l
 in the \emph{AWS Global Accelerator Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Accelerator = list(
     AcceleratorArn = "string",
     Name = "string",
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create a custom routing accelerator. A custom routing accelerator
@@ -69,7 +71,9 @@ traffic, see the
 operation.
 }
 \section{Request syntax}{
-\preformatted{svc$create_custom_routing_accelerator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_custom_routing_accelerator(
   Name = "string",
   IpAddressType = "IPV4",
   Enabled = TRUE|FALSE,
@@ -81,7 +85,7 @@ operation.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

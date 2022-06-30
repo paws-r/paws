@@ -32,11 +32,13 @@ can use this operation to manage AWS account root user credentials even
 if the AWS account has no associated users.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_access_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_access_key(
   UserName = "string",
   AccessKeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

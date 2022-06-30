@@ -14,7 +14,9 @@ supplied, this will be defaulted to 25 per page.}
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Registries = list(
     list(
       RegistryName = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of registries that you have created, with minimal
@@ -36,11 +38,13 @@ included in the results. Empty results will be returned if there are no
 registries available.
 }
 \section{Request syntax}{
-\preformatted{svc$list_registries(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_registries(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

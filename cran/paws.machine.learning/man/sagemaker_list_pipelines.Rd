@@ -28,7 +28,9 @@ use the token in the next request.}
 \item{MaxResults}{The maximum number of pipelines to return in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PipelineSummaries = list(
     list(
       PipelineArn = "string",
@@ -49,13 +51,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of pipelines.
 }
 \section{Request syntax}{
-\preformatted{svc$list_pipelines(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_pipelines(
   PipelineNamePrefix = "string",
   CreatedAfter = as.POSIXct(
     "2015-01-01"
@@ -68,7 +72,7 @@ Gets a list of pipelines.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

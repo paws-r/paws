@@ -15,7 +15,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{WriteSegmentRequest}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SegmentResponse = list(
     ApplicationId = "string",
     Arn = "string",
@@ -223,7 +225,7 @@ A list with the following syntax:\preformatted{list(
     Version = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new segment for an application or updates the configuration,
@@ -231,7 +233,9 @@ dimension, and other settings for an existing segment that's associated
 with an application.
 }
 \section{Request syntax}{
-\preformatted{svc$create_segment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_segment(
   ApplicationId = "string",
   WriteSegmentRequest = list(
     Dimensions = list(
@@ -423,7 +427,7 @@ with an application.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

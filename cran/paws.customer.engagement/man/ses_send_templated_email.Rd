@@ -13,12 +13,12 @@ ses_send_templated_email(Source, Destination, ReplyToAddresses,
 \item{Source}{[required] The email address that is sending the email. This email address must be
 either individually verified with Amazon SES, or from a domain that has
 been verified with Amazon SES. For information about verifying
-identities, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
+identities, see the \href{https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
 
 If you are sending on behalf of another user and have been permitted to
 do so by a sending authorization policy, then you must also specify the
 \code{SourceArn} parameter. For more information about sending authorization,
-see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
+see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.
 
 Amazon SES does not support the SMTPUTF8 extension, as described in
 \href{https://datatracker.ietf.org/doc/html/rfc6531}{RFC6531}. For this
@@ -59,7 +59,7 @@ you would specify the \code{SourceArn} to be
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}, and the
 \code{Source} to be \code{user@example.com}.
 
-For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
+For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{ReturnPathArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
@@ -73,7 +73,7 @@ would specify the \code{ReturnPathArn} to be
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}, and the
 \code{ReturnPath} to be \code{feedback@example.com}.
 
-For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
+For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{Tags}{A list of tags, in the form of name/value pairs, to apply to an email
 that you send using \code{\link[=ses_send_templated_email]{send_templated_email}}.
@@ -92,10 +92,12 @@ a JSON object, typically consisting of key-value pairs in which the keys
 correspond to replacement tags in the email template.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MessageId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Composes an email message using an email template and immediately queues
@@ -112,7 +114,7 @@ operation.
 \item If your account is still in the Amazon SES sandbox, you may only
 send to verified addresses or domains, or to email addresses
 associated with the Amazon SES Mailbox Simulator. For more
-information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains}
+information, see \href{https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains}
 in the \emph{Amazon SES Developer Guide.}
 \item The maximum message size is 10 MB.
 \item Calls to the \code{\link[=ses_send_templated_email]{send_templated_email}}
@@ -138,11 +140,13 @@ doesn't return a message stating that it was unable to send the email.
 
 For these reasons, we highly recommend that you set up Amazon SES to
 send you notifications when Rendering Failure events occur. For more
-information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html}{Sending Personalized Email Using the Amazon SES API}
+information, see \href{https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html}{Sending Personalized Email Using the Amazon SES API}
 in the \emph{Amazon Simple Email Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$send_templated_email(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_templated_email(
   Source = "string",
   Destination = list(
     ToAddresses = list(
@@ -172,7 +176,7 @@ in the \emph{Amazon Simple Email Service Developer Guide}.
   TemplateArn = "string",
   TemplateData = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

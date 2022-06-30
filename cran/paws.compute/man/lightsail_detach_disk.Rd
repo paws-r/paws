@@ -11,7 +11,9 @@ lightsail_detach_disk(diskName)
 \code{my-disk}).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Detaches a stopped block storage disk from a Lightsail instance. Make
@@ -48,10 +50,12 @@ resource tags applied to the resource identified by \verb{disk name}. For
 more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_disk(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_disk(
   diskName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ ecr_put_replication_configuration(replicationConfiguration)
 \item{replicationConfiguration}{[required] An object representing the replication configuration for a registry.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   replicationConfiguration = list(
     rules = list(
       list(
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates or updates the replication configuration for a registry. The
@@ -41,7 +43,9 @@ controlled using a registry permissions policy. For more information,
 see \code{\link[=ecr_put_registry_policy]{put_registry_policy}}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_replication_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_replication_configuration(
   replicationConfiguration = list(
     rules = list(
       list(
@@ -55,7 +59,7 @@ see \code{\link[=ecr_put_registry_policy]{put_registry_policy}}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

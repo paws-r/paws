@@ -72,7 +72,9 @@ paginates when the \code{MaxDatapoints} limit is reached.}
 paginating. If you omit this, the default of 100,800 is used.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MetricDataResults = list(
     list(
       Id = "string",
@@ -102,7 +104,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 You can use the \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} API to
@@ -151,7 +153,9 @@ results of the operation are null. CloudWatch does not perform unit
 conversions.
 }
 \section{Request syntax}{
-\preformatted{svc$get_metric_data(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_metric_data(
   MetricDataQueries = list(
     list(
       Id = "string",
@@ -186,7 +190,7 @@ conversions.
   ScanBy = "TimestampDescending"|"TimestampAscending",
   MaxDatapoints = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

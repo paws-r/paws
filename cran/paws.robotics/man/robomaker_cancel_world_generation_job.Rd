@@ -16,10 +16,12 @@ An empty list.
 Cancels the specified world generator job.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_world_generation_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_world_generation_job(
   job = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

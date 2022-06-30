@@ -23,7 +23,9 @@ query parameter value must be a single-valued list and contain the
 \code{GET /restapis/{restapi_id}/resources?embed=methods}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   position = "string",
   items = list(
     list(
@@ -101,13 +103,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists information about a collection of Resource resources.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resources(
   restApiId = "string",
   position = "string",
   limit = 123,
@@ -115,7 +119,7 @@ Lists information about a collection of Resource resources.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

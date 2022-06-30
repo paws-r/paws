@@ -17,10 +17,12 @@ An empty list.
 Deletes resources linked to an external ID.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_resources_by_external_id(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resources_by_external_id(
   externalId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

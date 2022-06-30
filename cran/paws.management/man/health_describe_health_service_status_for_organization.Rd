@@ -8,10 +8,12 @@ Health to work with your organization}
 health_describe_health_service_status_for_organization()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   healthServiceAccessStatusForOrganization = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation provides status information on enabling or disabling AWS

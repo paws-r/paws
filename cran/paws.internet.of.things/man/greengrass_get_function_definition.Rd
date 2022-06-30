@@ -11,7 +11,9 @@ greengrass_get_function_definition(FunctionDefinitionId)
 \item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -23,17 +25,19 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a Lambda function definition, including its
 creation time and latest version.
 }
 \section{Request syntax}{
-\preformatted{svc$get_function_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_function_definition(
   FunctionDefinitionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

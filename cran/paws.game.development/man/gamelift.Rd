@@ -57,7 +57,9 @@ CLI reference with each operation and data type topic. Useful links:
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- gamelift(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- gamelift(
   config = list(
     credentials = list(
       creds = list(
@@ -71,7 +73,7 @@ CLI reference with each operation and data type topic. Useful links:
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

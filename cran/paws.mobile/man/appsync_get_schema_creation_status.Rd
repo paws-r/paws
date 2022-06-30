@@ -10,20 +10,24 @@ appsync_get_schema_creation_status(apiId)
 \item{apiId}{[required] The API ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   status = "PROCESSING"|"ACTIVE"|"DELETING"|"FAILED"|"SUCCESS"|"NOT_APPLICABLE",
   details = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the current status of a schema creation operation.
 }
 \section{Request syntax}{
-\preformatted{svc$get_schema_creation_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_schema_creation_status(
   apiId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

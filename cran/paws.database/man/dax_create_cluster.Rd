@@ -87,7 +87,9 @@ access DynamoDB on your behalf.}
 cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterName = "string",
     Description = "string",
@@ -143,14 +145,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a DAX cluster. All nodes in the cluster run the same DAX caching
 software.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster(
   ClusterName = "string",
   NodeType = "string",
   Description = "string",
@@ -176,7 +180,7 @@ software.
     Enabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

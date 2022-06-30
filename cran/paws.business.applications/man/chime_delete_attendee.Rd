@@ -19,15 +19,17 @@ An empty list.
 Deletes an attendee from the specified Amazon Chime SDK meeting and
 deletes their \code{JoinToken}. Attendees are automatically deleted when a
 Amazon Chime SDK meeting is deleted. For more information about the
-Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in
-the \emph{Amazon Chime Developer Guide}.
+Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK}
+in the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_attendee(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_attendee(
   MeetingId = "string",
   AttendeeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

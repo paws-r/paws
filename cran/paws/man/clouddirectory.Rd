@@ -26,7 +26,9 @@ information on data types and errors. For information about Cloud
 Directory features, see \href{https://aws.amazon.com/directoryservice/}{AWS Directory Service} and the \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html}{Amazon Cloud Directory Developer Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- clouddirectory(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- clouddirectory(
   config = list(
     credentials = list(
       creds = list(
@@ -40,7 +42,7 @@ Directory features, see \href{https://aws.amazon.com/directoryservice/}{AWS Dire
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

@@ -99,10 +99,12 @@ the maximum length for a tag's value is 256.}
 \item{NotificationPolicy}{The notification policy of the file share.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FileShareARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Network File System (NFS) file share on an existing file
@@ -122,7 +124,9 @@ File gateway does not support creating hard or symbolic links on a file
 share.
 }
 \section{Request syntax}{
-\preformatted{svc$create_nfs_file_share(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_nfs_file_share(
   ClientToken = "string",
   NFSFileShareDefaults = list(
     FileMode = "string",
@@ -156,7 +160,7 @@ share.
   ),
   NotificationPolicy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

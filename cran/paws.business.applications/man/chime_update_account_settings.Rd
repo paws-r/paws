@@ -21,14 +21,16 @@ dial-out option. For more information about these settings, see \href{https://do
 the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_account_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_account_settings(
   AccountId = "string",
   AccountSettings = list(
     DisableRemoteControl = TRUE|FALSE,
     EnableDialOut = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,10 +21,12 @@ You cannot delete a cache security group if it is associated with any
 clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cache_security_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cache_security_group(
   CacheSecurityGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

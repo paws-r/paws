@@ -30,7 +30,9 @@ length of 256 characters.}
 \item{virtualRouterName}{[required] The name to use for the virtual router.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualRouter = list(
     meshName = "string",
     metadata = list(
@@ -62,7 +64,7 @@ A list with the following syntax:\preformatted{list(
     virtualRouterName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a virtual router within a service mesh.
@@ -77,7 +79,9 @@ requests to different virtual nodes.
 For more information about virtual routers, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_routers.html}{Virtual routers}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_virtual_router(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_virtual_router(
   clientToken = "string",
   meshName = "string",
   meshOwner = "string",
@@ -99,7 +103,7 @@ For more information about virtual routers, see \href{https://docs.aws.amazon.co
   ),
   virtualRouterName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

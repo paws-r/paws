@@ -26,11 +26,13 @@ An empty list.
 Removes the specified user from the specified group.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_user_from_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_user_from_group(
   GroupName = "string",
   UserName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

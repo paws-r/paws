@@ -12,8 +12,8 @@ ssm_describe_maintenance_window_execution_tasks(WindowExecutionId,
 be retrieved.}
 
 \item{Filters}{Optional filters used to scope down the returned tasks. The supported
-filter key is STATUS with the corresponding values PENDING,
-IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.}
+filter key is STATUS with the corresponding values PENDING, IN_PROGRESS,
+SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -23,7 +23,9 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowExecutionTaskIdentities = list(
     list(
       WindowExecutionId = "string",
@@ -42,13 +44,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 For a given maintenance window execution, lists the tasks that were run.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_maintenance_window_execution_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_maintenance_window_execution_tasks(
   WindowExecutionId = "string",
   Filters = list(
     list(
@@ -61,7 +65,7 @@ For a given maintenance window execution, lists the tasks that were run.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

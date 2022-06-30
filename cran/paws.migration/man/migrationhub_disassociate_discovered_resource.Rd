@@ -28,13 +28,15 @@ Disassociate an Application Discovery Service discovered resource from a
 migration task.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_discovered_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_discovered_resource(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   ConfigurationId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

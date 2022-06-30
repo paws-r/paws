@@ -20,7 +20,9 @@ Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a domain resource for the specified domain (e.g., example.com).
@@ -52,7 +54,9 @@ The \verb{create domain} operation supports tag-based access control via
 request tags. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$create_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_domain(
   domainName = "string",
   tags = list(
     list(
@@ -61,7 +65,7 @@ request tags. For more information, see the Lightsail Dev Guide.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

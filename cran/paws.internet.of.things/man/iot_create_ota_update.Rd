@@ -50,20 +50,24 @@ and AWS Code Signing resources to create an OTA update job.}
 \item{tags}{Metadata which can be used to manage updates.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   otaUpdateId = "string",
   awsIotJobId = "string",
   otaUpdateArn = "string",
   awsIotJobArn = "string",
   otaUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS IoT OTAUpdate on a target group of things or groups.
 }
 \section{Request syntax}{
-\preformatted{svc$create_ota_update(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_ota_update(
   otaUpdateId = "string",
   description = "string",
   targets = list(
@@ -160,7 +164,7 @@ Creates an AWS IoT OTAUpdate on a target group of things or groups.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

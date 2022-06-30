@@ -30,7 +30,9 @@ to 100 results and a \code{nextToken} value if applicable.}
 \code{templateId}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   worldExportJobSummaries = list(
     list(
       arn = "string",
@@ -45,13 +47,15 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists world export jobs.
 }
 \section{Request syntax}{
-\preformatted{svc$list_world_export_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_world_export_jobs(
   nextToken = "string",
   maxResults = 123,
   filters = list(
@@ -63,7 +67,7 @@ Lists world export jobs.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

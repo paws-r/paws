@@ -34,7 +34,9 @@ VPN documentation
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- ec2(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- ec2(
   config = list(
     credentials = list(
       creds = list(
@@ -48,7 +50,7 @@ VPN documentation
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

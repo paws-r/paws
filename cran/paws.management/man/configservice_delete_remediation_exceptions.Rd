@@ -17,7 +17,9 @@ current request. AWS Config adds exception for each resource key. For
 example, AWS Config adds 3 exceptions for 3 resource keys.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedBatches = list(
     list(
       FailureMessage = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes one or more remediation exceptions mentioned in the resource
@@ -41,7 +43,9 @@ executing a remediation action to a specific resource. Remediation
 exceptions blocks auto-remediation until the exception is cleared.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_remediation_exceptions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_remediation_exceptions(
   ConfigRuleName = "string",
   ResourceKeys = list(
     list(
@@ -50,7 +54,7 @@ exceptions blocks auto-remediation until the exception is cleared.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

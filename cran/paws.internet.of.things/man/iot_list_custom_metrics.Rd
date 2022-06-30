@@ -12,23 +12,27 @@ iot_list_custom_metrics(nextToken, maxResults)
 \item{maxResults}{The maximum number of results to return at one time. The default is 25.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   metricNames = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists your Device Defender detect custom metrics.
 }
 \section{Request syntax}{
-\preformatted{svc$list_custom_metrics(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_custom_metrics(
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

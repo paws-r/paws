@@ -16,10 +16,12 @@ An empty list.
 Removes a classifier from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_classifier(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_classifier(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

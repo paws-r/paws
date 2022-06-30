@@ -23,7 +23,9 @@ requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RecordDetail = list(
     RecordId = "string",
     ProvisionedProductName = "string",
@@ -55,19 +57,21 @@ A list with the following syntax:\preformatted{list(
     LaunchRoleArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provisions or modifies a product based on the resource changes for the
 specified plan.
 }
 \section{Request syntax}{
-\preformatted{svc$execute_provisioned_product_plan(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$execute_provisioned_product_plan(
   AcceptLanguage = "string",
   PlanId = "string",
   IdempotencyToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,7 +23,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Location = "string",
   Bucket = "string",
   Key = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
   BucketKeyEnabled = TRUE|FALSE,
   RequestCharged = "requester"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Completes a multipart upload by assembling previously uploaded parts.
@@ -112,7 +114,9 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$complete_multipart_upload(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$complete_multipart_upload(
   Bucket = "string",
   Key = "string",
   MultipartUpload = list(
@@ -127,7 +131,7 @@ The following operations are related to
   RequestPayer = "requester",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

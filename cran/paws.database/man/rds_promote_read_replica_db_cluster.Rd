@@ -18,7 +18,9 @@ Constraints:
 Example: \code{my-cluster-replica1}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -148,7 +150,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Promotes a read replica DB cluster to a standalone DB cluster.
@@ -156,10 +158,12 @@ Promotes a read replica DB cluster to a standalone DB cluster.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$promote_read_replica_db_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$promote_read_replica_db_cluster(
   DBClusterIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,7 +18,9 @@ order, enter \code{false}.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Presets = list(
     list(
       Id = "string",
@@ -86,7 +88,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The ListPresets operation gets a list of the default presets included
@@ -94,11 +96,13 @@ with Elastic Transcoder and the presets that you've added in an AWS
 region.
 }
 \section{Request syntax}{
-\preformatted{svc$list_presets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_presets(
   Ascending = "string",
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

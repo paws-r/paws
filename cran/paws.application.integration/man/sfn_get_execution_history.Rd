@@ -30,7 +30,9 @@ error.}
 event) is returned. The default is \code{true}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   events = list(
     list(
       timestamp = as.POSIXct(
@@ -213,7 +215,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the history of the specified execution as a list of events. By
@@ -231,14 +233,16 @@ error.
 This API action is not supported by \code{EXPRESS} state machines.
 }
 \section{Request syntax}{
-\preformatted{svc$get_execution_history(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_execution_history(
   executionArn = "string",
   maxResults = 123,
   reverseOrder = TRUE|FALSE,
   nextToken = "string",
   includeExecutionData = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

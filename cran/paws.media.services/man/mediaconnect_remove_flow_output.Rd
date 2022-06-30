@@ -12,11 +12,13 @@ mediaconnect_remove_flow_output(FlowArn, OutputArn)
 \item{OutputArn}{[required] The ARN of the output that you want to remove.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FlowArn = "string",
   OutputArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes an output from an existing flow. This request can be made only
@@ -26,11 +28,13 @@ When an entitlement is revoked from a flow, the service automatically
 removes the associated output.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_flow_output(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_flow_output(
   FlowArn = "string",
   OutputArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

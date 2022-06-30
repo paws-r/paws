@@ -177,7 +177,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Expiration = "string",
   ETag = "string",
   ServerSideEncryption = "AES256"|"aws:kms",
@@ -189,7 +191,7 @@ A list with the following syntax:\preformatted{list(
   BucketKeyEnabled = TRUE|FALSE,
   RequestCharged = "requester"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds an object to a bucket. You must have WRITE permissions on a bucket
@@ -266,7 +268,9 @@ For information about returning the versioning state of a bucket, see
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_object(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_object(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
   Body = raw,
   Bucket = "string",
@@ -306,7 +310,7 @@ For information about returning the versioning state of a bucket, see
   ObjectLockLegalHoldStatus = "ON"|"OFF",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

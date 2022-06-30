@@ -84,11 +84,13 @@ deployment, and to get details about Amazon ECS service deployments.
 \item \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/}{AWS CodeDeploy User Guide}
 \item \href{https://docs.aws.amazon.com/codedeploy/latest/APIReference/}{AWS CodeDeploy API Reference Guide}
 \item \href{https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html}{AWS CLI Reference for AWS CodeDeploy}
-\item \href{https://forums.aws.amazon.com/forum.jspa?forumID=179}{AWS CodeDeploy Developer Forum}
+\item \href{https://repost.aws/tags/TAP_gx1EAgRJuXWqSRorbHIw?forumID=179}{AWS CodeDeploy Developer Forum}
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- codedeploy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- codedeploy(
   config = list(
     credentials = list(
       creds = list(
@@ -102,7 +104,7 @@ deployment, and to get details about Amazon ECS service deployments.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

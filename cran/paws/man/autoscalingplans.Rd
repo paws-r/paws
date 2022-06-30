@@ -39,10 +39,12 @@ dynamic scaling to scale your Amazon EC2 capacity faster
 
 To learn more about AWS Auto Scaling, including information about
 granting IAM users required permissions for AWS Auto Scaling actions,
-see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html}{AWS Auto Scaling User Guide}.
+see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-a-scaling-plan.html}{AWS Auto Scaling User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- autoscalingplans(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- autoscalingplans(
   config = list(
     credentials = list(
       creds = list(
@@ -56,7 +58,7 @@ see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aw
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

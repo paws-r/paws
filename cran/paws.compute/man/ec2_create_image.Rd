@@ -50,10 +50,12 @@ To tag an AMI or snapshot after it has been created, see
 \code{\link[=ec2_create_tags]{create_tags}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ImageId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that
@@ -69,7 +71,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_image(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_image(
   BlockDeviceMappings = list(
     list(
       DeviceName = "string",
@@ -104,7 +108,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

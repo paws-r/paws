@@ -21,7 +21,9 @@ Pass null if this is the first call.}
 \item{Limit}{The maximum number of items to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainControllers = list(
     list(
       DirectoryId = "string",
@@ -42,13 +44,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information about any domain controllers in your directory.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_domain_controllers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_domain_controllers(
   DirectoryId = "string",
   DomainControllerIds = list(
     "string"
@@ -56,7 +60,7 @@ Provides information about any domain controllers in your directory.
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

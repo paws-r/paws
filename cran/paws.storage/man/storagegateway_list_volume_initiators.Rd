@@ -12,12 +12,14 @@ storagegateway_list_volume_initiators(VolumeARN)
 of gateway volumes for the gateway.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Initiators = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists iSCSI initiators that are connected to a volume. You can use this
@@ -26,10 +28,12 @@ operation is only supported in the cached volume and stored volume
 gateway types.
 }
 \section{Request syntax}{
-\preformatted{svc$list_volume_initiators(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_volume_initiators(
   VolumeARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

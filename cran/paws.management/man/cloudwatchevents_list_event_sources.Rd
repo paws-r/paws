@@ -19,7 +19,9 @@ The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventSources = list(
     list(
       Arn = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 You can use this to see all the partner event sources that have been
@@ -44,12 +46,14 @@ shared with your AWS account. For more information about partner event
 sources, see \code{\link[=cloudwatchevents_create_event_bus]{create_event_bus}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_event_sources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_event_sources(
   NamePrefix = "string",
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

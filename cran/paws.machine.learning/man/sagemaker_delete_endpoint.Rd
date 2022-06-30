@@ -22,10 +22,12 @@ endpoint, meaning you don't need to use the
 API call.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_endpoint(
   EndpointName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

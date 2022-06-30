@@ -27,12 +27,14 @@ Disassociates an Identity and Access Management (IAM) role from a DB
 cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_role_from_db_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_role_from_db_cluster(
   DBClusterIdentifier = "string",
   RoleArn = "string",
   FeatureName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

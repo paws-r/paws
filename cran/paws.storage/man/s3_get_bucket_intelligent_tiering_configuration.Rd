@@ -13,7 +13,9 @@ or retrieve.}
 \item{Id}{[required] The ID used to identify the S3 Intelligent-Tiering configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IntelligentTieringConfiguration = list(
     Id = "string",
     Filter = list(
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the S3 Intelligent-Tiering configuration from the specified bucket.
@@ -72,11 +74,13 @@ include:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_bucket_intelligent_tiering_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_intelligent_tiering_configuration(
   Bucket = "string",
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

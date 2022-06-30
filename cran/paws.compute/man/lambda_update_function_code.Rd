@@ -46,7 +46,9 @@ specified. Use this option to avoid modifying a function that has
 changed since you last read it.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FunctionName = "string",
   FunctionArn = "string",
   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
@@ -125,7 +127,7 @@ A list with the following syntax:\preformatted{list(
   SigningProfileVersionArn = "string",
   SigningJobArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a Lambda function's code. If code signing is enabled for the
@@ -140,7 +142,9 @@ tag to an image digest. In Amazon ECR, if you update the image tag to a
 new image, Lambda does not automatically update the function.
 }
 \section{Request syntax}{
-\preformatted{svc$update_function_code(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_function_code(
   FunctionName = "string",
   ZipFile = raw,
   S3Bucket = "string",
@@ -151,7 +155,7 @@ new image, Lambda does not automatically update the function.
   DryRun = TRUE|FALSE,
   RevisionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

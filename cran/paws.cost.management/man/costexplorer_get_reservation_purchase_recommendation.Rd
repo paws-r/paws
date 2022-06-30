@@ -39,7 +39,9 @@ response object.}
 want to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Metadata = list(
     RecommendationId = "string",
     GenerationTimestamp = "string"
@@ -131,7 +133,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets recommendations for which reservations to purchase. These
@@ -156,7 +158,9 @@ recommendation would be for \code{c4.large} because that is the smallest size
 instance in the c4 instance family.
 }
 \section{Request syntax}{
-\preformatted{svc$get_reservation_purchase_recommendation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_reservation_purchase_recommendation(
   AccountId = "string",
   Service = "string",
   Filter = list(
@@ -207,7 +211,7 @@ instance in the c4 instance family.
   PageSize = 123,
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

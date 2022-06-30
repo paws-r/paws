@@ -13,10 +13,12 @@ glue_start_export_labels_task_run(TransformId, OutputS3Path)
 \item{OutputS3Path}{[required] The Amazon S3 path where you export the labels.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TaskRunId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Begins an asynchronous task to export all labeled data for a particular
@@ -32,11 +34,13 @@ You can check on the status of your task run by calling the
 \code{\link[=glue_get_ml_task_run]{get_ml_task_run}} API.
 }
 \section{Request syntax}{
-\preformatted{svc$start_export_labels_task_run(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_export_labels_task_run(
   TransformId = "string",
   OutputS3Path = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

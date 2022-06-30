@@ -40,7 +40,9 @@ The valid values are \code{arn}, \code{id}, \code{name}, and \code{lastRecordId}
 results, use null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProvisionedProducts = list(
     list(
       Name = "string",
@@ -74,14 +76,16 @@ A list with the following syntax:\preformatted{list(
   TotalResultsCount = 123,
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the provisioned products that meet the specified
 criteria.
 }
 \section{Request syntax}{
-\preformatted{svc$search_provisioned_products(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_provisioned_products(
   AcceptLanguage = "string",
   AccessLevelFilter = list(
     Key = "Account"|"Role"|"User",
@@ -97,7 +101,7 @@ criteria.
   PageSize = 123,
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,7 +21,9 @@ returned.}
 \item{nextToken}{The token provided in the previous call to retrieve the next page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   directConnectGateways = list(
     list(
       directConnectGatewayId = "string",
@@ -34,19 +36,21 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all your Direct Connect gateways or only the specified Direct
 Connect gateway. Deleted Direct Connect gateways are not returned.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_direct_connect_gateways(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_direct_connect_gateways(
   directConnectGatewayId = "string",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

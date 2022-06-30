@@ -11,7 +11,9 @@ elastictranscoder_read_job(Id)
 information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Job = list(
     Id = "string",
     Arn = "string",
@@ -337,16 +339,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The ReadJob operation returns detailed information about a job.
 }
 \section{Request syntax}{
-\preformatted{svc$read_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$read_job(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

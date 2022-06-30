@@ -35,11 +35,13 @@ This operation is idempotent; it does not fail or return an error if you
 try to remove a client ID that does not exist.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_client_id_from_open_id_connect_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_client_id_from_open_id_connect_provider(
   OpenIDConnectProviderArn = "string",
   ClientID = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

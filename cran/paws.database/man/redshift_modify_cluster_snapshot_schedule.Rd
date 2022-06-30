@@ -24,12 +24,14 @@ An empty list.
 Modifies a snapshot schedule for a cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_cluster_snapshot_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cluster_snapshot_schedule(
   ClusterIdentifier = "string",
   ScheduleIdentifier = "string",
   DisassociateSchedule = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

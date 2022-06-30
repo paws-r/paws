@@ -23,7 +23,9 @@ results, use null.}
 \item{PageSize}{The maximum number of items to return with this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PortfolioDetails = list(
     list(
       Id = "string",
@@ -38,19 +40,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all portfolios that the specified product is associated with.
 }
 \section{Request syntax}{
-\preformatted{svc$list_portfolios_for_product(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_portfolios_for_product(
   AcceptLanguage = "string",
   ProductId = "string",
   PageToken = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

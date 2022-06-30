@@ -19,7 +19,9 @@ iot_list_security_profiles_for_target(nextToken, maxResults, recursive,
 want to get.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   securityProfileTargetMappings = list(
     list(
       securityProfileIdentifier = list(
@@ -33,20 +35,22 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the Device Defender security profiles attached to a target (thing
 group).
 }
 \section{Request syntax}{
-\preformatted{svc$list_security_profiles_for_target(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_security_profiles_for_target(
   nextToken = "string",
   maxResults = 123,
   recursive = TRUE|FALSE,
   securityProfileTargetArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

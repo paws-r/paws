@@ -21,10 +21,12 @@ unique. If you don't specify \code{DisplayName}, the value in
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ExperimentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an SageMaker \emph{experiment}. An experiment is a collection of
@@ -59,7 +61,9 @@ list of all the trials associated with an experiment, call the
 \code{\link[=sagemaker_create_trial]{create_trial}} API.
 }
 \section{Request syntax}{
-\preformatted{svc$create_experiment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_experiment(
   ExperimentName = "string",
   DisplayName = "string",
   Description = "string",
@@ -70,7 +74,7 @@ list of all the trials associated with an experiment, call the
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

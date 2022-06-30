@@ -17,7 +17,9 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RoutingProfileSummaryList = list(
     list(
       Id = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides summary information about the routing profiles for the
@@ -38,12 +40,14 @@ and \href{https://docs.aws.amazon.com/connect/latest/adminguide/routing-profiles
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_routing_profiles(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_routing_profiles(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

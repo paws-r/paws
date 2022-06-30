@@ -30,7 +30,9 @@ results are returned in ascending order of the \code{eventTimeStamp} of the
 events.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   events = list(
     list(
       eventTimestamp = as.POSIXct(
@@ -451,7 +453,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the history of the specified workflow execution. The results may
@@ -481,7 +483,9 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_workflow_execution_history(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_workflow_execution_history(
   domain = "string",
   execution = list(
     workflowId = "string",
@@ -491,7 +495,7 @@ in the \emph{Amazon SWF Developer Guide}.
   maximumPageSize = 123,
   reverseOrder = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ cloudfront_create_invalidation(DistributionId, InvalidationBatch)
 \item{InvalidationBatch}{[required] The batch information for the invalidation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Location = "string",
   Invalidation = list(
     Id = "string",
@@ -31,13 +33,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create a new invalidation.
 }
 \section{Request syntax}{
-\preformatted{svc$create_invalidation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_invalidation(
   DistributionId = "string",
   InvalidationBatch = list(
     Paths = list(
@@ -49,7 +53,7 @@ Create a new invalidation.
     CallerReference = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

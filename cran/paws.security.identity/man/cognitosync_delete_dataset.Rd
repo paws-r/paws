@@ -19,7 +19,9 @@ Cognito. GUID generation is unique within a region.}
 '_' (underscore), '-' (dash), and '.' (dot).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Dataset = list(
     IdentityId = "string",
     DatasetName = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     NumRecords = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specific dataset. The dataset will be deleted permanently,
@@ -46,12 +48,14 @@ This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_dataset(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dataset(
   IdentityPoolId = "string",
   IdentityId = "string",
   DatasetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

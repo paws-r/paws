@@ -10,7 +10,9 @@ iot_get_ota_update(otaUpdateId)
 \item{otaUpdateId}{[required] The OTA update ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   otaUpdateInfo = list(
     otaUpdateId = "string",
     otaUpdateArn = "string",
@@ -103,16 +105,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets an OTA update.
 }
 \section{Request syntax}{
-\preformatted{svc$get_ota_update(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ota_update(
   otaUpdateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

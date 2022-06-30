@@ -15,7 +15,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcEndpointIds}{[required] One or more VPC endpoint IDs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Unsuccessful = list(
     list(
       Error = list(
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes one or more specified VPC endpoints. Deleting a gateway endpoint
@@ -37,13 +39,15 @@ Gateway Load Balancer endpoints can only be deleted if the routes that
 are associated with the endpoint are deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vpc_endpoints(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpc_endpoints(
   DryRun = TRUE|FALSE,
   VpcEndpointIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

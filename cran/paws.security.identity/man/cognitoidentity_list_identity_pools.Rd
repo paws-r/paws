@@ -12,7 +12,9 @@ cognitoidentity_list_identity_pools(MaxResults, NextToken)
 \item{NextToken}{A pagination token.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityPools = list(
     list(
       IdentityPoolId = "string",
@@ -21,7 +23,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all of the Cognito identity pools registered for your account.
@@ -29,11 +31,13 @@ Lists all of the Cognito identity pools registered for your account.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{svc$list_identity_pools(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_identity_pools(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

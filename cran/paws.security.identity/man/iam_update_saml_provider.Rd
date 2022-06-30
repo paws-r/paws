@@ -21,10 +21,12 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 in the \emph{AWS General Reference}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SAMLProviderArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the metadata document for an existing SAML provider resource
@@ -33,11 +35,13 @@ object.
 This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_saml_provider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_saml_provider(
   SAMLMetadataDocument = "string",
   SAMLProviderArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

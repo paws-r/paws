@@ -29,7 +29,9 @@ For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/m
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StreamName = "string",
   CurrentShardLevelMetrics = list(
     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
@@ -38,19 +40,21 @@ A list with the following syntax:\preformatted{list(
     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disables enhanced monitoring.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_enhanced_monitoring(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_enhanced_monitoring(
   StreamName = "string",
   ShardLevelMetrics = list(
     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

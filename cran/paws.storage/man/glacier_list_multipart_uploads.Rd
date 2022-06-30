@@ -27,7 +27,9 @@ If this value is not specified, the List Uploads operation returns up to
 50 uploads.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UploadsList = list(
     list(
       MultipartUploadId = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation lists in-progress multipart uploads for the specified
@@ -75,13 +77,15 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-lis
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_multipart_uploads(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_multipart_uploads(
   accountId = "string",
   vaultName = "string",
   marker = "string",
   limit = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

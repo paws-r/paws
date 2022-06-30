@@ -62,7 +62,9 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:AddApplicationOutput} action.
 }
 \section{Request syntax}{
-\preformatted{svc$add_application_output(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_application_output(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   Output = list(
@@ -84,7 +86,7 @@ This operation requires permissions to perform the
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

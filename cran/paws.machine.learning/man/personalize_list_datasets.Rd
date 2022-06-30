@@ -17,7 +17,9 @@ getting the next set of dataset import jobs (if they exist).}
 \item{maxResults}{The maximum number of datasets to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   datasets = list(
     list(
       name = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the list of datasets contained in the given dataset group. The
@@ -43,12 +45,14 @@ Resource Name (ARN). For more information on datasets, see
 \code{\link[=personalize_create_dataset]{create_dataset}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_datasets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_datasets(
   datasetGroupArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

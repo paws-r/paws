@@ -10,7 +10,9 @@ iot_describe_detect_mitigation_actions_task(taskId)
 \item{taskId}{[required] The unique identifier of the task.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskSummary = list(
     taskId = "string",
     taskStatus = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"CANCELED",
@@ -75,16 +77,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a Device Defender ML Detect mitigation action.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_detect_mitigation_actions_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_detect_mitigation_actions_task(
   taskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

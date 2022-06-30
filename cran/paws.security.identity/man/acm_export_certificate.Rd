@@ -20,12 +20,14 @@ can use the following OpenSSL command to decrypt a private key:
 \verb{openssl rsa -in encrypted_key.pem -out decrypted_key.pem}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Certificate = "string",
   CertificateChain = "string",
   PrivateKey = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Exports a private certificate issued by a private certificate authority
@@ -38,11 +40,13 @@ For information about exporting and formatting a certificate using the
 ACM console or CLI, see \href{https://docs.aws.amazon.com/acm/latest/userguide/}{Export a Private Certificate}.
 }
 \section{Request syntax}{
-\preformatted{svc$export_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_certificate(
   CertificateArn = "string",
   Passphrase = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

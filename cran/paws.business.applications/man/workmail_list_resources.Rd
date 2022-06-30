@@ -15,7 +15,9 @@ does not contain any tokens.}
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Resources = list(
     list(
       Id = "string",
@@ -33,18 +35,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns summaries of the organization's resources.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resources(
   OrganizationId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

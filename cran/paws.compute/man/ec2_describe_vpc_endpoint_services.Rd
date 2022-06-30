@@ -18,11 +18,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{service-name} - The name of the service.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -39,7 +39,9 @@ items.}
 from a prior call.)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceNames = list(
     "string"
   ),
@@ -79,7 +81,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes available services to which you can create a VPC endpoint.
@@ -93,7 +95,9 @@ us-east-1b, the response includes the VPC endpoint services in the
 common Availability Zone, \verb{us-east-1a}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_vpc_endpoint_services(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_endpoint_services(
   DryRun = TRUE|FALSE,
   ServiceNames = list(
     "string"
@@ -109,7 +113,7 @@ common Availability Zone, \verb{us-east-1a}.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

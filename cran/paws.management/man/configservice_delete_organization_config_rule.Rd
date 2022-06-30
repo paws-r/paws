@@ -28,10 +28,12 @@ deletion is complete. You cannot update a rule while it is in this
 state.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_organization_config_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_organization_config_rule(
   OrganizationConfigRuleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

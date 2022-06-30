@@ -21,12 +21,14 @@ An empty list.
 Removes a physical device from a placement.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_device_from_placement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_device_from_placement(
   projectName = "string",
   placementName = "string",
   deviceTemplateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

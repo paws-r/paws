@@ -52,7 +52,9 @@ retrieve the next batch of objects, provide the NextPageToken from the
 prior call in your next request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextPageToken = "string",
   CostCategoryNames = list(
     "string"
@@ -63,7 +65,7 @@ A list with the following syntax:\preformatted{list(
   ReturnSize = 123,
   TotalSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves an array of Cost Category names and values incurred cost.
@@ -72,7 +74,9 @@ If some Cost Category names and values are not associated with any cost,
 they will not be returned by this API.
 }
 \section{Request syntax}{
-\preformatted{svc$get_cost_categories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cost_categories(
   SearchString = "string",
   TimePeriod = list(
     Start = "string",
@@ -124,7 +128,7 @@ they will not be returned by this API.
   MaxResults = 123,
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

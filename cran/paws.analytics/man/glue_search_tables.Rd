@@ -46,7 +46,9 @@ well as the tables in yor local account.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   TableList = list(
     list(
@@ -151,7 +153,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Searches a set of tables based on properties in the table metadata as
@@ -167,7 +169,9 @@ columns but not the data in the columns, those columns and the
 associated metadata for those columns will be included in the search.
 }
 \section{Request syntax}{
-\preformatted{svc$search_tables(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_tables(
   CatalogId = "string",
   NextToken = "string",
   Filters = list(
@@ -187,7 +191,7 @@ associated metadata for those columns will be included in the search.
   MaxResults = 123,
   ResourceShareType = "FOREIGN"|"ALL"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

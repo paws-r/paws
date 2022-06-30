@@ -18,10 +18,12 @@ Cancels the specified export task.
 The task must be in the \code{PENDING} or \code{RUNNING} state.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_export_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_export_task(
   taskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

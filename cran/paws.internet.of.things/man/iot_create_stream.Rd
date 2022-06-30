@@ -20,13 +20,15 @@ S3 files.}
 \item{tags}{Metadata which can be used to manage streams.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   streamId = "string",
   streamArn = "string",
   description = "string",
   streamVersion = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a stream for delivering one or more large files in chunks over
@@ -35,7 +37,9 @@ MQTT messages from a source like S3. You can have one or more files
 associated with a stream.
 }
 \section{Request syntax}{
-\preformatted{svc$create_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stream(
   streamId = "string",
   description = "string",
   files = list(
@@ -56,7 +60,7 @@ associated with a stream.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -8,12 +8,14 @@ Scaling}
 autoscaling_describe_auto_scaling_notification_types()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AutoScalingNotificationTypes = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the notification types that are supported by Amazon EC2 Auto

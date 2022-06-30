@@ -17,7 +17,9 @@ chime_list_accounts(Name, UserEmail, NextToken, MaxResults)
 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Accounts = list(
     list(
       AwsAccountId = "string",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the Amazon Chime accounts under the administrator's AWS account.
@@ -49,13 +51,15 @@ Chime account a user belongs to, you can filter by the user's email
 address, which returns one account result.
 }
 \section{Request syntax}{
-\preformatted{svc$list_accounts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_accounts(
   Name = "string",
   UserEmail = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

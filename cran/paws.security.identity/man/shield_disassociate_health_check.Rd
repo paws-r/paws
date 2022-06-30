@@ -29,11 +29,13 @@ information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/ddo
 in the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF and AWS Shield Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_health_check(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_health_check(
   ProtectionId = "string",
   HealthCheckArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

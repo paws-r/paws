@@ -10,7 +10,9 @@ mediapackage_describe_origin_endpoint(Id)
 \item{Id}{[required] The ID of the OriginEndpoint.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   Authorization = list(
     CdnIdentifierSecret = "string",
@@ -153,16 +155,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets details about an existing OriginEndpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_origin_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_origin_endpoint(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

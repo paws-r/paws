@@ -19,7 +19,9 @@ The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventBuses = list(
     list(
       Name = "string",
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all the event buses in your account, including the default event
 bus, custom event buses, and partner event buses.
 }
 \section{Request syntax}{
-\preformatted{svc$list_event_buses(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_event_buses(
   NamePrefix = "string",
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

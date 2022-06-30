@@ -14,13 +14,15 @@ for more information.}
 for more information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   certificatePem = "string",
   resourceArns = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provisions a thing in the device registry. RegisterThing calls other AWS
@@ -29,13 +31,15 @@ and cause throttle errors. Please contact AWS Customer Support to raise
 your throttling limits if necessary.
 }
 \section{Request syntax}{
-\preformatted{svc$register_thing(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_thing(
   templateBody = "string",
   parameters = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

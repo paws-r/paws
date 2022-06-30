@@ -15,7 +15,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PublicAccessBlockConfiguration = list(
     BlockPublicAcls = TRUE|FALSE,
     IgnorePublicAcls = TRUE|FALSE,
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     RestrictPublicBuckets = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the \code{PublicAccessBlock} configuration for an Amazon S3 bucket.
@@ -51,11 +53,13 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_public_access_block(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_public_access_block(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

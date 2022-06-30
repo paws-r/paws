@@ -19,7 +19,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{vaultName}{[required] The name of the vault.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VaultARN = "string",
   VaultName = "string",
   CreationDate = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
   NumberOfArchives = 123,
   SizeInBytes = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation returns information about a vault, including the vault's
@@ -52,11 +54,13 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.htm
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_vault(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vault(
   accountId = "string",
   vaultName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

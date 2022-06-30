@@ -10,7 +10,9 @@ greengrass_get_thing_runtime_configuration(ThingName)
 \item{ThingName}{[required] The thing name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RuntimeConfiguration = list(
     TelemetryConfiguration = list(
       ConfigurationSyncStatus = "InSync"|"OutOfSync",
@@ -18,16 +20,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get the runtime configuration of a thing.
 }
 \section{Request syntax}{
-\preformatted{svc$get_thing_runtime_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_thing_runtime_configuration(
   ThingName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

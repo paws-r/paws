@@ -17,7 +17,9 @@ returned and Amazon Lex doesn't publish a new version. If you don't
 specify a checksum, Amazon Lex publishes the \verb{$LATEST} version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   name = "string",
   description = "string",
   intents = list(
@@ -64,7 +66,7 @@ A list with the following syntax:\preformatted{list(
   enableModelImprovements = TRUE|FALSE,
   detectSentiment = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new version of the bot based on the \verb{$LATEST} version. If the
@@ -85,11 +87,13 @@ This operation requires permission for the \code{lex:CreateBotVersion}
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$create_bot_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_bot_version(
   name = "string",
   checksum = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

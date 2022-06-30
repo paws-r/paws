@@ -52,7 +52,9 @@ The following values are supported for \code{Key}:
 Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SavingsPlansUtilizationsByTime = list(
     list(
       TimePeriod = list(
@@ -94,7 +96,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the Savings Plans utilization for your account across date
@@ -107,7 +109,9 @@ You cannot group by any dimension values for
 \code{\link[=costexplorer_get_savings_plans_utilization]{get_savings_plans_utilization}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_savings_plans_utilization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_savings_plans_utilization(
   TimePeriod = list(
     Start = "string",
     End = "string"
@@ -154,7 +158,7 @@ You cannot group by any dimension values for
     SortOrder = "ASCENDING"|"DESCENDING"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

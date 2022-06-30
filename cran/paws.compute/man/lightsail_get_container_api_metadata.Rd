@@ -8,22 +8,26 @@ current version of the Lightsail Control (lightsailctl) plugin}
 lightsail_get_container_api_metadata()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   metadata = list(
     list(
       "string"
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about Amazon Lightsail containers, such as the
 current version of the Lightsail Control (lightsailctl) plugin.
 }
 \section{Request syntax}{
-\preformatted{svc$get_container_api_metadata()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_container_api_metadata()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

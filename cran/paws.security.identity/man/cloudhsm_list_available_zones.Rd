@@ -7,12 +7,14 @@
 cloudhsm_list_available_zones()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AZList = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -25,8 +27,10 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
 Lists the Availability Zones that have available AWS CloudHSM capacity.
 }
 \section{Request syntax}{
-\preformatted{svc$list_available_zones()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_available_zones()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

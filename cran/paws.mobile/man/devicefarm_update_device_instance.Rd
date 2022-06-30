@@ -15,7 +15,9 @@ instance.}
 \item{labels}{An array of strings that you want to associate with the device instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   deviceInstance = list(
     arn = "string",
     deviceArn = "string",
@@ -36,20 +38,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates information about a private device instance.
 }
 \section{Request syntax}{
-\preformatted{svc$update_device_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_device_instance(
   arn = "string",
   profileArn = "string",
   labels = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

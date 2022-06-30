@@ -17,7 +17,9 @@ stack instance information for.}
 \item{StackInstanceRegion}{[required] The name of a Region that's associated with this stack instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackInstance = list(
     StackSetId = "string",
     Region = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the stack instance that's associated with the specified stack
@@ -53,12 +55,14 @@ For a list of stack instances that are associated with a specific stack
 set, use \code{\link[=cloudformation_list_stack_instances]{list_stack_instances}}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_stack_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stack_instance(
   StackSetName = "string",
   StackInstanceAccount = "string",
   StackInstanceRegion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

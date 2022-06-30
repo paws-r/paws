@@ -15,7 +15,9 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceProfile = list(
     Path = "string",
     InstanceProfileName = "string",
@@ -56,7 +58,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the specified instance profile, including
@@ -65,10 +67,12 @@ about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGu
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_instance_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_instance_profile(
   InstanceProfileName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

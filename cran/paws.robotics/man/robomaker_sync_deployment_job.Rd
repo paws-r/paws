@@ -13,7 +13,9 @@ idempotency of the request.}
 \item{fleet}{[required] The target fleet for the synchronization.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   fleet = "string",
   status = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
@@ -48,18 +50,20 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Syncrhonizes robots in a fleet to the latest deployment. This is helpful
 if robots were added after a deployment.
 }
 \section{Request syntax}{
-\preformatted{svc$sync_deployment_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$sync_deployment_job(
   clientRequestToken = "string",
   fleet = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -25,7 +25,9 @@ the response includes only results beyond the token, up to the value
 specified by \code{MaxResults}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Parameters = list(
     list(
@@ -47,19 +49,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the detailed parameter list for a particular parameter group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_parameters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_parameters(
   ParameterGroupName = "string",
   Source = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

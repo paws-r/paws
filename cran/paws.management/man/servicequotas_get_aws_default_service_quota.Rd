@@ -12,7 +12,9 @@ servicequotas_get_aws_default_service_quota(ServiceCode, QuotaCode)
 \item{QuotaCode}{[required] The quota identifier.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Quota = list(
     ServiceCode = "string",
     ServiceName = "string",
@@ -41,18 +43,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the default value for the specified quota. The default value
 does not reflect any quota increases.
 }
 \section{Request syntax}{
-\preformatted{svc$get_aws_default_service_quota(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_aws_default_service_quota(
   ServiceCode = "string",
   QuotaCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

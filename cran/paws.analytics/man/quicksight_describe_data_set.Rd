@@ -13,7 +13,9 @@ quicksight_describe_data_set(AwsAccountId, DataSetId)
 AWS Region for each AWS account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DataSet = list(
     Arn = "string",
     DataSetId = "string",
@@ -167,17 +169,19 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a dataset.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_data_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_data_set(
   AwsAccountId = "string",
   DataSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

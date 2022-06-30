@@ -16,7 +16,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Subnet = list(
     AvailabilityZone = "string",
     AvailabilityZoneId = "string",
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
     OutpostArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a default subnet with a size \verb{/20} IPv4 CIDR block in the
@@ -61,11 +63,13 @@ default subnet per Availability Zone. For more information, see
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_default_subnet(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_default_subnet(
   AvailabilityZone = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

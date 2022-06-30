@@ -21,11 +21,13 @@ Disables alternative client authentication methods for the specified
 directory.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_client_authentication(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_client_authentication(
   DirectoryId = "string",
   Type = "SmartCard"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

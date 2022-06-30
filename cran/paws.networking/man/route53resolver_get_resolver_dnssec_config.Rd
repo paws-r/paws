@@ -11,7 +11,9 @@ route53resolver_get_resolver_dnssec_config(ResourceId)
 status.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResolverDNSSECConfig = list(
     Id = "string",
     OwnerId = "string",
@@ -19,16 +21,18 @@ A list with the following syntax:\preformatted{list(
     ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets DNSSEC validation information for a specified resource.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resolver_dnssec_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resolver_dnssec_config(
   ResourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

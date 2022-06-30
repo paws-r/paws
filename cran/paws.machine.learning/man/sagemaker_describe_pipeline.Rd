@@ -10,7 +10,9 @@ sagemaker_describe_pipeline(PipelineName)
 \item{PipelineName}{[required] The name of the pipeline to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PipelineArn = "string",
   PipelineName = "string",
   PipelineDisplayName = "string",
@@ -38,16 +40,18 @@ A list with the following syntax:\preformatted{list(
     DomainId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the details of a pipeline.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_pipeline(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_pipeline(
   PipelineName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -46,7 +46,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Deleted = list(
     list(
       Key = "string",
@@ -65,7 +67,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation enables you to delete multiple objects from a bucket
@@ -111,7 +113,9 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_objects(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_objects(
   Bucket = "string",
   Delete = list(
     Objects = list(
@@ -127,7 +131,7 @@ The following operations are related to
   BypassGovernanceRetention = TRUE|FALSE,
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

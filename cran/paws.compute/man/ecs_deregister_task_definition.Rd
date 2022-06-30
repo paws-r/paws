@@ -12,7 +12,9 @@ Name (ARN) of the task definition to deregister. You must specify a
 \code{revision}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskDefinition = list(
     taskDefinitionArn = "string",
     containerDefinitions = list(
@@ -272,7 +274,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deregisters the specified task definition by family and revision. Upon
@@ -294,10 +296,12 @@ future, so you should not rely on \code{INACTIVE} task definitions persisting
 beyond the lifecycle of any associated tasks and services.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_task_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_task_definition(
   taskDefinition = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

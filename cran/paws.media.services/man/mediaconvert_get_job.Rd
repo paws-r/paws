@@ -10,7 +10,9 @@ mediaconvert_get_job(Id)
 \item{Id}{[required] the job ID of the job.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Job = list(
     AccelerationSettings = list(
       Mode = "DISABLED"|"ENABLED"|"PREFERRED"
@@ -1211,16 +1213,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve the JSON for a specific completed transcoding job.
 }
 \section{Request syntax}{
-\preformatted{svc$get_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

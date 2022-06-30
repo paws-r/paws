@@ -14,10 +14,12 @@ chime_create_app_instance(Name, Metadata, ClientRequestToken)
 \item{ClientRequestToken}{[required] The \code{ClientRequestToken} of the app instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppInstanceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Amazon Chime Messaging SDK \code{AppInstance} under an AWS
@@ -26,12 +28,14 @@ Account. Only Messaging SDK customers use this API.
 \code{idempotency} behavior as described in the AWS API Standard.
 }
 \section{Request syntax}{
-\preformatted{svc$create_app_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_app_instance(
   Name = "string",
   Metadata = "string",
   ClientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

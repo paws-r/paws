@@ -19,10 +19,12 @@ personalize_update_campaign(campaignArn, solutionVersionArn,
 \item{campaignConfig}{The configuration details of a campaign.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   campaignArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a campaign by either deploying a new solution or changing the
@@ -39,7 +41,9 @@ For more information on campaigns, see
 \code{\link[=personalize_create_campaign]{create_campaign}}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_campaign(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_campaign(
   campaignArn = "string",
   solutionVersionArn = "string",
   minProvisionedTPS = 123,
@@ -49,7 +53,7 @@ For more information on campaigns, see
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

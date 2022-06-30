@@ -29,7 +29,9 @@ value.}
 \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HistoryRecords = list(
     list(
       EventInformation = list(
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the events for the specified EC2 Fleet during the specified
@@ -64,7 +66,9 @@ and not miss a recorded event. EC2 Fleet events are available for 48
 hours.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_fleet_history(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fleet_history(
   DryRun = TRUE|FALSE,
   EventType = "instance-change"|"fleet-change"|"service-error",
   MaxResults = 123,
@@ -74,7 +78,7 @@ hours.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

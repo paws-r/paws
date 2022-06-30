@@ -31,7 +31,9 @@ website. When you call this operation, the service attempts to send the
 test notification immediately.
 }
 \section{Request syntax}{
-\preformatted{svc$send_test_event_notification(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_test_event_notification(
   Notification = list(
     Destination = "string",
     Transport = "Email"|"SQS"|"SNS",
@@ -42,7 +44,7 @@ test notification immediately.
   ),
   TestEventType = "AssignmentAccepted"|"AssignmentAbandoned"|"AssignmentReturned"|"AssignmentSubmitted"|"AssignmentRejected"|"AssignmentApproved"|"HITCreated"|"HITExpired"|"HITReviewable"|"HITExtended"|"HITDisposed"|"Ping"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ glue_get_workflow(Name, IncludeGraph)
 resource metadata.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Workflow = list(
     Name = "string",
     Description = "string",
@@ -275,17 +277,19 @@ A list with the following syntax:\preformatted{list(
     MaxConcurrentRuns = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves resource metadata for a workflow.
 }
 \section{Request syntax}{
-\preformatted{svc$get_workflow(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_workflow(
   Name = "string",
   IncludeGraph = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

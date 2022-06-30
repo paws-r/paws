@@ -13,7 +13,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{ImportJobRequest}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ImportJobResponse = list(
     ApplicationId = "string",
     CompletedPieces = 123,
@@ -41,13 +43,15 @@ A list with the following syntax:\preformatted{list(
     Type = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an import job for an application.
 }
 \section{Request syntax}{
-\preformatted{svc$create_import_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_import_job(
   ApplicationId = "string",
   ImportJobRequest = list(
     DefineSegment = TRUE|FALSE,
@@ -60,7 +64,7 @@ Creates an import job for an application.
     SegmentName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ mediaconnect_add_flow_outputs(FlowArn, Outputs)
 \item{Outputs}{[required] A list of outputs that you want to add.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FlowArn = "string",
   Outputs = list(
     list(
@@ -52,14 +54,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds outputs to an existing flow. You can create up to 50 outputs per
 flow.
 }
 \section{Request syntax}{
-\preformatted{svc$add_flow_outputs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_flow_outputs(
   FlowArn = "string",
   Outputs = list(
     list(
@@ -92,7 +96,7 @@ flow.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

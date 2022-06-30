@@ -18,10 +18,12 @@ Makes a private skill available for enrolled users to enable on their
 devices.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_skill_with_users(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_skill_with_users(
   SkillId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

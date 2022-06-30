@@ -18,7 +18,9 @@ from a previous call.)}
 is \code{50} and the maximum value is \code{100}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NotificationConfigurations = list(
     list(
       AutoScalingGroupName = "string",
@@ -28,21 +30,23 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the notification actions associated with the specified Auto
 Scaling group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_notification_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_notification_configurations(
   AutoScalingGroupNames = list(
     "string"
   ),
   NextToken = "string",
   MaxRecords = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

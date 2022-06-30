@@ -14,12 +14,14 @@ elb_attach_load_balancer_to_subnets(LoadBalancerName, Subnets)
 Availability Zone.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Subnets = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds one or more subnets to the set of configured subnets for the
@@ -30,13 +32,15 @@ subnets. For more information, see \href{https://docs.aws.amazon.com/elasticload
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_load_balancer_to_subnets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_load_balancer_to_subnets(
   LoadBalancerName = "string",
   Subnets = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

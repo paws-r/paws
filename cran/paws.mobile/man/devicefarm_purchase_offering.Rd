@@ -14,7 +14,9 @@ devicefarm_purchase_offering(offeringId, quantity, offeringPromotionId)
 \item{offeringPromotionId}{The ID of the offering promotion to be applied to the purchase.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   offeringTransaction = list(
     offeringStatus = list(
       type = "PURCHASE"|"RENEW"|"SYSTEM",
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Immediately purchases offerings for an AWS account. Offerings renew with
@@ -59,12 +61,14 @@ permitted to invoke the operation. If you must be able to invoke this
 operation, contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
-\preformatted{svc$purchase_offering(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purchase_offering(
   offeringId = "string",
   quantity = 123,
   offeringPromotionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

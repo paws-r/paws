@@ -36,10 +36,12 @@ Removes a web ACL from the specified resource, either an application
 load balancer or Amazon API Gateway stage.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_web_acl(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_web_acl(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -62,7 +62,9 @@ provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Resources = list(
     list(
       Identifier = list(
@@ -88,7 +90,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of ARNs of the resources that are members of a specified
@@ -102,7 +104,9 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$list_group_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_group_resources(
   GroupName = "string",
   Group = "string",
   Filters = list(
@@ -116,7 +120,7 @@ To run this command, you must have the following permissions:
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

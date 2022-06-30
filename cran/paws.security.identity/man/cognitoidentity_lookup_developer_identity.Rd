@@ -28,14 +28,16 @@ pagination token as a part of the response. This token can be used to
 call the API again and get results starting from the 11th match.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityId = "string",
   DeveloperUserIdentifierList = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the \code{IdentityID} associated with a \code{DeveloperUserIdentifier}
@@ -60,14 +62,16 @@ is a better option for higher-volume operations for user authentication.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{svc$lookup_developer_identity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$lookup_developer_identity(
   IdentityPoolId = "string",
   IdentityId = "string",
   DeveloperUserIdentifier = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

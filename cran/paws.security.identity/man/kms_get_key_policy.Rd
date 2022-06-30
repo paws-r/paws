@@ -26,10 +26,12 @@ To get the names of key policies, use
 \code{\link[=kms_list_key_policies]{list_key_policies}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Policy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a key policy attached to the specified customer master key (CMK).
@@ -44,11 +46,13 @@ a different AWS account.
 \strong{Related operations}: \code{\link[=kms_put_key_policy]{put_key_policy}}
 }
 \section{Request syntax}{
-\preformatted{svc$get_key_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_key_policy(
   KeyId = "string",
   PolicyName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

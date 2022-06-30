@@ -18,10 +18,12 @@ referencing the schema. For more information on schemas, see
 \code{\link[=personalize_create_schema]{create_schema}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_schema(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_schema(
   schemaArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

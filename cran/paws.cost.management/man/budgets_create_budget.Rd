@@ -31,7 +31,9 @@ Syntax section shows the \code{BudgetLimit} syntax. For
 section.
 }
 \section{Request syntax}{
-\preformatted{svc$create_budget(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_budget(
   AccountId = "string",
   Budget = list(
     BudgetName = "string",
@@ -105,7 +107,7 @@ section.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

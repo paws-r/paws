@@ -15,24 +15,28 @@ iot_create_provisioning_template_version(templateName, templateBody,
 \item{setAsDefault}{Sets a fleet provision template version as the default version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   templateArn = "string",
   templateName = "string",
   versionId = 123,
   isDefaultVersion = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new version of a fleet provisioning template.
 }
 \section{Request syntax}{
-\preformatted{svc$create_provisioning_template_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_provisioning_template_version(
   templateName = "string",
   templateBody = "string",
   setAsDefault = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

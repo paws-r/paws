@@ -13,7 +13,9 @@ chime_reset_personal_pin(AccountId, UserId)
 \item{UserId}{[required] The user ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   User = list(
     UserId = "string",
     AccountId = "string",
@@ -37,7 +39,7 @@ A list with the following syntax:\preformatted{list(
     PersonalPIN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Resets the personal meeting PIN for the specified user on an Amazon
@@ -45,11 +47,13 @@ Chime account. Returns the User object with the updated personal meeting
 PIN.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_personal_pin(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_personal_pin(
   AccountId = "string",
   UserId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

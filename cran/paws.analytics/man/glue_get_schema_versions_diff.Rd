@@ -25,10 +25,12 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 \item{SchemaDiffType}{[required] Refers to \code{SYNTAX_DIFF}, which is the currently supported diff type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Diff = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Fetches the schema version difference in the specified difference type
@@ -38,7 +40,9 @@ This API allows you to compare two schema versions between two schema
 definitions under the same schema.
 }
 \section{Request syntax}{
-\preformatted{svc$get_schema_versions_diff(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_schema_versions_diff(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -54,7 +58,7 @@ definitions under the same schema.
   ),
   SchemaDiffType = "SYNTAX_DIFF"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -31,7 +31,9 @@ request and specify the \code{NextToken} parameter, you must use the same
 values for \code{Filters}, if any, as in the previous request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   MaxResults = 123,
   ResolverRuleAssociations = list(
@@ -45,14 +47,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the associations that were created between Resolver rules and VPCs
 using the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resolver_rule_associations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resolver_rule_associations(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(
@@ -64,7 +68,7 @@ using the current AWS account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

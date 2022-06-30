@@ -23,7 +23,9 @@ If the value is set to true, the accelerator cannot be deleted. If set
 to false, the accelerator can be deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Accelerator = list(
     AcceleratorArn = "string",
     Name = "string",
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Update an accelerator.
@@ -57,13 +59,15 @@ multiple AWS Regions but you must specify the US West (Oregon) Region to
 create or update accelerators.
 }
 \section{Request syntax}{
-\preformatted{svc$update_accelerator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_accelerator(
   AcceleratorArn = "string",
   Name = "string",
   IpAddressType = "IPV4",
   Enabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

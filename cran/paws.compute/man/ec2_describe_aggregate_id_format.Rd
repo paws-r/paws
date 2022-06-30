@@ -14,7 +14,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UseLongIdsAggregated = TRUE|FALSE,
   Statuses = list(
     list(
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the longer ID format settings for all resource types in a
@@ -49,10 +51,12 @@ The following resource types support longer IDs: \code{bundle} |
 \code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_aggregate_id_format(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_aggregate_id_format(
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

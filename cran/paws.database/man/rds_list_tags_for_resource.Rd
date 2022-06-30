@@ -15,7 +15,9 @@ in the \emph{Amazon RDS User Guide}.}
 \item{Filters}{This parameter isn't currently supported.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TagList = list(
     list(
       Key = "string",
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all tags on an Amazon RDS resource.
@@ -32,7 +34,9 @@ For an overview on tagging an Amazon RDS resource, see \href{https://docs.aws.am
 in the \emph{Amazon RDS User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   ResourceName = "string",
   Filters = list(
     list(
@@ -43,7 +47,7 @@ in the \emph{Amazon RDS User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

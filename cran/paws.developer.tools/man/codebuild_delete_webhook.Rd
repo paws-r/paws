@@ -22,10 +22,12 @@ rebuilding the source code every time a code change is pushed to the
 repository.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_webhook(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_webhook(
   projectName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

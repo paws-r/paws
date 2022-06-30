@@ -13,7 +13,9 @@ mturk_list_worker_blocks(NextToken, MaxResults)
 \item{MaxResults}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   NumResults = 123,
   WorkerBlocks = list(
@@ -23,18 +25,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{ListWorkersBlocks} operation retrieves a list of Workers who are
 blocked from working on your HITs.
 }
 \section{Request syntax}{
-\preformatted{svc$list_worker_blocks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_worker_blocks(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

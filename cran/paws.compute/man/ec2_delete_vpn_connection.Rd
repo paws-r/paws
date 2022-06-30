@@ -35,11 +35,13 @@ For certificate-based authentication, delete all AWS Certificate Manager
 the VPN connection before deleting the VPN connection.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vpn_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpn_connection(
   VpnConnectionId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -24,12 +24,14 @@ Accepts the invitation to be monitored by a GuardDuty administrator
 account.
 }
 \section{Request syntax}{
-\preformatted{svc$accept_invitation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_invitation(
   DetectorId = "string",
   MasterId = "string",
   InvitationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

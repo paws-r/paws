@@ -17,10 +17,12 @@ An empty list.
 Deletes a notebook instance lifecycle configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_notebook_instance_lifecycle_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_notebook_instance_lifecycle_config(
   NotebookInstanceLifecycleConfigName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

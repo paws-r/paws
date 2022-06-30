@@ -27,7 +27,9 @@ proactive engagement enabled, for escalations to the DRT and to initiate
 proactive customer support.
 }
 \section{Request syntax}{
-\preformatted{svc$update_emergency_contact_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_emergency_contact_settings(
   EmergencyContactList = list(
     list(
       EmailAddress = "string",
@@ -36,7 +38,7 @@ proactive customer support.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,7 +18,9 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LoadBalancers = list(
     list(
       LoadBalancerArn = "string",
@@ -59,13 +61,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified load balancers or all of your load balancers.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_load_balancers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_load_balancers(
   LoadBalancerArns = list(
     "string"
   ),
@@ -75,7 +79,7 @@ Describes the specified load balancers or all of your load balancers.
   Marker = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

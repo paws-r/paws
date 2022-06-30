@@ -13,7 +13,9 @@ robomaker_describe_simulation_application(application,
 \item{applicationVersion}{The version of the simulation application to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   name = "string",
   version = "string",
@@ -45,17 +47,19 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a simulation application.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_simulation_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_simulation_application(
   application = "string",
   applicationVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

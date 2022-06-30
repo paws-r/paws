@@ -63,7 +63,9 @@ For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$replace_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$replace_route(
   DestinationCidrBlock = "string",
   DestinationIpv6CidrBlock = "string",
   DestinationPrefixListId = "string",
@@ -81,7 +83,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   RouteTableId = "string",
   VpcPeeringConnectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -11,7 +11,9 @@ cloudfront_create_streaming_distribution_with_tags(
 \item{StreamingDistributionConfigWithTags}{[required] The streaming distribution's configuration information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StreamingDistribution = list(
     Id = "string",
     ARN = "string",
@@ -67,16 +69,18 @@ A list with the following syntax:\preformatted{list(
   Location = "string",
   ETag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API is deprecated. Amazon CloudFront is deprecating real-time
 messaging protocol (RTMP) distributions on December 31, 2020. For more
-information, \href{https://forums.aws.amazon.com/ann.jspa?annID=7356}{read the announcement} on the
-Amazon CloudFront discussion forum.
+information, read the announcement on the Amazon CloudFront discussion
+forum.
 }
 \section{Request syntax}{
-\preformatted{svc$create_streaming_distribution_with_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_streaming_distribution_with_tags(
   StreamingDistributionConfigWithTags = list(
     StreamingDistributionConfig = list(
       CallerReference = "string",
@@ -116,7 +120,7 @@ Amazon CloudFront discussion forum.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,12 +23,14 @@ alias and the current primary email), and the email provided in the
 input is promoted as the primary.
 }
 \section{Request syntax}{
-\preformatted{svc$update_primary_email_address(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_primary_email_address(
   OrganizationId = "string",
   EntityId = "string",
   Email = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

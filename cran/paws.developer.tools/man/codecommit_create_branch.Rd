@@ -23,12 +23,14 @@ Calling the create branch operation does not set a repository's default
 branch. To do this, call the update default branch operation.
 }
 \section{Request syntax}{
-\preformatted{svc$create_branch(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_branch(
   repositoryName = "string",
   branchName = "string",
   commitId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

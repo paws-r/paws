@@ -25,7 +25,9 @@ change.
 Updates the configuration settings for the specified quick connect.
 }
 \section{Request syntax}{
-\preformatted{svc$update_quick_connect_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_quick_connect_config(
   InstanceId = "string",
   QuickConnectId = "string",
   QuickConnectConfig = list(
@@ -43,7 +45,7 @@ Updates the configuration settings for the specified quick connect.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,7 +20,9 @@ that start with \code{$} are reserved by QuickSight.}
 \item{TemplateVersionNumber}{[required] The version number of the template.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TemplateAlias = list(
     AliasName = "string",
     Arn = "string",
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a template alias for a template.
 }
 \section{Request syntax}{
-\preformatted{svc$create_template_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_template_alias(
   AwsAccountId = "string",
   TemplateId = "string",
   AliasName = "string",
   TemplateVersionNumber = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

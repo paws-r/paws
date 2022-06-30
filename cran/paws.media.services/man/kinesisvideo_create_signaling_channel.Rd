@@ -21,10 +21,12 @@ type.}
 channel.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChannelARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a signaling channel.
@@ -33,7 +35,9 @@ Creates a signaling channel.
 an asynchronous operation.
 }
 \section{Request syntax}{
-\preformatted{svc$create_signaling_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_signaling_channel(
   ChannelName = "string",
   ChannelType = "SINGLE_MASTER",
   SingleMasterConfiguration = list(
@@ -46,7 +50,7 @@ an asynchronous operation.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

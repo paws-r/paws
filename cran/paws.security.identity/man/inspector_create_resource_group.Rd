@@ -15,10 +15,12 @@ inspector_create_resource_group(resourceGroupTags)
 For example,'[\{"key":"Name","values":["TestEC2Instance"]\}]'.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a resource group using the specified set of tags (key and value
@@ -29,7 +31,9 @@ information, see
 \code{\link[=inspector_create_assessment_target]{create_assessment_target}}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_resource_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_resource_group(
   resourceGroupTags = list(
     list(
       key = "string",
@@ -37,7 +41,7 @@ information, see
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

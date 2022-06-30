@@ -111,10 +111,12 @@ count).}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LabelingJobArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a job that uses workers to label the data objects in your input
@@ -147,7 +149,9 @@ The output can be used as the manifest file for another labeling job or
 as training data for your machine learning models.
 }
 \section{Request syntax}{
-\preformatted{svc$create_labeling_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_labeling_job(
   LabelingJobName = "string",
   LabelAttributeName = "string",
   InputConfig = list(
@@ -217,7 +221,7 @@ as training data for your machine learning models.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

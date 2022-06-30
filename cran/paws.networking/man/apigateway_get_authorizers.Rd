@@ -15,7 +15,9 @@ apigateway_get_authorizers(restApiId, position, limit)
 and the maximum value is 500.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   position = "string",
   items = list(
     list(
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describe an existing Authorizers resource.<div class="seeAlso">
@@ -43,12 +45,14 @@ Describe an existing Authorizers resource.<div class="seeAlso">
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html}{AWS CLI}</div>
 }
 \section{Request syntax}{
-\preformatted{svc$get_authorizers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_authorizers(
   restApiId = "string",
   position = "string",
   limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ cloudformation_describe_stack_set(StackSetName)
 \item{StackSetName}{[required] The name or unique ID of the stack set whose description you want.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackSet = list(
     StackSetName = "string",
     StackSetId = "string",
@@ -59,16 +61,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the description of the specified stack set.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_stack_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stack_set(
   StackSetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

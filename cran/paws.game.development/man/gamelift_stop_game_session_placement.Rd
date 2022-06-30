@@ -10,7 +10,9 @@ gamelift_stop_game_session_placement(PlacementId)
 \item{PlacementId}{[required] A unique identifier for a game session placement to cancel.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GameSessionPlacement = list(
     PlacementId = "string",
     GameSessionQueueName = "string",
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
     MatchmakerData = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels a game session placement that is in \code{PENDING} status. To stop a
@@ -74,10 +76,12 @@ is moved to \code{CANCELLED} status.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$stop_game_session_placement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_game_session_placement(
   PlacementId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

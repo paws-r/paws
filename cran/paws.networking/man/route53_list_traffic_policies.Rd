@@ -28,7 +28,9 @@ first traffic policy that Route 53 will return if you submit another
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficPolicySummaries = list(
     list(
       Id = "string",
@@ -42,7 +44,7 @@ A list with the following syntax:\preformatted{list(
   TrafficPolicyIdMarker = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the latest version for every traffic policy that
@@ -54,11 +56,13 @@ response from \code{\link[=route53_list_traffic_policies]{list_traffic_policies}
 see \code{\link[=route53_delete_traffic_policy]{delete_traffic_policy}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_traffic_policies(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_traffic_policies(
   TrafficPolicyIdMarker = "string",
   MaxItems = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

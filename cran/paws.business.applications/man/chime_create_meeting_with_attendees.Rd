@@ -32,7 +32,9 @@ Available values: \code{af-south-1}, \code{ap-northeast-1}, \code{ap-northeast-2
 \item{Attendees}{The request containing the attendees to create.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Meeting = list(
     MeetingId = "string",
     ExternalMeetingId = "string",
@@ -62,18 +64,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new Amazon Chime SDK meeting in the specified media Region,
 with attendees. For more information about specifying media Regions, see
-\href{https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html}{Amazon Chime SDK Media Regions}
+\href{https://docs.aws.amazon.com/chime-sdk/latest/dg/chime-sdk-meetings-regions.html}{Amazon Chime SDK Media Regions}
 in the \emph{Amazon Chime Developer Guide}. For more information about the
-Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in
-the \emph{Amazon Chime Developer Guide}.
+Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK}
+in the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_meeting_with_attendees(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_meeting_with_attendees(
   ClientRequestToken = "string",
   ExternalMeetingId = "string",
   MeetingHostId = "string",
@@ -100,7 +104,7 @@ the \emph{Amazon Chime Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

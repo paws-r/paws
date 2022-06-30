@@ -35,11 +35,13 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notific
 in the Amazon S3 Glacier Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vault_notifications(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vault_notifications(
   accountId = "string",
   vaultName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

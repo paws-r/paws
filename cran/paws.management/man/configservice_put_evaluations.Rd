@@ -27,7 +27,9 @@ valid value for the \code{ResultToken} parameter, but the value cannot be
 null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedEvaluations = list(
     list(
       ComplianceResourceType = "string",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Used by an AWS Lambda function to deliver evaluation results to AWS
@@ -48,7 +50,9 @@ Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
 }
 \section{Request syntax}{
-\preformatted{svc$put_evaluations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_evaluations(
   Evaluations = list(
     list(
       ComplianceResourceType = "string",
@@ -63,7 +67,7 @@ invoked by an AWS Config rule.
   ResultToken = "string",
   TestMode = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

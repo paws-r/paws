@@ -10,7 +10,9 @@ eventbridge_describe_replay(ReplayName)
 \item{ReplayName}{[required] The name of the replay to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplayName = "string",
   ReplayArn = "string",
   Description = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves details about a replay. Use
@@ -56,10 +58,12 @@ indicates the time within the specified time range associated with the
 last event replayed.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_replay(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_replay(
   ReplayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

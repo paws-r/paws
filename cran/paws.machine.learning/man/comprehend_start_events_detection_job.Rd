@@ -26,18 +26,22 @@ request token, Amazon Comprehend generates one.}
 \item{TargetEventTypes}{[required] The types of events to detect in the input documents.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string",
   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts an asynchronous event detection job for a collection of
 documents.
 }
 \section{Request syntax}{
-\preformatted{svc$start_events_detection_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_events_detection_job(
   InputDataConfig = list(
     S3Uri = "string",
     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
@@ -54,7 +58,7 @@ documents.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,16 +12,20 @@ sagemaker_update_domain(DomainId, DefaultUserSettings)
 \item{DefaultUserSettings}{A collection of settings.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the default settings for new user profiles in the domain.
 }
 \section{Request syntax}{
-\preformatted{svc$update_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain(
   DomainId = "string",
   DefaultUserSettings = list(
     ExecutionRole = "string",
@@ -63,7 +67,7 @@ Updates the default settings for new user profiles in the domain.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

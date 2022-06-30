@@ -15,7 +15,9 @@ failover. (If the instance isn't configured for Multi-AZ, then you can't
 specify \code{true}.)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationInstance = list(
     ReplicationInstanceIdentifier = "string",
     ReplicationInstanceClass = "string",
@@ -74,18 +76,20 @@ A list with the following syntax:\preformatted{list(
     DnsNameServers = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Reboots a replication instance. Rebooting results in a momentary outage,
 until the replication instance becomes available again.
 }
 \section{Request syntax}{
-\preformatted{svc$reboot_replication_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_replication_instance(
   ReplicationInstanceArn = "string",
   ForceFailover = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

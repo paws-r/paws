@@ -26,13 +26,15 @@ a valid user. This feedback is used for improving the risk evaluation
 decision for the user pool as part of Amazon Cognito advanced security.
 }
 \section{Request syntax}{
-\preformatted{svc$admin_update_auth_event_feedback(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_update_auth_event_feedback(
   UserPoolId = "string",
   Username = "string",
   EventId = "string",
   FeedbackValue = "Valid"|"Invalid"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

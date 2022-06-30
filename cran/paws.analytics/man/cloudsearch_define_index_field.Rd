@@ -12,7 +12,9 @@ cloudsearch_define_index_field(DomainName, IndexField)
 \item{IndexField}{[required] The index field and field options you want to configure.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IndexField = list(
     Options = list(
       IndexFieldName = "string",
@@ -114,7 +116,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Configures an \code{IndexField} for the search domain. Used to create new
@@ -123,12 +125,15 @@ you are configuring and an index field configuration. The index field
 configuration specifies a unique name, the index field type, and the
 options you want to configure for the field. The options you can specify
 depend on the \code{IndexFieldType}. If the field exists, the new
-configuration replaces the old one. For more information, see
-\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html}{Configuring Index Fields}
-in the \emph{Amazon CloudSearch Developer Guide}.
+configuration replaces the old one. For more information, see <a
+href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html"
+target="_blank">Configuring Index Fields</a> in the \emph{Amazon CloudSearch
+Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$define_index_field(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$define_index_field(
   DomainName = "string",
   IndexField = list(
     IndexFieldName = "string",
@@ -218,7 +223,7 @@ in the \emph{Amazon CloudSearch Developer Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

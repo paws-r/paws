@@ -16,12 +16,14 @@ An empty list.
 Enables the actions for the specified alarms.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_alarm_actions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_alarm_actions(
   AlarmNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

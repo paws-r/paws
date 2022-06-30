@@ -17,7 +17,9 @@ the task set exists in.}
 as the primary task set in the deployment.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskSet = list(
     id = "string",
     taskSetArn = "string",
@@ -88,7 +90,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies which task set in a service is the primary task set. Any
@@ -98,12 +100,14 @@ transition to the service. This is used when a service uses the
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_service_primary_task_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_service_primary_task_set(
   cluster = "string",
   service = "string",
   primaryTaskSet = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

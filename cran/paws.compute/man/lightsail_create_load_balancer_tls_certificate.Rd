@@ -33,7 +33,9 @@ Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -58,7 +60,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Lightsail load balancer TLS certificate.
@@ -73,7 +75,9 @@ the resource identified by \verb{load balancer name}. For more information,
 see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$create_load_balancer_tls_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_load_balancer_tls_certificate(
   loadBalancerName = "string",
   certificateName = "string",
   certificateDomainName = "string",
@@ -87,7 +91,7 @@ see the Lightsail Dev Guide.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

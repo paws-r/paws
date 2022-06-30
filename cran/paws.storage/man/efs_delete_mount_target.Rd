@@ -44,10 +44,12 @@ action on the mount target's network interface:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_mount_target(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_mount_target(
   MountTargetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

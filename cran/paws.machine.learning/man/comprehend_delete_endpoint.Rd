@@ -17,10 +17,12 @@ Deletes a model-specific endpoint for a previously-trained custom model.
 All endpoints must be deleted in order for the model to be deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_endpoint(
   EndpointArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

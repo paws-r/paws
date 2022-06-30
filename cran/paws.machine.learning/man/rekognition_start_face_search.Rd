@@ -32,10 +32,12 @@ example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts the asynchronous search for faces in a collection that match the
@@ -56,7 +58,9 @@ identifier (\code{JobId}) from the initial call to
 information, see procedure-person-search-videos.
 }
 \section{Request syntax}{
-\preformatted{svc$start_face_search(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_face_search(
   Video = list(
     S3Object = list(
       Bucket = "string",
@@ -73,7 +77,7 @@ information, see procedure-person-search-videos.
   ),
   JobTag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -26,7 +26,9 @@ Cognito User Pools.
 For more information, see the Amazon Cognito Documentation.
 }
 \section{Service syntax}{
-\preformatted{svc <- cognitoidentityprovider(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cognitoidentityprovider(
   config = list(
     credentials = list(
       creds = list(
@@ -40,7 +42,7 @@ For more information, see the Amazon Cognito Documentation.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

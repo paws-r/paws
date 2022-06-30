@@ -12,13 +12,15 @@ cloudhsm_list_luna_clients(NextToken)
 the first call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClientList = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -37,10 +39,12 @@ response contains a token that you pass in the next call to
 set of items.
 }
 \section{Request syntax}{
-\preformatted{svc$list_luna_clients(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_luna_clients(
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

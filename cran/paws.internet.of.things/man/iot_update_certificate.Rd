@@ -14,8 +14,8 @@ contains the certificate ID.)}
 
 \strong{Note:} Setting the status to PENDING_TRANSFER or PENDING_ACTIVATION
 will result in an exception being thrown. PENDING_TRANSFER and
-PENDING_ACTIVATION are statuses used internally by AWS IoT. They are
-not intended for developer use.
+PENDING_ACTIVATION are statuses used internally by AWS IoT. They are not
+intended for developer use.
 
 \strong{Note:} The status value REGISTER_INACTIVE is deprecated and should
 not be used.}
@@ -36,11 +36,13 @@ certificate to connect. Devices cannot use a certificate that is not in
 the ACTIVE state to reconnect.
 }
 \section{Request syntax}{
-\preformatted{svc$update_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_certificate(
   certificateId = "string",
   newStatus = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

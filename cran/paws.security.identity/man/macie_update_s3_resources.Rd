@@ -13,7 +13,9 @@ resources' classification types you want to update.}
 \item{s3ResourcesUpdate}{[required] The S3 resources whose classification types you want to update.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   failedS3Resources = list(
     list(
       failedItem = list(
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the classification types for the specified S3 resources. If
@@ -36,7 +38,9 @@ updates the classification types of the S3 resources associated with
 Amazon Macie Classic for the specified member account.
 }
 \section{Request syntax}{
-\preformatted{svc$update_s3_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_s3_resources(
   memberAccountId = "string",
   s3ResourcesUpdate = list(
     list(
@@ -49,7 +53,7 @@ Amazon Macie Classic for the specified member account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

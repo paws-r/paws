@@ -53,10 +53,12 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$disable_key_rotation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_key_rotation(
   KeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

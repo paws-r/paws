@@ -43,13 +43,15 @@ in UTF-8 encoding.}
 in the request payload.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   executionArn = "string",
   startDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a state machine execution.
@@ -62,13 +64,15 @@ the input is different, it will return a 400 \code{ExecutionAlreadyExists}
 error. Names can be reused after 90 days.
 }
 \section{Request syntax}{
-\preformatted{svc$start_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_execution(
   stateMachineArn = "string",
   name = "string",
   input = "string",
   traceHeader = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

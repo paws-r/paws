@@ -55,7 +55,9 @@ prefix.}
 an Amplify app.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   branch = list(
     branchArn = "string",
     branchName = "string",
@@ -98,13 +100,15 @@ A list with the following syntax:\preformatted{list(
     backendEnvironmentArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new branch for an Amplify app.
 }
 \section{Request syntax}{
-\preformatted{svc$create_branch(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_branch(
   appId = "string",
   branchName = "string",
   description = "string",
@@ -128,7 +132,7 @@ Creates a new branch for an Amplify app.
   pullRequestEnvironmentName = "string",
   backendEnvironmentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

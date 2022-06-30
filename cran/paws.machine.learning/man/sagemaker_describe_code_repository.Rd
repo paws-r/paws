@@ -10,7 +10,9 @@ sagemaker_describe_code_repository(CodeRepositoryName)
 \item{CodeRepositoryName}{[required] The name of the Git repository to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CodeRepositoryName = "string",
   CodeRepositoryArn = "string",
   CreationTime = as.POSIXct(
@@ -25,16 +27,18 @@ A list with the following syntax:\preformatted{list(
     SecretArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets details about the specified Git repository.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_code_repository(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_code_repository(
   CodeRepositoryName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

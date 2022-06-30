@@ -42,7 +42,9 @@ applies only to Zixi-based streams.}
 \item{VpcInterfaceAttachment}{The name of the VPC interface attachment to use for this output.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FlowArn = "string",
   Output = list(
     DataTransferSubscriberFeePercent = 123,
@@ -80,13 +82,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing flow output.
 }
 \section{Request syntax}{
-\preformatted{svc$update_flow_output(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_flow_output(
   CidrAllowList = list(
     "string"
   ),
@@ -115,7 +119,7 @@ Updates an existing flow output.
     VpcInterfaceName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

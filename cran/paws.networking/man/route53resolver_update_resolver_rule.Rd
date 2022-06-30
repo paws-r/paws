@@ -12,7 +12,9 @@ route53resolver_update_resolver_rule(ResolverRuleId, Config)
 \item{Config}{[required] The new settings for the Resolver rule.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResolverRule = list(
     Id = "string",
     CreatorRequestId = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     ModificationTime = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates settings for a specified Resolver rule. \code{ResolverRuleId} is
@@ -43,7 +45,9 @@ required, and all other parameters are optional. If you don't specify a
 parameter, it retains its current value.
 }
 \section{Request syntax}{
-\preformatted{svc$update_resolver_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_resolver_rule(
   ResolverRuleId = "string",
   Config = list(
     Name = "string",
@@ -56,7 +60,7 @@ parameter, it retains its current value.
     ResolverEndpointId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

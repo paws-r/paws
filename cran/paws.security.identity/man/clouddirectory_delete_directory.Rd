@@ -10,10 +10,12 @@ clouddirectory_delete_directory(DirectoryArn)
 \item{DirectoryArn}{[required] The ARN of the directory to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DirectoryArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a directory. Only disabled directories can be deleted. A deleted
@@ -21,10 +23,12 @@ directory cannot be undone. Exercise extreme caution when deleting
 directories.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_directory(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_directory(
   DirectoryArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

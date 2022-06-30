@@ -13,7 +13,9 @@ route53resolver_get_resolver_query_log_config(ResolverQueryLogConfigId)
 information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResolverQueryLogConfig = list(
     Id = "string",
     OwnerId = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     CreationTime = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a specified Resolver query logging configuration,
@@ -35,10 +37,12 @@ such as the number of VPCs that the configuration is logging queries for
 and the location that logs are sent to.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resolver_query_log_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resolver_query_log_config(
   ResolverQueryLogConfigId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,10 +13,12 @@ machinelearning_update_batch_prediction(BatchPredictionId,
 \item{BatchPredictionName}{[required] A new user-supplied name or description of the \code{BatchPrediction}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BatchPredictionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the \code{BatchPredictionName} of a \code{BatchPrediction}.
@@ -26,11 +28,13 @@ You can use the
 to view the contents of the updated data element.
 }
 \section{Request syntax}{
-\preformatted{svc$update_batch_prediction(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_batch_prediction(
   BatchPredictionId = "string",
   BatchPredictionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

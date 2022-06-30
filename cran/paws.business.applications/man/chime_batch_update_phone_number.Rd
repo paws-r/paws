@@ -11,7 +11,9 @@ chime_batch_update_phone_number(UpdatePhoneNumberRequestItems)
 names to update.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PhoneNumberErrors = list(
     list(
       PhoneNumberId = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates phone number product types or calling names. You can update one
@@ -36,7 +38,9 @@ Pending updates to outbound calling names must be complete before you
 can request another update.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_update_phone_number(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_update_phone_number(
   UpdatePhoneNumberRequestItems = list(
     list(
       PhoneNumberId = "string",
@@ -45,7 +49,7 @@ can request another update.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

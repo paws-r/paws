@@ -38,13 +38,15 @@ request to get the next group of results. Specify the value of
 \code{NextToken} from the previous response in the next request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = list(
     "HEALTHY"|"UNHEALTHY"|"UNKNOWN"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unknown}) of
@@ -54,7 +56,9 @@ There is a brief delay between when you register an instance and when
 the health status for the instance is available.
 }
 \section{Request syntax}{
-\preformatted{svc$get_instances_health_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_instances_health_status(
   ServiceId = "string",
   Instances = list(
     "string"
@@ -62,7 +66,7 @@ the health status for the instance is available.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

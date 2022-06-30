@@ -2643,8 +2643,8 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #'     -   token_url *if not available from discovery URL specified by
 #'         oidc_issuer key*
 #' 
-#'     -   attributes_url *if not available from discovery URL specified
-#'         by oidc_issuer key*
+#'     -   attributes_url *if not available from discovery URL specified by
+#'         oidc_issuer key*
 #' 
 #'     -   jwks_uri *if not available from discovery URL specified by
 #'         oidc_issuer key*

@@ -10,10 +10,12 @@ securityhub_enable_import_findings_for_product(ProductArn)
 \item{ProductArn}{[required] The ARN of the product to enable the integration for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProductSubscriptionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables the integration of a partner product with Security Hub.
@@ -23,10 +25,12 @@ When you enable a product integration, a permissions policy that grants
 permission for the product to send findings to Security Hub is applied.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_import_findings_for_product(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_import_findings_for_product(
   ProductArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

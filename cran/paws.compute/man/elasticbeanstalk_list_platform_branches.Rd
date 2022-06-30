@@ -51,7 +51,9 @@ identical to the ones specified in the initial request.
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PlatformBranchSummaryList = list(
     list(
       PlatformName = "string",
@@ -65,7 +67,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the platform branches available for your account in an AWS Region.
@@ -75,7 +77,9 @@ For definitions of platform branch and other platform-related terms, see
 \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html}{AWS Elastic Beanstalk Platforms Glossary}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_platform_branches(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_platform_branches(
   Filters = list(
     list(
       Attribute = "string",
@@ -88,7 +92,7 @@ For definitions of platform branch and other platform-related terms, see
   MaxRecords = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

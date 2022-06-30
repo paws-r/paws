@@ -18,7 +18,9 @@ are paginated, the response will return a next page token that you can
 specify as the page token in a subsequent request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   blueprints = list(
     list(
       blueprintId = "string",
@@ -37,7 +39,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the list of available instance images, or \emph{blueprints}. You can
@@ -53,11 +55,13 @@ inactive when they become outdated due to operating system updates or
 new application releases.
 }
 \section{Request syntax}{
-\preformatted{svc$get_blueprints(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_blueprints(
   includeInactive = TRUE|FALSE,
   pageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

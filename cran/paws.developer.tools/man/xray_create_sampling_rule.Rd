@@ -27,7 +27,9 @@ following characters: _ . : / = + - and @
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SamplingRuleRecord = list(
     SamplingRule = list(
       RuleName = "string",
@@ -54,7 +56,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a rule to control sampling behavior for instrumented
@@ -68,7 +70,9 @@ versions of each in-use rule. The updated rule contains a trace quota
 that the service can use instead of borrowing from the reservoir.
 }
 \section{Request syntax}{
-\preformatted{svc$create_sampling_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_sampling_rule(
   SamplingRule = list(
     RuleName = "string",
     RuleARN = "string",
@@ -93,7 +97,7 @@ that the service can use instead of borrowing from the reservoir.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

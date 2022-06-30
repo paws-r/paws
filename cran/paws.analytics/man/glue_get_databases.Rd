@@ -24,7 +24,9 @@ as well as the databases in yor local account.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DatabaseList = list(
     list(
       Name = "string",
@@ -55,19 +57,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves all databases defined in a given Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$get_databases(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_databases(
   CatalogId = "string",
   NextToken = "string",
   MaxResults = 123,
   ResourceShareType = "FOREIGN"|"ALL"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

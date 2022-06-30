@@ -30,14 +30,14 @@ NULL
 #' 
 #' -   The video track of each fragment must contain codec private data in
 #'     the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265
-#'     format. For more information, see [MPEG-4 specification ISO/IEC
-#'     14496-15](https://www.iso.org/standard/55980.html). For information
-#'     about adapting stream data to a given format, see [NAL Adaptation
+#'     format. For more information, see MPEG-4 specification ISO/IEC
+#'     14496-15. For information about adapting stream data to a given
+#'     format, see [NAL Adaptation
 #'     Flags](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
 #' 
 #' -   The audio track (if present) of each fragment must contain codec
-#'     private data in the AAC format ([AAC specification ISO/IEC
-#'     13818-7](https://www.iso.org/standard/43345.html)) or the [MS Wave
+#'     private data in the AAC format (AAC specification ISO/IEC 13818-7)
+#'     or the [MS Wave
 #'     format](http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html).
 #' 
 #' You can monitor the amount of outgoing data by monitoring the
@@ -136,14 +136,14 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #' 
 #' -   The video track of each fragment must contain codec private data in
 #'     the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265
-#'     format. For more information, see [MPEG-4 specification ISO/IEC
-#'     14496-15](https://www.iso.org/standard/55980.html). For information
-#'     about adapting stream data to a given format, see [NAL Adaptation
+#'     format. For more information, see MPEG-4 specification ISO/IEC
+#'     14496-15. For information about adapting stream data to a given
+#'     format, see [NAL Adaptation
 #'     Flags](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
 #' 
 #' -   The audio track (if present) of each fragment must contain codec
-#'     private data in the AAC format ([AAC specification ISO/IEC
-#'     13818-7](https://www.iso.org/standard/43345.html)) or the [MS Wave
+#'     private data in the AAC format (AAC specification ISO/IEC 13818-7)
+#'     or the [MS Wave
 #'     format](http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html).
 #' 
 #' The following procedure shows how to use MPEG-DASH with Kinesis Video
@@ -471,14 +471,12 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #' 
 #' -   The video track of each fragment must contain codec private data in
 #'     the Advanced Video Coding (AVC) for H.264 format or HEVC for H.265
-#'     format ([MPEG-4 specification ISO/IEC
-#'     14496-15](https://www.iso.org/standard/55980.html)). For information
+#'     format (MPEG-4 specification ISO/IEC 14496-15). For information
 #'     about adapting stream data to a given format, see [NAL Adaptation
 #'     Flags](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
 #' 
 #' -   The audio track (if present) of each fragment must contain codec
-#'     private data in the AAC format ([AAC specification ISO/IEC
-#'     13818-7](https://www.iso.org/standard/43345.html)).
+#'     private data in the AAC format (AAC specification ISO/IEC 13818-7).
 #' 
 #' Kinesis Video Streams HLS sessions contain fragments in the fragmented
 #' MPEG-4 form (also called fMP4 or CMAF) or the MPEG-2 form (also called

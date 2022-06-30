@@ -656,9 +656,8 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 #' @param name &#91;required&#93; \[Required\] The name of the model. Must be alphanumeric.
 #' @param description The description of the model.
 #' @param schema The schema for the model. For `application/json` models, this should be
-#' [JSON schema draft
-#' 4](https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04)
-#' model.
+#' <a href="https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04"
+#' target="_blank">JSON schema draft 4</a> model.
 #' @param contentType &#91;required&#93; \[Required\] The content-type for the model.
 #'
 #' @return
@@ -6005,12 +6004,12 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' @param uri Specifies Uniform Resource Identifier (URI) of the integration endpoint.
 #' 
 #' -   For `HTTP` or `HTTP_PROXY` integrations, the URI must be a fully
-#'     formed, encoded HTTP(S) URL according to the [RFC-3986
-#'     specification](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier),
-#'     for either standard integration, where `connectionType` is not
-#'     `VPC_LINK`, or private integration, where `connectionType` is
-#'     `VPC_LINK`. For a private HTTP integration, the URI is not used for
-#'     routing.
+#'     formed, encoded HTTP(S) URL according to the
+#'     <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier"
+#'     target="_blank">RFC-3986 specification</a>, for either standard
+#'     integration, where `connectionType` is not `VPC_LINK`, or private
+#'     integration, where `connectionType` is `VPC_LINK`. For a private
+#'     HTTP integration, the URI is not used for routing.
 #' 
 #' -   For `AWS` or `AWS_PROXY` integrations, the URI is of the form
 #'     `arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}`.
@@ -6033,7 +6032,7 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' internet or `VPC_LINK` for private connections between API Gateway and a
 #' network load balancer in a VPC. The default value is `INTERNET`.
 #' @param connectionId The
-#' ([`id`](https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id))
+#' ([`id`](https://docs.aws.amazon.com/apigateway/latest/api/API_Operations.html#id))
 #' of the VpcLink used for the integration when `connectionType=VPC_LINK`
 #' and undefined, otherwise.
 #' @param credentials Specifies whether credentials are required for a put integration.

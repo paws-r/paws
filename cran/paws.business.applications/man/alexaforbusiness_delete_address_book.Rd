@@ -16,10 +16,12 @@ An empty list.
 Deletes an address book by the address book ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_address_book(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_address_book(
   AddressBookArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

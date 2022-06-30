@@ -12,7 +12,9 @@ worklink_describe_domain(FleetArn, DomainName)
 \item{DomainName}{[required] The name of the domain.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DomainName = "string",
   DisplayName = "string",
   CreatedTime = as.POSIXct(
@@ -21,17 +23,19 @@ A list with the following syntax:\preformatted{list(
   DomainStatus = "PENDING_VALIDATION"|"ASSOCIATING"|"ACTIVE"|"INACTIVE"|"DISASSOCIATING"|"DISASSOCIATED"|"FAILED_TO_ASSOCIATE"|"FAILED_TO_DISASSOCIATE",
   AcmCertificateArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information about the domain.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_domain(
   FleetArn = "string",
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

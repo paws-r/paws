@@ -63,7 +63,9 @@ DB cluster snapshot, and otherwise false. The default is false.}
 \item{Tags}{The tags to assign to the new DB cluster snapshot copy.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterSnapshot = list(
     AvailabilityZones = list(
       "string"
@@ -93,7 +95,7 @@ A list with the following syntax:\preformatted{list(
     IAMDatabaseAuthenticationEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Copies a snapshot of a DB cluster.
@@ -103,7 +105,9 @@ To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
 (ARN) of the shared DB cluster snapshot.
 }
 \section{Request syntax}{
-\preformatted{svc$copy_db_cluster_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_db_cluster_snapshot(
   SourceDBClusterSnapshotIdentifier = "string",
   TargetDBClusterSnapshotIdentifier = "string",
   KmsKeyId = "string",
@@ -116,7 +120,7 @@ To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -15,7 +15,9 @@ the default cluster is assumed.}
 on which you would like to update the Amazon ECS container agent.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   containerInstance = list(
     containerInstanceArn = "string",
     ec2InstanceId = "string",
@@ -88,7 +90,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the Amazon ECS container agent on a specified container
@@ -105,11 +107,13 @@ on other operating systems, see \href{https://docs.aws.amazon.com/AmazonECS/late
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_container_agent(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_container_agent(
   cluster = "string",
   containerInstance = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

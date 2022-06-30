@@ -40,7 +40,9 @@ Constraints:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBCluster = list(
     AvailabilityZones = list(
       "string"
@@ -100,7 +102,7 @@ A list with the following syntax:\preformatted{list(
     DeletionProtection = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a previously provisioned cluster. When you delete a cluster, all
@@ -108,12 +110,14 @@ automated backups for that cluster are deleted and can't be recovered.
 Manual DB cluster snapshots of the specified cluster are not deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_db_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_cluster(
   DBClusterIdentifier = "string",
   SkipFinalSnapshot = TRUE|FALSE,
   FinalDBSnapshotIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

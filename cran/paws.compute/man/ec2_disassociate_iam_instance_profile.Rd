@@ -10,7 +10,9 @@ ec2_disassociate_iam_instance_profile(AssociationId)
 \item{AssociationId}{[required] The ID of the IAM instance profile association.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IamInstanceProfileAssociation = list(
     AssociationId = "string",
     InstanceId = "string",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disassociates an IAM instance profile from a running or stopped
@@ -35,10 +37,12 @@ Use
 to get the association ID.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_iam_instance_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_iam_instance_profile(
   AssociationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

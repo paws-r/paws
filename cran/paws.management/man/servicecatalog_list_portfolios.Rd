@@ -20,7 +20,9 @@ results, use null.}
 \item{PageSize}{The maximum number of items to return with this call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PortfolioDetails = list(
     list(
       Id = "string",
@@ -35,18 +37,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all portfolios in the catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$list_portfolios(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_portfolios(
   AcceptLanguage = "string",
   PageToken = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

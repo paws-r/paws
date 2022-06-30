@@ -28,11 +28,13 @@ If this field is not provided, the current state of TagOptions sharing
 on the portfolio share will not be modified.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PortfolioShareToken = "string",
   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"ERROR"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the specified portfolio share. You can use this API to enable or
@@ -57,7 +59,9 @@ This API cannot be used for removing the portfolio share. You must use
 for that action.
 }
 \section{Request syntax}{
-\preformatted{svc$update_portfolio_share(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_portfolio_share(
   AcceptLanguage = "string",
   PortfolioId = "string",
   AccountId = "string",
@@ -67,7 +71,7 @@ for that action.
   ),
   ShareTagOptions = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

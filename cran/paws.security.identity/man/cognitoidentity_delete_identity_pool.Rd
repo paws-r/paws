@@ -19,10 +19,12 @@ to authenticate with the pool.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_identity_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_identity_pool(
   IdentityPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

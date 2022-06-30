@@ -11,10 +11,12 @@ gamelift_validate_matchmaking_rule_set(RuleSetBody)
 string.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Valid = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Validates the syntax of a matchmaking rule or rule set. This operation
@@ -40,10 +42,12 @@ rule set JSON string.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$validate_matchmaking_rule_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$validate_matchmaking_rule_set(
   RuleSetBody = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

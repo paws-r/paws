@@ -14,7 +14,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{GCMChannelRequest}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GCMChannelResponse = list(
     ApplicationId = "string",
     CreationDate = "string",
@@ -29,21 +31,23 @@ A list with the following syntax:\preformatted{list(
     Version = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables the GCM channel for an application or updates the status and
 settings of the GCM channel for an application.
 }
 \section{Request syntax}{
-\preformatted{svc$update_gcm_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_gcm_channel(
   ApplicationId = "string",
   GCMChannelRequest = list(
     ApiKey = "string",
     Enabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

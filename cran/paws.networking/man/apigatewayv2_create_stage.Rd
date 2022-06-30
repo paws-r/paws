@@ -31,13 +31,15 @@ WebSocket APIs.}
 
 \item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-._~:/?\#&=,]+.}
+[A-Za-z0-9-._~:/?#&=,]+.}
 
 \item{Tags}{The collection of tags. Each tag element is associated with a given
 resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -78,13 +80,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Stage for an API.
 }
 \section{Request syntax}{
-\preformatted{svc$create_stage(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stage(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -118,7 +122,7 @@ Creates a Stage for an API.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

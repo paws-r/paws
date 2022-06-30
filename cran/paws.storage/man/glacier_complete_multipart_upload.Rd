@@ -30,12 +30,14 @@ archive as computed by Amazon S3 Glacier (Glacier), Glacier returns an
 error and the request fails.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   location = "string",
   checksum = "string",
   archiveId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 You call this operation to inform Amazon S3 Glacier (Glacier) that all
@@ -84,14 +86,16 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-com
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$complete_multipart_upload(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$complete_multipart_upload(
   accountId = "string",
   vaultName = "string",
   uploadId = "string",
   archiveSize = "string",
   checksum = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

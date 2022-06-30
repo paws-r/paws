@@ -139,7 +139,7 @@ a DB instance in another AWS Region.
 \item The specified DB subnet group must be in the same AWS Region in
 which the operation is running.
 \item All read replicas in one AWS Region that are created from the same
-source DB instance must either:>
+source DB instance must either:\>
 \itemize{
 \item Specify DB subnet groups from the same VPC. All these read
 replicas are created in the same VPC.
@@ -179,7 +179,7 @@ Valid Values: \verb{0, 1, 5, 10, 15, 30, 60}}
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 \code{arn:aws:iam:123456789012:role/emaccess}. For information on creating a
-monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Monitoring.html#USER_Monitoring}{To create an IAM role for Amazon RDS Enhanced Monitoring}
+monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole}{To create an IAM role for Amazon RDS Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide}.
 
 If \code{MonitoringInterval} is set to a value other than 0, then you must
@@ -338,7 +338,9 @@ of the DB instance.}
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -524,7 +526,7 @@ A list with the following syntax:\preformatted{list(
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new DB instance that acts as a read replica for an existing
@@ -545,7 +547,9 @@ specified.
 Your source DB instance must have backup retention enabled.
 }
 \section{Request syntax}{
-\preformatted{svc$create_db_instance_read_replica(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_instance_read_replica(
   DBInstanceIdentifier = "string",
   SourceDBInstanceIdentifier = "string",
   DBInstanceClass = "string",
@@ -594,7 +598,7 @@ Your source DB instance must have backup retention enabled.
   MaxAllocatedStorage = 123,
   SourceRegion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

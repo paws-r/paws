@@ -12,7 +12,9 @@ securityhub_invite_members(AccountIds)
 members.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Invites other AWS accounts to become member accounts for the Security
@@ -38,12 +40,14 @@ to become a member account, the master account can view the findings
 generated from the member account.
 }
 \section{Request syntax}{
-\preformatted{svc$invite_members(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$invite_members(
   AccountIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

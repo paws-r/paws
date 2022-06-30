@@ -45,7 +45,9 @@ All Elastic Load Balancing operations are idempotent, which means that
 they complete at most one time. If you repeat an operation, it succeeds.
 }
 \section{Service syntax}{
-\preformatted{svc <- elbv2(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- elbv2(
   config = list(
     credentials = list(
       creds = list(
@@ -59,7 +61,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

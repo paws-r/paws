@@ -24,7 +24,9 @@ Attaches a policy object to a regular object. An object can have a
 limited number of attached policies.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_policy(
   DirectoryArn = "string",
   PolicyReference = list(
     Selector = "string"
@@ -33,7 +35,7 @@ limited number of attached policies.
     Selector = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -25,7 +25,9 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   ReplicationTaskIndividualAssessments = list(
     list(
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a paginated list of individual assessments based on filter
@@ -49,7 +51,9 @@ These filter settings can specify a combination of premigration
 assessment runs, migration tasks, and assessment status values.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_replication_task_individual_assessments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_replication_task_individual_assessments(
   Filters = list(
     list(
       Name = "string",
@@ -61,7 +65,7 @@ assessment runs, migration tasks, and assessment status values.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

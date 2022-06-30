@@ -18,7 +18,9 @@ An empty list.
 Adds or modifies tags for the specified pipeline.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags(
   pipelineId = "string",
   tags = list(
     list(
@@ -27,7 +29,7 @@ Adds or modifies tags for the specified pipeline.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,7 +22,7 @@ Constraints:
 specify a valid DB snapshot identifier.
 \item If the source snapshot is in a different AWS Region than the copy,
 specify a valid DB cluster snapshot ARN. For more information, go to
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions}{Copying Snapshots Across AWS Regions}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-copy-snapshot.html#USER_CopySnapshot.AcrossRegions}{Copying Snapshots Across AWS Regions}
 in the \emph{Amazon Aurora User Guide.}
 }
 
@@ -116,7 +116,9 @@ not copied.}
 \item{SourceRegion}{The ID of the region that contains the snapshot to be copied.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterSnapshot = list(
     AvailabilityZones = list(
       "string"
@@ -152,7 +154,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Copies a snapshot of a DB cluster.
@@ -225,7 +227,7 @@ DB cluster snapshot identified by \code{TargetDBClusterSnapshotIdentifier}
 while that DB cluster snapshot is in "copying" status.
 
 For more information on copying encrypted DB cluster snapshots from one
-AWS Region to another, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html}{Copying a Snapshot}
+AWS Region to another, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-copy-snapshot.html}{Copying a Snapshot}
 in the \emph{Amazon Aurora User Guide.}
 
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
@@ -234,7 +236,9 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$copy_db_cluster_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_db_cluster_snapshot(
   SourceDBClusterSnapshotIdentifier = "string",
   TargetDBClusterSnapshotIdentifier = "string",
   KmsKeyId = "string",
@@ -248,7 +252,7 @@ This action only applies to Aurora DB clusters.
   ),
   SourceRegion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

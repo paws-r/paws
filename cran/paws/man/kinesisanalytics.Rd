@@ -27,7 +27,9 @@ This is the \emph{Amazon Kinesis Analytics v1 API Reference}. The Amazon
 Kinesis Analytics Developer Guide provides additional information.
 }
 \section{Service syntax}{
-\preformatted{svc <- kinesisanalytics(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- kinesisanalytics(
   config = list(
     credentials = list(
       creds = list(
@@ -41,7 +43,7 @@ Kinesis Analytics Developer Guide provides additional information.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

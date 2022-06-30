@@ -26,7 +26,9 @@ this token from a previous call.)}
 list of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Commands = list(
     list(
       CommandId = "string",
@@ -83,13 +85,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the commands requested by users of the AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_commands(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_commands(
   CommandId = "string",
   InstanceId = "string",
   MaxResults = 123,
@@ -101,7 +105,7 @@ Lists the commands requested by users of the AWS account.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

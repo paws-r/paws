@@ -10,7 +10,9 @@ dynamodb_describe_global_table_settings(GlobalTableName)
 \item{GlobalTableName}{[required] The name of the global table to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GlobalTableName = "string",
   ReplicaSettings = list(
     list(
@@ -103,7 +105,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes Region-specific settings for a global table.
@@ -112,10 +114,12 @@ This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/
 of global tables.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_global_table_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_global_table_settings(
   GlobalTableName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

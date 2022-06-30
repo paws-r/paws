@@ -20,10 +20,12 @@ change.
 Deletes the Amazon Connect instance.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_instance(
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

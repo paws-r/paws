@@ -45,7 +45,9 @@ An empty list.
 Updates an existing room profile by room profile ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$update_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_profile(
   ProfileArn = "string",
   ProfileName = "string",
   IsDefault = TRUE|FALSE,
@@ -77,7 +79,7 @@ Updates an existing room profile by room profile ARN.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

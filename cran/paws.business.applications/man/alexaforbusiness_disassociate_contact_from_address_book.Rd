@@ -19,11 +19,13 @@ An empty list.
 Disassociates a contact from a given address book.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_contact_from_address_book(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_contact_from_address_book(
   ContactArn = "string",
   AddressBookArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -61,7 +61,9 @@ and \href{https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manag
 in the \emph{Amazon Cognito Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Users = list(
     list(
       Username = "string",
@@ -89,13 +91,15 @@ A list with the following syntax:\preformatted{list(
   ),
   PaginationToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the users in the Amazon Cognito user pool.
 }
 \section{Request syntax}{
-\preformatted{svc$list_users(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_users(
   UserPoolId = "string",
   AttributesToGet = list(
     "string"
@@ -104,7 +108,7 @@ Lists the users in the Amazon Cognito user pool.
   PaginationToken = "string",
   Filter = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,7 +14,9 @@ other services, e.g., update state of AWS CloudFormation stacks in the
 AWS Mobile Hub project.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   details = list(
     name = "string",
     projectId = "string",
@@ -40,17 +42,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets details about a project in AWS Mobile Hub.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_project(
   projectId = "string",
   syncFromResources = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

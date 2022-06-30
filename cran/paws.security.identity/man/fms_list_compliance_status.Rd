@@ -25,7 +25,9 @@ AWS Firewall Manager to return for this request. If you have more
 to get another batch of \code{PolicyComplianceStatus} objects.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyComplianceStatusList = list(
     list(
       PolicyOwner = "string",
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an array of \code{PolicyComplianceStatus} objects. Use
@@ -57,12 +59,14 @@ Returns an array of \code{PolicyComplianceStatus} objects. Use
 protected by the specified policy.
 }
 \section{Request syntax}{
-\preformatted{svc$list_compliance_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_compliance_status(
   PolicyId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

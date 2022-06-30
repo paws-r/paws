@@ -78,7 +78,9 @@ The permission policy on the default event bus cannot exceed 10 KB in
 size.
 }
 \section{Request syntax}{
-\preformatted{svc$put_permission(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_permission(
   EventBusName = "string",
   Action = "string",
   Principal = "string",
@@ -90,7 +92,7 @@ size.
   ),
   Policy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

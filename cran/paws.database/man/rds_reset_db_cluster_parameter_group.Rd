@@ -21,10 +21,12 @@ the default values. You can't use this parameter if the
 \code{ResetAllParameters} parameter is enabled.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the parameters of a DB cluster parameter group to the default
@@ -46,7 +48,9 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_db_cluster_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(
@@ -67,7 +71,7 @@ This action only applies to Aurora DB clusters.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

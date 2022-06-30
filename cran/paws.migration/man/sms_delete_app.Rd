@@ -24,12 +24,14 @@ associated with the application and all AWS SMS replication jobs for
 servers in the application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_app(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app(
   appId = "string",
   forceStopAppReplication = TRUE|FALSE,
   forceTerminateApp = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

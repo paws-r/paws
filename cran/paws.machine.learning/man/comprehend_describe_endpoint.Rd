@@ -10,7 +10,9 @@ comprehend_describe_endpoint(EndpointArn)
 \item{EndpointArn}{[required] The Amazon Resource Number (ARN) of the endpoint being described.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointProperties = list(
     EndpointArn = "string",
     Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
@@ -26,17 +28,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the properties associated with a specific endpoint. Use this
 operation to get the status of an endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_endpoint(
   EndpointArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

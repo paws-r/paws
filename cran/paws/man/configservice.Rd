@@ -38,7 +38,9 @@ see \href{https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.
 in the \emph{AWS Config Developer Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- configservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- configservice(
   config = list(
     credentials = list(
       creds = list(
@@ -52,7 +54,7 @@ in the \emph{AWS Config Developer Guide}.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

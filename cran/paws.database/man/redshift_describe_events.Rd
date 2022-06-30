@@ -78,7 +78,9 @@ providing the returned marker value in the \code{Marker} parameter and
 retrying the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   Events = list(
     list(
@@ -96,7 +98,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns events related to clusters, security groups, snapshots, and
@@ -106,7 +108,9 @@ providing the name as a parameter. By default, the past hour of events
 are returned.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_events(
   SourceIdentifier = "string",
   SourceType = "cluster"|"cluster-parameter-group"|"cluster-security-group"|"cluster-snapshot"|"scheduled-action",
   StartTime = as.POSIXct(
@@ -119,7 +123,7 @@ are returned.
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

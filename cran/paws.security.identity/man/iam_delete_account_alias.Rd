@@ -22,10 +22,12 @@ AWS account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/co
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_account_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_account_alias(
   AccountAlias = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

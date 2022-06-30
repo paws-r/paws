@@ -16,7 +16,9 @@ to get the list of associated conditional forwarders. If this member is
 null, all conditional forwarders are returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConditionalForwarders = list(
     list(
       RemoteDomainName = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Obtains information about the conditional forwarders for this account.
@@ -36,13 +38,15 @@ If no input parameters are provided for RemoteDomainNames, this request
 describes all conditional forwarders for the specified directory ID.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_conditional_forwarders(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_conditional_forwarders(
   DirectoryId = "string",
   RemoteDomainNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

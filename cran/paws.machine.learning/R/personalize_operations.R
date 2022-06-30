@@ -114,10 +114,9 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' 
 #' A campaign can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' To get the campaign status, call
 #' [`describe_campaign`][personalize_describe_campaign].
@@ -209,10 +208,9 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' 
 #' A dataset can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' To get the status of the dataset, call
 #' [`describe_dataset`][personalize_describe_dataset].
@@ -304,8 +302,7 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 #' 
 #' A dataset group can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
 #' -   DELETE PENDING
 #' 
@@ -401,8 +398,7 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' 
 #' A dataset import job can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
 #' To get the status of the import job, call
 #' [`describe_dataset_import_job`][personalize_describe_dataset_import_job],
@@ -495,10 +491,9 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 #' 
 #' The event tracker can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' To get the status of the event tracker, call
 #' [`describe_event_tracker`][personalize_describe_event_tracker].
@@ -576,9 +571,9 @@ personalize_create_event_tracker <- function(name, datasetGroupArn) {
 #' 
 #' `EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")`
 #' 
-#' Where "EVENT_TYPE" is the type of event to filter out. To filter out
-#' all items with any interactions history, set `"*"` as the EVENT_TYPE.
-#' For more information, see [Using Filters with Amazon
+#' Where "EVENT_TYPE" is the type of event to filter out. To filter out all
+#' items with any interactions history, set `"*"` as the EVENT_TYPE. For
+#' more information, see [Using Filters with Amazon
 #' Personalize](https://docs.aws.amazon.com/personalize/latest/dg/).
 #'
 #' @return
@@ -710,10 +705,9 @@ personalize_create_schema <- function(name, schema) {
 #' 
 #' A solution can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' To get the status of the solution, call
 #' [`describe_solution`][personalize_describe_solution]. Wait until the
@@ -868,8 +862,7 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' 
 #' A solution version can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
 #' To get the status of the version, call
 #' [`describe_solution_version`][personalize_describe_solution_version].
@@ -1435,10 +1428,9 @@ personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
 #' 
 #' A campaign can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' When the `status` is `CREATE FAILED`, the response includes the
 #' `failureReason` key, which describes why.

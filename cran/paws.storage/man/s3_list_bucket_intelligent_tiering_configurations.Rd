@@ -15,7 +15,9 @@ or retrieve.}
 request should begin.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IsTruncated = TRUE|FALSE,
   ContinuationToken = "string",
   NextContinuationToken = "string",
@@ -48,7 +50,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the S3 Intelligent-Tiering configuration from the specified
@@ -80,11 +82,13 @@ include:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$list_bucket_intelligent_tiering_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_bucket_intelligent_tiering_configurations(
   Bucket = "string",
   ContinuationToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

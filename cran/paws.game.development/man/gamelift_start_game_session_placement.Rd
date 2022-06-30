@@ -41,7 +41,9 @@ value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GameSessionPlacement = list(
     PlacementId = "string",
     GameSessionQueueName = "string",
@@ -83,7 +85,7 @@ A list with the following syntax:\preformatted{list(
     MatchmakerData = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Places a request for a new game session in a queue (see
@@ -146,7 +148,9 @@ request or retry it with a different queue.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$start_game_session_placement(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_game_session_placement(
   PlacementId = "string",
   GameSessionQueueName = "string",
   GameProperties = list(
@@ -172,7 +176,7 @@ request or retry it with a different queue.
   ),
   GameSessionData = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

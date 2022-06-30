@@ -19,13 +19,15 @@ Deregisters the specified devices. After you deregister a device, you
 will need to re-register the devices.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_devices(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_devices(
   DeviceFleetName = "string",
   DeviceNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

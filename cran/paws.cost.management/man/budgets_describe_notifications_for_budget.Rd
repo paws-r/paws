@@ -20,7 +20,9 @@ response contains. The maximum is 100.}
 next set of results that you want to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Notifications = list(
     list(
       NotificationType = "ACTUAL"|"FORECASTED",
@@ -32,19 +34,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the notifications that are associated with a budget.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_notifications_for_budget(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_notifications_for_budget(
   AccountId = "string",
   BudgetName = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

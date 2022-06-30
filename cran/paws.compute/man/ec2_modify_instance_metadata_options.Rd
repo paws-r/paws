@@ -44,7 +44,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstanceId = "string",
   InstanceMetadataOptions = list(
     State = "pending"|"applied",
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     HttpEndpoint = "disabled"|"enabled"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modify the instance metadata parameters on a running or stopped
@@ -66,14 +68,16 @@ subsequent describe-instances API calls. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_instance_metadata_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_instance_metadata_options(
   InstanceId = "string",
   HttpTokens = "optional"|"required",
   HttpPutResponseHopLimit = 123,
   HttpEndpoint = "disabled"|"enabled",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

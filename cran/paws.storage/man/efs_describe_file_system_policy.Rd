@@ -10,11 +10,13 @@ efs_describe_file_system_policy(FileSystemId)
 \item{FileSystemId}{[required] Specifies which EFS file system to retrieve the \code{FileSystemPolicy} for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FileSystemId = "string",
   Policy = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the \code{FileSystemPolicy} for the specified EFS file system.
@@ -23,10 +25,12 @@ This operation requires permissions for the
 \code{elasticfilesystem:DescribeFileSystemPolicy} action.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_file_system_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_file_system_policy(
   FileSystemId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

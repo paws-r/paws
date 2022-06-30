@@ -19,7 +19,9 @@ the latest published dashboard version is described.}
 \item{AliasName}{The alias name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Dashboard = list(
     DashboardId = "string",
     Arn = "string",
@@ -63,19 +65,21 @@ A list with the following syntax:\preformatted{list(
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides a summary for a dashboard.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_dashboard(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_dashboard(
   AwsAccountId = "string",
   DashboardId = "string",
   VersionNumber = 123,
   AliasName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

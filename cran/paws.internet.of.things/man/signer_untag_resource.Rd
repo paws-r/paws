@@ -19,13 +19,15 @@ Removes one or more tags from a signing profile. To remove the tags,
 specify a list of tag keys.
 }
 \section{Request syntax}{
-\preformatted{svc$untag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

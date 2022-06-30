@@ -13,13 +13,15 @@ dax_update_parameter_group(ParameterGroupName, ParameterNameValues)
 element in the array represents a single parameter.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ParameterGroup = list(
     ParameterGroupName = "string",
     Description = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the parameters of a parameter group. You can modify up to 20
@@ -27,7 +29,9 @@ parameters in a single request by submitting a list parameter name and
 value pairs.
 }
 \section{Request syntax}{
-\preformatted{svc$update_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_parameter_group(
   ParameterGroupName = "string",
   ParameterNameValues = list(
     list(
@@ -36,7 +40,7 @@ value pairs.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -8,8 +8,7 @@ mediastoredata_get_object(Path, Range)
 }
 \arguments{
 \item{Path}{[required] The path (including the file name) where the object is stored in the
-container. Format: <folder name>/<folder name>/<file
-name>
+container. Format: \<folder name\>/\<folder name\>/\<file name\>
 
 For example, to upload the file \code{mlaw.avi} to the folder path
 \verb{premium\\canada} in the container \code{movies}, enter the path
@@ -41,7 +40,9 @@ Elemental MediaStore ignores this header for partially uploaded objects
 that have streaming upload availability.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Body = raw,
   CacheControl = "string",
   ContentRange = "string",
@@ -53,7 +54,7 @@ A list with the following syntax:\preformatted{list(
   ),
   StatusCode = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Downloads the object at the specified path. If the object’s upload
@@ -61,11 +62,13 @@ availability is set to \code{streaming}, AWS Elemental MediaStore downloads
 the object even if it’s still uploading the object.
 }
 \section{Request syntax}{
-\preformatted{svc$get_object(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_object(
   Path = "string",
   Range = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

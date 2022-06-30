@@ -11,10 +11,12 @@ route53domains_enable_domain_transfer_lock(DomainName)
 \item{DomainName}{[required] The name of the domain that you want to set the transfer lock for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation sets the transfer lock on the domain (specifically the
@@ -24,10 +26,12 @@ the progress and completion of the action. If the request is not
 completed successfully, the domain registrant will be notified by email.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_domain_transfer_lock(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_domain_transfer_lock(
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

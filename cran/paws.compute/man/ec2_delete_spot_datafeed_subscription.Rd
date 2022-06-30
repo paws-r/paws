@@ -19,10 +19,12 @@ An empty list.
 Deletes the data feed for Spot Instances.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_spot_datafeed_subscription(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_spot_datafeed_subscription(
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

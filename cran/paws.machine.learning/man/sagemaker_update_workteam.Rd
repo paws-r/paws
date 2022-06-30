@@ -40,7 +40,9 @@ with the work team you update.}
 \item{NotificationConfiguration}{Configures SNS topic notifications for available or expiring work items}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Workteam = list(
     WorkteamName = "string",
     MemberDefinitions = list(
@@ -75,14 +77,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing work team with new member definitions or
 description.
 }
 \section{Request syntax}{
-\preformatted{svc$update_workteam(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_workteam(
   WorkteamName = "string",
   MemberDefinitions = list(
     list(
@@ -103,7 +107,7 @@ description.
     NotificationTopicArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

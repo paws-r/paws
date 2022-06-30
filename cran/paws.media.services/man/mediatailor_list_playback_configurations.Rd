@@ -14,7 +14,9 @@ mediatailor_list_playback_configurations(MaxResults, NextToken)
 the maximum allowed. Use the token to fetch the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Items = list(
     list(
       AdDecisionServerUrl = "string",
@@ -58,7 +60,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the playback configurations defined in AWS Elemental
@@ -69,11 +71,13 @@ maximum, it provides parameters in the response that you can use to
 retrieve the next pageful.
 }
 \section{Request syntax}{
-\preformatted{svc$list_playback_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_playback_configurations(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -95,7 +95,9 @@ assumes that the database instance still exists and attempts to roll
 back to it, causing the update rollback to fail.
 }
 \section{Request syntax}{
-\preformatted{svc$continue_update_rollback(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$continue_update_rollback(
   StackName = "string",
   RoleARN = "string",
   ResourcesToSkip = list(
@@ -103,7 +105,7 @@ back to it, causing the update rollback to fail.
   ),
   ClientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

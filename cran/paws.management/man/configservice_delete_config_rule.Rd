@@ -25,10 +25,12 @@ You can check the state of a rule by using the
 \code{\link[=configservice_describe_config_rules]{describe_config_rules}} request.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_config_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_config_rule(
   ConfigRuleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

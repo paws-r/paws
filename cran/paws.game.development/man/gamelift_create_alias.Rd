@@ -27,7 +27,9 @@ remove, and view tags. The maximum tag limit may be lower than stated.
 See the AWS General Reference for actual tagging limits.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Alias = list(
     AliasId = "string",
     Name = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an alias for a fleet. In most situations, you can use an alias
@@ -76,7 +78,9 @@ another fleet by calling \code{\link[=gamelift_update_alias]{update_alias}}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_alias(
   Name = "string",
   Description = "string",
   RoutingStrategy = list(
@@ -91,7 +95,7 @@ another fleet by calling \code{\link[=gamelift_update_alias]{update_alias}}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

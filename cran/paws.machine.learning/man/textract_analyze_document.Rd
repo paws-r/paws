@@ -25,7 +25,9 @@ that isn't related to the value of \code{FeatureTypes}).}
 documents.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DocumentMetadata = list(
     Pages = 123
   ),
@@ -78,7 +80,7 @@ A list with the following syntax:\preformatted{list(
   ),
   AnalyzeDocumentModelVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Analyzes an input document for relationships between detected items.
@@ -100,9 +102,9 @@ relationship with the value of \code{FeatureTypes}).
 }
 
 Selection elements such as check boxes and option buttons (radio
-buttons) can be detected in form data and in tables. A
-SELECTION_ELEMENT \code{Block} object contains information about a selection
-element, including the selection status.
+buttons) can be detected in form data and in tables. A SELECTION_ELEMENT
+\code{Block} object contains information about a selection element, including
+the selection status.
 
 You can choose which type of analysis to perform by specifying the
 \code{FeatureTypes} list.
@@ -116,7 +118,9 @@ operation. To analyze documents asynchronously, use
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html}{Document Text Analysis}.
 }
 \section{Request syntax}{
-\preformatted{svc$analyze_document(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$analyze_document(
   Document = list(
     Bytes = raw,
     S3Object = list(
@@ -138,7 +142,7 @@ For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/h
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

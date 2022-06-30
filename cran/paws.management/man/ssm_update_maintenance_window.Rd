@@ -17,9 +17,9 @@ ssm_update_maintenance_window(WindowId, Name, Description, StartDate,
 
 \item{StartDate}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
-see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the
-IANA website.}
+"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA
+website.}
 
 \item{EndDate}{The date and time, in ISO-8601 Extended format, for when you want the
 maintenance window to become inactive. EndDate allows you to set a date
@@ -30,9 +30,9 @@ expression.}
 
 \item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
-see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the
-IANA website.}
+"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA
+website.}
 
 \item{ScheduleOffset}{The number of days to wait after the date and time specified by a CRON
 expression before running the maintenance window.
@@ -60,7 +60,9 @@ CreateMaintenanceWindow action are also required for this API request.
 Optional fields that are not specified are set to null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowId = "string",
   Name = "string",
   Description = "string",
@@ -74,7 +76,7 @@ A list with the following syntax:\preformatted{list(
   AllowUnassociatedTargets = TRUE|FALSE,
   Enabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing maintenance window. Only specified parameters are
@@ -89,7 +91,9 @@ value you specify for \code{Cutoff} is one hour, no maintenance window tasks
 can start after 5 PM.
 }
 \section{Request syntax}{
-\preformatted{svc$update_maintenance_window(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_maintenance_window(
   WindowId = "string",
   Name = "string",
   Description = "string",
@@ -104,7 +108,7 @@ can start after 5 PM.
   Enabled = TRUE|FALSE,
   Replace = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

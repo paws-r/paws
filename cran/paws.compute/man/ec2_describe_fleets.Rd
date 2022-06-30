@@ -37,7 +37,9 @@ replace unhealthy instances (\code{true} | \code{false}).
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   Fleets = list(
     list(
@@ -174,13 +176,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified EC2 Fleets or all of your EC2 Fleets.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_fleets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fleets(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string",
@@ -196,7 +200,7 @@ Describes the specified EC2 Fleets or all of your EC2 Fleets.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,7 +21,9 @@ An empty list.
 Removes the specified tags from a trail.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags(
   ResourceId = "string",
   TagsList = list(
     list(
@@ -30,7 +32,7 @@ Removes the specified tags from a trail.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

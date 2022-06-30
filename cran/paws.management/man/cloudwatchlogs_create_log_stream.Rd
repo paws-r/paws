@@ -32,11 +32,13 @@ You must use the following guidelines when naming a log stream:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_log_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_log_stream(
   logGroupName = "string",
   logStreamName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -238,7 +238,9 @@ indexes. If you scan a global secondary index with \code{ConsistentRead} set
 to true, you will receive a \code{ValidationException}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Items = list(
     list(
       list(
@@ -317,7 +319,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{\link[=dynamodb_scan]{scan}} operation returns one or more items and item
@@ -354,7 +356,9 @@ you need a consistent copy of the data, as of the time that the
 parameter to \code{true}.
 }
 \section{Request syntax}{
-\preformatted{svc$scan(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$scan(
   TableName = "string",
   IndexName = "string",
   AttributesToGet = list(
@@ -450,7 +454,7 @@ parameter to \code{true}.
   ),
   ConsistentRead = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

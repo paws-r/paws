@@ -21,12 +21,14 @@ Changes the state of a signing job to REVOKED. This indicates that the
 signature is no longer valid.
 }
 \section{Request syntax}{
-\preformatted{svc$revoke_signature(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_signature(
   jobId = "string",
   jobOwner = "string",
   reason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

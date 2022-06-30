@@ -14,7 +14,9 @@ names must be unique under an AWS user account.}
 defaults to the current version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   pipeline = list(
     name = "string",
     roleArn = "string",
@@ -87,7 +89,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the metadata, structure, stages, and actions of a pipeline. Can
@@ -96,11 +98,13 @@ which can then be modified and used to update the pipeline structure
 with \code{\link[=codepipeline_update_pipeline]{update_pipeline}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_pipeline(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_pipeline(
   name = "string",
   version = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

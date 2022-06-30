@@ -26,12 +26,14 @@ Resets an attribute of an AMI to its default value.
 The productCodes attribute can't be reset.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_image_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_image_attribute(
   Attribute = "launchPermission",
   ImageId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

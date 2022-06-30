@@ -12,7 +12,9 @@ cloudhsmv2_restore_backup(BackupId)
 \code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Backup = list(
     BackupId = "string",
     BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
@@ -38,7 +40,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Restores a specified AWS CloudHSM backup that is in the
@@ -46,10 +48,12 @@ Restores a specified AWS CloudHSM backup that is in the
 \code{\link[=cloudhsmv2_delete_backup]{delete_backup}}.
 }
 \section{Request syntax}{
-\preformatted{svc$restore_backup(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_backup(
   BackupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

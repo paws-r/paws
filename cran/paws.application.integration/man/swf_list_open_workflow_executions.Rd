@@ -50,7 +50,9 @@ specified in the filter are returned.
 You can specify at most one of these in a request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   executionInfos = list(
     list(
       execution = list(
@@ -81,7 +83,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of open workflow executions in the specified domain that
@@ -121,7 +123,9 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_open_workflow_executions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_open_workflow_executions(
   domain = "string",
   startTimeFilter = list(
     oldestDate = as.POSIXct(
@@ -145,7 +149,7 @@ in the \emph{Amazon SWF Developer Guide}.
     workflowId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -25,12 +25,14 @@ Deletes room skill parameter details by room, skill, and parameter key
 ID.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_room_skill_parameter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_room_skill_parameter(
   RoomArn = "string",
   SkillId = "string",
   ParameterKey = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

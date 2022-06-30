@@ -164,8 +164,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' create an Amazon EKS cluster, you must configure your Kubernetes tooling
 #' to communicate with the API server and launch worker nodes into your
 #' cluster. For more information, see [Managing Cluster
-#' Authentication](https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html)
-#' and [Launching Amazon EKS Worker
+#' Authentication](https://docs.aws.amazon.com/eks/latest/userguide/) and
+#' [Launching Amazon EKS Worker
 #' Nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
 #' in the *Amazon EKS User Guide*.
 #'

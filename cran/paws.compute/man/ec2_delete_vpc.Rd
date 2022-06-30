@@ -26,11 +26,13 @@ all route tables associated with the VPC (except the default one), and
 so on.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vpc(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpc(
   VpcId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

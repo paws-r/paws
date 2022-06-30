@@ -17,7 +17,9 @@ greengrass_create_device_definition(AmznClientToken, InitialVersion,
 \item{tags}{Tag(s) to add to the new resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
   LatestVersionArn = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a device definition. You may provide the initial version of the
@@ -34,7 +36,9 @@ device definition now or use ''CreateDeviceDefinitionVersion'' at a
 later time.
 }
 \section{Request syntax}{
-\preformatted{svc$create_device_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_device_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Devices = list(
@@ -51,7 +55,7 @@ later time.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

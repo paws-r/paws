@@ -26,12 +26,14 @@ value to less than 500 shards.
 \item{ScalingType}{[required] The scaling type. Uniform scaling creates shards of equal size.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StreamName = "string",
   CurrentShardCount = 123,
   TargetShardCount = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the shard count of the specified stream to the specified number
@@ -74,12 +76,14 @@ increase in the call rate limit, the shard limit for this API, or your
 overall shard limit, use the limits form.
 }
 \section{Request syntax}{
-\preformatted{svc$update_shard_count(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_shard_count(
   StreamName = "string",
   TargetShardCount = 123,
   ScalingType = "UNIFORM_SCALING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

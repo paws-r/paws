@@ -15,12 +15,14 @@ elb_enable_availability_zones_for_load_balancer(LoadBalancerName,
 balancer.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AvailabilityZones = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds the specified Availability Zones to the set of Availability Zones
@@ -35,13 +37,15 @@ Availability Zones that contain instances. For more information, see
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_availability_zones_for_load_balancer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_availability_zones_for_load_balancer(
   LoadBalancerName = "string",
   AvailabilityZones = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -21,7 +21,9 @@ idempotency of the request.}
 world template.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   clientRequestToken = "string",
   createdAt = as.POSIXct(
@@ -32,13 +34,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a world template.
 }
 \section{Request syntax}{
-\preformatted{svc$create_world_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_world_template(
   clientRequestToken = "string",
   name = "string",
   templateBody = "string",
@@ -50,7 +54,7 @@ Creates a world template.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

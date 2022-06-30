@@ -24,7 +24,9 @@ For information about how to set the prefixes, see \href{https://docs.aws.amazon
 in the \emph{AWS Direct Connect User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   directConnectGatewayAssociation = list(
     directConnectGatewayId = "string",
     directConnectGatewayOwnerAccount = "string",
@@ -47,14 +49,16 @@ A list with the following syntax:\preformatted{list(
     virtualGatewayOwnerAccount = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Accepts a proposal request to attach a virtual private gateway or
 transit gateway to a Direct Connect gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$accept_direct_connect_gateway_association_proposal(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_direct_connect_gateway_association_proposal(
   directConnectGatewayId = "string",
   proposalId = "string",
   associatedGatewayOwnerAccount = "string",
@@ -64,7 +68,7 @@ transit gateway to a Direct Connect gateway.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

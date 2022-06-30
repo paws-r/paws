@@ -18,7 +18,9 @@ get steps and their states for the specified cluster.}
 \code{SEND_INTERRUPT}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CancelStepsInfoList = list(
     list(
       StepId = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels a pending step or steps in a running cluster. Available only in
@@ -38,14 +40,16 @@ canceled, even if the request is successfully submitted. You can only
 cancel steps that are in a \code{PENDING} state.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_steps(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_steps(
   ClusterId = "string",
   StepIds = list(
     "string"
   ),
   StepCancellationOption = "SEND_INTERRUPT"|"TERMINATE_PROCESS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

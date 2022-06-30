@@ -38,12 +38,14 @@ in the \emph{AWS Directory Service Administration Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$reset_user_password(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_user_password(
   DirectoryId = "string",
   UserName = "string",
   NewPassword = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

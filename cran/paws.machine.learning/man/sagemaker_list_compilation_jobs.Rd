@@ -39,7 +39,9 @@ DescribeCompilationJobResponse$CompilationJobStatus status.}
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CompilationJobSummaries = list(
     list(
       CompilationJobName = "string",
@@ -65,7 +67,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists model compilation jobs that satisfy various filters.
@@ -76,7 +78,9 @@ information about a particular model compilation job you have created,
 use \code{\link[=sagemaker_describe_compilation_job]{describe_compilation_job}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_compilation_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_compilation_jobs(
   NextToken = "string",
   MaxResults = 123,
   CreationTimeAfter = as.POSIXct(
@@ -96,7 +100,7 @@ use \code{\link[=sagemaker_describe_compilation_job]{describe_compilation_job}}.
   SortBy = "Name"|"CreationTime"|"Status",
   SortOrder = "Ascending"|"Descending"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

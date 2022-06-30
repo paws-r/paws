@@ -14,7 +14,9 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   resourceTypes = list(
     list(
       resourceType = "string",
@@ -23,17 +25,19 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the shareable resource types supported by AWS RAM.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resource_types(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resource_types(
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

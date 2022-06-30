@@ -56,7 +56,9 @@ deployment group.
 call. It can be used to return the next set of applications in the list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   revisions = list(
     list(
       revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
@@ -83,13 +85,15 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists information about revisions for an application.
 }
 \section{Request syntax}{
-\preformatted{svc$list_application_revisions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_application_revisions(
   applicationName = "string",
   sortBy = "registerTime"|"firstUsedTime"|"lastUsedTime",
   sortOrder = "ascending"|"descending",
@@ -98,7 +102,7 @@ Lists information about revisions for an application.
   deployed = "include"|"exclude"|"ignore",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

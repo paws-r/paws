@@ -64,10 +64,12 @@ same registeration request, even if the request is submitted multiple
 times.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RegistrationToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Registers a type with the CloudFormation service. Registering a type
@@ -94,7 +96,9 @@ Once you have initiated a registration request using
 to monitor the progress of the registration request.
 }
 \section{Request syntax}{
-\preformatted{svc$register_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_type(
   Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   SchemaHandlerPackage = "string",
@@ -105,7 +109,7 @@ to monitor the progress of the registration request.
   ExecutionRoleArn = "string",
   ClientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

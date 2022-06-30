@@ -17,7 +17,9 @@ plan in which a temporary extension is granted to the remaining quota.}
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   usagePlanId = "string",
   startDate = "string",
   endDate = "string",
@@ -30,14 +32,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Grants a temporary extension to the remaining quota of a usage plan
 associated with a specified API key.
 }
 \section{Request syntax}{
-\preformatted{svc$update_usage(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_usage(
   usagePlanId = "string",
   keyId = "string",
   patchOperations = list(
@@ -49,7 +53,7 @@ associated with a specified API key.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

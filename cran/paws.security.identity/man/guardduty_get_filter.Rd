@@ -12,7 +12,9 @@ guardduty_get_filter(DetectorId, FilterName)
 \item{FilterName}{[required] The name of the filter you want to get.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string",
   Description = "string",
   Action = "NOOP"|"ARCHIVE",
@@ -47,17 +49,19 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the details of the filter specified by the filter name.
 }
 \section{Request syntax}{
-\preformatted{svc$get_filter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_filter(
   DetectorId = "string",
   FilterName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

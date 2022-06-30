@@ -12,7 +12,9 @@ athena_get_database(CatalogName, DatabaseName)
 \item{DatabaseName}{[required] The name of the database to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Database = list(
     Name = "string",
     Description = "string",
@@ -21,17 +23,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a database object for the specfied database and data catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$get_database(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_database(
   CatalogName = "string",
   DatabaseName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

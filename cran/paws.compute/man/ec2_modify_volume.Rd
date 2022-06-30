@@ -62,7 +62,9 @@ and \code{io2} volumes only. For more information, see \href{https://docs.aws.am
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VolumeModification = list(
     VolumeId = "string",
     ModificationState = "modifying"|"optimizing"|"completed"|"failed",
@@ -86,7 +88,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 You can modify several parameters of an existing EBS volume, including
@@ -122,7 +124,9 @@ will need to wait at least six hours before applying further
 modifications to the affected EBS volume.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_volume(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_volume(
   DryRun = TRUE|FALSE,
   VolumeId = "string",
   Size = 123,
@@ -131,7 +135,7 @@ modifications to the affected EBS volume.
   Throughput = 123,
   MultiAttachEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

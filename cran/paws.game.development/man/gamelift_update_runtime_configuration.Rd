@@ -22,7 +22,9 @@ each instance. A CreateFleet request must include a runtime
 configuration with at least one server process configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RuntimeConfiguration = list(
     ServerProcesses = list(
       list(
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     GameSessionActivationTimeoutSeconds = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the current runtime configuration for the specified fleet, which
@@ -76,7 +78,9 @@ during Amazon GameLift's normal process recycling activity.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_runtime_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_runtime_configuration(
   FleetId = "string",
   RuntimeConfiguration = list(
     ServerProcesses = list(
@@ -90,7 +94,7 @@ during Amazon GameLift's normal process recycling activity.
     GameSessionActivationTimeoutSeconds = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

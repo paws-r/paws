@@ -2244,17 +2244,17 @@ s3control <- function(config = list()) {
 #' Service API Reference*:
 #' 
 #' -   [AWS Storage Gateway required request
-#'     headers](https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders):
+#'     headers](https://docs.aws.amazon.com/storagegateway/index.html#AWSStorageGatewayHTTPRequestsHeaders):
 #'     Describes the required headers that you must send with every POST
 #'     request to AWS Storage Gateway.
 #' 
 #' -   [Signing
-#'     requests](https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests):
+#'     requests](https://docs.aws.amazon.com/storagegateway/index.html#AWSStorageGatewaySigningRequests):
 #'     AWS Storage Gateway requires that you authenticate every request you
 #'     send; this topic describes how sign such a request.
 #' 
 #' -   [Error
-#'     responses](https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses):
+#'     responses](https://docs.aws.amazon.com/storagegateway/index.html#APIErrorResponses):
 #'     Provides reference information about AWS Storage Gateway errors.
 #' 
 #' -   [Operations in AWS Storage
@@ -2292,9 +2292,8 @@ s3control <- function(config = list()) {
 #' A snapshot ID with the longer ID format looks like the following:
 #' `snap-78e226633445566ee`.
 #' 
-#' For more information, see [Announcement: Heads-up – Longer AWS Storage
-#' Gateway volume and snapshot IDs coming in
-#' 2016](https://forums.aws.amazon.com:443/ann.jspa?annID=3557).
+#' For more information, see Announcement: Heads-up – Longer AWS Storage
+#' Gateway volume and snapshot IDs coming in 2016.
 #'
 #' @param
 #' config
@@ -6135,7 +6134,7 @@ codecommit <- function(config = list()) {
 #'     CodeDeploy](https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
 #' 
 #' -   [AWS CodeDeploy Developer
-#'     Forum](https://forums.aws.amazon.com/forum.jspa?forumID=179)
+#'     Forum](https://repost.aws/tags/TAP_gx1EAgRJuXWqSRorbHIw?forumID=179)
 #'
 #' @param
 #' config
@@ -7046,7 +7045,7 @@ autoscaling <- function(config = list()) {
 #' To learn more about AWS Auto Scaling, including information about
 #' granting IAM users required permissions for AWS Auto Scaling actions,
 #' see the [AWS Auto Scaling User
-#' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
+#' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-a-scaling-plan.html).
 #'
 #' @param
 #' config
@@ -8032,11 +8031,9 @@ licensemanager <- function(config = list()) {
 #' -   [AWS SDK for
 #'     Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html)
 #' 
-#' -   [AWS SDK for
-#'     .NET](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/Index.html)
+#' -   AWS SDK for .NET
 #' 
-#' -   [AWS SDK for PHP
-#'     2](https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html)
+#' -   AWS SDK for PHP 2
 #' 
 #' -   [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/)
 #' 
@@ -8816,8 +8813,7 @@ resourcegroups <- function(config = list()) {
 #' 
 #' -   [Amazon ElastiCache](https://docs.aws.amazon.com/elasticache/)
 #' 
-#' -   [Amazon Elasticsearch
-#'     Service](https://docs.aws.amazon.com/elasticsearch-service/)
+#' -   Amazon Elasticsearch Service
 #' 
 #' -   [AWS Elemental MediaLive](https://docs.aws.amazon.com/medialive/)
 #' 
@@ -8914,7 +8910,7 @@ resourcegroups <- function(config = list()) {
 #' -   [Amazon Neptune](https://docs.aws.amazon.com/neptune/)
 #' 
 #' -   [AWS Network
-#'     Manager](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-network-manager.html)
+#'     Manager](https://docs.aws.amazon.com/vpc/latest/tgwnm/what-is-network-manager.html)
 #' 
 #' -   [AWS OpsWorks](https://docs.aws.amazon.com/opsworks/)
 #' 
@@ -8931,7 +8927,7 @@ resourcegroups <- function(config = list()) {
 #' 
 #' -   [Amazon Redshift](https://docs.aws.amazon.com/redshift/)
 #' 
-#' -   [AWS Resource Access Manager](https://docs.aws.amazon.com/ram/)
+#' -   [AWS Resource Access Manager](https://docs.aws.amazon.com/ARG/)
 #' 
 #' -   [AWS Resource Groups](https://docs.aws.amazon.com/ARG/)
 #' 
@@ -8978,7 +8974,7 @@ resourcegroups <- function(config = list()) {
 #' 
 #' -   [AWS WAF Regional](https://docs.aws.amazon.com/waf/)
 #' 
-#' -   [Amazon WorkLink](https://docs.aws.amazon.com/worklink/)
+#' -   Amazon WorkLink
 #' 
 #' -   [Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/)
 #'
@@ -11069,8 +11065,9 @@ athena <- function(config = list()) {
 #' The endpoint for configuration service requests is region-specific:
 #' cloudsearch.*region*.amazonaws.com. For example,
 #' cloudsearch.us-east-1.amazonaws.com. For a current list of supported
-#' regions and endpoints, see [Regions and
-#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region).
+#' regions and endpoints, see <a
+#' href="https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region"
+#' target="_blank">Regions and Endpoints</a>.
 #'
 #' @param
 #' config
@@ -11313,15 +11310,16 @@ datapipeline <- function(config = list()) {
 #' 
 #' For sample code that uses the Configuration API, see the [Amazon
 #' Elasticsearch Service Developer
-#' Guide](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html).
+#' Guide](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/configuration-samples.html).
 #' The guide also contains [sample code for sending signed HTTP requests to
 #' the Elasticsearch
-#' APIs](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html).
+#' APIs](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/request-signing.html).
 #' 
 #' The endpoint for configuration service requests is region-specific:
 #' es.*region*.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
-#' a current list of supported regions and endpoints, see [Regions and
-#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
+#' a current list of supported regions and endpoints, see <a
+#' href="https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions"
+#' target="_blank">Regions and Endpoints</a>.
 #'
 #' @param
 #' config
@@ -13062,8 +13060,8 @@ cognitoidentityprovider <- function(config = list()) {
 #' If you want to use Cognito Sync in an Android or iOS application, you
 #' will probably want to make API calls via the AWS Mobile SDK. To learn
 #' more, see the [Developer Guide for
-#' Android](https://docs.aws.amazon.com/aws-mobile/latest/developerguide/)
-#' and the [Developer Guide for
+#' Android](https://docs.aws.amazon.com/amplify/?id=docs_gateway) and the
+#' [Developer Guide for
 #' iOS](https://docs.aws.amazon.com/mobile/sdkforios/developerguide/).
 #'
 #' @param
@@ -13683,7 +13681,7 @@ iam <- function(config = list()) {
 #' Amazon Inspector enables you to analyze the behavior of your AWS
 #' resources and to identify potential security issues. For more
 #' information, see [Amazon Inspector User
-#' Guide](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html).
+#' Guide](https://docs.aws.amazon.com/inspector/v1/userguide/inspector_introduction.html).
 #'
 #' @param
 #' config
@@ -14143,7 +14141,7 @@ ram <- function(config = list()) {
 #' Secrets Manager. However, you also can use the Secrets Manager HTTP
 #' Query API to make direct calls to the Secrets Manager web service. To
 #' learn more about the Secrets Manager HTTP Query API, see [Making Query
-#' Requests](https://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html)
+#' Requests](https://docs.aws.amazon.com/secretsmanager/latest/userguide/)
 #' in the *AWS Secrets Manager User Guide*.
 #' 
 #' Secrets Manager API supports GET and POST requests for all actions, and
@@ -14156,9 +14154,9 @@ ram <- function(config = list()) {
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the [AWS Secrets Manager Discussion
-#' Forum](https://forums.aws.amazon.com/forum.jspa?forumID=296). For more
-#' information about the AWS Discussion Forums, see [Forums
-#' Help](https://forums.aws.amazon.com:443/help.jspa).
+#' Forum](https://repost.aws/tags/TAJAqKRtZ5RY6XCoNAUTcVzQ?forumID=296).
+#' For more information about the AWS Discussion Forums, see [Forums
+#' Help](https://repost.aws/forums?origin=help.jspa).
 #' 
 #' **How examples are presented**
 #' 
@@ -16658,13 +16656,13 @@ pinpointsmsvoice <- function(config = list()) {
 #' Email Service](https://aws.amazon.com/ses/) (Amazon SES) API, version
 #' 2010-12-01. This document is best used in conjunction with the [Amazon
 #' SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html).
 #' 
 #' For a list of Amazon SES endpoints to use in service requests, see
 #' [Regions and Amazon
-#' SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html)
-#' in the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+#' SES](https://docs.aws.amazon.com/ses/latest/dg/regions.html) in the
+#' [Amazon SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html).
 #'
 #' @param
 #' config

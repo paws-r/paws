@@ -28,7 +28,9 @@ group family.}
 \item{Tags}{The tags to be assigned to the new DB cluster parameter group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterParameterGroup = list(
     DBClusterParameterGroupName = "string",
     DBParameterGroupFamily = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     DBClusterParameterGroupArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new DB cluster parameter group.
@@ -71,7 +73,9 @@ command to verify that your DB cluster parameter group has been created
 or modified.
 }
 \section{Request syntax}{
-\preformatted{svc$create_db_cluster_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   DBParameterGroupFamily = "string",
   Description = "string",
@@ -82,7 +86,7 @@ or modified.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

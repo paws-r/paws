@@ -15,10 +15,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcId}{[required] The ID of the VPC.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables a VPC for ClassicLink. You can then link EC2-Classic instances
@@ -32,11 +34,13 @@ see
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_vpc_classic_link(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_vpc_classic_link(
   DryRun = TRUE|FALSE,
   VpcId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

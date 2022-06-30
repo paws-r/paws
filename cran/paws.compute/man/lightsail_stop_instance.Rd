@@ -17,7 +17,9 @@ Only use the \code{force} parameter if your instance is stuck in the
 without adding this parameter to your API request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -42,7 +44,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops a specific Amazon Lightsail instance that is currently running.
@@ -57,11 +59,13 @@ resource tags applied to the resource identified by \verb{instance name}. For
 more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_instance(
   instanceName = "string",
   force = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

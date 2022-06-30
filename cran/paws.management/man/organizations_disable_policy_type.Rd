@@ -25,7 +25,9 @@ one of the following values:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Root = list(
     Id = "string",
     Arn = "string",
@@ -38,7 +40,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disables an organizational policy type in a root. A policy of a certain
@@ -62,11 +64,13 @@ To view the status of available policy types in the organization, use
 \code{\link[=organizations_describe_organization]{describe_organization}}.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_policy_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_policy_type(
   RootId = "string",
   PolicyType = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -12,7 +12,9 @@ apigatewayv2_get_route(ApiId, RouteId)
 \item{RouteId}{[required] The route ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApiGatewayManaged = TRUE|FALSE,
   ApiKeyRequired = TRUE|FALSE,
   AuthorizationScopes = list(
@@ -35,17 +37,19 @@ A list with the following syntax:\preformatted{list(
   RouteResponseSelectionExpression = "string",
   Target = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a Route.
 }
 \section{Request syntax}{
-\preformatted{svc$get_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_route(
   ApiId = "string",
   RouteId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

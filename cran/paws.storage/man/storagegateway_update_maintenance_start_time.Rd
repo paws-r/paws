@@ -28,10 +28,12 @@ as an ordinal number from 1 to 28, where 1 represents the first day of
 the month and 28 represents the last day of the month.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a gateway's weekly maintenance start time information, including
@@ -39,14 +41,16 @@ day and time of the week. The maintenance time is the time in your
 gateway's time zone.
 }
 \section{Request syntax}{
-\preformatted{svc$update_maintenance_start_time(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_maintenance_start_time(
   GatewayARN = "string",
   HourOfDay = 123,
   MinuteOfHour = 123,
   DayOfWeek = 123,
   DayOfMonth = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -10,19 +10,23 @@ iot1clickdevicesservice_unclaim_device(DeviceId)
 \item{DeviceId}{[required] The unique identifier of the device.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   State = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disassociates a device from your AWS account using its device ID.
 }
 \section{Request syntax}{
-\preformatted{svc$unclaim_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unclaim_device(
   DeviceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

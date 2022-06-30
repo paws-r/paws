@@ -32,7 +32,9 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 2048-bit RSA public keys are supported.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyId = "string",
   ImportToken = raw,
   PublicKey = raw,
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the items you need to import key material into a symmetric,
@@ -87,12 +89,14 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_parameters_for_import(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_parameters_for_import(
   KeyId = "string",
   WrappingAlgorithm = "RSAES_PKCS1_V1_5"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
   WrappingKeySpec = "RSA_2048"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

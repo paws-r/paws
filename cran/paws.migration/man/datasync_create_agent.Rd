@@ -35,7 +35,7 @@ representable in UTF-8 format, and the following special characters: + -
 
 \item{VpcEndpointId}{The ID of the VPC (virtual private cloud) endpoint that the agent has
 access to. This is the client-side VPC endpoint, also called a
-PrivateLink. If you don't have a PrivateLink VPC endpoint, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html#create-endpoint-service}{Creating a VPC Endpoint Service Configuration}
+PrivateLink. If you don't have a PrivateLink VPC endpoint, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html#create-endpoint-service}{Creating a VPC Endpoint Service Configuration}
 in the Amazon VPC User Guide.
 
 VPC endpoint ID looks like this: \verb{vpce-01234d5aff67890e1}.}
@@ -53,10 +53,12 @@ these four network interfaces.}
 subnets. See CreateAgentRequest$SubnetArns.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AgentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Activates an AWS DataSync agent that you have deployed on your host. The
@@ -79,7 +81,9 @@ Agents are automatically updated by AWS on a regular basis, using a
 mechanism that ensures minimal interruption to your tasks.
 }
 \section{Request syntax}{
-\preformatted{svc$create_agent(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_agent(
   ActivationKey = "string",
   AgentName = "string",
   Tags = list(
@@ -96,7 +100,7 @@ mechanism that ensures minimal interruption to your tasks.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

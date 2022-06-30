@@ -43,7 +43,9 @@ requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProductViewDetail = list(
     ProductViewSummary = list(
       Id = "string",
@@ -82,7 +84,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a product.
@@ -95,7 +97,9 @@ permission is required when using the \code{ImportFromPhysicalId} template
 source in the information data section.
 }
 \section{Request syntax}{
-\preformatted{svc$create_product(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_product(
   AcceptLanguage = "string",
   Name = "string",
   Owner = "string",
@@ -122,7 +126,7 @@ source in the information data section.
   ),
   IdempotencyToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

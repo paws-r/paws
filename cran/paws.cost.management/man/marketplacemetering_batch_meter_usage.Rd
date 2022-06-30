@@ -16,7 +16,9 @@ The product code should be the same as the one used during the
 publishing of a new product.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Results = list(
     list(
       UsageRecord = list(
@@ -64,7 +66,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 BatchMeterUsage is called from a SaaS application listed on the AWS
@@ -86,7 +88,9 @@ define (or allow the customer to define).
 BatchMeterUsage requests must be less than 1MB in size.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_meter_usage(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_meter_usage(
   UsageRecords = list(
     list(
       Timestamp = as.POSIXct(
@@ -110,7 +114,7 @@ BatchMeterUsage requests must be less than 1MB in size.
   ),
   ProductCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

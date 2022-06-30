@@ -35,13 +35,15 @@ network interface.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$modify_mount_target_security_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_mount_target_security_groups(
   MountTargetId = "string",
   SecurityGroups = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

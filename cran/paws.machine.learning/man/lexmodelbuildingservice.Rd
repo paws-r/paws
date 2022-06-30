@@ -23,7 +23,9 @@ interfaces. Use these actions to create, update, and delete
 conversational bots for new and existing client applications.
 }
 \section{Service syntax}{
-\preformatted{svc <- lexmodelbuildingservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- lexmodelbuildingservice(
   config = list(
     credentials = list(
       creds = list(
@@ -37,7 +39,7 @@ conversational bots for new and existing client applications.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

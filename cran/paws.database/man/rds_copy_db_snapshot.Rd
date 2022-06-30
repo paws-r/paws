@@ -146,7 +146,9 @@ Example: \code{rds-caz-aiqhTgQv}.}
 \item{SourceRegion}{The ID of the region that contains the snapshot to be copied.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBSnapshot = list(
     DBSnapshotIdentifier = "string",
     DBInstanceIdentifier = "string",
@@ -193,7 +195,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Copies the specified DB snapshot. The source DB snapshot must be in the
@@ -208,7 +210,9 @@ For more information about copying snapshots, see \href{https://docs.aws.amazon.
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-\preformatted{svc$copy_db_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_db_snapshot(
   SourceDBSnapshotIdentifier = "string",
   TargetDBSnapshotIdentifier = "string",
   KmsKeyId = "string",
@@ -224,7 +228,7 @@ in the \emph{Amazon RDS User Guide.}
   TargetCustomAvailabilityZone = "string",
   SourceRegion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

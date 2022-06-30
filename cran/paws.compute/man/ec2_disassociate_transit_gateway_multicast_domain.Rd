@@ -22,7 +22,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Associations = list(
     TransitGatewayMulticastDomainId = "string",
     TransitGatewayAttachmentId = "string",
@@ -37,14 +39,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disassociates the specified subnets from the transit gateway multicast
 domain.
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_transit_gateway_multicast_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_transit_gateway_multicast_domain(
   TransitGatewayMulticastDomainId = "string",
   TransitGatewayAttachmentId = "string",
   SubnetIds = list(
@@ -52,7 +56,7 @@ domain.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

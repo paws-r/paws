@@ -16,10 +16,12 @@ An empty list.
 Deletes a network profile.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_network_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_network_profile(
   arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

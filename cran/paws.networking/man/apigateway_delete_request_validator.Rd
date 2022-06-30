@@ -18,11 +18,13 @@ An empty list.
 Deletes a RequestValidator of a given RestApi.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_request_validator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_request_validator(
   restApiId = "string",
   requestValidatorId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

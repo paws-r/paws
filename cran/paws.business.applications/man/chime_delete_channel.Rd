@@ -18,10 +18,12 @@ Immediately makes a channel and its memberships inaccessible and marks
 them for deletion. This is an irreversible process.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_channel(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_channel(
   ChannelArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

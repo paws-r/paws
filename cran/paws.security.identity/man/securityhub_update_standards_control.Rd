@@ -24,12 +24,14 @@ Used to control whether an individual security standard control is
 enabled or disabled.
 }
 \section{Request syntax}{
-\preformatted{svc$update_standards_control(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_standards_control(
   StandardsControlArn = "string",
   ControlStatus = "ENABLED"|"DISABLED",
   DisabledReason = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

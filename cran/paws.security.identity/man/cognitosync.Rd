@@ -33,11 +33,13 @@ credentials retrieved with \href{https://docs.aws.amazon.com/cognitoidentity/lat
 
 If you want to use Cognito Sync in an Android or iOS application, you
 will probably want to make API calls via the AWS Mobile SDK. To learn
-more, see the \href{https://docs.aws.amazon.com/aws-mobile/latest/developerguide/}{Developer Guide for Android}
-and the \href{https://docs.aws.amazon.com/mobile/sdkforios/developerguide/}{Developer Guide for iOS}.
+more, see the \href{https://docs.aws.amazon.com/amplify/?id=docs_gateway}{Developer Guide for Android} and the
+\href{https://docs.aws.amazon.com/mobile/sdkforios/developerguide/}{Developer Guide for iOS}.
 }
 \section{Service syntax}{
-\preformatted{svc <- cognitosync(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cognitosync(
   config = list(
     credentials = list(
       creds = list(
@@ -51,7 +53,7 @@ and the \href{https://docs.aws.amazon.com/mobile/sdkforios/developerguide/}{Deve
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

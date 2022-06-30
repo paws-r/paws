@@ -10,7 +10,9 @@ appsync_get_api_cache(apiId)
 \item{apiId}{[required] The API ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   apiCache = list(
     ttl = 123,
     apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
@@ -20,16 +22,18 @@ A list with the following syntax:\preformatted{list(
     status = "AVAILABLE"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves an \code{ApiCache} object.
 }
 \section{Request syntax}{
-\preformatted{svc$get_api_cache(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_api_cache(
   apiId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

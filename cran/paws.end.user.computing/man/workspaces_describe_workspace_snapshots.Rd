@@ -10,7 +10,9 @@ workspaces_describe_workspace_snapshots(WorkspaceId)
 \item{WorkspaceId}{[required] The identifier of the WorkSpace.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RebuildSnapshots = list(
     list(
       SnapshotTime = as.POSIXct(
@@ -26,16 +28,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the snapshots for the specified WorkSpace.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_workspace_snapshots(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workspace_snapshots(
   WorkspaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

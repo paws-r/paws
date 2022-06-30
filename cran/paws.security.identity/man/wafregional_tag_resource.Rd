@@ -36,7 +36,9 @@ this action to tag the AWS resources that you manage through AWS WAF
 Classic: web ACLs, rule groups, and rules.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -45,7 +47,7 @@ Classic: web ACLs, rule groups, and rules.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

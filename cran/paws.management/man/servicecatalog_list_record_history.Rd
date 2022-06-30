@@ -25,7 +25,9 @@ servicecatalog_list_record_history(AcceptLanguage, AccessLevelFilter,
 results, use null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RecordDetails = list(
     list(
       RecordId = "string",
@@ -60,13 +62,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the specified requests or all performed requests.
 }
 \section{Request syntax}{
-\preformatted{svc$list_record_history(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_record_history(
   AcceptLanguage = "string",
   AccessLevelFilter = list(
     Key = "Account"|"Role"|"User",
@@ -79,7 +83,7 @@ Lists the specified requests or all performed requests.
   PageSize = 123,
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

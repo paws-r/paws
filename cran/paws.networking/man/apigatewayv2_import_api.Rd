@@ -19,7 +19,9 @@ encountered. By default, API creation continues if a warning is
 encountered.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApiEndpoint = "string",
   ApiGatewayManaged = TRUE|FALSE,
   ApiId = "string",
@@ -60,18 +62,20 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Imports an API.
 }
 \section{Request syntax}{
-\preformatted{svc$import_api(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_api(
   Basepath = "string",
   Body = "string",
   FailOnWarnings = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

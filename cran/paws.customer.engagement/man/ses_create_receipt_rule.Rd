@@ -22,12 +22,14 @@ An empty list.
 \description{
 Creates a receipt rule.
 
-For information about setting up receipt rules, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html}{Amazon SES Developer Guide}.
+For information about setting up receipt rules, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$create_receipt_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_receipt_rule(
   RuleSetName = "string",
   After = "string",
   Rule = list(
@@ -78,7 +80,7 @@ You can execute this operation no more than once per second.
     ScanEnabled = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

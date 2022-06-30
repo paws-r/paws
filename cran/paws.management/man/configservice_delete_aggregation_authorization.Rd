@@ -21,11 +21,13 @@ Deletes the authorization granted to the specified configuration
 aggregator account in a specified region.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_aggregation_authorization(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_aggregation_authorization(
   AuthorizedAccountId = "string",
   AuthorizedAwsRegion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

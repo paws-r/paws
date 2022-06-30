@@ -12,14 +12,16 @@ chime_create_channel_moderator(ChannelArn, ChannelModeratorArn)
 \item{ChannelModeratorArn}{[required] The ARN of the moderator.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChannelArn = "string",
   ChannelModerator = list(
     Arn = "string",
     Name = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new \code{ChannelModerator}. A channel moderator can:
@@ -32,11 +34,13 @@ Creates a new \code{ChannelModerator}. A channel moderator can:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_channel_moderator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_channel_moderator(
   ChannelArn = "string",
   ChannelModeratorArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

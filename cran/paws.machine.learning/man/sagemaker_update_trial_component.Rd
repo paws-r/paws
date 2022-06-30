@@ -38,16 +38,20 @@ artifacts.}
 \item{OutputArtifactsToRemove}{The output artifacts to remove from the component.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrialComponentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates one or more properties of a trial component.
 }
 \section{Request syntax}{
-\preformatted{svc$update_trial_component(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_trial_component(
   TrialComponentName = "string",
   DisplayName = "string",
   Status = list(
@@ -88,7 +92,7 @@ Updates one or more properties of a trial component.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

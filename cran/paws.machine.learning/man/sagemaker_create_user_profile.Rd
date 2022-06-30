@@ -28,10 +28,12 @@ unique per resource.}
 \item{UserSettings}{A collection of settings.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserProfileArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a user profile. A user profile represents a single user within a
@@ -44,7 +46,9 @@ of settings for an individual user and has a reference to the user's
 private Amazon Elastic File System (EFS) home directory.
 }
 \section{Request syntax}{
-\preformatted{svc$create_user_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user_profile(
   DomainId = "string",
   UserProfileName = "string",
   SingleSignOnUserIdentifier = "string",
@@ -95,7 +99,7 @@ private Amazon Elastic File System (EFS) home directory.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

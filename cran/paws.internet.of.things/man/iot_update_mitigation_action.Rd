@@ -17,17 +17,21 @@ name.}
 \item{actionParams}{Defines the type of action and the parameters for that action.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   actionArn = "string",
   actionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the definition for the specified mitigation action.
 }
 \section{Request syntax}{
-\preformatted{svc$update_mitigation_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_mitigation_action(
   actionName = "string",
   roleArn = "string",
   actionParams = list(
@@ -55,7 +59,7 @@ Updates the definition for the specified mitigation action.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

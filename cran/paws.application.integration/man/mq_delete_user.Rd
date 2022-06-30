@@ -20,11 +20,13 @@ An empty list.
 Deletes an ActiveMQ user.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user(
   BrokerId = "string",
   Username = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

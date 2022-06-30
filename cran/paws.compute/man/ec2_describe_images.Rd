@@ -62,11 +62,11 @@ example, \verb{/dev/sda1}).
 \item \code{state-reason-message} - The message for the state change.
 \item \code{sriov-net-support} - A value of \code{simple} indicates that enhanced
 networking with the Intel 82599 VF interface is enabled.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -89,7 +89,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Images = list(
     list(
       Architecture = "i386"|"x86_64"|"arm64",
@@ -150,7 +152,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified images (AMIs, AKIs, and ARIs) available to you
@@ -166,7 +168,9 @@ reference a deregistered AMI are terminated, specifying the ID of the
 image results in an error indicating that the AMI ID cannot be found.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_images(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_images(
   ExecutableUsers = list(
     "string"
   ),
@@ -186,7 +190,7 @@ image results in an error indicating that the AMI ID cannot be found.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

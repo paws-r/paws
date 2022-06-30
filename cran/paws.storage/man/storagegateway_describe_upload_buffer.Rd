@@ -10,7 +10,9 @@ storagegateway_describe_upload_buffer(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string",
   DiskIds = list(
     "string"
@@ -18,7 +20,7 @@ A list with the following syntax:\preformatted{list(
   UploadBufferUsedInBytes = 123,
   UploadBufferAllocatedInBytes = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the upload buffer of a gateway. This operation
@@ -30,10 +32,12 @@ space, and it includes the amount of upload buffer space allocated and
 used.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_upload_buffer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_upload_buffer(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

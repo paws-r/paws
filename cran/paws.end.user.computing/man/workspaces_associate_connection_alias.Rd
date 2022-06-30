@@ -13,10 +13,12 @@ workspaces_associate_connection_alias(AliasId, ResourceId)
 \item{ResourceId}{[required] The identifier of the directory to associate the connection alias with.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConnectionIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates the specified connection alias with the specified directory
@@ -29,11 +31,13 @@ to make sure that the current state of the connection alias is
 \code{CREATED}.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_connection_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_connection_alias(
   AliasId = "string",
   ResourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

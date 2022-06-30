@@ -23,7 +23,9 @@ When you send an email that uses that configuration set, Amazon Pinpoint
 sends it using only the IP addresses in the associated pool.
 }
 \section{Request syntax}{
-\preformatted{svc$create_dedicated_ip_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dedicated_ip_pool(
   PoolName = "string",
   Tags = list(
     list(
@@ -32,7 +34,7 @@ sends it using only the IP addresses in the associated pool.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

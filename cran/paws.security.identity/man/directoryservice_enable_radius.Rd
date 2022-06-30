@@ -23,7 +23,9 @@ Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD
 directory.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_radius(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_radius(
   DirectoryId = "string",
   RadiusSettings = list(
     RadiusServers = list(
@@ -38,7 +40,7 @@ directory.
     UseSameUsername = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

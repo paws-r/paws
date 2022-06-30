@@ -23,8 +23,8 @@ VPC_LINK for private connections between API Gateway and resources in a
 VPC. The default value is INTERNET.}
 
 \item{ContentHandlingStrategy}{Supported only for WebSocket APIs. Specifies how to handle response
-payload content type conversions. Supported values are
-CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
+payload content type conversions. Supported values are CONVERT_TO_BINARY
+and CONVERT_TO_TEXT, with the following behaviors:
 
 CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 string to the corresponding binary blob.
@@ -94,8 +94,8 @@ specified as the requestTemplates property on the Integration resource.
 There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and
 NEVER. Supported only for WebSocket APIs.
 
-WHEN_NO_MATCH passes the request body for unmapped content types
-through to the integration backend without transformation.
+WHEN_NO_MATCH passes the request body for unmapped content types through
+to the integration backend without transformation.
 
 NEVER rejects unmapped content types with an HTTP 415 Unsupported Media
 Type response.
@@ -127,11 +127,10 @@ runtime. To learn more, see \href{https://docs.aws.amazon.com/apigateway/latest/
 For HTTP API integrations without a specified integrationSubtype request
 parameters are a key-value map specifying how to transform HTTP requests
 before sending them to the backend. The key should follow the pattern
-<action>:<header|querystring|path>.<location> where
-action can be append, overwrite or remove. For values, you can provide
-static values, or map request data, stage variables, or context
-variables that are evaluated at runtime. To learn more, see
-\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html}{Transforming API requests and responses}.}
+\<action\>:\<header|querystring|path\>.\<location\> where action can be
+append, overwrite or remove. For values, you can provide static values,
+or map request data, stage variables, or context variables that are
+evaluated at runtime. To learn more, see \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html}{Transforming API requests and responses}.}
 
 \item{RequestTemplates}{Represents a map of Velocity templates that are applied on the request
 payload based on the value of the Content-Type header sent by the
@@ -143,11 +142,11 @@ the HTTP response from a backend integration before returning the
 response to clients. Specify a key-value map from a selection key to
 response parameters. The selection key must be a valid HTTP status code
 within the range of 200-599. Response parameters are a key-value map.
-The key must match pattern
-<action>:<header>.<location> or overwrite.statuscode.
-The action can be append, overwrite or remove. The value can be a static
-value, or map to response data, stage variables, or context variables
-that are evaluated at runtime. To learn more, see \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html}{Transforming API requests and responses}.}
+The key must match pattern \<action\>:\<header\>.\<location\> or
+overwrite.statuscode. The action can be append, overwrite or remove. The
+value can be a static value, or map to response data, stage variables,
+or context variables that are evaluated at runtime. To learn more, see
+\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html}{Transforming API requests and responses}.}
 
 \item{TemplateSelectionExpression}{The template selection expression for the integration.}
 
@@ -160,7 +159,9 @@ configuration, private integration traffic uses the HTTPS protocol.
 Supported only for HTTP APIs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApiGatewayManaged = TRUE|FALSE,
   ConnectionId = "string",
   ConnectionType = "INTERNET"|"VPC_LINK",
@@ -192,13 +193,15 @@ A list with the following syntax:\preformatted{list(
     ServerNameToVerify = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Integration.
 }
 \section{Request syntax}{
-\preformatted{svc$create_integration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_integration(
   ApiId = "string",
   ConnectionId = "string",
   ConnectionType = "INTERNET"|"VPC_LINK",
@@ -228,7 +231,7 @@ Creates an Integration.
     ServerNameToVerify = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

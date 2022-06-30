@@ -47,7 +47,9 @@ include:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_bucket_intelligent_tiering_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_intelligent_tiering_configuration(
   Bucket = "string",
   Id = "string",
   IntelligentTieringConfiguration = list(
@@ -77,7 +79,7 @@ include:
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

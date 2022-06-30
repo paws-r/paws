@@ -10,7 +10,9 @@ ec2_disassociate_vpc_cidr_block(AssociationId)
 \item{AssociationId}{[required] The association ID for the CIDR block.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Ipv6CidrBlockAssociation = list(
     AssociationId = "string",
     Ipv6CidrBlock = "string",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
   ),
   VpcId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disassociates a CIDR block from a VPC. To disassociate the CIDR block,
@@ -44,10 +46,12 @@ You cannot disassociate the CIDR block with which you originally created
 the VPC (the primary CIDR block).
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_vpc_cidr_block(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_vpc_cidr_block(
   AssociationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

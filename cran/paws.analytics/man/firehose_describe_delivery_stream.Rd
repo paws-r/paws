@@ -18,7 +18,9 @@ information. Kinesis Data Firehose supports one destination per delivery
 stream.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeliveryStreamDescription = list(
     DeliveryStreamName = "string",
     DeliveryStreamARN = "string",
@@ -455,7 +457,7 @@ A list with the following syntax:\preformatted{list(
     HasMoreDestinations = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified delivery stream and its status. For example,
@@ -474,12 +476,14 @@ invoking \code{\link[=firehose_delete_delivery_stream]{delete_delivery_stream}}
 again but with DeleteDeliveryStreamInput$AllowForceDelete set to true.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_delivery_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_delivery_stream(
   DeliveryStreamName = "string",
   Limit = 123,
   ExclusiveStartDestinationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -30,20 +30,24 @@ when connecting to your underlying source.}
 to your underlying source.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   DataSourceId = "string",
   UpdateStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a data source.
 }
 \section{Request syntax}{
-\preformatted{svc$update_data_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_data_source(
   AwsAccountId = "string",
   DataSourceId = "string",
   Name = "string",
@@ -245,7 +249,7 @@ Updates a data source.
     DisableSsl = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

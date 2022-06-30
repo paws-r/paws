@@ -10,7 +10,9 @@ servicequotas_get_requested_service_quota_change(RequestId)
 \item{RequestId}{[required] The ID of the quota increase request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RequestedQuota = list(
     Id = "string",
     CaseId = "string",
@@ -32,16 +34,18 @@ A list with the following syntax:\preformatted{list(
     Unit = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the specified quota increase request.
 }
 \section{Request syntax}{
-\preformatted{svc$get_requested_service_quota_change(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_requested_service_quota_change(
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

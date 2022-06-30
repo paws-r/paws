@@ -14,13 +14,15 @@ configservice_put_retention_configuration(RetentionPeriodInDays)
 Currently, only applicable to the configuration item history.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RetentionConfiguration = list(
     Name = "string",
     RetentionPeriodInDays = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates and updates the retention configuration with details about
@@ -34,10 +36,12 @@ Currently, AWS Config supports only one retention configuration per
 region in your account.
 }
 \section{Request syntax}{
-\preformatted{svc$put_retention_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_retention_configuration(
   RetentionPeriodInDays = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

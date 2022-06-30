@@ -18,7 +18,9 @@ directories are retrieved.}
 provide this token to receive the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Directories = list(
     list(
       DirectoryId = "string",
@@ -68,21 +70,23 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the available directories that are registered with Amazon
 WorkSpaces.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_workspace_directories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workspace_directories(
   DirectoryIds = list(
     "string"
   ),
   Limit = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

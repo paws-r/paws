@@ -10,7 +10,9 @@ iot_describe_job(jobId)
 \item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   documentSource = "string",
   job = list(
     jobArn = "string",
@@ -77,16 +79,18 @@ A list with the following syntax:\preformatted{list(
     namespaceId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a job.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_job(
   jobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

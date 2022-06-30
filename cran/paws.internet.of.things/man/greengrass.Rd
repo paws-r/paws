@@ -25,7 +25,9 @@ transmitting data to the cloud by allowing you to author AWS Lambda
 functions that execute locally.
 }
 \section{Service syntax}{
-\preformatted{svc <- greengrass(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- greengrass(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +41,7 @@ functions that execute locally.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

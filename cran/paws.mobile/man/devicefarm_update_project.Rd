@@ -17,7 +17,9 @@ updating.}
 out.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   project = list(
     arn = "string",
     name = "string",
@@ -27,19 +29,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the specified project name, given the project ARN and a new
 name.
 }
 \section{Request syntax}{
-\preformatted{svc$update_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_project(
   arn = "string",
   name = "string",
   defaultJobTimeoutMinutes = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -16,10 +16,12 @@ route53domains_update_domain_nameservers(DomainName, FIAuthKey,
 \item{Nameservers}{[required] A list of new name servers for the domain.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation replaces the current set of name servers for the domain
@@ -33,7 +35,9 @@ not completed successfully, the domain registrant will be notified by
 email.
 }
 \section{Request syntax}{
-\preformatted{svc$update_domain_nameservers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain_nameservers(
   DomainName = "string",
   FIAuthKey = "string",
   Nameservers = list(
@@ -45,7 +49,7 @@ email.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

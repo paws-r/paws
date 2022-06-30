@@ -18,8 +18,8 @@ parameters, however, these are merely defaults -- the arguments you pass
 to the \code{\link[=storagegateway_activate_gateway]{activate_gateway}} API call
 determine the actual configuration of your gateway.
 
-For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html}{Getting activation key}
-in the \emph{AWS Storage Gateway User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/storagegateway/index.html}{Getting activation key} in the \emph{AWS
+Storage Gateway User Guide}.}
 
 \item{GatewayName}{[required] The name you configured for your gateway.}
 
@@ -63,10 +63,12 @@ characters: + - = . _ : / @. The maximum length of a tag's key is 128
 characters, and the maximum length for a tag's value is 256 characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Activates the gateway you previously deployed on your host. In the
@@ -80,7 +82,9 @@ your gateway with your account. For more information, see
 You must turn on the gateway VM before you can activate your gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$activate_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$activate_gateway(
   ActivationKey = "string",
   GatewayName = "string",
   GatewayTimezone = "string",
@@ -95,7 +99,7 @@ You must turn on the gateway VM before you can activate your gateway.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

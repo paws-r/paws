@@ -116,14 +116,16 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CiphertextBlob = raw,
   SourceKeyId = "string",
   KeyId = "string",
   SourceEncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
   DestinationEncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Decrypts ciphertext and then reencrypts it entirely within AWS KMS. You
@@ -138,7 +140,7 @@ The \code{\link[=kms_re_encrypt]{re_encrypt}} operation can decrypt ciphertext t
 was encrypted by using an AWS KMS CMK in an AWS KMS operation, such as
 \code{\link[=kms_encrypt]{encrypt}} or
 \code{\link[=kms_generate_data_key]{generate_data_key}}. It can also decrypt
-ciphertext that was encrypted by using the public key of an \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#asymmetric-cmks}{asymmetric CMK}
+ciphertext that was encrypted by using the public key of an \href{https://docs.aws.amazon.com/kms/latest/developerguide/#asymmetric-cmks}{asymmetric CMK}
 outside of AWS KMS. However, it cannot decrypt ciphertext produced by
 other libraries, such as the \href{https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/}{AWS Encryption SDK}
 or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}.
@@ -215,7 +217,9 @@ create a CMK programmatically or when you use the
 }
 }
 \section{Request syntax}{
-\preformatted{svc$re_encrypt(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$re_encrypt(
   CiphertextBlob = raw,
   SourceEncryptionContext = list(
     "string"
@@ -231,7 +235,7 @@ create a CMK programmatically or when you use the
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

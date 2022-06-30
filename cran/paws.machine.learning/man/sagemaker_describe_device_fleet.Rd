@@ -10,7 +10,9 @@ sagemaker_describe_device_fleet(DeviceFleetName)
 \item{DeviceFleetName}{[required] The name of the fleet.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeviceFleetName = "string",
   DeviceFleetArn = "string",
   OutputConfig = list(
@@ -27,16 +29,18 @@ A list with the following syntax:\preformatted{list(
   RoleArn = "string",
   IotRoleAlias = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 A description of the fleet the device belongs to.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_device_fleet(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_device_fleet(
   DeviceFleetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

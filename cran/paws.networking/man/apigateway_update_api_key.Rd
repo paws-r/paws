@@ -13,7 +13,9 @@ apigateway_update_api_key(apiKey, patchOperations)
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   value = "string",
   name = "string",
@@ -33,13 +35,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Changes information about an ApiKey resource.
 }
 \section{Request syntax}{
-\preformatted{svc$update_api_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_api_key(
   apiKey = "string",
   patchOperations = list(
     list(
@@ -50,7 +54,7 @@ Changes information about an ApiKey resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

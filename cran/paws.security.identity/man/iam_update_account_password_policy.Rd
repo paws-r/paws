@@ -95,7 +95,9 @@ For more information about using a password policy, see \href{https://docs.aws.a
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_account_password_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_account_password_policy(
   MinimumPasswordLength = 123,
   RequireSymbols = TRUE|FALSE,
   RequireNumbers = TRUE|FALSE,
@@ -106,7 +108,7 @@ in the \emph{IAM User Guide}.
   PasswordReusePrevention = 123,
   HardExpiry = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

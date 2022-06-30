@@ -37,7 +37,9 @@ Developer Guide see \href{https://docs.aws.amazon.com/cognito/latest/developergu
 For more information see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html}{Amazon Cognito Federated Identities}.
 }
 \section{Service syntax}{
-\preformatted{svc <- cognitoidentity(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cognitoidentity(
   config = list(
     credentials = list(
       creds = list(
@@ -51,7 +53,7 @@ For more information see \href{https://docs.aws.amazon.com/cognito/latest/develo
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

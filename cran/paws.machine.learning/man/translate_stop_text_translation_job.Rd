@@ -10,11 +10,13 @@ translate_stop_text_translation_job(JobId)
 \item{JobId}{[required] The job ID of the job to be stopped.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string",
   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops an asynchronous batch translation job that is in progress.
@@ -32,10 +34,12 @@ or \code{\link[=translate_list_text_translation_jobs]{list_text_translation_jobs
 operations to get a batch translation job's \code{JobId}.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_text_translation_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_text_translation_job(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

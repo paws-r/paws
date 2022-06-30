@@ -13,7 +13,9 @@ chime_get_proxy_session(VoiceConnectorId, ProxySessionId)
 \item{ProxySessionId}{[required] The proxy session ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProxySession = list(
     VoiceConnectorId = "string",
     ProxySessionId = "string",
@@ -46,18 +48,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the specified proxy session details for the specified Amazon Chime
 Voice Connector.
 }
 \section{Request syntax}{
-\preformatted{svc$get_proxy_session(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_proxy_session(
   VoiceConnectorId = "string",
   ProxySessionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

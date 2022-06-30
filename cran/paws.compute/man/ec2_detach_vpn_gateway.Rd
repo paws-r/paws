@@ -31,12 +31,14 @@ you can delete the VPC or attach a different VPC to the virtual private
 gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_vpn_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_vpn_gateway(
   VpcId = "string",
   VpnGatewayId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,7 +16,7 @@ NULL
 #' 
 #' If you're new to Amazon SES API v2, you might find it helpful to also
 #' review the [Amazon Simple Email Service Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/). The
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html). The
 #' *Amazon SES Developer Guide* provides information and code samples that
 #' demonstrate how to use Amazon SES API v2 features programmatically.
 #' 

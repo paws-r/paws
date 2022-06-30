@@ -28,7 +28,9 @@ records beyond the marker, up to the value specified by the \code{MaxRecords}
 parameter.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TableRestoreStatusDetails = list(
     list(
       TableRestoreRequestId = "string",
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the status of one or more table restore requests made using the
@@ -65,13 +67,15 @@ time of the request in ascending order. Otherwise
 returns the status of the table specified by \code{TableRestoreRequestId}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_table_restore_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_table_restore_status(
   ClusterIdentifier = "string",
   TableRestoreRequestId = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

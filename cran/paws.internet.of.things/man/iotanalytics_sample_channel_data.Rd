@@ -19,19 +19,23 @@ default is also 10.}
 \item{endTime}{The end of the time window from which sample messages are retrieved.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   payloads = list(
     raw
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a sample of messages from the specified channel ingested
 during the specified timeframe. Up to 10 messages can be retrieved.
 }
 \section{Request syntax}{
-\preformatted{svc$sample_channel_data(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$sample_channel_data(
   channelName = "string",
   maxMessages = 123,
   startTime = as.POSIXct(
@@ -41,7 +45,7 @@ during the specified timeframe. Up to 10 messages can be retrieved.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

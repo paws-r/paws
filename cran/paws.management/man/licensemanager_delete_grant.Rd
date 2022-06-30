@@ -12,22 +12,26 @@ licensemanager_delete_grant(GrantArn, Version)
 \item{Version}{[required] Current version of the grant.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GrantArn = "string",
   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified grant.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_grant(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_grant(
   GrantArn = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

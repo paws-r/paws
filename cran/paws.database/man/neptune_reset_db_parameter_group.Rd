@@ -29,10 +29,12 @@ maximum of 20 parameters can be modified in a single request.
 Valid Values (for Apply method): \code{pending-reboot}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the parameters of a DB parameter group to the engine/system
@@ -45,7 +47,9 @@ to \code{pending-reboot} to take effect on the next DB instance restart or
 \code{\link[=neptune_reboot_db_instance]{reboot_db_instance}} request.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_db_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_db_parameter_group(
   DBParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(
@@ -63,7 +67,7 @@ to \code{pending-reboot} to take effect on the next DB instance restart or
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

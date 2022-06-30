@@ -18,11 +18,13 @@ An empty list.
 Updates a connector definition.
 }
 \section{Request syntax}{
-\preformatted{svc$update_connector_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_connector_definition(
   ConnectorDefinitionId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

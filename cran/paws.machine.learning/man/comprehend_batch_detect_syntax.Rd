@@ -18,7 +18,9 @@ English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 Portuguese ("pt"). All documents must be in the same language.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResultList = list(
     list(
       Index = 123,
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Inspects the text of a batch of documents for the syntax and part of
@@ -52,13 +54,15 @@ speech of the words in the document and returns information about them.
 For more information, see how-syntax.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_detect_syntax(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_detect_syntax(
   TextList = list(
     "string"
   ),
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

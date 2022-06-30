@@ -19,24 +19,28 @@ parameter, then the response includes a \code{NextToken} element, which you
 can use to obtain additional results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DedicatedIpPools = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List all of the dedicated IP pools that exist in your Amazon Pinpoint
 account in the current AWS Region.
 }
 \section{Request syntax}{
-\preformatted{svc$list_dedicated_ip_pools(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_dedicated_ip_pools(
   NextToken = "string",
   PageSize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

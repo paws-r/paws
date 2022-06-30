@@ -14,7 +14,9 @@ verify that the calling entity is allowed access to the job and its
 details.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobDetails = list(
     id = "string",
     data = list(
@@ -81,7 +83,7 @@ A list with the following syntax:\preformatted{list(
     nonce = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Requests the details of a job for a third party action. Used for partner
@@ -93,11 +95,13 @@ action requires access to that S3 bucket for input or output artifacts.
 This API also returns any secret values defined for the action.
 }
 \section{Request syntax}{
-\preformatted{svc$get_third_party_job_details(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_third_party_job_details(
   jobId = "string",
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,10 +11,12 @@ ssm_cancel_maintenance_window_execution(WindowExecutionId)
 \item{WindowExecutionId}{[required] The ID of the maintenance window execution to stop.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowExecutionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops a maintenance window execution that is already in progress and
@@ -22,10 +24,12 @@ cancels any tasks in the window that have not already starting running.
 (Tasks already in progress will continue to completion.)
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_maintenance_window_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_maintenance_window_execution(
   WindowExecutionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

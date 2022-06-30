@@ -20,11 +20,13 @@ Deletes a group. Currently only groups with no members can be deleted.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_group(
   GroupName = "string",
   UserPoolId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

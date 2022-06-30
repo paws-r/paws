@@ -15,7 +15,9 @@ cloudfront_update_distribution(DistributionConfig, Id, IfMatch)
 distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Distribution = list(
     Id = "string",
     ARN = "string",
@@ -332,7 +334,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ETag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the configuration for a web distribution.
@@ -405,7 +407,9 @@ propagation is complete, the value of \code{Status} is \code{Deployed}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_distribution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_distribution(
   DistributionConfig = list(
     CallerReference = "string",
     Aliases = list(
@@ -677,7 +681,7 @@ propagation is complete, the value of \code{Status} is \code{Deployed}.
   Id = "string",
   IfMatch = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

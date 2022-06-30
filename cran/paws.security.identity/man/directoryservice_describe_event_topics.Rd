@@ -18,7 +18,9 @@ returned.
 An empty list results in an \code{InvalidParameterException} being thrown.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventTopics = list(
     list(
       DirectoryId = "string",
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Obtains information about which SNS topics receive status messages from
@@ -41,13 +43,15 @@ If no input parameters are provided, such as DirectoryId or TopicName,
 this request describes all of the associations in the account.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_event_topics(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_topics(
   DirectoryId = "string",
   TopicNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

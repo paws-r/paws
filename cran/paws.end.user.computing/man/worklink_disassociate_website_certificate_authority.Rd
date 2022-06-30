@@ -19,11 +19,13 @@ An empty list.
 Removes a certificate authority (CA).
 }
 \section{Request syntax}{
-\preformatted{svc$disassociate_website_certificate_authority(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_website_certificate_authority(
   FleetArn = "string",
   WebsiteCaId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

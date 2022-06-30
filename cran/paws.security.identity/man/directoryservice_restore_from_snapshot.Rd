@@ -26,10 +26,12 @@ operation with the directory identifier. When the
 operation is complete.
 }
 \section{Request syntax}{
-\preformatted{svc$restore_from_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_from_snapshot(
   SnapshotId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

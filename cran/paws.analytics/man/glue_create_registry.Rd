@@ -18,7 +18,9 @@ will not be any default value for this.}
 command line, or API.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RegistryArn = "string",
   RegistryName = "string",
   Description = "string",
@@ -26,21 +28,23 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new registry which may be used to hold a collection of
 schemas.
 }
 \section{Request syntax}{
-\preformatted{svc$create_registry(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_registry(
   RegistryName = "string",
   Description = "string",
   Tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

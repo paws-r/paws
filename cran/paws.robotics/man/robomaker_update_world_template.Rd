@@ -17,7 +17,9 @@ robomaker_update_world_template(template, name, templateBody,
 \item{templateLocation}{The location of the world template.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   name = "string",
   createdAt = as.POSIXct(
@@ -27,13 +29,15 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a world template.
 }
 \section{Request syntax}{
-\preformatted{svc$update_world_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_world_template(
   template = "string",
   name = "string",
   templateBody = "string",
@@ -42,7 +46,7 @@ Updates a world template.
     s3Key = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

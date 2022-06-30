@@ -21,7 +21,9 @@ Example: \code{mySubnetgroup}}
 \item{SubnetIds}{[required] The Amazon EC2 subnet IDs for the subnet group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBSubnetGroup = list(
     DBSubnetGroupName = "string",
     DBSubnetGroupDescription = "string",
@@ -39,21 +41,23 @@ A list with the following syntax:\preformatted{list(
     DBSubnetGroupArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies an existing subnet group. subnet groups must contain at least
 one subnet in at least two Availability Zones in the AWS Region.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_db_subnet_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_subnet_group(
   DBSubnetGroupName = "string",
   DBSubnetGroupDescription = "string",
   SubnetIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

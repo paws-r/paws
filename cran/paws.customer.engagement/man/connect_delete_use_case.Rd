@@ -24,12 +24,14 @@ change.
 Deletes a use case from an AppIntegration association.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_use_case(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_use_case(
   InstanceId = "string",
   IntegrationAssociationId = "string",
   UseCaseId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

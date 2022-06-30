@@ -15,10 +15,12 @@ returned by \code{\link[=wafregional_create_ip_set]{create_ip_set}} and by
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ChangeToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -48,11 +50,13 @@ change token that you provide in the \code{ChangeToken} parameter of a
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_ip_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_ip_set(
   IPSetId = "string",
   ChangeToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

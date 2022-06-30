@@ -59,11 +59,13 @@ about how to remove tags from your managed instances, see
 \code{\link[=ssm_remove_tags_from_resource]{remove_tags_from_resource}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ActivationId = "string",
   ActivationCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates an activation code and activation ID you can use to register
@@ -80,7 +82,9 @@ EC2 instances that you manage with Systems Manager are all called
 \emph{managed instances}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_activation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_activation(
   Description = "string",
   DefaultInstanceName = "string",
   IamRole = "string",
@@ -95,7 +99,7 @@ EC2 instances that you manage with Systems Manager are all called
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

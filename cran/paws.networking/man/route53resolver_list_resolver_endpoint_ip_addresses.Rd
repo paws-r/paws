@@ -27,7 +27,9 @@ request to get the next group of IP addresses. In the next request,
 specify the value of \code{NextToken} from the previous response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   MaxResults = 123,
   IpAddresses = list(
@@ -42,18 +44,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the IP addresses for a specified Resolver endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resolver_endpoint_ip_addresses(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resolver_endpoint_ip_addresses(
   ResolverEndpointId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

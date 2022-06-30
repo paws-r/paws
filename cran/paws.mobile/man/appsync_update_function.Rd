@@ -28,7 +28,9 @@ appsync_update_function(apiId, name, description, functionId,
 value is 2018-05-29.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   functionConfiguration = list(
     functionId = "string",
     functionArn = "string",
@@ -40,13 +42,15 @@ A list with the following syntax:\preformatted{list(
     functionVersion = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a \code{Function} object.
 }
 \section{Request syntax}{
-\preformatted{svc$update_function(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_function(
   apiId = "string",
   name = "string",
   description = "string",
@@ -56,7 +60,7 @@ Updates a \code{Function} object.
   responseMappingTemplate = "string",
   functionVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

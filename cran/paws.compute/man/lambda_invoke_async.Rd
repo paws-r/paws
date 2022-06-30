@@ -23,10 +23,12 @@ the function name, it is limited to 64 characters in length.}
 \item{InvokeArgs}{[required] The JSON that you want to provide to your Lambda function as input.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 For asynchronous function invocation, use \code{\link[=lambda_invoke]{invoke}}.
@@ -34,11 +36,13 @@ For asynchronous function invocation, use \code{\link[=lambda_invoke]{invoke}}.
 Invokes a function asynchronously.
 }
 \section{Request syntax}{
-\preformatted{svc$invoke_async(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$invoke_async(
   FunctionName = "string",
   InvokeArgs = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

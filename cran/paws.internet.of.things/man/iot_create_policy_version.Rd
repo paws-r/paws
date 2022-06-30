@@ -18,13 +18,15 @@ parameter is true, the new policy version becomes the operative version
 the policy is attached).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   policyArn = "string",
   policyDocument = "string",
   policyVersionId = "string",
   isDefaultVersion = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new version of the specified AWS IoT policy. To update a
@@ -38,12 +40,14 @@ The default version is the operative version (that is, the version that
 is in effect for the certificates to which the policy is attached).
 }
 \section{Request syntax}{
-\preformatted{svc$create_policy_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_policy_version(
   policyName = "string",
   policyDocument = "string",
   setAsDefault = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

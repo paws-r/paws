@@ -18,10 +18,12 @@ Deletes the specified lifecycle policy and halts the automated
 operations that the policy specified.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_lifecycle_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_lifecycle_policy(
   PolicyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

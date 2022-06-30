@@ -25,11 +25,13 @@ Amazon S3 bucket.
 You cannot delete an application that has a running environment.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application(
   ApplicationName = "string",
   TerminateEnvByForce = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

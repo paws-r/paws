@@ -70,8 +70,8 @@ in the \emph{IAM User Guide}.
 The plain text that you use for both inline and managed session policies
 can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
-character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
-(\code{U+0009}), linefeed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters.
+character list (\u0020 through \u00FF). It can also include the tab
+(\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your request
@@ -186,7 +186,9 @@ The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Credentials = list(
     AccessKeyId = "string",
     SecretAccessKey = "string",
@@ -201,7 +203,7 @@ A list with the following syntax:\preformatted{list(
   ),
   PackedPolicySize = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a set of temporary security credentials that you can use to
@@ -329,7 +331,9 @@ identifies the user's hardware or virtual MFA device. The \code{TokenCode} is
 the time-based one-time password (TOTP) that the MFA device produces.
 }
 \section{Request syntax}{
-\preformatted{svc$assume_role(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$assume_role(
   RoleArn = "string",
   RoleSessionName = "string",
   PolicyArns = list(
@@ -352,7 +356,7 @@ the time-based one-time password (TOTP) that the MFA device produces.
   SerialNumber = "string",
   TokenCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

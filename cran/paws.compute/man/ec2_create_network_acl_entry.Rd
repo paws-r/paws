@@ -75,7 +75,9 @@ For more information about network ACLs, see \href{https://docs.aws.amazon.com/v
 Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_network_acl_entry(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_network_acl_entry(
   CidrBlock = "string",
   DryRun = TRUE|FALSE,
   Egress = TRUE|FALSE,
@@ -93,7 +95,7 @@ Virtual Private Cloud User Guide}.
   RuleAction = "allow"|"deny",
   RuleNumber = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

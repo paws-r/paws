@@ -25,7 +25,7 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
 \item{HostInstanceType}{The host instance type of the broker to upgrade to. For a list of
 supported instance types, see
-https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html\#broker-instance-types}
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types}
 
 \item{LdapServerMetadata}{The metadata of the LDAP server used to authenticate and authorize
 connections to the broker.}
@@ -36,7 +36,9 @@ connections to the broker.}
 connections to brokers.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AuthenticationStrategy = "SIMPLE"|"LDAP",
   AutoMinorVersionUpgrade = TRUE|FALSE,
   BrokerId = "string",
@@ -68,13 +70,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds a pending configuration change to a broker.
 }
 \section{Request syntax}{
-\preformatted{svc$update_broker(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_broker(
   AuthenticationStrategy = "SIMPLE"|"LDAP",
   AutoMinorVersionUpgrade = TRUE|FALSE,
   BrokerId = "string",
@@ -107,7 +111,7 @@ Adds a pending configuration change to a broker.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

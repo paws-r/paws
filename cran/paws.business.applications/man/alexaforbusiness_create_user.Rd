@@ -22,16 +22,20 @@ idempotency.}
 \item{Tags}{The tags for the user.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a user.
 }
 \section{Request syntax}{
-\preformatted{svc$create_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user(
   UserId = "string",
   FirstName = "string",
   LastName = "string",
@@ -44,7 +48,7 @@ Creates a user.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

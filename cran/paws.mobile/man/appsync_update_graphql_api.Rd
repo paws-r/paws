@@ -27,7 +27,9 @@ object.}
 \item{xrayEnabled}{A flag indicating whether to enable X-Ray tracing for the \code{GraphqlApi}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   graphqlApi = list(
     name = "string",
     apiId = "string",
@@ -76,13 +78,15 @@ A list with the following syntax:\preformatted{list(
     wafWebAclArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a \code{GraphqlApi} object.
 }
 \section{Request syntax}{
-\preformatted{svc$update_graphql_api(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_graphql_api(
   apiId = "string",
   name = "string",
   logConfig = list(
@@ -121,7 +125,7 @@ Updates a \code{GraphqlApi} object.
   ),
   xrayEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

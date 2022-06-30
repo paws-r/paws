@@ -72,7 +72,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SnapshotId = "string",
   Tags = list(
     list(
@@ -81,7 +83,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
@@ -105,7 +107,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$copy_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_snapshot(
   Description = "string",
   DestinationRegion = "string",
   Encrypted = TRUE|FALSE,
@@ -126,7 +130,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

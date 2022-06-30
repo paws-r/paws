@@ -22,7 +22,9 @@ parameter.}
 \item{RegionName}{Lists the global tables in a specific Region.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GlobalTables = list(
     list(
       GlobalTableName = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
   ),
   LastEvaluatedGlobalTableName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all global tables that have a replica in the specified Region.
@@ -44,12 +46,14 @@ This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/
 of global tables.
 }
 \section{Request syntax}{
-\preformatted{svc$list_global_tables(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_global_tables(
   ExclusiveStartGlobalTableName = "string",
   Limit = 123,
   RegionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

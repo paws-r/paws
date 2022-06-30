@@ -49,10 +49,12 @@ policies. For more information, see \href{https://docs.aws.amazon.com/acm-pca/la
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_policy(
   ResourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

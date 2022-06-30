@@ -25,10 +25,12 @@ it. For information about deactivating MFA devices, see
 \code{\link[=iam_deactivate_mfa_device]{deactivate_mfa_device}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_virtual_mfa_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_virtual_mfa_device(
   SerialNumber = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

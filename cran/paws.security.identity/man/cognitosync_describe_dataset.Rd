@@ -19,7 +19,9 @@ Cognito. GUID generation is unique within a region.}
 '_' (underscore), '-' (dash), and '.' (dot).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Dataset = list(
     IdentityId = "string",
     DatasetName = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
     NumRecords = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets meta data about a dataset by identity and dataset name. With Amazon
@@ -47,12 +49,14 @@ Cognito Identity or with developer credentials. You should use Cognito
 Identity credentials to make this API call.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_dataset(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_dataset(
   IdentityPoolId = "string",
   IdentityId = "string",
   DatasetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

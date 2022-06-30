@@ -24,7 +24,9 @@ results, use null.}
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProvisioningArtifactViews = list(
     list(
       ProductViewSummary = list(
@@ -53,20 +55,22 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all provisioning artifacts (also known as versions) for the
 specified self-service action.
 }
 \section{Request syntax}{
-\preformatted{svc$list_provisioning_artifacts_for_service_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_provisioning_artifacts_for_service_action(
   ServiceActionId = "string",
   PageSize = 123,
   PageToken = "string",
   AcceptLanguage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

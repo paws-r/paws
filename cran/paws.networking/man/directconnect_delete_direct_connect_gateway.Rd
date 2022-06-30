@@ -10,7 +10,9 @@ directconnect_delete_direct_connect_gateway(directConnectGatewayId)
 \item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   directConnectGateway = list(
     directConnectGatewayId = "string",
     directConnectGatewayName = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     stateChangeError = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified Direct Connect gateway. You must first delete all
@@ -29,10 +31,12 @@ disassociate all virtual private gateways associated with the Direct
 Connect gateway.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_direct_connect_gateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_direct_connect_gateway(
   directConnectGatewayId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ autoscaling_exit_standby(InstanceIds, AutoScalingGroupName)
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Activities = list(
     list(
       ActivityId = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Moves the specified instances out of the standby state.
@@ -44,13 +46,15 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$exit_standby(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$exit_standby(
   InstanceIds = list(
     "string"
   ),
   AutoScalingGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

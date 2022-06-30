@@ -13,7 +13,9 @@ underscores, and must not contain whitespaces, brackets, wildcard
 characters, or special characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AuthenticationStrategy = "SIMPLE"|"LDAP",
   AutoMinorVersionUpgrade = TRUE|FALSE,
   BrokerArn = "string",
@@ -123,16 +125,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the specified broker.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_broker(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_broker(
   BrokerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

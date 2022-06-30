@@ -31,7 +31,9 @@ An empty list.
 Updates a fleet provisioning template.
 }
 \section{Request syntax}{
-\preformatted{svc$update_provisioning_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_provisioning_template(
   templateName = "string",
   description = "string",
   enabled = TRUE|FALSE,
@@ -43,7 +45,7 @@ Updates a fleet provisioning template.
   ),
   removePreProvisioningHook = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

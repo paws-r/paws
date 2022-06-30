@@ -12,7 +12,9 @@ of your rules, use
 \code{\link[=cloudwatch_describe_insight_rules]{describe_insight_rules}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Failures = list(
     list(
       FailureResource = "string",
@@ -22,19 +24,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disables the specified Contributor Insights rules. When rules are
 disabled, they do not analyze log groups and do not incur costs.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_insight_rules(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_insight_rules(
   RuleNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

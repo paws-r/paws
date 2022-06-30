@@ -13,7 +13,9 @@ describing permissions for.}
 \item{DashboardId}{[required] The ID for the dashboard, also added to the IAM policy.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DashboardId = "string",
   DashboardArn = "string",
   Permissions = list(
@@ -27,17 +29,19 @@ A list with the following syntax:\preformatted{list(
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes read and write permissions for a dashboard.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_dashboard_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_dashboard_permissions(
   AwsAccountId = "string",
   DashboardId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

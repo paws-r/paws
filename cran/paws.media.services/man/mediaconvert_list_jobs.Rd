@@ -23,7 +23,9 @@ resource.}
 CANCELED, or ERROR.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Jobs = list(
     list(
       AccelerationSettings = list(
@@ -1227,7 +1229,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieve a JSON array of up to twenty of your most recently created
@@ -1237,14 +1239,16 @@ retrieve the twenty next most recent jobs, use the nextToken string
 returned with the array.
 }
 \section{Request syntax}{
-\preformatted{svc$list_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_jobs(
   MaxResults = 123,
   NextToken = "string",
   Order = "ASCENDING"|"DESCENDING",
   Queue = "string",
   Status = "SUBMITTED"|"PROGRESSING"|"COMPLETE"|"CANCELED"|"ERROR"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

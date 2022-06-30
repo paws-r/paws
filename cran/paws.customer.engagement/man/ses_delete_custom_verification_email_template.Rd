@@ -17,16 +17,18 @@ An empty list.
 Deletes an existing custom verification email template.
 
 For more information about custom verification email templates, see
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}
-in the \emph{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Using Custom Verification Email Templates} in
+the \emph{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_custom_verification_email_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_custom_verification_email_template(
   TemplateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

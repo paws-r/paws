@@ -8,7 +8,9 @@ Lightsail container services}
 lightsail_get_container_service_powers()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   powers = list(
     list(
       powerId = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the list of powers that can be specified for your Amazon
@@ -30,8 +32,10 @@ The power specifies the amount of memory, the number of vCPUs, and the
 base price of the container service.
 }
 \section{Request syntax}{
-\preformatted{svc$get_container_service_powers()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_container_service_powers()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

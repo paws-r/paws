@@ -23,11 +23,13 @@ input data and associated response data. This action can be called once
 every 24 hours for a specific shared device.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_device_usage_data(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_device_usage_data(
   DeviceArn = "string",
   DeviceUsageType = "VOICE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,7 +22,9 @@ journey metrics.}
 paginated response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SegmentsResponse = list(
     Item = list(
       list(
@@ -235,7 +237,7 @@ A list with the following syntax:\preformatted{list(
     NextToken = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the configuration, dimension, and other
@@ -243,13 +245,15 @@ settings for all the versions of a specific segment that's associated
 with an application.
 }
 \section{Request syntax}{
-\preformatted{svc$get_segment_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_segment_versions(
   ApplicationId = "string",
   PageSize = "string",
   SegmentId = "string",
   Token = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

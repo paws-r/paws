@@ -57,11 +57,13 @@ Updates a topic rule destination. You use this to change the status,
 endpoint URL, or confirmation URL of the destination.
 }
 \section{Request syntax}{
-\preformatted{svc$update_topic_rule_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_topic_rule_destination(
   arn = "string",
   status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"|"DELETING"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

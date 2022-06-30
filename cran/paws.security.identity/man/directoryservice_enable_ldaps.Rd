@@ -21,11 +21,13 @@ Activates the switch for the specific directory to always use LDAP
 secure calls.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_ldaps(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_ldaps(
   DirectoryId = "string",
   Type = "Client"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

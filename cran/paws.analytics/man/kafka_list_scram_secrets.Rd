@@ -15,25 +15,29 @@ kafka_list_scram_secrets(ClusterArn, MaxResults, NextToken)
 \item{NextToken}{The nextToken of the query.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   SecretArnList = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the Scram Secrets associated with an Amazon MSK
 cluster.
 }
 \section{Request syntax}{
-\preformatted{svc$list_scram_secrets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_scram_secrets(
   ClusterArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

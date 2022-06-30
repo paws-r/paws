@@ -19,7 +19,9 @@ page size.}
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AnomalySubscriptions = list(
     list(
       SubscriptionArn = "string",
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the cost anomaly subscription objects for your account. You
@@ -49,7 +51,9 @@ can filter using a list of cost anomaly monitor Amazon Resource Names
 (ARNs).
 }
 \section{Request syntax}{
-\preformatted{svc$get_anomaly_subscriptions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_anomaly_subscriptions(
   SubscriptionArnList = list(
     "string"
   ),
@@ -57,7 +61,7 @@ can filter using a list of cost anomaly monitor Amazon Resource Names
   NextPageToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

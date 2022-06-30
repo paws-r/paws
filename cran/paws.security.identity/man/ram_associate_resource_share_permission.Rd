@@ -21,23 +21,27 @@ permission.}
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   returnValue = TRUE|FALSE,
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a permission with a resource share.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_resource_share_permission(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_resource_share_permission(
   resourceShareArn = "string",
   permissionArn = "string",
   replace = TRUE|FALSE,
   clientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -68,10 +68,12 @@ To be able to tag a topic on creation, you must have the
 \code{sns:CreateTopic} and \code{sns:TagResource} permissions.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TopicArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a topic to which notifications can be published. Users can
@@ -83,7 +85,9 @@ specified name, that topic's ARN is returned without creating a new
 topic.
 }
 \section{Request syntax}{
-\preformatted{svc$create_topic(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_topic(
   Name = "string",
   Attributes = list(
     "string"
@@ -95,7 +99,7 @@ topic.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

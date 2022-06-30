@@ -11,7 +11,9 @@ xray_put_trace_segments(TraceSegmentDocuments)
 subsegments.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UnprocessedTraceSegments = list(
     list(
       Id = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Uploads segment documents to AWS X-Ray. The \href{https://docs.aws.amazon.com/xray/index.html}{X-Ray SDK} generates segment
@@ -67,12 +69,14 @@ hexadecimal digits.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_trace_segments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_trace_segments(
   TraceSegmentDocuments = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

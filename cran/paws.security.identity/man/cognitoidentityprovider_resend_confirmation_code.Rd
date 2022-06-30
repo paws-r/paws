@@ -56,21 +56,25 @@ don't use it to provide sensitive information.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CodeDeliveryDetails = list(
     Destination = "string",
     DeliveryMedium = "SMS"|"EMAIL",
     AttributeName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Resends the confirmation (for confirmation of registration) to a
 specific user in the user pool.
 }
 \section{Request syntax}{
-\preformatted{svc$resend_confirmation_code(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resend_confirmation_code(
   ClientId = "string",
   SecretHash = "string",
   UserContextData = list(
@@ -84,7 +88,7 @@ specific user in the user pool.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

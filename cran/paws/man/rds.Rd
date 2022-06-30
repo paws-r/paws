@@ -59,7 +59,9 @@ the user guide.
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- rds(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- rds(
   config = list(
     credentials = list(
       creds = list(
@@ -73,7 +75,7 @@ the user guide.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

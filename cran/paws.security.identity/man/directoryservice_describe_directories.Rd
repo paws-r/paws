@@ -22,7 +22,9 @@ maximum number of items is specified by the limitations of the
 operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DirectoryDescriptions = list(
     list(
       DirectoryId = "string",
@@ -127,7 +129,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Obtains information about the directories that belong to this account.
@@ -147,14 +149,16 @@ You can also specify a maximum number of return results with the \code{Limit}
 parameter.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_directories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_directories(
   DirectoryIds = list(
     "string"
   ),
   NextToken = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -39,7 +39,9 @@ specified time.}
 \item{StatusEquals}{A filter that returns only tuning jobs with the specified status.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HyperParameterTuningJobSummaries = list(
     list(
       HyperParameterTuningJobName = "string",
@@ -75,14 +77,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of HyperParameterTuningJobSummary objects that describe the
 hyperparameter tuning jobs launched in your account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_hyper_parameter_tuning_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_hyper_parameter_tuning_jobs(
   NextToken = "string",
   MaxResults = 123,
   SortBy = "Name"|"Status"|"CreationTime",
@@ -102,7 +106,7 @@ hyperparameter tuning jobs launched in your account.
   ),
   StatusEquals = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

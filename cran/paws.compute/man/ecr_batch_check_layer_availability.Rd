@@ -18,7 +18,9 @@ check.}
 \item{layerDigests}{[required] The digests of the image layers to check.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   layers = list(
     list(
       layerDigest = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Checks the availability of one or more image layers in a repository.
@@ -49,14 +51,16 @@ by customers for pulling and pushing images. In most cases, you should
 use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_check_layer_availability(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_check_layer_availability(
   registryId = "string",
   repositoryName = "string",
   layerDigests = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

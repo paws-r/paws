@@ -11,11 +11,13 @@ storagegateway_notify_when_uploaded(FileShareARN)
 \item{FileShareARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FileShareARN = "string",
   NotificationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sends you notification through CloudWatch Events when all files written
@@ -31,14 +33,16 @@ CloudWatch Events to send the notification through event targets such as
 Amazon SNS or AWS Lambda function. This operation is only supported for
 file gateways.
 
-For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-upload-notification}{Getting file upload notification}
+For more information, see \href{https://docs.aws.amazon.com/storagegateway/index.html#get-upload-notification}{Getting file upload notification}
 in the \emph{AWS Storage Gateway User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$notify_when_uploaded(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$notify_when_uploaded(
   FileShareARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

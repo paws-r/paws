@@ -20,10 +20,12 @@ subject to change.
 Removes an Amazon EMR Studio from the Studio metadata store.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_studio(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_studio(
   StudioId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

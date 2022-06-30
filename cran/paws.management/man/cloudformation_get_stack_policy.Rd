@@ -11,20 +11,24 @@ cloudformation_get_stack_policy(StackName)
 policy you want to get.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackPolicyBody = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the stack policy for a specified stack. If a stack doesn't have
 a policy, a null value is returned.
 }
 \section{Request syntax}{
-\preformatted{svc$get_stack_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_stack_policy(
   StackName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

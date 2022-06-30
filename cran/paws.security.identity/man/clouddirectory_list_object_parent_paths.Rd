@@ -19,7 +19,9 @@ clouddirectory_list_object_parent_paths(DirectoryArn, ObjectReference,
 approximate number.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PathToObjectIdentifiersList = list(
     list(
       Path = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves all available parent paths for any object type such as node,
@@ -46,7 +48,9 @@ are deleted or moved. Paths not leading to the directory root are
 ignored from the target object.
 }
 \section{Request syntax}{
-\preformatted{svc$list_object_parent_paths(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_object_parent_paths(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -54,7 +58,7 @@ ignored from the target object.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

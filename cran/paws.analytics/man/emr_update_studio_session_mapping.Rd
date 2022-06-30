@@ -42,14 +42,16 @@ Updates the session policy attached to the user or group for the
 specified Amazon EMR Studio.
 }
 \section{Request syntax}{
-\preformatted{svc$update_studio_session_mapping(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_studio_session_mapping(
   StudioId = "string",
   IdentityId = "string",
   IdentityName = "string",
   IdentityType = "USER"|"GROUP",
   SessionPolicyArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

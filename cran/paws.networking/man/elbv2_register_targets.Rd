@@ -32,7 +32,9 @@ CR1, CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register
 instances of these types by IP address.
 }
 \section{Request syntax}{
-\preformatted{svc$register_targets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_targets(
   TargetGroupArn = "string",
   Targets = list(
     list(
@@ -42,7 +44,7 @@ instances of these types by IP address.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

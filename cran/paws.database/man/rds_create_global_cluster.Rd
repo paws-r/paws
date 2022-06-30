@@ -28,7 +28,9 @@ global database cluster you are creating.}
 \item{StorageEncrypted}{The storage encryption setting for the new global database cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GlobalCluster = list(
     GlobalClusterIdentifier = "string",
     GlobalClusterResourceId = "string",
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Aurora global database spread across multiple AWS Regions.
@@ -68,7 +70,9 @@ becomes the primary cluster of the global database.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$create_global_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_global_cluster(
   GlobalClusterIdentifier = "string",
   SourceDBClusterIdentifier = "string",
   Engine = "string",
@@ -77,7 +81,7 @@ This action only applies to Aurora DB clusters.
   DatabaseName = "string",
   StorageEncrypted = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

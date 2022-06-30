@@ -28,10 +28,12 @@ in the \emph{Amazon EventBridge User Guide}.}
 omit this, the default event bus is used.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RuleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates or updates the specified rule. Rules are enabled by default, or
@@ -96,10 +98,12 @@ are found to be in a bad state, instead of after any change.
 
 An infinite loop can quickly cause higher than expected charges. We
 recommend that you use budgeting, which alerts you when charges exceed
-your specified limit. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html}{Managing Your Costs with Budgets}.
+your specified limit. For more information, see \href{https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html}{Managing Your Costs with Budgets}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_rule(
   Name = "string",
   ScheduleExpression = "string",
   EventPattern = "string",
@@ -114,7 +118,7 @@ your specified limit. For more information, see \href{https://docs.aws.amazon.co
   ),
   EventBusName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,7 +17,9 @@ servicecatalog_describe_portfolio(AcceptLanguage, Id)
 \item{Id}{[required] The portfolio identifier.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PortfolioDetail = list(
     Id = "string",
     ARN = "string",
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the specified portfolio.
@@ -57,11 +59,13 @@ Gets information about the specified portfolio.
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_portfolio(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_portfolio(
   AcceptLanguage = "string",
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

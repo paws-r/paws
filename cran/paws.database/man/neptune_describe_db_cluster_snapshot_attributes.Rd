@@ -13,7 +13,9 @@ neptune_describe_db_cluster_snapshot_attributes(
 for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterSnapshotAttributesResult = list(
     DBClusterSnapshotIdentifier = "string",
     DBClusterSnapshotAttributes = list(
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of DB cluster snapshot attribute names and values for a
@@ -47,10 +49,12 @@ private, use the
 API action.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_db_cluster_snapshot_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_cluster_snapshot_attributes(
   DBClusterSnapshotIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

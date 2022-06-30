@@ -103,7 +103,9 @@ file system created using Amazon Elastic File System.}
 \item{buildBatchConfig}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   project = list(
     name = "string",
     arn = "string",
@@ -289,13 +291,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Changes the settings of a build project.
 }
 \section{Request syntax}{
-\preformatted{svc$update_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_project(
   name = "string",
   description = "string",
   source = list(
@@ -450,7 +454,7 @@ Changes the settings of a build project.
     timeoutInMins = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

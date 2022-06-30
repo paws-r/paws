@@ -16,10 +16,12 @@ An empty list.
 Deletes a room by the room ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_room(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_room(
   RoomArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

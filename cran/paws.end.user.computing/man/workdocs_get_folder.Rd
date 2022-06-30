@@ -16,7 +16,9 @@ administrator credentials to access the API.}
 \item{IncludeCustomMetadata}{Set to TRUE to include custom metadata in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Metadata = list(
     Id = "string",
     Name = "string",
@@ -40,18 +42,20 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the metadata of the specified folder.
 }
 \section{Request syntax}{
-\preformatted{svc$get_folder(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_folder(
   AuthenticationToken = "string",
   FolderId = "string",
   IncludeCustomMetadata = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

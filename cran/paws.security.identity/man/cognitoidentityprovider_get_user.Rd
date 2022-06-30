@@ -11,7 +11,9 @@ cognitoidentityprovider_get_user(AccessToken)
 about the user.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Username = "string",
   UserAttributes = list(
     list(
@@ -30,16 +32,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the user attributes and metadata for a user.
 }
 \section{Request syntax}{
-\preformatted{svc$get_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_user(
   AccessToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -336,7 +336,9 @@ operations for secondary clusters.}
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -466,7 +468,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new Amazon Aurora DB cluster.
@@ -483,7 +485,9 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$create_db_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_cluster(
   AvailabilityZones = list(
     "string"
   ),
@@ -536,7 +540,7 @@ This action only applies to Aurora DB clusters.
   EnableGlobalWriteForwarding = TRUE|FALSE,
   SourceRegion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

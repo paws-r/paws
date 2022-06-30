@@ -28,7 +28,9 @@ retrieve the next page of results.}
 \item{MaxItems}{The maximum number of configurations to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FunctionEventInvokeConfigs = list(
     list(
       LastModified = as.POSIXct(
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of configurations for asynchronous invocation for a
@@ -59,12 +61,14 @@ To configure options for asynchronous invocation, use
 \code{\link[=lambda_put_function_event_invoke_config]{put_function_event_invoke_config}}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_function_event_invoke_configs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_function_event_invoke_configs(
   FunctionName = "string",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

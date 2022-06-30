@@ -28,7 +28,9 @@ Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LicenseConfigurationUsageList = list(
     list(
       ResourceArn = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all license usage records for a license configuration, displaying
@@ -52,7 +54,9 @@ this action to audit the current license consumption for any license
 inventory and configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$list_usage_for_license_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_usage_for_license_configuration(
   LicenseConfigurationArn = "string",
   MaxResults = 123,
   NextToken = "string",
@@ -65,7 +69,7 @@ inventory and configuration.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

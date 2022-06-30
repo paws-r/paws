@@ -177,8 +177,7 @@ NULL
 #' 
 #' -   [Amazon ElastiCache](https://docs.aws.amazon.com/elasticache/)
 #' 
-#' -   [Amazon Elasticsearch
-#'     Service](https://docs.aws.amazon.com/elasticsearch-service/)
+#' -   Amazon Elasticsearch Service
 #' 
 #' -   [AWS Elemental MediaLive](https://docs.aws.amazon.com/medialive/)
 #' 
@@ -275,7 +274,7 @@ NULL
 #' -   [Amazon Neptune](https://docs.aws.amazon.com/neptune/)
 #' 
 #' -   [AWS Network
-#'     Manager](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-network-manager.html)
+#'     Manager](https://docs.aws.amazon.com/vpc/latest/tgwnm/what-is-network-manager.html)
 #' 
 #' -   [AWS OpsWorks](https://docs.aws.amazon.com/opsworks/)
 #' 
@@ -292,7 +291,7 @@ NULL
 #' 
 #' -   [Amazon Redshift](https://docs.aws.amazon.com/redshift/)
 #' 
-#' -   [AWS Resource Access Manager](https://docs.aws.amazon.com/ram/)
+#' -   [AWS Resource Access Manager](https://docs.aws.amazon.com/ARG/)
 #' 
 #' -   [AWS Resource Groups](https://docs.aws.amazon.com/ARG/)
 #' 
@@ -339,7 +338,7 @@ NULL
 #' 
 #' -   [AWS WAF Regional](https://docs.aws.amazon.com/waf/)
 #' 
-#' -   [Amazon WorkLink](https://docs.aws.amazon.com/worklink/)
+#' -   Amazon WorkLink
 #' 
 #' -   [Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/)
 #'

@@ -12,7 +12,9 @@ apigatewayv2_update_vpc_link(Name, VpcLinkId)
 \item{VpcLinkId}{[required] The ID of the VPC link.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CreatedDate = as.POSIXct(
     "2015-01-01"
   ),
@@ -31,17 +33,19 @@ A list with the following syntax:\preformatted{list(
   VpcLinkStatusMessage = "string",
   VpcLinkVersion = "V2"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a VPC link.
 }
 \section{Request syntax}{
-\preformatted{svc$update_vpc_link(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_vpc_link(
   Name = "string",
   VpcLinkId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,7 +16,9 @@ by default). This value must be an integer from 5 to 100.}
 return. To request the first page, leave nextToken empty.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BrokerId = "string",
   MaxResults = 123,
   NextToken = "string",
@@ -27,18 +29,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of all ActiveMQ users.
 }
 \section{Request syntax}{
-\preformatted{svc$list_users(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_users(
   BrokerId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

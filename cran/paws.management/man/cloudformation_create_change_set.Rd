@@ -178,11 +178,13 @@ template. The default behavior of this action is set to \code{False}. To
 include nested sets in a change set, specify \code{True}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Id = "string",
   StackId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a list of changes that will be applied to a stack so that you
@@ -216,7 +218,9 @@ To create a change set for the entire stack hierachy, set
 \code{IncludeNestedStacks} to \code{True}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_change_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_change_set(
   StackName = "string",
   TemplateBody = "string",
   TemplateURL = "string",
@@ -269,7 +273,7 @@ To create a change set for the entire stack hierachy, set
   ),
   IncludeNestedStacks = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

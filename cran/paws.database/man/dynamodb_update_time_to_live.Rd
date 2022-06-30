@@ -14,13 +14,15 @@ dynamodb_update_time_to_live(TableName, TimeToLiveSpecification)
 specified table.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TimeToLiveSpecification = list(
     Enabled = TRUE|FALSE,
     AttributeName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} method enables
@@ -55,14 +57,16 @@ For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/lates
 in the Amazon DynamoDB Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$update_time_to_live(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_time_to_live(
   TableName = "string",
   TimeToLiveSpecification = list(
     Enabled = TRUE|FALSE,
     AttributeName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

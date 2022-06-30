@@ -19,11 +19,13 @@ An empty list.
 Updates the audit stream configuration for the fleet.
 }
 \section{Request syntax}{
-\preformatted{svc$update_audit_stream_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_audit_stream_configuration(
   FleetArn = "string",
   AuditStreamArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

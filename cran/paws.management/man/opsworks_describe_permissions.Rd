@@ -13,7 +13,9 @@ information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/Use
 \item{StackId}{The stack ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Permissions = list(
     list(
       StackId = "string",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the permissions for a specified stack.
@@ -35,11 +37,13 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_permissions(
   IamUserArn = "string",
   StackId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

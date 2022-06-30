@@ -36,7 +36,9 @@ notification specification, or one must be provided in the same call to
 \code{\link[=mturk_update_notification_settings]{update_notification_settings}}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_notification_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_notification_settings(
   HITTypeId = "string",
   Notification = list(
     Destination = "string",
@@ -48,7 +50,7 @@ notification specification, or one must be provided in the same call to
   ),
   Active = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,10 +10,12 @@ cloudhsm_create_hapg(Label)
 \item{Label}{[required] The label of the new high-availability partition group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HapgArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -28,10 +30,12 @@ partition group is a group of partitions that spans multiple physical
 HSMs.
 }
 \section{Request syntax}{
-\preformatted{svc$create_hapg(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_hapg(
   Label = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

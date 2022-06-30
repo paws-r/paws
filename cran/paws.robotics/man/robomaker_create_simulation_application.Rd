@@ -23,7 +23,9 @@ application.}
 simulation application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   name = "string",
   version = "string",
@@ -55,13 +57,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a simulation application.
 }
 \section{Request syntax}{
-\preformatted{svc$create_simulation_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_simulation_application(
   name = "string",
   sources = list(
     list(
@@ -86,7 +90,7 @@ Creates a simulation application.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

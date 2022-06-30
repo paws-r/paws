@@ -24,25 +24,29 @@ IAM user or role explicitly overrides these settings. If this field is
 omitted, the setting is changed only for the authenticated user.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   setting = list(
     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
     value = "string",
     principalArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disables an account setting for a specified IAM user, IAM role, or the
 root user for an account.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_account_setting(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_account_setting(
   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
   principalArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -47,12 +47,14 @@ modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_login_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_login_profile(
   UserName = "string",
   Password = "string",
   PasswordResetRequired = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

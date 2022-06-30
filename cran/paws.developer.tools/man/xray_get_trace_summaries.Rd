@@ -28,7 +28,9 @@ requests that meet certain requirements.}
 the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TraceSummaries = list(
     list(
       Id = "string",
@@ -205,7 +207,7 @@ A list with the following syntax:\preformatted{list(
   TracesProcessedCount = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves IDs and annotations for traces available for a specified time
@@ -229,7 +231,9 @@ filter expressions, see \href{https://docs.aws.amazon.com/xray/latest/devguide/x
 in the \emph{AWS X-Ray Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_trace_summaries(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_trace_summaries(
   StartTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -245,7 +249,7 @@ in the \emph{AWS X-Ray Developer Guide}.
   FilterExpression = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

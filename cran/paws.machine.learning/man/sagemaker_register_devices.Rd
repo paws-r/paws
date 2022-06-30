@@ -20,7 +20,9 @@ An empty list.
 Register devices.
 }
 \section{Request syntax}{
-\preformatted{svc$register_devices(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_devices(
   DeviceFleetName = "string",
   Devices = list(
     list(
@@ -36,7 +38,7 @@ Register devices.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

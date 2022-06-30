@@ -12,13 +12,15 @@ glue_create_security_configuration(Name, EncryptionConfiguration)
 \item{EncryptionConfiguration}{[required] The encryption configuration for the new security configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string",
   CreatedTimestamp = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new security configuration. A security configuration is a set
@@ -27,7 +29,9 @@ security configuration to encrypt data at rest. For information about
 using security configurations in AWS Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html}{Encrypting Data Written by Crawlers, Jobs, and Development Endpoints}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_security_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_security_configuration(
   Name = "string",
   EncryptionConfiguration = list(
     S3Encryption = list(
@@ -46,7 +50,7 @@ using security configurations in AWS Glue, see \href{https://docs.aws.amazon.com
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

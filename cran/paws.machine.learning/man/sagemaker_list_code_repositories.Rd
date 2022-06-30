@@ -35,7 +35,9 @@ repositories, use the token in the next request.}
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CodeRepositorySummaryList = list(
     list(
       CodeRepositoryName = "string",
@@ -55,13 +57,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of the Git repositories in your account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_code_repositories(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_code_repositories(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -80,7 +84,7 @@ Gets a list of the Git repositories in your account.
   SortBy = "Name"|"CreationTime"|"LastModifiedTime",
   SortOrder = "Ascending"|"Descending"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

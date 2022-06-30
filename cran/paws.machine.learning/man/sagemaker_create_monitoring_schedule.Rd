@@ -20,17 +20,21 @@ Cost Allocation Tags in the \emph{AWS Billing and Cost Management User
 Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MonitoringScheduleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a schedule that regularly starts Amazon SageMaker Processing
 Jobs to monitor the data captured for an Amazon SageMaker Endoint.
 }
 \section{Request syntax}{
-\preformatted{svc$create_monitoring_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_monitoring_schedule(
   MonitoringScheduleName = "string",
   MonitoringScheduleConfig = list(
     ScheduleConfig = list(
@@ -123,7 +127,7 @@ Jobs to monitor the data captured for an Amazon SageMaker Endoint.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

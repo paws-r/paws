@@ -52,12 +52,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 Default: \code{off}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HostIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Allocates a Dedicated Host to your account. At a minimum, specify the
@@ -65,7 +67,9 @@ supported instance type or instance family, the Availability Zone in
 which to allocate the host, and the number of hosts to allocate.
 }
 \section{Request syntax}{
-\preformatted{svc$allocate_hosts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$allocate_hosts(
   AutoPlacement = "on"|"off",
   AvailabilityZone = "string",
   ClientToken = "string",
@@ -85,7 +89,7 @@ which to allocate the host, and the number of hosts to allocate.
   ),
   HostRecovery = "on"|"off"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -53,7 +53,9 @@ endpoint. To require that clients use a custom domain name to invoke
 your API, disable the default endpoint.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -83,13 +85,15 @@ A list with the following syntax:\preformatted{list(
   ),
   disableExecuteApiEndpoint = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new RestApi resource.
 }
 \section{Request syntax}{
-\preformatted{svc$create_rest_api(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_rest_api(
   name = "string",
   description = "string",
   version = "string",
@@ -113,7 +117,7 @@ Creates a new RestApi resource.
   ),
   disableExecuteApiEndpoint = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

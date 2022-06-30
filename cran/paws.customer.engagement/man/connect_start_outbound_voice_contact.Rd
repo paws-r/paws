@@ -46,10 +46,12 @@ contact. Attribute keys can include only alphanumeric, dash, and
 underscore characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContactId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API places an outbound call to a contact, and then initiates the
@@ -70,7 +72,9 @@ request. For more information, see \href{https://docs.aws.amazon.com/connect/lat
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_outbound_voice_contact(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_outbound_voice_contact(
   DestinationPhoneNumber = "string",
   ContactFlowId = "string",
   InstanceId = "string",
@@ -81,7 +85,7 @@ in the \emph{Amazon Connect Administrator Guide}.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

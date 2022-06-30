@@ -16,7 +16,9 @@ chime_create_user(AccountId, Username, Email, UserType)
 \item{UserType}{The user type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   User = list(
     UserId = "string",
     AccountId = "string",
@@ -40,19 +42,21 @@ A list with the following syntax:\preformatted{list(
     PersonalPIN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a user under the specified Amazon Chime account.
 }
 \section{Request syntax}{
-\preformatted{svc$create_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user(
   AccountId = "string",
   Username = "string",
   Email = "string",
   UserType = "PrivateUser"|"SharedDevice"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

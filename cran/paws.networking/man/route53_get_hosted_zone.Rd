@@ -11,7 +11,9 @@ route53_get_hosted_zone(Id)
 \item{Id}{[required] The ID of the hosted zone that you want to get information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HostedZone = list(
     Id = "string",
     Name = "string",
@@ -40,17 +42,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a specified hosted zone including the four name
 servers assigned to the hosted zone.
 }
 \section{Request syntax}{
-\preformatted{svc$get_hosted_zone(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_hosted_zone(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -24,13 +24,15 @@ An empty list.
 Deletes the specified comment from the document version.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_comment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_comment(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string",
   CommentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

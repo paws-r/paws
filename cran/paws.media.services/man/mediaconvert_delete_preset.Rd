@@ -16,10 +16,12 @@ An empty list.
 Permanently delete a preset you have created.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_preset(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_preset(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

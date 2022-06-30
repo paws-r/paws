@@ -36,11 +36,13 @@ local disk used to create the volume. This value is only required when
 you are attaching a stored volume.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VolumeARN = "string",
   TargetARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Connects a volume to an iSCSI connection and then attaches the volume to
@@ -50,14 +52,16 @@ creating a snapshot. It also makes it easier to move your volumes from
 an on-premises gateway to a gateway hosted on an Amazon EC2 instance.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_volume(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_volume(
   GatewayARN = "string",
   TargetName = "string",
   VolumeARN = "string",
   NetworkInterfaceId = "string",
   DiskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

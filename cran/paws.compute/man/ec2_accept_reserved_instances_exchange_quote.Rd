@@ -21,10 +21,12 @@ Convertible Reserved Instance of the same or higher value.}
 exchange for your current Convertible Reserved Instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ExchangeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Accepts the Convertible Reserved Instance exchange quote described in
@@ -33,7 +35,9 @@ the
 call.
 }
 \section{Request syntax}{
-\preformatted{svc$accept_reserved_instances_exchange_quote(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_reserved_instances_exchange_quote(
   DryRun = TRUE|FALSE,
   ReservedInstanceIds = list(
     "string"
@@ -45,7 +49,7 @@ call.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

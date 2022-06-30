@@ -21,7 +21,9 @@ administrator credentials to access the API.}
 previous call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Comments = list(
     list(
       CommentId = "string",
@@ -65,20 +67,22 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List all the comments for the specified document version.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_comments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_comments(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string",
   Limit = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

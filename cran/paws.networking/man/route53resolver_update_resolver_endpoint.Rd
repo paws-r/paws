@@ -12,7 +12,9 @@ route53resolver_update_resolver_endpoint(ResolverEndpointId, Name)
 \item{Name}{The name of the Resolver endpoint that you want to update.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResolverEndpoint = list(
     Id = "string",
     CreatorRequestId = "string",
@@ -30,17 +32,19 @@ A list with the following syntax:\preformatted{list(
     ModificationTime = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the name of an inbound or an outbound Resolver endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$update_resolver_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_resolver_endpoint(
   ResolverEndpointId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

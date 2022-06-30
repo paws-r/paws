@@ -13,21 +13,25 @@ workmail_create_group(OrganizationId, Name)
 \item{Name}{[required] The name of the group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a group that can be used in Amazon WorkMail by calling the
 \code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.
 }
 \section{Request syntax}{
-\preformatted{svc$create_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_group(
   OrganizationId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

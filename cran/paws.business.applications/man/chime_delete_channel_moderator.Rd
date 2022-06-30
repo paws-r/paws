@@ -18,11 +18,13 @@ An empty list.
 Deletes a channel moderator.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_channel_moderator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_channel_moderator(
   ChannelArn = "string",
   ChannelModeratorArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

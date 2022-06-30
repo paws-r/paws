@@ -21,10 +21,12 @@ If emergency calling is configured for the Amazon Chime Voice Connector,
 it must be deleted prior to deleting the origination settings.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_voice_connector_origination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_voice_connector_origination(
   VoiceConnectorId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

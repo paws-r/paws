@@ -25,13 +25,15 @@ The following example removes the stack tag with value Prod from a
 cluster:
 }
 \section{Request syntax}{
-\preformatted{svc$remove_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags(
   ResourceId = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

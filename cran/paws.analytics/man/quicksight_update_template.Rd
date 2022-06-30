@@ -37,7 +37,9 @@ field.}
 \item{Name}{The name for the template.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TemplateId = "string",
   Arn = "string",
   VersionArn = "string",
@@ -45,14 +47,16 @@ A list with the following syntax:\preformatted{list(
   Status = 123,
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a template from an existing Amazon QuickSight analysis or
 another template.
 }
 \section{Request syntax}{
-\preformatted{svc$update_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_template(
   AwsAccountId = "string",
   TemplateId = "string",
   SourceEntity = list(
@@ -72,7 +76,7 @@ another template.
   VersionDescription = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

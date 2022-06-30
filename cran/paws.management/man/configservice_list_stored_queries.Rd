@@ -13,7 +13,9 @@ request the next page of results in a paginated response.}
 \item{MaxResults}{The maximum number of results to be returned with a single call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StoredQueryMetadata = list(
     list(
       QueryId = "string",
@@ -24,18 +26,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List the stored queries for an AWS account in an AWS Region. The default
 is 100.
 }
 \section{Request syntax}{
-\preformatted{svc$list_stored_queries(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_stored_queries(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

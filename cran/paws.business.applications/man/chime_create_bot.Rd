@@ -14,7 +14,9 @@ chime_create_bot(AccountId, DisplayName, Domain)
 \item{Domain}{The domain of the Amazon Chime Enterprise account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Bot = list(
     BotId = "string",
     UserId = "string",
@@ -31,18 +33,20 @@ A list with the following syntax:\preformatted{list(
     SecurityToken = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a bot for an Amazon Chime Enterprise account.
 }
 \section{Request syntax}{
-\preformatted{svc$create_bot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_bot(
   AccountId = "string",
   DisplayName = "string",
   Domain = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

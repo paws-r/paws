@@ -33,23 +33,27 @@ both resource-level and account/catalog-level resource policies is
 allowed.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyHash = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sets the Data Catalog resource policy for access control.
 }
 \section{Request syntax}{
-\preformatted{svc$put_resource_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_resource_policy(
   PolicyInJson = "string",
   ResourceArn = "string",
   PolicyHashCondition = "string",
   PolicyExistsCondition = "MUST_EXIST"|"NOT_EXIST"|"NONE",
   EnableHybrid = "TRUE"|"FALSE"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -38,10 +38,12 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RequestCharged = "requester"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Applies a Legal Hold configuration to the specified object.
@@ -54,7 +56,9 @@ This action is not supported by Amazon S3 on Outposts.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$put_object_legal_hold(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_object_legal_hold(
   Bucket = "string",
   Key = "string",
   LegalHold = list(
@@ -65,7 +69,7 @@ This action is not supported by Amazon S3 on Outposts.
   ContentMD5 = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -34,7 +34,9 @@ required and not secret. For more information, see \href{https://docs.aws.amazon
 \item{tags}{The tags for the custom action.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   actionType = list(
     id = list(
       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
@@ -75,14 +77,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new custom action that can be used in all pipelines associated
 with the AWS account. Only used for custom actions.
 }
 \section{Request syntax}{
-\preformatted{svc$create_custom_action_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_custom_action_type(
   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
   provider = "string",
   version = "string",
@@ -118,7 +122,7 @@ with the AWS account. Only used for custom actions.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

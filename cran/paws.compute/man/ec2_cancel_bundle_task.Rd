@@ -16,7 +16,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BundleTask = list(
     BundleId = "string",
     BundleTaskError = list(
@@ -43,18 +45,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels a bundling operation for an instance store-backed Windows
 instance.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_bundle_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_bundle_task(
   BundleId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

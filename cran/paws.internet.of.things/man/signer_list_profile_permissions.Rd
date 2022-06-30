@@ -12,7 +12,9 @@ signer_list_profile_permissions(profileName, nextToken)
 \item{nextToken}{String for specifying the next set of paginated results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   revisionId = "string",
   policySizeBytes = 123,
   permissions = list(
@@ -25,17 +27,19 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the cross-account permissions associated with a signing profile.
 }
 \section{Request syntax}{
-\preformatted{svc$list_profile_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_profile_permissions(
   profileName = "string",
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

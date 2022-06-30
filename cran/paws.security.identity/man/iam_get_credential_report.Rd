@@ -7,14 +7,16 @@
 iam_get_credential_report()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Content = raw,
   ReportFormat = "text/csv",
   GeneratedTime = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a credential report for the AWS account. For more information

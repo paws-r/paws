@@ -33,7 +33,9 @@ graphed.
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html}{CloudWatch Anomaly Detection}.
 }
 \section{Request syntax}{
-\preformatted{svc$put_anomaly_detector(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_anomaly_detector(
   Namespace = "string",
   MetricName = "string",
   Dimensions = list(
@@ -57,7 +59,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/lat
     MetricTimezone = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

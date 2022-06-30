@@ -116,16 +116,20 @@ recommend this worker type for memory-intensive jobs.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new job definition.
 }
 \section{Request syntax}{
-\preformatted{svc$create_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_job(
   Name = "string",
   Description = "string",
   LogUri = "string",
@@ -164,7 +168,7 @@ Creates a new job definition.
   NumberOfWorkers = 123,
   WorkerType = "Standard"|"G.1X"|"G.2X"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

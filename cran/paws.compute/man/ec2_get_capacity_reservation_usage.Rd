@@ -25,7 +25,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   CapacityReservationId = "string",
   InstanceType = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets usage information about a Capacity Reservation. If the Capacity
@@ -49,13 +51,15 @@ shared capacity. If the Capacity Reservation is not shared, it shows
 only the Capacity Reservation owner's usage.
 }
 \section{Request syntax}{
-\preformatted{svc$get_capacity_reservation_usage(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_capacity_reservation_usage(
   CapacityReservationId = "string",
   NextToken = "string",
   MaxResults = 123,
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

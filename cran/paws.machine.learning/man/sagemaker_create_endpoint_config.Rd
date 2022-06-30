@@ -56,10 +56,12 @@ For a list of instance types that support local instance storage, see
 For more information about local instance storage encryption, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html}{SSD Instance Store Volumes}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointConfigArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an endpoint configuration that Amazon SageMaker hosting services
@@ -101,7 +103,9 @@ calling \code{\link[=sagemaker_create_endpoint]{create_endpoint}} to minimize th
 potential impact of a DynamoDB eventually consistent read.
 }
 \section{Request syntax}{
-\preformatted{svc$create_endpoint_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_endpoint_config(
   EndpointConfigName = "string",
   ProductionVariants = list(
     list(
@@ -140,7 +144,7 @@ potential impact of a DynamoDB eventually consistent read.
   ),
   KmsKeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

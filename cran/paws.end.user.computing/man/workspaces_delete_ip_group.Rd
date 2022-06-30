@@ -19,10 +19,12 @@ You cannot delete an IP access control group that is associated with a
 directory.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_ip_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_ip_group(
   GroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

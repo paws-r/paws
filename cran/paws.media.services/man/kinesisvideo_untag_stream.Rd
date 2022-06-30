@@ -25,14 +25,16 @@ does not exist, it's ignored.
 In the request, you must provide the \code{StreamName} or \code{StreamARN}.
 }
 \section{Request syntax}{
-\preformatted{svc$untag_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_stream(
   StreamARN = "string",
   StreamName = "string",
   TagKeyList = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

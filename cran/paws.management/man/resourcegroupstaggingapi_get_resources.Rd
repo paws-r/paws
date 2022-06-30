@@ -108,7 +108,9 @@ You can use this parameter only if the \code{IncludeComplianceDetails}
 parameter is also set to \code{true}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PaginationToken = "string",
   ResourceTagMappingList = list(
     list(
@@ -131,7 +133,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns all the tagged or previously tagged resources that are located
@@ -154,7 +156,9 @@ than allowed. The \code{PaginationToken} response parameter value is \code{null}
 \emph{only} when there are no more results to display.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resources(
   PaginationToken = "string",
   TagFilters = list(
     list(
@@ -172,7 +176,7 @@ than allowed. The \code{PaginationToken} response parameter value is \code{null}
   IncludeComplianceDetails = TRUE|FALSE,
   ExcludeCompliantResources = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

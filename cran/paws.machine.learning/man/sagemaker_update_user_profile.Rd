@@ -14,16 +14,20 @@ sagemaker_update_user_profile(DomainId, UserProfileName, UserSettings)
 \item{UserSettings}{A collection of settings.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserProfileArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a user profile.
 }
 \section{Request syntax}{
-\preformatted{svc$update_user_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_profile(
   DomainId = "string",
   UserProfileName = "string",
   UserSettings = list(
@@ -66,7 +70,7 @@ Updates a user profile.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

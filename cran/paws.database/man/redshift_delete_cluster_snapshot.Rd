@@ -21,7 +21,9 @@ cluster name.
 Constraints: Must be the name of valid cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Snapshot = list(
     SnapshotIdentifier = "string",
     ClusterIdentifier = "string",
@@ -77,7 +79,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the specified manual snapshot. The snapshot must be in the
@@ -92,11 +94,13 @@ must revoke all of the authorizations before you can delete the
 snapshot.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cluster_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cluster_snapshot(
   SnapshotIdentifier = "string",
   SnapshotClusterIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

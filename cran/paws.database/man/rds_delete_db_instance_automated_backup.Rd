@@ -17,7 +17,9 @@ example,
 \code{arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBInstanceAutomatedBackup = list(
     DBInstanceArn = "string",
     DbiResourceId = "string",
@@ -60,18 +62,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes automated backups using the \code{DbiResourceId} value of the source
 DB instance or the Amazon Resource Name (ARN) of the automated backups.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_db_instance_automated_backup(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_instance_automated_backup(
   DbiResourceId = "string",
   DBInstanceAutomatedBackupsArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

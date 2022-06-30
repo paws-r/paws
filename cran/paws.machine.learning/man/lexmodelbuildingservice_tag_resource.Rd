@@ -21,7 +21,9 @@ Adds the specified tags to the specified resource. If a tag key already
 exists, the existing value is replaced with the new value.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     list(
@@ -30,7 +32,7 @@ exists, the existing value is replaced with the new value.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

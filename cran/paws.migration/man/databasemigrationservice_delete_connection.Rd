@@ -14,7 +14,9 @@ endpoint.}
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Connection = list(
     ReplicationInstanceArn = "string",
     EndpointArn = "string",
@@ -24,17 +26,19 @@ A list with the following syntax:\preformatted{list(
     ReplicationInstanceIdentifier = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes the connection between a replication instance and an endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_connection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_connection(
   EndpointArn = "string",
   ReplicationInstanceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

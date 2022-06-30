@@ -22,7 +22,9 @@ command line tools, base64 encoding is performed for you.}
 \item{TagSpecifications}{The tags to apply to the imported key pair.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyFingerprint = "string",
   KeyName = "string",
   KeyPairId = "string",
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Imports the public key from an RSA key pair that you created with a
@@ -47,7 +49,9 @@ For more information about key pairs, see \href{https://docs.aws.amazon.com/AWSE
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$import_key_pair(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_key_pair(
   DryRun = TRUE|FALSE,
   KeyName = "string",
   PublicKeyMaterial = raw,
@@ -63,7 +67,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

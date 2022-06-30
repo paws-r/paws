@@ -20,7 +20,9 @@ request. If you have more \code{Rules} than the number that you specify for
 get another batch of \code{Rules}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextMarker = "string",
   Rules = list(
     list(
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -44,11 +46,13 @@ regional and global use.
 Returns an array of RuleSummary objects.
 }
 \section{Request syntax}{
-\preformatted{svc$list_rate_based_rules(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_rate_based_rules(
   NextMarker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

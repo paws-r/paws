@@ -17,10 +17,12 @@ An empty list.
 Deletes an existing VpcLink of a specified identifier.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_vpc_link(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpc_link(
   vpcLinkId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

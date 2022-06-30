@@ -16,10 +16,12 @@ An empty list.
 Deletes an Amazon SageMaker model bias job definition.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_model_bias_job_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_model_bias_job_definition(
   JobDefinitionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

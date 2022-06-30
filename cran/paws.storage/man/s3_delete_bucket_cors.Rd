@@ -33,11 +33,13 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_bucket_cors(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bucket_cors(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

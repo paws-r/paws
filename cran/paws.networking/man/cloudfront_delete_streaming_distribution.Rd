@@ -51,11 +51,13 @@ console, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Developer
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_streaming_distribution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_streaming_distribution(
   Id = "string",
   IfMatch = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

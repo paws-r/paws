@@ -29,17 +29,21 @@ as the key might be added to an endpoint to indicate its use by the
 sales department.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a model-specific endpoint for synchronous inference for a
 previously trained custom model
 }
 \section{Request syntax}{
-\preformatted{svc$create_endpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_endpoint(
   EndpointName = "string",
   ModelArn = "string",
   DesiredInferenceUnits = 123,
@@ -51,7 +55,7 @@ previously trained custom model
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

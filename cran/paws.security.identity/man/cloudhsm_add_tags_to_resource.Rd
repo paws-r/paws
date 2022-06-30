@@ -12,10 +12,12 @@ cloudhsm_add_tags_to_resource(ResourceArn, TagList)
 \item{TagList}{[required] One or more tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -32,7 +34,9 @@ Each tag consists of a key and a value. Tag keys must be unique to each
 resource.
 }
 \section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_resource(
   ResourceArn = "string",
   TagList = list(
     list(
@@ -41,7 +45,7 @@ resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

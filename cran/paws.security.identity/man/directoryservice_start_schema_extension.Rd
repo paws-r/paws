@@ -16,28 +16,32 @@ extension.}
 
 \item{LdifContent}{[required] The LDIF file represented as a string. To construct the LdifContent
 string, precede each line as it would be formatted in an ldif file with
-\\n. See the example request below for more details. The file size can
-be no larger than 1MB.}
+\n. See the example request below for more details. The file size can be
+no larger than 1MB.}
 
 \item{Description}{[required] A description of the schema extension.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SchemaExtensionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Applies a schema extension to a Microsoft AD directory.
 }
 \section{Request syntax}{
-\preformatted{svc$start_schema_extension(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_schema_extension(
   DirectoryId = "string",
   CreateSnapshotBeforeSchemaExtension = TRUE|FALSE,
   LdifContent = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

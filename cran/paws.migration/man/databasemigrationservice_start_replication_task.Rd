@@ -28,7 +28,7 @@ The value can be in date, checkpoint, or LSN/SCN format.
 Date Example: --cdc-start-position “2018-03-08T12:12:12”
 
 Checkpoint Example: --cdc-start-position
-"checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
+"checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"
 
 LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 
@@ -48,7 +48,9 @@ Commit time example: --cdc-stop-position “commit_time:
 2018-02-09T12:12:12 “}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationTask = list(
     ReplicationTaskIdentifier = "string",
     SourceEndpointArn = "string",
@@ -97,7 +99,7 @@ A list with the following syntax:\preformatted{list(
     TargetReplicationInstanceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts the replication task.
@@ -106,7 +108,9 @@ For more information about AWS DMS tasks, see \href{https://docs.aws.amazon.com/
 in the \emph{AWS Database Migration Service User Guide.}
 }
 \section{Request syntax}{
-\preformatted{svc$start_replication_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_replication_task(
   ReplicationTaskArn = "string",
   StartReplicationTaskType = "start-replication"|"resume-processing"|"reload-target",
   CdcStartTime = as.POSIXct(
@@ -115,7 +119,7 @@ in the \emph{AWS Database Migration Service User Guide.}
   CdcStartPosition = "string",
   CdcStopPosition = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -17,7 +17,9 @@ and groups.}
 \item{Marker}{The pagination token that indicates the set of results to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SessionMappings = list(
     list(
       StudioId = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
@@ -42,12 +44,14 @@ Returns a list of all user or group session mappings for the EMR Studio
 specified by \code{StudioId}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_studio_session_mappings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_studio_session_mappings(
   StudioId = "string",
   IdentityType = "USER"|"GROUP",
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

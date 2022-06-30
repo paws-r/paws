@@ -14,10 +14,12 @@ ssm_create_ops_metadata(ResourceId, Metadata)
 \item{Metadata}{Metadata for a new Application Manager application.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OpsMetadataArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 If you create a new application in Application Manager, Systems Manager
@@ -25,7 +27,9 @@ calls this API action to specify information about the new application,
 including the application type.
 }
 \section{Request syntax}{
-\preformatted{svc$create_ops_metadata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_ops_metadata(
   ResourceId = "string",
   Metadata = list(
     list(
@@ -33,7 +37,7 @@ including the application type.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

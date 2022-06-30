@@ -35,7 +35,9 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Groups = list(
     list(
       Path = "string",
@@ -50,7 +52,7 @@ A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the IAM groups that have the specified path prefix.
@@ -59,12 +61,14 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$list_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_groups(
   PathPrefix = "string",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

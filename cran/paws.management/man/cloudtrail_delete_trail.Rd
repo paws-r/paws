@@ -21,10 +21,12 @@ be called on the shadow trails (replicated trails in other regions) of a
 trail that is enabled in all regions.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_trail(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_trail(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

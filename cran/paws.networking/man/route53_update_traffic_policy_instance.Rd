@@ -22,7 +22,9 @@ to update resource record sets for the specified traffic policy
 instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrafficPolicyInstance = list(
     Id = "string",
     HostedZoneId = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the resource record sets in a specified hosted zone that were
@@ -58,13 +60,15 @@ associated with the root resource record set name.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_traffic_policy_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_traffic_policy_instance(
   Id = "string",
   TTL = 123,
   TrafficPolicyId = "string",
   TrafficPolicyVersion = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

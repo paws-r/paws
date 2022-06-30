@@ -18,11 +18,13 @@ An empty list.
 Deletes a \code{Function}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_function(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_function(
   apiId = "string",
   functionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

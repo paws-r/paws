@@ -13,7 +13,9 @@ description of.}
 \item{BudgetName}{[required] The name of the budget that you want a description of.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Budget = list(
     BudgetName = "string",
     BudgetLimit = list(
@@ -69,7 +71,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a budget.
@@ -80,11 +82,13 @@ The Request Syntax section shows the \code{BudgetLimit} syntax. For
 section.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_budget(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_budget(
   AccountId = "string",
   BudgetName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

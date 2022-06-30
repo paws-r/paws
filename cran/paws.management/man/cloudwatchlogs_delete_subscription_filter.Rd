@@ -18,11 +18,13 @@ An empty list.
 Deletes the specified subscription filter.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_subscription_filter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_subscription_filter(
   logGroupName = "string",
   filterName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

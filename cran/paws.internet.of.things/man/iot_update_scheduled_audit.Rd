@@ -34,17 +34,21 @@ to select which checks are enabled.)}
 \item{scheduledAuditName}{[required] The name of the scheduled audit. (Max. 128 chars)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   scheduledAuditArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a scheduled audit, including which checks are performed and how
 often the audit takes place.
 }
 \section{Request syntax}{
-\preformatted{svc$update_scheduled_audit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_scheduled_audit(
   frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
   dayOfMonth = "string",
   dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
@@ -53,7 +57,7 @@ often the audit takes place.
   ),
   scheduledAuditName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

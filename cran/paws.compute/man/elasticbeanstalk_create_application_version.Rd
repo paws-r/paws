@@ -58,7 +58,9 @@ Elastic Beanstalk applies these tags only to the application version.
 Environments that use the application version don't inherit the tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationVersion = list(
     ApplicationVersionArn = "string",
     ApplicationName = "string",
@@ -83,7 +85,7 @@ A list with the following syntax:\preformatted{list(
     Status = "Processed"|"Unprocessed"|"Failed"|"Processing"|"Building"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an application version for the specified application. You can
@@ -108,7 +110,9 @@ you change the Amazon S3 location, you receive an exception when you
 attempt to launch an environment from the application version.
 }
 \section{Request syntax}{
-\preformatted{svc$create_application_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application_version(
   ApplicationName = "string",
   VersionLabel = "string",
   Description = "string",
@@ -137,7 +141,7 @@ attempt to launch an environment from the application version.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

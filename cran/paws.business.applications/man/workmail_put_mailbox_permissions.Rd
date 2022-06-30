@@ -19,8 +19,8 @@ permissions.}
 
 \item{PermissionValues}{[required] The permissions granted to the grantee. SEND_AS allows the grantee to
 send email as the owner of the mailbox (the grantee is not mentioned on
-these emails). SEND_ON_BEHALF allows the grantee to send email on
-behalf of the owner of the mailbox (the grantee is not mentioned as the
+these emails). SEND_ON_BEHALF allows the grantee to send email on behalf
+of the owner of the mailbox (the grantee is not mentioned as the
 physical sender of these emails). FULL_ACCESS allows the grantee full
 access to the mailbox, irrespective of other folder-level permissions
 set on the mailbox.}
@@ -33,7 +33,9 @@ Sets permissions for a user, group, or resource. This replaces any
 pre-existing permissions.
 }
 \section{Request syntax}{
-\preformatted{svc$put_mailbox_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_mailbox_permissions(
   OrganizationId = "string",
   EntityId = "string",
   GranteeId = "string",
@@ -41,7 +43,7 @@ pre-existing permissions.
     "FULL_ACCESS"|"SEND_AS"|"SEND_ON_BEHALF"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

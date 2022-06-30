@@ -10,19 +10,23 @@ sagemaker_delete_workteam(WorkteamName)
 \item{WorkteamName}{[required] The name of the work team to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Success = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an existing work team. This operation can't be undone.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_workteam(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_workteam(
   WorkteamName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

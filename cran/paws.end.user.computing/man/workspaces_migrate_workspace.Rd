@@ -13,11 +13,13 @@ workspaces_migrate_workspace(SourceWorkspaceId, BundleId)
 \item{BundleId}{[required] The identifier of the target bundle type to migrate the WorkSpace to.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SourceWorkspaceId = "string",
   TargetWorkspaceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Migrates a WorkSpace from one operating system or bundle type to
@@ -35,11 +37,13 @@ For available migration scenarios, details about what happens during
 migration, and best practices, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/migrate-workspaces.html}{Migrate a WorkSpace}.
 }
 \section{Request syntax}{
-\preformatted{svc$migrate_workspace(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$migrate_workspace(
   SourceWorkspaceId = "string",
   BundleId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

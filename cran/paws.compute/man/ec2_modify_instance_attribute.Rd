@@ -111,7 +111,9 @@ information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_instance_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_instance_attribute(
   SourceDestCheck = list(
     Value = TRUE|FALSE
   ),
@@ -161,7 +163,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ),
   Value = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

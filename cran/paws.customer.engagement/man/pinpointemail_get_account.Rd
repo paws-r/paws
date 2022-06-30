@@ -8,7 +8,9 @@ your Amazon Pinpoint account in the current AWS Region}
 pinpointemail_get_account()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SendQuota = list(
     Max24HourSend = 123.0,
     MaxSendRate = 123.0,
@@ -19,15 +21,17 @@ A list with the following syntax:\preformatted{list(
   EnforcementStatus = "string",
   ProductionAccessEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Obtain information about the email-sending status and capabilities of
 your Amazon Pinpoint account in the current AWS Region.
 }
 \section{Request syntax}{
-\preformatted{svc$get_account()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_account()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,11 +18,13 @@ An empty list.
 Updates a core definition.
 }
 \section{Request syntax}{
-\preformatted{svc$update_core_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_core_definition(
   CoreDefinitionId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

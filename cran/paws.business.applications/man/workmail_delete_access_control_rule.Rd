@@ -18,11 +18,13 @@ An empty list.
 Deletes an access control rule for the specified WorkMail organization.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_access_control_rule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_access_control_rule(
   OrganizationId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

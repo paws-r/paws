@@ -14,11 +14,13 @@ quicksight_tag_resource(ResourceArn, Tags)
 assigned to the resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Assigns one or more tags (key-value pairs) to the specified QuickSight
@@ -47,7 +49,9 @@ Groups.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -56,7 +60,7 @@ Groups.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

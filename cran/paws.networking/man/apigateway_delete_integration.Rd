@@ -21,12 +21,14 @@ An empty list.
 Represents a delete integration.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_integration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_integration(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

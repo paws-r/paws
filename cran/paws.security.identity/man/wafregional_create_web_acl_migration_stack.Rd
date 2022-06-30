@@ -30,10 +30,12 @@ web ACL during the migration. Otherwise, if AWS WAF encounters
 unsupported entities, it stops the process and throws an exception.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   S3ObjectUrl = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS CloudFormation WAFV2 template for the specified web ACL
@@ -49,12 +51,14 @@ over to the new web ACL, see \href{https://docs.aws.amazon.com/waf/latest/develo
 in the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_web_acl_migration_stack(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_web_acl_migration_stack(
   WebACLId = "string",
   S3BucketName = "string",
   IgnoreUnsupportedType = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

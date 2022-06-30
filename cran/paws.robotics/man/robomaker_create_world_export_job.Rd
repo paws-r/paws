@@ -23,7 +23,9 @@ bucket and put the export.}
 world export job.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   status = "Pending"|"Running"|"Completed"|"Failed"|"Canceling"|"Canceled",
   createdAt = as.POSIXct(
@@ -40,13 +42,15 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a world export job.
 }
 \section{Request syntax}{
-\preformatted{svc$create_world_export_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_world_export_job(
   clientRequestToken = "string",
   worlds = list(
     "string"
@@ -60,7 +64,7 @@ Creates a world export job.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

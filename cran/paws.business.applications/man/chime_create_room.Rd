@@ -14,7 +14,9 @@ chime_create_room(AccountId, Name, ClientRequestToken)
 \item{ClientRequestToken}{The idempotency token for the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Room = list(
     RoomId = "string",
     Name = "string",
@@ -28,18 +30,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a chat room for the specified Amazon Chime Enterprise account.
 }
 \section{Request syntax}{
-\preformatted{svc$create_room(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_room(
   AccountId = "string",
   Name = "string",
   ClientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

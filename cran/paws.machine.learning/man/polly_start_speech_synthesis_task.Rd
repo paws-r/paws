@@ -60,7 +60,9 @@ value is plain text.}
 \item{VoiceId}{[required] Voice ID to use for the synthesis.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SynthesisTask = list(
     Engine = "standard"|"neural",
     TaskId = "string",
@@ -85,7 +87,7 @@ A list with the following syntax:\preformatted{list(
     LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Allows the creation of an asynchronous synthesis task, by starting a new
@@ -98,7 +100,9 @@ SpeechSynthesisTask object, which will include an identifier of this
 task as well as the current status.
 }
 \section{Request syntax}{
-\preformatted{svc$start_speech_synthesis_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_speech_synthesis_task(
   Engine = "standard"|"neural",
   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
   LexiconNames = list(
@@ -116,7 +120,7 @@ task as well as the current status.
   TextType = "ssml"|"text",
   VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -36,12 +36,14 @@ calling \code{\link[=glue_delete_table]{delete_table}}, use
 resources that belong to the table.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_table(
   CatalogId = "string",
   DatabaseName = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

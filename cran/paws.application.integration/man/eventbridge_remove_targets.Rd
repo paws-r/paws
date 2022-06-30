@@ -23,7 +23,9 @@ rule is a managed rule by using
 field of the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedEntryCount = 123,
   FailedEntries = list(
     list(
@@ -33,7 +35,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Removes the specified targets from the specified rule. When the rule is
@@ -49,7 +51,9 @@ and each entry in \code{FailedEntries} provides the ID of the failed target
 and the error code.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_targets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_targets(
   Rule = "string",
   EventBusName = "string",
   Ids = list(
@@ -57,7 +61,7 @@ and the error code.
   ),
   Force = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

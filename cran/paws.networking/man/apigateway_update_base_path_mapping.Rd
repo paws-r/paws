@@ -18,18 +18,22 @@ To specify an empty base path, set this parameter to \code{'(none)'}.}
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   basePath = "string",
   restApiId = "string",
   stage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Changes information about the BasePathMapping resource.
 }
 \section{Request syntax}{
-\preformatted{svc$update_base_path_mapping(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_base_path_mapping(
   domainName = "string",
   basePath = "string",
   patchOperations = list(
@@ -41,7 +45,7 @@ Changes information about the BasePathMapping resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

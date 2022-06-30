@@ -20,12 +20,14 @@ An empty list.
 Deletes a RouteResponse.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_route_response(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_route_response(
   ApiId = "string",
   RouteId = "string",
   RouteResponseId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

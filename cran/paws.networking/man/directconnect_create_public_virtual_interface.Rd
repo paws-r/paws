@@ -13,7 +13,9 @@ directconnect_create_public_virtual_interface(connectionId,
 \item{newPublicVirtualInterface}{[required] Information about the public virtual interface.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ownerAccount = "string",
   virtualInterfaceId = "string",
   location = "string",
@@ -60,7 +62,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a public virtual interface. A virtual interface is the VLAN that
@@ -72,7 +74,9 @@ When creating an IPv6 public virtual interface (\code{addressFamily} is
 auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
 }
 \section{Request syntax}{
-\preformatted{svc$create_public_virtual_interface(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_public_virtual_interface(
   connectionId = "string",
   newPublicVirtualInterface = list(
     virtualInterfaceName = "string",
@@ -95,7 +99,7 @@ auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

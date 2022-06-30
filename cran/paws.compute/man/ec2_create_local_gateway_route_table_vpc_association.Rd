@@ -21,7 +21,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LocalGatewayRouteTableVpcAssociation = list(
     LocalGatewayRouteTableVpcAssociationId = "string",
     LocalGatewayRouteTableId = "string",
@@ -38,14 +40,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates the specified VPC with the specified local gateway route
 table.
 }
 \section{Request syntax}{
-\preformatted{svc$create_local_gateway_route_table_vpc_association(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_local_gateway_route_table_vpc_association(
   LocalGatewayRouteTableId = "string",
   VpcId = "string",
   TagSpecifications = list(
@@ -61,7 +65,7 @@ table.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

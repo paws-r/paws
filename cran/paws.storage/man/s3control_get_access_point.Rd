@@ -25,7 +25,9 @@ the URL encoding of
 The value must be URL encoded.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string",
   Bucket = "string",
   NetworkOrigin = "Internet"|"VPC",
@@ -42,7 +44,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns configuration information about the specified access point.
@@ -65,11 +67,13 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_access_point(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_access_point(
   AccountId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -34,7 +34,9 @@ Constraints: You can specify either the \code{ClusterIdentifier} parameter,
 or the \code{marker} parameter, but not both.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   ClusterDbRevisions = list(
     list(
@@ -55,18 +57,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an array of \code{ClusterDbRevision} objects.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_cluster_db_revisions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cluster_db_revisions(
   ClusterIdentifier = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

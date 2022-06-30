@@ -26,7 +26,9 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   WindowExecutionTaskInvocationIdentities = list(
     list(
       WindowExecutionId = "string",
@@ -49,14 +51,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the individual task executions (one per target) for a
 particular task run as part of a maintenance window execution.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_maintenance_window_execution_task_invocations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_maintenance_window_execution_task_invocations(
   WindowExecutionId = "string",
   TaskId = "string",
   Filters = list(
@@ -70,7 +74,7 @@ particular task run as part of a maintenance window execution.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

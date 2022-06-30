@@ -15,7 +15,9 @@ administrator credentials to access the API.}
 \item{ParentFolderId}{[required] The ID of the parent folder.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Metadata = list(
     Id = "string",
     Name = "string",
@@ -36,18 +38,20 @@ A list with the following syntax:\preformatted{list(
     LatestVersionSize = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a folder with the specified name and parent folder.
 }
 \section{Request syntax}{
-\preformatted{svc$create_folder(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_folder(
   AuthenticationToken = "string",
   Name = "string",
   ParentFolderId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

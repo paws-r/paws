@@ -20,17 +20,21 @@ destination and the KMS key used for encryption.}
 \item{ClientToken}{The idempotency token for the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DestinationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a publishing destination to export findings to. The resource to
 export findings to must exist before you use this operation.
 }
 \section{Request syntax}{
-\preformatted{svc$create_publishing_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_publishing_destination(
   DetectorId = "string",
   DestinationType = "S3",
   DestinationProperties = list(
@@ -39,7 +43,7 @@ export findings to must exist before you use this operation.
   ),
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

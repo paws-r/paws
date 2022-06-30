@@ -12,10 +12,12 @@ codestar_delete_user_profile(userArn)
 \item{userArn}{[required] The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   userArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a user profile in AWS CodeStar, including all personal
@@ -24,10 +26,12 @@ email address. It does not delete the history of that user, for example
 the history of commits made by that user.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_profile(
   userArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

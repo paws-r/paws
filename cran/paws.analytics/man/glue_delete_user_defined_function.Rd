@@ -21,12 +21,14 @@ An empty list.
 Deletes an existing function definition from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user_defined_function(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_defined_function(
   CatalogId = "string",
   DatabaseName = "string",
   FunctionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

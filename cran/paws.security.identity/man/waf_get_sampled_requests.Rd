@@ -37,7 +37,9 @@ range. If your resource received fewer requests than the value of
 information about all of them.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SampledRequests = list(
     list(
       Request = list(
@@ -71,7 +73,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -98,7 +100,9 @@ time range. This new time range indicates the actual period during which
 AWS WAF selected the requests in the sample.
 }
 \section{Request syntax}{
-\preformatted{svc$get_sampled_requests(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sampled_requests(
   WebAclId = "string",
   RuleId = "string",
   TimeWindow = list(
@@ -111,7 +115,7 @@ AWS WAF selected the requests in the sample.
   ),
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

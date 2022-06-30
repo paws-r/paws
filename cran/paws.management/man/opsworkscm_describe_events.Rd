@@ -26,7 +26,9 @@ a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServerEvents = list(
     list(
       CreatedAt = as.POSIXct(
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes events for a specified server. Results are ordered by time,
@@ -52,12 +54,14 @@ A \code{ValidationException} is raised when parameters of the request are not
 valid.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_events(
   ServerName = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

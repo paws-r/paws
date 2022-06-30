@@ -18,7 +18,9 @@ identifier.}
 \item{statusCode}{[required] [Required] Specifies a get integration response request's status code.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   statusCode = "string",
   selectionPattern = "string",
   responseParameters = list(
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
   ),
   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Represents a get integration response.
 }
 \section{Request syntax}{
-\preformatted{svc$get_integration_response(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_integration_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
   statusCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

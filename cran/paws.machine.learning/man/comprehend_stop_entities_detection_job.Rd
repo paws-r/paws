@@ -10,11 +10,13 @@ comprehend_stop_entities_detection_job(JobId)
 \item{JobId}{[required] The identifier of the entities detection job to stop.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string",
   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops an entities detection job in progress.
@@ -32,10 +34,12 @@ When a job is stopped, any documents already processed are written to
 the output location.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_entities_detection_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_entities_detection_job(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -27,7 +27,9 @@ more clusters than the number you specify, the response contains a
 \code{NextToken} value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Clusters = list(
     list(
       BackupPolicy = "DEFAULT",
@@ -78,7 +80,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about AWS CloudHSM clusters.
@@ -92,7 +94,9 @@ clusters. When you receive a response with no \code{NextToken} (or an empty
 or null value), that means there are no more clusters to get.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_clusters(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_clusters(
   Filters = list(
     list(
       "string"
@@ -101,7 +105,7 @@ or null value), that means there are no more clusters to get.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

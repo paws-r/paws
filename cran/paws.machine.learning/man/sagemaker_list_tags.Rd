@@ -17,7 +17,9 @@ the next set of tags, use it in the subsequent request.}
 \item{MaxResults}{Maximum number of tags to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -26,18 +28,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the tags for the specified Amazon SageMaker resource.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags(
   ResourceArn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

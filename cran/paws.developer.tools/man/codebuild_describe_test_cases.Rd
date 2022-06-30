@@ -24,7 +24,9 @@ The default value is 100.}
 \item{filter}{A \code{TestCaseFilter} object used to filter the returned reports.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   nextToken = "string",
   testCases = list(
     list(
@@ -41,13 +43,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of details about test cases for a report.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_test_cases(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_test_cases(
   reportArn = "string",
   nextToken = "string",
   maxResults = 123,
@@ -56,7 +60,7 @@ Returns a list of details about test cases for a report.
     keyword = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

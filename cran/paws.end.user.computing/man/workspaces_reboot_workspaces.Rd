@@ -10,7 +10,9 @@ workspaces_reboot_workspaces(RebootWorkspaceRequests)
 \item{RebootWorkspaceRequests}{[required] The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedRequests = list(
     list(
       WorkspaceId = "string",
@@ -19,7 +21,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Reboots the specified WorkSpaces.
@@ -31,14 +33,16 @@ This operation is asynchronous and returns before the WorkSpaces have
 rebooted.
 }
 \section{Request syntax}{
-\preformatted{svc$reboot_workspaces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_workspaces(
   RebootWorkspaceRequests = list(
     list(
       WorkspaceId = "string"
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

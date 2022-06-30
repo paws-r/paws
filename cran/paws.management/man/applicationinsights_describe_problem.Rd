@@ -10,7 +10,9 @@ applicationinsights_describe_problem(ProblemId)
 \item{ProblemId}{[required] The ID of the problem.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Problem = list(
     Id = "string",
     Title = "string",
@@ -30,16 +32,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes an application problem.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_problem(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_problem(
   ProblemId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

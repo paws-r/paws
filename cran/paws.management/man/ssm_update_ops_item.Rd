@@ -92,7 +92,9 @@ and health of their AWS resources. For more information, see \href{https://docs.
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$update_ops_item(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_ops_item(
   Description = "string",
   OperationalData = list(
     list(
@@ -132,7 +134,7 @@ in the \emph{AWS Systems Manager User Guide}.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

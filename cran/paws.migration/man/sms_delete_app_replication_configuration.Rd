@@ -16,10 +16,12 @@ An empty list.
 Deletes the replication configuration for the specified application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_app_replication_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app_replication_configuration(
   appId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

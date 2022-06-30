@@ -53,10 +53,12 @@ by using the \code{\link[=support_add_attachments_to_set]{add_attachments_to_set
 operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   caseId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a case in the AWS Support Center. This operation is similar to
@@ -92,7 +94,9 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_case(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_case(
   subject = "string",
   serviceCode = "string",
   severityCode = "string",
@@ -105,7 +109,7 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
   issueType = "string",
   attachmentSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

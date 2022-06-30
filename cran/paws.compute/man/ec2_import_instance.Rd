@@ -23,7 +23,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Platform}{[required] The instance operating system.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConversionTask = list(
     ConversionTaskId = "string",
     ExpirationTime = "string",
@@ -76,7 +78,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an import instance task using metadata from the specified disk
@@ -88,7 +90,9 @@ For information about the import manifest referenced by this API action,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
 }
 \section{Request syntax}{
-\preformatted{svc$import_instance(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_instance(
   Description = "string",
   DiskImages = list(
     list(
@@ -134,7 +138,7 @@ see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{
   ),
   Platform = "Windows"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

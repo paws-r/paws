@@ -16,24 +16,28 @@ deleting.}
 provided, only the specified version of the dashboard is deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = 123,
   Arn = "string",
   DashboardId = "string",
   RequestId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a dashboard.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_dashboard(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dashboard(
   AwsAccountId = "string",
   DashboardId = "string",
   VersionNumber = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

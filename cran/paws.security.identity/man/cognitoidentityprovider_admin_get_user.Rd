@@ -13,7 +13,9 @@ about the user.}
 \item{Username}{[required] The user name of the user you wish to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Username = "string",
   UserAttributes = list(
     list(
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the specified user by user name in a user pool as an administrator.
@@ -49,11 +51,13 @@ Works on any user.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{svc$admin_get_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_get_user(
   UserPoolId = "string",
   Username = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,10 +16,12 @@ operation.}
 \item{OperationId}{\emph{The ID of the stack set operation.}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Detect drift on a stack set. When CloudFormation performs drift
@@ -64,7 +66,9 @@ To stop a drift detection stack set operation, use
 \code{\link[=cloudformation_stop_stack_set_operation]{stop_stack_set_operation}}.
 }
 \section{Request syntax}{
-\preformatted{svc$detect_stack_set_drift(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_stack_set_drift(
   StackSetName = "string",
   OperationPreferences = list(
     RegionOrder = list(
@@ -77,7 +81,7 @@ To stop a drift detection stack set operation, use
   ),
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

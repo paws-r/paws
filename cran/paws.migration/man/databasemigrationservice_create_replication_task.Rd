@@ -54,7 +54,7 @@ The value can be in date, checkpoint, or LSN/SCN format.
 Date Example: --cdc-start-position “2018-03-08T12:12:12”
 
 Checkpoint Example: --cdc-start-position
-"checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
+"checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"
 
 LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 
@@ -92,7 +92,9 @@ specify a \code{ResourceIdentifier} value, AWS DMS generates a default
 identifier value for the end of \code{EndpointArn}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationTask = list(
     ReplicationTaskIdentifier = "string",
     SourceEndpointArn = "string",
@@ -141,13 +143,15 @@ A list with the following syntax:\preformatted{list(
     TargetReplicationInstanceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a replication task using the specified parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$create_replication_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_replication_task(
   ReplicationTaskIdentifier = "string",
   SourceEndpointArn = "string",
   TargetEndpointArn = "string",
@@ -169,7 +173,7 @@ Creates a replication task using the specified parameters.
   TaskData = "string",
   ResourceIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

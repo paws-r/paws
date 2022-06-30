@@ -19,11 +19,13 @@ An empty list.
 Deletes the publishing definition with the specified \code{destinationId}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_publishing_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_publishing_destination(
   DetectorId = "string",
   DestinationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

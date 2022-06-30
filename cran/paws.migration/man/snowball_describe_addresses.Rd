@@ -14,7 +14,9 @@ list of \code{ADDRESS} objects, you have the option of specifying a value for
 \code{NextToken} as the starting point for your list of returned addresses.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Addresses = list(
     list(
       AddressId = "string",
@@ -35,7 +37,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a specified number of \code{ADDRESS} objects. Calling this API in one
@@ -43,11 +45,13 @@ of the US regions will return addresses from the list of all addresses
 associated with this account in all US regions.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_addresses(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_addresses(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

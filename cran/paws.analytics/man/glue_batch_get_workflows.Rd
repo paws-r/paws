@@ -14,7 +14,9 @@ glue_batch_get_workflows(Names, IncludeGraph)
 resource metadata.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Workflows = list(
     list(
       Name = "string",
@@ -281,7 +283,7 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of resource metadata for a given list of workflow names.
@@ -291,13 +293,15 @@ granted permissions. This operation supports all IAM permissions,
 including permission conditions that uses tags.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_get_workflows(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_workflows(
   Names = list(
     "string"
   ),
   IncludeGraph = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

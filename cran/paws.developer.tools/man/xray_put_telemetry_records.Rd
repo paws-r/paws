@@ -23,7 +23,9 @@ An empty list.
 Used by the AWS X-Ray daemon to upload telemetry.
 }
 \section{Request syntax}{
-\preformatted{svc$put_telemetry_records(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_telemetry_records(
   TelemetryRecords = list(
     list(
       Timestamp = as.POSIXct(
@@ -47,7 +49,7 @@ Used by the AWS X-Ray daemon to upload telemetry.
   Hostname = "string",
   ResourceARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

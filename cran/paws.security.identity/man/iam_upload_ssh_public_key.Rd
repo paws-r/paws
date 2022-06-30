@@ -31,7 +31,9 @@ carriage return (\verb{\\u000D})
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SSHPublicKey = list(
     UserName = "string",
     SSHPublicKeyId = "string",
@@ -43,7 +45,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Uploads an SSH public key and associates it with the specified IAM user.
@@ -55,11 +57,13 @@ CodeCommit repository, see \href{https://docs.aws.amazon.com/codecommit/latest/u
 in the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$upload_ssh_public_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upload_ssh_public_key(
   UserName = "string",
   SSHPublicKeyBody = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

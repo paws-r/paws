@@ -35,7 +35,9 @@ Where \code{BackupType} can be:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupSummaries = list(
     list(
       TableName = "string",
@@ -56,7 +58,7 @@ A list with the following syntax:\preformatted{list(
   ),
   LastEvaluatedBackupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List backups associated with an AWS account. To list backups for a given
@@ -73,7 +75,9 @@ You can call \code{\link[=dynamodb_list_backups]{list_backups}} a maximum of fiv
 times per second.
 }
 \section{Request syntax}{
-\preformatted{svc$list_backups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_backups(
   TableName = "string",
   Limit = 123,
   TimeRangeLowerBound = as.POSIXct(
@@ -85,7 +89,7 @@ times per second.
   ExclusiveStartBackupArn = "string",
   BackupType = "USER"|"SYSTEM"|"AWS_BACKUP"|"ALL"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

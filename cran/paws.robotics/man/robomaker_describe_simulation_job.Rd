@@ -10,7 +10,9 @@ robomaker_describe_simulation_job(job)
 \item{job}{[required] The Amazon Resource Name (ARN) of the simulation job to be described.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   name = "string",
   status = "Pending"|"Preparing"|"Running"|"Restarting"|"Completed"|"Failed"|"RunningFailed"|"Terminating"|"Terminated"|"Canceled",
@@ -119,16 +121,18 @@ A list with the following syntax:\preformatted{list(
     simulationUnitLimit = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a simulation job.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_simulation_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_simulation_job(
   job = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

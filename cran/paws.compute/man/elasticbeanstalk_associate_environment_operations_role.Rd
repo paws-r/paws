@@ -24,11 +24,13 @@ this environment. For more information, see \href{https://docs.aws.amazon.com/el
 \emph{AWS Elastic Beanstalk Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_environment_operations_role(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_environment_operations_role(
   EnvironmentName = "string",
   OperationsRole = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

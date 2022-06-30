@@ -44,7 +44,9 @@ Modifies a subnet attribute. You can only modify one attribute at a
 time.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_subnet_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_subnet_attribute(
   AssignIpv6AddressOnCreation = list(
     Value = TRUE|FALSE
   ),
@@ -57,7 +59,7 @@ time.
   ),
   CustomerOwnedIpv4Pool = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

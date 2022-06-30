@@ -14,10 +14,12 @@ instance the attachment belongs to.}
 \item{attachments}{[required] Any attachments associated with the state change request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   acknowledgment = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
@@ -26,7 +28,9 @@ for use outside of the agent.
 Sent to acknowledge that an attachment changed states.
 }
 \section{Request syntax}{
-\preformatted{svc$submit_attachment_state_changes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$submit_attachment_state_changes(
   cluster = "string",
   attachments = list(
     list(
@@ -35,7 +39,7 @@ Sent to acknowledge that an attachment changed states.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

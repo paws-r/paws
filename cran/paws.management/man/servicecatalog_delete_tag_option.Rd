@@ -19,10 +19,12 @@ You cannot delete a TagOption if it is associated with a product or
 portfolio.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_tag_option(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tag_option(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

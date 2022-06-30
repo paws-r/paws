@@ -18,7 +18,9 @@ results than the maximum page size.}
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CostCategoryReferences = list(
     list(
       CostCategoryArn = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the name, ARN, \code{NumberOfRules} and effective dates of all Cost
@@ -53,12 +55,14 @@ supports pagination. The request can have a \code{MaxResults} range up to
 100.
 }
 \section{Request syntax}{
-\preformatted{svc$list_cost_category_definitions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_cost_category_definitions(
   EffectiveOn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

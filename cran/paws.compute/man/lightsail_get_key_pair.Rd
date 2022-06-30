@@ -10,7 +10,9 @@ lightsail_get_key_pair(keyPairName)
 \item{keyPairName}{[required] The name of the key pair for which you are requesting information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   keyPair = list(
     name = "string",
     arn = "string",
@@ -32,16 +34,18 @@ A list with the following syntax:\preformatted{list(
     fingerprint = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a specific key pair.
 }
 \section{Request syntax}{
-\preformatted{svc$get_key_pair(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_key_pair(
   keyPairName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

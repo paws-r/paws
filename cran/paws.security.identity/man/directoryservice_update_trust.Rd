@@ -13,22 +13,26 @@ directoryservice_update_trust(TrustId, SelectiveAuth)
 \item{SelectiveAuth}{Updates selective authentication for the trust.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RequestId = "string",
   TrustId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the trust that has been set up between your AWS Managed
 Microsoft AD directory and an on-premises Active Directory.
 }
 \section{Request syntax}{
-\preformatted{svc$update_trust(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_trust(
   TrustId = "string",
   SelectiveAuth = "Enabled"|"Disabled"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

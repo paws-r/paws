@@ -26,7 +26,9 @@ An empty list.
 Creates a new table definition in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$create_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_table(
   CatalogId = "string",
   DatabaseName = "string",
   TableInput = list(
@@ -128,7 +130,7 @@ Creates a new table definition in the Data Catalog.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

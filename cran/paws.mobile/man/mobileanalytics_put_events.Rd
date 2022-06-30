@@ -24,7 +24,9 @@ attributes and metrics per custom event, and any number of attribute or
 metric values.
 }
 \section{Request syntax}{
-\preformatted{svc$put_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_events(
   events = list(
     list(
       eventType = "string",
@@ -47,7 +49,7 @@ metric values.
   clientContext = "string",
   clientContextEncoding = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

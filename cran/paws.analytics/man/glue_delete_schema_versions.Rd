@@ -17,7 +17,9 @@ Resource Name (ARN).}
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SchemaVersionErrors = list(
     list(
       VersionNumber = 123,
@@ -28,14 +30,14 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Remove versions from the specified schema. A version number or range may
 be supplied. If the compatibility mode forbids deleting of a version
-that is necessary, such as BACKWARDS_FULL, an error is returned.
-Calling the \code{GetSchemaVersions} API after this call will list the status
-of the deleted versions.
+that is necessary, such as BACKWARDS_FULL, an error is returned. Calling
+the \code{GetSchemaVersions} API after this call will list the status of the
+deleted versions.
 
 When the range of version numbers contain check pointed version, the API
 will return a 409 conflict and will not proceed with the deletion. You
@@ -53,7 +55,9 @@ If the compatibility mode forbids deleting of a version that is
 necessary, such as BACKWARDS_FULL, an error is returned.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_schema_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_schema_versions(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -61,7 +65,7 @@ necessary, such as BACKWARDS_FULL, an error is returned.
   ),
   Versions = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

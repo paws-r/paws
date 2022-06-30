@@ -130,7 +130,9 @@ is owned by a different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CopySourceVersionId = "string",
   CopyPartResult = list(
     ETag = "string",
@@ -145,7 +147,7 @@ A list with the following syntax:\preformatted{list(
   BucketKeyEnabled = TRUE|FALSE,
   RequestCharged = "requester"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Uploads a part by copying data from an existing object as data source.
@@ -259,7 +261,9 @@ byte-range copy source.}
 }
 }
 \section{Request syntax}{
-\preformatted{svc$upload_part_copy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upload_part_copy(
   Bucket = "string",
   CopySource = "string",
   CopySourceIfMatch = "string",
@@ -284,7 +288,7 @@ byte-range copy source.}
   ExpectedBucketOwner = "string",
   ExpectedSourceBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

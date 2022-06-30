@@ -13,10 +13,12 @@ connect_associate_security_key(InstanceId, Key)
 \item{Key}{[required] A valid security key in PEM format.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssociationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -25,11 +27,13 @@ change.
 Associates a security key to the instance.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_security_key(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_security_key(
   InstanceId = "string",
   Key = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

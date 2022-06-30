@@ -23,7 +23,9 @@ Creates or updates a validation configuration for the specified
 application.
 }
 \section{Request syntax}{
-\preformatted{svc$put_app_validation_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_app_validation_configuration(
   appId = "string",
   appValidationConfigurations = list(
     list(
@@ -83,7 +85,7 @@ application.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

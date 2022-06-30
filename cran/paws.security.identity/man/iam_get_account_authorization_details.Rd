@@ -32,7 +32,9 @@ the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserDetailList = list(
     list(
       Path = "string",
@@ -205,7 +207,7 @@ A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about all IAM users, groups, roles, and policies
@@ -223,14 +225,16 @@ You can optionally filter the results using the \code{Filter} parameter. You
 can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
 \section{Request syntax}{
-\preformatted{svc$get_account_authorization_details(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_account_authorization_details(
   Filter = list(
     "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy"
   ),
   MaxItems = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

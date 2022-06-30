@@ -18,13 +18,15 @@ An empty list.
 Removes one or more tags (metadata key/value pairs) from a resource.
 }
 \section{Request syntax}{
-\preformatted{svc$untag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

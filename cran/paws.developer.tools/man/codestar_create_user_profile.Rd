@@ -24,7 +24,9 @@ public key will be used along with the user's private key for SSH
 access.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   userArn = "string",
   displayName = "string",
   emailAddress = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a profile for a user that includes user preferences, such as the
@@ -46,13 +48,15 @@ user profile is displayed wherever the user's information appears to
 other users in AWS CodeStar.
 }
 \section{Request syntax}{
-\preformatted{svc$create_user_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user_profile(
   userArn = "string",
   displayName = "string",
   emailAddress = "string",
   sshPublicKey = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ storagegateway_describe_bandwidth_rate_limit_schedule(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string",
   BandwidthRateLimitIntervals = list(
     list(
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the bandwidth rate limit schedule of a
@@ -50,10 +52,12 @@ describe, use the Amazon Resource Name (ARN) of the gateway in your
 request.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_bandwidth_rate_limit_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_bandwidth_rate_limit_schedule(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

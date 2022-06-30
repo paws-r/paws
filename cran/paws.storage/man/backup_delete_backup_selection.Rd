@@ -21,11 +21,13 @@ Deletes the resource selection associated with a backup plan that is
 specified by the \code{SelectionId}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_backup_selection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_backup_selection(
   BackupPlanId = "string",
   SelectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

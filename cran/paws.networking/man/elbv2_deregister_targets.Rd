@@ -22,7 +22,9 @@ the targets are deregistered, they no longer receive traffic from the
 load balancer.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_targets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_targets(
   TargetGroupArn = "string",
   Targets = list(
     list(
@@ -32,7 +34,7 @@ load balancer.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

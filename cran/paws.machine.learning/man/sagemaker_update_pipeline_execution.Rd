@@ -15,21 +15,25 @@ sagemaker_update_pipeline_execution(PipelineExecutionArn,
 \item{PipelineExecutionDisplayName}{The display name of the pipeline execution.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PipelineExecutionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a pipeline execution.
 }
 \section{Request syntax}{
-\preformatted{svc$update_pipeline_execution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pipeline_execution(
   PipelineExecutionArn = "string",
   PipelineExecutionDescription = "string",
   PipelineExecutionDisplayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

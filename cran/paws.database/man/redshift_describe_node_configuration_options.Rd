@@ -48,7 +48,9 @@ Default: \code{500}
 Constraints: minimum 100, maximum 500.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NodeConfigurationOptionList = list(
     list(
       NodeType = "string",
@@ -59,14 +61,16 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns properties of possible node configurations such as node type,
 number of nodes, and disk usage for the specified action type.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_node_configuration_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_node_configuration_options(
   ActionType = "restore-cluster"|"recommend-node-config"|"resize-cluster",
   ClusterIdentifier = "string",
   SnapshotIdentifier = "string",
@@ -83,7 +87,7 @@ number of nodes, and disk usage for the specified action type.
   Marker = "string",
   MaxRecords = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

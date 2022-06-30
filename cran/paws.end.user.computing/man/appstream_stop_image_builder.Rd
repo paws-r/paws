@@ -10,7 +10,9 @@ appstream_stop_image_builder(Name)
 \item{Name}{[required] The name of the image builder.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ImageBuilder = list(
     Name = "string",
     Arn = "string",
@@ -63,16 +65,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Stops the specified image builder.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_image_builder(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_image_builder(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

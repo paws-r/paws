@@ -19,13 +19,15 @@ An empty list.
 Removes IP address blocks from a directory.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_ip_routes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_ip_routes(
   DirectoryId = "string",
   CidrIps = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

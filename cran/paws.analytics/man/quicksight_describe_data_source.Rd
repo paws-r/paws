@@ -13,7 +13,9 @@ quicksight_describe_data_source(AwsAccountId, DataSourceId)
 account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DataSource = list(
     Arn = "string",
     DataSourceId = "string",
@@ -224,17 +226,19 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a data source.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_data_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_data_source(
   AwsAccountId = "string",
   DataSourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

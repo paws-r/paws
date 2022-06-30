@@ -73,18 +73,22 @@ specified, it defaults to \code{EC2}. To run the job on Fargate resources,
 specify \code{FARGATE}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobDefinitionName = "string",
   jobDefinitionArn = "string",
   revision = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Registers an AWS Batch job definition.
 }
 \section{Request syntax}{
-\preformatted{svc$register_job_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_job_definition(
   jobDefinitionName = "string",
   type = "container"|"multinode",
   parameters = list(
@@ -313,7 +317,7 @@ Registers an AWS Batch job definition.
     "EC2"|"FARGATE"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

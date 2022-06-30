@@ -19,7 +19,9 @@ specifies to continue the list from where the previous call left off.}
 \item{FileSystemId}{[required] The ID of the file system whose tag set you want to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   Tags = list(
     list(
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the tags associated with a file system. The order of tags
@@ -41,12 +43,14 @@ This operation requires permissions for the
 \code{elasticfilesystem:DescribeTags} action.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tags(
   MaxItems = 123,
   Marker = "string",
   FileSystemId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -15,7 +15,9 @@ iot_list_provisioning_template_versions(templateName, maxResults,
 \item{nextToken}{A token to retrieve the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   versions = list(
     list(
       versionId = 123,
@@ -27,18 +29,20 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 A list of fleet provisioning template versions.
 }
 \section{Request syntax}{
-\preformatted{svc$list_provisioning_template_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_provisioning_template_versions(
   templateName = "string",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

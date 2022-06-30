@@ -46,7 +46,9 @@ AWS Price List Service API provides the following two endpoints:
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- pricing(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- pricing(
   config = list(
     credentials = list(
       creds = list(
@@ -60,7 +62,7 @@ AWS Price List Service API provides the following two endpoints:
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

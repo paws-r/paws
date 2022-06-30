@@ -13,7 +13,9 @@ ses_describe_configuration_set(ConfigurationSetName,
 \item{ConfigurationSetAttributeNames}{A list of configuration set attributes to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConfigurationSet = list(
     Name = "string"
   ),
@@ -56,22 +58,24 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the details of the specified configuration set. For information
-about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
+about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_configuration_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration_set(
   ConfigurationSetName = "string",
   ConfigurationSetAttributeNames = list(
     "eventDestinations"|"trackingOptions"|"deliveryOptions"|"reputationOptions"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

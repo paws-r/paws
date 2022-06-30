@@ -15,15 +15,17 @@ An empty list.
 \description{
 Deletes the specified IP address filter.
 
-For information about managing IP address filters, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html}{Amazon SES Developer Guide}.
+For information about managing IP address filters, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-ip-filtering-console-walkthrough.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_receipt_filter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_receipt_filter(
   FilterName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

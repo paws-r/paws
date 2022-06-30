@@ -10,7 +10,9 @@ workspaces_terminate_workspaces(TerminateWorkspaceRequests)
 \item{TerminateWorkspaceRequests}{[required] The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedRequests = list(
     list(
       WorkspaceId = "string",
@@ -19,7 +21,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Terminates the specified WorkSpaces.
@@ -51,14 +53,16 @@ If you delete your Simple AD or AD Connector directory, you can always
 create a new one when you want to start using WorkSpaces again.
 }
 \section{Request syntax}{
-\preformatted{svc$terminate_workspaces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_workspaces(
   TerminateWorkspaceRequests = list(
     list(
       WorkspaceId = "string"
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

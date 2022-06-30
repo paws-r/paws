@@ -17,14 +17,16 @@ lifecycle management when to transition files from the Standard storage
 class to the Infrequent Access storage class.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LifecyclePolicies = list(
     list(
       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables lifecycle management by creating a new \code{LifecycleConfiguration}
@@ -59,7 +61,9 @@ you need the same AWS Key Management Service (AWS KMS) permissions as
 when you created the encrypted file system.
 }
 \section{Request syntax}{
-\preformatted{svc$put_lifecycle_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_lifecycle_configuration(
   FileSystemId = "string",
   LifecyclePolicies = list(
     list(
@@ -67,7 +71,7 @@ when you created the encrypted file system.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

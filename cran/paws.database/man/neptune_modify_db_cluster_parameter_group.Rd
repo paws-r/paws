@@ -13,10 +13,12 @@ neptune_modify_db_cluster_parameter_group(DBClusterParameterGroupName,
 \item{Parameters}{[required] A list of parameters in the DB cluster parameter group to modify.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the parameters of a DB cluster parameter group. To modify more
@@ -42,7 +44,9 @@ command to verify that your DB cluster parameter group has been created
 or modified.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_db_cluster_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   Parameters = list(
     list(
@@ -59,7 +63,7 @@ or modified.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

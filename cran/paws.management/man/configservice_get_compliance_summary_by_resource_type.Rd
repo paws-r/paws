@@ -17,7 +17,9 @@ For this request, you can specify an AWS resource type such as
 account by specifying \verb{AWS::::Account}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ComplianceSummariesByResourceType = list(
     list(
       ResourceType = "string",
@@ -37,7 +39,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the number of resources that are compliant and the number that
@@ -46,12 +48,14 @@ these numbers for each resource type. The maximum number returned is
 100.
 }
 \section{Request syntax}{
-\preformatted{svc$get_compliance_summary_by_resource_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_compliance_summary_by_resource_type(
   ResourceTypes = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

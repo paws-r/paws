@@ -16,7 +16,9 @@ An empty list.
 Deletes the specified tags.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tags(
   Tags = list(
     list(
       ResourceId = "string",
@@ -27,7 +29,7 @@ Deletes the specified tags.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

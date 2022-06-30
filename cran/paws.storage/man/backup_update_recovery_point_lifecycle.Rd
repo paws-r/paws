@@ -28,7 +28,9 @@ a minimum of 90 days. Therefore, the “expire after days” setting must be
 has been transitioned to cold.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupVaultArn = "string",
   RecoveryPointArn = "string",
   Lifecycle = list(
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sets the transition lifecycle of a recovery point.
@@ -60,7 +62,9 @@ a minimum of 90 days. Therefore, the “expire after days” setting must be
 has been transitioned to cold.
 }
 \section{Request syntax}{
-\preformatted{svc$update_recovery_point_lifecycle(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_recovery_point_lifecycle(
   BackupVaultName = "string",
   RecoveryPointArn = "string",
   Lifecycle = list(
@@ -68,7 +72,7 @@ has been transitioned to cold.
     DeleteAfterDays = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

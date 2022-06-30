@@ -15,7 +15,9 @@ return with this call. The default value is 10.}
 previous call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Accelerators = list(
     list(
       AcceleratorArn = "string",
@@ -42,17 +44,19 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List the custom routing accelerators for an AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_custom_routing_accelerators(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_custom_routing_accelerators(
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,7 +16,9 @@ information about.}
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   id = "string",
   description = "string",
   createdDate = as.POSIXct(
@@ -31,13 +33,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Changes information about a Deployment resource.
 }
 \section{Request syntax}{
-\preformatted{svc$update_deployment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_deployment(
   restApiId = "string",
   deploymentId = "string",
   patchOperations = list(
@@ -49,7 +53,7 @@ Changes information about a Deployment resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

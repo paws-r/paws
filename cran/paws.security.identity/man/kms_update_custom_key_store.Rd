@@ -96,13 +96,15 @@ key store in a different AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_custom_key_store(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_custom_key_store(
   CustomKeyStoreId = "string",
   NewCustomKeyStoreName = "string",
   KeyStorePassword = "string",
   CloudHsmClusterId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

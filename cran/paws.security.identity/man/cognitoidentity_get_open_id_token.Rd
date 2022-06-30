@@ -16,11 +16,13 @@ accounts.google.com, an Amazon Cognito user pool provider, or any other
 OpenId Connect provider, always include the \code{id_token}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IdentityId = "string",
   Token = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets an OpenID token, using a known Cognito ID. This known Cognito ID is
@@ -33,13 +35,15 @@ The OpenId token is valid for 10 minutes.
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{svc$get_open_id_token(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_open_id_token(
   IdentityId = "string",
   Logins = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

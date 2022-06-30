@@ -10,7 +10,9 @@ codebuild_delete_build_batch(id)
 \item{id}{[required] The identifier of the batch build to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   statusCode = "string",
   buildsDeleted = list(
     "string"
@@ -22,16 +24,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a batch build.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_build_batch(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_build_batch(
   id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

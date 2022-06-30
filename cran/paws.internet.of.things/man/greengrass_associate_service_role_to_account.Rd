@@ -10,10 +10,12 @@ greengrass_associate_service_role_to_account(RoleArn)
 \item{RoleArn}{[required] The ARN of the service role you wish to associate with your account.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AssociatedAt = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates a role with your account. AWS IoT Greengrass will use the
@@ -23,10 +25,12 @@ minimum permissions in the policy
 ''AWSGreengrassResourceAccessRolePolicy''.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_service_role_to_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_service_role_to_account(
   RoleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

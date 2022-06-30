@@ -16,10 +16,12 @@ An empty list.
 If the specified crawler is running, stops the crawl.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_crawler(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_crawler(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

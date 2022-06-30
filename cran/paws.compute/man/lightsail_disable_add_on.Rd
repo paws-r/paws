@@ -12,7 +12,9 @@ lightsail_disable_add_on(addOnType, resourceName)
 \item{resourceName}{[required] The name of the source resource for which to disable the add-on.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -37,18 +39,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disables an add-on for an Amazon Lightsail resource. For more
 information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_add_on(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_add_on(
   addOnType = "AutoSnapshot",
   resourceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

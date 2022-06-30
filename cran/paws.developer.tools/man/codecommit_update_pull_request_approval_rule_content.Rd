@@ -49,7 +49,9 @@ For more information about IAM ARNs, wildcards, and formats, see \href{https://d
 in the \emph{IAM User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   approvalRule = list(
     approvalRuleId = "string",
     approvalRuleName = "string",
@@ -68,7 +70,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the structure of an approval rule created specifically for a
@@ -76,13 +78,15 @@ pull request. For example, you can change the number of required
 approvers and the approval pool for approvers.
 }
 \section{Request syntax}{
-\preformatted{svc$update_pull_request_approval_rule_content(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pull_request_approval_rule_content(
   pullRequestId = "string",
   approvalRuleName = "string",
   existingRuleContentSha256 = "string",
   newRuleContent = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

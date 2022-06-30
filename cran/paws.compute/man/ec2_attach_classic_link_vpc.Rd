@@ -22,10 +22,12 @@ VPC.}
 \item{VpcId}{[required] The ID of a ClassicLink-enabled VPC.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Return = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
@@ -43,7 +45,9 @@ Linking your instance to a VPC is sometimes referred to as \emph{attaching}
 your instance.
 }
 \section{Request syntax}{
-\preformatted{svc$attach_classic_link_vpc(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_classic_link_vpc(
   DryRun = TRUE|FALSE,
   Groups = list(
     "string"
@@ -51,7 +55,7 @@ your instance.
   InstanceId = "string",
   VpcId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

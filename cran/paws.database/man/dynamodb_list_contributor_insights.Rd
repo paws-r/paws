@@ -15,7 +15,9 @@ dynamodb_list_contributor_insights(TableName, NextToken, MaxResults)
 \item{MaxResults}{Maximum number of results to return per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContributorInsightsSummaries = list(
     list(
       TableName = "string",
@@ -25,19 +27,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of ContributorInsightsSummary for a table and all its
 global secondary indexes.
 }
 \section{Request syntax}{
-\preformatted{svc$list_contributor_insights(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_contributor_insights(
   TableName = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

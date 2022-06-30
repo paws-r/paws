@@ -18,11 +18,13 @@ An empty list.
 Removes a member from a channel.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_channel_membership(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_channel_membership(
   ChannelArn = "string",
   MemberArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

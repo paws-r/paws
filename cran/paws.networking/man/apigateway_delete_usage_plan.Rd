@@ -16,10 +16,12 @@ An empty list.
 Deletes a usage plan of a given plan Id.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_usage_plan(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_usage_plan(
   usagePlanId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

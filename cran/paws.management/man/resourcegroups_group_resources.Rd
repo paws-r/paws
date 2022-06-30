@@ -12,7 +12,9 @@ resourcegroups_group_resources(Group, ResourceArns)
 \item{ResourceArns}{[required] The list of ARNs for resources to be added to the group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Succeeded = list(
     "string"
   ),
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds the specified resources to the specified group.
@@ -42,13 +44,15 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$group_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$group_resources(
   Group = "string",
   ResourceArns = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

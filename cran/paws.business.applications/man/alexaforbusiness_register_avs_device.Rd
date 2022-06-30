@@ -27,17 +27,21 @@ creates a new product on Amazon's Developer Console.}
 \item{RoomArn}{The ARN of the room with which to associate your AVS device.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DeviceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Registers an Alexa-enabled device built by an Original Equipment
 Manufacturer (OEM) using Alexa Voice Service (AVS).
 }
 \section{Request syntax}{
-\preformatted{svc$register_avs_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_avs_device(
   ClientId = "string",
   UserCode = "string",
   ProductId = "string",
@@ -45,7 +49,7 @@ Manufacturer (OEM) using Alexa Voice Service (AVS).
   AmazonId = "string",
   RoomArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

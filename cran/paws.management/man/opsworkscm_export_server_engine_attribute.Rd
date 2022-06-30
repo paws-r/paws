@@ -34,14 +34,16 @@ Puppet, this parameter is ignored.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EngineAttribute = list(
     Name = "string",
     Value = "string"
   ),
   ServerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Exports a specified server engine attribute as a base64-encoded string.
@@ -56,7 +58,9 @@ exist. An \code{InvalidStateException} is thrown when the server is in any of
 the following states: CREATING, TERMINATED, FAILED or DELETING.
 }
 \section{Request syntax}{
-\preformatted{svc$export_server_engine_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_server_engine_attribute(
   ExportAttributeName = "string",
   ServerName = "string",
   InputAttributes = list(
@@ -66,7 +70,7 @@ the following states: CREATING, TERMINATED, FAILED or DELETING.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

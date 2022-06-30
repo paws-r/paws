@@ -15,7 +15,9 @@ languages supported by Amazon Comprehend. All documents must be in the
 same language.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyPhrases = list(
     list(
       Score = 123.0,
@@ -25,17 +27,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Detects the key noun phrases found in the text.
 }
 \section{Request syntax}{
-\preformatted{svc$detect_key_phrases(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_key_phrases(
   Text = "string",
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

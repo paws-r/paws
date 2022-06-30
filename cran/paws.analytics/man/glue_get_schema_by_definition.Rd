@@ -19,14 +19,16 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 \item{SchemaDefinition}{[required] The definition of the schema for which schema details are required.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SchemaVersionId = "string",
   SchemaArn = "string",
   DataFormat = "AVRO",
   Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
   CreatedTime = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a schema by the \code{SchemaDefinition}. The schema definition is
@@ -37,7 +39,9 @@ Otherwise, a 404 or NotFound error is returned. Schema versions in
 \code{Deleted} statuses will not be included in the results.
 }
 \section{Request syntax}{
-\preformatted{svc$get_schema_by_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_schema_by_definition(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -45,7 +49,7 @@ Otherwise, a 404 or NotFound error is returned. Schema versions in
   ),
   SchemaDefinition = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

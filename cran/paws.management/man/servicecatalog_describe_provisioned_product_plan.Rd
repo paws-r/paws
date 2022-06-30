@@ -23,7 +23,9 @@ servicecatalog_describe_provisioned_product_plan(AcceptLanguage, PlanId,
 results, use null.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProvisionedProductPlanDetails = list(
     CreatedTime = as.POSIXct(
       "2015-01-01"
@@ -83,19 +85,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about the resource changes for the specified plan.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_provisioned_product_plan(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_provisioned_product_plan(
   AcceptLanguage = "string",
   PlanId = "string",
   PageSize = 123,
   PageToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

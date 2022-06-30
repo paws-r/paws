@@ -132,7 +132,9 @@ Notifications are enabled by default if you don't specify this
 parameter.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -157,7 +159,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates or updates an alarm, and associates it with the specified
@@ -178,7 +180,9 @@ update completely overwrites the previous configuration of the alarm.
 The alarm is then evaluated with the updated configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$put_alarm(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_alarm(
   alarmName = "string",
   metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System"|"ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"BurstCapacityTime"|"BurstCapacityPercentage",
   monitoredResourceName = "string",
@@ -195,7 +199,7 @@ The alarm is then evaluated with the updated configuration.
   ),
   notificationEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

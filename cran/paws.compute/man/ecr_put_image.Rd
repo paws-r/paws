@@ -27,7 +27,9 @@ Initiative (OCI) formats.}
 \item{imageDigest}{The image digest of the image manifest corresponding to the image.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   image = list(
     registryId = "string",
     repositoryName = "string",
@@ -39,7 +41,7 @@ A list with the following syntax:\preformatted{list(
     imageManifestMediaType = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates or updates the image manifest and tags associated with an image.
@@ -53,7 +55,9 @@ by customers for pulling and pushing images. In most cases, you should
 use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
-\preformatted{svc$put_image(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_image(
   registryId = "string",
   repositoryName = "string",
   imageManifest = "string",
@@ -61,7 +65,7 @@ use the \code{docker} CLI to pull, tag, and push images.
   imageTag = "string",
   imageDigest = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

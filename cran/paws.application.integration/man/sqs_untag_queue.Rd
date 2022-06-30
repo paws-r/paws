@@ -24,13 +24,15 @@ information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$untag_queue(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_queue(
   QueueUrl = "string",
   TagKeys = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

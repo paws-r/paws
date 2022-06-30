@@ -28,7 +28,9 @@ specified time (timestamp).}
 greater than or equal to the specified time (timestamp).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointConfigs = list(
     list(
       EndpointConfigName = "string",
@@ -40,13 +42,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists endpoint configurations.
 }
 \section{Request syntax}{
-\preformatted{svc$list_endpoint_configs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_endpoint_configs(
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending",
   NextToken = "string",
@@ -59,7 +63,7 @@ Lists endpoint configurations.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

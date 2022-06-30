@@ -7,17 +7,21 @@
 iot_get_registration_code()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   registrationCode = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a registration code used to register a CA certificate with AWS IoT.
 }
 \section{Request syntax}{
-\preformatted{svc$get_registration_code()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_registration_code()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

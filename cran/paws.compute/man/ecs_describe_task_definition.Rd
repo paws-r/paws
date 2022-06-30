@@ -16,7 +16,9 @@ Amazon Resource Name (ARN) of the task definition to describe.}
 field is omitted, tags are not included in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskDefinition = list(
     taskDefinitionArn = "string",
     containerDefinitions = list(
@@ -282,7 +284,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a task definition. You can specify a \code{family} and \code{revision}
@@ -293,13 +295,15 @@ You can only describe \code{INACTIVE} task definitions while an active task
 or service references them.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_task_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_task_definition(
   taskDefinition = "string",
   include = list(
     "TAGS"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

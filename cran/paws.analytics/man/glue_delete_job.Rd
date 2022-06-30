@@ -10,20 +10,24 @@ glue_delete_job(JobName)
 \item{JobName}{[required] The name of the job definition to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a specified job definition. If the job definition is not found,
 no exception is thrown.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_job(
   JobName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

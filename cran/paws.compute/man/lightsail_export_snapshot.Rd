@@ -11,7 +11,9 @@ lightsail_export_snapshot(sourceSnapshotName)
 \item{sourceSnapshotName}{[required] The name of the instance or disk snapshot to be exported to Amazon EC2.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Exports an Amazon Lightsail instance or block storage disk snapshot to
@@ -61,10 +63,12 @@ Use the \verb{get instance snapshots} or \verb{get disk snapshots} operations to
 get a list of snapshots that you can export to Amazon EC2.
 }
 \section{Request syntax}{
-\preformatted{svc$export_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_snapshot(
   sourceSnapshotName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

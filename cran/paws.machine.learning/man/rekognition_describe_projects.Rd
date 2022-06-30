@@ -18,7 +18,9 @@ value you can specify is 100. If you specify a value greater than 100, a
 ValidationException error occurs. The default value is 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProjectDescriptions = list(
     list(
       ProjectArn = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists and gets information about your Amazon Rekognition Custom Labels
@@ -40,11 +42,13 @@ This operation requires permissions to perform the
 \code{rekognition:DescribeProjects} action.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_projects(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_projects(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

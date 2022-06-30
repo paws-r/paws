@@ -47,7 +47,9 @@ is disabled and \emph{BacktrackTo} is set to a timestamp earlier than the
 earliest backtrack time, an error occurs.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBClusterIdentifier = "string",
   BacktrackIdentifier = "string",
   BacktrackTo = as.POSIXct(
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Status = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Backtracks a DB cluster to a specific time, without creating a new DB
@@ -73,7 +75,9 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora MySQL DB clusters.
 }
 \section{Request syntax}{
-\preformatted{svc$backtrack_db_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$backtrack_db_cluster(
   DBClusterIdentifier = "string",
   BacktrackTo = as.POSIXct(
     "2015-01-01"
@@ -81,7 +85,7 @@ This action only applies to Aurora MySQL DB clusters.
   Force = TRUE|FALSE,
   UseEarliestTimeOnPointInTimeUnavailable = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

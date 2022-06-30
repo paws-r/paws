@@ -31,7 +31,9 @@ clouds. This means that you can easily migrate any standard Kubernetes
 application to Amazon EKS without any code modification required.
 }
 \section{Service syntax}{
-\preformatted{svc <- eks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- eks(
   config = list(
     credentials = list(
       creds = list(
@@ -45,7 +47,7 @@ application to Amazon EKS without any code modification required.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

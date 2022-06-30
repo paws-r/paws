@@ -11,7 +11,9 @@ codecommit_get_approval_rule_template(approvalRuleTemplateName)
 information.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   approvalRuleTemplate = list(
     approvalRuleTemplateId = "string",
     approvalRuleTemplateName = "string",
@@ -27,16 +29,18 @@ A list with the following syntax:\preformatted{list(
     lastModifiedUser = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a specified approval rule template.
 }
 \section{Request syntax}{
-\preformatted{svc$get_approval_rule_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_approval_rule_template(
   approvalRuleTemplateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ medialive_describe_input(InputId)
 \item{InputId}{[required] Unique ID of the input}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   AttachedChannels = list(
     "string"
@@ -57,16 +59,18 @@ A list with the following syntax:\preformatted{list(
   ),
   Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"|"INPUT_DEVICE"|"AWS_CDI"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Produces details about an input
 }
 \section{Request syntax}{
-\preformatted{svc$describe_input(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_input(
   InputId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

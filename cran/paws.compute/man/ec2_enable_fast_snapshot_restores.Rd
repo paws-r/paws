@@ -21,7 +21,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Successful = list(
     list(
       SnapshotId = "string",
@@ -62,7 +64,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Enables fast snapshot restores for the specified snapshots in the
@@ -78,7 +80,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_fast_snapshot_restores(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_fast_snapshot_restores(
   AvailabilityZones = list(
     "string"
   ),
@@ -87,7 +91,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

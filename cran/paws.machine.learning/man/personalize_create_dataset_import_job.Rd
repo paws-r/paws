@@ -19,10 +19,12 @@ personalize_create_dataset_import_job(jobName, datasetArn, dataSource,
 data source.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   datasetImportJobArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a job that imports training data from your data source (an
@@ -38,8 +40,7 @@ The dataset import job replaces any previous data in the dataset.
 
 A dataset import job can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
+\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 }
 
 To get the status of the import job, call
@@ -59,7 +60,9 @@ before training a model using the dataset.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_dataset_import_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dataset_import_job(
   jobName = "string",
   datasetArn = "string",
   dataSource = list(
@@ -67,7 +70,7 @@ before training a model using the dataset.
   ),
   roleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

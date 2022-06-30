@@ -19,10 +19,12 @@ By default, when you successfully create a new schedule, the status of a
 monitoring schedule is \code{scheduled}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_monitoring_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_monitoring_schedule(
   MonitoringScheduleName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

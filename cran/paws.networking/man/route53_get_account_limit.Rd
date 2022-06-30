@@ -10,30 +10,32 @@ route53_get_account_limit(Type)
 \arguments{
 \item{Type}{[required] The limit that you want to get. Valid values include the following:
 \itemize{
-\item \strong{MAX_HEALTH_CHECKS_BY_OWNER}: The maximum number of health
-checks that you can create using the current account.
-\item \strong{MAX_HOSTED_ZONES_BY_OWNER}: The maximum number of hosted
-zones that you can create using the current account.
-\item \strong{MAX_REUSABLE_DELEGATION_SETS_BY_OWNER}: The maximum number
-of reusable delegation sets that you can create using the current
+\item \strong{MAX_HEALTH_CHECKS_BY_OWNER}: The maximum number of health checks
+that you can create using the current account.
+\item \strong{MAX_HOSTED_ZONES_BY_OWNER}: The maximum number of hosted zones
+that you can create using the current account.
+\item \strong{MAX_REUSABLE_DELEGATION_SETS_BY_OWNER}: The maximum number of
+reusable delegation sets that you can create using the current
 account.
 \item \strong{MAX_TRAFFIC_POLICIES_BY_OWNER}: The maximum number of traffic
 policies that you can create using the current account.
-\item \strong{MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER}: The maximum number
-of traffic policy instances that you can create using the current
+\item \strong{MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER}: The maximum number of
+traffic policy instances that you can create using the current
 account. (Traffic policy instances are referred to as traffic flow
 policy records in the Amazon Route 53 console.)
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Limit = list(
     Type = "MAX_HEALTH_CHECKS_BY_OWNER"|"MAX_HOSTED_ZONES_BY_OWNER"|"MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"|"MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"|"MAX_TRAFFIC_POLICIES_BY_OWNER",
     Value = 123
   ),
   Count = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the specified limit for the current account, for example, the
@@ -50,10 +52,12 @@ https://console.aws.amazon.com/trustedadvisor/. Then choose \strong{Service
 limits} in the navigation pane.
 }
 \section{Request syntax}{
-\preformatted{svc$get_account_limit(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_account_limit(
   Type = "MAX_HEALTH_CHECKS_BY_OWNER"|"MAX_HOSTED_ZONES_BY_OWNER"|"MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"|"MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"|"MAX_TRAFFIC_POLICIES_BY_OWNER"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -29,13 +29,15 @@ the following data in JSON format. At least Name or Description must be
 provided.
 }
 \section{Request syntax}{
-\preformatted{svc$update_quick_connect_name(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_quick_connect_name(
   InstanceId = "string",
   QuickConnectId = "string",
   Name = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -1005,8 +1005,8 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL) {
 #'     denoted by a specific sequence number, provided in the value
 #'     `StartingSequenceNumber`.
 #' 
-#' -   AT_TIMESTAMP - Start reading from the position denoted by a
-#'     specific time stamp, provided in the value `Timestamp`.
+#' -   AT_TIMESTAMP - Start reading from the position denoted by a specific
+#'     time stamp, provided in the value `Timestamp`.
 #' 
 #' -   TRIM_HORIZON - Start reading at the last untrimmed record in the
 #'     shard in the system, which is the oldest data record in the shard.

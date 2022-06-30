@@ -25,7 +25,9 @@ Example: \code{mySubnetgroup}}
 \item{Tags}{One or more tags to be assigned to the subnet group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ReplicationSubnetGroup = list(
     ReplicationSubnetGroupIdentifier = "string",
     ReplicationSubnetGroupDescription = "string",
@@ -42,14 +44,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a replication subnet group given a list of the subnet IDs in a
 VPC.
 }
 \section{Request syntax}{
-\preformatted{svc$create_replication_subnet_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_replication_subnet_group(
   ReplicationSubnetGroupIdentifier = "string",
   ReplicationSubnetGroupDescription = "string",
   SubnetIds = list(
@@ -62,7 +66,7 @@ VPC.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

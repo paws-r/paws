@@ -16,7 +16,9 @@ supplied, this will be defaulted to 25 per page.}
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Schemas = list(
     list(
       RegistryName = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of schemas with minimal details. Schemas in Deleting
@@ -41,7 +43,9 @@ When the \code{RegistryId} is not provided, all the schemas across registries
 will be part of the API response.
 }
 \section{Request syntax}{
-\preformatted{svc$list_schemas(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_schemas(
   RegistryId = list(
     RegistryName = "string",
     RegistryArn = "string"
@@ -49,7 +53,7 @@ will be part of the API response.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

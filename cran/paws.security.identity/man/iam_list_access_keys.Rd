@@ -30,7 +30,9 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccessKeyMetadata = list(
     list(
       UserName = "string",
@@ -44,7 +46,7 @@ A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the access key IDs associated with the
@@ -64,12 +66,14 @@ To ensure the security of your AWS account, the secret access key is
 accessible only during key and user creation.
 }
 \section{Request syntax}{
-\preformatted{svc$list_access_keys(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_access_keys(
   UserName = "string",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

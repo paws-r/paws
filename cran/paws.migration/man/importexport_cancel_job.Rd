@@ -12,21 +12,25 @@ importexport_cancel_job(JobId, APIVersion)
 \item{APIVersion}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Success = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation cancels a specified job. Only the job owner can cancel
 it. The operation fails if the job has already started or is complete.
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_job(
   JobId = "string",
   APIVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

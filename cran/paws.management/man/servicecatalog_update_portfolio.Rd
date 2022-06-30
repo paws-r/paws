@@ -28,7 +28,9 @@ servicecatalog_update_portfolio(AcceptLanguage, Id, DisplayName,
 \item{RemoveTags}{The tags to remove.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PortfolioDetail = list(
     Id = "string",
     ARN = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the specified portfolio.
@@ -54,7 +56,9 @@ Updates the specified portfolio.
 You cannot update a product that was shared with you.
 }
 \section{Request syntax}{
-\preformatted{svc$update_portfolio(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_portfolio(
   AcceptLanguage = "string",
   Id = "string",
   DisplayName = "string",
@@ -70,7 +74,7 @@ You cannot update a product that was shared with you.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,17 +19,21 @@ profiling, and storage paths.}
 framework metrics.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrainingJobArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Update a model training job to request a new Debugger profiling
 configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$update_training_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_training_job(
   TrainingJobName = "string",
   ProfilerConfig = list(
     S3OutputPath = "string",
@@ -53,7 +57,7 @@ configuration.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

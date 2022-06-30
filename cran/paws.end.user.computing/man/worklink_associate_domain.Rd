@@ -24,13 +24,15 @@ An empty list.
 Specifies a domain to be associated to Amazon WorkLink.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_domain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_domain(
   FleetArn = "string",
   DomainName = "string",
   DisplayName = "string",
   AcmCertificateArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

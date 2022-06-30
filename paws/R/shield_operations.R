@@ -279,7 +279,7 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' [Getting Started with AWS Shield
 #' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html)
 #' and [Add AWS Shield Advanced Protection to more AWS
-#' Resources](https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html).
+#' Resources](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
 #' shield_create_protection(Name, ResourceArn)

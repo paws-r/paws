@@ -11,24 +11,28 @@ emr_describe_security_configuration(Name)
 \item{Name}{[required] The name of the security configuration.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Name = "string",
   SecurityConfiguration = "string",
   CreationDateTime = as.POSIXct(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides the details of a security configuration by returning the
 configuration JSON.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_security_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_security_configuration(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

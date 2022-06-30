@@ -13,7 +13,9 @@ follow the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securi
 Maximum of 100 findings per request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedCount = 123,
   SuccessCount = 123,
   FailedFindings = list(
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Imports security findings generated from an integrated third-party
@@ -62,7 +64,9 @@ fields cannot be updated using
 }
 }
 \section{Request syntax}{
-\preformatted{svc$batch_import_findings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_import_findings(
   Findings = list(
     list(
       SchemaVersion = "string",
@@ -1692,7 +1696,7 @@ fields cannot be updated using
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

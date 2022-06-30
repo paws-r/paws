@@ -10,10 +10,12 @@ storagegateway_update_gateway_software_now(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the gateway virtual machine (VM) software. The request
@@ -28,15 +30,17 @@ to verify the gateway is in the \code{STATE_RUNNING} state.
 A software update forces a system restart of your gateway. You can
 minimize the chance of any disruption to your applications by increasing
 your iSCSI Initiators' timeouts. For more information about increasing
-iSCSI Initiator timeouts for Windows and Linux, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/#CustomizeWindowsiSCSISettings}{Customizing your Windows iSCSI settings}
-and \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/#CustomizeLinuxiSCSISettings}{Customizing your Linux iSCSI settings},
+iSCSI Initiator timeouts for Windows and Linux, see \href{https://docs.aws.amazon.com/storagegateway/index.html#CustomizeWindowsiSCSISettings}{Customizing your Windows iSCSI settings}
+and \href{https://docs.aws.amazon.com/storagegateway/index.html#CustomizeLinuxiSCSISettings}{Customizing your Linux iSCSI settings},
 respectively.
 }
 \section{Request syntax}{
-\preformatted{svc$update_gateway_software_now(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_gateway_software_now(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -47,10 +47,12 @@ hours. For example, you reach the limit if you call
 12 times for the same delivery stream in a 24-hour period.
 }
 \section{Request syntax}{
-\preformatted{svc$stop_delivery_stream_encryption(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_delivery_stream_encryption(
   DeliveryStreamName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

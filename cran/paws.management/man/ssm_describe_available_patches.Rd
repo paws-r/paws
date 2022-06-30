@@ -15,7 +15,9 @@ ssm_describe_available_patches(Filters, MaxResults, NextToken)
 from a previous call.)}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Patches = list(
     list(
       Id = "string",
@@ -53,13 +55,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all patches eligible to be included in a patch baseline.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_available_patches(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_available_patches(
   Filters = list(
     list(
       Key = "string",
@@ -71,7 +75,7 @@ Lists all patches eligible to be included in a patch baseline.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

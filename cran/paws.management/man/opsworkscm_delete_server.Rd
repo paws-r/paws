@@ -28,10 +28,12 @@ does not exist. A \code{ValidationException} is raised when parameters of the
 request are not valid.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_server(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_server(
   ServerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

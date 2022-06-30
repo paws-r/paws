@@ -34,7 +34,9 @@ a specific database engine version. If specified, then EngineName must
 also be specified.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OptionGroupsList = list(
     list(
       OptionGroupName = "string",
@@ -83,13 +85,15 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the available option groups.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_option_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_option_groups(
   OptionGroupName = "string",
   Filters = list(
     list(
@@ -104,7 +108,7 @@ Describes the available option groups.
   EngineName = "string",
   MajorEngineVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

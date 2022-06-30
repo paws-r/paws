@@ -17,7 +17,9 @@ of tapes.}
 call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TapeInfos = list(
     list(
       TapeARN = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists virtual tapes in your virtual tape library (VTL) and your virtual
@@ -53,14 +55,16 @@ to retrieve the next set of tapes. This operation is only supported in
 the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tapes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tapes(
   TapeARNs = list(
     "string"
   ),
   Marker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

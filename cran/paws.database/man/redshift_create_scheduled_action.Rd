@@ -37,7 +37,9 @@ not trigger. For more information about \code{state} of the scheduled action,
 see ScheduledAction.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ScheduledActionName = "string",
   TargetAction = list(
     ResizeCluster = list(
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a scheduled action. A scheduled action contains a schedule and
@@ -79,7 +81,9 @@ when to run the \code{\link[=redshift_resize_cluster]{resize_cluster}} API
 operation.
 }
 \section{Request syntax}{
-\preformatted{svc$create_scheduled_action(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_scheduled_action(
   ScheduledActionName = "string",
   TargetAction = list(
     ResizeCluster = list(
@@ -107,7 +111,7 @@ operation.
   ),
   Enable = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

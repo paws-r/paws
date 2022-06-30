@@ -21,7 +21,9 @@ specific audit finding.}
 \item{nextToken}{The token for the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   actionsExecutions = list(
     list(
       taskId = "string",
@@ -41,20 +43,22 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the status of audit mitigation action tasks that were executed.
 }
 \section{Request syntax}{
-\preformatted{svc$list_audit_mitigation_actions_executions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_audit_mitigation_actions_executions(
   taskId = "string",
   actionStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED"|"SKIPPED"|"PENDING",
   findingId = "string",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

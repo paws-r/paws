@@ -22,10 +22,12 @@ If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrialArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an Amazon SageMaker \emph{trial}. A trial is a set of steps called
@@ -47,7 +49,9 @@ To create a trial component, call the
 \code{\link[=sagemaker_create_trial_component]{create_trial_component}} API.
 }
 \section{Request syntax}{
-\preformatted{svc$create_trial(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_trial(
   TrialName = "string",
   DisplayName = "string",
   ExperimentName = "string",
@@ -64,7 +68,7 @@ To create a trial component, call the
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

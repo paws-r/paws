@@ -20,7 +20,9 @@ default cluster.}
 field is omitted, tags are not included in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tasks = list(
     list(
       attachments = list(
@@ -185,13 +187,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a specified task or tasks.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_tasks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tasks(
   cluster = "string",
   tasks = list(
     "string"
@@ -200,7 +204,7 @@ Describes a specified task or tasks.
     "TAGS"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

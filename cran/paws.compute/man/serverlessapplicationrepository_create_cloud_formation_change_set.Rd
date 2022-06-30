@@ -30,9 +30,8 @@ CAPABILITY_NAMED_IAM:
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}.
 If the application contains IAM resources, you can specify either
-CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains
-IAM resources with custom names, you must specify
-CAPABILITY_NAMED_IAM.
+CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains IAM
+resources with custom names, you must specify CAPABILITY_NAMED_IAM.
 
 The following resources require you to specify
 CAPABILITY_RESOURCE_POLICY:
@@ -104,19 +103,23 @@ Pattern:
 [0-9a-fA-F]\{8\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{12\}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationId = "string",
   ChangeSetId = "string",
   SemanticVersion = "string",
   StackId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS CloudFormation change set for the given application.
 }
 \section{Request syntax}{
-\preformatted{svc$create_cloud_formation_change_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cloud_formation_change_set(
   ApplicationId = "string",
   Capabilities = list(
     "string"
@@ -155,7 +158,7 @@ Creates an AWS CloudFormation change set for the given application.
   ),
   TemplateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

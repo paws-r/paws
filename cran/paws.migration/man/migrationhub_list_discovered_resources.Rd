@@ -20,7 +20,9 @@ using the returned token in \code{NextToken}.}
 \item{MaxResults}{The maximum number of results returned per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   DiscoveredResourceList = list(
     list(
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists discovered resources associated with the given \code{MigrationTask}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_discovered_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_discovered_resources(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

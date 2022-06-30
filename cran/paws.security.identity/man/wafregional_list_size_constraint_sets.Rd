@@ -22,7 +22,9 @@ objects than the number you specify for \code{Limit}, the response includes a
 \code{SizeConstraintSet} objects.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextMarker = "string",
   SizeConstraintSets = list(
     list(
@@ -31,7 +33,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -46,11 +48,13 @@ regional and global use.
 Returns an array of SizeConstraintSetSummary objects.
 }
 \section{Request syntax}{
-\preformatted{svc$list_size_constraint_sets(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_size_constraint_sets(
   NextMarker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

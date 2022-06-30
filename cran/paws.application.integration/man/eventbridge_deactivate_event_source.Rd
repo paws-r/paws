@@ -25,10 +25,12 @@ To activate a deactivated partner event source, use
 \code{\link[=eventbridge_activate_event_source]{activate_event_source}}.
 }
 \section{Request syntax}{
-\preformatted{svc$deactivate_event_source(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deactivate_event_source(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

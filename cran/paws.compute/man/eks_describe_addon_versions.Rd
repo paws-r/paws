@@ -26,7 +26,9 @@ purposes.}
 .}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   addons = list(
     list(
       addonName = "string",
@@ -52,19 +54,21 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the Kubernetes versions that the add-on can be used with.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_addon_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_addon_versions(
   kubernetesVersion = "string",
   maxResults = 123,
   nextToken = "string",
   addonName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

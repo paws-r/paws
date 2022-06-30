@@ -19,7 +19,9 @@ none is provided, the AWS account ID is used by default.}
 deleted.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Errors = list(
     list(
       PartitionValues = list(
@@ -32,13 +34,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes one or more partitions in a batch operation.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_delete_partition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_delete_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -50,7 +54,7 @@ Deletes one or more partitions in a batch operation.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

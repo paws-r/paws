@@ -18,7 +18,9 @@ batch inference jobs were created.}
 page. The default value is 100.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   batchInferenceJobs = list(
     list(
       batchInferenceJobArn = "string",
@@ -36,19 +38,21 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of the batch inference jobs that have been performed off of
 a solution version.
 }
 \section{Request syntax}{
-\preformatted{svc$list_batch_inference_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_batch_inference_jobs(
   solutionVersionArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

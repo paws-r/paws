@@ -38,7 +38,9 @@ find the product's technical documentation at
 \href{https://docs.aws.amazon.com/}{docs.aws.amazon.com}.
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudformation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudformation(
   config = list(
     credentials = list(
       creds = list(
@@ -52,7 +54,7 @@ find the product's technical documentation at
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

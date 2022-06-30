@@ -21,12 +21,14 @@ An empty list.
 Updates the default outbound queue of a routing profile.
 }
 \section{Request syntax}{
-\preformatted{svc$update_routing_profile_default_outbound_queue(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_routing_profile_default_outbound_queue(
   InstanceId = "string",
   RoutingProfileId = "string",
   DefaultOutboundQueueId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -21,7 +21,9 @@ instance. If \code{TAGS} is specified, the tags are included in the response.
 If this field is omitted, tags are not included in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   containerInstances = list(
     list(
       containerInstanceArn = "string",
@@ -103,7 +105,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes Amazon Elastic Container Service container instances. Returns
@@ -111,7 +113,9 @@ metadata about registered and remaining resources on each container
 instance requested.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_container_instances(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_container_instances(
   cluster = "string",
   containerInstances = list(
     "string"
@@ -120,7 +124,7 @@ instance requested.
     "TAGS"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

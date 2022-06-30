@@ -25,11 +25,13 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
 \emph{AWS Site-to-Site VPN User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_vpn_connection_route(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpn_connection_route(
   DestinationCidrBlock = "string",
   VpnConnectionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

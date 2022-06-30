@@ -10,21 +10,25 @@ iot_set_default_authorizer(authorizerName)
 \item{authorizerName}{[required] The authorizer name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   authorizerName = "string",
   authorizerArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Sets the default authorizer. This will be used if a websocket connection
 is made without specifying an authorizer.
 }
 \section{Request syntax}{
-\preformatted{svc$set_default_authorizer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_default_authorizer(
   authorizerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

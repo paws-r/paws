@@ -14,7 +14,9 @@ guardduty_update_member_detectors(DetectorId, AccountIds, DataSources)
 \item{DataSources}{Describes which data sources will be updated.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -22,13 +24,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Contains information on member accounts to be updated.
 }
 \section{Request syntax}{
-\preformatted{svc$update_member_detectors(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_member_detectors(
   DetectorId = "string",
   AccountIds = list(
     "string"
@@ -39,7 +43,7 @@ Contains information on member accounts to be updated.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

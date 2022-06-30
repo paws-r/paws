@@ -42,7 +42,9 @@ recommendations.
 For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter.html}{Filtering Recommendations}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   personalizedRanking = list(
     list(
       itemId = "string",
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
   ),
   recommendationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Re-ranks a list of recommended items for the given user. The first item
@@ -62,7 +64,9 @@ The solution backing the campaign must have been created using a recipe
 of type PERSONALIZED_RANKING.
 }
 \section{Request syntax}{
-\preformatted{svc$get_personalized_ranking(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_personalized_ranking(
   campaignArn = "string",
   inputList = list(
     "string"
@@ -76,7 +80,7 @@ of type PERSONALIZED_RANKING.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

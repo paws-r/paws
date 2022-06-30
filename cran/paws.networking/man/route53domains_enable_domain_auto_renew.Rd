@@ -25,10 +25,12 @@ renew before the end of the renewal period so we can complete processing
 before the deadline.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_domain_auto_renew(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_domain_auto_renew(
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -16,7 +16,9 @@ English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 Portuguese ("pt").}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SyntaxTokens = list(
     list(
       TokenId = 123,
@@ -30,18 +32,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Inspects text for syntax and the part of speech of words in the
 document. For more information, how-syntax.
 }
 \section{Request syntax}{
-\preformatted{svc$detect_syntax(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_syntax(
   Text = "string",
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

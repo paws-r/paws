@@ -12,7 +12,9 @@ s3control_list_storage_lens_configurations(AccountId, NextToken)
 \item{NextToken}{A pagination token to request the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   StorageLensConfigurationList = list(
     list(
@@ -23,7 +25,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of Amazon S3 Storage Lens configurations. For more
@@ -36,11 +38,13 @@ To use this action, you must have permission to perform the
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_storage_lens_configurations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_storage_lens_configurations(
   AccountId = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

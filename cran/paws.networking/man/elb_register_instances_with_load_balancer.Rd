@@ -12,14 +12,16 @@ elb_register_instances_with_load_balancer(LoadBalancerName, Instances)
 \item{Instances}{[required] The IDs of the instances.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Instances = list(
     list(
       InstanceId = "string"
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds the specified instances to the specified load balancer.
@@ -50,7 +52,9 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$register_instances_with_load_balancer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_instances_with_load_balancer(
   LoadBalancerName = "string",
   Instances = list(
     list(
@@ -58,7 +62,7 @@ in the \emph{Classic Load Balancers Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

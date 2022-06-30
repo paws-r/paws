@@ -12,10 +12,12 @@ cloudhsm_modify_luna_client(ClientArn, Certificate)
 \item{Certificate}{[required] The new certificate for the client.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ClientArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -31,11 +33,13 @@ This action can potentially start a workflow to install the new
 certificate on the client's HSMs.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_luna_client(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_luna_client(
   ClientArn = "string",
   Certificate = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

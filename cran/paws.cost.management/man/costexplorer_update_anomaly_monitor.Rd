@@ -12,21 +12,25 @@ costexplorer_update_anomaly_monitor(MonitorArn, MonitorName)
 \item{MonitorName}{The new name for the cost anomaly monitor.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MonitorArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an existing cost anomaly monitor. The changes made are applied
 going forward, and does not change anomalies detected in the past.
 }
 \section{Request syntax}{
-\preformatted{svc$update_anomaly_monitor(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_anomaly_monitor(
   MonitorArn = "string",
   MonitorName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

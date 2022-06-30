@@ -10,7 +10,9 @@ codestar_describe_project(id)
 \item{id}{[required] The ID of the project.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   name = "string",
   id = "string",
   arn = "string",
@@ -26,16 +28,18 @@ A list with the following syntax:\preformatted{list(
     reason = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a project and its resources.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_project(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_project(
   id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

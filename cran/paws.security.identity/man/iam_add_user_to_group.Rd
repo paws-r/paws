@@ -26,11 +26,13 @@ An empty list.
 Adds the specified user to the specified group.
 }
 \section{Request syntax}{
-\preformatted{svc$add_user_to_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_user_to_group(
   GroupName = "string",
   UserName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

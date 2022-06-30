@@ -34,7 +34,9 @@ For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.c
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- athena(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- athena(
   config = list(
     credentials = list(
       creds = list(
@@ -48,7 +50,7 @@ in the \emph{Amazon Athena User Guide}.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

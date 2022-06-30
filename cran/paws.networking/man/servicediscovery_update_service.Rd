@@ -12,10 +12,12 @@ servicediscovery_update_service(Id, Service)
 \item{Service}{[required] A complex type that contains the new settings for the service.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Submits a request to perform the following operations:
@@ -43,7 +45,9 @@ corresponding settings in all the records and health checks that were
 created by using the specified service.
 }
 \section{Request syntax}{
-\preformatted{svc$update_service(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_service(
   Id = "string",
   Service = list(
     Description = "string",
@@ -62,7 +66,7 @@ created by using the specified service.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

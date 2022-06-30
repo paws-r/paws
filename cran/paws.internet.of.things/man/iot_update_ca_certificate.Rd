@@ -29,7 +29,9 @@ An empty list.
 Updates a registered CA certificate.
 }
 \section{Request syntax}{
-\preformatted{svc$update_ca_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_ca_certificate(
   certificateId = "string",
   newStatus = "ACTIVE"|"INACTIVE",
   newAutoRegistrationStatus = "ENABLE"|"DISABLE",
@@ -39,7 +41,7 @@ Updates a registered CA certificate.
   ),
   removeAutoRegistration = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

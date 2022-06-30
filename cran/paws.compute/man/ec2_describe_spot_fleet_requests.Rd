@@ -23,7 +23,9 @@ value.}
 \item{SpotFleetRequestIds}{The IDs of the Spot Fleet requests.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   NextToken = "string",
   SpotFleetRequestConfigs = list(
     list(
@@ -209,7 +211,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes your Spot Fleet requests.
@@ -218,7 +220,9 @@ Spot Fleet requests are deleted 48 hours after they are canceled and
 their instances are terminated.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_spot_fleet_requests(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_spot_fleet_requests(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string",
@@ -226,7 +230,7 @@ their instances are terminated.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

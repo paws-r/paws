@@ -19,7 +19,9 @@ next set of results.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OpsMetadataList = list(
     list(
       ResourceId = "string",
@@ -35,14 +37,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Systems Manager calls this API action when displaying all Application
 Manager OpsMetadata objects or blobs.
 }
 \section{Request syntax}{
-\preformatted{svc$list_ops_metadata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_ops_metadata(
   Filters = list(
     list(
       Key = "string",
@@ -54,7 +58,7 @@ Manager OpsMetadata objects or blobs.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

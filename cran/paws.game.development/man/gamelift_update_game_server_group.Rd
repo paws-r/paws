@@ -25,7 +25,7 @@ group. For more information on instance types, see \href{https://docs.aws.amazon
 in the \emph{Amazon EC2 User Guide}. You can optionally specify capacity
 weighting for each instance type. If no weight value is specified for an
 instance type, it is set to the default value "1". For more information
-about capacity weighting, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-weighting.html}{Instance Weighting for Amazon EC2 Auto Scaling}
+about capacity weighting, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups-instance-weighting.html}{Instance Weighting for Amazon EC2 Auto Scaling}
 in the Amazon EC2 Auto Scaling User Guide.}
 
 \item{GameServerProtectionPolicy}{A flag that indicates whether instances in the game server group are
@@ -60,7 +60,9 @@ this balancing strategy is in force.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GameServerGroup = list(
     GameServerGroupName = "string",
     GameServerGroupArn = "string",
@@ -87,7 +89,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -121,7 +123,9 @@ returned.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$update_game_server_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_game_server_group(
   GameServerGroupName = "string",
   RoleArn = "string",
   InstanceDefinitions = list(
@@ -133,7 +137,7 @@ returned.
   GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
   BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

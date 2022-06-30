@@ -17,7 +17,9 @@ to log queries for.
 The VPCs and the query logging configuration must be in the same Region.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ResolverQueryLogConfigAssociation = list(
     Id = "string",
     ResolverQueryLogConfigId = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     CreationTime = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Associates an Amazon VPC with a specified query logging configuration.
@@ -45,11 +47,13 @@ To remove a VPC from a query logging configuration, see
 \code{\link[=route53resolver_disassociate_resolver_query_log_config]{disassociate_resolver_query_log_config}}.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_resolver_query_log_config(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_resolver_query_log_config(
   ResolverQueryLogConfigId = "string",
   ResourceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

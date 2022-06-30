@@ -22,7 +22,9 @@ and optionally followed by a period '.' and a string of letters and
 digits.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyVersion = list(
     Document = "string",
     VersionId = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about the specified version of the specified
@@ -60,11 +62,13 @@ For more information about managed policy versions, see \href{https://docs.aws.a
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_policy_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_policy_version(
   PolicyArn = "string",
   VersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -39,11 +39,13 @@ For the cli-input-json file use format: "tags":
 "key1=value1&key2=value2..."}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   domainConfigurationName = "string",
   domainConfigurationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a domain configuration.
@@ -52,7 +54,9 @@ The domain configuration feature is in public preview and is subject to
 change.
 }
 \section{Request syntax}{
-\preformatted{svc$create_domain_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_domain_configuration(
   domainConfigurationName = "string",
   domainName = "string",
   serverCertificateArns = list(
@@ -71,7 +75,7 @@ change.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

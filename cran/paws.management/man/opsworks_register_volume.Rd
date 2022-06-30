@@ -12,10 +12,12 @@ opsworks_register_volume(Ec2VolumeId, StackId)
 \item{StackId}{[required] The stack ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VolumeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Registers an Amazon EBS volume with a specified stack. A volume can be
@@ -30,11 +32,13 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{svc$register_volume(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_volume(
   Ec2VolumeId = "string",
   StackId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

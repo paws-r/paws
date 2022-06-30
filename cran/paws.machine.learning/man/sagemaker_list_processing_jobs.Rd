@@ -38,7 +38,9 @@ of processing jobs, use the token in the next request.}
 \item{MaxResults}{The maximum number of processing jobs to return in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProcessingJobSummaries = list(
     list(
       ProcessingJobName = "string",
@@ -59,13 +61,15 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists processing jobs that satisfy various filters.
 }
 \section{Request syntax}{
-\preformatted{svc$list_processing_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_processing_jobs(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -85,7 +89,7 @@ Lists processing jobs that satisfy various filters.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

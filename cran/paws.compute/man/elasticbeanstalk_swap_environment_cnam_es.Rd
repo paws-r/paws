@@ -42,13 +42,15 @@ An empty list.
 Swaps the CNAMEs of two environments.
 }
 \section{Request syntax}{
-\preformatted{svc$swap_environment_cnam_es(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$swap_environment_cnam_es(
   SourceEnvironmentId = "string",
   SourceEnvironmentName = "string",
   DestinationEnvironmentId = "string",
   DestinationEnvironmentName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

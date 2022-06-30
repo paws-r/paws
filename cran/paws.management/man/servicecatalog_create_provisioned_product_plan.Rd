@@ -50,14 +50,16 @@ have a \code{RESOURCE_UPDATE} constraint with
 \code{TagUpdatesOnProvisionedProduct} set to \code{ALLOWED} to allow tag updates.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PlanName = "string",
   PlanId = "string",
   ProvisionProductId = "string",
   ProvisionedProductName = "string",
   ProvisioningArtifactId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a plan. A plan includes the list of resources to be created
@@ -74,7 +76,9 @@ To create or modify the provisioned product, use
 \code{\link[=servicecatalog_execute_provisioned_product_plan]{execute_provisioned_product_plan}}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_provisioned_product_plan(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_provisioned_product_plan(
   AcceptLanguage = "string",
   PlanName = "string",
   PlanType = "CLOUDFORMATION",
@@ -100,7 +104,7 @@ To create or modify the provisioned product, use
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

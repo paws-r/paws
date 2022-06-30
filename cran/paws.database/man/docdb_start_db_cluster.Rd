@@ -11,7 +11,9 @@ docdb_start_db_cluster(DBClusterIdentifier)
 \code{docdb-2019-05-28-15-24-52}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBCluster = list(
     AvailabilityZones = list(
       "string"
@@ -71,17 +73,19 @@ A list with the following syntax:\preformatted{list(
     DeletionProtection = TRUE|FALSE
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Restarts the stopped cluster that is specified by \code{DBClusterIdentifier}.
 For more information, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html}{Stopping and Starting an Amazon DocumentDB Cluster}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_db_cluster(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_db_cluster(
   DBClusterIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -15,7 +15,9 @@ Constraints: Must be the valid name of an existing cluster that has
 cross-region snapshot copy enabled.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -172,7 +174,7 @@ A list with the following syntax:\preformatted{list(
     ClusterNamespaceArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Disables the automatic copying of snapshots from one region to another
@@ -185,10 +187,12 @@ delete the grant that grants Amazon Redshift permission to the CMK in
 the destination region.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_snapshot_copy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_snapshot_copy(
   ClusterIdentifier = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

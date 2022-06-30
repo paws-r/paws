@@ -13,13 +13,15 @@ clouddirectory_create_directory(Name, SchemaArn)
 copied into the data Directory. For more information, see arns.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DirectoryArn = "string",
   Name = "string",
   ObjectIdentifier = "string",
   AppliedSchemaArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a Directory by copying the published schema into the directory.
@@ -30,11 +32,13 @@ the \code{QuickStartSchema}. For more information, see \href{https://docs.aws.am
 in the \emph{Amazon Cloud Directory Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_directory(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_directory(
   Name = "string",
   SchemaArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

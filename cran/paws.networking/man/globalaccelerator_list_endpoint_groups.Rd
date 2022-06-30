@@ -17,7 +17,9 @@ call. The default value is 10.}
 previous call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointGroups = list(
     list(
       EndpointGroupArn = "string",
@@ -47,18 +49,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 List the endpoint groups that are associated with a listener.
 }
 \section{Request syntax}{
-\preformatted{svc$list_endpoint_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_endpoint_groups(
   ListenerArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,7 +18,9 @@ using the returned token in \code{NextToken}.}
 \item{MaxResults}{Maximum number of results to be returned per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationStateList = list(
     list(
       ApplicationId = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all the migration statuses for your applications. If you use the
@@ -38,14 +40,16 @@ optional \code{ApplicationIds} parameter, only the migration statuses for
 those applications will be returned.
 }
 \section{Request syntax}{
-\preformatted{svc$list_application_states(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_application_states(
   ApplicationIds = list(
     "string"
   ),
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

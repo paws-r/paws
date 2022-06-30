@@ -60,7 +60,9 @@ For more information, see \href{https://docs.aws.amazon.com/global-accelerator/l
 in the \emph{AWS Global Accelerator Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointGroup = list(
     EndpointGroupArn = "string",
     EndpointGroupRegion = "string",
@@ -87,7 +89,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create an endpoint group for the specified listener. An endpoint group
@@ -95,7 +97,9 @@ is a collection of endpoints in one AWS Region. A resource must be valid
 and active when you add it as an endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$create_endpoint_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_endpoint_group(
   ListenerArn = "string",
   EndpointGroupRegion = "string",
   EndpointConfigurations = list(
@@ -119,7 +123,7 @@ and active when you add it as an endpoint.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

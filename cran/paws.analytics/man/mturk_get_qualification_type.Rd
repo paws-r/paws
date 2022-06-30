@@ -11,7 +11,9 @@ mturk_get_qualification_type(QualificationTypeId)
 \item{QualificationTypeId}{[required] The ID of the QualificationType.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   QualificationType = list(
     QualificationTypeId = "string",
     CreationTime = as.POSIXct(
@@ -30,17 +32,19 @@ A list with the following syntax:\preformatted{list(
     AutoGrantedValue = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The \code{\link[=mturk_get_qualification_type]{get_qualification_type}}operation
 retrieves information about a Qualification type using its ID.
 }
 \section{Request syntax}{
-\preformatted{svc$get_qualification_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_qualification_type(
   QualificationTypeId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

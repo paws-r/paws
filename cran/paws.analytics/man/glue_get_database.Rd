@@ -14,7 +14,9 @@ provided, the AWS account ID is used by default.}
 should be all lowercase.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Database = list(
     Name = "string",
     Description = "string",
@@ -42,17 +44,19 @@ A list with the following syntax:\preformatted{list(
     CatalogId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the definition of a specified database.
 }
 \section{Request syntax}{
-\preformatted{svc$get_database(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_database(
   CatalogId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

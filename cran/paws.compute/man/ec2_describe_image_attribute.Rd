@@ -22,7 +22,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BlockDeviceMappings = list(
     list(
       DeviceName = "string",
@@ -66,19 +68,21 @@ A list with the following syntax:\preformatted{list(
     Value = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified attribute of the specified AMI. You can specify
 only one attribute at a time.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_image_attribute(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_image_attribute(
   Attribute = "description"|"kernel"|"ramdisk"|"launchPermission"|"productCodes"|"blockDeviceMapping"|"sriovNetSupport",
   ImageId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

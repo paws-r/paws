@@ -23,7 +23,9 @@ guide provides descriptions of the STS API. For more information about
 using this service, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html}{Temporary Security Credentials}.
 }
 \section{Service syntax}{
-\preformatted{svc <- sts(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sts(
   config = list(
     credentials = list(
       creds = list(
@@ -37,7 +39,7 @@ using this service, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/i
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

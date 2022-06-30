@@ -19,10 +19,12 @@ Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN)
 with AWS Elemental MediaConvert.
 }
 \section{Request syntax}{
-\preformatted{svc$associate_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_certificate(
   Arn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

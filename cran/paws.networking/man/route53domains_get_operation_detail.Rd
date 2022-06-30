@@ -13,7 +13,9 @@ Route 53 returned the identifier in the response to the original
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OperationId = "string",
   Status = "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED",
   Message = "string",
@@ -23,17 +25,19 @@ A list with the following syntax:\preformatted{list(
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation returns the current status of an operation that is not
 completed.
 }
 \section{Request syntax}{
-\preformatted{svc$get_operation_detail(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_operation_detail(
   OperationId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

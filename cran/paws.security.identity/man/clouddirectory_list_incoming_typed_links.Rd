@@ -30,7 +30,9 @@ facet, not the order in which they are supplied to any API calls.}
 \item{ConsistencyLevel}{The consistency level to execute the request at.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LinkSpecifiers = list(
     list(
       TypedLinkFacet = list(
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a paginated list of all the incoming TypedLinkSpecifier
@@ -69,7 +71,9 @@ information for an object. It also supports filtering by typed link
 facet and identity attributes. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_incoming_typed_links(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_incoming_typed_links(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -109,7 +113,7 @@ facet and identity attributes. For more information, see \href{https://docs.aws.
   MaxResults = 123,
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

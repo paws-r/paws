@@ -16,7 +16,9 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 \item{virtualRouterName}{[required] The name of the virtual router to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   virtualRouter = list(
     meshName = "string",
     metadata = list(
@@ -48,18 +50,20 @@ A list with the following syntax:\preformatted{list(
     virtualRouterName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes an existing virtual router.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_virtual_router(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_virtual_router(
   meshName = "string",
   meshOwner = "string",
   virtualRouterName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

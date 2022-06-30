@@ -10,7 +10,9 @@ alexaforbusiness_get_device(DeviceArn)
 \item{DeviceArn}{The ARN of the device for which to request details. Required.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Device = list(
     DeviceArn = "string",
     DeviceSerialNumber = "string",
@@ -41,16 +43,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the details of a device by device ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$get_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_device(
   DeviceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12,7 +12,9 @@ connect_describe_user_hierarchy_group(HierarchyGroupId, InstanceId)
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   HierarchyGroup = list(
     Id = "string",
     Arn = "string",
@@ -47,17 +49,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified hierarchy group.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_user_hierarchy_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user_hierarchy_group(
   HierarchyGroupId = "string",
   InstanceId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

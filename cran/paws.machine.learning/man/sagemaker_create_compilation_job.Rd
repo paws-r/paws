@@ -42,10 +42,12 @@ resources in different ways, for example, by purpose, owner, or
 environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CompilationJobArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts a model compilation job. After the model has been compiled,
@@ -79,7 +81,9 @@ information about multiple model compilation jobs, use
 \code{\link[=sagemaker_list_compilation_jobs]{list_compilation_jobs}}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_compilation_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_compilation_job(
   CompilationJobName = "string",
   RoleArn = "string",
   InputConfig = list(
@@ -109,7 +113,7 @@ information about multiple model compilation jobs, use
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

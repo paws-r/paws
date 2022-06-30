@@ -10,7 +10,9 @@ sagemaker_describe_trial(TrialName)
 \item{TrialName}{[required] The name of the trial to describe.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrialName = "string",
   TrialArn = "string",
   DisplayName = "string",
@@ -42,16 +44,18 @@ A list with the following syntax:\preformatted{list(
     ProjectId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides a list of a trial's properties.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_trial(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_trial(
   TrialName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

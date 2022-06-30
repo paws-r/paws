@@ -39,7 +39,9 @@ access secrets in AWS Secrets Manager.}
 \item{SecurityGroups}{The new list of security groups for the \code{DBProxy}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBProxy = list(
     DBProxyName = "string",
     DBProxyArn = "string",
@@ -73,13 +75,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Changes the settings for an existing DB proxy.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_db_proxy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_proxy(
   DBProxyName = "string",
   NewDBProxyName = "string",
   Auth = list(
@@ -99,7 +103,7 @@ Changes the settings for an existing DB proxy.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

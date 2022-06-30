@@ -19,24 +19,28 @@ response.}
 \item{MaxResults}{The maximum number of items to return in the response.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ProductSubscriptions = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all findings-generating solutions (products) that you are
 subscribed to receive findings from in Security Hub.
 }
 \section{Request syntax}{
-\preformatted{svc$list_enabled_products_for_import(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_enabled_products_for_import(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

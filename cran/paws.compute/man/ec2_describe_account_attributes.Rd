@@ -15,7 +15,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccountAttributes = list(
     list(
       AttributeName = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes attributes of your AWS account. The following are the
@@ -50,13 +52,15 @@ that you can allocate for use with EC2-VPC.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$describe_account_attributes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_attributes(
   AttributeNames = list(
     "supported-platforms"|"default-vpc"
   ),
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

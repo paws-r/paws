@@ -11,10 +11,12 @@ directoryservice_verify_trust(TrustId)
 \item{TrustId}{[required] The unique Trust ID of the trust relationship to verify.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TrustId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 AWS Directory Service for Microsoft Active Directory allows you to
@@ -24,10 +26,12 @@ This action verifies a trust relationship between your AWS Managed
 Microsoft AD directory and an external domain.
 }
 \section{Request syntax}{
-\preformatted{svc$verify_trust(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$verify_trust(
   TrustId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

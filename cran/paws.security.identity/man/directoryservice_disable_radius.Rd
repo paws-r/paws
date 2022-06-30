@@ -20,10 +20,12 @@ Authentication Dial In User Service (RADIUS) server for an AD Connector
 or Microsoft AD directory.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_radius(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_radius(
   DirectoryId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

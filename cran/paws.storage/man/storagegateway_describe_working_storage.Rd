@@ -10,7 +10,9 @@ storagegateway_describe_working_storage(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string",
   DiskIds = list(
     "string"
@@ -18,7 +20,7 @@ A list with the following syntax:\preformatted{list(
   WorkingStorageUsedInBytes = 123,
   WorkingStorageAllocatedInBytes = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the working storage of a gateway. This
@@ -34,10 +36,12 @@ The response includes disk IDs that are configured as working storage,
 and it includes the amount of working storage allocated and used.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_working_storage(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_working_storage(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

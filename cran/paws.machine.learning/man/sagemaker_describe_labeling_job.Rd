@@ -10,7 +10,9 @@ sagemaker_describe_labeling_job(LabelingJobName)
 \item{LabelingJobName}{[required] The name of the labeling job to return information for.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LabelingJobStatus = "Initializing"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
   LabelCounters = list(
     TotalLabeled = 123,
@@ -101,16 +103,18 @@ A list with the following syntax:\preformatted{list(
     FinalActiveLearningModelArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about a labeling job.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_labeling_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_labeling_job(
   LabelingJobName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

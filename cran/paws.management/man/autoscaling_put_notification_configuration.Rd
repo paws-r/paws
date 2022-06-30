@@ -29,21 +29,23 @@ delivered to an endpoint such as a web server or an email address.
 
 This configuration overwrites any existing configuration.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html}{Getting Amazon SNS notifications when your Auto Scaling group scales}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-sns-notifications.html}{Getting Amazon SNS notifications when your Auto Scaling group scales}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 If you exceed your maximum limit of SNS topics, which is 10 per Auto
 Scaling group, the call fails.
 }
 \section{Request syntax}{
-\preformatted{svc$put_notification_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_notification_configuration(
   AutoScalingGroupName = "string",
   TopicARN = "string",
   NotificationTypes = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

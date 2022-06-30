@@ -17,7 +17,9 @@ Volumes request.}
 number of items.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string",
   Marker = "string",
   VolumeInfos = list(
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the iSCSI stored volumes of a gateway. Results are sorted by
@@ -52,12 +54,14 @@ subsequent request to retrieve the next set of volumes. This operation
 is only supported in the cached volume and stored volume gateway types.
 }
 \section{Request syntax}{
-\preformatted{svc$list_volumes(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_volumes(
   GatewayARN = "string",
   Marker = "string",
   Limit = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

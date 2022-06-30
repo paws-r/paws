@@ -33,10 +33,12 @@ This parameter tells AWS KMS the \code{kmsuser} account password; it does not
 change the password in the AWS CloudHSM cluster.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CustomKeyStoreId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
@@ -82,13 +84,15 @@ key store in a different AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_custom_key_store(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_custom_key_store(
   CustomKeyStoreName = "string",
   CloudHsmClusterId = "string",
   TrustAnchorCertificate = "string",
   KeyStorePassword = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

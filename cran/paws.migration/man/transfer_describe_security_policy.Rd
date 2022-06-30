@@ -12,7 +12,9 @@ transfer_describe_security_policy(SecurityPolicyName)
 server.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SecurityPolicy = list(
     Fips = TRUE|FALSE,
     SecurityPolicyName = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the security policy that is attached to your file transfer
@@ -39,10 +41,12 @@ security policy's properties. For more information about security
 policies, see \href{https://docs.aws.amazon.com/transfer/latest/userguide/security-policies.html}{Working with security policies}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_security_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_security_policy(
   SecurityPolicyName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

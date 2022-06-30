@@ -26,7 +26,9 @@ An empty list.
 Updates an existing function definition in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$update_user_defined_function(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_defined_function(
   CatalogId = "string",
   DatabaseName = "string",
   FunctionName = "string",
@@ -43,7 +45,7 @@ Updates an existing function definition in the Data Catalog.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

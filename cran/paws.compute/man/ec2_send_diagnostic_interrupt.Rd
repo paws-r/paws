@@ -40,11 +40,13 @@ a crash dump when a kernel panic or stop error occurs, see \href{https://docs.aw
 (Windows instances).
 }
 \section{Request syntax}{
-\preformatted{svc$send_diagnostic_interrupt(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_diagnostic_interrupt(
   InstanceId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

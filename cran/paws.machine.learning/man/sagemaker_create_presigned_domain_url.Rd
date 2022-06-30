@@ -15,10 +15,12 @@ sagemaker_create_presigned_domain_url(DomainId, UserProfileName,
 \item{SessionExpirationDurationInSeconds}{The session expiration duration in seconds.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AuthorizedUrl = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a URL for a specified UserProfile in a Domain. When accessed in
@@ -35,12 +37,14 @@ is valid only for 5 minutes. If you try to use the URL after the
 page.
 }
 \section{Request syntax}{
-\preformatted{svc$create_presigned_domain_url(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_presigned_domain_url(
   DomainId = "string",
   UserProfileName = "string",
   SessionExpirationDurationInSeconds = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

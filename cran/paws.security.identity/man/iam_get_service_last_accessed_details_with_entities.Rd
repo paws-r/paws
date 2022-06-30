@@ -41,7 +41,9 @@ the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
   JobCreationDate = as.POSIXct(
     "2015-01-01"
@@ -70,7 +72,7 @@ A list with the following syntax:\preformatted{list(
     Code = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 After you generate a group or policy report using the
@@ -100,13 +102,15 @@ By default, the list of associated entities is sorted by date, with the
 most recent access listed first.
 }
 \section{Request syntax}{
-\preformatted{svc$get_service_last_accessed_details_with_entities(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_service_last_accessed_details_with_entities(
   JobId = "string",
   ServiceNamespace = "string",
   MaxItems = 123,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

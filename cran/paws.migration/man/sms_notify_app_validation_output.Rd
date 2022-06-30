@@ -20,7 +20,9 @@ Provides information to AWS SMS about whether application validation is
 successful.
 }
 \section{Request syntax}{
-\preformatted{svc$notify_app_validation_output(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$notify_app_validation_output(
   appId = "string",
   notificationContext = list(
     validationId = "string",
@@ -28,7 +30,7 @@ successful.
     statusMessage = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

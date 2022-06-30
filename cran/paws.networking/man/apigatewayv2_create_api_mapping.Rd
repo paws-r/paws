@@ -16,25 +16,29 @@ apigatewayv2_create_api_mapping(ApiId, ApiMappingKey, DomainName, Stage)
 \item{Stage}{[required] The API stage.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApiId = "string",
   ApiMappingId = "string",
   ApiMappingKey = "string",
   Stage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an API mapping.
 }
 \section{Request syntax}{
-\preformatted{svc$create_api_mapping(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_api_mapping(
   ApiId = "string",
   ApiMappingKey = "string",
   DomainName = "string",
   Stage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

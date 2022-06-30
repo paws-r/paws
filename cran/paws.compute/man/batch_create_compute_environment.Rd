@@ -63,11 +63,13 @@ These tags can be updated or removed using the
 don't propagate to the underlying compute resources.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   computeEnvironmentName = "string",
   computeEnvironmentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an AWS Batch compute environment. You can create \code{MANAGED} or
@@ -116,7 +118,9 @@ Batch jobs, complete these steps:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$create_compute_environment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_compute_environment(
   computeEnvironmentName = "string",
   type = "MANAGED"|"UNMANAGED",
   state = "ENABLED"|"DISABLED",
@@ -161,7 +165,7 @@ Batch jobs, complete these steps:
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

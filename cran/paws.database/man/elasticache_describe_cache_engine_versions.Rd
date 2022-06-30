@@ -45,7 +45,9 @@ the value specified by \code{MaxRecords}.}
 engine or engine and major version combination is to be returned.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Marker = "string",
   CacheEngineVersions = list(
     list(
@@ -57,13 +59,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the available cache engines and their versions.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_cache_engine_versions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cache_engine_versions(
   Engine = "string",
   EngineVersion = "string",
   CacheParameterGroupFamily = "string",
@@ -71,7 +75,7 @@ Returns a list of the available cache engines and their versions.
   Marker = "string",
   DefaultOnly = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

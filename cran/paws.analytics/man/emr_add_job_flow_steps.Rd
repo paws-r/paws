@@ -14,12 +14,14 @@ from \code{\link[=emr_list_clusters]{list_clusters}}.}
 \item{Steps}{[required] A list of StepConfig to be executed by the job flow.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StepIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 AddJobFlowSteps adds new steps to a running cluster. A maximum of 256
@@ -30,8 +32,8 @@ complex, you may require more than 256 steps to process your data. You
 can bypass the 256-step limitation in various ways, including using SSH
 to connect to the master node and submitting queries directly to the
 software running on the master node, such as Hive and Hadoop. For more
-information on how to do this, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html}{Add More than 256 Steps to a Cluster}
-in the \emph{Amazon EMR Management Guide}.
+information on how to do this, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Add More than 256 Steps to a Cluster} in the
+\emph{Amazon EMR Management Guide}.
 
 A step specifies the location of a JAR file stored either on the master
 node of the cluster or in Amazon S3. Each step is performed by the main
@@ -48,7 +50,9 @@ You can only add steps to a cluster that is in one of the following
 states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
 }
 \section{Request syntax}{
-\preformatted{svc$add_job_flow_steps(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_job_flow_steps(
   JobFlowId = "string",
   Steps = list(
     list(
@@ -70,7 +74,7 @@ states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

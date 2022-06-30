@@ -54,7 +54,9 @@ For more information, see \href{https://docs.aws.amazon.com/global-accelerator/l
 in the \emph{AWS Global Accelerator Developer Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EndpointGroup = list(
     EndpointGroupArn = "string",
     EndpointGroupRegion = "string",
@@ -81,14 +83,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Update an endpoint group. A resource must be valid and active when you
 add it as an endpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$update_endpoint_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_endpoint_group(
   EndpointGroupArn = "string",
   EndpointConfigurations = list(
     list(
@@ -110,7 +114,7 @@ add it as an endpoint.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

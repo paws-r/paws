@@ -27,7 +27,9 @@ cloud. Amazon WorkLink doesn't download or store any internal web
 content on mobile devices.
 }
 \section{Service syntax}{
-\preformatted{svc <- worklink(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- worklink(
   config = list(
     credentials = list(
       creds = list(
@@ -41,7 +43,7 @@ content on mobile devices.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

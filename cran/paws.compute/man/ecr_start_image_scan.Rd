@@ -16,7 +16,9 @@ specify a registry, the default registry is assumed.}
 \item{imageId}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   imageId = list(
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     description = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts an image vulnerability scan. An image scan can only be started
@@ -37,7 +39,9 @@ scanned on initial push. For more information, see \href{https://docs.aws.amazon
 in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_image_scan(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_image_scan(
   registryId = "string",
   repositoryName = "string",
   imageId = list(
@@ -45,7 +49,7 @@ in the \emph{Amazon Elastic Container Registry User Guide}.
     imageTag = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,13 +19,15 @@ the cross connect.}
 value is application/pdf.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   loa = list(
     loaContent = raw,
     loaContentType = "application/pdf"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deprecated. Use \code{\link[=directconnect_describe_loa]{describe_loa}} instead.
@@ -39,12 +41,14 @@ more information, see \href{https://docs.aws.amazon.com/directconnect/latest/Use
 in the \emph{AWS Direct Connect User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_connection_loa(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_connection_loa(
   connectionId = "string",
   providerName = "string",
   loaContentType = "application/pdf"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

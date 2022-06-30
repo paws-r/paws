@@ -14,7 +14,9 @@ robomaker_create_fleet(name, tags)
 fleet.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   arn = "string",
   name = "string",
   createdAt = as.POSIXct(
@@ -24,20 +26,22 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a fleet, a logical group of robots running the same robot
 application.
 }
 \section{Request syntax}{
-\preformatted{svc$create_fleet(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_fleet(
   name = "string",
   tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

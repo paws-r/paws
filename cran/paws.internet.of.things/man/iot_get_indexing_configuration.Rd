@@ -7,7 +7,9 @@
 iot_get_indexing_configuration()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   thingIndexingConfiguration = list(
     thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
     thingConnectivityIndexingMode = "OFF"|"STATUS",
@@ -40,14 +42,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the indexing configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$get_indexing_configuration()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_indexing_configuration()
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

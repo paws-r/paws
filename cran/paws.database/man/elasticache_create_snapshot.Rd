@@ -20,7 +20,9 @@ cluster.}
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the snapshot.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Snapshot = list(
     SnapshotName = "string",
     ReplicationGroupId = "string",
@@ -79,7 +81,7 @@ A list with the following syntax:\preformatted{list(
     ARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a copy of an entire cluster or replication group at a specific
@@ -88,13 +90,15 @@ moment in time.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-\preformatted{svc$create_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_snapshot(
   ReplicationGroupId = "string",
   CacheClusterId = "string",
   SnapshotName = "string",
   KmsKeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

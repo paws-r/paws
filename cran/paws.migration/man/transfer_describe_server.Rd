@@ -11,7 +11,9 @@ transfer_describe_server(ServerId)
 \item{ServerId}{[required] A system-assigned unique identifier for a server.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Server = list(
     Arn = "string",
     Certificate = "string",
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
     UserCount = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a file transfer protocol-enabled server that you specify by
@@ -63,10 +65,12 @@ set \code{EndpointType} to VPC, the response will contain the
 \code{EndpointDetails}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_server(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_server(
   ServerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

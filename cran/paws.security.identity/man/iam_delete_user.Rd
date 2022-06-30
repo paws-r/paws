@@ -42,10 +42,12 @@ Before attempting to delete a user, remove the following items:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user(
   UserName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -31,11 +31,13 @@ learn how the effective permissions for a user are evaluated, see \href{https://
 in the IAM User Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$put_user_permissions_boundary(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_user_permissions_boundary(
   UserName = "string",
   PermissionsBoundary = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

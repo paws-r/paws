@@ -16,10 +16,12 @@ An empty list.
 Deletes a CORS configuration.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_cors_configuration(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cors_configuration(
   ApiId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

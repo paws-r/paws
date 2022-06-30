@@ -10,7 +10,9 @@ iot_create_keys_and_certificate(setAsActive)
 \item{setAsActive}{Specifies whether the certificate is active.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   certificateArn = "string",
   certificateId = "string",
   certificatePem = "string",
@@ -19,7 +21,7 @@ A list with the following syntax:\preformatted{list(
     PrivateKey = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a 2048-bit RSA key pair and issues an X.509 certificate using
@@ -31,10 +33,12 @@ MQTT from a device, for more information, see \href{https://docs.aws.amazon.com/
 certificate, so it is important to keep it in a secure location.
 }
 \section{Request syntax}{
-\preformatted{svc$create_keys_and_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_keys_and_certificate(
   setAsActive = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

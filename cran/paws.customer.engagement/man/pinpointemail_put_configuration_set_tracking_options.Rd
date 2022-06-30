@@ -22,11 +22,13 @@ Specify a custom domain to use for open and click tracking elements in
 email that you send using Amazon Pinpoint.
 }
 \section{Request syntax}{
-\preformatted{svc$put_configuration_set_tracking_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_configuration_set_tracking_options(
   ConfigurationSetName = "string",
   CustomRedirectDomain = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

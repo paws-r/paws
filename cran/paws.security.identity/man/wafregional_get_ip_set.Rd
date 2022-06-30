@@ -12,7 +12,9 @@ by \code{\link[=wafregional_create_ip_set]{create_ip_set}} and by
 \code{\link[=wafregional_list_ip_sets]{list_ip_sets}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   IPSet = list(
     IPSetId = "string",
     Name = "string",
@@ -24,7 +26,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -39,10 +41,12 @@ regional and global use.
 Returns the IPSet that is specified by \code{IPSetId}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_ip_set(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ip_set(
   IPSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

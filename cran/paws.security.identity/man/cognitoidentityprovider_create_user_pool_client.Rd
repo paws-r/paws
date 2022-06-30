@@ -157,7 +157,9 @@ default to \code{ENABLED} for newly created user pool clients if no value is
 provided.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   UserPoolClient = list(
     UserPoolId = "string",
     ClientName = "string",
@@ -213,13 +215,15 @@ A list with the following syntax:\preformatted{list(
     PreventUserExistenceErrors = "LEGACY"|"ENABLED"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates the user pool client.
 }
 \section{Request syntax}{
-\preformatted{svc$create_user_pool_client(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user_pool_client(
   UserPoolId = "string",
   ClientName = "string",
   GenerateSecret = TRUE|FALSE,
@@ -266,7 +270,7 @@ Creates the user pool client.
   ),
   PreventUserExistenceErrors = "LEGACY"|"ENABLED"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

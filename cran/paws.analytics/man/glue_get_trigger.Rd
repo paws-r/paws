@@ -10,7 +10,9 @@ glue_get_trigger(Name)
 \item{Name}{[required] The name of the trigger to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Trigger = list(
     Name = "string",
     WorkflowName = "string",
@@ -47,16 +49,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the definition of a trigger.
 }
 \section{Request syntax}{
-\preformatted{svc$get_trigger(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_trigger(
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

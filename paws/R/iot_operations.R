@@ -161,8 +161,8 @@ iot_add_thing_to_thing_group <- function(thingGroupName = NULL, thingGroupArn = 
 #' 
 #' -   The job status must currently be "IN_PROGRESS".
 #' 
-#' -   The total number of targets associated with a job must not
-#'     exceed 100.
+#' -   The total number of targets associated with a job must not exceed
+#'     100.
 #'
 #' @usage
 #' iot_associate_targets_with_job(targets, jobId, comment, namespaceId)
@@ -654,9 +654,9 @@ iot_cancel_job <- function(jobId, reasonCode = NULL, comment = NULL, force = NUL
 #' @param jobId &#91;required&#93; The ID of the job to be canceled.
 #' @param thingName &#91;required&#93; The name of the thing whose execution of the job will be canceled.
 #' @param force (Optional) If `true` the job execution will be canceled if it has status
-#' IN_PROGRESS or QUEUED, otherwise the job execution will be canceled
-#' only if it has status QUEUED. If you attempt to cancel a job execution
-#' that is IN_PROGRESS, and you do not set `force` to `true`, then an
+#' IN_PROGRESS or QUEUED, otherwise the job execution will be canceled only
+#' if it has status QUEUED. If you attempt to cancel a job execution that
+#' is IN_PROGRESS, and you do not set `force` to `true`, then an
 #' `InvalidStateTransitionException` will be thrown. The default is
 #' `false`.
 #' 
@@ -1033,13 +1033,13 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #' On Windows PowerShell, the command to create certificates for all CSRs
 #' in my-csr-directory is:
 #' 
-#' &gt; ls -Name my-csr-directory | %\{aws iot create-certificate-from-csr
+#' \> ls -Name my-csr-directory | %\{aws iot create-certificate-from-csr
 #' --certificate-signing-request file://my-csr-directory/$_\}
 #' 
 #' On a Windows command prompt, the command to create certificates for all
 #' CSRs in my-csr-directory is:
 #' 
-#' &gt; forfiles /p my-csr-directory /c "cmd /c aws iot
+#' \> forfiles /p my-csr-directory /c "cmd /c aws iot
 #' create-certificate-from-csr --certificate-signing-request file://@@path"
 #'
 #' @usage
@@ -1174,7 +1174,7 @@ iot_create_custom_metric <- function(metricName, displayName = NULL, metricType,
 #' @param type &#91;required&#93; Specifies the type of dimension. Supported types: `TOPIC_FILTER.`
 #' @param stringValues &#91;required&#93; Specifies the value or list of values for the dimension. For
 #' `TOPIC_FILTER` dimensions, this is a pattern used to match the MQTT
-#' topic (for example, "admin/\#").
+#' topic (for example, "admin/#").
 #' @param tags Metadata that can be used to manage the dimension.
 #' @param clientRequestToken &#91;required&#93; Each dimension must have a unique client request token. If you try to
 #' create a new dimension with the same token as a dimension that already
@@ -1596,8 +1596,8 @@ iot_create_keys_and_certificate <- function(setAsActive = NULL) {
 #' StartAuditMitigationActionsTask. Only certain types of mitigation
 #' actions can be applied to specific check names. For more information,
 #' see [Mitigation
-#' actions](https://docs.aws.amazon.com/iot/latest/developerguide/). Each
-#' mitigation action can apply only one type of change.
+#' actions](https://docs.aws.amazon.com/iot/latest/developerguide/dd-mitigation-actions.html).
+#' Each mitigation action can apply only one type of change.
 #'
 #' @usage
 #' iot_create_mitigation_action(actionName, roleArn, actionParams, tags)
@@ -3652,12 +3652,12 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 #' 
 #' Deleting a job may take time, depending on the number of job executions
 #' created for the job and various other factors. While the job is being
-#' deleted, the status of the job will be shown as
-#' "DELETION_IN_PROGRESS". Attempting to delete or cancel a job whose
-#' status is already "DELETION_IN_PROGRESS" will result in an error.
+#' deleted, the status of the job will be shown as "DELETION_IN_PROGRESS".
+#' Attempting to delete or cancel a job whose status is already
+#' "DELETION_IN_PROGRESS" will result in an error.
 #' 
-#' Only 10 jobs may have status "DELETION_IN_PROGRESS" at the same time,
-#' or a LimitExceededException will occur.
+#' Only 10 jobs may have status "DELETION_IN_PROGRESS" at the same time, or
+#' a LimitExceededException will occur.
 #'
 #' @usage
 #' iot_delete_job(jobId, force, namespaceId)
@@ -13819,8 +13819,8 @@ iot_update_ca_certificate <- function(certificateId, newStatus = NULL, newAutoRe
 #' 
 #' **Note:** Setting the status to PENDING_TRANSFER or PENDING_ACTIVATION
 #' will result in an exception being thrown. PENDING_TRANSFER and
-#' PENDING_ACTIVATION are statuses used internally by AWS IoT. They are
-#' not intended for developer use.
+#' PENDING_ACTIVATION are statuses used internally by AWS IoT. They are not
+#' intended for developer use.
 #' 
 #' **Note:** The status value REGISTER_INACTIVE is deprecated and should
 #' not be used.
@@ -13927,7 +13927,7 @@ iot_update_custom_metric <- function(metricName, displayName) {
 #' the type and value to make it easy to remember what it does.
 #' @param stringValues &#91;required&#93; Specifies the value or list of values for the dimension. For
 #' `TOPIC_FILTER` dimensions, this is a pattern used to match the MQTT
-#' topic (for example, "admin/\#").
+#' topic (for example, "admin/#").
 #'
 #' @return
 #' A list with the following syntax:

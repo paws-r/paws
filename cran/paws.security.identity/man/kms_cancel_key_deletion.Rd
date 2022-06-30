@@ -23,10 +23,12 @@ To get the key ID and key ARN for a CMK, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   KeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Cancels the deletion of a customer master key (CMK). When this operation
@@ -52,10 +54,12 @@ a different AWS account.
 \code{\link[=kms_schedule_key_deletion]{schedule_key_deletion}}
 }
 \section{Request syntax}{
-\preformatted{svc$cancel_key_deletion(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_key_deletion(
   KeyId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

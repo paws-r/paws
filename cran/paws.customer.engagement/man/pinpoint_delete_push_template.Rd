@@ -36,24 +36,28 @@ of the template.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MessageBody = list(
     Message = "string",
     RequestID = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a message template for messages that were sent through a push
 notification channel.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_push_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_push_template(
   TemplateName = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

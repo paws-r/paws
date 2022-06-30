@@ -25,11 +25,13 @@ This call is asynchronous. It might take several seconds for the
 detachment to propagate.
 }
 \section{Request syntax}{
-\preformatted{svc$detach_thing_principal(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_thing_principal(
   thingName = "string",
   principal = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

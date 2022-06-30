@@ -20,7 +20,9 @@ additional results.}
 \item{queryVersion}{The query version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   nextToken = "string",
   things = list(
     list(
@@ -54,20 +56,22 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 The query search index.
 }
 \section{Request syntax}{
-\preformatted{svc$search_index(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_index(
   indexName = "string",
   queryString = "string",
   nextToken = "string",
   maxResults = 123,
   queryVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ greengrass_get_connector_definition(ConnectorDefinitionId)
 \item{ConnectorDefinitionId}{[required] The ID of the connector definition.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -22,16 +24,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves information about a connector definition.
 }
 \section{Request syntax}{
-\preformatted{svc$get_connector_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_connector_definition(
   ConnectorDefinitionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

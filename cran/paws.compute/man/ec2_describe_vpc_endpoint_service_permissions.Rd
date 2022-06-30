@@ -32,7 +32,9 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AllowedPrincipals = list(
     list(
       PrincipalType = "All"|"Service"|"OrganizationUnit"|"Account"|"User"|"Role",
@@ -41,14 +43,16 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the principals (service consumers) that are permitted to
 discover your VPC endpoint service.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_vpc_endpoint_service_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_endpoint_service_permissions(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   Filters = list(
@@ -62,7 +66,7 @@ discover your VPC endpoint service.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

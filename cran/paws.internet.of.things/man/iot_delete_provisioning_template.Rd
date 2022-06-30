@@ -16,10 +16,12 @@ An empty list.
 Deletes a fleet provisioning template.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_provisioning_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_provisioning_template(
   templateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

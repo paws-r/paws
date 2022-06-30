@@ -21,7 +21,9 @@ from a previous call.)}
 is \code{50} and the maximum value is \code{100}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AutoScalingGroups = list(
     list(
       AutoScalingGroupName = "string",
@@ -130,20 +132,22 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes one or more Auto Scaling groups.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_auto_scaling_groups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_auto_scaling_groups(
   AutoScalingGroupNames = list(
     "string"
   ),
   NextToken = "string",
   MaxRecords = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

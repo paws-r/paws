@@ -10,21 +10,25 @@ iot_describe_index(indexName)
 \item{indexName}{[required] The index name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   indexName = "string",
   indexStatus = "ACTIVE"|"BUILDING"|"REBUILDING",
   schema = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes a search index.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_index(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_index(
   indexName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

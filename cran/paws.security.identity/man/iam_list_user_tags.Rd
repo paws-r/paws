@@ -30,7 +30,9 @@ that case, the \code{IsTruncated} response element returns \code{true}, and
 the service where to continue from.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the tags that are attached to the specified user. The returned
@@ -49,12 +51,14 @@ see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_user_tags(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_user_tags(
   UserName = "string",
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -75,12 +75,14 @@ value is plain text. For more information, see \href{https://docs.aws.amazon.com
 IDs by calling the \code{\link[=polly_describe_voices]{describe_voices}} operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AudioStream = raw,
   ContentType = "string",
   RequestCharacters = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML
@@ -90,7 +92,9 @@ at all by English voices) unless phoneme mapping is used. For more
 information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html}{How it Works}.
 }
 \section{Request syntax}{
-\preformatted{svc$synthesize_speech(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$synthesize_speech(
   Engine = "standard"|"neural",
   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
   LexiconNames = list(
@@ -105,7 +109,7 @@ information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-s
   TextType = "ssml"|"text",
   VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

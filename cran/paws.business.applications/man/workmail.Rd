@@ -45,7 +45,9 @@ the scenarios listed above, as well as give users the ability to grant
 access on a selective basis using the IAM model.
 }
 \section{Service syntax}{
-\preformatted{svc <- workmail(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- workmail(
   config = list(
     credentials = list(
       creds = list(
@@ -59,7 +61,7 @@ access on a selective basis using the IAM model.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

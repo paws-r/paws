@@ -16,21 +16,25 @@ characters can be alphanumeric characters, underscores (_), or hyphens
 (-). Template names are case sensitive.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CreateTemplateMessageBody = list(
     Arn = "string",
     Message = "string",
     RequestID = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a message template for messages that are sent through the SMS
 channel.
 }
 \section{Request syntax}{
-\preformatted{svc$create_sms_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_sms_template(
   SMSTemplateRequest = list(
     Body = "string",
     DefaultSubstitutions = "string",
@@ -42,7 +46,7 @@ channel.
   ),
   TemplateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

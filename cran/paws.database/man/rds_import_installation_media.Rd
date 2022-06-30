@@ -50,7 +50,9 @@ with the specified DB engine.
 Example: \code{WindowsISO/en_windows_server_2016_x64_dvd_9327751.iso}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   InstallationMediaId = "string",
   CustomAvailabilityZoneId = "string",
   Engine = "string",
@@ -62,21 +64,23 @@ A list with the following syntax:\preformatted{list(
     Message = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Imports the installation media for a DB engine that requires an
 on-premises customer provided license, such as SQL Server.
 }
 \section{Request syntax}{
-\preformatted{svc$import_installation_media(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_installation_media(
   CustomAvailabilityZoneId = "string",
   Engine = "string",
   EngineVersion = "string",
   EngineInstallationMediaPath = "string",
   OSInstallationMediaPath = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

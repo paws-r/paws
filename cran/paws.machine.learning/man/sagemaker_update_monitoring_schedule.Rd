@@ -15,16 +15,20 @@ AWS Region within an AWS account.}
 defines the monitoring job.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MonitoringScheduleArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates a previously created schedule.
 }
 \section{Request syntax}{
-\preformatted{svc$update_monitoring_schedule(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_monitoring_schedule(
   MonitoringScheduleName = "string",
   MonitoringScheduleConfig = list(
     ScheduleConfig = list(
@@ -111,7 +115,7 @@ Updates a previously created schedule.
     MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

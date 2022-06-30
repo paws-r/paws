@@ -19,7 +19,9 @@ provide this token to receive the next set of results.}
 \item{MaxResults}{The maximum number of items to return.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Images = list(
     list(
       ImageId = "string",
@@ -40,7 +42,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list that describes one or more specified images, if the
@@ -48,7 +50,9 @@ image identifiers are provided. Otherwise, all images in the account are
 described.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_workspace_images(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workspace_images(
   ImageIds = list(
     "string"
   ),
@@ -56,7 +60,7 @@ described.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

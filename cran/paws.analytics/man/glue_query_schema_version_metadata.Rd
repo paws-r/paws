@@ -24,7 +24,9 @@ supplied, this will be defaulted to 25 per page.}
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MetadataInfoMap = list(
     list(
       MetadataValue = "string",
@@ -34,13 +36,15 @@ A list with the following syntax:\preformatted{list(
   SchemaVersionId = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Queries for the schema version metadata information.
 }
 \section{Request syntax}{
-\preformatted{svc$query_schema_version_metadata(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$query_schema_version_metadata(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -60,7 +64,7 @@ Queries for the schema version metadata information.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

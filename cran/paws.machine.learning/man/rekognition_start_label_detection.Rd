@@ -36,10 +36,12 @@ example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts asynchronous detection of labels in a stored video.
@@ -65,7 +67,9 @@ pass the job identifier (\code{JobId}) from the initial call to
 \code{\link[=rekognition_start_label_detection]{start_label_detection}}.
 }
 \section{Request syntax}{
-\preformatted{svc$start_label_detection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_label_detection(
   Video = list(
     S3Object = list(
       Bucket = "string",
@@ -81,7 +85,7 @@ pass the job identifier (\code{JobId}) from the initial call to
   ),
   JobTag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

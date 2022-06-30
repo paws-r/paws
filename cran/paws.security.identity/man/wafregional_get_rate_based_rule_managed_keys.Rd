@@ -16,13 +16,15 @@ wafregional_get_rate_based_rule_managed_keys(RuleId, NextMarker)
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ManagedKeys = list(
     "string"
   ),
   NextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -41,11 +43,13 @@ addresses exceed the rate limit, the 10,000 addresses with the highest
 rates will be blocked.
 }
 \section{Request syntax}{
-\preformatted{svc$get_rate_based_rule_managed_keys(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_rate_based_rule_managed_keys(
   RuleId = "string",
   NextMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -28,10 +28,12 @@ deleted.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_alias(
   AliasId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

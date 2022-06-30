@@ -27,7 +27,9 @@ the proper AWS Data Pipeline service charges are applied to your
 pipeline.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskObject = list(
     taskId = "string",
     pipelineId = "string",
@@ -47,7 +49,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Task runners call \code{\link[=datapipeline_poll_for_task]{poll_for_task}} to
@@ -71,7 +73,9 @@ seconds. The task runner should not call
 seconds.
 }
 \section{Request syntax}{
-\preformatted{svc$poll_for_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$poll_for_task(
   workerGroup = "string",
   hostname = "string",
   instanceIdentity = list(
@@ -79,7 +83,7 @@ seconds.
     signature = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

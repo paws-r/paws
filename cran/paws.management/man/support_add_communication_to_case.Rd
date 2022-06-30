@@ -22,10 +22,12 @@ to the case. Create the set by calling
 \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   result = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds additional customer communication to an AWS Support case. Use the
@@ -43,7 +45,9 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-\preformatted{svc$add_communication_to_case(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_communication_to_case(
   caseId = "string",
   communicationBody = "string",
   ccEmailAddresses = list(
@@ -51,7 +55,7 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
   ),
   attachmentSetId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

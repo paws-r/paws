@@ -21,7 +21,9 @@ Default: There is no default value.}
 to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackResourceSummaries = list(
     list(
       LogicalResourceId = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns descriptions of all resources of the specified stack.
@@ -55,11 +57,13 @@ For deleted stacks, ListStackResources returns resource information for
 up to 90 days after the stack has been deleted.
 }
 \section{Request syntax}{
-\preformatted{svc$list_stack_resources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_stack_resources(
   StackName = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

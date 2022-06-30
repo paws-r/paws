@@ -7,7 +7,9 @@
 lambda_get_account_settings()
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AccountLimit = list(
     TotalCodeSize = 123,
     CodeSizeUnzipped = 123,
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     FunctionCount = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves details about your account's
@@ -28,8 +30,10 @@ Retrieves details about your account's
 and usage in an AWS Region.
 }
 \section{Request syntax}{
-\preformatted{svc$get_account_settings()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_account_settings()
+}\if{html}{\out{</div>}}
 }
 
 \examples{

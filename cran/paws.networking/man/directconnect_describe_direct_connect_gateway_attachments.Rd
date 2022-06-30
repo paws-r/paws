@@ -23,7 +23,9 @@ returned.}
 \item{nextToken}{The token provided in the previous call to retrieve the next page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   directConnectGatewayAttachments = list(
     list(
       directConnectGatewayId = "string",
@@ -37,7 +39,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the attachments between your Direct Connect gateways and virtual
@@ -50,13 +52,15 @@ specify both, the response contains the attachment between the Direct
 Connect gateway and the virtual interface.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_direct_connect_gateway_attachments(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_direct_connect_gateway_attachments(
   directConnectGatewayId = "string",
   virtualInterfaceId = "string",
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

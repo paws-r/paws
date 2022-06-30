@@ -14,7 +14,9 @@ sns_list_subscriptions_by_topic(TopicArn, NextToken)
 request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Subscriptions = list(
     list(
       SubscriptionArn = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the subscriptions to a specific topic. Each call
@@ -39,11 +41,13 @@ get further results.
 This action is throttled at 30 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{svc$list_subscriptions_by_topic(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_subscriptions_by_topic(
   TopicArn = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

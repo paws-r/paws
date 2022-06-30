@@ -60,12 +60,14 @@ users, regardless of these settings and provided that they have
 permission to use the relevant \code{Describe} command for the resource type.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_identity_id_format(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_identity_id_format(
   PrincipalArn = "string",
   Resource = "string",
   UseLongIds = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

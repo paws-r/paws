@@ -26,10 +26,12 @@ use the pending-reboot value for both dynamic and static parameters, and
 changes are applied when you reboot the DB instance without failover.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBParameterGroupName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the parameters of a DB parameter group. To modify more than one
@@ -54,7 +56,9 @@ command to verify that your DB parameter group has been created or
 modified.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_db_parameter_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_parameter_group(
   DBParameterGroupName = "string",
   Parameters = list(
     list(
@@ -74,7 +78,7 @@ modified.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

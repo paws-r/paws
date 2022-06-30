@@ -137,14 +137,16 @@ MessageGroupId
 Property]: R:Using\%20the\%0AMessageGroupId\%0AProperty}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   MD5OfMessageBody = "string",
   MD5OfMessageAttributes = "string",
   MD5OfMessageSystemAttributes = "string",
   MessageId = "string",
   SequenceNumber = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Delivers a message to the specified queue.
@@ -159,7 +161,9 @@ Any characters not included in this list will be rejected. For more
 information, see the \href{http://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.
 }
 \section{Request syntax}{
-\preformatted{svc$send_message(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_message(
   QueueUrl = "string",
   MessageBody = "string",
   DelaySeconds = 123,
@@ -192,7 +196,7 @@ information, see the \href{http://www.w3.org/TR/REC-xml/#charsets}{W3C specifica
   MessageDeduplicationId = "string",
   MessageGroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

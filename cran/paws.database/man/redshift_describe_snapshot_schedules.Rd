@@ -31,7 +31,9 @@ retrieve the next set of records by retrying the command with the
 returned \code{marker} value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SnapshotSchedules = list(
     list(
       ScheduleDefinitions = list(
@@ -61,13 +63,15 @@ A list with the following syntax:\preformatted{list(
   ),
   Marker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of snapshot schedules.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_snapshot_schedules(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_snapshot_schedules(
   ClusterIdentifier = "string",
   ScheduleIdentifier = "string",
   TagKeys = list(
@@ -79,7 +83,7 @@ Returns a list of snapshot schedules.
   Marker = "string",
   MaxRecords = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

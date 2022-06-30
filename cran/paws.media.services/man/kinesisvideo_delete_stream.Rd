@@ -37,11 +37,13 @@ This operation requires permission for the \code{KinesisVideo:DeleteStream}
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_stream(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_stream(
   StreamARN = "string",
   CurrentVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

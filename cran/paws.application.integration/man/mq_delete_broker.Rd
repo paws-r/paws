@@ -10,19 +10,23 @@ mq_delete_broker(BrokerId)
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BrokerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes a broker. Note: This API is asynchronous.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_broker(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_broker(
   BrokerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

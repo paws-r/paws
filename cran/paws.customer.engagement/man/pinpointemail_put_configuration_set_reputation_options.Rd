@@ -24,11 +24,13 @@ Enable or disable collection of reputation metrics for emails that you
 send using a particular configuration set in a specific AWS Region.
 }
 \section{Request syntax}{
-\preformatted{svc$put_configuration_set_reputation_options(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_configuration_set_reputation_options(
   ConfigurationSetName = "string",
   ReputationMetricsEnabled = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -18,10 +18,12 @@ Deletes the access policy that is associated with the specified
 container.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_container_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_container_policy(
   ContainerName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

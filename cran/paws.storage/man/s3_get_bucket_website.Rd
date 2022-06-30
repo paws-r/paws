@@ -14,7 +14,9 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   RedirectAllRequestsTo = list(
     HostName = "string",
     Protocol = "http"|"https"
@@ -41,7 +43,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the website configuration for a bucket. To host website on
@@ -62,11 +64,13 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_bucket_website(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_website(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

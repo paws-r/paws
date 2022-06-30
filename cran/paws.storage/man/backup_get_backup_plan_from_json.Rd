@@ -10,7 +10,9 @@ backup_get_backup_plan_from_json(BackupPlanTemplateJson)
 \item{BackupPlanTemplateJson}{[required] A customer-supplied backup plan document in JSON format.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupPlan = list(
     BackupPlanName = "string",
     Rules = list(
@@ -49,16 +51,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a valid JSON document specifying a backup plan or an error.
 }
 \section{Request syntax}{
-\preformatted{svc$get_backup_plan_from_json(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_backup_plan_from_json(
   BackupPlanTemplateJson = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

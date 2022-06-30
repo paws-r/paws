@@ -17,7 +17,9 @@ provisioned.}
 \item{newPrivateVirtualInterfaceAllocation}{[required] Information about the private virtual interface.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ownerAccount = "string",
   virtualInterfaceId = "string",
   location = "string",
@@ -64,7 +66,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provisions a private virtual interface to be owned by the specified AWS
@@ -77,7 +79,9 @@ Until then, the virtual interface is in the \code{Confirming} state and is
 not available to handle traffic.
 }
 \section{Request syntax}{
-\preformatted{svc$allocate_private_virtual_interface(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$allocate_private_virtual_interface(
   connectionId = "string",
   ownerAccount = "string",
   newPrivateVirtualInterfaceAllocation = list(
@@ -97,7 +101,7 @@ not available to handle traffic.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

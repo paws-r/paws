@@ -29,7 +29,9 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VirtualMFADevice = list(
     SerialNumber = "string",
     Base32StringSeed = raw,
@@ -61,7 +63,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new virtual MFA device for the AWS account. After creating the
@@ -81,11 +83,13 @@ your passwords. After you provision your virtual device, you should
 ensure that the information is destroyed following secure procedures.
 }
 \section{Request syntax}{
-\preformatted{svc$create_virtual_mfa_device(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_virtual_mfa_device(
   Path = "string",
   VirtualMFADeviceName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

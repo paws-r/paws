@@ -22,7 +22,9 @@ an expired pagination token will return an \emph{HTTP 400 InvalidToken}
 error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   activities = list(
     list(
       activityArn = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the existing activities.
@@ -50,11 +52,13 @@ This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }
 \section{Request syntax}{
-\preformatted{svc$list_activities(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_activities(
   maxResults = 123,
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

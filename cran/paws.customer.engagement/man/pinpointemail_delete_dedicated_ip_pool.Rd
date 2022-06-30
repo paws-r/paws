@@ -16,10 +16,12 @@ An empty list.
 Delete a dedicated IP pool.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_dedicated_ip_pool(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dedicated_ip_pool(
   PoolName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

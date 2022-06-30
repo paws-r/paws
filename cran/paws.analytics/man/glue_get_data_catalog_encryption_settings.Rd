@@ -11,7 +11,9 @@ glue_get_data_catalog_encryption_settings(CatalogId)
 If none is provided, the AWS account ID is used by default.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DataCatalogEncryptionSettings = list(
     EncryptionAtRest = list(
       CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
@@ -23,16 +25,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the security configuration for a specified catalog.
 }
 \section{Request syntax}{
-\preformatted{svc$get_data_catalog_encryption_settings(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_data_catalog_encryption_settings(
   CatalogId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

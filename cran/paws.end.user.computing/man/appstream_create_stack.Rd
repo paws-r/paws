@@ -53,7 +53,9 @@ iframe. You must approve the domains that you want to host embedded
 AppStream 2.0 streaming sessions.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Stack = list(
     Arn = "string",
     Name = "string",
@@ -101,7 +103,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a stack to start streaming applications to users. A stack
@@ -109,7 +111,9 @@ consists of an associated fleet, user access policies, and storage
 configurations.
 }
 \section{Request syntax}{
-\preformatted{svc$create_stack(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stack(
   Name = "string",
   Description = "string",
   DisplayName = "string",
@@ -147,7 +151,7 @@ configurations.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -9,9 +9,8 @@ NULL
 #' 
 #' The AWS Well-Architected Tool API provides programmatic access to the
 #' [AWS Well-Architected
-#' Tool](https://aws.amazon.com/well-architected-tool/) in the [AWS
-#' Management
-#' Console](https://console.aws.amazon.com/wellarchitected/home).
+#' Tool](https://aws.amazon.com/well-architected-tool/) in the AWS
+#' Management Console.
 #' 
 #' **Managing workloads:**
 #' 

@@ -15,7 +15,9 @@ the remaining results, make another call with the returned nextToken
 value.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   webhooks = list(
     list(
       definition = list(
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a listing of all the webhooks in this AWS Region for this account.
@@ -59,11 +61,13 @@ The output lists all webhooks and includes the webhook URL and ARN and
 the configuration for each webhook.
 }
 \section{Request syntax}{
-\preformatted{svc$list_webhooks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_webhooks(
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

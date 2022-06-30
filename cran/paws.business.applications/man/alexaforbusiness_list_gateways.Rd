@@ -14,7 +14,9 @@ alexaforbusiness_list_gateways(GatewayGroupArn, NextToken, MaxResults)
 \item{MaxResults}{The maximum number of gateway summaries to return. The default is 50.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Gateways = list(
     list(
       Arn = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves a list of gateway summaries. Use GetGateway to retrieve
@@ -35,12 +37,14 @@ provided to only retrieve gateway summaries of gateways that are
 associated with that gateway group ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$list_gateways(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_gateways(
   GatewayGroupArn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

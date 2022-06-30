@@ -12,7 +12,9 @@ elb_describe_load_balancer_policy_types(PolicyTypeNames)
 policy types defined by Elastic Load Balancing.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PolicyTypeDescriptions = list(
     list(
       PolicyTypeName = "string",
@@ -29,7 +31,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the specified load balancer policy types or all load balancer
@@ -50,12 +52,14 @@ or
 to set the policy.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_load_balancer_policy_types(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_load_balancer_policy_types(
   PolicyTypeNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

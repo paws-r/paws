@@ -25,7 +25,9 @@ provided.}
 \item{SchemaVersionNumber}{The version number of the schema.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   SchemaVersionId = "string",
   SchemaDefinition = "string",
   DataFormat = "AVRO",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
   CreatedTime = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get the specified schema by its unique ID assigned when a version of the
@@ -42,7 +44,9 @@ schema is created or registered. Schema versions in Deleted status will
 not be included in the results.
 }
 \section{Request syntax}{
-\preformatted{svc$get_schema_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_schema_version(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -54,7 +58,7 @@ not be included in the results.
     VersionNumber = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

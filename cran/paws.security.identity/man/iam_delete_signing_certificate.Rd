@@ -32,11 +32,13 @@ can use this operation to manage AWS account root user credentials even
 if the AWS account has no associated IAM users.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_signing_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_signing_certificate(
   UserName = "string",
   CertificateId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

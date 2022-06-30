@@ -12,7 +12,9 @@ apigatewayv2_get_deployment(ApiId, DeploymentId)
 \item{DeploymentId}{[required] The deployment ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AutoDeployed = TRUE|FALSE,
   CreatedDate = as.POSIXct(
     "2015-01-01"
@@ -22,17 +24,19 @@ A list with the following syntax:\preformatted{list(
   DeploymentStatusMessage = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a Deployment.
 }
 \section{Request syntax}{
-\preformatted{svc$get_deployment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deployment(
   ApiId = "string",
   DeploymentId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -11,7 +11,9 @@ cloudfront_create_field_level_encryption_profile(
 \item{FieldLevelEncryptionProfileConfig}{[required] The request to create a field-level encryption profile.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FieldLevelEncryptionProfile = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -41,13 +43,15 @@ A list with the following syntax:\preformatted{list(
   Location = "string",
   ETag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create a field-level encryption profile.
 }
 \section{Request syntax}{
-\preformatted{svc$create_field_level_encryption_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_field_level_encryption_profile(
   FieldLevelEncryptionProfileConfig = list(
     Name = "string",
     CallerReference = "string",
@@ -69,7 +73,7 @@ Create a field-level encryption profile.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

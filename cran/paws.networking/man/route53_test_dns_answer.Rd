@@ -42,7 +42,9 @@ IPv4 or an IPv6 address:
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Nameserver = "string",
   RecordName = "string",
   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
@@ -52,7 +54,7 @@ A list with the following syntax:\preformatted{list(
   ResponseCode = "string",
   Protocol = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets the value that Amazon Route 53 returns in response to a DNS request
@@ -61,7 +63,9 @@ address of a DNS resolver, an EDNS0 client subnet IP address, and a
 subnet mask.
 }
 \section{Request syntax}{
-\preformatted{svc$test_dns_answer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_dns_answer(
   HostedZoneId = "string",
   RecordName = "string",
   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
@@ -69,7 +73,7 @@ subnet mask.
   EDNS0ClientSubnetIP = "string",
   EDNS0ClientSubnetMask = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

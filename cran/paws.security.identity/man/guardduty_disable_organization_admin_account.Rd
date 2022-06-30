@@ -19,10 +19,12 @@ Disables an AWS account within the Organization as the GuardDuty
 delegated administrator.
 }
 \section{Request syntax}{
-\preformatted{svc$disable_organization_admin_account(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_organization_admin_account(
   AdminAccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

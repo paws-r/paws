@@ -12,7 +12,9 @@ mediaconnect_add_flow_sources(FlowArn, Sources)
 \item{Sources}{[required] A list of sources that you want to add.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FlowArn = "string",
   Sources = list(
     list(
@@ -50,13 +52,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Adds Sources to flow
 }
 \section{Request syntax}{
-\preformatted{svc$add_flow_sources(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_flow_sources(
   FlowArn = "string",
   Sources = list(
     list(
@@ -84,7 +88,7 @@ Adds Sources to flow
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

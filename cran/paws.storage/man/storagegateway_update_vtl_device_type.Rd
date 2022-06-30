@@ -14,10 +14,12 @@ storagegateway_update_vtl_device_type(VTLDeviceARN, DeviceType)
 Valid Values: \code{STK-L700} | \code{AWS-Gateway-VTL} | \verb{IBM-03584L32-0402}}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   VTLDeviceARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the type of medium changer in a tape gateway. When you activate
@@ -27,11 +29,13 @@ after a tape gateway is activated. This operation is only supported in
 the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{svc$update_vtl_device_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_vtl_device_type(
   VTLDeviceARN = "string",
   DeviceType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

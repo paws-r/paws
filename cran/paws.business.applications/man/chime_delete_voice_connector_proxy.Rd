@@ -18,10 +18,12 @@ Deletes the proxy configuration from the specified Amazon Chime Voice
 Connector.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_voice_connector_proxy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_voice_connector_proxy(
   VoiceConnectorId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

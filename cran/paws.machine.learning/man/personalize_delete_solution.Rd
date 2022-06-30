@@ -23,10 +23,12 @@ state. For more information on solutions, see
 \code{\link[=personalize_create_solution]{create_solution}}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_solution(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_solution(
   solutionArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

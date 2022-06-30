@@ -13,7 +13,9 @@ backup_get_backup_plan(BackupPlanId, VersionId)
 most 1,024 bytes long. Version IDs cannot be edited.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   BackupPlan = list(
     BackupPlanName = "string",
     Rules = list(
@@ -73,18 +75,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns \code{BackupPlan} details for the specified \code{BackupPlanId}. Returns
 the body of a backup plan in JSON format, in addition to plan metadata.
 }
 \section{Request syntax}{
-\preformatted{svc$get_backup_plan(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_backup_plan(
   BackupPlanId = "string",
   VersionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

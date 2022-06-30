@@ -16,7 +16,9 @@ associated with the credentials used to sign the request. If you specify
 your account ID, do not include any hyphens ('-') in the ID.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Policy = list(
     Rules = list(
       list(
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation returns the current data retrieval policy for the account
@@ -34,10 +36,12 @@ and region specified in the GET request. For more information about data
 retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html}{Amazon Glacier Data Retrieval Policies}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_data_retrieval_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_data_retrieval_policy(
   accountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

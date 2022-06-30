@@ -88,7 +88,9 @@ use \code{\link[=secretsmanager_untag_resource]{untag_resource}}.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   SecretId = "string",
   Tags = list(
     list(
@@ -97,7 +99,7 @@ use \code{\link[=secretsmanager_untag_resource]{untag_resource}}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

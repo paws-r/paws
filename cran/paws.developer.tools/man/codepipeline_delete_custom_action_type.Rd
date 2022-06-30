@@ -31,12 +31,14 @@ custom action, use a JSON file that is identical to the deleted action,
 including the original string in the version field.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_custom_action_type(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_custom_action_type(
   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
   provider = "string",
   version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -119,7 +119,9 @@ parameter is not used, the operation returns up to 50 results and a
 \item{NextToken}{The token for the next set of results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ScheduledActions = list(
     list(
       ScheduledActionName = "string",
@@ -145,7 +147,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes the Application Auto Scaling scheduled actions for the
@@ -158,7 +160,9 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/applicat
 in the \emph{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_scheduled_actions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scheduled_actions(
   ScheduledActionNames = list(
     "string"
   ),
@@ -168,7 +172,7 @@ in the \emph{Application Auto Scaling User Guide}.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

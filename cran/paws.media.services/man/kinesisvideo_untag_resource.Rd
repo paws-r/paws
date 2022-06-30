@@ -21,13 +21,15 @@ specify only a tag key or keys; don't specify the value. If you specify
 a tag key that does not exist, it's ignored.
 }
 \section{Request syntax}{
-\preformatted{svc$untag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
   ResourceARN = "string",
   TagKeyList = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

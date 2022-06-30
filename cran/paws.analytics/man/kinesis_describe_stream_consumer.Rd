@@ -17,7 +17,9 @@ For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aw
 consumer.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ConsumerDescription = list(
     ConsumerName = "string",
     ConsumerARN = "string",
@@ -28,7 +30,7 @@ A list with the following syntax:\preformatted{list(
     StreamARN = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 To get the description of a registered consumer, provide the ARN of the
@@ -44,12 +46,14 @@ registered with a given data stream.
 This operation has a limit of 20 transactions per second per stream.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_stream_consumer(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stream_consumer(
   StreamARN = "string",
   ConsumerName = "string",
   ConsumerARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -10,7 +10,9 @@ signer_describe_signing_job(jobId)
 \item{jobId}{[required] The ID of the signing job on input.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   jobId = "string",
   source = list(
     s3 = list(
@@ -64,7 +66,7 @@ A list with the following syntax:\preformatted{list(
   jobOwner = "string",
   jobInvoker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a specific code signing job. You specify the
@@ -72,10 +74,12 @@ job by using the \code{jobId} value that is returned by the
 \code{\link[=signer_start_signing_job]{start_signing_job}} operation.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_signing_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_signing_job(
   jobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -20,7 +20,9 @@ next set of results.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ActivationList = list(
     list(
       ActivationId = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes details about the activation, such as the date and time the
@@ -55,7 +57,9 @@ the instances in the activation, and the number of instances registered
 by using this activation.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_activations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_activations(
   Filters = list(
     list(
       FilterKey = "ActivationIds"|"DefaultInstanceName"|"IamRole",
@@ -67,7 +71,7 @@ by using this activation.
   MaxResults = 123,
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

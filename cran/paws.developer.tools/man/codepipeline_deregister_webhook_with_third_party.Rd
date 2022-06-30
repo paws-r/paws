@@ -19,10 +19,12 @@ CodePipeline and the external tool with events to be detected. Currently
 supported only for webhooks that target an action type of GitHub.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_webhook_with_third_party(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_webhook_with_third_party(
   webhookName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

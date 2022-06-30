@@ -10,10 +10,12 @@ cloudhsm_delete_hsm(HsmArn)
 \item{HsmArn}{[required] The ARN of the HSM to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -27,10 +29,12 @@ Deletes an HSM. After completion, this operation cannot be undone and
 your key material cannot be recovered.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_hsm(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_hsm(
   HsmArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

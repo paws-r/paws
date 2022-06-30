@@ -17,7 +17,9 @@ using
 \code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   OriginRequestPolicy = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -57,7 +59,7 @@ A list with the following syntax:\preformatted{list(
   ),
   ETag = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets an origin request policy, including the following metadata:
@@ -76,10 +78,12 @@ using
 \code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_origin_request_policy(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_origin_request_policy(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

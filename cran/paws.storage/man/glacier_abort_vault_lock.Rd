@@ -41,11 +41,13 @@ multiple times, if the vault lock is in the \code{InProgress} state or if
 there is no policy associated with the vault.
 }
 \section{Request syntax}{
-\preformatted{svc$abort_vault_lock(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$abort_vault_lock(
   accountId = "string",
   vaultName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

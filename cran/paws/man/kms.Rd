@@ -89,7 +89,9 @@ policies, by using the console.
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- kms(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- kms(
   config = list(
     credentials = list(
       creds = list(
@@ -103,7 +105,7 @@ policies, by using the console.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

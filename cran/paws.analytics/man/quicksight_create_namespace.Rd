@@ -21,7 +21,9 @@ supports users with an identity type of \code{QUICKSIGHT}.}
 creating.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   Name = "string",
   CapacityRegion = "string",
@@ -30,7 +32,7 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 (Enterprise edition only) Creates a new namespace for you to use with
@@ -46,7 +48,9 @@ limit of 100 namespaces per AWS account. To increase your limit, create
 a ticket with AWS Support.
 }
 \section{Request syntax}{
-\preformatted{svc$create_namespace(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_namespace(
   AwsAccountId = "string",
   Namespace = "string",
   IdentityStore = "QUICKSIGHT",
@@ -57,7 +61,7 @@ a ticket with AWS Support.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -29,16 +29,20 @@ number type and multiple numbers.}
 idempotency.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ContactArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a contact with the specified details.
 }
 \section{Request syntax}{
-\preformatted{svc$create_contact(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_contact(
   DisplayName = "string",
   FirstName = "string",
   LastName = "string",
@@ -57,7 +61,7 @@ Creates a contact with the specified details.
   ),
   ClientRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

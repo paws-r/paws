@@ -24,7 +24,9 @@ the EC2 Auto Scaling group as is.
 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GameServerGroup = list(
     GameServerGroupName = "string",
     GameServerGroupArn = "string",
@@ -51,7 +53,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -98,11 +100,13 @@ GameLift FleetIQ emits delete events to Amazon CloudWatch.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_game_server_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_game_server_group(
   GameServerGroupName = "string",
   DeleteOption = "SAFE_DELETE"|"FORCE_DELETE"|"RETAIN"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

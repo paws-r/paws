@@ -34,7 +34,9 @@ of the request. For more information, see \href{https://docs.aws.amazon.com/AWSE
 Constraints: Up to 255 UTF-8 characters in length.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PrefixList = list(
     PrefixListId = "string",
     AddressFamily = "string",
@@ -53,7 +55,7 @@ A list with the following syntax:\preformatted{list(
     OwnerId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a managed prefix list. You can specify one or more entries for
@@ -64,7 +66,9 @@ You must specify the maximum number of entries for the prefix list. The
 maximum number of entries cannot be changed later.
 }
 \section{Request syntax}{
-\preformatted{svc$create_managed_prefix_list(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_managed_prefix_list(
   DryRun = TRUE|FALSE,
   PrefixListName = "string",
   Entries = list(
@@ -88,7 +92,7 @@ maximum number of entries cannot be changed later.
   AddressFamily = "string",
   ClientToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

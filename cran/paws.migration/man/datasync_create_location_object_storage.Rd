@@ -46,10 +46,12 @@ location. The value can be an empty string. We recommend using tags to
 name your resources.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   LocationArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an endpoint for a self-managed object storage bucket. For more
@@ -57,7 +59,9 @@ information about self-managed object storage locations, see
 create-object-location.
 }
 \section{Request syntax}{
-\preformatted{svc$create_location_object_storage(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_location_object_storage(
   ServerHostname = "string",
   ServerPort = 123,
   ServerProtocol = "HTTPS"|"HTTP",
@@ -75,7 +79,7 @@ create-object-location.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

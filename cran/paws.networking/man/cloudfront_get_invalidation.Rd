@@ -13,7 +13,9 @@ cloudfront_get_invalidation(DistributionId, Id)
 \code{IDFDVBD632BHDS5}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Invalidation = list(
     Id = "string",
     Status = "string",
@@ -31,17 +33,19 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Get the information about an invalidation.
 }
 \section{Request syntax}{
-\preformatted{svc$get_invalidation(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_invalidation(
   DistributionId = "string",
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

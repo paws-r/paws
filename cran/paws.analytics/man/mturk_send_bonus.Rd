@@ -43,14 +43,16 @@ if your account does not have enough funds to pay for both the bonus and
 the fees.
 }
 \section{Request syntax}{
-\preformatted{svc$send_bonus(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_bonus(
   WorkerId = "string",
   BonusAmount = "string",
   AssignmentId = "string",
   Reason = "string",
   UniqueRequestToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

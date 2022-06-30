@@ -25,10 +25,12 @@ be an exact, case-sensitive, match.}
 \item{hostname}{The public DNS name of the task runner.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   terminate = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Task runners call
@@ -39,12 +41,14 @@ Pipeline, the web service can use this call to detect when the task
 runner application has failed and restart a new instance.
 }
 \section{Request syntax}{
-\preformatted{svc$report_task_runner_heartbeat(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$report_task_runner_heartbeat(
   taskrunnerId = "string",
   workerGroup = "string",
   hostname = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -52,7 +52,9 @@ applications.
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- serverlessapplicationrepository(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- serverlessapplicationrepository(
   config = list(
     credentials = list(
       creds = list(
@@ -66,7 +68,7 @@ applications.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

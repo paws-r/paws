@@ -115,7 +115,9 @@ Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -140,7 +142,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new database in Amazon Lightsail.
@@ -150,7 +152,9 @@ control via request tags. For more information, see the Lightsail Dev
 Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$create_relational_database(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_relational_database(
   relationalDatabaseName = "string",
   availabilityZone = "string",
   relationalDatabaseBlueprintId = "string",
@@ -168,7 +172,7 @@ Guide.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

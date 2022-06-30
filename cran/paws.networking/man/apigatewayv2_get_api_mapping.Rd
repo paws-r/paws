@@ -12,23 +12,27 @@ apigatewayv2_get_api_mapping(ApiMappingId, DomainName)
 \item{DomainName}{[required] The domain name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApiId = "string",
   ApiMappingId = "string",
   ApiMappingKey = "string",
   Stage = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets an API mapping.
 }
 \section{Request syntax}{
-\preformatted{svc$get_api_mapping(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_api_mapping(
   ApiMappingId = "string",
   DomainName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

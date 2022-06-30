@@ -12,7 +12,9 @@ ses_get_custom_verification_email_template(TemplateName)
 retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TemplateName = "string",
   FromEmailAddress = "string",
   TemplateSubject = "string",
@@ -20,23 +22,25 @@ A list with the following syntax:\preformatted{list(
   SuccessRedirectionURL = "string",
   FailureRedirectionURL = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the custom email verification template for the template name you
 specify.
 
 For more information about custom verification email templates, see
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}
-in the \emph{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Using Custom Verification Email Templates} in
+the \emph{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{svc$get_custom_verification_email_template(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_custom_verification_email_template(
   TemplateName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

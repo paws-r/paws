@@ -10,7 +10,9 @@ sagemaker_describe_compilation_job(CompilationJobName)
 \item{CompilationJobName}{[required] The name of the model compilation job that you want information about.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CompilationJobName = "string",
   CompilationJobArn = "string",
   CompilationJobStatus = "INPROGRESS"|"COMPLETED"|"FAILED"|"STARTING"|"STOPPING"|"STOPPED",
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
     KmsKeyId = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about a model compilation job.
@@ -66,10 +68,12 @@ information about multiple model compilation jobs, use
 \code{\link[=sagemaker_list_compilation_jobs]{list_compilation_jobs}}.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_compilation_job(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_compilation_job(
   CompilationJobName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

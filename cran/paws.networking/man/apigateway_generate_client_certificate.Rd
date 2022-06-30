@@ -14,7 +14,9 @@ apigateway_generate_client_certificate(description, tags)
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   clientCertificateId = "string",
   description = "string",
   pemEncodedCertificate = "string",
@@ -28,19 +30,21 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Generates a ClientCertificate resource.
 }
 \section{Request syntax}{
-\preformatted{svc$generate_client_certificate(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$generate_client_certificate(
   description = "string",
   tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -22,10 +22,12 @@ You can't delete the default presets that are included with Elastic
 Transcoder.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_preset(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_preset(
   Id = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

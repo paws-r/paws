@@ -86,7 +86,7 @@ the \verb{Key ID} parameter.
 
 \item{AllowedPattern}{A regular expression used to validate the parameter value. For example,
 for String types with values restricted to numbers, you can specify the
-following: AllowedPattern=^\\d+$}
+following: AllowedPattern=^\d+$}
 
 \item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or
@@ -210,17 +210,21 @@ in your AWS account. For more information, see \href{https://docs.aws.amazon.com
 in the \emph{AWS Systems Manager User Guide}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Version = 123,
   Tier = "Standard"|"Advanced"|"Intelligent-Tiering"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Add a parameter to the system.
 }
 \section{Request syntax}{
-\preformatted{svc$put_parameter(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_parameter(
   Name = "string",
   Description = "string",
   Value = "string",
@@ -238,7 +242,7 @@ Add a parameter to the system.
   Policies = "string",
   DataType = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

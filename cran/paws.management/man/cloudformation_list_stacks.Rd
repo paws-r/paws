@@ -17,7 +17,9 @@ of stack status codes, see the \code{StackStatus} parameter of the Stack data
 type.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   StackSummaries = list(
     list(
       StackId = "string",
@@ -46,7 +48,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the summary information for stacks whose status matches the
@@ -56,13 +58,15 @@ StackStatusFilter is specified, summary information for all stacks is
 returned (including existing stacks and stacks that have been deleted).
 }
 \section{Request syntax}{
-\preformatted{svc$list_stacks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_stacks(
   NextToken = "string",
   StackStatusFilter = list(
     "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"REVIEW_IN_PROGRESS"|"IMPORT_IN_PROGRESS"|"IMPORT_COMPLETE"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

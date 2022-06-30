@@ -10,7 +10,9 @@ apigatewayv2_get_api(ApiId)
 \item{ApiId}{[required] The API identifier.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApiEndpoint = "string",
   ApiGatewayManaged = TRUE|FALSE,
   ApiId = "string",
@@ -51,16 +53,18 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets an Api resource.
 }
 \section{Request syntax}{
-\preformatted{svc$get_api(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_api(
   ApiId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -17,7 +17,9 @@ greengrass_list_bulk_deployment_detailed_reports(BulkDeploymentId,
 additional results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Deployments = list(
     list(
       CreatedAt = "string",
@@ -37,19 +39,21 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a paginated list of the deployments that have been started in a
 bulk deployment operation, and their current deployment status.
 }
 \section{Request syntax}{
-\preformatted{svc$list_bulk_deployment_detailed_reports(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_bulk_deployment_detailed_reports(
   BulkDeploymentId = "string",
   MaxResults = "string",
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

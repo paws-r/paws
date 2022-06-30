@@ -12,7 +12,9 @@ signer_get_signing_profile(profileName, profileOwner)
 \item{profileOwner}{The AWS account ID of the profile owner.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   profileName = "string",
   profileVersion = "string",
   profileVersionArn = "string",
@@ -51,17 +53,19 @@ A list with the following syntax:\preformatted{list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information on a specific signing profile.
 }
 \section{Request syntax}{
-\preformatted{svc$get_signing_profile(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_signing_profile(
   profileName = "string",
   profileOwner = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -14,7 +14,9 @@ amplify_create_webhook(appId, branchName, description)
 \item{description}{The description for a webhook.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   webhook = list(
     webhookArn = "string",
     webhookId = "string",
@@ -29,18 +31,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new webhook on an Amplify app.
 }
 \section{Request syntax}{
-\preformatted{svc$create_webhook(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_webhook(
   appId = "string",
   branchName = "string",
   description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

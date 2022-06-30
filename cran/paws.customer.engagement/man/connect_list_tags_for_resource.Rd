@@ -10,12 +10,14 @@ connect_list_tags_for_resource(resourceArn)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   tags = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the tags for the specified resource.
@@ -24,10 +26,12 @@ For sample policies that use tags, see \href{https://docs.aws.amazon.com/connect
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
   resourceArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -43,11 +43,13 @@ termination timestamp and reason.
 }
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_game_server(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_game_server(
   GameServerGroupName = "string",
   GameServerId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -13,7 +13,9 @@ kinesis_put_records(Records, StreamName)
 \item{StreamName}{[required] The stream name associated with the request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FailedRecordCount = 123,
   Records = list(
     list(
@@ -25,7 +27,7 @@ A list with the following syntax:\preformatted{list(
   ),
   EncryptionType = "NONE"|"KMS"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Writes multiple data records into a Kinesis data stream in a single call
@@ -105,7 +107,9 @@ or
 to modify this retention period.
 }
 \section{Request syntax}{
-\preformatted{svc$put_records(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_records(
   Records = list(
     list(
       Data = raw,
@@ -115,7 +119,7 @@ to modify this retention period.
   ),
   StreamName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

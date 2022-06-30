@@ -30,7 +30,9 @@ If you do not specify a \code{SourceSchemaName} value, the default is
 \item{NewTableName}{[required] The name of the table to create as a result of the current request.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TableRestoreStatus = list(
     TableRestoreRequestId = "string",
     Status = "PENDING"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED",
@@ -50,7 +52,7 @@ A list with the following syntax:\preformatted{list(
     NewTableName = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new table from a table in an Amazon Redshift cluster snapshot.
@@ -73,7 +75,9 @@ This way, you can replace the original table with the table created from
 the snapshot.
 }
 \section{Request syntax}{
-\preformatted{svc$restore_table_from_cluster_snapshot(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_table_from_cluster_snapshot(
   ClusterIdentifier = "string",
   SnapshotIdentifier = "string",
   SourceDatabaseName = "string",
@@ -83,7 +87,7 @@ the snapshot.
   TargetSchemaName = "string",
   NewTableName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

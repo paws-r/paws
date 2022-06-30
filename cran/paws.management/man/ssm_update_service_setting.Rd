@@ -54,11 +54,13 @@ back to the original value defined by the AWS service team.
 Update the service setting for the account.
 }
 \section{Request syntax}{
-\preformatted{svc$update_service_setting(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_service_setting(
   SettingId = "string",
   SettingValue = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

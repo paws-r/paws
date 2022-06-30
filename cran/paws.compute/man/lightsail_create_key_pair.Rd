@@ -15,7 +15,9 @@ Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   keyPair = list(
     name = "string",
     arn = "string",
@@ -60,7 +62,7 @@ A list with the following syntax:\preformatted{list(
     errorDetails = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates an SSH key pair.
@@ -69,7 +71,9 @@ The \verb{create key pair} operation supports tag-based access control via
 request tags. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$create_key_pair(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_key_pair(
   keyPairName = "string",
   tags = list(
     list(
@@ -78,7 +82,7 @@ request tags. For more information, see the Lightsail Dev Guide.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

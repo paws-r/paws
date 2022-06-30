@@ -25,20 +25,24 @@ of an object is reflected in a subsequent read operation of that same
 object.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Children = list(
     "string"
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a paginated list of child objects that are associated with a
 given object.
 }
 \section{Request syntax}{
-\preformatted{svc$list_object_children(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_object_children(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -47,7 +51,7 @@ given object.
   MaxResults = 123,
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

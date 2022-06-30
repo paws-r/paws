@@ -15,10 +15,12 @@ action. This must be of the form:
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Csr = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the certificate signing request (CSR) for your private
@@ -31,10 +33,12 @@ Private CA by calling the
 action. The CSR is returned as a base64 PEM-encoded string.
 }
 \section{Request syntax}{
-\preformatted{svc$get_certificate_authority_csr(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_certificate_authority_csr(
   CertificateAuthorityArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

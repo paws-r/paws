@@ -12,24 +12,28 @@ worklink_describe_website_certificate_authority(FleetArn, WebsiteCaId)
 \item{WebsiteCaId}{[required] A unique identifier for the certificate authority.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Certificate = "string",
   CreatedTime = as.POSIXct(
     "2015-01-01"
   ),
   DisplayName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information about the certificate authority.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_website_certificate_authority(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_website_certificate_authority(
   FleetArn = "string",
   WebsiteCaId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

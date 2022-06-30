@@ -90,10 +90,12 @@ data into the \code{OfflineStore} if an \code{OfflineStoreConfig} is provided.}
 \item{Tags}{Tags used to identify \code{Features} in each \code{FeatureGroup}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   FeatureGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Create a new \code{FeatureGroup}. A \code{FeatureGroup} is a group of \code{Features}
@@ -109,7 +111,9 @@ You must include at least one of \code{OnlineStoreConfig} and
 \code{OfflineStoreConfig} to create a \code{FeatureGroup}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_feature_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_feature_group(
   FeatureGroupName = "string",
   RecordIdentifierFeatureName = "string",
   EventTimeFeatureName = "string",
@@ -146,7 +150,7 @@ You must include at least one of \code{OnlineStoreConfig} and
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -30,16 +30,18 @@ An empty list.
 \description{
 Sets the health status of the specified instance.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health checks for Auto Scaling instances}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html}{Health checks for Auto Scaling instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$set_instance_health(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_instance_health(
   InstanceId = "string",
   HealthStatus = "string",
   ShouldRespectGracePeriod = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

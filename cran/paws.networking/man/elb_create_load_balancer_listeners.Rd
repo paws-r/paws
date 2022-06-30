@@ -24,7 +24,9 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$create_load_balancer_listeners(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_load_balancer_listeners(
   LoadBalancerName = "string",
   Listeners = list(
     list(
@@ -36,7 +38,7 @@ in the \emph{Classic Load Balancers Guide}.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

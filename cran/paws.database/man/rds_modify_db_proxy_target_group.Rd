@@ -20,7 +20,9 @@ with a letter and must contain only ASCII letters, digits, and hyphens;
 it can't end with a hyphen or contain two consecutive hyphens.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DBProxyTargetGroup = list(
     DBProxyName = "string",
     TargetGroupName = "string",
@@ -44,13 +46,15 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Modifies the properties of a \code{DBProxyTargetGroup}.
 }
 \section{Request syntax}{
-\preformatted{svc$modify_db_proxy_target_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_proxy_target_group(
   TargetGroupName = "string",
   DBProxyName = "string",
   ConnectionPoolConfig = list(
@@ -64,7 +68,7 @@ Modifies the properties of a \code{DBProxyTargetGroup}.
   ),
   NewName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -37,7 +37,9 @@ An empty list.
 Updates the data for a thing.
 }
 \section{Request syntax}{
-\preformatted{svc$update_thing(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_thing(
   thingName = "string",
   thingTypeName = "string",
   attributePayload = list(
@@ -49,7 +51,7 @@ Updates the data for a thing.
   expectedVersion = 123,
   removeThingType = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

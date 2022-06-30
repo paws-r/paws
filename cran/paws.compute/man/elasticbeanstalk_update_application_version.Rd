@@ -24,7 +24,9 @@ If no application version is found with this label,
 \item{Description}{A new description for this version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationVersion = list(
     ApplicationVersionArn = "string",
     ApplicationName = "string",
@@ -49,7 +51,7 @@ A list with the following syntax:\preformatted{list(
     Status = "Processed"|"Unprocessed"|"Failed"|"Processing"|"Building"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the specified application version to have the specified
@@ -59,12 +61,14 @@ If a property (for example, \code{description}) is not provided, the value
 remains unchanged. To clear properties, specify an empty string.
 }
 \section{Request syntax}{
-\preformatted{svc$update_application_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_application_version(
   ApplicationName = "string",
   VersionLabel = "string",
   Description = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

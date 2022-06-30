@@ -22,7 +22,9 @@ Tags that you add to an AWS Cloud9 environment by using this method will
 NOT be automatically propagated to underlying resources.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -31,7 +33,7 @@ NOT be automatically propagated to underlying resources.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

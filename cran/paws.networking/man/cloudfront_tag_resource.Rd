@@ -18,7 +18,9 @@ An empty list.
 Add tags to a CloudFront resource.
 }
 \section{Request syntax}{
-\preformatted{svc$tag_resource(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
   Resource = "string",
   Tags = list(
     Items = list(
@@ -29,7 +31,7 @@ Add tags to a CloudFront resource.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

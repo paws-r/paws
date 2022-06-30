@@ -56,7 +56,9 @@ the value is assumed to be true. The response from this operation always
 interleaves events from multiple log streams within a log group.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   events = list(
     list(
       logStreamName = "string",
@@ -74,7 +76,7 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists log events from the specified log group. You can list all the log
@@ -93,7 +95,9 @@ when the event was ingested by CloudWatch Logs, and the ID of the
 \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} request.
 }
 \section{Request syntax}{
-\preformatted{svc$filter_log_events(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$filter_log_events(
   logGroupName = "string",
   logStreamNames = list(
     "string"
@@ -106,7 +110,7 @@ when the event was ingested by CloudWatch Logs, and the ID of the
   limit = 123,
   interleaved = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -19,7 +19,9 @@ resource.}
 \item{MaxResults}{The number of maximum results in a page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Delegates = list(
     list(
       Id = "string",
@@ -28,20 +30,22 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists the delegates associated with a resource. Users and groups can be
 resource delegates and answer requests on behalf of the resource.
 }
 \section{Request syntax}{
-\preformatted{svc$list_resource_delegates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resource_delegates(
   OrganizationId = "string",
   ResourceId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

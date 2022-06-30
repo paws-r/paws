@@ -12,7 +12,9 @@ iot_list_scheduled_audits(nextToken, maxResults)
 \item{maxResults}{The maximum number of results to return at one time. The default is 25.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   scheduledAudits = list(
     list(
       scheduledAuditName = "string",
@@ -24,17 +26,19 @@ A list with the following syntax:\preformatted{list(
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Lists all of your scheduled audits.
 }
 \section{Request syntax}{
-\preformatted{svc$list_scheduled_audits(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_scheduled_audits(
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

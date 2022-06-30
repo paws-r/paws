@@ -17,16 +17,20 @@ sagemaker_update_artifact(ArtifactArn, ArtifactName, Properties,
 \item{PropertiesToRemove}{A list of properties to remove.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ArtifactArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an artifact.
 }
 \section{Request syntax}{
-\preformatted{svc$update_artifact(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_artifact(
   ArtifactArn = "string",
   ArtifactName = "string",
   Properties = list(
@@ -36,7 +40,7 @@ Updates an artifact.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

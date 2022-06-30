@@ -25,7 +25,9 @@ documentation for a programming interface that you can use to manage
 Amazon QuickSight.
 }
 \section{Service syntax}{
-\preformatted{svc <- quicksight(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- quicksight(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +41,7 @@ Amazon QuickSight.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

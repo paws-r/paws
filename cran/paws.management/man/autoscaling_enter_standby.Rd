@@ -16,7 +16,9 @@ autoscaling_enter_standby(InstanceIds, AutoScalingGroupName,
 group by the number of instances moved to \code{Standby} mode.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Activities = list(
     list(
       ActivityId = "string",
@@ -36,7 +38,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Moves the specified instances into the standby state.
@@ -54,14 +56,16 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$enter_standby(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enter_standby(
   InstanceIds = list(
     "string"
   ),
   AutoScalingGroupName = "string",
   ShouldDecrementDesiredCapacity = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

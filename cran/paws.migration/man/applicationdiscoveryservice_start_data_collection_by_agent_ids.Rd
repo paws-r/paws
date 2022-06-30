@@ -17,7 +17,9 @@ agents/connectors, the system does not throw an exception. Instead, the
 system shows \code{Failed} in the \emph{Description} field.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   agentsConfigurationStatus = list(
     list(
       agentId = "string",
@@ -26,18 +28,20 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Instructs the specified agents or connectors to start collecting data.
 }
 \section{Request syntax}{
-\preformatted{svc$start_data_collection_by_agent_ids(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_data_collection_by_agent_ids(
   agentIds = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

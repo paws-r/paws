@@ -14,22 +14,26 @@ chime_update_app_instance_user(AppInstanceUserArn, Name, Metadata)
 \item{Metadata}{The metadata of the app instance user.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   AppInstanceUserArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates the details for an \code{AppInstanceUser}. You can update names and
 metadata.
 }
 \section{Request syntax}{
-\preformatted{svc$update_app_instance_user(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_app_instance_user(
   AppInstanceUserArn = "string",
   Name = "string",
   Metadata = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

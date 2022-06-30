@@ -13,10 +13,12 @@ and \code{Expression}.}
 \item{Tags}{A list of \code{Tags} object.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   QueryArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Saves a new query or updates an existing saved query. The \code{QueryName}
@@ -24,7 +26,9 @@ must be unique for an AWS account in an AWS Region. You can create upto
 300 queries in an AWS account in an AWS Region.
 }
 \section{Request syntax}{
-\preformatted{svc$put_stored_query(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_stored_query(
   StoredQuery = list(
     QueryId = "string",
     QueryArn = "string",
@@ -39,7 +43,7 @@ must be unique for an AWS account in an AWS Region. You can create upto
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

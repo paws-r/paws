@@ -23,7 +23,9 @@ request.}
 Default: 20}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Domains = list(
     list(
       DomainName = "string",
@@ -36,18 +38,20 @@ A list with the following syntax:\preformatted{list(
   ),
   NextPageMarker = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation returns all the domain names registered with Amazon Route
 53 for the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{svc$list_domains(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_domains(
   Marker = "string",
   MaxItems = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

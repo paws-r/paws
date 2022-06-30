@@ -943,7 +943,7 @@ gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, Scri
 #' weighting for each instance type. If no weight value is specified for an
 #' instance type, it is set to the default value "1". For more information
 #' about capacity weighting, see [Instance Weighting for Amazon EC2 Auto
-#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-weighting.html)
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups-instance-weighting.html)
 #' in the Amazon EC2 Auto Scaling User Guide.
 #' @param AutoScalingPolicy Configuration settings to define a scaling policy for the Auto Scaling
 #' group that is optimized for game hosting. The scaling policy uses the
@@ -9387,7 +9387,7 @@ gamelift_update_game_server <- function(GameServerGroupName, GameServerId, GameS
 #' weighting for each instance type. If no weight value is specified for an
 #' instance type, it is set to the default value "1". For more information
 #' about capacity weighting, see [Instance Weighting for Amazon EC2 Auto
-#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-weighting.html)
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups-instance-weighting.html)
 #' in the Amazon EC2 Auto Scaling User Guide.
 #' @param GameServerProtectionPolicy A flag that indicates whether instances in the game server group are
 #' protected from early termination. Unprotected instances that have active

@@ -16,10 +16,12 @@ An empty list.
 Deletes a gateway group.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_gateway_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_gateway_group(
   GatewayGroupArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

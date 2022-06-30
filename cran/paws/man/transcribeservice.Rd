@@ -19,7 +19,9 @@ Operations section.
 Operations and objects for transcribing speech to text.
 }
 \section{Service syntax}{
-\preformatted{svc <- transcribeservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- transcribeservice(
   config = list(
     credentials = list(
       creds = list(
@@ -33,7 +35,7 @@ Operations and objects for transcribing speech to text.
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

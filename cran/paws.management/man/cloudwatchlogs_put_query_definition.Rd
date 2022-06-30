@@ -33,10 +33,12 @@ the updated definition will contain no log groups.}
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   queryDefinitionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates or updates a query definition for CloudWatch Logs Insights. For
@@ -54,7 +56,9 @@ You must have the \code{logs:PutQueryDefinition} permission to be able to
 perform this operation.
 }
 \section{Request syntax}{
-\preformatted{svc$put_query_definition(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_query_definition(
   name = "string",
   queryDefinitionId = "string",
   logGroupNames = list(
@@ -62,7 +66,7 @@ perform this operation.
   ),
   queryString = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

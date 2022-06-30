@@ -13,7 +13,9 @@ in the format
 \verb{task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid>}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Status = "SUCCEEDED"|"IN_PROGRESS"|"FAILED"|"NOT_STARTED",
   Reason = list(
     Reason = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves the status of your service-linked role deletion. After you use
@@ -40,10 +42,12 @@ operation returns the reason that it failed, if that information is
 returned by the service.
 }
 \section{Request syntax}{
-\preformatted{svc$get_service_linked_role_deletion_status(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_service_linked_role_deletion_status(
   DeletionTaskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -12058,7 +12058,7 @@ sagemaker_describe_user_profile <- function(DomainId, UserProfileName) {
 #' @description
 #' Lists private workforce information, including workforce name, Amazon
 #' Resource Name (ARN), and, if applicable, allowed IP address ranges
-#' ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)).
+#' ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html)).
 #' Allowable IP address ranges are the IP addresses that workers can use to
 #' access tasks.
 #' 
@@ -13599,7 +13599,7 @@ sagemaker_list_contexts <- function(SourceUri = NULL, ContextType = NULL, Create
 #' @param NextToken If the result of the previous
 #' [`list_data_quality_job_definitions`][sagemaker_list_data_quality_job_definitions]
 #' request was truncated, the response includes a `NextToken`. To retrieve
-#' the next set of transform jobs, use the token in the next request.&gt;
+#' the next set of transform jobs, use the token in the next request.\>
 #' @param MaxResults The maximum number of data quality monitoring job definitions to return
 #' in the response.
 #' @param NameContains A string in the data quality monitoring job definition name. This filter
@@ -20958,7 +20958,7 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #' Use `SourceIpConfig` to restrict worker access to tasks to a specific
 #' range of IP addresses. You specify allowed IP addresses by creating a
 #' list of up to ten
-#' [CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html).
+#' [CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html).
 #' By default, a workforce isn't restricted to specific IP addresses. If
 #' you specify a range of IP addresses, workers who attempt to access tasks
 #' using any IP address outside the specified range are denied and get a
@@ -20983,7 +20983,7 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #' @param WorkforceName &#91;required&#93; The name of the private workforce that you want to update. You can find
 #' your workforce name by using the operation.
 #' @param SourceIpConfig A list of one to ten worker IP address ranges
-#' ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html))
+#' ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html))
 #' that can be used to access tasks assigned to this workforce.
 #' 
 #' Maximum: Ten CIDR values

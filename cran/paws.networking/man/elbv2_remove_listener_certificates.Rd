@@ -21,7 +21,9 @@ Removes the specified certificate from the certificate list for the
 specified HTTPS or TLS listener.
 }
 \section{Request syntax}{
-\preformatted{svc$remove_listener_certificates(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_listener_certificates(
   ListenerArn = "string",
   Certificates = list(
     list(
@@ -30,7 +32,7 @@ specified HTTPS or TLS listener.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

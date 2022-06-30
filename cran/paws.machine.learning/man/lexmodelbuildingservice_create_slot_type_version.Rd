@@ -19,7 +19,9 @@ version. If you don't specify a checksum, Amazon Lex publishes the
 \verb{$LATEST} version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   name = "string",
   description = "string",
   enumerationValues = list(
@@ -48,7 +50,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a new version of a slot type based on the \verb{$LATEST} version of
@@ -61,21 +63,21 @@ update the numbered versions that you create with the
 \code{\link[=lexmodelbuildingservice_create_slot_type_version]{create_slot_type_version}}
 operation.
 
-When you create a version of a slot type, Amazon Lex sets the version to
-\enumerate{
-\item Subsequent versions increment by 1. For more information, see
+When you create a version of a slot type, Amazon Lex sets the version
+to 1. Subsequent versions increment by 1. For more information, see
 versioning-intro.
-}
 
 This operation requires permissions for the \code{lex:CreateSlotTypeVersion}
 action.
 }
 \section{Request syntax}{
-\preformatted{svc$create_slot_type_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_slot_type_version(
   name = "string",
   checksum = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

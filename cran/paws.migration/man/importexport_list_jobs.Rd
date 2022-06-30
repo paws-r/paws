@@ -14,7 +14,9 @@ importexport_list_jobs(MaxJobs, Marker, APIVersion)
 \item{APIVersion}{}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Jobs = list(
     list(
       JobId = "string",
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
   ),
   IsTruncated = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 This operation returns the jobs associated with the requester. AWS
@@ -37,12 +39,14 @@ Test2 was created 2010Feb05, the ListJobs operation would return Test2
 followed by Test1.
 }
 \section{Request syntax}{
-\preformatted{svc$list_jobs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_jobs(
   MaxJobs = 123,
   Marker = "string",
   APIVersion = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

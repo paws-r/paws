@@ -18,7 +18,9 @@ opsworkscm_describe_backups(BackupId, ServerName, NextToken, MaxResults)
 \code{\link[=opsworkscm_describe_backups]{describe_backups}} requests.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Backups = list(
     list(
       BackupArn = "string",
@@ -55,7 +57,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Describes backups. The results are ordered by time, with newest backups
@@ -69,13 +71,15 @@ A \code{ValidationException} is raised when parameters of the request are not
 valid.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_backups(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_backups(
   BackupId = "string",
   ServerName = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

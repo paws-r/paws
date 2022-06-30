@@ -24,27 +24,31 @@ batch of the results.}
 results.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   pullRequestIds = list(
     "string"
   ),
   nextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of pull requests for a specified repository. The return
 list can be refined by pull request status or pull request author ARN.
 }
 \section{Request syntax}{
-\preformatted{svc$list_pull_requests(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_pull_requests(
   repositoryName = "string",
   authorArn = "string",
   pullRequestStatus = "OPEN"|"CLOSED",
   nextToken = "string",
   maxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

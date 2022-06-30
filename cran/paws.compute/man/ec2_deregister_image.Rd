@@ -30,11 +30,13 @@ it doesn't affect the files that you uploaded to Amazon S3 when you
 created the AMI.
 }
 \section{Request syntax}{
-\preformatted{svc$deregister_image(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_image(
   ImageId = "string",
   DryRun = TRUE|FALSE
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

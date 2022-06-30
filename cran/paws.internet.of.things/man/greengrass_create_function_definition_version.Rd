@@ -20,20 +20,24 @@ these settings.}
 \item{Functions}{A list of Lambda functions in this function definition version.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
   Version = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Creates a version of a Lambda function definition that has already been
 defined.
 }
 \section{Request syntax}{
-\preformatted{svc$create_function_definition_version(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_function_definition_version(
   AmznClientToken = "string",
   DefaultConfig = list(
     Execution = list(
@@ -79,7 +83,7 @@ defined.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

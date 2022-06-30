@@ -14,7 +14,9 @@ setting ID can be \verb{/ssm/parameter-store/default-parameter-tier},
 \code{arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled}.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ServiceSetting = list(
     SettingId = "string",
     SettingValue = "string",
@@ -26,7 +28,7 @@ A list with the following syntax:\preformatted{list(
     Status = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 \code{ServiceSetting} is an account-level setting for an AWS service. This
@@ -50,10 +52,12 @@ Reset the service setting for the account to the default value as
 provisioned by the AWS service team.
 }
 \section{Request syntax}{
-\preformatted{svc$reset_service_setting(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_service_setting(
   SettingId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

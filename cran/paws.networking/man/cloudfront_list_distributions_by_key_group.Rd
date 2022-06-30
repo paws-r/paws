@@ -20,7 +20,9 @@ page’s response.}
 listing.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DistributionIdList = list(
     Marker = "string",
     NextMarker = "string",
@@ -32,7 +34,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets a list of distribution IDs for distributions that have a cache
@@ -46,12 +48,14 @@ get the next page of items, send a subsequent request that specifies the
 the subsequent request.
 }
 \section{Request syntax}{
-\preformatted{svc$list_distributions_by_key_group(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_distributions_by_key_group(
   Marker = "string",
   MaxItems = "string",
   KeyGroupId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

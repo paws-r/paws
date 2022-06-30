@@ -10,7 +10,9 @@ storagegateway_list_local_disks(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   GatewayARN = "string",
   Disks = list(
     list(
@@ -27,7 +29,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns a list of the gateway's local disks. To specify which gateway to
@@ -42,10 +44,12 @@ longer connected to the gateway), or mismatch (the disk node is occupied
 by a disk that has incorrect metadata or the disk content is corrupted).
 }
 \section{Request syntax}{
-\preformatted{svc$list_local_disks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_local_disks(
   GatewayARN = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

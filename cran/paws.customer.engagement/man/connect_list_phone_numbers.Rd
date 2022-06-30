@@ -22,7 +22,9 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   PhoneNumberSummaryList = list(
     list(
       Id = "string",
@@ -34,7 +36,7 @@ A list with the following syntax:\preformatted{list(
   ),
   NextToken = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Provides information about the phone numbers for the specified Amazon
@@ -44,7 +46,9 @@ For more information about phone numbers, see \href{https://docs.aws.amazon.com/
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-\preformatted{svc$list_phone_numbers(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_phone_numbers(
   InstanceId = "string",
   PhoneNumberTypes = list(
     "TOLL_FREE"|"DID"
@@ -55,7 +59,7 @@ in the \emph{Amazon Connect Administrator Guide}.
   NextToken = "string",
   MaxResults = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

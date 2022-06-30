@@ -10,7 +10,9 @@ rds_delete_event_subscription(SubscriptionName)
 \item{SubscriptionName}{[required] The name of the RDS event notification subscription you want to delete.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -28,16 +30,18 @@ A list with the following syntax:\preformatted{list(
     EventSubscriptionArn = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an RDS event notification subscription.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_event_subscription(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_event_subscription(
   SubscriptionName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

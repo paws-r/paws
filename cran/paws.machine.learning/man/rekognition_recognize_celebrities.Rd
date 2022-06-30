@@ -16,7 +16,9 @@ need to base64-encode image bytes passed using the \code{Bytes} field. For
 more information, see Images in the Amazon Rekognition developer guide.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   CelebrityFaces = list(
     list(
       Urls = list(
@@ -81,7 +83,7 @@ A list with the following syntax:\preformatted{list(
   ),
   OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns an array of celebrities recognized in the input image. For more
@@ -123,7 +125,9 @@ This operation requires permissions to perform the
 \code{rekognition:RecognizeCelebrities} operation.
 }
 \section{Request syntax}{
-\preformatted{svc$recognize_celebrities(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$recognize_celebrities(
   Image = list(
     Bytes = raw,
     S3Object = list(
@@ -133,7 +137,7 @@ This operation requires permissions to perform the
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

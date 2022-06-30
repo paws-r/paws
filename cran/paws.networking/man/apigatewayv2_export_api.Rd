@@ -27,16 +27,20 @@ the only supported value.}
 a representation of the latest API configuration is exported.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   body = raw
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Export api
 }
 \section{Request syntax}{
-\preformatted{svc$export_api(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_api(
   ApiId = "string",
   ExportVersion = "string",
   IncludeExtensions = TRUE|FALSE,
@@ -44,7 +48,7 @@ Export api
   Specification = "OAS30",
   StageName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

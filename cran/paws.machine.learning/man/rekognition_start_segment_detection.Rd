@@ -31,10 +31,12 @@ the completion notification.}
 TECHNICAL_CUE and SHOT.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts asynchronous detection of segment detection in a stored video.
@@ -64,7 +66,9 @@ For more information, see Detecting Video Segments in Stored Video in
 the Amazon Rekognition Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{svc$start_segment_detection(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_segment_detection(
   Video = list(
     S3Object = list(
       Bucket = "string",
@@ -90,7 +94,7 @@ the Amazon Rekognition Developer Guide.
     "TECHNICAL_CUE"|"SHOT"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

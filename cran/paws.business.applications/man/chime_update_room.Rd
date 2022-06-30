@@ -15,7 +15,9 @@ chime_update_room(AccountId, RoomId, Name)
 \item{Name}{The room name.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Room = list(
     RoomId = "string",
     Name = "string",
@@ -29,19 +31,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates room details, such as the room name, for a room in an Amazon
 Chime Enterprise account.
 }
 \section{Request syntax}{
-\preformatted{svc$update_room(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_room(
   AccountId = "string",
   RoomId = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

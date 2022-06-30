@@ -19,7 +19,9 @@ Operations section.
 Amazon DocumentDB API documentation
 }
 \section{Service syntax}{
-\preformatted{svc <- docdb(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- docdb(
   config = list(
     credentials = list(
       creds = list(
@@ -33,7 +35,7 @@ Amazon DocumentDB API documentation
     region = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

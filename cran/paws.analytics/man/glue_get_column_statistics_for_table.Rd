@@ -18,7 +18,9 @@ none is supplied, the AWS account ID is used by default.}
 \item{ColumnNames}{[required] A list of the column names.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ColumnStatisticsList = list(
     list(
       ColumnName = "string",
@@ -91,7 +93,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Retrieves table statistics of columns.
@@ -100,7 +102,9 @@ The Identity and Access Management (IAM) permission required for this
 operation is \code{\link[=glue_get_table]{get_table}}.
 }
 \section{Request syntax}{
-\preformatted{svc$get_column_statistics_for_table(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_column_statistics_for_table(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -108,7 +112,7 @@ operation is \code{\link[=glue_get_table]{get_table}}.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

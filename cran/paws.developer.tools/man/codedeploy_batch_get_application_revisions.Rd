@@ -15,7 +15,9 @@ about the application revisions, including type and location. The
 maximum number of \code{RevisionLocation} objects you can specify is 25.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   applicationName = "string",
   errorMessage = "string",
   revisions = list(
@@ -60,14 +62,16 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets information about one or more application revisions. The maximum
 number of application revisions that can be returned is 25.
 }
 \section{Request syntax}{
-\preformatted{svc$batch_get_application_revisions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_application_revisions(
   applicationName = "string",
   revisions = list(
     list(
@@ -94,7 +98,7 @@ number of application revisions that can be returned is 25.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

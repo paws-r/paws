@@ -21,7 +21,9 @@ to delete. You can get the \code{CloudWatchLoggingOptionId} by using the
 operation.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123,
   CloudWatchLoggingOptionDescriptions = list(
@@ -32,19 +34,21 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics
 application.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_application_cloud_watch_logging_option(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_cloud_watch_logging_option(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   CloudWatchLoggingOptionId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

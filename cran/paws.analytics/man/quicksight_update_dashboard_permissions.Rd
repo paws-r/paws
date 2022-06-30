@@ -18,7 +18,9 @@ you're updating.}
 \item{RevokePermissions}{The permissions that you want to revoke from this resource.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   DashboardArn = "string",
   DashboardId = "string",
   Permissions = list(
@@ -32,13 +34,15 @@ A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates read and write permissions on a dashboard.
 }
 \section{Request syntax}{
-\preformatted{svc$update_dashboard_permissions(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_dashboard_permissions(
   AwsAccountId = "string",
   DashboardId = "string",
   GrantPermissions = list(
@@ -58,7 +62,7 @@ Updates read and write permissions on a dashboard.
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

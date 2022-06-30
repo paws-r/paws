@@ -10,7 +10,9 @@ dynamodb_describe_kinesis_streaming_destination(TableName)
 \item{TableName}{[required] The name of the table being described.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   TableName = "string",
   KinesisDataStreamDestinations = list(
     list(
@@ -20,16 +22,18 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns information about the status of Kinesis streaming.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_kinesis_streaming_destination(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_kinesis_streaming_destination(
   TableName = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -49,17 +49,21 @@ specify the full ARN of your service role when you create compute
 environments.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   computeEnvironmentName = "string",
   computeEnvironmentArn = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Updates an AWS Batch compute environment.
 }
 \section{Request syntax}{
-\preformatted{svc$update_compute_environment(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_compute_environment(
   computeEnvironment = "string",
   state = "ENABLED"|"DISABLED",
   computeResources = list(
@@ -75,7 +79,7 @@ Updates an AWS Batch compute environment.
   ),
   serviceRole = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

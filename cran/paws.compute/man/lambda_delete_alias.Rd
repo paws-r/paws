@@ -30,11 +30,13 @@ Deletes a Lambda function
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
 }
 \section{Request syntax}{
-\preformatted{svc$delete_alias(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_alias(
   FunctionName = "string",
   Name = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

@@ -35,7 +35,9 @@ defined back-end endpoint.}
 deployed Stage.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   status = 123,
   body = "string",
   headers = list(
@@ -49,14 +51,16 @@ A list with the following syntax:\preformatted{list(
   log = "string",
   latency = 123
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Simulate the execution of a Method in your RestApi with headers,
 parameters, and an incoming request body.
 }
 \section{Request syntax}{
-\preformatted{svc$test_invoke_method(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_invoke_method(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
@@ -75,7 +79,7 @@ parameters, and an incoming request body.
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

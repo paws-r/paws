@@ -15,21 +15,25 @@ to see the list of all checks, including those that are enabled or
 to select which checks are enabled.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   taskId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Starts an on-demand Device Defender audit.
 }
 \section{Request syntax}{
-\preformatted{svc$start_on_demand_audit_task(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_on_demand_audit_task(
   targetCheckNames = list(
     "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

@@ -23,8 +23,8 @@ specific sequence number, provided in the value
 \item AFTER_SEQUENCE_NUMBER - Start reading right after the position
 denoted by a specific sequence number, provided in the value
 \code{StartingSequenceNumber}.
-\item AT_TIMESTAMP - Start reading from the position denoted by a
-specific time stamp, provided in the value \code{Timestamp}.
+\item AT_TIMESTAMP - Start reading from the position denoted by a specific
+time stamp, provided in the value \code{Timestamp}.
 \item TRIM_HORIZON - Start reading at the last untrimmed record in the
 shard in the system, which is the oldest data record in the shard.
 \item LATEST - Start reading just after the most recent record in the
@@ -45,10 +45,12 @@ horizon, the iterator returned is for the oldest untrimmed data record
 (TRIM_HORIZON).}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   ShardIterator = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Gets an Amazon Kinesis shard iterator. A shard iterator expires 5
@@ -104,7 +106,9 @@ closed as a result of using \code{\link[=kinesis_split_shard]{split_shard}} or
 transactions per second per account per open shard.
 }
 \section{Request syntax}{
-\preformatted{svc$get_shard_iterator(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_shard_iterator(
   StreamName = "string",
   ShardId = "string",
   ShardIteratorType = "AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER"|"TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
@@ -113,7 +117,7 @@ transactions per second per account per open shard.
     "2015-01-01"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

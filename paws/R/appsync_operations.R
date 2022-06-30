@@ -24,8 +24,8 @@ NULL
 #' 
 #' -   **FULL_REQUEST_CACHING**: All requests are fully cached.
 #' 
-#' -   **PER_RESOLVER_CACHING**: Individual resolvers that you specify
-#'     are cached.
+#' -   **PER_RESOLVER_CACHING**: Individual resolvers that you specify are
+#'     cached.
 #' @param type &#91;required&#93; The cache instance type. Valid values are
 #' 
 #' -   `SMALL`
@@ -2307,8 +2307,8 @@ appsync_untag_resource <- function(resourceArn, tagKeys) {
 #' 
 #' -   **FULL_REQUEST_CACHING**: All requests are fully cached.
 #' 
-#' -   **PER_RESOLVER_CACHING**: Individual resolvers that you specify
-#'     are cached.
+#' -   **PER_RESOLVER_CACHING**: Individual resolvers that you specify are
+#'     cached.
 #' @param type &#91;required&#93; The cache instance type. Valid values are
 #' 
 #' -   `SMALL`

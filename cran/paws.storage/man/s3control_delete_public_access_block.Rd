@@ -24,10 +24,12 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$delete_public_access_block(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_public_access_block(
   AccountId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

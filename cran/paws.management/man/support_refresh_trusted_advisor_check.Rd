@@ -13,14 +13,16 @@ support_refresh_trusted_advisor_check(checkId)
 refreshed causes an \code{InvalidParameterValue} error.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   status = list(
     checkId = "string",
     status = "string",
     millisUntilNextRefreshable = 123
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Refreshes the AWS Trusted Advisor check that you specify using the check
@@ -44,10 +46,12 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-\preformatted{svc$refresh_trusted_advisor_check(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$refresh_trusted_advisor_check(
   checkId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

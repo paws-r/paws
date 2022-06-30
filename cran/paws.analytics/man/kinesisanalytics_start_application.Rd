@@ -44,7 +44,9 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:StartApplication} action.
 }
 \section{Request syntax}{
-\preformatted{svc$start_application(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_application(
   ApplicationName = "string",
   InputConfigurations = list(
     list(
@@ -55,7 +57,7 @@ This operation requires permissions to perform the
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}

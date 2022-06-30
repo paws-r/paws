@@ -12,7 +12,9 @@ s3control_get_job_tagging(AccountId, JobId)
 \item{JobId}{[required] The ID for the S3 Batch Operations job whose tags you want to retrieve.}
 }
 \value{
-A list with the following syntax:\preformatted{list(
+A list with the following syntax:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -20,7 +22,7 @@ A list with the following syntax:\preformatted{list(
     )
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 \description{
 Returns the tags on an S3 Batch Operations job. To use this operation,
@@ -36,11 +38,13 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-\preformatted{svc$get_job_tagging(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job_tagging(
   AccountId = "string",
   JobId = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \keyword{internal}
